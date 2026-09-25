@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Laureate ID Badge Studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Pinyon+Script&family=Oswald:wght@500;700&family=Shippori+Mincho:wght@700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="../certificate-engine/laureate-render.js"></script>
+<script src="badge-render.js"></script>
+<style>
+:root{
+  --bg:#EEE9DD; --panel:#FBF8F1; --field:#FFFFFF; --ink:#1B2740; --muted:#56617A; --line:#D8CFBB;
+  --accent:#8A6A2C; --accent-ink:#FFFFFF; --primary:#1B2740; --primary-ink:#F6F1E5; --focus:#B08A3E;
+  --stage:#E2DCCD; --ok:#2B6B47; --warn:#9A5B12;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F141D; --panel:#161D29; --field:#1D2533; --ink:#ECE6D8; --muted:#A6AFC1; --line:#2D3647;
+    --accent:#D4B26A; --accent-ink:#141A24; --primary:#D4B26A; --primary-ink:#141A24; --focus:#D4B26A;
+    --stage:#0B0F16; --ok:#7CC49A; --warn:#E3A55A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F141D; --panel:#161D29; --field:#1D2533; --ink:#ECE6D8; --muted:#A6AFC1; --line:#2D3647;
+  --accent:#D4B26A; --accent-ink:#141A24; --primary:#D4B26A; --primary-ink:#141A24; --focus:#D4B26A;
+  --stage:#0B0F16; --ok:#7CC49A; --warn:#E3A55A;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Hanken Grotesk','Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.5;margin:0}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:20px;padding-block:20px 40px}
+header.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:6px 18px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.brand{display:flex;flex-direction:column;gap:2px}
+.brand .eyebrow{font-family:Cinzel,Georgia,serif;font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+.brand h1{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:34px;line-height:1.05;text-wrap:balance}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+button,.btn{font:inherit;font-weight:600;font-size:14px;border-radius:8px;padding:10px 16px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--primary);color:var(--primary-ink);border-color:var(--primary)}
+button.primary:hover{filter:brightness(1.08)}
+button:disabled{opacity:.55;cursor:progress}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.tab:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.layout{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:960px){.layout{grid-template-columns:minmax(0,1fr)}.stage-col{order:-1}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.tabs{display:flex;border-bottom:1px solid var(--line)}
+.tab{flex:1;font-weight:600;font-size:14px;padding:14px 10px;background:none;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--muted);justify-content:center;min-height:48px}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tabpanel{padding:18px;display:flex;flex-direction:column;gap:22px}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+legend{font-family:Cinzel,Georgia,serif;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);padding:0;margin-bottom:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:13px;font-weight:600;color:var(--muted)}
+input[type=text],input[type=date],input[type=number],select,textarea{font:inherit;font-size:15px;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:8px;padding:9px 11px;min-height:42px;width:100%}
+textarea{resize:vertical;min-height:84px;line-height:1.45}
+textarea.mono{font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:13px;min-height:150px;white-space:pre}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.inline{display:flex;gap:8px;align-items:flex-end}
+.inline .field{flex:1}
+.check{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;min-height:32px}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.stage-col{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:flex;flex-direction:column;gap:12px}
+@media (max-width:960px){.stage-col{position:static}}
+.stage{background:var(--stage);border-radius:12px;padding:clamp(12px,3vw,36px);border:1px solid var(--line)}
+.sides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,3vw,32px)}
+.side{display:flex;flex-direction:column;gap:8px;align-items:center}
+.side span{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.stage canvas{display:block;width:100%;height:auto;max-width:100%;border-radius:14px;box-shadow:0 18px 40px rgba(20,24,34,.22),0 2px 6px rgba(20,24,34,.12)}
+.stage-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
+.stage-meta strong{color:var(--ink);font-weight:600}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:600;color:var(--muted);background:var(--field)}
+tr:last-child td{border-bottom:0}
+tr.current td{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+td button{min-height:32px;padding:4px 10px;font-size:13px}
+.flag{color:var(--warn);font-weight:600}
+.toast{min-height:22px;font-size:14px;font-weight:500;color:var(--ok)}
+.toast.err{color:var(--warn)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="eyebrow">Lean Six Sigma</span>
+      <h1>Laureate ID Badge Studio</h1>
+    </div>
+    <div class="actions">
+      <button type="button" id="btn-png">Download PNGs (.zip)</button>
+      <button type="button" id="btn-pdf" class="primary">Download PDF</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="panel">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-single" aria-selected="true" aria-controls="form">Single badge</button>
+        <button class="tab" role="tab" id="tab-batch" aria-selected="false" aria-controls="panel-batch">Batch from CSV</button>
+      </div>
+
+      <form id="form" class="tabpanel" role="tabpanel" aria-labelledby="tab-single">
+        <fieldset>
+          <legend>Holder</legend>
+          <div class="btnrow">
+            <label class="btn" for="photo-file" style="cursor:pointer">Upload photo…</label>
+            <input type="file" id="photo-file" accept="image/png,image/jpeg,image/webp" hidden>
+            <button type="button" id="btn-photo-clear" hidden>Remove photo</button>
+          </div>
+          <p class="hint" id="photo-status">No photo. The badge shows initials instead.</p>
+          <div class="field"><label for="f-name">Full name</label><input type="text" id="f-name" data-key="name" autocomplete="off"></div>
+          <div class="field"><label for="f-title">Job title</label><input type="text" id="f-title" data-key="title"></div>
+          <div class="field"><label for="f-organization">Department or company</label><input type="text" id="f-organization" data-key="organization"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Credential</legend>
+          <div class="row2">
+            <div class="field"><label for="f-belt">Belt level</label>
+              <select id="f-belt" data-key="belt"><option>Yellow</option><option>Green</option><option>Black</option><option>Master Black</option></select>
+            </div>
+            <div class="field"><label for="f-cred">Credential number</label><input type="text" id="f-cred" data-key="cred" autocomplete="off"></div>
+            <div class="field"><label for="f-issued">Issued</label><input type="date" id="f-issued" data-key="issued"></div>
+            <div class="field"><label for="f-expires">Valid until</label><input type="date" id="f-expires" data-key="expires"></div>
+          </div>
+          <label class="check"><input type="checkbox" id="f-seal" data-key="seal"> Holographic seal on the photo</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Issuer &amp; logo</legend>
+          <div class="btnrow">
+            <label class="btn" for="logo-file" style="cursor:pointer">Upload logo…</label>
+            <input type="file" id="logo-file" accept="image/png,image/jpeg,image/svg+xml,image/webp" hidden>
+            <button type="button" id="btn-logo-clear" hidden>Remove logo</button>
+          </div>
+          <p class="hint" id="logo-status">No logo.</p>
+          <div class="field"><label for="f-institute">Issuing institute</label><input type="text" id="f-institute" data-key="institute"></div>
+          <div class="field"><label for="f-tagline">Line under the institute</label><input type="text" id="f-tagline" data-key="tagline"></div>
+          <div class="field"><label for="f-verify">Verification address (the QR code links here)</label><input type="text" id="f-verify" data-key="verify"></div>
+          <div class="field"><label for="f-returnNotice">Back of card notice</label><textarea id="f-returnNotice" data-key="returnNotice" rows="3"></textarea></div>
+          <div class="field"><label for="f-contact">Contact line</label><input type="text" id="f-contact" data-key="contact"></div>
+        </fieldset>
+        <div class="btnrow"><button type="button" id="btn-reset">Reset to sample</button></div>
+      </form>
+
+      <div class="tabpanel" id="panel-batch" role="tabpanel" aria-labelledby="tab-batch" hidden>
+        <p class="hint">One badge per row. Columns: <strong>name, title, organization, belt, credential, issued, expires, photo</strong>. The <strong>photo</strong> column holds a file name; load those photos below. Issuer, logo and back text come from the Single tab.</p>
+        <div class="field"><label for="csv">CSV rows</label><textarea id="csv" class="mono" spellcheck="false"></textarea></div>
+        <div class="btnrow">
+          <label class="btn" for="csv-file" style="cursor:pointer">Load CSV file…</label>
+          <input type="file" id="csv-file" accept=".csv,text/csv,text/plain" hidden>
+          <label class="btn" for="photos-file" style="cursor:pointer">Load photos…</label>
+          <input type="file" id="photos-file" accept="image/png,image/jpeg,image/webp" multiple hidden>
+        </div>
+        <p class="hint" id="photos-status">No batch photos loaded.</p>
+        <div class="field" style="max-width:160px"><label for="serial">Next serial</label><input type="number" id="serial" min="1" value="4718"></div>
+        <div class="table-wrap"><table id="batch-table"><thead><tr><th>#</th><th>Name</th><th>Belt</th><th>Credential</th><th>Photo</th><th></th></tr></thead><tbody></tbody></table></div>
+        <div class="btnrow">
+          <button type="button" class="primary" id="btn-batch-pdf">All as one PDF</button>
+          <button type="button" id="btn-batch-zip">All as PNGs (.zip)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-col">
+      <div class="stage">
+        <div class="sides">
+          <div class="side"><canvas id="pv-front" width="1080" height="1712" aria-label="Badge front preview"></canvas><span>Front</span></div>
+          <div class="side"><canvas id="pv-back" width="1080" height="1712" aria-label="Badge back preview"></canvas><span>Back</span></div>
+        </div>
+      </div>
+      <div class="stage-meta"><span>Previewing <strong id="meta-who">—</strong></span><span>CR80 card · 54 × 85.6 mm · PNG 675 × 1070 px per side</span></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const LC = window.LaureateCertificate, LB = window.LaureateBadge;
+const $ = (s) => document.querySelector(s);
+const STORE_KEY = 'laureate-badge-v1';
+const SAMPLE_CSV = 'name,title,organization,belt,credential,issued,expires,photo\nAlexandra M. Reynolds,Continuous Improvement Lead,Operations Excellence Office,Green,,2026-09-25,2029-09-25,alexandra.jpg\nDaniel K. Osei,Process Excellence Manager,Supply Chain,Black,,2026-09-25,2029-09-25,daniel.jpg\nPriya Raman,Quality Analyst,Clinical Operations,Yellow,,2026-09-25,2029-09-25,';
+const BASE = Object.assign({}, LB.DEFAULTS, { photo: undefined, logo: undefined, photoSrc: '', logoSrc: '' });
+function slug(s){ return (s||'badge').normalize('NFKD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'badge'; }
+function yearOf(iso){ const m = /^(\d{4})/.exec(iso || ''); return m ? m[1] : String(new Date().getFullYear()); }
+function toast(msg, err){ const t = $('#toast'); t.textContent = msg; t.classList.toggle('err', !!err); }
+
+let form = Object.assign({}, BASE), batchRows = [], previewOverride = null;
+let logoImg = null, photoImg = null; const photoMap = new Map();
+try { const saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null'); if (saved && saved.form) form = Object.assign({}, BASE, saved.form); if (saved && typeof saved.csv === 'string') $('#csv').value = saved.csv; } catch (e) {}
+if (!$('#csv').value) $('#csv').value = SAMPLE_CSV;
+function persist(){
+  try { localStorage.setItem(STORE_KEY, JSON.stringify({ form, csv: $('#csv').value })); }
+  catch (e) { try { localStorage.setItem(STORE_KEY, JSON.stringify({ form: Object.assign({}, form, { photoSrc: '' }), csv: $('#csv').value })); } catch (e2) {} }
+}
+
+const inputs = [...document.querySelectorAll('[data-key]')];
+function fillForm(){ inputs.forEach(el => { const k = el.dataset.key; if (el.type === 'checkbox') el.checked = !!form[k]; else el.value = form[k] ?? ''; }); }
+fillForm();
+inputs.forEach(el => el.addEventListener(el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'input', () => {
+  const k = el.dataset.key; form[k] = el.type === 'checkbox' ? el.checked : el.value;
+  if (k === 'belt' && /^LSS-(YB|GB|BB|MBB)-/.test(form.cred)) { form.cred = form.cred.replace(/^LSS-(YB|GB|BB|MBB)-/, 'LSS-' + LC.beltInfo(form.belt).code + '-'); $('#f-cred').value = form.cred; }
+  previewOverride = null; markCurrent(-1); persist(); schedule(); buildBatch(false);
+}));
+$('#form').addEventListener('submit', (e) => e.preventDefault());
+
+function readImage(file, maxMB){
+  return new Promise((res, rej) => {
+    if (file.size > maxMB * 1024 * 1024) return rej(new Error('That image is over ' + maxMB + ' MB. Use a smaller file.'));
+    const rd = new FileReader(); rd.onload = () => res(String(rd.result)); rd.onerror = () => rej(new Error('Could not read that file.')); rd.readAsDataURL(file);
+  });
+}
+function refreshImages(){
+  $('#logo-status').textContent = form.logoSrc ? 'Logo loaded.' : 'No logo.'; $('#btn-logo-clear').hidden = !form.logoSrc;
+  $('#photo-status').textContent = form.photoSrc ? 'Photo loaded.' : 'No photo. The badge shows initials instead.'; $('#btn-photo-clear').hidden = !form.photoSrc;
+  Promise.all([LC.loadImage(form.logoSrc || null).catch(() => null), LC.loadImage(form.photoSrc || null).catch(() => null)])
+    .then(([l, p]) => { logoImg = l; photoImg = p; schedule(); });
+}
+$('#logo-file').addEventListener('change', async (e) => { const f = e.target.files[0]; e.target.value = ''; if (!f) return; try { form.logoSrc = await readImage(f, 3); persist(); refreshImages(); toast('Logo added.'); } catch (err) { toast(err.message, true); } });
+$('#photo-file').addEventListener('change', async (e) => { const f = e.target.files[0]; e.target.value = ''; if (!f) return; try { form.photoSrc = await readImage(f, 6); persist(); refreshImages(); toast('Photo added.'); } catch (err) { toast(err.message, true); } });
+$('#btn-logo-clear').addEventListener('click', () => { form.logoSrc = ''; persist(); refreshImages(); });
+$('#btn-photo-clear').addEventListener('click', () => { form.photoSrc = ''; persist(); refreshImages(); });
+$('#btn-reset').addEventListener('click', () => { form = Object.assign({}, BASE); fillForm(); previewOverride = null; persist(); refreshImages(); buildBatch(false); toast('Reset to the sample badge.'); });
+
+/* data for rendering: shared settings + images */
+function singleData(){ return Object.assign({}, form, { logo: logoImg, photo: photoImg }); }
+function currentData(){ return previewOverride ? previewOverride() : singleData(); }
+
+const fctx = $('#pv-front').getContext('2d'), bctx = $('#pv-back').getContext('2d');
+let raf = 0;
+function schedule(){ cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { const d = currentData(); LB.drawFront(fctx, d, 2); LB.drawBack(bctx, d, 2); $('#meta-who').textContent = (d.name || 'Untitled') + ' · ' + LC.beltInfo(d.belt).name; }); }
+schedule(); refreshImages();
+LC.loadFonts().then(schedule);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+
+/* tabs */
+function selectTab(which){
+  const single = which === 'single';
+  $('#tab-single').setAttribute('aria-selected', String(single)); $('#tab-batch').setAttribute('aria-selected', String(!single));
+  $('#form').hidden = !single; $('#panel-batch').hidden = single;
+  if (!single) buildBatch(false); else { previewOverride = null; schedule(); }
+}
+$('#tab-single').addEventListener('click', () => selectTab('single'));
+$('#tab-batch').addEventListener('click', () => selectTab('batch'));
+
+/* batch */
+function parseCSV(text){
+  const rows = []; let row = [], cell = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"') { if (text[i+1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+    else if (c === '"') q = true;
+    else if (c === ',') { row.push(cell); cell = ''; }
+    else if (c === '\n' || c === '\r') { if (c === '\r' && text[i+1] === '\n') i++; row.push(cell); rows.push(row); row = []; cell = ''; }
+    else cell += c;
+  }
+  if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+  return rows.map(r => r.map(x => x.trim())).filter(r => r.some(Boolean));
+}
+function normBelt(v){
+  const s = (v || '').toLowerCase();
+  if (s.startsWith('master') || s === 'mbb') return 'Master Black';
+  if (s.includes('black') || s === 'bb') return 'Black';
+  if (s.includes('green') || s === 'gb') return 'Green';
+  if (s.includes('yellow') || s === 'yb') return 'Yellow';
+  return null;
+}
+function photoKey(name){ return (name || '').toLowerCase().trim(); }
+function findPhoto(name){ const k = photoKey(name); if (!k) return null; return photoMap.get(k) || photoMap.get(k.replace(/\.[a-z0-9]+$/, '')) || null; }
+function buildBatch(render){
+  const rows = parseCSV($('#csv').value);
+  const cols = ['name','title','organization','belt','credential','issued','expires','photo'];
+  let start = 0, idx = {}; cols.forEach((c, i) => idx[c] = i);
+  const head = rows[0] ? rows[0].map(h => h.toLowerCase()) : [];
+  if (head.includes('name')) { start = 1; cols.forEach(c => idx[c] = head.indexOf(c)); }
+  const get = (r, c) => idx[c] >= 0 ? (r[idx[c]] || '') : '';
+  let serial = parseInt($('#serial').value, 10) || 1;
+  batchRows = rows.slice(start).map(r => {
+    const belt = normBelt(get(r, 'belt')) || form.belt;
+    const issued = /^\d{4}-\d{2}-\d{2}$/.test(get(r, 'issued')) ? get(r, 'issued') : form.issued;
+    const expires = /^\d{4}-\d{2}-\d{2}$/.test(get(r, 'expires')) ? get(r, 'expires') : form.expires;
+    const cred = get(r, 'credential') || LC.autoCredential(belt, issued, serial++);
+    const photoName = get(r, 'photo');
+    return { photoName, fields: { name: get(r, 'name'), title: get(r, 'title') || form.title, organization: get(r, 'organization') || form.organization, belt, cred, issued, expires } };
+  }).filter(x => x.fields.name);
+  const tb = $('#batch-table tbody'); tb.textContent = '';
+  batchRows.forEach((row, i) => {
+    const tr = document.createElement('tr'); tr.dataset.i = i;
+    const has = !!findPhoto(row.photoName);
+    [String(i+1), row.fields.name, LC.beltInfo(row.fields.belt).name, row.fields.cred, row.photoName ? (has ? row.photoName : row.photoName + ' (not loaded)') : 'initials']
+      .forEach((t, j) => { const td = document.createElement('td'); td.textContent = t; if (j === 4 && row.photoName && !has) td.className = 'flag'; tr.appendChild(td); });
+    const td = document.createElement('td'); const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = 'Preview';
+    btn.addEventListener('click', () => { previewOverride = () => rowData(row); markCurrent(i); schedule(); });
+    td.appendChild(btn); tr.appendChild(td); tb.appendChild(tr);
+  });
+  if (!batchRows.length) { const tr = document.createElement('tr'); const td = document.createElement('td'); td.colSpan = 6; td.textContent = 'No rows yet. Add a name per line.'; tr.appendChild(td); tb.appendChild(tr); }
+  if (render && batchRows[0]) { previewOverride = () => rowData(batchRows[0]); markCurrent(0); schedule(); }
+}
+function rowData(row){ return Object.assign({}, form, row.fields, { logo: logoImg, photo: findPhoto(row.photoName) }); }
+function markCurrent(i){ document.querySelectorAll('#batch-table tbody tr').forEach(tr => tr.classList.toggle('current', +tr.dataset.i === i)); }
+$('#csv').addEventListener('input', () => { persist(); buildBatch(false); });
+$('#serial').addEventListener('input', () => buildBatch(false));
+$('#csv-file').addEventListener('change', (e) => {
+  const f = e.target.files && e.target.files[0]; e.target.value = ''; if (!f) return;
+  const rd = new FileReader(); rd.onload = () => { $('#csv').value = String(rd.result || ''); persist(); buildBatch(true); toast('Loaded ' + f.name + ' · ' + batchRows.length + ' badges.'); };
+  rd.onerror = () => toast('Could not read that file. Save it as CSV and try again.', true); rd.readAsText(f);
+});
+$('#photos-file').addEventListener('change', async (e) => {
+  const files = [...(e.target.files || [])]; e.target.value = '';
+  for (const f of files) { try { const img = await LC.loadImage(f); photoMap.set(photoKey(f.name), img); photoMap.set(photoKey(f.name).replace(/\.[a-z0-9]+$/, ''), img); } catch (err) {} }
+  $('#photos-status').textContent = (photoMap.size / 2) + ' photos loaded. They stay in this tab only.';
+  buildBatch(false); schedule(); toast(files.length + ' photos added.');
+});
+
+/* export */
+const downloadsP = (window.claude && typeof window.claude.use === 'function') ? window.claude.use('downloads').catch(() => null) : Promise.resolve(null);
+const toBlob = (c, type, q) => new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error('encode')), type, q));
+async function saveFile(filename, blob){
+  const dl = await downloadsP;
+  if (dl) {
+    try { await dl.save({ filename, data: blob }); toast('Saved ' + filename + '.'); }
+    catch (e) { const code = e && e.code; if (code === 'declined') toast('Download cancelled.'); else if (code === 'rate_limited') toast('A save prompt is already open. Finish it, then try again.', true); else toast('The file could not be saved here (' + (code || 'error') + ').', true); }
+    return;
+  }
+  if (window.claude) { toast('Downloads are not available in this view. Open the page in a browser tab to save files.', true); return; }
+  const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 4000); toast('Saved ' + filename + '.');
+}
+function newPdf(){
+  if (!window.jspdf) throw new Error('The PDF library did not load. Check your connection and reload.');
+  return new window.jspdf.jsPDF({ orientation: 'portrait', unit: 'mm', format: [54, 85.6], compress: true });
+}
+async function addBadge(pdf, d, first){
+  const { front, back } = await LB.renderToCanvases(d, 1.25);
+  if (!first) pdf.addPage([54, 85.6], 'portrait');
+  pdf.addImage(front.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 54, 85.6, undefined, 'FAST');
+  pdf.addPage([54, 85.6], 'portrait');
+  pdf.addImage(back.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 54, 85.6, undefined, 'FAST');
+}
+async function busy(btn, label, fn){
+  const old = btn.textContent; btn.disabled = true; btn.textContent = label;
+  try { await fn((t) => { btn.textContent = t; }); } catch (e) { toast(e.message || 'Something went wrong while rendering.', true); }
+  finally { btn.disabled = false; btn.textContent = old; }
+}
+$('#btn-pdf').addEventListener('click', (e) => busy(e.currentTarget, 'Rendering…', async () => {
+  const d = currentData(); const pdf = newPdf(); await addBadge(pdf, d, true);
+  await saveFile('LSS-Badge_' + slug(d.name) + '.pdf', pdf.output('blob'));
+}));
+$('#btn-png').addEventListener('click', (e) => busy(e.currentTarget, 'Rendering…', async () => {
+  if (!window.JSZip) throw new Error('The ZIP library did not load. Check your connection and reload.');
+  const d = currentData(); const { front, back } = await LB.renderToCanvases(d, 1.25); const zip = new window.JSZip(); const base = 'LSS-Badge_' + slug(d.name);
+  zip.file(base + '_front.png', await toBlob(front, 'image/png')); zip.file(base + '_back.png', await toBlob(back, 'image/png'));
+  await saveFile(base + '.zip', await zip.generateAsync({ type: 'blob' }));
+}));
+$('#btn-batch-pdf').addEventListener('click', (e) => busy(e.currentTarget, 'Rendering…', async (set) => {
+  buildBatch(false); if (!batchRows.length) { toast('Add at least one row first.', true); return; }
+  const pdf = newPdf();
+  for (let i = 0; i < batchRows.length; i++) { set('Rendering ' + (i+1) + ' / ' + batchRows.length + '…'); await addBadge(pdf, rowData(batchRows[i]), i === 0); }
+  await saveFile('LSS-Badges_' + batchRows.length + '.pdf', pdf.output('blob'));
+}));
+$('#btn-batch-zip').addEventListener('click', (e) => busy(e.currentTarget, 'Rendering…', async (set) => {
+  buildBatch(false); if (!batchRows.length) { toast('Add at least one row first.', true); return; }
+  if (!window.JSZip) throw new Error('The ZIP library did not load. Check your connection and reload.');
+  const zip = new window.JSZip(); const used = {};
+  for (let i = 0; i < batchRows.length; i++) {
+    set('Rendering ' + (i+1) + ' / ' + batchRows.length + '…');
+    const d = rowData(batchRows[i]); let base = 'LSS-Badge_' + slug(d.name); used[base] = (used[base] || 0) + 1; if (used[base] > 1) base += '-' + used[base];
+    const { front, back } = await LB.renderToCanvases(d, 1.25);
+    zip.file(base + '_front.png', await toBlob(front, 'image/png')); zip.file(base + '_back.png', await toBlob(back, 'image/png'));
+  }
+  set('Packing ZIP…'); await saveFile('LSS-Badges_' + batchRows.length + '.zip', await zip.generateAsync({ type: 'blob' }));
+}));
+buildBatch(false);
+})();
+</script>
+
+</body>
+</html>
