@@ -15,6 +15,16 @@ Both pages keep the draft in the browser's local storage only.
 
 The drawing code lives in `certificate-engine/laureate-render.js` (`window.LaureateCertificate`) and `id-badge/badge-render.js` (`window.LaureateBadge`). See [`docs/INTEGRATION_PROMPT.md`](docs/INTEGRATION_PROMPT.md) for the full API, the data fields, logo handling, export sizes, and a ready-to-paste brief for your app's developer or AI assistant.
 
+## Health Quality Leaders integration
+
+`integrations/hql/` connects the certificate to the LSS Master Toolkit. It contains:
+
+- `laureate-hql.js`, an adapter that reads the toolkit's `lss_cert` record, `CREST_URI`, `SIG_URI` and QR payload
+- `hql-assets.js`, the crest and signature as data URIs
+- `demo.html`, a page that mirrors `issueCertificate()`
+
+The brief for the toolkit's developer is [`docs/HQL_INTEGRATION_PROMPT.md`](docs/HQL_INTEGRATION_PROMPT.md).
+
 ## Sample content
 
 Names, the institute ("Aurelian Institute of Process Excellence"), signatories, the `aurelian.example` domain and the contact line are placeholders. Replace them before issuing real credentials.

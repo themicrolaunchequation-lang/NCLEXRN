@@ -34,6 +34,7 @@ const DEFAULTS = {
   returnNotice: 'This card remains the property of the issuing institute. If found, please return it to the address below or report it at the verification page.',
   contact: '[Street address · City · Phone]',
   seal: true,
+  facts: null,        // optional [[label, value] × 3] replacing Credential / Issued / Valid until
   photo: null,
   logo: null
 };
@@ -76,6 +77,7 @@ function logoPlate(ctx, img, x, y, w, h){
   ctx.strokeStyle = GOLD; ctx.lineWidth = 1; rrect(ctx, x + 3.5, y + 3.5, w - 7, h - 7, 6); ctx.stroke();
   drawContain(ctx, img, x + 10, y + 8, w - 20, h - 16, 'center');
 }
+function isTall(img){ const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height; return iw / ih < 1.3; }
 function drawCover(ctx, img, x, y, w, h){
   const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height; if (!iw || !ih) return;
   const k = Math.max(w / iw, h / ih), dw = iw * k, dh = ih * k;
@@ -102,10 +104,11 @@ function drawFront(ctx, data, s){
   const instFont = (z) => '600 ' + z + 'px Cinzel, Georgia, serif';
   ctx.fillStyle = GOLD_LIGHT;
   if (hasLogo) {
-    logoPlate(ctx, d.logo, 28, 26, 124, 72);
-    ctx.font = instFont(15); const lines = wrap(ctx, (d.institute || '').toUpperCase(), 330).slice(0, 3);
+    const tall = isTall(d.logo), tx = tall ? 138 : 170;
+    if (tall) drawContain(ctx, d.logo, 26, 14, 96, 104, 'center'); else logoPlate(ctx, d.logo, 28, 26, 124, 72);
+    ctx.font = instFont(15); const lines = wrap(ctx, (d.institute || '').toUpperCase(), 360).slice(0, 3);
     const top = 62 - (lines.length - 1) * 11;
-    lines.forEach((l, i) => { const z = fitSize(ctx, l, instFont, 15, 340, 9, (q) => q * 0.08); drawSpaced(ctx, l, 170, top + i * 22, z * 0.08, 'left'); });
+    lines.forEach((l, i) => { const z = fitSize(ctx, l, instFont, 15, 372, 9, (q) => q * 0.08); drawSpaced(ctx, l, tx, top + i * 22, z * 0.08, 'left'); });
   } else {
     ctx.font = instFont(16); const lines = wrap(ctx, (d.institute || '').toUpperCase(), 440).slice(0, 2);
     lines.forEach((l, i) => { const z = fitSize(ctx, l, instFont, 16, 470, 9, (q) => q * 0.14); drawSpaced(ctx, l, W/2, (lines.length === 1 ? 70 : 58) + i * 26, z * 0.14, 'center'); });
@@ -156,7 +159,9 @@ function drawFront(ctx, data, s){
   drawSpaced(ctx, bl, W/2, 687, bz * 0.22, 'center');
 
   // facts
-  const cols = [[98, 'Credential', d.cred], [290, 'Issued', shortDate(d.issued)], [450, 'Valid until', shortDate(d.expires)]];
+  const facts = Array.isArray(d.facts) && d.facts.length === 3 ? d.facts
+    : [['Credential', d.cred], ['Issued', shortDate(d.issued)], ['Valid until', shortDate(d.expires)]];
+  const cols = [[98].concat(facts[0]), [290].concat(facts[1]), [450].concat(facts[2])];
   cols.forEach(([x, label, value], i) => {
     ctx.fillStyle = '#7A6232'; ctx.font = '600 11px Cinzel, Georgia, serif';
     drawSpaced(ctx, label.toUpperCase(), x, 748, 1.6, 'center');
@@ -187,7 +192,10 @@ function drawBack(ctx, data, s){
   ctx.strokeStyle = 'rgba(168,134,74,0.5)'; ctx.strokeRect(24.5, 24.5, W - 49, H - 49);
 
   let y = 86;
-  if (isDrawable(d.logo)) { logoPlate(ctx, d.logo, W/2 - 70, 44, 140, 64); y = 142; }
+  if (isDrawable(d.logo)) {
+    if (isTall(d.logo)) { drawContain(ctx, d.logo, W/2 - 50, 40, 100, 96, 'center'); y = 164; }
+    else { logoPlate(ctx, d.logo, W/2 - 70, 44, 140, 64); y = 142; }
+  }
   ctx.fillStyle = GOLD_LIGHT;
   const inst = (d.institute || '').toUpperCase();
   const iz = fitSize(ctx, inst, (z) => '600 ' + z + 'px Cinzel, Georgia, serif', 14, 460, 8, (q) => q * 0.16);
@@ -230,7 +238,7 @@ function drawBack(ctx, data, s){
 }
 
 function drawQR(ctx, text, x, y, size){
-  const lib = root.qrcode;
+  const lib = LC.getQrLib();
   if (typeof lib !== 'function') {
     ctx.fillStyle = NAVY; ctx.font = '600 16px Oswald, sans-serif'; ctx.textAlign = 'center';
     ctx.strokeStyle = NAVY; ctx.lineWidth = 2; ctx.setLineDash([6,5]); ctx.strokeRect(x + 1, y + 1, size - 2, size - 2); ctx.setLineDash([]);

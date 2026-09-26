@@ -29,7 +29,12 @@ const DEFAULTS = {
   sig2Script:'M. Adeyemi', sig2Name:'Marcus Adeyemi, MBB', sig2Title:'Chair, Examination Board',
   seal:true, sealTop:'LEAN SIX SIGMA', sealBottom:'GENUINE · CERTIFIED', sealLine1:'OFFICIAL', sealLine2:'CERTIFIED',
   hanko:true, hankoText:'認定',
-  logo:null, sealLogo:false
+  logo:null, sealLogo:false,
+  // optional layout fields (used by integrations such as the HQL adapter)
+  title:'Certificate', certifyLine:'This is to certify that', org:'', programText:'', learning:'', sashText:'',
+  signatories:2, sig1Image:null, sig2Image:null,
+  qr:false, qrText:'', qrCaption:'Scan to verify',
+  footer:null, disclaimer:'', specimen:false, watermarkText:''
 };
 
 const rad = (d) => d * Math.PI / 180;
@@ -150,12 +155,23 @@ function drawCertificate(ctx, d, s){
   ctx.beginPath(); ctx.moveTo(-210, -20.5); ctx.lineTo(210, -20.5); ctx.moveTo(-210, 20.5); ctx.lineTo(210, 20.5); ctx.stroke();
   ctx.setLineDash([]);
   ctx.fillStyle = belt.ink;
-  const sashSize = fitSize(ctx, belt.name.toUpperCase(), (z) => '700 ' + z + 'px Cinzel, Georgia, serif', 14, 270, 9, (z) => z * 0.22);
-  drawSpaced(ctx, belt.name.toUpperCase(), 0, 5, sashSize * 0.22, 'center');
+  const sashLabel = (d.sashText || belt.name).toUpperCase();
+  const sashSize = fitSize(ctx, sashLabel, (z) => '700 ' + z + 'px Cinzel, Georgia, serif', 14, 270, 9, (z) => z * 0.22);
+  drawSpaced(ctx, sashLabel, 0, 5, sashSize * 0.22, 'center');
   ctx.restore();
 
-  // issuer logo, top-left inside the frame
-  if (isDrawable(d.logo) && !d.sealLogo) drawContain(ctx, d.logo, 84, 76, 150, 84, 'left');
+  // optional faint text watermark behind the content
+  if ((d.watermarkText || '').trim()) {
+    ctx.save(); ctx.fillStyle = 'rgba(27,39,64,0.035)'; ctx.font = '700 150px Cinzel, Georgia, serif';
+    drawSpaced(ctx, d.watermarkText.trim(), 561, 470, 12, 'center'); ctx.restore();
+  }
+
+  // issuer logo / crest, top-left inside the frame (tall crests get a taller box)
+  if (isDrawable(d.logo) && !d.sealLogo) {
+    const iw = d.logo.naturalWidth || d.logo.width, ih = d.logo.naturalHeight || d.logo.height;
+    if (iw / ih < 1.3) drawContain(ctx, d.logo, 80, 70, 118, 128, 'left');
+    else drawContain(ctx, d.logo, 84, 76, 150, 84, 'left');
+  }
 
   // header
   const CX = 561;
@@ -169,14 +185,14 @@ function drawCertificate(ctx, d, s){
   ctx.fillStyle = GOLD;
   [[CX,2],[CX-14,1.2],[CX+14,1.2]].forEach(([x,r]) => { ctx.beginPath(); ctx.arc(x, 112, r, 0, Math.PI*2); ctx.fill(); });
 
-  hatchedTitle(ctx, 'Certificate', CX, 192, s);
+  hatchedTitle(ctx, d.title || 'Certificate', CX, 192, s);
 
   ctx.fillStyle = '#7A6232';
   const subSize = fitSize(ctx, d.subtitle, (z) => '500 ' + z + 'px Cinzel, Georgia, serif', 15, 640, 9, (z) => z * 0.4);
   drawSpaced(ctx, d.subtitle, CX, 225, subSize * 0.4, 'center');
 
   ctx.fillStyle = '#3A4760'; ctx.font = 'italic 400 20px "Cormorant Garamond", Georgia, serif'; ctx.textAlign = 'center';
-  ctx.fillText('This is to certify that', CX, 265);
+  ctx.fillText(d.certifyLine == null ? 'This is to certify that' : d.certifyLine, CX, 265);
 
   // recipient name + double rule
   ctx.fillStyle = NAVY;
@@ -185,40 +201,123 @@ function drawCertificate(ctx, d, s){
   const nw = Math.min(803, ctx.measureText(d.name).width + 88);
   ctx.fillStyle = GOLD; ctx.fillRect(CX - nw/2, 342, nw, 1); ctx.fillRect(CX - nw/2, 344.5, nw, 1);
 
-  // statement
-  let bs = 18, lines;
-  for (; bs >= 14; bs -= 1) { ctx.font = '400 ' + bs + 'px "Cormorant Garamond", Georgia, serif'; lines = wrap(ctx, d.statement, 670); if (lines.length <= 4) break; }
-  lines = lines.slice(0, 6);
-  const lh = bs * 1.5;
-  ctx.fillStyle = '#2E3A52'; ctx.textAlign = 'center';
-  lines.forEach((l, i) => ctx.fillText(l, CX, 378 + i * lh));
-  const last = 378 + (lines.length - 1) * lh;
+  // body block: organisation, statement, program line, learning outcomes (shrinks to fit)
+  const plan = planBody(ctx, d, belt, 345, 552);
+  if (plan.orgY) {
+    ctx.fillStyle = '#5E6674'; ctx.font = '600 12px Cinzel, Georgia, serif';
+    const org = d.org.toUpperCase(); const oz = fitSize(ctx, org, (z) => '600 ' + z + 'px Cinzel, Georgia, serif', 12, 700, 8, (q) => q * 0.16);
+    drawSpaced(ctx, org, CX, plan.orgY, oz * 0.16, 'center');
+  }
+  ctx.fillStyle = '#2E3A52'; ctx.textAlign = 'center'; ctx.font = '400 ' + plan.st + 'px "Cormorant Garamond", Georgia, serif';
+  plan.stLines.forEach((l, i) => ctx.fillText(l, CX, plan.stY + i * plan.st * 1.5));
+  drawProgramLine(ctx, d, belt, CX, plan.prY, plan.pr);
+  if (plan.leLines.length) {
+    ctx.fillStyle = '#3A4760'; ctx.textAlign = 'center'; ctx.font = 'italic 400 ' + plan.le + 'px "Cormorant Garamond", Georgia, serif';
+    plan.leLines.forEach((l, i) => ctx.fillText(l, CX, plan.leY + i * plan.le * 1.45));
+  }
 
-  // program line with belt swatch
-  const beltY = Math.min(last + 44, 560);
-  let ps = 27;
+  // signatures (and QR in the second slot when enabled)
+  const single = d.signatories === 1 || d.qr;
+  sigBlock(ctx, 295, d.sig1Script, d.sig1Name, d.sig1Title, d.sig1Image);
+  if (!single) sigBlock(ctx, 625, d.sig2Script, d.sig2Name, d.sig2Title, d.sig2Image);
+  if (d.qr) qrBlock(ctx, 625, d);
+  if (d.hanko && (d.hankoText||'').trim()) hanko(ctx, 417, 595, [...d.hankoText.trim()].slice(0,4));
+
+  const disc = (d.disclaimer || '').trim();
+  if (d.seal) {
+    ctx.save();
+    if (disc) { ctx.translate(850, 536); ctx.scale(0.78, 0.78); } else { ctx.translate(832, 546); ctx.scale(0.89, 0.89); }
+    drawSeal(ctx, d); ctx.restore();
+  }
+
+  // footer + optional disclaimer
+  const fy = disc ? 702 : 724;
+  const foot = Array.isArray(d.footer) && d.footer.length ? d.footer : ['Credential No. ' + d.cred, 'Conferred ' + fmtDate(d.date), 'Verify · ' + d.verify];
+  ctx.fillStyle = '#3A4760'; ctx.font = '500 12px Cinzel, Georgia, serif';
+  if (foot[0]) drawSpaced(ctx, foot[0], 110, fy, 1.92, 'left');
+  if (foot[1]) drawSpaced(ctx, foot[1], 561, fy, 1.92, 'center');
+  if (foot[2]) drawSpaced(ctx, foot[2], 1013, fy, 1.92, 'right');
+  if (disc) {
+    let z = 12, dl;
+    for (; z >= 9; z -= 0.5) { ctx.font = 'italic 400 ' + z + 'px "Cormorant Garamond", Georgia, serif'; dl = wrap(ctx, disc, 900); if (dl.length <= 2) break; }
+    ctx.fillStyle = '#56617A'; ctx.textAlign = 'center';
+    dl.slice(0, 2).forEach((l, i) => ctx.fillText(l, CX, 721 + i * z * 1.2));
+  }
+
+  // specimen overprint for previews
+  if (d.specimen) {
+    ctx.save(); ctx.translate(561, 420); ctx.rotate(rad(-18));
+    ctx.font = '700 150px Cinzel, Georgia, serif'; ctx.fillStyle = 'rgba(168,50,45,0.13)';
+    drawSpaced(ctx, 'SPECIMEN', 0, 50, 18, 'center'); ctx.restore();
+  }
+}
+
+function planBody(ctx, d, belt, top, limit){
+  const variants = [[18,27,15],[17,24,14],[16,22,13],[15,20,12.5],[14,18,12]];
+  let plan = null;
+  for (const [st, pr, le] of variants) {
+    let cur = top; const orgY = (d.org || '').trim() ? cur + 24 : 0; if (orgY) cur = orgY;
+    ctx.font = '400 ' + st + 'px "Cormorant Garamond", Georgia, serif';
+    const stLines = wrap(ctx, d.statement, 670).slice(0, 5);
+    const stY = cur + (orgY ? 30 : 33);
+    const lastSt = stY + (stLines.length - 1) * st * 1.5;
+    const prY = lastSt + pr * 1.6;
+    ctx.font = 'italic 400 ' + le + 'px "Cormorant Garamond", Georgia, serif';
+    const leLines = (d.learning || '').trim() ? wrap(ctx, d.learning, 720).slice(0, 3) : [];
+    const leY = prY + le * 2.1;
+    const bottom = leLines.length ? leY + (leLines.length - 1) * le * 1.45 : prY;
+    plan = { st, pr, le, orgY, stLines, stY, prY, leLines, leY };
+    if (bottom <= limit) break;
+  }
+  return plan;
+}
+
+function drawProgramLine(ctx, d, belt, CX, y, size){
   const pf = (z) => '600 ' + z + 'px Cinzel, Georgia, serif';
-  for (; ps > 16; ps -= 1) { ctx.font = pf(ps); if (spacedWidth(ctx,'Lean Six Sigma',ps*.1) + spacedWidth(ctx,belt.name,ps*.1) + 62 <= 800) break; }
+  const text = (d.programText || '').trim();
+  if (text) {
+    let ps = size; for (; ps > 12; ps -= 1) { ctx.font = pf(ps); if (spacedWidth(ctx, text, ps*.06) + 48 <= 820) break; }
+    ctx.font = pf(ps); const w = spacedWidth(ctx, text, ps*.06); const x0 = CX - (w + 48) / 2;
+    ctx.fillStyle = belt.color; ctx.fillRect(x0, y - ps*0.52, 34, 9);
+    ctx.strokeStyle = GOLD; ctx.lineWidth = 1; ctx.strokeRect(x0 + .5, y - ps*0.52 + .5, 33, 8);
+    ctx.fillStyle = NAVY; drawSpaced(ctx, text, x0 + 48, y, ps*.06, 'left');
+    return;
+  }
+  let ps = size;
+  for (; ps > 12; ps -= 1) { ctx.font = pf(ps); if (spacedWidth(ctx,'Lean Six Sigma',ps*.1) + spacedWidth(ctx,belt.name,ps*.1) + 62 <= 800) break; }
   ctx.font = pf(ps);
   const w1 = spacedWidth(ctx, 'Lean Six Sigma', ps*.1), w2 = spacedWidth(ctx, belt.name, ps*.1);
   const x0 = CX - (w1 + 62 + w2) / 2;
-  ctx.fillStyle = NAVY; drawSpaced(ctx, 'Lean Six Sigma', x0, beltY, ps*.1, 'left');
-  ctx.fillStyle = belt.color; ctx.fillRect(x0 + w1 + 14, beltY - ps*0.52, 34, 9);
-  ctx.strokeStyle = GOLD; ctx.lineWidth = 1; ctx.strokeRect(x0 + w1 + 14.5, beltY - ps*0.52 + .5, 33, 8);
-  ctx.fillStyle = NAVY; drawSpaced(ctx, belt.name, x0 + w1 + 62, beltY, ps*.1, 'left');
+  ctx.fillStyle = NAVY; drawSpaced(ctx, 'Lean Six Sigma', x0, y, ps*.1, 'left');
+  ctx.fillStyle = belt.color; ctx.fillRect(x0 + w1 + 14, y - ps*0.52, 34, 9);
+  ctx.strokeStyle = GOLD; ctx.lineWidth = 1; ctx.strokeRect(x0 + w1 + 14.5, y - ps*0.52 + .5, 33, 8);
+  ctx.fillStyle = NAVY; drawSpaced(ctx, belt.name, x0 + w1 + 62, y, ps*.1, 'left');
+}
 
-  // signatures
-  sigBlock(ctx, 295, d.sig1Script, d.sig1Name, d.sig1Title);
-  sigBlock(ctx, 625, d.sig2Script, d.sig2Name, d.sig2Title);
-  if (d.hanko && (d.hankoText||'').trim()) hanko(ctx, 417, 595, [...d.hankoText.trim()].slice(0,4));
-
-  if (d.seal) { ctx.save(); ctx.translate(832, 546); ctx.scale(0.89, 0.89); drawSeal(ctx, d); ctx.restore(); }
-
-  // footer
-  ctx.fillStyle = '#3A4760'; ctx.font = '500 12px Cinzel, Georgia, serif';
-  drawSpaced(ctx, 'Credential No. ' + d.cred, 110, 724, 1.92, 'left');
-  drawSpaced(ctx, 'Conferred ' + fmtDate(d.date), 561, 724, 1.92, 'center');
-  drawSpaced(ctx, 'Verify · ' + d.verify, 1013, 724, 1.92, 'right');
+function qrBlock(ctx, cx, d){
+  const size = 100, x = cx - size/2, y = 540;
+  ctx.fillStyle = '#FFFDF8'; ctx.fillRect(x - 8, y - 8, size + 16, size + 16);
+  ctx.strokeStyle = GOLD; ctx.lineWidth = 1; ctx.strokeRect(x - 7.5, y - 7.5, size + 15, size + 15);
+  const lib = getQrLib();
+  const text = d.qrText || ('Certificate ' + (d.cred || '') + ' · ' + (d.name || ''));
+  if (typeof lib === 'function') {
+    try {
+      const qr = lib(0, 'M'); qr.addData(text); qr.make();
+      const n = qr.getModuleCount(), cell = size / n; ctx.fillStyle = NAVY;
+      for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (qr.isDark(r, c)) ctx.fillRect(x + c*cell, y + r*cell, cell + 0.3, cell + 0.3);
+    } catch (e) { qrPlaceholder(ctx, x, y, size); }
+  } else qrPlaceholder(ctx, x, y, size);
+  ctx.fillStyle = '#3A4760'; ctx.font = '500 11px Cinzel, Georgia, serif';
+  drawSpaced(ctx, (d.qrCaption || 'Scan to verify').toUpperCase(), cx, y + size + 27, 2, 'center');
+}
+/* qrcode-generator API: qrcode(typeNumber, level). Works whether the host declares it as window.qrcode or a global const. */
+function getQrLib(){
+  try { if (typeof qrcode === 'function') return qrcode; } catch (e) {}
+  return root.qrcode;
+}
+function qrPlaceholder(ctx, x, y, size){
+  ctx.save(); ctx.strokeStyle = NAVY; ctx.setLineDash([5,4]); ctx.strokeRect(x + 1, y + 1, size - 2, size - 2); ctx.restore();
+  ctx.fillStyle = NAVY; ctx.font = '600 14px Oswald, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('QR', x + size/2, y + size/2 + 5);
 }
 
 function hatchedTitle(ctx, text, cx, baseline, s){
@@ -235,10 +334,16 @@ function hatchedTitle(ctx, text, cx, baseline, s){
   ctx.drawImage(oc, cx - w/2 - pad, baseline - 95, w + pad*2, hh);
 }
 
-function sigBlock(ctx, cx, script, name, title){
+function sigBlock(ctx, cx, script, name, title, image){
   ctx.fillStyle = NAVY; ctx.textAlign = 'center';
-  fitSize(ctx, script || '', (z) => z + 'px "Pinyon Script", cursive', 36, 270, 18);
-  ctx.fillText(script || '', cx, 630);
+  if (isDrawable(image)) {
+    const iw = image.naturalWidth || image.width, ih = image.naturalHeight || image.height;
+    const k = Math.min(260 / iw, 76 / ih), dw = iw * k, dh = ih * k;
+    ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.drawImage(image, cx - dw/2, 637 - dh, dw, dh); ctx.restore();
+  } else {
+    fitSize(ctx, script || '', (z) => z + 'px "Pinyon Script", cursive', 36, 270, 18);
+    ctx.fillText(script || '', cx, 630);
+  }
   ctx.fillRect(cx - 145, 640.5, 290, 1);
   ctx.fillStyle = '#2E3A52';
   fitSize(ctx, name || '', (z) => '400 ' + z + 'px "Cormorant Garamond", Georgia, serif', 16, 290, 11);
@@ -369,7 +474,7 @@ function loadImage(src){
 }
 async function prepare(data){
   const d = Object.assign({}, DEFAULTS, data || {});
-  if (d.logo && !isDrawable(d.logo)) d.logo = await loadImage(d.logo);
+  for (const k of ['logo', 'sig1Image', 'sig2Image']) if (d[k] && !isDrawable(d[k])) d[k] = await loadImage(d[k]);
   return d;
 }
 async function renderToCanvas(data, scale){
@@ -391,6 +496,7 @@ const api = {
   loadFonts: (data) => { injectFonts(); return ensureFonts(data); },
   autoCredential: autoCred, formatDate: fmtDate, beltInfo: (b) => BELTS[b] || BELTS.Green,
   /* shared drawing kit, used by the ID badge renderer */
+  getQrLib,
   drawSeal: (ctx, data) => drawSeal(ctx, Object.assign({}, DEFAULTS, data || {})),
   util: { rad, spacedWidth, drawSpaced, fitSize, wrap, rrect, ellipseAt, drawContain, isDrawable, starShape, hanko },
   colors: { NAVY, GOLD, PAPER }

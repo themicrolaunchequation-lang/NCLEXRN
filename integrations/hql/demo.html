@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>HQL Certificate Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Oswald:wght@500;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="hql-assets.js"></script>
+<script src="../../certificate-engine/laureate-render.js"></script>
+<script src="../../id-badge/badge-render.js"></script>
+<script src="laureate-hql.js"></script>
+<style>
+:root{--bg:#EEEAE0;--panel:#FBF9F3;--ink:#1B2740;--muted:#56617A;--line:#D8D0BE;--accent:#8A6A2C;--primary:#1B2740;--primary-ink:#F6F1E5;--stage:#E1DBCC;--warn:#9A5B12;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0F141D;--panel:#161D29;--ink:#ECE6D8;--muted:#A6AFC1;--line:#2D3647;--accent:#D4B26A;--primary:#D4B26A;--primary-ink:#141A24;--stage:#0B0F16;--warn:#E3A55A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F141D;--panel:#161D29;--ink:#ECE6D8;--muted:#A6AFC1;--line:#2D3647;--accent:#D4B26A;--primary:#D4B26A;--primary-ink:#141A24;--stage:#0B0F16;--warn:#E3A55A;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hanken Grotesk','Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.5}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:20px;padding-block:20px 48px;display:flex;flex-direction:column;gap:20px}
+h1{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:32px;line-height:1.1}
+.eyebrow{font-family:Cinzel,Georgia,serif;font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:4px;flex:1 1 180px}
+.field label{font-size:13px;font-weight:600;color:var(--muted)}
+input[type=text],input[type=number]{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 11px;min-height:42px;width:100%}
+.check{display:flex;align-items:center;gap:8px;font-weight:500;min-height:42px}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+button{font:inherit;font-weight:600;font-size:14px;border-radius:8px;padding:10px 16px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;min-height:44px}
+button.primary{background:var(--primary);color:var(--primary-ink);border-color:var(--primary)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button:disabled{opacity:.55;cursor:progress}
+.stage{background:var(--stage);border:1px solid var(--line);border-radius:12px;padding:clamp(12px,3vw,32px)}
+.stage canvas{box-shadow:0 16px 36px rgba(20,24,34,.22)}
+#badgeWrap{max-width:620px;margin:0 auto}
+.meta{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;margin:0}
+.meta code{font-size:12px}
+.err{color:var(--warn);font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+</style>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">Health Quality Leaders Ltd</div>
+    <h1>Certificate preview</h1>
+  </div>
+
+  <div class="panel" role="group" aria-label="Simulated learner">
+    <div class="field"><label for="reg-name">Registered name (lss_reg.name)</label><input type="text" id="reg-name" value="Dr. Jane Doe"></div>
+    <div class="field"><label for="reg-org">Organisation (lss_reg.org)</label><input type="text" id="reg-org" value="Metropolitan Healthcare Trust"></div>
+    <div class="field" style="flex:0 1 130px"><label for="exam-best">Best score %</label><input type="number" id="exam-best" min="0" max="100" value="96"></div>
+    <label class="check"><input type="checkbox" id="admin-preview"> Admin preview</label>
+    <div class="row">
+      <button type="button" class="primary" id="btn-issue">Issue my certificate</button>
+      <button type="button" id="btn-reissue">Re-issue with current name</button>
+    </div>
+  </div>
+
+  <p class="meta" id="meta">lss_cert: none yet.</p>
+  <div class="stage"><div id="certPaperWrap"></div></div>
+  <div class="row">
+    <button type="button" class="primary" id="btn-pdf">Download certificate (PDF)</button>
+    <button type="button" id="btn-png">Download certificate (PNG)</button>
+    <button type="button" id="btn-badge">Download ID badge (PDF)</button>
+  </div>
+  <div class="stage"><div id="badgeWrap"></div></div>
+  <p class="meta" id="status" role="status" aria-live="polite"></p>
+</div>
+
+<script>
+(function(){
+'use strict';
+const $ = (id) => document.getElementById(id);
+const PASS_PCT = 80, CERT_KEY = 'lss_cert';
+function randCode(){ const s = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let a = '', b = ''; for (let i = 0; i < 4; i++) a += s[Math.floor(Math.random()*s.length)]; for (let i = 0; i < 4; i++) b += s[Math.floor(Math.random()*s.length)]; return a + '-' + b; }
+function getCert(){ try { return JSON.parse(localStorage.getItem(CERT_KEY) || 'null'); } catch (e) { return null; } }
+function setCert(c){ try { localStorage.setItem(CERT_KEY, JSON.stringify(c)); } catch (e) {} }
+let current = getCert();
+
+/* mirrors the toolkit's issueCertificate(reissue) */
+function issueCertificate(reissue){
+  const name = $('reg-name').value.trim(), org = $('reg-org').value.trim(), best = Number($('exam-best').value);
+  const passed = best >= PASS_PCT, admin = $('admin-preview').checked;
+  if (!name) { status('Enter a registered name first.', true); return; }
+  if (!passed && !admin) { status('Score is below ' + PASS_PCT + '%. Tick Admin preview to render a specimen.', true); return; }
+  let cert = getCert() || {};
+  if (!cert.issued || reissue) {
+    cert.issued = true; cert.name = name; cert.org = org; cert.score = best;
+    cert.preview = (!passed && admin); cert.issuedAt = Date.now();
+    if (!cert.code || reissue || (cert.preview !== String(cert.code).startsWith('PREVIEW-'))) cert.code = (cert.preview ? 'PREVIEW-' : 'LSSGB-') + randCode();
+    setCert(cert);
+  }
+  current = cert; render();
+}
+function status(msg, err){ const s = $('status'); s.textContent = msg; s.className = 'meta' + (err ? ' err' : ''); }
+async function render(){
+  if (!current) { $('meta').textContent = 'lss_cert: none yet. Issue a certificate to preview it.'; return; }
+  $('meta').innerHTML = 'lss_cert: <code></code>'; $('meta').querySelector('code').textContent = JSON.stringify(current);
+  try { await LaureateHQL.renderCertificate('certPaperWrap', current); await LaureateHQL.renderBadge('badgeWrap', current); }
+  catch (e) { status(e.message, true); }
+}
+async function busy(btn, fn){ btn.disabled = true; try { await fn(); status('Download started.'); } catch (e) { status(e.message, true); } finally { btn.disabled = false; } }
+$('btn-issue').addEventListener('click', () => issueCertificate(false));
+$('btn-reissue').addEventListener('click', () => issueCertificate(true));
+$('btn-pdf').addEventListener('click', (e) => { if (current) busy(e.currentTarget, () => LaureateHQL.downloadCertificate(current, 'pdf')); });
+$('btn-png').addEventListener('click', (e) => { if (current) busy(e.currentTarget, () => LaureateHQL.downloadCertificate(current, 'png')); });
+$('btn-badge').addEventListener('click', (e) => { if (current) busy(e.currentTarget, () => LaureateHQL.downloadBadge(current)); });
+if (!current) issueCertificate(false); else render();
+LaureateHQL.ready().then(render);
+})();
+</script>
+</body>
+</html>
