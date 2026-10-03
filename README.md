@@ -5,7 +5,7 @@ Browser tools that draw print-ready Lean Six Sigma credentials on a canvas. Ther
 | Folder | Open | Output |
 |---|---|---|
 | `certificate-engine/` | `index.html` | A4 landscape certificate as PNG (3369 × 2382 px) or PDF. Also batch PDF or ZIP from a CSV. |
-| `lss-game/` | `index.html` | **Kaizen Ward**, a Lean Six Sigma learning game: six stations (DMAIC, 8 wastes, 5 Whys, fishbone, Pareto, control chart) on a hospital discharge case, scored as a live sigma level with belt progression. |
+| `lss-game/` | `index.html` | **Lean Town**, a cartoon Lean Six Sigma game: 6 levels on a town map teaching 8 Wastes, 5S and 5 Whys, each with a daily-life and a healthcare example. Hearts, timer, coins and stars. |
 | `id-badge/` | `index.html` | CR80 badge (54 × 85.6 mm), front and back, with photo, logo and a QR verification code. PNG ZIP or card-size PDF, single or batch. |
 
 Serve the repo folder over HTTP, for example with `npx serve .`, and open either `index.html`. Opening the file directly also works in most browsers.

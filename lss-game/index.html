@@ -3,878 +3,863 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kaizen Ward</title>
+<title>Lean Town</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;800;900&display=swap">
 <style>
-/* Layout: a ward "gemba board" — HUD bar, a value-stream rail of six tool stations, one play area with a coach's note beside it. */
+/* Layout: one game "device" column — title screen, a winding town map, then full-width level stages with a chunky HUD. Single bright cartoon world on purpose (no dark variant). */
 :root{
-  --paper:#EAF0EE; --sheet:#FBFDFC; --ink:#13232A; --muted:#566A6F; --line:#C5D2D0; --grid:#DCE5E3;
-  --teal:#0A6B63; --teal-ink:#FFFFFF; --teal-soft:#D2E8E4;
-  --amber:#C98A10; --amber-soft:#FBEBC6; --red:#C23C2B; --red-soft:#F8DCD7; --green:#23844B; --green-soft:#D5EEDD;
-  --belt-white:#F4F4F0; --belt-yellow:#F2C230; --belt-green:#2E9A55; --belt-black:#16191B;
-  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
-  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-  --r:10px;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#0E171A; --sheet:#152227; --ink:#E3ECEA; --muted:#93A6A9; --line:#2B3D42; --grid:#16252A;
-    --teal:#46C2B3; --teal-ink:#06201D; --teal-soft:#16393A;
-    --amber:#F0B447; --amber-soft:#3A2E12; --red:#F06C5A; --red-soft:#3D1D19; --green:#5FC98A; --green-soft:#16362A;
-    --belt-white:#E9ECEA; --belt-black:#000000;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#0E171A; --sheet:#152227; --ink:#E3ECEA; --muted:#93A6A9; --line:#2B3D42; --grid:#16252A;
-  --teal:#46C2B3; --teal-ink:#06201D; --teal-soft:#16393A;
-  --amber:#F0B447; --amber-soft:#3A2E12; --red:#F06C5A; --red-soft:#3D1D19; --green:#5FC98A; --green-soft:#16362A;
-  --belt-white:#E9ECEA; --belt-black:#000000;
-  color-scheme:dark;
+  --ink:#2B2140; --sky:#8FD3FF; --sky-deep:#4FA9E8; --grass:#7CCB5B; --sun:#FFD166; --red:#EF476F;
+  --teal:#06D6A0; --blue:#118AB2; --orange:#FF9F1C; --cream:#FFF7E6; --purple:#7B5CFF; --stone:#B8B2C8;
+  --f-game:"Lilita One","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0}
 body{
-  background-color:var(--paper);
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:24px 24px;
-  color:var(--ink); font:16px/1.55 var(--f-body);
-  padding-inline:16px; padding-block:0 48px;
+  background:var(--sky-deep);
+  background-image:radial-gradient(circle at 20% 10%,#ffffff22 0 60px,transparent 61px),radial-gradient(circle at 85% 30%,#ffffff1a 0 90px,transparent 91px);
+  color:var(--ink); font:600 16px/1.45 var(--f-body);
+  padding-inline:16px; padding-block:12px 40px; min-height:100%;
 }
-.wrap{max-width:1100px;margin:0 auto}
 button{font:inherit;color:inherit}
-button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
-.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.eyebrow{font:600 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+button:focus-visible,[tabindex]:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
+.game{max-width:900px;margin:0 auto;display:grid;gap:12px}
 
-/* Header + HUD */
-.top{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;padding-block:20px 16px}
-.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.brand h1{font-size:30px;font-weight:900;font-stretch:125%;letter-spacing:-.01em;line-height:1}
-.brand .case{color:var(--muted);font-size:14px}
-.hud{display:flex;gap:10px;flex-wrap:wrap}
-.hud-cell{background:var(--sheet);border:1px solid var(--line);border-radius:var(--r);padding:8px 12px;display:grid;gap:4px;min-width:96px}
-.hud-cell b{font:600 20px/1 var(--f-mono);font-variant-numeric:tabular-nums}
-.hud-cell small{font-size:12px;color:var(--muted)}
-.gauge{height:6px;border-radius:3px;background:var(--grid);background:color-mix(in srgb,var(--line) 60%,transparent);overflow:hidden;width:100%}
-.gauge i{display:block;height:100%;background:var(--teal);width:0;transition:width .5s ease}
-.belt{display:flex;align-items:center;gap:10px}
-.belt-bar{width:44px;height:12px;border-radius:3px;border:1px solid var(--line);position:relative;background:var(--belt-white)}
-.belt-bar::after{content:"";position:absolute;left:50%;top:-4px;width:10px;height:18px;margin-left:-5px;border-radius:3px;background:inherit;border:1px solid var(--line)}
-.belt-bar[data-belt="Yellow"]{background:var(--belt-yellow)}
-.belt-bar[data-belt="Green"]{background:var(--belt-green)}
-.belt-bar[data-belt="Black"]{background:var(--belt-black)}
+/* Buttons */
+.btn{font:400 22px/1 var(--f-game);letter-spacing:.02em;padding:14px 26px;border:3px solid var(--ink);border-radius:18px;background:var(--sun);color:var(--ink);box-shadow:0 6px 0 var(--ink);cursor:pointer;transition:transform .08s,box-shadow .08s}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
+.btn.green{background:var(--teal)} .btn.red{background:var(--red);color:#fff} .btn.white{background:#fff} .btn.small{font-size:16px;padding:9px 14px;border-radius:12px;box-shadow:0 4px 0 var(--ink)}
+.btn.small:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
 
-/* Value stream rail */
-.rail-scroll{overflow-x:auto;padding-block:4px 12px;margin-inline:-4px}
-.rail{display:flex;align-items:stretch;gap:0;min-width:max-content;padding-inline:4px}
-.proc{display:grid;gap:2px;text-align:left;background:var(--sheet);border:1.5px solid var(--line);border-radius:6px;padding:8px 12px;min-width:132px;cursor:pointer}
-.proc .n{font:600 11px/1 var(--f-mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
-.proc .t{font:800 15px/1.2 var(--f-display);font-stretch:110%}
-.proc .s{font-size:12px;color:var(--muted)}
-.proc[aria-current="step"]{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
-.proc.done .s{color:var(--green);font-weight:700}
-.proc:disabled{cursor:not-allowed;opacity:.55}
-.push{display:flex;align-items:center;padding-inline:4px;color:var(--muted)}
-.push svg{width:26px;height:14px}
+/* HUD */
+.hud{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--cream);border:3px solid var(--ink);border-radius:18px;padding:8px 10px;box-shadow:0 5px 0 var(--ink)}
+.hud .lvl{font:400 18px/1.1 var(--f-game);flex:1 1 140px;min-width:0}
+.hud .lvl small{display:block;font:800 11px/1.2 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:#6B5F80}
+.hearts{display:flex;gap:2px}
+.hearts svg{width:26px;height:24px}
+.coins{display:flex;align-items:center;gap:6px;font:400 20px/1 var(--f-game);background:#fff;border:3px solid var(--ink);border-radius:999px;padding:3px 12px 3px 4px}
+.coins svg{width:24px;height:24px}
+.timer{flex:1 1 120px;height:18px;border:3px solid var(--ink);border-radius:999px;background:#fff;overflow:hidden;min-width:90px}
+.timer i{display:block;height:100%;width:100%;background:var(--teal);transition:width .25s linear}
+.timer.low i{background:var(--red)}
+.icon-btn{width:44px;height:44px;border:3px solid var(--ink);border-radius:12px;background:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 3px 0 var(--ink)}
+.icon-btn svg{width:24px;height:24px}
 
-/* Stage */
-.stage{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;margin-top:8px;align-items:start}
-@media (max-width:860px){.stage{grid-template-columns:minmax(0,1fr)}}
-.panel{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:24px;min-width:0}
-@media (max-width:520px){.panel{padding:18px}}
-.st-head{display:grid;gap:8px;margin-bottom:20px}
-.st-head h2{font-size:clamp(28px,5vw,44px);font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.015em}
-.st-head p{margin:0;color:var(--muted);max-width:62ch}
-.coach{background:transparent;border:1.5px dashed var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:10px;min-width:0}
-.coach h3{font-size:16px;font-weight:800;font-stretch:110%}
-.coach ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
-.coach p{margin:0;font-size:15px}
-.tag{display:inline-block;font:600 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:4px;background:var(--teal-soft);color:var(--ink)}
+/* Cards / stage */
+.card{background:var(--cream);border:3px solid var(--ink);border-radius:22px;box-shadow:0 6px 0 var(--ink);padding:18px;min-width:0}
+.stage{border:3px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:0 6px 0 var(--ink);background:var(--sky);position:relative}
+.stage svg{display:block;width:100%;height:auto}
+.say{display:flex;gap:12px;align-items:center;font-weight:800}
+.say .bubble{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:10px 14px;position:relative;flex:1;min-width:0}
+.say svg{width:56px;height:56px;flex:none}
 
-/* Question card + options */
-.qcount{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}
-.pips{display:flex;gap:4px;flex-wrap:wrap}
-.pips i{width:14px;height:6px;border-radius:2px;background:var(--line)}
-.pips i.on{background:var(--teal)}
-.qcard{border:1px solid var(--line);border-radius:var(--r);padding:20px;background:var(--paper);font-size:19px;line-height:1.45;margin-bottom:16px}
-.qcard .who{display:block;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
-.opts.cols-1{grid-template-columns:1fr}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;background:var(--sheet);border:1.5px solid var(--line);border-radius:var(--r);padding:12px 14px;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
-.opt:hover:not(:disabled){border-color:var(--teal)}
-.opt:active:not(:disabled){transform:translateY(1px)}
-.opt .k{flex:none;width:30px;height:30px;border-radius:6px;display:grid;place-items:center;font:900 16px/1 var(--f-display);background:var(--teal-soft)}
-.opt .l{display:grid;gap:2px;min-width:0}
-.opt .l b{font-weight:700}
-.opt .l span{font-size:13px;color:var(--muted)}
-.opt:disabled{cursor:default}
-.opt.is-wrong{border-color:var(--red);background:var(--red-soft);opacity:.75}
-.opt.is-right{border-color:var(--green);background:var(--green-soft)}
-.opt.is-right .k{background:var(--green);color:var(--sheet)}
+/* Title */
+.title-wrap{text-align:center;display:grid;gap:14px;justify-items:center}
+.logo{font:400 clamp(54px,13vw,104px)/.9 var(--f-game);color:var(--sun);-webkit-text-stroke:4px var(--ink);paint-order:stroke fill;text-shadow:0 7px 0 var(--ink);letter-spacing:.02em;margin:6px 0 0}
+.logo span{color:#fff}
+.tagline{font:800 18px/1.3 var(--f-body);color:#fff;text-shadow:0 2px 0 var(--ink);margin:0}
 
-/* Feedback */
-.fb{margin-top:16px;border-radius:var(--r);padding:14px 16px;display:grid;gap:10px;border:1.5px solid var(--line)}
-.fb[data-kind="good"]{border-color:var(--green);background:var(--green-soft)}
-.fb[data-kind="bad"]{border-color:var(--red);background:var(--red-soft)}
-.fb[data-kind="info"]{border-color:var(--amber);background:var(--amber-soft)}
-.fb .fb-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
-.fb .fb-top strong{font:800 17px/1.2 var(--f-display);font-stretch:110%}
-.fb .pts{font:600 14px/1 var(--f-mono)}
-.fb p{margin:0}
-.btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;background:var(--teal);color:var(--teal-ink);border:0;border-radius:8px;padding:12px 18px;font:800 15px/1 var(--f-display);font-stretch:110%;letter-spacing:.02em;cursor:pointer;justify-self:start}
-.btn:hover{filter:brightness(1.07)}
-.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+/* Map */
+.stage.map{max-width:600px;width:100%;justify-self:center;background:var(--grass)}
+.map svg .node{cursor:pointer}
+.map svg .node:focus-visible circle.ring{stroke:var(--sun);stroke-width:8}
+.map svg .node.locked{cursor:not-allowed}
+.legend{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;font:800 13px/1 var(--f-body);background:#fff;border:2.5px solid var(--ink);border-radius:999px;padding:6px 10px}
+.chip i{width:12px;height:12px;border-radius:50%;border:2px solid var(--ink)}
 
-/* DMAIC tally strip */
-.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:18px}
-.strip div{border-top:4px solid var(--line);padding-top:6px;font-size:12px;color:var(--muted)}
-.strip div b{display:block;font:900 20px/1 var(--f-display);color:var(--ink)}
-.strip div.lit{border-top-color:var(--teal)}
+/* Spot the waste */
+.hit{fill:transparent;cursor:pointer;stroke:transparent;stroke-width:4;stroke-dasharray:10 8}
+.hit:hover,.hit:focus-visible{stroke:#fff;outline:none}
+.hit.done{cursor:default;stroke:none}
+.found{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.found .chip.ok{background:var(--teal)}
+.found .chip.empty{opacity:.55;border-style:dashed}
 
-/* Five whys ladder */
-.ladder{display:grid;gap:0;margin-bottom:16px}
-.rung{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start;padding-block:8px;position:relative}
-.rung .badge{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:900 13px/1 var(--f-mono);background:var(--teal-soft);border:1.5px solid var(--teal)}
-.rung.problem .badge{background:var(--red-soft);border-color:var(--red)}
-.rung.root .badge{background:var(--amber-soft);border-color:var(--amber)}
-.rung + .rung::before{content:"";position:absolute;left:21px;top:-8px;height:16px;border-left:2px dotted var(--line)}
-.rung p{margin:0;padding-top:10px}
-.rung small{display:block;color:var(--muted);font-size:13px}
+/* Modal */
+.modal{position:fixed;inset:0;background:#2B214099;display:grid;place-items:center;padding:16px;z-index:20;overflow-y:auto}
+.modal .card{max-width:480px;width:100%;display:grid;gap:14px;text-align:center;animation:pop .25s ease}
+.modal h2{font:400 34px/1 var(--f-game);margin:0;color:var(--ink)}
+.modal p{margin:0}
+.choices{display:grid;gap:10px}
+.choice{display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:10px 14px;cursor:pointer;box-shadow:0 4px 0 var(--ink);font-weight:800}
+.choice small{display:block;font-weight:600;color:#6B5F80}
+.choice:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.choice.bad{background:#FFD3DC;opacity:.6}
+.choice .dot{width:38px;height:38px;border-radius:12px;border:3px solid var(--ink);flex:none;display:grid;place-items:center;font:400 18px/1 var(--f-game);color:#fff;-webkit-text-stroke:1px var(--ink)}
+.stars{display:flex;justify-content:center;gap:8px}
+.stars svg{width:64px;height:64px}
+.stars svg.on{animation:pop .4s ease both}
+.tool-badge{justify-self:center;font:400 16px/1 var(--f-game);background:var(--purple);color:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 16px}
+.kind{justify-self:center}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center}
 
-/* Fishbone */
-.tray{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;min-height:44px}
-.chip{background:var(--sheet);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;text-align:left;cursor:pointer;line-height:1.3}
-.chip[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft);box-shadow:0 0 0 3px var(--amber-soft)}
-.fish{display:grid;gap:0}
-.bones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.bone{display:grid;gap:6px;align-content:start;text-align:left;background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r);padding:10px;min-height:110px;cursor:pointer}
-.bone:hover{border-color:var(--teal)}
-.bone h4{margin:0;font:800 15px/1.1 var(--f-display);font-stretch:110%}
-.bone .def{font-size:12px;color:var(--muted)}
-.bone ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}
-.bone li{font-size:13px;background:var(--green-soft);border-radius:6px;padding:4px 8px}
-.spine{display:grid;grid-template-columns:1fr auto;align-items:center;margin-block:10px}
-.spine .line{height:4px;background:var(--ink);border-radius:2px;position:relative}
-.spine .line::after{content:"";position:absolute;right:-2px;top:-6px;border-left:12px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent}
-.spine .head{background:var(--red-soft);border:1.5px solid var(--red);border-radius:8px 40px 40px 8px;padding:8px 18px 8px 14px;font:800 14px/1.2 var(--f-display);margin-left:14px;max-width:180px}
-@media (max-width:600px){.fish{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bones{display:contents}.spine{grid-column:1/-1;order:2}.spine .head{max-width:140px;font-size:13px}}
+/* 5S */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.steps div{background:#fff;border:3px solid var(--ink);border-radius:12px;padding:6px 4px;text-align:center;font:400 13px/1.1 var(--f-game);opacity:.5}
+.steps div b{display:block;font-size:20px;font-weight:400}
+.steps div.on{background:var(--sun);opacity:1}
+.steps div.done{background:var(--teal);opacity:1}
+@media (max-width:480px){.steps div{font-size:10px}.steps div b{font-size:16px}}
+.sort{display:grid;gap:14px;justify-items:center;text-align:center}
+.item-card{width:200px;max-width:100%;aspect-ratio:1;background:#fff;border:3px solid var(--ink);border-radius:24px;display:grid;place-items:center;box-shadow:0 6px 0 var(--ink)}
+.item-card svg{width:70%;height:70%}
+.item-name{font:400 24px/1.1 var(--f-game)}
+.bins{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.board{position:relative;border:3px solid var(--ink);border-radius:20px;padding:18px 18px 24px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;box-shadow:inset 0 0 0 6px #00000014,0 6px 0 var(--ink)}
+.board.wood{background:#E2A867;background-image:repeating-linear-gradient(90deg,#00000010 0 2px,transparent 2px 60px)}
+.board.steel{background:#C9D6E3;background-image:repeating-linear-gradient(0deg,#ffffff40 0 2px,transparent 2px 40px)}
+.slot{aspect-ratio:1;border:3px dashed #2B214066;border-radius:16px;display:grid;place-items:center;position:relative;background:#ffffff30;min-width:0}
+.slot svg{width:78%;height:78%}
+.slot .shadow *{fill:#2B214040!important;stroke:none!important}
+.slot.filled{border-style:solid;border-color:var(--ink);background:#ffffff80}
+.slot.target{background:#fff}
+.slot .label{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);white-space:nowrap;font:800 11px/1 var(--f-body);background:var(--sun);border:2px solid var(--ink);border-radius:6px;padding:3px 6px;max-width:112%;overflow:hidden;text-overflow:ellipsis}
+.tray{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;min-height:96px;padding:10px;border:3px dashed #fff;border-radius:18px;background:#ffffff26}
+.piece{width:86px;height:86px;background:#fff;border:3px solid var(--ink);border-radius:16px;display:grid;place-items:center;cursor:grab;touch-action:none;box-shadow:0 4px 0 var(--ink)}
+.piece svg{width:78%;height:78%;pointer-events:none}
+.piece[aria-pressed="true"]{background:var(--sun)}
+.ghost{position:fixed;z-index:30;pointer-events:none;width:86px;height:86px;transform:translate(-50%,-50%) scale(1.1);background:#fff;border:3px solid var(--ink);border-radius:16px;display:grid;place-items:center;box-shadow:0 10px 20px #0004}
+.ghost svg{width:78%;height:78%}
+.dirt{position:absolute;width:15%;aspect-ratio:1;border-radius:50% 40% 55% 45%;background:radial-gradient(circle at 40% 40%,#8A6038,#5B3A1E);border:3px solid var(--ink);cursor:pointer;transform:translate(-50%,-50%);transition:opacity .2s,transform .2s;padding:0}
+.dirt.half{opacity:.45;transform:translate(-50%,-50%) scale(.8)}
+@media (max-width:520px){.board{gap:8px;padding:12px 12px 20px}.piece{width:70px;height:70px}}
 
-/* Charts */
-.chart-scroll{overflow-x:auto;margin-bottom:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper)}
-.chart-scroll svg{display:block;width:100%;min-width:460px;height:auto}
-svg text{font-family:var(--f-mono);fill:var(--muted)}
-svg .bar{fill:var(--teal);opacity:.35;cursor:pointer;transition:opacity .2s}
-svg .bar.sorted{opacity:.85}
-svg .bar.pick{fill:var(--amber);opacity:1}
-svg .bar:hover{opacity:.7}
-svg .bar.sorted:hover{opacity:1}
-svg .bar.flash{fill:var(--red);opacity:1}
-svg .ax{stroke:var(--line);stroke-width:1}
-svg .cum{fill:none;stroke:var(--ink);stroke-width:2.5}
-svg .cumdot{fill:var(--sheet);stroke:var(--ink);stroke-width:2}
-svg .ref{stroke:var(--red);stroke-width:1.5;stroke-dasharray:5 4}
-svg .lbl{fill:var(--ink);font-size:12px}
-svg .val{fill:var(--ink);font-size:13px;font-weight:600}
-svg .lim{stroke:var(--red);stroke-width:1.5;stroke-dasharray:6 4}
-svg .cl{stroke:var(--teal);stroke-width:1.5}
-svg .run{fill:none;stroke:var(--muted);stroke-width:1.5}
-svg .pt{fill:var(--sheet);stroke:var(--ink);stroke-width:2}
-svg .pt.sig{fill:var(--red);stroke:var(--red)}
-svg .zone{fill:var(--amber-soft);opacity:.8}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:12px}
-.legend span{display:inline-flex;gap:6px;align-items:center}
-.legend i{width:18px;height:0;border-top:2px dashed var(--red);display:inline-block}
-.legend i.cl{border-top:2px solid var(--teal)}
-.meter{font:600 15px/1.3 var(--f-mono)}
+/* 5 Whys */
+.dig{display:grid;border:3px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:0 6px 0 var(--ink)}
+.layer{padding:14px 66px 14px 70px;position:relative;min-height:74px;display:grid;gap:10px;align-content:center;border-top:3px solid #2B214055}
+.layer .num{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:3px solid var(--ink);display:grid;place-items:center;font:400 15px/1 var(--f-game)}
+.layer.done .num{background:var(--teal)}
+.layer .q{font:400 22px/1.1 var(--f-game);color:#fff;text-shadow:0 2px 0 var(--ink)}
+.layer .ans{background:#fff;border:3px solid var(--ink);border-radius:14px;padding:8px 12px;font-weight:800;justify-self:start}
+.layer.locked{color:#ffffff88;font:400 20px/1 var(--f-game)}
+.rocks{display:flex;flex-wrap:wrap;gap:10px}
+.rock{background:linear-gradient(160deg,#ECE8F5,#A9A2BC);border:3px solid var(--ink);border-radius:38% 52% 44% 58% / 52% 40% 60% 46%;padding:12px 18px;font-weight:900;cursor:pointer;box-shadow:0 4px 0 var(--ink);text-align:left;max-width:100%}
+.rock:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.rock.cracked{background:linear-gradient(160deg,#FFC2CF,#EF476F);opacity:.75}
+.rock.cracked>span:first-child{text-decoration:line-through}
+.rock .why{display:block;font:900 12px/1 var(--f-body);text-transform:uppercase;letter-spacing:.06em;margin-top:5px}
+.chest{background:#3B2414;color:#fff;padding:18px;display:grid;gap:10px;justify-items:center;text-align:center;min-height:120px;align-content:center}
+.chest svg{width:96px;height:80px}
+.chest b{font:400 22px/1.15 var(--f-game);color:var(--sun);font-weight:400}
+.driller{position:absolute;right:10px;top:50%;width:48px;height:48px;transform:translateY(-50%)}
+@media (max-width:520px){.layer{padding:12px 12px 12px 64px}.driller{display:none}}
 
-/* Brief + finish */
-.charter{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-block:18px}
-.charter div{padding:12px 14px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);min-width:0}
-.charter div:nth-child(2n){border-right:0}
-.charter dt{font:600 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.charter dd{margin:0}
-@media (max-width:560px){.charter{grid-template-columns:1fr}.charter div{border-right:0}}
-.big-sigma{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.big-sigma b{font:900 clamp(56px,12vw,96px)/1 var(--f-display);font-stretch:125%;color:var(--teal)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-block:16px}
-.stats div{border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:4px}
-.stats b{font:600 22px/1 var(--f-mono);font-variant-numeric:tabular-nums}
-.stats small{color:var(--muted);font-size:12px}
-.recap{display:grid;gap:0;margin-top:8px;border-top:1px solid var(--line)}
-.recap div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding-block:10px;border-bottom:1px solid var(--line)}
-.recap div b{font:800 15px/1.3 var(--f-display);font-stretch:110%}
-@media (max-width:520px){.recap div{grid-template-columns:1fr;gap:2px}}
-.lede{font-size:18px;max-width:62ch;margin:0}
-
-/* Toast */
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:999px;font:800 15px/1 var(--f-display);font-stretch:110%;display:flex;gap:10px;align-items:center;z-index:9;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.toast .belt-bar{border-color:transparent}
-
-@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+/* FX */
+.float{position:fixed;z-index:40;font:400 26px/1 var(--f-game);color:var(--sun);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;pointer-events:none;transform:translate(-50%,0);animation:floatUp .9s ease-out forwards}
+.toast{position:fixed;left:50%;top:calc(16px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:35;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:10px 16px;font-weight:800;box-shadow:0 5px 0 var(--ink);width:max-content;max-width:min(92vw,520px);text-align:center}
+.toast.bad{background:#FFD3DC} .toast.good{background:#C9F7E6}
+@keyframes floatUp{from{transform:translate(-50%,0);opacity:1}to{transform:translate(-50%,-70px);opacity:0}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}50%{transform:translateX(7px)}75%{transform:translateX(-4px)}}
+@keyframes walk{0%,100%{transform:translateX(0)}50%{transform:translateX(-58px)}}
+@keyframes walkLong{0%,100%{transform:translateX(0)}50%{transform:translateX(300px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes drive{from{transform:translateX(-180px)}to{transform:translateX(980px)}}
+@keyframes drill{0%,100%{transform:translateY(-50%) rotate(-8deg)}50%{transform:translateY(-44%) rotate(8deg)}}
+@keyframes puff{0%{transform:translateY(0) scale(.6);opacity:.9}100%{transform:translateY(-40px) scale(1.4);opacity:0}}
 .shake{animation:shake .35s ease}
-@keyframes rise{from{transform:translateY(8px);opacity:.2}to{transform:none;opacity:1}}
-.rise{animation:rise .3s ease both}
-@media (prefers-reduced-motion:reduce){.shake,.rise{animation:none}.gauge i{transition:none}}
+.walk{animation:walk 3s ease-in-out infinite}
+.walk-long{animation:walkLong 7s ease-in-out infinite}
+.bob{animation:bob 1.6s ease-in-out infinite}
+.drive{animation:drive 9s linear infinite}
+.drive.slow{animation-duration:14s;animation-delay:-5s}
+.puff{animation:puff 1.8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+.puff.d2{animation-delay:.6s}.puff.d3{animation-delay:1.2s}
+.driller{animation:drill .5s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.walk,.walk-long,.bob,.drive,.puff,.driller,.shake,.float,.modal .card,.stars svg.on{animation:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <div class="brand">
-      <h1>Kaizen Ward</h1>
-      <span class="case">A Lean Six Sigma game · Ward 7 discharge project</span>
-    </div>
-    <div class="hud" aria-live="polite">
-      <div class="hud-cell"><small>Score</small><b id="hud-score">0</b></div>
-      <div class="hud-cell" title="Your answers measured like a process: each question is an opportunity, each wrong first try is a defect.">
-        <small>Your sigma level</small><b id="hud-sigma">—</b>
-        <div class="gauge"><i id="hud-gauge"></i></div>
-        <small id="hud-dpmo">0 defects / 0 opportunities</small>
-      </div>
-      <div class="hud-cell"><small>Belt</small><div class="belt"><span class="belt-bar" id="hud-beltbar"></span><b id="hud-belt" style="font-size:16px">White</b></div></div>
-    </div>
-  </header>
-
-  <nav class="rail-scroll" aria-label="Tool stations">
-    <div class="rail" id="rail"></div>
-  </nav>
-
-  <main class="stage">
-    <section class="panel" id="main"></section>
-    <aside class="coach" id="coach"></aside>
-  </main>
+<div class="game" id="game">
+  <div class="hud" id="hud" hidden>
+    <button class="icon-btn" type="button" id="btn-map" aria-label="Back to map"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="#2B2140" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="lvl" id="hud-lvl"></div>
+    <div class="hearts" id="hud-hearts" aria-label="Hearts"></div>
+    <div class="timer" id="hud-timer" hidden><i></i></div>
+    <div class="coins" id="hud-coins"></div>
+    <button class="icon-btn" type="button" id="btn-sound" aria-label="Sound on or off"></button>
+  </div>
+  <div id="screen"></div>
 </div>
+<div class="modal" id="modal" hidden></div>
 <div class="toast" id="toast" hidden></div>
 
 <script>
 (function(){
 "use strict";
-
-/* ---------- Content ---------- */
-const STATIONS = [
-  {id:"dmaic",  name:"DMAIC",         phase:"The roadmap", tool:"DMAIC roadmap"},
-  {id:"waste",  name:"Waste Walk",    phase:"Measure",     tool:"8 wastes (DOWNTIME)"},
-  {id:"whys",   name:"5 Whys",        phase:"Analyze",     tool:"5 Whys"},
-  {id:"fish",   name:"Fishbone",      phase:"Analyze",     tool:"Fishbone (Ishikawa)"},
-  {id:"pareto", name:"Pareto",        phase:"Analyze",     tool:"Pareto chart"},
-  {id:"spc",    name:"Control Chart", phase:"Control",     tool:"Control chart (SPC)"}
-];
-
-const PHASES = [
-  {k:"D", n:"Define",  d:"Agree the problem, goal, scope and customer."},
-  {k:"M", n:"Measure", d:"Map the current process and collect reliable baseline data."},
-  {k:"A", n:"Analyze", d:"Find and prove the root causes."},
-  {k:"I", n:"Improve", d:"Design, test and roll out fixes for the root causes."},
-  {k:"C", n:"Control", d:"Hold the gains with standard work and monitoring."}
-];
-const DMAIC_Q = [
-  {t:"Time 40 discharges from “medically fit” to “left the ward”.", a:1, r:"Measure. You need a baseline before you can prove any change worked."},
-  {t:"Write the project charter: discharges take 5.8 h, goal under 3 h within 12 weeks.", a:0, r:"Define. The charter states the problem, goal, scope and team before any data work starts."},
-  {t:"Draw a Pareto chart of the delay reasons to see which ones cost the most hours.", a:2, r:"Analyze. Pareto points you at the few causes worth chasing."},
-  {t:"Pilot writing take-home prescriptions the afternoon before a planned discharge.", a:3, r:"Improve. You are testing a fix for a proven root cause, on a small scale first."},
-  {t:"Build a SIPOC with the bed manager and ward sister to agree where the process starts and ends.", a:0, r:"Define. SIPOC (Suppliers, Inputs, Process, Outputs, Customers) sets the scope on one page."},
-  {t:"Plot daily discharge times on a control chart and hand the board over to the ward team.", a:4, r:"Control. The process owner now watches the chart, so the gain doesn't slip away."},
-  {t:"Check that two nurses timing the same discharge record the same times.", a:1, r:"Measure. This is a measurement system check. Bad data leads to bad conclusions."},
-  {t:"Ask 5 Whys about the slowest discharges and sketch a fishbone with the team.", a:2, r:"Analyze. Both tools dig below symptoms to find root causes."},
-  {t:"Run a 5S on the discharge lounge supply cupboard so nurses stop searching for forms.", a:3, r:"Improve. 5S (Sort, Set in order, Shine, Standardize, Sustain) removes searching and motion."},
-  {t:"Add the new discharge standard work to the ward induction pack.", a:4, r:"Control. Standard work makes the new way the normal way, even for new starters."}
-];
-
-const WASTES = [
-  {k:"D", n:"Defects",            d:"Errors that cause rework or harm."},
-  {k:"O", n:"Overproduction",     d:"Doing work before it is needed, or more than is needed."},
-  {k:"W", n:"Waiting",            d:"Patients, staff or information idle, waiting for the next step."},
-  {k:"N", n:"Non-utilized talent",d:"Not using people's skills, ideas and experience."},
-  {k:"T", n:"Transportation",     d:"Moving patients, items or information more than needed."},
-  {k:"I", n:"Inventory",          d:"More supplies or work in progress than you need right now."},
-  {k:"M", n:"Motion",             d:"Unneeded movement of staff: walking, reaching, searching."},
-  {k:"E", n:"Extra-processing",   d:"Doing more than the patient needs: duplicate entries, extra checks."}
-];
-const WASTE_Q = [
-  {t:"Mrs Okafor sits dressed, bag packed, for 3 hours until her medicines arrive.", a:2, r:"Waiting. The patient is ready but the next step isn't. On most wards this is the biggest waste."},
-  {t:"A nurse walks to the far store room nine times a shift to fetch dressings.", a:6, r:"Motion. It is the person moving. Stock the dressings at the point of use."},
-  {t:"Allergy details are written on paper, typed into the e-record, then copied onto the drug chart.", a:7, r:"Extra-processing. The patient gains nothing from the second and third copy, and each copy adds risk."},
-  {t:"The discharge letter is sent back twice because the GP's details are wrong.", a:0, r:"Defects. Every error means rework, and some errors reach the patient."},
-  {t:"The ward cupboard holds three months of catheters, and some expire before they are used.", a:5, r:"Inventory. Excess stock ties up money and space, and it expires."},
-  {t:"Paper notes travel to pharmacy, back to the ward, then on to the discharge lounge.", a:4, r:"Transportation. The item is moving, not the person. Fewer hand-offs means less carrying and less risk of loss."},
-  {t:"Healthcare assistants who spot delays every day are never asked for ideas at the huddle.", a:3, r:"Non-utilized talent. The people closest to the work often know the fix."},
-  {t:"Pharmacy prepares take-home packs for every patient “just in case”, including those not going home.", a:1, r:"Overproduction. Making things before there is demand creates rework and waste downstream."}
-];
-
-const WHYS_PROBLEM = "Mr Patel was medically fit to go home at 10:00 but left the ward at 16:00.";
-const WHYS_Q = [
-  {q:"Why did he leave at 16:00?", o:[
-    {t:"He was waiting for his take-home medicines from pharmacy.", ok:true},
-    {t:"The nurses were too slow.", why:"That blames people and gives you nothing to fix. Ask what the process was doing."},
-    {t:"The hospital is always busy.", why:"Too vague to act on. A good “why” is specific and you can check it with data."}
-  ], r:"Specific, and you can check it: the discharge log shows the medicines arrived at 15:40."},
-  {q:"Why was he waiting for his medicines?", o:[
-    {t:"We need more pharmacists.", why:"That jumps straight to a solution. Keep asking why before you decide on a fix."},
-    {t:"Pharmacy received the prescription at 13:30.", ok:true},
-    {t:"Pharmacy doesn't care about discharges.", why:"Blame again. Lean assumes good people stuck in a poor process."}
-  ], r:"Pharmacy turned it round in about 2 hours. The bigger gap is earlier: 10:00 to 13:30."},
-  {q:"Why did pharmacy get it so late?", o:[
-    {t:"The doctor forgot.", why:"Possible once, but this happens most days. Look for the pattern, not one person's mistake."},
-    {t:"Prescriptions are slow by nature.", why:"That accepts the problem instead of explaining it."},
-    {t:"The doctor wrote it only after finishing the whole ward round.", ok:true}
-  ], r:"The team watched three ward rounds. All discharge prescriptions were written after the round ended."},
-  {q:"Why was it written after the round?", o:[
-    {t:"All discharge prescriptions are written together, in one batch, at the end of the round.", ok:true},
-    {t:"The doctor prefers it that way.", why:"Preference doesn't explain why every doctor does the same. Look at how the work is set up."},
-    {t:"The computer is slow.", why:"Worth checking, but the observation showed the delay is when the work starts, not how long it takes."}
-  ], r:"Batching. Every patient waits for the whole batch, so the first patient seen waits the longest."},
-  {q:"Why are they batched?", o:[
-    {t:"Doctors are lazy.", why:"Blame stops learning. Five whys should lead you to a process you can change."},
-    {t:"There's no standard work saying to write them the day before for planned discharges.", ok:true},
-    {t:"Patients ask to leave in the afternoon.", why:"The data shows most patients wanted to leave before noon."}
-  ], r:"Root cause found: a missing standard. That is something the team can change."}
-];
-const WHYS_FIX = "Countermeasure: for every planned discharge, the doctor writes the take-home prescription the afternoon before, and pharmacy prepares it overnight.";
-
-const BONES = [
-  {n:"People",      d:"Staffing, skills, training, handovers"},
-  {n:"Methods",     d:"Procedures, policies, how work is done"},
-  {n:"Equipment",   d:"Machines, devices, IT"},
-  {n:"Materials",   d:"Supplies, forms, consumables"},
-  {n:"Measurement", d:"How data is recorded and checked"},
-  {n:"Environment", d:"Layout, location, opening hours"}
-];
-const FISH_Q = [
-  {t:"Prescriptions written in one batch after the ward round", b:1},
-  {t:"Only two wheelchairs for the whole floor", b:2},
-  {t:"Discharge lounge closes at 17:00", b:5},
-  {t:"New junior doctors unsure of the discharge checklist", b:0},
-  {t:"Discharge forms run out at weekends", b:3},
-  {t:"“Ready for discharge” time is not recorded anywhere", b:4},
-  {t:"No agreed time for the daily discharge decision", b:1},
-  {t:"One pharmacist covers four wards after noon", b:0},
-  {t:"Shared printer for discharge letters often jams", b:2},
-  {t:"Delay reasons logged as free text, so they can't be counted", b:4},
-  {t:"Medicine packs arrive without labels and must be relabelled", b:3},
-  {t:"Pharmacy is two floors away from the ward", b:5}
-];
-
-const PARETO = [
-  {k:"Transport",        v:21, l:["Transport"]},
-  {k:"Family pickup",    v:5,  l:["Family","pickup"]},
-  {k:"TTO medicines",    v:46, l:["TTO","medicines"]},
-  {k:"Other",            v:2,  l:["Other"]},
-  {k:"Senior review",    v:14, l:["Senior","review"]},
-  {k:"Oxygen / kit",     v:3,  l:["Oxygen","/ kit"]},
-  {k:"Discharge letter", v:9,  l:["Letter"]}
-];
-
-const SPC = { mean:2.6, ucl:3.4, lcl:1.8 };
-const SPC_OPTS = [
-  {t:"In control", s:"Only common-cause variation", fix:"Leave the process alone. Reacting to normal noise (tampering) makes variation worse."},
-  {t:"Point outside a limit", s:"One point beyond UCL or LCL", fix:"Investigate that day. Something unusual happened."},
-  {t:"Run of 8", s:"8+ points on one side of the mean", fix:"The process has shifted. Find out what changed when the run began."},
-  {t:"Trend of 6", s:"6+ points steadily rising or falling", fix:"Something is drifting. Act before it crosses a limit."}
-];
-const SPC_Q = [
-  {d:[2.5,2.8,2.4,2.7,2.9,2.3,2.6,2.8,2.5,2.2,2.7,3.0,2.4,3.9,2.9,2.5,2.3,2.7,2.6,2.8], a:1, sig:[13], r:"Day 14 is above the upper control limit. The team found an outbreak closure that day."},
-  {d:[2.5,2.8,2.4,2.7,2.9,2.3,2.6,2.8,2.5,2.2,2.7,3.0,2.4,2.6,2.9,2.5,2.3,2.7,2.6,2.8], a:0, sig:[], r:"Points bounce around the mean inside the limits with no pattern. This is normal variation."},
-  {d:[2.6,2.4,2.8,2.5,2.3,2.7,2.5,2.4,2.2,2.3,2.4,2.6,2.8,2.9,3.1,3.3,2.7,2.5,2.6,2.4], a:3, sig:[8,9,10,11,12,13,14,15], r:"Days 9 to 16 climb steadily. Discharges slow as a weekend rota gap takes hold."},
-  {d:[2.5,2.7,2.3,2.8,2.4,2.6,2.2,2.7,2.5,2.4,2.9,3.0,2.8,3.1,2.9,3.2,2.8,3.0,2.5,2.7], a:2, sig:[10,11,12,13,14,15,16,17], r:"Days 11 to 18 all sit above the mean. The new pharmacist rota went live on day 11."}
-];
-
-/* ---------- State ---------- */
-const KEY = "kaizen-ward-v1";
-function fresh(){ return {view:"brief", done:[], score:0, opps:0, defects:0, streak:0, best:0, seen:{}, wrong:{}, ok:{}}; }
-function load(){ try{ const s = JSON.parse(localStorage.getItem(KEY)); return s && s.done ? s : null; }catch(e){ return null; } }
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
-let S = fresh();
-let L = {}; // per-station working state
-
-/* ---------- Helpers ---------- */
-const $ = (s, r=document) => r.querySelector(s);
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const O = "#2B2140";
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-function shake(el){ if(reduce||!el) return; el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
 
-function invNorm(p){
-  const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.357751867269,-30.66479806614716,2.506628277459239],
-        b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],
-        c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],
-        d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416];
-  const pl=0.02425; let q,r;
-  if(p<pl){ q=Math.sqrt(-2*Math.log(p)); return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1); }
-  if(p<=1-pl){ q=p-0.5; r=q*q; return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1); }
-  q=Math.sqrt(-2*Math.log(1-p)); return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
-}
-// Short-term sigma with the conventional 1.5 shift, capped at 6.
-function sigma(){
-  if(!S.opps) return null;
-  if(!S.defects) return 6;
-  const p = 1 - S.defects/S.opps;
-  if(p <= 0) return 0;
-  return Math.max(0, Math.min(6, invNorm(p) + 1.5));
-}
-function dpmo(){ return S.opps ? Math.round(S.defects/S.opps*1e6) : 0; }
-function belt(n){ n = n==null ? S.done.length : n; return n>=6 ? "Black" : n>=4 ? "Green" : n>=2 ? "Yellow" : "White"; }
+/* ================= SAVE ================= */
+const KEY="lean-town-v1";
+let SAVE = {stars:{}, coins:0, muted:false};
+try{ const s=JSON.parse(localStorage.getItem(KEY)); if(s&&s.stars) SAVE=Object.assign(SAVE,s); }catch(e){}
+function persist(){ try{ localStorage.setItem(KEY, JSON.stringify(SAVE)); }catch(e){} }
 
-function hud(){
-  $("#hud-score").textContent = S.score.toLocaleString();
-  const sg = sigma();
-  $("#hud-sigma").textContent = sg==null ? "—" : sg.toFixed(1)+"σ";
-  $("#hud-gauge").style.width = (sg==null?0:sg/6*100)+"%";
-  $("#hud-dpmo").textContent = `${S.defects} defect${S.defects===1?"":"s"} / ${S.opps} opportunities`;
-  const b = belt();
-  $("#hud-belt").textContent = b;
-  $("#hud-beltbar").dataset.belt = b;
+/* ================= SOUND ================= */
+let AC=null;
+function sfx(type){
+  if(SAVE.muted) return;
+  try{
+    AC = AC || new (window.AudioContext||window.webkitAudioContext)();
+    const seq = {good:[[660,.08],[880,.14]], bad:[[196,.12],[147,.2]], coin:[[988,.06],[1319,.12]], win:[[523,.11],[659,.11],[784,.11],[1047,.3]], lose:[[392,.15],[330,.15],[262,.3]], tap:[[520,.04]]}[type];
+    let t = AC.currentTime;
+    seq.forEach(([f,d])=>{ const o=AC.createOscillator(), g=AC.createGain(); o.type = type==="bad"||type==="lose" ? "square" : "triangle"; o.frequency.value=f; g.gain.setValueAtTime(.08,t); g.gain.exponentialRampToValueAtTime(.001,t+d); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+d+.02); t+=d; });
+  }catch(e){}
 }
 
-// One question = one opportunity. A wrong first try = one defect.
-function mark(qid, correct){
-  if(S.ok[qid]) return null; // replay: no scoring
-  if(!S.seen[qid]){ S.seen[qid]=1; S.opps++; }
-  let pts = 0;
-  if(correct){
-    S.ok[qid]=1;
-    if(S.wrong[qid]){ pts=40; }
-    else { S.streak++; S.best=Math.max(S.best,S.streak); pts = 100 + (S.streak>=3 ? 25 : 0); }
-    S.score += pts;
+/* ================= SPRITES ================= */
+function person(o){
+  const {x=0,y=0,s=1,skin="#F2C29B",shirt="#118AB2",pants="#3D405B",hair="#3B2A20",kind="plain",face="happy",flip=false,hold=null,long=false} = o;
+  const st = `stroke="${O}" stroke-width="3" stroke-linejoin="round"`;
+  const sleeve = kind==="doctor" ? "#fff" : shirt;
+  const legC = kind==="nurse" ? shirt : pants;
+  let g = "";
+  g += `<rect x="-15" y="-38" width="12" height="38" rx="6" fill="${legC}" ${st}/><rect x="3" y="-38" width="12" height="38" rx="6" fill="${legC}" ${st}/>`;
+  g += `<rect x="-19" y="-6" width="17" height="9" rx="4.5" fill="${O}"/><rect x="2" y="-6" width="17" height="9" rx="4.5" fill="${O}"/>`;
+  g += `<rect x="-29" y="-78" width="12" height="38" rx="6" fill="${sleeve}" ${st}/><circle cx="-23" cy="-40" r="6" fill="${skin}" ${st}/>`;
+  if(long) g += `<rect x="-19" y="-104" width="38" height="44" rx="12" fill="${hair}" ${st}/>`;
+  g += `<rect x="-20" y="-82" width="40" height="50" rx="14" fill="${shirt}" ${st}/>`;
+  if(kind==="doctor"){
+    g += `<path d="M-20 -68 Q-20 -82 -6 -82 L-2 -82 L-2 -32 L-20 -32Z M20 -68 Q20 -82 6 -82 L2 -82 L2 -32 L20 -32Z" fill="#fff" ${st}/>`;
+    g += `<path d="M-8 -80 Q-12 -58 0 -54 Q12 -58 8 -80" fill="none" stroke="${O}" stroke-width="2.5"/><circle cx="0" cy="-52" r="4" fill="#9AA5B1" stroke="${O}" stroke-width="2"/>`;
+  }
+  if(kind==="nurse") g += `<rect x="4" y="-72" width="10" height="7" rx="2" fill="#fff" stroke="${O}" stroke-width="2"/>`;
+  if(hold){
+    g += `<rect x="16" y="-78" width="12" height="36" rx="6" fill="${sleeve}" ${st} transform="rotate(-75 22 -74)"/><circle cx="56" cy="-66" r="6" fill="${skin}" ${st}/>`;
+    if(hold==="cup") g += `<path d="M50 -88 L66 -88 L63 -68 L53 -68Z" fill="#fff" ${st}/><rect x="49" y="-92" width="18" height="5" rx="2" fill="#7A4A2A" stroke="${O}" stroke-width="2"/>`;
   } else {
-    if(!S.wrong[qid]){ S.wrong[qid]=1; S.defects++; }
-    S.streak = 0;
+    g += `<rect x="17" y="-78" width="12" height="38" rx="6" fill="${sleeve}" ${st}/><circle cx="23" cy="-40" r="6" fill="${skin}" ${st}/>`;
   }
-  save(); hud();
-  return pts;
-}
-
-function toast(html){
-  const t = $("#toast"); t.innerHTML = html; t.hidden = false;
-  clearTimeout(toast._t); toast._t = setTimeout(()=>{ t.hidden = true; }, 2600);
-}
-
-/* ---------- Feedback panel ---------- */
-function feedback(kind, title, body, pts, next){
-  const fb = $("#fb"); if(!fb) return;
-  fb.hidden = false; fb.dataset.kind = kind;
-  const ptsTxt = pts==null ? (kind==="good" ? "Replay · no points" : "") : pts ? `+${pts} pts${pts>100?" · streak bonus":""}` : "";
-  fb.innerHTML = `<div class="fb-top"><strong>${title}</strong><span class="pts">${ptsTxt}</span></div><p>${body}</p>`;
-  if(next){
-    const b = document.createElement("button");
-    b.className = "btn"; b.type = "button"; b.textContent = next.label;
-    b.onclick = next.go; fb.appendChild(b);
-    b.focus({preventScroll:true});
+  g += `<circle cx="0" cy="-98" r="17" fill="${skin}" ${st}/>`;
+  g += `<path d="M-17 -98 Q-18 -117 0 -117 Q18 -117 17 -98 Q10 -108 -4 -106 Q-12 -104 -17 -98Z" fill="${hair}" ${st}/>`;
+  if(kind==="nurse") g += `<path d="M-12 -114 L12 -114 L9 -124 L-9 -124Z" fill="#fff" ${st}/><path d="M0 -122 v6 M-3 -119 h6" stroke="#EF476F" stroke-width="2.5"/>`;
+  if(face==="sleep") g += `<path d="M-9 -97 h6 M3 -97 h6" stroke="${O}" stroke-width="2.5" stroke-linecap="round"/><path d="M-5 -88 Q0 -86 5 -88" fill="none" stroke="${O}" stroke-width="2.5" stroke-linecap="round"/>`;
+  else {
+    g += `<circle cx="-6" cy="-98" r="2.6" fill="${O}"/><circle cx="6" cy="-98" r="2.6" fill="${O}"/>`;
+    g += face==="sad" ? `<path d="M-6 -86 Q0 -92 6 -86" fill="none" stroke="${O}" stroke-width="2.5" stroke-linecap="round"/>` : face==="wow" ? `<circle cx="0" cy="-88" r="3.5" fill="${O}"/>` : `<path d="M-7 -90 Q0 -83 7 -90" fill="none" stroke="${O}" stroke-width="2.5" stroke-linecap="round"/>`;
   }
-  fb.classList.remove("rise"); void fb.offsetWidth; fb.classList.add("rise");
+  return `<g transform="translate(${x} ${y}) scale(${flip?-s:s} ${s})">${g}</g>`;
 }
-function clearFb(){ const fb=$("#fb"); if(fb){ fb.hidden=true; fb.innerHTML=""; } }
+function seated(o){
+  const {x=0,y=0,s=1,skin="#F2C29B",shirt="#FF9F1C",pants="#3D405B",hair="#3B2A20",face="sad"} = o;
+  const st = `stroke="${O}" stroke-width="3" stroke-linejoin="round"`;
+  let g = `<rect x="-6" y="-40" width="36" height="13" rx="6" fill="${pants}" ${st}/><rect x="20" y="-40" width="12" height="40" rx="6" fill="${pants}" ${st}/><rect x="18" y="-6" width="18" height="9" rx="4.5" fill="${O}"/>`;
+  g += `<rect x="-20" y="-88" width="38" height="52" rx="14" fill="${shirt}" ${st}/><rect x="8" y="-82" width="12" height="32" rx="6" fill="${shirt}" ${st}/><circle cx="14" cy="-50" r="6" fill="${skin}" ${st}/>`;
+  g += `<circle cx="0" cy="-104" r="17" fill="${skin}" ${st}/><path d="M-17 -104 Q-18 -123 0 -123 Q18 -123 17 -104 Q10 -114 -4 -112 Q-12 -110 -17 -104Z" fill="${hair}" ${st}/>`;
+  if(face==="sleep") g += `<path d="M-9 -103 h6 M3 -103 h6" stroke="${O}" stroke-width="2.5" stroke-linecap="round"/>`;
+  else g += `<circle cx="-6" cy="-104" r="2.6" fill="${O}"/><circle cx="6" cy="-104" r="2.6" fill="${O}"/>`;
+  g += face==="happy" ? `<path d="M-7 -96 Q0 -89 7 -96" fill="none" stroke="${O}" stroke-width="2.5"/>` : `<path d="M-6 -92 Q0 -98 6 -92" fill="none" stroke="${O}" stroke-width="2.5" stroke-linecap="round"/>`;
+  return `<g transform="translate(${x} ${y}) scale(${s})">${g}</g>`;
+}
+function car(x,y,c,s=1,driver="#F2C29B"){
+  const st = `stroke="${O}" stroke-width="3" stroke-linejoin="round"`;
+  return `<g transform="translate(${x} ${y}) scale(${s})">
+    <path d="M28 -44 L46 -70 Q49 -74 54 -74 L92 -74 Q97 -74 100 -70 L116 -44Z" fill="${c}" ${st}/>
+    <rect x="4" y="-48" width="128" height="32" rx="12" fill="${c}" ${st}/>
+    <path d="M42 -46 L54 -66 L71 -66 L71 -46Z M77 -46 L77 -66 L94 -66 L106 -46Z" fill="#CDEFFF" ${st}/>
+    ${driver?`<circle cx="88" cy="-55" r="7" fill="${driver}" stroke="${O}" stroke-width="2"/>`:""}
+    <rect x="70" y="-36" width="12" height="4" rx="2" fill="${O}"/>
+    <circle cx="127" cy="-36" r="4.5" fill="#FFE066" stroke="${O}" stroke-width="2"/><rect x="4" y="-40" width="6" height="8" rx="2" fill="#EF476F"/>
+    <circle cx="34" cy="-14" r="14" fill="${O}"/><circle cx="34" cy="-14" r="6" fill="#C9C3D6"/>
+    <circle cx="104" cy="-14" r="14" fill="${O}"/><circle cx="104" cy="-14" r="6" fill="#C9C3D6"/>
+  </g>`;
+}
+const heart = on => `<svg viewBox="0 0 26 24"><path d="M13 22 C4 15 1 11 1 7 A6 6 0 0 1 13 5 A6 6 0 0 1 25 7 C25 11 22 15 13 22Z" fill="${on?"#EF476F":"#D9D4E3"}" stroke="${O}" stroke-width="2.5" stroke-linejoin="round"/></svg>`;
+const coinSvg = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FFD166" stroke="${O}" stroke-width="2.5"/><path d="M12 7v10" stroke="${O}" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+const starPath = on => `<path d="M32 4 L40 23 L60 24 L44 37 L50 58 L32 46 L14 58 L20 37 L4 24 L24 23Z" fill="${on?"#FFD166":"#E6E1EE"}" stroke="${O}" stroke-width="4" stroke-linejoin="round"/>`;
+const starSvg = (on,cls="") => `<svg viewBox="0 0 64 64" class="${cls}">${starPath(on)}</svg>`;
+const cloud = (x,y,s=1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 30 Q0 10 22 12 Q30 -6 52 4 Q72 -4 80 16 Q100 16 98 32 Z" fill="#fff" stroke="${O}" stroke-width="3" stroke-linejoin="round"/></g>`;
+const tree = (x,y,s=1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-6" y="-30" width="12" height="30" rx="3" fill="#9C6B3F" stroke="${O}" stroke-width="3"/><circle cx="0" cy="-48" r="26" fill="#3FAE5A" stroke="${O}" stroke-width="3"/><circle cx="-8" cy="-56" r="7" fill="#7FDB8B"/></g>`;
+const bubble = (x,y,w,h,text,fs=16) => `<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#fff" stroke="${O}" stroke-width="3"/><path d="M${x+w/2-10} ${y+h-1.5} L${x+w/2} ${y+h+14} L${x+w/2+10} ${y+h-1.5}" fill="#fff" stroke="${O}" stroke-width="3" stroke-linejoin="round"/><rect x="${x+w/2-11}" y="${y+h-4}" width="22" height="4" fill="#fff"/>${text.split("\n").map((t,i,a)=>`<text x="${x+w/2}" y="${y+h/2+fs*0.36+(i-(a.length-1)/2)*(fs+3)}" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="900" font-size="${fs}" fill="${O}">${esc(t)}</text>`).join("")}</g>`;
+const clock = (x,y,r=26) => `<g transform="translate(${x} ${y})"><circle r="${r}" fill="#fff" stroke="${O}" stroke-width="3"/><path d="M0 0 V${-r*.6} M0 0 L${r*.45} ${r*.2}" stroke="${O}" stroke-width="3.5" stroke-linecap="round"/><circle r="3" fill="${O}"/></g>`;
+const mascot = (face="happy") => `<svg viewBox="-40 -140 80 145" aria-hidden="true">${person({kind:"nurse",shirt:"#06D6A0",skin:"#C68A5E",hair:"#2B2140",face})}</svg>`;
 
-/* Generic multiple choice */
-function mcq(host, o){
-  // o: {qid, opts:[{k?,t,s?,why}], answer, right, cols1, next}
-  host.innerHTML = "";
-  const box = document.createElement("div");
-  box.className = "opts" + (o.cols1 ? " cols-1" : "");
-  let solved = false;
-  o.opts.forEach((op,i)=>{
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "opt";
-    b.innerHTML = (op.k ? `<span class="k">${esc(op.k)}</span>` : "") + `<span class="l"><b>${esc(op.t)}</b>${op.s?`<span>${esc(op.s)}</span>`:""}</span>`;
-    b.onclick = () => {
-      if(solved) return;
-      if(i === o.answer){
-        solved = true;
-        b.classList.add("is-right");
-        box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
-        const pts = mark(o.qid, true);
-        feedback("good", o.rightTitle || "Correct", o.right, pts, o.next);
-      } else {
-        b.classList.add("is-wrong"); b.disabled = true; shake(b);
-        mark(o.qid, false);
-        feedback("bad", "Not quite", op.why || "Try another option.");
-      }
-    };
-    box.appendChild(b);
-  });
-  host.appendChild(box);
+/* ================= ITEM ICONS (100x100) ================= */
+const S3 = `stroke="${O}" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"`;
+const ICONS = {
+  spoon:`<ellipse cx="50" cy="30" rx="17" ry="22" fill="#D9A066" ${S3}/><rect x="44" y="50" width="12" height="44" rx="6" fill="#D9A066" ${S3}/>`,
+  scissors:`<path d="M40 62 L64 8 M60 62 L36 8" stroke="#9AA5B1" stroke-width="9" stroke-linecap="round"/><path d="M40 62 L64 8 M60 62 L36 8" fill="none" stroke="${O}" stroke-width="2"/><circle cx="34" cy="76" r="13" fill="none" stroke="#EF476F" stroke-width="8"/><circle cx="66" cy="76" r="13" fill="none" stroke="#EF476F" stroke-width="8"/>`,
+  whisk:`<path d="M50 62 C20 42 30 6 50 6 C70 6 80 42 50 62 M50 62 C36 40 40 10 50 8 C60 10 64 40 50 62" fill="none" stroke="#7D8794" stroke-width="4"/><rect x="43" y="60" width="14" height="34" rx="6" fill="#EF476F" ${S3}/>`,
+  mcup:`<path d="M24 28 L72 28 L68 88 Q67 92 62 92 L34 92 Q29 92 28 88Z" fill="#CDEFFF" ${S3}/><path d="M72 40 Q90 42 88 58 Q86 72 70 72" fill="none" ${S3}/><path d="M34 46 h12 M34 60 h18 M34 74 h12" stroke="${O}" stroke-width="3"/>`,
+  battery:`<rect x="30" y="18" width="40" height="74" rx="8" fill="#4A4E69" ${S3}/><rect x="40" y="10" width="20" height="9" rx="2" fill="#9AA5B1" ${S3}/><rect x="37" y="76" width="26" height="10" rx="2" fill="#EF476F"/><text x="50" y="58" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="20" fill="#fff">0%</text>`,
+  menu:`<rect x="22" y="8" width="56" height="84" rx="4" fill="#FFF7E6" ${S3}/><path d="M32 26 h36 M32 38 h28 M32 50 h32" stroke="${O}" stroke-width="3"/><g transform="rotate(-14 50 72)"><rect x="28" y="60" width="44" height="22" rx="4" fill="none" stroke="#EF476F" stroke-width="4"/><text x="50" y="77" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="16" fill="#EF476F">2015</text></g>`,
+  sock:`<path d="M38 8 L62 8 L62 56 L82 70 Q92 80 82 90 Q74 96 64 90 L36 72 Q30 68 30 60 L38 8Z" fill="#7B5CFF" ${S3}/><path d="M38 20 h24 M37 32 h25" stroke="#fff" stroke-width="6"/>`,
+  spatula:`<rect x="30" y="8" width="40" height="34" rx="6" fill="#06D6A0" ${S3}/><path d="M44 44 L46 58 M54 44 L52 58" stroke="${O}" stroke-width="4"/><rect x="44" y="64" width="12" height="30" rx="5" fill="#1F2937" ${S3} transform="rotate(18 50 79)"/><path d="M36 18 L46 28 L40 34" fill="none" stroke="${O}" stroke-width="3"/>`,
+  gloves:`<rect x="14" y="40" width="72" height="48" rx="6" fill="#8FD3FF" ${S3}/><path d="M36 42 L36 22 Q36 16 41 16 Q46 16 46 22 L46 12 Q46 6 51 6 Q56 6 56 12 L56 18 Q56 12 61 12 Q66 12 66 18 L66 42" fill="#fff" ${S3}/><text x="50" y="74" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="14" fill="${O}">GLOVES</text>`,
+  syringe:`<g transform="rotate(-40 50 50)"><rect x="40" y="18" width="20" height="54" rx="4" fill="#E8F7FF" ${S3}/><rect x="42" y="44" width="16" height="26" fill="#8FD3FF"/><rect x="46" y="6" width="8" height="14" fill="#9AA5B1" ${S3}/><rect x="36" y="4" width="28" height="6" rx="2" fill="#9AA5B1" ${S3}/><path d="M50 72 V96" stroke="${O}" stroke-width="3"/></g>`,
+  swabs:`<rect x="20" y="20" width="60" height="60" rx="8" fill="#fff" ${S3}/><path d="M20 62 L62 20 L80 20 L80 30 L30 80 L20 80Z" fill="#118AB2"/><rect x="20" y="20" width="60" height="60" rx="8" fill="none" ${S3}/><text x="42" y="48" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="16" fill="${O}">70%</text>`,
+  tape:`<circle cx="50" cy="52" r="34" fill="#F4F1F8" ${S3}/><circle cx="50" cy="52" r="15" fill="#FFD166" ${S3}/><path d="M80 66 L94 88 L70 84" fill="#F4F1F8" ${S3}/>`,
+  ivbag:`<path d="M28 14 L72 14 L72 66 Q72 76 62 78 L38 78 Q28 76 28 66Z" fill="#CDEFFF" ${S3}/><path d="M30 40 L70 40 L70 66 Q70 74 62 76 L38 76 Q30 74 30 66Z" fill="#8FD3FF"/><path d="M50 78 V96" stroke="${O}" stroke-width="4"/><rect x="30" y="20" width="40" height="16" rx="3" fill="#EF476F" stroke="${O}" stroke-width="3"/><text x="50" y="33" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="13" fill="#fff">EXP</text>`,
+  mug:`<rect x="20" y="30" width="48" height="58" rx="8" fill="#FF9F1C" ${S3}/><path d="M68 44 Q86 44 86 60 Q86 74 68 74" fill="none" ${S3}/><path d="M34 22 Q30 14 36 8 M48 22 Q44 14 50 8" fill="none" stroke="#9AA5B1" stroke-width="4" stroke-linecap="round"/><path d="M30 52 Q44 44 58 52" fill="none" stroke="#fff" stroke-width="4"/>`,
+  thermo:`<rect x="40" y="8" width="20" height="64" rx="10" fill="#fff" ${S3}/><circle cx="50" cy="80" r="14" fill="#EF476F" ${S3}/><rect x="46" y="40" width="8" height="36" fill="#EF476F"/><path d="M38 30 L48 36 L42 42 L56 48" fill="none" stroke="${O}" stroke-width="3"/>`,
+  leaflet:`<rect x="22" y="8" width="56" height="84" rx="4" fill="#fff" ${S3}/><path d="M32 22 h36 M32 32 h30 M32 42 h34 M32 52 h24" stroke="${O}" stroke-width="3"/><g transform="rotate(-14 50 74)"><rect x="28" y="62" width="44" height="22" rx="4" fill="none" stroke="#EF476F" stroke-width="4"/><text x="50" y="79" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="16" fill="#EF476F">2019</text></g>`
+};
+const icon = (id, cls="") => `<svg viewBox="0 0 100 100" class="${cls}" aria-hidden="true">${ICONS[id]}</svg>`;
+
+/* ================= LEVEL DATA ================= */
+const WASTES = {
+  "Waiting":{c:"#FF9F1C", h:"Idle, waiting for the next step"},
+  "Motion":{c:"#7B5CFF", h:"People walking, reaching, searching"},
+  "Transportation":{c:"#118AB2", h:"Moving things or people around"},
+  "Inventory":{c:"#9C6B3F", h:"Too much stock piling up"},
+  "Overproduction":{c:"#EF476F", h:"Making more than needed, too early"},
+  "Defects":{c:"#E63946", h:"Mistakes that must be redone"},
+  "Extra-processing":{c:"#06D6A0", h:"Doing extra work nobody needs"},
+  "Unused talent":{c:"#FFD166", h:"Ignoring people's ideas and skills"}
+};
+const TOOLS = {
+  waste:{name:"8 Wastes", rule:"Waste is anything the customer would not pay for. Tap it, then name it.", key:"Waste hides in plain sight. Once you can see it, you can remove it."},
+  fives:{name:"5S", rule:"Sort, Set in order, Shine, Standardize, Sustain. Turn a messy space into one that works.", key:"A place for everything, everything in its place, and a small check every day."},
+  whys:{name:"5 Whys", rule:"Keep asking “why?” until you reach the real cause. No blaming people!", key:"Fix the process, not the person. Ask why until you find something you can change."}
+};
+const LEVELS = [
+  {id:"drive", tool:"waste", life:"daily",  name:"Coffee Drive-Thru", time:90},
+  {id:"er",    tool:"waste", life:"health", name:"Emergency Room",    time:90},
+  {id:"drawer",tool:"fives", life:"daily",  name:"Kitchen Drawer"},
+  {id:"cart",  tool:"fives", life:"health", name:"Nurse's Med Cart"},
+  {id:"carfix",tool:"whys",  life:"daily",  name:"Car Won't Start"},
+  {id:"fall",  tool:"whys",  life:"health", name:"Night-Time Fall"}
+];
+
+/* ---- Spot the waste scenes ---- */
+const SCENES = {
+drive:{
+  spots:[
+    {id:"waiting", w:"Waiting", hit:[0,372,368,108], why:"Cars idle in a long line. Customers pay for coffee, not for waiting."},
+    {id:"extra", w:"Extra-processing", hit:[292,150,186,150], why:"You order at the speaker, then say it all again at the window."},
+    {id:"inv", w:"Inventory", hit:[8,128,118,177], why:"5,000 spare cups eat up space and money."},
+    {id:"def", w:"Defects", hit:[206,206,86,98], why:"Wrong order, poured away. Making it twice doubles the cost."},
+    {id:"over", w:"Overproduction", hit:[458,228,92,68], why:"Coffees made before anyone ordered. Now they're cold."},
+    {id:"motion", w:"Motion", hit:[648,160,130,168], why:"The barista walks to the far fridge for every carton of milk."}
+  ],
+  decoys:[
+    {id:"brew", hit:[552,188,92,108], why:"Brewing coffee is VALUE. It's what the customer pays for. −1 heart"},
+    {id:"cust", hit:[130,180,74,125], why:"A happy customer with their coffee is VALUE, the whole point! −1 heart"}
+  ],
+  draw(){
+    let g = `<rect width="800" height="300" fill="#8FD3FF"/>`;
+    g += `<circle cx="210" cy="64" r="30" fill="#FFD166" stroke="${O}" stroke-width="3"/>` + cloud(40,40,.8) + cloud(300,24,.7);
+    g += `<path d="M0 260 Q120 200 260 250 T520 240 T800 230 V300 H0Z" fill="#A6E39A" stroke="${O}" stroke-width="3"/>`;
+    g += `<rect y="300" width="800" height="200" fill="#7CCB5B"/><rect y="380" width="800" height="100" fill="#4A4E69" stroke="${O}" stroke-width="3"/>`;
+    for(let x=10;x<800;x+=70) g += `<rect x="${x}" y="427" width="38" height="6" rx="3" fill="#fff"/>`;
+    g += `<rect x="440" y="120" width="350" height="262" fill="#FFF1D6" stroke="${O}" stroke-width="3"/>`;
+    g += `<rect x="428" y="96" width="374" height="30" rx="6" fill="#EF476F" stroke="${O}" stroke-width="3"/>`;
+    for(let i=0;i<9;i++) g += `<path d="M${440+i*39} 126 h39 v14 a19.5 12 0 0 1 -39 0Z" fill="${i%2?"#fff":"#EF476F"}" stroke="${O}" stroke-width="2.5"/>`;
+    g += `<rect x="520" y="40" width="190" height="48" rx="12" fill="${O}"/><text x="615" y="74" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="28" fill="#FFD166">LEAN BEANS</text><path d="M560 88 v10 M670 88 v10" stroke="${O}" stroke-width="4"/>`;
+    g += `<rect x="455" y="160" width="320" height="170" rx="6" fill="#FFE2B8" stroke="${O}" stroke-width="3"/>`;
+    g += `<rect x="738" y="172" width="34" height="120" rx="4" fill="#fff" stroke="${O}" stroke-width="3"/><path d="M738 210 h34" stroke="${O}" stroke-width="3"/><rect x="742" y="186" width="4" height="16" fill="${O}"/><text x="755" y="258" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="11" fill="${O}">MILK</text>`;
+    g += person({x:618,y:330,s:.8,shirt:"#7B5CFF",skin:"#8D5A3B",hair:"#1B1B1B",face:"happy",flip:true});
+    g += `<g class="walk">${person({x:715,y:330,s:.8,shirt:"#FF9F1C",skin:"#F2C29B",hair:"#C0392B",face:"sad",long:true})}</g>`;
+    g += `<rect x="455" y="290" width="320" height="40" fill="#B9734A" stroke="${O}" stroke-width="3"/><path d="M660 312 h70" stroke="#FFF1D6" stroke-width="3" stroke-dasharray="6 6"/>`;
+    g += `<rect x="560" y="236" width="44" height="54" rx="6" fill="#9AA5B1" stroke="${O}" stroke-width="3"/><rect x="568" y="246" width="28" height="10" rx="3" fill="${O}"/><rect x="576" y="270" width="12" height="14" fill="#fff" stroke="${O}" stroke-width="2"/>`;
+    for(let i=0;i<5;i++) g += `<path d="M${466+i*16} 266 l13 0 l-2 24 l-9 0Z" fill="#D7ECFF" stroke="${O}" stroke-width="2.5"/>`;
+    g += `<rect x="462" y="236" width="82" height="22" rx="6" fill="#118AB2" stroke="${O}" stroke-width="2.5"/><text x="503" y="252" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="11" fill="#fff">MADE 1 HR AGO</text>`;
+    g += `<rect x="404" y="300" width="8" height="80" fill="${O}"/><rect x="378" y="252" width="60" height="56" rx="6" fill="#2B2140" stroke="${O}" stroke-width="3"/><path d="M386 266 h44 M386 278 h36 M386 290 h40" stroke="#FFD166" stroke-width="3"/>`;
+    g += bubble(296,156,178,62,"Please repeat your\norder at the window!",15);
+    for(let r=0;r<4;r++) for(let c=0;c<2;c++) g += `<rect x="${14+c*52+(r%2)*6}" y="${266-r*34}" width="48" height="34" rx="3" fill="#D9A066" stroke="${O}" stroke-width="3"/><path d="M${24+c*52+(r%2)*6} ${283-r*34} h28" stroke="${O}" stroke-width="2.5"/>`;
+    g += `<rect x="20" y="138" width="100" height="22" rx="6" fill="#fff" stroke="${O}" stroke-width="2.5"/><text x="70" y="154" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="13" fill="${O}">CUPS ×5000</text>`;
+    g += person({x:160,y:300,s:.75,shirt:"#06D6A0",skin:"#C68A5E",hair:"#2B2140",hold:"cup",face:"happy"});
+    g += `<ellipse cx="262" cy="300" rx="34" ry="6" fill="#7A4A2A" opacity=".8"/><path d="M226 246 h52 l-6 56 h-40Z" fill="#9AA5B1" stroke="${O}" stroke-width="3"/><rect x="222" y="238" width="60" height="10" rx="3" fill="#7D8794" stroke="${O}" stroke-width="3"/>`;
+    g += `<path d="M240 222 l18 0 l-3 20 l-12 0Z" fill="#fff" stroke="${O}" stroke-width="2.5"/><path d="M234 212 l30 30 M264 212 l-30 30" stroke="#EF476F" stroke-width="5" stroke-linecap="round"/>`;
+    g += car(8,462,"#FFD166",.8,"#F2C29B") + car(124,462,"#06D6A0",.8,"#8D5A3B") + car(240,462,"#7B5CFF",.8,"#F2C29B") + car(470,462,"#EF476F",.85,"#C68A5E");
+    g += clock(120,350,18) + `<text x="146" y="357" font-family="Lilita One" font-size="20" fill="#fff" stroke="${O}" stroke-width="3" paint-order="stroke">25 min</text>`;
+    return g;
+  }
+},
+er:{
+  spots:[
+    {id:"waiting", w:"Waiting", hit:[12,104,228,300], why:"Patients have waited 4 hours. Waiting is the No. 1 waste in hospitals."},
+    {id:"extra", w:"Extra-processing", hit:[246,176,150,220], why:"The same details written on three different forms."},
+    {id:"def", w:"Defects", hit:[408,86,168,130], why:"A blood sample with no label is rejected. The patient is pricked again."},
+    {id:"inv", w:"Inventory", hit:[600,26,192,196], why:"Shelves overflow and supplies expire before anyone uses them."},
+    {id:"trans", w:"Transportation", hit:[604,228,188,176], why:"Patient wheeled to X-ray and back three times in one visit."},
+    {id:"motion", w:"Motion", hit:[240,404,380,94], why:"The nurse walks the whole corridor to fetch supplies, again and again."}
+  ],
+  decoys:[
+    {id:"doc", hit:[404,226,196,176], why:"The doctor examining the patient is VALUE. It's why they came. −1 heart"}
+  ],
+  draw(){
+    let g = `<rect width="800" height="330" fill="#E6F4F1"/><rect y="330" width="800" height="170" fill="#CFE3E8"/>`;
+    for(let x=60;x<860;x+=60) g += `<path d="M${x} 330 L${x-40} 500" stroke="#B6CFD6" stroke-width="2"/>`;
+    g += `<path d="M0 380 H800 M0 440 H800" stroke="#B6CFD6" stroke-width="2"/><rect y="322" width="800" height="10" fill="#9BB8C2" stroke="${O}" stroke-width="2"/>`;
+    g += `<rect x="300" y="18" width="200" height="44" rx="10" fill="#EF476F" stroke="${O}" stroke-width="3"/><text x="400" y="49" text-anchor="middle" font-family="Lilita One" font-size="24" fill="#fff">EMERGENCY</text>`;
+    g += clock(120,138,26) + `<rect x="78" y="172" width="84" height="26" rx="8" fill="#FF9F1C" stroke="${O}" stroke-width="2.5"/><text x="120" y="191" text-anchor="middle" font-family="Lilita One" font-size="17" fill="#fff">WAIT 4 H</text>`;
+    [44,118,192].forEach((x,i)=>{
+      g += `<path d="M${x-20} 312 v84 M${x+24} 312 v84" stroke="${O}" stroke-width="4"/><rect x="${x-26}" y="236" width="12" height="74" rx="4" fill="#118AB2" stroke="${O}" stroke-width="3"/><rect x="${x-26}" y="300" width="58" height="12" rx="4" fill="#118AB2" stroke="${O}" stroke-width="3"/>`;
+      g += seated({x:x-6,y:340,s:.78,shirt:["#FF9F1C","#7B5CFF","#06D6A0"][i],skin:["#F2C29B","#8D5A3B","#C68A5E"][i],hair:["#3B2A20","#1B1B1B","#C0392B"][i],face:i===1?"sleep":"sad"});
+    });
+    g += `<text x="206" y="226" font-family="Lilita One" font-size="22" fill="${O}">z z</text>`;
+    g += person({x:322,y:330,s:.78,shirt:"#FFD166",skin:"#C68A5E",hair:"#2B2140",face:"happy",long:true});
+    g += `<rect x="250" y="298" width="142" height="92" rx="6" fill="#9BB8C2" stroke="${O}" stroke-width="3"/><rect x="244" y="290" width="154" height="14" rx="4" fill="#fff" stroke="${O}" stroke-width="3"/><text x="321" y="352" text-anchor="middle" font-family="Lilita One" font-size="18" fill="#fff">RECEPTION</text>`;
+    [0,1,2].forEach(i=> g += `<g transform="rotate(${-12+i*12} ${300+i*24} 230)"><rect x="${270+i*24}" y="186" width="36" height="46" rx="3" fill="#fff" stroke="${O}" stroke-width="2.5"/><text x="${288+i*24}" y="204" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="9" fill="${O}">FORM</text><path d="M${276+i*24} 212 h24 M${276+i*24} 220 h18" stroke="${O}" stroke-width="2"/></g>`);
+    g += `<circle cx="372" cy="194" r="17" fill="#EF476F" stroke="${O}" stroke-width="3"/><text x="372" y="201" text-anchor="middle" font-family="Lilita One" font-size="17" fill="#fff">×3</text>`;
+    g += `<rect x="416" y="176" width="150" height="12" rx="3" fill="#B9734A" stroke="${O}" stroke-width="3"/>`;
+    for(let i=0;i<5;i++){ const bad = i===3; g += `<rect x="${430+i*26}" y="120" width="14" height="56" rx="7" fill="#fff" stroke="${O}" stroke-width="2.5"/><rect x="${432+i*26}" y="146" width="10" height="28" rx="5" fill="#C1121F"/><rect x="${429+i*26}" y="112" width="16" height="10" rx="2" fill="${["#8FD3FF","#FFD166","#7B5CFF","#06D6A0","#FF9F1C"][i]}" stroke="${O}" stroke-width="2"/>${bad?"":`<rect x="${431+i*26}" y="128" width="12" height="12" fill="#FFF7E6" stroke="${O}" stroke-width="1.5"/>`}`; }
+    g += `<path d="M498 96 l30 30 M528 96 l-30 30" stroke="#EF476F" stroke-width="6" stroke-linecap="round"/><rect x="418" y="90" width="74" height="22" rx="6" fill="#EF476F" stroke="${O}" stroke-width="2.5"/><text x="455" y="106" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="12" fill="#fff">NO LABEL</text>`;
+    g += `<rect x="412" y="300" width="160" height="22" rx="6" fill="#fff" stroke="${O}" stroke-width="3"/><rect x="412" y="318" width="160" height="16" fill="#9AA5B1" stroke="${O}" stroke-width="3"/><path d="M420 334 v54 M564 334 v54" stroke="${O}" stroke-width="5"/><rect x="408" y="266" width="10" height="70" rx="4" fill="#9AA5B1" stroke="${O}" stroke-width="3"/>`;
+    g += `<rect x="420" y="284" width="40" height="20" rx="8" fill="#fff" stroke="${O}" stroke-width="3"/><circle cx="446" cy="282" r="15" fill="#F2C29B" stroke="${O}" stroke-width="3"/><path d="M431 280 q14 -18 30 -2" fill="#3B2A20" stroke="${O}" stroke-width="3"/><circle cx="452" cy="284" r="2" fill="${O}"/>`;
+    g += `<path d="M456 296 h108 v8 q0 10 -10 10 h-98Z" fill="#8FD3FF" stroke="${O}" stroke-width="3"/>`;
+    g += person({x:560,y:398,s:.82,kind:"doctor",shirt:"#118AB2",skin:"#8D5A3B",hair:"#1B1B1B",face:"happy",flip:true});
+    g += `<rect x="612" y="40" width="172" height="174" fill="#F4E3C9" stroke="${O}" stroke-width="3"/><path d="M612 98 h172 M612 156 h172" stroke="${O}" stroke-width="5"/>`;
+    [[618,62,36],[652,58,40],[690,64,34],[726,56,42],[618,120,36],[656,114,42],[694,122,34],[732,116,40],[620,178,36],[660,172,42],[700,180,34],[740,174,40]].forEach(([x,y,h],i)=>{ g += `<rect x="${x}" y="${y}" width="34" height="${h}" rx="2" fill="${["#8FD3FF","#D9A066","#fff","#FFD166"][i%4]}" stroke="${O}" stroke-width="2.5"/>`; if(i%3===1) g += `<rect x="${x+4}" y="${y+8}" width="26" height="12" rx="2" fill="#EF476F"/><text x="${x+17}" y="${y+18}" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="9" fill="#fff">EXP</text>`; });
+    g += `<rect x="744" y="20" width="32" height="28" rx="2" fill="#D9A066" stroke="${O}" stroke-width="2.5" transform="rotate(24 760 34)"/><rect x="770" y="214" width="26" height="22" rx="2" fill="#8FD3FF" stroke="${O}" stroke-width="2.5" transform="rotate(-10 780 225)"/>`;
+    g += `<path d="M640 266 C 620 232, 780 224, 774 262" fill="none" stroke="#118AB2" stroke-width="4" stroke-dasharray="9 7"/><rect x="660" y="232" width="92" height="24" rx="8" fill="#118AB2" stroke="${O}" stroke-width="2.5"/><text x="706" y="249" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="12" fill="#fff">X-RAY TRIP #3</text>`;
+    g += seated({x:672,y:372,s:.68,shirt:"#8FD3FF",skin:"#F2C29B",hair:"#9AA5B1",face:"sad"});
+    g += `<circle cx="680" cy="382" r="22" fill="none" stroke="${O}" stroke-width="4"/><circle cx="716" cy="394" r="8" fill="${O}"/><path d="M656 330 v40 M656 348 h44 l10 30" fill="none" stroke="${O}" stroke-width="4" stroke-linecap="round"/>`;
+    g += person({x:752,y:398,s:.74,kind:"nurse",shirt:"#7B5CFF",skin:"#C68A5E",hair:"#2B2140",face:"sad",flip:true});
+    g += `<path d="M250 490 H600" stroke="${O}" stroke-width="2.5" stroke-dasharray="4 10"/><rect x="636" y="442" width="150" height="40" rx="10" fill="#fff" stroke="${O}" stroke-width="3"/><text x="711" y="468" text-anchor="middle" font-family="Lilita One" font-size="17" fill="${O}">SUPPLY ROOM →</text>`;
+    g += `<g class="walk-long">${person({x:270,y:494,s:.7,kind:"nurse",shirt:"#06D6A0",skin:"#F2C29B",hair:"#C0392B",face:"sad"})}</g>`;
+    return g;
+  }
+}
+};
+
+/* ---- 5S ---- */
+const FIVES = {
+  drawer:{surface:"wood", place:"drawer", items:[
+    {id:"spoon",n:"Wooden spoon",keep:true},{id:"battery",n:"Dead battery",keep:false,why:"It's dead. Recycle it."},
+    {id:"scissors",n:"Scissors",keep:true},{id:"menu",n:"Takeaway menu from 2015",keep:false,why:"Ten years old. Out it goes."},
+    {id:"whisk",n:"Whisk",keep:true},{id:"sock",n:"Lonely sock",keep:false,why:"Not a kitchen tool!"},
+    {id:"mcup",n:"Measuring cup",keep:true},{id:"spatula",n:"Snapped spatula",keep:false,why:"Broken tools slow you down."}],
+    habit:{q:"How do you keep the drawer this tidy?", ok:"Put things back after each use, quick check every Sunday", bad:["Have a huge clear-out once a year","Buy a bigger drawer"]}},
+  cart:{surface:"steel", place:"med cart", items:[
+    {id:"gloves",n:"Gloves",keep:true},{id:"ivbag",n:"Expired IV bag",keep:false,why:"Expired. Unsafe for patients."},
+    {id:"syringe",n:"Syringes",keep:true},{id:"mug",n:"Someone's coffee mug",keep:false,why:"Food and drink don't belong on a med cart."},
+    {id:"swabs",n:"Alcohol swabs",keep:true},{id:"thermo",n:"Cracked thermometer",keep:false,why:"Broken equipment gives wrong readings."},
+    {id:"tape",n:"Medical tape",keep:true},{id:"leaflet",n:"Old policy from 2019",keep:false,why:"Out of date. Use the current one."}],
+    habit:{q:"How does the team keep the cart this way?", ok:"A 2-minute checklist at every shift change", bad:["A big tidy-up when an inspector visits","Ask the newest nurse to remember"]}}
+};
+
+/* ---- 5 Whys ---- */
+const WHYS = {
+  carfix:{problem:"The car won't start!", steps:[
+    {ok:"The battery is dead.", bad:[["Cars are just unreliable.","Too vague"],["Buy a new car!","That's a fix, not a cause"]]},
+    {ok:"The alternator stopped charging it.", bad:[["The mechanic is useless.","Blame"],["It's Monday.","Not a real cause"]]},
+    {ok:"The alternator belt snapped.", bad:[["Just bad luck.","Too vague"],["Get a new alternator!","That's a fix, not a cause"]]},
+    {ok:"The belt was old and worn out.", bad:[["Belts just break.","Too vague"],["I'm a terrible driver.","Blame"]]},
+    {ok:"Nobody followed the service schedule.", bad:[["Cars hate me.","Not a real cause"],["My partner forgot.","Blame"]]}],
+    root:"No service schedule was followed.", fix:"Set a phone reminder and service the car on time."},
+  fall:{problem:"Mr Ali fell in his room at night.", steps:[
+    {ok:"He walked to the bathroom alone.", bad:[["He was careless.","Blame"],["Old people fall.","Too vague"]]},
+    {ok:"He couldn't reach the call bell.", bad:[["The night nurse was lazy.","Blame"],["Hire more nurses!","That's a fix, not a cause"]]},
+    {ok:"The bed was moved for cleaning.", bad:[["Rooms are messy.","Too vague"],["The cleaner did it wrong.","Blame"]]},
+    {ok:"No one put the bell back in reach.", bad:[["Install cameras!","That's a fix, not a cause"],["Bells are badly designed.","Too vague"]]},
+    {ok:"Hourly rounds don't check the call bell.", bad:[["Staff don't care.","Blame"],["Nights are hard.","Too vague"]]}],
+    root:"The hourly round checklist misses the call bell.", fix:"Add “call bell within reach” to every hourly round."}
+};
+
+/* ================= RUNTIME ================= */
+let R = null;
+let timerId = null;
+
+function hudShow(on){ $("#hud").hidden = !on; }
+function hideToast(){ clearTimeout(toast.t); $("#toast").hidden = true; }
+function hudUpdate(){
+  if(!R) return;
+  $("#hud-hearts").innerHTML = [0,1,2].map(i=>heart(i<R.hearts)).join("");
+  $("#hud-coins").innerHTML = coinSvg + `<span>${SAVE.coins + R.coins}</span>`;
+  const t = $("#hud-timer");
+  if(R.time){ t.hidden = false; const pct = Math.max(0,R.left/R.time*100); t.querySelector("i").style.width = pct+"%"; t.classList.toggle("low", pct<25); }
+  else t.hidden = true;
+}
+function soundIcon(){ $("#btn-sound").innerHTML = `<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#FFD166" stroke="${O}" stroke-width="2" stroke-linejoin="round"/>${SAVE.muted?`<path d="M16 9l5 6M21 9l-5 6" stroke="${O}" stroke-width="2.5" stroke-linecap="round"/>`:`<path d="M16 8q3 4 0 8M18.5 5.5q5 6.5 0 13" fill="none" stroke="${O}" stroke-width="2.2" stroke-linecap="round"/>`}</svg>`; }
+
+function floatText(txt, x, y){
+  const f = document.createElement("div"); f.className="float"; f.textContent=txt;
+  f.style.left = x+"px"; f.style.top = y+"px"; document.body.appendChild(f);
+  setTimeout(()=>f.remove(), 950);
+}
+function toast(msg, kind=""){
+  const t = $("#toast"); t.className = "toast "+kind; t.innerHTML = msg; t.hidden = false;
+  clearTimeout(toast.t); toast.t = setTimeout(()=>t.hidden=true, 2800);
+}
+function shake(el){ if(reduce||!el) return; el.classList.remove("shake"); void el.getBoundingClientRect(); el.classList.add("shake"); }
+
+function addCoins(n, ev){
+  R.coins += n; sfx("coin"); hudUpdate();
+  const p = ev && ev.clientX ? [ev.clientX, ev.clientY] : [innerWidth/2, innerHeight/2];
+  floatText("+"+n, p[0], p[1]);
+}
+function loseHeart(){
+  R.hearts--; sfx("bad"); hudUpdate(); shake($("#hud-hearts"));
+  if(R.hearts<=0){ R.paused = true; setTimeout(()=>endLevel(false,"Out of hearts!"), 600); return true; }
+  return false;
 }
 
-function pips(n, i){ return `<span class="pips" aria-hidden="true">${Array.from({length:n},(_,j)=>`<i class="${j<i?"on":""}"></i>`).join("")}</span>`; }
+function openModal(html){ const m=$("#modal"); m.innerHTML = `<div class="card">${html}</div>`; m.hidden=false; if(R) R.paused=true; const b=m.querySelector("button"); if(b) b.focus({preventScroll:true}); }
+function closeModal(){ $("#modal").hidden=true; $("#modal").innerHTML=""; if(R && !R.over && R.hearts>0) R.paused=false; }
 
-/* ---------- Shell ---------- */
-function rail(){
-  const r = $("#rail"); r.innerHTML = "";
-  const arrow = `<span class="push" aria-hidden="true"><svg viewBox="0 0 26 14"><path d="M0 7h20" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/><path d="M18 2l7 5-7 5z" fill="currentColor"/></svg></span>`;
-  STATIONS.forEach((st,i)=>{
-    const done = S.done.includes(st.id);
-    const open = i===0 || S.done.includes(STATIONS[i-1].id) || done;
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "proc" + (done ? " done" : "");
-    b.disabled = !open;
-    if(S.view===st.id) b.setAttribute("aria-current","step");
-    b.innerHTML = `<span class="n">Station ${i+1} · ${esc(st.phase)}</span><span class="t">${esc(st.name)}</span><span class="s">${done?"✓ Complete":open?"Open":"Locked"}</span>`;
-    b.onclick = () => go(st.id);
-    if(i) r.insertAdjacentHTML("beforeend", arrow);
-    r.appendChild(b);
-  });
+function stopTimer(){ clearInterval(timerId); timerId=null; }
+function startTimer(){
+  stopTimer();
+  timerId = setInterval(()=>{
+    if(!R || R.paused || R.over) return;
+    R.left -= .25; hudUpdate();
+    if(R.left<=0){ R.left=0; endLevel(false,"Time's up!"); }
+  }, 250);
 }
 
-function go(view){
-  S.view = view; L = {}; save();
-  rail(); render();
-  const cur = $('.proc[aria-current="step"]');
-  if(cur) cur.scrollIntoView({block:"nearest", inline:"nearest", behavior: reduce?"auto":"smooth"});
-  window.scrollTo({top:0, behavior: reduce?"auto":"smooth"});
-}
-
-function complete(id){
-  const before = belt();
-  if(!S.done.includes(id)) S.done.push(id);
-  save(); hud(); rail();
-  const after = belt();
-  if(after !== before) toast(`<span class="belt-bar" data-belt="${after}"></span>${after} Belt earned`);
-}
-
-function nextStation(id){
-  const i = STATIONS.findIndex(s=>s.id===id);
-  return i < STATIONS.length-1 ? STATIONS[i+1].id : "finish";
-}
-
-function head(st, lede){
-  const i = STATIONS.indexOf(st);
-  return `<div class="st-head"><span class="eyebrow">Station ${i+1} of 6 · ${esc(st.phase)}</span><h2>${esc(st.name)}</h2><p>${lede}</p></div>`;
-}
-function coach(title, items, foot){
-  $("#coach").innerHTML = `<span class="tag">Coach's note</span><h3>${title}</h3><ul>${items.map(x=>`<li>${x}</li>`).join("")}</ul>${foot?`<p>${foot}</p>`:""}`;
-}
-function stationEnd(id, title, body){
-  complete(id);
-  const nx = nextStation(id);
-  feedback("info", title, body, undefined, {label: nx==="finish" ? "See your results →" : `Go to station ${STATIONS.findIndex(s=>s.id===nx)+1}: ${STATIONS.find(s=>s.id===nx).name} →`, go:()=>go(nx)});
-}
-
-function render(){
-  $("#coach").hidden = false;
-  ({brief, dmaic, waste, whys, fish, pareto, spc, finish})[S.view]();
-}
-
-/* ---------- Views ---------- */
-function brief(){
-  $("#main").innerHTML = `
-    <div class="st-head">
-      <span class="eyebrow">Your first shift as Green Belt</span>
-      <h2>Patients are fit to go home. They just can't leave.</h2>
-    </div>
-    <p class="lede">On Ward 7 at City General, a patient declared fit for discharge waits almost six hours to leave. Downstairs, the Emergency Department has people on trolleys waiting for those beds. Work through six stations, one Lean Six Sigma tool each, and fix the flow.</p>
-    <dl class="charter">
-      <div><dt>Problem</dt><dd>Fit-to-leave → left ward averages <b class="mono">5.8 h</b></dd></div>
-      <div><dt>Goal</dt><dd>Under <b class="mono">3.0 h</b> within 12 weeks</dd></div>
-      <div><dt>Scope</dt><dd>Discharge decision to departure, Ward 7 only</dd></div>
-      <div><dt>Customer (CTQ)</dt><dd>Patient leaves within 3 h of being told they can go</dd></div>
-    </dl>
-    <div class="row"><button class="btn" type="button" id="start">${S.done.length ? "Continue the project →" : "Start at station 1 →"}</button>
-    ${S.opps ? `<button class="btn ghost" type="button" id="reset">Start over</button>` : ""}</div>
-    <div class="fb" id="fb" hidden></div>`;
-  $("#start").onclick = () => go(STATIONS.find(s=>!S.done.includes(s.id))?.id || "finish");
-  const rs = $("#reset"); if(rs) rs.onclick = confirmReset;
-  coach("How the game scores you", [
-    "Every question is an <b>opportunity</b>. A wrong first try is a <b>defect</b>.",
-    "Your sigma level comes from defects per million opportunities (DPMO), just like a real process. 6σ means 3.4 defects per million.",
-    "Right first time: <b class='mono'>+100</b>. Three in a row adds a <b class='mono'>+25</b> streak bonus. Right after a miss: <b class='mono'>+40</b>.",
-    "Finish stations to earn belts: Yellow at 2, Green at 4, Black at 6."
-  ]);
-}
-
-function confirmReset(){
-  feedback("bad", "Start over?", "This clears your score, sigma level and belts on this device.", undefined, {label:"Yes, clear my progress", go:()=>{ S = fresh(); save(); hud(); go("brief"); }});
-}
-
-function dmaic(){
-  const st = STATIONS[0];
-  L.i = L.i || 0;
-  const q = DMAIC_Q[L.i];
-  const tally = PHASES.map((p,pi)=>({p, n: DMAIC_Q.slice(0, L.i).filter(x=>x.a===pi).length}));
-  $("#main").innerHTML = head(st, "Every Six Sigma project follows the same five phases. Sort each Ward 7 task into the phase where it belongs.") + `
-    <div class="qcount"><span class="eyebrow">Task ${L.i+1} of ${DMAIC_Q.length}</span>${pips(DMAIC_Q.length, L.i)}</div>
-    <div class="qcard"><span class="who">Project task</span>${esc(q.t)}</div>
-    <div id="opts"></div>
-    <div class="fb" id="fb" hidden></div>
-    <div class="strip">${tally.map(x=>`<div class="${x.n?"lit":""}"><b>${x.p.k}</b>${x.p.n} · ${x.n}</div>`).join("")}</div>`;
-  mcq($("#opts"), {
-    qid:"dmaic-"+L.i, answer:q.a, right:q.r, rightTitle: PHASES[q.a].n,
-    opts: PHASES.map(p=>({k:p.k, t:p.n, s:p.d, why:`${p.n} is for this: ${p.d.toLowerCase()} Does this task do that?`})),
-    next:{label: L.i < DMAIC_Q.length-1 ? "Next task →" : "Finish station →", go:()=>{ if(L.i < DMAIC_Q.length-1){ L.i++; dmaic(); } else { L.i = DMAIC_Q.length; dmaicDone(); } }}
-  });
-  coach("DMAIC in one line each", PHASES.map(p=>`<b>${p.k} · ${p.n}</b>: ${p.d}`), "Projects fail most often by jumping from Define straight to Improve. Data and root causes come first.");
-}
-function dmaicDone(){
-  $("#opts").innerHTML = ""; $(".qcard").innerHTML = `<span class="who">Roadmap sorted</span>Define → Measure → Analyze → Improve → Control.`;
-  $(".strip").innerHTML = PHASES.map((p,pi)=>`<div class="lit"><b>${p.k}</b>${p.n} · ${DMAIC_Q.filter(x=>x.a===pi).length}</div>`).join("");
-  $(".pips").innerHTML = DMAIC_Q.map(()=>`<i class="on"></i>`).join("");
-  stationEnd("dmaic", "Station complete", "You know the roadmap. Next, walk the ward and see the waste for yourself. Lean calls this going to the gemba, the place where the work happens.");
-}
-
-function waste(){
-  const st = STATIONS[1];
-  L.i = L.i || 0;
-  const q = WASTE_Q[L.i];
-  $("#main").innerHTML = head(st, "Lean names eight kinds of waste. Remember them as <b>DOWNTIME</b>. You're on a gemba walk through Ward 7. Name the waste in each thing you see.") + `
-    <div class="qcount"><span class="eyebrow">Observation ${L.i+1} of ${WASTE_Q.length}</span>${pips(WASTE_Q.length, L.i)}</div>
-    <div class="qcard"><span class="who">Seen on the ward</span>${esc(q.t)}</div>
-    <div id="opts"></div>
-    <div class="fb" id="fb" hidden></div>`;
-  mcq($("#opts"), {
-    qid:"waste-"+L.i, answer:q.a, right:q.r, rightTitle: WASTES[q.a].n,
-    opts: WASTES.map(w=>({k:w.k, t:w.n, why:`<b>${w.n}</b> means: ${w.d.toLowerCase()} Look again at what is actually being wasted here.`})),
-    next:{label: L.i < WASTE_Q.length-1 ? "Next observation →" : "Finish station →", go:()=>{ if(L.i < WASTE_Q.length-1){ L.i++; waste(); } else { $("#opts").innerHTML=""; $(".qcard").innerHTML = `<span class="who">Gemba walk done</span>Eight observations, eight wastes. Waiting cost the most patient time.`; stationEnd("waste","Station complete","You've seen the waste. Now find out why patients wait. Next stop: the 5 Whys."); } }}
-  });
-  coach("DOWNTIME", WASTES.map(w=>`<b>${w.k} · ${w.n}</b>: ${w.d}`), "Transport moves the thing. Motion is the person moving.");
-}
-
-function whys(){
-  const st = STATIONS[2];
-  L.i = L.i || 0;
-  const answered = WHYS_Q.slice(0, L.i);
-  const ladder = `<div class="ladder">
-    <div class="rung problem"><span class="badge">!</span><p><small>Problem</small>${esc(WHYS_PROBLEM)}</p></div>
-    ${answered.map((w,j)=>`<div class="rung ${j===4?"root":""}"><span class="badge">W${j+1}</span><p><small>${esc(w.q)}</small>${esc(w.o.find(x=>x.ok).t)}</p></div>`).join("")}
+/* ================= SCREENS ================= */
+function titleScreen(){
+  R=null; stopTimer(); hudShow(false); closeModal();
+  let g = `<rect width="800" height="250" fill="#8FD3FF"/>` + cloud(60,30,.9) + cloud(600,40,.7) + `<circle cx="400" cy="70" r="34" fill="#FFD166" stroke="${O}" stroke-width="3"/>`;
+  g += `<rect y="250" width="800" height="50" fill="#7CCB5B"/><rect y="290" width="800" height="70" fill="#4A4E69" stroke="${O}" stroke-width="3"/>`;
+  for(let x=0;x<800;x+=70) g += `<rect x="${x}" y="322" width="38" height="6" rx="3" fill="#fff"/>`;
+  g += `<rect x="560" y="130" width="160" height="122" fill="#fff" stroke="${O}" stroke-width="3"/><rect x="548" y="114" width="184" height="22" rx="5" fill="#06D6A0" stroke="${O}" stroke-width="3"/><path d="M640 150 v40 M620 170 h40" stroke="#EF476F" stroke-width="12"/><rect x="614" y="210" width="52" height="42" fill="#8FD3FF" stroke="${O}" stroke-width="3"/>`;
+  g += `<rect x="70" y="150" width="150" height="102" fill="#FFF1D6" stroke="${O}" stroke-width="3"/><rect x="60" y="132" width="170" height="24" rx="5" fill="#EF476F" stroke="${O}" stroke-width="3"/><rect x="100" y="188" width="90" height="64" fill="#FFE2B8" stroke="${O}" stroke-width="3"/><text x="145" y="150" text-anchor="middle" font-family="Lilita One" font-size="16" fill="#fff">CAFÉ</text>` + tree(300,252,.9) + tree(500,252,.8);
+  g += person({x:262,y:290,s:.6,shirt:"#7B5CFF",skin:"#8D5A3B",hair:"#1B1B1B",hold:"cup"}) + person({x:530,y:290,s:.6,kind:"nurse",shirt:"#06D6A0",skin:"#F2C29B",hair:"#C0392B"}) + person({x:420,y:290,s:.6,kind:"doctor",shirt:"#118AB2",skin:"#C68A5E",hair:"#2B2140",flip:true});
+  g += `<g class="drive">${car(0,352,"#EF476F",.7)}</g><g class="drive slow">${car(0,352,"#FFD166",.7,"#8D5A3B")}</g>`;
+  const total = Object.values(SAVE.stars).reduce((a,b)=>a+b,0);
+  $("#screen").innerHTML = `<div class="title-wrap">
+    <h1 class="logo">LEAN <span>TOWN</span></h1>
+    <p class="tagline">Hunt waste. Clean up. Find the real cause.</p>
+    <div class="stage" style="width:100%"><svg viewBox="0 0 800 360" role="img" aria-label="A small town with a café, a hospital, people and cars">${g}</svg></div>
+    <button class="btn" type="button" id="play" style="font-size:30px;padding:16px 46px">${total? "CONTINUE" : "PLAY"}</button>
+    <div class="legend"><span class="chip">${coinSvg.replace("<svg","<svg width='18' height='18'")} ${SAVE.coins} coins</span><span class="chip">★ ${total} / 18 stars</span><span class="chip">3 Lean tools · 6 levels</span></div>
   </div>`;
-  $("#main").innerHTML = head(st, "Ask “why?” about five times to get from a symptom to a root cause you can fix. Pick the answer a good improvement team would accept: specific, backed by evidence, and free of blame.") + ladder + (L.i < WHYS_Q.length ? `
-    <div class="qcount"><span class="eyebrow">Why ${L.i+1} of 5</span>${pips(5, L.i)}</div>
-    <div class="qcard"><span class="who">Why ${L.i+1}</span>${esc(WHYS_Q[L.i].q)}</div>
-    <div id="opts"></div>` : "") + `<div class="fb" id="fb" hidden></div>`;
-  coach("Good whys vs bad whys", [
-    "<b>Good</b>: specific, and you can check it against data or by watching the work.",
-    "<b>Blame</b> (“lazy”, “doesn't care”) ends the inquiry. Good people in a bad process still get bad results.",
-    "<b>Solution-jumping</b> (“hire more staff”) skips the cause.",
-    "Stop when you reach a process you can change. That's the root cause."
-  ]);
-  if(L.i >= WHYS_Q.length){
-    stationEnd("whys", "Root cause: no standard work", esc(WHYS_FIX) + " One root cause rarely explains everything, so next you'll map all the causes on a fishbone.");
-    return;
+  $("#play").onclick = ()=>{ sfx("tap"); mapScreen(); };
+  window.scrollTo({top:0});
+}
+
+function mapIcon(id){
+  const st = `stroke="${O}" stroke-width="3" stroke-linejoin="round"`;
+  return {
+    drive:`<path d="M-13 -10 L13 -10 L10 16 L-10 16Z" fill="#fff" ${st}/><rect x="-15" y="-16" width="30" height="7" rx="2" fill="#7A4A2A" ${st}/><path d="M13 -4 q9 0 8 8 q-1 6 -10 6" fill="none" ${st}/>`,
+    er:`<rect x="-18" y="-18" width="36" height="36" rx="8" fill="#fff" ${st}/><path d="M0 -11 V11 M-11 0 H11" stroke="#EF476F" stroke-width="7"/>`,
+    drawer:`<rect x="-20" y="-14" width="40" height="30" rx="4" fill="#D9A066" ${st}/><path d="M-20 1 H20" stroke="${O}" stroke-width="3"/><rect x="-6" y="-9" width="12" height="4" rx="2" fill="${O}"/><rect x="-6" y="7" width="12" height="4" rx="2" fill="${O}"/>`,
+    cart:`<rect x="-18" y="-16" width="36" height="26" rx="4" fill="#C9D6E3" ${st}/><path d="M-6 -3 h12 M0 -9 v12" stroke="#EF476F" stroke-width="4"/><circle cx="-10" cy="16" r="5" fill="${O}"/><circle cx="10" cy="16" r="5" fill="${O}"/>`,
+    carfix:car(-27,16,"#FFD166",.4,null),
+    fall:`<rect x="-20" y="-4" width="40" height="12" rx="3" fill="#fff" ${st}/><rect x="-20" y="-14" width="12" height="12" rx="4" fill="#8FD3FF" ${st}/><path d="M-18 8 v10 M18 8 v10" stroke="${O}" stroke-width="4"/>`
+  }[id];
+}
+function unlocked(i){ return i===0 || (SAVE.stars[LEVELS[i-1].id]||0) > 0; }
+function mapScreen(){
+  R=null; stopTimer(); hudShow(false); closeModal(); hideToast();
+  const P = [[170,690],[430,600],[170,490],[430,380],[170,270],[430,160]];
+  let g = `<rect y="0" width="600" height="900" fill="#7CCB5B"/>`;
+  g += `<path d="M0 60 H600 V100 Q300 140 0 100Z" fill="#8FD3FF"/>`;
+  [[60,600],[545,700],[545,480],[60,380],[545,250],[60,160],[300,320],[300,540]].forEach(([x,y],i)=> g += tree(x,y,.6+(i%3)*.1));
+  const road = `M100 830 C 100 740, 170 730, 170 690 S 430 640, 430 600 S 170 530, 170 490 S 430 420, 430 380 S 170 310, 170 270 S 430 200, 430 160 S 300 110, 300 90`;
+  g += `<path d="${road}" fill="none" stroke="${O}" stroke-width="58" stroke-linecap="round"/><path d="${road}" fill="none" stroke="#4A4E69" stroke-width="50" stroke-linecap="round"/><path d="${road}" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="16 16"/>`;
+  [["8 WASTES",300,650,"#FF9F1C"],["5S",300,435,"#7B5CFF"],["5 WHYS",300,215,"#EF476F"]].forEach(([t,x,y,c])=>{
+    const w = t.length*15+34;
+    g += `<g transform="translate(${x} ${y})"><rect x="${-w/2}" y="-18" width="${w}" height="36" rx="10" fill="${c}" stroke="${O}" stroke-width="3"/><text y="9" text-anchor="middle" font-family="Lilita One" font-size="22" fill="#fff">${t}</text></g>`;
+  });
+  const cur = LEVELS.findIndex((l,i)=>unlocked(i) && !(SAVE.stars[l.id]>0));
+  LEVELS.forEach((l,i)=>{
+    const [x,y] = P[i], open = unlocked(i), st = SAVE.stars[l.id]||0;
+    const ring = l.life==="daily" ? "#FF9F1C" : "#06D6A0";
+    g += `<g class="node${open?"":" locked"}" data-i="${i}" tabindex="${open?0:-1}" role="button" aria-label="Level ${i+1}: ${esc(l.name)}${open?"":" (locked)"}">
+      <circle class="ring" cx="${x}" cy="${y}" r="46" fill="${open?"#fff":"#D9D4E3"}" stroke="${open?ring:"#9A93AA"}" stroke-width="8"/>
+      <circle cx="${x}" cy="${y}" r="50" fill="none" stroke="${O}" stroke-width="3"/>
+      <g transform="translate(${x} ${y})" opacity="${open?1:.35}">${mapIcon(l.id)}</g>
+      <circle cx="${x-36}" cy="${y-36}" r="15" fill="${O}"/><text x="${x-36}" y="${y-30}" text-anchor="middle" font-family="Lilita One" font-size="17" fill="#fff">${i+1}</text>
+      ${open?"":`<g transform="translate(${x+32} ${y-34})"><path d="M-6 -4 v-5 a6 6 0 0 1 12 0 v5" fill="none" stroke="${O}" stroke-width="3"/><rect x="-11" y="-4" width="22" height="18" rx="4" fill="#FFD166" stroke="${O}" stroke-width="3"/></g>`}
+      <rect x="${x-82}" y="${y+56}" width="164" height="30" rx="10" fill="#fff" stroke="${O}" stroke-width="3"/>
+      <text x="${x}" y="${y+77}" text-anchor="middle" font-family="Lilita One" font-size="17" fill="${O}">${esc(l.name)}</text>
+      <g transform="translate(${x-37} ${y+90}) scale(.36)">${[0,1,2].map(k=>`<g transform="translate(${k*72} 0)">${starPath(k<st)}</g>`).join("")}</g>
+    </g>`;
+  });
+  if(cur>=0){ const [x,y]=P[cur]; g += `<g class="bob" style="pointer-events:none">${car(x+38,y+6,"#EF476F",.55)}</g>`; }
+  $("#screen").innerHTML = `
+    <div class="say"><div>${mascot("happy")}</div><div class="bubble">${cur<0 ? "You beat Lean Town! Replay any level to win more stars." : `Drive to level ${cur+1}! Tap the circle to play.`}</div></div>
+    <div class="stage map"><svg viewBox="0 60 600 790" role="img" aria-label="Town map with six levels">${g}</svg></div>
+    <div class="legend"><span class="chip"><i style="background:#FF9F1C"></i>Daily life</span><span class="chip"><i style="background:#06D6A0"></i>Healthcare</span><button class="btn small white" type="button" id="home">Home</button></div>`;
+  $("#home").onclick = titleScreen;
+  document.querySelectorAll(".node").forEach(n=>{
+    const go = ()=>{ const i=+n.dataset.i; if(!unlocked(i)){ sfx("bad"); toast("Clear the level before it to unlock this one.","bad"); return; } sfx("tap"); intro(i); };
+    n.onclick = go; n.onkeydown = e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } };
+  });
+  window.scrollTo({top:0});
+}
+
+function intro(i){
+  const L = LEVELS[i], T = TOOLS[L.tool];
+  stopTimer(); hideToast();
+  R = {i, level:L, hearts:3, coins:0, paused:true, time:L.time||0, left:L.time||0, over:false};
+  openModal(`<span class="tool-badge">${T.name}</span>
+    <h2>${esc(L.name)}</h2>
+    <span class="chip kind"><i style="background:${L.life==="daily"?"#FF9F1C":"#06D6A0"}"></i>${L.life==="daily"?"Daily life":"Healthcare"}</span>
+    <div class="say" style="text-align:left"><div>${mascot("happy")}</div><div class="bubble">${T.rule}</div></div>
+    <div class="btn-row"><button class="btn green" type="button" id="go">GO!</button><button class="btn white small" type="button" id="back">Map</button></div>`);
+  $("#go").onclick = ()=>{ closeModal(); sfx("tap"); startLevel(); };
+  $("#back").onclick = ()=>{ mapScreen(); };
+}
+
+function startLevel(){
+  hudShow(true);
+  $("#hud-lvl").innerHTML = `<small>Level ${R.i+1} · ${TOOLS[R.level.tool].name}</small>${esc(R.level.name)}`;
+  hudUpdate();
+  ({waste:playWaste, fives:playFives, whys:playWhys})[R.level.tool]();
+  window.scrollTo({top:0});
+}
+
+function endLevel(win, reason){
+  if(!R || R.over) return;
+  R.over = true; R.paused = true; stopTimer();
+  const L = R.level, T = TOOLS[L.tool];
+  if(win){
+    const stars = Math.max(1, R.hearts);
+    const bonus = stars*20;
+    R.coins += bonus;
+    SAVE.coins += R.coins;
+    SAVE.stars[L.id] = Math.max(SAVE.stars[L.id]||0, stars);
+    persist(); sfx("win");
+    const next = R.i < LEVELS.length-1 ? R.i+1 : -1;
+    openModal(`<h2>LEVEL CLEAR!</h2>
+      <div class="stars">${[0,1,2].map(k=>starSvg(k<stars, k<stars?"on":"")).join("")}</div>
+      <p><b>+${R.coins} coins</b> (including a ${bonus}-coin star bonus)</p>
+      <div class="say" style="text-align:left"><div>${mascot("happy")}</div><div class="bubble"><b>${T.name}:</b> ${T.key}</div></div>
+      <div class="btn-row"><button class="btn green" type="button" id="next">${next>=0?"NEXT LEVEL":"BACK TO TOWN"}</button><button class="btn white small" type="button" id="replay">Replay</button><button class="btn white small" type="button" id="map">Map</button></div>`);
+    document.querySelectorAll("#modal .stars svg.on").forEach((s,k)=>s.style.animationDelay=(k*.25)+"s");
+    $("#next").onclick = ()=>{ next>=0 ? intro(next) : mapScreen(); };
+  } else {
+    sfx("lose");
+    openModal(`<h2>${esc(reason)}</h2>
+      <div class="stars">${[0,1,2].map(()=>starSvg(false)).join("")}</div>
+      <div class="say" style="text-align:left"><div>${mascot("sad")}</div><div class="bubble">No problem. Every expert failed first. Try again!</div></div>
+      <div class="btn-row"><button class="btn green" type="button" id="replay">TRY AGAIN</button><button class="btn white small" type="button" id="map">Map</button></div>`);
   }
-  const q = WHYS_Q[L.i];
-  mcq($("#opts"), {
-    qid:"whys-"+L.i, cols1:true, answer:q.o.findIndex(x=>x.ok), right:q.r, rightTitle:"Good why",
-    opts:q.o.map(x=>({t:x.t, why:x.why})),
-    next:{label: L.i < 4 ? "Ask why again →" : "Show the root cause →", go:()=>{ L.i++; whys(); }}
-  });
+  const idx = R.i;
+  $("#replay").onclick = ()=>intro(idx);
+  $("#map").onclick = ()=>mapScreen();
 }
 
-function fish(){
-  const st = STATIONS[3];
-  if(!L.order){ L.order = FISH_Q.map((_,i)=>i); L.placed = []; L.sel = null; }
-  const tray = L.order.filter(i=>!L.placed.includes(i));
-  const bone = (bi) => `<button type="button" class="bone" data-b="${bi}"><h4>${BONES[bi].n}</h4><span class="def">${BONES[bi].d}</span><ul>${L.placed.filter(i=>FISH_Q[i].b===bi).map(i=>`<li>${esc(FISH_Q[i].t)}</li>`).join("")}</ul></button>`;
-  $("#main").innerHTML = head(st, "A fishbone (Ishikawa) diagram sorts every possible cause into categories, so the team doesn't fixate on one idea. Tap a cause card, then tap the bone where it belongs.") + `
-    <div class="qcount"><span class="eyebrow">${L.placed.length} of ${FISH_Q.length} causes placed</span>${pips(FISH_Q.length, L.placed.length)}</div>
-    <div class="tray" id="tray">${tray.map(i=>`<button type="button" class="chip" data-i="${i}" aria-pressed="${L.sel===i}">${esc(FISH_Q[i].t)}</button>`).join("") || `<span class="eyebrow">All causes placed</span>`}</div>
-    <div class="fish">
-      <div class="bones">${[0,1,2].map(bone).join("")}</div>
-      <div class="spine"><div class="line"></div><div class="head">Discharge takes over 3 h</div></div>
-      <div class="bones">${[3,4,5].map(bone).join("")}</div>
-    </div>
-    <div class="fb" id="fb" hidden></div>`;
-  coach("The 6 bones used in healthcare", BONES.map(b=>`<b>${b.n}</b>: ${b.d}`), "A cause can touch two bones. Place it where you would act on it. The fishbone shows possible causes. Data (the next station) tells you which ones matter.");
-  $("#tray").onclick = e => {
-    const c = e.target.closest(".chip"); if(!c) return;
-    const i = +c.dataset.i; L.sel = L.sel===i ? null : i;
-    $("#tray").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed", String(+x.dataset.i===L.sel)));
+/* ================= GAME 1: SPOT THE WASTE ================= */
+function playWaste(){
+  const sc = SCENES[R.level.id];
+  R.found = new Set(); R.seenDecoy = new Set();
+  let hits = "";
+  sc.spots.forEach(s=> hits += `<rect class="hit" data-k="${s.id}" x="${s.hit[0]}" y="${s.hit[1]}" width="${s.hit[2]}" height="${s.hit[3]}" rx="16" tabindex="0" role="button" aria-label="Inspect this"/>`);
+  sc.decoys.forEach(s=> hits += `<rect class="hit" data-d="${s.id}" x="${s.hit[0]}" y="${s.hit[1]}" width="${s.hit[2]}" height="${s.hit[3]}" rx="16" tabindex="0" role="button" aria-label="Inspect this"/>`);
+  $("#screen").innerHTML = `
+    <div class="say"><div>${mascot("happy")}</div><div class="bubble">Find <b>${sc.spots.length} wastes</b> before time runs out. Careful: some things are <b>value</b>, not waste!</div></div>
+    <div class="stage" id="scene"><svg viewBox="0 0 800 500" role="img" aria-label="${esc(R.level.name)} scene">${sc.draw()}<g id="tags"></g>${hits}</svg></div>
+    <div class="card found" id="found"></div>`;
+  renderFound();
+  const svg = $("#scene svg");
+  const act = (el, ev) => {
+    if(R.over || R.paused) return;
+    if(el.dataset.k){ const s = sc.spots.find(x=>x.id===el.dataset.k); if(!R.found.has(s.id)) classify(s, el, ev); }
+    else if(el.dataset.d && !R.seenDecoy.has(el.dataset.d)){
+      const d = sc.decoys.find(x=>x.id===el.dataset.d); R.seenDecoy.add(d.id);
+      addTag(d.hit, "VALUE ✓", "#06D6A0"); el.classList.add("done");
+      toast(d.why, "bad"); loseHeart();
+    }
   };
-  document.querySelectorAll(".bone").forEach(b=>b.onclick = () => {
-    const bi = +b.dataset.b;
-    if(L.sel==null){ feedback("info","Pick a cause first","Tap one of the cause cards above, then tap a bone."); shake($("#tray")); return; }
-    const i = L.sel, q = FISH_Q[i];
-    if(q.b === bi){
-      const pts = mark("fish-"+i, true);
-      L.placed.push(i); L.sel = null;
-      fish();
-      if(L.placed.length === FISH_Q.length){
-        stationEnd("fish","Fishbone complete","Twelve possible causes on six bones. The team now has more ideas than time. Use data to decide which causes to fix first.");
-      } else feedback("good", BONES[bi].n, `“${esc(q.t)}” is a ${BONES[bi].n.toLowerCase()} cause.`, pts);
+  svg.addEventListener("click", e=>{ const h=e.target.closest(".hit"); if(h) act(h,e); });
+  svg.addEventListener("keydown", e=>{ const h=e.target.closest(".hit"); if(h&&(e.key==="Enter"||e.key===" ")){ e.preventDefault(); act(h,null); } });
+  R.paused = false; startTimer();
+}
+function addTag(hit, label, color){
+  const [x,y,w] = hit; const tw = label.length*10.5+28, cx = Math.min(800-tw/2-4, Math.max(tw/2+4, x+w/2)), ty = Math.max(4, y-6);
+  $("#tags").insertAdjacentHTML("beforeend", `<g style="pointer-events:none"><rect x="${cx-tw/2}" y="${ty}" width="${tw}" height="32" rx="10" fill="${color}" stroke="${O}" stroke-width="3"/><text x="${cx}" y="${ty+23}" text-anchor="middle" font-family="Lilita One" font-size="19" fill="#fff" stroke="${O}" stroke-width="3" paint-order="stroke">${esc(label)}</text></g>`);
+}
+function renderFound(){
+  const sc = SCENES[R.level.id];
+  $("#found").innerHTML = `<b style="font-family:var(--f-game);font-size:18px;font-weight:400">Found ${R.found.size}/${sc.spots.length}</b>` +
+    sc.spots.map(s=> R.found.has(s.id) ? `<span class="chip ok">✓ ${s.w}</span>` : `<span class="chip empty">?</span>`).join("");
+}
+function classify(s, el, ev){
+  const others = shuffle(Object.keys(WASTES).filter(w=>w!==s.w)).slice(0,2);
+  const opts = shuffle([s.w, ...others]);
+  openModal(`<h2>What waste is this?</h2>
+    <div class="choices">${opts.map(w=>`<button type="button" class="choice" data-w="${w}"><span class="dot" style="background:${WASTES[w].c}">${w[0]}</span><span>${w}<small>${WASTES[w].h}</small></span></button>`).join("")}</div>`);
+  document.querySelectorAll("#modal .choice").forEach(b=> b.onclick = e => {
+    if(b.dataset.w === s.w){
+      sfx("good"); closeModal();
+      R.found.add(s.id); el.classList.add("done"); addTag(s.hit, s.w, WASTES[s.w].c); renderFound();
+      addCoins(10, ev || e); toast(`<b>${s.w}!</b> ${s.why}`, "good");
+      if(R.found.size === SCENES[R.level.id].spots.length){ R.paused = true; setTimeout(()=>endLevel(true), 1000); }
     } else {
-      mark("fish-"+i, false); shake(b);
-      feedback("bad", `Not ${BONES[bi].n}`, `${BONES[bi].n} covers ${BONES[bi].d.toLowerCase()}. Ask what you would have to change to remove “${esc(q.t)}”.`);
+      b.classList.add("bad"); b.disabled = true; shake(b);
+      if(loseHeart()) closeModal();
     }
   });
 }
 
-/* Pareto */
-function paretoSvg(){
-  const W=520, H=320, ml=44, mr=48, mt=18, mb=66, pw=W-ml-mr, ph=H-mt-mb;
-  const order = L.sorted.concat(PARETO.map((_,i)=>i).filter(i=>!L.sorted.includes(i)));
-  const total = PARETO.reduce((s,x)=>s+x.v,0);
-  const bw = pw/order.length, y = v => mt + ph - v/total*ph;
-  let g = "";
-  [0,25,50,75,100].forEach(t=>{ g += `<line class="ax" x1="${ml}" x2="${W-mr}" y1="${y(t/100*total)}" y2="${y(t/100*total)}" opacity=".5"/><text x="${ml-8}" y="${y(t/100*total)+4}" text-anchor="end" font-size="12">${t}</text>`; });
-  const fullySorted = L.sorted.length === PARETO.length;
-  if(fullySorted){ [0,25,50,75,100].forEach(t=>{ g += `<text x="${W-mr+8}" y="${y(t/100*total)+4}" font-size="12">${t}%</text>`; }); }
-  g += `<text x="12" y="${mt+ph/2}" font-size="12" transform="rotate(-90 12 ${mt+ph/2})" text-anchor="middle">Delay hours</text>`;
-  order.forEach((ci,pos)=>{
-    const c = PARETO[ci], x = ml + pos*bw + 6, h = c.v/total*ph;
-    const cls = "bar" + (L.sorted.includes(ci) ? " sorted" : "") + (L.pick && L.pick.has(ci) ? " pick" : "") + (L.flash===ci ? " flash" : "");
-    g += `<rect class="${cls}" data-c="${ci}" x="${x}" y="${y(c.v)}" width="${bw-12}" height="${Math.max(h,1)}" rx="3" tabindex="0" role="button" aria-label="${esc(c.k)}, ${c.v} hours"/>`;
-    g += `<text class="val" x="${x+(bw-12)/2}" y="${y(c.v)-6}" text-anchor="middle">${c.v}</text>`;
-    const [l1, l2] = c.l;
-    g += `<text class="lbl" x="${x+(bw-12)/2}" y="${mt+ph+18}" text-anchor="middle">${esc(l1)}</text>`;
-    if(l2) g += `<text class="lbl" x="${x+(bw-12)/2}" y="${mt+ph+34}" text-anchor="middle">${esc(l2)}</text>`;
+/* ================= GAME 2: 5S ================= */
+function playFives(){
+  const D = FIVES[R.level.id];
+  R.queue = shuffle(D.items); R.idx = 0; R.kept = []; R.tossed = 0; R.placed = new Set();
+  R.paused = false;
+  renderSort();
+}
+function stepsBar(active){
+  const N = [["S1","Sort"],["S2","Set in order"],["S3","Shine"],["S4","Standardize"],["S5","Sustain"]];
+  return `<div class="steps">${N.map((n,i)=>`<div class="${i<active?"done":i===active?"on":""}"><b>${n[0]}</b>${n[1]}</div>`).join("")}</div>`;
+}
+function renderSort(){
+  const D = FIVES[R.level.id];
+  if(R.idx >= R.queue.length){ renderSet(); return; }
+  const it = R.queue[R.idx];
+  $("#screen").innerHTML = `${stepsBar(0)}
+    <div class="say"><div>${mascot("happy")}</div><div class="bubble"><b>SORT:</b> Keep only what the ${D.place} really needs. Red-tag the rest.</div></div>
+    <div class="card sort">
+      <span class="chip">Item ${R.idx+1} of ${R.queue.length}</span>
+      <div class="item-card" id="item">${icon(it.id)}</div>
+      <div class="item-name">${esc(it.n)}</div>
+      <div class="bins"><button class="btn green" type="button" id="keep">✓ KEEP</button><button class="btn red" type="button" id="toss">RED TAG</button></div>
+      <div class="legend"><span class="chip">Kept: ${R.kept.length}</span><span class="chip">Red-tagged: ${R.tossed}</span></div>
+    </div>`;
+  const choose = (keep, e) => {
+    if(R.over || R.paused) return;
+    if(keep === it.keep){
+      sfx("good"); addCoins(10, e);
+      if(keep) R.kept.push(it); else { R.tossed++; toast(`Red tag! ${it.why}`, "good"); }
+      R.idx++; renderSort();
+    } else {
+      shake($("#item"));
+      toast(keep ? `Not needed here. ${it.why}` : `The ${D.place} needs this. Keep it!`, "bad");
+      loseHeart();
+    }
+  };
+  $("#keep").onclick = e=>choose(true,e); $("#toss").onclick = e=>choose(false,e);
+}
+function boardHtml(D, showItems, labels){
+  return `<div class="board ${D.surface}" id="board">${R.kept.map(it=>`<div class="slot${R.placed.has(it.id)?" filled":""}" data-id="${it.id}">${R.placed.has(it.id)||showItems ? icon(it.id) : icon(it.id,"shadow")}${labels?`<span class="label">${esc(it.n)}</span>`:""}</div>`).join("")}</div>`;
+}
+function renderSet(){
+  const D = FIVES[R.level.id];
+  const tray = shuffle(R.kept.filter(it=>!R.placed.has(it.id)));
+  $("#screen").innerHTML = `${stepsBar(1)}
+    <div class="say"><div>${mascot("happy")}</div><div class="bubble"><b>SET IN ORDER:</b> Drag each item onto its outline (or tap the item, then the outline).</div></div>
+    ${boardHtml(D,false,false)}
+    <div class="tray" id="tray">${tray.length ? tray.map(it=>`<button type="button" class="piece" data-id="${it.id}" aria-pressed="false" aria-label="${esc(it.n)}">${icon(it.id)}</button>`).join("") : `<span class="chip">All in place!</span>`}</div>`;
+  let sel = null;
+  const tryPlace = (id, slot, e) => {
+    if(!slot || R.over) return;
+    if(slot.dataset.id === id){
+      R.placed.add(id); sfx("good"); addCoins(10, e); renderSet();
+      if(R.placed.size === R.kept.length) setTimeout(renderShine, 500);
+    } else { sfx("bad"); shake(slot); toast("Wrong spot. Match the shape!", "bad"); }
+  };
+  document.querySelectorAll(".piece").forEach(p=>{
+    let dragged = false;
+    p.onclick = () => { if(dragged){ dragged=false; return; } sel = sel===p.dataset.id ? null : p.dataset.id; document.querySelectorAll(".piece").forEach(x=>x.setAttribute("aria-pressed", String(x.dataset.id===sel))); };
+    p.onpointerdown = e => {
+      if(e.button>0) return;
+      const id = p.dataset.id, sx=e.clientX, sy=e.clientY; let ghost=null;
+      const move = ev => {
+        if(!ghost && Math.hypot(ev.clientX-sx, ev.clientY-sy) < 8) return;
+        if(!ghost){ dragged=true; ghost=document.createElement("div"); ghost.className="ghost"; ghost.innerHTML=icon(id); document.body.appendChild(ghost); p.style.opacity=.3; }
+        ghost.style.left=ev.clientX+"px"; ghost.style.top=ev.clientY+"px";
+        document.querySelectorAll(".slot").forEach(s=>s.classList.remove("target"));
+        const under = document.elementFromPoint(ev.clientX, ev.clientY); const s = under && under.closest(".slot"); if(s) s.classList.add("target");
+      };
+      const up = ev => {
+        removeEventListener("pointermove", move); removeEventListener("pointerup", up); removeEventListener("pointercancel", up);
+        if(ghost){ ghost.remove(); p.style.opacity=""; const under=document.elementFromPoint(ev.clientX, ev.clientY); const s=under&&under.closest(".slot"); document.querySelectorAll(".slot").forEach(x=>x.classList.remove("target")); if(s) tryPlace(id, s, ev); }
+      };
+      addEventListener("pointermove", move); addEventListener("pointerup", up); addEventListener("pointercancel", up);
+    };
   });
-  g += `<line class="ax" x1="${ml}" x2="${W-mr}" y1="${mt+ph}" y2="${mt+ph}"/>`;
-  if(fullySorted){
-    let cum = 0; const pts = order.map((ci,pos)=>{ cum += PARETO[ci].v; return [ml + pos*bw + bw/2, y(cum)]; });
-    g += `<line class="ref" x1="${ml}" x2="${W-mr}" y1="${y(0.8*total)}" y2="${y(0.8*total)}"/><text x="${W-mr-4}" y="${y(0.8*total)-6}" text-anchor="end" font-size="12" style="fill:var(--red)">80%</text>`;
-    g += `<polyline class="cum" points="${pts.map(p=>p.join(",")).join(" ")}"/>`;
-    g += pts.map(p=>`<circle class="cumdot" cx="${p[0]}" cy="${p[1]}" r="4"/>`).join("");
+  document.querySelectorAll(".slot").forEach(s=> s.onclick = e => { if(sel && !s.classList.contains("filled")) tryPlace(sel, s, e); });
+}
+function renderShine(){
+  if(R.over) return;
+  const D = FIVES[R.level.id];
+  const dirt = [[12,22],[38,72],[63,30],[88,76],[50,50],[25,84]].map(([x,y])=>({x,y,hp:2}));
+  $("#screen").innerHTML = `${stepsBar(2)}
+    <div class="say"><div>${mascot("happy")}</div><div class="bubble"><b>SHINE:</b> Scrub away the dirt! Tap each spot twice. Cleaning is also checking.</div></div>
+    <div style="position:relative" id="shinewrap">${boardHtml(D,true,false)}</div>`;
+  const wrap = $("#shinewrap");
+  dirt.forEach(d=>{
+    const el = document.createElement("button"); el.type="button"; el.className="dirt"; el.setAttribute("aria-label","Dirt spot"); el.style.left=d.x+"%"; el.style.top=d.y+"%";
+    el.onclick = e => { if(R.over) return; d.hp--; sfx("tap"); if(d.hp===1) el.classList.add("half"); else { el.remove(); addCoins(5, e); if(dirt.every(x=>x.hp<=0)) setTimeout(renderStandard, 400); } };
+    wrap.appendChild(el);
+  });
+}
+function renderStandard(){
+  if(R.over) return;
+  const D = FIVES[R.level.id], H = D.habit;
+  const opts = shuffle([{t:H.ok, ok:true}, ...H.bad.map(t=>({t, ok:false}))]);
+  $("#screen").innerHTML = `${stepsBar(3)}
+    <div class="say"><div>${mascot("happy")}</div><div class="bubble"><b>STANDARDIZE:</b> Every spot now has a label, so anyone can find things and put them back.</div></div>
+    ${boardHtml(D,true,true)}
+    <div class="card" style="display:grid;gap:12px">
+      <div style="font:400 20px/1.15 var(--f-game)"><span style="color:var(--purple)">S5 SUSTAIN:</span> ${esc(H.q)}</div>
+      <div class="choices">${opts.map((o,i)=>`<button type="button" class="choice" data-i="${i}"><span class="dot" style="background:#7B5CFF">${"ABC"[i]}</span><span>${esc(o.t)}</span></button>`).join("")}</div>
+    </div>`;
+  document.querySelectorAll(".choice").forEach(b=> b.onclick = e => {
+    if(R.over || R.paused) return;
+    const o = opts[+b.dataset.i];
+    if(o.ok){ sfx("good"); addCoins(10,e); $("#screen .steps").outerHTML = stepsBar(5); document.querySelectorAll(".choice").forEach(x=>x.disabled=true); R.paused = true; setTimeout(()=>endLevel(true), 800); }
+    else { b.classList.add("bad"); b.disabled=true; shake(b); toast("That won't last. Small daily habits keep the gains.","bad"); loseHeart(); }
+  });
+}
+
+/* ================= GAME 3: 5 WHYS ================= */
+function problemArt(id){
+  if(id==="carfix"){
+    let g = `<rect width="800" height="220" fill="#8FD3FF"/>` + cloud(600,20,.7) + cloud(60,30,.6) + `<rect y="150" width="800" height="70" fill="#4A4E69" stroke="${O}" stroke-width="3"/>`;
+    g += car(250,200,"#118AB2",1.15,null);
+    g += `<circle class="puff" cx="392" cy="122" r="14" fill="#9AA5B1" stroke="${O}" stroke-width="2.5"/><circle class="puff d2" cx="402" cy="112" r="12" fill="#B8B2C8" stroke="${O}" stroke-width="2.5"/><circle class="puff d3" cx="386" cy="114" r="10" fill="#9AA5B1" stroke="${O}" stroke-width="2.5"/>`;
+    g += person({x:470,y:200,s:.9,shirt:"#FF9F1C",skin:"#C68A5E",hair:"#2B2140",face:"wow",flip:true});
+    g += bubble(500,30,130,50,"Why?!",26);
+    return g;
   }
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Pareto chart of discharge delay reasons">${g}</svg>`;
+  let g = `<rect width="800" height="220" fill="#3C3A6E"/><circle cx="700" cy="50" r="24" fill="#FFF7E6" stroke="${O}" stroke-width="3"/><circle cx="688" cy="44" r="21" fill="#3C3A6E"/>`;
+  g += `<rect y="170" width="800" height="50" fill="#8B8FB3" stroke="${O}" stroke-width="3"/>`;
+  g += `<rect x="140" y="120" width="190" height="24" rx="6" fill="#fff" stroke="${O}" stroke-width="3"/><rect x="140" y="140" width="190" height="16" fill="#9AA5B1" stroke="${O}" stroke-width="3"/><path d="M150 156 v26 M320 156 v26" stroke="${O}" stroke-width="5"/><rect x="146" y="104" width="44" height="20" rx="8" fill="#fff" stroke="${O}" stroke-width="3"/>`;
+  g += seated({x:380,y:196,s:.8,shirt:"#8FD3FF",skin:"#8D5A3B",hair:"#9AA5B1",face:"sad"});
+  g += `<path d="M418 92 l6 -12 l6 12 l12 -4 l-6 12 l10 6 l-12 4 l2 12 l-10 -6 l-8 10 l-2 -12 l-12 -2 l10 -8Z" fill="#FFD166" stroke="${O}" stroke-width="2.5"/>`;
+  g += `<path d="M570 0 V110" stroke="#fff" stroke-width="3"/><rect x="556" y="108" width="28" height="20" rx="6" fill="#EF476F" stroke="${O}" stroke-width="3"/><path d="M440 150 Q 510 150 552 124" fill="none" stroke="#FFD166" stroke-width="3" stroke-dasharray="6 6"/><text x="596" y="118" font-family="Lilita One" font-size="18" fill="#FFD166">CALL BELL</text><text x="596" y="140" font-family="Lilita One" font-size="18" fill="#FFD166">Out of reach!</text>`;
+  g += bubble(40,28,130,50,"Why?!",26);
+  return g;
 }
-function pareto(){
-  const st = STATIONS[4];
-  if(!L.sorted){ L.sorted = []; L.phase = "sort"; L.pick = new Set(); }
-  const total = PARETO.reduce((s,x)=>s+x.v,0);
-  const sorting = L.phase==="sort";
-  const picked = [...L.pick].reduce((s,ci)=>s+PARETO[ci].v,0);
-  $("#main").innerHTML = head(st, "The team logged the main reason for delay on 40 discharges: <b class='mono'>100 delay hours</b> in total. A Pareto chart sorts causes from biggest to smallest so you can see the <i>vital few</i>.") + `
-    <div class="qcount"><span class="eyebrow">${sorting ? `Step 1 · Build the chart (${L.sorted.length} of ${PARETO.length})` : L.phase==="pick" ? "Step 2 · Pick the vital few" : "Chart complete"}</span></div>
-    <div class="qcard">${sorting ? "Tap the bars from <b>tallest to shortest</b>. Each one moves into Pareto order." : L.phase==="pick" ? "The line shows the running total. Tap the bars that make up the <b>vital few</b>: the fewest categories that together cause about 80% of the delay hours. Then check your answer." : "The vital few are found. Fixing three causes removes about 80% of delay hours."}</div>
-    <div class="chart-scroll" id="chart">${paretoSvg()}</div>
-    ${L.phase==="pick" ? `<div class="row"><span class="meter" aria-live="polite">Selected: ${L.pick.size} categor${L.pick.size===1?"y":"ies"} · ${Math.round(picked/total*100)}% of delay hours</span><button type="button" class="btn" id="check">Check the vital few</button></div>` : ""}
-    <div class="fb" id="fb" hidden></div>`;
-  coach("The 80/20 rule", [
-    "Roughly 80% of the effect comes from 20% of the causes.",
-    "Bars run from largest to smallest. The line is the cumulative percentage.",
-    "Where the line crosses 80%, everything to the left is the <b>vital few</b>. The rest are the <b>useful many</b>.",
-    "Fix the vital few first. They give the most improvement for your effort."
-  ]);
-  const onBar = ci => {
-    if(L.phase==="sort"){
-      if(L.sorted.includes(ci)) return;
-      const remaining = PARETO.map((_,i)=>i).filter(i=>!L.sorted.includes(i));
-      const tallest = remaining.reduce((a,b)=>PARETO[b].v>PARETO[a].v?b:a);
-      const qid = "par-"+L.sorted.length;
-      if(ci===tallest){
-        const pts = mark(qid, true); L.sorted.push(ci);
-        if(L.sorted.length === PARETO.length-1){ L.sorted.push(remaining.find(i=>i!==ci)); }
-        if(L.sorted.length === PARETO.length){ L.phase = "pick"; pareto(); feedback("good","Chart built","Now look at the line. It climbs steeply, then flattens. The steep part is where the big causes are.", pts); }
-        else { pareto(); feedback("good", PARETO[ci].k, `${PARETO[ci].v} hours. Next tallest?`, pts); }
-      } else {
-        mark(qid, false); L.flash = ci; pareto(); L.flash = null;
-        feedback("bad","Not the tallest left",`${esc(PARETO[ci].k)} is ${PARETO[ci].v} h. There's a taller bar still unsorted.`);
-      }
-    } else if(L.phase==="pick"){
-      L.pick.has(ci) ? L.pick.delete(ci) : L.pick.add(ci); pareto();
-    }
-  };
-  $("#chart").onclick = e => { const r = e.target.closest(".bar"); if(r) onBar(+r.dataset.c); };
-  $("#chart").onkeydown = e => { const r = e.target.closest(".bar"); if(r && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); onBar(+r.dataset.c); } };
-  const ck = $("#check");
-  if(ck) ck.onclick = () => {
-    const top = L.sorted.slice(0,3);
-    const ok = L.pick.size===3 && top.every(c=>L.pick.has(c));
-    if(ok){
-      const pts = mark("par-vital", true); L.phase = "done"; pareto();
-      stationEnd("pareto", "Vital few: medicines, transport, senior review", `Together they cause ${top.reduce((s,c)=>s+PARETO[c].v,0)} of 100 delay hours. Your 5 Whys already found the fix for the biggest one. The team writes take-home prescriptions the day before, books transport at the decision, and adds a mid-morning senior review.` + (pts?` <b class="mono">+${pts} pts</b>`:""));
-    } else {
-      mark("par-vital", false);
-      const skipped = top.some(c=>!L.pick.has(c)) && [...L.pick].some(c=>!top.includes(c));
-      const msg = !L.pick.size ? "Tap bars to select them first." :
-        skipped ? "Start from the left. The vital few are always the tallest bars, taken in order." :
-        picked < 75 ? `You've covered ${Math.round(picked/total*100)}%. Add the next tallest bar until the line reaches about 80%.` :
-        "Those extra bars add little. Stop at the bar where the line first reaches about 80%.";
-      feedback("bad","Not quite", msg);
-    }
-  };
+function playWhys(){
+  const W = WHYS[R.level.id];
+  R.step = 0; R.order = W.steps.map(s=>shuffle([{t:s.ok,ok:true}, ...s.bad.map(b=>({t:b[0], why:b[1]}))]));
+  R.paused = false; renderWhys();
 }
-
-/* Control chart */
-function spcSvg(q, reveal){
-  const W=520, H=240, ml=40, mr=56, mt=16, mb=34, pw=W-ml-mr, ph=H-mt-mb, lo=1.4, hi=4.2;
-  const y = v => mt + (hi-v)/(hi-lo)*ph, x = i => ml + i*(pw/(q.d.length-1));
-  let g = "";
-  [1.5,2.0,2.5,3.0,3.5,4.0].forEach(t=>{ g += `<text x="${ml-8}" y="${y(t)+4}" text-anchor="end" font-size="12">${t.toFixed(1)}</text>`; });
-  if(reveal && q.sig.length > 1){ g += `<rect class="zone" x="${x(q.sig[0])-8}" y="${mt}" width="${x(q.sig[q.sig.length-1])-x(q.sig[0])+16}" height="${ph}" rx="6"/>`; }
-  g += `<line class="lim" x1="${ml}" x2="${W-mr}" y1="${y(SPC.ucl)}" y2="${y(SPC.ucl)}"/><text x="${W-mr+6}" y="${y(SPC.ucl)+4}" font-size="12">UCL ${SPC.ucl}</text>`;
-  g += `<line class="cl" x1="${ml}" x2="${W-mr}" y1="${y(SPC.mean)}" y2="${y(SPC.mean)}"/><text x="${W-mr+6}" y="${y(SPC.mean)+4}" font-size="12">x̄ ${SPC.mean}</text>`;
-  g += `<line class="lim" x1="${ml}" x2="${W-mr}" y1="${y(SPC.lcl)}" y2="${y(SPC.lcl)}"/><text x="${W-mr+6}" y="${y(SPC.lcl)+4}" font-size="12">LCL ${SPC.lcl}</text>`;
-  g += `<polyline class="run" points="${q.d.map((v,i)=>x(i)+","+y(v)).join(" ")}"/>`;
-  g += q.d.map((v,i)=>`<circle class="pt${reveal && q.sig.includes(i) ? " sig" : ""}" cx="${x(i)}" cy="${y(v)}" r="4.5"/>`).join("");
-  [1,5,10,15,20].forEach(d=>{ g += `<text x="${x(d-1)}" y="${H-10}" text-anchor="middle" font-size="12">${d}</text>`; });
-  g += `<text x="${ml+pw/2}" y="${H-10}" text-anchor="middle" font-size="0"></text>`;
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Control chart of daily average discharge time in hours over 20 days">${g}</svg>`;
-}
-function spc(){
-  const st = STATIONS[5];
-  L.i = L.i || 0;
-  if(L.i >= SPC_Q.length){ return; }
-  const q = SPC_Q[L.i];
-  $("#main").innerHTML = head(st, "The fixes are live and average discharge time has fallen to <b class='mono'>2.6 h</b>. Now hold the gain. Each chart shows 20 days of average discharge time. Read the signal before you react.") + `
-    <div class="qcount"><span class="eyebrow">Chart ${L.i+1} of ${SPC_Q.length} · daily mean discharge time (h)</span>${pips(SPC_Q.length, L.i)}</div>
-    <div class="legend"><span><i class="cl"></i>Centre line (mean)</span><span><i></i>Control limits (±3σ)</span><span>Days 1–20 →</span></div>
-    <div class="chart-scroll" id="chart">${spcSvg(q, false)}</div>
-    <div id="opts"></div>
-    <div class="fb" id="fb" hidden></div>`;
-  coach("Reading a control chart", [
-    "Control limits are calculated from the process's own data, at about ±3σ from the mean. They are not targets set by managers.",
-    "<b>Common cause</b>: everyday variation built into the process. Leave it alone.",
-    "<b>Special cause</b>: a signal that something changed. Look for one point beyond a limit, a run of 8 on one side, or a trend of 6.",
-    "Treating noise as a signal is called <b>tampering</b>, and it makes the process worse."
-  ]);
-  mcq($("#opts"), {
-    qid:"spc-"+L.i, answer:q.a, rightTitle:SPC_OPTS[q.a].t,
-    right: q.r + " " + SPC_OPTS[q.a].fix,
-    opts: SPC_OPTS.map((o,oi)=>({t:o.t, s:o.s, why: oi===0 ? "Look closer. Something here breaks one of the rules for a stable process." : `Check the rule: ${o.s.toLowerCase()}. Is that what this chart shows?`})),
-    next:{label: L.i < SPC_Q.length-1 ? "Next chart →" : "Finish the project →", go:()=>{
-      if(L.i < SPC_Q.length-1){ L.i++; spc(); }
-      else { stationEnd("spc","Gains held","The ward now owns the chart and knows when to act and when to leave the process alone. Project closed: 5.8 h → 2.6 h."); }
-    }}
+const SOIL = ["#A9774A","#8E5F37","#764C2A","#5F3B20","#4A2D17"];
+function renderWhys(){
+  const W = WHYS[R.level.id];
+  const layers = W.steps.map((s,i)=>{
+    if(i < R.step) return `<div class="layer done" style="background:${SOIL[i]}"><span class="num">W${i+1}</span><div class="ans">✓ ${esc(s.ok)}</div></div>`;
+    if(i === R.step) return `<div class="layer cur" style="background:${SOIL[i]}"><span class="num">W${i+1}</span><div class="q">${i===0?"Why did this happen?":"Why?"}</div><div class="rocks">${R.order[i].map((r,k)=>`<button type="button" class="rock" data-k="${k}"><span>${esc(r.t)}</span></button>`).join("")}</div></div>`;
+    return `<div class="layer locked" style="background:${SOIL[i]}"><span class="num">W${i+1}</span>? ? ?</div>`;
+  }).join("");
+  const done = R.step >= W.steps.length;
+  $("#screen").innerHTML = `
+    <div class="say"><div>${mascot("happy")}</div><div class="bubble">${done ? "Treasure! You dug all the way down to the root cause." : "Tap the rock with the <b>real reason</b>. Watch out for blame, vague answers and jumping to fixes."}</div></div>
+    <div class="dig">
+      <div class="stage" style="border:0;border-radius:0;box-shadow:none"><svg viewBox="0 0 800 220" role="img" aria-label="${esc(W.problem)}">${problemArt(R.level.id)}</svg></div>
+      <div style="background:#7CCB5B;border-top:3px solid ${O};padding:10px 14px;font:400 22px/1.1 var(--f-game);text-align:center">PROBLEM: ${esc(W.problem)}</div>
+      ${layers}
+      <div class="chest">
+        <svg viewBox="0 0 96 80" aria-hidden="true"><rect x="8" y="34" width="80" height="40" rx="6" fill="#D9A066" stroke="${O}" stroke-width="3.5"/><path d="M8 34 Q8 ${done?4:14} 48 ${done?4:14} Q88 ${done?4:14} 88 34Z" fill="#B9734A" stroke="${O}" stroke-width="3.5"/><rect x="40" y="40" width="16" height="16" rx="3" fill="#FFD166" stroke="${O}" stroke-width="3"/>${done?`<path d="M30 28 l-4 -10 M48 22 v-14 M66 28 l4 -10" stroke="#FFD166" stroke-width="4" stroke-linecap="round"/>`:""}</svg>
+        ${done ? `<b>ROOT CAUSE: ${esc(W.root)}</b><span>FIX: ${esc(W.fix)}</span><button class="btn" type="button" id="claim">CLAIM TREASURE</button>` : `<span style="opacity:.8">Root cause buried here…</span>`}
+      </div>
+    </div>`;
+  if(done){ $("#claim").onclick = ()=>endLevel(true); $("#claim").scrollIntoView({block:"center", behavior: reduce?"auto":"smooth"}); return; }
+  const cur = $(".layer.cur");
+  cur.insertAdjacentHTML("beforeend", `<svg class="driller" viewBox="0 0 48 48" aria-hidden="true"><rect x="16" y="4" width="16" height="20" rx="4" fill="#FFD166" stroke="${O}" stroke-width="3"/><path d="M14 24 h20 l-10 20Z" fill="#9AA5B1" stroke="${O}" stroke-width="3" stroke-linejoin="round"/></svg>`);
+  if(R.step>0) cur.scrollIntoView({block:"center", behavior: reduce?"auto":"smooth"});
+  cur.querySelectorAll(".rock").forEach(b=> b.onclick = e => {
+    if(R.over || R.paused) return;
+    const r = R.order[R.step][+b.dataset.k];
+    if(r.ok){ sfx("good"); addCoins(10, e); R.step++; renderWhys(); }
+    else { b.classList.add("cracked"); b.disabled=true; b.insertAdjacentHTML("beforeend", `<span class="why">${esc(r.why)}</span>`); shake(b); loseHeart(); }
   });
-  // reveal the signal on a correct answer
-  $("#opts").addEventListener("click", () => { if($("#opts .is-right")) $("#chart").innerHTML = spcSvg(q, true); });
 }
 
-function finish(){
-  const sg = sigma(), b = belt();
-  const firstTry = S.opps - S.defects;
-  $("#main").innerHTML = `
-    <div class="st-head"><span class="eyebrow">Project closed · Ward 7</span><h2>Discharge time down from 5.8 h to 2.6 h</h2></div>
-    <div class="big-sigma"><b>${sg==null?"—":sg.toFixed(1)+"σ"}</b><span>your process sigma, at ${dpmo().toLocaleString()} DPMO</span></div>
-    <div class="stats">
-      <div><small>Score</small><b>${S.score.toLocaleString()}</b></div>
-      <div><small>Right first time</small><b>${firstTry}/${S.opps}</b></div>
-      <div><small>Best streak</small><b>${S.best}</b></div>
-      <div><small>Belt</small><b style="display:flex;gap:8px;align-items:center"><span class="belt-bar" data-belt="${b}"></span>${b}</b></div>
-    </div>
-    <h3 style="font-size:20px;margin-top:8px">Your toolkit</h3>
-    <div class="recap">
-      <div><b>DMAIC</b><span>The roadmap: Define, Measure, Analyze, Improve, Control. Don't skip to solutions.</span></div>
-      <div><b>8 wastes</b><span>DOWNTIME. Go to the gemba and see waste with your own eyes.</span></div>
-      <div><b>5 Whys</b><span>Ask why until you reach a process you can change. No blame.</span></div>
-      <div><b>Fishbone</b><span>Brainstorm every possible cause on six bones before you choose.</span></div>
-      <div><b>Pareto</b><span>Sort causes by size. Fix the vital few that give about 80% of the effect.</span></div>
-      <div><b>Control chart</b><span>Tell signal from noise. React to special causes, leave common causes alone.</span></div>
-    </div>
-    <div class="row" style="margin-top:20px"><button type="button" class="btn" id="again">Replay a station</button><button type="button" class="btn ghost" id="reset">Start over</button></div>
-    <div class="fb" id="fb" hidden></div>`;
-  $("#again").onclick = () => go("dmaic");
-  $("#reset").onclick = confirmReset;
-  coach("What your sigma means", [
-    "<b>2σ</b>: about 308,000 defects per million. Many unmeasured processes sit here.",
-    "<b>3σ</b>: about 66,800 per million.",
-    "<b>4σ</b>: about 6,200 per million.",
-    "<b>6σ</b>: 3.4 per million. This is the goal the method is named after."
-  ], "Sigma here uses the standard 1.5σ shift, the same convention as real Six Sigma tables.");
-}
-
-/* ---------- Boot ---------- */
-function start(saved){
-  const s = (saved && saved.done) ? saved : load();
-  if(s) S = Object.assign(fresh(), s);
-  if(S.view==="finish" && S.done.length < 6) S.view = "brief";
-  hud(); rail(); render();
-}
-if(window.claude && window.claude.hot){ window.claude.hot.snapshot && window.claude.hot.snapshot(()=>S); }
-window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? null);
+/* ================= BOOT ================= */
+$("#btn-map").onclick = ()=>mapScreen();
+$("#btn-sound").onclick = ()=>{ SAVE.muted=!SAVE.muted; persist(); soundIcon(); if(!SAVE.muted) sfx("tap"); };
+soundIcon();
+if(window.claude && window.claude.hot && window.claude.hot.snapshot) window.claude.hot.snapshot(()=>SAVE);
+titleScreen();
 })();
 </script>
 </body>
