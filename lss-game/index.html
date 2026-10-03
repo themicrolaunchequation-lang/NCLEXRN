@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kaizen Ward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: a ward "gemba board" — HUD bar, a value-stream rail of six tool stations, one play area with a coach's note beside it. */
+:root{
+  --paper:#EAF0EE; --sheet:#FBFDFC; --ink:#13232A; --muted:#566A6F; --line:#C5D2D0; --grid:#DCE5E3;
+  --teal:#0A6B63; --teal-ink:#FFFFFF; --teal-soft:#D2E8E4;
+  --amber:#C98A10; --amber-soft:#FBEBC6; --red:#C23C2B; --red-soft:#F8DCD7; --green:#23844B; --green-soft:#D5EEDD;
+  --belt-white:#F4F4F0; --belt-yellow:#F2C230; --belt-green:#2E9A55; --belt-black:#16191B;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E171A; --sheet:#152227; --ink:#E3ECEA; --muted:#93A6A9; --line:#2B3D42; --grid:#16252A;
+    --teal:#46C2B3; --teal-ink:#06201D; --teal-soft:#16393A;
+    --amber:#F0B447; --amber-soft:#3A2E12; --red:#F06C5A; --red-soft:#3D1D19; --green:#5FC98A; --green-soft:#16362A;
+    --belt-white:#E9ECEA; --belt-black:#000000;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E171A; --sheet:#152227; --ink:#E3ECEA; --muted:#93A6A9; --line:#2B3D42; --grid:#16252A;
+  --teal:#46C2B3; --teal-ink:#06201D; --teal-soft:#16393A;
+  --amber:#F0B447; --amber-soft:#3A2E12; --red:#F06C5A; --red-soft:#3D1D19; --green:#5FC98A; --green-soft:#16362A;
+  --belt-white:#E9ECEA; --belt-black:#000000;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+  color:var(--ink); font:16px/1.55 var(--f-body);
+  padding-inline:16px; padding-block:0 48px;
+}
+.wrap{max-width:1100px;margin:0 auto}
+button{font:inherit;color:inherit}
+button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font:600 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Header + HUD */
+.top{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;padding-block:20px 16px}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand h1{font-size:30px;font-weight:900;font-stretch:125%;letter-spacing:-.01em;line-height:1}
+.brand .case{color:var(--muted);font-size:14px}
+.hud{display:flex;gap:10px;flex-wrap:wrap}
+.hud-cell{background:var(--sheet);border:1px solid var(--line);border-radius:var(--r);padding:8px 12px;display:grid;gap:4px;min-width:96px}
+.hud-cell b{font:600 20px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.hud-cell small{font-size:12px;color:var(--muted)}
+.gauge{height:6px;border-radius:3px;background:var(--grid);background:color-mix(in srgb,var(--line) 60%,transparent);overflow:hidden;width:100%}
+.gauge i{display:block;height:100%;background:var(--teal);width:0;transition:width .5s ease}
+.belt{display:flex;align-items:center;gap:10px}
+.belt-bar{width:44px;height:12px;border-radius:3px;border:1px solid var(--line);position:relative;background:var(--belt-white)}
+.belt-bar::after{content:"";position:absolute;left:50%;top:-4px;width:10px;height:18px;margin-left:-5px;border-radius:3px;background:inherit;border:1px solid var(--line)}
+.belt-bar[data-belt="Yellow"]{background:var(--belt-yellow)}
+.belt-bar[data-belt="Green"]{background:var(--belt-green)}
+.belt-bar[data-belt="Black"]{background:var(--belt-black)}
+
+/* Value stream rail */
+.rail-scroll{overflow-x:auto;padding-block:4px 12px;margin-inline:-4px}
+.rail{display:flex;align-items:stretch;gap:0;min-width:max-content;padding-inline:4px}
+.proc{display:grid;gap:2px;text-align:left;background:var(--sheet);border:1.5px solid var(--line);border-radius:6px;padding:8px 12px;min-width:132px;cursor:pointer}
+.proc .n{font:600 11px/1 var(--f-mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.proc .t{font:800 15px/1.2 var(--f-display);font-stretch:110%}
+.proc .s{font-size:12px;color:var(--muted)}
+.proc[aria-current="step"]{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.proc.done .s{color:var(--green);font-weight:700}
+.proc:disabled{cursor:not-allowed;opacity:.55}
+.push{display:flex;align-items:center;padding-inline:4px;color:var(--muted)}
+.push svg{width:26px;height:14px}
+
+/* Stage */
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;margin-top:8px;align-items:start}
+@media (max-width:860px){.stage{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:24px;min-width:0}
+@media (max-width:520px){.panel{padding:18px}}
+.st-head{display:grid;gap:8px;margin-bottom:20px}
+.st-head h2{font-size:clamp(28px,5vw,44px);font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.015em}
+.st-head p{margin:0;color:var(--muted);max-width:62ch}
+.coach{background:transparent;border:1.5px dashed var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:10px;min-width:0}
+.coach h3{font-size:16px;font-weight:800;font-stretch:110%}
+.coach ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+.coach p{margin:0;font-size:15px}
+.tag{display:inline-block;font:600 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:4px;background:var(--teal-soft);color:var(--ink)}
+
+/* Question card + options */
+.qcount{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}
+.pips{display:flex;gap:4px;flex-wrap:wrap}
+.pips i{width:14px;height:6px;border-radius:2px;background:var(--line)}
+.pips i.on{background:var(--teal)}
+.qcard{border:1px solid var(--line);border-radius:var(--r);padding:20px;background:var(--paper);font-size:19px;line-height:1.45;margin-bottom:16px}
+.qcard .who{display:block;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.opts.cols-1{grid-template-columns:1fr}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;background:var(--sheet);border:1.5px solid var(--line);border-radius:var(--r);padding:12px 14px;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+.opt:hover:not(:disabled){border-color:var(--teal)}
+.opt:active:not(:disabled){transform:translateY(1px)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:6px;display:grid;place-items:center;font:900 16px/1 var(--f-display);background:var(--teal-soft)}
+.opt .l{display:grid;gap:2px;min-width:0}
+.opt .l b{font-weight:700}
+.opt .l span{font-size:13px;color:var(--muted)}
+.opt:disabled{cursor:default}
+.opt.is-wrong{border-color:var(--red);background:var(--red-soft);opacity:.75}
+.opt.is-right{border-color:var(--green);background:var(--green-soft)}
+.opt.is-right .k{background:var(--green);color:var(--sheet)}
+
+/* Feedback */
+.fb{margin-top:16px;border-radius:var(--r);padding:14px 16px;display:grid;gap:10px;border:1.5px solid var(--line)}
+.fb[data-kind="good"]{border-color:var(--green);background:var(--green-soft)}
+.fb[data-kind="bad"]{border-color:var(--red);background:var(--red-soft)}
+.fb[data-kind="info"]{border-color:var(--amber);background:var(--amber-soft)}
+.fb .fb-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.fb .fb-top strong{font:800 17px/1.2 var(--f-display);font-stretch:110%}
+.fb .pts{font:600 14px/1 var(--f-mono)}
+.fb p{margin:0}
+.btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;background:var(--teal);color:var(--teal-ink);border:0;border-radius:8px;padding:12px 18px;font:800 15px/1 var(--f-display);font-stretch:110%;letter-spacing:.02em;cursor:pointer;justify-self:start}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* DMAIC tally strip */
+.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:18px}
+.strip div{border-top:4px solid var(--line);padding-top:6px;font-size:12px;color:var(--muted)}
+.strip div b{display:block;font:900 20px/1 var(--f-display);color:var(--ink)}
+.strip div.lit{border-top-color:var(--teal)}
+
+/* Five whys ladder */
+.ladder{display:grid;gap:0;margin-bottom:16px}
+.rung{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start;padding-block:8px;position:relative}
+.rung .badge{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:900 13px/1 var(--f-mono);background:var(--teal-soft);border:1.5px solid var(--teal)}
+.rung.problem .badge{background:var(--red-soft);border-color:var(--red)}
+.rung.root .badge{background:var(--amber-soft);border-color:var(--amber)}
+.rung + .rung::before{content:"";position:absolute;left:21px;top:-8px;height:16px;border-left:2px dotted var(--line)}
+.rung p{margin:0;padding-top:10px}
+.rung small{display:block;color:var(--muted);font-size:13px}
+
+/* Fishbone */
+.tray{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;min-height:44px}
+.chip{background:var(--sheet);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;text-align:left;cursor:pointer;line-height:1.3}
+.chip[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft);box-shadow:0 0 0 3px var(--amber-soft)}
+.fish{display:grid;gap:0}
+.bones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.bone{display:grid;gap:6px;align-content:start;text-align:left;background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r);padding:10px;min-height:110px;cursor:pointer}
+.bone:hover{border-color:var(--teal)}
+.bone h4{margin:0;font:800 15px/1.1 var(--f-display);font-stretch:110%}
+.bone .def{font-size:12px;color:var(--muted)}
+.bone ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+.bone li{font-size:13px;background:var(--green-soft);border-radius:6px;padding:4px 8px}
+.spine{display:grid;grid-template-columns:1fr auto;align-items:center;margin-block:10px}
+.spine .line{height:4px;background:var(--ink);border-radius:2px;position:relative}
+.spine .line::after{content:"";position:absolute;right:-2px;top:-6px;border-left:12px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.spine .head{background:var(--red-soft);border:1.5px solid var(--red);border-radius:8px 40px 40px 8px;padding:8px 18px 8px 14px;font:800 14px/1.2 var(--f-display);margin-left:14px;max-width:180px}
+@media (max-width:600px){.fish{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bones{display:contents}.spine{grid-column:1/-1;order:2}.spine .head{max-width:140px;font-size:13px}}
+
+/* Charts */
+.chart-scroll{overflow-x:auto;margin-bottom:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper)}
+.chart-scroll svg{display:block;width:100%;min-width:460px;height:auto}
+svg text{font-family:var(--f-mono);fill:var(--muted)}
+svg .bar{fill:var(--teal);opacity:.35;cursor:pointer;transition:opacity .2s}
+svg .bar.sorted{opacity:.85}
+svg .bar.pick{fill:var(--amber);opacity:1}
+svg .bar:hover{opacity:.7}
+svg .bar.sorted:hover{opacity:1}
+svg .bar.flash{fill:var(--red);opacity:1}
+svg .ax{stroke:var(--line);stroke-width:1}
+svg .cum{fill:none;stroke:var(--ink);stroke-width:2.5}
+svg .cumdot{fill:var(--sheet);stroke:var(--ink);stroke-width:2}
+svg .ref{stroke:var(--red);stroke-width:1.5;stroke-dasharray:5 4}
+svg .lbl{fill:var(--ink);font-size:12px}
+svg .val{fill:var(--ink);font-size:13px;font-weight:600}
+svg .lim{stroke:var(--red);stroke-width:1.5;stroke-dasharray:6 4}
+svg .cl{stroke:var(--teal);stroke-width:1.5}
+svg .run{fill:none;stroke:var(--muted);stroke-width:1.5}
+svg .pt{fill:var(--sheet);stroke:var(--ink);stroke-width:2}
+svg .pt.sig{fill:var(--red);stroke:var(--red)}
+svg .zone{fill:var(--amber-soft);opacity:.8}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:12px}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.legend i{width:18px;height:0;border-top:2px dashed var(--red);display:inline-block}
+.legend i.cl{border-top:2px solid var(--teal)}
+.meter{font:600 15px/1.3 var(--f-mono)}
+
+/* Brief + finish */
+.charter{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-block:18px}
+.charter div{padding:12px 14px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);min-width:0}
+.charter div:nth-child(2n){border-right:0}
+.charter dt{font:600 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.charter dd{margin:0}
+@media (max-width:560px){.charter{grid-template-columns:1fr}.charter div{border-right:0}}
+.big-sigma{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.big-sigma b{font:900 clamp(56px,12vw,96px)/1 var(--f-display);font-stretch:125%;color:var(--teal)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-block:16px}
+.stats div{border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:4px}
+.stats b{font:600 22px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.stats small{color:var(--muted);font-size:12px}
+.recap{display:grid;gap:0;margin-top:8px;border-top:1px solid var(--line)}
+.recap div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding-block:10px;border-bottom:1px solid var(--line)}
+.recap div b{font:800 15px/1.3 var(--f-display);font-stretch:110%}
+@media (max-width:520px){.recap div{grid-template-columns:1fr;gap:2px}}
+.lede{font-size:18px;max-width:62ch;margin:0}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:999px;font:800 15px/1 var(--f-display);font-stretch:110%;display:flex;gap:10px;align-items:center;z-index:9;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.toast .belt-bar{border-color:transparent}
+
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.shake{animation:shake .35s ease}
+@keyframes rise{from{transform:translateY(8px);opacity:.2}to{transform:none;opacity:1}}
+.rise{animation:rise .3s ease both}
+@media (prefers-reduced-motion:reduce){.shake,.rise{animation:none}.gauge i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Kaizen Ward</h1>
+      <span class="case">A Lean Six Sigma game · Ward 7 discharge project</span>
+    </div>
+    <div class="hud" aria-live="polite">
+      <div class="hud-cell"><small>Score</small><b id="hud-score">0</b></div>
+      <div class="hud-cell" title="Your answers measured like a process: each question is an opportunity, each wrong first try is a defect.">
+        <small>Your sigma level</small><b id="hud-sigma">—</b>
+        <div class="gauge"><i id="hud-gauge"></i></div>
+        <small id="hud-dpmo">0 defects / 0 opportunities</small>
+      </div>
+      <div class="hud-cell"><small>Belt</small><div class="belt"><span class="belt-bar" id="hud-beltbar"></span><b id="hud-belt" style="font-size:16px">White</b></div></div>
+    </div>
+  </header>
+
+  <nav class="rail-scroll" aria-label="Tool stations">
+    <div class="rail" id="rail"></div>
+  </nav>
+
+  <main class="stage">
+    <section class="panel" id="main"></section>
+    <aside class="coach" id="coach"></aside>
+  </main>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- Content ---------- */
+const STATIONS = [
+  {id:"dmaic",  name:"DMAIC",         phase:"The roadmap", tool:"DMAIC roadmap"},
+  {id:"waste",  name:"Waste Walk",    phase:"Measure",     tool:"8 wastes (DOWNTIME)"},
+  {id:"whys",   name:"5 Whys",        phase:"Analyze",     tool:"5 Whys"},
+  {id:"fish",   name:"Fishbone",      phase:"Analyze",     tool:"Fishbone (Ishikawa)"},
+  {id:"pareto", name:"Pareto",        phase:"Analyze",     tool:"Pareto chart"},
+  {id:"spc",    name:"Control Chart", phase:"Control",     tool:"Control chart (SPC)"}
+];
+
+const PHASES = [
+  {k:"D", n:"Define",  d:"Agree the problem, goal, scope and customer."},
+  {k:"M", n:"Measure", d:"Map the current process and collect reliable baseline data."},
+  {k:"A", n:"Analyze", d:"Find and prove the root causes."},
+  {k:"I", n:"Improve", d:"Design, test and roll out fixes for the root causes."},
+  {k:"C", n:"Control", d:"Hold the gains with standard work and monitoring."}
+];
+const DMAIC_Q = [
+  {t:"Time 40 discharges from “medically fit” to “left the ward”.", a:1, r:"Measure. You need a baseline before you can prove any change worked."},
+  {t:"Write the project charter: discharges take 5.8 h, goal under 3 h within 12 weeks.", a:0, r:"Define. The charter states the problem, goal, scope and team before any data work starts."},
+  {t:"Draw a Pareto chart of the delay reasons to see which ones cost the most hours.", a:2, r:"Analyze. Pareto points you at the few causes worth chasing."},
+  {t:"Pilot writing take-home prescriptions the afternoon before a planned discharge.", a:3, r:"Improve. You are testing a fix for a proven root cause, on a small scale first."},
+  {t:"Build a SIPOC with the bed manager and ward sister to agree where the process starts and ends.", a:0, r:"Define. SIPOC (Suppliers, Inputs, Process, Outputs, Customers) sets the scope on one page."},
+  {t:"Plot daily discharge times on a control chart and hand the board over to the ward team.", a:4, r:"Control. The process owner now watches the chart, so the gain doesn't slip away."},
+  {t:"Check that two nurses timing the same discharge record the same times.", a:1, r:"Measure. This is a measurement system check. Bad data leads to bad conclusions."},
+  {t:"Ask 5 Whys about the slowest discharges and sketch a fishbone with the team.", a:2, r:"Analyze. Both tools dig below symptoms to find root causes."},
+  {t:"Run a 5S on the discharge lounge supply cupboard so nurses stop searching for forms.", a:3, r:"Improve. 5S (Sort, Set in order, Shine, Standardize, Sustain) removes searching and motion."},
+  {t:"Add the new discharge standard work to the ward induction pack.", a:4, r:"Control. Standard work makes the new way the normal way, even for new starters."}
+];
+
+const WASTES = [
+  {k:"D", n:"Defects",            d:"Errors that cause rework or harm."},
+  {k:"O", n:"Overproduction",     d:"Doing work before it is needed, or more than is needed."},
+  {k:"W", n:"Waiting",            d:"Patients, staff or information idle, waiting for the next step."},
+  {k:"N", n:"Non-utilized talent",d:"Not using people's skills, ideas and experience."},
+  {k:"T", n:"Transportation",     d:"Moving patients, items or information more than needed."},
+  {k:"I", n:"Inventory",          d:"More supplies or work in progress than you need right now."},
+  {k:"M", n:"Motion",             d:"Unneeded movement of staff: walking, reaching, searching."},
+  {k:"E", n:"Extra-processing",   d:"Doing more than the patient needs: duplicate entries, extra checks."}
+];
+const WASTE_Q = [
+  {t:"Mrs Okafor sits dressed, bag packed, for 3 hours until her medicines arrive.", a:2, r:"Waiting. The patient is ready but the next step isn't. On most wards this is the biggest waste."},
+  {t:"A nurse walks to the far store room nine times a shift to fetch dressings.", a:6, r:"Motion. It is the person moving. Stock the dressings at the point of use."},
+  {t:"Allergy details are written on paper, typed into the e-record, then copied onto the drug chart.", a:7, r:"Extra-processing. The patient gains nothing from the second and third copy, and each copy adds risk."},
+  {t:"The discharge letter is sent back twice because the GP's details are wrong.", a:0, r:"Defects. Every error means rework, and some errors reach the patient."},
+  {t:"The ward cupboard holds three months of catheters, and some expire before they are used.", a:5, r:"Inventory. Excess stock ties up money and space, and it expires."},
+  {t:"Paper notes travel to pharmacy, back to the ward, then on to the discharge lounge.", a:4, r:"Transportation. The item is moving, not the person. Fewer hand-offs means less carrying and less risk of loss."},
+  {t:"Healthcare assistants who spot delays every day are never asked for ideas at the huddle.", a:3, r:"Non-utilized talent. The people closest to the work often know the fix."},
+  {t:"Pharmacy prepares take-home packs for every patient “just in case”, including those not going home.", a:1, r:"Overproduction. Making things before there is demand creates rework and waste downstream."}
+];
+
+const WHYS_PROBLEM = "Mr Patel was medically fit to go home at 10:00 but left the ward at 16:00.";
+const WHYS_Q = [
+  {q:"Why did he leave at 16:00?", o:[
+    {t:"He was waiting for his take-home medicines from pharmacy.", ok:true},
+    {t:"The nurses were too slow.", why:"That blames people and gives you nothing to fix. Ask what the process was doing."},
+    {t:"The hospital is always busy.", why:"Too vague to act on. A good “why” is specific and you can check it with data."}
+  ], r:"Specific, and you can check it: the discharge log shows the medicines arrived at 15:40."},
+  {q:"Why was he waiting for his medicines?", o:[
+    {t:"We need more pharmacists.", why:"That jumps straight to a solution. Keep asking why before you decide on a fix."},
+    {t:"Pharmacy received the prescription at 13:30.", ok:true},
+    {t:"Pharmacy doesn't care about discharges.", why:"Blame again. Lean assumes good people stuck in a poor process."}
+  ], r:"Pharmacy turned it round in about 2 hours. The bigger gap is earlier: 10:00 to 13:30."},
+  {q:"Why did pharmacy get it so late?", o:[
+    {t:"The doctor forgot.", why:"Possible once, but this happens most days. Look for the pattern, not one person's mistake."},
+    {t:"Prescriptions are slow by nature.", why:"That accepts the problem instead of explaining it."},
+    {t:"The doctor wrote it only after finishing the whole ward round.", ok:true}
+  ], r:"The team watched three ward rounds. All discharge prescriptions were written after the round ended."},
+  {q:"Why was it written after the round?", o:[
+    {t:"All discharge prescriptions are written together, in one batch, at the end of the round.", ok:true},
+    {t:"The doctor prefers it that way.", why:"Preference doesn't explain why every doctor does the same. Look at how the work is set up."},
+    {t:"The computer is slow.", why:"Worth checking, but the observation showed the delay is when the work starts, not how long it takes."}
+  ], r:"Batching. Every patient waits for the whole batch, so the first patient seen waits the longest."},
+  {q:"Why are they batched?", o:[
+    {t:"Doctors are lazy.", why:"Blame stops learning. Five whys should lead you to a process you can change."},
+    {t:"There's no standard work saying to write them the day before for planned discharges.", ok:true},
+    {t:"Patients ask to leave in the afternoon.", why:"The data shows most patients wanted to leave before noon."}
+  ], r:"Root cause found: a missing standard. That is something the team can change."}
+];
+const WHYS_FIX = "Countermeasure: for every planned discharge, the doctor writes the take-home prescription the afternoon before, and pharmacy prepares it overnight.";
+
+const BONES = [
+  {n:"People",      d:"Staffing, skills, training, handovers"},
+  {n:"Methods",     d:"Procedures, policies, how work is done"},
+  {n:"Equipment",   d:"Machines, devices, IT"},
+  {n:"Materials",   d:"Supplies, forms, consumables"},
+  {n:"Measurement", d:"How data is recorded and checked"},
+  {n:"Environment", d:"Layout, location, opening hours"}
+];
+const FISH_Q = [
+  {t:"Prescriptions written in one batch after the ward round", b:1},
+  {t:"Only two wheelchairs for the whole floor", b:2},
+  {t:"Discharge lounge closes at 17:00", b:5},
+  {t:"New junior doctors unsure of the discharge checklist", b:0},
+  {t:"Discharge forms run out at weekends", b:3},
+  {t:"“Ready for discharge” time is not recorded anywhere", b:4},
+  {t:"No agreed time for the daily discharge decision", b:1},
+  {t:"One pharmacist covers four wards after noon", b:0},
+  {t:"Shared printer for discharge letters often jams", b:2},
+  {t:"Delay reasons logged as free text, so they can't be counted", b:4},
+  {t:"Medicine packs arrive without labels and must be relabelled", b:3},
+  {t:"Pharmacy is two floors away from the ward", b:5}
+];
+
+const PARETO = [
+  {k:"Transport",        v:21, l:["Transport"]},
+  {k:"Family pickup",    v:5,  l:["Family","pickup"]},
+  {k:"TTO medicines",    v:46, l:["TTO","medicines"]},
+  {k:"Other",            v:2,  l:["Other"]},
+  {k:"Senior review",    v:14, l:["Senior","review"]},
+  {k:"Oxygen / kit",     v:3,  l:["Oxygen","/ kit"]},
+  {k:"Discharge letter", v:9,  l:["Letter"]}
+];
+
+const SPC = { mean:2.6, ucl:3.4, lcl:1.8 };
+const SPC_OPTS = [
+  {t:"In control", s:"Only common-cause variation", fix:"Leave the process alone. Reacting to normal noise (tampering) makes variation worse."},
+  {t:"Point outside a limit", s:"One point beyond UCL or LCL", fix:"Investigate that day. Something unusual happened."},
+  {t:"Run of 8", s:"8+ points on one side of the mean", fix:"The process has shifted. Find out what changed when the run began."},
+  {t:"Trend of 6", s:"6+ points steadily rising or falling", fix:"Something is drifting. Act before it crosses a limit."}
+];
+const SPC_Q = [
+  {d:[2.5,2.8,2.4,2.7,2.9,2.3,2.6,2.8,2.5,2.2,2.7,3.0,2.4,3.9,2.9,2.5,2.3,2.7,2.6,2.8], a:1, sig:[13], r:"Day 14 is above the upper control limit. The team found an outbreak closure that day."},
+  {d:[2.5,2.8,2.4,2.7,2.9,2.3,2.6,2.8,2.5,2.2,2.7,3.0,2.4,2.6,2.9,2.5,2.3,2.7,2.6,2.8], a:0, sig:[], r:"Points bounce around the mean inside the limits with no pattern. This is normal variation."},
+  {d:[2.6,2.4,2.8,2.5,2.3,2.7,2.5,2.4,2.2,2.3,2.4,2.6,2.8,2.9,3.1,3.3,2.7,2.5,2.6,2.4], a:3, sig:[8,9,10,11,12,13,14,15], r:"Days 9 to 16 climb steadily. Discharges slow as a weekend rota gap takes hold."},
+  {d:[2.5,2.7,2.3,2.8,2.4,2.6,2.2,2.7,2.5,2.4,2.9,3.0,2.8,3.1,2.9,3.2,2.8,3.0,2.5,2.7], a:2, sig:[10,11,12,13,14,15,16,17], r:"Days 11 to 18 all sit above the mean. The new pharmacist rota went live on day 11."}
+];
+
+/* ---------- State ---------- */
+const KEY = "kaizen-ward-v1";
+function fresh(){ return {view:"brief", done:[], score:0, opps:0, defects:0, streak:0, best:0, seen:{}, wrong:{}, ok:{}}; }
+function load(){ try{ const s = JSON.parse(localStorage.getItem(KEY)); return s && s.done ? s : null; }catch(e){ return null; } }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+let S = fresh();
+let L = {}; // per-station working state
+
+/* ---------- Helpers ---------- */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function shake(el){ if(reduce||!el) return; el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
+
+function invNorm(p){
+  const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.357751867269,-30.66479806614716,2.506628277459239],
+        b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],
+        c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],
+        d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416];
+  const pl=0.02425; let q,r;
+  if(p<pl){ q=Math.sqrt(-2*Math.log(p)); return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1); }
+  if(p<=1-pl){ q=p-0.5; r=q*q; return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1); }
+  q=Math.sqrt(-2*Math.log(1-p)); return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+}
+// Short-term sigma with the conventional 1.5 shift, capped at 6.
+function sigma(){
+  if(!S.opps) return null;
+  if(!S.defects) return 6;
+  const p = 1 - S.defects/S.opps;
+  if(p <= 0) return 0;
+  return Math.max(0, Math.min(6, invNorm(p) + 1.5));
+}
+function dpmo(){ return S.opps ? Math.round(S.defects/S.opps*1e6) : 0; }
+function belt(n){ n = n==null ? S.done.length : n; return n>=6 ? "Black" : n>=4 ? "Green" : n>=2 ? "Yellow" : "White"; }
+
+function hud(){
+  $("#hud-score").textContent = S.score.toLocaleString();
+  const sg = sigma();
+  $("#hud-sigma").textContent = sg==null ? "—" : sg.toFixed(1)+"σ";
+  $("#hud-gauge").style.width = (sg==null?0:sg/6*100)+"%";
+  $("#hud-dpmo").textContent = `${S.defects} defect${S.defects===1?"":"s"} / ${S.opps} opportunities`;
+  const b = belt();
+  $("#hud-belt").textContent = b;
+  $("#hud-beltbar").dataset.belt = b;
+}
+
+// One question = one opportunity. A wrong first try = one defect.
+function mark(qid, correct){
+  if(S.ok[qid]) return null; // replay: no scoring
+  if(!S.seen[qid]){ S.seen[qid]=1; S.opps++; }
+  let pts = 0;
+  if(correct){
+    S.ok[qid]=1;
+    if(S.wrong[qid]){ pts=40; }
+    else { S.streak++; S.best=Math.max(S.best,S.streak); pts = 100 + (S.streak>=3 ? 25 : 0); }
+    S.score += pts;
+  } else {
+    if(!S.wrong[qid]){ S.wrong[qid]=1; S.defects++; }
+    S.streak = 0;
+  }
+  save(); hud();
+  return pts;
+}
+
+function toast(html){
+  const t = $("#toast"); t.innerHTML = html; t.hidden = false;
+  clearTimeout(toast._t); toast._t = setTimeout(()=>{ t.hidden = true; }, 2600);
+}
+
+/* ---------- Feedback panel ---------- */
+function feedback(kind, title, body, pts, next){
+  const fb = $("#fb"); if(!fb) return;
+  fb.hidden = false; fb.dataset.kind = kind;
+  const ptsTxt = pts==null ? (kind==="good" ? "Replay · no points" : "") : pts ? `+${pts} pts${pts>100?" · streak bonus":""}` : "";
+  fb.innerHTML = `<div class="fb-top"><strong>${title}</strong><span class="pts">${ptsTxt}</span></div><p>${body}</p>`;
+  if(next){
+    const b = document.createElement("button");
+    b.className = "btn"; b.type = "button"; b.textContent = next.label;
+    b.onclick = next.go; fb.appendChild(b);
+    b.focus({preventScroll:true});
+  }
+  fb.classList.remove("rise"); void fb.offsetWidth; fb.classList.add("rise");
+}
+function clearFb(){ const fb=$("#fb"); if(fb){ fb.hidden=true; fb.innerHTML=""; } }
+
+/* Generic multiple choice */
+function mcq(host, o){
+  // o: {qid, opts:[{k?,t,s?,why}], answer, right, cols1, next}
+  host.innerHTML = "";
+  const box = document.createElement("div");
+  box.className = "opts" + (o.cols1 ? " cols-1" : "");
+  let solved = false;
+  o.opts.forEach((op,i)=>{
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "opt";
+    b.innerHTML = (op.k ? `<span class="k">${esc(op.k)}</span>` : "") + `<span class="l"><b>${esc(op.t)}</b>${op.s?`<span>${esc(op.s)}</span>`:""}</span>`;
+    b.onclick = () => {
+      if(solved) return;
+      if(i === o.answer){
+        solved = true;
+        b.classList.add("is-right");
+        box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+        const pts = mark(o.qid, true);
+        feedback("good", o.rightTitle || "Correct", o.right, pts, o.next);
+      } else {
+        b.classList.add("is-wrong"); b.disabled = true; shake(b);
+        mark(o.qid, false);
+        feedback("bad", "Not quite", op.why || "Try another option.");
+      }
+    };
+    box.appendChild(b);
+  });
+  host.appendChild(box);
+}
+
+function pips(n, i){ return `<span class="pips" aria-hidden="true">${Array.from({length:n},(_,j)=>`<i class="${j<i?"on":""}"></i>`).join("")}</span>`; }
+
+/* ---------- Shell ---------- */
+function rail(){
+  const r = $("#rail"); r.innerHTML = "";
+  const arrow = `<span class="push" aria-hidden="true"><svg viewBox="0 0 26 14"><path d="M0 7h20" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/><path d="M18 2l7 5-7 5z" fill="currentColor"/></svg></span>`;
+  STATIONS.forEach((st,i)=>{
+    const done = S.done.includes(st.id);
+    const open = i===0 || S.done.includes(STATIONS[i-1].id) || done;
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "proc" + (done ? " done" : "");
+    b.disabled = !open;
+    if(S.view===st.id) b.setAttribute("aria-current","step");
+    b.innerHTML = `<span class="n">Station ${i+1} · ${esc(st.phase)}</span><span class="t">${esc(st.name)}</span><span class="s">${done?"✓ Complete":open?"Open":"Locked"}</span>`;
+    b.onclick = () => go(st.id);
+    if(i) r.insertAdjacentHTML("beforeend", arrow);
+    r.appendChild(b);
+  });
+}
+
+function go(view){
+  S.view = view; L = {}; save();
+  rail(); render();
+  const cur = $('.proc[aria-current="step"]');
+  if(cur) cur.scrollIntoView({block:"nearest", inline:"nearest", behavior: reduce?"auto":"smooth"});
+  window.scrollTo({top:0, behavior: reduce?"auto":"smooth"});
+}
+
+function complete(id){
+  const before = belt();
+  if(!S.done.includes(id)) S.done.push(id);
+  save(); hud(); rail();
+  const after = belt();
+  if(after !== before) toast(`<span class="belt-bar" data-belt="${after}"></span>${after} Belt earned`);
+}
+
+function nextStation(id){
+  const i = STATIONS.findIndex(s=>s.id===id);
+  return i < STATIONS.length-1 ? STATIONS[i+1].id : "finish";
+}
+
+function head(st, lede){
+  const i = STATIONS.indexOf(st);
+  return `<div class="st-head"><span class="eyebrow">Station ${i+1} of 6 · ${esc(st.phase)}</span><h2>${esc(st.name)}</h2><p>${lede}</p></div>`;
+}
+function coach(title, items, foot){
+  $("#coach").innerHTML = `<span class="tag">Coach's note</span><h3>${title}</h3><ul>${items.map(x=>`<li>${x}</li>`).join("")}</ul>${foot?`<p>${foot}</p>`:""}`;
+}
+function stationEnd(id, title, body){
+  complete(id);
+  const nx = nextStation(id);
+  feedback("info", title, body, undefined, {label: nx==="finish" ? "See your results →" : `Go to station ${STATIONS.findIndex(s=>s.id===nx)+1}: ${STATIONS.find(s=>s.id===nx).name} →`, go:()=>go(nx)});
+}
+
+function render(){
+  $("#coach").hidden = false;
+  ({brief, dmaic, waste, whys, fish, pareto, spc, finish})[S.view]();
+}
+
+/* ---------- Views ---------- */
+function brief(){
+  $("#main").innerHTML = `
+    <div class="st-head">
+      <span class="eyebrow">Your first shift as Green Belt</span>
+      <h2>Patients are fit to go home. They just can't leave.</h2>
+    </div>
+    <p class="lede">On Ward 7 at City General, a patient declared fit for discharge waits almost six hours to leave. Downstairs, the Emergency Department has people on trolleys waiting for those beds. Work through six stations, one Lean Six Sigma tool each, and fix the flow.</p>
+    <dl class="charter">
+      <div><dt>Problem</dt><dd>Fit-to-leave → left ward averages <b class="mono">5.8 h</b></dd></div>
+      <div><dt>Goal</dt><dd>Under <b class="mono">3.0 h</b> within 12 weeks</dd></div>
+      <div><dt>Scope</dt><dd>Discharge decision to departure, Ward 7 only</dd></div>
+      <div><dt>Customer (CTQ)</dt><dd>Patient leaves within 3 h of being told they can go</dd></div>
+    </dl>
+    <div class="row"><button class="btn" type="button" id="start">${S.done.length ? "Continue the project →" : "Start at station 1 →"}</button>
+    ${S.opps ? `<button class="btn ghost" type="button" id="reset">Start over</button>` : ""}</div>
+    <div class="fb" id="fb" hidden></div>`;
+  $("#start").onclick = () => go(STATIONS.find(s=>!S.done.includes(s.id))?.id || "finish");
+  const rs = $("#reset"); if(rs) rs.onclick = confirmReset;
+  coach("How the game scores you", [
+    "Every question is an <b>opportunity</b>. A wrong first try is a <b>defect</b>.",
+    "Your sigma level comes from defects per million opportunities (DPMO), just like a real process. 6σ means 3.4 defects per million.",
+    "Right first time: <b class='mono'>+100</b>. Three in a row adds a <b class='mono'>+25</b> streak bonus. Right after a miss: <b class='mono'>+40</b>.",
+    "Finish stations to earn belts: Yellow at 2, Green at 4, Black at 6."
+  ]);
+}
+
+function confirmReset(){
+  feedback("bad", "Start over?", "This clears your score, sigma level and belts on this device.", undefined, {label:"Yes, clear my progress", go:()=>{ S = fresh(); save(); hud(); go("brief"); }});
+}
+
+function dmaic(){
+  const st = STATIONS[0];
+  L.i = L.i || 0;
+  const q = DMAIC_Q[L.i];
+  const tally = PHASES.map((p,pi)=>({p, n: DMAIC_Q.slice(0, L.i).filter(x=>x.a===pi).length}));
+  $("#main").innerHTML = head(st, "Every Six Sigma project follows the same five phases. Sort each Ward 7 task into the phase where it belongs.") + `
+    <div class="qcount"><span class="eyebrow">Task ${L.i+1} of ${DMAIC_Q.length}</span>${pips(DMAIC_Q.length, L.i)}</div>
+    <div class="qcard"><span class="who">Project task</span>${esc(q.t)}</div>
+    <div id="opts"></div>
+    <div class="fb" id="fb" hidden></div>
+    <div class="strip">${tally.map(x=>`<div class="${x.n?"lit":""}"><b>${x.p.k}</b>${x.p.n} · ${x.n}</div>`).join("")}</div>`;
+  mcq($("#opts"), {
+    qid:"dmaic-"+L.i, answer:q.a, right:q.r, rightTitle: PHASES[q.a].n,
+    opts: PHASES.map(p=>({k:p.k, t:p.n, s:p.d, why:`${p.n} is for this: ${p.d.toLowerCase()} Does this task do that?`})),
+    next:{label: L.i < DMAIC_Q.length-1 ? "Next task →" : "Finish station →", go:()=>{ if(L.i < DMAIC_Q.length-1){ L.i++; dmaic(); } else { L.i = DMAIC_Q.length; dmaicDone(); } }}
+  });
+  coach("DMAIC in one line each", PHASES.map(p=>`<b>${p.k} · ${p.n}</b>: ${p.d}`), "Projects fail most often by jumping from Define straight to Improve. Data and root causes come first.");
+}
+function dmaicDone(){
+  $("#opts").innerHTML = ""; $(".qcard").innerHTML = `<span class="who">Roadmap sorted</span>Define → Measure → Analyze → Improve → Control.`;
+  $(".strip").innerHTML = PHASES.map((p,pi)=>`<div class="lit"><b>${p.k}</b>${p.n} · ${DMAIC_Q.filter(x=>x.a===pi).length}</div>`).join("");
+  $(".pips").innerHTML = DMAIC_Q.map(()=>`<i class="on"></i>`).join("");
+  stationEnd("dmaic", "Station complete", "You know the roadmap. Next, walk the ward and see the waste for yourself. Lean calls this going to the gemba, the place where the work happens.");
+}
+
+function waste(){
+  const st = STATIONS[1];
+  L.i = L.i || 0;
+  const q = WASTE_Q[L.i];
+  $("#main").innerHTML = head(st, "Lean names eight kinds of waste. Remember them as <b>DOWNTIME</b>. You're on a gemba walk through Ward 7. Name the waste in each thing you see.") + `
+    <div class="qcount"><span class="eyebrow">Observation ${L.i+1} of ${WASTE_Q.length}</span>${pips(WASTE_Q.length, L.i)}</div>
+    <div class="qcard"><span class="who">Seen on the ward</span>${esc(q.t)}</div>
+    <div id="opts"></div>
+    <div class="fb" id="fb" hidden></div>`;
+  mcq($("#opts"), {
+    qid:"waste-"+L.i, answer:q.a, right:q.r, rightTitle: WASTES[q.a].n,
+    opts: WASTES.map(w=>({k:w.k, t:w.n, why:`<b>${w.n}</b> means: ${w.d.toLowerCase()} Look again at what is actually being wasted here.`})),
+    next:{label: L.i < WASTE_Q.length-1 ? "Next observation →" : "Finish station →", go:()=>{ if(L.i < WASTE_Q.length-1){ L.i++; waste(); } else { $("#opts").innerHTML=""; $(".qcard").innerHTML = `<span class="who">Gemba walk done</span>Eight observations, eight wastes. Waiting cost the most patient time.`; stationEnd("waste","Station complete","You've seen the waste. Now find out why patients wait. Next stop: the 5 Whys."); } }}
+  });
+  coach("DOWNTIME", WASTES.map(w=>`<b>${w.k} · ${w.n}</b>: ${w.d}`), "Transport moves the thing. Motion is the person moving.");
+}
+
+function whys(){
+  const st = STATIONS[2];
+  L.i = L.i || 0;
+  const answered = WHYS_Q.slice(0, L.i);
+  const ladder = `<div class="ladder">
+    <div class="rung problem"><span class="badge">!</span><p><small>Problem</small>${esc(WHYS_PROBLEM)}</p></div>
+    ${answered.map((w,j)=>`<div class="rung ${j===4?"root":""}"><span class="badge">W${j+1}</span><p><small>${esc(w.q)}</small>${esc(w.o.find(x=>x.ok).t)}</p></div>`).join("")}
+  </div>`;
+  $("#main").innerHTML = head(st, "Ask “why?” about five times to get from a symptom to a root cause you can fix. Pick the answer a good improvement team would accept: specific, backed by evidence, and free of blame.") + ladder + (L.i < WHYS_Q.length ? `
+    <div class="qcount"><span class="eyebrow">Why ${L.i+1} of 5</span>${pips(5, L.i)}</div>
+    <div class="qcard"><span class="who">Why ${L.i+1}</span>${esc(WHYS_Q[L.i].q)}</div>
+    <div id="opts"></div>` : "") + `<div class="fb" id="fb" hidden></div>`;
+  coach("Good whys vs bad whys", [
+    "<b>Good</b>: specific, and you can check it against data or by watching the work.",
+    "<b>Blame</b> (“lazy”, “doesn't care”) ends the inquiry. Good people in a bad process still get bad results.",
+    "<b>Solution-jumping</b> (“hire more staff”) skips the cause.",
+    "Stop when you reach a process you can change. That's the root cause."
+  ]);
+  if(L.i >= WHYS_Q.length){
+    stationEnd("whys", "Root cause: no standard work", esc(WHYS_FIX) + " One root cause rarely explains everything, so next you'll map all the causes on a fishbone.");
+    return;
+  }
+  const q = WHYS_Q[L.i];
+  mcq($("#opts"), {
+    qid:"whys-"+L.i, cols1:true, answer:q.o.findIndex(x=>x.ok), right:q.r, rightTitle:"Good why",
+    opts:q.o.map(x=>({t:x.t, why:x.why})),
+    next:{label: L.i < 4 ? "Ask why again →" : "Show the root cause →", go:()=>{ L.i++; whys(); }}
+  });
+}
+
+function fish(){
+  const st = STATIONS[3];
+  if(!L.order){ L.order = FISH_Q.map((_,i)=>i); L.placed = []; L.sel = null; }
+  const tray = L.order.filter(i=>!L.placed.includes(i));
+  const bone = (bi) => `<button type="button" class="bone" data-b="${bi}"><h4>${BONES[bi].n}</h4><span class="def">${BONES[bi].d}</span><ul>${L.placed.filter(i=>FISH_Q[i].b===bi).map(i=>`<li>${esc(FISH_Q[i].t)}</li>`).join("")}</ul></button>`;
+  $("#main").innerHTML = head(st, "A fishbone (Ishikawa) diagram sorts every possible cause into categories, so the team doesn't fixate on one idea. Tap a cause card, then tap the bone where it belongs.") + `
+    <div class="qcount"><span class="eyebrow">${L.placed.length} of ${FISH_Q.length} causes placed</span>${pips(FISH_Q.length, L.placed.length)}</div>
+    <div class="tray" id="tray">${tray.map(i=>`<button type="button" class="chip" data-i="${i}" aria-pressed="${L.sel===i}">${esc(FISH_Q[i].t)}</button>`).join("") || `<span class="eyebrow">All causes placed</span>`}</div>
+    <div class="fish">
+      <div class="bones">${[0,1,2].map(bone).join("")}</div>
+      <div class="spine"><div class="line"></div><div class="head">Discharge takes over 3 h</div></div>
+      <div class="bones">${[3,4,5].map(bone).join("")}</div>
+    </div>
+    <div class="fb" id="fb" hidden></div>`;
+  coach("The 6 bones used in healthcare", BONES.map(b=>`<b>${b.n}</b>: ${b.d}`), "A cause can touch two bones. Place it where you would act on it. The fishbone shows possible causes. Data (the next station) tells you which ones matter.");
+  $("#tray").onclick = e => {
+    const c = e.target.closest(".chip"); if(!c) return;
+    const i = +c.dataset.i; L.sel = L.sel===i ? null : i;
+    $("#tray").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed", String(+x.dataset.i===L.sel)));
+  };
+  document.querySelectorAll(".bone").forEach(b=>b.onclick = () => {
+    const bi = +b.dataset.b;
+    if(L.sel==null){ feedback("info","Pick a cause first","Tap one of the cause cards above, then tap a bone."); shake($("#tray")); return; }
+    const i = L.sel, q = FISH_Q[i];
+    if(q.b === bi){
+      const pts = mark("fish-"+i, true);
+      L.placed.push(i); L.sel = null;
+      fish();
+      if(L.placed.length === FISH_Q.length){
+        stationEnd("fish","Fishbone complete","Twelve possible causes on six bones. The team now has more ideas than time. Use data to decide which causes to fix first.");
+      } else feedback("good", BONES[bi].n, `“${esc(q.t)}” is a ${BONES[bi].n.toLowerCase()} cause.`, pts);
+    } else {
+      mark("fish-"+i, false); shake(b);
+      feedback("bad", `Not ${BONES[bi].n}`, `${BONES[bi].n} covers ${BONES[bi].d.toLowerCase()}. Ask what you would have to change to remove “${esc(q.t)}”.`);
+    }
+  });
+}
+
+/* Pareto */
+function paretoSvg(){
+  const W=520, H=320, ml=44, mr=48, mt=18, mb=66, pw=W-ml-mr, ph=H-mt-mb;
+  const order = L.sorted.concat(PARETO.map((_,i)=>i).filter(i=>!L.sorted.includes(i)));
+  const total = PARETO.reduce((s,x)=>s+x.v,0);
+  const bw = pw/order.length, y = v => mt + ph - v/total*ph;
+  let g = "";
+  [0,25,50,75,100].forEach(t=>{ g += `<line class="ax" x1="${ml}" x2="${W-mr}" y1="${y(t/100*total)}" y2="${y(t/100*total)}" opacity=".5"/><text x="${ml-8}" y="${y(t/100*total)+4}" text-anchor="end" font-size="12">${t}</text>`; });
+  const fullySorted = L.sorted.length === PARETO.length;
+  if(fullySorted){ [0,25,50,75,100].forEach(t=>{ g += `<text x="${W-mr+8}" y="${y(t/100*total)+4}" font-size="12">${t}%</text>`; }); }
+  g += `<text x="12" y="${mt+ph/2}" font-size="12" transform="rotate(-90 12 ${mt+ph/2})" text-anchor="middle">Delay hours</text>`;
+  order.forEach((ci,pos)=>{
+    const c = PARETO[ci], x = ml + pos*bw + 6, h = c.v/total*ph;
+    const cls = "bar" + (L.sorted.includes(ci) ? " sorted" : "") + (L.pick && L.pick.has(ci) ? " pick" : "") + (L.flash===ci ? " flash" : "");
+    g += `<rect class="${cls}" data-c="${ci}" x="${x}" y="${y(c.v)}" width="${bw-12}" height="${Math.max(h,1)}" rx="3" tabindex="0" role="button" aria-label="${esc(c.k)}, ${c.v} hours"/>`;
+    g += `<text class="val" x="${x+(bw-12)/2}" y="${y(c.v)-6}" text-anchor="middle">${c.v}</text>`;
+    const [l1, l2] = c.l;
+    g += `<text class="lbl" x="${x+(bw-12)/2}" y="${mt+ph+18}" text-anchor="middle">${esc(l1)}</text>`;
+    if(l2) g += `<text class="lbl" x="${x+(bw-12)/2}" y="${mt+ph+34}" text-anchor="middle">${esc(l2)}</text>`;
+  });
+  g += `<line class="ax" x1="${ml}" x2="${W-mr}" y1="${mt+ph}" y2="${mt+ph}"/>`;
+  if(fullySorted){
+    let cum = 0; const pts = order.map((ci,pos)=>{ cum += PARETO[ci].v; return [ml + pos*bw + bw/2, y(cum)]; });
+    g += `<line class="ref" x1="${ml}" x2="${W-mr}" y1="${y(0.8*total)}" y2="${y(0.8*total)}"/><text x="${W-mr-4}" y="${y(0.8*total)-6}" text-anchor="end" font-size="12" style="fill:var(--red)">80%</text>`;
+    g += `<polyline class="cum" points="${pts.map(p=>p.join(",")).join(" ")}"/>`;
+    g += pts.map(p=>`<circle class="cumdot" cx="${p[0]}" cy="${p[1]}" r="4"/>`).join("");
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Pareto chart of discharge delay reasons">${g}</svg>`;
+}
+function pareto(){
+  const st = STATIONS[4];
+  if(!L.sorted){ L.sorted = []; L.phase = "sort"; L.pick = new Set(); }
+  const total = PARETO.reduce((s,x)=>s+x.v,0);
+  const sorting = L.phase==="sort";
+  const picked = [...L.pick].reduce((s,ci)=>s+PARETO[ci].v,0);
+  $("#main").innerHTML = head(st, "The team logged the main reason for delay on 40 discharges: <b class='mono'>100 delay hours</b> in total. A Pareto chart sorts causes from biggest to smallest so you can see the <i>vital few</i>.") + `
+    <div class="qcount"><span class="eyebrow">${sorting ? `Step 1 · Build the chart (${L.sorted.length} of ${PARETO.length})` : L.phase==="pick" ? "Step 2 · Pick the vital few" : "Chart complete"}</span></div>
+    <div class="qcard">${sorting ? "Tap the bars from <b>tallest to shortest</b>. Each one moves into Pareto order." : L.phase==="pick" ? "The line shows the running total. Tap the bars that make up the <b>vital few</b>: the fewest categories that together cause about 80% of the delay hours. Then check your answer." : "The vital few are found. Fixing three causes removes about 80% of delay hours."}</div>
+    <div class="chart-scroll" id="chart">${paretoSvg()}</div>
+    ${L.phase==="pick" ? `<div class="row"><span class="meter" aria-live="polite">Selected: ${L.pick.size} categor${L.pick.size===1?"y":"ies"} · ${Math.round(picked/total*100)}% of delay hours</span><button type="button" class="btn" id="check">Check the vital few</button></div>` : ""}
+    <div class="fb" id="fb" hidden></div>`;
+  coach("The 80/20 rule", [
+    "Roughly 80% of the effect comes from 20% of the causes.",
+    "Bars run from largest to smallest. The line is the cumulative percentage.",
+    "Where the line crosses 80%, everything to the left is the <b>vital few</b>. The rest are the <b>useful many</b>.",
+    "Fix the vital few first. They give the most improvement for your effort."
+  ]);
+  const onBar = ci => {
+    if(L.phase==="sort"){
+      if(L.sorted.includes(ci)) return;
+      const remaining = PARETO.map((_,i)=>i).filter(i=>!L.sorted.includes(i));
+      const tallest = remaining.reduce((a,b)=>PARETO[b].v>PARETO[a].v?b:a);
+      const qid = "par-"+L.sorted.length;
+      if(ci===tallest){
+        const pts = mark(qid, true); L.sorted.push(ci);
+        if(L.sorted.length === PARETO.length-1){ L.sorted.push(remaining.find(i=>i!==ci)); }
+        if(L.sorted.length === PARETO.length){ L.phase = "pick"; pareto(); feedback("good","Chart built","Now look at the line. It climbs steeply, then flattens. The steep part is where the big causes are.", pts); }
+        else { pareto(); feedback("good", PARETO[ci].k, `${PARETO[ci].v} hours. Next tallest?`, pts); }
+      } else {
+        mark(qid, false); L.flash = ci; pareto(); L.flash = null;
+        feedback("bad","Not the tallest left",`${esc(PARETO[ci].k)} is ${PARETO[ci].v} h. There's a taller bar still unsorted.`);
+      }
+    } else if(L.phase==="pick"){
+      L.pick.has(ci) ? L.pick.delete(ci) : L.pick.add(ci); pareto();
+    }
+  };
+  $("#chart").onclick = e => { const r = e.target.closest(".bar"); if(r) onBar(+r.dataset.c); };
+  $("#chart").onkeydown = e => { const r = e.target.closest(".bar"); if(r && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); onBar(+r.dataset.c); } };
+  const ck = $("#check");
+  if(ck) ck.onclick = () => {
+    const top = L.sorted.slice(0,3);
+    const ok = L.pick.size===3 && top.every(c=>L.pick.has(c));
+    if(ok){
+      const pts = mark("par-vital", true); L.phase = "done"; pareto();
+      stationEnd("pareto", "Vital few: medicines, transport, senior review", `Together they cause ${top.reduce((s,c)=>s+PARETO[c].v,0)} of 100 delay hours. Your 5 Whys already found the fix for the biggest one. The team writes take-home prescriptions the day before, books transport at the decision, and adds a mid-morning senior review.` + (pts?` <b class="mono">+${pts} pts</b>`:""));
+    } else {
+      mark("par-vital", false);
+      const skipped = top.some(c=>!L.pick.has(c)) && [...L.pick].some(c=>!top.includes(c));
+      const msg = !L.pick.size ? "Tap bars to select them first." :
+        skipped ? "Start from the left. The vital few are always the tallest bars, taken in order." :
+        picked < 75 ? `You've covered ${Math.round(picked/total*100)}%. Add the next tallest bar until the line reaches about 80%.` :
+        "Those extra bars add little. Stop at the bar where the line first reaches about 80%.";
+      feedback("bad","Not quite", msg);
+    }
+  };
+}
+
+/* Control chart */
+function spcSvg(q, reveal){
+  const W=520, H=240, ml=40, mr=56, mt=16, mb=34, pw=W-ml-mr, ph=H-mt-mb, lo=1.4, hi=4.2;
+  const y = v => mt + (hi-v)/(hi-lo)*ph, x = i => ml + i*(pw/(q.d.length-1));
+  let g = "";
+  [1.5,2.0,2.5,3.0,3.5,4.0].forEach(t=>{ g += `<text x="${ml-8}" y="${y(t)+4}" text-anchor="end" font-size="12">${t.toFixed(1)}</text>`; });
+  if(reveal && q.sig.length > 1){ g += `<rect class="zone" x="${x(q.sig[0])-8}" y="${mt}" width="${x(q.sig[q.sig.length-1])-x(q.sig[0])+16}" height="${ph}" rx="6"/>`; }
+  g += `<line class="lim" x1="${ml}" x2="${W-mr}" y1="${y(SPC.ucl)}" y2="${y(SPC.ucl)}"/><text x="${W-mr+6}" y="${y(SPC.ucl)+4}" font-size="12">UCL ${SPC.ucl}</text>`;
+  g += `<line class="cl" x1="${ml}" x2="${W-mr}" y1="${y(SPC.mean)}" y2="${y(SPC.mean)}"/><text x="${W-mr+6}" y="${y(SPC.mean)+4}" font-size="12">x̄ ${SPC.mean}</text>`;
+  g += `<line class="lim" x1="${ml}" x2="${W-mr}" y1="${y(SPC.lcl)}" y2="${y(SPC.lcl)}"/><text x="${W-mr+6}" y="${y(SPC.lcl)+4}" font-size="12">LCL ${SPC.lcl}</text>`;
+  g += `<polyline class="run" points="${q.d.map((v,i)=>x(i)+","+y(v)).join(" ")}"/>`;
+  g += q.d.map((v,i)=>`<circle class="pt${reveal && q.sig.includes(i) ? " sig" : ""}" cx="${x(i)}" cy="${y(v)}" r="4.5"/>`).join("");
+  [1,5,10,15,20].forEach(d=>{ g += `<text x="${x(d-1)}" y="${H-10}" text-anchor="middle" font-size="12">${d}</text>`; });
+  g += `<text x="${ml+pw/2}" y="${H-10}" text-anchor="middle" font-size="0"></text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Control chart of daily average discharge time in hours over 20 days">${g}</svg>`;
+}
+function spc(){
+  const st = STATIONS[5];
+  L.i = L.i || 0;
+  if(L.i >= SPC_Q.length){ return; }
+  const q = SPC_Q[L.i];
+  $("#main").innerHTML = head(st, "The fixes are live and average discharge time has fallen to <b class='mono'>2.6 h</b>. Now hold the gain. Each chart shows 20 days of average discharge time. Read the signal before you react.") + `
+    <div class="qcount"><span class="eyebrow">Chart ${L.i+1} of ${SPC_Q.length} · daily mean discharge time (h)</span>${pips(SPC_Q.length, L.i)}</div>
+    <div class="legend"><span><i class="cl"></i>Centre line (mean)</span><span><i></i>Control limits (±3σ)</span><span>Days 1–20 →</span></div>
+    <div class="chart-scroll" id="chart">${spcSvg(q, false)}</div>
+    <div id="opts"></div>
+    <div class="fb" id="fb" hidden></div>`;
+  coach("Reading a control chart", [
+    "Control limits are calculated from the process's own data, at about ±3σ from the mean. They are not targets set by managers.",
+    "<b>Common cause</b>: everyday variation built into the process. Leave it alone.",
+    "<b>Special cause</b>: a signal that something changed. Look for one point beyond a limit, a run of 8 on one side, or a trend of 6.",
+    "Treating noise as a signal is called <b>tampering</b>, and it makes the process worse."
+  ]);
+  mcq($("#opts"), {
+    qid:"spc-"+L.i, answer:q.a, rightTitle:SPC_OPTS[q.a].t,
+    right: q.r + " " + SPC_OPTS[q.a].fix,
+    opts: SPC_OPTS.map((o,oi)=>({t:o.t, s:o.s, why: oi===0 ? "Look closer. Something here breaks one of the rules for a stable process." : `Check the rule: ${o.s.toLowerCase()}. Is that what this chart shows?`})),
+    next:{label: L.i < SPC_Q.length-1 ? "Next chart →" : "Finish the project →", go:()=>{
+      if(L.i < SPC_Q.length-1){ L.i++; spc(); }
+      else { stationEnd("spc","Gains held","The ward now owns the chart and knows when to act and when to leave the process alone. Project closed: 5.8 h → 2.6 h."); }
+    }}
+  });
+  // reveal the signal on a correct answer
+  $("#opts").addEventListener("click", () => { if($("#opts .is-right")) $("#chart").innerHTML = spcSvg(q, true); });
+}
+
+function finish(){
+  const sg = sigma(), b = belt();
+  const firstTry = S.opps - S.defects;
+  $("#main").innerHTML = `
+    <div class="st-head"><span class="eyebrow">Project closed · Ward 7</span><h2>Discharge time down from 5.8 h to 2.6 h</h2></div>
+    <div class="big-sigma"><b>${sg==null?"—":sg.toFixed(1)+"σ"}</b><span>your process sigma, at ${dpmo().toLocaleString()} DPMO</span></div>
+    <div class="stats">
+      <div><small>Score</small><b>${S.score.toLocaleString()}</b></div>
+      <div><small>Right first time</small><b>${firstTry}/${S.opps}</b></div>
+      <div><small>Best streak</small><b>${S.best}</b></div>
+      <div><small>Belt</small><b style="display:flex;gap:8px;align-items:center"><span class="belt-bar" data-belt="${b}"></span>${b}</b></div>
+    </div>
+    <h3 style="font-size:20px;margin-top:8px">Your toolkit</h3>
+    <div class="recap">
+      <div><b>DMAIC</b><span>The roadmap: Define, Measure, Analyze, Improve, Control. Don't skip to solutions.</span></div>
+      <div><b>8 wastes</b><span>DOWNTIME. Go to the gemba and see waste with your own eyes.</span></div>
+      <div><b>5 Whys</b><span>Ask why until you reach a process you can change. No blame.</span></div>
+      <div><b>Fishbone</b><span>Brainstorm every possible cause on six bones before you choose.</span></div>
+      <div><b>Pareto</b><span>Sort causes by size. Fix the vital few that give about 80% of the effect.</span></div>
+      <div><b>Control chart</b><span>Tell signal from noise. React to special causes, leave common causes alone.</span></div>
+    </div>
+    <div class="row" style="margin-top:20px"><button type="button" class="btn" id="again">Replay a station</button><button type="button" class="btn ghost" id="reset">Start over</button></div>
+    <div class="fb" id="fb" hidden></div>`;
+  $("#again").onclick = () => go("dmaic");
+  $("#reset").onclick = confirmReset;
+  coach("What your sigma means", [
+    "<b>2σ</b>: about 308,000 defects per million. Many unmeasured processes sit here.",
+    "<b>3σ</b>: about 66,800 per million.",
+    "<b>4σ</b>: about 6,200 per million.",
+    "<b>6σ</b>: 3.4 per million. This is the goal the method is named after."
+  ], "Sigma here uses the standard 1.5σ shift, the same convention as real Six Sigma tables.");
+}
+
+/* ---------- Boot ---------- */
+function start(saved){
+  const s = (saved && saved.done) ? saved : load();
+  if(s) S = Object.assign(fresh(), s);
+  if(S.view==="finish" && S.done.length < 6) S.view = "brief";
+  hud(); rail(); render();
+}
+if(window.claude && window.claude.hot){ window.claude.hot.snapshot && window.claude.hot.snapshot(()=>S); }
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? null);
+})();
+</script>
+</body>
+</html>
