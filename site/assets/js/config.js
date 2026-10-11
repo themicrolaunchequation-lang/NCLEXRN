@@ -6,7 +6,7 @@ window.HCA_CONFIG = {
   // Legally required on a UK company website (Companies Act 2006 /
   // Trading Disclosures Regulations 2015). Copy it exactly from the
   // Companies House record, e.g. '1 Example Street, London, AB1 2CD'.
-  registeredOffice: '',
+  registeredOffice: '71-75 Shelton Street, Covent Garden, London, WC2H 9JQ',
 
   // Evinca backend (Supabase project "evinca", London region).
   // The join form writes to public.inquiries and calls public.subscribe().
