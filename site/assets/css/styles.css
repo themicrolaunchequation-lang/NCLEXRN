@@ -245,11 +245,12 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .js .is-loaded .record-checks li{opacity:1;transform:none}
 .record-foot{margin-top:24px;padding-top:16px;border-top:1px dashed rgba(255,255,255,.16);display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--text-soft);font-variant-numeric:tabular-nums}
 .specimen{padding:3px 9px;border:1px solid rgba(255,255,255,.2);border-radius:6px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
-.record-seal{position:absolute;right:-34px;top:38%;width:116px;height:116px;opacity:.85;animation:spin 24s linear infinite;pointer-events:none}
-.seal-ring{fill:none;stroke:rgba(232,193,112,.35);stroke-width:1}
-.seal-text{font-size:9.4px;letter-spacing:2.2px;fill:var(--gold-300);font-family:var(--font-sans);font-weight:600}
-.seal-crown{fill:none;stroke:var(--gold-400);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
-.seal-crown circle{fill:var(--gold-400)}
+.record-seal{position:absolute;right:16px;bottom:58px;width:104px;height:104px;pointer-events:none;filter:drop-shadow(0 10px 22px rgba(0,0,0,.45))}
+.seal-spin{transform-origin:60px 60px;animation:spin 28s linear infinite}
+.seal-ring{fill:rgba(8,17,40,.55);stroke:rgba(232,193,112,.45);stroke-width:1}
+.seal-text{font-size:9.6px;letter-spacing:0;fill:var(--gold-300);font-family:var(--font-sans);font-weight:600}
+.seal-crown{fill:none;stroke:#2B1E05;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.seal-crown circle{fill:#2B1E05}
 .float-chip{position:absolute;z-index:2;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;background:rgba(8,17,40,.72);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:.85rem;font-weight:600;box-shadow:0 18px 40px -16px rgba(0,0,0,.7);animation:bob 6s ease-in-out infinite}
 .float-chip .i{color:var(--gold-400)}
 .chip-a{right:12%;top:0}
@@ -651,7 +652,7 @@ input[aria-invalid="true"]{border-color:#F87171;box-shadow:0 0 0 4px rgba(248,11
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important}
-  .aurora,.marquee-track,.record-seal,.badge-orbit,.globe-dots,.float-chip,.pulse-run{animation:none!important}
+  .aurora,.marquee-track,.seal-spin,.badge-orbit,.globe-dots,.float-chip,.pulse-run{animation:none!important}
   .marquee-track{flex-wrap:wrap;justify-content:center;transform:none}
   .js [data-hero-in],.js [data-split] .split-word,.js .reveal,.js .record-checks li{opacity:1;transform:none;filter:none}
   .mission-quote .mw{opacity:1}

@@ -199,10 +199,17 @@
           <span class="specimen">Specimen</span>
         </div>
         <svg class="record-seal" viewBox="0 0 120 120" aria-hidden="true">
-          <defs><path id="sealPath" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
-          <circle cx="60" cy="60" r="56" class="seal-ring"/>
-          <text class="seal-text"><textPath href="#sealPath">EVIDENCE · IMPACT · EXCELLENCE · RECOGNISED ·</textPath></text>
-          <g transform="translate(36 34) scale(.75)" class="seal-crown"><use href="#i-crown"/></g>
+          <defs>
+            <path id="sealPath" d="M60 60m-47 0a47 47 0 1 1 94 0a47 47 0 1 1-94 0"/>
+            <radialGradient id="sealDisc" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFF3D1"/><stop offset=".45" stop-color="#E8C170"/><stop offset="1" stop-color="#8A6317"/></radialGradient>
+          </defs>
+          <g class="seal-spin">
+            <circle cx="60" cy="60" r="57" class="seal-ring"/>
+            <text class="seal-text"><textPath href="#sealPath" textLength="290" lengthAdjust="spacing">EVIDENCE · IMPACT · EXCELLENCE · </textPath></text>
+          </g>
+          <circle cx="60" cy="60" r="34" fill="url(#sealDisc)"/>
+          <circle cx="60" cy="60" r="29" fill="none" stroke="#2B1E05" stroke-opacity=".25"/>
+          <svg x="40" y="38" width="40" height="40" viewBox="0 0 64 64" class="seal-crown"><use href="#i-crown"/></svg>
         </svg>
       </figure>
     </div>
