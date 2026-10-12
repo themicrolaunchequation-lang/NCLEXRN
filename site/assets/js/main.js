@@ -20,12 +20,9 @@
     });
     const office = $('[data-registered-office]');
     if (office && cfg.registeredOffice) office.textContent = 'Registered office: ' + cfg.registeredOffice + '.';
-    const evinca = $('[data-evinca-link]');
-    if (evinca && /^https:\/\//.test(cfg.evincaUrl || '')) {
-      evinca.href = cfg.evincaUrl;
-      evinca.target = '_blank';
-      evinca.rel = 'noopener';
-      evinca.hidden = false;
+    // Evinca deep links: HTML ships working absolute URLs; config can move the base.
+    if (/^https:\/\/[^/]+$/.test(cfg.evincaUrl || '')) {
+      $$('[data-evinca]').forEach((link) => { link.href = cfg.evincaUrl + link.dataset.evinca; });
     }
     $$('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
   }

@@ -15,7 +15,8 @@ window.HCA_CONFIG = {
   supabaseUrl: 'https://ujeofxfbwivjmgrxqdcl.supabase.co',
   supabaseKey: 'sb_publishable_ie1qqB5QnaqUZPitNPfQCg__M46e7JL',
 
-  // Public address of the Evinca app, once it is live
-  // (e.g. 'https://evinca.healthcarecrownacademy.co.uk'). Leave empty to hide the link.
-  evincaUrl: ''
+  // Public address of the Evinca app (no trailing slash). Every button marked
+  // data-evinca="/en/..." links to this base. Switch to
+  // 'https://evinca.healthcarecrownacademy.co.uk' once that subdomain is live.
+  evincaUrl: 'https://evinca.vercel.app'
 };

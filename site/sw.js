@@ -2,7 +2,7 @@
    Pages are network-first (fresh content when online, cached copy offline);
    static assets are stale-while-revalidate. Cross-origin requests
    (the Supabase API) are never cached. Bump VERSION on every release. */
-const VERSION = 'hca-v3';
+const VERSION = 'hca-v4';
 const CORE = [
   '/',
   '/privacy',
