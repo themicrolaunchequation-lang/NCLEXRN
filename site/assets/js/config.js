@@ -18,5 +18,5 @@ window.HCA_CONFIG = {
   // Public address of the Evinca app (no trailing slash). Every button marked
   // data-evinca="/en/..." links to this base. Switch to
   // 'https://evinca.healthcarecrownacademy.co.uk' once that subdomain is live.
-  evincaUrl: 'https://evinca.vercel.app'
+  evincaUrl: 'https://evinca.healthcarecrownacademy.co.uk'
 };
