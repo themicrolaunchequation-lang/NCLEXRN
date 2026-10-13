@@ -39,7 +39,7 @@ Contact email on both sites stays themicrolaunchequation@gmail.com.
   (`icoNumber`, `pilotInviteOnly=false`, `indexable`), policy texts in `lib/policies.ts`.
 
 ## Current state of Evinca
-- **Learn & tools** (`/en/academy`): hosts `evinca/public/tools/platform.html` (Academy, Career Studio, Gifts Studio) in an iframe via `components/platform-host.tsx`. Optional per-member sync to table `platform_state`. To update the platform, replace `public/tools/platform.html` and push.
+- **Learn & tools** (`/en/academy`): members only. Admin uploads the platform HTML on the Admin page; the browser builds `platform-1/2/3.html` (Starter: Gifts; Practice: +Career; Professional: +Academy, set in table `platform_levels`) into private bucket `platform`. Access via `platform_level()` (admins = 3). Optional sync to `platform_state`.
 - **Run A samples**: 100 people / 135 entries (P0001–P0100) already imported as nominees + submitted applications, all `illustrative=true`, none published.
 - Applications open and free (invite code off in code and DB `settings.invite_only=false`).
 - Full Privacy / Terms / Corrections / Reviewer conduct texts (dated 12 Oct 2026).
