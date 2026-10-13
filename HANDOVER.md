@@ -7,6 +7,18 @@
 | evinca.healthcarecrownacademy.co.uk | Evinca app | Vercel project `evinca` | **Automatic**: any push to `main` of `themicrolaunchequation-lang/evinca` |
 | evinca.vercel.app | Old address | Vercel | 308-redirects to the address above |
 
+## Account map (who logs in where)
+| Service | Log in with | Holds |
+|---|---|---|
+| GitHub | `themicrolaunchequation-lang` (owner); `lilianhossamfahmi2-glitch` = collaborator | Code: `NCLEXRN` (home page), `evinca` (app) |
+| Vercel | themicrolaunchequation@gmail.com (kept as is; the separate account lilianhossamfahmi2-1009 holds only old NCLEX projects) | Evinca hosting |
+| Supabase | themicrolaunchequation@… ; lilianhossamfahmi2@gmail.com invited as Owner | Org **clinicalai** → project **evinca** |
+| Cloudflare | lilianhossamfahmi2@gmail.com → open **Themicrolaunchequation@gmail.com's Account** (Super Admin) | DNS + home page |
+| Porkbun | unchanged | Domain registration/renewal |
+| Evinca admins | lilianhossamfahmi@gmail.com, themicrolaunchequation@gmail.com, lilianhossamfahmi2@gmail.com | Full admin (all data, gifts, certificates) |
+
+Contact email on both sites stays themicrolaunchequation@gmail.com.
+
 ## Accounts
 - **Domain**: Porkbun (nameservers → Cloudflare: asa / kellen.ns.cloudflare.com). Email forwarding MX/TXT kept.
 - **DNS + home page hosting**: Cloudflare (free plan). Records: root + www → Worker; `evinca` CNAME → Vercel (grey cloud, DNS only).
