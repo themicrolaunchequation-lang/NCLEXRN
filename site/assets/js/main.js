@@ -24,6 +24,14 @@
     if (/^https:\/\/[^/]+$/.test(cfg.evincaUrl || '')) {
       $$('[data-evinca]').forEach((link) => { link.href = cfg.evincaUrl + link.dataset.evinca; });
     }
+
+  // ICO registration badges
+  if (/^Z[A-Z0-9]{5,9}$/.test(cfg.icoNumber || '')) {
+    document.querySelectorAll('[data-ico-number]').forEach((el) => { el.textContent = cfg.icoNumber; });
+    document.querySelectorAll('[data-ico-link]').forEach((a) => { a.href = 'https://ico.org.uk/ESDWebPages/Entry/' + cfg.icoNumber; });
+    document.querySelectorAll('[data-ico-line]').forEach((el) => { el.textContent = 'Registered with the Information Commissioner\'s Office (ICO) for data protection, registration no. ' + cfg.icoNumber + '.'; });
+    document.querySelectorAll('[data-ico]').forEach((el) => { el.hidden = false; });
+  }
     $$('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
   }
 
