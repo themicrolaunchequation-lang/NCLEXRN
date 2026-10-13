@@ -21,7 +21,8 @@ Contact email on both sites stays themicrolaunchequation@gmail.com.
 
 ## Accounts
 - **Domain**: Porkbun (nameservers → Cloudflare: asa / kellen.ns.cloudflare.com). Email forwarding MX/TXT kept.
-- **DNS + home page hosting**: Cloudflare (free plan). Records: root + www → Worker; `evinca` CNAME → Vercel (grey cloud, DNS only).
+- **Home page hosting**: Vercel project `nclexrn-site` (root dir `site`, auto-deploys from default branch `claude/loving-ptolemy-srrq02`). No more zip uploads: push = live.
+- **DNS**: Cloudflare (free plan). Records (all grey cloud): `@` A 76.76.21.21, `www` CNAME cname.vercel-dns.com (redirects to apex), `evinca` CNAME → Vercel. Old Worker `curly-king-5652` is unused and can be deleted. Old Vercel projects `nclexrn`/`nclexrnbeta` are duplicates to delete.
 - **Evinca hosting**: Vercel, team `themicrolaunchequation-langs-projects`, Hobby plan.
   Commits must be authored as `themicrolaunchequation-lang <287725945+themicrolaunchequation-lang@users.noreply.github.com>`.
   If a push builds only as **Preview**, use Deployments → ⋯ → Promote to Production.
