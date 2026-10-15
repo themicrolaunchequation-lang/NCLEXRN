@@ -1,0 +1,200 @@
+/* HCA v4 — Lumen experience layer styles. Injected after hca-v3.css. */
+
+/* ---------- One set of components ---------- */
+:where(.page-content, .modal) .button { min-height: 44px; }
+:where(.page-content, .modal) .button.compact, .hca3-step .button, .hca4-tag-dialog .modal-footer .button { min-height: 40px; }
+.modal-footer .button { min-height: 44px; font-size: 14px !important; padding: 10px 16px !important; }
+.eyebrow { letter-spacing: .12em; }
+.hca-panel, .hca3-plan, .hca3-onboard, .hca4-ngn-card, .hca4-methods-link, .hca4-resurface, .hca4-examweek { border-radius: 6px; }
+
+/* Filter bars: older rules set 9–10px labels and mixed 36–62px heights. One 48px row, 14px labels. */
+.library-toolbar, .notes-toolbar, .studio-toolbar { align-items: center; }
+.app-shell :is(.library-toolbar, .notes-toolbar, .studio-toolbar) .segmented:not(.layout-toggle) { min-height: 48px; padding: 4px !important; box-sizing: border-box; align-items: center; }
+.app-shell :is(.library-toolbar, .notes-toolbar, .studio-toolbar) .segmented button { font-size: 14px !important; min-height: 40px !important; padding: 0 14px !important; }
+.app-shell .library-search { min-height: 48px !important; height: 48px; padding-top: 0 !important; padding-bottom: 0 !important; box-sizing: border-box; display: flex; align-items: center; }
+.app-shell .library-search input { min-height: 0 !important; height: 100%; }
+.app-shell :is(.sort-select, .studio-toolbar select, .notes-toolbar select) { min-height: 48px !important; height: 48px; min-width: 170px; font-size: 15px !important; }
+.app-shell .layout-toggle { min-height: 48px; padding: 4px !important; box-sizing: border-box; align-items: center; }
+.app-shell .layout-toggle button { min-height: 40px; min-width: 40px; }
+.app-shell .notes-toolbar .button { min-height: 48px; }
+.app-shell .studio-hero .button { font-size: 14px !important; min-height: 42px !important; padding: 10px 16px !important; }
+.app-shell .studio-hero .text-link { font-size: 14px !important; }
+
+/* The selected focus-timer length was 4.2:1 contrast; this teal passes 4.5:1. */
+:root:not([data-theme=dark]) .focus-duration button.selected { color: #066763; }
+
+/* ---------- Less clutter ---------- */
+/* Library: the "Your books belong with you" banner becomes a one-line privacy note. */
+.library-banner { display: flex; align-items: center; gap: 12px; min-height: 0; padding: 12px 16px !important; margin: 0 0 20px !important; background: var(--surface) !important; border: 1px solid var(--line) !important; border-radius: 6px; box-shadow: none !important; }
+.library-banner > div { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+.library-banner h2, .library-banner .banner-book { display: none !important; }
+.library-banner p { margin: 0 !important; color: var(--muted); font-size: 14px !important; }
+.results-caption > span { display: none; }
+
+/* Study: the large "Less rereading" banner becomes a compact action bar; its buttons are kept. */
+.studio-hero { display: block !important; min-height: 0 !important; padding: 14px 18px !important; margin-bottom: 20px !important; border-radius: 6px !important; }
+.studio-hero > div:first-child > :not(.hero-actions) { display: none !important; }
+.studio-hero .stack-art { display: none !important; }
+.studio-hero .hero-actions { margin: 0 !important; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.hca4-study.no-cards .studio-stats { display: none; }
+.hca4-notes.is-empty .insight-summary { display: none; }
+.hca4-notes-foot { padding-top: 0 !important; }
+
+/* Methods appear in full only on the Methods page; elsewhere a single row links to it. */
+.hca3-today > .page-content > .hca-method-section { display: none; }
+.hca3-today > .page-content > .hca-metrics { order: 6; }
+.hca3-today > .page-content > .hca-work-grid:not(.hca-lower-grid) { order: 7; }
+.hca3-today > .hca4-methods-link { order: 8; }
+.hca3-today > .page-content > .hca-lower-grid { order: 9; }
+.hca3-today > .hca4-examweek, .hca3-today > .hca4-resurface { order: 2; }
+.hca4-methods-link { display: flex; align-items: center; gap: 18px; padding: 16px 20px; margin: 0 0 28px; border: 1px solid var(--line); background: var(--surface); }
+.hca4-methods-link > div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.hca4-methods-link strong { color: var(--ink-strong); font-size: 16px; }
+.hca4-methods-link > div > span { color: var(--muted); font-size: 14px; }
+.hca4-methods-icons { display: flex; flex: none; }
+.hca4-methods-icons span { display: grid; place-items: center; width: 32px; height: 32px; margin-left: -6px; border-radius: 50%; background: var(--green-light); color: var(--green); border: 2px solid var(--surface); font-size: 15px; }
+.hca4-methods-icons span:first-child { margin-left: 0; }
+
+/* ---------- Today: exam week and resurfaced highlights ---------- */
+.hca4-examweek { display: flex; align-items: center; gap: 16px; padding: 16px 20px; margin: 0 0 16px; background: var(--navy, #10253a); color: #f8f5ef; }
+.hca4-examweek > i { font-size: 26px; color: var(--gold, #c9a24a); }
+.hca4-examweek > div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.hca4-examweek strong { font-size: 16px; }
+.hca4-examweek span { color: #c9d4d6; font-size: 14px; }
+:root[data-theme=dark] .hca4-examweek { background: #193244; }
+.hca4-resurface { padding: 18px 22px; margin: 0 0 22px; border: 1px solid var(--line); background: var(--surface); }
+.hca4-resurface-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.hca4-resurface blockquote { margin: 8px 0 14px; padding-left: 14px; border-left: 3px solid var(--gold, #c9a24a); font: 400 19px/1.5 'Playfair Display', Georgia, serif; color: var(--ink-strong); }
+.hca4-resurface-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+/* ---------- Study: NCLEX practice card ---------- */
+.hca4-ngn-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px; align-items: center; padding: 22px 24px; margin: 8px 0 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.hca4-ngn-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--green-light); color: var(--green); font-size: 24px; }
+.hca4-ngn-card h2 { font-size: 26px; margin: 4px 0 6px; }
+.hca4-ngn-card p { margin: 0; color: var(--muted); font-size: 15px; }
+.hca4-ngn-actions { display: flex; flex-direction: column; gap: 8px; }
+
+/* ---------- Practice dialog ---------- */
+.hca4-ngn.modal { width: min(860px, calc(100vw - 32px)); max-width: min(860px, calc(100vw - 32px)) !important; }
+.hca4-ngn button:disabled, .hca4-ngn select:disabled, .hca4-ngn input:disabled { opacity: 1; cursor: default; color: var(--ink); }
+.hca4-ngn-stem { font-size: 17px; line-height: 1.6; color: var(--ink-strong); margin: 0 0 16px; }
+.hca4-choices, .hca4-highlight { display: grid; gap: 8px; }
+.hca4-choices button, .hca4-highlight button, .hca4-bowtie button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 46px; padding: 10px 14px; text-align: left; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font-size: 15px; cursor: pointer; }
+.hca4-choices button i { font-size: 20px; color: var(--muted); }
+.hca4-choices button.on, .hca4-bowtie button.on { border-color: var(--green); background: var(--green-light); }
+.hca4-choices button.on i { color: var(--green); }
+.hca4-highlight { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--canvas); }
+.hca4-highlight button { width: auto; min-height: 36px; padding: 4px 8px; border-color: transparent; background: transparent; }
+.hca4-highlight button.on { background: color-mix(in srgb, var(--gold, #c9a24a) 40%, transparent); border-color: color-mix(in srgb, var(--gold, #c9a24a) 70%, transparent); }
+.hca4-ngn .right { outline: 2px solid #2e7d4f; outline-offset: -2px; }
+.hca4-ngn .wrong { outline: 2px solid #b4442f; outline-offset: -2px; }
+.hca4-key { color: #2e7d4f; font-weight: 600; font-size: 13px; }
+:root[data-theme=dark] .hca4-key { color: #8fdcae; }
+:root[data-theme=dark] .hca4-ngn .right { outline-color: #6cc791; }
+:root[data-theme=dark] .hca4-ngn .wrong { outline-color: #ef8a73; }
+.hca4-matrix { width: 100%; border-collapse: collapse; font-size: 15px; }
+.hca4-matrix th, .hca4-matrix td { padding: 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.hca4-matrix thead th { font-size: 13px; color: var(--muted); font-weight: 600; }
+.hca4-matrix td { text-align: center; width: 110px; }
+.hca4-matrix input { width: 20px; height: 20px; accent-color: var(--green); }
+.hca4-matrix tbody th { font-weight: 400; color: var(--ink); }
+.hca4-bowtie { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; align-items: start; }
+.hca4-bowtie fieldset { border: 1px solid var(--line); border-radius: 6px; padding: 10px; margin: 0; display: grid; gap: 6px; }
+.hca4-bowtie legend { font-weight: 650; font-size: 13px; padding: 0 4px; color: var(--ink-strong); }
+/* NGN bow-tie layout: actions on the left, the condition in the middle, parameters to monitor on the right. */
+.hca4-bowtie .hca4-bow-actions { order: 1; }
+.hca4-bowtie .hca4-bow-condition { order: 2; align-self: center; border-color: var(--green); }
+.hca4-bowtie .hca4-bow-monitor { order: 3; }
+.hca4-bowtie button { min-height: 40px; font-size: 14px; }
+.hca4-cloze { font-size: 17px; line-height: 2.4; color: var(--ink-strong); }
+.hca4-cloze select { min-height: 40px; max-width: 100%; margin: 0 4px; padding: 4px 8px; border: 1px solid var(--green); border-radius: 4px; background: var(--surface); color: var(--ink); font-size: 15px; }
+.hca4-ngn-rationale { margin-top: 16px; padding: 14px 16px; border-left: 3px solid var(--green); background: var(--green-light); border-radius: 0 6px 6px 0; }
+.hca4-ngn-rationale p { margin: 6px 0 0; }
+.hca4-ngn-total { font-size: 18px; margin: 0 0 12px; }
+.hca4-ngn-total strong { font: 400 34px/1 'Playfair Display', Georgia, serif; color: var(--ink-strong); margin-right: 6px; }
+.hca4-ngn-results ol { padding-left: 20px; display: grid; gap: 10px; }
+.hca4-ngn-result-head { display: flex; justify-content: space-between; gap: 12px; }
+.hca4-ngn-results li p { margin: 2px 0; }
+.hca4-ngn-results summary { cursor: pointer; color: var(--green); font-size: 14px; }
+
+/* ---------- Tags ---------- */
+.hca4-tags { border: 0; padding: 0; margin: 4px 0 0; }
+.hca4-tags legend { font-weight: 600; font-size: 14px; color: var(--ink-strong); margin-bottom: 8px; }
+.hca4-tags legend span { color: var(--muted); font-weight: 400; }
+.hca4-tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.hca4-tag { display: inline-flex; align-items: center; gap: 4px; min-height: 34px; padding: 4px 12px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 13px; cursor: pointer; }
+.hca4-tag.on { border-color: var(--green); background: var(--green-light); color: var(--green-dark, #066763); font-weight: 600; }
+:root[data-theme=dark] .hca4-tag.on { color: var(--green); }
+.hca4-tag-controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin: 12px 0; }
+.hca4-tag-controls label { display: grid; gap: 4px; font-weight: 600; font-size: 13px; }
+.hca4-tag-controls select { min-height: 44px; width: 100%; min-width: 0; }
+.hca4-tag-controls .hca4-check { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 14px; grid-column: 1 / -1; }
+.hca4-check input, .hca4-tag-cards input { width: 18px; height: 18px; accent-color: var(--green); flex: none; }
+.hca4-tag-select-all { display: flex; gap: 16px; }
+.hca4-tag-cards { list-style: none; padding: 0; margin: 6px 0 0; max-height: 46vh; overflow-y: auto; border: 1px solid var(--line); border-radius: 6px; }
+.hca4-tag-cards li + li { border-top: 1px solid var(--line); }
+.hca4-tag-cards label { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; cursor: pointer; }
+.hca4-tag-cards strong { display: block; font-weight: 500; font-size: 14.5px; color: var(--ink-strong); }
+.hca4-tag-cards small { color: var(--muted); font-size: 12.5px; }
+
+/* ---------- Progress: categories ---------- */
+.hca4-categories { margin-bottom: 28px; }
+.hca3-progress > .hca4-categories { order: 4; }
+.hca4-cat-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hca4-cat-rows { display: grid; gap: 4px; margin: 16px 0; }
+.hca4-cat-row { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr) 48px minmax(0, 220px) 70px; gap: 14px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.hca4-cat-row.muted { opacity: .55; }
+.hca4-cat-name { color: var(--ink-strong); font-weight: 550; }
+.hca4-cat-bar { height: 10px; background: var(--surface-2); border-radius: 99px; overflow: hidden; }
+.hca4-cat-bar span { display: block; height: 100%; background: var(--green); border-radius: inherit; }
+.hca4-cat-num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink-strong); }
+.hca4-cat-meta { color: var(--muted); font-size: 13px; }
+.hca4-cat-row .text-link { min-height: 32px; font-size: 13px; justify-self: end; }
+.hca4-cat-empty { color: var(--muted); max-width: 70ch; }
+
+/* Dialog form labels and fields were 10–12px. */
+.modal .source-input-row label { font-size: 13px !important; font-weight: 600; }
+.modal :is(select, input:not([type=checkbox]):not([type=radio]), textarea) { font-size: 15px !important; }
+.modal .card-making-tip, .modal .modal-footnote { font-size: 13px !important; }
+
+/* ---------- Review: four ratings ---------- */
+.rating-buttons button small { font-size: 12px !important; }
+.rating-buttons { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.rating-buttons button.hard { --rating: #a8742f; }
+.review-modal .rating-buttons button { min-width: 0; }
+
+/* ---------- Reader ---------- */
+/* Study panel tabs sat in two rows of two; one row of four is quicker to scan. */
+.hca-sidecar-tabs { display: flex !important; flex-wrap: nowrap !important; gap: 0 !important; padding: 0 8px !important; }
+.hca-sidecar-tabs button { flex: 1 1 auto; min-width: 0; padding: 8px 4px !important; font-size: 13px !important; white-space: nowrap; text-align: center; }
+
+/* ---------- Storage warning ---------- */
+.hca4-storage-bar { position: fixed; left: 50%; transform: translateX(-50%); bottom: 20px; z-index: 1200; display: flex; align-items: center; gap: 12px; width: min(760px, calc(100vw - 24px)); padding: 12px 14px 12px 18px; border-radius: 8px; background: #6e2a1e; color: #fff; box-shadow: 0 18px 50px #0004; font-size: 14px; }
+.hca4-storage-bar > i { font-size: 22px; }
+.hca4-storage-bar > span { flex: 1; }
+.hca4-storage-bar .hca3-icon-btn { color: #fff; }
+
+/* ---------- Keys dialog sections ---------- */
+.hca4-keys-section h3 { font-size: 14px; font-weight: 650; margin: 18px 0 4px; color: var(--ink-strong); }
+.hca4-keys-section .hca3-keylist { margin-top: 6px; }
+
+@media (max-width: 980px) {
+  .hca4-cat-row { grid-template-columns: minmax(0, 1fr) 48px 70px; }
+  .hca4-cat-bar { grid-column: 1 / -1; grid-row: 2; }
+  .hca4-cat-meta { grid-column: 1 / -1; grid-row: 3; }
+  .hca4-ngn-card { grid-template-columns: auto minmax(0, 1fr); }
+  .hca4-ngn-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
+}
+@media (max-width: 760px) {
+  .hca4-methods-link { flex-wrap: wrap; }
+  .hca4-methods-icons { display: none; }
+  .hca4-examweek { flex-wrap: wrap; }
+  .hca4-ngn-card { grid-template-columns: minmax(0, 1fr); padding: 18px 16px; }
+  .hca4-ngn-icon { display: none; }
+  .hca4-bowtie { grid-template-columns: minmax(0, 1fr); }
+  .hca4-matrix td { width: 74px; }
+  .hca4-matrix th, .hca4-matrix td { padding: 8px 4px; font-size: 14px; }
+  .rating-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .hca4-tag-controls { grid-template-columns: minmax(0, 1fr); }
+  .hca4-storage-bar { flex-wrap: wrap; bottom: 76px; }
+}

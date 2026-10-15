@@ -12,13 +12,13 @@ HCA3.isMac = /Mac|iPhone|iPad/.test(navigator.platform);
 HCA3.DAY = 864e5;
 
 /* ---------- Adaptive scheduler: FSRS-4.5 with default parameters ----------
-   Three ratings map to FSRS grades: again = 1, good = 3, easy = 4. Target retention 90%,
+   Ratings map to FSRS grades: again = 1, hard = 2, good = 3, easy = 4. Target retention 90%,
    where the next interval equals the memory stability S (in days). Cards scheduled by the
    old 1/3/7/14/30/60 ladder are seeded from their ladder step on their next review. */
 const HCA3W = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
 const HCA3Ladder = [1, 3, 7, 14, 30, 60];
 const HCA3Clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-const HCA3Grade = rating => (rating === 'again' ? 1 : rating === 'easy' ? 4 : 3);
+const HCA3Grade = rating => ({ again: 1, hard: 2, good: 3, easy: 4 })[rating] || 3;
 const HCA3InitialDifficulty = g => HCA3Clamp(HCA3W[4] - (g - 3) * HCA3W[5], 1, 10);
 const HCA3Retrievability = (days, s) => Math.pow(1 + (19 / 81) * days / s, -0.5);
 
@@ -39,7 +39,7 @@ function HCA3Fsrs(card, rating) {
     const r = HCA3Retrievability(Math.max(0, (now - prev.last) / HCA3.DAY), prev.s);
     d = HCA3Clamp(w[7] * HCA3InitialDifficulty(4) + (1 - w[7]) * (prev.d - w[6] * (g - 3)), 1, 10);
     if (g === 1) s = Math.min(prev.s, w[11] * Math.pow(prev.d, -w[12]) * (Math.pow(prev.s + 1, w[13]) - 1) * Math.exp(w[14] * (1 - r)));
-    else s = prev.s * (1 + Math.exp(w[8]) * (11 - prev.d) * Math.pow(prev.s, -w[9]) * (Math.exp(w[10] * (1 - r)) - 1) * (g === 4 ? w[16] : 1));
+    else s = prev.s * (1 + Math.exp(w[8]) * (11 - prev.d) * Math.pow(prev.s, -w[9]) * (Math.exp(w[10] * (1 - r)) - 1) * (g === 2 ? w[15] : g === 4 ? w[16] : 1));
   }
   s = HCA3Clamp(s, 0.1, 36500);
   const ivl = g === 1 ? 0 : HCA3Clamp(Math.round(s), 1, 3650);
@@ -56,7 +56,11 @@ function HCA3Fsrs(card, rating) {
 }
 
 Te = function HCA3Schedule(card, rating) {
-  return HCA3.scheduler === 'ladder' ? HCA3.ladder(card, rating) : HCA3Fsrs(card, rating);
+  if (HCA3.scheduler !== 'ladder') return HCA3Fsrs(card, rating);
+  if (rating !== 'hard') return HCA3.ladder(card, rating);
+  // The ladder has no "hard" step: repeat the current step's interval instead of moving up.
+  const step = Math.max(0, card.step ?? 0);
+  return { ...card, step, due: Date.now() + HCA3Ladder[step] * HCA3.DAY, reviews: (card.reviews || 0) + 1 };
 };
 
 /* ---------- Activity, streaks and goals ---------- */
@@ -181,8 +185,14 @@ function HCA3GetStarted() {
         HCAIcon(ok ? 'checkbox-circle-line' : 'checkbox-blank-circle-line'), HC('span', {}, label), !ok && HCAIcon('arrow-right-s-line'))))));
 }
 
+// Unless the learner has chosen, the welcome banner is only for newcomers: it steps aside after the first review or upload.
+function HCA3HeroOff(s) {
+  const choice = s.settings.hcaHero;
+  return choice === 'off' || (choice !== 'on' && ((s.reviewLog || []).length > 0 || s.books.some(b => b.kind !== 'demo')));
+}
+
 ke = function HCA3Today() {
-  const ctx = y(), heroOff = ctx.state.settings.hcaHero === 'off';
+  const ctx = y(), heroOff = HCA3HeroOff(ctx.state);
   return HC('div', { className: `page-content hca-dashboard hca3-shell hca3-today ${heroOff ? 'hero-off' : ''}` },
     HC(HCA3TodayPlan), HC(HCA3GetStarted),
     HC('div', { className: 'hca3-hero-toggle' },
@@ -321,7 +331,7 @@ function HCA3Commands(ctx) {
     nav('Notes & highlights', 'notes', 'sticky-note-line', 'N'), nav('Methods', 'methods', 'lightbulb-line', 'M'), nav('Progress', 'progress', 'dashboard-line', 'P'),
     { group: 'Preferences', icon: 'contrast-drop-line', label: s.settings.theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme', keys: ['D'], run: () => HCA3SetSettings(ctx, { theme: s.settings.theme === 'dark' ? 'light' : 'dark' }) },
     { group: 'Preferences', icon: 'font-size', label: s.settings.interfaceScale === 'large' ? 'Use standard interface text' : 'Use larger interface text', run: () => HCA3SetSettings(ctx, { interfaceScale: s.settings.interfaceScale === 'large' ? 'comfortable' : 'large' }) },
-    { group: 'Preferences', icon: 'layout-row-line', label: s.settings.hcaHero === 'off' ? 'Show the welcome banner on Today' : 'Hide the welcome banner on Today', run: () => HCA3SetSettings(ctx, { hcaHero: s.settings.hcaHero === 'off' ? 'on' : 'off' }) },
+    { group: 'Preferences', icon: 'layout-row-line', label: HCA3HeroOff(s) ? 'Show the welcome banner on Today' : 'Hide the welcome banner on Today', run: () => HCA3SetSettings(ctx, { hcaHero: HCA3HeroOff(s) ? 'on' : 'off' }) },
     { group: 'Preferences', icon: 'settings-4-line', label: 'Open settings', run: () => ctx.setModal({ type: 'settings' }) },
     { group: 'Your data', icon: 'file-text-line', label: 'Export study pack (Markdown)', run: () => ctx.exportStudyPack() },
     { group: 'Your data', icon: 'download-line', label: 'Back up the whole workspace', run: () => ctx.backupWorkspace() },
@@ -396,7 +406,7 @@ const HCA3Keymap = [
   ['Go to Notes', ['G', 'N']], ['Go to Methods', ['G', 'M']], ['Go to Progress', ['G', 'P']],
   ['Review due cards', ['R']], ['New recall card', ['C']], ['New note', ['N']], ['Add a source', ['U']],
   ['Switch light or dark theme', ['D']], ['Show these shortcuts', ['?']],
-  ['In a review: reveal the answer', ['Space']], ['In a review: Again · Good · Easy', ['1', '2', '3']],
+  ['In a review: reveal the answer', ['Space']], ['In a review: Again · Hard · Good · Easy', ['1', '2', '3', '4']],
 ];
 
 function HCA3KeysDialog({ onClose }) {
@@ -421,7 +431,7 @@ function HCA3Runtime() {
       if (c.modal?.type === 'review' && !e.metaKey && !e.ctrlKey && !e.altKey && !e.target.closest?.('input,textarea,select,[contenteditable="true"]')) {
         const buttons = [...document.querySelectorAll('.modal-backdrop button')];
         const find = re => buttons.find(b => re.test(b.innerText.trim()));
-        const target = e.key === ' ' ? find(/^I have an answer/) : e.key === '1' ? find(/^Again/) : e.key === '2' ? find(/^Good/) : e.key === '3' ? find(/^Easy/) : null;
+        const target = e.key === ' ' ? find(/^I have an answer/) : e.key === '1' ? find(/^Again/) : e.key === '2' ? find(/^Hard/) : e.key === '3' ? find(/^Good/) : e.key === '4' ? find(/^Easy/) : null;
         if (target) { e.preventDefault(); e.stopPropagation(); target.click(); }
         return;
       }

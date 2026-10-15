@@ -2,7 +2,7 @@
 
 *Healthcare Crown Academy · Lumen clinical study studio · 15 October 2026*
 
-This review comes from running the current file (`Lumen-clinical-study-studio-complete.html`, 16 MB) in Chromium at desktop width (1440 × 900) and phone width (390 × 844). I went through every page and dialog, ran a review session, and measured layout in the browser. Section 4 lists what this round fixes and adds. Section 5 is the roadmap for the rest. The ChatGPT brief in [`CHATGPT_PROMPT.md`](CHATGPT_PROMPT.md) covers that roadmap.
+This review comes from running the current file (`Lumen-clinical-study-studio-complete.html`, 16 MB) in Chromium at desktop width (1440 × 900) and phone width (390 × 844). I went through every page and dialog, ran a review session, and measured layout in the browser. Section 4 lists what two rounds of work have fixed and added. Section 5 lists what is left. The ChatGPT brief in [`CHATGPT_PROMPT.md`](CHATGPT_PROMPT.md) covers what is left.
 
 ---
 
@@ -64,112 +64,76 @@ Keep these. They set Lumen apart, and any redesign should protect them.
 | **Duolingo / GitHub** | Streaks and an activity heatmap | A gentle streak with no guilt messaging ("study today to keep it"), an 18-week heatmap, and a review forecast. |
 | **Notion / Linear onboarding** | A short checklist that ticks itself off | "Learn Lumen in six small steps", which ticks automatically and can be dismissed. |
 
-## 4. Done in this round (v3 layer)
+## 4. What is done
 
-Built as a separate layer (`lumen/src/hca-v3.js` and `hca-v3.css`) that `lumen/tools/build.mjs` injects into the app file. Existing code is not edited, and the build can be re-run on its own output. Output: `lumen/dist/Lumen-clinical-study-studio-v3.html`.
+Both rounds are separate layers that `lumen/tools/build.mjs` injects into the app file, so the original code stays untouched. The current app is `lumen/dist/Lumen-clinical-study-studio.html`. [`CHANGELOG.md`](CHANGELOG.md) has the full list and how each round was tested.
 
-**Today**
-- **Today's plan** sits at the top with three steps in order:
-  1. Review the due cards (with an estimated time), or a "reviews are clear" state with when the next card is due.
-  2. Continue reading, with page and progress bar.
-  3. Exam countdown and today's review target, or "Set your exam date".
-- A streak chip and a **Quick actions** button.
-- **A Getting Started checklist** with six steps. They tick themselves off from real activity, and the checklist can be dismissed.
-- **The welcome banner can be hidden** with one click (or from the palette). The choice is remembered.
+### Round 1 (v3)
+- **Today's plan** at the top:
+  1. Review due cards, with an estimated time.
+  2. Continue reading, with a progress bar.
+  3. Exam countdown and daily target.
+- **Today also has** a gentle streak, a Getting Started checklist, and a welcome banner that can be hidden.
+- **Command palette** (Ctrl K, ⌘K or /): actions plus search across sources, notes, highlights and cards.
+- **Keyboard shortcuts:** `G`+letter to change page; `R C N U D ?`.
+- **Adaptive scheduling (FSRS-4.5)**, with the simple ladder as an option and real intervals shown on the rating buttons.
+- **Progress insights:** streak, 30-day recall rate, 7-day forecast, card maturity, and an 18-week activity heatmap.
+- **Goal dialog:** exam name, date, daily target and scheduler.
+- **Fixes:** every phone overflow in section 2.2, the bottom tab bar, "0" reading as "O", the duplicate sidebar label, and the clipped sidebar card.
 
-**Command palette (Ctrl K, ⌘K or /)**
-- It replaces the old search dialog.
-- **Actions:** review due cards, continue reading, add a source, new card, new note, focus timer, set goal, theme, text size, export, back up, help.
-- **Search:** sources, notes, highlights and cards, with matches highlighted and page references shown.
-- Grouped results, fully keyboard driven, with an empty state. It is labelled as a dialog and combobox for screen readers.
+### Round 2 (v4)
+- **Less clutter:**
+  - The Library and Study banners are now a one-line note and a compact action bar.
+  - The method cards appear only on Methods; elsewhere a one-row link replaces them.
+  - Rows of zero counts are hidden.
+  - The welcome banner steps aside after a learner's first review or upload.
+- **Consistent controls:** filter bars are one 48px row with 14px labels (some were 9–10px). Dialog text is readable. One contrast failure is fixed.
+- **Storage you can trust:**
+  - The workspace is saved in IndexedDB, with automatic migration and a localStorage mirror.
+  - Saves also happen when the tab is hidden.
+  - If saving fails, a warning offers a backup download.
+- **Reader:** the panel tabs sit on one row. `T` toggles the panel, `Z` turns focus mode on or off, and `Esc` leaves it. `?` lists the reader keys.
+- **NCLEX:**
+  - Client Needs tags in the card and note dialogs, plus bulk tagging.
+  - Recall by category on Progress, with "Practise weakest".
+  - An exam-week banner.
+  - Six original NGN-style practice items (select all that apply, matrix, bow-tie, highlight, drop-down) with partial-credit scoring, rationales and a timed mode.
+- **Learning:**
+  - A fourth rating, Hard (keys `1–4`), which backups accept.
+  - "From your highlights" brings back one older highlight a day as a ready-made card draft.
+- **OCR:**
+  - Fixed a bug in the original file that stopped OCR from starting.
+  - The engine is now compressed, so the file is 12.9 MB instead of 16.0 MB.
 
-**Keyboard**
-- `G` then `T/L/S/N/M/P` to change page.
-- `R` to review, `C` new card, `N` new note, `U` add source, `D` theme, `?` shortcut sheet.
-- In a review: `Space` reveals, `1/2/3` rate Again, Good or Easy.
-- Single-key shortcuts are paused in text fields and in the reading room.
+## 5. What is still to do
 
-**Scheduling**
-- **Adaptive scheduling (FSRS-4.5, default parameters, 90% target recall).** The rating buttons now preview real intervals: Again 10 min, Good 4 days, Easy 14 days for a new card.
-- Cards already on the ladder carry over smoothly from their current step.
-- **The simple ladder is still available** in the goal dialog.
-- The scheduling note on the Study page has been rewritten to match.
-
-**Progress**
-- A **Learning insights** panel: current and best streak, 30-day recall rate, reviews due in the next 7 days, and long-term cards (stable for 21+ days).
-- An **18-week activity heatmap** with a table alternative, a **7-day review forecast**, and a **card maturity** bar (new / learning / long-term).
-
-**Goal dialog**
-- Exam name (default NCLEX-RN), date and daily review target.
-- Choice of scheduler, with a plain-language explanation of each.
-- A note that goals are study aids, not predictions.
-
-**Fixes**
-- All the phone overflow bugs in section 2.2. Every page now measures exactly 390 px on a 390 px phone.
-- All six bottom tabs fit.
-- Numbers display in Inter, so zero no longer looks like "O".
-- The duplicate sidebar label is hidden.
-- The sidebar quote card no longer clips: it shows in full where there is room and is left out on shorter screens.
-- Filter controls share one height, and labels are at least 13.5 px.
-
-**Checked**
-- Builds the same output when re-run on its own output.
-- No page errors on Today, Library, Study, Notes, Methods, Progress or the reader.
-- Light and dark themes.
-- A full review session driven by both mouse and keyboard.
-- The palette, goal and shortcut dialogs.
-- Stored card state after Again, Good and Easy (scheduled 10 min, 4 days and 14 days).
-
-## 5. Roadmap
-
-### Phase 1: Clean up the structure (1–2 weeks)
-1. **Replace the banners on Library and Study with compact page headers.** Title, one line of context and the main action, under 160 px. Keep one dismissible banner, on Today only, for first-time users.
-2. **Remove duplication.** Show the six methods only on the Methods page. Elsewhere, use a one-line link ("Try a method →"). Show the metric strip only where its numbers drive an action.
-3. **Combine the reader's tools into one toolbar.**
-   - Read, Annotate (pen / highlight / sticky / region in a single tool picker), Recall, and Page studio.
-   - One side panel with up to three tabs on a single row.
+### Next (1–2 weeks)
+1. **Redesign the reader toolbar.**
+   - One toolbar with four groups: Read, Annotate (a single tool picker with colour and width), Recall and Page studio.
    - Remove the separate "Study tools" button.
-   - Add a "Focus" mode (F) that hides everything except the page.
-4. **One set of components.**
-   - Buttons in two sizes (40 and 46 px).
-   - Inputs and selects at 44 px.
-   - A segmented control with 14 px labels.
-   - Eyebrow text at least 11 px with 0.12em letter-spacing.
-   - Panels with one corner radius (6 px) and one shadow.
-5. **Move workspace storage from `localStorage` to IndexedDB.** Migrate automatically on first load. Show a clear warning if storage fails, never a silent switch to session-only.
-6. **Load the OCR engine (about 9 MB) only when first used.** Use a separate cached file, with the PWA service worker caching it after first use.
+   - v4 tidied the panel and added keys, but every action should exist in exactly one place.
+2. **A larger practice bank.**
+   - Timed blocks of 25, 50 or 75 items need far more than six questions.
+   - Write them against the learner's own sources, so every rationale links to a page.
+   - Add a six-step case study (recognise cues → evaluate outcomes).
+3. **Make the file smaller.**
+   - Cut the icon font down to the 103 icons in use: about 540 KB of embedded text, of which a few KB are needed.
+   - Optionally, for web-hosted copies, serve the OCR engine as a separate cached file.
+   - Measure with Lighthouse on a mid-range phone.
 
-### Phase 2: NCLEX layer (2–3 weeks)
-1. **Tag cards, notes and questions with NCLEX Client Needs categories.** The tags are optional and can be applied in bulk.
-2. **Show recall by category** on Progress ("Pharmacological therapies: 72% recalled over 30 days"), with "practise weakest" as one click.
-3. **Add NGN-style item types to Practice:**
-   - Extended multiple response
-   - Bow-tie
-   - Matrix / grid
-   - Highlight-in-text
-   - Six-step case studies
-
-   Write the content as illustrative samples with clear labels.
-4. **Timed practice blocks** (25 / 50 / 75 items) with a review screen that links every rationale to its source page.
-5. **Exam-week mode.** In the final 7 days, new cards are paused and reviews focus on the weakest categories.
-
-### Phase 3: Smarter, still private (opt-in)
-1. **FSRS tuned to each learner** from their own review history, once there are 400 or more reviews. Run it on the device and show the expected retention.
-2. **Draft cards and questions from a page** (AI, off by default).
-   - Preview exactly what text will be sent.
+### Later: smarter, still private (opt-in)
+1. **Tune FSRS to each learner** from their own review history once there are 400 or more reviews. Run it on the device and show the expected recall.
+2. **Draft cards and questions from a page** (AI, off by default; needs the server endpoint):
+   - Preview exactly what will be sent.
    - Every draft cites its page.
-   - Drafts sit in an approval inbox and nothing is saved automatically.
-3. **Feedback on "Explain it back".** Compare the learner's explanation with the source passage and point out what is missing, with quotes.
-4. **Bring highlights back.** A step on Today shows two older highlights a day to turn into cards.
-5. **"Hard" as a fourth rating** (FSRS grade 2). This needs the backup format and the restore checks to accept `hard`.
+   - Drafts wait in an approval inbox.
+3. **Feedback on "Explain it back".** Compare the learner's explanation with the source passage and quote what is missing.
+4. **A "Connections" view** that links notes from different sources around one concept.
 
-### Phase 4: Platform
-1. **Recover or rebuild the original source** (Vite, React, TypeScript). Turn the v1–v3 override layers into real components, and stop editing minified variables.
+### Platform
+1. **Recover or rebuild the original source** (Vite, React, TypeScript). Turn the v1–v4 layers into real components, and stop wrapping minified names.
 2. **An installable app that works offline**, with an optional encrypted sync to the Evinca `platform_state` table for members who opt in.
-3. **Quality gates:**
-   - Playwright smoke tests (each page, a review session, the palette, the phone overflow check).
-   - axe accessibility checks.
-   - Lighthouse budgets: under 2.5 s to show the main content on a mid-range phone, and under 1.5 MB JavaScript on first load.
+3. **Run `lumen/tests/smoke.mjs` and axe on every change** (in CI once there is a pipeline), and add Lighthouse budgets.
 
 ### How to measure progress
 - **Day-7 return rate.**
