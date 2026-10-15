@@ -1,5 +1,7 @@
 # Laureate — Lean Six Sigma certificate & ID badge generators
 
+> **Lumen study app:** the single-file clinical study studio and its improvement plan live in [`lumen/`](lumen/).
+>
 > **Healthcare Crown Academy website:** the company home page and installable app for `healthcarecrownacademy.co.uk` lives in [`site/`](site/). See [`site/README.md`](site/README.md) for settings, deployment and domain setup.
 
 Browser tools that draw print-ready Lean Six Sigma credentials on a canvas. There's no build step and no server.
