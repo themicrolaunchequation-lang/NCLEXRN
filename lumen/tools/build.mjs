@@ -5,7 +5,7 @@
 //   3. gzips the embedded OCR engine, which is unpacked in the browser only when OCR is first used.
 // Usage: node lumen/tools/build.mjs <input.html> [output.html]
 // Safe to re-run on its own output: old layers are removed first and applied patches are skipped.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
@@ -173,7 +173,13 @@ for (const v of LAYERS) {
 
 let js = '', css = '';
 for (const v of LAYERS) {
-  const layerJs = readFileSync(join(here, '..', 'src', `hca-${v}.js`), 'utf8');
+  let layerJs = readFileSync(join(here, '..', 'src', `hca-${v}.js`), 'utf8');
+  if (v === 'v9') {
+    // Technique infographics (assets/techniques/<id>.webp) become data URLs for the Techniques window.
+    const dir = join(here, '..', 'assets', 'techniques');
+    const imgs = existsSync(dir) ? readdirSync(dir).filter(f => f.endsWith('.webp')) : [];
+    layerJs = `const HCA9TechImg = {${imgs.map(f => `${JSON.stringify(f.slice(0, -5))}: 'data:image/webp;base64,${readFileSync(join(dir, f)).toString('base64')}'`).join(',\n')}};\n` + layerJs;
+  }
   const layerCss = readFileSync(join(here, '..', 'src', `hca-${v}.css`), 'utf8');
   // These sequences inside an inline script confuse the HTML parser or the layer and asset insertion points.
   for (const bad of ['</script', '<script', '<!--', '</head', '</body']) if (layerJs.toLowerCase().includes(bad)) throw new Error(`hca-${v}.js must not contain "${bad}".`);

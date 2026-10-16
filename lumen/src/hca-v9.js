@@ -227,7 +227,7 @@ function HCA9TechArt({ id }) {
 }
 
 function HCA9Techniques() {
-  const ctx = y(), [i, setI] = _.useState(0), t = HCA9Tech[i];
+  const ctx = y(), [i, setI] = _.useState(0), [zoom, setZoom] = _.useState(false), t = HCA9Tech[i];
   const go = target => {
     if (target === 'review') { const due = we(ctx.state.cards); return due.length ? ctx.startReview(due) : ctx.navigate('studio'); }
     if (['studio', 'progress', 'methods'].includes(target)) return ctx.navigate(target);
@@ -236,8 +236,10 @@ function HCA9Techniques() {
   return HC(HCA8Window, { id: 'techniques', title: 'Study techniques that work', icon: 'lightbulb-line', className: 'hca9-tech-win', onClose: () => HCA8Close('techniques') },
     HC('ol', { className: 'hca9-chapters', 'aria-label': 'Chapters' }, HCA9Tech.map((x, n) => HC('li', { key: x.id },
       HC('button', { type: 'button', 'aria-current': n === i ? 'step' : undefined, className: n < i ? 'seen' : '', onClick: () => setI(n), title: x.name }, HC('span', {}, n + 1), HC('em', {}, x.name))))),
-    HC('article', { className: 'hca9-chapter', key: t.id, onKeyDown: e => { if (e.key === 'ArrowRight') setI(Math.min(HCA9Tech.length - 1, i + 1)); if (e.key === 'ArrowLeft') setI(Math.max(0, i - 1)); } },
-      HC('div', { className: 'hca9-chapter-art' }, HC(HCA9TechArt, { id: t.id }), HC('span', { className: `hca9-evidence ${t.evidence.toLowerCase()}` }, `Evidence: ${t.evidence}`)),
+    HC('article', { className: `hca9-chapter ${HCA9TechImg[t.id] ? 'has-img' : ''}`, key: t.id, onKeyDown: e => { if (e.key === 'ArrowRight') setI(Math.min(HCA9Tech.length - 1, i + 1)); if (e.key === 'ArrowLeft') setI(Math.max(0, i - 1)); } },
+      HCA9TechImg[t.id]
+        ? HC('figure', { className: 'hca9-chapter-img' }, HC('button', { type: 'button', onClick: () => setZoom(true), 'aria-label': `Enlarge the ${t.name} infographic` }, HC('img', { src: HCA9TechImg[t.id], alt: `Infographic: ${t.name}. ${t.steps.join(' ')}` })), HC('figcaption', {}, HCAIcon('zoom-in-line'), 'Click to enlarge'))
+        : HC('div', { className: 'hca9-chapter-art' }, HC(HCA9TechArt, { id: t.id }), HC('span', { className: `hca9-evidence ${t.evidence.toLowerCase()}` }, `Evidence: ${t.evidence}`)),
       HC('div', { className: 'hca9-chapter-copy' },
         HC('span', { className: 'eyebrow' }, `CHAPTER ${i + 1} OF ${HCA9Tech.length} · ${t.tag.toUpperCase()}`),
         HC('h3', {}, t.name),
@@ -245,6 +247,7 @@ function HCA9Techniques() {
         HC('div', { className: 'hca9-why' }, HC('strong', {}, 'Why it works'), HC('p', {}, t.why), HC('small', {}, t.cite)),
         HC('ol', { className: 'hca9-steps3' }, t.steps.map((s, n) => HC('li', { key: s, style: { '--i': n } }, s))),
         HC('div', { className: 'hca8-row' }, t.tries.map(([label, target], n) => HCABtn(`Try it: ${label}`, () => go(target), n ? 'secondary' : 'primary', 'arrow-right-up-line', { key: label }))))),
+    zoom && HCA9TechImg[t.id] && S.createPortal(HC('div', { className: 'hca9-lightbox', role: 'dialog', 'aria-label': t.name, onClick: () => setZoom(false), onKeyDown: e => e.key === 'Escape' && setZoom(false), tabIndex: -1, ref: el => el?.focus() }, HC('img', { src: HCA9TechImg[t.id], alt: `Infographic: ${t.name}` }), HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close' }, HCAIcon('close-line'))), document.body),
     HC('div', { className: 'hca9-chapter-nav' },
       HCABtn('Previous', () => setI(Math.max(0, i - 1)), 'secondary', 'arrow-left-line', { disabled: i === 0 }),
       HC('span', { className: 'hca-small' }, i === HCA9Tech.length - 1 ? 'Myth check: rereading and highlighting feel productive but were rated low utility on their own. Use them as a start, then test yourself.' : 'Use ← and → to move between chapters.'),

@@ -314,3 +314,13 @@
   .hca9-art .draw { stroke-dashoffset: 0; }
 }
 [data-theme=dark] .tone-navy { --tone: #4f8fbf; } [data-theme=dark] .tone-sand { --tone: #c9a35a; }
+
+/* Technique infographics */
+.hca9-chapter.has-img { grid-template-columns: 1fr; }
+.hca9-chapter-img { margin: 0; display: grid; gap: 4px; }
+.hca9-chapter-img button { padding: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #f7f4ec; cursor: zoom-in; box-shadow: 0 12px 30px -18px #10253a77; }
+.hca9-chapter-img img { display: block; width: 100%; height: auto; max-height: 62vh; object-fit: contain; }
+.hca9-chapter-img figcaption { display: flex; gap: 5px; align-items: center; justify-content: center; font-size: 12px; color: var(--muted); }
+.hca9-lightbox { position: fixed; inset: 0; z-index: 100050; display: grid; place-items: center; padding: 24px; background: #0d1b2ae6; cursor: zoom-out; animation: hca9-rise .25s both; }
+.hca9-lightbox img { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px #000a; }
+.hca9-lightbox button { position: absolute; top: 16px; right: 16px; background: #fff; }
