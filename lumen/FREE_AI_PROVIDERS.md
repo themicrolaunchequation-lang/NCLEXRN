@@ -2,9 +2,11 @@
 
 *Researched 16 October 2026. Free tiers change often. Check each provider's console before relying on a number.*
 
+**For the Academy's 500+ members, the main route is now Academy AI** (`ACADEMY_AI.md`): members sign in with Evinca and use the Academy's paid, capped service with no key. The free providers below stay available as an extra for members who want more, and as a fallback.
+
 Lumen never ships with a shared API key. A key built into the app would be visible to everyone, would be used up within a day, and would break the providers' terms. Instead, each learner can add **their own free key** under **AI providers and keys** (Ctrl K → "AI providers"). Lumen then tries the keys in the learner's order and moves on when one runs out:
 
-**your keys, in your order → Browser AI (on-device) → Free local AI (WebLLM, if downloaded) → Source tools (no AI)**
+**Academy AI (members) → your keys, in your order → Browser AI (on-device) → Free local AI (WebLLM, if downloaded) → Source tools (no AI)**
 
 So studying never stops because of a quota. The last step always works offline.
 

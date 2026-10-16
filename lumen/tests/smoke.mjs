@@ -126,20 +126,49 @@ try {
   }).catch(e => `error: ${e.message}`);
   check('OCR reads a printed test image', ocr.includes('CARDIAC OUTPUT'), ocr.slice(0, 80));
 
-  // AI with the learner's own key, against a mocked OpenAI-compatible provider (no real network).
+  // AI through Academy AI (members sign in, no key), then falling back to the learner's own key when the
+  // daily allowance is used up. Both services are mocked here, so nothing goes over the network.
   const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS' };
+  const draft = (prompt, types) => {
+    const quote = ((prompt.split('SOURCE:\n')[1] || '').match(/[^.!?\n]+[.!?]/g) || []).map(x => x.trim()).find(x => x.length > 30) || '';
+    return JSON.stringify({ items: types.map(type => ({ type, category: 'pha', stem: `Smoke ${type}?`, rationale: 'From the page.', quote,
+      options: ['A', 'B', 'C', 'D'], answer: type === 'calc' ? 5 : 0, answers: [0, 1], steps: ['One', 'Two', 'Three'], tolerance: 0, unit: 'mL' })) });
+  };
+  const json = body => ({ status: 200, headers: { ...cors, 'content-type': 'application/json' }, body: JSON.stringify(body) });
+  let academy = 'ok';
+  await desktop.route('https://ujeofxfbwivjmgrxqdcl.supabase.co/**', async route => {
+    const req = route.request(), path = new URL(req.url()).pathname, body = JSON.parse(req.postData() || '{}');
+    if (req.method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors });
+    if (path === '/auth/v1/token') return body.password === 'right-password'
+      ? route.fulfill(json({ access_token: 'smoke-access', refresh_token: 'SMOKE-REFRESH-TOKEN', expires_in: 3600, user: { email: 'member@example.com' } }))
+      : route.fulfill({ ...json({ error_description: 'Invalid login credentials' }), status: 400 });
+    if (path === '/functions/v1/lumen-ai') {
+      if (req.headers().authorization !== 'Bearer smoke-access') return route.fulfill({ ...json({ message: 'Sign in again.' }), status: 401 });
+      if (body.action === 'status') return route.fulfill(json({ level: 1, limit: 15, used: 0, remaining: 15 }));
+      if (academy === 'daily') return route.fulfill({ ...json({ error: 'daily', retryAfter: 3600, message: 'You have used today’s 15 Academy AI requests.' }), status: 429 });
+      return route.fulfill(json({ text: draft(body.prompt, ['single', 'multi', 'order']), provider: 'gemini', model: 'gemini-2.5-flash-lite', remaining: 14 }));
+    }
+    return route.fulfill({ status: 404, headers: cors, body: '{}' });
+  });
   await desktop.route('https://api.groq.com/**', async route => {
     if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors });
     const prompt = JSON.parse(route.request().postData() || '{}').messages?.[1]?.content || '';
-    const quote = ((prompt.split('SOURCE:\n')[1] || '').match(/[^.!?\n]+[.!?]/g) || []).map(x => x.trim()).find(x => x.length > 30) || '';
-    const items = ['single', 'multi', 'order', 'calc'].map(type => ({ type, category: 'pha', stem: `Smoke ${type}?`, rationale: 'From the page.', quote,
-      options: ['A', 'B', 'C', 'D'], answer: type === 'calc' ? 5 : 0, answers: [0, 1], steps: ['One', 'Two', 'Three'], tolerance: 0, unit: 'mL' }));
-    return route.fulfill({ status: 200, headers: { ...cors, 'content-type': 'application/json' }, body: JSON.stringify({ choices: [{ message: { content: JSON.stringify({ items }) } }] }) });
+    return route.fulfill(json({ choices: [{ message: { content: draft(prompt, ['single', 'multi', 'order', 'calc']) } }] }));
   });
   await go(page, 'home');
   await page.keyboard.press('Control+k');
   await page.keyboard.type('AI providers');
   await page.keyboard.press('Enter');
+  const academyRow = page.locator('.hca6-academy');
+  await academyRow.locator('input[type=email]').fill('member@example.com');
+  await academyRow.locator('input[type=password]').fill('wrong-password');
+  await academyRow.getByRole('button', { name: 'Sign in' }).click();
+  await page.waitForTimeout(400);
+  const refused = await academyRow.locator('[role=alert]').innerText().catch(() => '');
+  await academyRow.locator('input[type=password]').fill('right-password');
+  await academyRow.getByRole('button', { name: 'Sign in' }).click();
+  await page.waitForTimeout(800);
+  check('Academy AI sign-in (wrong password refused, then signed in)', /do not match/.test(refused) && /15 of today/.test(await academyRow.innerText()));
   const groq = page.locator('.hca5-provider', { has: page.locator('.hca5-switch strong', { hasText: /^Groq$/ }) });
   await groq.locator('.hca5-switch input').check();
   await groq.locator('input[type=password]').fill('SMOKE-TEST-KEY');
@@ -153,14 +182,19 @@ try {
   await page.locator('.hca5-consent input[type=checkbox]').check();
   await page.locator('.hca5-consent').getByRole('button', { name: 'Send' }).click();
   await page.waitForTimeout(1500);
-  check('AI questions from your own key', await page.locator('.hca5-item').count() === 4, `${await page.locator('.hca5-item').count()} items`);
+  const studio = page.locator('.hca5-studio');
+  check('AI questions from Academy AI', await page.locator('.hca5-item').count() === 3 && /Academy AI/.test(await studio.locator('.hca-output-heading small').first().textContent()), `${await page.locator('.hca5-item').count()} items`);
+  academy = 'daily';
+  await page.getByRole('button', { name: 'Make questions' }).click();
+  await page.waitForTimeout(1500);
+  check('falls back to your own key when the Academy allowance is used', await page.locator('.hca5-item').count() === 4 && /used today/.test(await studio.locator('.hca5-attempts').first().textContent()), `${await page.locator('.hca5-item').count()} items`);
   const download = page.waitForEvent('download');
   await go(page, 'home');
   await page.keyboard.press('Control+k');
   await page.keyboard.type('back up');
   await page.keyboard.press('Enter');
   const backup = await (await download).createReadStream().then(stream => new Promise(done => { let t = ''; stream.on('data', c => { t += c; }); stream.on('end', () => done(t)); }));
-  check('API keys stay out of backups', backup.length > 100 && !backup.includes('SMOKE-TEST-KEY'));
+  check('API keys and sign-in stay out of backups', backup.length > 100 && !/SMOKE-TEST-KEY|SMOKE-REFRESH-TOKEN|smoke-access/.test(backup));
 
   // Phones: nothing wider than the screen.
   for (const width of [360, 390, 414]) {

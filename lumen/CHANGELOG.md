@@ -1,5 +1,27 @@
 # Lumen changelog
 
+## v6: 16 October 2026
+
+### Academy AI: AI for members, with no keys
+- **Academy AI is now the first AI engine.** Members sign in once with their Evinca email and password (AI providers → Academy AI). From then on, summaries and every question type work with nothing to set up.
+- **Runs on the Academy's own service.** This is a Supabase Edge Function, `lumen-ai`, that holds the Academy's paid Gemini and Groq keys. The keys never reach the browser.
+- **Daily allowance by Evinca level.** The defaults are 15, 30 and 60 requests a day, plus an Academy-wide daily ceiling that caps spending. The dialog shows how many requests are left today.
+- **Shared answer store.** A request that another member already sent is answered from the store and does not use the allowance.
+- **Fallback is unchanged.** When the allowance is used up or the service is busy, Lumen moves on to any key the member added, then browser AI, local AI and source tools. A request is given back if no provider answers.
+- **The sign-in is kept like the keys.** It stays in this browser (or this tab only) and is never included in backups. **Sign out** removes it.
+- **Wording:** the AI dialog and Page studio now name Academy AI next to "your own keys".
+- **Not deployed yet.** `ACADEMY_AI.md` explains the choice for 500+ members, the cost (about $40 a month typical, at most about $125 with the default ceiling) and the setup steps.
+
+### How it was tested
+- **Edge Function handler:** 12 unit tests with simulated Supabase and providers. They cover sign-in, Evinca level, allowance, ceiling, fallback on 429, 5xx or no connection, the refund, the cache, size limits, and that prompt text is never logged.
+- **Migration:** run twice in an in-process Postgres. It checks the allowance counting, the refund and the Academy-wide ceiling.
+- **Smoke test:** 17 checks. The new ones cover:
+  - a wrong password is refused, then sign-in succeeds
+  - questions arrive from Academy AI
+  - a used-up allowance falls back to the learner's Groq key
+  - no key or sign-in token appears in a backup
+- **Accessibility:** axe found no serious issues in the AI dialog, at 1440px and on a 390px phone, in light and dark themes.
+
 ## v5: 16 October 2026
 
 ### AI with your own keys

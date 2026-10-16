@@ -64,7 +64,7 @@ function HCA5SaveConfig(config) {
 }
 
 const HCA5Settings = id => ({ enabled: false, key: '', model: HCA5Provider(id)?.model || '', base: HCA5Provider(id)?.base || '', remember: true, ...(HCA5Store.config.providers[id] || {}) });
-const HCA5Ready = () => HCA5Store.config.order.filter(id => { const s = HCA5Settings(id); return s.enabled && (s.key || HCA5Provider(id)?.custom) && s.model; });
+let HCA5Ready = () => HCA5Store.config.order.filter(id => { const s = HCA5Settings(id); return s.enabled && (s.key || HCA5Provider(id)?.custom) && s.model; });
 
 /* Daily request counts and cool-downs, per provider, kept on this device. */
 function HCA5Status() {
@@ -661,13 +661,13 @@ function HCA5ProvidersDialog({ onClose }) {
   const move = (id, step) => { const order = [...config.order], i = order.indexOf(id); order.splice(i, 1); order.splice(i + step, 0, id); commit({ ...config, order }); };
   const forgetAll = () => { commit({ order: config.order, providers: Object.fromEntries(Object.entries(config.providers).map(([id, p]) => [id, { ...p, key: '', enabled: false }])) }); ctx.toast('All AI keys removed from this device.'); };
   const ready = HCA5Ready();
-  return HC(A, { title: 'AI with your own keys.', eyebrow: 'OPTIONAL · OFF UNTIL YOU ADD A KEY', onClose, className: 'hca5-ai-dialog',
+  return HC(A, { title: 'AI for your studies.', eyebrow: 'ACADEMY AI OR YOUR OWN KEYS', onClose, className: 'hca5-ai-dialog',
     footer: HC(_.Fragment, {}, HCABtn('Remove all keys', forgetAll, 'secondary', 'delete-bin-line'), HCABtn('Done', onClose, 'primary', 'check-line')) },
-    HC('p', {}, 'Add a key from one or more providers. Lumen tries them in this order. When one reaches its limit or fails, it moves to the next, then to browser AI, then to source tools that need no AI.'),
+    HC('p', {}, 'Members can sign in to Academy AI, with nothing to set up. You can also add your own key from one or more providers. Lumen tries them in this order. When one reaches its limit or fails, it moves to the next, then to browser AI, then to source tools that need no AI.'),
     HC('div', { className: 'hca5-chain', 'aria-label': 'Fallback order' },
       [...ready.map(id => HCA5Provider(id).name), 'Browser AI', 'Free local AI (if downloaded)', 'Source tools'].map((n, i, a) => HC(_.Fragment, { key: n }, HC('span', { className: i < ready.length ? 'live' : '' }, n), i < a.length - 1 && HCAIcon('arrow-right-s-line')))),
     HC('div', { className: 'hca-info-banner hca5-warning' }, HCAIcon('shield-check-line'),
-      HC('p', {}, HC('strong', {}, 'Never send patient-identifiable information. '), 'Only the page or passage you choose is sent, and only after you confirm. Keys stay in this browser, are not included in backups or exports, and go only to the provider they belong to. Free tiers may keep or review prompts; each provider’s note says what is known.')),
+      HC('p', {}, HC('strong', {}, 'Never send patient-identifiable information. '), 'Only the page or passage you choose is sent, and only after you confirm. Keys and your sign-in stay in this browser, are not included in backups or exports, and go only to the service they belong to. Free tiers may keep or review prompts; each provider’s note says what is known.')),
     HC('ul', { className: 'hca5-providers' }, config.order.map((id, i) => HC(HCA5ProviderRow, { key: id, id, index: i, count: config.order.length, config, update, move }))),
     HC('p', { className: 'hca-small' }, 'Free-tier limits change often. The notes reflect public information from October 2026; each provider’s console shows your exact limits.'));
 }
@@ -784,10 +784,10 @@ function HCA5PageStudio({ book, page, getText, onTranscript, selection }) {
       HCABtn('Edit text', () => onTranscript(page), 'secondary', 'edit-line')),
     HC('label', { className: 'hca-field' }, 'Engine', HC('select', { value: engine, disabled: !!busy, onChange: e => setEngine(e.target.value) }, engineOptions.map(([v, l]) => HC('option', { key: v, value: v }, l)))),
     HC('p', { className: 'hca-small hca5-engine-note' }, engine === 'auto'
-      ? (ready.length ? `Tries ${ready.map(id => HCA5Provider(id).name).join(' → ')}, then browser AI, then source tools. ` : 'No AI keys yet, so Auto uses browser AI or source tools. ')
+      ? (ready.length ? `Tries ${ready.map(id => HCA5Provider(id).name).join(' → ')}, then browser AI, then source tools. ` : 'No AI set up yet, so Auto uses browser AI or source tools. ')
       : engine === 'source' ? 'Key-sentence summaries and fill-the-gap questions from your text. Nothing leaves your device. '
       : engine === 'webllm' && !HCAAI.engine ? 'Download the local model first (about 1 GB, needs WebGPU). ' : '',
-      HC('button', { className: 'text-link inline', onClick: () => ctx.setModal({ type: 'hca5-ai' }) }, ready.length ? 'Manage AI keys' : 'Add an AI key')),
+      HC('button', { className: 'text-link inline', onClick: () => ctx.setModal({ type: 'hca5-ai' }) }, ready.length ? 'Manage AI' : 'Sign in to Academy AI or add a key')),
     engine === 'webllm' && !HCAAI.engine && HCABtn('Download & enable local AI', () => HCALoadWebLLM().then(() => refresh(n => n + 1)).catch(e => setError(e.message)), 'secondary', 'download-line', { disabled: !navigator.gpu }),
     HC('fieldset', { className: 'hca5-make' },
       HC('legend', {}, 'Summary'),
@@ -798,8 +798,8 @@ function HCA5PageStudio({ book, page, getText, onTranscript, selection }) {
       HC('legend', {}, 'Practice questions'),
       HC('div', { className: 'hca5-types', role: 'group', 'aria-label': 'Question types' }, allowedTypes.map(t =>
         HC('button', { key: t.id, type: 'button', title: t.hint, 'aria-pressed': types.includes(t.id), className: `hca4-tag ${types.includes(t.id) ? 'on' : ''}`, onClick: () => toggleType(t.id), disabled: engine === 'source' }, types.includes(t.id) && HCAIcon('check-line'), t.label))),
-      engine === 'source' && HC('p', { className: 'hca-small' }, 'Source tools make fill-the-gap questions only. Add an AI key for every type.'),
-      localOnly && HC('p', { className: 'hca-small' }, 'On-device models handle the simpler types. Add an AI key for matrix, bow-tie, case studies and more.'),
+      engine === 'source' && HC('p', { className: 'hca-small' }, 'Source tools make fill-the-gap questions only. Use Academy AI or your own key for every type.'),
+      localOnly && HC('p', { className: 'hca-small' }, 'On-device models handle the simpler types. Use Academy AI or your own key for matrix, bow-tie, case studies and more.'),
       HC('div', { className: 'hca5-row' },
         HC('select', { 'aria-label': 'Number of questions', value: count, onChange: e => setCount(Number(e.target.value)) }, [3, 5, 8, 10, 15].map(n => HC('option', { key: n, value: n }, `${n} questions`))),
         HCABtn(busy === 'exam' ? 'Working…' : 'Make questions', () => ask('exam'), 'primary', 'question-line', { disabled: !!busy || !bounded || (engine !== 'source' && !activeTypes.length) }))),

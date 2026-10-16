@@ -1,0 +1,11 @@
+/* HCA v6 — Academy AI sign-in in the AI dialog. */
+.hca5-tier.academy { background: #e6eefb; color: #23427a; }
+:root[data-theme=dark] .hca5-tier.academy { background: #1f2c45; color: #b9cdf2; }
+.hca6-academy.on { border-color: color-mix(in srgb, #3b5ea8 55%, var(--line)); }
+.hca6-signin { display: grid; gap: 10px; min-width: 0; }
+.hca6-signin > label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; color: var(--ink-strong); }
+.hca6-signin > label.hca4-check { display: flex !important; align-items: flex-start; gap: 10px; font-weight: 400; }
+.hca6-signin > label.hca4-check input { flex: none; margin: 2px 0 0; }
+.hca6-signin input:not([type=checkbox]) { min-height: 44px; width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas); color: var(--ink); font: 400 15px/1.4 inherit; box-sizing: border-box; }
+.hca6-signed { display: flex; gap: 8px; align-items: flex-start; margin: 0; font-size: 14px; }
+.hca6-signed svg, .hca6-signed i { flex: none; margin-top: 2px; color: var(--green); }
