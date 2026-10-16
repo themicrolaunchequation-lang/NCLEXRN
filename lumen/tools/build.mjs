@@ -17,7 +17,7 @@ if (!input) {
   process.exit(1);
 }
 
-const LAYERS = ['v3', 'v4'];
+const LAYERS = ['v3', 'v4', 'v5'];
 const RENDER_CALL = '(0,g.createRoot)(document.getElementById(`root`)).render(';
 const jsMarkers = v => [`/*HCA${v.slice(1)}:BEGIN*/`, `/*HCA${v.slice(1)}:END*/`];
 const cssMarkers = v => [`<style id="hca-${v}">`, `</style><!--/hca-${v}-->`];

@@ -1,5 +1,48 @@
 # Lumen changelog
 
+## v5: 16 October 2026
+
+### AI with your own keys
+- **New "AI providers and keys" dialog** (Ctrl K → "AI providers", and the AI link in Settings). It lists 13 providers:
+  - Free tiers: Gemini, Groq, OpenRouter free models, Mistral, SambaNova, NVIDIA NIM
+  - Trials: Cerebras, Cohere, Hugging Face
+  - Paid: OpenAI, Anthropic, DeepSeek
+  - Your own server: Ollama or LM Studio
+- **Each provider has:** a key field, a link to get a key, **Load models** (asks the provider for its current list; OpenRouter is filtered to free models), **Test connection**, a daily request count, and arrows to set the order.
+- **Automatic fallback.** Lumen tries your providers in order, then browser AI, then the local model, then source tools (no AI). On a quota error it reads the provider's retry hint and rests that provider: about a minute for per-minute limits, longer for daily limits. A refused key rests for a day. Each result shows what happened with every provider.
+- **Keys are stored apart from the workspace.** They never appear in backups or exports. "Remember on this device" can be turned off, and **Remove all keys** wipes them.
+- **Before any text leaves the device**, Lumen shows how much will be sent and to whom, and asks you to confirm it contains no patient-identifiable information.
+
+### Every question type
+- **Page studio was rebuilt.** Choose an engine and a summary style (key points, structured notes, clinical pearls and red flags, plain language), then the question types and how many (3–15).
+- **14 types:**
+  - Multiple choice, select all that apply, true or false
+  - Matrix and matrix multiple response
+  - Bow-tie, highlight, drop-down cloze
+  - Drag and drop (word bank, which works by dragging or by tapping), ordered response
+  - Calculation (unit and tolerance), short answer (self-marked against a model answer)
+  - Case studies with exhibit tabs and the six clinical-judgement steps
+  - Flashcards, which become recall cards
+- **AI drafts must quote the page.** Lumen checks each draft's quote against the page and leaves out any it cannot match.
+- **Question bank.** Save drafts after checking them; filter by type, category or source; practise untimed or timed (1.5 minutes per item). Results feed Progress → Recall by category, and every rationale links back to its page.
+
+### Also
+- `FREE_AI_PROVIDERS.md`: researched free tiers, privacy notes, sources, and how the fallback works.
+- `ICON_LIBRARY_PROMPT.md`: the design for a drag-and-drop, resizable clinical sticker library, plus a prompt for an external research agent to collect 300 openly licensed icons.
+- **Smoke test:** 15 checks. The new ones cover AI questions through a mocked provider and keys staying out of backups.
+
+### How it was tested
+- **Real providers could not be reached from the build environment**, so the AI was tested against mocked Gemini and Groq endpoints. The scenarios covered:
+  - a daily quota that falls back to the next provider
+  - a per-minute limit (rests about a minute)
+  - a server error
+  - every provider failing (falls back to source tools)
+  - recovery
+- **All 14 question types** were rendered, answered, checked and scored. One draft with a quote that is not on the page was rejected.
+- **Bank and practice:** the bank, practice and backup-without-keys flows all passed.
+- **Accessibility:** axe found no serious issues in the new dialogs.
+- **Phones:** the AI dialog fits a 390 px phone.
+
 ## v4.1: 16 October 2026
 
 - **OCR now works when Lumen is opened straight from your computer** (`file://`), not only from a website. Before, "Extract printed text locally" stopped at "Loading English recognition model…" and then showed "OCR could not complete". The browser refused to load the OCR engine as a separate in-memory file. The engine and its worker now load as one script, so nothing has to be fetched while OCR runs.

@@ -2,7 +2,7 @@
 
 *Healthcare Crown Academy · Lumen clinical study studio · 15 October 2026*
 
-This review comes from running the current file (`Lumen-clinical-study-studio-complete.html`, 16 MB) in Chromium at desktop width (1440 × 900) and phone width (390 × 844). I went through every page and dialog, ran a review session, and measured layout in the browser. Section 4 lists what two rounds of work have fixed and added. Section 5 lists what is left. The ChatGPT brief in [`CHATGPT_PROMPT.md`](CHATGPT_PROMPT.md) covers what is left.
+This review comes from running the current file (`Lumen-clinical-study-studio-complete.html`, 16 MB) in Chromium at desktop width (1440 × 900) and phone width (390 × 844). I went through every page and dialog, ran a review session, and measured layout in the browser. Section 4 lists what three rounds of work have fixed and added. Section 5 lists what is left. The ChatGPT brief in [`CHATGPT_PROMPT.md`](CHATGPT_PROMPT.md) covers what is left.
 
 ---
 
@@ -105,33 +105,34 @@ Both rounds are separate layers that `lumen/tools/build.mjs` injects into the ap
   - Fixed the bugs in the original file that stopped OCR from starting, including when the file is opened from a computer.
   - The engine is now compressed, so the file is 12.9 MB instead of 16.0 MB.
 
+### Round 3 (v5)
+- **AI with your own keys** from 13 providers, with automatic fallback and safe key storage. See [`FREE_AI_PROVIDERS.md`](FREE_AI_PROVIDERS.md).
+- **Every practice-question type** (14), drafted from a page, checked against a quote from the page, and saved to a question bank for untimed or timed practice.
+
 ## 5. What is still to do
 
 ### Next (1–2 weeks)
-1. **Redesign the reader toolbar.**
+1. **Build the clinical sticker library** once the research agent returns the 300-item list. [`ICON_LIBRARY_PROMPT.md`](ICON_LIBRARY_PROMPT.md) has the design.
+2. **Redesign the reader toolbar.**
    - One toolbar with four groups: Read, Annotate (a single tool picker with colour and width), Recall and Page studio.
    - Remove the separate "Study tools" button.
    - v4 tidied the panel and added keys, but every action should exist in exactly one place.
-2. **A larger practice bank.**
+3. **A larger built-in practice bank.**
    - Timed blocks of 25, 50 or 75 items need far more than six questions.
    - Write them against the learner's own sources, so every rationale links to a page.
    - Add a six-step case study (recognise cues → evaluate outcomes).
-3. **Make the file smaller.**
+4. **Make the file smaller.**
    - Cut the icon font down to the 103 icons in use: about 540 KB of embedded text, of which a few KB are needed.
    - Optionally, for web-hosted copies, serve the OCR engine as a separate cached file.
    - Measure with Lighthouse on a mid-range phone.
 
 ### Later: smarter, still private (opt-in)
 1. **Tune FSRS to each learner** from their own review history once there are 400 or more reviews. Run it on the device and show the expected recall.
-2. **Draft cards and questions from a page** (AI, off by default; needs the server endpoint):
-   - Preview exactly what will be sent.
-   - Every draft cites its page.
-   - Drafts wait in an approval inbox.
-3. **Feedback on "Explain it back".** Compare the learner's explanation with the source passage and quote what is missing.
-4. **A "Connections" view** that links notes from different sources around one concept.
+2. **Feedback on "Explain it back".** Compare the learner's explanation with the source passage and quote what is missing.
+3. **A "Connections" view** that links notes from different sources around one concept.
 
 ### Platform
-1. **Recover or rebuild the original source** (Vite, React, TypeScript). Turn the v1–v4 layers into real components, and stop wrapping minified names.
+1. **Recover or rebuild the original source** (Vite, React, TypeScript). Turn the v1–v5 layers into real components, and stop wrapping minified names.
 2. **An installable app that works offline**, with an optional encrypted sync to the Evinca `platform_state` table for members who opt in.
 3. **Run `lumen/tests/smoke.mjs` and axe on every change** (in CI once there is a pipeline), and add Lighthouse budgets.
 
