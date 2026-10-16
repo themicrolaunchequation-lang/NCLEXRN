@@ -261,6 +261,27 @@ try {
   check('PowerPoint as PDF: wide pages with selectable text', asPdf === 1 && /Heart failure basics/.test(slideText) && shape.width > shape.height, `${Math.round(shape.width)}×${Math.round(shape.height)}`);
   check('export to PowerPoint', deckBytes.length > 2000 && deckBytes.subarray(0, 2).toString() === 'PK', `${deckBytes.length} bytes`);
 
+  // Study desk: board card saved, canvas template, timer badge.
+  await page.keyboard.press('Escape');
+  const desk = page.locator('.hca8-desk-nav button');
+  await desk.nth(0).click();
+  const addCard = page.locator('.hca8-add input').first();
+  await addCard.fill('Smoke board card'); await addCard.press('Enter');
+  await page.locator('.hca8-win button[aria-label^="Close"]').last().click();
+  await desk.nth(1).click();
+  await page.getByRole('button', { name: 'Concept map (condition)' }).click();
+  const nodes = await page.locator('.hca8-node').count();
+  await page.locator('.hca8-win button[aria-label^="Close"]').last().click();
+  await desk.nth(2).click();
+  await page.getByRole('button', { name: 'Start', exact: true }).click();
+  await page.waitForTimeout(2200);
+  const badge = await page.locator('.hca8-badge').count();
+  await page.getByRole('button', { name: 'Reset', exact: true }).click();
+  await page.locator('.hca8-win button[aria-label^="Close"]').last().click();
+  await page.waitForTimeout(1500);
+  const deskState = await saved(page);
+  check('study desk: board, canvas and focus timer', nodes >= 5 && badge === 1 && deskState?.hcaBoard?.cards?.some(c => c.title === 'Smoke board card'), `nodes ${nodes}, badge ${badge}`);
+
   // Phones: nothing wider than the screen.
   for (const width of [360, 390, 414]) {
     const phone = await browser.newContext({ viewport: { width, height: 844 }, isMobile: true, hasTouch: true });

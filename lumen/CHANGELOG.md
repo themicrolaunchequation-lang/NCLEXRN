@@ -1,5 +1,27 @@
 # Lumen changelog
 
+## v8: 16 October 2026: Study desk
+
+A new **Study desk** group in the sidebar holds five tools. Each opens in a window you can move, resize (from the corner) and maximise, so it sits beside your reading. Everything works offline, uses no AI, and is saved in your workspace and backups.
+
+- **Board (Kanban):** To learn → Learning → Review → Mastered.
+  - **Columns:** rename, add (up to 6) or remove.
+  - **Cards:** drag between columns, or use the arrows. Each card can have a note, a due date (late and today are flagged), an NCLEX area, a colour and a link to a source page, which opens the reader there.
+  - **Filter:** search the cards.
+- **Canvas:** a whiteboard for thinking visually.
+  - **Tools:** notes, arrows between notes, freehand pen, eraser, pan and zoom, fit to screen, and export as PNG.
+  - **Templates:** concept map (condition), pathophysiology flow, SBAR handover, compare two conditions, medication card, or blank. Keeps up to 30 canvases.
+- **Focus timer (Pomodoro):** focus, short break and long break, with your own lengths.
+  - **While it runs:** it keeps going while you study; the time shows in the sidebar badge and the browser tab, with a chime and an optional notification at the end.
+  - **Tracking:** logs completed sessions (skipped ones are not counted) with minutes today and this week, plus a 7-day chart.
+- **Planner:**
+  - **Exam countdown.**
+  - **Today at a glance:** recall cards due, board tasks due, minutes focused.
+  - **Weekly study blocks:** coloured by subject, with hours per week, and an "Add to my calendar" (.ics) export for Google, Apple or Outlook calendar.
+- **Calculator:** the advanced calculator, one click from the sidebar.
+- **Command palette (Ctrl K):** each desk tool can also be opened from here.
+- **Smoke test: 24 checks.** New: Study desk board, canvas and timer.
+
 ## v7.1: 16 October 2026: magnifier, Meaning, languages, PowerPoint as PDF
 
 - **The magnifier was rebuilt.** The lens now shows a live, sharp copy of the whole page, including text, images, PDF pages, your ink and your stickers. It used to enlarge only the page bitmap, and on pages with a photo it showed the wrong area. Scroll to change the zoom from 1.5× to 6×; Lumen remembers your choice.

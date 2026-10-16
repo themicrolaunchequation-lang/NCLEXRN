@@ -17,7 +17,7 @@ if (!input) {
   process.exit(1);
 }
 
-const LAYERS = ['v3', 'v4', 'v5', 'v6', 'v7'];
+const LAYERS = ['v3', 'v4', 'v5', 'v6', 'v7', 'v8'];
 const RENDER_CALL = '(0,g.createRoot)(document.getElementById(`root`)).render(';
 const jsMarkers = v => [`/*HCA${v.slice(1)}:BEGIN*/`, `/*HCA${v.slice(1)}:END*/`];
 const cssMarkers = v => [`<style id="hca-${v}">`, `</style><!--/hca-${v}-->`];
@@ -63,6 +63,11 @@ const PATCHES = [
     why: 'Reader: landscape sources show one page at a time in Flipbook',
     find: 'Ce=b===`flip`&&!be||j!==null',
     replace: 'Ce=b===`flip`&&!be&&!((e.hcaRatio||1.414)<.9)||j!==null',
+  },
+  {
+    why: 'Sidebar: Study desk (board, canvas, focus timer, planner, calculator)',
+    find: "(0,C.jsx)(`div`,{className:`sidebar-divider`}),(0,C.jsx)(`div`,{className:`sidebar-label`,children:`A LITTLE MORE`})",
+    replace: "HC(HCA8SideDesk,{}),(0,C.jsx)(`div`,{className:`sidebar-divider`}),(0,C.jsx)(`div`,{className:`sidebar-label`,children:`A LITTLE MORE`})",
   },
   {
     why: 'Study page note on scheduling matches the adaptive scheduler',
