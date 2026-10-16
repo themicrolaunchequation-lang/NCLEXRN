@@ -11,7 +11,7 @@
    New workspace keys (optional, ignored by older versions): hcaStamps, hcaSnips. */
 
 /* ---------- Floating UI store (calculator, stickers tray, meaning card, presenter, status) ---------- */
-const HCA7UI = { state: { calc: false, tray: false, define: null, present: null, status: '' }, subs: new Set() };
+const HCA7UI = { state: { calc: false, tray: false, define: null, present: null, progress: null, choose: null }, subs: new Set() };
 function HCA7Set(patch) { HCA7UI.state = { ...HCA7UI.state, ...(typeof patch === 'function' ? patch(HCA7UI.state) : patch) }; HCA7UI.subs.forEach(f => f()); }
 function HCA7Use() {
   const [, force] = _.useState(0);
@@ -19,6 +19,10 @@ function HCA7Use() {
   return HCA7UI.state;
 }
 const HCA7Reader = { bookId: null };
+HCAReaderPageWidth = function HCA7ReaderPageWidth(width, height, spread, fit, ratio = 1.414) {
+  const cols = spread ? 2 : 1, w = Math.max(140, (width - 24) / cols);
+  return fit === 'page' ? Math.max(140, Math.min(w, (height - 20) / ratio)) : w;
+};
 
 /* Floating windows: drag by the header, resize from the corner, and they reopen where you left them. */
 const HCA7_WIN_KEY = 'lumen.windows';
@@ -83,10 +87,24 @@ HCAPenSettings = function HCA7PenSettings({ book, page, tool, onTool }) {
 
 /* ---------- Page layer: ink, marker, movable sticky pins, snip, magnifier, stickers ---------- */
 function HCA7SourceImage(wrap) {
-  const canvases = [...(wrap?.querySelectorAll('.hca-source-render canvas') || [])].filter(c => c.width > 50 && c.height > 50);
+  // The page bitmap only: a PDF canvas or a page image that spans the page width (not a photo inside an HTML page).
+  const ww = wrap?.getBoundingClientRect().width || 0;
+  const wide = el => el.getBoundingClientRect().width >= ww * .9;
+  const canvases = [...(wrap?.querySelectorAll('.hca-source-render canvas') || [])].filter(c => c.width > 50 && c.height > 50 && wide(c));
   if (canvases.length) return canvases.sort((a, b) => b.width * b.height - a.width * a.height)[0];
-  const img = wrap?.querySelector('.hca-source-render img');
-  return img && img.naturalWidth ? img : null;
+  const img = [...(wrap?.querySelectorAll('.hca-source-render img') || [])].find(i => i.naturalWidth && wide(i));
+  return img || null;
+}
+
+const HCA7_LENS = 260;
+function HCA7LensClone(wrap) {
+  const clone = wrap.cloneNode(true);
+  clone.querySelectorAll('.hca7-capture, .hca7-lens, .hca7-stamp-bar, .hca7-stamp-handle').forEach(n => n.remove());
+  const from = wrap.querySelectorAll('canvas'), to = clone.querySelectorAll('canvas');
+  to.forEach((c, i) => { const o = from[i]; if (!o) return; c.width = o.width; c.height = o.height; try { c.getContext('2d').drawImage(o, 0, 0); } catch {} });
+  clone.removeAttribute('data-hca-page'); clone.setAttribute('aria-hidden', 'true'); clone.setAttribute('inert', '');
+  Object.assign(clone.style, { position: 'absolute', left: '0', top: '0', margin: '0', width: `${wrap.offsetWidth}px`, height: `${wrap.offsetHeight}px`, transform: 'none' });
+  return clone;
 }
 
 /* Where the page bitmap is drawn on screen (handles letterboxed images shown with object-fit: contain). */
@@ -101,7 +119,7 @@ function HCA7Content(src) {
 }
 
 HCAAnnotations = function HCA7Annotations({ book, page, width, height, tool, hcaTool, onTool }) {
-  const ctx = y(), mode = hcaTool || tool, rootRef = _.useRef(null), svgRef = _.useRef(null), drawing = _.useRef(null), lensRef = _.useRef(null);
+  const ctx = y(), mode = hcaTool || tool, rootRef = _.useRef(null), svgRef = _.useRef(null), drawing = _.useRef(null), lensRef = _.useRef(null), lensInner = _.useRef(null), [zoom, setZoom] = _.useState(() => { try { return Number(localStorage.getItem('lumen.lensZoom')) || 2.5; } catch { return 2.5; } });
   const [draft, setDraft] = _.useState(null), [box, setBox] = _.useState(null), [lens, setLens] = _.useState(null), [moving, setMoving] = _.useState(null), [picked, setPicked] = _.useState(null);
   const boxStart = _.useRef(null), pinDrag = _.useRef(null), stampDrag = _.useRef(null);
   HCA7Reader.bookId = book.id;
@@ -135,13 +153,24 @@ HCAAnnotations = function HCA7Annotations({ book, page, width, height, tool, hca
     setDraft({ ...drawing.current, points: [...pts] });
   };
   _.useEffect(() => { drawing.current = null; setDraft(null); setBox(null); setLens(null); }, [mode, page]);
+  // Learn the source's page shape from its first rendered page, so wide slides get a wide page.
+  _.useEffect(() => {
+    if (page !== 1 || book.kind === 'demo') return;
+    const t = setTimeout(() => {
+      const src = HCA7SourceImage(rootRef.current?.closest('[data-hca-page]')); if (!src) return;
+      const w = src.naturalWidth || src.width, h = src.naturalHeight || src.height; if (!w || !h) return;
+      const r = Math.round(h / w * 1000) / 1000;
+      if (r > .3 && r < 3 && Math.abs(r - (book.hcaRatio || 1.414)) > .03) ctx.setState(s => ({ ...s, books: s.books.map(b => b.id === book.id ? { ...b, hcaRatio: r } : b) }));
+    }, 900);
+    return () => clearTimeout(t);
+  }, [book.id, page, width]);
 
   /* Snip and magnifier share one capture surface. */
   const capDown = e => {
     if (mode === 'snip') { e.preventDefault(); e.currentTarget.setPointerCapture?.(e.pointerId); boxStart.current = rel(e); setBox({ x: boxStart.current.x, y: boxStart.current.y, w: 0, h: 0 }); }
   };
   const capMove = e => {
-    if (mode === 'magnify') { const r = rootRef.current.getBoundingClientRect(); setLens({ px: e.clientX - r.left, py: e.clientY - r.top, ...rel(e) }); return; }
+    if (mode === 'magnify') { const r = rootRef.current.getBoundingClientRect(); setLens({ px: e.clientX - r.left, py: e.clientY - r.top }); return; }
     if (mode === 'snip' && boxStart.current) { const p = rel(e), a = boxStart.current; setBox({ x: Math.min(a.x, p.x), y: Math.min(a.y, p.y), w: Math.abs(p.x - a.x), h: Math.abs(p.y - a.y) }); }
   };
   const capUp = () => {
@@ -151,15 +180,19 @@ HCAAnnotations = function HCA7Annotations({ book, page, width, height, tool, hca
     if (!b || b.w < .02 || b.h < .02) return;
     HCA7Snip(ctx, book, page, rootRef.current.closest('[data-hca-page]'), b);
   };
+  /* Magnifier: a live copy of the whole page (text, images, PDF canvas, ink, stickers) shown enlarged in the lens. */
   _.useEffect(() => {
-    if (mode !== 'magnify' || !lens || !lensRef.current) return;
-    const src = HCA7SourceImage(rootRef.current?.closest('[data-hca-page]')); if (!src) return;
-    const c = lensRef.current, g = c.getContext('2d'), box = HCA7Content(src), root = rootRef.current.getBoundingClientRect();
-    const perPx = box.nw / box.width, zoom = 2.5, size = c.width;
-    const nx = (root.left + lens.px - box.left) * perPx, ny = (root.top + lens.py - box.top) * perPx, span = size / zoom * perPx;
-    g.fillStyle = '#fff'; g.fillRect(0, 0, size, size);
-    try { g.drawImage(src, nx - span / 2, ny - span / 2, span, span, 0, 0, size, size); } catch {}
-  }, [lens, mode]);
+    if (mode !== 'magnify' || !lens || !lensInner.current) return;
+    const inner = lensInner.current;
+    if (!inner.firstChild) {
+      const wrap = rootRef.current?.closest('[data-hca-page]'); if (!wrap) return;
+      inner.appendChild(HCA7LensClone(wrap));
+    }
+    const R = HCA7_LENS / 2;
+    inner.style.transform = `translate(${R - lens.px * zoom}px, ${R - lens.py * zoom}px) scale(${zoom})`;
+  }, [lens, mode, zoom]);
+  _.useEffect(() => { if (lensInner.current) lensInner.current.textContent = ''; }, [mode, page]);
+  const wheel = e => { if (mode !== 'magnify') return; e.preventDefault(); setZoom(z => { const v = Math.round(HCABound(z + (e.deltaY < 0 ? .5 : -.5), 1.5, 6) * 10) / 10; try { localStorage.setItem('lumen.lensZoom', v); } catch {} return v; }); };
 
   /* Sticky pins: drag to move, click to open. */
   const pinDown = (e, note) => {
@@ -228,15 +261,16 @@ HCAAnnotations = function HCA7Annotations({ book, page, width, height, tool, hca
           onPointerDown: e => pinDown(e, note), onPointerMove: pinMove, onPointerUp: e => pinUp(e, note), onKeyDown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ctx.setModal({ type: 'hca-sticky', note }); } } },
           HCAIcon('sticky-note-line'), HC('span', {}, i + 1)));
     }),
-    capture && HC('div', { className: `hca7-capture ${mode}`, onPointerDown: capDown, onPointerMove: capMove, onPointerUp: capUp, onPointerLeave: () => mode === 'magnify' && setLens(null), 'aria-label': mode === 'snip' ? 'Drag a box to snip this part of the page' : 'Magnifier: move over the page' },
+    capture && HC('div', { className: `hca7-capture ${mode}`, onPointerDown: capDown, onPointerMove: capMove, onPointerUp: capUp, onWheel: wheel, onPointerEnter: () => { if (lensInner.current) lensInner.current.textContent = ''; }, onPointerLeave: () => mode === 'magnify' && setLens(null), 'aria-label': mode === 'snip' ? 'Drag a box to snip this part of the page' : 'Magnifier: move over the page. Scroll to change the zoom.' },
       box && HC('div', { className: 'hca7-snipbox', style: { left: `${box.x * 100}%`, top: `${box.y * 100}%`, width: `${box.w * 100}%`, height: `${box.h * 100}%` } }),
-      mode === 'magnify' && lens && HC('canvas', { ref: lensRef, width: 220, height: 220, className: 'hca7-lens', style: { left: lens.px - 110, top: lens.py - 110 } })));
+      mode === 'magnify' && lens && HC('div', { ref: lensRef, className: 'hca7-lens', style: { left: lens.px - HCA7_LENS / 2, top: lens.py - HCA7_LENS / 2, width: HCA7_LENS, height: HCA7_LENS } },
+        HC('div', { ref: lensInner, className: 'hca7-lens-inner' }), HC('span', { className: 'hca7-lens-zoom' }, `${zoom}×`))));
 };
 
 /* ---------- Snip ---------- */
 async function HCA7Snip(ctx, book, page, wrap, b) {
   const src = HCA7SourceImage(wrap);
-  if (!src) { ctx.toast('Snip works on page images. Switch from Text view to Flipbook or Single page.', 'warning'); return; }
+  if (!src) { ctx.toast('Snip works on PDF and image pages. For this page, use your device’s screenshot tool.', 'warning'); return; }
   // Work in screen coordinates, then scale up to the page image's own resolution.
   const wr = wrap.getBoundingClientRect(), box = HCA7Content(src);
   const sel = { left: wr.left + b.x * wr.width, top: wr.top + b.y * wr.height, width: b.w * wr.width, height: b.h * wr.height };
@@ -294,7 +328,7 @@ const HCA7Prev = { Toolbar: HCAReaderToolbar, List: HCAAnnotationList, Commands:
 HCAReaderToolbar = function HCA7ReaderToolbar(props) {
   const el = HCA7Prev.Toolbar(props);
   const kids = _.Children.toArray(el.props.children);
-  kids.splice(Math.max(0, kids.length - 1), 0, HC(HCA7ToolsMenu, { key: 'hca7-tools', ...props }));
+  kids.splice(Math.max(0, kids.length - 1), 0, HC(HCA7ToolsMenu, { key: 'hca7-tools', ...props }), HC(HCALabelTool, { key: 'hca7-refresh', icon: 'refresh-line', label: 'Refresh', onClick: HCA7Refresh, title: 'Refresh: reload Lumen if a page looks stuck. Your work is saved first.' }));
   return _.cloneElement(el, {}, ...kids);
 };
 
@@ -316,6 +350,13 @@ function HCA7ToolsMenu({ book, page, tool, onTool, readMode }) {
       item('search-line', 'Meaning', 'Plain definition of a word or term', () => HCA7Set({ define: { text: '', page, bookId: book.id } })),
       item('play-fill', 'Present', 'Slides from your highlights, notes and snips', () => ctx.setModal({ type: 'hca7-export', bookId: book.id, page, present: true })),
       item('download-line', 'Export', 'PowerPoint, Word, Markdown, print, cards', () => ctx.setModal({ type: 'hca7-export', bookId: book.id, page }))));
+}
+
+async function HCA7Refresh() {
+  HCA7Set({ progress: { title: 'Refreshing Lumen', label: 'Saving your work, then reloading', value: null } });
+  window.dispatchEvent(new Event('pagehide'));
+  await new Promise(r => setTimeout(r, 900));
+  location.reload();
 }
 
 /* Remember which page the learner last touched, for click-to-add stickers. */
@@ -646,49 +687,144 @@ async function HCA7Fetch(url, ms = 8000) {
   const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms);
   try { const r = await fetch(url, { signal: ctl.signal }); return r.ok ? await r.json() : null; } catch { return null; } finally { clearTimeout(t); }
 }
+const HCA7Stop = new Set('a an and are as at be been but by can could did do does for from had has have he her his how i if in into is it its may me more most must my no not of on or our she should so some such than that the their them then there these they this those to too up us was we were what when where which while who why will with would you your also very just only each other about after before between during over under within without'.split(' '));
+/* Words worth looking up in a selection: longer, non-trivial words first, plus any glossary terms. */
+function HCA7Candidates(text) {
+  const seen = new Set(), out = [];
+  for (const t of HCA7Clean(text).match(/[A-Za-z][A-Za-z0-9'-]*[A-Za-z0-9]|[A-Za-z]{2,}/g) || []) {
+    const w = t.replace(/'s$/i, ''), k = w.toLowerCase();
+    if (seen.has(k) || HCA7Stop.has(k) || (w.length < 4 && !HCA7Glossary[k])) continue;
+    seen.add(k); out.push(w);
+  }
+  return out.sort((a, b) => Number(!!HCA7Glossary[b.toLowerCase()]) - Number(!!HCA7Glossary[a.toLowerCase()]) || b.length - a.length).slice(0, 14);
+}
+const HCA7StripHtml = h => String(h || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+
+/* Free sources, no keys: Lumen glossary → Wiktionary → Free Dictionary → Simple Wikipedia → Wikipedia (with search for the closest article). */
 async function HCA7LookUp(term) {
   const q = HCA7Clean(term).replace(/[“”"'.,;:!?()]/g, '').trim();
   const out = { term: q, glossary: HCA7Glossary[q.toLowerCase()] || null, dictionary: null, wiki: null, offline: !navigator.onLine };
   if (!q || out.offline) return out;
-  const enc = encodeURIComponent(q);
-  const [dict, simple] = await Promise.all([
-    q.split(' ').length <= 2 ? HCA7Fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${enc}`) : null,
+  const enc = encodeURIComponent(q), lower = encodeURIComponent(q.toLowerCase()), words = q.split(' ').length;
+  const [wikt, dict, simple] = await Promise.all([
+    words <= 3 ? HCA7Fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${lower}`) : null,
+    words <= 2 ? HCA7Fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${lower}`) : null,
     HCA7Fetch(`https://simple.wikipedia.org/api/rest_v1/page/summary/${enc}?redirect=true`),
   ]);
-  if (Array.isArray(dict) && dict[0]?.meanings) out.dictionary = dict[0].meanings.slice(0, 3).map(m => ({ part: m.partOfSpeech, text: m.definitions?.[0]?.definition })).filter(m => m.text);
+  const defs = [];
+  for (const sec of wikt?.en || []) for (const d of (sec.definitions || []).slice(0, 2)) { const text = HCA7StripHtml(d.definition); if (text) defs.push({ part: sec.partOfSpeech?.toLowerCase(), text }); }
+  if (!defs.length && Array.isArray(dict)) for (const m of dict[0]?.meanings || []) { const text = m.definitions?.[0]?.definition; if (text) defs.push({ part: m.partOfSpeech, text }); }
+  if (defs.length) out.dictionary = defs.slice(0, 3);
   let wiki = simple?.type === 'standard' ? { ...simple, simple: true } : null;
-  if (!wiki) { const en = await HCA7Fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${enc}?redirect=true`); if (en?.type === 'standard') wiki = en; }
+  if (!wiki) {
+    let en = await HCA7Fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${enc}?redirect=true`);
+    if (en?.type !== 'standard') {
+      const hit = await HCA7Fetch(`https://en.wikipedia.org/w/rest.php/v1/search/title?q=${enc}&limit=1`);
+      const key = hit?.pages?.[0]?.key;
+      en = key ? await HCA7Fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(key)}?redirect=true`) : null;
+    }
+    if (en?.type === 'standard') wiki = en;
+  }
   if (wiki) out.wiki = { title: wiki.title, text: (wiki.extract || '').split(/(?<=\.)\s/).slice(0, 3).join(' '), url: wiki.content_urls?.desktop?.page, simple: !!wiki.simple };
   return out;
 }
 
+/* Help language: on-device translation in Chrome when available; otherwise MyMemory (free, no key).
+   The term's own Wikipedia article in the learner's language is shown when one exists. */
+const HCA7Langs = [['', 'Off'], ['ar', 'العربية · Arabic'], ['bn', 'বাংলা · Bengali'], ['zh', '中文 · Chinese'], ['tl', 'Filipino'], ['fr', 'Français · French'], ['de', 'Deutsch · German'], ['hi', 'हिन्दी · Hindi'], ['id', 'Bahasa Indonesia'], ['it', 'Italiano · Italian'], ['ja', '日本語 · Japanese'], ['ko', '한국어 · Korean'], ['ml', 'മലയാളം · Malayalam'], ['ne', 'नेपाली · Nepali'], ['fa', 'فارسی · Persian'], ['pl', 'Polski · Polish'], ['pt', 'Português · Portuguese'], ['pa', 'ਪੰਜਾਬੀ · Punjabi'], ['ro', 'Română · Romanian'], ['ru', 'Русский · Russian'], ['so', 'Soomaali · Somali'], ['es', 'Español · Spanish'], ['sw', 'Kiswahili · Swahili'], ['ta', 'தமிழ் · Tamil'], ['tr', 'Türkçe · Turkish'], ['uk', 'Українська · Ukrainian'], ['ur', 'اردو · Urdu'], ['vi', 'Tiếng Việt · Vietnamese'], ['yo', 'Yorùbá · Yoruba']];
+const HCA7Lang = { get: () => { try { return localStorage.getItem('lumen.helpLang') || ''; } catch { return ''; } }, set: v => { try { localStorage.setItem('lumen.helpLang', v); } catch {} } };
+const HCA7Translators = {};
+async function HCA7Translate(text, to) {
+  const t = HCA7Clean(text).slice(0, 480);
+  if (!t || !to) return null;
+  try {
+    if (window.Translator?.create) {
+      // Use Chrome's on-device translator only when its language pack is already installed;
+      // otherwise start the download quietly for next time and use the online service now.
+      const ok = await Promise.race([Translator.availability({ sourceLanguage: 'en', targetLanguage: to }), new Promise(r => setTimeout(() => r('slow'), 1500))]);
+      if (ok === 'available') {
+        HCA7Translators[to] ??= Translator.create({ sourceLanguage: 'en', targetLanguage: to });
+        const out = await Promise.race([HCA7Translators[to].then(tr => tr.translate(t)), new Promise(r => setTimeout(() => r(null), 6000))]);
+        if (out) return { text: out, via: 'on this device (Chrome)' };
+      } else if (ok === 'downloadable' && navigator.userActivation?.isActive) {
+        Translator.create({ sourceLanguage: 'en', targetLanguage: to }).catch(() => {});
+      }
+    }
+  } catch {}
+  const r = await HCA7Fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(t)}&langpair=en|${to}`);
+  const out = r?.responseData?.translatedText;
+  return out && !/MYMEMORY WARNING|INVALID|QUERY LENGTH/i.test(out) ? { text: HCA7StripHtml(out), via: 'MyMemory' } : null;
+}
+async function HCA7WikiInLang(title, lang) {
+  if (!title || !lang) return null;
+  const r = await HCA7Fetch(`https://en.wikipedia.org/w/api.php?action=query&prop=langlinks&titles=${encodeURIComponent(title)}&lllang=${lang}&format=json&origin=*`);
+  const page = Object.values(r?.query?.pages || {})[0], local = page?.langlinks?.[0]?.['*'];
+  if (!local) return null;
+  const sum = await HCA7Fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(local)}`);
+  return sum?.type === 'standard' ? { title: sum.title, text: (sum.extract || '').split(/(?<=[.。؟?!])\s/).slice(0, 2).join(' '), url: sum.content_urls?.desktop?.page } : { title: local, text: '', url: `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(local)}` };
+}
+
 function HCA7Meaning({ text, page, bookId }) {
   const ctx = y(), [query, setQuery] = _.useState(''), [res, setRes] = _.useState(null), [busy, setBusy] = _.useState(false), win = HCA7Win('meaning');
-  const passage = HCA7Clean(text), short = passage && passage.split(' ').length <= 4;
-  const go = async term => { if (!HCA7Clean(term)) return; setBusy(true); setRes(await HCA7LookUp(term)); setBusy(false); };
-  _.useEffect(() => { setRes(null); setQuery(short ? passage.replace(/[“”"'.,;:!?()]/g, '') : ''); if (short) go(passage); }, [text]);
-  const hits = passage && !short ? HCA7GlossaryHits(passage) : [];
-  const meaning = res && (res.glossary || res.wiki?.text || res.dictionary?.[0]?.text);
+  const [lang, setLang] = _.useState(HCA7Lang.get), [help, setHelp] = _.useState(null), [helpBusy, setHelpBusy] = _.useState(false), [passage, setPassageT] = _.useState(null), run = _.useRef(0);
+  const sel = HCA7Clean(text), short = sel && sel.split(' ').length <= 3;
+  const cands = sel && !short ? HCA7Candidates(sel) : [];
+  const go = async term => {
+    if (!HCA7Clean(term)) return;
+    const id = ++run.current; setQuery(term); setBusy(true); setHelp(null);
+    const r = await HCA7LookUp(term); if (id !== run.current) return;
+    setRes(r); setBusy(false);
+  };
+  _.useEffect(() => {
+    setRes(null); setHelp(null); setPassageT(null);
+    if (short) go(sel.replace(/[“”"'.,;:!?()]/g, ''));
+    else { const g = cands.find(w => HCA7Glossary[w.toLowerCase()]); setQuery(g || ''); if (g) go(g); }
+  }, [text]);
+  const meaning = res && (res.glossary || res.dictionary?.[0]?.text || res.wiki?.text);
+  _.useEffect(() => {
+    if (!lang || !res?.term) return;
+    let live = true; setHelpBusy(true);
+    Promise.all([HCA7Translate(res.term, lang), meaning ? HCA7Translate(meaning, lang) : null, HCA7WikiInLang(res.wiki?.title, lang)])
+      .then(([term, mean, wiki]) => { if (live) { setHelp({ term, mean, wiki }); setHelpBusy(false); } });
+    return () => { live = false; };
+  }, [res, lang]);
+  const translatePassage = async () => { setPassageT({ busy: true }); setPassageT((await HCA7Translate(sel, lang)) || { text: '', failed: true }); };
   const card = () => {
     if (!bookId || !meaning) return;
-    ctx.setState(s => ({ ...s, cards: [...s.cards, { id: ue(), bookId, page, question: `What does “${res.term}” mean?`, answer: meaning, sourceText: passage.slice(0, 600), createdAt: Date.now(), due: Date.now(), step: -1, reviews: 0 }] }));
+    ctx.setState(s => ({ ...s, cards: [...s.cards, { id: ue(), bookId, page, question: `What does “${res.term}” mean?`, answer: meaning + (help?.term?.text ? `\n(${help.term.text})` : ''), sourceText: sel.slice(0, 600), createdAt: Date.now(), due: Date.now(), step: -1, reviews: 0 }] }));
     ctx.toast('Recall card made. It will come up in your reviews.');
   };
+  const rtl = ['ar', 'fa', 'ur'].includes(lang);
   return HC('section', { ref: win.ref, className: 'hca7-float hca7-meaning', style: win.style, 'aria-label': 'Meaning' },
-    HC('header', { ...win.header, title: 'Drag to move · double-click to reset' }, HCAIcon('search-line'), HC('strong', {}, 'Meaning'), HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close meaning', onClick: () => HCA7Set({ define: null }) }, HCAIcon('close-line'))),
+    HC('header', { ...win.header, title: 'Drag to move · double-click to reset' }, HCAIcon('search-line'), HC('strong', {}, 'Meaning'),
+      HC('label', { className: 'hca7-lang', title: 'Help language: translations and articles in your language' }, HC('span', { className: 'sr-only' }, 'Help language'),
+        HC('select', { value: lang, onChange: e => { setLang(e.target.value); HCA7Lang.set(e.target.value); setPassageT(null); } }, HCA7Langs.map(([v, l]) => HC('option', { key: v, value: v }, v ? l : 'Help language: off')))),
+      HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close meaning', onClick: () => HCA7Set({ define: null }) }, HCAIcon('close-line'))),
     HC('form', { className: 'hca7-lookup', onSubmit: e => { e.preventDefault(); go(query); } },
       HC('input', { value: query, onChange: e => setQuery(e.target.value), onKeyDown: e => e.stopPropagation(), placeholder: 'Type a word or term', 'aria-label': 'Word or term to look up' }),
-      HCABtn(busy ? '…' : 'Look up', () => go(query), 'primary', 'search-line', { disabled: busy || !query.trim() })),
-    hits.length > 0 && HC('div', { className: 'hca7-hits' }, HC('p', { className: 'hca-small' }, 'Terms in your selection'), HC('dl', {}, hits.map(([w, m]) => HC(_.Fragment, { key: w }, HC('dt', {}, HC('button', { type: 'button', className: 'text-link', onClick: () => { setQuery(w); go(w); } }, w.toUpperCase())), HC('dd', {}, m))))),
-    !short && passage && !hits.length && !res && HC('p', { className: 'hca-small' }, 'Select one word or a short term for its meaning, or type it above.'),
-    res && HC('div', { className: 'hca7-def', 'aria-live': 'polite' },
+      HCABtn(busy ? 'Looking…' : 'Look up', () => go(query), 'primary', busy ? 'loader-4-line' : 'search-line', { disabled: busy || !query.trim() })),
+    cands.length > 0 && HC('div', { className: 'hca7-cands' }, HC('p', { className: 'hca-small' }, 'Choose a word from your selection'),
+      HC('div', {}, cands.map(w => HC('button', { key: w, type: 'button', className: `hca4-tag ${res?.term?.toLowerCase() === w.toLowerCase() ? 'on' : ''} ${HCA7Glossary[w.toLowerCase()] ? 'gloss' : ''}`, onClick: () => go(w) }, w)))),
+    cands.length > 0 && lang && HC('div', { className: 'hca7-passage' },
+      passage?.text ? HC('p', { dir: 'auto', lang }, passage.text, HC('small', {}, ` · translated ${passage.via}`)) : passage?.failed ? HC('p', { className: 'hca-small' }, 'Translation is not available right now.') : null,
+      !passage?.text && HCABtn(passage?.busy ? 'Translating…' : 'Translate the whole selection', translatePassage, 'secondary', 'refresh-line', { disabled: !!passage?.busy })),
+    busy && HC('div', { className: 'hca7-progress indeterminate', role: 'progressbar', 'aria-label': 'Looking up' }, HC('span', {})),
+    res && !busy && HC('div', { className: 'hca7-def', 'aria-live': 'polite' },
       HC('h4', {}, res.term),
       res.glossary && HC('p', {}, HC('span', { className: 'hca7-src' }, 'Lumen glossary'), res.glossary),
-      res.wiki && HC('p', {}, HC('span', { className: 'hca7-src' }, res.wiki.simple ? 'Simple Wikipedia' : 'Wikipedia'), res.wiki.text, ' ', res.wiki.url && HC('a', { href: res.wiki.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, 'Read more', HCAIcon('external-link-line'))),
-      res.dictionary && HC('ul', {}, res.dictionary.map((d, i) => HC('li', { key: i }, HC('em', {}, d.part), ' ', d.text))),
-      !meaning && !res.dictionary && HC('p', { className: 'hca-small' }, res.offline ? 'You are offline, and this term is not in the Lumen glossary.' : 'No plain definition found. Try a shorter or different spelling.'),
-      meaning && HC('div', { className: 'hca5-row' }, HCABtn('Make a recall card', card, 'secondary', 'stack-line', { disabled: !bookId }), HCABtn('Copy', () => navigator.clipboard?.writeText(`${res.term}: ${meaning}`).then(() => ctx.toast('Copied.')), 'secondary', 'file-copy-line')),
-      HC('p', { className: 'hca-small' }, 'General definitions for study, not clinical advice. Online sources: Free Dictionary API and Wikipedia.')));
+      res.dictionary && HC('div', {}, HC('span', { className: 'hca7-src' }, 'Dictionary'), HC('ul', {}, res.dictionary.map((d, i) => HC('li', { key: i }, d.part && HC('em', {}, d.part), ' ', d.text)))),
+      res.wiki && HC('p', {}, HC('span', { className: 'hca7-src' }, res.wiki.simple ? 'Simple Wikipedia · plain English' : `Wikipedia · ${res.wiki.title}`), res.wiki.text, ' ', res.wiki.url && HC('a', { href: res.wiki.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, 'Read more', HCAIcon('external-link-line'))),
+      !meaning && HC('p', { className: 'hca-small' }, res.offline ? 'You are offline, and this term is not in the Lumen glossary.' : 'No definition found for this exact wording. Pick one word above, or try a shorter term.'),
+      lang && HC('div', { className: 'hca7-help', dir: 'auto', lang },
+        HC('span', { className: 'hca7-src' }, `In ${HCA7Langs.find(l => l[0] === lang)?.[1]}`),
+        helpBusy ? HC('div', { className: 'hca7-progress indeterminate' }, HC('span', {})) : HC(_.Fragment, {},
+          help?.term?.text && HC('p', { className: 'hca7-help-term', style: { textAlign: rtl ? 'right' : undefined } }, help.term.text),
+          help?.mean?.text && HC('p', { style: { textAlign: rtl ? 'right' : undefined } }, help.mean.text),
+          help?.wiki && HC('p', { style: { textAlign: rtl ? 'right' : undefined } }, help.wiki.text, ' ', HC('a', { href: help.wiki.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, help.wiki.title, HCAIcon('external-link-line'))),
+          !help?.term && !help?.mean && !help?.wiki && HC('p', { className: 'hca-small' }, 'No translation available right now.'),
+          (help?.term || help?.mean) && HC('small', { className: 'hca-small' }, `Machine translation ${help.term?.via || help.mean?.via}. Check important terms with your tutor.`))),
+      meaning && HC('div', { className: 'hca5-row' }, HCABtn('Make a recall card', card, 'secondary', 'stack-line', { disabled: !bookId }), HCABtn('Copy', () => navigator.clipboard?.writeText(`${res.term}: ${meaning}`).then(() => ctx.toast('Copied.')), 'secondary', 'file-copy-line'), HCABtn('Look up again', () => go(res.term), 'secondary', 'refresh-line'))),
+    HC('p', { className: 'hca-small' }, 'General definitions for study, not clinical advice. Sources: Lumen glossary, Wiktionary, Free Dictionary, Wikipedia', lang ? '; translations on your device (Chrome) or by MyMemory, which receives the words you translate.' : '.'));
 }
 window.HCA7Define = (text, page, bookId) => HCA7Set({ define: { text, page, bookId } });
 
@@ -731,7 +867,12 @@ function HCA7Html({ book, items }, forPrint) {
 function HCA7Markdown({ book, items }) {
   return `# ${book.title}\n\nStudy notes from Lumen · ${new Date().toLocaleDateString()}\n\n` + items.map(it => `## ${it.kind} · page ${it.page}${it.title ? `: ${it.title}` : ''}\n\n${it.image ? '_(snip image: see the Word, PowerPoint or print export)_\n\n' : ''}${it.text ? (it.kind === 'Highlight' ? `> ${it.text.replace(/\n/g, '\n> ')}` : it.text) : ''}\n`).join('\n');
 }
-async function HCA7Pptx({ book, items }) {
+async function HCA7Pptx(data) {
+  HCA7Set({ progress: { title: 'Making your PowerPoint', label: 'Preparing slides', value: null } });
+  try { await HCA7PptxBuild(data); HCA7Set({ progress: null }); }
+  catch (e) { HCA7Set({ progress: null }); throw e; }
+}
+async function HCA7PptxBuild({ book, items }) {
   await HCA7LoadPptx();
   const p = new window.PptxGenJS();
   p.layout = 'LAYOUT_WIDE'; p.title = book.title; p.company = 'Healthcare Crown Academy';
@@ -826,7 +967,7 @@ function HCA7Color(el) {
 }
 function HCA7PhKey(sp) { const ph = HCA7Deep(sp, 'ph')[0]; return ph ? { type: ph.getAttribute('type') || 'body', idx: ph.getAttribute('idx') } : null; }
 
-async function HCA7PptxToImages(file, onProgress) {
+async function HCA7PptxRender(file, onProgress) {
   await HCA7LoadPptx();
   const zip = await window.JSZip.loadAsync(file);
   const read = path => zip.file(path)?.async('string');
@@ -847,14 +988,15 @@ async function HCA7PptxToImages(file, onProgress) {
     return (layoutCache[path] = { map, rels, doc });
   }
   for (let n = 0; n < paths.length; n++) {
-    onProgress?.(`Converting slide ${n + 1} of ${paths.length}…`);
+    if (HCA7UI.state.progress?.cancelled) throw Error('Cancelled.');
+    onProgress?.(`Drawing slide ${n + 1} of ${paths.length}`, (n + .5) / paths.length);
     const path = paths[n], doc = parse(await read(path)), rels = HCA7Rels(await read(path.replace(/([^/]+)$/, '_rels/$1.rels')));
     const layoutRel = Object.values(rels).find(r => r.type.endsWith('/slideLayout'));
     const layoutPath = layoutRel && HCA7Resolve(path, layoutRel.target), layout = layoutPath ? await placeholders(layoutPath) : { map: {}, rels: {} };
     const masterRel = Object.values(layout.rels || {}).find(r => r.type.endsWith('/slideMaster'));
     const master = masterRel ? await placeholders(HCA7Resolve(layoutPath, masterRel.target)) : { map: {} };
     const c = document.createElement('canvas'); c.width = W; c.height = H;
-    const g = c.getContext('2d');
+    const g = c.getContext('2d'), words = [];
     const bg = HCA7Color(HCA7Deep(doc, 'bg')[0]) || HCA7Color(HCA7Deep(layout.doc, 'bg')[0]) || HCA7Color(HCA7Deep(master.doc, 'bg')[0]) || '#ffffff';
     g.fillStyle = bg; g.fillRect(0, 0, W, H);
     const where = (sp, t) => {
@@ -892,7 +1034,9 @@ async function HCA7PptxToImages(file, onProgress) {
       for (const l of wrapped) {
         g.font = l.font; g.fillStyle = l.color;
         const tw = g.measureText(l.text).width, x0 = box.x * k + pad + l.indent;
-        g.fillText(l.text, l.align === 'ctr' ? box.x * k + (box.w * k - tw) / 2 : l.align === 'r' ? box.x * k + box.w * k - pad - tw : x0, yy);
+        const xx = l.align === 'ctr' ? box.x * k + (box.w * k - tw) / 2 : l.align === 'r' ? box.x * k + box.w * k - pad - tw : x0;
+        g.fillText(l.text, xx, yy);
+        if (l.text.trim()) words.push({ text: l.text, x: xx, y: yy, size: l.size, width: tw });
         yy += l.size * 1.2;
       }
     };
@@ -931,22 +1075,95 @@ async function HCA7PptxToImages(file, onProgress) {
     };
     const tree = HCA7Deep(doc, 'spTree')[0];
     if (tree) await walk(tree, { ox: 0, oy: 0, cx: 0, cy: 0, sx: 1, sy: 1 });
-    const blob = await new Promise(ok => c.toBlob(ok, 'image/png'));
-    out.push(new File([blob], `${base} - slide ${String(n + 1).padStart(2, '0')}.png`, { type: 'image/png' }));
+    out.push({ canvas: c, words, W, H, ptW: EW / 12700, ptH: EH / 12700 });
+    await new Promise(r => setTimeout(r, 0));
   }
-  return out;
+  return { base, slides: out };
+}
+
+async function HCA7PptxToImages(file, onProgress) {
+  const { base, slides } = await HCA7PptxRender(file, (m, v) => onProgress?.(m, v * .9));
+  const files = [];
+  for (const [n, s] of slides.entries()) {
+    onProgress?.(`Saving slide ${n + 1} of ${slides.length}`, .9 + .1 * n / slides.length);
+    files.push(new File([await new Promise(ok => s.canvas.toBlob(ok, 'image/png'))], `${base} - slide ${String(n + 1).padStart(2, '0')}.png`, { type: 'image/png' }));
+  }
+  return files;
+}
+
+/* A small PDF writer: one landscape page per slide, the slide picture, and the slide's words as
+   invisible text in the right places, so the reader can select, search, highlight and quiz on them. */
+const HCA7HelvW = [278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584];
+const HCA7WinAnsi = { '€': 128, '‚': 130, '„': 132, '…': 133, '•': 149, '–': 150, '—': 151, '‘': 145, '’': 146, '“': 147, '”': 148, '™': 153, '·': 183, '°': 176, '±': 177, '×': 215, '÷': 247, 'µ': 181, '²': 178, '³': 179, '½': 189, '¼': 188, '¾': 190 };
+function HCA7PdfText(str) {
+  let out = '', width = 0;
+  for (const ch of str.normalize('NFC')) {
+    let code = ch.charCodeAt(0);
+    if (HCA7WinAnsi[ch]) code = HCA7WinAnsi[ch];
+    else if (code > 255) { const plain = ch.normalize('NFKD').replace(/[\u0300-\u036f]/g, ''); code = plain && plain.charCodeAt(0) < 256 ? plain.charCodeAt(0) : 63; }
+    width += code >= 32 && code <= 126 ? HCA7HelvW[code - 32] : 556;
+    out += code === 40 || code === 41 || code === 92 ? '\\' + String.fromCharCode(code) : code < 32 || code > 126 ? '\\' + code.toString(8).padStart(3, '0') : String.fromCharCode(code);
+  }
+  return { out, width };
+}
+async function HCA7SlidesToPdf(slides, title, onProgress) {
+  const enc = new TextEncoder(), parts = [], offsets = [];
+  let size = 0;
+  const push = b => { const u = typeof b === 'string' ? enc.encode(b) : b; parts.push(u); size += u.length; };
+  const obj = (n, body) => { offsets[n] = size; push(`${n} 0 obj\n`); body(); push('\nendobj\n'); };
+  push('%PDF-1.4\n%\xe2\xe3\xcf\xd3\n');
+  const kids = slides.map((_, i) => `${4 + i * 3} 0 R`).join(' ');
+  obj(1, () => push(`<< /Type /Catalog /Pages 2 0 R >>`));
+  obj(2, () => push(`<< /Type /Pages /Kids [${kids}] /Count ${slides.length} >>`));
+  obj(3, () => push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>'));
+  for (const [i, s] of slides.entries()) {
+    onProgress?.(`Building PDF page ${i + 1} of ${slides.length}`, .85 + .15 * i / slides.length);
+    const jpg = new Uint8Array(await (await new Promise(ok => s.canvas.toBlob(ok, 'image/jpeg', .86))).arrayBuffer());
+    const pw = +s.ptW.toFixed(2), ph = +s.ptH.toFixed(2), k = pw / s.W;
+    let text = 'BT 3 Tr\n';
+    for (const w of s.words) {
+      const { out, width } = HCA7PdfText(w.text), fs = Math.max(1, w.size * k), natural = width / 1000 * fs, target = w.width * k;
+      const tz = natural > 0 ? Math.max(20, Math.min(400, target / natural * 100)) : 100;
+      text += `/F1 ${fs.toFixed(2)} Tf ${tz.toFixed(1)} Tz 1 0 0 1 ${(w.x * k).toFixed(2)} ${(ph - (w.y + w.size * .8) * k).toFixed(2)} Tm (${out}) Tj\n`;
+    }
+    text += 'ET';
+    const content = `q ${pw} 0 0 ${ph} 0 0 cm /Im${i} Do Q\n${text}`;
+    const pageN = 4 + i * 3, contN = pageN + 1, imgN = pageN + 2;
+    obj(pageN, () => push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pw} ${ph}] /Resources << /Font << /F1 3 0 R >> /XObject << /Im${i} ${imgN} 0 R >> >> /Contents ${contN} 0 R >>`));
+    const cb = enc.encode(content);
+    obj(contN, () => { push(`<< /Length ${cb.length} >>\nstream\n`); push(cb); push('\nendstream'); });
+    obj(imgN, () => { push(`<< /Type /XObject /Subtype /Image /Width ${s.canvas.width} /Height ${s.canvas.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpg.length} >>\nstream\n`); push(jpg); push('\nendstream'); });
+  }
+  const infoN = 4 + slides.length * 3, t = HCA7PdfText(title).out;
+  obj(infoN, () => push(`<< /Title (${t}) /Producer (Lumen by Healthcare Crown Academy) >>`));
+  const xref = size, count = infoN + 1;
+  push(`xref\n0 ${count}\n0000000000 65535 f \n` + Array.from({ length: count - 1 }, (_, i) => `${String(offsets[i + 1]).padStart(10, '0')} 00000 n \n`).join(''));
+  push(`trailer\n<< /Size ${count} /Root 1 0 R /Info ${infoN} 0 R >>\nstartxref\n${xref}\n%%EOF`);
+  return new Blob(parts, { type: 'application/pdf' });
+}
+async function HCA7PptxToPdf(file, onProgress) {
+  const { base, slides } = await HCA7PptxRender(file, (m, v) => onProgress?.(m, v * .85));
+  return [new File([await HCA7SlidesToPdf(slides, base, onProgress)], `${base}.pdf`, { type: 'application/pdf' })];
 }
 
 /* Called by the Library upload (build patch): PowerPoint files are converted, everything else passes through. */
+function HCA7AskImportMode(name) {
+  let remembered = ''; try { remembered = localStorage.getItem('lumen.pptxMode') || ''; } catch {}
+  if (remembered) return Promise.resolve(remembered);
+  return new Promise(resolve => HCA7Set({ choose: { name, resolve: (mode, remember) => { if (remember) { try { localStorage.setItem('lumen.pptxMode', mode); } catch {} } HCA7Set({ choose: null }); resolve(mode); } } }));
+}
+const HCA7Progress = (label, value) => HCA7Set(s => ({ progress: { ...(s.progress || {}), label, value } }));
 async function HCA7Expand(files) {
   const out = [];
   for (const f of files) {
     if (/\.pptx$/i.test(f.name) || f.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation') {
-      try { HCA7Set({ status: `Opening ${f.name}…` }); out.push(...await HCA7PptxToImages(f, m => HCA7Set({ status: m }))); }
-      catch (e) { HCA7Set({ status: `Could not convert ${f.name}: ${e.message || 'unknown error'}. In PowerPoint, choose File → Save as → PDF, then upload the PDF.` }); setTimeout(() => HCA7Set({ status: '' }), 9000); continue; }
-      HCA7Set({ status: '' });
+      const mode = await HCA7AskImportMode(f.name);
+      if (mode === 'cancel') continue;
+      HCA7Set({ progress: { title: `Importing ${f.name}`, label: 'Opening the presentation', value: 0 } });
+      try { out.push(...await (mode === 'images' ? HCA7PptxToImages : HCA7PptxToPdf)(f, HCA7Progress)); HCA7Set({ progress: null }); }
+      catch (e) { HCA7Set({ progress: { title: `Could not import ${f.name}`, label: e.message === 'Cancelled.' ? 'Import cancelled.' : `${e.message || 'Unknown error'} In PowerPoint, choose File → Save as → PDF, then upload the PDF.`, value: null, error: true } }); }
     } else if (/\.(ppt|key|odp)$/i.test(f.name)) {
-      HCA7Set({ status: `${f.name}: older or other slide formats cannot be read. Save it as .pptx or PDF first.` }); setTimeout(() => HCA7Set({ status: '' }), 9000);
+      HCA7Set({ progress: { title: f.name, label: 'Older or other slide formats cannot be read. Save it as .pptx or PDF first.', value: null, error: true } });
     } else out.push(f);
   }
   return out;
@@ -956,10 +1173,27 @@ window.HCA7Expand = HCA7Expand;
 /* ---------- Mount floating tools, dialogs and commands ---------- */
 function HCA7Floats() {
   const ui = HCA7Use();
-  return HC(_.Fragment, {},
+  // Rendered into <body> so pop-ups sit above the reader and any open dialog.
+  return S.createPortal(HC(_.Fragment, {},
     ui.tray && HC(HCA7Tray), ui.calc && HC(HCA7Calculator), ui.define && HC(HCA7Meaning, ui.define),
     ui.present && HC(HCA7Presenter, { data: ui.present }),
-    ui.status && HC('div', { className: 'hca7-status', role: 'status' }, HCAIcon('loader-4-line'), ui.status));
+    ui.progress && HC('div', { className: `hca7-progress-card ${ui.progress.error ? 'error' : ''}`, role: 'status', 'aria-live': 'polite' },
+      HC('div', { className: 'hca7-progress-head' }, HCAIcon(ui.progress.error ? 'error-warning-line' : 'loader-4-line'), HC('strong', {}, ui.progress.title || 'Working'),
+        ui.progress.error ? HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close', onClick: () => HCA7Set({ progress: null }) }, HCAIcon('close-line'))
+          : HC('button', { type: 'button', className: 'text-link', onClick: () => HCA7Set(s => ({ progress: { ...s.progress, cancelled: true, label: 'Cancelling…' } })) }, 'Cancel')),
+      HC('p', {}, ui.progress.label, typeof ui.progress.value === 'number' ? ` · ${Math.round(ui.progress.value * 100)}%` : ''),
+      !ui.progress.error && HC('div', { className: `hca7-progress ${typeof ui.progress.value === 'number' ? '' : 'indeterminate'}`, role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': typeof ui.progress.value === 'number' ? Math.round(ui.progress.value * 100) : undefined }, HC('span', { style: typeof ui.progress.value === 'number' ? { width: `${Math.max(2, ui.progress.value * 100)}%` } : undefined }))),
+    ui.choose && HC(HCA7ImportChoice, ui.choose)), document.body);
+}
+function HCA7ImportChoice({ name, resolve }) {
+  const [remember, setRemember] = _.useState(false);
+  return HC('div', { className: 'hca7-choose-backdrop', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Import a PowerPoint' },
+    HC('div', { className: 'hca7-choose' },
+      HC('p', { className: 'eyebrow' }, 'POWERPOINT'), HC('h3', {}, `How should “${name}” open?`),
+      HC('button', { type: 'button', className: 'hca7-choice', autoFocus: true, onClick: () => resolve('pdf', remember) }, HCAIcon('file-pdf-2-line'), HC('span', {}, HC('strong', {}, 'As a PDF (recommended)'), HC('small', {}, 'Wide landscape pages that fill the reader. The slide text can be selected, searched, highlighted and used in Page studio.'))),
+      HC('button', { type: 'button', className: 'hca7-choice', onClick: () => resolve('images', remember) }, HCAIcon('gallery-line'), HC('span', {}, HC('strong', {}, 'As page images'), HC('small', {}, 'One picture per slide, like scanned pages. Use OCR later if you need the text.'))),
+      HC('label', { className: 'hca4-check' }, HC('input', { type: 'checkbox', checked: remember, onChange: e => setRemember(e.target.checked) }), 'Remember my choice'),
+      HC('div', { className: 'hca5-row' }, HCABtn('Cancel', () => resolve('cancel', false), 'secondary', 'close-line'))));
 }
 rs = function HCA7DialogRouter() {
   const ctx = y(), m = ctx.modal, close = () => ctx.setModal(null);
@@ -972,6 +1206,7 @@ HCA3Commands = function HCA7Commands(ctx) {
     { group: 'Tools', icon: 'gallery-line', label: 'Stickers', run: () => HCA7Set({ tray: true }) },
     { group: 'Tools', icon: 'search-line', label: 'Meaning of a word or term', run: () => HCA7Set({ define: { text: '' } }) },
     { group: 'Tools', icon: 'play-fill', label: 'Present my notes', run: () => ctx.setModal({ type: 'hca7-export', bookId: HCA7Reader.bookId, present: true }) },
+    { group: 'Tools', icon: 'refresh-line', label: 'Refresh Lumen (reload, work is saved)', run: HCA7Refresh },
     { group: 'Tools', icon: 'download-line', label: 'Export notes (PowerPoint, Word, PDF)', run: () => ctx.setModal({ type: 'hca7-export', bookId: HCA7Reader.bookId }) }];
 };
 

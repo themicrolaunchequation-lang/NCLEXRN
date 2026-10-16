@@ -55,6 +55,16 @@ const PATCHES = [
     replace: 'PDF, PowerPoint (.pptx), JPG, PNG, WEBP, GIF, BMP · up to 150 MB per file',
   },
   {
+    why: 'Reader: size pages to the source page shape (landscape slides fill the width)',
+    find: 'Ee=HCAReaderPageWidth(xe.width,xe.height,Ce,t.settings.readerFit||`width`),De=Math.max(140,Ee)*A,Oe=De*1.414;',
+    replace: 'Ee=HCAReaderPageWidth(xe.width,xe.height,Ce,t.settings.readerFit||`width`,e.hcaRatio||1.414),De=Math.max(140,Ee)*A,Oe=De*(e.hcaRatio||1.414);',
+  },
+  {
+    why: 'Reader: landscape sources show one page at a time in Flipbook',
+    find: 'Ce=b===`flip`&&!be||j!==null',
+    replace: 'Ce=b===`flip`&&!be&&!((e.hcaRatio||1.414)<.9)||j!==null',
+  },
+  {
     why: 'Study page note on scheduling matches the adaptive scheduler',
     find: 'Review intervals are a simple 1 / 3 / 7 / 14 / 30 / 60-day ladder—not FSRS, a validated test, or a measure of clinical competence.',
     replace: 'Review timing adapts to your ratings (FSRS-4.5, default parameters) unless you choose the simple 1 / 3 / 7 / 14 / 30 / 60-day ladder under Today → Set goal. A study aid, not a validated test or a measure of clinical competence.',

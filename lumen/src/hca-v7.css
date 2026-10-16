@@ -141,3 +141,53 @@ body.hca7-panel-float .hca-reader-divider, body.hca7-panel-float .hca-reader-sid
 @media (max-width: 760px) { .hca7-pop { display: none; } }
 .hca7-slide h1, .hca7-slide h2, .hca7-slide p, .hca7-slide blockquote { color: #fff; }
 .hca7-slide .sub { color: #b9c6d3; }
+
+/* Magnifier lens (live copy of the page) */
+.hca7-lens { overflow: hidden; }
+.hca7-lens-inner { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
+.hca7-lens-inner * { pointer-events: none !important; animation: none !important; transition: none !important; }
+.hca7-lens-zoom { position: absolute; right: 50%; bottom: 8px; transform: translateX(50%); font: 700 11px/1 system-ui, sans-serif; color: #fff; background: #10253acc; padding: 3px 6px; border-radius: 99px; }
+
+/* Progress card (PowerPoint import and export, refresh) */
+.hca7-progress-card { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 100001; width: min(460px, calc(100vw - 32px)); box-sizing: border-box; display: grid; gap: 8px; padding: 14px 16px; border-radius: 10px; background: #10253a; color: #fff; box-shadow: 0 12px 32px rgba(0, 0, 0, .35); }
+.hca7-progress-card.error { background: #5a1f1f; }
+.hca7-progress-head { display: flex; align-items: center; gap: 8px; }
+.hca7-progress-head strong { flex: 1; font-size: 15px; }
+.hca7-progress-head .text-link, .hca7-progress-head .hca3-icon-btn { color: #fff; }
+.hca7-progress-card p { margin: 0; font-size: 14px; color: #dbe5ee; }
+.hca7-progress-card i.ri-loader-4-line { animation: hca7-spin 1s linear infinite; }
+@keyframes hca7-spin { to { transform: rotate(360deg); } }
+.hca7-progress { height: 8px; border-radius: 99px; background: #ffffff26; overflow: hidden; position: relative; }
+.hca7-meaning .hca7-progress { background: var(--line); }
+.hca7-progress > span { display: block; height: 100%; background: #6fd3c7; border-radius: inherit; transition: width .25s ease; }
+.hca7-progress.indeterminate > span { width: 35%; position: absolute; animation: hca7-slide 1.1s ease-in-out infinite; }
+.hca7-meaning .hca7-progress > span { background: #087d7a; }
+@keyframes hca7-slide { from { left: -35%; } to { left: 100%; } }
+@media (prefers-reduced-motion: reduce) { .hca7-progress.indeterminate > span, .hca7-progress-card i.ri-loader-4-line { animation: none; } }
+
+/* PowerPoint import choice */
+.hca7-choose-backdrop { position: fixed; inset: 0; z-index: 100000; background: rgba(13, 27, 42, .45); display: grid; place-items: center; padding: 16px; }
+.hca7-choose { width: min(520px, 100%); background: var(--surface, #fff); color: var(--ink); border-radius: 12px; padding: 22px; display: grid; gap: 12px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
+.hca7-choose h3 { margin: 0; font-size: 22px; }
+.hca7-choose .eyebrow { margin: 0; }
+.hca7-choice { display: flex; gap: 12px; align-items: flex-start; text-align: left; padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--canvas); color: var(--ink); cursor: pointer; font: inherit; }
+.hca7-choice:hover, .hca7-choice:focus-visible { border-color: #087d7a; box-shadow: 0 0 0 2px #087d7a33; }
+.hca7-choice i { font-size: 26px; color: #087d7a; }
+.hca7-choice span { display: grid; gap: 4px; }
+.hca7-choice small { color: var(--muted); font-size: 13px; line-height: 1.4; }
+
+/* Meaning: word choices and help language */
+.hca7-lang select { max-width: 150px; min-height: 30px; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas); color: var(--ink); font-size: 12px; padding: 0 4px; }
+.hca7-meaning > header .hca7-lang { margin-left: auto; }
+.hca7-meaning > header > button:last-child { margin-left: 0; }
+.hca7-cands > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.hca7-cands .hca4-tag { min-height: 30px; font-size: 13px; }
+.hca7-cands .hca4-tag.gloss { border-color: #087d7a; }
+.hca7-cands p { margin: 0 0 6px; }
+.hca7-passage p { margin: 0 0 6px; font-size: 14px; line-height: 1.5; }
+.hca7-help { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
+.hca7-help p { margin: 4px 0; font-size: 15px; line-height: 1.55; }
+.hca7-help-term { font-size: 20px !important; font-weight: 700; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.hca7-choose label.hca4-check { display: flex !important; align-items: center; gap: 10px; font-size: 14px; }
+.hca7-choose label.hca4-check input { margin: 0; flex: none; }

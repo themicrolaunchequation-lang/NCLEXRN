@@ -1,5 +1,28 @@
 # Lumen changelog
 
+## v7.1: 16 October 2026: magnifier, Meaning, languages, PowerPoint as PDF
+
+- **The magnifier was rebuilt.** The lens now shows a live, sharp copy of the whole page, including text, images, PDF pages, your ink and your stickers. It used to enlarge only the page bitmap, and on pages with a photo it showed the wrong area. Scroll to change the zoom from 1.5× to 6×; Lumen remembers your choice.
+- **Meaning finds a definition for any selection.**
+  - **Long passages:** instead of looking up the whole phrase, Meaning offers the passage's key words to choose from, with glossary terms first.
+  - **Sources (all free, no keys):** the Lumen glossary, Wiktionary, Free Dictionary, Simple Wikipedia, then Wikipedia, which searches for the closest article.
+  - **Try again:** "Look up again" retries.
+- **Help language (30 languages, including Arabic, Urdu, Hindi, Tagalog, French and Spanish):** shows the term and its meaning in your language, plus the Wikipedia article in your language where one exists.
+  - **How it translates:** on your device with Chrome's built-in translator when its language pack is installed; otherwise with MyMemory (free, no key). The panel says which, and that the words are sent.
+  - **Translate the whole selection** for a passage.
+  - **Text direction:** Arabic, Persian and Urdu read right to left.
+- **Refresh button** in the reader toolbar, and in the command palette. It saves your work, then reloads Lumen, for when a page looks stuck.
+- **Progress card for long jobs.**
+  - **PowerPoint import:** shows a progress bar with the slide count, the step and a percentage, and has a Cancel button.
+  - **PowerPoint export:** shows progress too.
+  - **Errors:** an error explains what to do next.
+- **PowerPoint as PDF (recommended).** Uploading a .pptx now asks how to open it. You can tick "Remember my choice".
+  - **As a PDF:** wide landscape pages, one slide per view, filling the reader. The slide text is placed invisibly over the slide, so it can be selected, searched, highlighted, looked up and used in Page studio.
+  - **As page images:** one picture per slide, as before.
+- **Reader pages take the shape of the source.** Lumen reads the shape of a source's first page. Landscape sources (slides, landscape PDFs, wide images) get wide pages and one page per view in Flipbook, instead of a tall portrait frame.
+- **Pop-ups sit above everything.** Pop-ups and the progress card now open above other dialogs, so the PowerPoint choice can no longer hide behind the upload dialog.
+- **Smoke test: 23 checks.** New: PowerPoint as PDF gives wide pages with selectable text.
+
 ## v7: 16 October 2026: reader tools
 
 All new tools work offline and use no AI. They live in a single **Tools** menu in the reader toolbar, so the page keeps its full size.

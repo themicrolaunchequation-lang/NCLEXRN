@@ -202,6 +202,7 @@ try {
   await page.getByRole('button', { name: 'Add a source' }).first().click();
   await page.waitForTimeout(400);
   await page.setInputFiles('.file-drop-zone input[type=file]', join(here, 'fixtures', 'sample-deck.pptx'));
+  await page.locator('.hca7-choice', { hasText: 'As page images' }).click();
   await page.waitForTimeout(3000);
   const slides = await page.getByText(/sample-deck - slide 0\d\.png/).count();
   await page.locator('.modal input[type=checkbox]').first().check();
@@ -244,8 +245,21 @@ try {
   const deck = page.waitForEvent('download');
   await page.getByRole('button', { name: /PowerPoint/ }).click();
   const deckBytes = await (await deck).createReadStream().then(stream => new Promise(done => { const c = []; stream.on('data', d => c.push(d)); stream.on('end', () => done(Buffer.concat(c))); }));
-  check('export to PowerPoint', deckBytes.length > 2000 && deckBytes.subarray(0, 2).toString() === 'PK', `${deckBytes.length} bytes`);
   await page.locator('.modal-backdrop button[aria-label="Close dialog"]').first().click();
+  await go(page, 'library');
+  await page.getByRole('button', { name: 'Add a source' }).first().click();
+  await page.waitForTimeout(400);
+  await page.setInputFiles('.file-drop-zone input[type=file]', join(here, 'fixtures', 'sample-deck.pptx'));
+  await page.locator('.hca7-choice', { hasText: 'As a PDF' }).click();
+  await page.waitForTimeout(3000);
+  const asPdf = await page.getByText('sample-deck.pdf').count();
+  await page.locator('.modal input[type=checkbox]').first().check();
+  await page.getByRole('button', { name: /Add 1 source file/ }).click();
+  await page.waitForTimeout(4000);
+  const slideText = await page.evaluate(() => [...document.querySelectorAll('[data-hca-page] .textLayer span')].map(s => s.textContent).join(' '));
+  const shape = await page.locator('[data-hca-page]').first().boundingBox();
+  check('PowerPoint as PDF: wide pages with selectable text', asPdf === 1 && /Heart failure basics/.test(slideText) && shape.width > shape.height, `${Math.round(shape.width)}×${Math.round(shape.height)}`);
+  check('export to PowerPoint', deckBytes.length > 2000 && deckBytes.subarray(0, 2).toString() === 'PK', `${deckBytes.length} bytes`);
 
   // Phones: nothing wider than the screen.
   for (const width of [360, 390, 414]) {

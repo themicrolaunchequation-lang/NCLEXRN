@@ -7146,7 +7146,7 @@ function rs(){let{modal:e,setModal:t}=y();if(!e)return null;let n=()=>t(null),r=
 `,` `)||e.title}),o===null?(0,C.jsx)(ne,{text:`Opening the page text…`}):o?(0,C.jsxs)(C.Fragment,{children:[(0,C.jsx)(`div`,{className:`text-view-notice`,children:e.kind===`demo`?`Original Lumen learning sample. Not a clinical guideline.`:`Text order may differ from the visual page, especially in columns and tables. Verify the original when meaning depends on layout.`}),o.split(/\n\n+/).map((e,n)=>(0,C.jsx)(`p`,{className:`extracted-paragraph`,children:(0,C.jsx)(hs,{text:e,highlights:i.filter(e=>e.page===t)})},n))]}):(0,C.jsxs)(`div`,{className:`no-text-state`,children:[(0,C.jsx)(`span`,{className:`soft-icon sage`,children:(0,C.jsx)(E,{name:`image-line`})}),(0,C.jsx)(`h3`,{children:`A picture, without a text layer.`}),(0,C.jsx)(`p`,{children:`You can read and mark this page visually. To use text search and local study tools, add a careful, verbatim transcript.`}),(0,C.jsx)(k,{variant:`soft`,icon:`add-line`,onClick:r,children:`Add a page transcript`}),(0,C.jsx)(`small`,{children:`Use the local English OCR or add a checked transcript.`})]}),(0,C.jsxs)(`footer`,{className:`text-view-footer`,children:[e.title,(0,C.jsxs)(`span`,{children:[`Page `,t]})]})]})})}function _s({book:e,page:t,doc:n,active:r,onClick:i,cache:a}){let o=(0,_.useRef)(),[s,c]=(0,_.useState)(a.current.get(t)||``);(0,_.useEffect)(()=>{if(e.kind!==`pdf`||!n||s)return;let r=!1,i=new IntersectionObserver(e=>{e.some(e=>e.isIntersecting)&&(i.disconnect(),Bo(n,t,110).then(e=>{a.current.set(t,e),r||c(e)}).catch(()=>{}))},{rootMargin:`120px`});return o.current&&i.observe(o.current),()=>{r=!0,i.disconnect()}},[e.id,t,n]);let l=oe[e.id]?.[t-1];return(0,C.jsxs)(`button`,{ref:o,className:`thumbnail-tile ${r?`active`:``}`,onClick:i,"aria-label":`Go to page ${t}${l?`: `+l.title.replaceAll(`
 `,` `):``}`,children:[(0,C.jsx)(`span`,{className:`thumbnail-paper ${l?.cover?`cover`:``} ${e.color||``}`,children:s?(0,C.jsx)(`img`,{src:s,alt:``}):l?(0,C.jsxs)(C.Fragment,{children:[(0,C.jsx)(`span`,{className:`thumb-kicker`,children:`LUMEN FIELDNOTES`}),(0,C.jsx)(`strong`,{children:l.title}),l.cover?(0,C.jsx)(`img`,{src:l.image,alt:``}):(0,C.jsx)(`span`,{className:`thumbnail-lines`,children:Array.from({length:7},(e,t)=>(0,C.jsx)(`b`,{},t))})]}):(0,C.jsx)(E,{name:e.kind===`images`?`image-line`:`file-text-line`})}),(0,C.jsxs)(`span`,{className:`thumbnail-label`,children:[t,r&&(0,C.jsx)(E,{name:`check-line`})]})]})}function vs({book:e,doc:t,page:n,getText:r,onPage:i,onClose:a,initialTab:o=`contents`}){let[s,c]=(0,_.useState)(o),[l,u]=(0,_.useState)(``),[d,f]=(0,_.useState)([]),[p,m]=(0,_.useState)(!1),[h,g]=(0,_.useState)(0),[v,b]=(0,_.useState)(!1),[x,S]=(0,_.useState)([]),w=(0,_.useRef)(new Map),T=(0,_.useRef)(!1),{state:D}=y();(0,_.useEffect)(()=>{o!==s&&c(o)},[o]),(0,_.useEffect)(()=>{t&&t.getOutline().then(e=>{function t(e,n=0){return(e||[]).flatMap(e=>[{...e,depth:n},...t(e.items,n+1)])}S(t(e))}).catch(()=>{})},[t]),(0,_.useEffect)(()=>()=>{T.current=!0},[]);async function k(t){if(t?.preventDefault(),!l.trim())return;T.current=!1,m(!0),f([]),b(!0);let n=[],i=l.trim().toLowerCase();try{for(let t=1;t<=e.count&&!T.current;t++){let a=await r(t),o=a.toLowerCase().indexOf(i);o>=0&&n.push({page:t,text:a.slice(Math.max(0,o-75),Math.min(a.length,o+i.length+140)).replaceAll(`
 `,` `)}),(t%5==0||t===e.count)&&(g(t),f([...n]),await new Promise(e=>setTimeout(e,0)))}f(n)}finally{m(!1)}}async function A(e){try{let n=typeof e.dest==`string`?await t.getDestination(e.dest):e.dest;n?.[0]!==void 0&&i(typeof n[0]==`number`?n[0]+1:await t.getPageIndex(n[0])+1)}catch{}}return(0,C.jsxs)(`aside`,{className:`reader-drawer`,children:[(0,C.jsxs)(`div`,{className:`drawer-header`,children:[(0,C.jsx)(`h3`,{children:`A way through.`}),(0,C.jsx)(O,{icon:`close-line`,label:`Close book navigation`,onClick:a})]}),(0,C.jsx)(`div`,{className:`drawer-tabs`,children:[[`contents`,`Pages`],[`search`,`Search`],[`bookmarks`,`Saved`]].map(([e,t])=>(0,C.jsx)(`button`,{className:s===e?`active`:``,onClick:()=>c(e),children:t},e))}),s===`search`?(0,C.jsxs)(`div`,{className:`drawer-search-content`,children:[(0,C.jsxs)(`form`,{className:`document-search`,onSubmit:k,children:[(0,C.jsx)(E,{name:`search-line`}),(0,C.jsx)(`input`,{autoFocus:!0,"aria-label":`Search inside this book`,placeholder:`A word, a phrase, a connection…`,value:l,onChange:e=>u(e.target.value)}),(0,C.jsx)(O,{icon:`arrow-right-line`,label:`Search all book pages`,disabled:p||!l.trim(),type:`submit`})]}),p&&(0,C.jsxs)(`div`,{role:`status`,className:`search-progress`,children:[(0,C.jsx)(E,{name:`loader-4-line`,className:`spinning`}),(0,C.jsxs)(`span`,{children:[`Page `,h,` of `,e.count]}),(0,C.jsx)(`button`,{onClick:()=>{T.current=!0},children:`Stop`})]}),v&&(0,C.jsxs)(`div`,{className:`drawer-result-count`,children:[d.length,` matching page`,d.length===1?``:`s`,p?` so far`:``]}),d.map(e=>(0,C.jsxs)(`button`,{className:`document-search-result`,onClick:()=>i(e.page),children:[(0,C.jsxs)(`span`,{children:[`PAGE `,e.page,(0,C.jsx)(E,{name:`arrow-right-up-line`})]}),(0,C.jsx)(`p`,{children:e.text.split(RegExp(`(${l.replace(/[.*+?^${}()|[\]\\]/g,`\\$&`)})`,`gi`)).map((e,t)=>e.toLowerCase()===l.toLowerCase()?(0,C.jsx)(`mark`,{children:e},t):e)})]},e.page)),!v&&(0,C.jsxs)(`div`,{className:`drawer-helper`,children:[(0,C.jsx)(E,{name:`search-line`}),(0,C.jsx)(`p`,{children:`Find a thread through your source.`}),(0,C.jsx)(`small`,{children:`Search uses available text and checked transcripts. Run local English OCR on a scan, then correct its text.`})]}),v&&!p&&!d.length&&(0,C.jsxs)(`div`,{className:`drawer-helper`,children:[(0,C.jsx)(E,{name:`file-text-line`}),(0,C.jsx)(`p`,{children:`No matching text here.`}),(0,C.jsx)(`small`,{children:`Try another term. Scanned pages may have no text to search.`})]})]}):s===`bookmarks`?(0,C.jsx)(`div`,{className:`drawer-bookmarks`,children:(e.bookmarks||[]).length?(e.bookmarks||[]).sort((e,t)=>e-t).map(t=>(0,C.jsxs)(`button`,{onClick:()=>i(t),children:[(0,C.jsx)(E,{name:`bookmark-fill`}),(0,C.jsxs)(`span`,{children:[(0,C.jsxs)(`strong`,{children:[`Page `,t]}),(0,C.jsx)(`small`,{children:oe[e.id]?.[t-1]?.title.replaceAll(`
-`,` `)||`A place you wanted to keep`})]}),(0,C.jsx)(E,{name:`arrow-right-line`})]},t)):(0,C.jsxs)(`div`,{className:`drawer-helper`,children:[(0,C.jsx)(E,{name:`bookmark-line`}),(0,C.jsx)(`p`,{children:`Keep a place to return to.`}),(0,C.jsx)(`small`,{children:`Press B or use the bookmark button to save the current page.`})]})}):(0,C.jsxs)(`div`,{className:`drawer-pages-scroll`,children:[x.length>0&&(0,C.jsxs)(`div`,{className:`outline-list`,children:[(0,C.jsx)(`span`,{className:`eyebrow`,children:`FROM YOUR PDF CONTENTS`}),x.map((e,t)=>(0,C.jsxs)(`button`,{style:{paddingLeft:10+e.depth*12},onClick:()=>A(e),children:[e.title,(0,C.jsx)(E,{name:`arrow-right-s-line`})]},t))]}),(0,C.jsx)(`div`,{className:`thumbnail-grid`,children:Array.from({length:e.count},(r,a)=>(0,C.jsx)(_s,{book:e,page:a+1,active:n===a+1,doc:t,onClick:()=>i(a+1),cache:w},a+1))})]})]})}function ys({book:e}){const hcaCurrentBookId=e.id;let{state:t,setState:n,setModal:r,toast:i,requestPassword:a,readerFocus:o,setReaderFocus:s,aiConfig:c}=y(),l=e.page||1,[u,d]=(0,_.useState)(null),[f,p]=(0,_.useState)(null),[m,h]=(0,_.useState)(e.kind!==`demo`),[g,v]=(0,_.useState)(``),[b,x]=(0,_.useState)(t.settings.readingMode||`flip`),[S,w]=(0,_.useState)(()=>window.innerWidth>=1100),[T,D]=(0,_.useState)(null),[A,te]=(0,_.useState)(1),[j,M]=(0,_.useState)(null),[re,ie]=(0,_.useState)(`select`),[N,P]=(0,_.useState)(`#f1d98e`),[F,ae]=(0,_.useState)(null),[oe,se]=(0,_.useState)(String(l)),[ce,de]=(0,_.useState)(!1),[fe,pe]=(0,_.useState)(1),[me,I]=(0,_.useState)(!1),L=(0,_.useRef)(),he=(0,_.useRef)(),ge=(0,_.useRef)(),ye=(0,_.useRef)(),be=cs(),xe=ss(L),Se=t.highlights.filter(t=>t.bookId===e.id),Ce=b===`flip`&&!be||j!==null,we=j===null?Ce?[l,l+1<=e.count?l+1:null]:[l]:[j,l],Te=t.settings.reducedMotion||matchMedia(`(prefers-reduced-motion: reduce)`).matches,Ee=HCAReaderPageWidth(xe.width,xe.height,Ce,t.settings.readerFit||`width`),De=Math.max(140,Ee)*A,Oe=De*1.414;const hcaSetState=n,hcaToast=i;(0,_.useEffect)(()=>{const open=()=>w(true);window.addEventListener(`hca-show-study-tools`,open);return()=>window.removeEventListener(`hca-show-study-tools`,open)},[]);(0,_.useEffect)(()=>{let t=!1;return(async()=>{if(e.kind===`demo`)h(!1);else try{h(!0);let n=await ve(e.id);if(!n)throw Error(`The original file is not in this browser. Restore a full workspace backup, or reimport the file. A sandboxed preview may be session-only.`);if(t)return;if(p(n),e.kind===`pdf`){let r=await Lo(n.blob,e.id,a);if(t)return;d(r)}h(!1)}catch(e){if(t)return;v(e.message||`This book could not be opened. Try an unlocked, undamaged copy.`),h(!1)}})(),()=>{t=!0,window.speechSynthesis?.cancel?.()}},[e.id]),(0,_.useEffect)(()=>{se(String(l)),ae(null),L.current?.scrollTo?.({top:0,left:0,behavior:`instant`}),window.getSelection()?.removeAllRanges(),ce&&(window.speechSynthesis?.cancel(),de(!1))},[l]),(0,_.useEffect)(()=>()=>window.speechSynthesis?.cancel(),[]);async function ke(t){return (f||await ve(e.id))?.transcripts?.[t]||(e.kind===`demo`?le(e.id,t):e.kind===`pdf`&&u?zo(u,e.id,t):``)}function Ae(t){let r=Math.max(1,Math.min(e.count,Math.trunc(Number(t)||1)));n(t=>({...t,lastBookId:e.id,books:t.books.map(t=>t.id===e.id?{...t,page:r}:t)}))}function je(e){if(me||e===l)return;let t=e>l?`next`:`prev`;if(b===`text`||Te||!he.current||!Ce){Ae(e);return}let n=he.current.querySelector(`[data-side="${t===`next`?`right`:`left`}"]`);if(!n){Ae(e);return}n=n.closest(`.hca-page-wrap`)||n;let r=n.cloneNode(!0),i=n.querySelectorAll(`canvas`);r.querySelectorAll(`canvas`).forEach((e,t)=>{try{let n=document.createElement(`img`);n.src=i[t].toDataURL(),n.style.cssText=i[t].style.cssText,e.replaceWith(n)}catch{}}),r.classList.add(`flip-ghost`),r.setAttribute(`aria-hidden`,`true`),r.style.position=`absolute`,r.style.top=`0`,r.style.left=t===`next`?`${De}px`:`0`,r.style.transformOrigin=t===`next`?`left center`:`right center`,r.style.zIndex=`20`,r.style.pointerEvents=`none`,ge.current.appendChild(r),I(!0),Ae(e),r.animate([{transform:`rotateY(0deg)`,filter:`brightness(1)`},{transform:`rotateY(${t===`next`?`-`:`+`}90deg)`,filter:`brightness(.85)`,offset:.65},{transform:`rotateY(${t===`next`?`-`:`+`}178deg)`,opacity:0}],{duration:560,easing:`cubic-bezier(.22,.65,.22,1)`,fill:`forwards`}).finished.catch(()=>{}).finally(()=>{r.remove(),I(!1)})}function Me(){je(Math.min(e.count,l+(Ce&&j===null?2:1)))}function Ne(){je(Math.max(1,l-(Ce&&j===null?2:1)))}function Pe(){let t=(e.bookmarks||[]).includes(l);n(n=>({...n,books:n.books.map(n=>n.id===e.id?{...n,bookmarks:t?(n.bookmarks||[]).filter(e=>e!==l):[...n.bookmarks||[],l]}:n)})),i(t?`Bookmark removed.`:`A place to return to. Page bookmarked.`)}(0,_.useEffect)(()=>{let t=t=>{document.querySelector(`[role="dialog"]`)||t.ctrlKey||t.metaKey||t.altKey||t.target.closest(`input,textarea,select,[contenteditable="true"]`)||(t.key===`ArrowRight`?(t.preventDefault(),Me()):t.key===`ArrowLeft`?(t.preventDefault(),Ne()):t.key.toLowerCase()===`f`?(t.preventDefault(),D(`search`)):t.key.toLowerCase()===`b`?(t.preventDefault(),Pe()):t.key.toLowerCase()===`n`?(t.preventDefault(),b===`text`?r({type:`hca-sticky`,bookId:e.id,page:l,anchor:{x:.82,y:.15}}):ie(`sticky`)):t.key.toLowerCase()===`p`?(t.preventDefault(),b===`text`?i(`Switch to a visual page to use the pen.`):ie(`pen`)):t.key.toLowerCase()===`h`?(t.preventDefault(),ie(`highlight`)):t.key.toLowerCase()===`m`?(t.preventDefault(),b===`text`?i(`Switch to a visual page to mark an area.`):ie(`note-area`)):t.key===`Escape`&&(s(!1),ae(null),ie(`select`)))};return document.addEventListener(`keydown`,t),()=>document.removeEventListener(`keydown`,t)},[l,Ce,j,me,e.bookmarks,o,b]);function Fe(e){x(e),M(null),ie(`select`),ae(null),n(t=>({...t,settings:{...t.settings,readingMode:e}}))}function Ie(){[`select`,`highlight`].includes(re)&&setTimeout(()=>{let e=window.getSelection();if(!e||e.isCollapsed||!e.toString().trim()||!e.rangeCount){ae(null);return}let t=e.anchorNode?.parentElement?.closest(`.source-page`),n=e.focusNode?.parentElement?.closest(`.source-page`);if(!t||t!==n||!L.current?.contains(t)){ae(null);return}let r=t.getBoundingClientRect(),i=e.getRangeAt(0),a=i.getBoundingClientRect(),o=[...i.getClientRects()].filter(e=>e.width>1&&e.height>1).map(e=>({x:Math.max(0,(e.left-r.left)/r.width),y:Math.max(0,(e.top-r.top)/r.height),w:Math.min(1,e.width/r.width),h:Math.min(1,e.height/r.height)}));(()=>{const passage={text:e.toString().trim().slice(0,6e3),page:Number(t.dataset.page),rects:b===`text`?[]:o,x:Math.max(150,Math.min(window.innerWidth-170,a.left+a.width/2)),y:Math.max(88,a.top-54)};if(re===`highlight`){hcaSetState(state=>({...state,highlights:[...state.highlights,{id:ue(),bookId:state.books.find(book=>book.id===hcaCurrentBookId)?.id||hcaCurrentBookId,page:passage.page,text:passage.text,rects:passage.rects,color:N,createdAt:Date.now()}]}));window.getSelection()?.removeAllRanges();ae(null);hcaToast(`Highlight saved with its source page.`)}else ae(passage)})()},10)}function Le(){F?(n(t=>({...t,highlights:[...t.highlights,{id:ue(),bookId:e.id,page:F.page,text:F.text,rects:F.rects,color:N,createdAt:Date.now()}]})),ae(null),window.getSelection()?.removeAllRanges(),i(`An idea worth keeping. Highlight saved.`)):i(`Select a passage on the page first, or use Mark area for an image.`)}function Re(t,r){n(n=>({...n,highlights:[...n.highlights,{id:ue(),bookId:e.id,page:t,text:``,rects:[r],color:N,createdAt:Date.now()}]})),ie(`select`),i(`Visual region saved. Find it in Notes & highlights.`)}async function ze(pg=l){pg=Number.isInteger(pg)?pg:l;let t=f||await ve(e.id);r({type:`transcript`,bookId:e.id,page:pg,initialText:t?.transcripts?.[pg]||await ke(pg),onSave:async r=>{let a=t||{};a.transcripts={...a.transcripts||{},[pg]:r};let o=await _e(e.id,a);p({...a}),n(t=>({...t,books:t.books.map(t=>t.id===e.id?{...t,transcriptVersion:(t.transcriptVersion||0)+1}:t)})),i(o?`Page transcript saved locally.`:`Transcript kept for this session. Browser storage is unavailable.`)}})}async function Be(){if(!window.speechSynthesis){i(`This browser does not offer text-to-speech.`);return}if(ce){window.speechSynthesis.cancel(),de(!1);return}let e=window.speechSynthesis.getVoices().filter(e=>e.localService),t=e.find(e=>e.lang.startsWith(`en`))||e[0];if(!t){i(`No on-device voice is available in this browser. Install a local system voice; remote voices are not used.`);return}let n=F?.text||await ke(l);if(!n.trim()){i(`This page needs selectable text or a transcript to read aloud.`);return}de(!0);let r=n.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[n];r.forEach((e,n)=>{let i=new SpeechSynthesisUtterance(e);i.voice=t,i.rate=fe,i.onend=()=>{n===r.length-1&&de(!1)},i.onerror=()=>de(!1),window.speechSynthesis.speak(i)})}async function Ve(){let t=f||await ve(e.id);t?.blob?R(t.name||`${e.title}.pdf`,t.blob):t?.images?.[l-1]?R(t.images[l-1].name,t.images[l-1].blob):i(`This interactive sample has no original PDF. You can export its study material from Notes & highlights.`)}async function He(){if(s(!o),o)document.fullscreenElement&&document.exitFullscreen?.();else try{await document.documentElement.requestFullscreen?.()}catch{i(`Focus view is active. Browser fullscreen is unavailable in this preview.`)}}return(0,C.jsxs)(`div`,{className:`reader-root hca-reader-root fit-${t.settings.readerFit||`width`} ${o?`focused`:``} ${S?`with-companion`:``}`,style:{"--hca-reader-width":`${HCABound(Number(t.settings.readerWidth)||75,55,90)}vw`},children:[(0,C.jsxs)(`div`,{className:`reader-document-header`,children:[(0,C.jsxs)(`div`,{className:`reader-title-group`,children:[(0,C.jsx)(HCAReaderBackButton,{}),(0,C.jsx)(`span`,{className:`soft-icon ${e.color||`sage`}`,children:(0,C.jsx)(E,{name:`book-open-line`})}),(0,C.jsxs)(`div`,{children:[(0,C.jsx)(`h1`,{children:e.title}),(0,C.jsxs)(`div`,{className:`reader-document-meta`,children:[(0,C.jsx)(`span`,{children:e.category||`Personal library`}),(0,C.jsx)(`span`,{children:`·`}),(0,C.jsx)(`span`,{children:e.kind===`demo`?`Original learning sample`:e.kind===`pdf`?`Private PDF`:`Private image collection`}),(0,C.jsx)(`span`,{children:`·`}),(0,C.jsxs)(`span`,{children:[e.count,` pages`]})]})]})]}),(0,C.jsxs)(`div`,{className:`reader-heading-actions`,children:[o&&(0,C.jsx)(k,{variant:`secondary`,icon:`fullscreen-exit-line`,onClick:()=>{s(!1),document.fullscreenElement&&document.exitFullscreen?.()},children:`Leave focus`}),(0,C.jsx)(O,{icon:`download-line`,label:e.kind===`images`?`Download this original image`:`Download original PDF`,onClick:Ve,disabled:e.kind===`demo`}),(0,C.jsxs)(k,{variant:S?`soft`:`secondary`,icon:`sparkling-2-line`,className:`companion-toggle`,onClick:()=>w(!S),children:[`Study tools`,S&&(0,C.jsx)(`span`,{className:`status-dot`})]})]})]}),(0,C.jsxs)(`div`,{className:`reading-room`,children:[(0,C.jsxs)(`div`,{className:`reader-main`,children:[(0,C.jsxs)(`div`,{className:`reader-toolbar`,children:[(0,C.jsxs)(`div`,{className:`toolbar-left`,children:[(0,C.jsx)(O,{icon:`side-bar-line`,label:`Pages, contents, and bookmarks`,active:!!T,onClick:()=>D(T?null:`contents`)}),(0,C.jsx)(O,{icon:`search-line`,label:`Search in book (F)`,active:T===`search`,onClick:()=>D(T===`search`?null:`search`)}),(0,C.jsx)(`span`,{className:`toolbar-divider`}),(0,C.jsx)(`div`,{className:`segmented reading-modes`,children:[[`flip`,`book-open-line`,`Flipbook`],[`single`,`file-text-line`,`Single`],[`text`,`text`,`Text`]].map(([e,t,n])=>(0,C.jsxs)(`button`,{className:b===e?`selected`:``,onClick:()=>Fe(e),"aria-label":`${n} reading mode`,children:[(0,C.jsx)(E,{name:t}),(0,C.jsx)(`span`,{children:n})]},e))})]}),(0,C.jsx)(`div`,{className:`toolbar-right`,children:(0,C.jsx)(HCAReaderToolbar,{book:e,page:l,tool:re,onTool:ie,selection:F,onHighlight:Le,onBookmark:Pe,readMode:b,onMode:Fe,onCompare:()=>{j===null?(M(l),Ae(l<e.count?l+1:l-1)):M(null)},comparing:j!==null,onSpeak:Be,speaking:ce,onFocus:He,focused:o})})]}),(0,C.jsxs)(`div`,{className:`reader-stage surround-${t.settings.paper} ${b===`text`?`text-mode`:``} ${T?`drawer-visible`:``}`,ref:L,onMouseUp:Ie,onTouchStart:e=>{if(![`select`,`highlight`].includes(re)){ye.current=null;return}e.touches.length===1&&(ye.current={x:e.touches[0].clientX,y:e.touches[0].clientY})},onTouchEnd:e=>{if(!ye.current||![`select`,`highlight`].includes(re)||window.getSelection()?.toString())return;let t=e.changedTouches[0].clientX-ye.current.x,n=e.changedTouches[0].clientY-ye.current.y;Math.abs(t)>75&&Math.abs(n)<60&&(t<0?Me():Ne()),ye.current=null},children:[T&&(0,C.jsx)(vs,{book:e,doc:u,page:l,getText:ke,onPage:e=>{Ae(e),be&&D(null)},onClose:()=>D(null),initialTab:T}),(0,C.jsxs)(`div`,{className:`stage-topline`,children:[(0,C.jsxs)(`span`,{children:[(0,C.jsx)(`span`,{className:`status-dot`}),j===null?b===`text`?`A LITTLE SPACE TO THINK`:b===`flip`&&!be?`TWO PAGES. ONE THOUGHTFUL MOMENT.`:`ONE PAGE AT A TIME.`:`Comparing pinned page ${j} with page ${l}`]}),(0,C.jsx)(`span`,{children:re===`area`?`Drag a rectangle on the page`:ce?(0,C.jsxs)(C.Fragment,{children:[(0,C.jsxs)(`span`,{className:`audio-bars`,children:[(0,C.jsx)(`b`,{}),(0,C.jsx)(`b`,{}),(0,C.jsx)(`b`,{})]}),`On-device voice ·`,` `,(0,C.jsxs)(`select`,{"aria-label":`Read aloud speed`,value:fe,onChange:e=>{pe(Number(e.target.value)),window.speechSynthesis?.cancel(),de(!1),i(`Playback speed updated. Press Read aloud to restart this page at the new speed.`)},children:[(0,C.jsx)(`option`,{value:.8,children:`0.8×`}),(0,C.jsx)(`option`,{value:1,children:`1×`}),(0,C.jsx)(`option`,{value:1.2,children:`1.2×`}),(0,C.jsx)(`option`,{value:1.5,children:`1.5×`})]})]}):e.kind===`demo`?(0,C.jsxs)(C.Fragment,{children:[(0,C.jsx)(E,{name:`shield-check-line`}),`Original sample · learning only`]}):(0,C.jsxs)(`button`,{className:`transcript-link`,onClick:ze,children:[(0,C.jsx)(E,{name:`text`}),`Add / edit page transcript`]})})]}),m?(0,C.jsx)(ne,{text:`Making room for your source…`}):g?(0,C.jsx)(`div`,{className:`reader-load-error`,children:(0,C.jsx)(ee,{icon:`file-pdf-2-line`,title:`This source needs another look.`,text:g,children:(0,C.jsx)(k,{variant:`soft`,icon:`upload-2-line`,onClick:()=>r({type:`upload`}),children:`Import a source`})})}):b===`text`?(0,C.jsx)(gs,{book:e,page:l,getText:ke,onTranscript:ze,highlights:Se}):(0,C.jsxs)(`div`,{className:`book-positioner`,children:[(0,C.jsx)(`button`,{className:`page-turn-arrow previous`,"aria-label":`Previous pages`,disabled:l<=1||me,onClick:Ne,children:(0,C.jsx)(E,{name:`arrow-left-s-line`})}),(0,C.jsxs)(`div`,{className:`book-object ${Ce?`spread`:`single-page-book`}`,style:{width:De*(Ce?2:1),height:Oe},ref:he,children:[(0,C.jsx)(`div`,{className:`book-pages`,children:we.map((t,n)=>(0,C.jsx)(ms,{book:e,page:t,doc:u,record:f,width:De,height:Oe,side:Ce&&n===0?`left`:`right`,tool:re===`note-area`?`area`:re,hcaTool:re,onTool:ie,onRegion:re===`note-area`?(page,region)=>{ie(`select`);r({type:`hca-sticky`,bookId:e.id,page,anchor:{x:Math.min(.96,region.x+region.w),y:region.y},region})}:Re,onPage:Ae,highlights:Se},`${n}-${t}`))}),(0,C.jsx)(`div`,{className:`ghost-host`,ref:ge}),Ce&&(0,C.jsx)(`div`,{className:`book-gutter`,"aria-hidden":`true`}),(0,C.jsx)(`div`,{className:`book-edge`,"aria-hidden":`true`}),(0,C.jsx)(`button`,{className:`page-corner`,"aria-label":`Turn to next pages`,disabled:l+(Ce&&j===null?1:0)>=e.count||me,onClick:Me})]}),(0,C.jsx)(`button`,{className:`page-turn-arrow next`,"aria-label":`Next pages`,disabled:l+(Ce&&j===null?1:0)>=e.count||me,onClick:Me,children:(0,C.jsx)(E,{name:`arrow-right-s-line`})})]}),(0,C.jsxs)(`div`,{className:`stage-bottomline`,children:[(0,C.jsx)(`span`,{children:b===`text`?`A text companion, not a replacement for the visual source.`:`Select a passage to highlight, note, or make a recall card.`}),!Te&&b===`flip`&&!be&&(0,C.jsxs)(`button`,{onClick:()=>n(e=>({...e,settings:{...e.settings,reducedMotion:!0}})),children:[`Prefer less motion?`,(0,C.jsx)(E,{name:`leaf-line`})]})]})]}),(0,C.jsxs)(`div`,{className:`reader-bottom-toolbar`,children:[(0,C.jsxs)(`div`,{className:`bottom-nav-controls`,children:[(0,C.jsx)(O,{icon:`arrow-left-s-line`,label:`Previous reading page`,disabled:l<=1,onClick:Ne}),(0,C.jsxs)(`form`,{className:`page-jump`,onSubmit:e=>{e.preventDefault(),Ae(oe)},children:[(0,C.jsx)(`label`,{htmlFor:`page-number-input`,children:`Page`}),(0,C.jsx)(`input`,{id:`page-number-input`,"aria-label":`Jump to page`,type:`number`,min:1,max:e.count,value:oe,onChange:e=>se(e.target.value),onBlur:()=>{Number(oe)!==l&&Ae(oe)}}),(0,C.jsxs)(`span`,{children:[`of `,e.count]})]}),(0,C.jsx)(O,{icon:`arrow-right-s-line`,label:`Next reading page`,disabled:l+(Ce&&j===null?1:0)>=e.count,onClick:Me})]}),(0,C.jsx)(HCAReaderFit,{}),(0,C.jsx)(`input`,{className:`page-scrubber`,"aria-label":`Reading position`,type:`range`,min:1,max:e.count,value:l,onChange:e=>Ae(e.target.value)}),(0,C.jsxs)(`div`,{className:`zoom-controls`,children:[(0,C.jsx)(O,{icon:`subtract-line`,label:`Zoom out`,disabled:A<=.65||b===`text`,onClick:()=>te(e=>Math.max(.65,e-.1))}),(0,C.jsxs)(`button`,{className:`zoom-value`,title:`Reset to fit`,onClick:()=>te(1),children:[Math.round(A*100),`%`,(0,C.jsx)(E,{name:`arrow-down-s-line`})]}),(0,C.jsx)(O,{icon:`add-line`,label:`Zoom in`,disabled:A>=2||b===`text`,onClick:()=>te(e=>Math.min(2,e+.1))})]})]}),(0,C.jsxs)(`div`,{className:`reader-footnote`,children:[(0,C.jsxs)(`span`,{children:[(0,C.jsx)(`kbd`,{children:`←`}),(0,C.jsx)(`kbd`,{children:`→`}),`to turn pages`,(0,C.jsx)(`span`,{className:`meta-dot`,children:`·`}),(0,C.jsx)(`kbd`,{children:`F`}),`to find a thread`]}),(0,C.jsxs)(`span`,{children:[(0,C.jsx)(E,{name:`lock-line`}),`Your reading stays with you.`]})]})]}),S&&(0,C.jsx)(HCAReaderSidecar,{book:e,page:l,getText:ke,selection:F,onPage:Ae,onClose:()=>w(!1),onTranscript:ze,tool:re,onTool:ie},e.id)]}),F&&(0,C.jsxs)(`div`,{className:`selection-toolbar`,style:{left:F.x,top:F.y},onMouseDown:e=>e.preventDefault(),role:`toolbar`,"aria-label":`Selected passage actions`,children:[(0,C.jsx)(`div`,{className:`highlight-colors`,children:HCA7HighlightColors.map(e=>(0,C.jsx)(`button`,{className:e===N?`selected`:``,style:{background:e},title:`Choose ${HCA7ColorName(e)} highlight`,"aria-label":`Choose ${e} highlight color`,onClick:()=>P(e),children:e===N&&(0,C.jsx)(E,{name:`check-line`})},e))}),(0,C.jsx)(`span`,{}),(0,C.jsxs)(`button`,{onClick:Le,children:[(0,C.jsx)(E,{name:`mark-pen-line`}),`Highlight`]}),(0,C.jsxs)(`button`,{onClick:()=>{window.HCA7Define&&window.HCA7Define(F.text,F.page,e.id),ae(null)},children:[(0,C.jsx)(E,{name:`search-line`}),`Meaning`]}),(0,C.jsxs)(`button`,{onClick:()=>{r({type:`note`,bookId:e.id,page:F.page,excerpt:F.text}),ae(null)},children:[(0,C.jsx)(E,{name:`sticky-note-line`}),`Note`]}),(0,C.jsxs)(`button`,{onClick:()=>{r({type:`card`,bookId:e.id,page:F.page,excerpt:F.text}),ae(null)},children:[(0,C.jsx)(E,{name:`stack-line`}),`Recall`]}),(0,C.jsx)(O,{icon:`close-line`,label:`Dismiss selected passage tools`,onClick:()=>{ae(null),window.getSelection()?.removeAllRanges()}})]})]})}var bs=[[`home`,`home-5-line`,`Today`],[`library`,`book-2-line`,`Library`],[`studio`,`stack-line`,`Study`],[`notes`,`sticky-note-line`,`Notes`],[`methods`,`lightbulb-line`,`Methods`],[`progress`,`dashboard-line`,`Progress`]],xs=class extends _.Component{constructor(e){super(e),this.state={error:null}}static getDerivedStateFromError(e){return{error:e}}render(){return this.state.error?(0,C.jsxs)(`div`,{className:`fatal-error`,children:[(0,C.jsx)(D,{}),(0,C.jsx)(`h1`,{children:`A little pause.`}),(0,C.jsx)(`p`,{children:`The workspace could not finish rendering. Your browser-saved study data has not been deleted.`}),(0,C.jsx)(k,{onClick:()=>location.reload(),children:`Reopen Lumen`}),(0,C.jsxs)(`details`,{children:[(0,C.jsx)(`summary`,{children:`Technical detail`}),(0,C.jsx)(`pre`,{children:String(this.state.error)})]})]}):this.props.children}};function Ss(){return(0,C.jsx)(xs,{children:(0,C.jsx)(Cs,{})})}function Cs(){let[e,t]=(0,_.useState)(me),[n,r]=(0,_.useState)(()=>HCAInitialRoute()),[i,a]=(0,_.useState)(null),[o,s]=(0,_.useState)(null),[c,l]=(0,_.useState)([]),[u,d]=(0,_.useState)(!1),[f,p]=(0,_.useState)(()=>window.innerWidth<=760),[m,h]=(0,_.useState)(fe?`local`:`session`),[g,y]=(0,_.useState)(!1),[b,x]=(0,_.useState)(`all`),[S,w]=(0,_.useState)({configured:!1,provider:`OpenAI`}),[T,te]=(0,_.useState)(null),[j,ne]=(0,_.useState)(``),[M,re]=(0,_.useState)({running:!1,duration:(e.settings.dailyGoal||25)*60,remaining:(e.settings.dailyGoal||25)*60}),ie=(0,_.useRef)(0),N=(0,_.useRef)(e);N.current=e,(0,_.useEffect)(()=>{let e=matchMedia(`(max-width: 760px)`),t=()=>p(e.matches);return e.addEventListener(`change`,t),()=>e.removeEventListener(`change`,t)},[]),(0,_.useEffect)(()=>{o&&d(!1)},[o]),(0,_.useEffect)(()=>{if(!f||!u)return;let e=document.querySelector(`.app-sidebar`),t=document.activeElement;requestAnimationFrame(()=>e.querySelector(`button`)?.focus());let n=t=>{if(t.key!==`Tab`)return;let n=[...e.querySelectorAll(`button`)].filter(e=>!e.disabled&&e.getClientRects().length),r=n[0],i=n.at(-1);t.shiftKey&&document.activeElement===r?(t.preventDefault(),i.focus()):!t.shiftKey&&document.activeElement===i&&(t.preventDefault(),r.focus())};return document.addEventListener(`keydown`,n),()=>{document.removeEventListener(`keydown`,n),t?.isConnected&&t.focus()}},[f,u]);let P=(0,_.useCallback)((e,t=`success`)=>{let n=ue();l(r=>[...r.slice(-2),{id:n,text:e,type:t}]),setTimeout(()=>l(e=>e.filter(e=>e.id!==n)),6500)},[]);(0,_.useEffect)(()=>{document.documentElement.dataset.theme=e.settings.theme,document.documentElement.dataset.motion=e.settings.reducedMotion?`reduced`:`normal`},[e.settings.theme,e.settings.reducedMotion]),(0,_.useEffect)(()=>{let t=setTimeout(()=>{!I(e)&&m!==`session`&&h(`session`)},450);return()=>clearTimeout(t)},[e]),(0,_.useEffect)(()=>{let e=()=>I({...N.current,focusSeconds:N.current.focusSeconds+ie.current});return window.addEventListener(`beforeunload`,e),()=>window.removeEventListener(`beforeunload`,e)},[]),(0,_.useEffect)(()=>{window.LUMEN_AI_BACKEND===true&&(location.protocol===`http:`||location.protocol===`https:`)&&location.origin!==`null`&&fetch(`/api/assistant/status`).then(e=>e.ok?e.json():null).then(e=>{e&&typeof e.configured==`boolean`&&w(e)}).catch(()=>{})},[]);let F=(0,_.useCallback)(()=>{let e=ie.current;e&&(ie.current=0,t(t=>({...t,focusSeconds:t.focusSeconds+e})))},[]),ae=(0,_.useCallback)(()=>{re(e=>({...e,running:!1})),F()},[F]),oe=()=>{re(e=>({...e,running:!0,remaining:e.remaining||e.duration})),P(`A little room to focus. The timer pauses when this tab is hidden.`)},ce=()=>{F(),re(e=>({...e,running:!1,remaining:e.duration}))};(0,_.useEffect)(()=>{if(!M.running)return;let e=setInterval(()=>{document.hidden||(ie.current+=1,re(e=>e.remaining<=1?(queueMicrotask(()=>{F(),P(`A thoughtful session, complete. Take a little break.`)}),{...e,remaining:0,running:!1}):{...e,remaining:e.remaining-1}),ie.current>=15&&F())},1e3);return()=>clearInterval(e)},[M.running]),(0,_.useEffect)(()=>{let e=()=>{document.hidden&&ae()};return document.addEventListener(`visibilitychange`,e),()=>document.removeEventListener(`visibilitychange`,e)},[ae]);let le=(0,_.useCallback)(e=>{r(e),d(!1),y(!1),window.scrollTo({top:0,behavior:`instant`})},[]),de=(0,_.useCallback)((e,n)=>{a(e),r(`reader`),d(!1),t(t=>({...t,lastBookId:e,books:t.books.map(t=>t.id===e?{...t,page:n?Math.max(1,Math.min(t.count,Math.trunc(Number(n)||1))):t.page||1}:t)})),window.scrollTo({top:0,behavior:`instant`})},[]);(0,_.useEffect)(()=>{let e=e=>{e.key===`Escape`&&d(!1),e.key===`k`&&(e.metaKey||e.ctrlKey)?(e.preventDefault(),s({type:`search`})):document.querySelector(`[role="dialog"]`)||e.target.closest(`input,textarea,select,[contenteditable="true"]`)||(e.key===`?`?(e.preventDefault(),s({type:`help`})):e.key===`/`&&(e.preventDefault(),s({type:`search`})))};return document.addEventListener(`keydown`,e),()=>document.removeEventListener(`keydown`,e)},[]);let pe=(0,_.useCallback)(e=>new Promise(t=>{ne(``),te({incorrect:e,resolve:t})}),[]);function L(e){T?.resolve(e),te(null),ne(``)}async function he(e,t=320){let n=URL.createObjectURL(e);try{let r=await new Promise((e,t)=>{let r=new Image;r.onload=()=>e(r),r.onerror=()=>t(Error(`This image could not be decoded. Try PNG or JPEG.`)),r.src=n}),i=Math.min(1,t/r.naturalWidth),a=document.createElement(`canvas`);a.width=Math.max(1,r.naturalWidth*i),a.height=Math.max(1,r.naturalHeight*i);let o=a.getContext(`2d`);o.fillStyle=`#fff`,o.fillRect(0,0,a.width,a.height),o.drawImage(r,0,0,a.width,a.height);let s=null;if(e.type===`image/gif`){let e=document.createElement(`canvas`);if(e.width=r.naturalWidth,e.height=r.naturalHeight,e.getContext(`2d`).drawImage(r,0,0),s=await new Promise(t=>e.toBlob(t,`image/png`)),!s)throw Error(`This GIF could not be converted to a still page.`)}return{thumbnail:a.toDataURL(`image/jpeg`,.82),still:s}}finally{URL.revokeObjectURL(n)}}async function ge(e,n=()=>{}){let r=[...e];if(!r.length)return!1;let i=r.filter(e=>!(/\.pdf$/i.test(e.name)||/\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(e.name)));if(i.length)throw Error(`Unsupported file: ${i[0].name}. Choose PDFs or common raster images; SVG images are not imported.`);if(r.some(e=>e.size>157286400))throw Error(`One source is larger than 150 MB. Split or optimize it before importing.`);let a=r.filter(e=>/\.pdf$/i.test(e.name)),o=r.filter(e=>!/\.pdf$/i.test(e.name)).sort((e,t)=>e.name.localeCompare(t.name,void 0,{numeric:!0,sensitivity:`base`})),s=[],c=[],l=!1;for(let e of a){let t=ue();n(`Opening ${e.name}…`);try{let n=await Lo(e,t,pe),r=``;try{r=await Bo(n,1,320)}catch{}await _e(t,{blob:e,name:e.name,type:`pdf`,transcripts:{}})||(l=!0),s.push({id:t,title:e.name.replace(/\.pdf$/i,``),category:`My uploads`,kind:`pdf`,count:n.numPages,page:1,size:e.size,addedAt:Date.now(),thumbnail:r,color:`sage`})}catch{Ro(t),c.push(e.name),n(`Could not open ${e.name}. It may need a valid password or an unlocked, undamaged copy.`)}}if(o.length){let e=ue();n(`Gathering ${o.length} image page${o.length===1?``:`s`}…`);try{let t=[],n=``;for(let e of o){let r=await he(e);n||=r.thumbnail,t.push({name:e.name,blob:e,viewBlob:r.still||void 0})}await _e(e,{type:`images`,images:t,transcripts:{}})||(l=!0),s.push({id:e,title:o.length===1?o[0].name.replace(/\.[^.]+$/,``):`My image fieldnotes`,category:`My uploads`,kind:`images`,count:o.length,page:1,size:o.reduce((e,t)=>e+t.size,0),addedAt:Date.now(),thumbnail:n,color:`sand`})}catch{c.push(`image collection`)}}if(!s.length)throw Error(`No source could be opened. Check passwords and file integrity, then try an unlocked PDF or a PNG/JPEG image.`);return t(e=>({...e,books:[...e.books,...s],lastBookId:s[0].id})),l?(h(`session`),P(`Sources opened for this session. Browser storage is unavailable; download a workspace backup before closing.`,`warning`)):P(`${s.length} new source${s.length===1?``:`s`}. A little more possibility.`),c.length&&P(`${c.length} source${c.length===1?` was`:`s were`} skipped: ${c.join(`, `)}.`,`warning`),de(s[0].id),!0}async function be(e){Ro(e),await ye(e),t(t=>({...t,books:t.books.filter(t=>t.id!==e),notes:t.notes.filter(t=>t.bookId!==e),highlights:t.highlights.filter(t=>t.bookId!==e),cards:t.cards.filter(t=>t.bookId!==e),practiceSessions:(t.practiceSessions||[]).filter(t=>t.bookId!==e),reviewLog:(t.reviewLog||[]).filter(t=>t.bookId!==e),ink:(t.ink||[]).filter(t=>t.bookId!==e),practiceMasks:Object.fromEntries(Object.entries(t.practiceMasks||{}).filter(([key])=>!key.startsWith(`${e}:`))),lastBookId:t.lastBookId===e?t.books.find(t=>t.id!==e)?.id||null:t.lastBookId})),i===e&&le(`library`),P(`The source and its study data were removed from this workspace.`)}function Ce(){let t=[`# My Lumen study pack`,`Exported ${new Date().toLocaleDateString(`en-GB`)}`,``,`Learning notes only. Verify original sources; not clinical decision support.`,``];for(let n of e.books){let r=e.notes.filter(e=>e.bookId===n.id),i=e.highlights.filter(e=>e.bookId===n.id),a=e.cards.filter(e=>e.bookId===n.id);if(r.length||i.length||a.length||(e.practiceSessions||[]).some(e=>e.bookId===n.id)){t.push(`## ${n.title}`,``,`Source type: ${n.kind}. Page references are one-based positions in the original source.`,n.sourceMeta?`Source details: ${[n.sourceMeta.author,n.sourceMeta.year,n.sourceMeta.edition,n.sourceMeta.publisher,n.sourceMeta.url].filter(Boolean).join(` · `)}`:``,``);for(let e of r)t.push(`### ${e.title||`A note in the margin`} — p. ${e.page}`,``,e.excerpt?`> ${e.excerpt.replaceAll(`
+`,` `)||`A place you wanted to keep`})]}),(0,C.jsx)(E,{name:`arrow-right-line`})]},t)):(0,C.jsxs)(`div`,{className:`drawer-helper`,children:[(0,C.jsx)(E,{name:`bookmark-line`}),(0,C.jsx)(`p`,{children:`Keep a place to return to.`}),(0,C.jsx)(`small`,{children:`Press B or use the bookmark button to save the current page.`})]})}):(0,C.jsxs)(`div`,{className:`drawer-pages-scroll`,children:[x.length>0&&(0,C.jsxs)(`div`,{className:`outline-list`,children:[(0,C.jsx)(`span`,{className:`eyebrow`,children:`FROM YOUR PDF CONTENTS`}),x.map((e,t)=>(0,C.jsxs)(`button`,{style:{paddingLeft:10+e.depth*12},onClick:()=>A(e),children:[e.title,(0,C.jsx)(E,{name:`arrow-right-s-line`})]},t))]}),(0,C.jsx)(`div`,{className:`thumbnail-grid`,children:Array.from({length:e.count},(r,a)=>(0,C.jsx)(_s,{book:e,page:a+1,active:n===a+1,doc:t,onClick:()=>i(a+1),cache:w},a+1))})]})]})}function ys({book:e}){const hcaCurrentBookId=e.id;let{state:t,setState:n,setModal:r,toast:i,requestPassword:a,readerFocus:o,setReaderFocus:s,aiConfig:c}=y(),l=e.page||1,[u,d]=(0,_.useState)(null),[f,p]=(0,_.useState)(null),[m,h]=(0,_.useState)(e.kind!==`demo`),[g,v]=(0,_.useState)(``),[b,x]=(0,_.useState)(t.settings.readingMode||`flip`),[S,w]=(0,_.useState)(()=>window.innerWidth>=1100),[T,D]=(0,_.useState)(null),[A,te]=(0,_.useState)(1),[j,M]=(0,_.useState)(null),[re,ie]=(0,_.useState)(`select`),[N,P]=(0,_.useState)(`#f1d98e`),[F,ae]=(0,_.useState)(null),[oe,se]=(0,_.useState)(String(l)),[ce,de]=(0,_.useState)(!1),[fe,pe]=(0,_.useState)(1),[me,I]=(0,_.useState)(!1),L=(0,_.useRef)(),he=(0,_.useRef)(),ge=(0,_.useRef)(),ye=(0,_.useRef)(),be=cs(),xe=ss(L),Se=t.highlights.filter(t=>t.bookId===e.id),Ce=b===`flip`&&!be&&!((e.hcaRatio||1.414)<.9)||j!==null,we=j===null?Ce?[l,l+1<=e.count?l+1:null]:[l]:[j,l],Te=t.settings.reducedMotion||matchMedia(`(prefers-reduced-motion: reduce)`).matches,Ee=HCAReaderPageWidth(xe.width,xe.height,Ce,t.settings.readerFit||`width`,e.hcaRatio||1.414),De=Math.max(140,Ee)*A,Oe=De*(e.hcaRatio||1.414);const hcaSetState=n,hcaToast=i;(0,_.useEffect)(()=>{const open=()=>w(true);window.addEventListener(`hca-show-study-tools`,open);return()=>window.removeEventListener(`hca-show-study-tools`,open)},[]);(0,_.useEffect)(()=>{let t=!1;return(async()=>{if(e.kind===`demo`)h(!1);else try{h(!0);let n=await ve(e.id);if(!n)throw Error(`The original file is not in this browser. Restore a full workspace backup, or reimport the file. A sandboxed preview may be session-only.`);if(t)return;if(p(n),e.kind===`pdf`){let r=await Lo(n.blob,e.id,a);if(t)return;d(r)}h(!1)}catch(e){if(t)return;v(e.message||`This book could not be opened. Try an unlocked, undamaged copy.`),h(!1)}})(),()=>{t=!0,window.speechSynthesis?.cancel?.()}},[e.id]),(0,_.useEffect)(()=>{se(String(l)),ae(null),L.current?.scrollTo?.({top:0,left:0,behavior:`instant`}),window.getSelection()?.removeAllRanges(),ce&&(window.speechSynthesis?.cancel(),de(!1))},[l]),(0,_.useEffect)(()=>()=>window.speechSynthesis?.cancel(),[]);async function ke(t){return (f||await ve(e.id))?.transcripts?.[t]||(e.kind===`demo`?le(e.id,t):e.kind===`pdf`&&u?zo(u,e.id,t):``)}function Ae(t){let r=Math.max(1,Math.min(e.count,Math.trunc(Number(t)||1)));n(t=>({...t,lastBookId:e.id,books:t.books.map(t=>t.id===e.id?{...t,page:r}:t)}))}function je(e){if(me||e===l)return;let t=e>l?`next`:`prev`;if(b===`text`||Te||!he.current||!Ce){Ae(e);return}let n=he.current.querySelector(`[data-side="${t===`next`?`right`:`left`}"]`);if(!n){Ae(e);return}n=n.closest(`.hca-page-wrap`)||n;let r=n.cloneNode(!0),i=n.querySelectorAll(`canvas`);r.querySelectorAll(`canvas`).forEach((e,t)=>{try{let n=document.createElement(`img`);n.src=i[t].toDataURL(),n.style.cssText=i[t].style.cssText,e.replaceWith(n)}catch{}}),r.classList.add(`flip-ghost`),r.setAttribute(`aria-hidden`,`true`),r.style.position=`absolute`,r.style.top=`0`,r.style.left=t===`next`?`${De}px`:`0`,r.style.transformOrigin=t===`next`?`left center`:`right center`,r.style.zIndex=`20`,r.style.pointerEvents=`none`,ge.current.appendChild(r),I(!0),Ae(e),r.animate([{transform:`rotateY(0deg)`,filter:`brightness(1)`},{transform:`rotateY(${t===`next`?`-`:`+`}90deg)`,filter:`brightness(.85)`,offset:.65},{transform:`rotateY(${t===`next`?`-`:`+`}178deg)`,opacity:0}],{duration:560,easing:`cubic-bezier(.22,.65,.22,1)`,fill:`forwards`}).finished.catch(()=>{}).finally(()=>{r.remove(),I(!1)})}function Me(){je(Math.min(e.count,l+(Ce&&j===null?2:1)))}function Ne(){je(Math.max(1,l-(Ce&&j===null?2:1)))}function Pe(){let t=(e.bookmarks||[]).includes(l);n(n=>({...n,books:n.books.map(n=>n.id===e.id?{...n,bookmarks:t?(n.bookmarks||[]).filter(e=>e!==l):[...n.bookmarks||[],l]}:n)})),i(t?`Bookmark removed.`:`A place to return to. Page bookmarked.`)}(0,_.useEffect)(()=>{let t=t=>{document.querySelector(`[role="dialog"]`)||t.ctrlKey||t.metaKey||t.altKey||t.target.closest(`input,textarea,select,[contenteditable="true"]`)||(t.key===`ArrowRight`?(t.preventDefault(),Me()):t.key===`ArrowLeft`?(t.preventDefault(),Ne()):t.key.toLowerCase()===`f`?(t.preventDefault(),D(`search`)):t.key.toLowerCase()===`b`?(t.preventDefault(),Pe()):t.key.toLowerCase()===`n`?(t.preventDefault(),b===`text`?r({type:`hca-sticky`,bookId:e.id,page:l,anchor:{x:.82,y:.15}}):ie(`sticky`)):t.key.toLowerCase()===`p`?(t.preventDefault(),b===`text`?i(`Switch to a visual page to use the pen.`):ie(`pen`)):t.key.toLowerCase()===`h`?(t.preventDefault(),ie(`highlight`)):t.key.toLowerCase()===`m`?(t.preventDefault(),b===`text`?i(`Switch to a visual page to mark an area.`):ie(`note-area`)):t.key===`Escape`&&(s(!1),ae(null),ie(`select`)))};return document.addEventListener(`keydown`,t),()=>document.removeEventListener(`keydown`,t)},[l,Ce,j,me,e.bookmarks,o,b]);function Fe(e){x(e),M(null),ie(`select`),ae(null),n(t=>({...t,settings:{...t.settings,readingMode:e}}))}function Ie(){[`select`,`highlight`].includes(re)&&setTimeout(()=>{let e=window.getSelection();if(!e||e.isCollapsed||!e.toString().trim()||!e.rangeCount){ae(null);return}let t=e.anchorNode?.parentElement?.closest(`.source-page`),n=e.focusNode?.parentElement?.closest(`.source-page`);if(!t||t!==n||!L.current?.contains(t)){ae(null);return}let r=t.getBoundingClientRect(),i=e.getRangeAt(0),a=i.getBoundingClientRect(),o=[...i.getClientRects()].filter(e=>e.width>1&&e.height>1).map(e=>({x:Math.max(0,(e.left-r.left)/r.width),y:Math.max(0,(e.top-r.top)/r.height),w:Math.min(1,e.width/r.width),h:Math.min(1,e.height/r.height)}));(()=>{const passage={text:e.toString().trim().slice(0,6e3),page:Number(t.dataset.page),rects:b===`text`?[]:o,x:Math.max(150,Math.min(window.innerWidth-170,a.left+a.width/2)),y:Math.max(88,a.top-54)};if(re===`highlight`){hcaSetState(state=>({...state,highlights:[...state.highlights,{id:ue(),bookId:state.books.find(book=>book.id===hcaCurrentBookId)?.id||hcaCurrentBookId,page:passage.page,text:passage.text,rects:passage.rects,color:N,createdAt:Date.now()}]}));window.getSelection()?.removeAllRanges();ae(null);hcaToast(`Highlight saved with its source page.`)}else ae(passage)})()},10)}function Le(){F?(n(t=>({...t,highlights:[...t.highlights,{id:ue(),bookId:e.id,page:F.page,text:F.text,rects:F.rects,color:N,createdAt:Date.now()}]})),ae(null),window.getSelection()?.removeAllRanges(),i(`An idea worth keeping. Highlight saved.`)):i(`Select a passage on the page first, or use Mark area for an image.`)}function Re(t,r){n(n=>({...n,highlights:[...n.highlights,{id:ue(),bookId:e.id,page:t,text:``,rects:[r],color:N,createdAt:Date.now()}]})),ie(`select`),i(`Visual region saved. Find it in Notes & highlights.`)}async function ze(pg=l){pg=Number.isInteger(pg)?pg:l;let t=f||await ve(e.id);r({type:`transcript`,bookId:e.id,page:pg,initialText:t?.transcripts?.[pg]||await ke(pg),onSave:async r=>{let a=t||{};a.transcripts={...a.transcripts||{},[pg]:r};let o=await _e(e.id,a);p({...a}),n(t=>({...t,books:t.books.map(t=>t.id===e.id?{...t,transcriptVersion:(t.transcriptVersion||0)+1}:t)})),i(o?`Page transcript saved locally.`:`Transcript kept for this session. Browser storage is unavailable.`)}})}async function Be(){if(!window.speechSynthesis){i(`This browser does not offer text-to-speech.`);return}if(ce){window.speechSynthesis.cancel(),de(!1);return}let e=window.speechSynthesis.getVoices().filter(e=>e.localService),t=e.find(e=>e.lang.startsWith(`en`))||e[0];if(!t){i(`No on-device voice is available in this browser. Install a local system voice; remote voices are not used.`);return}let n=F?.text||await ke(l);if(!n.trim()){i(`This page needs selectable text or a transcript to read aloud.`);return}de(!0);let r=n.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[n];r.forEach((e,n)=>{let i=new SpeechSynthesisUtterance(e);i.voice=t,i.rate=fe,i.onend=()=>{n===r.length-1&&de(!1)},i.onerror=()=>de(!1),window.speechSynthesis.speak(i)})}async function Ve(){let t=f||await ve(e.id);t?.blob?R(t.name||`${e.title}.pdf`,t.blob):t?.images?.[l-1]?R(t.images[l-1].name,t.images[l-1].blob):i(`This interactive sample has no original PDF. You can export its study material from Notes & highlights.`)}async function He(){if(s(!o),o)document.fullscreenElement&&document.exitFullscreen?.();else try{await document.documentElement.requestFullscreen?.()}catch{i(`Focus view is active. Browser fullscreen is unavailable in this preview.`)}}return(0,C.jsxs)(`div`,{className:`reader-root hca-reader-root fit-${t.settings.readerFit||`width`} ${o?`focused`:``} ${S?`with-companion`:``}`,style:{"--hca-reader-width":`${HCABound(Number(t.settings.readerWidth)||75,55,90)}vw`},children:[(0,C.jsxs)(`div`,{className:`reader-document-header`,children:[(0,C.jsxs)(`div`,{className:`reader-title-group`,children:[(0,C.jsx)(HCAReaderBackButton,{}),(0,C.jsx)(`span`,{className:`soft-icon ${e.color||`sage`}`,children:(0,C.jsx)(E,{name:`book-open-line`})}),(0,C.jsxs)(`div`,{children:[(0,C.jsx)(`h1`,{children:e.title}),(0,C.jsxs)(`div`,{className:`reader-document-meta`,children:[(0,C.jsx)(`span`,{children:e.category||`Personal library`}),(0,C.jsx)(`span`,{children:`·`}),(0,C.jsx)(`span`,{children:e.kind===`demo`?`Original learning sample`:e.kind===`pdf`?`Private PDF`:`Private image collection`}),(0,C.jsx)(`span`,{children:`·`}),(0,C.jsxs)(`span`,{children:[e.count,` pages`]})]})]})]}),(0,C.jsxs)(`div`,{className:`reader-heading-actions`,children:[o&&(0,C.jsx)(k,{variant:`secondary`,icon:`fullscreen-exit-line`,onClick:()=>{s(!1),document.fullscreenElement&&document.exitFullscreen?.()},children:`Leave focus`}),(0,C.jsx)(O,{icon:`download-line`,label:e.kind===`images`?`Download this original image`:`Download original PDF`,onClick:Ve,disabled:e.kind===`demo`}),(0,C.jsxs)(k,{variant:S?`soft`:`secondary`,icon:`sparkling-2-line`,className:`companion-toggle`,onClick:()=>w(!S),children:[`Study tools`,S&&(0,C.jsx)(`span`,{className:`status-dot`})]})]})]}),(0,C.jsxs)(`div`,{className:`reading-room`,children:[(0,C.jsxs)(`div`,{className:`reader-main`,children:[(0,C.jsxs)(`div`,{className:`reader-toolbar`,children:[(0,C.jsxs)(`div`,{className:`toolbar-left`,children:[(0,C.jsx)(O,{icon:`side-bar-line`,label:`Pages, contents, and bookmarks`,active:!!T,onClick:()=>D(T?null:`contents`)}),(0,C.jsx)(O,{icon:`search-line`,label:`Search in book (F)`,active:T===`search`,onClick:()=>D(T===`search`?null:`search`)}),(0,C.jsx)(`span`,{className:`toolbar-divider`}),(0,C.jsx)(`div`,{className:`segmented reading-modes`,children:[[`flip`,`book-open-line`,`Flipbook`],[`single`,`file-text-line`,`Single`],[`text`,`text`,`Text`]].map(([e,t,n])=>(0,C.jsxs)(`button`,{className:b===e?`selected`:``,onClick:()=>Fe(e),"aria-label":`${n} reading mode`,children:[(0,C.jsx)(E,{name:t}),(0,C.jsx)(`span`,{children:n})]},e))})]}),(0,C.jsx)(`div`,{className:`toolbar-right`,children:(0,C.jsx)(HCAReaderToolbar,{book:e,page:l,tool:re,onTool:ie,selection:F,onHighlight:Le,onBookmark:Pe,readMode:b,onMode:Fe,onCompare:()=>{j===null?(M(l),Ae(l<e.count?l+1:l-1)):M(null)},comparing:j!==null,onSpeak:Be,speaking:ce,onFocus:He,focused:o})})]}),(0,C.jsxs)(`div`,{className:`reader-stage surround-${t.settings.paper} ${b===`text`?`text-mode`:``} ${T?`drawer-visible`:``}`,ref:L,onMouseUp:Ie,onTouchStart:e=>{if(![`select`,`highlight`].includes(re)){ye.current=null;return}e.touches.length===1&&(ye.current={x:e.touches[0].clientX,y:e.touches[0].clientY})},onTouchEnd:e=>{if(!ye.current||![`select`,`highlight`].includes(re)||window.getSelection()?.toString())return;let t=e.changedTouches[0].clientX-ye.current.x,n=e.changedTouches[0].clientY-ye.current.y;Math.abs(t)>75&&Math.abs(n)<60&&(t<0?Me():Ne()),ye.current=null},children:[T&&(0,C.jsx)(vs,{book:e,doc:u,page:l,getText:ke,onPage:e=>{Ae(e),be&&D(null)},onClose:()=>D(null),initialTab:T}),(0,C.jsxs)(`div`,{className:`stage-topline`,children:[(0,C.jsxs)(`span`,{children:[(0,C.jsx)(`span`,{className:`status-dot`}),j===null?b===`text`?`A LITTLE SPACE TO THINK`:b===`flip`&&!be?`TWO PAGES. ONE THOUGHTFUL MOMENT.`:`ONE PAGE AT A TIME.`:`Comparing pinned page ${j} with page ${l}`]}),(0,C.jsx)(`span`,{children:re===`area`?`Drag a rectangle on the page`:ce?(0,C.jsxs)(C.Fragment,{children:[(0,C.jsxs)(`span`,{className:`audio-bars`,children:[(0,C.jsx)(`b`,{}),(0,C.jsx)(`b`,{}),(0,C.jsx)(`b`,{})]}),`On-device voice ·`,` `,(0,C.jsxs)(`select`,{"aria-label":`Read aloud speed`,value:fe,onChange:e=>{pe(Number(e.target.value)),window.speechSynthesis?.cancel(),de(!1),i(`Playback speed updated. Press Read aloud to restart this page at the new speed.`)},children:[(0,C.jsx)(`option`,{value:.8,children:`0.8×`}),(0,C.jsx)(`option`,{value:1,children:`1×`}),(0,C.jsx)(`option`,{value:1.2,children:`1.2×`}),(0,C.jsx)(`option`,{value:1.5,children:`1.5×`})]})]}):e.kind===`demo`?(0,C.jsxs)(C.Fragment,{children:[(0,C.jsx)(E,{name:`shield-check-line`}),`Original sample · learning only`]}):(0,C.jsxs)(`button`,{className:`transcript-link`,onClick:ze,children:[(0,C.jsx)(E,{name:`text`}),`Add / edit page transcript`]})})]}),m?(0,C.jsx)(ne,{text:`Making room for your source…`}):g?(0,C.jsx)(`div`,{className:`reader-load-error`,children:(0,C.jsx)(ee,{icon:`file-pdf-2-line`,title:`This source needs another look.`,text:g,children:(0,C.jsx)(k,{variant:`soft`,icon:`upload-2-line`,onClick:()=>r({type:`upload`}),children:`Import a source`})})}):b===`text`?(0,C.jsx)(gs,{book:e,page:l,getText:ke,onTranscript:ze,highlights:Se}):(0,C.jsxs)(`div`,{className:`book-positioner`,children:[(0,C.jsx)(`button`,{className:`page-turn-arrow previous`,"aria-label":`Previous pages`,disabled:l<=1||me,onClick:Ne,children:(0,C.jsx)(E,{name:`arrow-left-s-line`})}),(0,C.jsxs)(`div`,{className:`book-object ${Ce?`spread`:`single-page-book`}`,style:{width:De*(Ce?2:1),height:Oe},ref:he,children:[(0,C.jsx)(`div`,{className:`book-pages`,children:we.map((t,n)=>(0,C.jsx)(ms,{book:e,page:t,doc:u,record:f,width:De,height:Oe,side:Ce&&n===0?`left`:`right`,tool:re===`note-area`?`area`:re,hcaTool:re,onTool:ie,onRegion:re===`note-area`?(page,region)=>{ie(`select`);r({type:`hca-sticky`,bookId:e.id,page,anchor:{x:Math.min(.96,region.x+region.w),y:region.y},region})}:Re,onPage:Ae,highlights:Se},`${n}-${t}`))}),(0,C.jsx)(`div`,{className:`ghost-host`,ref:ge}),Ce&&(0,C.jsx)(`div`,{className:`book-gutter`,"aria-hidden":`true`}),(0,C.jsx)(`div`,{className:`book-edge`,"aria-hidden":`true`}),(0,C.jsx)(`button`,{className:`page-corner`,"aria-label":`Turn to next pages`,disabled:l+(Ce&&j===null?1:0)>=e.count||me,onClick:Me})]}),(0,C.jsx)(`button`,{className:`page-turn-arrow next`,"aria-label":`Next pages`,disabled:l+(Ce&&j===null?1:0)>=e.count||me,onClick:Me,children:(0,C.jsx)(E,{name:`arrow-right-s-line`})})]}),(0,C.jsxs)(`div`,{className:`stage-bottomline`,children:[(0,C.jsx)(`span`,{children:b===`text`?`A text companion, not a replacement for the visual source.`:`Select a passage to highlight, note, or make a recall card.`}),!Te&&b===`flip`&&!be&&(0,C.jsxs)(`button`,{onClick:()=>n(e=>({...e,settings:{...e.settings,reducedMotion:!0}})),children:[`Prefer less motion?`,(0,C.jsx)(E,{name:`leaf-line`})]})]})]}),(0,C.jsxs)(`div`,{className:`reader-bottom-toolbar`,children:[(0,C.jsxs)(`div`,{className:`bottom-nav-controls`,children:[(0,C.jsx)(O,{icon:`arrow-left-s-line`,label:`Previous reading page`,disabled:l<=1,onClick:Ne}),(0,C.jsxs)(`form`,{className:`page-jump`,onSubmit:e=>{e.preventDefault(),Ae(oe)},children:[(0,C.jsx)(`label`,{htmlFor:`page-number-input`,children:`Page`}),(0,C.jsx)(`input`,{id:`page-number-input`,"aria-label":`Jump to page`,type:`number`,min:1,max:e.count,value:oe,onChange:e=>se(e.target.value),onBlur:()=>{Number(oe)!==l&&Ae(oe)}}),(0,C.jsxs)(`span`,{children:[`of `,e.count]})]}),(0,C.jsx)(O,{icon:`arrow-right-s-line`,label:`Next reading page`,disabled:l+(Ce&&j===null?1:0)>=e.count,onClick:Me})]}),(0,C.jsx)(HCAReaderFit,{}),(0,C.jsx)(`input`,{className:`page-scrubber`,"aria-label":`Reading position`,type:`range`,min:1,max:e.count,value:l,onChange:e=>Ae(e.target.value)}),(0,C.jsxs)(`div`,{className:`zoom-controls`,children:[(0,C.jsx)(O,{icon:`subtract-line`,label:`Zoom out`,disabled:A<=.65||b===`text`,onClick:()=>te(e=>Math.max(.65,e-.1))}),(0,C.jsxs)(`button`,{className:`zoom-value`,title:`Reset to fit`,onClick:()=>te(1),children:[Math.round(A*100),`%`,(0,C.jsx)(E,{name:`arrow-down-s-line`})]}),(0,C.jsx)(O,{icon:`add-line`,label:`Zoom in`,disabled:A>=2||b===`text`,onClick:()=>te(e=>Math.min(2,e+.1))})]})]}),(0,C.jsxs)(`div`,{className:`reader-footnote`,children:[(0,C.jsxs)(`span`,{children:[(0,C.jsx)(`kbd`,{children:`←`}),(0,C.jsx)(`kbd`,{children:`→`}),`to turn pages`,(0,C.jsx)(`span`,{className:`meta-dot`,children:`·`}),(0,C.jsx)(`kbd`,{children:`F`}),`to find a thread`]}),(0,C.jsxs)(`span`,{children:[(0,C.jsx)(E,{name:`lock-line`}),`Your reading stays with you.`]})]})]}),S&&(0,C.jsx)(HCAReaderSidecar,{book:e,page:l,getText:ke,selection:F,onPage:Ae,onClose:()=>w(!1),onTranscript:ze,tool:re,onTool:ie},e.id)]}),F&&(0,C.jsxs)(`div`,{className:`selection-toolbar`,style:{left:F.x,top:F.y},onMouseDown:e=>e.preventDefault(),role:`toolbar`,"aria-label":`Selected passage actions`,children:[(0,C.jsx)(`div`,{className:`highlight-colors`,children:HCA7HighlightColors.map(e=>(0,C.jsx)(`button`,{className:e===N?`selected`:``,style:{background:e},title:`Choose ${HCA7ColorName(e)} highlight`,"aria-label":`Choose ${e} highlight color`,onClick:()=>P(e),children:e===N&&(0,C.jsx)(E,{name:`check-line`})},e))}),(0,C.jsx)(`span`,{}),(0,C.jsxs)(`button`,{onClick:Le,children:[(0,C.jsx)(E,{name:`mark-pen-line`}),`Highlight`]}),(0,C.jsxs)(`button`,{onClick:()=>{window.HCA7Define&&window.HCA7Define(F.text,F.page,e.id),ae(null)},children:[(0,C.jsx)(E,{name:`search-line`}),`Meaning`]}),(0,C.jsxs)(`button`,{onClick:()=>{r({type:`note`,bookId:e.id,page:F.page,excerpt:F.text}),ae(null)},children:[(0,C.jsx)(E,{name:`sticky-note-line`}),`Note`]}),(0,C.jsxs)(`button`,{onClick:()=>{r({type:`card`,bookId:e.id,page:F.page,excerpt:F.text}),ae(null)},children:[(0,C.jsx)(E,{name:`stack-line`}),`Recall`]}),(0,C.jsx)(O,{icon:`close-line`,label:`Dismiss selected passage tools`,onClick:()=>{ae(null),window.getSelection()?.removeAllRanges()}})]})]})}var bs=[[`home`,`home-5-line`,`Today`],[`library`,`book-2-line`,`Library`],[`studio`,`stack-line`,`Study`],[`notes`,`sticky-note-line`,`Notes`],[`methods`,`lightbulb-line`,`Methods`],[`progress`,`dashboard-line`,`Progress`]],xs=class extends _.Component{constructor(e){super(e),this.state={error:null}}static getDerivedStateFromError(e){return{error:e}}render(){return this.state.error?(0,C.jsxs)(`div`,{className:`fatal-error`,children:[(0,C.jsx)(D,{}),(0,C.jsx)(`h1`,{children:`A little pause.`}),(0,C.jsx)(`p`,{children:`The workspace could not finish rendering. Your browser-saved study data has not been deleted.`}),(0,C.jsx)(k,{onClick:()=>location.reload(),children:`Reopen Lumen`}),(0,C.jsxs)(`details`,{children:[(0,C.jsx)(`summary`,{children:`Technical detail`}),(0,C.jsx)(`pre`,{children:String(this.state.error)})]})]}):this.props.children}};function Ss(){return(0,C.jsx)(xs,{children:(0,C.jsx)(Cs,{})})}function Cs(){let[e,t]=(0,_.useState)(me),[n,r]=(0,_.useState)(()=>HCAInitialRoute()),[i,a]=(0,_.useState)(null),[o,s]=(0,_.useState)(null),[c,l]=(0,_.useState)([]),[u,d]=(0,_.useState)(!1),[f,p]=(0,_.useState)(()=>window.innerWidth<=760),[m,h]=(0,_.useState)(fe?`local`:`session`),[g,y]=(0,_.useState)(!1),[b,x]=(0,_.useState)(`all`),[S,w]=(0,_.useState)({configured:!1,provider:`OpenAI`}),[T,te]=(0,_.useState)(null),[j,ne]=(0,_.useState)(``),[M,re]=(0,_.useState)({running:!1,duration:(e.settings.dailyGoal||25)*60,remaining:(e.settings.dailyGoal||25)*60}),ie=(0,_.useRef)(0),N=(0,_.useRef)(e);N.current=e,(0,_.useEffect)(()=>{let e=matchMedia(`(max-width: 760px)`),t=()=>p(e.matches);return e.addEventListener(`change`,t),()=>e.removeEventListener(`change`,t)},[]),(0,_.useEffect)(()=>{o&&d(!1)},[o]),(0,_.useEffect)(()=>{if(!f||!u)return;let e=document.querySelector(`.app-sidebar`),t=document.activeElement;requestAnimationFrame(()=>e.querySelector(`button`)?.focus());let n=t=>{if(t.key!==`Tab`)return;let n=[...e.querySelectorAll(`button`)].filter(e=>!e.disabled&&e.getClientRects().length),r=n[0],i=n.at(-1);t.shiftKey&&document.activeElement===r?(t.preventDefault(),i.focus()):!t.shiftKey&&document.activeElement===i&&(t.preventDefault(),r.focus())};return document.addEventListener(`keydown`,n),()=>{document.removeEventListener(`keydown`,n),t?.isConnected&&t.focus()}},[f,u]);let P=(0,_.useCallback)((e,t=`success`)=>{let n=ue();l(r=>[...r.slice(-2),{id:n,text:e,type:t}]),setTimeout(()=>l(e=>e.filter(e=>e.id!==n)),6500)},[]);(0,_.useEffect)(()=>{document.documentElement.dataset.theme=e.settings.theme,document.documentElement.dataset.motion=e.settings.reducedMotion?`reduced`:`normal`},[e.settings.theme,e.settings.reducedMotion]),(0,_.useEffect)(()=>{let t=setTimeout(()=>{!I(e)&&m!==`session`&&h(`session`)},450);return()=>clearTimeout(t)},[e]),(0,_.useEffect)(()=>{let e=()=>I({...N.current,focusSeconds:N.current.focusSeconds+ie.current});return window.addEventListener(`beforeunload`,e),()=>window.removeEventListener(`beforeunload`,e)},[]),(0,_.useEffect)(()=>{window.LUMEN_AI_BACKEND===true&&(location.protocol===`http:`||location.protocol===`https:`)&&location.origin!==`null`&&fetch(`/api/assistant/status`).then(e=>e.ok?e.json():null).then(e=>{e&&typeof e.configured==`boolean`&&w(e)}).catch(()=>{})},[]);let F=(0,_.useCallback)(()=>{let e=ie.current;e&&(ie.current=0,t(t=>({...t,focusSeconds:t.focusSeconds+e})))},[]),ae=(0,_.useCallback)(()=>{re(e=>({...e,running:!1})),F()},[F]),oe=()=>{re(e=>({...e,running:!0,remaining:e.remaining||e.duration})),P(`A little room to focus. The timer pauses when this tab is hidden.`)},ce=()=>{F(),re(e=>({...e,running:!1,remaining:e.duration}))};(0,_.useEffect)(()=>{if(!M.running)return;let e=setInterval(()=>{document.hidden||(ie.current+=1,re(e=>e.remaining<=1?(queueMicrotask(()=>{F(),P(`A thoughtful session, complete. Take a little break.`)}),{...e,remaining:0,running:!1}):{...e,remaining:e.remaining-1}),ie.current>=15&&F())},1e3);return()=>clearInterval(e)},[M.running]),(0,_.useEffect)(()=>{let e=()=>{document.hidden&&ae()};return document.addEventListener(`visibilitychange`,e),()=>document.removeEventListener(`visibilitychange`,e)},[ae]);let le=(0,_.useCallback)(e=>{r(e),d(!1),y(!1),window.scrollTo({top:0,behavior:`instant`})},[]),de=(0,_.useCallback)((e,n)=>{a(e),r(`reader`),d(!1),t(t=>({...t,lastBookId:e,books:t.books.map(t=>t.id===e?{...t,page:n?Math.max(1,Math.min(t.count,Math.trunc(Number(n)||1))):t.page||1}:t)})),window.scrollTo({top:0,behavior:`instant`})},[]);(0,_.useEffect)(()=>{let e=e=>{e.key===`Escape`&&d(!1),e.key===`k`&&(e.metaKey||e.ctrlKey)?(e.preventDefault(),s({type:`search`})):document.querySelector(`[role="dialog"]`)||e.target.closest(`input,textarea,select,[contenteditable="true"]`)||(e.key===`?`?(e.preventDefault(),s({type:`help`})):e.key===`/`&&(e.preventDefault(),s({type:`search`})))};return document.addEventListener(`keydown`,e),()=>document.removeEventListener(`keydown`,e)},[]);let pe=(0,_.useCallback)(e=>new Promise(t=>{ne(``),te({incorrect:e,resolve:t})}),[]);function L(e){T?.resolve(e),te(null),ne(``)}async function he(e,t=320){let n=URL.createObjectURL(e);try{let r=await new Promise((e,t)=>{let r=new Image;r.onload=()=>e(r),r.onerror=()=>t(Error(`This image could not be decoded. Try PNG or JPEG.`)),r.src=n}),i=Math.min(1,t/r.naturalWidth),a=document.createElement(`canvas`);a.width=Math.max(1,r.naturalWidth*i),a.height=Math.max(1,r.naturalHeight*i);let o=a.getContext(`2d`);o.fillStyle=`#fff`,o.fillRect(0,0,a.width,a.height),o.drawImage(r,0,0,a.width,a.height);let s=null;if(e.type===`image/gif`){let e=document.createElement(`canvas`);if(e.width=r.naturalWidth,e.height=r.naturalHeight,e.getContext(`2d`).drawImage(r,0,0),s=await new Promise(t=>e.toBlob(t,`image/png`)),!s)throw Error(`This GIF could not be converted to a still page.`)}return{thumbnail:a.toDataURL(`image/jpeg`,.82),still:s}}finally{URL.revokeObjectURL(n)}}async function ge(e,n=()=>{}){let r=[...e];if(!r.length)return!1;let i=r.filter(e=>!(/\.pdf$/i.test(e.name)||/\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(e.name)));if(i.length)throw Error(`Unsupported file: ${i[0].name}. Choose PDFs or common raster images; SVG images are not imported.`);if(r.some(e=>e.size>157286400))throw Error(`One source is larger than 150 MB. Split or optimize it before importing.`);let a=r.filter(e=>/\.pdf$/i.test(e.name)),o=r.filter(e=>!/\.pdf$/i.test(e.name)).sort((e,t)=>e.name.localeCompare(t.name,void 0,{numeric:!0,sensitivity:`base`})),s=[],c=[],l=!1;for(let e of a){let t=ue();n(`Opening ${e.name}…`);try{let n=await Lo(e,t,pe),r=``;try{r=await Bo(n,1,320)}catch{}await _e(t,{blob:e,name:e.name,type:`pdf`,transcripts:{}})||(l=!0),s.push({id:t,title:e.name.replace(/\.pdf$/i,``),category:`My uploads`,kind:`pdf`,count:n.numPages,page:1,size:e.size,addedAt:Date.now(),thumbnail:r,color:`sage`})}catch{Ro(t),c.push(e.name),n(`Could not open ${e.name}. It may need a valid password or an unlocked, undamaged copy.`)}}if(o.length){let e=ue();n(`Gathering ${o.length} image page${o.length===1?``:`s`}…`);try{let t=[],n=``;for(let e of o){let r=await he(e);n||=r.thumbnail,t.push({name:e.name,blob:e,viewBlob:r.still||void 0})}await _e(e,{type:`images`,images:t,transcripts:{}})||(l=!0),s.push({id:e,title:o.length===1?o[0].name.replace(/\.[^.]+$/,``):`My image fieldnotes`,category:`My uploads`,kind:`images`,count:o.length,page:1,size:o.reduce((e,t)=>e+t.size,0),addedAt:Date.now(),thumbnail:n,color:`sand`})}catch{c.push(`image collection`)}}if(!s.length)throw Error(`No source could be opened. Check passwords and file integrity, then try an unlocked PDF or a PNG/JPEG image.`);return t(e=>({...e,books:[...e.books,...s],lastBookId:s[0].id})),l?(h(`session`),P(`Sources opened for this session. Browser storage is unavailable; download a workspace backup before closing.`,`warning`)):P(`${s.length} new source${s.length===1?``:`s`}. A little more possibility.`),c.length&&P(`${c.length} source${c.length===1?` was`:`s were`} skipped: ${c.join(`, `)}.`,`warning`),de(s[0].id),!0}async function be(e){Ro(e),await ye(e),t(t=>({...t,books:t.books.filter(t=>t.id!==e),notes:t.notes.filter(t=>t.bookId!==e),highlights:t.highlights.filter(t=>t.bookId!==e),cards:t.cards.filter(t=>t.bookId!==e),practiceSessions:(t.practiceSessions||[]).filter(t=>t.bookId!==e),reviewLog:(t.reviewLog||[]).filter(t=>t.bookId!==e),ink:(t.ink||[]).filter(t=>t.bookId!==e),practiceMasks:Object.fromEntries(Object.entries(t.practiceMasks||{}).filter(([key])=>!key.startsWith(`${e}:`))),lastBookId:t.lastBookId===e?t.books.find(t=>t.id!==e)?.id||null:t.lastBookId})),i===e&&le(`library`),P(`The source and its study data were removed from this workspace.`)}function Ce(){let t=[`# My Lumen study pack`,`Exported ${new Date().toLocaleDateString(`en-GB`)}`,``,`Learning notes only. Verify original sources; not clinical decision support.`,``];for(let n of e.books){let r=e.notes.filter(e=>e.bookId===n.id),i=e.highlights.filter(e=>e.bookId===n.id),a=e.cards.filter(e=>e.bookId===n.id);if(r.length||i.length||a.length||(e.practiceSessions||[]).some(e=>e.bookId===n.id)){t.push(`## ${n.title}`,``,`Source type: ${n.kind}. Page references are one-based positions in the original source.`,n.sourceMeta?`Source details: ${[n.sourceMeta.author,n.sourceMeta.year,n.sourceMeta.edition,n.sourceMeta.publisher,n.sourceMeta.url].filter(Boolean).join(` · `)}`:``,``);for(let e of r)t.push(`### ${e.title||`A note in the margin`} — p. ${e.page}`,``,e.excerpt?`> ${e.excerpt.replaceAll(`
 `,`
 > `)}`:``,e.text,``);for(let e of i)t.push(`### Highlight — p. ${e.page}`,``,e.text?`> ${e.text.replaceAll(`
 `,`
@@ -9466,7 +9466,7 @@ HCA5ProviderRow = function HCA6ProviderRow(props) {
    New workspace keys (optional, ignored by older versions): hcaStamps, hcaSnips. */
 
 /* ---------- Floating UI store (calculator, stickers tray, meaning card, presenter, status) ---------- */
-const HCA7UI = { state: { calc: false, tray: false, define: null, present: null, status: '' }, subs: new Set() };
+const HCA7UI = { state: { calc: false, tray: false, define: null, present: null, progress: null, choose: null }, subs: new Set() };
 function HCA7Set(patch) { HCA7UI.state = { ...HCA7UI.state, ...(typeof patch === 'function' ? patch(HCA7UI.state) : patch) }; HCA7UI.subs.forEach(f => f()); }
 function HCA7Use() {
   const [, force] = _.useState(0);
@@ -9474,6 +9474,10 @@ function HCA7Use() {
   return HCA7UI.state;
 }
 const HCA7Reader = { bookId: null };
+HCAReaderPageWidth = function HCA7ReaderPageWidth(width, height, spread, fit, ratio = 1.414) {
+  const cols = spread ? 2 : 1, w = Math.max(140, (width - 24) / cols);
+  return fit === 'page' ? Math.max(140, Math.min(w, (height - 20) / ratio)) : w;
+};
 
 /* Floating windows: drag by the header, resize from the corner, and they reopen where you left them. */
 const HCA7_WIN_KEY = 'lumen.windows';
@@ -9538,10 +9542,24 @@ HCAPenSettings = function HCA7PenSettings({ book, page, tool, onTool }) {
 
 /* ---------- Page layer: ink, marker, movable sticky pins, snip, magnifier, stickers ---------- */
 function HCA7SourceImage(wrap) {
-  const canvases = [...(wrap?.querySelectorAll('.hca-source-render canvas') || [])].filter(c => c.width > 50 && c.height > 50);
+  // The page bitmap only: a PDF canvas or a page image that spans the page width (not a photo inside an HTML page).
+  const ww = wrap?.getBoundingClientRect().width || 0;
+  const wide = el => el.getBoundingClientRect().width >= ww * .9;
+  const canvases = [...(wrap?.querySelectorAll('.hca-source-render canvas') || [])].filter(c => c.width > 50 && c.height > 50 && wide(c));
   if (canvases.length) return canvases.sort((a, b) => b.width * b.height - a.width * a.height)[0];
-  const img = wrap?.querySelector('.hca-source-render img');
-  return img && img.naturalWidth ? img : null;
+  const img = [...(wrap?.querySelectorAll('.hca-source-render img') || [])].find(i => i.naturalWidth && wide(i));
+  return img || null;
+}
+
+const HCA7_LENS = 260;
+function HCA7LensClone(wrap) {
+  const clone = wrap.cloneNode(true);
+  clone.querySelectorAll('.hca7-capture, .hca7-lens, .hca7-stamp-bar, .hca7-stamp-handle').forEach(n => n.remove());
+  const from = wrap.querySelectorAll('canvas'), to = clone.querySelectorAll('canvas');
+  to.forEach((c, i) => { const o = from[i]; if (!o) return; c.width = o.width; c.height = o.height; try { c.getContext('2d').drawImage(o, 0, 0); } catch {} });
+  clone.removeAttribute('data-hca-page'); clone.setAttribute('aria-hidden', 'true'); clone.setAttribute('inert', '');
+  Object.assign(clone.style, { position: 'absolute', left: '0', top: '0', margin: '0', width: `${wrap.offsetWidth}px`, height: `${wrap.offsetHeight}px`, transform: 'none' });
+  return clone;
 }
 
 /* Where the page bitmap is drawn on screen (handles letterboxed images shown with object-fit: contain). */
@@ -9556,7 +9574,7 @@ function HCA7Content(src) {
 }
 
 HCAAnnotations = function HCA7Annotations({ book, page, width, height, tool, hcaTool, onTool }) {
-  const ctx = y(), mode = hcaTool || tool, rootRef = _.useRef(null), svgRef = _.useRef(null), drawing = _.useRef(null), lensRef = _.useRef(null);
+  const ctx = y(), mode = hcaTool || tool, rootRef = _.useRef(null), svgRef = _.useRef(null), drawing = _.useRef(null), lensRef = _.useRef(null), lensInner = _.useRef(null), [zoom, setZoom] = _.useState(() => { try { return Number(localStorage.getItem('lumen.lensZoom')) || 2.5; } catch { return 2.5; } });
   const [draft, setDraft] = _.useState(null), [box, setBox] = _.useState(null), [lens, setLens] = _.useState(null), [moving, setMoving] = _.useState(null), [picked, setPicked] = _.useState(null);
   const boxStart = _.useRef(null), pinDrag = _.useRef(null), stampDrag = _.useRef(null);
   HCA7Reader.bookId = book.id;
@@ -9590,13 +9608,24 @@ HCAAnnotations = function HCA7Annotations({ book, page, width, height, tool, hca
     setDraft({ ...drawing.current, points: [...pts] });
   };
   _.useEffect(() => { drawing.current = null; setDraft(null); setBox(null); setLens(null); }, [mode, page]);
+  // Learn the source's page shape from its first rendered page, so wide slides get a wide page.
+  _.useEffect(() => {
+    if (page !== 1 || book.kind === 'demo') return;
+    const t = setTimeout(() => {
+      const src = HCA7SourceImage(rootRef.current?.closest('[data-hca-page]')); if (!src) return;
+      const w = src.naturalWidth || src.width, h = src.naturalHeight || src.height; if (!w || !h) return;
+      const r = Math.round(h / w * 1000) / 1000;
+      if (r > .3 && r < 3 && Math.abs(r - (book.hcaRatio || 1.414)) > .03) ctx.setState(s => ({ ...s, books: s.books.map(b => b.id === book.id ? { ...b, hcaRatio: r } : b) }));
+    }, 900);
+    return () => clearTimeout(t);
+  }, [book.id, page, width]);
 
   /* Snip and magnifier share one capture surface. */
   const capDown = e => {
     if (mode === 'snip') { e.preventDefault(); e.currentTarget.setPointerCapture?.(e.pointerId); boxStart.current = rel(e); setBox({ x: boxStart.current.x, y: boxStart.current.y, w: 0, h: 0 }); }
   };
   const capMove = e => {
-    if (mode === 'magnify') { const r = rootRef.current.getBoundingClientRect(); setLens({ px: e.clientX - r.left, py: e.clientY - r.top, ...rel(e) }); return; }
+    if (mode === 'magnify') { const r = rootRef.current.getBoundingClientRect(); setLens({ px: e.clientX - r.left, py: e.clientY - r.top }); return; }
     if (mode === 'snip' && boxStart.current) { const p = rel(e), a = boxStart.current; setBox({ x: Math.min(a.x, p.x), y: Math.min(a.y, p.y), w: Math.abs(p.x - a.x), h: Math.abs(p.y - a.y) }); }
   };
   const capUp = () => {
@@ -9606,15 +9635,19 @@ HCAAnnotations = function HCA7Annotations({ book, page, width, height, tool, hca
     if (!b || b.w < .02 || b.h < .02) return;
     HCA7Snip(ctx, book, page, rootRef.current.closest('[data-hca-page]'), b);
   };
+  /* Magnifier: a live copy of the whole page (text, images, PDF canvas, ink, stickers) shown enlarged in the lens. */
   _.useEffect(() => {
-    if (mode !== 'magnify' || !lens || !lensRef.current) return;
-    const src = HCA7SourceImage(rootRef.current?.closest('[data-hca-page]')); if (!src) return;
-    const c = lensRef.current, g = c.getContext('2d'), box = HCA7Content(src), root = rootRef.current.getBoundingClientRect();
-    const perPx = box.nw / box.width, zoom = 2.5, size = c.width;
-    const nx = (root.left + lens.px - box.left) * perPx, ny = (root.top + lens.py - box.top) * perPx, span = size / zoom * perPx;
-    g.fillStyle = '#fff'; g.fillRect(0, 0, size, size);
-    try { g.drawImage(src, nx - span / 2, ny - span / 2, span, span, 0, 0, size, size); } catch {}
-  }, [lens, mode]);
+    if (mode !== 'magnify' || !lens || !lensInner.current) return;
+    const inner = lensInner.current;
+    if (!inner.firstChild) {
+      const wrap = rootRef.current?.closest('[data-hca-page]'); if (!wrap) return;
+      inner.appendChild(HCA7LensClone(wrap));
+    }
+    const R = HCA7_LENS / 2;
+    inner.style.transform = `translate(${R - lens.px * zoom}px, ${R - lens.py * zoom}px) scale(${zoom})`;
+  }, [lens, mode, zoom]);
+  _.useEffect(() => { if (lensInner.current) lensInner.current.textContent = ''; }, [mode, page]);
+  const wheel = e => { if (mode !== 'magnify') return; e.preventDefault(); setZoom(z => { const v = Math.round(HCABound(z + (e.deltaY < 0 ? .5 : -.5), 1.5, 6) * 10) / 10; try { localStorage.setItem('lumen.lensZoom', v); } catch {} return v; }); };
 
   /* Sticky pins: drag to move, click to open. */
   const pinDown = (e, note) => {
@@ -9683,15 +9716,16 @@ HCAAnnotations = function HCA7Annotations({ book, page, width, height, tool, hca
           onPointerDown: e => pinDown(e, note), onPointerMove: pinMove, onPointerUp: e => pinUp(e, note), onKeyDown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ctx.setModal({ type: 'hca-sticky', note }); } } },
           HCAIcon('sticky-note-line'), HC('span', {}, i + 1)));
     }),
-    capture && HC('div', { className: `hca7-capture ${mode}`, onPointerDown: capDown, onPointerMove: capMove, onPointerUp: capUp, onPointerLeave: () => mode === 'magnify' && setLens(null), 'aria-label': mode === 'snip' ? 'Drag a box to snip this part of the page' : 'Magnifier: move over the page' },
+    capture && HC('div', { className: `hca7-capture ${mode}`, onPointerDown: capDown, onPointerMove: capMove, onPointerUp: capUp, onWheel: wheel, onPointerEnter: () => { if (lensInner.current) lensInner.current.textContent = ''; }, onPointerLeave: () => mode === 'magnify' && setLens(null), 'aria-label': mode === 'snip' ? 'Drag a box to snip this part of the page' : 'Magnifier: move over the page. Scroll to change the zoom.' },
       box && HC('div', { className: 'hca7-snipbox', style: { left: `${box.x * 100}%`, top: `${box.y * 100}%`, width: `${box.w * 100}%`, height: `${box.h * 100}%` } }),
-      mode === 'magnify' && lens && HC('canvas', { ref: lensRef, width: 220, height: 220, className: 'hca7-lens', style: { left: lens.px - 110, top: lens.py - 110 } })));
+      mode === 'magnify' && lens && HC('div', { ref: lensRef, className: 'hca7-lens', style: { left: lens.px - HCA7_LENS / 2, top: lens.py - HCA7_LENS / 2, width: HCA7_LENS, height: HCA7_LENS } },
+        HC('div', { ref: lensInner, className: 'hca7-lens-inner' }), HC('span', { className: 'hca7-lens-zoom' }, `${zoom}×`))));
 };
 
 /* ---------- Snip ---------- */
 async function HCA7Snip(ctx, book, page, wrap, b) {
   const src = HCA7SourceImage(wrap);
-  if (!src) { ctx.toast('Snip works on page images. Switch from Text view to Flipbook or Single page.', 'warning'); return; }
+  if (!src) { ctx.toast('Snip works on PDF and image pages. For this page, use your device’s screenshot tool.', 'warning'); return; }
   // Work in screen coordinates, then scale up to the page image's own resolution.
   const wr = wrap.getBoundingClientRect(), box = HCA7Content(src);
   const sel = { left: wr.left + b.x * wr.width, top: wr.top + b.y * wr.height, width: b.w * wr.width, height: b.h * wr.height };
@@ -9749,7 +9783,7 @@ const HCA7Prev = { Toolbar: HCAReaderToolbar, List: HCAAnnotationList, Commands:
 HCAReaderToolbar = function HCA7ReaderToolbar(props) {
   const el = HCA7Prev.Toolbar(props);
   const kids = _.Children.toArray(el.props.children);
-  kids.splice(Math.max(0, kids.length - 1), 0, HC(HCA7ToolsMenu, { key: 'hca7-tools', ...props }));
+  kids.splice(Math.max(0, kids.length - 1), 0, HC(HCA7ToolsMenu, { key: 'hca7-tools', ...props }), HC(HCALabelTool, { key: 'hca7-refresh', icon: 'refresh-line', label: 'Refresh', onClick: HCA7Refresh, title: 'Refresh: reload Lumen if a page looks stuck. Your work is saved first.' }));
   return _.cloneElement(el, {}, ...kids);
 };
 
@@ -9771,6 +9805,13 @@ function HCA7ToolsMenu({ book, page, tool, onTool, readMode }) {
       item('search-line', 'Meaning', 'Plain definition of a word or term', () => HCA7Set({ define: { text: '', page, bookId: book.id } })),
       item('play-fill', 'Present', 'Slides from your highlights, notes and snips', () => ctx.setModal({ type: 'hca7-export', bookId: book.id, page, present: true })),
       item('download-line', 'Export', 'PowerPoint, Word, Markdown, print, cards', () => ctx.setModal({ type: 'hca7-export', bookId: book.id, page }))));
+}
+
+async function HCA7Refresh() {
+  HCA7Set({ progress: { title: 'Refreshing Lumen', label: 'Saving your work, then reloading', value: null } });
+  window.dispatchEvent(new Event('pagehide'));
+  await new Promise(r => setTimeout(r, 900));
+  location.reload();
 }
 
 /* Remember which page the learner last touched, for click-to-add stickers. */
@@ -10101,49 +10142,144 @@ async function HCA7Fetch(url, ms = 8000) {
   const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms);
   try { const r = await fetch(url, { signal: ctl.signal }); return r.ok ? await r.json() : null; } catch { return null; } finally { clearTimeout(t); }
 }
+const HCA7Stop = new Set('a an and are as at be been but by can could did do does for from had has have he her his how i if in into is it its may me more most must my no not of on or our she should so some such than that the their them then there these they this those to too up us was we were what when where which while who why will with would you your also very just only each other about after before between during over under within without'.split(' '));
+/* Words worth looking up in a selection: longer, non-trivial words first, plus any glossary terms. */
+function HCA7Candidates(text) {
+  const seen = new Set(), out = [];
+  for (const t of HCA7Clean(text).match(/[A-Za-z][A-Za-z0-9'-]*[A-Za-z0-9]|[A-Za-z]{2,}/g) || []) {
+    const w = t.replace(/'s$/i, ''), k = w.toLowerCase();
+    if (seen.has(k) || HCA7Stop.has(k) || (w.length < 4 && !HCA7Glossary[k])) continue;
+    seen.add(k); out.push(w);
+  }
+  return out.sort((a, b) => Number(!!HCA7Glossary[b.toLowerCase()]) - Number(!!HCA7Glossary[a.toLowerCase()]) || b.length - a.length).slice(0, 14);
+}
+const HCA7StripHtml = h => String(h || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+
+/* Free sources, no keys: Lumen glossary → Wiktionary → Free Dictionary → Simple Wikipedia → Wikipedia (with search for the closest article). */
 async function HCA7LookUp(term) {
   const q = HCA7Clean(term).replace(/[“”"'.,;:!?()]/g, '').trim();
   const out = { term: q, glossary: HCA7Glossary[q.toLowerCase()] || null, dictionary: null, wiki: null, offline: !navigator.onLine };
   if (!q || out.offline) return out;
-  const enc = encodeURIComponent(q);
-  const [dict, simple] = await Promise.all([
-    q.split(' ').length <= 2 ? HCA7Fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${enc}`) : null,
+  const enc = encodeURIComponent(q), lower = encodeURIComponent(q.toLowerCase()), words = q.split(' ').length;
+  const [wikt, dict, simple] = await Promise.all([
+    words <= 3 ? HCA7Fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${lower}`) : null,
+    words <= 2 ? HCA7Fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${lower}`) : null,
     HCA7Fetch(`https://simple.wikipedia.org/api/rest_v1/page/summary/${enc}?redirect=true`),
   ]);
-  if (Array.isArray(dict) && dict[0]?.meanings) out.dictionary = dict[0].meanings.slice(0, 3).map(m => ({ part: m.partOfSpeech, text: m.definitions?.[0]?.definition })).filter(m => m.text);
+  const defs = [];
+  for (const sec of wikt?.en || []) for (const d of (sec.definitions || []).slice(0, 2)) { const text = HCA7StripHtml(d.definition); if (text) defs.push({ part: sec.partOfSpeech?.toLowerCase(), text }); }
+  if (!defs.length && Array.isArray(dict)) for (const m of dict[0]?.meanings || []) { const text = m.definitions?.[0]?.definition; if (text) defs.push({ part: m.partOfSpeech, text }); }
+  if (defs.length) out.dictionary = defs.slice(0, 3);
   let wiki = simple?.type === 'standard' ? { ...simple, simple: true } : null;
-  if (!wiki) { const en = await HCA7Fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${enc}?redirect=true`); if (en?.type === 'standard') wiki = en; }
+  if (!wiki) {
+    let en = await HCA7Fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${enc}?redirect=true`);
+    if (en?.type !== 'standard') {
+      const hit = await HCA7Fetch(`https://en.wikipedia.org/w/rest.php/v1/search/title?q=${enc}&limit=1`);
+      const key = hit?.pages?.[0]?.key;
+      en = key ? await HCA7Fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(key)}?redirect=true`) : null;
+    }
+    if (en?.type === 'standard') wiki = en;
+  }
   if (wiki) out.wiki = { title: wiki.title, text: (wiki.extract || '').split(/(?<=\.)\s/).slice(0, 3).join(' '), url: wiki.content_urls?.desktop?.page, simple: !!wiki.simple };
   return out;
 }
 
+/* Help language: on-device translation in Chrome when available; otherwise MyMemory (free, no key).
+   The term's own Wikipedia article in the learner's language is shown when one exists. */
+const HCA7Langs = [['', 'Off'], ['ar', 'العربية · Arabic'], ['bn', 'বাংলা · Bengali'], ['zh', '中文 · Chinese'], ['tl', 'Filipino'], ['fr', 'Français · French'], ['de', 'Deutsch · German'], ['hi', 'हिन्दी · Hindi'], ['id', 'Bahasa Indonesia'], ['it', 'Italiano · Italian'], ['ja', '日本語 · Japanese'], ['ko', '한국어 · Korean'], ['ml', 'മലയാളം · Malayalam'], ['ne', 'नेपाली · Nepali'], ['fa', 'فارسی · Persian'], ['pl', 'Polski · Polish'], ['pt', 'Português · Portuguese'], ['pa', 'ਪੰਜਾਬੀ · Punjabi'], ['ro', 'Română · Romanian'], ['ru', 'Русский · Russian'], ['so', 'Soomaali · Somali'], ['es', 'Español · Spanish'], ['sw', 'Kiswahili · Swahili'], ['ta', 'தமிழ் · Tamil'], ['tr', 'Türkçe · Turkish'], ['uk', 'Українська · Ukrainian'], ['ur', 'اردو · Urdu'], ['vi', 'Tiếng Việt · Vietnamese'], ['yo', 'Yorùbá · Yoruba']];
+const HCA7Lang = { get: () => { try { return localStorage.getItem('lumen.helpLang') || ''; } catch { return ''; } }, set: v => { try { localStorage.setItem('lumen.helpLang', v); } catch {} } };
+const HCA7Translators = {};
+async function HCA7Translate(text, to) {
+  const t = HCA7Clean(text).slice(0, 480);
+  if (!t || !to) return null;
+  try {
+    if (window.Translator?.create) {
+      // Use Chrome's on-device translator only when its language pack is already installed;
+      // otherwise start the download quietly for next time and use the online service now.
+      const ok = await Promise.race([Translator.availability({ sourceLanguage: 'en', targetLanguage: to }), new Promise(r => setTimeout(() => r('slow'), 1500))]);
+      if (ok === 'available') {
+        HCA7Translators[to] ??= Translator.create({ sourceLanguage: 'en', targetLanguage: to });
+        const out = await Promise.race([HCA7Translators[to].then(tr => tr.translate(t)), new Promise(r => setTimeout(() => r(null), 6000))]);
+        if (out) return { text: out, via: 'on this device (Chrome)' };
+      } else if (ok === 'downloadable' && navigator.userActivation?.isActive) {
+        Translator.create({ sourceLanguage: 'en', targetLanguage: to }).catch(() => {});
+      }
+    }
+  } catch {}
+  const r = await HCA7Fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(t)}&langpair=en|${to}`);
+  const out = r?.responseData?.translatedText;
+  return out && !/MYMEMORY WARNING|INVALID|QUERY LENGTH/i.test(out) ? { text: HCA7StripHtml(out), via: 'MyMemory' } : null;
+}
+async function HCA7WikiInLang(title, lang) {
+  if (!title || !lang) return null;
+  const r = await HCA7Fetch(`https://en.wikipedia.org/w/api.php?action=query&prop=langlinks&titles=${encodeURIComponent(title)}&lllang=${lang}&format=json&origin=*`);
+  const page = Object.values(r?.query?.pages || {})[0], local = page?.langlinks?.[0]?.['*'];
+  if (!local) return null;
+  const sum = await HCA7Fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(local)}`);
+  return sum?.type === 'standard' ? { title: sum.title, text: (sum.extract || '').split(/(?<=[.。؟?!])\s/).slice(0, 2).join(' '), url: sum.content_urls?.desktop?.page } : { title: local, text: '', url: `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(local)}` };
+}
+
 function HCA7Meaning({ text, page, bookId }) {
   const ctx = y(), [query, setQuery] = _.useState(''), [res, setRes] = _.useState(null), [busy, setBusy] = _.useState(false), win = HCA7Win('meaning');
-  const passage = HCA7Clean(text), short = passage && passage.split(' ').length <= 4;
-  const go = async term => { if (!HCA7Clean(term)) return; setBusy(true); setRes(await HCA7LookUp(term)); setBusy(false); };
-  _.useEffect(() => { setRes(null); setQuery(short ? passage.replace(/[“”"'.,;:!?()]/g, '') : ''); if (short) go(passage); }, [text]);
-  const hits = passage && !short ? HCA7GlossaryHits(passage) : [];
-  const meaning = res && (res.glossary || res.wiki?.text || res.dictionary?.[0]?.text);
+  const [lang, setLang] = _.useState(HCA7Lang.get), [help, setHelp] = _.useState(null), [helpBusy, setHelpBusy] = _.useState(false), [passage, setPassageT] = _.useState(null), run = _.useRef(0);
+  const sel = HCA7Clean(text), short = sel && sel.split(' ').length <= 3;
+  const cands = sel && !short ? HCA7Candidates(sel) : [];
+  const go = async term => {
+    if (!HCA7Clean(term)) return;
+    const id = ++run.current; setQuery(term); setBusy(true); setHelp(null);
+    const r = await HCA7LookUp(term); if (id !== run.current) return;
+    setRes(r); setBusy(false);
+  };
+  _.useEffect(() => {
+    setRes(null); setHelp(null); setPassageT(null);
+    if (short) go(sel.replace(/[“”"'.,;:!?()]/g, ''));
+    else { const g = cands.find(w => HCA7Glossary[w.toLowerCase()]); setQuery(g || ''); if (g) go(g); }
+  }, [text]);
+  const meaning = res && (res.glossary || res.dictionary?.[0]?.text || res.wiki?.text);
+  _.useEffect(() => {
+    if (!lang || !res?.term) return;
+    let live = true; setHelpBusy(true);
+    Promise.all([HCA7Translate(res.term, lang), meaning ? HCA7Translate(meaning, lang) : null, HCA7WikiInLang(res.wiki?.title, lang)])
+      .then(([term, mean, wiki]) => { if (live) { setHelp({ term, mean, wiki }); setHelpBusy(false); } });
+    return () => { live = false; };
+  }, [res, lang]);
+  const translatePassage = async () => { setPassageT({ busy: true }); setPassageT((await HCA7Translate(sel, lang)) || { text: '', failed: true }); };
   const card = () => {
     if (!bookId || !meaning) return;
-    ctx.setState(s => ({ ...s, cards: [...s.cards, { id: ue(), bookId, page, question: `What does “${res.term}” mean?`, answer: meaning, sourceText: passage.slice(0, 600), createdAt: Date.now(), due: Date.now(), step: -1, reviews: 0 }] }));
+    ctx.setState(s => ({ ...s, cards: [...s.cards, { id: ue(), bookId, page, question: `What does “${res.term}” mean?`, answer: meaning + (help?.term?.text ? `\n(${help.term.text})` : ''), sourceText: sel.slice(0, 600), createdAt: Date.now(), due: Date.now(), step: -1, reviews: 0 }] }));
     ctx.toast('Recall card made. It will come up in your reviews.');
   };
+  const rtl = ['ar', 'fa', 'ur'].includes(lang);
   return HC('section', { ref: win.ref, className: 'hca7-float hca7-meaning', style: win.style, 'aria-label': 'Meaning' },
-    HC('header', { ...win.header, title: 'Drag to move · double-click to reset' }, HCAIcon('search-line'), HC('strong', {}, 'Meaning'), HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close meaning', onClick: () => HCA7Set({ define: null }) }, HCAIcon('close-line'))),
+    HC('header', { ...win.header, title: 'Drag to move · double-click to reset' }, HCAIcon('search-line'), HC('strong', {}, 'Meaning'),
+      HC('label', { className: 'hca7-lang', title: 'Help language: translations and articles in your language' }, HC('span', { className: 'sr-only' }, 'Help language'),
+        HC('select', { value: lang, onChange: e => { setLang(e.target.value); HCA7Lang.set(e.target.value); setPassageT(null); } }, HCA7Langs.map(([v, l]) => HC('option', { key: v, value: v }, v ? l : 'Help language: off')))),
+      HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close meaning', onClick: () => HCA7Set({ define: null }) }, HCAIcon('close-line'))),
     HC('form', { className: 'hca7-lookup', onSubmit: e => { e.preventDefault(); go(query); } },
       HC('input', { value: query, onChange: e => setQuery(e.target.value), onKeyDown: e => e.stopPropagation(), placeholder: 'Type a word or term', 'aria-label': 'Word or term to look up' }),
-      HCABtn(busy ? '…' : 'Look up', () => go(query), 'primary', 'search-line', { disabled: busy || !query.trim() })),
-    hits.length > 0 && HC('div', { className: 'hca7-hits' }, HC('p', { className: 'hca-small' }, 'Terms in your selection'), HC('dl', {}, hits.map(([w, m]) => HC(_.Fragment, { key: w }, HC('dt', {}, HC('button', { type: 'button', className: 'text-link', onClick: () => { setQuery(w); go(w); } }, w.toUpperCase())), HC('dd', {}, m))))),
-    !short && passage && !hits.length && !res && HC('p', { className: 'hca-small' }, 'Select one word or a short term for its meaning, or type it above.'),
-    res && HC('div', { className: 'hca7-def', 'aria-live': 'polite' },
+      HCABtn(busy ? 'Looking…' : 'Look up', () => go(query), 'primary', busy ? 'loader-4-line' : 'search-line', { disabled: busy || !query.trim() })),
+    cands.length > 0 && HC('div', { className: 'hca7-cands' }, HC('p', { className: 'hca-small' }, 'Choose a word from your selection'),
+      HC('div', {}, cands.map(w => HC('button', { key: w, type: 'button', className: `hca4-tag ${res?.term?.toLowerCase() === w.toLowerCase() ? 'on' : ''} ${HCA7Glossary[w.toLowerCase()] ? 'gloss' : ''}`, onClick: () => go(w) }, w)))),
+    cands.length > 0 && lang && HC('div', { className: 'hca7-passage' },
+      passage?.text ? HC('p', { dir: 'auto', lang }, passage.text, HC('small', {}, ` · translated ${passage.via}`)) : passage?.failed ? HC('p', { className: 'hca-small' }, 'Translation is not available right now.') : null,
+      !passage?.text && HCABtn(passage?.busy ? 'Translating…' : 'Translate the whole selection', translatePassage, 'secondary', 'refresh-line', { disabled: !!passage?.busy })),
+    busy && HC('div', { className: 'hca7-progress indeterminate', role: 'progressbar', 'aria-label': 'Looking up' }, HC('span', {})),
+    res && !busy && HC('div', { className: 'hca7-def', 'aria-live': 'polite' },
       HC('h4', {}, res.term),
       res.glossary && HC('p', {}, HC('span', { className: 'hca7-src' }, 'Lumen glossary'), res.glossary),
-      res.wiki && HC('p', {}, HC('span', { className: 'hca7-src' }, res.wiki.simple ? 'Simple Wikipedia' : 'Wikipedia'), res.wiki.text, ' ', res.wiki.url && HC('a', { href: res.wiki.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, 'Read more', HCAIcon('external-link-line'))),
-      res.dictionary && HC('ul', {}, res.dictionary.map((d, i) => HC('li', { key: i }, HC('em', {}, d.part), ' ', d.text))),
-      !meaning && !res.dictionary && HC('p', { className: 'hca-small' }, res.offline ? 'You are offline, and this term is not in the Lumen glossary.' : 'No plain definition found. Try a shorter or different spelling.'),
-      meaning && HC('div', { className: 'hca5-row' }, HCABtn('Make a recall card', card, 'secondary', 'stack-line', { disabled: !bookId }), HCABtn('Copy', () => navigator.clipboard?.writeText(`${res.term}: ${meaning}`).then(() => ctx.toast('Copied.')), 'secondary', 'file-copy-line')),
-      HC('p', { className: 'hca-small' }, 'General definitions for study, not clinical advice. Online sources: Free Dictionary API and Wikipedia.')));
+      res.dictionary && HC('div', {}, HC('span', { className: 'hca7-src' }, 'Dictionary'), HC('ul', {}, res.dictionary.map((d, i) => HC('li', { key: i }, d.part && HC('em', {}, d.part), ' ', d.text)))),
+      res.wiki && HC('p', {}, HC('span', { className: 'hca7-src' }, res.wiki.simple ? 'Simple Wikipedia · plain English' : `Wikipedia · ${res.wiki.title}`), res.wiki.text, ' ', res.wiki.url && HC('a', { href: res.wiki.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, 'Read more', HCAIcon('external-link-line'))),
+      !meaning && HC('p', { className: 'hca-small' }, res.offline ? 'You are offline, and this term is not in the Lumen glossary.' : 'No definition found for this exact wording. Pick one word above, or try a shorter term.'),
+      lang && HC('div', { className: 'hca7-help', dir: 'auto', lang },
+        HC('span', { className: 'hca7-src' }, `In ${HCA7Langs.find(l => l[0] === lang)?.[1]}`),
+        helpBusy ? HC('div', { className: 'hca7-progress indeterminate' }, HC('span', {})) : HC(_.Fragment, {},
+          help?.term?.text && HC('p', { className: 'hca7-help-term', style: { textAlign: rtl ? 'right' : undefined } }, help.term.text),
+          help?.mean?.text && HC('p', { style: { textAlign: rtl ? 'right' : undefined } }, help.mean.text),
+          help?.wiki && HC('p', { style: { textAlign: rtl ? 'right' : undefined } }, help.wiki.text, ' ', HC('a', { href: help.wiki.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, help.wiki.title, HCAIcon('external-link-line'))),
+          !help?.term && !help?.mean && !help?.wiki && HC('p', { className: 'hca-small' }, 'No translation available right now.'),
+          (help?.term || help?.mean) && HC('small', { className: 'hca-small' }, `Machine translation ${help.term?.via || help.mean?.via}. Check important terms with your tutor.`))),
+      meaning && HC('div', { className: 'hca5-row' }, HCABtn('Make a recall card', card, 'secondary', 'stack-line', { disabled: !bookId }), HCABtn('Copy', () => navigator.clipboard?.writeText(`${res.term}: ${meaning}`).then(() => ctx.toast('Copied.')), 'secondary', 'file-copy-line'), HCABtn('Look up again', () => go(res.term), 'secondary', 'refresh-line'))),
+    HC('p', { className: 'hca-small' }, 'General definitions for study, not clinical advice. Sources: Lumen glossary, Wiktionary, Free Dictionary, Wikipedia', lang ? '; translations on your device (Chrome) or by MyMemory, which receives the words you translate.' : '.'));
 }
 window.HCA7Define = (text, page, bookId) => HCA7Set({ define: { text, page, bookId } });
 
@@ -10186,7 +10322,12 @@ function HCA7Html({ book, items }, forPrint) {
 function HCA7Markdown({ book, items }) {
   return `# ${book.title}\n\nStudy notes from Lumen · ${new Date().toLocaleDateString()}\n\n` + items.map(it => `## ${it.kind} · page ${it.page}${it.title ? `: ${it.title}` : ''}\n\n${it.image ? '_(snip image: see the Word, PowerPoint or print export)_\n\n' : ''}${it.text ? (it.kind === 'Highlight' ? `> ${it.text.replace(/\n/g, '\n> ')}` : it.text) : ''}\n`).join('\n');
 }
-async function HCA7Pptx({ book, items }) {
+async function HCA7Pptx(data) {
+  HCA7Set({ progress: { title: 'Making your PowerPoint', label: 'Preparing slides', value: null } });
+  try { await HCA7PptxBuild(data); HCA7Set({ progress: null }); }
+  catch (e) { HCA7Set({ progress: null }); throw e; }
+}
+async function HCA7PptxBuild({ book, items }) {
   await HCA7LoadPptx();
   const p = new window.PptxGenJS();
   p.layout = 'LAYOUT_WIDE'; p.title = book.title; p.company = 'Healthcare Crown Academy';
@@ -10281,7 +10422,7 @@ function HCA7Color(el) {
 }
 function HCA7PhKey(sp) { const ph = HCA7Deep(sp, 'ph')[0]; return ph ? { type: ph.getAttribute('type') || 'body', idx: ph.getAttribute('idx') } : null; }
 
-async function HCA7PptxToImages(file, onProgress) {
+async function HCA7PptxRender(file, onProgress) {
   await HCA7LoadPptx();
   const zip = await window.JSZip.loadAsync(file);
   const read = path => zip.file(path)?.async('string');
@@ -10302,14 +10443,15 @@ async function HCA7PptxToImages(file, onProgress) {
     return (layoutCache[path] = { map, rels, doc });
   }
   for (let n = 0; n < paths.length; n++) {
-    onProgress?.(`Converting slide ${n + 1} of ${paths.length}…`);
+    if (HCA7UI.state.progress?.cancelled) throw Error('Cancelled.');
+    onProgress?.(`Drawing slide ${n + 1} of ${paths.length}`, (n + .5) / paths.length);
     const path = paths[n], doc = parse(await read(path)), rels = HCA7Rels(await read(path.replace(/([^/]+)$/, '_rels/$1.rels')));
     const layoutRel = Object.values(rels).find(r => r.type.endsWith('/slideLayout'));
     const layoutPath = layoutRel && HCA7Resolve(path, layoutRel.target), layout = layoutPath ? await placeholders(layoutPath) : { map: {}, rels: {} };
     const masterRel = Object.values(layout.rels || {}).find(r => r.type.endsWith('/slideMaster'));
     const master = masterRel ? await placeholders(HCA7Resolve(layoutPath, masterRel.target)) : { map: {} };
     const c = document.createElement('canvas'); c.width = W; c.height = H;
-    const g = c.getContext('2d');
+    const g = c.getContext('2d'), words = [];
     const bg = HCA7Color(HCA7Deep(doc, 'bg')[0]) || HCA7Color(HCA7Deep(layout.doc, 'bg')[0]) || HCA7Color(HCA7Deep(master.doc, 'bg')[0]) || '#ffffff';
     g.fillStyle = bg; g.fillRect(0, 0, W, H);
     const where = (sp, t) => {
@@ -10347,7 +10489,9 @@ async function HCA7PptxToImages(file, onProgress) {
       for (const l of wrapped) {
         g.font = l.font; g.fillStyle = l.color;
         const tw = g.measureText(l.text).width, x0 = box.x * k + pad + l.indent;
-        g.fillText(l.text, l.align === 'ctr' ? box.x * k + (box.w * k - tw) / 2 : l.align === 'r' ? box.x * k + box.w * k - pad - tw : x0, yy);
+        const xx = l.align === 'ctr' ? box.x * k + (box.w * k - tw) / 2 : l.align === 'r' ? box.x * k + box.w * k - pad - tw : x0;
+        g.fillText(l.text, xx, yy);
+        if (l.text.trim()) words.push({ text: l.text, x: xx, y: yy, size: l.size, width: tw });
         yy += l.size * 1.2;
       }
     };
@@ -10386,22 +10530,95 @@ async function HCA7PptxToImages(file, onProgress) {
     };
     const tree = HCA7Deep(doc, 'spTree')[0];
     if (tree) await walk(tree, { ox: 0, oy: 0, cx: 0, cy: 0, sx: 1, sy: 1 });
-    const blob = await new Promise(ok => c.toBlob(ok, 'image/png'));
-    out.push(new File([blob], `${base} - slide ${String(n + 1).padStart(2, '0')}.png`, { type: 'image/png' }));
+    out.push({ canvas: c, words, W, H, ptW: EW / 12700, ptH: EH / 12700 });
+    await new Promise(r => setTimeout(r, 0));
   }
-  return out;
+  return { base, slides: out };
+}
+
+async function HCA7PptxToImages(file, onProgress) {
+  const { base, slides } = await HCA7PptxRender(file, (m, v) => onProgress?.(m, v * .9));
+  const files = [];
+  for (const [n, s] of slides.entries()) {
+    onProgress?.(`Saving slide ${n + 1} of ${slides.length}`, .9 + .1 * n / slides.length);
+    files.push(new File([await new Promise(ok => s.canvas.toBlob(ok, 'image/png'))], `${base} - slide ${String(n + 1).padStart(2, '0')}.png`, { type: 'image/png' }));
+  }
+  return files;
+}
+
+/* A small PDF writer: one landscape page per slide, the slide picture, and the slide's words as
+   invisible text in the right places, so the reader can select, search, highlight and quiz on them. */
+const HCA7HelvW = [278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584];
+const HCA7WinAnsi = { '€': 128, '‚': 130, '„': 132, '…': 133, '•': 149, '–': 150, '—': 151, '‘': 145, '’': 146, '“': 147, '”': 148, '™': 153, '·': 183, '°': 176, '±': 177, '×': 215, '÷': 247, 'µ': 181, '²': 178, '³': 179, '½': 189, '¼': 188, '¾': 190 };
+function HCA7PdfText(str) {
+  let out = '', width = 0;
+  for (const ch of str.normalize('NFC')) {
+    let code = ch.charCodeAt(0);
+    if (HCA7WinAnsi[ch]) code = HCA7WinAnsi[ch];
+    else if (code > 255) { const plain = ch.normalize('NFKD').replace(/[\u0300-\u036f]/g, ''); code = plain && plain.charCodeAt(0) < 256 ? plain.charCodeAt(0) : 63; }
+    width += code >= 32 && code <= 126 ? HCA7HelvW[code - 32] : 556;
+    out += code === 40 || code === 41 || code === 92 ? '\\' + String.fromCharCode(code) : code < 32 || code > 126 ? '\\' + code.toString(8).padStart(3, '0') : String.fromCharCode(code);
+  }
+  return { out, width };
+}
+async function HCA7SlidesToPdf(slides, title, onProgress) {
+  const enc = new TextEncoder(), parts = [], offsets = [];
+  let size = 0;
+  const push = b => { const u = typeof b === 'string' ? enc.encode(b) : b; parts.push(u); size += u.length; };
+  const obj = (n, body) => { offsets[n] = size; push(`${n} 0 obj\n`); body(); push('\nendobj\n'); };
+  push('%PDF-1.4\n%\xe2\xe3\xcf\xd3\n');
+  const kids = slides.map((_, i) => `${4 + i * 3} 0 R`).join(' ');
+  obj(1, () => push(`<< /Type /Catalog /Pages 2 0 R >>`));
+  obj(2, () => push(`<< /Type /Pages /Kids [${kids}] /Count ${slides.length} >>`));
+  obj(3, () => push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>'));
+  for (const [i, s] of slides.entries()) {
+    onProgress?.(`Building PDF page ${i + 1} of ${slides.length}`, .85 + .15 * i / slides.length);
+    const jpg = new Uint8Array(await (await new Promise(ok => s.canvas.toBlob(ok, 'image/jpeg', .86))).arrayBuffer());
+    const pw = +s.ptW.toFixed(2), ph = +s.ptH.toFixed(2), k = pw / s.W;
+    let text = 'BT 3 Tr\n';
+    for (const w of s.words) {
+      const { out, width } = HCA7PdfText(w.text), fs = Math.max(1, w.size * k), natural = width / 1000 * fs, target = w.width * k;
+      const tz = natural > 0 ? Math.max(20, Math.min(400, target / natural * 100)) : 100;
+      text += `/F1 ${fs.toFixed(2)} Tf ${tz.toFixed(1)} Tz 1 0 0 1 ${(w.x * k).toFixed(2)} ${(ph - (w.y + w.size * .8) * k).toFixed(2)} Tm (${out}) Tj\n`;
+    }
+    text += 'ET';
+    const content = `q ${pw} 0 0 ${ph} 0 0 cm /Im${i} Do Q\n${text}`;
+    const pageN = 4 + i * 3, contN = pageN + 1, imgN = pageN + 2;
+    obj(pageN, () => push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pw} ${ph}] /Resources << /Font << /F1 3 0 R >> /XObject << /Im${i} ${imgN} 0 R >> >> /Contents ${contN} 0 R >>`));
+    const cb = enc.encode(content);
+    obj(contN, () => { push(`<< /Length ${cb.length} >>\nstream\n`); push(cb); push('\nendstream'); });
+    obj(imgN, () => { push(`<< /Type /XObject /Subtype /Image /Width ${s.canvas.width} /Height ${s.canvas.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpg.length} >>\nstream\n`); push(jpg); push('\nendstream'); });
+  }
+  const infoN = 4 + slides.length * 3, t = HCA7PdfText(title).out;
+  obj(infoN, () => push(`<< /Title (${t}) /Producer (Lumen by Healthcare Crown Academy) >>`));
+  const xref = size, count = infoN + 1;
+  push(`xref\n0 ${count}\n0000000000 65535 f \n` + Array.from({ length: count - 1 }, (_, i) => `${String(offsets[i + 1]).padStart(10, '0')} 00000 n \n`).join(''));
+  push(`trailer\n<< /Size ${count} /Root 1 0 R /Info ${infoN} 0 R >>\nstartxref\n${xref}\n%%EOF`);
+  return new Blob(parts, { type: 'application/pdf' });
+}
+async function HCA7PptxToPdf(file, onProgress) {
+  const { base, slides } = await HCA7PptxRender(file, (m, v) => onProgress?.(m, v * .85));
+  return [new File([await HCA7SlidesToPdf(slides, base, onProgress)], `${base}.pdf`, { type: 'application/pdf' })];
 }
 
 /* Called by the Library upload (build patch): PowerPoint files are converted, everything else passes through. */
+function HCA7AskImportMode(name) {
+  let remembered = ''; try { remembered = localStorage.getItem('lumen.pptxMode') || ''; } catch {}
+  if (remembered) return Promise.resolve(remembered);
+  return new Promise(resolve => HCA7Set({ choose: { name, resolve: (mode, remember) => { if (remember) { try { localStorage.setItem('lumen.pptxMode', mode); } catch {} } HCA7Set({ choose: null }); resolve(mode); } } }));
+}
+const HCA7Progress = (label, value) => HCA7Set(s => ({ progress: { ...(s.progress || {}), label, value } }));
 async function HCA7Expand(files) {
   const out = [];
   for (const f of files) {
     if (/\.pptx$/i.test(f.name) || f.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation') {
-      try { HCA7Set({ status: `Opening ${f.name}…` }); out.push(...await HCA7PptxToImages(f, m => HCA7Set({ status: m }))); }
-      catch (e) { HCA7Set({ status: `Could not convert ${f.name}: ${e.message || 'unknown error'}. In PowerPoint, choose File → Save as → PDF, then upload the PDF.` }); setTimeout(() => HCA7Set({ status: '' }), 9000); continue; }
-      HCA7Set({ status: '' });
+      const mode = await HCA7AskImportMode(f.name);
+      if (mode === 'cancel') continue;
+      HCA7Set({ progress: { title: `Importing ${f.name}`, label: 'Opening the presentation', value: 0 } });
+      try { out.push(...await (mode === 'images' ? HCA7PptxToImages : HCA7PptxToPdf)(f, HCA7Progress)); HCA7Set({ progress: null }); }
+      catch (e) { HCA7Set({ progress: { title: `Could not import ${f.name}`, label: e.message === 'Cancelled.' ? 'Import cancelled.' : `${e.message || 'Unknown error'} In PowerPoint, choose File → Save as → PDF, then upload the PDF.`, value: null, error: true } }); }
     } else if (/\.(ppt|key|odp)$/i.test(f.name)) {
-      HCA7Set({ status: `${f.name}: older or other slide formats cannot be read. Save it as .pptx or PDF first.` }); setTimeout(() => HCA7Set({ status: '' }), 9000);
+      HCA7Set({ progress: { title: f.name, label: 'Older or other slide formats cannot be read. Save it as .pptx or PDF first.', value: null, error: true } });
     } else out.push(f);
   }
   return out;
@@ -10411,10 +10628,27 @@ window.HCA7Expand = HCA7Expand;
 /* ---------- Mount floating tools, dialogs and commands ---------- */
 function HCA7Floats() {
   const ui = HCA7Use();
-  return HC(_.Fragment, {},
+  // Rendered into <body> so pop-ups sit above the reader and any open dialog.
+  return S.createPortal(HC(_.Fragment, {},
     ui.tray && HC(HCA7Tray), ui.calc && HC(HCA7Calculator), ui.define && HC(HCA7Meaning, ui.define),
     ui.present && HC(HCA7Presenter, { data: ui.present }),
-    ui.status && HC('div', { className: 'hca7-status', role: 'status' }, HCAIcon('loader-4-line'), ui.status));
+    ui.progress && HC('div', { className: `hca7-progress-card ${ui.progress.error ? 'error' : ''}`, role: 'status', 'aria-live': 'polite' },
+      HC('div', { className: 'hca7-progress-head' }, HCAIcon(ui.progress.error ? 'error-warning-line' : 'loader-4-line'), HC('strong', {}, ui.progress.title || 'Working'),
+        ui.progress.error ? HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close', onClick: () => HCA7Set({ progress: null }) }, HCAIcon('close-line'))
+          : HC('button', { type: 'button', className: 'text-link', onClick: () => HCA7Set(s => ({ progress: { ...s.progress, cancelled: true, label: 'Cancelling…' } })) }, 'Cancel')),
+      HC('p', {}, ui.progress.label, typeof ui.progress.value === 'number' ? ` · ${Math.round(ui.progress.value * 100)}%` : ''),
+      !ui.progress.error && HC('div', { className: `hca7-progress ${typeof ui.progress.value === 'number' ? '' : 'indeterminate'}`, role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-valuenow': typeof ui.progress.value === 'number' ? Math.round(ui.progress.value * 100) : undefined }, HC('span', { style: typeof ui.progress.value === 'number' ? { width: `${Math.max(2, ui.progress.value * 100)}%` } : undefined }))),
+    ui.choose && HC(HCA7ImportChoice, ui.choose)), document.body);
+}
+function HCA7ImportChoice({ name, resolve }) {
+  const [remember, setRemember] = _.useState(false);
+  return HC('div', { className: 'hca7-choose-backdrop', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Import a PowerPoint' },
+    HC('div', { className: 'hca7-choose' },
+      HC('p', { className: 'eyebrow' }, 'POWERPOINT'), HC('h3', {}, `How should “${name}” open?`),
+      HC('button', { type: 'button', className: 'hca7-choice', autoFocus: true, onClick: () => resolve('pdf', remember) }, HCAIcon('file-pdf-2-line'), HC('span', {}, HC('strong', {}, 'As a PDF (recommended)'), HC('small', {}, 'Wide landscape pages that fill the reader. The slide text can be selected, searched, highlighted and used in Page studio.'))),
+      HC('button', { type: 'button', className: 'hca7-choice', onClick: () => resolve('images', remember) }, HCAIcon('gallery-line'), HC('span', {}, HC('strong', {}, 'As page images'), HC('small', {}, 'One picture per slide, like scanned pages. Use OCR later if you need the text.'))),
+      HC('label', { className: 'hca4-check' }, HC('input', { type: 'checkbox', checked: remember, onChange: e => setRemember(e.target.checked) }), 'Remember my choice'),
+      HC('div', { className: 'hca5-row' }, HCABtn('Cancel', () => resolve('cancel', false), 'secondary', 'close-line'))));
 }
 rs = function HCA7DialogRouter() {
   const ctx = y(), m = ctx.modal, close = () => ctx.setModal(null);
@@ -10427,6 +10661,7 @@ HCA3Commands = function HCA7Commands(ctx) {
     { group: 'Tools', icon: 'gallery-line', label: 'Stickers', run: () => HCA7Set({ tray: true }) },
     { group: 'Tools', icon: 'search-line', label: 'Meaning of a word or term', run: () => HCA7Set({ define: { text: '' } }) },
     { group: 'Tools', icon: 'play-fill', label: 'Present my notes', run: () => ctx.setModal({ type: 'hca7-export', bookId: HCA7Reader.bookId, present: true }) },
+    { group: 'Tools', icon: 'refresh-line', label: 'Refresh Lumen (reload, work is saved)', run: HCA7Refresh },
     { group: 'Tools', icon: 'download-line', label: 'Export notes (PowerPoint, Word, PDF)', run: () => ctx.setModal({ type: 'hca7-export', bookId: HCA7Reader.bookId }) }];
 };
 
@@ -11270,6 +11505,56 @@ body.hca7-panel-float .hca-reader-divider, body.hca7-panel-float .hca-reader-sid
 @media (max-width: 760px) { .hca7-pop { display: none; } }
 .hca7-slide h1, .hca7-slide h2, .hca7-slide p, .hca7-slide blockquote { color: #fff; }
 .hca7-slide .sub { color: #b9c6d3; }
+
+/* Magnifier lens (live copy of the page) */
+.hca7-lens { overflow: hidden; }
+.hca7-lens-inner { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
+.hca7-lens-inner * { pointer-events: none !important; animation: none !important; transition: none !important; }
+.hca7-lens-zoom { position: absolute; right: 50%; bottom: 8px; transform: translateX(50%); font: 700 11px/1 system-ui, sans-serif; color: #fff; background: #10253acc; padding: 3px 6px; border-radius: 99px; }
+
+/* Progress card (PowerPoint import and export, refresh) */
+.hca7-progress-card { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 100001; width: min(460px, calc(100vw - 32px)); box-sizing: border-box; display: grid; gap: 8px; padding: 14px 16px; border-radius: 10px; background: #10253a; color: #fff; box-shadow: 0 12px 32px rgba(0, 0, 0, .35); }
+.hca7-progress-card.error { background: #5a1f1f; }
+.hca7-progress-head { display: flex; align-items: center; gap: 8px; }
+.hca7-progress-head strong { flex: 1; font-size: 15px; }
+.hca7-progress-head .text-link, .hca7-progress-head .hca3-icon-btn { color: #fff; }
+.hca7-progress-card p { margin: 0; font-size: 14px; color: #dbe5ee; }
+.hca7-progress-card i.ri-loader-4-line { animation: hca7-spin 1s linear infinite; }
+@keyframes hca7-spin { to { transform: rotate(360deg); } }
+.hca7-progress { height: 8px; border-radius: 99px; background: #ffffff26; overflow: hidden; position: relative; }
+.hca7-meaning .hca7-progress { background: var(--line); }
+.hca7-progress > span { display: block; height: 100%; background: #6fd3c7; border-radius: inherit; transition: width .25s ease; }
+.hca7-progress.indeterminate > span { width: 35%; position: absolute; animation: hca7-slide 1.1s ease-in-out infinite; }
+.hca7-meaning .hca7-progress > span { background: #087d7a; }
+@keyframes hca7-slide { from { left: -35%; } to { left: 100%; } }
+@media (prefers-reduced-motion: reduce) { .hca7-progress.indeterminate > span, .hca7-progress-card i.ri-loader-4-line { animation: none; } }
+
+/* PowerPoint import choice */
+.hca7-choose-backdrop { position: fixed; inset: 0; z-index: 100000; background: rgba(13, 27, 42, .45); display: grid; place-items: center; padding: 16px; }
+.hca7-choose { width: min(520px, 100%); background: var(--surface, #fff); color: var(--ink); border-radius: 12px; padding: 22px; display: grid; gap: 12px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
+.hca7-choose h3 { margin: 0; font-size: 22px; }
+.hca7-choose .eyebrow { margin: 0; }
+.hca7-choice { display: flex; gap: 12px; align-items: flex-start; text-align: left; padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--canvas); color: var(--ink); cursor: pointer; font: inherit; }
+.hca7-choice:hover, .hca7-choice:focus-visible { border-color: #087d7a; box-shadow: 0 0 0 2px #087d7a33; }
+.hca7-choice i { font-size: 26px; color: #087d7a; }
+.hca7-choice span { display: grid; gap: 4px; }
+.hca7-choice small { color: var(--muted); font-size: 13px; line-height: 1.4; }
+
+/* Meaning: word choices and help language */
+.hca7-lang select { max-width: 150px; min-height: 30px; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas); color: var(--ink); font-size: 12px; padding: 0 4px; }
+.hca7-meaning > header .hca7-lang { margin-left: auto; }
+.hca7-meaning > header > button:last-child { margin-left: 0; }
+.hca7-cands > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.hca7-cands .hca4-tag { min-height: 30px; font-size: 13px; }
+.hca7-cands .hca4-tag.gloss { border-color: #087d7a; }
+.hca7-cands p { margin: 0 0 6px; }
+.hca7-passage p { margin: 0 0 6px; font-size: 14px; line-height: 1.5; }
+.hca7-help { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
+.hca7-help p { margin: 4px 0; font-size: 15px; line-height: 1.55; }
+.hca7-help-term { font-size: 20px !important; font-weight: 700; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.hca7-choose label.hca4-check { display: flex !important; align-items: center; gap: 10px; font-size: 14px; }
+.hca7-choose label.hca4-check input { margin: 0; flex: none; }
 
 </style><!--/hca-v7--></head>
   <body>
