@@ -1,5 +1,7 @@
 # Academy AI: AI for every member, with no keys
 
+**Status (16 Oct 2026): live on the evinca project.** Function `lumen-ai` is deployed and the tables `lumen_ai_usage` and `lumen_ai_cache` exist, with row-level security on. The functions `lumen_ai_take` and `lumen_ai_refund` can be run only by the server. Provider: OpenRouter, `openai/gpt-oss-120b`. The optional `lumen_ai_cleanup` function was not created because Supabase timed out; it is housekeeping only, and old rows can be deleted by hand.
+
 *Written 16 October 2026 for 500 or more subscribers. Prices are as reported in October 2026; check each provider's pricing page before you rely on them.*
 
 ## The choice, in short

@@ -97,7 +97,7 @@ export async function callProvider(id, env, fetcher, { system, prompt, json: wan
     throw Object.assign(new Error(`${p.name} could not be reached`), { retry: true });
   } finally { clearTimeout(timer); }
   const body = await res.text();
-  if (!res.ok) throw Object.assign(new Error(`${p.name} answered ${res.status}`), { retry: res.status === 429 || res.status >= 500 || res.status === 401 || res.status === 403 || res.status === 404, status: res.status });
+  if (!res.ok) throw Object.assign(new Error(`${p.name} answered ${res.status}`), { retry: res.status === 429 || res.status >= 500 || res.status === 401 || res.status === 403 || res.status === 404, status: res.status, detail: body.slice(0, 300) });
   let data;
   try { data = JSON.parse(body); } catch { throw Object.assign(new Error(`${p.name} sent an unreadable reply`), { retry: true }); }
   const text = id === 'gemini'
@@ -177,7 +177,7 @@ export function createHandler(deps) {
         return json(200, { ...out, cached: false, remaining });
       } catch (err) {
         tried.push(`${PROVIDERS[id].name}: ${err.status || 'error'}`);
-        log('provider-failed', { provider: id, status: err.status || 0 });
+        log('provider-failed', { provider: id, status: err.status || 0, detail: err.detail || err.message });
         if (!err.retry) break;
       }
     }
