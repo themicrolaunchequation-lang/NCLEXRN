@@ -17,13 +17,43 @@ if (!input) {
   process.exit(1);
 }
 
-const LAYERS = ['v3', 'v4', 'v5', 'v6'];
+const LAYERS = ['v3', 'v4', 'v5', 'v6', 'v7'];
 const RENDER_CALL = '(0,g.createRoot)(document.getElementById(`root`)).render(';
 const jsMarkers = v => [`/*HCA${v.slice(1)}:BEGIN*/`, `/*HCA${v.slice(1)}:END*/`];
 const cssMarkers = v => [`<style id="hca-${v}">`, `</style><!--/hca-${v}-->`];
 
 // Each patch must find its text (or exactly one of its alternatives) once, unless its replacement is already there.
 const PATCHES = [
+  {
+    why: 'Reader: eight highlight colours',
+    find: "[`#f1d98e`,`#b9d8bd`,`#c9c6e9`,`#f0bd9f`].map(e=>(0,C.jsx)(`button`,{className:e===N?`selected`:``,style:{background:e},title:`Choose ${e===`#f1d98e`?`amber`:e===`#b9d8bd`?`sage`:e===`#c9c6e9`?`lavender`:`peach`} highlight`",
+    replace: "HCA7HighlightColors.map(e=>(0,C.jsx)(`button`,{className:e===N?`selected`:``,style:{background:e},title:`Choose ${HCA7ColorName(e)} highlight`",
+  },
+  {
+    why: 'Sticky notes: six colours',
+    find: "[['#ffe2a3','Amber'],['#bfe1d9','Teal'],['#e0d7ef','Lavender']].map",
+    replace: 'HCA7StickyColors.map',
+  },
+  {
+    why: 'Selected passage: Meaning button',
+    find: "(0,C.jsxs)(`button`,{onClick:()=>{r({type:`note`,bookId:e.id,page:F.page,excerpt:F.text}),ae(null)},children:[(0,C.jsx)(E,{name:`sticky-note-line`}),`Note`]})",
+    replace: "(0,C.jsxs)(`button`,{onClick:()=>{window.HCA7Define&&window.HCA7Define(F.text,F.page,e.id),ae(null)},children:[(0,C.jsx)(E,{name:`search-line`}),`Meaning`]}),(0,C.jsxs)(`button`,{onClick:()=>{r({type:`note`,bookId:e.id,page:F.page,excerpt:F.text}),ae(null)},children:[(0,C.jsx)(E,{name:`sticky-note-line`}),`Note`]})",
+  },
+  {
+    why: 'Library upload: accept PowerPoint (.pptx) and convert slides to pages',
+    find: "accept:`application/pdf,image/jpeg,image/png,image/webp,image/gif,image/bmp,.pdf,.jpg,.jpeg,.png,.webp,.gif,.bmp`,disabled:s,onChange:e=>i([...e.target.files])",
+    replace: "accept:`application/pdf,image/jpeg,image/png,image/webp,image/gif,image/bmp,.pdf,.jpg,.jpeg,.png,.webp,.gif,.bmp,.pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation`,disabled:s,onChange:e=>{let f=[...e.target.files];e.target.value=``;HCA7Expand(f).then(x=>x.length&&i(x))}",
+  },
+  {
+    why: 'Library drop zone: convert dropped PowerPoint files',
+    find: 's||i([...e.dataTransfer.files])',
+    replace: 's||HCA7Expand([...e.dataTransfer.files]).then(x=>x.length&&i(x))',
+  },
+  {
+    why: 'Library drop zone: mention PowerPoint',
+    find: 'PDF, JPG, PNG, WEBP, GIF, BMP · up to 150 MB per file',
+    replace: 'PDF, PowerPoint (.pptx), JPG, PNG, WEBP, GIF, BMP · up to 150 MB per file',
+  },
   {
     why: 'Study page note on scheduling matches the adaptive scheduler',
     find: 'Review intervals are a simple 1 / 3 / 7 / 14 / 30 / 60-day ladder—not FSRS, a validated test, or a measure of clinical competence.',
@@ -130,7 +160,8 @@ let js = '', css = '';
 for (const v of LAYERS) {
   const layerJs = readFileSync(join(here, '..', 'src', `hca-${v}.js`), 'utf8');
   const layerCss = readFileSync(join(here, '..', 'src', `hca-${v}.css`), 'utf8');
-  if (layerJs.includes('</script')) throw new Error(`hca-${v}.js must not contain "</script".`);
+  // These sequences inside an inline script confuse the HTML parser or the layer and asset insertion points.
+  for (const bad of ['</script', '<script', '<!--', '</head', '</body']) if (layerJs.toLowerCase().includes(bad)) throw new Error(`hca-${v}.js must not contain "${bad}".`);
   if (layerCss.includes('</style')) throw new Error(`hca-${v}.css must not contain "</style".`);
   const [jb, je] = jsMarkers(v), [cb, ce] = cssMarkers(v);
   js += `${jb}\n${layerJs}\n${je}`;
@@ -164,6 +195,14 @@ if (ocrAt >= 0) {
 } else if (!html.includes('<script id="lumen-ocr-core" type="application/octet-stream" data-encoding="gzip">')) {
   throw new Error('Could not find the embedded OCR engine.');
 }
+
+// PowerPoint tools (PptxGenJS with JSZip, MIT licence), gzipped and unpacked in the browser on first use.
+const PPTX_RE = /<script id="lumen-pptx"[^>]*>[^<]*<\/script>/;
+html = html.replace(PPTX_RE, '');
+const pptx = gzipSync(readFileSync(join(here, '..', 'vendor', 'pptxgen.bundle.js')), { level: 9 }).toString('base64');
+const bodyEnd = html.lastIndexOf('</body>');
+if (bodyEnd < 0) throw new Error('No </body> in the input.');
+html = `${html.slice(0, bodyEnd)}<script id="lumen-pptx" type="application/octet-stream" data-encoding="gzip">${pptx}</script>${html.slice(bodyEnd)}`;
 
 writeFileSync(output, html);
 console.log(`Wrote ${output} (${(html.length / 1048576).toFixed(1)} MB). Layers: ${LAYERS.join(', ')}. Patches applied: ${applied}. ${ocrNote}`);

@@ -4,14 +4,17 @@ Lumen is the Healthcare Crown Academy study app: a local-first reader, notes and
 
 | Path | What it is |
 |---|---|
-| `dist/Lumen-clinical-study-studio.html` | **The app to upload** (13.0 MB): the original build plus the v3, v4, v5 and v6 layers. |
+| `dist/Lumen-clinical-study-studio.html` | **The app to upload** (13.3 MB): the original build plus the v3–v7 layers. |
 | `src/hca-v3.js`, `src/hca-v3.css` | v3 layer: Today's plan, command palette, shortcuts, adaptive (FSRS) scheduling, progress insights, goal dialog, phone fixes. |
 | `src/hca-v4.js`, `src/hca-v4.css` | v4 layer: IndexedDB storage, decluttered pages, consistent controls, NCLEX tags and categories, practice set, exam week, Hard rating, resurfaced highlights, reader keys. |
 | `src/hca-v5.js`, `src/hca-v5.css` | v5 layer: AI with your own keys and automatic fallback, every question type, question bank, rebuilt Page studio. |
 | `src/hca-v6.js`, `src/hca-v6.css` | v6 layer: Academy AI. Members sign in with their Evinca account and use the Academy's AI with no key. |
+| `src/hca-v7.js`, `src/hca-v7.css` | v7 layer: reader tools. Colours and marker, snip, magnifier, stickers, movable sticky notes, calculator, Meaning, Present and Export, PowerPoint import, pop-out windows. |
+| `vendor/pptxgen.bundle.js` | PptxGenJS 3.12 with JSZip (MIT), embedded gzipped by the build for PowerPoint import and export. |
+| `STUDY_VISUALS_PROMPT.md` | Brief for 100 SVG study icons and 30 illustrations for the Stickers tray. |
 | `supabase/` | The `lumen-ai` Edge Function and its migration (daily allowances, a shared answer store). **Not deployed yet**; see `ACADEMY_AI.md`. |
 | `tools/build.mjs` | Injects the layers, applies a few exact patches inside the bundle, and compresses the OCR engine. Safe to re-run on its own output. |
-| `tests/smoke.mjs` | Headless-browser smoke test: 17 checks, including OCR, Academy AI sign-in and fallback to a learner's key (both mocked), at desktop width and on 360, 390 and 414px phones. |
+| `tests/smoke.mjs` | Headless-browser smoke test: 22 checks, including OCR, Academy AI sign-in and fallback (mocked), PowerPoint import and export, stickers, snips and the calculator, at desktop width and on 360, 390 and 414px phones. |
 | `tests/academy-ai.test.mjs` | Unit tests for the Edge Function: sign-in, levels, allowances, ceiling, fallback, refund, cache. Run with `node --test`. |
 | `ACADEMY_AI.md` | Why Academy AI suits 500+ members, what it costs, and the setup steps. |
 | `FREE_AI_PROVIDERS.md` | Free AI providers, their limits and privacy terms, and how Lumen falls back between them. |
@@ -42,4 +45,5 @@ If any patch can no longer find its text (for example, after the original bundle
 - **Backups now include the Hard rating.** The restore check was updated to accept it.
 - **OCR works offline**, whether the file is opened from your computer or served from a website.
 - **AI keys are kept apart from the workspace** (IndexedDB key `ai`, or the browser session only). They are never included in backups. New optional data: `hcaQuestionBank`.
+- **New optional data in v7:** `hcaStamps` (stickers) and `hcaSnips` (snip images, stored as JPEG). Both are included in backups.
 - **The Academy AI sign-in is stored the same way** (IndexedDB key `academy`, or the browser session only), never in backups.

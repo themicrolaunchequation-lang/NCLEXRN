@@ -1,5 +1,82 @@
 # Lumen changelog
 
+## v7: 16 October 2026: reader tools
+
+All new tools work offline and use no AI. They live in a single **Tools** menu in the reader toolbar, so the page keeps its full size.
+
+### Draw and mark
+- **Ten pen colours plus any colour:** a colour picker for any shade, and widths from 1 to 8 px.
+- **Marker:** a see-through highlighter pen, four times as wide as the pen.
+- **Eight highlight colours** for selected text, up from four.
+- **Clear page** removes all ink from one page.
+- **Six sticky-note colours.**
+- **Moving sticky notes:** drag a sticky note to a new spot. Click it to open it.
+- **Pinning a sticky note:** Tools → Pin a sticky note, then click the exact spot. The toolbar Sticky note button also works this way.
+
+### New tools (Tools menu)
+- **Snip:** drag a box over any part of a page. The snip includes your ink and stickers. You can:
+  - copy it to paste into Word or PowerPoint
+  - download it as a PNG
+  - keep it with the page, with a caption
+
+  Kept snips appear under Notes & pen, and in Present and Export.
+- **Magnifier:** a 2.5× lens that follows your pointer.
+- **Stickers:** 50 clinical emoji in three groups (body, care, marks) and 14 coloured labels (KEY, EXAM, HIGH-YIELD, RED FLAG, ASSESS…). Drag a sticker onto a page, or click it to add it. On the page:
+  - drag to move it
+  - drag the corner to resize it
+  - use − / + / delete, or press the Delete key
+- **Calculator:** stays open while you read.
+  - **Keypad:** brackets, %, ^, √, ln, log and trigonometry. The parser is safe and does not run code.
+  - **Clinical formulas, each showing its formula:**
+    - dose by weight; desired ÷ have × quantity
+    - IV rate in mL/h; drip rate in gtt/min; infusion time; weight-based infusion
+    - BMI; BSA (Mosteller); MAP; maintenance fluids (4-2-1 rule); creatinine clearance (Cockcroft-Gault); fluid balance
+  - **Conversions:** kg/lb, mg/mcg/g, mL/L, °C/°F, cm/in, household measures, glucose mmol/L ↔ mg/dL.
+- **Meaning:** select text and choose **Meaning** in the selection toolbar, or open it from Tools.
+  - **Lookup order:** a built-in glossary of about 140 nursing terms and abbreviations (works offline), then Simple Wikipedia (plain English), then a dictionary.
+  - **Long passages:** Lumen lists the abbreviations it recognises in them.
+  - **Make a recall card** turns a term and its meaning into a review card.
+- **Present:** full-screen slides made from your highlights, notes, sticky notes and snips. Use the arrow keys, Space, or a click to move; Esc to leave.
+- **Export** a whole source or one page to:
+  - **PowerPoint (.pptx):** real slides that open in PowerPoint, Google Slides and Keynote.
+  - **Word (.doc).**
+  - **Print or save as PDF.**
+  - **Markdown.**
+  - **Recall cards as CSV** (works with Anki).
+
+### Pop-up windows that keep the page large
+- **Floating windows:** Calculator, Stickers and Meaning float over the page. Drag a window by its header and resize it from the corner. Each one reopens where you left it; double-click the header to reset it.
+- **Study panel pop-out:** the panel (Notes & pen, Page recall, Page studio, Lookup) has a new **Pop out** button. It becomes a floating, resizable window, and the page uses the full reader width. **Dock** puts it back.
+
+### PowerPoint in the Library
+- **Upload .pptx files** like PDFs. Each slide becomes a page image, and you can annotate, snip, highlight regions and quiz yourself on it.
+- **What is drawn:** text boxes, pictures, filled shapes and simple tables.
+- **What is not drawn:** charts, SmartArt and animations.
+- **For an exact copy,** save the deck as PDF in PowerPoint and upload that.
+
+### Also
+- **`STUDY_VISUALS_PROMPT.md`:** the brief for an external agent to supply 100 SVG icons and 30 study illustrations. They will replace and extend the emoji stickers.
+- **New optional workspace data:** `hcaStamps` (stickers) and `hcaSnips` (snip images). Both are included in backups.
+- **PowerPoint tools:** PptxGenJS 3.12 with JSZip (MIT licence), stored gzipped (about 0.2 MB) and unpacked only when first used.
+- **Build guard:** the build now refuses layer code that contains `<script`, `<!--`, `</head` or `</body`. A literal `</head>` inside a layer had made styles land in the wrong place.
+
+### How it was tested
+- **Smoke test: 22 checks**, including:
+  - a PowerPoint deck becoming two page images
+  - a sticker, a marker stroke and a snip saved with the page
+  - the calculator keypad and drip rate
+  - the offline glossary
+  - a PowerPoint export that opens as a valid file
+- **Exported .pptx:** opened with python-pptx (title slide, then one slide per item, with the snip picture).
+- **Checked by hand in a headless browser:**
+  - dragging and resizing stickers
+  - dragging sticky notes
+  - the magnifier and snip on letterboxed image pages
+  - Meaning from selected text, with mocked dictionary and Wikipedia replies
+  - the presenter
+  - the pop-out study panel
+  - phones at 360, 390 and 414 px
+
 ## v6: 16 October 2026
 
 ### Academy AI: AI for members, with no keys

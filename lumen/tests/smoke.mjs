@@ -196,6 +196,57 @@ try {
   const backup = await (await download).createReadStream().then(stream => new Promise(done => { let t = ''; stream.on('data', c => { t += c; }); stream.on('end', () => done(t)); }));
   check('API keys and sign-in stay out of backups', backup.length > 100 && !/SMOKE-TEST-KEY|SMOKE-REFRESH-TOKEN|smoke-access/.test(backup));
 
+  // Reader tools (v7): PowerPoint import, stickers, marker, snip, calculator, meaning, PowerPoint export.
+  await desktop.route(/dictionaryapi\.dev|wikipedia\.org/, route => route.fulfill({ status: 404, headers: cors, body: '{}' }));
+  await go(page, 'library');
+  await page.getByRole('button', { name: 'Add a source' }).first().click();
+  await page.waitForTimeout(400);
+  await page.setInputFiles('.file-drop-zone input[type=file]', join(here, 'fixtures', 'sample-deck.pptx'));
+  await page.waitForTimeout(3000);
+  const slides = await page.getByText(/sample-deck - slide 0\d\.png/).count();
+  await page.locator('.modal input[type=checkbox]').first().check();
+  await page.getByRole('button', { name: /Add 2 source files/ }).click();
+  await page.waitForTimeout(2500);
+  check('PowerPoint deck becomes page images', slides === 2 && await page.locator('[data-hca-page]').count() > 0, `${slides} slides`);
+  await page.locator('.hca7-tools > summary').click();
+  await page.locator('.hca7-tools-menu button', { hasText: 'Drag clinical icons' }).click();
+  await page.locator('.hca7-tray .hca7-grid button').first().click();
+  await page.locator('.hca7-tray header button').click();
+  const sheet = await page.locator('[data-hca-page]').first().boundingBox();
+  await page.getByRole('button', { name: /^Pen/ }).first().click();
+  await page.locator('.hca7-seg button', { hasText: 'Marker' }).click();
+  await page.mouse.move(sheet.x + 80, sheet.y + 80); await page.mouse.down(); await page.mouse.move(sheet.x + 260, sheet.y + 90, { steps: 6 }); await page.mouse.up();
+  await page.keyboard.press('Escape');
+  await page.locator('.hca7-tools > summary').click();
+  await page.locator('.hca7-tools-menu button', { hasText: 'Drag a box' }).click();
+  await page.mouse.move(sheet.x + 30, sheet.y + 30); await page.mouse.down(); await page.mouse.move(sheet.x + 330, sheet.y + 230, { steps: 5 }); await page.mouse.up();
+  await page.waitForTimeout(1200);
+  await page.getByRole('button', { name: 'Keep with this page' }).click();
+  await page.locator('.modal-backdrop button[aria-label="Close dialog"]').first().click();
+  await page.waitForTimeout(1200);
+  state = await saved(page);
+  check('stickers, marker and snips are saved with the page', state?.hcaStamps?.length === 1 && /59$/.test(state?.ink?.at(-1)?.color || '') && state?.hcaSnips?.length === 1 && state.hcaSnips[0].image.startsWith('data:image/jpeg'));
+  await page.keyboard.press('Control+k'); await page.keyboard.type('Calculator'); await page.keyboard.press('Enter');
+  await page.locator('.hca7-display').fill('(500 × 0.2) ÷ 4 + 2^3'); await page.keyboard.press('Enter');
+  const calc = await page.locator('.hca7-display').inputValue();
+  await page.locator('.hca7-calc .hca7-tabs button', { hasText: 'Clinical' }).click();
+  await page.locator('.hca7-clinical select').selectOption('drip');
+  for (const [i, v] of ['1000', '480', '20'].entries()) await page.locator('.hca7-clinical input').nth(i).fill(v);
+  check('calculator: keypad and drip rate', calc === '33' && /42 gtt\/min/.test(await page.locator('.hca7-result').innerText()), calc);
+  await page.locator('.hca7-calc header button').click();
+  await page.keyboard.press('Control+k'); await page.keyboard.type('Meaning'); await page.keyboard.press('Enter');
+  await page.locator('.hca7-lookup input').fill('SpO2'); await page.keyboard.press('Enter');
+  await page.waitForTimeout(800);
+  check('Meaning: offline glossary answers', /oxygen saturation/i.test(await page.locator('.hca7-def').innerText().catch(() => '')));
+  await page.locator('.hca7-meaning header button').click();
+  await page.locator('.hca7-tools > summary').click();
+  await page.locator('.hca7-tools-menu button', { hasText: 'PowerPoint, Word' }).click();
+  const deck = page.waitForEvent('download');
+  await page.getByRole('button', { name: /PowerPoint/ }).click();
+  const deckBytes = await (await deck).createReadStream().then(stream => new Promise(done => { const c = []; stream.on('data', d => c.push(d)); stream.on('end', () => done(Buffer.concat(c))); }));
+  check('export to PowerPoint', deckBytes.length > 2000 && deckBytes.subarray(0, 2).toString() === 'PK', `${deckBytes.length} bytes`);
+  await page.locator('.modal-backdrop button[aria-label="Close dialog"]').first().click();
+
   // Phones: nothing wider than the screen.
   for (const width of [360, 390, 414]) {
     const phone = await browser.newContext({ viewport: { width, height: 844 }, isMobile: true, hasTouch: true });
