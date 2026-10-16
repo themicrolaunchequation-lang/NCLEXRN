@@ -9,3 +9,16 @@
 .hca6-signin input:not([type=checkbox]) { min-height: 44px; width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas); color: var(--ink); font: 400 15px/1.4 inherit; box-sizing: border-box; }
 .hca6-signed { display: flex; gap: 8px; align-items: flex-start; margin: 0; font-size: 14px; }
 .hca6-signed svg, .hca6-signed i { flex: none; margin-top: 2px; color: var(--green); }
+
+/* Page studio: two clear actions, everything else under Options. */
+.hca7-studio { gap: 14px; }
+.hca7-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.hca7-head strong { font-size: 16px; color: var(--ink-strong); }
+.hca7-actions { display: grid; gap: 10px; }
+.hca7-action { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.hca7-action .button { justify-content: center; min-height: 48px; font-size: 15px; white-space: nowrap; }
+.hca7-action select { min-height: 48px; padding: 0 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas); color: var(--ink); font-size: 14px; max-width: 132px; }
+.hca7-options { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; display: grid; gap: 10px; }
+.hca7-options[open] { padding-bottom: 14px; }
+.hca7-options > summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--ink-strong); }
+.hca7-options > :not(summary) { margin-top: 10px; }

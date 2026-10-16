@@ -178,14 +178,14 @@ try {
   await page.keyboard.press('ArrowRight');
   await page.getByRole('button', { name: /Page studio/ }).first().click();
   await page.waitForTimeout(600);
-  await page.getByRole('button', { name: 'Make questions' }).click();
+  await page.getByRole('button', { name: 'Quiz me' }).click();
   await page.locator('.hca5-consent input[type=checkbox]').check();
   await page.locator('.hca5-consent').getByRole('button', { name: 'Send' }).click();
   await page.waitForTimeout(1500);
   const studio = page.locator('.hca5-studio');
   check('AI questions from Academy AI', await page.locator('.hca5-item').count() === 3 && /Academy AI/.test(await studio.locator('.hca-output-heading small').first().textContent()), `${await page.locator('.hca5-item').count()} items`);
   academy = 'daily';
-  await page.getByRole('button', { name: 'Make questions' }).click();
+  await page.getByRole('button', { name: 'Quiz me' }).click();
   await page.waitForTimeout(1500);
   check('falls back to your own key when the Academy allowance is used', await page.locator('.hca5-item').count() === 4 && /used today/.test(await studio.locator('.hca5-attempts').first().textContent()), `${await page.locator('.hca5-item').count()} items`);
   const download = page.waitForEvent('download');

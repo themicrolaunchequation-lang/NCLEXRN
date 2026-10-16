@@ -225,6 +225,8 @@ const HCA5Types = [
   { id: 'case', label: 'Case study', hint: 'Six clinical judgement steps' },
   { id: 'flashcard', label: 'Flashcards', hint: 'Saved as recall cards', simple: true },
 ];
+// Page studio offers the five types that AI writes most reliably from one page. The others still play in the bank.
+const HCA5StudioTypes = ['single', 'multi', 'truefalse', 'dropdown', 'flashcard'];
 const HCA5TypeLabel = id => HCA5Types.find(t => t.id === id)?.label || id;
 const HCA5Steps = ['Recognize cues', 'Analyze cues', 'Prioritize hypotheses', 'Generate solutions', 'Take action', 'Evaluate outcomes'];
 
@@ -280,7 +282,25 @@ function HCA5ParseJson(raw) {
   return Array.isArray(data) ? data : data.items || data.questions || [];
 }
 
-const HCA5Norm = s => String(s || '').toLowerCase().replace(/[‘’“”"']/g, '').replace(/[^a-z0-9%.]+/g, ' ').trim();
+/* PDF text often differs from what a model copies (line breaks, hyphenation, ligatures, curly quotes,
+   a dropped word). Accept a quote when it appears exactly, or when nearly all of its words appear in
+   one short stretch of the source and at least four words run on in the same order. */
+function HCA5QuoteFound(quote, source) {
+  const q = HCA5Norm(quote), src = HCA5Norm(source);
+  if (q.length < 20) return false;
+  if (src.includes(q)) return true;
+  const qw = q.split(' ').filter(w => w.length > 2), sw = src.split(' ');
+  if (qw.length < 4) return false;
+  const all = q.split(' '), runs = all.slice(0, -3).some((_, i) => src.includes(all.slice(i, i + 4).join(' ')));
+  if (!runs) return false;
+  const span = Math.round(qw.length * 2.2) + 6;
+  for (let i = 0; i < sw.length; i += 3) {
+    const win = new Set(sw.slice(i, i + span));
+    if (qw.filter(w => win.has(w)).length / qw.length >= 0.8) return true;
+  }
+  return false;
+}
+const HCA5Norm = s => String(s || '').normalize('NFKC').toLowerCase().replace(/-\s*\n\s*/g, '').replace(/[‘’“”"']/g, '').replace(/[^a-z0-9%]+/g, ' ').trim();
 const HCA5Str = (v, max = 600) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
 const HCA5Strs = (v, min, max) => (Array.isArray(v) ? v.map(x => HCA5Str(String(x ?? ''), 300)).filter(Boolean) : []).slice(0, max).filter((_, __, a) => a.length >= min);
 const HCA5Idx = (v, n) => Number.isInteger(v) && v >= 0 && v < n;
@@ -302,7 +322,7 @@ function HCA5Normalize(raw, source, shared = {}) {
   const base = { id: ue(), type, category, label: HCA5TypeLabel(type), stem: HCA5Str(raw.stem, 1200), rationale: HCA5Str(raw.rationale, 2000), quote: HCA5Str(raw.quote, 600), ...shared };
   if (type !== 'flashcard' && type !== 'case') {
     if (!base.stem) return 'missing question';
-    if (base.quote.length < 20 || !HCA5Norm(source).includes(HCA5Norm(base.quote))) return 'its supporting quote is not in the source';
+    if (!HCA5QuoteFound(base.quote, source)) return 'its supporting quote is not in the source';
   }
   if (type === 'single') {
     const o = HCA5Strs(raw.options, 3, 6);
@@ -684,7 +704,7 @@ function HCA5PageStudio({ book, page, getText, onTranscript, selection }) {
   const ctx = y(), ready = HCA5Ready();
   const [source, setSource] = _.useState(''), [error, setError] = _.useState(''), [scope, setScope] = _.useState('page');
   const [engine, setEngine] = _.useState(ready.length ? 'auto' : 'source'), [style, setStyle] = _.useState('key');
-  const [types, setTypes] = _.useState(['single', 'multi', 'matrix', 'bowtie']), [count, setCount] = _.useState(5);
+  const [types, setTypes] = _.useState(HCA5StudioTypes), [count, setCount] = _.useState(5);
   const [summary, setSummary] = _.useState(''), [items, setItems] = _.useState([]), [rejected, setRejected] = _.useState([]);
   const [origin, setOrigin] = _.useState(''), [attempts, setAttempts] = _.useState([]), [busy, setBusy] = _.useState(''), [progress, setProgress] = _.useState('');
   const [answers, setAnswers] = _.useState({}), [checked, setChecked] = _.useState({}), [reviewed, setReviewed] = _.useState(false), [savedIds, setSavedIds] = _.useState({});
@@ -700,7 +720,7 @@ function HCA5PageStudio({ book, page, getText, onTranscript, selection }) {
   const hasSelection = selection?.page === page && !!selection.text;
   const input = (scope === 'selection' && hasSelection ? selection.text : source).trim(), bounded = input.slice(0, 8000);
   const localOnly = engine === 'native' || engine === 'webllm';
-  const allowedTypes = HCA5Types.filter(t => !localOnly || t.simple);
+  const allowedTypes = HCA5Types.filter(t => HCA5StudioTypes.includes(t.id) && (!localOnly || t.simple));
   const activeTypes = types.filter(t => allowedTypes.some(a => a.id === t));
   const toggleType = id => setTypes(list => (list.includes(id) ? list.filter(x => x !== id) : [...list, id]));
 
@@ -774,38 +794,36 @@ function HCA5PageStudio({ book, page, getText, onTranscript, selection }) {
   };
   const engineOptions = [HCA5Engines[0], ...ready.map(id => [id, `${HCA5Provider(id).name} only`]), ...HCA5Engines.slice(1)];
 
-  return HC('section', { className: 'hca-page-studio hca5-studio' },
-    HC('div', { className: 'hca-studio-intro' }, HCAEyebrow('FROM THIS PAGE'), HC('h3', {}, 'Turn reading into understanding.'), HC('p', {}, 'Summarize a passage or make practice questions of any type, all tied to this page.')),
-    HC('div', { className: 'hca-studio-source' },
-      HC('strong', {}, `Source · page ${page}`), HC('span', {}, `${input.length.toLocaleString()} characters`),
-      HC('label', { className: 'hca-field' }, 'Use', HC('select', { value: scope, onChange: e => setScope(e.target.value) }, HC('option', { value: 'page' }, 'Current page'), HC('option', { value: 'selection', disabled: !hasSelection }, 'Selected passage'))),
-      HC('details', {}, HC('summary', {}, 'View the text that will be used'), HC('p', {}, bounded || 'No extracted text yet. Use Edit text to add a transcript, or run OCR.')),
-      input.length > 8000 && HC('small', {}, 'Using the first 8,000 characters. Select a passage for a focused result.'),
-      HCABtn('Edit text', () => onTranscript(page), 'secondary', 'edit-line')),
-    HC('label', { className: 'hca-field' }, 'Engine', HC('select', { value: engine, disabled: !!busy, onChange: e => setEngine(e.target.value) }, engineOptions.map(([v, l]) => HC('option', { key: v, value: v }, l)))),
-    HC('p', { className: 'hca-small hca5-engine-note' }, engine === 'auto'
-      ? (ready.length ? `Tries ${ready.map(id => HCA5Provider(id).name).join(' → ')}, then browser AI, then source tools. ` : 'No AI set up yet, so Auto uses browser AI or source tools. ')
-      : engine === 'source' ? 'Key-sentence summaries and fill-the-gap questions from your text. Nothing leaves your device. '
-      : engine === 'webllm' && !HCAAI.engine ? 'Download the local model first (about 1 GB, needs WebGPU). ' : '',
-      HC('button', { className: 'text-link inline', onClick: () => ctx.setModal({ type: 'hca5-ai' }) }, ready.length ? 'Manage AI' : 'Sign in to Academy AI or add a key')),
-    engine === 'webllm' && !HCAAI.engine && HCABtn('Download & enable local AI', () => HCALoadWebLLM().then(() => refresh(n => n + 1)).catch(e => setError(e.message)), 'secondary', 'download-line', { disabled: !navigator.gpu }),
-    HC('fieldset', { className: 'hca5-make' },
-      HC('legend', {}, 'Summary'),
-      HC('div', { className: 'hca5-row' },
-        HC('select', { 'aria-label': 'Summary style', value: style, onChange: e => setStyle(e.target.value) }, HCA5SummaryStyles.map(([v, l]) => HC('option', { key: v, value: v }, l))),
-        HCABtn(busy === 'summary' ? 'Working…' : 'Summarize', () => ask('summary'), 'primary', 'file-text-line', { disabled: !!busy || !bounded }))),
-    HC('fieldset', { className: 'hca5-make' },
-      HC('legend', {}, 'Practice questions'),
+  const engineNote = engine === 'auto'
+    ? (ready.length ? `Uses ${HCA5Provider(ready[0]).name}${ready.length > 1 ? ' first' : ''}; if it is busy, the next option. ` : 'No AI set up yet, so questions are fill-the-gap from your text. ')
+    : engine === 'source' ? 'Key sentences and fill-the-gap questions from your text. Nothing leaves your device. '
+    : engine === 'webllm' && !HCAAI.engine ? 'Download the local model first (about 1 GB, needs WebGPU). ' : '';
+  return HC('section', { className: 'hca-page-studio hca5-studio hca7-studio' },
+    HC('div', { className: 'hca7-head' },
+      HC('strong', {}, hasSelection && scope === 'selection' ? 'Your selected passage' : `Page ${page}`),
+      HC('span', { className: 'hca-small' }, input.length ? `${input.length.toLocaleString()} characters` : 'No text on this page yet'),
+      hasSelection && HC('button', { className: 'text-link inline', onClick: () => setScope(scope === 'selection' ? 'page' : 'selection') }, scope === 'selection' ? 'Use whole page' : 'Use my selection')),
+    !input && HC('p', { className: 'hca-small' }, 'This page has no text yet. ', HC('button', { className: 'text-link inline', onClick: () => onTranscript(page) }, 'Add or extract its text'), ' first.'),
+    HC('div', { className: 'hca7-actions' },
+      HC('div', { className: 'hca7-action' },
+        HCABtn(busy === 'exam' ? 'Writing questions…' : 'Quiz me', () => ask('exam'), 'primary', 'question-line', { disabled: !!busy || !bounded || (engine !== 'source' && !activeTypes.length) }),
+        HC('select', { 'aria-label': 'Number of questions', value: count, onChange: e => setCount(Number(e.target.value)) }, [3, 5, 8, 10].map(n => HC('option', { key: n, value: n }, `${n} questions`)))),
+      HC('div', { className: 'hca7-action' },
+        HCABtn(busy === 'summary' ? 'Summarizing…' : 'Summarize', () => ask('summary'), 'secondary', 'file-text-line', { disabled: !!busy || !bounded }),
+        HC('select', { 'aria-label': 'Summary style', value: style, onChange: e => setStyle(e.target.value) }, HCA5SummaryStyles.map(([v, l]) => HC('option', { key: v, value: v }, l))))),
+    HC('details', { className: 'hca7-options' },
+      HC('summary', {}, 'Options: question types, AI engine, source text'),
       HC('div', { className: 'hca5-types', role: 'group', 'aria-label': 'Question types' }, allowedTypes.map(t =>
         HC('button', { key: t.id, type: 'button', title: t.hint, 'aria-pressed': types.includes(t.id), className: `hca4-tag ${types.includes(t.id) ? 'on' : ''}`, onClick: () => toggleType(t.id), disabled: engine === 'source' }, types.includes(t.id) && HCAIcon('check-line'), t.label))),
-      engine === 'source' && HC('p', { className: 'hca-small' }, 'Source tools make fill-the-gap questions only. Use Academy AI or your own key for every type.'),
-      localOnly && HC('p', { className: 'hca-small' }, 'On-device models handle the simpler types. Use Academy AI or your own key for matrix, bow-tie, case studies and more.'),
-      HC('div', { className: 'hca5-row' },
-        HC('select', { 'aria-label': 'Number of questions', value: count, onChange: e => setCount(Number(e.target.value)) }, [3, 5, 8, 10, 15].map(n => HC('option', { key: n, value: n }, `${n} questions`))),
-        HCABtn(busy === 'exam' ? 'Working…' : 'Make questions', () => ask('exam'), 'primary', 'question-line', { disabled: !!busy || !bounded || (engine !== 'source' && !activeTypes.length) }))),
+      HC('label', { className: 'hca-field' }, 'AI engine', HC('select', { value: engine, disabled: !!busy, onChange: e => setEngine(e.target.value) }, engineOptions.map(([v, l]) => HC('option', { key: v, value: v }, l)))),
+      HC('p', { className: 'hca-small' }, engineNote, HC('button', { className: 'text-link inline', onClick: () => ctx.setModal({ type: 'hca5-ai' }) }, ready.length ? 'Manage AI' : 'Sign in to Academy AI')),
+      engine === 'webllm' && !HCAAI.engine && HCABtn('Download & enable local AI', () => HCALoadWebLLM().then(() => refresh(n => n + 1)).catch(e => setError(e.message)), 'secondary', 'download-line', { disabled: !navigator.gpu }),
+      HC('details', {}, HC('summary', {}, 'View the text that will be used'), HC('p', {}, bounded || 'No extracted text yet.')),
+      input.length > 8000 && HC('small', {}, 'Using the first 8,000 characters. Select a passage for a focused result.'),
+      HCABtn('Edit page text', () => onTranscript(page), 'secondary', 'edit-line')),
     confirm && HC('div', { className: 'hca5-consent', role: 'alertdialog', 'aria-label': 'Confirm sending text' },
       HC('strong', {}, `Send ${bounded.length.toLocaleString()} characters from page ${page} to ${engine === 'auto' ? ready.map(id => HCA5Provider(id).name).join(' or ') : HCA5Provider(engine).name}?`),
-      HC('p', { className: 'hca-small' }, 'Only this text is sent, to the first provider that answers. Open “View the text that will be used” above to check it.'),
+      HC('p', { className: 'hca-small' }, 'Only this text is sent, to the first provider that answers. You can check it under Options.'),
       HC('label', { className: 'hca4-check' }, HC('input', { type: 'checkbox', checked: noPatient, onChange: e => setNoPatient(e.target.checked) }), 'This text contains no patient-identifiable information.'),
       HC('div', { className: 'hca5-row' }, HCABtn('Cancel', () => setConfirm(null), 'secondary', 'close-line'), HCABtn('Send', consent, 'primary', 'send-plane-2-line', { disabled: !noPatient }))),
     (busy || progress) && HC('div', { className: 'hca-ai-progress', role: 'status' }, HC('span', {}, progress || 'Working on this page…'), busy && HC('button', { onClick: () => controller.current?.abort() }, 'Stop')),
@@ -830,9 +848,8 @@ function HCA5PageStudio({ book, page, getText, onTranscript, selection }) {
         HC('div', { className: 'hca5-row' },
           HCABtn(savedIds[item.id] ? 'Saved' : item.type === 'flashcard' ? 'Save as recall card' : 'Save to bank', () => saveItems([item]), 'secondary', 'check-line', { disabled: !!savedIds[item.id] }),
           HC('button', { className: 'text-link', onClick: () => setItems(list => list.filter(x => x.id !== item.id)) }, 'Remove')))),
-      HC('label', { className: 'hca-recall-verify' }, HC('input', { type: 'checkbox', checked: reviewed, onChange: e => setReviewed(e.target.checked) }), 'I checked these drafts against the original page.'),
       HC('div', { className: 'hca-sidecar-actions' },
-        HCABtn('Save all', () => saveItems(items.filter(i => !savedIds[i.id])), 'primary', 'check-double-line', { disabled: !reviewed || items.every(i => savedIds[i.id]) }),
+        HCABtn('Save all to my bank', () => saveItems(items.filter(i => !savedIds[i.id])), 'primary', 'check-double-line', { disabled: items.every(i => savedIds[i.id]) }),
         HCABtn('Practise now', () => ctx.setModal({ type: 'hca4-ngn', items: items.filter(i => i.type !== 'flashcard').map(i => ({ ...i, ...meta })), title: `Page ${page}` }), 'secondary', 'play-fill', { disabled: !items.some(i => i.type !== 'flashcard') })),
       HC('p', { className: 'hca-small' }, 'AI drafts can be wrong. Each question here quotes your page; check the answer against it before you rely on it. Practice questions are for learning, not a validated exam.')));
 }
