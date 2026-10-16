@@ -4,13 +4,13 @@
 
 ### Academy AI: AI for members, with no keys
 - **Academy AI is now the first AI engine.** Members sign in once with their Evinca email and password (AI providers → Academy AI). From then on, summaries and every question type work with nothing to set up.
-- **Runs on the Academy's own service.** This is a Supabase Edge Function, `lumen-ai`, that holds the Academy's paid Gemini and Groq keys. The keys never reach the browser.
+- **Runs on the Academy's own service.** This is a Supabase Edge Function, `lumen-ai`, that holds the Academy's paid OpenAI and Groq keys (Gemini is optional). The keys never reach the browser.
 - **Daily allowance by Evinca level.** The defaults are 15, 30 and 60 requests a day, plus an Academy-wide daily ceiling that caps spending. The dialog shows how many requests are left today.
 - **Shared answer store.** A request that another member already sent is answered from the store and does not use the allowance.
 - **Fallback is unchanged.** When the allowance is used up or the service is busy, Lumen moves on to any key the member added, then browser AI, local AI and source tools. A request is given back if no provider answers.
 - **The sign-in is kept like the keys.** It stays in this browser (or this tab only) and is never included in backups. **Sign out** removes it.
 - **Wording:** the AI dialog and Page studio now name Academy AI next to "your own keys".
-- **Not deployed yet.** `ACADEMY_AI.md` explains the choice for 500+ members, the cost (about $40 a month typical, at most about $125 with the default ceiling) and the setup steps.
+- **Not deployed yet.** `ACADEMY_AI.md` explains the choice for 500+ members, compares the cheapest suitable models, gives the cost (about $50 a month typical with GPT-6 Luna, at most about $145 with the default ceiling) and the setup steps.
 
 ### How it was tested
 - **Edge Function handler:** 12 unit tests with simulated Supabase and providers. They cover sign-in, Evinca level, allowance, ceiling, fallback on 429, 5xx or no connection, the refund, the cache, size limits, and that prompt text is never logged.

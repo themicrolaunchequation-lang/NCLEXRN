@@ -15,7 +15,7 @@ const HCA6_SESSION = 'lumen.academy.session';
 HCA5Providers.unshift({
   id: 'academy', name: 'Academy AI', kind: 'academy', model: 'academy', tier: 'academy',
   free: 'Included with your Evinca membership, with a daily allowance. No key to set up.',
-  privacy: 'Runs on the Academy’s paid AI accounts (Google Gemini, with Groq as backup), which do not use your text to train models. A request that another member already sent is answered from a shared store, without using your allowance.',
+  privacy: 'Runs on the Academy’s paid AI accounts (OpenAI, with Groq as backup), which do not use your text to train models. A request that another member already sent is answered from a shared store, without using your allowance.',
 });
 if (!HCA5Store.config.order.includes('academy')) HCA5Store.config.order.unshift('academy');
 if (!HCA5Store.config.providers.academy) HCA5Store.config.providers.academy = { enabled: true };

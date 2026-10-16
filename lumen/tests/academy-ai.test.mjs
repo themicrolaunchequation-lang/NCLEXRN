@@ -10,7 +10,7 @@ function setup({ env = {}, level = 1, providers = {}, used = 0, ceilingUsed = 0 
   const vars = { GEMINI_API_KEY: 'g-key', GROQ_API_KEY: 'q-key', ...env };
   const reply = (status, body) => new Response(typeof body === 'string' ? body : JSON.stringify(body), { status });
   const fetch = async (url, init) => {
-    const id = url.includes('googleapis') ? 'gemini' : url.includes('groq') ? 'groq' : 'openrouter';
+    const id = url.includes('googleapis') ? 'gemini' : url.includes('groq') ? 'groq' : url.includes('openai.com') ? 'openai' : 'openrouter';
     state.calls.push({ id, body: JSON.parse(init.body), headers: init.headers });
     const plan = providers[id] ?? 200;
     if (plan === 'down') throw new TypeError('fetch failed');
@@ -70,12 +70,12 @@ test('refuses accounts without an Evinca level', async () => {
 });
 
 test('answers with the first provider and counts one request', async () => {
-  const { post, state } = setup();
+  const { post, state } = setup({ env: { LUMEN_AI_PROVIDERS: 'gemini,groq' } });
   const res = await post(ask);
   const body = await res.json();
   assert.equal(res.status, 200);
   assert.equal(body.provider, 'gemini');
-  assert.equal(body.model, 'gemini-2.5-flash-lite');
+  assert.equal(body.model, 'gemini-3.1-flash-lite');
   assert.equal(body.remaining, 14);
   assert.equal(state.calls[0].headers['x-goog-api-key'], 'g-key');
   assert.ok(!JSON.stringify(state.logs).includes('heart'), 'prompt text must not be logged');
@@ -83,7 +83,7 @@ test('answers with the first provider and counts one request', async () => {
 
 test('falls back to Groq when Gemini is rate limited or down', async () => {
   for (const plan of [429, 500, 'down']) {
-    const { post, state } = setup({ providers: { gemini: plan } });
+    const { post, state } = setup({ providers: { gemini: plan }, env: { LUMEN_AI_PROVIDERS: 'gemini,groq' } });
     const body = await (await post(ask)).json();
     assert.equal(body.provider, 'groq', String(plan));
     assert.equal(state.calls[1].body.reasoning_effort, 'low');
@@ -120,7 +120,7 @@ test('a repeated request is served from the shared cache without using the allow
 });
 
 test('rejects oversized passages and caps output tokens', async () => {
-  const { post, state } = setup();
+  const { post, state } = setup({ env: { LUMEN_AI_PROVIDERS: 'gemini' } });
   assert.equal((await post({ ...ask, prompt: 'x'.repeat(30001) })).status, 413);
   await post({ ...ask, maxTokens: 99999 });
   assert.equal(state.calls[0].body.generationConfig.maxOutputTokens, 4000);
@@ -137,4 +137,21 @@ test('reports when no provider key is set', async () => {
   const res = await post(ask);
   assert.equal(res.status, 503);
   assert.match((await res.json()).message, /not set up/);
+});
+
+test('default order uses OpenAI first when its key is set, with current request fields', async () => {
+  const { post, state } = setup({ env: { OPENAI_API_KEY: 'o-key' } });
+  const body = await (await post(ask)).json();
+  assert.equal(body.provider, 'openai');
+  assert.equal(body.model, 'gpt-6-luna');
+  const sent = state.calls[0].body;
+  assert.equal(sent.max_completion_tokens, 800 + 1024);
+  assert.equal(sent.temperature, undefined);
+  assert.equal(sent.max_tokens, undefined);
+  assert.equal(state.calls[0].headers.Authorization, 'Bearer o-key');
+});
+
+test('without an OpenAI key the default order starts with Groq', async () => {
+  const { post } = setup();
+  assert.equal((await (await post(ask)).json()).provider, 'groq');
 });

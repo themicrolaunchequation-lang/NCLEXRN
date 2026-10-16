@@ -7,7 +7,8 @@
 //   2. Checks the token, then the member's Evinca level (public.platform_level()).
 //   3. Returns a cached answer if another member already sent exactly the same request.
 //   4. Takes one request from the member's daily allowance and from the Academy's daily ceiling.
-//   5. Tries the Academy's providers in order (default: Gemini, then Groq) and returns the first answer.
+//   5. Tries the Academy's providers in order (default: OpenAI, then Groq, then Gemini; only those
+//      with a key set) and returns the first answer.
 //      If none answers, the request is given back to the member.
 // Prompt text is never logged.
 
@@ -21,9 +22,10 @@ const CORS = {
 const LIMITS = { system: 4000, prompt: 30000, maxTokens: 4000 };
 
 export const PROVIDERS = {
-  gemini: { key: 'GEMINI_API_KEY', model: 'GEMINI_MODEL', fallbackModel: 'gemini-2.5-flash-lite', name: 'Gemini' },
+  openai: { key: 'OPENAI_API_KEY', model: 'OPENAI_MODEL', fallbackModel: 'gpt-6-luna', name: 'OpenAI', base: 'https://api.openai.com/v1' },
+  gemini: { key: 'GEMINI_API_KEY', model: 'GEMINI_MODEL', fallbackModel: 'gemini-3.1-flash-lite', name: 'Gemini' },
   groq: { key: 'GROQ_API_KEY', model: 'GROQ_MODEL', fallbackModel: 'openai/gpt-oss-20b', name: 'Groq', base: 'https://api.groq.com/openai/v1' },
-  openrouter: { key: 'OPENROUTER_API_KEY', model: 'OPENROUTER_MODEL', fallbackModel: 'google/gemini-2.5-flash-lite', name: 'OpenRouter', base: 'https://openrouter.ai/api/v1' },
+  openrouter: { key: 'OPENROUTER_API_KEY', model: 'OPENROUTER_MODEL', fallbackModel: 'google/gemini-3.1-flash-lite', name: 'OpenRouter', base: 'https://openrouter.ai/api/v1' },
 };
 
 /** "1:15,2:30,3:60" -> {1:15, 2:30, 3:60} */
@@ -66,6 +68,18 @@ export async function callProvider(id, env, fetcher, { system, prompt, json: wan
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
         body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents: [{ role: 'user', parts: [{ text: prompt }] }],
           generationConfig: { temperature: 0.2, maxOutputTokens: maxTokens, ...(wantJson ? { responseMimeType: 'application/json' } : {}) } }),
+      });
+    } else if (id === 'openai') {
+      // Current OpenAI models take max_completion_tokens and only the default temperature.
+      // The extra 1,024 tokens leave room for hidden reasoning, which is billed as output.
+      const effort = env('OPENAI_REASONING_EFFORT');
+      res = await fetcher(`${p.base}/chat/completions`, {
+        method: 'POST', signal: ctl.signal,
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+        body: JSON.stringify({ model, max_completion_tokens: maxTokens + 1024,
+          messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
+          ...(effort ? { reasoning_effort: effort } : {}),
+          ...(wantJson ? { response_format: { type: 'json_object' } } : {}) }),
       });
     } else {
       const reasoning = /gpt-oss/.test(model);
@@ -151,7 +165,7 @@ export function createHandler(deps) {
     if (remaining === -1) return json(429, { error: 'daily', retryAfter, message: `You have used today’s ${allowance} Academy AI requests. They reset at midnight UTC.` });
     if (remaining === -2) return json(429, { error: 'academy', retryAfter, message: 'Academy AI has reached its limit for today. It resets at midnight UTC.' });
 
-    const order = (env('LUMEN_AI_PROVIDERS') || 'gemini,groq').split(',').map(s => s.trim()).filter(id => PROVIDERS[id] && env(PROVIDERS[id].key));
+    const order = (env('LUMEN_AI_PROVIDERS') || 'openai,groq,gemini').split(',').map(s => s.trim()).filter(id => PROVIDERS[id] && env(PROVIDERS[id].key));
     const tried = [];
     for (const id of order) {
       try {

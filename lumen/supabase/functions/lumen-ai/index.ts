@@ -1,12 +1,14 @@
 // Supabase Edge Function "lumen-ai": Academy AI for Lumen members.
 // The logic lives in handler.mjs (tested in Node); this file wires it to Supabase.
 //
-// Secrets (Supabase → Edge Functions → Secrets):
-//   GEMINI_API_KEY          Academy's Google AI Studio key, on a PAID (billing-enabled) project
-//   GROQ_API_KEY            Academy's Groq key (fallback)
-//   OPENROUTER_API_KEY      optional third provider
-//   LUMEN_AI_PROVIDERS      order, default "gemini,groq"
-//   GEMINI_MODEL / GROQ_MODEL / OPENROUTER_MODEL   optional model overrides
+// Secrets (Supabase → Edge Functions → Secrets). Set a key only for the providers you use:
+//   OPENAI_API_KEY          main provider (default model gpt-6-luna)
+//   GROQ_API_KEY            backup (default model openai/gpt-oss-20b)
+//   GEMINI_API_KEY          optional, on a PAID (billing-enabled) Google project (default gemini-3.1-flash-lite)
+//   OPENROUTER_API_KEY      optional
+//   LUMEN_AI_PROVIDERS      order, default "openai,groq,gemini" (providers without a key are skipped)
+//   OPENAI_MODEL / GROQ_MODEL / GEMINI_MODEL / OPENROUTER_MODEL   optional model overrides
+//   OPENAI_REASONING_EFFORT optional, e.g. "low" or "minimal" if the chosen model supports it
 //   LUMEN_AI_DAILY          requests per member per day by Evinca level, default "1:15,2:30,3:60"
 //   LUMEN_AI_ACADEMY_DAILY  requests per day for all members together, default 3000
 // SUPABASE_URL, SUPABASE_ANON_KEY and SUPABASE_SERVICE_ROLE_KEY are provided by Supabase.
