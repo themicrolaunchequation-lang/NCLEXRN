@@ -89,6 +89,7 @@ export async function callProvider(id, env, fetcher, { system, prompt, json: wan
         body: JSON.stringify({ model, temperature: 0.2, max_tokens: maxTokens + (reasoning ? 1024 : 0),
           messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
           ...(reasoning && id === 'groq' ? { reasoning_effort: 'low' } : {}),
+          ...(reasoning && id === 'openrouter' ? { reasoning: { effort: 'low', exclude: true } } : {}),
           ...(wantJson ? { response_format: { type: 'json_object' } } : {}) }),
       });
     }

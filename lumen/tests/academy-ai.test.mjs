@@ -155,3 +155,11 @@ test('without an OpenAI key the default order starts with Groq', async () => {
   const { post } = setup();
   assert.equal((await (await post(ask)).json()).provider, 'groq');
 });
+
+test('OpenRouter with gpt-oss-120b asks for low reasoning effort', async () => {
+  const { post, state } = setup({ env: { GEMINI_API_KEY: '', GROQ_API_KEY: '', OPENROUTER_API_KEY: 'r-key', OPENROUTER_MODEL: 'openai/gpt-oss-120b', LUMEN_AI_PROVIDERS: 'openrouter,openai' } });
+  const body = await (await post(ask)).json();
+  assert.equal(body.provider, 'openrouter');
+  assert.deepEqual(state.calls[0].body.reasoning, { effort: 'low', exclude: true });
+  assert.equal(state.calls[0].body.model, 'openai/gpt-oss-120b');
+});

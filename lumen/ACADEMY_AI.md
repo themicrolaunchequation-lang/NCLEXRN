@@ -52,10 +52,35 @@ Prices below are third-party reports from Sept–Oct 2026. The official pricing 
 | Claude Haiku 4.5 (Anthropic) | $1 / $5 | ~$0.016 | ~$480 | ~$1,440 | Highest quality of these, about 10× the cost. Not needed for this task. |
 | DeepSeek | ~$0.14–0.30 / ~$0.28–0.50 | ~$0.001 | ~$30 | ~$90 | **Not advised.** Data is stored in China, with training on by default and no zero-retention option. That is a poor fit for a UK health academy under GDPR. |
 
-**Recommendation:** buy an **OpenAI** key as the main one and a **Groq** key as the backup. Expect about **$35–50 a month** for 500 members, with a hard limit of about $145 a month from the default ceiling.
+**Recommendation:** for the lowest cost, see "Cheaper than buying direct?" below: an **OpenRouter** key with gpt-oss-120b (about $19 a month). Otherwise buy an **OpenAI** key as the main one and a **Groq** key as the backup. Expect about **$35–50 a month** for 500 members, with a hard limit of about $145 a month from the default ceiling.
 - **Repeats are free.** Requests already in the shared store cost nothing.
 - **More members:** for about 1,000 members, double `LUMEN_AI_ACADEMY_DAILY`.
 - **Hidden reasoning:** if GPT-6 Luna turns out to be a reasoning model, its hidden reasoning is billed as output. Set `OPENAI_REASONING_EFFORT=low` (or `minimal`) to keep requests near the figures above, and watch the first week's usage page.
+
+## Cheaper than buying direct?
+
+**Yes, legitimately, in three ways:**
+
+1. **Buy an open model from a low-cost host (the biggest saving).** OpenAI's open-weight gpt-oss models are sold by many hosts at different prices. They are reached through **OpenRouter**: one key, and it routes to a low-cost host such as DeepInfra.
+
+   | Model via OpenRouter | Price per million tokens (in / out, lowest host reported) | Per request | 500 members, typical month | At the ceiling |
+   |---|---|---|---|---|
+   | gpt-oss-120b | ~$0.04 / $0.17 | ~$0.0006 | **~$19** | ~$58 |
+   | gpt-oss-20b | ~$0.02 / $0.09 | ~$0.0003 | ~$10 | ~$30 |
+
+   gpt-oss-120b is a stronger model than Groq's 20b, at about 40% of GPT-6 Luna's price. Lumen's function already supports it, with no code change. Set `OPENROUTER_API_KEY`, `OPENROUTER_MODEL=openai/gpt-oss-120b` and `LUMEN_AI_PROVIDERS=openrouter,openai`; the function asks for low reasoning effort. In OpenRouter → **Settings → Privacy**, allow only providers that do not train on or keep prompts. OpenRouter adds a small fee when you buy credits.
+2. **Discounts from the same company.**
+   - Prompt caching: the repeated instructions in each request are billed at a fraction of the price automatically.
+   - Batch processing: about 50% off when results can wait hours, for example building an Academy question bank overnight.
+   - Lumen's shared answer store: repeats cost nothing.
+3. **Free credits for a new company.**
+   - **Microsoft for Startups:** Azure credits that can pay for Azure OpenAI. No investor is needed to apply.
+   - **Google for Startups Cloud:** credits for Gemini. Large tiers need an investor or accelerator.
+   - **AWS Activate Founders:** a few thousand dollars, usable on Amazon Bedrock, which also hosts gpt-oss.
+
+   Any of these could cover a year or more at this scale. Using them needs a small code change for that provider's address.
+
+**Avoid "cheap key" shops.** These are discount resellers, relay sites, and keys sold on Telegram or marketplaces. A July 2026 investigation found they typically resell abused free trials, leaked keys, or capacity bought with stolen cards. Reselling breaks the providers' terms, so access can stop overnight and take your prepaid balance with it. Every member's text would also pass through an unknown middleman, which is not acceptable for a UK health academy under GDPR.
 
 ## What you need to do (about 20 minutes)
 
@@ -90,6 +115,9 @@ Evinca's sign-in page must accept the email and password a member types into Lum
 - Mistral: [CloudZero](https://www.cloudzero.com/blog/mistral-api-pricing)
 - Claude Haiku 4.5: [AnotherWrapper](https://anotherwrapper.com/llm-pricing/claude-haiku-4-5-20251001)
 - DeepSeek data location: [Deepak Gupta model catalog](https://guptadeepak.com/ai-models/deepseek/deepseek-v4-pro/)
+- gpt-oss hosts: [AnotherWrapper](https://anotherwrapper.com/tools/llm-pricing/gpt-oss-120b/gpt-oss-20b), [ComputePrices](https://computeprices.com/api-pricing/gpt-oss), [PricePerToken](https://pricepertoken.com/pricing-page/model/openai-gpt-oss-120b)
+- Startup credits: [Causo comparison](https://hub.causo.ai/startup-cloud-credits-compared-2026), [Deepak Gupta](https://guptadeepak.com/aws-activate-vs-microsoft-for-startups-vs-google-for-startups-2026-who-each-one-is-actually-for/)
+- Key-reseller risks: [Simon Willison on the relay market](https://simonwillison.net/2026/Jul/26/relay-market), [Developers Digest](https://www.developersdigest.tech/blog/ai-token-relay-market-fraud-hn-analysis)
 - Price roundups: [BenchLM](https://benchlm.ai/llm-pricing), [Morph LLM APIs](https://www.morphllm.com/llm-api)
 - Groq prices: [Morph (Oct 2026)](https://www.morphllm.com/groq-pricing), [eesel](https://eesel.ai/blog/groq-pricing), [Groq docs: your data](https://console.groq.com/docs/your-data)
 - Puter user-pays model: [docs.puter.com](https://docs.puter.com/user-pays-model/)
