@@ -1,5 +1,45 @@
 # Lumen changelog
 
+## v9: 16 October 2026: a welcoming Today, the Study desk explained, and readable cards
+
+### Today
+- **A new welcome hero.** It greets you by time of day, and the headline ends on a word that changes: clarity, confidence, calm, mastery. The animated background drifts slowly, and floating cards preview a recall card, the focus timer and your streak.
+- **Live numbers that count up:** your streak, cards due, focus minutes today and days to your exam. Each number opens the matching tool.
+- **One main button that adapts:** it says Review N cards, Continue reading or Add a source, depending on what you need next.
+- **"What Lumen can do".** Eight animated tiles introduce the advanced features, and each one opens the feature.
+- **Where your work is saved.** A strip shows your sources, items and storage used, with "Where is it saved?" and "Back up now".
+- **Respects reduced motion.** Animations stop when the device asks for reduced motion.
+
+### Where is my work saved?
+A new window explains it in plain language, with a diagram: You study → This browser → Backup file.
+- **What is saved where:** library files are in the browser's document store; notes, highlights, cards, the Study desk and ink are in the workspace store; the backup .json goes to your Downloads folder and includes everything.
+- **When work can seem to disappear:** using another browser or computer, clearing site data, or a private window.
+- **Storage used,** and a "Protect from clean-up" button (the browser's persistent storage).
+- **Shortcuts:** Back up now, Restore a backup.
+
+### Study desk
+- **How to use the desk** (new sidebar link, and a "?" in every desk window).
+  - **Start here:** an animated seven-step study session: Plan → Focus → Read → Map → Blurt → Track → Recall.
+  - **What to do with the time you have:** 10 minutes, an hour, a study day, exam week.
+  - **For every tool:** what it is, how to use it, when to use it, and a tip.
+- **Techniques:** ten evidence-based techniques told as one nurse's story, with an animated illustration, an evidence rating and the research behind it.
+  - The ten: retrieval practice, spacing, interleaving, elaboration, explaining simply, dual coding, concrete cases, focused sessions, calibration and if–then plans.
+  - Each chapter has three steps and a "Try it in Lumen" button.
+- **Blurt pad:** write everything you remember about a topic against a timer. Lumen then compares it with your own notes, highlights and cards, and shows the key terms you recalled and missed. You can send missed terms to the Board.
+- **Lab values:** common adult NCLEX reference ranges in 10 groups.
+  - Units: US or SI.
+  - Each value has a clinical cue.
+  - Search, and Quiz me mode, which hides the values until you reveal them.
+  - A clear note that ranges vary by lab.
+- **Focus sounds** in the Focus timer: brown, pink and white noise and soft rain. They are generated on the device, with a volume control.
+
+### Easier to read
+- **Recall cards:** the question is now in a clear sans-serif, larger and dark navy, on a warm white card with a teal edge. The answer side is deep teal with white text. Hints and labels are larger and darker.
+- **Study page:** card previews have bigger, bolder questions, and the revealed answer is easier to read.
+- **Page headers:** the empty space under the top bar is gone. Page titles sit in a compact header band with a slowly moving accent line.
+
+- **Smoke test: 25 checks.** New: welcome hero, storage guide, desk guide, lab values, blurt pad.
+
 ## v8: 16 October 2026: Study desk
 
 A new **Study desk** group in the sidebar holds five tools. Each opens in a window you can move, resize (from the corner) and maximise, so it sits beside your reading. Everything works offline, uses no AI, and is saved in your workspace and backups.

@@ -282,6 +282,30 @@ try {
   const deskState = await saved(page);
   check('study desk: board, canvas and focus timer', nodes >= 5 && badge === 1 && deskState?.hcaBoard?.cards?.some(c => c.title === 'Smoke board card'), `nodes ${nodes}, badge ${badge}`);
 
+  // v9: welcome hero, storage explainer, desk guide, blurt pad, lab values.
+  await go(page, 'home');
+  const hero = await page.locator('.hca9-hero').count(), tiles = await page.locator('.hca9-tile').count();
+  await page.getByRole('button', { name: 'Where is it saved?' }).click();
+  const savedWin = await page.locator('.hca9-saved-win').count();
+  await page.locator('.hca8-win button[aria-label^="Close"]').last().click();
+  await page.locator('.hca8-desk-nav button', { hasText: 'How to use the desk' }).click();
+  const flow = await page.locator('.hca9-flow li').count();
+  await page.locator('.hca8-win button[aria-label^="Close"]').last().click();
+  await page.locator('.hca8-desk-nav button', { hasText: 'Lab values' }).click();
+  await page.locator('.hca9-labs-win input').fill('potassium');
+  const lab = await page.locator('.hca9-labs-win td.val').first().textContent();
+  await page.locator('.hca8-win button[aria-label^="Close"]').last().click();
+  await page.locator('.hca8-desk-nav button', { hasText: 'Blurt pad' }).click();
+  await page.locator('.hca9-blurt-win input').fill('Smoke topic');
+  await page.getByRole('button', { name: 'Start', exact: true }).click();
+  await page.locator('.hca9-blurt-text').fill('everything I remember');
+  await page.getByRole('button', { name: 'Check now' }).click();
+  await page.getByRole('button', { name: 'Save and finish' }).click();
+  await page.locator('.hca8-win button[aria-label^="Close"]').last().click();
+  await page.waitForTimeout(1500);
+  const blurts = (await saved(page))?.hcaBlurts?.length || 0;
+  check('v9: welcome hero, storage guide, desk guide, lab values, blurt pad', hero === 1 && tiles === 8 && savedWin === 1 && flow === 7 && /3\.5/.test(lab || '') && blurts === 1, `hero ${hero}, tiles ${tiles}, saved ${savedWin}, flow ${flow}, lab ${lab}, blurts ${blurts}`);
+
   // Phones: nothing wider than the screen.
   for (const width of [360, 390, 414]) {
     const phone = await browser.newContext({ viewport: { width, height: 844 }, isMobile: true, hasTouch: true });

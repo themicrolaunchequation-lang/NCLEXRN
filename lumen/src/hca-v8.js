@@ -12,6 +12,7 @@ function HCA8Window({ id, title, icon, onClose, children, className = '', action
   return HC('section', { ref: win.ref, className: `hca7-float hca8-win ${className} ${max ? 'max' : ''}`, style: max ? undefined : win.style, 'aria-label': title, role: 'dialog' },
     HC('header', { ...(max ? {} : win.header), title: max ? undefined : 'Drag to move · double-click to reset' },
       !max && HCAIcon('draggable'), HCAIcon(icon), HC('strong', {}, title), HC('span', { className: 'grow' }), actions,
+      typeof HCA9Guide !== 'undefined' && HCA9Guide.some(g => g.id === id) && HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': `How to use ${title}`, title: 'How to use this', onClick: () => HCA9OpenGuide(id) }, HCAIcon('question-line')),
       HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': max ? 'Restore window size' : 'Maximise window', onClick: () => setMax(!max) }, HCAIcon(max ? 'fullscreen-exit-line' : 'fullscreen-line')),
       HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': `Close ${title}`, onClick: onClose }, HCAIcon('close-line'))),
     HC('div', { className: 'hca8-body' }, children));
@@ -36,7 +37,11 @@ function HCA8SideDesk() {
       item('canvas', 'edit-line', 'Canvas', 'Whiteboard for concept maps and flows'),
       item('timer', 'timer-line', 'Focus timer', 'Pomodoro focus sessions and breaks', t.running ? HC('b', { className: 'hca8-badge' }, HCA8Fmt(t.left)) : null),
       item('planner', 'time-line', 'Planner', 'Exam countdown and weekly timetable'),
-      item('calc', 'stethoscope-line', 'Calculator', 'Clinical and scientific calculator')));
+      item('blurt', 'brain-line', 'Blurt pad', 'Write from memory, then check what you missed'),
+      item('labs', 'heart-pulse-line', 'Lab values', 'Reference ranges with a quiz mode'),
+      item('techniques', 'lightbulb-line', 'Techniques', 'Proven study techniques, told as a story'),
+      item('calc', 'stethoscope-line', 'Calculator', 'Clinical and scientific calculator'),
+      HC('button', { type: 'button', className: `hca9-guide-link ${desk.guide ? 'hca8-on' : ''}`, title: 'What each tool is, how and when to use it', onClick: () => desk.guide ? HCA8Close('guide') : HCA9OpenGuide('overview') }, HCAIcon('question-line'), HC('span', {}, 'How to use the desk'))));
 }
 
 /* ---------- Focus timer (keeps running when its window is closed) ---------- */
@@ -114,6 +119,7 @@ function HCA8Timer() {
       HC('div', {}, HC('strong', {}, `${(week.reduce((a, l) => a + l.minutes, 0) / 60).toFixed(1)} h`), HC('span', {}, 'this week'))),
     HC('div', { className: 'hca8-bars', role: 'img', 'aria-label': `Focus minutes this week: ${byDay.map(([d, m]) => `${d} ${m}`).join(', ')}` },
       byDay.map(([d, m]) => HC('div', { key: d }, HC('span', { style: { height: `${Math.round(m / peak * 100)}%` }, title: `${m} min` }), HC('small', {}, d)))),
+    HC(HCA9SoundRow),
     HC('details', { className: 'hca8-settings' }, HC('summary', {}, 'Timer settings'),
       HC('div', { className: 'hca8-grid4' }, [['focus', 'Focus', 5, 120], ['short', 'Short break', 1, 30], ['long', 'Long break', 5, 60], ['every', 'Long break every', 2, 8]].map(([k, l, min, max]) => HC('label', { key: k }, l, HC('input', { type: 'number', min, max, value: cfg[k], onKeyDown: e => e.stopPropagation(), onChange: e => setCfg({ [k]: HCABound(Math.round(Number(e.target.value) || min), min, max) }) }), HC('small', {}, k === 'every' ? 'rounds' : 'min')))),
       HC('div', { className: 'hca8-row' }, [25, 50, 90].map(m => HC('button', { key: m, type: 'button', className: 'hca4-tag', onClick: () => { setCfg({ focus: m, short: m >= 50 ? 10 : 5, long: m >= 50 ? 20 : 15 }); if (!t.running) HCA8TSet({ phase: 'focus', left: m * 60 }); } }, `${m} / ${m >= 50 ? 10 : 5}`))),
@@ -379,7 +385,7 @@ function HCA8Planner() {
 /* ---------- Mount ---------- */
 function HCA8Floats() {
   const ui = HCA7Use(), d = ui.desk || {};
-  return HC(_.Fragment, {}, HC(HCA8TimerHost), S.createPortal(HC(_.Fragment, {}, d.board && HC(HCA8Board), d.canvas && HC(HCA8Canvas), d.timer && HC(HCA8Timer), d.planner && HC(HCA8Planner)), document.body));
+  return HC(_.Fragment, {}, HC(HCA8TimerHost), S.createPortal(HC(_.Fragment, {}, d.board && HC(HCA8Board), d.canvas && HC(HCA8Canvas), d.timer && HC(HCA8Timer), d.planner && HC(HCA8Planner)), document.body), HC(HCA9Floats));
 }
 const HCA8Prev = { Dialogs: rs, Commands: HCA3Commands };
 rs = function HCA8DialogRouter() { return HC(_.Fragment, {}, HC(HCA8Prev.Dialogs), HC(HCA8Floats)); };
