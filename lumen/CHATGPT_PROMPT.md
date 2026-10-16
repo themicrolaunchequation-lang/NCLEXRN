@@ -103,7 +103,7 @@ Bundled icon names (use only these):
   - Six NGN-style practice items with partial credit and a timed mode.
   - A Hard rating (keys `1–4`).
   - "From your highlights" on Today.
-  - The OCR start-up bug fixed, and the engine gzipped (16.0 → 12.9 MB).
+  - OCR fixed (it now runs from a local file or a website, with the engine and worker loaded as one script), and the engine gzipped (16.0 → 12.9 MB).
 
 ## 4. Your tasks, in priority order
 Finish each task, with its acceptance criteria met, before starting the next.

@@ -102,7 +102,7 @@ Both rounds are separate layers that `lumen/tools/build.mjs` injects into the ap
   - A fourth rating, Hard (keys `1–4`), which backups accept.
   - "From your highlights" brings back one older highlight a day as a ready-made card draft.
 - **OCR:**
-  - Fixed a bug in the original file that stopped OCR from starting.
+  - Fixed the bugs in the original file that stopped OCR from starting, including when the file is opened from a computer.
   - The engine is now compressed, so the file is 12.9 MB instead of 16.0 MB.
 
 ## 5. What is still to do

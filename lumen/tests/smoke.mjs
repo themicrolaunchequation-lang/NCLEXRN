@@ -106,6 +106,20 @@ try {
   await page.waitForTimeout(300);
   check('reader focus mode toggles with Z and Esc', focused === 1 && await page.locator('.app-shell.focus-active').count() === 0);
 
+  // OCR reads a printed image, even from a local file:// copy.
+  const ocr = await page.evaluate(async () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 600; canvas.height = 140;
+    const g = canvas.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, 600, 140);
+    g.fillStyle = '#000'; g.font = '48px sans-serif'; g.fillText('CARDIAC OUTPUT', 30, 90);
+    const worker = await window.LumenOCR.createWorker(() => {});
+    const result = await worker.recognize(canvas);
+    await worker.terminate();
+    return result.data.text.trim();
+  }).catch(e => `error: ${e.message}`);
+  check('OCR reads a printed test image', ocr.includes('CARDIAC OUTPUT'), ocr.slice(0, 80));
+
   // Phones: nothing wider than the screen.
   for (const width of [360, 390, 414]) {
     const phone = await browser.newContext({ viewport: { width, height: 844 }, isMobile: true, hasTouch: true });

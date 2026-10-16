@@ -1,5 +1,12 @@
 # Lumen changelog
 
+## v4.1: 16 October 2026
+
+- **OCR now works when Lumen is opened straight from your computer** (`file://`), not only from a website. Before, "Extract printed text locally" stopped at "Loading English recognition model…" and then showed "OCR could not complete". The browser refused to load the OCR engine as a separate in-memory file. The engine and its worker now load as one script, so nothing has to be fetched while OCR runs.
+- **The upload consent checkbox sits beside its sentence again**, instead of below it.
+- **The smoke test now checks OCR**, so it now has 13 checks.
+- **Tested:** the reported failure was reproduced through the real screens (upload a scanned page, open it, open the transcript editor, press Extract), then the new build was confirmed to fill in the page text. OCR works both from a local file and over http.
+
 ## v4: 15 October 2026
 
 The second round of the improvement plan. Built with `node lumen/tools/build.mjs <input> [output]` from the original file or any earlier build; the result is the same either way.
@@ -56,7 +63,6 @@ The second round of the improvement plan. Built with `node lumen/tools/build.mjs
 ### OCR
 - **Fixed a bug in the original file that stopped OCR from ever starting.** The OCR library treated the engine's in-memory (blob) address as a folder and added a file name to it. OCR now reads a test image correctly in under a second.
 - **The OCR engine is gzipped** and unpacked only when OCR is first used. The file shrinks from 16.0 MB to 12.9 MB.
-- Browsers block OCR when the file is opened directly from disk (`file://`). It works when the file is served over http(s), for example from Evinca.
 
 ### How it was tested
 - `lumen/tests/smoke.mjs`: 12 checks pass, at 1440px wide and on 360, 390 and 414px phones.

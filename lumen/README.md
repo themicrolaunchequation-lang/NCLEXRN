@@ -8,7 +8,7 @@ Lumen is the Healthcare Crown Academy study app: a local-first reader, notes and
 | `src/hca-v3.js`, `src/hca-v3.css` | v3 layer: Today's plan, command palette, shortcuts, adaptive (FSRS) scheduling, progress insights, goal dialog, phone fixes. |
 | `src/hca-v4.js`, `src/hca-v4.css` | v4 layer: IndexedDB storage, decluttered pages, consistent controls, NCLEX tags and categories, practice set, exam week, Hard rating, resurfaced highlights, reader keys. |
 | `tools/build.mjs` | Injects the layers, applies a few exact patches inside the bundle, and compresses the OCR engine. Safe to re-run on its own output. |
-| `tests/smoke.mjs` | Headless-browser smoke test: 12 checks at desktop width and on 360, 390 and 414px phones. |
+| `tests/smoke.mjs` | Headless-browser smoke test: 13 checks, including OCR, at desktop width and on 360, 390 and 414px phones. |
 | `CHANGELOG.md` | What changed in each round, and how it was tested. |
 | `IMPROVEMENT_PLAN.md` | Review findings, comparison with similar apps, what is done, and what is left. |
 | `CHATGPT_PROMPT.md` | Brief for the next round of work (v5). |
@@ -32,4 +32,4 @@ If any patch can no longer find its text (for example, after the original bundle
   - `hcaGoals`, `hcaOnboard`, `hcaNgnLog` and `hcaResurface`
   - `settings.hcaScheduler` and `settings.hcaHero`
 - **Backups now include the Hard rating.** The restore check was updated to accept it.
-- **OCR needs the file served over http(s)**, for example from Evinca. Browsers block it when the file is opened straight from disk.
+- **OCR works offline**, whether the file is opened from your computer or served from a website.

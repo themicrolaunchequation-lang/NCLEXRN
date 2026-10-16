@@ -22,7 +22,7 @@ const RENDER_CALL = '(0,g.createRoot)(document.getElementById(`root`)).render(';
 const jsMarkers = v => [`/*HCA${v.slice(1)}:BEGIN*/`, `/*HCA${v.slice(1)}:END*/`];
 const cssMarkers = v => [`<style id="hca-${v}">`, `</style><!--/hca-${v}-->`];
 
-// Each patch must find its text exactly once, unless its replacement is already there.
+// Each patch must find its text (or exactly one of its alternatives) once, unless its replacement is already there.
 const PATCHES = [
   {
     why: 'Study page note on scheduling matches the adaptive scheduler',
@@ -74,19 +74,40 @@ const PATCHES = [
     find: '[`again`,`good`,`easy`].includes(e.rating)',
     replace: '[`again`,`hard`,`good`,`easy`].includes(e.rating)',
   },
+  // OCR. The original loader handed Tesseract.js blob: URLs for its engine and worker and let the
+  // worker importScripts() them. That never worked: Tesseract treats a corePath not ending in "js" as
+  // a folder, and browsers refuse importScripts() of a blob: URL inside a worker opened from file://.
+  // Now the engine is unpacked (it is gzipped by this build) and joined with the worker into one
+  // script, so nothing is imported at run time. Each OCR patch also matches the v4 build's text,
+  // so an earlier build can be rebuilt.
   {
-    why: 'OCR loader: unpack the gzipped engine on first use',
-    find: "const decode=(id,type)=>{const raw=atob(document.getElementById(id).textContent.trim());const bytes=Uint8Array.from(raw,c=>c.charCodeAt(0));const url=URL.createObjectURL(new Blob([bytes],{type}));blobs.push(url);return url};",
-    replace: "const decode=async(id,type)=>{const el=document.getElementById(id);let bytes=Uint8Array.from(atob(el.textContent.trim()),c=>c.charCodeAt(0));if(el.dataset.encoding==='gzip'){if(!globalThis.DecompressionStream)throw Error('This browser cannot unpack the OCR engine. Please update it.');bytes=new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer())}const url=URL.createObjectURL(new Blob([bytes],{type}));blobs.push(url);return url};",
+    why: 'OCR loader: unpack embedded scripts as bytes, gunzipping the engine',
+    find: [
+      "const decode=(id,type)=>{const raw=atob(document.getElementById(id).textContent.trim());const bytes=Uint8Array.from(raw,c=>c.charCodeAt(0));const url=URL.createObjectURL(new Blob([bytes],{type}));blobs.push(url);return url};",
+      "const decode=async(id,type)=>{const el=document.getElementById(id);let bytes=Uint8Array.from(atob(el.textContent.trim()),c=>c.charCodeAt(0));if(el.dataset.encoding==='gzip'){if(!globalThis.DecompressionStream)throw Error('This browser cannot unpack the OCR engine. Please update it.');bytes=new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer())}const url=URL.createObjectURL(new Blob([bytes],{type}));blobs.push(url);return url};",
+    ],
+    replace: "const decode=async id=>{const el=document.getElementById(id);let bytes=Uint8Array.from(atob(el.textContent.trim()),c=>c.charCodeAt(0));if(el.dataset.encoding==='gzip'){if(!globalThis.DecompressionStream)throw Error('This browser cannot unpack the OCR engine. Please update it.');bytes=new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer())}return bytes};",
   },
   {
-    // Tesseract.js treats a corePath that does not end in "js" as a folder and appends a file name,
-    // which breaks blob: URLs, so OCR never started. A fragment keeps the blob URL loadable.
-    why: 'OCR loader: wait for the engine and pass it as a file',
-    find: "corePath=decode('lumen-ocr-core','text/javascript');",
-    replace: "corePath=(await decode('lumen-ocr-core','text/javascript'))+'#tesseract-core.wasm.js';",
+    why: 'OCR loader: load the engine inside the worker script (corePath is then unused)',
+    find: ["corePath=decode('lumen-ocr-core','text/javascript');", "corePath=(await decode('lumen-ocr-core','text/javascript'))+'#tesseract-core.wasm.js';"],
+    replace: "const core=await decode('lumen-ocr-core');corePath='lumen-inline-core.js';",
   },
-  { why: 'OCR loader: wait for the worker', find: 'const worker=decode(', replace: 'const worker=await decode(' },
+  {
+    why: 'OCR loader: read the worker as bytes',
+    find: ["const worker=decode('lumen-ocr-worker','text/javascript');", "const worker=await decode('lumen-ocr-worker','text/javascript');"],
+    replace: "const worker=await decode('lumen-ocr-worker');",
+  },
+  {
+    why: 'OCR loader: do not import the worker at run time',
+    find: "return nativeFetch(input,options)};importScripts('${worker}');`;",
+    replace: "return nativeFetch(input,options)};`;",
+  },
+  {
+    why: 'OCR loader: one worker script = setup, engine, worker',
+    find: "workerPath=URL.createObjectURL(new Blob([script],{type:'text/javascript'}));",
+    replace: "workerPath=URL.createObjectURL(new Blob([script,'\\n',core,'\\n;\\n',worker],{type:'text/javascript'}));",
+  },
 ];
 
 const countOf = (text, needle) => text.split(needle).length - 1;
@@ -125,9 +146,9 @@ html = `${html.slice(0, headEnd)}${css}${html.slice(headEnd)}`;
 let applied = 0;
 for (const { why, find, replace } of PATCHES) {
   if (countOf(html, replace) === 1) continue;
-  const n = countOf(html, find);
-  if (n !== 1) throw new Error(`Patch "${why}" expected its text once but found it ${n} times.`);
-  html = html.replace(find, () => replace);
+  const matches = [find].flat().filter(f => countOf(html, f) === 1);
+  if (matches.length !== 1) throw new Error(`Patch "${why}" could not find its text exactly once.`);
+  html = html.replace(matches[0], () => replace);
   applied++;
 }
 
