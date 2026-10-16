@@ -8627,7 +8627,7 @@ const HCA5Steps = ['Recognize cues', 'Analyze cues', 'Prioritize hypotheses', 'G
 const HCA5Shape = {
   single: '"options": [4 strings], "answer": index of the one correct option',
   multi: '"options": [5 or 6 strings], "answers": [indexes of every correct option]',
-  truefalse: '"statement": "...", "answer": true or false',
+  truefalse: '"stem": "True or false?", "statement": "one sentence the learner judges", "answer": true or false',
   matrix: '"columns": [2 or 3 headings], "rows": [{"text": "...", "answer": column index}] (4 to 6 rows)',
   matrixMulti: '"columns": [3 or 4 headings], "rows": [{"text": "...", "answers": [column indexes]}] (3 to 5 rows)',
   bowtie: '"condition": {"options": [4 strings], "answer": index}, "actions": {"options": [5 strings], "answers": [2 indexes]}, "monitor": {"options": [5 strings], "answers": [2 indexes]}',
@@ -8713,7 +8713,7 @@ function HCA5Normalize(raw, source, shared = {}) {
   const type = raw?.type;
   if (!HCA5Types.some(t => t.id === type)) return `unknown type “${type}”`;
   const category = HCA4Categories.some(c => c[0] === raw.category) ? raw.category : 'pha';
-  const base = { id: ue(), type, category, label: HCA5TypeLabel(type), stem: HCA5Str(raw.stem, 1200), rationale: HCA5Str(raw.rationale, 2000), quote: HCA5Str(raw.quote, 600), ...shared };
+  const base = { id: ue(), type, category, label: HCA5TypeLabel(type), stem: HCA5Str(raw.stem || raw.statement || raw.question || raw.text, 1200), rationale: HCA5Str(raw.rationale, 2000), quote: HCA5Str(raw.quote, 600), ...shared };
   if (type !== 'flashcard' && type !== 'case') {
     if (!base.stem) return 'missing question';
     if (!HCA5QuoteFound(base.quote, source)) return 'its supporting quote is not in the source';
@@ -8727,7 +8727,8 @@ function HCA5Normalize(raw, source, shared = {}) {
     return o.length && a.length ? { ...base, options: HCA5Opts(o, a) } : 'needs options and at least one answer';
   }
   if (type === 'truefalse') {
-    return typeof raw.answer === 'boolean' ? { ...base, stem: HCA5Str(raw.statement, 600) || base.stem, answer: raw.answer } : 'needs a true or false answer';
+    const tf = typeof raw.answer === 'boolean' ? raw.answer : /^(true|false)$/i.test(String(raw.answer).trim()) ? /^true$/i.test(String(raw.answer).trim()) : null;
+    return tf !== null ? { ...base, stem: HCA5Str(raw.statement, 600) || base.stem, answer: tf } : 'needs a true or false answer';
   }
   if (type === 'matrix' || type === 'matrixMulti') {
     const cols = HCA5Strs(raw.columns, 2, 5), rows = Array.isArray(raw.rows) ? raw.rows : [];
