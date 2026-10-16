@@ -324,3 +324,22 @@
 .hca9-lightbox { position: fixed; inset: 0; z-index: 100050; display: grid; place-items: center; padding: 24px; background: #0d1b2ae6; cursor: zoom-out; animation: hca9-rise .25s both; }
 .hca9-lightbox img { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px #000a; }
 .hca9-lightbox button { position: absolute; top: 16px; right: 16px; background: #fff; }
+
+/* How to use Lumen: floating button and guide */
+.hca9-fab { position: fixed; right: 24px; bottom: 24px; z-index: 900; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px 0 14px; border: 0; border-radius: 99px; background: linear-gradient(135deg, #087d7a, #10253a); color: #fff; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 14px 30px -10px #10253aaa; animation: hca9-rise .6s .6s both; transition: transform .2s; }
+.hca9-fab:hover { transform: translateY(-3px); }
+.hca9-fab i { font-size: 20px; }
+.hca9-fab-ring { position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 0 0 0 #3ee0c5aa; animation: hca9-pulse 2.6s infinite; pointer-events: none; }
+.hca9-appguide-win { right: 24px; bottom: 24px; width: min(640px, calc(100vw - 48px)); height: min(560px, calc(100vh - 100px)); }
+.hca9-app-rail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.hca9-app-rail button { width: 100%; display: flex; gap: 6px; align-items: center; min-height: 34px; padding: 0 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left; }
+.hca9-app-rail button span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hca9-app-rail button.seen { color: #087d7a; border-color: #087d7a55; }
+.hca9-app-rail button[aria-current] { background: #10253a; border-color: #10253a; color: #fff; }
+.hca9-app-step { display: grid; gap: 14px; animation: hca9-rise .35s both; }
+.hca9-app-head { display: flex; gap: 14px; align-items: center; }
+.hca9-app-head h3 { margin: 2px 0; font-size: 22px; }
+.hca9-app-head p { margin: 0; color: var(--muted); line-height: 1.5; }
+.hca9-app-head .eyebrow { color: #087d7a; margin: 0; }
+.hca9-appguide-win .hca9-chapter-nav .hca3-meter { flex: 1; }
+@media (max-width: 760px) { .hca9-fab { bottom: 84px; right: 14px; } .hca9-fab > span:last-child { display: none; } .hca9-fab { padding: 0 14px; } .hca9-app-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

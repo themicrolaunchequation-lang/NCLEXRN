@@ -106,8 +106,38 @@ const HCA9Bytes = n => n > 1e9 ? `${(n / 1e9).toFixed(1)} GB` : n > 1e6 ? `${(n 
 ke = function HCA9Today() {
   const el = HCA9Prev.Today();
   const kids = [].concat(el.props.children).filter(k => !(k && k.props && /hca3-hero-toggle/.test(k.props.className || '')));
-  return _.cloneElement(el, { className: `${el.props.className} hca9-today` }, HC(HCA9Hero, { key: 'hero' }), ...kids, HC(HCA9FeatureTour, { key: 'tour' }), HC(HCA9SavedStrip, { key: 'saved' }));
+  return _.cloneElement(el, { className: `${el.props.className} hca9-today` }, HC(HCA9Hero, { key: 'hero' }), ...kids, HC(HCA9FeatureTour, { key: 'tour' }), HC(HCA9SavedStrip, { key: 'saved' }), S.createPortal(HC(HCA9HelpFab, { key: 'fab' }), document.body));
 };
+
+/* ---------- How to use Lumen: floating button on Today ---------- */
+function HCA9HelpFab() {
+  const d = HCA7Use().desk || {};
+  if (d.appguide) return null;
+  return HC('button', { type: 'button', className: 'hca9-fab', onClick: () => HCA9Show('appguide'), 'aria-label': 'How to use Lumen' }, HC('span', { className: 'hca9-fab-ring' }), HCAIcon('question-line'), HC('span', {}, 'How to use Lumen'));
+}
+const HCA9AppSteps = [
+  { icon: 'home-5-line', title: 'Start on Today', text: 'Today shows what to do next: cards due, where you stopped reading, and your exam countdown.', how: ['Press the main button in the welcome banner. It always points to your next best step.', 'Follow "Three steps, in order".', 'Tick off "Learn Lumen in six small steps" once.'], go: ['Set exam date', ctx => ctx.setModal({ type: 'hca3-goals' })] },
+  { icon: 'upload-2-line', title: 'Add your sources', text: 'Bring in PDFs, images or PowerPoint slides. They stay on this device.', how: ['Library → Add a source, or drag files onto the page.', 'For slides, choose "As a PDF" to get selectable text.', 'Scanned pages get text recognition (OCR) automatically.'], go: ['Add a source', ctx => ctx.setModal({ type: 'upload' })] },
+  { icon: 'book-open-line', title: 'Read and mark', text: 'The reading room has everything in one Tools menu, so the page keeps its size.', how: ['Select text to highlight, add a note, make a card or see its Meaning.', 'Tools: pen, marker, sticky notes, stickers, snip, magnifier, calculator.', 'Present or export your pages to PowerPoint and Word.'], go: ['Open the library', ctx => ctx.navigate('library')] },
+  { icon: 'stack-line', title: 'Turn it into recall', text: 'Recall cards bring ideas back just before you would forget them.', how: ['Make a card from a highlight, or press "Make a recall card".', 'Review: answer in your head first, then reveal.', 'Rate honestly: Again, Hard, Good or Easy. Lumen schedules the rest.'], go: ['Open Study', ctx => ctx.navigate('studio')] },
+  { icon: 'list-check', title: 'Practise like the exam', text: 'Page studio turns a page into NCLEX-style questions; Practice lab mixes them.', how: ['In the reader, open Page studio on a page.', 'Choose question types: multiple choice, select all, ordering, true or false, highlight.', 'Practise in Study → Practice lab, and mix topics.'], go: ['Practise', ctx => ctx.navigate('studio')] },
+  { icon: 'layout-column-line', title: 'Use the Study desk', text: 'Board, canvas, focus timer, planner, blurt pad, lab values and techniques, in windows beside your reading.', how: ['Pick a tool in the sidebar under STUDY DESK.', 'Drag, resize or maximise any window.', 'Press "?" in a window to learn that tool.'], go: ['Desk guide', () => HCA9OpenGuide('overview')] },
+  { icon: 'dashboard-line', title: 'Watch your progress', text: 'Streaks, recall rate, NCLEX areas and what is coming up.', how: ['Open Progress once a week.', 'Spend extra time on your weakest NCLEX area.', 'Keep the streak small and steady.'], go: ['View progress', ctx => ctx.navigate('progress')] },
+  { icon: 'shield-check-line', title: 'Keep your work safe', text: 'Everything saves automatically in this browser. Back up to move or protect it.', how: ['Press Back up once a week; keep the file in your cloud drive.', 'On a new computer or browser, restore the backup.', 'Do not clear site data for this page.'], go: ['Where is it saved?', () => HCA9Show('saved')] },
+];
+function HCA9AppGuide() {
+  const ctx = y(), [i, setI] = _.useState(0), st = HCA9AppSteps[i], last = i === HCA9AppSteps.length - 1;
+  return HC(HCA8Window, { id: 'appguide', title: 'How to use Lumen', icon: 'question-line', className: 'hca9-appguide-win', onClose: () => HCA8Close('appguide') },
+    HC('ol', { className: 'hca9-app-rail' }, HCA9AppSteps.map((x, n) => HC('li', { key: x.title }, HC('button', { type: 'button', 'aria-current': n === i ? 'step' : undefined, className: n < i ? 'seen' : '', onClick: () => setI(n), title: x.title }, HCAIcon(x.icon), HC('span', {}, `${n + 1}. ${x.title}`))))),
+    HC('article', { className: 'hca9-app-step', key: st.title },
+      HC('div', { className: 'hca9-app-head' }, HC('span', { className: 'hca9-guide-icon' }, HCAIcon(st.icon)), HC('div', {}, HC('span', { className: 'eyebrow' }, `STEP ${i + 1} OF ${HCA9AppSteps.length}`), HC('h3', {}, st.title), HC('p', {}, st.text))),
+      HC('ol', { className: 'hca9-steps3' }, st.how.map((t, n) => HC('li', { key: t, style: { '--i': n } }, t))),
+      HC('div', { className: 'hca8-row' }, HCABtn(st.go[0], () => st.go[1](ctx), 'secondary', 'arrow-right-up-line'))),
+    HC('div', { className: 'hca9-chapter-nav' },
+      HCABtn('Back', () => setI(Math.max(0, i - 1)), 'secondary', 'arrow-left-line', { disabled: i === 0 }),
+      HC('span', { className: 'hca3-meter wide' }, HC('span', { style: { width: `${(i + 1) / HCA9AppSteps.length * 100}%` } })),
+      HCABtn(last ? 'Done' : 'Next', () => last ? HCA8Close('appguide') : setI(i + 1), 'primary', last ? 'check-line' : 'arrow-right-line')));
+}
 
 /* ---------- Your work and where it lives ---------- */
 function HCA9Saved() {
@@ -443,7 +473,7 @@ function HCA9SoundRow() {
 /* ---------- Mount ---------- */
 function HCA9Floats() {
   const d = HCA7Use().desk || {};
-  return S.createPortal(HC(_.Fragment, {}, d.saved && HC(HCA9Saved), d.guide && HC(HCA9GuideWin), d.techniques && HC(HCA9Techniques), d.blurt && HC(HCA9Blurt), d.labs && HC(HCA9LabsWin)), document.body);
+  return S.createPortal(HC(_.Fragment, {}, d.saved && HC(HCA9Saved), d.appguide && HC(HCA9AppGuide), d.guide && HC(HCA9GuideWin), d.techniques && HC(HCA9Techniques), d.blurt && HC(HCA9Blurt), d.labs && HC(HCA9LabsWin)), document.body);
 }
 const HCA9PrevCommands = HCA3Commands;
 HCA3Commands = function HCA9Commands(ctx) {
@@ -452,5 +482,6 @@ HCA3Commands = function HCA9Commands(ctx) {
     { group: 'Study desk', icon: 'lightbulb-line', label: 'Study techniques that work', run: () => HCA9Show('techniques') },
     { group: 'Study desk', icon: 'brain-line', label: 'Blurt pad (write from memory)', run: () => HCA9Show('blurt') },
     { group: 'Study desk', icon: 'heart-pulse-line', label: 'Lab values (reference and quiz)', run: () => HCA9Show('labs') },
+    { group: 'Help', icon: 'question-line', label: 'How to use Lumen', run: () => HCA9Show('appguide') },
     { group: 'Your data', icon: 'shield-check-line', label: 'Where is my work saved?', run: () => HCA9Show('saved') }];
 };
