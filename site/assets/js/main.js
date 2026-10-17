@@ -633,6 +633,57 @@
     addEventListener('appinstalled', () => { btn.hidden = true; toast('Installed. Find Crown Academy on your home screen.'); });
   }
 
+  /* ---------- Free apps: a taste of each before opening it ---------- */
+  function initApps() {
+    const scenario = $('[data-mini-scenario]');
+    if (scenario) {
+      const result = $('[data-mini-result]', scenario);
+      const options = $$('.mini-opts button', scenario);
+      options.forEach((btn) => btn.addEventListener('click', () => {
+        const strongest = options.find((o) => o.hasAttribute('data-correct'));
+        options.forEach((o) => {
+          o.disabled = true;
+          if (o === strongest) o.classList.add('is-strongest');
+          else if (o === btn) o.classList.add('is-chosen');
+        });
+        const right = btn === strongest;
+        result.innerHTML = '';
+        const lead = document.createElement('p');
+        const strong = document.createElement('strong');
+        strong.textContent = right ? 'Strongest choice. ' : 'A useful comparison. ';
+        lead.append(strong, btn.dataset.why + (right ? '' : ' The strongest choice was B: ' + strongest.dataset.why));
+        const more = document.createElement('a');
+        more.href = '/carecraft';
+        more.textContent = 'Try today’s scenario in Carecraft →';
+        result.append(lead, more);
+        strongest.focus({ preventScroll: true });
+      }));
+    }
+
+    const breath = $('[data-mini-breath]');
+    if (breath) {
+      const cue = $('[data-mb-cue]', breath);
+      const start = $('[data-mb-start]', breath);
+      let timers = [];
+      start.addEventListener('click', () => {
+        timers.forEach(clearTimeout);
+        start.disabled = true;
+        breath.classList.remove('is-out');
+        breath.classList.add('is-in');
+        cue.textContent = 'Breathe in, gently…';
+        timers = [
+          setTimeout(() => { breath.classList.replace('is-in', 'is-out'); cue.textContent = '…and let it go, slowly.'; }, 4000),
+          setTimeout(() => {
+            breath.classList.remove('is-out');
+            cue.textContent = 'Ten seconds, well spent. Serein has more when you need them.';
+            start.disabled = false;
+            start.lastChild.textContent = 'One more breath';
+          }, 10000)
+        ];
+      });
+    }
+  }
+
   function initServiceWorker() {
     if (!('serviceWorker' in navigator) || location.protocol !== 'https:') return;
     addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
@@ -653,6 +704,7 @@
   initSteps();
   initReadiness();
   initTabs();
+  initApps();
   initMissionWords();
   initJoinForm();
   initNewsForm();

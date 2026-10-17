@@ -710,3 +710,61 @@ input[aria-invalid="true"]{border-color:#F87171;box-shadow:0 0 0 4px rgba(248,11
 .trust-bar strong{display:block;font-size:.92rem}
 .trust-bar small{display:block;font-size:.8rem;color:var(--text-muted)}
 .trust-bar b{font-weight:600;color:var(--text)}
+
+/* ---------- Free apps: Carecraft (learning teal) and Serein (serene sage) ---------- */
+.apps{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-alt) 100%)}
+.app-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);align-items:stretch}
+.app-card{--app:#087D7A;--app-soft:rgba(8,125,122,.08);--app-text:#066B68;position:relative;display:flex;flex-direction:column;gap:18px;padding:clamp(22px,3vw,40px);border-radius:var(--radius-xl);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-md);overflow:hidden;isolation:isolate}
+.app-card::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--app),var(--gold-400))}
+.app-card h3{font-family:var(--font-display);font-weight:500;font-size:clamp(1.5rem,1.2rem + 1vw,2.1rem);letter-spacing:-.015em;line-height:1.15}
+.app-card .card-kicker{color:var(--app-text);margin:0 0 4px}
+.app-card-top{display:flex;gap:16px;align-items:center}
+.app-crest{width:56px;height:56px;flex-shrink:0;border-radius:50%;background:#F8F5EF;padding:4px;box-shadow:var(--shadow-sm)}
+.app-lede{color:var(--text-muted);max-width:52ch}
+.app-facts{display:flex;flex-wrap:wrap;gap:8px 18px;padding:0;margin:auto 0 0;list-style:none;font-size:.92rem;color:var(--text-muted)}
+.app-facts li{display:inline-flex;align-items:center;gap:.45em}
+.app-facts .i{width:18px;height:18px;color:var(--app-text)}
+.btn-app{align-self:flex-start;color:#fff;background:var(--app);box-shadow:0 10px 24px -10px var(--app)}
+.btn-app:hover{transform:translateY(-2px)}
+.btn-app:hover .i{transform:translateX(3px)}
+:root[data-theme="dark"] .app-carecraft{--app-text:#7FD6CC;--app-soft:rgba(127,214,204,.08)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .app-carecraft{--app-text:#7FD6CC;--app-soft:rgba(127,214,204,.08)}}
+.app-serein{--app:#2F6B5E;--app-text:#9FD8C4;--app-soft:rgba(159,216,196,.08);background:radial-gradient(120% 80% at 80% 0%,#1B3A44 0%,#10253A 60%,#0B1927 100%);border-color:rgba(255,255,255,.08)}
+.app-serein .btn-serein{background:#9FD8C4;color:#10253A;box-shadow:0 10px 24px -10px rgba(159,216,196,.6)}
+
+/* mini scenario */
+.mini-scenario{padding:clamp(16px,2vw,24px);border-radius:var(--radius-lg);background:var(--app-soft);border:1px solid var(--line)}
+.mini-label{display:inline-flex;align-items:center;gap:.4em;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--app-text);margin-bottom:10px}
+.mini-label .i{width:16px;height:16px}
+.mini-q{font-weight:600;color:var(--text);line-height:1.5;margin-bottom:14px}
+.mini-opts{display:grid;gap:8px}
+.mini-opts button{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:center;width:100%;min-height:52px;padding:10px 14px;text-align:left;font:inherit;font-size:.95rem;line-height:1.45;color:var(--text);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;cursor:pointer;transition:border-color .2s,transform .3s var(--ease-out),background-color .2s}
+.mini-opts button:hover:not(:disabled){border-color:var(--app);transform:translateY(-1px)}
+.mini-opts button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.mini-opts b{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line-strong);font-size:.85rem;color:var(--app-text)}
+.mini-opts button:disabled{cursor:default}
+.mini-opts .is-strongest{border-color:#17694F;background:rgba(23,105,79,.08)}
+.mini-opts .is-strongest b{background:#17694F;border-color:#17694F;color:#fff}
+.mini-opts .is-chosen{border-style:dashed;border-color:var(--accent-strong)}
+.mini-result:not(:empty){margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--text-muted);animation:fade-up .4s var(--ease-out)}
+.mini-result strong{color:var(--text)}
+.mini-result a{display:inline-flex;align-items:center;gap:.35em;margin-top:8px;font-weight:600;color:var(--app-text)}
+:root[data-theme="dark"] .mini-opts .is-strongest b,:root[data-theme="dark"] .mini-opts .is-strongest{border-color:#5FC79F}
+@keyframes fade-up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* mini breath */
+.mini-breath{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,28px);align-items:center;padding:clamp(16px,2vw,24px);border-radius:var(--radius-lg);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.mb-orb{position:relative;width:clamp(110px,14vw,150px);aspect-ratio:1;display:grid;place-items:center}
+.mb-orb::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(159,216,196,.35)}
+.mb-orb span{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 38% 34%,#E9F6EF 0%,#9FD8C4 34%,#2F6B5E 78%,#1B4A43 100%);box-shadow:0 0 50px rgba(159,216,196,.35);transform:scale(.6);transition:transform 4s cubic-bezier(.45,.05,.55,.95)}
+.mini-breath.is-in .mb-orb span{transform:scale(.95)}
+.mini-breath.is-out .mb-orb span{transform:scale(.6);transition-duration:6s}
+.mb-cue{font-family:var(--font-display);font-size:clamp(1.2rem,1rem + .6vw,1.5rem);line-height:1.3;color:#F8F5EF;margin-bottom:14px;min-height:2.6em}
+.mini-breath .btn-ghost{color:#E3EEEC}
+
+.sr-moments ul{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.sr-moments li{padding:8px 14px;border-radius:999px;border:1px solid rgba(159,216,196,.3);background:rgba(159,216,196,.06);font-size:.9rem;color:#E3EEEC}
+.apps-note{margin-top:clamp(20px,3vw,32px);font-size:.88rem;color:var(--text-soft);max-width:80ch}
+@media (max-width:860px){.app-duo{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.mini-breath{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}.btn-app{align-self:stretch}}
+@media (prefers-reduced-motion:reduce){.mb-orb span{transition:none}.mini-breath.is-in .mb-orb span{transform:scale(.8)}}

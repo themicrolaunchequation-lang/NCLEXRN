@@ -1,8 +1,9 @@
 /* Service worker: offline support for the home page.
    Pages are network-first (fresh content when online, cached copy offline);
    static assets are stale-while-revalidate. Cross-origin requests
-   (the Supabase API) are never cached. Bump VERSION on every release. */
-const VERSION = 'hca-v8';
+   (the Supabase API) are never cached. Bump VERSION on every release.
+   /carecraft and /serein use content-hashed file names, so cached copies never go stale. */
+const VERSION = 'hca-v9';
 const CORE = [
   '/',
   '/privacy',
@@ -34,6 +35,9 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+  // Large one-off downloads (the offline Carecraft edition) are never cached here,
+  // and Serein's own offline worker takes over /serein once someone turns it on.
+  if (url.pathname.startsWith('/carecraft/download/')) return;
 
   if (req.mode === 'navigate') {
     event.respondWith(

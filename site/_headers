@@ -12,3 +12,16 @@
 
 /sw.js
   Cache-Control: no-cache
+
+/carecraft/app.*
+  Cache-Control: public, max-age=31536000, immutable
+
+/serein/app.*
+  Cache-Control: public, max-age=31536000, immutable
+
+/carecraft/download/*
+  Content-Disposition: attachment
+
+/serein/sw.js
+  Cache-Control: no-cache
+  Service-Worker-Allowed: /serein

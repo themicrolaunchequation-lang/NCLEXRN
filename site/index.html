@@ -46,7 +46,27 @@
       "foundingDate": "2026-10-06",
       "identifier": {"@type": "PropertyValue", "propertyID": "UK Companies House number", "value": "17501904"},
       "description": "UK-registered company dedicated to healthcare education, professional development, innovation and recognition.",
-      "brand": {"@type": "Brand", "name": "Evinca"}
+      "brand": [{"@type": "Brand", "name": "Evinca"}, {"@type": "Brand", "name": "Carecraft"}, {"@type": "Brand", "name": "Serein"}]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Carecraft",
+      "url": "https://healthcarecrownacademy.co.uk/carecraft",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any (web browser)",
+      "description": "A daily 60-second scenario, 30 short lessons, interactive practice and visual guides for people who work in healthcare.",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"},
+      "publisher": {"@id": "https://healthcarecrownacademy.co.uk/#org"}
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Serein",
+      "url": "https://healthcarecrownacademy.co.uk/serein",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any (web browser)",
+      "description": "Short, private well-being practices, reflection and practical support for people who work in healthcare.",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"},
+      "publisher": {"@id": "https://healthcarecrownacademy.co.uk/#org"}
     },
     {
       "@type": "WebSite",
@@ -106,6 +126,7 @@
     <nav class="primary-nav" aria-label="Primary">
       <ul>
         <li><a href="#academy">Academy</a></li>
+        <li><a href="#apps">Free apps</a></li>
         <li><a href="#evinca">Evinca</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#readiness">Readiness check</a></li>
@@ -126,6 +147,7 @@
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav aria-label="Mobile">
       <a href="#academy">Academy</a>
+      <a href="#apps">Free apps</a>
       <a href="#evinca">Evinca</a>
       <a href="#how">How it works</a>
       <a href="#readiness">Readiness check</a>
@@ -255,6 +277,7 @@
         <p class="card-kicker">Learn</p>
         <h3>Self-paced courses that fit around your shifts</h3>
         <p>Practical, bite-sized lessons and interactive tools you can pick up after a night shift or on a day off, built for real clinical life.</p>
+        <a class="text-link" href="/carecraft">Start free in Carecraft <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <div class="learn-visual" aria-hidden="true">
           <svg class="ring" viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="50"/><circle class="ring-fg" cx="60" cy="60" r="50" pathLength="100"/></svg>
           <div class="ring-label"><strong>60%</strong><span>Module 3 of 5</span></div>
@@ -313,6 +336,85 @@
         </div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ============ FREE APPS ============ -->
+<section class="section apps" id="apps" aria-labelledby="apps-title">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>Free apps · No account needed</p>
+      <h2 id="apps-title" class="section-title">Two companions for every shift. <span class="serif-italic">Try them right here.</span></h2>
+      <p class="section-lede">Carecraft sharpens how you think in a minute. Serein gives you a minute back. Both are free, open in your browser, and keep what you write on your own device.</p>
+    </header>
+
+    <div class="app-duo">
+      <article class="app-card app-carecraft reveal" aria-labelledby="carecraft-title">
+        <div class="app-card-top">
+          <img class="app-crest" src="/carecraft/img/crest.svg" alt="" width="56" height="56" loading="lazy">
+          <div>
+            <p class="card-kicker">Learn · Carecraft</p>
+            <h3 id="carecraft-title">One useful minute of learning.</h3>
+          </div>
+        </div>
+        <p class="app-lede">A daily 60-second scenario, 30 short lessons, 22 practice activities and 90 visual guides on communication, safety and teamwork.</p>
+
+        <div class="mini-scenario" data-mini-scenario>
+          <p class="mini-label"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>60-second scenario · Communication</p>
+          <p class="mini-q" id="mini-q">A fictional patient has nodded through a discharge explanation. Time is limited. What most directly checks how clearly you explained the next step?</p>
+          <div class="mini-opts" role="group" aria-labelledby="mini-q">
+            <button type="button" data-why="Repeating information can help, but does not itself reveal understanding."><b aria-hidden="true">A</b><span>Repeat the key points, then ask whether any questions remain.</span></button>
+            <button type="button" data-correct data-why="An open teach-back prompt reveals what needs clarification without blaming the patient."><b aria-hidden="true">B</b><span>Invite the patient to explain the next step in their own words.</span></button>
+            <button type="button" data-why="Written support is useful, but does not confirm understanding before the conversation ends."><b aria-hidden="true">C</b><span>Give a written summary, then ask them to read it after discharge.</span></button>
+          </div>
+          <div class="mini-result" role="status" aria-live="polite" data-mini-result></div>
+        </div>
+
+        <ul class="app-facts" aria-label="Carecraft at a glance">
+          <li><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>30 lessons</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-pulse"/></svg>A new scenario daily</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-download"/></svg>Works offline</li>
+        </ul>
+        <a class="btn btn-lg btn-app btn-carecraft" href="/carecraft">Open Carecraft <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="app-card app-serein island-dark reveal" aria-labelledby="serein-title">
+        <div class="app-card-top">
+          <img class="app-crest" src="/serein/img/crest.svg" alt="" width="56" height="56" loading="lazy">
+          <div>
+            <p class="card-kicker">Recharge · Serein</p>
+            <h3 id="serein-title">A little room to breathe.</h3>
+          </div>
+        </div>
+        <p class="app-lede">Short, private practices for before, during and after a shift: breathing, grounding, gentle movement and reflection. Nothing is monitored.</p>
+
+        <div class="mini-breath" data-mini-breath>
+          <div class="mb-orb" aria-hidden="true"><span></span></div>
+          <div class="mb-copy">
+            <p class="mb-cue" role="status" aria-live="polite" data-mb-cue>Ten seconds is enough to start.</p>
+            <button type="button" class="btn btn-ghost" data-mb-start><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg>Take one breath with us</button>
+          </div>
+        </div>
+
+        <div class="sr-moments">
+          <p class="mini-label">Made for every moment of a shift</p>
+          <ul>
+            <li>Before a shift</li>
+            <li>Between tasks</li>
+            <li>After a difficult moment</li>
+            <li>After work</li>
+          </ul>
+        </div>
+
+        <ul class="app-facts" aria-label="Serein at a glance">
+          <li><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Practices from 1 minute</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Private by design</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Team toolkit</li>
+        </ul>
+        <a class="btn btn-lg btn-app btn-serein" href="/serein">Open Serein <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+    <p class="apps-note">Educational resources for people who work in healthcare. They are not clinical advice, assessment or accreditation. If you need support, please speak to someone you trust or your local services.</p>
   </div>
 </section>
 
@@ -756,6 +858,8 @@
       <nav class="footer-col" aria-label="Explore">
         <h2>Explore</h2>
         <a href="#academy">The Academy</a>
+        <a href="/carecraft">Carecraft: learning app</a>
+        <a href="/serein">Serein: well-being app</a>
         <a href="#evinca">Evinca</a>
         <a href="#how">How it works</a>
         <a href="#readiness">Readiness check</a>

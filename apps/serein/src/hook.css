@@ -1,0 +1,53 @@
+/* Serein first-visit hook: one breath, then a private check-in. */
+.serein-hook{width:min(680px,calc(100% - 24px));max-width:100%;max-height:calc(100dvh - 24px);padding:0;border:0;border-radius:28px;color:#F8F5EF;background:radial-gradient(120% 90% at 50% 0%,#1B3A44 0%,#10253A 55%,#0B1927 100%);box-shadow:0 30px 90px #07162388;overflow:auto;animation:sh-in .5s var(--ease)}
+.serein-hook::backdrop{background:#071623E6;backdrop-filter:blur(8px)}
+@keyframes sh-in{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.sh-inner{padding:clamp(20px,4.5vw,40px);text-align:center}
+.sh-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:clamp(16px,4vh,36px);text-align:left}
+.sh-brand{display:flex;align-items:center;gap:12px}
+.sh-brand img{width:36px;height:40px;object-fit:contain}
+.sh-brand span{display:grid;font:500 19px/1.1 var(--font-serif);letter-spacing:.06em}
+.sh-brand small{font:600 11px var(--font-sans);letter-spacing:.12em;color:#B6D0CF;margin-top:3px}
+.sh-skip{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid #ffffff40;color:#E3EEEC;font-size:14px;font-weight:600}
+.sh-skip:hover{background:#ffffff14}
+.serein-hook :focus-visible{outline:3px solid #F1C56E;outline-offset:3px}
+.sh-eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;color:#9FD8C4;margin:0 0 10px}
+.serein-hook h2{font:500 clamp(28px,5vw,40px)/1.15 var(--font-serif);letter-spacing:-.02em;color:#F8F5EF;margin:0 auto 8px;max-width:20ch}
+.sh-orb{position:relative;width:min(220px,52vw);aspect-ratio:1;margin:clamp(18px,4vh,34px) auto}
+.sh-orb-ring,.sh-orb-core{position:absolute;inset:0;border-radius:50%}
+.sh-orb-ring{border:1.5px solid #9FD8C455;transform:scale(1)}
+.sh-orb-core{background:radial-gradient(circle at 38% 34%,#E9F6EF 0%,#9FD8C4 34%,#2F6B5E 78%,#1B4A43 100%);box-shadow:0 0 60px #9FD8C455,inset 0 -10px 30px #10253A66;transform:scale(.55);transition:transform 4s cubic-bezier(.45,.05,.55,.95),box-shadow 4s ease}
+.sh-orb.is-in .sh-orb-core{transform:scale(.95);box-shadow:0 0 90px #9FD8C488,inset 0 -10px 30px #10253A55}
+.sh-orb.is-out .sh-orb-core{transform:scale(.55);transition-duration:6s}
+.sh-orb.is-rest .sh-orb-core{transform:scale(.7);transition-duration:1.5s}
+.sh-orb.is-in .sh-orb-ring{animation:sh-ring 4s ease-out}
+@keyframes sh-ring{from{transform:scale(.6);opacity:0}40%{opacity:1}to{transform:scale(1.08);opacity:0}}
+.sh-breath.is-still .sh-orb-core{transform:scale(.75);transition:none}
+.sh-cue{font:500 clamp(20px,3.4vw,24px)/1.4 var(--font-serif);color:#F8F5EF;min-height:2.8em;margin:0 auto;max-width:30ch}
+.sh-count{font-size:14px;color:#B6D0CF;margin:6px 0 0;min-height:1.6em}
+.sh-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:clamp(18px,4vh,30px)}
+.serein-hook .button-teal{background:#9FD8C4;color:#10253A}
+.serein-hook .button-teal:hover{background:#B9E8D8}
+.sh-lead{color:#C7DCDA;margin:0 auto 24px;max-width:42ch}
+.serein-hook .sh-moods{margin:8px auto 0;max-width:520px}
+.serein-hook .mood{color:#D5E5E2;font-size:14px;min-height:96px;border-radius:16px;padding:10px 4px}
+.serein-hook .mood:hover{background:#ffffff0f}
+.serein-hook .mood-face{width:52px;height:52px;background:#ffffff12;color:#9FD8C4}
+.serein-hook .mood.selected{color:#fff;background:#ffffff14}
+.serein-hook .mood.selected .mood-face{background:#9FD8C4;color:#10253A;outline:2px solid #9FD8C4;outline-offset:3px}
+.sh-suggest{min-height:8px}
+.sh-suggest>p{color:#E3EEEC;margin:22px auto 16px;max-width:44ch;animation:sh-in .4s var(--ease)}
+.sh-practice{display:grid;justify-items:center;gap:6px;padding:20px;border:1px solid #ffffff26;border-radius:18px;background:#ffffff0d;animation:sh-in .4s var(--ease)}
+.sh-practice .sh-eyebrow{margin:0}
+.sh-practice strong{font:500 24px var(--font-serif);margin-bottom:10px}
+.sh-privacy{font-size:13px;color:#B6D0CF;margin:22px auto 0;max-width:46ch}
+.sh-secondary{margin-top:6px}
+.serein-hook .text-button{color:#9FD8C4}
+@media(max-width:599px){.serein-hook{width:100%;height:100dvh;max-height:100dvh;margin:0;border-radius:0}.serein-hook .mood{min-height:84px;font-size:12px}.serein-hook .mood-face{width:44px;height:44px}}
+@media(prefers-reduced-motion:reduce){.serein-hook,.sh-suggest>p,.sh-practice{animation:none}.sh-orb-core{transition:none}.sh-orb-ring{animation:none}}
+.reduce-motion .serein-hook,.reduce-motion .sh-suggest>p,.reduce-motion .sh-practice{animation:none}
+
+/* Sibling app link in the sidebar */
+.sibling-app{gap:8px;padding:10px 12px;border:1px solid #49686F;border-radius:12px;line-height:1.4}
+.sibling-app b{display:block;color:#F8F5EF;font-weight:600}
+.sibling-app:hover{border-color:#9FD8C4}

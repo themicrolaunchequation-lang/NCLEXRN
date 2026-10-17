@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const read=f=>fs.readFileSync(f,'utf8'),uri=f=>'data:image/svg+xml;base64,'+Buffer.from(read(f)).toString('base64');
+const index=JSON.parse(read('src/v4/image-index.json')),rasterFiles=[...new Set(Object.values(index))];
+const raster=rasterFiles.map((name,i)=>`const image${i}="data:image/webp;base64,${fs.readFileSync('src/v4/assets/'+name).toString('base64')}";`).join('\n');
+const assets='const ASSETS={'+Object.entries(index).map(([key,name])=>JSON.stringify(key)+':image'+rasterFiles.indexOf(name)).join(',')+'};';
+const art='const CC_SIM_ART={handover:ASSETS["generated-sim-handover"],interruptions:ASSETS["generated-sim-interruptions"],"shared-decision":ASSETS["generated-sim-shared-choice"]};const CC_REFINE_ART={communication:ASSETS["editorial-communication"],debrief:ASSETS["editorial-debrief"]};';
+const lessonIds=JSON.parse(read('src/v4/data.json')).lessons.map(lesson=>lesson.id);
+const infoPng='const INFO_PNG='+JSON.stringify(Object.fromEntries(lessonIds.map(id=>[id,[1,2,3].map(page=>{const file='src/v4/assets/infographics/'+id+'-'+page+'.png';return 'data:image/png;base64,'+fs.readFileSync(file).toString('base64');})])))+';';
+const prefix='const CC_RELEASE={version:"4.5.0",filename:"Carecraft-v4.5.0.html"};const HCA_CREST='+JSON.stringify(uri('src/crest.svg'))+';const HCA_CREST_DARK='+JSON.stringify(uri('src/crest-dark.svg'))+';\n'+raster+'\n'+assets+'\n'+art+'\n';
+const scripts=prefix+infoPng+['runtime-data.js','lesson-notes.js','store.js','app.js','views.js','home.js','features.js','learning.js','infographics.js','events.js','hook.js','engines.js','engine-actions.js'].map(f=>read('src/v4/'+f)).join('\n')+'\nbootstrap();maybeOpenHook();';
+const styles=read('src/v4/fonts.css')+'\n'+read('src/v4/design.css')+'\n'+read('src/v4/engines.css')+'\n'+read('src/v4/hook.css');
+const html='<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="carecraft-version" content="4.5.0"><meta name="theme-color" content="#10253A"><meta name="description" content="Carecraft by Healthcare Crown Academy. Thirty lessons, thoughtful practice, Smart Review and private learning notes."><meta name="robots" content="noindex,nofollow"><link rel="icon" href="'+uri('src/crest.svg')+'"><title>Carecraft v4.5.0 — Healthcare Crown Academy</title><style id="carecraft-app-styles">'+styles+'</style></head><body><div id="app"></div><script id="carecraft-app-code">'+scripts.replace(/<\/script/gi,'<\\/script')+'</script></body></html>';
+fs.mkdirSync('dist',{recursive:true});for(const file of ['index.html','carecraft.html','Carecraft-v4.5.0.html'])fs.writeFileSync('dist/'+file,html);
+fs.writeFileSync('dist/_headers','/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Cache-Control: no-cache\n');
+if(process.env.CARECRAFT_SCRIPT_OUTPUT)fs.writeFileSync(process.env.CARECRAFT_SCRIPT_OUTPUT,scripts);
+console.log(JSON.stringify({file:'dist/Carecraft-v4.5.0.html',bytes:Buffer.byteLength(html),rasterBytes:rasterFiles.reduce((n,f)=>n+fs.statSync('src/v4/assets/'+f).size,0),inlineEventAttributes:(scripts.match(/\son(?:click|input|change|keydown)=/g)||[]).length}));

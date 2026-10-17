@@ -1,0 +1,15 @@
+{
+  "crest": "../src/crest.svg",
+  "outDir": ".",
+  "fontsCss": "../src/v4/fonts.css",
+  "photo": "../src/v4/assets/today-welcome-v440.webp",
+  "eyebrow": "HEALTHCARE CROWN ACADEMY",
+  "line1": "Carecraft",
+  "line2": "One useful minute.",
+  "body": "A daily 60-second scenario, 30 short lessons and hands-on practice for people in healthcare.",
+  "pill": "Free · Private · Works offline",
+  "ink": "#10253A",
+  "paper": "#F8F5EF",
+  "accentLight": "#8ED8CF",
+  "gold": "#E8C170"
+}

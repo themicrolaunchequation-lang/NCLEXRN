@@ -1,0 +1,38 @@
+/* The 60-second scenario: a first-visit hook and a daily Today card built only from each lesson's authored check, answers and rationales. */
+const HOOK_FIRST=['communication','sbar','speakup','deterioration','teachback-skill','safety'];
+function scenarioState(){if(!state.scenarios||typeof state.scenarios!=='object'||Array.isArray(state.scenarios))state.scenarios={seen:false,days:{}};if(!state.scenarios.days||typeof state.scenarios.days!=='object')state.scenarios.days={};return state.scenarios;}
+function scenarioPool(){return lessons.filter(l=>l.question&&Array.isArray(l.answers)&&l.answers.length>1&&Array.isArray(l.rationales));}
+function scenarioOfDay(day=localDay()){const pool=scenarioPool(),n=Math.floor(Date.parse(day+'T12:00:00Z')/864e5);return pool[((n%pool.length)+pool.length)%pool.length];}
+function scenarioStreak(){const days=scenarioState().days;let d=new Date(),count=0;if(!days[localDay(d)])d.setDate(d.getDate()-1);while(days[localDay(d)]){count++;d.setDate(d.getDate()-1);}return count;}
+function scenarioStats(){const all=Object.values(scenarioState().days);return {answered:all.length,strongest:all.filter(x=>x.correct).length,streak:scenarioStreak()};}
+function scenarioBody(l,where,chosen=null){const done=chosen!==null,letters=['A','B','C','D'];
+ return `<p class="scenario-question" id="${where}-question">${esc(l.question)}</p>
+ <div class="scenario-options" role="group" aria-labelledby="${where}-question">${l.answers.map((a,i)=>{const cls=!done?'':i===l.correct?'is-strongest':i===chosen?'is-chosen':'is-other';return `<button type="button" class="scenario-option ${cls}" data-action="scenario-answer" data-arg0="${where}" data-arg1="${esc(l.id)}" data-arg2="${i}" ${done?'disabled':''} ${done&&i===chosen?'aria-current="true"':''}><span class="scenario-letter" aria-hidden="true">${i===l.correct&&done?'✓':letters[i]}</span><span class="scenario-text"><span>${esc(a)}</span>${done?`<small>${i===l.correct?'<b>Strongest choice.</b> ':''}${esc(l.rationales[i]||'')}</small>`:''}</span></button>`;}).join('')}</div>
+ ${done?`<div class="scenario-reveal" role="status"><span class="eyebrow">${chosen===l.correct?'YOU CHOSE THE STRONGEST RESPONSE':'A USEFUL COMPARISON'}</span><p>${esc(l.feedback)}</p><p class="scenario-takeaway">${icon('spark')}<span>${esc(l.takeaway)}</span></p></div>`:''}`;}
+function scenarioFooter(l,where){return where==='hook'?`<div class="scenario-next"><p>You just practised <strong>${esc(l.title)}</strong>. The full lesson takes about ${l.time} minutes.</p><div class="row">${btn('Open the full lesson →','scenario-lesson',[l.id])}${btn('Try another scenario','scenario-another',[l.id],'secondary')}${btn('Explore Carecraft','scenario-close',[],'ghost')}</div></div>`:`<div class="row scenario-card-actions">${btn('Open the lesson →','lesson',[l.id],'secondary')}${btn('Visual guide','infographics',[l.id],'ghost')}</div>`;}
+function renderDailyScenario(){const l=scenarioOfDay(),today=scenarioState().days[localDay()],chosen=today&&today.id===l.id?today.choice:null,s=scenarioStats();
+ return `<section class="scenario-card" aria-labelledby="daily-question-title"><div class="scenario-card-main"><div class="scenario-card-head"><span class="eyebrow" id="daily-question-title">TODAY’S 60-SECOND SCENARIO · ${esc(l.tag.toUpperCase())}</span><span class="scenario-chip">Fictional · Practice only</span></div><div id="dailyScenario">${scenarioBody(l,'daily',chosen)}</div>${chosen!==null?scenarioFooter(l,'daily'):''}</div>
+ <div class="scenario-card-side" role="group" aria-label="Your scenario rhythm"><div class="scenario-flame" aria-hidden="true">${icon('spark')}</div><strong>${s.streak}</strong><span>day${s.streak===1?'':'s'} in a row</span><dl><div><dt>Scenarios explored</dt><dd>${s.answered}</dd></div><div><dt>Strongest choices</dt><dd>${s.strongest}</dd></div></dl><p>A new scenario arrives each day. Thinking first, then comparing, helps ideas stick.</p></div></section>`;}
+function answerScenario(where,id,choice){const l=lessons.find(x=>x.id===id);if(!l)return;choice=Number(choice);const s=scenarioState(),day=localDay();if(where==='daily'||!s.days[day])s.days[day]={id,choice,correct:choice===l.correct};s.seen=true;persist();
+ const host=where==='hook'?$('#hookScenario'):$('#dailyScenario');if(!host)return;host.innerHTML=scenarioBody(l,where,choice);host.insertAdjacentHTML('afterend',scenarioFooter(l,where));if(where==='hook'){$('#ccHook')?.classList.add('is-answered');stopHookTimer();}
+ if(where==='daily'){const side=$('.scenario-card-side');if(side){const st=scenarioStats();side.querySelector('strong').textContent=st.streak;side.querySelector('strong+span').textContent='day'+(st.streak===1?'':'s')+' in a row';const dd=side.querySelectorAll('dd');dd[0].textContent=st.answered;dd[1].textContent=st.strongest;}}
+ host.querySelector('.scenario-option.is-strongest')?.focus({preventScroll:true});}
+let hookTimer=null;
+function stopHookTimer(){clearInterval(hookTimer);hookTimer=null;}
+function openHook(id){const pool=scenarioPool(),l=pool.find(x=>x.id===id)||pool.find(x=>x.id===HOOK_FIRST[0])||pool[0];if(!l)return;let d=$('#ccHook');if(!d){d=document.createElement('dialog');d.id='ccHook';d.className='cc-hook';d.setAttribute('aria-labelledby','hookTitle');document.body.append(d);d.addEventListener('cancel',e=>{e.preventDefault();closeHook();});}
+ d.classList.remove('is-answered');d.dataset.id=l.id;
+ d.innerHTML=`<div class="cc-hook-inner"><header class="cc-hook-head"><div class="cc-hook-brand"><img src="${HCA_CREST}" alt="" width="40" height="40"><span>Carecraft<small>HEALTHCARE CROWN ACADEMY</small></span></div><button type="button" class="cc-hook-skip" data-action="scenario-close">Skip intro</button></header>
+ <div class="cc-hook-intro"><span class="eyebrow">A 60-SECOND SCENARIO · ${esc(l.tag.toUpperCase())}</span><h2 id="hookTitle">One moment from a working day.<br><em>What would you do?</em></h2><div class="cc-hook-timer" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" class="track"/><circle cx="22" cy="22" r="19" class="fill" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" id="hookRing"/></svg><span id="hookClock">60</span></div><p class="cc-hook-note">No pressure: the ring is only a gentle pace. Choose, then compare the reasoning behind every option.</p></div>
+ <div id="hookScenario">${scenarioBody(l,'hook')}</div></div>`;
+ if(!d.open)d.showModal();stopHookTimer();const started=Date.now(),ring=$('#hookRing'),clock=$('#hookClock');
+ if(!studioReducedMotion())hookTimer=setInterval(()=>{const t=Math.min(60,(Date.now()-started)/1000);if(ring)ring.setAttribute('stroke-dashoffset',String(100-t/60*100));if(clock)clock.textContent=String(Math.ceil(60-t));if(t>=60){stopHookTimer();if(clock)clock.textContent='✓';}},250);
+ d.querySelector('.scenario-option')?.focus({preventScroll:true});}
+function closeHook(){stopHookTimer();const s=scenarioState();if(!s.seen){s.seen=true;persist();}const d=$('#ccHook');if(d?.open)d.close();d?.remove();if(currentPage==='dashboard')render();}
+function maybeOpenHook(){try{if(scenarioState().seen||state.onboarded||currentPage!=='dashboard'||new URLSearchParams(location.search).has('nohook'))return;openHook(HOOK_FIRST[0]);}catch{}}
+Object.assign(actions,{
+ 'scenario-answer':([where,id,choice])=>answerScenario(where,id,choice),
+ 'scenario-lesson':([id])=>{closeHook();openLesson(id);},
+ 'scenario-another':([id])=>{const pool=scenarioPool(),order=HOOK_FIRST.filter(x=>pool.some(l=>l.id===x)),next=order[(order.indexOf(id)+1)%order.length]||pool[0].id;openHook(next);},
+ 'scenario-close':()=>closeHook(),
+ 'scenario-open':([id])=>openHook(id)
+});

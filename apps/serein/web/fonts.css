@@ -1,0 +1,5 @@
+/* @font-face rules for render-art.cjs, pointing at the built font files. */
+@font-face{font-family:Inter;src:url("../../../site/serein/fonts/9bc09e789d.woff2") format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:"Playfair Display";src:url("../../../site/serein/fonts/0c9ba3839f.woff2") format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:"Playfair Display";src:url("../../../site/serein/fonts/0b3e199dc7.woff2") format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:"Playfair Display";src:url("../../../site/serein/fonts/5ed8bb41b4.woff2") format('woff2');font-style:italic;font-display:swap}
