@@ -84,6 +84,7 @@ const html = `<!DOCTYPE html>
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="preload" href="${BASE}img/${index['today-welcome']}" as="image" fetchpriority="high">
 <link rel="stylesheet" id="carecraft-app-styles" href="${BASE}${cssName}">
+<script defer src="/assets/js/crown-account.js"></script>
 <script defer id="carecraft-app-code" src="${BASE}${jsName}"></script>
 </head>
 <body><div id="app"></div><noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:4rem auto;padding:0 1rem">Carecraft needs JavaScript. You can also <a href="${BASE}download/Carecraft-v${VERSION}.html">download the offline edition</a> or return to <a href="/">Healthcare Crown Academy</a>.</p></noscript></body>

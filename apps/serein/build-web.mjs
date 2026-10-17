@@ -94,6 +94,7 @@ write('index.html', `<!doctype html>
 <link rel="icon" href="${crest}" type="image/svg+xml"><link rel="apple-touch-icon" href="${BASE}img/apple-touch-icon.png"><link rel="manifest" href="${BASE}manifest.webmanifest">
 <meta name="serein-distribution" content="web"><meta name="serein-offline-cache" content="${cacheName}">
 <link rel="stylesheet" href="${BASE}${cssName}">
+<script defer src="/assets/js/crown-account.js"></script>
 <script defer src="${BASE}${jsName}"></script>
 </head>
 <body>${markup}<noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:2rem auto;padding:0 1rem">Serein needs JavaScript to run. Return to <a href="/">Healthcare Crown Academy</a>.</p></noscript>

@@ -80,6 +80,7 @@ write('index.html', `<!DOCTYPE html>
 <link rel="icon" type="image/svg+xml" href="${favicon}"><link rel="apple-touch-icon" href="${BASE}img/apple-touch-icon.png">
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="stylesheet" href="${BASE}${cssName}">
+<script defer src="/assets/js/crown-account.js"></script>
 <script defer src="${BASE}${hookName}"></script>
 <script defer src="${BASE}${jsName}"></script>
 </head>
