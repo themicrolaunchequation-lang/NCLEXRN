@@ -64,6 +64,8 @@
 .hca-menu a:hover,.hca-menu button:hover,.hca-menu a:focus-visible,.hca-menu button:focus-visible{background:rgba(243,217,155,.12);outline:none}
 .hca-menu .gold{color:#F3D99B}
 @media (max-width:760px){.hca-acct.floating{bottom:84px}}
+.hca-acct.floating.right{left:auto;right:16px;bottom:84px}
+.hca-acct.floating.right .hca-menu{left:auto;right:0}
 @media print{.hca-acct{display:none}}`;
 
   function render(host, e) {
@@ -124,7 +126,13 @@
     style.textContent = css;
     document.head.append(style);
     let host = document.querySelector('[data-crown-account]');
-    if (!host) { host = document.createElement('div'); host.className = 'floating'; document.body.append(host); }
+    if (!host) {
+      host = document.createElement('div');
+      host.className = 'floating';
+      // A page can move the floating button: <meta name="hca-account-position" content="right">
+      if (document.querySelector('meta[name="hca-account-position"]')?.content === 'right') host.classList.add('right');
+      document.body.append(host);
+    }
     host.classList.add('hca-acct');
     ready.then((e) => render(host, e));
   }

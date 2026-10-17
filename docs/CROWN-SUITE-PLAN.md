@@ -8,6 +8,7 @@ HCA stops looking like "a company with some apps" and becomes one recognisable p
 
 | Jewel | App | Promise | Signature colour | Stage |
 |---|---|---|---|---|
+| Amethyst | **Lumen** | Study your own sources: PDFs, images, notes, recall cards, focus planner, Academy AI | Amethyst `#8B6CF0` | Study |
 | Sapphire | **MedLex** | Understand the language of medicine | Sapphire `#2A45B8` on navy | Understand |
 | Emerald | **Carecraft** | Practise better care, one minute a day | Learning teal `#087D7A` | Practise |
 | Jade | **Serein** | Restore yourself between shifts | Serene sage `#2F6B5E` / `#9FD8C4` | Restore |
@@ -175,3 +176,7 @@ Phases 1 and 2 cost nothing to run. Payments are never switched on until you com
 2. **Serein free scope:** keep core practices and support free, as recommended?
 3. **Account hub address:** `account.healthcarecrownacademy.co.uk` (recommended), or keep accounts inside Evinca's address?
 4. **Order:** start with phase 1 now and phase 2 straight after (recommended)?
+
+
+## Addendum (17 Oct 2026): Lumen
+Lumen joins as the fifth jewel (amethyst) at /lumen. Price £5.99/month or £49.99/year (comparator: RemNote Pro with AI, $18/month or $216/year). Free: up to 3 sources. Crown Pass now covers MedLex, Lumen, Carecraft and Serein at the same £9.99/£79.99; review this once Academy AI usage costs are known. /lumen has its own security policy (vercel.json) because it reads PDFs and scans in background workers and can call AI providers chosen by the user.

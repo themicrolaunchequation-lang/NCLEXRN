@@ -728,8 +728,8 @@
       });
     }
 
-    const prices = { medlex: [6.99, 49.99], carecraft: [4.99, 49.99], serein: [4.99, 24.99] };
-    const names = { medlex: 'MedLex', carecraft: 'Carecraft', serein: 'Serein', evinca: 'Evinca' };
+    const prices = { medlex: [6.99, 49.99], lumen: [5.99, 49.99], carecraft: [4.99, 49.99], serein: [4.99, 24.99] };
+    const names = { medlex: 'MedLex', lumen: 'Lumen', carecraft: 'Carecraft', serein: 'Serein', evinca: 'Evinca' };
     const preview = $('.crown-preview');
     if (preview) {
       const label = $('[data-crown-label]'), price = $('[data-crown-price]');
@@ -739,7 +739,6 @@
         chosen.has(app) ? chosen.delete(app) : chosen.add(app);
         b.setAttribute('aria-pressed', String(chosen.has(app)));
         Object.keys(names).forEach((k) => preview.toggleAttribute('data-' + k, chosen.has(k)));
-        preview.toggleAttribute('data-all', chosen.size === 4);
         const paid = [...chosen].filter((k) => prices[k]);
         if (!chosen.size) { label.textContent = 'Choose an interest to light your crown.'; price.textContent = ''; return; }
         label.textContent = 'Your crown: ' + [...chosen].map((k) => names[k]).join(' + ');

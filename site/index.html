@@ -47,7 +47,7 @@
       "foundingDate": "2026-10-06",
       "identifier": {"@type": "PropertyValue", "propertyID": "UK Companies House number", "value": "17501904"},
       "description": "UK-registered company dedicated to healthcare education, professional development, innovation and recognition.",
-      "brand": [{"@type": "Brand", "name": "Evinca"}, {"@type": "Brand", "name": "Carecraft"}, {"@type": "Brand", "name": "Serein"}, {"@type": "Brand", "name": "MedLex"}]
+      "brand": [{"@type": "Brand", "name": "Evinca"}, {"@type": "Brand", "name": "Carecraft"}, {"@type": "Brand", "name": "Serein"}, {"@type": "Brand", "name": "MedLex"}, {"@type": "Brand", "name": "Lumen"}]
     },
     {
       "@type": "WebApplication",
@@ -66,6 +66,16 @@
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any (web browser)",
       "description": "A medical terminology course for healthcare practitioners: 26 modules, 1,480 terms, word elements, illustrated guides and active practice.",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"},
+      "publisher": {"@id": "https://healthcarecrownacademy.co.uk/#org"}
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Lumen",
+      "url": "https://healthcarecrownacademy.co.uk/lumen",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any (web browser)",
+      "description": "A private clinical study studio: read PDFs and images, collect insights, make recall cards and plan focused study.",
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"},
       "publisher": {"@id": "https://healthcarecrownacademy.co.uk/#org"}
     },
@@ -153,7 +163,7 @@
         <button class="btn btn-gold btn-sm header-cta" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="app-dock" data-launcher-toggle>Open an app <svg class="i chev" aria-hidden="true"><use href="#i-arrow"/></svg></button>
         <div class="app-dock" id="app-dock" role="menu" aria-label="Crown Suite apps" hidden>
           <p class="dock-title">The Crown Suite · one account for all</p>
-          <a class="dock-app jewel-medlex" href="/medlex" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open MedLex</b><small>Understand · Decode medical words</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="dock-app jewel-carecraft" href="/carecraft" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open Carecraft</b><small>Practise · A 60-second scenario a day</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="dock-app jewel-serein" href="/serein" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open Serein</b><small>Restore · A little room to breathe</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="dock-app jewel-evinca" href="https://evinca.healthcarecrownacademy.co.uk/en" data-evinca="/en" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open Evinca</b><small>Be recognised · Share your impact</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="dock-app jewel-medlex" href="/medlex" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open MedLex</b><small>Understand · Decode medical words</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="dock-app jewel-carecraft" href="/carecraft" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open Carecraft</b><small>Practise · A 60-second scenario a day</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="dock-app jewel-serein" href="/serein" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open Serein</b><small>Restore · A little room to breathe</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="dock-app jewel-lumen" href="/lumen" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open Lumen</b><small>Study · Your sources, turned into recall</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="dock-app jewel-evinca" href="https://evinca.healthcarecrownacademy.co.uk/en" data-evinca="/en" role="menuitem"><span class="jewel" aria-hidden="true"></span><span class="dock-text"><b>Open Evinca</b><small>Be recognised · Share your impact</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="dock-pricing" href="#pricing">See plans and the Crown Pass →</a>
         </div>
       </div>
@@ -173,6 +183,7 @@
       <a class="btn btn-gold mobile-app" href="/medlex"><span class="jewel jewel-medlex" aria-hidden="true"></span>Open MedLex</a>
       <a class="btn btn-gold mobile-app" href="/carecraft"><span class="jewel jewel-carecraft" aria-hidden="true"></span>Open Carecraft</a>
       <a class="btn btn-gold mobile-app" href="/serein"><span class="jewel jewel-serein" aria-hidden="true"></span>Open Serein</a>
+      <a class="btn btn-gold mobile-app" href="/lumen"><span class="jewel jewel-lumen" aria-hidden="true"></span>Open Lumen</a>
       <a class="btn btn-gold mobile-app" href="https://evinca.healthcarecrownacademy.co.uk/en" data-evinca="/en"><span class="jewel jewel-evinca" aria-hidden="true"></span>Open Evinca</a>
       <a href="#pricing">Pricing</a>
     </nav>
@@ -203,9 +214,9 @@
         Where healthcare excellence is learned, lived and <em class="gold-text">crowned.</em>
       </h1>
       <p class="hero-lede" data-hero-in>
-        Four apps, one account. <strong>MedLex</strong> to understand, <strong>Carecraft</strong> to practise, <strong>Serein</strong> to restore and <strong>Evinca</strong> to be recognised. Build the crown that fits your career.
+        Five apps, one account. <strong>MedLex</strong> to understand, <strong>Lumen</strong> to study, <strong>Carecraft</strong> to practise, <strong>Serein</strong> to restore and <strong>Evinca</strong> to be recognised. Build the crown that fits your career.
       </p>
-      <div class="hero-dock" data-hero-in aria-label="Open an app"><a class="hero-app jewel-medlex" href="/medlex"><span class="jewel" aria-hidden="true"></span><span><small>Understand</small><b>Open MedLex</b></span></a><a class="hero-app jewel-carecraft" href="/carecraft"><span class="jewel" aria-hidden="true"></span><span><small>Practise</small><b>Open Carecraft</b></span></a><a class="hero-app jewel-serein" href="/serein"><span class="jewel" aria-hidden="true"></span><span><small>Restore</small><b>Open Serein</b></span></a><a class="hero-app jewel-evinca" href="https://evinca.healthcarecrownacademy.co.uk/en" data-evinca="/en"><span class="jewel" aria-hidden="true"></span><span><small>Be recognised</small><b>Open Evinca</b></span></a></div>
+      <div class="hero-dock" data-hero-in aria-label="Open an app"><a class="hero-app jewel-medlex" href="/medlex"><span class="jewel" aria-hidden="true"></span><span><small>Understand</small><b>Open MedLex</b></span></a><a class="hero-app jewel-lumen" href="/lumen"><span class="jewel" aria-hidden="true"></span><span><small>Study</small><b>Open Lumen</b></span></a><a class="hero-app jewel-carecraft" href="/carecraft"><span class="jewel" aria-hidden="true"></span><span><small>Practise</small><b>Open Carecraft</b></span></a><a class="hero-app jewel-serein" href="/serein"><span class="jewel" aria-hidden="true"></span><span><small>Restore</small><b>Open Serein</b></span></a><a class="hero-app jewel-evinca" href="https://evinca.healthcarecrownacademy.co.uk/en" data-evinca="/en"><span class="jewel" aria-hidden="true"></span><span><small>Be recognised</small><b>Open Evinca</b></span></a></div>
       <div class="hero-ctas" data-hero-in>
         <a class="btn btn-gold btn-lg" href="https://evinca.healthcarecrownacademy.co.uk/en/apply" data-evinca="/en/apply" data-magnetic>
           Share your story, free
@@ -278,6 +289,7 @@
     <div class="builder-grid">
       <div class="interest-list" role="group" aria-label="Your interests" data-interests>
         <button type="button" class="interest jewel-medlex" data-app="medlex" aria-pressed="false"><span class="jewel" aria-hidden="true"></span><span><b>Understand medical words</b><small>MedLex · 26 modules, 1,480 terms</small></span></button>
+        <button type="button" class="interest jewel-lumen" data-app="lumen" aria-pressed="false"><span class="jewel" aria-hidden="true"></span><span><b>Study my own notes and PDFs</b><small>Lumen · recall cards, focus timer, AI help</small></span></button>
         <button type="button" class="interest jewel-carecraft" data-app="carecraft" aria-pressed="false"><span class="jewel" aria-hidden="true"></span><span><b>Handle tricky moments at work</b><small>Carecraft · 30 lessons, daily scenarios</small></span></button>
         <button type="button" class="interest jewel-serein" data-app="serein" aria-pressed="false"><span class="jewel" aria-hidden="true"></span><span><b>Look after myself on hard days</b><small>Serein · short well-being practices</small></span></button>
         <button type="button" class="interest jewel-evinca" data-app="evinca" aria-pressed="false"><span class="jewel" aria-hidden="true"></span><span><b>Get my work recognised</b><small>Evinca · free story, optional review</small></span></button>
@@ -290,7 +302,7 @@
           <circle class="gem gem-carecraft" cx="78" cy="86" r="11"/>
           <circle class="gem gem-evinca" cx="120" cy="22" r="13"/>
           <circle class="gem gem-serein" cx="162" cy="86" r="11"/>
-          <circle class="gem gem-all" cx="204" cy="46" r="11"/>
+          <circle class="gem gem-lumen" cx="204" cy="46" r="11"/>
         </svg>
         <p class="crown-label" data-crown-label>Choose an interest to light your crown.</p>
         <p class="crown-price" data-crown-price></p>
@@ -809,7 +821,7 @@
         <p class="card-kicker">Free account</p>
         <p class="price"><span>£0</span></p>
         <p class="price-note">No card needed.</p>
-        <ul><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>MedLex modules 1–3</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Carecraft daily scenario and 6 lessons</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Serein starter practices and Get help</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Evinca free story</li></ul>
+        <ul><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>MedLex modules 1–3</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Carecraft daily scenario and 6 lessons</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Serein starter practices and Get help</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Lumen with 3 sources</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Evinca free story</li></ul>
         <a class="btn btn-ghost" href="/medlex">Start free</a>
       </article>
       <article class="price-card jewel-medlex">
@@ -833,11 +845,18 @@
         <ul><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>All 15 practices</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Journeys, routines and insights</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Team toolkit</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Participation certificate</li></ul>
         <a class="btn btn-ghost" href="#waitlist">Choose Serein</a>
       </article>
+      <article class="price-card jewel-lumen">
+        <p class="card-kicker"><span class="jewel" aria-hidden="true"></span>Lumen</p>
+        <p class="price"><span data-m="£5.99" data-y="£49.99">£5.99</span><small data-per>/month</small></p>
+        <p class="price-note" data-note-m="Billed monthly. Cancel any time." data-note-y="Billed yearly.">Billed monthly. Cancel any time.</p>
+        <ul><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Unlimited sources and notes</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Academy AI study help</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Recall cards and focus planner</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Study certificate</li></ul>
+        <a class="btn btn-ghost" href="#waitlist">Choose Lumen</a>
+      </article>
       <article class="price-card jewel-evinca price-crown">
         <p class="card-kicker"><span class="jewel" aria-hidden="true"></span>Crown Pass</p>
         <p class="price"><span data-m="£9.99" data-y="£79.99">£9.99</span><small data-per>/month</small></p>
         <p class="price-note" data-note-m="Billed monthly. Cancel any time." data-note-y="Billed yearly.">Billed monthly. Cancel any time.</p>
-        <ul><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>MedLex, Carecraft and Serein</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>15% off Evinca review fees</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>All certificates</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>7-day free trial</li></ul>
+        <ul><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>MedLex, Lumen, Carecraft and Serein</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>15% off Evinca review fees</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>All certificates</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>7-day free trial</li></ul>
         <a class="btn btn-gold" href="#waitlist">Get the Crown Pass</a>
       </article>
     </div>
@@ -1003,6 +1022,7 @@
         <a href="/carecraft">Carecraft: learning app</a>
         <a href="/serein">Serein: well-being app</a>
         <a href="/medlex">MedLex: medical terminology</a>
+        <a href="/lumen">Lumen: clinical study studio</a>
         <a href="#evinca">Evinca</a>
         <a href="#how">How it works</a>
         <a href="#readiness">Readiness check</a>
