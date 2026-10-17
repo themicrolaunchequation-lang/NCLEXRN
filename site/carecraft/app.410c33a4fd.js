@@ -678,4 +678,5 @@ const ENGINE_ACTIONS={
 "engine-96":function(event,element,args){hcaChooseBackup()}
 };
 function hcaDownloadApp(){const a=document.createElement('a');a.href="/carecraft/download/Carecraft-v4.5.0.html";a.download=CC_RELEASE.filename;document.body.append(a);a.click();a.remove();toast('Downloading the offline edition (about 19 MB).');}
+window.CC_FREE={lessons:lessons.slice(0,6).map(l=>l.id),activities:HCA_ACTIVITIES.slice(0,3).map(a=>a.id)};
 bootstrap();maybeOpenHook();

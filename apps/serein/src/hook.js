@@ -6,8 +6,8 @@ const MOODS=[
  {label:'Low',curve:10,practice:'ground',duration:null,line:'Thank you for being honest. Let’s keep this very gentle and look outward, at your own pace.'},
  {label:'A little low',curve:12,practice:'tide',duration:60,line:'That makes sense. A soft minute of slower breathing can make a little room.'},
  {label:'Okay',curve:15,practice:'desk',duration:null,line:'A steady place to start. A short seated reset can loosen what the day has gathered.'},
- {label:'Good',curve:19,practice:'listen',duration:60,line:'Lovely. One minute of listening can help you notice what is going well.'},
- {label:'Great',curve:21,practice:'handreset',duration:null,line:'Wonderful. A small reset for your hands helps you carry that energy with care.'}
+ {label:'Good',curve:19,practice:'tide',duration:60,line:'Lovely. One easy minute of breathing helps you keep that steadiness for later.'},
+ {label:'Great',curve:21,practice:'desk',duration:null,line:'Wonderful. A quick seated reset helps you carry that energy with care.'}
 ];
 const BREATHS=3,IN=4000,OUT=6000;
 let dialog=null,timers=[],ctx=null,chosen=null;

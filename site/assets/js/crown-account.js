@@ -66,7 +66,20 @@
 @media (max-width:760px){.hca-acct.floating{bottom:84px}}
 .hca-acct.floating.right{left:auto;right:16px;bottom:84px}
 .hca-acct.floating.right .hca-menu{left:auto;right:0}
-@media print{.hca-acct{display:none}}`;
+@media print{.hca-acct{display:none}}
+.hca-pay{width:min(460px,calc(100% - 24px));max-width:100%;padding:0;border:1px solid rgba(232,193,112,.5);border-radius:24px;background:radial-gradient(120% 90% at 50% 0%,#15254D,#081128 70%);color:#EEF1F8;font:400 15px/1.5 Inter,Geist,system-ui,sans-serif;box-shadow:0 30px 80px rgba(5,10,24,.6)}
+.hca-pay::backdrop{background:rgba(5,10,24,.72);backdrop-filter:blur(4px)}
+.hca-pay-in{padding:28px}
+.hca-pay-eye{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.14em;color:#E8C170}
+.hca-pay h2{margin:0 0 8px;font:500 28px/1.15 'Playfair Display',Fraunces,Georgia,serif;color:#F8F5EF}
+.hca-pay-lead{margin:0 0 14px;color:#C7D0E4}
+.hca-pay ul{margin:0 0 16px;padding:0;list-style:none;display:grid;gap:6px}
+.hca-pay li{padding-left:22px;position:relative}.hca-pay li::before{content:"◆";position:absolute;left:0;color:#E8C170;font-size:11px;top:3px}
+.hca-pay-price{margin:0 0 18px;color:#C7D0E4}.hca-pay-price b{color:#F3D99B}
+.hca-pay-row{display:flex;flex-wrap:wrap;gap:10px}
+.hca-pay-go{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:linear-gradient(135deg,#F3D99B,#D4A445 60%,#B8862B);color:#1B1404;font-weight:700;text-decoration:none}
+.hca-pay-alt{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:none;color:#EEF1F8;font:inherit;font-weight:600;cursor:pointer}
+.hca-pay :focus-visible{outline:3px solid #F1C56E;outline-offset:3px}`;
 
   function render(host, e) {
     const initials = (e.name || e.email || '?').split(/[\s@.]+/).filter(Boolean).slice(0, 2).map((x) => x[0].toUpperCase()).join('');
@@ -115,9 +128,92 @@
   }
 
   const ready = entitlements();
+  let ent = null;
+  ready.then((e) => { ent = e; });
+
+  /* ---------- Free and paid limits ----------
+     Switched off until paid plans can be bought (GATES_LIVE). Preview with ?gates=on.
+     The "Get help" support in Serein and every app's first steps always stay free. */
+  const GATES_LIVE = false;
+  const gatesOn = GATES_LIVE || new URLSearchParams(location.search).get('gates') === 'on';
+  const NAMES = { medlex: 'MedLex', carecraft: 'Carecraft', serein: 'Serein', lumen: 'Lumen' };
+  const PERKS = {
+    medlex: ['All 26 modules and 1,480 terms', '56 illustrated guides', 'Spaced practice and worksheets', 'Completion certificate'],
+    carecraft: ['All 30 lessons and 90 visual guides', 'All 22 practice activities', 'Smart Review', 'Completion certificate'],
+    serein: ['All 15 practices', 'Journeys, routines and insights', 'Team toolkit', 'Participation certificate'],
+    lumen: ['More Academy AI help each day', 'Unlimited sources and notes', 'Recall cards and focus planner', 'Study certificate'],
+  };
+  function paywall(app, what) {
+    document.querySelector('.hca-pay')?.remove();
+    const d = document.createElement('dialog');
+    d.className = 'hca-pay';
+    d.setAttribute('aria-labelledby', 'hca-pay-title');
+    const signedIn = ent && ent.signed_in;
+    d.innerHTML = `<div class="hca-pay-in"><p class="hca-pay-eye">CROWN PASS · ${NAMES[app].toUpperCase()}</p><h2 id="hca-pay-title"></h2><p class="hca-pay-lead"></p><ul></ul>
+<p class="hca-pay-price"><b>£9.99/month</b> for every app, or ${NAMES[app]} on its own. Codes can be used at checkout.</p>
+<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/?plan=${app}#pricing">See plans</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
+    d.querySelector('h2').textContent = what ? `Unlock ${what}` : `Unlock all of ${NAMES[app]}`;
+    d.querySelector('.hca-pay-lead').textContent = `This is part of ${NAMES[app]} premium. Everything you have done so far stays yours.`;
+    for (const t of PERKS[app]) { const li = document.createElement('li'); li.textContent = t; d.querySelector('ul').append(li); }
+    d.addEventListener('click', (e) => { if (e.target.closest('[data-close]') || e.target === d) d.close(); if (e.target.closest('[data-in]')) location.href = signInURL(); });
+    d.addEventListener('close', () => d.remove());
+    document.body.append(d);
+    d.showModal();
+    d.querySelector('.hca-pay-go').focus();
+  }
+  /** Runs `allowed` if this person has premium for the app; otherwise shows the paywall. */
+  async function gate(app, what, allowed) {
+    const e = ent || await ready;
+    if (!gatesOn || e.admin || e[app] === 'premium') { allowed(); return true; }
+    paywall(app, what);
+    return false;
+  }
+
+  const appName = document.querySelector('meta[name="hca-app"]')?.content;
+  let replaying = false;
+  function guardClicks(test) {
+    document.addEventListener('click', (ev) => {
+      if (replaying || !gatesOn) return;
+      const hit = test(ev.target);
+      if (!hit) return;
+      if (ent && (ent.admin || ent[appName] === 'premium')) return;
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      gate(appName, hit.what, () => { replaying = true; try { hit.el.click(); } finally { replaying = false; } });
+    }, true);
+  }
+  if (appName === 'serein') {
+    const free = new Set(['tide', 'ground', 'desk']);
+    guardClicks((t) => { const el = t.closest('[data-practice]'); return el && !free.has(el.dataset.practice) ? { el, what: 'this practice' } : null; });
+  }
+  if (appName === 'carecraft') {
+    // Published by the Carecraft build: the first 6 lessons and first 3 activities are free.
+    const freeLessons = () => new Set(window.CC_FREE?.lessons || []);
+    const freeActs = () => new Set(window.CC_FREE?.activities || []);
+    guardClicks((t) => {
+      const el = t.closest('[data-action="lesson"],[data-action="scenario-lesson"],[data-action="activity"]');
+      if (!el) return null;
+      const id = el.dataset.arg0;
+      if (el.dataset.action === 'activity') return freeActs().has(id) ? null : { el, what: 'this practice activity' };
+      return freeLessons().has(id) ? null : { el, what: 'this lesson' };
+    });
+  }
+  if (appName === 'medlex') {
+    const free = new Set(['ch1', 'ch2', 'prefixes']);
+    const check = () => {
+      if (!gatesOn) return;
+      const m = location.hash.match(/^#(?:learn\/)?module(?:\/([^/?&]+)|\?(?:.*&)?id=([^&]+))/);
+      const id = m && decodeURIComponent(m[1] || m[2]);
+      if (!id || free.has(id)) return;
+      gate('medlex', 'this module', () => {}).then((ok) => { if (!ok) history.replaceState(null, '', '#learn'), dispatchEvent(new HashChangeEvent('hashchange')); });
+    };
+    addEventListener('hashchange', check);
+    ready.then(check);
+  }
   window.HCA = {
     ready,
     signIn: (mode) => { location.href = signInURL(mode); },
+    gate,
+    paywall,
     upgrade: (app) => { location.href = 'https://healthcarecrownacademy.co.uk/?plan=' + encodeURIComponent(app || 'crown') + '#pricing'; },
   };
 

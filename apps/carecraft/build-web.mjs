@@ -37,7 +37,7 @@ const infoPng = 'const INFO_PNG=' + JSON.stringify(Object.fromEntries(lessonIds.
 const prefix = `const CC_RELEASE={version:"${VERSION}",filename:"Carecraft-v${VERSION}.html"};const HCA_CREST="${BASE}img/crest.svg";const HCA_CREST_DARK="${BASE}img/crest-dark.svg";\n` + raster + '\n' + assets + '\n' + art + '\n';
 // The offline single-file edition is published beside the app; "Download app" fetches it.
 const webOverrides = `function hcaDownloadApp(){const a=document.createElement('a');a.href=${JSON.stringify(BASE + 'download/' + 'Carecraft-v' + VERSION + '.html')};a.download=CC_RELEASE.filename;document.body.append(a);a.click();a.remove();toast('Downloading the offline edition (about 19 MB).');}`;
-const scripts = prefix + infoPng + ['runtime-data.js', 'lesson-notes.js', 'store.js', 'app.js', 'views.js', 'home.js', 'features.js', 'learning.js', 'infographics.js', 'events.js', 'hook.js', 'engines.js', 'engine-actions.js'].map(f => read('src/v4/' + f)).join('\n') + '\n' + webOverrides + '\nbootstrap();maybeOpenHook();';
+const scripts = prefix + infoPng + ['runtime-data.js', 'lesson-notes.js', 'store.js', 'app.js', 'views.js', 'home.js', 'features.js', 'learning.js', 'infographics.js', 'events.js', 'hook.js', 'engines.js', 'engine-actions.js'].map(f => read('src/v4/' + f)).join('\n') + '\n' + webOverrides + '\nwindow.CC_FREE={lessons:lessons.slice(0,6).map(l=>l.id),activities:HCA_ACTIVITIES.slice(0,3).map(a=>a.id)};\nbootstrap();maybeOpenHook();';
 
 const cssName = `app.${hash(styles)}.css`, jsName = `app.${hash(scripts)}.js`;
 write(cssName, styles);
@@ -84,6 +84,7 @@ const html = `<!DOCTYPE html>
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="preload" href="${BASE}img/${index['today-welcome']}" as="image" fetchpriority="high">
 <link rel="stylesheet" id="carecraft-app-styles" href="${BASE}${cssName}">
+<meta name="hca-app" content="carecraft">
 <script defer src="/assets/js/crown-account.js"></script>
 <script defer id="carecraft-app-code" src="${BASE}${jsName}"></script>
 </head>
