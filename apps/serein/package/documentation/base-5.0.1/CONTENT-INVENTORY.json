@@ -1,0 +1,2681 @@
+{
+  "version": "5.0.1",
+  "practices": [
+    {
+      "id": "tide",
+      "title": "Breathing Tide",
+      "tag": "BREATHE",
+      "category": "Breathing",
+      "duration": "1–5 min",
+      "image": "breathing",
+      "color": "#dce7df",
+      "desc": "Follow a soft, expanding light. Let the next breath arrive gently.",
+      "intro": "A breath, not a performance.",
+      "instruction": "Let the light grow as you breathe in, and soften as you breathe out. Stay with a comfortable, unforced breath.",
+      "safety": "No breath holding. The timing is optional: breathe naturally or stop if the pace feels uncomfortable or you feel dizzy.",
+      "originalImage": "coast",
+      "originalPhases": {
+        "defaultSeconds": 120,
+        "paceOptions": [
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            5
+          ]
+        ],
+        "defaultPace": [
+          4,
+          6
+        ],
+        "cyclic": true,
+        "phases": [
+          {
+            "title": "Breathe in",
+            "seconds": 4,
+            "cue": "Gently, and only as far as feels comfortable."
+          },
+          {
+            "title": "Breathe out",
+            "seconds": 6,
+            "cue": "Gently, and only as far as feels comfortable."
+          }
+        ]
+      },
+      "durations": [
+        60,
+        120,
+        180,
+        300
+      ],
+      "defaultDuration": 120,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": true,
+      "movement": false,
+      "steps": [
+        [
+          "Breathe in",
+          "Gently, and only as far as feels comfortable."
+        ],
+        [
+          "Breathe out",
+          "Gently, and only as far as feels comfortable."
+        ]
+      ],
+      "photoPlan": [],
+      "photo": "assets/coast.webp",
+      "cardAlt": "Illustrative coastline and calm sea"
+    },
+    {
+      "id": "box",
+      "title": "Box Breathing",
+      "tag": "FIND A RHYTHM",
+      "category": "Breathing",
+      "duration": "4–12 cycles",
+      "image": "breathing",
+      "color": "#e9e5d7",
+      "desc": "Follow a steady rhythm, one phase at a time. Holds are optional.",
+      "intro": "One side. One moment.",
+      "instruction": "Follow the light around the square. Each side marks a phase. You can turn holds off and breathe continuously.",
+      "safety": "Never strain or force a breath hold. Choose “No holds” if holding is uncomfortable. If unsure about breath holds because of a health condition, seek advice from your clinician.",
+      "originalImage": "forest",
+      "originalPhases": {
+        "defaultCycles": 8,
+        "phaseSecondsOptions": [
+          3,
+          4,
+          5
+        ],
+        "defaultPhaseSeconds": 4,
+        "cyclic": true,
+        "phases": [
+          {
+            "title": "Breathe in",
+            "seconds": 4,
+            "cue": "Gently, and only as far as feels comfortable."
+          },
+          {
+            "title": "Hold gently",
+            "seconds": 4,
+            "cue": "Only if comfortable. No strain, no forcing."
+          },
+          {
+            "title": "Breathe out",
+            "seconds": 4,
+            "cue": "Gently, and only as far as feels comfortable."
+          },
+          {
+            "title": "Rest gently",
+            "seconds": 4,
+            "cue": "Only if comfortable. No strain, no forcing."
+          }
+        ],
+        "noHoldsPhaseTitles": [
+          "Breathe in",
+          "Breathe out"
+        ]
+      },
+      "durations": [
+        60,
+        120,
+        180,
+        300
+      ],
+      "defaultDuration": 120,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": true,
+      "movement": false,
+      "steps": [
+        [
+          "Breathe in",
+          "Gently, and only as far as feels comfortable."
+        ],
+        [
+          "Hold gently",
+          "Only if comfortable. No strain, no forcing."
+        ],
+        [
+          "Breathe out",
+          "Gently, and only as far as feels comfortable."
+        ],
+        [
+          "Rest gently",
+          "Only if comfortable. No strain, no forcing."
+        ]
+      ],
+      "photoPlan": [],
+      "photo": "assets/mountain.webp",
+      "cardAlt": "Illustrative mountain landscape"
+    },
+    {
+      "id": "ground",
+      "title": "Here & Now",
+      "tag": "5 · 4 · 3 · 2 · 1",
+      "category": "Grounding",
+      "duration": "Your own pace",
+      "image": "grounding",
+      "color": "#e9e4db",
+      "desc": "Reconnect with your surroundings through five simple senses.",
+      "intro": "Let the room meet you.",
+      "instruction": "Notice things in your actual surroundings, not just on this screen. Tap a stone for each thing you notice. No writing or sharing needed.",
+      "safety": "Keep your eyes open if that feels safer. Skip or substitute any sense that is inaccessible, unpleasant, or uncomfortable. Nothing needs to be tasted or touched.",
+      "originalImage": "mountain",
+      "originalPhases": {
+        "selfPaced": true,
+        "steps": [
+          {
+            "title": "See",
+            "count": 5,
+            "line": "Notice five things you can see.",
+            "hint": "A color, a shape, the way light meets a surface."
+          },
+          {
+            "title": "Feel",
+            "count": 4,
+            "line": "Notice four comfortable physical sensations.",
+            "hint": "Your feet supported, the chair, your sleeve. No need to touch new objects."
+          },
+          {
+            "title": "Hear",
+            "count": 3,
+            "line": "Notice three sounds around you.",
+            "hint": "Nearby or far away. If hearing is not accessible, notice three visual details."
+          },
+          {
+            "title": "Smell",
+            "count": 2,
+            "line": "Notice two neutral or pleasant smells.",
+            "hint": "If none are available, recall familiar scents or choose two colors instead."
+          },
+          {
+            "title": "Taste",
+            "count": 1,
+            "line": "Notice one taste, if comfortable.",
+            "hint": "Nothing needs to go in your mouth. Alternatively, name one thing you appreciate."
+          }
+        ]
+      },
+      "durations": [],
+      "defaultDuration": 120,
+      "selfPaced": true,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": false,
+      "steps": [
+        [
+          "See",
+          "Notice five things you can see. A color, a shape, the way light meets a surface."
+        ],
+        [
+          "Feel",
+          "Notice four comfortable physical sensations. Your feet supported, the chair, your sleeve. No need to touch new objects."
+        ],
+        [
+          "Hear",
+          "Notice three sounds around you. Nearby or far away. If hearing is not accessible, notice three visual details."
+        ],
+        [
+          "Smell",
+          "Notice two neutral or pleasant smells. If none are available, recall familiar scents or choose two colors instead."
+        ],
+        [
+          "Taste",
+          "Notice one taste, if comfortable. Nothing needs to go in your mouth. Alternatively, name one thing you appreciate."
+        ]
+      ],
+      "photoPlan": [
+        [
+          "awareness",
+          0
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          2
+        ],
+        [
+          "awareness",
+          3
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "photo": "assets/awareness-0.webp"
+    },
+    {
+      "id": "release",
+      "title": "Soften & Release",
+      "tag": "MUSCLE RELAXATION",
+      "category": "Movement",
+      "duration": "2 min",
+      "image": "release",
+      "color": "#e4e9da",
+      "desc": "Notice gentle tension and release, at your own pace.",
+      "intro": "A little less to carry.",
+      "instruction": "The highlighted area shows where to place your attention. Use only light tension, breathe normally, and notice the release. The final step is rest only.",
+      "safety": "Avoid tensing painful or injured areas; choose “Relax only” or skip. Stop if you feel pain or discomfort. This is a short PMR-inspired adaptation, not a clinical protocol.",
+      "originalImage": "leaves",
+      "originalPhases": {
+        "defaultSeconds": 120,
+        "secondsPerPhase": 30,
+        "lightEffortSeconds": 5,
+        "relaxOnlyAvailable": true,
+        "phases": [
+          {
+            "title": "Hands",
+            "effortPhase": "Gently tense",
+            "effortCue": "Lightly close your hands. Keep breathing normally.",
+            "releasePhase": "Soften & notice",
+            "releaseCue": "Let your fingers soften. Notice without judging."
+          },
+          {
+            "title": "Shoulders",
+            "effortPhase": "Gently tense",
+            "effortCue": "Lift your shoulders just a little. Keep breathing.",
+            "releasePhase": "Soften & notice",
+            "releaseCue": "Let your shoulders settle. There is no perfect position."
+          },
+          {
+            "title": "Feet",
+            "effortPhase": "Gently tense",
+            "effortCue": "Lightly press your feet into the floor. No straining.",
+            "releasePhase": "Soften & notice",
+            "releaseCue": "Release the effort in your feet and lower legs."
+          },
+          {
+            "title": "Rest & notice",
+            "releasePhase": "Soften & notice",
+            "releaseCue": "Let your whole body be supported. Breathe naturally."
+          }
+        ]
+      },
+      "durations": [
+        120
+      ],
+      "defaultDuration": 120,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": true,
+      "steps": [
+        [
+          "Hands",
+          "Let your fingers soften. Notice without judging."
+        ],
+        [
+          "Shoulders",
+          "Let your shoulders settle. There is no perfect position."
+        ],
+        [
+          "Feet",
+          "Release the effort in your feet and lower legs."
+        ],
+        [
+          "Rest & notice",
+          "Let your whole body be supported. Breathe naturally."
+        ]
+      ],
+      "photoPlan": [
+        [
+          "hands",
+          3
+        ],
+        [
+          "shoulders",
+          3
+        ],
+        [
+          "feet",
+          3
+        ],
+        [
+          "release",
+          3
+        ]
+      ],
+      "photo": "assets/hands-3.webp"
+    },
+    {
+      "id": "desk",
+      "title": "The Seated Reset",
+      "tag": "GENTLE MOVEMENT",
+      "category": "Movement",
+      "duration": "90 sec",
+      "image": "seated",
+      "color": "#ecdfd0",
+      "desc": "Ease your shoulders, uncurl your hands, and gently turn your head.",
+      "intro": "Move a little. Notice a little.",
+      "instruction": "Sit on a stable, non-wheeled chair, with feet supported. Use a small comfortable range. The figure is a schematic cue, not a posture assessment.",
+      "safety": "Skip any movement that is unsuitable, painful, or makes you dizzy. Do not force a stretch or roll your neck. Check with a clinician if unsure whether these movements are suitable.",
+      "originalImage": "forest",
+      "originalPhases": {
+        "defaultSeconds": 90,
+        "secondsPerPhase": 30,
+        "phases": [
+          {
+            "title": "Shoulder lift & release",
+            "phase": "Lift, then let go",
+            "cue": "Gently lift your shoulders a little, then let them lower."
+          },
+          {
+            "title": "Open & soften hands",
+            "phase": "Open, then soften",
+            "cue": "Slowly uncurl your fingers, then let your hands soften."
+          },
+          {
+            "title": "Gentle neck turns",
+            "phase": "Turn, then return",
+            "cue": "Turn left within a comfortable range, return to center, then right."
+          }
+        ]
+      },
+      "durations": [
+        90
+      ],
+      "defaultDuration": 90,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": true,
+      "steps": [
+        [
+          "Shoulder lift & release",
+          "Gently lift your shoulders a little, then let them lower."
+        ],
+        [
+          "Open & soften hands",
+          "Slowly uncurl your fingers, then let your hands soften."
+        ],
+        [
+          "Gentle neck turns",
+          "Turn left within a comfortable range, return to center, then right."
+        ]
+      ],
+      "photoPlan": [
+        [
+          "shoulders",
+          1
+        ],
+        [
+          "hands",
+          1
+        ],
+        [
+          "shoulders",
+          3
+        ]
+      ],
+      "photo": "assets/shoulders-1.webp"
+    },
+    {
+      "id": "scan",
+      "title": "Body Scan Journey",
+      "category": "Awareness",
+      "image": "release",
+      "duration": "2–5 min",
+      "seconds": 180,
+      "visual": "scan",
+      "desc": "Move attention gently through supported body areas.",
+      "steps": [
+        [
+          "Feet & support",
+          "Notice contact with the floor or chair. Nothing needs to change."
+        ],
+        [
+          "Legs",
+          "Notice whatever is present, or choose to focus on the room instead."
+        ],
+        [
+          "Hands",
+          "Notice the weight and temperature of your hands."
+        ],
+        [
+          "Shoulders",
+          "Notice support. There is no need to soften on command."
+        ],
+        [
+          "Face",
+          "Notice your expression without judging it."
+        ],
+        [
+          "Whole body",
+          "Broaden attention, then look around the room."
+        ]
+      ],
+      "safety": "Skip any area or use external focus if body attention feels uncomfortable.",
+      "tag": "AWARENESS",
+      "intro": "Body Scan Journey",
+      "instruction": "Notice contact with the floor or chair. Nothing needs to change.",
+      "finalImage": "timeline-scan",
+      "photoPhasePlan": [
+        [
+          "feet",
+          0
+        ],
+        [
+          "release",
+          3
+        ],
+        [
+          "hands",
+          3
+        ],
+        [
+          "shoulders",
+          3
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "durations": [
+        120,
+        180,
+        300
+      ],
+      "defaultDuration": 180,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": false,
+      "photoPlan": [
+        [
+          "feet",
+          0
+        ],
+        [
+          "release",
+          3
+        ],
+        [
+          "hands",
+          3
+        ],
+        [
+          "shoulders",
+          3
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "photo": "assets/awareness-1.webp",
+      "cardAlt": "Illustrative healthcare worker seated in a quiet room"
+    },
+    {
+      "id": "fullrelease",
+      "title": "Full Muscle Release",
+      "category": "Movement",
+      "image": "release",
+      "duration": "3–5 min",
+      "seconds": 240,
+      "visual": "release",
+      "desc": "Explore light effort and release across several areas.",
+      "steps": [
+        [
+          "Hands",
+          "Optional: close your hands lightly, then let them open."
+        ],
+        [
+          "Arms",
+          "Optional: use a little effort in the arms, then release."
+        ],
+        [
+          "Shoulders",
+          "Optional: make a small lift, then return comfortably."
+        ],
+        [
+          "Feet",
+          "Optional: press feet lightly into support, then release."
+        ],
+        [
+          "Rest",
+          "No effort here. Notice the chair supporting you."
+        ]
+      ],
+      "safety": "Use only light effort. Avoid painful or injured areas. Relax-only mode is available.",
+      "tag": "MOVEMENT",
+      "intro": "Full Muscle Release",
+      "instruction": "Optional: close your hands lightly, then let them open.",
+      "finalImage": "timeline-fullrelease",
+      "photoPhasePlan": [
+        [
+          "release",
+          0
+        ],
+        [
+          "release",
+          1
+        ],
+        [
+          "release",
+          2
+        ],
+        [
+          "feet",
+          1
+        ],
+        [
+          "release",
+          3
+        ]
+      ],
+      "durations": [
+        180,
+        240,
+        300
+      ],
+      "defaultDuration": 240,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": true,
+      "photoPlan": [
+        [
+          "release",
+          0
+        ],
+        [
+          "release",
+          1
+        ],
+        [
+          "release",
+          2
+        ],
+        [
+          "feet",
+          1
+        ],
+        [
+          "release",
+          3
+        ]
+      ],
+      "photo": "assets/release-0.webp"
+    },
+    {
+      "id": "handreset",
+      "title": "Hand & Finger Reset",
+      "category": "Movement",
+      "image": "detail-hands",
+      "duration": "60–90 sec",
+      "seconds": 90,
+      "visual": "hands",
+      "desc": "A close-up guide to gently opening and resting your hands.",
+      "steps": [
+        [
+          "Settle",
+          "Rest your forearms comfortably. Keep wrists neutral."
+        ],
+        [
+          "Open gently",
+          "Gently uncurl your fingers in a comfortable range."
+        ],
+        [
+          "Return",
+          "Return to a relaxed hand. Do not grip tightly."
+        ],
+        [
+          "Rest",
+          "Let the hands be supported."
+        ]
+      ],
+      "safety": "Stop for pain, tingling, or discomfort. This is a movement cue, not treatment.",
+      "tag": "MOVEMENT",
+      "intro": "Hand & Finger Reset",
+      "instruction": "Rest your forearms comfortably. Keep wrists neutral.",
+      "finalImage": "timeline-handreset",
+      "photoPhasePlan": [
+        [
+          "hands",
+          0
+        ],
+        [
+          "hands",
+          1
+        ],
+        [
+          "hands",
+          2
+        ],
+        [
+          "hands",
+          3
+        ]
+      ],
+      "durations": [
+        60,
+        90
+      ],
+      "defaultDuration": 90,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": true,
+      "photoPlan": [
+        [
+          "hands",
+          0
+        ],
+        [
+          "hands",
+          1
+        ],
+        [
+          "hands",
+          2
+        ],
+        [
+          "hands",
+          3
+        ]
+      ],
+      "photo": "assets/hands-0.webp"
+    },
+    {
+      "id": "shoulderreset",
+      "title": "Shoulder Reset",
+      "category": "Movement",
+      "image": "detail-shoulders",
+      "duration": "60–90 sec",
+      "seconds": 90,
+      "visual": "shoulders",
+      "desc": "Follow a small lift and a gentle return to rest.",
+      "steps": [
+        [
+          "Settle",
+          "Sit supported with arms resting comfortably."
+        ],
+        [
+          "Small lift",
+          "If comfortable, lift shoulders a little. Keep breathing naturally."
+        ],
+        [
+          "Return",
+          "Return gently. Avoid forcing shoulders downward."
+        ],
+        [
+          "Rest",
+          "Notice support and stop whenever you prefer."
+        ]
+      ],
+      "safety": "Use a small comfortable range. Skip painful or injured areas.",
+      "tag": "MOVEMENT",
+      "intro": "Shoulder Reset",
+      "instruction": "Sit supported with arms resting comfortably.",
+      "finalImage": "timeline-shoulderreset",
+      "photoPhasePlan": [
+        [
+          "shoulders",
+          0
+        ],
+        [
+          "shoulders",
+          1
+        ],
+        [
+          "shoulders",
+          2
+        ],
+        [
+          "shoulders",
+          3
+        ]
+      ],
+      "durations": [
+        60,
+        90
+      ],
+      "defaultDuration": 90,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": true,
+      "photoPlan": [
+        [
+          "shoulders",
+          0
+        ],
+        [
+          "shoulders",
+          1
+        ],
+        [
+          "shoulders",
+          2
+        ],
+        [
+          "shoulders",
+          3
+        ]
+      ],
+      "photo": "assets/shoulders-0.webp"
+    },
+    {
+      "id": "ankles",
+      "title": "Seated Foot & Ankle Movement",
+      "category": "Movement",
+      "image": "detail-feet",
+      "duration": "1–2 min",
+      "seconds": 120,
+      "visual": "feet",
+      "desc": "Explore a small up-and-down movement while seated.",
+      "steps": [
+        [
+          "Settle",
+          "Use a stable chair. Support your leg and foot comfortably."
+        ],
+        [
+          "Small movement",
+          "If comfortable, move the ankle gently up and down."
+        ],
+        [
+          "Other side",
+          "Repeat on the other side only if suitable."
+        ],
+        [
+          "Rest",
+          "Return both feet to comfortable support."
+        ]
+      ],
+      "safety": "Do not force range. Skip if movement is unsuitable, painful, or causes discomfort.",
+      "tag": "MOVEMENT",
+      "intro": "Seated Foot & Ankle Movement",
+      "instruction": "Use a stable chair. Support your leg and foot comfortably.",
+      "finalImage": "timeline-ankles",
+      "photoPhasePlan": [
+        [
+          "feet",
+          0
+        ],
+        [
+          "feet",
+          1
+        ],
+        [
+          "feet",
+          2
+        ],
+        [
+          "feet",
+          3
+        ]
+      ],
+      "durations": [
+        60,
+        120
+      ],
+      "defaultDuration": 120,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": true,
+      "photoPlan": [
+        [
+          "feet",
+          0
+        ],
+        [
+          "feet",
+          1
+        ],
+        [
+          "feet",
+          2
+        ],
+        [
+          "feet",
+          3
+        ]
+      ],
+      "photo": "assets/feet-0.webp"
+    },
+    {
+      "id": "listen",
+      "title": "Mindful Listening",
+      "category": "Awareness",
+      "image": "grounding",
+      "duration": "1–3 min",
+      "seconds": 120,
+      "visual": "listen",
+      "desc": "Notice nearby and distant sounds without recording them.",
+      "steps": [
+        [
+          "Arrive",
+          "Look around. Choose a comfortable position."
+        ],
+        [
+          "Nearby",
+          "Notice a nearby sound, or a nearby visual detail."
+        ],
+        [
+          "Further away",
+          "Notice something further away. No need to search hard."
+        ],
+        [
+          "Whole space",
+          "Allow attention to include the room as a whole."
+        ]
+      ],
+      "safety": "Use visual details if hearing is inaccessible or focusing on sound is uncomfortable. No microphone is used.",
+      "tag": "AWARENESS",
+      "intro": "Mindful Listening",
+      "instruction": "Look around. Choose a comfortable position.",
+      "finalImage": "timeline-listen",
+      "photoPhasePlan": [
+        [
+          "awareness",
+          0
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          2
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "durations": [
+        60,
+        120,
+        180
+      ],
+      "defaultDuration": 120,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": false,
+      "photoPlan": [
+        [
+          "awareness",
+          0
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          2
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "photo": "assets/seated.webp",
+      "cardAlt": "Illustrative healthcare worker seated beside a window"
+    },
+    {
+      "id": "pause3",
+      "title": "Three-Minute Pause",
+      "category": "Awareness",
+      "image": "breathing",
+      "duration": "3 min",
+      "seconds": 180,
+      "visual": "pause",
+      "desc": "Notice, choose an anchor, then broaden awareness.",
+      "steps": [
+        [
+          "Notice",
+          "Notice how you are arriving: thoughts, feelings, or surroundings."
+        ],
+        [
+          "Anchor",
+          "Choose natural breathing, supported feet, or a visual detail."
+        ],
+        [
+          "Broaden",
+          "Include the body and room. Choose one useful next step."
+        ]
+      ],
+      "safety": "Breathing is optional. Keep attention external if that feels more comfortable.",
+      "tag": "AWARENESS",
+      "intro": "Three-Minute Pause",
+      "instruction": "Notice how you are arriving: thoughts, feelings, or surroundings.",
+      "finalImage": "timeline-pause3",
+      "photoPhasePlan": [
+        [
+          "awareness",
+          0
+        ],
+        [
+          "awareness",
+          2
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "durations": [
+        180
+      ],
+      "defaultDuration": 180,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": false,
+      "photoPlan": [
+        [
+          "awareness",
+          0
+        ],
+        [
+          "awareness",
+          2
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "photo": "assets/awareness-3.webp",
+      "cardAlt": "Illustrative healthcare worker resting in a chair"
+    },
+    {
+      "id": "quietplace",
+      "title": "Quiet Place Visualization",
+      "category": "Visualization",
+      "image": "recovery",
+      "duration": "2–5 min",
+      "seconds": 180,
+      "visual": "scene",
+      "desc": "Explore a gentle imagined scene, with motion optional.",
+      "steps": [
+        [
+          "Choose",
+          "Choose an ordinary place that feels comfortable enough."
+        ],
+        [
+          "Notice",
+          "Notice imagined light, colors, or textures. You can simply view the photograph."
+        ],
+        [
+          "Stay gently",
+          "No need to create a vivid image. Keep your eyes open if preferred."
+        ],
+        [
+          "Return",
+          "Look around your actual room and notice its support."
+        ]
+      ],
+      "safety": "Skip imagery if it feels uncomfortable. Choose grounding in your actual surroundings instead.",
+      "tag": "VISUALIZATION",
+      "intro": "Quiet Place Visualization",
+      "instruction": "Choose an ordinary place that feels comfortable enough.",
+      "finalImage": "timeline-quietplace",
+      "photoPhasePlan": [
+        [
+          "awareness",
+          0
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          2
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "durations": [
+        120,
+        180,
+        300
+      ],
+      "defaultDuration": 180,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": false,
+      "photoPlan": [
+        [
+          "awareness",
+          0
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          2
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "photo": "assets/forest.webp",
+      "cardAlt": "Illustrative woodland setting"
+    },
+    {
+      "id": "walk",
+      "title": "Slow Walking Awareness",
+      "category": "Movement",
+      "image": "seated",
+      "duration": "2–5 min",
+      "seconds": 180,
+      "visual": "walk",
+      "desc": "A preview of slow steps, followed by screen-away prompts.",
+      "steps": [
+        [
+          "Prepare",
+          "Choose a clear, level space. Preview while stationary."
+        ],
+        [
+          "Step",
+          "Put the screen away before moving. Walk at your own comfortable pace."
+        ],
+        [
+          "Notice",
+          "Notice ordinary contact and surroundings, without changing your gait."
+        ],
+        [
+          "Return",
+          "Stop in a stable position and return attention to the room."
+        ]
+      ],
+      "safety": "Use only if walking is suitable. Do not watch or operate the screen while walking. Seated awareness is an alternative.",
+      "tag": "MOVEMENT",
+      "intro": "Slow Walking Awareness",
+      "instruction": "Choose a clear, level space. Preview while stationary.",
+      "finalImage": "timeline-walk",
+      "photoPhasePlan": [
+        [
+          "walking",
+          0
+        ],
+        [
+          "walking",
+          1
+        ],
+        [
+          "walking",
+          2
+        ],
+        [
+          "walking",
+          3
+        ]
+      ],
+      "durations": [
+        120,
+        180,
+        300
+      ],
+      "defaultDuration": 180,
+      "selfPaced": false,
+      "position": "Walking",
+      "breathFocus": false,
+      "movement": true,
+      "photoPlan": [
+        [
+          "walking",
+          0
+        ],
+        [
+          "walking",
+          1
+        ],
+        [
+          "walking",
+          2
+        ],
+        [
+          "walking",
+          3
+        ]
+      ],
+      "photo": "assets/walking-0.webp"
+    },
+    {
+      "id": "winddown",
+      "title": "Evening Wind-Down",
+      "category": "Awareness",
+      "image": "recovery",
+      "duration": "3–5 min",
+      "seconds": 240,
+      "visual": "winddown",
+      "desc": "A quiet sequence of support, awareness, and optional release.",
+      "steps": [
+        [
+          "Supported rest",
+          "Choose a comfortable supported position."
+        ],
+        [
+          "Notice support",
+          "Notice the surface supporting you, without trying to sleep."
+        ],
+        [
+          "Gentle release",
+          "Let hands and shoulders rest. Tensing is not required."
+        ],
+        [
+          "Set down",
+          "Notice one thing that can wait until tomorrow."
+        ],
+        [
+          "Finish",
+          "End here or continue resting. There is no outcome to achieve."
+        ]
+      ],
+      "safety": "This practice does not treat sleep difficulties or guarantee sleep. Stop or adapt if uncomfortable.",
+      "tag": "AWARENESS",
+      "intro": "Evening Wind-Down",
+      "instruction": "Choose a comfortable supported position.",
+      "finalImage": "timeline-winddown",
+      "photoPhasePlan": [
+        [
+          "release",
+          3
+        ],
+        [
+          "feet",
+          0
+        ],
+        [
+          "hands",
+          3
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "durations": [
+        180,
+        240,
+        300
+      ],
+      "defaultDuration": 240,
+      "selfPaced": false,
+      "position": "Seated",
+      "breathFocus": false,
+      "movement": false,
+      "photoPlan": [
+        [
+          "release",
+          3
+        ],
+        [
+          "feet",
+          0
+        ],
+        [
+          "hands",
+          3
+        ],
+        [
+          "awareness",
+          1
+        ],
+        [
+          "awareness",
+          3
+        ]
+      ],
+      "photo": "assets/release-3.webp"
+    }
+  ],
+  "resources": [
+    {
+      "id": "reset",
+      "category": "Mindfulness",
+      "label": "MINDFUL MOMENT",
+      "title": "A little pause. A fresh perspective.",
+      "duration": "2 min practice",
+      "image": "assets/coast.webp",
+      "imageAlt": "Illustrative coastline and calm sea",
+      "desc": "A gentle, guided breathing space between appointments.",
+      "body": "A brief pause is not another thing to achieve. It is a chance to notice how you are arriving in this moment.",
+      "steps": [
+        "Settle into a supported position. Keep your eyes open or softly lower your gaze.",
+        "Breathe gently in for four seconds, then out for six. Do not force or hold your breath.",
+        "When your attention wanders, return to the feeling of your feet on the ground."
+      ],
+      "extra": "If focusing on your breath is uncomfortable, breathe normally and name five things you can see instead. Stop if you feel dizzy or distressed.",
+      "originalImage": "coast"
+    },
+    {
+      "id": "compassion",
+      "category": "Practitioner care",
+      "label": "PRACTITIONER CARE",
+      "title": "Caring without carrying it all",
+      "duration": "4 min read",
+      "image": "assets/leaves.webp",
+      "imageAlt": "Illustrative close-up of green leaves",
+      "desc": "A compassionate approach to boundaries and recovery.",
+      "body": "Caring deeply and protecting your own capacity can coexist. A boundary is not a measure of how much you care; it is a way to make care sustainable.",
+      "steps": [
+        "Notice your early signs of depletion: irritability, emotional distance, or difficulty switching off. These experiences deserve attention, not self-judgment.",
+        "Create a closing ritual: finish essential documentation, identify the next safe step, and name what can wait.",
+        "Use supervision and peer support. Keep patient information within approved confidential settings.",
+        "If distress persists or affects safe practice, seek support from an occupational health service or qualified mental health professional."
+      ],
+      "extra": "Reflection: What is one responsibility you can share, clarify, or set down today?",
+      "originalImage": "leaves"
+    },
+    {
+      "id": "grounding",
+      "category": "Shared practice",
+      "label": "IN YOUR TOOLKIT",
+      "title": "Finding your feet in the present",
+      "duration": "3 min practice",
+      "image": "assets/awareness-0.webp",
+      "imageAlt": "Illustrative healthcare worker seated with feet supported",
+      "desc": "An adaptable sensory grounding exercise for shared practice.",
+      "body": "Grounding may help some people reconnect with the present. Offer it as an invitation rather than a requirement, and ask what feels accessible and comfortable.",
+      "steps": [
+        "Look around and gently name five things you can see.",
+        "Notice four physical sensations, such as the chair supporting you or your feet on the floor.",
+        "Listen for three sounds; then notice two neutral or pleasant smells, if comfortable.",
+        "Name one thing that feels steady right now. Skip any sense that is inaccessible or uncomfortable."
+      ],
+      "extra": "This practice is optional and is not a treatment or crisis intervention. Stop or adapt it if it increases discomfort.",
+      "originalImage": "mountain"
+    },
+    {
+      "id": "sleep",
+      "category": "Shared practice",
+      "label": "REST & RECOVERY",
+      "title": "Make room for restorative rest",
+      "duration": "5 min read",
+      "image": "assets/forest.webp",
+      "imageAlt": "Illustrative woodland setting",
+      "desc": "Small, realistic changes that can support a steadier sleep routine.",
+      "body": "Rest is personal. Begin with curiosity about routines, responsibilities, symptoms, medication, and the environment rather than assuming there is one perfect schedule.",
+      "steps": [
+        "Choose a realistic, reasonably consistent wake-up time.",
+        "Make a small transition between the demands of the day and bedtime.",
+        "Discuss the timing of caffeine and other stimulants with an appropriate professional.",
+        "For persistent sleep difficulties, consider assessment and evidence-based support such as CBT-I."
+      ],
+      "extra": "Avoid making changes to prescribed medication without consulting the prescriber.",
+      "originalImage": "forest"
+    },
+    {
+      "id": "reflection",
+      "category": "Practitioner care",
+      "label": "REFLECTIVE PRACTICE",
+      "title": "Leave the day a little lighter",
+      "duration": "3 min reflection",
+      "image": "assets/reflection.webp",
+      "imageAlt": "Illustrative quiet space for reflection",
+      "desc": "A brief end-of-day reflection without judgment.",
+      "body": "Reflection is most useful when it creates understanding rather than another standard to meet. You do not need to solve the whole day before you leave it.",
+      "steps": [
+        "Name one moment of connection or meaningful work.",
+        "Notice one demand that felt difficult. Describe it without blaming yourself.",
+        "Choose one practical support for tomorrow: a pause, a conversation, or a clearer boundary."
+      ],
+      "extra": "Keep personal reflections free of patient names or identifying details.",
+      "originalImage": "coast"
+    },
+    {
+      "id": "checkins",
+      "category": "Practitioner care",
+      "label": "PERSONAL AWARENESS",
+      "title": "A check-in starts a conversation",
+      "duration": "4 min read",
+      "image": "assets/seated.webp",
+      "imageAlt": "Illustrative healthcare worker taking a seated pause",
+      "desc": "Notice your experience without turning it into a score.",
+      "body": "A personal check-in captures a moment in your own words. Feelings change with context; no label can describe your whole experience.",
+      "steps": [
+        "Choose the feeling that fits this moment, or skip the check-in.",
+        "Add context only if useful. Keep it free of patient names and identifying details.",
+        "Decide whether to keep the entry for this visit or save it in your browser.",
+        "Use your own words to notice what support or practical change would help."
+      ],
+      "extra": "Serein does not interpret check-ins as a diagnosis, risk assessment, or a measure of professional performance.",
+      "originalImage": "leaves"
+    },
+    {
+      "id": "ask-support",
+      "category": "Practitioner care",
+      "label": "ASKING FOR SUPPORT",
+      "title": "Start a useful support conversation",
+      "duration": "3 min read",
+      "image": "assets/release.webp",
+      "imageAlt": "Illustrative healthcare worker seated beside a window",
+      "desc": "Turn a difficult demand into a clear request.",
+      "body": "A useful support conversation describes the situation and the help needed. You do not need to wait until you are overwhelmed to ask.",
+      "steps": [
+        "Describe the demand: \"I have several time-critical tasks and need help prioritizing.\"",
+        "Explain the practical impact without sharing patient details in this app.",
+        "Make one specific request: help with a task, protected time, clarification, or a short conversation.",
+        "Agree who will do what, and when you will check back. Use your workplace escalation pathway for immediate safety concerns."
+      ],
+      "extra": "Practice wording: \"Can we agree the immediate priorities and who can help?\" This is an educational conversation guide.",
+      "originalImage": "mountain"
+    },
+    {
+      "id": "shift-home",
+      "category": "Practitioner care",
+      "label": "AFTER YOUR SHIFT",
+      "title": "A gentler transition home",
+      "duration": "3 min read",
+      "image": "assets/walking-3.webp",
+      "imageAlt": "Illustrative healthcare worker standing in a quiet room",
+      "desc": "Close the workday with a realistic transition.",
+      "body": "A transition does not need to erase the day. It can help you acknowledge what happened and move into the next part of your life.",
+      "steps": [
+        "Complete essential handover and documentation in your approved workplace system.",
+        "Identify one unfinished matter and its agreed next owner or next step.",
+        "Choose a small transition: change clothes, have a drink, sit quietly, or take a comfortable walk.",
+        "Ask yourself what recovery is realistic today. If the shift remains difficult to process, consider a trusted colleague or professional support."
+      ],
+      "extra": "Original Serein reflection: \"A difficult shift does not erase the care you gave.\"",
+      "originalImage": "forest"
+    },
+    {
+      "id": "boundaries",
+      "title": "A boundary you can actually say",
+      "label": "BOUNDARIES",
+      "image": "assets/awareness-1.webp",
+      "imageAlt": "Illustrative healthcare worker looking towards a plant",
+      "desc": "Make a respectful, specific request.",
+      "body": "A useful boundary explains your capacity and offers a workable next step. Adapt the words to your role and workplace responsibilities.",
+      "steps": [
+        "Name the request or demand clearly.",
+        "Describe your current capacity: \"I can complete this after the urgent task, or we can agree another owner.\"",
+        "Offer a realistic option rather than promising work you cannot safely complete.",
+        "Confirm priorities with the appropriate supervisor when competing demands affect safe care."
+      ],
+      "extra": "Try: \"I want to help. Can we agree what should take priority and what can wait?\"",
+      "category": "Practitioner care",
+      "duration": "3 min guide",
+      "originalImage": "leaves"
+    },
+    {
+      "id": "peer-check",
+      "title": "Check in with a colleague",
+      "label": "PEER CONNECTION",
+      "image": "assets/awareness-2.webp",
+      "imageAlt": "Illustrative hands resting on a seated healthcare worker’s lap",
+      "desc": "Offer connection without pushing for disclosure.",
+      "body": "A supportive check-in can be short and respectful. Let the colleague choose whether to talk.",
+      "steps": [
+        "Ask permission: \"Would a quick check-in be useful?\"",
+        "Offer a choice: listen, practical help, or a quiet break.",
+        "Listen without diagnosing, minimizing, or insisting on details.",
+        "Respect privacy and workplace safeguarding responsibilities. Help the person access appropriate support when needed."
+      ],
+      "extra": "Try: \"Would you like me to listen, help with something practical, or give you some space?\"",
+      "category": "Practitioner care",
+      "duration": "3 min guide",
+      "originalImage": "coast"
+    },
+    {
+      "id": "priorities",
+      "title": "When everything feels urgent",
+      "label": "WORKLOAD CLARITY",
+      "image": "assets/mountain.webp",
+      "imageAlt": "Illustrative mountain landscape",
+      "desc": "Turn competing demands into a shared decision.",
+      "body": "Use a brief conversation to clarify priorities and available help. Clinical urgency belongs within your professional assessment and local protocols.",
+      "steps": [
+        "List the competing tasks in your approved work environment. Do not enter patient information here.",
+        "Identify immediate safety concerns and escalate through your workplace process.",
+        "Ask the appropriate lead to agree the order and who can help.",
+        "Repeat the agreement back and arrange a check-back if circumstances change."
+      ],
+      "extra": "Try: \"These tasks overlap. Can we confirm the immediate priorities and available support?\"",
+      "category": "Practitioner care",
+      "duration": "3 min guide",
+      "originalImage": "mountain"
+    },
+    {
+      "id": "difficult-talk",
+      "title": "Prepare for a difficult conversation",
+      "label": "CLEAR COMMUNICATION",
+      "image": "assets/awareness-3.webp",
+      "imageAlt": "Illustrative healthcare worker resting in a chair",
+      "desc": "Use observations, impact, and a clear request.",
+      "body": "Preparation can make a conversation more specific. Choose an appropriate private setting and follow your workplace policy.",
+      "steps": [
+        "Describe an observable event rather than a personal label.",
+        "Explain the impact on work or your ability to contribute.",
+        "Ask an open question and allow the other person to respond.",
+        "Agree one practical next step, an owner, and a review time."
+      ],
+      "extra": "Practice: \"When the plan changed without a handover, I was unsure of my next task. How can we make the next change clearer?\"",
+      "category": "Practitioner care",
+      "duration": "3 min guide",
+      "originalImage": "forest"
+    },
+    {
+      "id": "small-win",
+      "title": "Notice a small moment of meaning",
+      "label": "REFLECTION",
+      "image": "assets/walking-0.webp",
+      "imageAlt": "Illustrative healthcare worker taking a step in a quiet room",
+      "desc": "Reflect without turning the day into a grade.",
+      "body": "A reflection can acknowledge care, learning, or connection. A difficult day can remain difficult even when something meaningful happened.",
+      "steps": [
+        "Recall one ordinary moment you want to acknowledge.",
+        "Name what mattered: kindness, teamwork, asking a question, or noticing a need.",
+        "Describe it without patient names or identifying details.",
+        "Let it be enough. You do not have to find a positive lesson in every experience."
+      ],
+      "extra": "Prompt: \"One moment I want to acknowledge today is...\"",
+      "category": "Practitioner care",
+      "duration": "3 min guide",
+      "originalImage": "coast"
+    },
+    {
+      "id": "manager-support",
+      "title": "A supportive team conversation",
+      "label": "FOR TEAM LEADERS",
+      "image": "assets/team.webp",
+      "imageAlt": "Illustrative healthcare colleagues discussing practical support",
+      "desc": "Move from encouragement to practical support.",
+      "body": "A useful team conversation asks about working conditions and follows through on what can change. This is an educational conversation template.",
+      "steps": [
+        "Ask what is making the work harder and what is already helping.",
+        "Clarify practical barriers such as workload, breaks, role clarity, or access to supervision.",
+        "Agree one feasible change and an accountable owner.",
+        "Check back. Do not ask staff to disclose private health information in a group."
+      ],
+      "extra": "Try: \"What would make this shift more workable, and what can we change together?\"",
+      "category": "Practitioner care",
+      "duration": "3 min guide",
+      "originalImage": "leaves"
+    }
+  ],
+  "reflections": [
+    {
+      "text": "You can care deeply without carrying everything alone.",
+      "by": "A Serein reflection"
+    },
+    {
+      "text": "A difficult shift does not erase the care you gave.",
+      "by": "A Serein reflection"
+    },
+    {
+      "text": "You are allowed to ask for support before you reach your limit.",
+      "by": "A Serein reflection"
+    },
+    {
+      "text": "One small pause can make room for the next safe step.",
+      "by": "A Serein reflection"
+    },
+    {
+      "text": "Reflection is a place to understand yourself, not grade yourself.",
+      "by": "A Serein reflection"
+    },
+    {
+      "text": "Some days, recovery begins with doing one thing less.",
+      "by": "A Serein reflection"
+    },
+    {
+      "text": "Your needs belong in the conversation, too.",
+      "by": "A Serein reflection"
+    },
+    {
+      "text": "Rest is part of a sustainable practice.",
+      "by": "A Serein reflection"
+    }
+  ],
+  "moments": [
+    {
+      "title": "Before my shift",
+      "desc": "Arrive with one clear intention.",
+      "practice": "ground",
+      "prompt": "What is one thing I can prepare, and one support I can ask for?"
+    },
+    {
+      "title": "Between tasks",
+      "desc": "A short pause in a busy day.",
+      "practice": "tide",
+      "prompt": "What needs my attention next, and what can safely wait?"
+    },
+    {
+      "title": "After a difficult moment",
+      "desc": "Make space for support and recovery.",
+      "practice": "ground",
+      "prompt": "What do I need now: practical help, a colleague, or a quiet pause?"
+    },
+    {
+      "title": "After my shift",
+      "desc": "Create a gentler transition home.",
+      "practice": "release",
+      "prompt": "What can I hand over, set down, or leave for tomorrow?"
+    }
+  ],
+  "sources": [
+    {
+      "title": "[1] Calm · Breathe Bubble and adjustable timing ↗ Reference for the familiar expanding-circle interaction, not a basis for clinical claims.",
+      "url": "https://support.calm.com/hc/en-us/articles/360000069973-Calm-Breathing-Exercises-How-to-Adjust-Speed-Timers-Haptics-Vibrations"
+    },
+    {
+      "title": "[2] NHS · Breathing exercises for stress ↗ Comfortable, gentle, unforced breathing. Serein’s short timings are optional adaptations, not the NHS routine.",
+      "url": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/"
+    },
+    {
+      "title": "[3] NHS inform · Grounding exercises ↗ The 5–4–3–2–1 sensory sequence, with optional accessibility substitutions here.",
+      "url": "https://www.nhsinform.scot/healthy-living/mental-wellbeing/breathing-and-relaxation-exercises/grounding-exercises/"
+    },
+    {
+      "title": "[4] Royal National Orthopaedic Hospital · Relaxation techniques ↗ Progressive muscle relaxation background. The shortened routine and relax-only option here are adaptations.",
+      "url": "https://www.rnoh.nhs.uk/patients-and-visitors/patient-information-guides/relaxation-techniques-pain-management"
+    },
+    {
+      "title": "[5] NHS · Sitting exercises ↗ Stable seating and comfortable neck-turning guidance. The combined 90-second seated reset is a Serein adaptation.",
+      "url": "https://www.nhs.uk/live-well/exercise/sitting-exercises/"
+    },
+    {
+      "title": "[6] Calm · Box breathing ↗ Four-phase square breathing; holds are optional in this interface.",
+      "url": "https://www.calm.com/blog/box-breathing"
+    },
+    {
+      "title": "Body scan & mindful awareness",
+      "url": "https://www.guysandstthomas.nhs.uk/health-information/mindfulness-based-stress-reduction-mbsr/mbsr-exercises"
+    },
+    {
+      "title": "Sitting & ankle exercise guidance",
+      "url": "https://www.nhs.uk/live-well/exercise/sitting-exercises/"
+    },
+    {
+      "title": "Relaxation & grounding",
+      "url": "https://www.nhsinform.scot/healthy-living/mental-wellbeing/breathing-and-relaxation-exercises/"
+    },
+    {
+      "title": "Meditation & relaxation",
+      "url": "https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/how-to-fall-asleep-faster-and-sleep-better/how-can-meditation-help-with-sleep/"
+    }
+  ],
+  "studios": [
+    {
+      "id": "boundary",
+      "title": "Boundary Rehearsal",
+      "tag": "FIND YOUR WORDS",
+      "icon": "shield",
+      "description": "Rehearse a realistic response to competing demands.",
+      "result": "A boundary you can say.",
+      "why": "Specific observations and requests make a conversation more actionable.",
+      "when": "Before a non-urgent conversation with a colleague or lead.",
+      "who": "Any healthcare worker; adapt to role and workplace policy.",
+      "refs": [
+        "who",
+        "niosh"
+      ],
+      "steps": [
+        "Choose a situation",
+        "Try a response",
+        "Make it yours",
+        "Your rehearsal"
+      ],
+      "fields": [
+        [
+          "What can you realistically offer?",
+          "I can help once we agree which task takes priority."
+        ],
+        [
+          "What needs to be agreed?",
+          "An owner for the task that will wait."
+        ],
+        [
+          "When will you check back?",
+          "At the next agreed team check-in."
+        ]
+      ]
+    },
+    {
+      "id": "support",
+      "title": "Support Request Builder",
+      "tag": "ASK WITH CLARITY",
+      "icon": "support",
+      "description": "Turn a difficulty into a specific request and next step.",
+      "result": "An editable conversation plan.",
+      "why": "A clear request connects the situation to practical support.",
+      "when": "When you want help agreeing workload, breaks, supervision or priorities.",
+      "who": "Workers preparing a conversation with an appropriate colleague or lead.",
+      "refs": [
+        "who",
+        "niosh"
+      ],
+      "steps": [
+        "Name the need",
+        "Choose the support",
+        "Agree follow-through",
+        "Your request"
+      ],
+      "fields": [
+        [
+          "Describe the situation without patient details",
+          "Several responsibilities overlap during the shift."
+        ],
+        [
+          "What impact does it have on your work?",
+          "I need clearer priorities to work reliably."
+        ],
+        [
+          "What practical support would help?",
+          "A lead to agree priorities and available cover."
+        ],
+        [
+          "Who could help?",
+          "My shift lead."
+        ],
+        [
+          "What next step could you propose?",
+          "A short conversation before the next task allocation."
+        ],
+        [
+          "When should you review it?",
+          "At an agreed time later in the shift."
+        ]
+      ]
+    },
+    {
+      "id": "transition",
+      "title": "Shift Transition",
+      "tag": "LEAVE THE DAY",
+      "icon": "moon",
+      "description": "Make room between the shift and the rest of your day.",
+      "result": "A personal transition checklist.",
+      "why": "A deliberate transition separates agreed work responsibilities from personal recovery.",
+      "when": "After handover through your approved workplace processes.",
+      "who": "Workers finishing a shift, including night and rotating shifts.",
+      "refs": [
+        "who",
+        "sleep"
+      ],
+      "steps": [
+        "Close the work loop",
+        "Choose your transition",
+        "Make room for recovery",
+        "Your checklist"
+      ],
+      "fields": [
+        [
+          "What handover or owner needs confirming in the approved system?",
+          "Confirm the next responsible person through the normal handover."
+        ],
+        [
+          "What can wait until your next shift?",
+          "Routine learning notes, after checking priorities."
+        ],
+        [
+          "Choose one transition action",
+          "Change clothes and take a quiet seated moment."
+        ],
+        [
+          "What might make this action easier?",
+          "Prepare a small bag before the shift."
+        ],
+        [
+          "Choose one recovery support",
+          "A meal and an opportunity to rest."
+        ],
+        [
+          "Who or what could support it?",
+          "A trusted person or a quieter space."
+        ]
+      ]
+    },
+    {
+      "id": "difficult",
+      "title": "After a Difficult Moment",
+      "tag": "ONE NEXT STEP",
+      "icon": "heart",
+      "description": "Choose practical help, a quiet pause, or human connection.",
+      "result": "A manageable support plan.",
+      "why": "Different moments call for different forms of support; choice matters.",
+      "when": "Once immediate safety and work responsibilities have been addressed.",
+      "who": "Someone choosing their own support; no disclosure is required.",
+      "refs": [
+        "who",
+        "grounding"
+      ],
+      "steps": [
+        "Choose what would help",
+        "Make it practical",
+        "Keep a choice open",
+        "Your next step"
+      ],
+      "fields": [
+        [
+          "What practical support would help now?",
+          "Ask the appropriate lead to clarify the next safe task."
+        ],
+        [
+          "Who could you contact, if you choose?",
+          "A trusted colleague, supervisor or usual professional support."
+        ],
+        [
+          "When could you take this step?",
+          "At the next safe opportunity."
+        ]
+      ]
+    },
+    {
+      "id": "team",
+      "title": "Team Pause Facilitator",
+      "tag": "INVITE, NEVER REQUIRE",
+      "icon": "expand",
+      "description": "Prepare an inclusive invitation and shared practice.",
+      "result": "A facilitator script and presentation.",
+      "why": "A shared invitation works best when people can decline, adapt or observe.",
+      "when": "A suitable break with agreement from the team.",
+      "who": "A facilitator and willing colleagues; never a clinical assessment.",
+      "refs": [
+        "who",
+        "niosh"
+      ],
+      "steps": [
+        "Plan the invitation",
+        "Choose the practice",
+        "Prepare adaptations",
+        "Your facilitator script"
+      ],
+      "fields": [
+        [
+          "What will you say to invite the team?",
+          "Would a short optional pause be useful? Observing or sitting this out is equally welcome."
+        ],
+        [
+          "How will you close?",
+          "Thank you. No feedback or explanation is needed."
+        ]
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Working Conditions Planner",
+      "tag": "FROM INSIGHT TO ACTION",
+      "icon": "sliders",
+      "description": "Turn a workplace barrier into an accountable small change.",
+      "result": "An action, owner and review date.",
+      "why": "Practical changes to working conditions belong alongside individual support.",
+      "when": "Preparing an appropriate team or leadership conversation.",
+      "who": "Workers and leaders using their normal workplace decision processes.",
+      "refs": [
+        "niosh",
+        "who",
+        "cdc"
+      ],
+      "steps": [
+        "Identify a barrier",
+        "Define a change",
+        "Agree ownership",
+        "Your action plan"
+      ],
+      "fields": [
+        [
+          "Which practical barrier needs attention?",
+          "Breaks are frequently interrupted."
+        ],
+        [
+          "What would a workable improvement look like?",
+          "Agree a realistic cover arrangement."
+        ],
+        [
+          "What change could be tried?",
+          "Discuss a short cover trial with the shift lead."
+        ],
+        [
+          "What would show the change happened?",
+          "Whether agreed cover was available during the trial."
+        ],
+        [
+          "Who can agree and own the action?",
+          "The appropriate shift lead or manager."
+        ],
+        [
+          "When should it be reviewed?",
+          "2026-11-01"
+        ]
+      ]
+    }
+  ],
+  "journeys": [
+    {
+      "id": "pause",
+      "title": "Finding your pause",
+      "description": "Explore attention, comfort and a practice that fits your day.",
+      "image": "coast",
+      "steps": [
+        {
+          "title": "Begin with choice",
+          "kind": "Understand",
+          "text": "A pause is an invitation. Different people prefer different anchors: a room detail, a sound, supported contact, or gentle breathing. Choose what feels suitable today. You can stop, observe, or change focus at any time.",
+          "action": "Name one focus you would be willing to try. No need to record it."
+        },
+        {
+          "title": "Meet the room",
+          "kind": "Try",
+          "text": "Grounding uses details in your actual surroundings. The 5–4–3–2–1 sequence is a structure, not a test. Substitute any sense that is inaccessible or uncomfortable.",
+          "practice": "ground"
+        },
+        {
+          "title": "Explore a comfortable rhythm",
+          "kind": "Try",
+          "text": "If breath attention is welcome, explore an optional rhythm without forcing depth or timing. If not, listening offers an outward anchor.",
+          "practice": "tide",
+          "alternative": "listen"
+        },
+        {
+          "title": "Notice without grading",
+          "kind": "Reflect",
+          "text": "A practice may feel helpful, neutral, or uncomfortable. Each response is useful information. Optional session feedback can help you remember preferences; it is not a clinical assessment.",
+          "action": "Consider what you would keep, adapt, or skip next time."
+        },
+        {
+          "title": "Build a realistic return",
+          "kind": "Apply",
+          "text": "Choose an available moment and a small action that fits it. A flexible plan can survive a changing shift. Return when useful, without needing to maintain a streak.",
+          "action": "Complete: When a suitable break is available, I could try…",
+          "studio": "support"
+        }
+      ]
+    },
+    {
+      "id": "boundaries",
+      "title": "Working with boundaries",
+      "description": "Move from competing demands to a clear support conversation.",
+      "image": "team",
+      "steps": [
+        {
+          "title": "Notice the working conditions",
+          "kind": "Understand",
+          "text": "Workload, role clarity, support and break arrangements can affect working life. Individual practices sit alongside practical workplace changes. A support request can make a barrier visible without disclosing private health information.",
+          "action": "Identify one practical barrier you want to discuss."
+        },
+        {
+          "title": "Separate observation from judgment",
+          "kind": "Understand",
+          "text": "An observation describes something that happened. A judgment assigns a label. “The plan changed before handover” gives a conversation a more concrete starting point than labeling a colleague.",
+          "action": "Try rewriting a general complaint as one observable event."
+        },
+        {
+          "title": "Rehearse a boundary",
+          "kind": "Rehearse",
+          "text": "A useful boundary names capacity, asks for priorities and offers a feasible next step. Adapt the wording to your responsibilities and local policies.",
+          "studio": "boundary"
+        },
+        {
+          "title": "Ask for a specific support",
+          "kind": "Apply",
+          "text": "Connect the situation, impact and request. Suggest who could agree an action and when to review it. The other person may have information you need; allow space for a response.",
+          "studio": "support"
+        },
+        {
+          "title": "Close the loop",
+          "kind": "Apply",
+          "text": "An agreed action needs an owner and review point. If the barrier remains, use the appropriate workplace process to raise it again. This app does not send requests or monitor follow-through.",
+          "studio": "conditions"
+        }
+      ]
+    },
+    {
+      "id": "transition",
+      "title": "Leaving the shift",
+      "description": "Create a practical, personal transition towards recovery.",
+      "image": "forest",
+      "steps": [
+        {
+          "title": "Confirm responsibility",
+          "kind": "Understand",
+          "text": "Handover belongs in the approved workplace system. Serein can prompt you to confirm ownership, but it is not a task list for patient care or a clinical record.",
+          "action": "Consider whether the normal handover and ownership arrangements are complete."
+        },
+        {
+          "title": "Choose an outward pause",
+          "kind": "Try",
+          "text": "A brief listening practice offers an anchor in the environment. You can substitute visual details or supported contact if listening is inaccessible or uncomfortable.",
+          "practice": "listen"
+        },
+        {
+          "title": "Allow an ordinary ending",
+          "kind": "Reflect",
+          "text": "You do not have to extract a positive lesson from every shift. You may acknowledge an ordinary effort, choose to say nothing, or ask for support. A difficult experience does not need to be retold here.",
+          "action": "Choose: a quiet transition, a practical request, or a trusted conversation."
+        },
+        {
+          "title": "Make your transition plan",
+          "kind": "Apply",
+          "text": "One concrete action can mark the move from work to personal time. Keep it feasible for your shift pattern, responsibilities and available support.",
+          "studio": "transition"
+        },
+        {
+          "title": "Make room for rest",
+          "kind": "Try",
+          "text": "A wind-down sequence is one optional way to settle. Your opportunity for rest may depend on working patterns and support. Persistent difficulties deserve a conversation with your usual qualified support.",
+          "practice": "winddown"
+        }
+      ]
+    }
+  ],
+  "references": {
+    "gentle": {
+      "title": "NHS · Breathing exercises for stress",
+      "url": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/",
+      "scope": "Gentle, comfortable breathing. Serein uses optional shorter timings."
+    },
+    "grounding": {
+      "title": "NHS inform · Grounding exercises",
+      "url": "https://www.nhsinform.scot/healthy-living/mental-wellbeing/breathing-and-relaxation-exercises/grounding-exercises/",
+      "scope": "Sensory grounding, with optional substitutions in Serein."
+    },
+    "release": {
+      "title": "Royal National Orthopaedic Hospital · Relaxation techniques",
+      "url": "https://www.rnoh.nhs.uk/patients-and-visitors/patient-information-guides/relaxation-techniques-pain-management",
+      "scope": "Square breathing, muscle relaxation and calming imagery background; Serein uses optional timings and adaptations."
+    },
+    "sitting": {
+      "title": "NHS · Sitting exercises",
+      "url": "https://www.nhs.uk/live-well/exercise/sitting-exercises/",
+      "scope": "Stable seating and comfortable movement. Serein illustrations do not prescribe range."
+    },
+    "mindful": {
+      "title": "Guy’s and St Thomas’ · Mindfulness exercises",
+      "url": "https://www.guysandstthomas.nhs.uk/health-information/mindfulness-based-stress-reduction-mbsr/mbsr-exercises",
+      "scope": "Background on body awareness and mindfulness; not validation of this app."
+    },
+    "sleep": {
+      "title": "NHS · Meditation and sleep",
+      "url": "https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/how-to-fall-asleep-faster-and-sleep-better/how-can-meditation-help-with-sleep/",
+      "scope": "General wind-down information. Serein does not prescribe a sleep schedule."
+    },
+    "who": {
+      "title": "WHO · Guidelines on mental health at work (2022)",
+      "url": "https://www.who.int/publications/i/item/9789240053052",
+      "scope": "Workplace interventions, manager training, worker training and individual support."
+    },
+    "niosh": {
+      "title": "NIOSH · Impact Wellbeing Guide (2024)",
+      "url": "https://www.cdc.gov/niosh/healthcare/impactwellbeingguide/index.html",
+      "scope": "Six evidence-informed actions for healthcare workplace improvements."
+    },
+    "cdc": {
+      "title": "CDC · U.S. Quality of Worklife survey, 2018–2022 (published 2023)",
+      "url": "https://www.cdc.gov/mmwr/volumes/72/wr/mm7244e1.htm",
+      "scope": "Historical U.S. workforce survey. Associations are not proof of causation or Serein outcomes."
+    }
+  },
+  "updated": "2026-10-15",
+  "contextRegistry": {
+    "version": "4.1",
+    "checked": "2026-10-15",
+    "sources": {
+      "workforce": {
+        "title": "CDC · Quality of Worklife survey",
+        "url": "https://www.cdc.gov/vitalsigns/health-worker-mental-health/index.html",
+        "population": "U.S. health workers",
+        "period": "2018 and 2022 surveys · published 2023",
+        "limit": "Historical, self-reported workforce estimates. They do not measure Serein or establish that an individual tool changes burnout."
+      },
+      "whofacts": {
+        "title": "WHO · Mental health at work",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/mental-health-at-work",
+        "population": "Global working-age population / global economy",
+        "period": "WHO fact sheet updated September 2026",
+        "limit": "Global context and modelled annual estimates. They are not a prediction for a person, workplace or app."
+      },
+      "sleepdata": {
+        "title": "CDC/NCHS · Data Brief 559",
+        "url": "https://www.cdc.gov/nchs/products/databriefs/db559.htm",
+        "population": "U.S. civilian, noninstitutionalized adults",
+        "period": "NHIS 2024 · published April 2026",
+        "limit": "Self-reported population survey. These percentages do not establish that Serein improves sleep."
+      },
+      "breathstudy": {
+        "title": "Balban et al. · Cell Reports Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36630953/",
+        "population": "Adult volunteers in a remote randomized study",
+        "period": "Published 2023 · daily practices for one month",
+        "limit": "These numbers describe a research protocol, not an effect size or a recommendation for you. Serein’s timings and adaptations differ."
+      },
+      "niosh": {
+        "title": "NIOSH · Impact Wellbeing Guide",
+        "url": "https://www.cdc.gov/niosh/healthcare/impactwellbeingguide/index.html",
+        "population": "Healthcare organizational improvement guidance",
+        "period": "Guide revised 2024",
+        "limit": "Six organizational actions in the guide. Serein’s studios are original educational tools and are not those six actions."
+      }
+    },
+    "facts": {
+      "burnout": {
+        "value": "46%",
+        "number": 46,
+        "baseline": 32,
+        "baselineLabel": "2018",
+        "label": "reported burnout often or very often",
+        "year": "2022",
+        "source": "workforce",
+        "kind": "Survey context"
+      },
+      "turnover": {
+        "value": "44%",
+        "number": 44,
+        "baseline": 33,
+        "baselineLabel": "2018",
+        "label": "intended to look for another job",
+        "year": "2022",
+        "source": "workforce",
+        "kind": "Survey context"
+      },
+      "harassment": {
+        "value": "13%",
+        "number": 13,
+        "baseline": 6,
+        "baselineLabel": "2018",
+        "label": "reported workplace harassment",
+        "year": "2022",
+        "source": "workforce",
+        "kind": "Survey context"
+      },
+      "trust": {
+        "value": "78%",
+        "number": 78,
+        "baseline": 84,
+        "baselineLabel": "2018",
+        "label": "agreed they trusted management",
+        "year": "2022",
+        "source": "workforce",
+        "kind": "Survey context"
+      },
+      "conditions": {
+        "value": "82%",
+        "number": 82,
+        "baseline": 91,
+        "baselineLabel": "2018",
+        "label": "said conditions supported productivity",
+        "year": "2022",
+        "source": "workforce",
+        "kind": "Survey context"
+      },
+      "workdays": {
+        "value": "12bn",
+        "label": "working days lost annually to depression and anxiety",
+        "source": "whofacts",
+        "kind": "Global annual estimate"
+      },
+      "cost": {
+        "value": "US$1tn",
+        "label": "annual productivity losses linked to depression and anxiety",
+        "source": "whofacts",
+        "kind": "Global annual estimate"
+      },
+      "mentalhealth": {
+        "value": "16%",
+        "number": 16,
+        "label": "of working-age adults estimated to have a mental disorder",
+        "year": "2023",
+        "source": "whofacts",
+        "kind": "Global estimate"
+      },
+      "shortSleep": {
+        "value": "30.5%",
+        "number": 30.5,
+        "label": "reported less than seven hours of sleep per 24 hours",
+        "year": "2024",
+        "source": "sleepdata",
+        "kind": "Survey context"
+      },
+      "rested": {
+        "value": "54.8%",
+        "number": 54.8,
+        "label": "woke well-rested most days or every day",
+        "year": "2024",
+        "source": "sleepdata",
+        "kind": "Survey context"
+      },
+      "sleepOnset": {
+        "value": "15.4%",
+        "number": 15.4,
+        "label": "had trouble falling asleep most days or every day",
+        "year": "2024",
+        "source": "sleepdata",
+        "kind": "Survey context"
+      },
+      "studyMinutes": {
+        "value": "5 min",
+        "label": "daily session length in the published research",
+        "source": "breathstudy",
+        "kind": "Study protocol"
+      },
+      "studyMonth": {
+        "value": "1 month",
+        "label": "intervention period in the published research",
+        "source": "breathstudy",
+        "kind": "Study protocol"
+      },
+      "nioshActions": {
+        "value": "6",
+        "label": "organizational actions in the NIOSH guide",
+        "source": "niosh",
+        "kind": "Guideline structure"
+      }
+    },
+    "topics": {
+      "today": [
+        "Today",
+        "A starting point that connects your current working moment with a suitable pause.",
+        "Reduce searching when time and attention are limited.",
+        "Before, during or after a shift, once a safe pause is possible.",
+        "Choose a working moment, then explore a recommendation or use Help me choose.",
+        "Healthcare workers choosing their own support.",
+        [
+          "burnout",
+          "workdays"
+        ]
+      ],
+      "practices": [
+        "Guided practices",
+        "A catalogue of optional breathing, grounding, movement, attention and visualization experiences.",
+        "Compare options and find an approach that feels suitable.",
+        "When you have an appropriate setting and can stop or adapt freely.",
+        "Filter by time, focus and movement. Open About this practice before beginning.",
+        "People seeking an optional educational pause; suitability remains personal.",
+        [
+          "studyMinutes",
+          "burnout"
+        ]
+      ],
+      "guides": [
+        "Practical guides",
+        "A library of short educational readings about care, communication, rest and support.",
+        "Understand a situation before choosing a practical response.",
+        "When you want a brief explanation or a conversation prompt.",
+        "Choose a category, open a guide, and adapt its suggested steps to your own setting.",
+        "Healthcare workers and learners; guidance does not replace workplace policies.",
+        [
+          "trust",
+          "conditions"
+        ]
+      ],
+      "studios": [
+        "Interactive studios",
+        "Guided tools that turn a workplace concern into words, choices or an editable plan.",
+        "Make practical support and workplace changes easier to discuss.",
+        "Before a conversation, at handover, or when planning an agreed next step.",
+        "Choose a studio, work through its steps, then edit, copy or download the result.",
+        "Healthcare workers and team facilitators; use normal workplace decision processes.",
+        [
+          "trust",
+          "nioshActions"
+        ]
+      ],
+      "journeys": [
+        "Learning journeys",
+        "Short sequences that connect understanding, practice, reflection and application.",
+        "Build familiarity without deadlines or a fixed daily streak.",
+        "When you want a little structure across several visits.",
+        "Choose a journey, explore any step, and mark progress when it is useful.",
+        "Independent learners, students and healthcare workers.",
+        [
+          "workdays",
+          "burnout"
+        ]
+      ],
+      "reflect": [
+        "Reflect",
+        "A personal space for optional check-ins and words about your own experience.",
+        "Notice what matters and identify a possible support or next step.",
+        "When reflection feels welcome; leaving an entry blank is also a choice.",
+        "Choose a prompt or write freely. Keep patient details out and choose whether to save.",
+        "The person using Serein; entries are not monitored or clinically assessed.",
+        [
+          "burnout",
+          "mentalhealth"
+        ]
+      ],
+      "space": [
+        "My space",
+        "Your chosen collection of saved practices, routines, reflections and personal observations.",
+        "Return to useful tools and control what is stored.",
+        "When revisiting a practice or reviewing what you chose to keep.",
+        "Use the collection tabs, explore patterns, or manage data and app options.",
+        "The person using this browser; local records are not employer reports.",
+        [
+          "burnout",
+          "trust"
+        ]
+      ],
+      "support": [
+        "Support",
+        "Practical routes to prepare a conversation and consider qualified human support.",
+        "Connect individual needs with people and working conditions.",
+        "When a colleague, lead or professional service could help.",
+        "Choose a relevant guide or prepare a clear request through a studio.",
+        "Workers seeking support and colleagues offering it respectfully.",
+        [
+          "turnover",
+          "trust"
+        ]
+      ],
+      "finder": [
+        "Help me choose",
+        "A three-choice navigator matching a practice to your moment, time and comfort.",
+        "Make a manageable selection without scanning the whole catalogue.",
+        "When you know what feels comfortable but are unsure where to start.",
+        "Select the moment, available time and preferred focus; compare the explained matches.",
+        "Anyone choosing their own practice; matches are preference-based.",
+        [
+          "burnout",
+          "studyMinutes"
+        ]
+      ],
+      "checkin": [
+        "Personal check-in",
+        "An optional record of a feeling, energy and a little context.",
+        "Notice experience and decide whether another support would help.",
+        "At a moment you choose; frequent recording is not required.",
+        "Choose the nearest feeling, optionally add context, then decide whether to save.",
+        "You; this is not screening, diagnosis or live monitoring.",
+        [
+          "burnout",
+          "mentalhealth"
+        ]
+      ],
+      "journal": [
+        "Personal reflection",
+        "A private-to-this-browser writing space with optional persistence.",
+        "Put an experience or a support need into your own words.",
+        "When writing feels useful; you do not have to find a positive lesson.",
+        "Use a prompt or start freely. Save only if comfortable with browser storage.",
+        "You; exclude patient-identifying information and other people’s private details.",
+        [
+          "burnout",
+          "trust"
+        ]
+      ],
+      "quote": [
+        "Original reflections",
+        "Short secular Serein words selected around the working moment.",
+        "Offer a brief invitation to notice, rest or ask for support.",
+        "When a small reading prompt is welcome.",
+        "Save useful words, choose another reflection, or hide them in Preferences.",
+        "People who choose to use reflective prompts.",
+        [
+          "burnout",
+          "workdays"
+        ]
+      ],
+      "routine": [
+        "My routine",
+        "An ordered collection of up to four chosen practices.",
+        "Keep a familiar sequence available without repeating the search.",
+        "When several short practices fit an available break.",
+        "Choose practices, reorder them, and begin each one only when you are ready.",
+        "People who prefer a repeatable, adaptable sequence.",
+        [
+          "studyMinutes",
+          "burnout"
+        ]
+      ],
+      "saved": [
+        "Saved collection",
+        "Bookmarks for practices, guides and original reflections.",
+        "Return quickly to something you chose to keep.",
+        "When revisiting a useful resource.",
+        "Use the bookmark control; remove it whenever the collection no longer fits.",
+        "The person using this browser; bookmarks remain locally stored.",
+        [
+          "burnout",
+          "trust"
+        ]
+      ],
+      "patterns": [
+        "My patterns",
+        "Counts and charts of check-ins and optional practice feedback you recorded.",
+        "Make your own entries easier to explore without turning them into a health grade.",
+        "After recording observations, or when reviewing a selected period.",
+        "Choose a date range, inspect the counts and denominators, and remove entries if desired.",
+        "You; missing entries are unknown, and paired changes do not establish causation.",
+        [
+          "burnout",
+          "mentalhealth"
+        ]
+      ],
+      "data": [
+        "My data",
+        "Controls for exporting, restoring and clearing personal Serein records.",
+        "Keep control when changing devices, browsers or app editions.",
+        "Before moving your records or clearing this browser’s data.",
+        "Export a private JSON archive, import it to merge or replace, or clear Serein data.",
+        "The owner of these local records; archives are not encrypted.",
+        [
+          "trust",
+          "conditions"
+        ]
+      ],
+      "preferences": [
+        "Your preferences",
+        "Remembered choices for role wording, duration, comfort, text and appearance.",
+        "Adapt the interface and suggestions to the way you want to use it.",
+        "At setup or whenever your needs change.",
+        "Choose options and save. Device reduced-motion preferences are respected.",
+        "You; a selected role does not certify that a practice is suitable.",
+        [
+          "burnout",
+          "conditions"
+        ]
+      ],
+      "app": [
+        "Install, offline & reminders",
+        "Optional device installation, downloaded app content and calendar reminder tools.",
+        "Keep chosen resources reachable around your working day.",
+        "While online for offline preparation; when a self-chosen reminder would be useful.",
+        "Prepare offline content, use your browser’s install option, or import a downloaded calendar reminder.",
+        "Users of a supported browser; background push notifications are not sent.",
+        [
+          "shortSleep",
+          "rested"
+        ]
+      ],
+      "conversation": [
+        "Support conversation",
+        "A temporary draft builder for describing a situation and requesting practical support.",
+        "Replace a vague concern with a clearer next step.",
+        "Before an appropriate, non-urgent workplace conversation.",
+        "Describe the situation, requested support and proposed action; edit before copying.",
+        "Workers preparing their own words for a colleague or lead.",
+        [
+          "trust",
+          "conditions"
+        ]
+      ],
+      "transition": [
+        "Transition home",
+        "A personal prompt for an agreed handover, a transition action and recovery support.",
+        "Create a practical boundary between work and the rest of the day.",
+        "After responsibilities have been handed over through approved workplace processes.",
+        "Confirm ownership in the approved system, then choose one transition and recovery action.",
+        "Workers finishing day, night or rotating shifts.",
+        [
+          "shortSleep",
+          "rested"
+        ]
+      ],
+      "team": [
+        "Shared presentation",
+        "A simplified practice view for a voluntary invitation with colleagues.",
+        "Keep the shared screen focused on the practice rather than personal records.",
+        "During a suitable break with willing participants.",
+        "Ask permission, offer adaptations, and use Present. Observing or sitting out is welcome.",
+        "A facilitator and willing colleagues; no disclosure or feedback is required.",
+        [
+          "trust",
+          "nioshActions"
+        ]
+      ],
+      "feedback": [
+        "Practice feedback",
+        "An optional helpful, neutral or uncomfortable response with optional settledness ratings.",
+        "Remember personal preferences and review your own observations.",
+        "After a practice, if you want to record a response.",
+        "Choose a response; save explicitly for future insights or leave it visit-only.",
+        "You; this does not measure treatment effectiveness.",
+        [
+          "burnout",
+          "studyMonth"
+        ]
+      ],
+      "memory": [
+        "Practice memory",
+        "Remembered timing, visual and comfort settings for a single practice.",
+        "Reduce repeated setup while keeping each session adaptable.",
+        "When an option suits you well enough to reuse.",
+        "Select Remember in the player. Reset a practice’s choices in My patterns.",
+        "You; voice stays off until enabled for the current session.",
+        [
+          "studyMinutes",
+          "burnout"
+        ]
+      ],
+      "player": [
+        "Practice player",
+        "A shared space for guidance, optional imagery, pacing and persistent session controls.",
+        "Make it straightforward to pause, adapt or stop a practice.",
+        "In a safe setting where the activity feels suitable.",
+        "Read the practice notes, choose comfort options, then Begin. Use Pause or Exit freely.",
+        "People choosing an educational practice; no camera or microphone is used.",
+        [
+          "studyMinutes",
+          "burnout"
+        ]
+      ],
+      "playerSettings": [
+        "Practice comfort options",
+        "Controls for duration, pace, holds, attention focus, movement, sound and visuals.",
+        "Keep the experience adjustable instead of requiring one format.",
+        "Before starting, or after pausing when changing timing.",
+        "Choose only comfortable options; use text or external focus if preferred.",
+        "The person doing the practice; some options depend on the selected activity.",
+        [
+          "studyMinutes",
+          "studyMonth"
+        ]
+      ],
+      "evidence": [
+        "Practice information & sources",
+        "A mapped explanation of the activity, adaptations and relevant background references.",
+        "Understand what the source supports and what Serein has adapted.",
+        "Before trying an unfamiliar practice or checking a content claim.",
+        "Read the scope notes, date, population and linked primary source.",
+        "Readers evaluating the educational content; sources do not certify this app.",
+        [
+          "studyMinutes",
+          "nioshActions"
+        ]
+      ],
+      "time": [
+        "Available time",
+        "A filter that matches practices to supported durations or a self-paced option.",
+        "Avoid opening a timed practice longer than the chosen budget.",
+        "When the time available for a pause is limited.",
+        "Choose a time chip. Self-paced activities have no required countdown.",
+        "Anyone selecting a realistic break length.",
+        [
+          "studyMinutes",
+          "studyMonth"
+        ]
+      ],
+      "style": [
+        "Attention preference",
+        "A filter for breathing, grounding or practices without breath focus.",
+        "Offer choice when internal attention or paced breathing is not welcome.",
+        "When choosing what feels comfortable today.",
+        "Select a style, inspect the matches, and adapt or stop any practice.",
+        "Users making their own comfort choices.",
+        [
+          "burnout",
+          "studyMinutes"
+        ]
+      ],
+      "setting": [
+        "Movement and setting",
+        "A filter for a seated pause or an activity without guided movement.",
+        "Match the catalogue to your available space and comfort.",
+        "Before choosing a practice in a limited or shared space.",
+        "Choose a setting; seated options exclude walking, and still options exclude guided movement.",
+        "Users considering their space and suitability.",
+        [
+          "conditions",
+          "burnout"
+        ]
+      ],
+      "privacy": [
+        "Privacy & browser data",
+        "A plain explanation of local storage, optional saving, exports and media.",
+        "Make storage choices with a clear view of their limits.",
+        "Before saving personal words or using a shared browser.",
+        "Read the storage notes and use My data to export, delete or clear records.",
+        "Anyone using this app; browser storage and exported files are not encrypted.",
+        [
+          "trust",
+          "conditions"
+        ]
+      ],
+      "about": [
+        "About Serein",
+        "An overview of this educational wellbeing studio and Healthcare Crown Academy.",
+        "Clarify the purpose and limits of the product.",
+        "When first exploring the app or checking who provides it.",
+        "Explore the practices, studios and journeys; use support routes for human help.",
+        "Healthcare workers, learners and willing facilitators.",
+        [
+          "burnout",
+          "nioshActions"
+        ]
+      ]
+    },
+    "resources": {
+      "reset": [
+        "Reorient attention with an optional pause.",
+        "Between tasks when a short reset feels useful.",
+        [
+          "burnout",
+          "studyMinutes"
+        ]
+      ],
+      "compassion": [
+        "Recognize that care and personal limits can coexist.",
+        "When emotional demands make it harder to identify your own needs.",
+        [
+          "burnout",
+          "turnover"
+        ]
+      ],
+      "grounding": [
+        "Use the actual environment as an attention anchor.",
+        "When outward attention feels more welcome than breath or body focus.",
+        [
+          "burnout",
+          "studyMinutes"
+        ]
+      ],
+      "sleep": [
+        "Consider a feasible opportunity for rest and support.",
+        "When preparing for rest or reviewing a difficult sleep routine.",
+        [
+          "shortSleep",
+          "sleepOnset"
+        ]
+      ],
+      "reflection": [
+        "Explore a shift without needing to turn it into a positive lesson.",
+        "When personal reflection feels welcome after work.",
+        [
+          "burnout",
+          "trust"
+        ]
+      ],
+      "checkins": [
+        "Offer a short invitation to connect without demanding disclosure.",
+        "When checking in with a willing colleague or yourself.",
+        [
+          "trust",
+          "burnout"
+        ]
+      ],
+      "ask-support": [
+        "Turn a difficulty into a specific practical request.",
+        "Before a conversation with an appropriate colleague, lead or service.",
+        [
+          "trust",
+          "conditions"
+        ]
+      ],
+      "shift-home": [
+        "Plan one transition action after an agreed handover.",
+        "At the end of a shift, including night or rotating work.",
+        [
+          "shortSleep",
+          "rested"
+        ]
+      ],
+      "boundaries": [
+        "Make capacity and competing priorities visible.",
+        "When a request needs an agreed priority or another owner.",
+        [
+          "conditions",
+          "turnover"
+        ]
+      ],
+      "peer-check": [
+        "Offer a colleague choices about listening or practical help.",
+        "When a colleague may welcome a respectful check-in.",
+        [
+          "trust",
+          "harassment"
+        ]
+      ],
+      "priorities": [
+        "Turn overlapping demands into an explicit shared decision.",
+        "When several responsibilities need a lead to agree order or ownership.",
+        [
+          "conditions",
+          "burnout"
+        ]
+      ],
+      "difficult-talk": [
+        "Prepare observations, impact and a clear request.",
+        "Before a private, non-urgent conversation using normal workplace processes.",
+        [
+          "trust",
+          "harassment"
+        ]
+      ],
+      "small-win": [
+        "Acknowledge an ordinary moment of care or learning.",
+        "When noticing meaning feels useful rather than compulsory.",
+        [
+          "burnout",
+          "turnover"
+        ]
+      ],
+      "manager-support": [
+        "Connect a team concern to a feasible, accountable change.",
+        "When a lead is preparing to listen and follow through.",
+        [
+          "trust",
+          "nioshActions"
+        ]
+      ]
+    }
+  }
+}

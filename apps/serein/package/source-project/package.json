@@ -1,0 +1,14 @@
+{
+  "name": "serein-hca-studio",
+  "version": "5.1.1",
+  "private": true,
+  "description": "Serein by Healthcare Crown Academy \u2014 browser-local wellbeing studio",
+  "scripts": {
+    "check": "node scripts/check.cjs && python3 scripts/contrast-check.py",
+    "build": "python3 scripts/build-infographics.py && node scripts/build-strings.cjs && python3 scripts/build-offline.py && python3 scripts/build-portable.py",
+    "test": "node scripts/v5-check.cjs && node scripts/audit-check.cjs && node scripts/release-check.cjs && node scripts/offline-check.cjs && node scripts/infographics-check.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.3"
+  }
+}

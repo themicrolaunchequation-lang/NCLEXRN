@@ -1,0 +1,217 @@
+[
+  {
+    "asset": "avatar.webp",
+    "before": 7191,
+    "after": 1344
+  },
+  {
+    "asset": "awareness-0.webp",
+    "before": 60292,
+    "after": 19306
+  },
+  {
+    "asset": "awareness-1.webp",
+    "before": 47536,
+    "after": 15606
+  },
+  {
+    "asset": "awareness-2.webp",
+    "before": 37222,
+    "after": 11376
+  },
+  {
+    "asset": "awareness-3.webp",
+    "before": 55114,
+    "after": 17752
+  },
+  {
+    "asset": "coast.webp",
+    "before": 53758,
+    "after": 13180
+  },
+  {
+    "asset": "detail-feet.webp",
+    "before": 97585,
+    "after": 9536
+  },
+  {
+    "asset": "detail-hands.webp",
+    "before": 138864,
+    "after": 15064
+  },
+  {
+    "asset": "detail-neck.webp",
+    "before": 77505,
+    "after": 6740
+  },
+  {
+    "asset": "detail-shoulders.webp",
+    "before": 122040,
+    "after": 10118
+  },
+  {
+    "asset": "feet-0.webp",
+    "before": 49422,
+    "after": 12760
+  },
+  {
+    "asset": "feet-1.webp",
+    "before": 47078,
+    "after": 12490
+  },
+  {
+    "asset": "feet-2.webp",
+    "before": 50410,
+    "after": 12830
+  },
+  {
+    "asset": "feet-3.webp",
+    "before": 49644,
+    "after": 12368
+  },
+  {
+    "asset": "forest.webp",
+    "before": 83120,
+    "after": 17118
+  },
+  {
+    "asset": "hands-0.webp",
+    "before": 53812,
+    "after": 12884
+  },
+  {
+    "asset": "hands-1.webp",
+    "before": 53004,
+    "after": 13020
+  },
+  {
+    "asset": "hands-2.webp",
+    "before": 57566,
+    "after": 13318
+  },
+  {
+    "asset": "hands-3.webp",
+    "before": 58860,
+    "after": 13902
+  },
+  {
+    "asset": "leaves.webp",
+    "before": 78810,
+    "after": 17894
+  },
+  {
+    "asset": "mountain.webp",
+    "before": 106710,
+    "after": 25222
+  },
+  {
+    "asset": "reflection.webp",
+    "before": 67112,
+    "after": 16236
+  },
+  {
+    "asset": "release-0.webp",
+    "before": 61514,
+    "after": 18932
+  },
+  {
+    "asset": "release-1.webp",
+    "before": 60332,
+    "after": 18342
+  },
+  {
+    "asset": "release-2.webp",
+    "before": 61790,
+    "after": 18684
+  },
+  {
+    "asset": "release-3.webp",
+    "before": 60174,
+    "after": 18588
+  },
+  {
+    "asset": "release.webp",
+    "before": 101386,
+    "after": 23474
+  },
+  {
+    "asset": "seated.webp",
+    "before": 108422,
+    "after": 21770
+  },
+  {
+    "asset": "shoulders-0.webp",
+    "before": 29160,
+    "after": 10588
+  },
+  {
+    "asset": "shoulders-1.webp",
+    "before": 30098,
+    "after": 10734
+  },
+  {
+    "asset": "shoulders-2.webp",
+    "before": 29204,
+    "after": 10624
+  },
+  {
+    "asset": "shoulders-3.webp",
+    "before": 29004,
+    "after": 10646
+  },
+  {
+    "asset": "team.webp",
+    "before": 78480,
+    "after": 19428
+  },
+  {
+    "asset": "walking-0.webp",
+    "before": 30448,
+    "after": 10192
+  },
+  {
+    "asset": "walking-1.webp",
+    "before": 31086,
+    "after": 10454
+  },
+  {
+    "asset": "walking-2.webp",
+    "before": 30904,
+    "after": 10288
+  },
+  {
+    "asset": "walking-3.webp",
+    "before": 29364,
+    "after": 9828
+  },
+  {
+    "asset": "playfair-display-latin-600-normal.woff2",
+    "before": 23228,
+    "after": 20376
+  },
+  {
+    "asset": "playfair-display-latin-400-italic.woff2",
+    "before": 21884,
+    "after": 19176
+  },
+  {
+    "asset": "playfair-display-latin-400-normal.woff2",
+    "before": 21856,
+    "after": 19024
+  },
+  {
+    "asset": "inter-latin-wght-normal.woff2",
+    "before": 48256,
+    "after": 38376
+  },
+  {
+    "asset": "serein-crest.svg",
+    "before": 33220,
+    "after": 3316
+  },
+  {
+    "asset": "serein-crest-light.svg",
+    "before": 33220,
+    "after": 3316
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "images": {
+    "detail-shoulders": "assets/detail-shoulders.jpg",
+    "leaves": "assets/leaves.webp",
+    "detail-hands": "assets/detail-hands.jpg",
+    "avatar": "assets/avatar.jpg",
+    "detail-neck": "assets/detail-neck.jpg",
+    "mountain": "assets/mountain.webp",
+    "coast": "assets/coast.webp",
+    "detail-feet": "assets/detail-feet.jpg",
+    "portrait": "assets/avatar.jpg",
+    "forest": "assets/forest.webp",
+    "breathing": "assets/coast.webp",
+    "grounding": "assets/mountain.webp",
+    "seated": "assets/seated.webp",
+    "release": "assets/release.webp",
+    "support": "assets/leaves.webp",
+    "reflection": "assets/reflection.webp",
+    "recovery": "assets/forest.webp",
+    "team": "assets/team.webp"
+  },
+  "frames": {
+    "hands": [
+      "assets/hands-0.webp",
+      "assets/hands-1.webp",
+      "assets/hands-2.webp",
+      "assets/hands-3.webp"
+    ],
+    "shoulders": [
+      "assets/shoulders-0.webp",
+      "assets/shoulders-1.webp",
+      "assets/shoulders-2.webp",
+      "assets/shoulders-3.webp"
+    ],
+    "feet": [
+      "assets/feet-0.webp",
+      "assets/feet-1.webp",
+      "assets/feet-2.webp",
+      "assets/feet-3.webp"
+    ],
+    "release": [
+      "assets/release-0.webp",
+      "assets/release-1.webp",
+      "assets/release-2.webp",
+      "assets/release-3.webp"
+    ],
+    "walking": [
+      "assets/walking-0.webp",
+      "assets/walking-1.webp",
+      "assets/walking-2.webp",
+      "assets/walking-3.webp"
+    ],
+    "awareness": [
+      "assets/awareness-0.webp",
+      "assets/awareness-1.webp",
+      "assets/awareness-2.webp",
+      "assets/awareness-3.webp"
+    ]
+  }
+}

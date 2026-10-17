@@ -1,0 +1,1770 @@
+{
+  "practices": {
+    "tide": "4010b5bbb1b15c0e32eadadae67f544aea34e1604d6857f23ddba3fcf91c82d9",
+    "box": "bc373fefbaec8b49ea174736af05c5236fb9df7950e7d7e277f21fdd6ae512d4",
+    "ground": "80b61f367b416625f8b3f50e2fa0a2910c12d06db2067c7cd6f0cb76e966c0b7",
+    "release": "54f67afcef6bc41a28aeeae6b704332a3ed524a958d8512753bd49f74fdcfd04",
+    "desk": "42d0f7eafbd742ace870d5569ab1e134c55d08ad77f5bb7fe6deee3e2cbb00e2",
+    "scan": "3ff101bcc623287d128e8b1c3d780dae31e2cbe2b1fae990a1267f597bf0bbb4",
+    "fullrelease": "e1d93949fe346f442fbdc1e13f52c269b335c67141bdf0508d4dc121ff6644f3",
+    "handreset": "76f3b39636d17948ccee0c94388bf186e41c7d207567b3def480170514e85069",
+    "shoulderreset": "8c6dcaa9a15767ec6cdb674399229604235cb0058e064124f09b9bb3c08b861d",
+    "ankles": "b8604da11abca2a34e3e93556fa60d31e8aab009c2de718e6d025d0e70ed1460",
+    "listen": "1194c971c5fd65ea1db2865fa45157a31ea6269f319e1ac7886325fee2907893",
+    "pause3": "5c56f4a19ad1c8cec1dde5ec13a5dedff547c98615ed7c09d9bcfbbb4a8abae9",
+    "quietplace": "731e803df3041e2e7470463de89fdcc2e22f2ba9717705079d779d17733229b1",
+    "walk": "e24248d8de026cc83265d2a1467b10019aaea412d8c0f28d3bba0156b0c45008",
+    "winddown": "95176c7fc9b6e04720f9c2d9295e8d92be7ea7b83f6848c3a48a2331edcc7e10"
+  },
+  "guides": {
+    "reset": "d1945a6b61929a4bfdc4a9ac9e5f9af0c6feea91f2e33f08d9c76304bc53dea0",
+    "compassion": "fe68891f47ccafbbaab524e050e9c4f24dbb6ed803c46794f13a1545d0f76c59",
+    "grounding": "333891eb80ce66688104bbc140d23bcee107a99ba983fc23dec1f9f647ea40a2",
+    "sleep": "a9bdf7487f56493e930ab67acd9f1ce1f0a883d1d815a852730045ef6230d4d2",
+    "reflection": "b3ac5513aabec840967c61218acd4211b7393b2e54f9ce3710c71e38e164abb6",
+    "checkins": "b7a32772a032d18d54444f8ca2c6d4cdbb780e8c10df16b762678e9bd0e73922",
+    "ask-support": "4ab44a236765814768a3ddde4f36875baffeeb39f40ec31f8e2280561e04c36a",
+    "shift-home": "e7832ca26578b9b47590e1c83c5478916ff8fc1faf4b5a05c5118cc421007afc",
+    "boundaries": "1ae7e866d6f9b23b0c99145cffb27477d99a653599e5d89f7fa68b272eb584b1",
+    "peer-check": "6d3fa818fc1e48acc4b3278d9208f7b1d2b76f304d7fb8b8e87e04b4a172fa78",
+    "priorities": "14622d7295f0b77d441c9646fd6545aaec9a73669b114790f702f724c65a50f7",
+    "difficult-talk": "bff527d544706ee65adccce47ff2259b586006a24e0ab9e7116b044a0b03c9ff",
+    "small-win": "a1f8665941764ceb60623de22c12c815c7322b4986f8dd3fd1b58a5a52d0429b",
+    "manager-support": "f4c7cede873748f60acbae85c242d22fb3b12281585824085df4864252519fb0"
+  },
+  "other": {
+    "reflections": "9231ab52cf526a9b3aebb7acfc979926bf16de1b0ee839d7154716677d74242f",
+    "moments": "21dbd6fa01344ae652a6c9e0afb112a571b7a98e87846113d48af7b039496c82",
+    "sources": "168fee75339b3d5b9ad411ecb91d4f9b6b61d70c5ade2c8347196986636158af",
+    "images": "54826d5f63fa28f74808b318dbcc828bf6c1abc6f8ef7d349c3260a7e7f1a42e",
+    "frames": "fbc25dbfe6247c2bf25ef727dfdc37107f3f7425cb04b23689330e58bb3e2c26",
+    "descriptions": "57756e1b52983397bcbd2027e0ffa5d231a4e96e2dab28a52091dd69f23ba5e0",
+    "groundSteps": "3aea8e3c65f635cd32daa3193a26f424c27691b77de355e00dfe8d4fab111c22"
+  },
+  "assets": {
+    "assets/detail-hands.jpg": "8992a58e2fce7f69c04a20ea09dccba1bab457470fb7897b0bb8150e6de9c59e",
+    "assets/icon-512.png": "e5ed47e54af7e5ad6e35497f8ab56c45a3fb65779da8857b0c5ced32af7764b7",
+    "assets/awareness-3.webp": "bcfc20249b76f93aa162f635edb3e8169648709c1c597bd3f1ce8ce392c9f1c5",
+    "assets/awareness-1.webp": "c8bf7078f58099365661cb154cf330c9099a2f7ac6e640cb8b199e2eda3beb79",
+    "assets/awareness-0.webp": "03afd05635da39fa68201a6369896e86d5f76ef859a0bf34ccd36f5de1ac8724",
+    "assets/shoulders-1.webp": "21ea2c6ee935f4ee7550502a85dcc268d74b1daacb98409611f5b1e818fa99f9",
+    "assets/shoulders-3.webp": "aaeaf61c05776c4e14d1e101f185e5bea20206583afe9bfa79f5b9c80019e6c7",
+    "assets/feet-1.webp": "4dd351b11287a641a588e4769d673d3b42a40f227d0fa3abe0e1220e99ee69f1",
+    "assets/walking-1.webp": "68eff065ed0b0134b54b5487a345d6e2bc573bbd05293c50ae693ef4deae0f9d",
+    "assets/icon-192.png": "8a5264f6171b89b181972d7f1894b4294cc401f5401ee09816b87394ff33ee37",
+    "assets/release-1.webp": "39593f747d476334b8e33191ea8e2ed7ecf5007b1336f2801b819689e78d31bf",
+    "assets/playfair-display-latin-400-normal.woff2": "1fe9ad5d8b2ebd8ecb8fbd05bed1e3fdfa52dae3f1a04e1c219918442fe9394d",
+    "assets/detail-neck.jpg": "7737ea11aedcc64747c478c4f79ceb767c0cc16ee526dba5c47b27a2d116e9d8",
+    "assets/playfair-display-latin-600-normal.woff2": "5d2286941a6b02a29387efa94809a064f8917598eafa67b938261cf13bb887cd",
+    "assets/team.webp": "9ea3ab7df4d1187068dc3ad785f2037a6269a57d7b1322dd8226e59bd6274515",
+    "assets/feet-3.webp": "ed2d64b8fd698abde442781ebe5ea50577153973288e1c78cabd888886f22c3c",
+    "assets/release.webp": "cf430de7d1c091beb10445ec6cc462cab88fcc1e61b4dacae4561a3957fadb12",
+    "assets/hands-2.webp": "2dca79572a303da815e94770a1c11997617801f3e1e933a79e4ca6c1cc52f8c8",
+    "assets/detail-shoulders.jpg": "6720daa7f825ef1a7f10d84d0f8ee304835fb7a04af31cabaef0eabe40d4942c",
+    "assets/hands-3.webp": "06e8828fac77192cf5e2575cd9ae79dac05deab4c5c0e850369075ba8fcfdf2e",
+    "assets/walking-3.webp": "4f2993bbd9963fd019a7dc4dd393aebd2b8ea5ee9299d1d8153b9182dec75b54",
+    "assets/release-2.webp": "cf03eaee16029ce70c740e17860b7e4ce3e2b0c75bc711beec0a088c6652ec5b",
+    "assets/hands-1.webp": "1d590914d45b03055cb6f412ae2ae4eb441c177dd07d33265b6764e93cebd567",
+    "assets/shoulders-0.webp": "f7407747c2395e58db77e438a9811c43cd60736b1fa2cf7b623857c75ae1d8d9",
+    "assets/inter-latin-wght-normal.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "assets/feet-0.webp": "7bfb5e4e59dcc88156400b5c13e2aae17461dade4eb25a4cc0dcd8a0341619ae",
+    "assets/feet-2.webp": "9361e20e129edaf181fbf09717e5509324571ea418f7b91987d7b83f07a8c81b",
+    "assets/coast.webp": "fec3a5bcf439a933a10dee109553daec9cb1d8702e8c5d14a57a9249d79cf57b",
+    "assets/awareness-2.webp": "72004c7c823f7541e994e1400134253308a588cabc56362ff8ba5650a3957452",
+    "assets/walking-0.webp": "68a7bc57b54e700d88dc8619e0aecfdae0db9193ab0709bec744178a9dad498f",
+    "assets/playfair-display-latin-400-italic.woff2": "eabce94d4a69e439cd050755c31f9894ac8a78f93e58b063c6c01f370474e1de",
+    "assets/seated.webp": "5f2818204a820ef4ee51293490e6837b7505bda85e45800a64a68119d27a40ec",
+    "assets/detail-feet.jpg": "493b22f0df92bd4b9dce82d15604f51d70997131d6bd0ea16249062d1032b698",
+    "assets/avatar.jpg": "ae8da6b41b8ca4be5b12bfe1c55019e111b63e58758637eb7ff5834b1a672562",
+    "assets/walking-2.webp": "5fc1cdaf4787a114060f9f895c029620dd57f07dc41ea456417958d441aa91bd",
+    "assets/mountain.webp": "24018c5c94ff456023f40add103910bb2798726680bfa4aec0d2a6e3a6de4a6a",
+    "assets/reflection.webp": "e8f15e2ea389373e32ab857186d49fc8b765e7a814200d8f7892c2e89113ee43",
+    "assets/shoulders-2.webp": "54e35398eb6fa868ffcab96a820c7c0f6a67040477a5efbf4824e2558fe8b61f",
+    "assets/forest.webp": "3d5aa17818b72cd76bbb6128c89cf0236b05fc2dd736c0aa2012d2cf95900ed1",
+    "assets/release-3.webp": "27ee22d43e3ccbd287127c79596fb9972bc92bddbf6969e8a2055a2648191e36",
+    "assets/leaves.webp": "6d6cf67118892c21972005331d2bbb8a2ab9f8a92b7c3f9654ee39495de0e0f3",
+    "assets/release-0.webp": "36cd1f84c90a715950d7baf4a50f1b22324d06569a3839d1589ddf822c30b81d",
+    "assets/hands-0.webp": "e3cc1c1698d7db46b4700caa7666273269859eb326289cc34a65f27d1b3f6f43",
+    "assets/serein-crest.svg": "fc85a86cd716bd3a6bee1fb89454484d2cc82c5fd13b0b8a78e4b826e513503a",
+    "assets/serein-crest-light.svg": "1b5adac1cdd6eabf4ddf599e4b37e67a092e24d2d4e84d67a203e863b0ae9b63"
+  },
+  "content": {
+    "practices": [
+      {
+        "id": "tide",
+        "title": "Breathing Tide",
+        "tag": "BREATHE",
+        "category": "Breathing",
+        "duration": "1–5 min",
+        "image": "breathing",
+        "color": "#dce7df",
+        "desc": "Follow a soft, expanding light. Let the next breath arrive gently.",
+        "intro": "A breath, not a performance.",
+        "instruction": "Let the light grow as you breathe in, and soften as you breathe out. Stay with a comfortable, unforced breath.",
+        "safety": "No breath holding. The timing is optional: breathe naturally or stop if the pace feels uncomfortable or you feel dizzy.",
+        "originalImage": "coast",
+        "originalPhases": {
+          "defaultSeconds": 120,
+          "paceOptions": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "defaultPace": [
+            4,
+            6
+          ],
+          "cyclic": true,
+          "phases": [
+            {
+              "title": "Breathe in",
+              "seconds": 4,
+              "cue": "Gently, and only as far as feels comfortable."
+            },
+            {
+              "title": "Breathe out",
+              "seconds": 6,
+              "cue": "Gently, and only as far as feels comfortable."
+            }
+          ]
+        },
+        "durations": [
+          60,
+          120,
+          180,
+          300
+        ],
+        "defaultDuration": 120,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": true,
+        "movement": false,
+        "steps": [
+          [
+            "Breathe in",
+            "Gently, and only as far as feels comfortable."
+          ],
+          [
+            "Breathe out",
+            "Gently, and only as far as feels comfortable."
+          ]
+        ],
+        "photoPlan": []
+      },
+      {
+        "id": "box",
+        "title": "Box Breathing",
+        "tag": "FIND A RHYTHM",
+        "category": "Breathing",
+        "duration": "4–12 cycles",
+        "image": "breathing",
+        "color": "#e9e5d7",
+        "desc": "Follow a steady rhythm, one phase at a time. Holds are optional.",
+        "intro": "One side. One moment.",
+        "instruction": "Follow the light around the square. Each side marks a phase. You can turn holds off and breathe continuously.",
+        "safety": "Never strain or force a breath hold. Choose “No holds” if holding is uncomfortable. If unsure about breath holds because of a health condition, seek advice from your clinician.",
+        "originalImage": "forest",
+        "originalPhases": {
+          "defaultCycles": 8,
+          "phaseSecondsOptions": [
+            3,
+            4,
+            5
+          ],
+          "defaultPhaseSeconds": 4,
+          "cyclic": true,
+          "phases": [
+            {
+              "title": "Breathe in",
+              "seconds": 4,
+              "cue": "Gently, and only as far as feels comfortable."
+            },
+            {
+              "title": "Hold gently",
+              "seconds": 4,
+              "cue": "Only if comfortable. No strain, no forcing."
+            },
+            {
+              "title": "Breathe out",
+              "seconds": 4,
+              "cue": "Gently, and only as far as feels comfortable."
+            },
+            {
+              "title": "Rest gently",
+              "seconds": 4,
+              "cue": "Only if comfortable. No strain, no forcing."
+            }
+          ],
+          "noHoldsPhaseTitles": [
+            "Breathe in",
+            "Breathe out"
+          ]
+        },
+        "durations": [
+          60,
+          120,
+          180,
+          300
+        ],
+        "defaultDuration": 120,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": true,
+        "movement": false,
+        "steps": [
+          [
+            "Breathe in",
+            "Gently, and only as far as feels comfortable."
+          ],
+          [
+            "Hold gently",
+            "Only if comfortable. No strain, no forcing."
+          ],
+          [
+            "Breathe out",
+            "Gently, and only as far as feels comfortable."
+          ],
+          [
+            "Rest gently",
+            "Only if comfortable. No strain, no forcing."
+          ]
+        ],
+        "photoPlan": []
+      },
+      {
+        "id": "ground",
+        "title": "Here & Now",
+        "tag": "5 · 4 · 3 · 2 · 1",
+        "category": "Grounding",
+        "duration": "Your own pace",
+        "image": "grounding",
+        "color": "#e9e4db",
+        "desc": "Reconnect with your surroundings through five simple senses.",
+        "intro": "Let the room meet you.",
+        "instruction": "Notice things in your actual surroundings, not just on this screen. Tap a stone for each thing you notice. No writing or sharing needed.",
+        "safety": "Keep your eyes open if that feels safer. Skip or substitute any sense that is inaccessible, unpleasant, or uncomfortable. Nothing needs to be tasted or touched.",
+        "originalImage": "mountain",
+        "originalPhases": {
+          "selfPaced": true,
+          "steps": [
+            {
+              "title": "See",
+              "count": 5,
+              "line": "Notice five things you can see.",
+              "hint": "A color, a shape, the way light meets a surface."
+            },
+            {
+              "title": "Feel",
+              "count": 4,
+              "line": "Notice four comfortable physical sensations.",
+              "hint": "Your feet supported, the chair, your sleeve. No need to touch new objects."
+            },
+            {
+              "title": "Hear",
+              "count": 3,
+              "line": "Notice three sounds around you.",
+              "hint": "Nearby or far away. If hearing is not accessible, notice three visual details."
+            },
+            {
+              "title": "Smell",
+              "count": 2,
+              "line": "Notice two neutral or pleasant smells.",
+              "hint": "If none are available, recall familiar scents or choose two colors instead."
+            },
+            {
+              "title": "Taste",
+              "count": 1,
+              "line": "Notice one taste, if comfortable.",
+              "hint": "Nothing needs to go in your mouth. Alternatively, name one thing you appreciate."
+            }
+          ]
+        },
+        "durations": [],
+        "defaultDuration": 120,
+        "selfPaced": true,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": false,
+        "steps": [
+          [
+            "See",
+            "Notice five things you can see. A color, a shape, the way light meets a surface."
+          ],
+          [
+            "Feel",
+            "Notice four comfortable physical sensations. Your feet supported, the chair, your sleeve. No need to touch new objects."
+          ],
+          [
+            "Hear",
+            "Notice three sounds around you. Nearby or far away. If hearing is not accessible, notice three visual details."
+          ],
+          [
+            "Smell",
+            "Notice two neutral or pleasant smells. If none are available, recall familiar scents or choose two colors instead."
+          ],
+          [
+            "Taste",
+            "Notice one taste, if comfortable. Nothing needs to go in your mouth. Alternatively, name one thing you appreciate."
+          ]
+        ],
+        "photoPlan": [
+          [
+            "awareness",
+            0
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            2
+          ],
+          [
+            "awareness",
+            3
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "release",
+        "title": "Soften & Release",
+        "tag": "MUSCLE RELAXATION",
+        "category": "Movement",
+        "duration": "2 min",
+        "image": "release",
+        "color": "#e4e9da",
+        "desc": "Notice gentle tension and release, at your own pace.",
+        "intro": "A little less to carry.",
+        "instruction": "The highlighted area shows where to place your attention. Use only light tension, breathe normally, and notice the release. The final step is rest only.",
+        "safety": "Avoid tensing painful or injured areas; choose “Relax only” or skip. Stop if you feel pain or discomfort. This is a short PMR-inspired adaptation, not a clinical protocol.",
+        "originalImage": "leaves",
+        "originalPhases": {
+          "defaultSeconds": 120,
+          "secondsPerPhase": 30,
+          "lightEffortSeconds": 5,
+          "relaxOnlyAvailable": true,
+          "phases": [
+            {
+              "title": "Hands",
+              "effortPhase": "Gently tense",
+              "effortCue": "Lightly close your hands. Keep breathing normally.",
+              "releasePhase": "Soften & notice",
+              "releaseCue": "Let your fingers soften. Notice without judging."
+            },
+            {
+              "title": "Shoulders",
+              "effortPhase": "Gently tense",
+              "effortCue": "Lift your shoulders just a little. Keep breathing.",
+              "releasePhase": "Soften & notice",
+              "releaseCue": "Let your shoulders settle. There is no perfect position."
+            },
+            {
+              "title": "Feet",
+              "effortPhase": "Gently tense",
+              "effortCue": "Lightly press your feet into the floor. No straining.",
+              "releasePhase": "Soften & notice",
+              "releaseCue": "Release the effort in your feet and lower legs."
+            },
+            {
+              "title": "Rest & notice",
+              "releasePhase": "Soften & notice",
+              "releaseCue": "Let your whole body be supported. Breathe naturally."
+            }
+          ]
+        },
+        "durations": [
+          120
+        ],
+        "defaultDuration": 120,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": true,
+        "steps": [
+          [
+            "Hands",
+            "Let your fingers soften. Notice without judging."
+          ],
+          [
+            "Shoulders",
+            "Let your shoulders settle. There is no perfect position."
+          ],
+          [
+            "Feet",
+            "Release the effort in your feet and lower legs."
+          ],
+          [
+            "Rest & notice",
+            "Let your whole body be supported. Breathe naturally."
+          ]
+        ],
+        "photoPlan": [
+          [
+            "hands",
+            3
+          ],
+          [
+            "shoulders",
+            3
+          ],
+          [
+            "feet",
+            3
+          ],
+          [
+            "release",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "desk",
+        "title": "The Seated Reset",
+        "tag": "GENTLE MOVEMENT",
+        "category": "Movement",
+        "duration": "90 sec",
+        "image": "seated",
+        "color": "#ecdfd0",
+        "desc": "Ease your shoulders, uncurl your hands, and gently turn your head.",
+        "intro": "Move a little. Notice a little.",
+        "instruction": "Sit on a stable, non-wheeled chair, with feet supported. Use a small comfortable range. The figure is a schematic cue, not a posture assessment.",
+        "safety": "Skip any movement that is unsuitable, painful, or makes you dizzy. Do not force a stretch or roll your neck. Check with a clinician if unsure whether these movements are suitable.",
+        "originalImage": "forest",
+        "originalPhases": {
+          "defaultSeconds": 90,
+          "secondsPerPhase": 30,
+          "phases": [
+            {
+              "title": "Shoulder lift & release",
+              "phase": "Lift, then let go",
+              "cue": "Gently lift your shoulders a little, then let them lower."
+            },
+            {
+              "title": "Open & soften hands",
+              "phase": "Open, then soften",
+              "cue": "Slowly uncurl your fingers, then let your hands soften."
+            },
+            {
+              "title": "Gentle neck turns",
+              "phase": "Turn, then return",
+              "cue": "Turn left within a comfortable range, return to center, then right."
+            }
+          ]
+        },
+        "durations": [
+          90
+        ],
+        "defaultDuration": 90,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": true,
+        "steps": [
+          [
+            "Shoulder lift & release",
+            "Gently lift your shoulders a little, then let them lower."
+          ],
+          [
+            "Open & soften hands",
+            "Slowly uncurl your fingers, then let your hands soften."
+          ],
+          [
+            "Gentle neck turns",
+            "Turn left within a comfortable range, return to center, then right."
+          ]
+        ],
+        "photoPlan": [
+          [
+            "shoulders",
+            1
+          ],
+          [
+            "hands",
+            1
+          ],
+          [
+            "shoulders",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "scan",
+        "title": "Body Scan Journey",
+        "category": "Awareness",
+        "image": "release",
+        "duration": "2–5 min",
+        "seconds": 180,
+        "visual": "scan",
+        "desc": "Move attention gently through supported body areas.",
+        "steps": [
+          [
+            "Feet & support",
+            "Notice contact with the floor or chair. Nothing needs to change."
+          ],
+          [
+            "Legs",
+            "Notice whatever is present, or choose to focus on the room instead."
+          ],
+          [
+            "Hands",
+            "Notice the weight and temperature of your hands."
+          ],
+          [
+            "Shoulders",
+            "Notice support. There is no need to soften on command."
+          ],
+          [
+            "Face",
+            "Notice your expression without judging it."
+          ],
+          [
+            "Whole body",
+            "Broaden attention, then look around the room."
+          ]
+        ],
+        "safety": "Skip any area or use external focus if body attention feels uncomfortable.",
+        "tag": "AWARENESS",
+        "intro": "Body Scan Journey",
+        "instruction": "Notice contact with the floor or chair. Nothing needs to change.",
+        "finalImage": "timeline-scan",
+        "photoPhasePlan": [
+          [
+            "feet",
+            0
+          ],
+          [
+            "release",
+            3
+          ],
+          [
+            "hands",
+            3
+          ],
+          [
+            "shoulders",
+            3
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ],
+        "durations": [
+          120,
+          180,
+          300
+        ],
+        "defaultDuration": 180,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": false,
+        "photoPlan": [
+          [
+            "feet",
+            0
+          ],
+          [
+            "release",
+            3
+          ],
+          [
+            "hands",
+            3
+          ],
+          [
+            "shoulders",
+            3
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "fullrelease",
+        "title": "Full Muscle Release",
+        "category": "Movement",
+        "image": "release",
+        "duration": "3–5 min",
+        "seconds": 240,
+        "visual": "release",
+        "desc": "Explore light effort and release across several areas.",
+        "steps": [
+          [
+            "Hands",
+            "Optional: close your hands lightly, then let them open."
+          ],
+          [
+            "Arms",
+            "Optional: use a little effort in the arms, then release."
+          ],
+          [
+            "Shoulders",
+            "Optional: make a small lift, then return comfortably."
+          ],
+          [
+            "Feet",
+            "Optional: press feet lightly into support, then release."
+          ],
+          [
+            "Rest",
+            "No effort here. Notice the chair supporting you."
+          ]
+        ],
+        "safety": "Use only light effort. Avoid painful or injured areas. Relax-only mode is available.",
+        "tag": "MOVEMENT",
+        "intro": "Full Muscle Release",
+        "instruction": "Optional: close your hands lightly, then let them open.",
+        "finalImage": "timeline-fullrelease",
+        "photoPhasePlan": [
+          [
+            "release",
+            0
+          ],
+          [
+            "release",
+            1
+          ],
+          [
+            "release",
+            2
+          ],
+          [
+            "feet",
+            1
+          ],
+          [
+            "release",
+            3
+          ]
+        ],
+        "durations": [
+          180,
+          240,
+          300
+        ],
+        "defaultDuration": 240,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": true,
+        "photoPlan": [
+          [
+            "release",
+            0
+          ],
+          [
+            "release",
+            1
+          ],
+          [
+            "release",
+            2
+          ],
+          [
+            "feet",
+            1
+          ],
+          [
+            "release",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "handreset",
+        "title": "Hand & Finger Reset",
+        "category": "Movement",
+        "image": "detail-hands",
+        "duration": "60–90 sec",
+        "seconds": 90,
+        "visual": "hands",
+        "desc": "A close-up guide to gently opening and resting your hands.",
+        "steps": [
+          [
+            "Settle",
+            "Rest your forearms comfortably. Keep wrists neutral."
+          ],
+          [
+            "Open gently",
+            "Gently uncurl your fingers in a comfortable range."
+          ],
+          [
+            "Return",
+            "Return to a relaxed hand. Do not grip tightly."
+          ],
+          [
+            "Rest",
+            "Let the hands be supported."
+          ]
+        ],
+        "safety": "Stop for pain, tingling, or discomfort. This is a movement cue, not treatment.",
+        "tag": "MOVEMENT",
+        "intro": "Hand & Finger Reset",
+        "instruction": "Rest your forearms comfortably. Keep wrists neutral.",
+        "finalImage": "timeline-handreset",
+        "photoPhasePlan": [
+          [
+            "hands",
+            0
+          ],
+          [
+            "hands",
+            1
+          ],
+          [
+            "hands",
+            2
+          ],
+          [
+            "hands",
+            3
+          ]
+        ],
+        "durations": [
+          60,
+          90
+        ],
+        "defaultDuration": 90,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": true,
+        "photoPlan": [
+          [
+            "hands",
+            0
+          ],
+          [
+            "hands",
+            1
+          ],
+          [
+            "hands",
+            2
+          ],
+          [
+            "hands",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "shoulderreset",
+        "title": "Shoulder Reset",
+        "category": "Movement",
+        "image": "detail-shoulders",
+        "duration": "60–90 sec",
+        "seconds": 90,
+        "visual": "shoulders",
+        "desc": "Follow a small lift and a gentle return to rest.",
+        "steps": [
+          [
+            "Settle",
+            "Sit supported with arms resting comfortably."
+          ],
+          [
+            "Small lift",
+            "If comfortable, lift shoulders a little. Keep breathing naturally."
+          ],
+          [
+            "Return",
+            "Return gently. Avoid forcing shoulders downward."
+          ],
+          [
+            "Rest",
+            "Notice support and stop whenever you prefer."
+          ]
+        ],
+        "safety": "Use a small comfortable range. Skip painful or injured areas.",
+        "tag": "MOVEMENT",
+        "intro": "Shoulder Reset",
+        "instruction": "Sit supported with arms resting comfortably.",
+        "finalImage": "timeline-shoulderreset",
+        "photoPhasePlan": [
+          [
+            "shoulders",
+            0
+          ],
+          [
+            "shoulders",
+            1
+          ],
+          [
+            "shoulders",
+            2
+          ],
+          [
+            "shoulders",
+            3
+          ]
+        ],
+        "durations": [
+          60,
+          90
+        ],
+        "defaultDuration": 90,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": true,
+        "photoPlan": [
+          [
+            "shoulders",
+            0
+          ],
+          [
+            "shoulders",
+            1
+          ],
+          [
+            "shoulders",
+            2
+          ],
+          [
+            "shoulders",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "ankles",
+        "title": "Seated Foot & Ankle Movement",
+        "category": "Movement",
+        "image": "detail-feet",
+        "duration": "1–2 min",
+        "seconds": 120,
+        "visual": "feet",
+        "desc": "Explore a small up-and-down movement while seated.",
+        "steps": [
+          [
+            "Settle",
+            "Use a stable chair. Support your leg and foot comfortably."
+          ],
+          [
+            "Small movement",
+            "If comfortable, move the ankle gently up and down."
+          ],
+          [
+            "Other side",
+            "Repeat on the other side only if suitable."
+          ],
+          [
+            "Rest",
+            "Return both feet to comfortable support."
+          ]
+        ],
+        "safety": "Do not force range. Skip if movement is unsuitable, painful, or causes discomfort.",
+        "tag": "MOVEMENT",
+        "intro": "Seated Foot & Ankle Movement",
+        "instruction": "Use a stable chair. Support your leg and foot comfortably.",
+        "finalImage": "timeline-ankles",
+        "photoPhasePlan": [
+          [
+            "feet",
+            0
+          ],
+          [
+            "feet",
+            1
+          ],
+          [
+            "feet",
+            2
+          ],
+          [
+            "feet",
+            3
+          ]
+        ],
+        "durations": [
+          60,
+          120
+        ],
+        "defaultDuration": 120,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": true,
+        "photoPlan": [
+          [
+            "feet",
+            0
+          ],
+          [
+            "feet",
+            1
+          ],
+          [
+            "feet",
+            2
+          ],
+          [
+            "feet",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "listen",
+        "title": "Mindful Listening",
+        "category": "Awareness",
+        "image": "grounding",
+        "duration": "1–3 min",
+        "seconds": 120,
+        "visual": "listen",
+        "desc": "Notice nearby and distant sounds without recording them.",
+        "steps": [
+          [
+            "Arrive",
+            "Look around. Choose a comfortable position."
+          ],
+          [
+            "Nearby",
+            "Notice a nearby sound, or a nearby visual detail."
+          ],
+          [
+            "Further away",
+            "Notice something further away. No need to search hard."
+          ],
+          [
+            "Whole space",
+            "Allow attention to include the room as a whole."
+          ]
+        ],
+        "safety": "Use visual details if hearing is inaccessible or focusing on sound is uncomfortable. No microphone is used.",
+        "tag": "AWARENESS",
+        "intro": "Mindful Listening",
+        "instruction": "Look around. Choose a comfortable position.",
+        "finalImage": "timeline-listen",
+        "photoPhasePlan": [
+          [
+            "awareness",
+            0
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            2
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ],
+        "durations": [
+          60,
+          120,
+          180
+        ],
+        "defaultDuration": 120,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": false,
+        "photoPlan": [
+          [
+            "awareness",
+            0
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            2
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "pause3",
+        "title": "Three-Minute Pause",
+        "category": "Awareness",
+        "image": "breathing",
+        "duration": "3 min",
+        "seconds": 180,
+        "visual": "pause",
+        "desc": "Notice, choose an anchor, then broaden awareness.",
+        "steps": [
+          [
+            "Notice",
+            "Notice how you are arriving: thoughts, feelings, or surroundings."
+          ],
+          [
+            "Anchor",
+            "Choose natural breathing, supported feet, or a visual detail."
+          ],
+          [
+            "Broaden",
+            "Include the body and room. Choose one useful next step."
+          ]
+        ],
+        "safety": "Breathing is optional. Keep attention external if that feels more comfortable.",
+        "tag": "AWARENESS",
+        "intro": "Three-Minute Pause",
+        "instruction": "Notice how you are arriving: thoughts, feelings, or surroundings.",
+        "finalImage": "timeline-pause3",
+        "photoPhasePlan": [
+          [
+            "awareness",
+            0
+          ],
+          [
+            "awareness",
+            2
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ],
+        "durations": [
+          180
+        ],
+        "defaultDuration": 180,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": false,
+        "photoPlan": [
+          [
+            "awareness",
+            0
+          ],
+          [
+            "awareness",
+            2
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "quietplace",
+        "title": "Quiet Place Visualization",
+        "category": "Visualization",
+        "image": "recovery",
+        "duration": "2–5 min",
+        "seconds": 180,
+        "visual": "scene",
+        "desc": "Explore a gentle imagined scene, with motion optional.",
+        "steps": [
+          [
+            "Choose",
+            "Choose an ordinary place that feels comfortable enough."
+          ],
+          [
+            "Notice",
+            "Notice imagined light, colors, or textures. You can simply view the photograph."
+          ],
+          [
+            "Stay gently",
+            "No need to create a vivid image. Keep your eyes open if preferred."
+          ],
+          [
+            "Return",
+            "Look around your actual room and notice its support."
+          ]
+        ],
+        "safety": "Skip imagery if it feels uncomfortable. Choose grounding in your actual surroundings instead.",
+        "tag": "VISUALIZATION",
+        "intro": "Quiet Place Visualization",
+        "instruction": "Choose an ordinary place that feels comfortable enough.",
+        "finalImage": "timeline-quietplace",
+        "photoPhasePlan": [
+          [
+            "awareness",
+            0
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            2
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ],
+        "durations": [
+          120,
+          180,
+          300
+        ],
+        "defaultDuration": 180,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": false,
+        "photoPlan": [
+          [
+            "awareness",
+            0
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            2
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "walk",
+        "title": "Slow Walking Awareness",
+        "category": "Movement",
+        "image": "seated",
+        "duration": "2–5 min",
+        "seconds": 180,
+        "visual": "walk",
+        "desc": "A preview of slow steps, followed by screen-away prompts.",
+        "steps": [
+          [
+            "Prepare",
+            "Choose a clear, level space. Preview while stationary."
+          ],
+          [
+            "Step",
+            "Put the screen away before moving. Walk at your own comfortable pace."
+          ],
+          [
+            "Notice",
+            "Notice ordinary contact and surroundings, without changing your gait."
+          ],
+          [
+            "Return",
+            "Stop in a stable position and return attention to the room."
+          ]
+        ],
+        "safety": "Use only if walking is suitable. Do not watch or operate the screen while walking. Seated awareness is an alternative.",
+        "tag": "MOVEMENT",
+        "intro": "Slow Walking Awareness",
+        "instruction": "Choose a clear, level space. Preview while stationary.",
+        "finalImage": "timeline-walk",
+        "photoPhasePlan": [
+          [
+            "walking",
+            0
+          ],
+          [
+            "walking",
+            1
+          ],
+          [
+            "walking",
+            2
+          ],
+          [
+            "walking",
+            3
+          ]
+        ],
+        "durations": [
+          120,
+          180,
+          300
+        ],
+        "defaultDuration": 180,
+        "selfPaced": false,
+        "position": "Walking",
+        "breathFocus": false,
+        "movement": true,
+        "photoPlan": [
+          [
+            "walking",
+            0
+          ],
+          [
+            "walking",
+            1
+          ],
+          [
+            "walking",
+            2
+          ],
+          [
+            "walking",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "winddown",
+        "title": "Evening Wind-Down",
+        "category": "Awareness",
+        "image": "recovery",
+        "duration": "3–5 min",
+        "seconds": 240,
+        "visual": "winddown",
+        "desc": "A quiet sequence of support, awareness, and optional release.",
+        "steps": [
+          [
+            "Supported rest",
+            "Choose a comfortable supported position."
+          ],
+          [
+            "Notice support",
+            "Notice the surface supporting you, without trying to sleep."
+          ],
+          [
+            "Gentle release",
+            "Let hands and shoulders rest. Tensing is not required."
+          ],
+          [
+            "Set down",
+            "Notice one thing that can wait until tomorrow."
+          ],
+          [
+            "Finish",
+            "End here or continue resting. There is no outcome to achieve."
+          ]
+        ],
+        "safety": "This practice does not treat sleep difficulties or guarantee sleep. Stop or adapt if uncomfortable.",
+        "tag": "AWARENESS",
+        "intro": "Evening Wind-Down",
+        "instruction": "Choose a comfortable supported position.",
+        "finalImage": "timeline-winddown",
+        "photoPhasePlan": [
+          [
+            "release",
+            3
+          ],
+          [
+            "feet",
+            0
+          ],
+          [
+            "hands",
+            3
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ],
+        "durations": [
+          180,
+          240,
+          300
+        ],
+        "defaultDuration": 240,
+        "selfPaced": false,
+        "position": "Seated",
+        "breathFocus": false,
+        "movement": false,
+        "photoPlan": [
+          [
+            "release",
+            3
+          ],
+          [
+            "feet",
+            0
+          ],
+          [
+            "hands",
+            3
+          ],
+          [
+            "awareness",
+            1
+          ],
+          [
+            "awareness",
+            3
+          ]
+        ]
+      }
+    ],
+    "guides": [
+      {
+        "id": "reset",
+        "category": "Mindfulness",
+        "label": "MINDFUL MOMENT",
+        "title": "A little pause. A fresh perspective.",
+        "duration": "2 min practice",
+        "desc": "A gentle, guided breathing space between appointments.",
+        "body": "A brief pause is not another thing to achieve. It is a chance to notice how you are arriving in this moment.",
+        "steps": [
+          "Settle into a supported position. Keep your eyes open or softly lower your gaze.",
+          "Breathe gently in for four seconds, then out for six. Do not force or hold your breath.",
+          "When your attention wanders, return to the feeling of your feet on the ground."
+        ],
+        "extra": "If focusing on your breath is uncomfortable, breathe normally and name five things you can see instead. Stop if you feel dizzy or distressed.",
+        "originalImage": "coast"
+      },
+      {
+        "id": "compassion",
+        "category": "Practitioner care",
+        "label": "PRACTITIONER CARE",
+        "title": "Caring without carrying it all",
+        "duration": "4 min read",
+        "desc": "A compassionate approach to boundaries and recovery.",
+        "body": "Caring deeply and protecting your own capacity can coexist. A boundary is not a measure of how much you care; it is a way to make care sustainable.",
+        "steps": [
+          "Notice your early signs of depletion: irritability, emotional distance, or difficulty switching off. These experiences deserve attention, not self-judgment.",
+          "Create a closing ritual: finish essential documentation, identify the next safe step, and name what can wait.",
+          "Use supervision and peer support. Keep patient information within approved confidential settings.",
+          "If distress persists or affects safe practice, seek support from an occupational health service or qualified mental health professional."
+        ],
+        "extra": "Reflection: What is one responsibility you can share, clarify, or set down today?",
+        "originalImage": "leaves"
+      },
+      {
+        "id": "grounding",
+        "category": "Shared practice",
+        "label": "IN YOUR TOOLKIT",
+        "title": "Finding your feet in the present",
+        "duration": "3 min practice",
+        "desc": "An adaptable sensory grounding exercise for shared practice.",
+        "body": "Grounding may help some people reconnect with the present. Offer it as an invitation rather than a requirement, and ask what feels accessible and comfortable.",
+        "steps": [
+          "Look around and gently name five things you can see.",
+          "Notice four physical sensations, such as the chair supporting you or your feet on the floor.",
+          "Listen for three sounds; then notice two neutral or pleasant smells, if comfortable.",
+          "Name one thing that feels steady right now. Skip any sense that is inaccessible or uncomfortable."
+        ],
+        "extra": "This practice is optional and is not a treatment or crisis intervention. Stop or adapt it if it increases discomfort.",
+        "originalImage": "mountain"
+      },
+      {
+        "id": "sleep",
+        "category": "Shared practice",
+        "label": "REST & RECOVERY",
+        "title": "Make room for restorative rest",
+        "duration": "5 min read",
+        "desc": "Small, realistic changes that can support a steadier sleep routine.",
+        "body": "Rest is personal. Begin with curiosity about routines, responsibilities, symptoms, medication, and the environment rather than assuming there is one perfect schedule.",
+        "steps": [
+          "Choose a realistic, reasonably consistent wake-up time.",
+          "Make a small transition between the demands of the day and bedtime.",
+          "Discuss the timing of caffeine and other stimulants with an appropriate professional.",
+          "For persistent sleep difficulties, consider assessment and evidence-based support such as CBT-I."
+        ],
+        "extra": "Avoid making changes to prescribed medication without consulting the prescriber.",
+        "originalImage": "forest"
+      },
+      {
+        "id": "reflection",
+        "category": "Practitioner care",
+        "label": "REFLECTIVE PRACTICE",
+        "title": "Leave the day a little lighter",
+        "duration": "3 min reflection",
+        "desc": "A brief end-of-day reflection without judgment.",
+        "body": "Reflection is most useful when it creates understanding rather than another standard to meet. You do not need to solve the whole day before you leave it.",
+        "steps": [
+          "Name one moment of connection or meaningful work.",
+          "Notice one demand that felt difficult. Describe it without blaming yourself.",
+          "Choose one practical support for tomorrow: a pause, a conversation, or a clearer boundary."
+        ],
+        "extra": "Keep personal reflections free of patient names or identifying details.",
+        "originalImage": "coast"
+      },
+      {
+        "id": "checkins",
+        "category": "Practitioner care",
+        "label": "PERSONAL AWARENESS",
+        "title": "A check-in starts a conversation",
+        "duration": "4 min read",
+        "desc": "Notice your experience without turning it into a score.",
+        "body": "A personal check-in captures a moment in your own words. Feelings change with context; no label can describe your whole experience.",
+        "steps": [
+          "Choose the feeling that fits this moment, or skip the check-in.",
+          "Add context only if useful. Keep it free of patient names and identifying details.",
+          "Decide whether to keep the entry for this visit or save it in your browser.",
+          "Use your own words to notice what support or practical change would help."
+        ],
+        "extra": "Serein does not interpret check-ins as a diagnosis, risk assessment, or a measure of professional performance.",
+        "originalImage": "leaves"
+      },
+      {
+        "id": "ask-support",
+        "category": "Practitioner care",
+        "label": "ASKING FOR SUPPORT",
+        "title": "Start a useful support conversation",
+        "duration": "3 min read",
+        "desc": "Turn a difficult demand into a clear request.",
+        "body": "A useful support conversation describes the situation and the help needed. You do not need to wait until you are overwhelmed to ask.",
+        "steps": [
+          "Describe the demand: \"I have several time-critical tasks and need help prioritizing.\"",
+          "Explain the practical impact without sharing patient details in this app.",
+          "Make one specific request: help with a task, protected time, clarification, or a short conversation.",
+          "Agree who will do what, and when you will check back. Use your workplace escalation pathway for immediate safety concerns."
+        ],
+        "extra": "Practice wording: \"Can we agree the immediate priorities and who can help?\" This is an educational conversation guide.",
+        "originalImage": "mountain"
+      },
+      {
+        "id": "shift-home",
+        "category": "Practitioner care",
+        "label": "AFTER YOUR SHIFT",
+        "title": "A gentler transition home",
+        "duration": "3 min read",
+        "desc": "Close the workday with a realistic transition.",
+        "body": "A transition does not need to erase the day. It can help you acknowledge what happened and move into the next part of your life.",
+        "steps": [
+          "Complete essential handover and documentation in your approved workplace system.",
+          "Identify one unfinished matter and its agreed next owner or next step.",
+          "Choose a small transition: change clothes, have a drink, sit quietly, or take a comfortable walk.",
+          "Ask yourself what recovery is realistic today. If the shift remains difficult to process, consider a trusted colleague or professional support."
+        ],
+        "extra": "Original Serein reflection: \"A difficult shift does not erase the care you gave.\"",
+        "originalImage": "forest"
+      },
+      {
+        "id": "boundaries",
+        "title": "A boundary you can actually say",
+        "label": "BOUNDARIES",
+        "desc": "Make a respectful, specific request.",
+        "body": "A useful boundary explains your capacity and offers a workable next step. Adapt the words to your role and workplace responsibilities.",
+        "steps": [
+          "Name the request or demand clearly.",
+          "Describe your current capacity: \"I can complete this after the urgent task, or we can agree another owner.\"",
+          "Offer a realistic option rather than promising work you cannot safely complete.",
+          "Confirm priorities with the appropriate supervisor when competing demands affect safe care."
+        ],
+        "extra": "Try: \"I want to help. Can we agree what should take priority and what can wait?\"",
+        "category": "Practitioner care",
+        "duration": "3 min guide",
+        "originalImage": "leaves"
+      },
+      {
+        "id": "peer-check",
+        "title": "Check in with a colleague",
+        "label": "PEER CONNECTION",
+        "desc": "Offer connection without pushing for disclosure.",
+        "body": "A supportive check-in can be short and respectful. Let the colleague choose whether to talk.",
+        "steps": [
+          "Ask permission: \"Would a quick check-in be useful?\"",
+          "Offer a choice: listen, practical help, or a quiet break.",
+          "Listen without diagnosing, minimizing, or insisting on details.",
+          "Respect privacy and workplace safeguarding responsibilities. Help the person access appropriate support when needed."
+        ],
+        "extra": "Try: \"Would you like me to listen, help with something practical, or give you some space?\"",
+        "category": "Practitioner care",
+        "duration": "3 min guide",
+        "originalImage": "coast"
+      },
+      {
+        "id": "priorities",
+        "title": "When everything feels urgent",
+        "label": "WORKLOAD CLARITY",
+        "desc": "Turn competing demands into a shared decision.",
+        "body": "Use a brief conversation to clarify priorities and available help. Clinical urgency belongs within your professional assessment and local protocols.",
+        "steps": [
+          "List the competing tasks in your approved work environment. Do not enter patient information here.",
+          "Identify immediate safety concerns and escalate through your workplace process.",
+          "Ask the appropriate lead to agree the order and who can help.",
+          "Repeat the agreement back and arrange a check-back if circumstances change."
+        ],
+        "extra": "Try: \"These tasks overlap. Can we confirm the immediate priorities and available support?\"",
+        "category": "Practitioner care",
+        "duration": "3 min guide",
+        "originalImage": "mountain"
+      },
+      {
+        "id": "difficult-talk",
+        "title": "Prepare for a difficult conversation",
+        "label": "CLEAR COMMUNICATION",
+        "desc": "Use observations, impact, and a clear request.",
+        "body": "Preparation can make a conversation more specific. Choose an appropriate private setting and follow your workplace policy.",
+        "steps": [
+          "Describe an observable event rather than a personal label.",
+          "Explain the impact on work or your ability to contribute.",
+          "Ask an open question and allow the other person to respond.",
+          "Agree one practical next step, an owner, and a review time."
+        ],
+        "extra": "Practice: \"When the plan changed without a handover, I was unsure of my next task. How can we make the next change clearer?\"",
+        "category": "Practitioner care",
+        "duration": "3 min guide",
+        "originalImage": "forest"
+      },
+      {
+        "id": "small-win",
+        "title": "Notice a small moment of meaning",
+        "label": "REFLECTION",
+        "desc": "Reflect without turning the day into a grade.",
+        "body": "A reflection can acknowledge care, learning, or connection. A difficult day can remain difficult even when something meaningful happened.",
+        "steps": [
+          "Recall one ordinary moment you want to acknowledge.",
+          "Name what mattered: kindness, teamwork, asking a question, or noticing a need.",
+          "Describe it without patient names or identifying details.",
+          "Let it be enough. You do not have to find a positive lesson in every experience."
+        ],
+        "extra": "Prompt: \"One moment I want to acknowledge today is...\"",
+        "category": "Practitioner care",
+        "duration": "3 min guide",
+        "originalImage": "coast"
+      },
+      {
+        "id": "manager-support",
+        "title": "A supportive team conversation",
+        "label": "FOR TEAM LEADERS",
+        "desc": "Move from encouragement to practical support.",
+        "body": "A useful team conversation asks about working conditions and follows through on what can change. This is an educational conversation template.",
+        "steps": [
+          "Ask what is making the work harder and what is already helping.",
+          "Clarify practical barriers such as workload, breaks, role clarity, or access to supervision.",
+          "Agree one feasible change and an accountable owner.",
+          "Check back. Do not ask staff to disclose private health information in a group."
+        ],
+        "extra": "Try: \"What would make this shift more workable, and what can we change together?\"",
+        "category": "Practitioner care",
+        "duration": "3 min guide",
+        "originalImage": "leaves"
+      }
+    ],
+    "other": {
+      "reflections": [
+        {
+          "text": "You can care deeply without carrying everything alone.",
+          "by": "A Serein reflection"
+        },
+        {
+          "text": "A difficult shift does not erase the care you gave.",
+          "by": "A Serein reflection"
+        },
+        {
+          "text": "You are allowed to ask for support before you reach your limit.",
+          "by": "A Serein reflection"
+        },
+        {
+          "text": "One small pause can make room for the next safe step.",
+          "by": "A Serein reflection"
+        },
+        {
+          "text": "Reflection is a place to understand yourself, not grade yourself.",
+          "by": "A Serein reflection"
+        },
+        {
+          "text": "Some days, recovery begins with doing one thing less.",
+          "by": "A Serein reflection"
+        },
+        {
+          "text": "Your needs belong in the conversation, too.",
+          "by": "A Serein reflection"
+        },
+        {
+          "text": "Rest is part of a sustainable practice.",
+          "by": "A Serein reflection"
+        }
+      ],
+      "moments": [
+        {
+          "title": "Before my shift",
+          "desc": "Arrive with one clear intention.",
+          "practice": "ground",
+          "prompt": "What is one thing I can prepare, and one support I can ask for?"
+        },
+        {
+          "title": "Between tasks",
+          "desc": "A short pause in a busy day.",
+          "practice": "tide",
+          "prompt": "What needs my attention next, and what can safely wait?"
+        },
+        {
+          "title": "After a difficult moment",
+          "desc": "Make space for support and recovery.",
+          "practice": "ground",
+          "prompt": "What do I need now: practical help, a colleague, or a quiet pause?"
+        },
+        {
+          "title": "After my shift",
+          "desc": "Create a gentler transition home.",
+          "practice": "release",
+          "prompt": "What can I hand over, set down, or leave for tomorrow?"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[1] Calm · Breathe Bubble and adjustable timing ↗ Reference for the familiar expanding-circle interaction, not a basis for clinical claims.",
+          "url": "https://support.calm.com/hc/en-us/articles/360000069973-Calm-Breathing-Exercises-How-to-Adjust-Speed-Timers-Haptics-Vibrations"
+        },
+        {
+          "title": "[2] NHS · Breathing exercises for stress ↗ Comfortable, gentle, unforced breathing. Serein’s short timings are optional adaptations, not the NHS routine.",
+          "url": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/"
+        },
+        {
+          "title": "[3] NHS inform · Grounding exercises ↗ The 5–4–3–2–1 sensory sequence, with optional accessibility substitutions here.",
+          "url": "https://www.nhsinform.scot/healthy-living/mental-wellbeing/breathing-and-relaxation-exercises/grounding-exercises/"
+        },
+        {
+          "title": "[4] Royal National Orthopaedic Hospital · Relaxation techniques ↗ Progressive muscle relaxation background. The shortened routine and relax-only option here are adaptations.",
+          "url": "https://www.rnoh.nhs.uk/patients-and-visitors/patient-information-guides/relaxation-techniques-pain-management"
+        },
+        {
+          "title": "[5] NHS · Sitting exercises ↗ Stable seating and comfortable neck-turning guidance. The combined 90-second seated reset is a Serein adaptation.",
+          "url": "https://www.nhs.uk/live-well/exercise/sitting-exercises/"
+        },
+        {
+          "title": "[6] Calm · Box breathing ↗ Four-phase square breathing; holds are optional in this interface.",
+          "url": "https://www.calm.com/blog/box-breathing"
+        },
+        {
+          "title": "Body scan & mindful awareness",
+          "url": "https://www.guysandstthomas.nhs.uk/health-information/mindfulness-based-stress-reduction-mbsr/mbsr-exercises"
+        },
+        {
+          "title": "Sitting & ankle exercise guidance",
+          "url": "https://www.nhs.uk/live-well/exercise/sitting-exercises/"
+        },
+        {
+          "title": "Relaxation & grounding",
+          "url": "https://www.nhsinform.scot/healthy-living/mental-wellbeing/breathing-and-relaxation-exercises/"
+        },
+        {
+          "title": "Meditation & relaxation",
+          "url": "https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/how-to-fall-asleep-faster-and-sleep-better/how-can-meditation-help-with-sleep/"
+        }
+      ],
+      "images": {
+        "detail-shoulders": "assets/detail-shoulders.jpg",
+        "leaves": "assets/leaves.webp",
+        "detail-hands": "assets/detail-hands.jpg",
+        "avatar": "assets/avatar.jpg",
+        "detail-neck": "assets/detail-neck.jpg",
+        "mountain": "assets/mountain.webp",
+        "coast": "assets/coast.webp",
+        "detail-feet": "assets/detail-feet.jpg",
+        "portrait": "assets/avatar.jpg",
+        "forest": "assets/forest.webp",
+        "breathing": "assets/coast.webp",
+        "grounding": "assets/mountain.webp",
+        "seated": "assets/seated.webp",
+        "release": "assets/release.webp",
+        "support": "assets/leaves.webp",
+        "reflection": "assets/reflection.webp",
+        "recovery": "assets/forest.webp",
+        "team": "assets/team.webp"
+      },
+      "frames": {
+        "hands": [
+          "assets/hands-0.webp",
+          "assets/hands-1.webp",
+          "assets/hands-2.webp",
+          "assets/hands-3.webp"
+        ],
+        "shoulders": [
+          "assets/shoulders-0.webp",
+          "assets/shoulders-1.webp",
+          "assets/shoulders-2.webp",
+          "assets/shoulders-3.webp"
+        ],
+        "feet": [
+          "assets/feet-0.webp",
+          "assets/feet-1.webp",
+          "assets/feet-2.webp",
+          "assets/feet-3.webp"
+        ],
+        "release": [
+          "assets/release-0.webp",
+          "assets/release-1.webp",
+          "assets/release-2.webp",
+          "assets/release-3.webp"
+        ],
+        "walking": [
+          "assets/walking-0.webp",
+          "assets/walking-1.webp",
+          "assets/walking-2.webp",
+          "assets/walking-3.webp"
+        ],
+        "awareness": [
+          "assets/awareness-0.webp",
+          "assets/awareness-1.webp",
+          "assets/awareness-2.webp",
+          "assets/awareness-3.webp"
+        ]
+      },
+      "descriptions": {
+        "breathing": "Healthcare worker seated comfortably, taking a natural breathing pause.",
+        "grounding": "Healthcare worker noticing a plant and light in the surrounding room, with eyes open.",
+        "seated": "Healthcare worker seated on a stable chair with supported feet and a small comfortable head turn.",
+        "release": "Healthcare worker seated with open hands and relaxed shoulders after releasing effort.",
+        "support": "Two healthcare colleagues having a supportive conversation in a private staff room.",
+        "reflection": "Healthcare worker writing a personal reflection in a notebook.",
+        "recovery": "Healthcare worker taking a quiet pause at home after a shift.",
+        "team": "Healthcare colleagues discussing workload and practical support together."
+      },
+      "groundSteps": [
+        {
+          "title": "See",
+          "count": 5,
+          "line": "Notice five things you can see.",
+          "hint": "A color, a shape, the way light meets a surface."
+        },
+        {
+          "title": "Feel",
+          "count": 4,
+          "line": "Notice four comfortable physical sensations.",
+          "hint": "Your feet supported, the chair, your sleeve. No need to touch new objects."
+        },
+        {
+          "title": "Hear",
+          "count": 3,
+          "line": "Notice three sounds around you.",
+          "hint": "Nearby or far away. If hearing is not accessible, notice three visual details."
+        },
+        {
+          "title": "Smell",
+          "count": 2,
+          "line": "Notice two neutral or pleasant smells.",
+          "hint": "If none are available, recall familiar scents or choose two colors instead."
+        },
+        {
+          "title": "Taste",
+          "count": 1,
+          "line": "Notice one taste, if comfortable.",
+          "hint": "Nothing needs to go in your mouth. Alternatively, name one thing you appreciate."
+        }
+      ]
+    }
+  }
+}

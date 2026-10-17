@@ -1,0 +1,314 @@
+[
+  {
+    "theme": "Light",
+    "foreground": "text",
+    "background": "bg",
+    "hex_fg": "#10253A",
+    "hex_bg": "#F8F5EF",
+    "ratio": 14.32
+  },
+  {
+    "theme": "Light",
+    "foreground": "text",
+    "background": "surface",
+    "hex_fg": "#10253A",
+    "hex_bg": "#FFFDF9",
+    "ratio": 15.34
+  },
+  {
+    "theme": "Light",
+    "foreground": "text",
+    "background": "surface-raised",
+    "hex_fg": "#10253A",
+    "hex_bg": "#F1F6F2",
+    "ratio": 14.25
+  },
+  {
+    "theme": "Light",
+    "foreground": "text-muted",
+    "background": "bg",
+    "hex_fg": "#4C626A",
+    "hex_bg": "#F8F5EF",
+    "ratio": 5.92
+  },
+  {
+    "theme": "Light",
+    "foreground": "text-muted",
+    "background": "surface",
+    "hex_fg": "#4C626A",
+    "hex_bg": "#FFFDF9",
+    "ratio": 6.34
+  },
+  {
+    "theme": "Light",
+    "foreground": "text-muted",
+    "background": "surface-raised",
+    "hex_fg": "#4C626A",
+    "hex_bg": "#F1F6F2",
+    "ratio": 5.89
+  },
+  {
+    "theme": "Light",
+    "foreground": "accent",
+    "background": "bg",
+    "hex_fg": "#087D7A",
+    "hex_bg": "#F8F5EF",
+    "ratio": 4.57
+  },
+  {
+    "theme": "Light",
+    "foreground": "accent",
+    "background": "surface",
+    "hex_fg": "#087D7A",
+    "hex_bg": "#FFFDF9",
+    "ratio": 4.89
+  },
+  {
+    "theme": "Light",
+    "foreground": "accent",
+    "background": "surface-raised",
+    "hex_fg": "#087D7A",
+    "hex_bg": "#F1F6F2",
+    "ratio": 4.55
+  },
+  {
+    "theme": "Light",
+    "foreground": "danger",
+    "background": "bg",
+    "hex_fg": "#9C3038",
+    "hex_bg": "#F8F5EF",
+    "ratio": 6.67
+  },
+  {
+    "theme": "Light",
+    "foreground": "danger",
+    "background": "surface",
+    "hex_fg": "#9C3038",
+    "hex_bg": "#FFFDF9",
+    "ratio": 7.14
+  },
+  {
+    "theme": "Light",
+    "foreground": "danger",
+    "background": "surface-raised",
+    "hex_fg": "#9C3038",
+    "hex_bg": "#F1F6F2",
+    "ratio": 6.64
+  },
+  {
+    "theme": "Light",
+    "foreground": "accent-contrast",
+    "background": "accent",
+    "hex_fg": "#FFFFFF",
+    "hex_bg": "#087D7A",
+    "ratio": 4.97
+  },
+  {
+    "theme": "Dark",
+    "foreground": "text",
+    "background": "bg",
+    "hex_fg": "#F8F5EF",
+    "hex_bg": "#0B1927",
+    "ratio": 16.32
+  },
+  {
+    "theme": "Dark",
+    "foreground": "text",
+    "background": "surface",
+    "hex_fg": "#F8F5EF",
+    "hex_bg": "#142B3D",
+    "ratio": 13.38
+  },
+  {
+    "theme": "Dark",
+    "foreground": "text",
+    "background": "surface-raised",
+    "hex_fg": "#F8F5EF",
+    "hex_bg": "#203E4B",
+    "ratio": 10.42
+  },
+  {
+    "theme": "Dark",
+    "foreground": "text-muted",
+    "background": "bg",
+    "hex_fg": "#BBCFD1",
+    "hex_bg": "#0B1927",
+    "ratio": 10.96
+  },
+  {
+    "theme": "Dark",
+    "foreground": "text-muted",
+    "background": "surface",
+    "hex_fg": "#BBCFD1",
+    "hex_bg": "#142B3D",
+    "ratio": 8.98
+  },
+  {
+    "theme": "Dark",
+    "foreground": "text-muted",
+    "background": "surface-raised",
+    "hex_fg": "#BBCFD1",
+    "hex_bg": "#203E4B",
+    "ratio": 7.0
+  },
+  {
+    "theme": "Dark",
+    "foreground": "accent",
+    "background": "bg",
+    "hex_fg": "#79D4CA",
+    "hex_bg": "#0B1927",
+    "ratio": 10.22
+  },
+  {
+    "theme": "Dark",
+    "foreground": "accent",
+    "background": "surface",
+    "hex_fg": "#79D4CA",
+    "hex_bg": "#142B3D",
+    "ratio": 8.38
+  },
+  {
+    "theme": "Dark",
+    "foreground": "accent",
+    "background": "surface-raised",
+    "hex_fg": "#79D4CA",
+    "hex_bg": "#203E4B",
+    "ratio": 6.52
+  },
+  {
+    "theme": "Dark",
+    "foreground": "danger",
+    "background": "bg",
+    "hex_fg": "#FFA5A9",
+    "hex_bg": "#0B1927",
+    "ratio": 9.48
+  },
+  {
+    "theme": "Dark",
+    "foreground": "danger",
+    "background": "surface",
+    "hex_fg": "#FFA5A9",
+    "hex_bg": "#142B3D",
+    "ratio": 7.77
+  },
+  {
+    "theme": "Dark",
+    "foreground": "danger",
+    "background": "surface-raised",
+    "hex_fg": "#FFA5A9",
+    "hex_bg": "#203E4B",
+    "ratio": 6.05
+  },
+  {
+    "theme": "Dark",
+    "foreground": "accent-contrast",
+    "background": "accent",
+    "hex_fg": "#10253A",
+    "hex_bg": "#79D4CA",
+    "ratio": 8.97
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "text",
+    "background": "bg",
+    "hex_fg": "#FFF",
+    "hex_bg": "#000",
+    "ratio": 21.0
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "text",
+    "background": "surface",
+    "hex_fg": "#FFF",
+    "hex_bg": "#080808",
+    "ratio": 20.03
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "text",
+    "background": "surface-raised",
+    "hex_fg": "#FFF",
+    "hex_bg": "#202020",
+    "ratio": 16.29
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "text-muted",
+    "background": "bg",
+    "hex_fg": "#DDD",
+    "hex_bg": "#000",
+    "ratio": 15.46
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "text-muted",
+    "background": "surface",
+    "hex_fg": "#DDD",
+    "hex_bg": "#080808",
+    "ratio": 14.75
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "text-muted",
+    "background": "surface-raised",
+    "hex_fg": "#DDD",
+    "hex_bg": "#202020",
+    "ratio": 12.0
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "accent",
+    "background": "bg",
+    "hex_fg": "#8AFBE7",
+    "hex_bg": "#000",
+    "ratio": 17.03
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "accent",
+    "background": "surface",
+    "hex_fg": "#8AFBE7",
+    "hex_bg": "#080808",
+    "ratio": 16.24
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "accent",
+    "background": "surface-raised",
+    "hex_fg": "#8AFBE7",
+    "hex_bg": "#202020",
+    "ratio": 13.22
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "danger",
+    "background": "bg",
+    "hex_fg": "#FFAEB5",
+    "hex_bg": "#000",
+    "ratio": 11.97
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "danger",
+    "background": "surface",
+    "hex_fg": "#FFAEB5",
+    "hex_bg": "#080808",
+    "ratio": 11.42
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "danger",
+    "background": "surface-raised",
+    "hex_fg": "#FFAEB5",
+    "hex_bg": "#202020",
+    "ratio": 9.29
+  },
+  {
+    "theme": "High contrast",
+    "foreground": "accent-contrast",
+    "background": "accent",
+    "hex_fg": "#000",
+    "hex_bg": "#8AFBE7",
+    "ratio": 17.03
+  }
+]

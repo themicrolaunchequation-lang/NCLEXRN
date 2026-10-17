@@ -1,0 +1,12 @@
+{
+  "app": "Serein",
+  "company": "Healthcare Crown Academy Ltd",
+  "version": "5.1.1",
+  "schema": 5,
+  "source_commit": "b2c007725849bb248073f13a5055b8ff67a6b8b8",
+  "date": "2026-10-16",
+  "live_url": "https://serein-hca-studio.bouncyfield17.chatgpt.site",
+  "access": "existing owner-private access preserved",
+  "infographic_assets": "12 generated raster images, 12 raster thumbnails; PNG originals included",
+  "html_sha256": "c9df02bc2a169ab7058f989677aed5d86c85ff7d91d2d127983002c6e2428ff5"
+}

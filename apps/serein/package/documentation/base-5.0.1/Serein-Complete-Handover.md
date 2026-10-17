@@ -1,0 +1,539 @@
+# Serein Complete App Handover
+
+Owner guide and developer reference
+Version 5.0.1 · 16 October 2026
+
+## 01 App identity and purpose
+
+Serein is an educational wellbeing studio for healthcare workers, created for Healthcare Crown Academy. This handover describes the audited 5.0.1 release and supplies the files needed to operate, deploy and maintain it without this conversation.
+
+| Release fact | Value |
+| --- | --- |
+| Product | Serein by Healthcare Crown Academy |
+| App version | 5.0.1 |
+| Storage schema | 5, using the existing serein-hca-v3 key |
+| Audited source commit | 60bf138a7911c926693aae685a5bba611e9d6df0 |
+| Snapshot date | 16 October 2026 |
+| Standalone HTML | 1,409,723 bytes with embedded images, fonts, CSS and JavaScript |
+| Core catalogue | 15 practices, 14 guides, 6 studios, 3 journeys and 8 base reflections |
+| Validation | 498 reported automated checks; browser and device checks remain outstanding |
+| Current live access | Private to the existing account |
+
+The runtime is a static, browser-local app. It has no backend database, account registration, employer dashboard, analytics, live care team or automatic messaging. Sources and support links open external services.
+
+The current live URL is https://serein-hca-studio.bouncyfield17.chatgpt.site. This is the existing private deployment, not a Vercel or Netlify deployment.
+
+## 02 Keep control after deleting the chat
+
+Download the complete ZIP and this document to storage you control before deleting the conversation. Keep a second copy. Links in a shared account should not be your only backup. The ZIP contains runnable output and editable source; neither depends on retrieving this chat.
+
+- Open START-HERE.md after extracting the archive. Keep the extracted folder structure intact.
+- Open portable/Serein-v5.0.html to use the full app directly from your computer.
+- Use an account and repository you control for a new Vercel or Netlify deployment.
+- If you have personal entries in the old app, export them from Me → Data & privacy before moving to a new domain or local file. The ZIP does not contain those browser records.
+- Keep encrypted-export passcodes separately. There is no forgotten-passcode recovery.
+- Save the final deployed URL, host owner details and domain renewal details outside this shared account. Do not put passwords in the source ZIP.
+
+The current private live link continues to require the original account’s access. Deleting a chat is different from transferring hosting ownership. The downloadable app can be hosted independently, but it does not inherit the original site’s access controls.
+
+The app package includes no hosting credentials, Git authentication, node_modules, browser records or original Sites deployment binding. The original Sites project identifier is retained only as provenance.
+
+## 03 Find the information you need
+
+| Chapters | Contents |
+| --- | --- |
+| 01 to 05 | Identity, preservation, package map, navigation, first use and command search |
+| 06 to 13 | Practices, player, device options, guides, studios, journeys, journal, insights and routines |
+| 14 to 16 | Browser data, encryption, export, import, recovery and migration |
+| 17 to 20 | Branding, accessibility, evidence, assets, architecture and schema |
+| 21 to 24 | Maintenance, Vercel, Netlify and offline operation |
+| 25 to 28 | Validation, troubleshooting, future development and references |
+
+| Package location | What it contains |
+| --- | --- |
+| dist | Prebuilt modular website to publish |
+| source-project | Complete editable audited project and current test pipeline |
+| portable | Complete single HTML app and its separate hosting worker |
+| documentation | This handbook, Markdown copy, catalogue inventory, audit, feature map, QA and metrics |
+| licenses | Inter and Playfair Display font licence texts |
+| vercel.json | Prebuilt deployment configuration publishing only dist |
+| netlify.toml | Git deployment configuration publishing only dist |
+| PROVENANCE.json | Version, source commit, original private site and HTML checksum |
+| SHA256SUMS.txt | Checksums for the supplied package files |
+
+For a quick deployment, use chapters 22 and 23. For changes to content or code, start with chapters 19 and 21. For a new developer or AI assistant, use chapter 27 together with the source project.
+
+## 04 Navigation and routes
+
+Desktop navigation has Today, Library, Toolkit, Me and Support. On mobile, the centre item is Quick pause instead of Toolkit. Toolkit remains accessible from Today’s links, Library and command search. The sidebar has no explanatory hover overlays.
+
+| Destination | Hash route |
+| --- | --- |
+| Today | #today |
+| Practices | #library/practices |
+| Guides | #library/guides |
+| Journeys | #library/journeys |
+| A studio | #toolkit or #toolkit/boundary, support, transition, difficult, team, conditions |
+| Journal | #me/journal |
+| Saved collection | #me/saved |
+| Routine | #me/routine |
+| Insights | #me/insights |
+| Settings | #me/settings |
+| Data and privacy | #me/data |
+| Support | #support |
+
+These are hash routes. The browser requests index.html; content after # is interpreted by the app. A server-side SPA catch-all rewrite is not required. Bookmarks, Back and Forward retain routing behaviour. Explicitly returning to the same studio or journey reopens its dialog.
+
+Legacy redirects remain: #practices → #library/practices; #studios → #toolkit; #journeys → #library/journeys; #reflect → #me/journal; #space → #me/saved. #me/checkins maps to Insights. Filters support query parameters such as #library/practices?time=120&style=nonbreath&setting=still&q=ground.
+
+## 05 First use Today and search
+
+The welcome guide is optional and skippable. It explains the product, gathers role, usual pause length, attention preference and shift pattern, then explains storage and optional encryption. Reopen it from Settings. Role selection changes presentation or defaults; it does not establish clinical suitability.
+
+Today leads with one suggested practice. The user can start, choose Something else or change the time. Moment chips cover Before shift, Between tasks, After a difficult moment and After shift. Day, night and rotating preferences help choose a working moment; this is not a live rota integration. Users can override the choice.
+
+A quick check-in is visit-only initially. Add a note or explicitly choose Save on this browser to retain it. Today can also show an unfinished journey, chosen routine or saved plan, followed by an optional original reflection.
+
+Suggestions rank eligible practices using moment fit, focus/time choices, explicit helpful/later/exclude preferences, saved favourites and saved feedback. They are preference matches, not health predictions. Excluded practices stay available in Library. If all matches are excluded, the app offers a route to review settings.
+
+Search is in the topbar at every width. Ctrl or Command K and / open it outside text fields. Results group actions, practices, guides, studios and journeys; fuzzy matching tolerates missing characters. Recent choices are retained as preferences. Commands include quick pause, journal, check-in, export, dark theme and human support. Search input is debounced by 150 ms.
+
+## 06 Practice inventory
+
+Library → Practices offers a detail view before starting or watching. Available lengths differ by practice; the 1, 2 and 5 minute filters are a convenient subset, not the complete duration catalogue. Here & Now is self-paced.
+
+| Practice and stable ID | Available length |
+| --- | --- |
+| Breathing Tide  tide | 1 min / 2 min / 3 min / 5 min |
+| Box Breathing  box | 1 min / 2 min / 3 min / 5 min |
+| Here & Now  ground | Self paced |
+| Soften & Release  release | 2 min |
+| The Seated Reset  desk | 90 sec |
+| Body Scan Journey  scan | 2 min / 3 min / 5 min |
+| Full Muscle Release  fullrelease | 3 min / 4 min / 5 min |
+| Hand & Finger Reset  handreset | 1 min / 90 sec |
+| Shoulder Reset  shoulderreset | 1 min / 90 sec |
+| Seated Foot & Ankle Movement  ankles | 1 min / 2 min |
+| Mindful Listening  listen | 1 min / 2 min / 3 min |
+| Three-Minute Pause  pause3 | 3 min |
+| Quiet Place Visualization  quietplace | 2 min / 3 min / 5 min |
+| Slow Walking Awareness  walk | 2 min / 3 min / 5 min |
+| Evening Wind-Down  winddown | 3 min / 4 min / 5 min |
+
+Categories cover breathing, grounding, movement, awareness and visualisation. Filters include time, focus style, setting, category, search and saved status. Active filters can be removed individually or cleared. The mobile filter sheet and desktop controls update the same state.
+
+Each practice retains its original description, steps, safety text and mapped evidence. CONTENT-INVENTORY.json contains the complete practice records, including durations, steps, media plans and safety wording. Never change a stable ID without updating bookmarks, memories, journeys, links and migration logic.
+
+## 07 Use the practice player
+
+- Read the practice detail and local safety/adaptation notes. Select a suitable available duration and choose Start or Watch first.
+- Begin the practice explicitly. Quick pause instead uses a gentle 3–2–1 countdown; reduced motion skips that countdown.
+- Use Pause or Resume for timed practices. Self-paced grounding uses Continue to move to the next noticing stage.
+- Open practice settings to change timing while paused, attention, movement alternatives, visuals, local voice and optional feedback choices.
+- Use numbered steps or the seek control where supported. Restart begins a new run; Exit pauses the engine and releases optional device controls.
+- On completion, feedback is optional. Save it only if the user chooses; then save the practice, try another suggestion or return to Today.
+
+Visual choices include photographs, a breathing orb or box, text focus and the Body Scan attention map where offered. The grounding visual reminds users to notice their actual surroundings. Images are illustrative AI-generated media, not anatomical standards or prescribed movement ranges.
+
+Box Breathing has a moving perimeter marker, phase text and no-holds continuous breathing. Less motion keeps a still alternative. External focus replaces inward attention instructions; movement practices may offer relax-only mode. A shared presentation hides the workspace behind the player backdrop but is not a patient record or clinical assessment.
+
+Practice memory is opt-in per practice. Timing and comfort options can be remembered; voice remains off until enabled again. Replaying a completed practice creates a fresh optional feedback response instead of overwriting the previous run.
+
+## 08 Device options and shortcuts
+
+Native features are optional and depend on the browser, operating system, secure context and available permissions. The core player remains usable without them. No ambient sound or vibration starts by default.
+
+| Option | Behaviour |
+| --- | --- |
+| Voice | Local English voices only; preference for en-GB, then another local English voice. Select voice and rate when available. |
+| Ambient sound | Locally synthesised rain, ocean or hum, with volume control. No audio download or streaming service. |
+| Phase tone | Optional short locally generated tone on phase changes. |
+| Wake lock | Opt-in screen wake while playing; released on pause/exit. A late grant after exit is released. |
+| Media session | Title/artwork and supported play, pause, stop and position controls. Handlers clear on exit. |
+| Haptics | Optional brief phase vibration on supported Android browsers. |
+
+| Shortcut | Action |
+| --- | --- |
+| P | Quick pause outside text fields |
+| Ctrl or Command K or / | Open search |
+| Space | Uses the primary player action; active self-paced grounding uses Continue |
+| Left or right arrow | Previous or next practice step |
+| R | Restart practice |
+| F | Toggle shared presentation |
+| ? | Open shortcut guide |
+| Escape | Close the current sheet or exit practice |
+
+Help, settings, search and shortcut dialogs explicitly pause a playing practice, including self-paced grounding. Opening them during Quick pause cancels the countdown. Actual hardware/media, voice, wake and haptic behaviour still needs device testing.
+
+## 09 Guide inventory
+
+Library → Guides contains practical reading views. Each view includes original text, recommended steps, scope/adaptation notes and local context or evidence controls. Bookmark a guide from its reading view and return through Me → Saved.
+
+| Guide | Stable ID |
+| --- | --- |
+| A little pause. A fresh perspective. | reset |
+| Caring without carrying it all | compassion |
+| Finding your feet in the present | grounding |
+| Make room for restorative rest | sleep |
+| Leave the day a little lighter | reflection |
+| A check-in starts a conversation | checkins |
+| Start a useful support conversation | ask-support |
+| A gentler transition home | shift-home |
+| A boundary you can actually say | boundaries |
+| Check in with a colleague | peer-check |
+| When everything feels urgent | priorities |
+| Prepare for a difficult conversation | difficult-talk |
+| Notice a small moment of meaning | small-win |
+| A supportive team conversation | manager-support |
+
+Guide search and categories are separate from practice filters. A saved guide can be removed without deleting the guide itself. Reading guidance is educational and cannot determine an individual’s healthcare or employment needs.
+
+The complete body text, steps, image assignment, alt text and extra notes are preserved in the content inventory and source. Source links require connectivity, even when the app and reading content are offline.
+
+## 10 Toolkit studios
+
+| Current label | Original studio and ID |
+| --- | --- |
+| Say no kindly | Boundary Rehearsal  boundary |
+| Ask for help | Support Request Builder  support |
+| Leave work at work | Shift Transition  transition |
+| After a hard moment | After a Difficult Moment  difficult |
+| Run a team pause | Team Pause Facilitator  team |
+| Fix a work barrier | Working Conditions Planner  conditions |
+
+A studio is a temporary guided drafting tool. It explains what it is for, when it may fit and who chooses to use it. Move through the questions, edit the resulting text so it sounds appropriate, then copy or download it. Nothing is automatically sent. Keep names and patient-identifying details out of drafts.
+
+Say no kindly includes boundary-response scenarios. Ask for help structures a support request. Leave work at work supports handover, transition and recovery planning. After a hard moment offers optional grounding or practical next steps. Run a team pause builds an invitation and shared script. Fix a work barrier develops a working-conditions plan that can be explicitly saved.
+
+Saved Working Conditions plans remain unencrypted and can be deleted from the saved-plan collection. Other studio drafts remain temporary unless copied or downloaded. Compact conversation and transition draft tools are still available under Toolkit → Short draft tools.
+
+The team studio can generate a link such as #toolkit/team?practice=ground&duration=120&external=1. It includes only practice settings. Opening it uses shared presentation, text guidance, reduced movement and silent defaults. A file:// link is local to a device with that file; use the hosted app URL to share across devices.
+
+## 11 Learning journeys
+
+Library → Journeys provides three flexible five-step paths. Users can revisit steps, mark them complete or incomplete, continue later and reset step marks. Progress is a personal learning preference, not a qualification or mandatory course completion record.
+
+| Journey | Steps |
+| --- | --- |
+| Finding your pause | 1 Begin with choice |
+|  | 2 Meet the room |
+|  | 3 Explore a comfortable rhythm |
+|  | 4 Notice without grading |
+|  | 5 Build a realistic return |
+| Working with boundaries | 1 Notice the working conditions |
+|  | 2 Separate observation from judgment |
+|  | 3 Rehearse a boundary |
+|  | 4 Ask for a specific support |
+|  | 5 Close the loop |
+| Leaving the shift | 1 Confirm responsibility |
+|  | 2 Choose an outward pause |
+|  | 3 Allow an ordinary ending |
+|  | 4 Make your transition plan |
+|  | 5 Make room for rest |
+
+Steps combine short explanations with practice or studio links where appropriate. A non-breath preference can offer an alternative practice. Today shows an unfinished journey when progress exists. Completing the final step returns to the journey collection. Stable journey IDs are pause, boundaries and transition.
+
+## 12 Journal check ins and insights
+
+Me → Journal combines a composer, three optional writing prompts and searchable history. Drafts autosave after about 500 ms to temporary tab storage, and navigation flushes the draft. The status distinguishes temporary storage from a memory-only fallback. Submitted reflections are visit-only unless Save on this browser is selected. Entries can be edited, deleted and restored through the immediate Undo action.
+
+A full check-in can record a feeling, energy, note and working moment. Today offers a shorter feeling-only route. No entry is monitored, and missing entries are unknown rather than evidence of low mood.
+
+Me → Insights includes an eight-week feeling calendar with daily counts/averages, paired before/after settledness dots, weekly response summaries, helpful-practice counts by moment and removable individual records. Date filters select 7, 30, 90 days or all entries. Equivalent tables accompany visual summaries.
+
+The charts describe self-reported observations. They do not establish that a practice caused a change, constitute a clinical score or report to an employer. Feedback stays outside the optional private-record encryption, which is disclosed beside saving.
+
+When the journal lock is enabled and locked, private journal/check-in/contact views require unlock. The rest of the app remains available. Locking also clears private search/import buffers and Undo references.
+
+## 13 Saved collections and routines
+
+Me → Saved contains bookmarked practices, guides and original Serein words. Bookmarking affects the collection rather than access to the underlying content. The reflection control can cycle original words and save a chosen line; showing reflections can be disabled in Settings.
+
+Me → Routine supports a sequence of one to four practices. Create a routine from the builder, reorder or remove items, then start it. Each practice begins only when the user chooses. The player offers the next item or ends the routine. No streak or completion pressure is introduced.
+
+Toolkit also exposes saved plans. A plan’s browser storage is unencrypted; this is separate from journal lock coverage. Deleting a plan does not reset journeys, bookmarks or private entries.
+
+Settings apply immediately and provide Undo where offered. Preferences include reading size/width, Light/Dark/Auto/High contrast, focus mode, less motion, 3D breathing, reflections, role, usual length, attention style and shift pattern. Explicit practice priorities and remembered options can be reset.
+
+Support begins with UK help routes and offers optional local contacts, professional support, speaking to a lead and workforce context. UK support links are not a worldwide emergency directory. The app cannot make calls, send messages or arrange help by itself; tel/sms links hand off to the user’s phone application.
+
+## 14 Browser data and record lifetime
+
+The persistent model uses localStorage["serein-hca-v3"] with schema version 5. Earlier Serein exports and the older serein-demo-v1 storage key remain supported. Keeping the key avoids losing existing users’ saved records when the app version changes.
+
+| Data | Default lifetime and protection |
+| --- | --- |
+| Journal draft | Temporary sessionStorage in this tab; encrypted there when the lock is enabled and unlocked. Browser restore behaviour varies. |
+| Submitted journals/check-ins/contacts | Visit-only until the user explicitly chooses persistence. The optional lock encrypts these fields at rest. |
+| Feedback | Visit-only unless saved; saved responses remain unencrypted. |
+| Bookmarks, words, routine | Stored as browser preferences; unencrypted. |
+| Role, theme, reading and practice options | Browser preferences; unencrypted. |
+| Journey progress and saved plans | Saved locally when chosen; unencrypted. |
+| Studio and short-tool drafts | Temporary unless the user explicitly saves an offered plan or copies/downloads text. |
+| Offline cache | App content, not a backup of personal records. Removed separately through browser site-storage controls. |
+
+Storage is tied to browser profile and origin. Different domains, browsers and local files can have separate data. Private/incognito sessions or clearing browser data can remove it. The deployment ZIP contains application code and synthetic test fixtures, not a backup of real journal entries.
+
+## 15 Encryption and its limits
+
+Journal lock is optional. The user chooses a passcode or passphrase of at least six characters and acknowledges that a forgotten passcode cannot be recovered. A longer passphrase is stronger. The key stays in memory and is derived locally through Web Crypto.
+
+| Parameter | Implementation |
+| --- | --- |
+| Key derivation | PBKDF2 with SHA-256 and 310,000 iterations |
+| Salt | Random 16 bytes for lock setup |
+| Cipher | AES-256-GCM |
+| IV | Fresh random 12 bytes for each encrypted write |
+| Authenticated data | Serein-v5-private |
+| Covered fields | journals, checkins and contacts |
+| Auto lock | Selectable inactivity delay; optional lock when the tab is hidden |
+| Recovery | Correct passphrase or an already unlocked copy; no reset service |
+
+Locking seals visit-only private records for the current visit in memory, writes only explicitly saved records to durable storage and clears readable private views. Encryption setup removes the old plaintext draft and legacy demo copy where possible. Removing the lock verifies the passcode before returning saved private records to normal browser storage.
+
+Generation guards prevent in-flight encryption operations from restoring records after Clear data. A conflicting change from another tab blocks stale writes and keeps local edits in memory for export. This lock protects selected records at rest; it does not protect an unlocked device or a page running malicious code. Preferences, feedback and plans are not covered.
+
+## 16 Exports imports and recovery
+
+- Use Me → Data & privacy → Export to choose an archive. Plain exports require an explicit acknowledgement because their records are readable.
+- Encrypted exports require an enabled lock and preserve the protected fields inside an authenticated envelope. Keep the passcode with a secure backup process.
+- Import accepts supported Serein JSON. Unlock the current app first if necessary. Encrypted input asks for its own passcode; a wrong passcode reveals no records.
+- Merge combines records and collections. Replace restores the incoming archive in their place and clears the previous unsubmitted journal draft.
+- When importing an encrypted archive into an unencrypted app, keeping encryption is selected by default. Read the warning before changing that choice.
+- An import is not reported as successful if storage cannot be written. The in-memory replacement is rolled back and an error remains visible.
+- If existing browser data is unreadable, the original bytes are protected. Download the recovery copy before clearing the damaged archive.
+- Clear data removes this app’s records, drafts, settings and collections from the browser. It also cancels queued/in-flight private writes. Export anything needed first.
+
+Import files must be smaller than 8 MB. Normalisation caps or filters record types and sizes; journals are limited to 20,000 characters per entry, check-in notes to 6,000, and archives to the supported schema. See app.js and advance.js for the complete limits. Future unsupported schema versions are rejected rather than silently downgraded.
+
+A browser-origin move needs an explicit export/import. There is no cloud sync or server account through which old records can be fetched automatically.
+
+## 17 Branding and accessibility
+
+Preserve the supplied HCA identity: Serein crest, Healthcare Crown Academy attribution, navy/teal/ivory palette, Inter for interface text and Playfair Display for editorial headings. Content uses British English, secular reflections and a calm educational tone.
+
+| Token or behaviour | Current value |
+| --- | --- |
+| Brand navy / teal / ivory | #10253A / #087D7A / #F8F5EF |
+| Copper / gold | #BD764A / #C9A24A |
+| Light borders / Dark borders | #7B8F8A / #78969F |
+| Breakpoints | Mobile first; 600, 1024 and 1440 px |
+| Text | Mobile body at least 16 px; interface scale starts at 13 px |
+| Targets and focus | Controls designed for at least 44 px targets and visible focus |
+| Themes | Light, Dark, Auto following device, High contrast |
+| Motion | Device and in-app reduced-motion choices |
+| Information hierarchy | Essential guidance in content; longer context on deliberate clicks; only brief setting tips on hover/focus/tap |
+
+The audit measured 39 semantic text pairs at a minimum 4.5:1 and 18 border/focus pairs at a minimum 3:1. These checks do not certify composed UI states, browser layout or screen-reader behaviour. Keep those checks in the release process.
+
+The sidebar has no hover help. Native dialogs, focus return, Skip to content, accessible control names, image alternatives and equivalent insight tables are implemented. Actual nested-dialog focus and assistive-technology behaviour remain manual verification items.
+
+## 18 Content evidence and assets
+
+All original practice, guide, studio, journey, reflection, evidence and safety content was preserved. The app distinguishes original educational adaptations, population background statistics and individual choice. It does not present a background source as proof of a Serein treatment outcome.
+
+Evidence appears near the related task: practice notes, guide context, studio background, Support workforce context and About images and evidence. Longer information requires an explicit click; it is not placed in a sidebar or a whole-card hover overlay. The context registry includes source dates, populations and limitations.
+
+The content inventory records complete data plus references and context facts. Editorial changes should keep population, date, denominator and uncertainty attached to statistics. Re-check external links and service arrangements before release; external availability was not verified by the automated audit.
+
+The app includes 37 raster photographs/frames, two PNG install icons, two SVG crests and four WOFF2 font files. Existing photographs were re-encoded as WebP quality 68: up to 640 px wide, 600 px for detail images and 160 px for the avatar. Fonts were subset to Latin/Latin-1 and used glyphs; the crest retains its S glyph. Image quality on larger or high-DPI screens remains a visual check.
+
+Inter and Playfair Display use the included SIL Open Font License texts. Preserve those notices. Brand ownership and illustrative-image origin are distinct from third-party reference ownership; no blanket claim that every external source is free to reuse is made.
+
+## 19 Technical architecture
+
+The runtime is framework-free HTML, CSS and JavaScript. The public application namespace is Serein. Scripts load in a deliberate order; the single-file builder preserves it.
+
+| Module | Responsibility |
+| --- | --- |
+| data.js / advance-data.js | Practices, guides, frames, studios, journeys and mapped evidence |
+| context-data.js / context-info.js | Context facts and deliberate local information controls |
+| strings.js | Generated English catalogue and Serein.t helper |
+| media.js | Visible-boundary media resolution and portable embedded map |
+| engine.js | DOM-free practice state, phases, play/pause/seek/jump |
+| orb.js | Optional WebGL sphere and CSS fallback |
+| advance.js | Studios, journeys, finder, feedback, calendars and offline controls |
+| vault.js | Persistence, encryption, conflict detection and protected drafts |
+| insights.js | Descriptive charts and equivalent tables |
+| player-tools.js | Optional voice/device/media/audio helpers and Quick pause |
+| modern.js | Router, views, keyed updates, search, onboarding and current UI flows |
+| app.js | Core model, migration, player and delegated actions |
+| scope-archive.js | Retained original scope/privacy/safety statements |
+| styles.css | Unified tokens, components, themes and breakpoints |
+
+Public APIs include Serein.data/content, store, router, views, ui, player, studios, journeys, insights, search and a11y. Core rendering patches stable elements to preserve focus. Event delegation handles dynamic controls; one IntersectionObserver manages lazy images.
+
+## 20 Model and persistence schema
+
+| Field group | Meaning |
+| --- | --- |
+| version, onboarded, vault | Schema version, welcome completion and optional encrypted envelope |
+| journals | id, text, date and persistent choice |
+| checkins | id, mood, energy, note, moment, date and persistent choice |
+| contacts | id, name, role, phone and persistent choice |
+| feedback | id, practiceId, result, moment, before/after, date and persistent choice |
+| savedPractices / savedResources | Valid catalogue IDs |
+| savedWords / routine | Saved reflection strings and up to four practice IDs |
+| savedPlans / journeyProgress | Explicit saved drafts and marked journey step indices |
+| practiceMemory / practiceChoices | Per-practice comfort options and helpful/later/exclude priority |
+| preferences | Role, time, style, reading, theme, shift, motion, voice and recent commands |
+
+With encryption enabled, the durable JSON omits readable journals/checkins/contacts and stores their authenticated ciphertext under vault. The envelope includes format, kdf, iterations, salt, iv, ciphertext, lockAfter and lockOnHide. Other allowed preferences remain readable so locked views can render.
+
+The draft keys are serein-journal-draft and serein-journal-draft-sealed in sessionStorage. Moment/rotating-shift overrides also use temporary tab storage. Do not rename these keys without a migration. Record IDs are used for merge/deduplication; escape user strings before placing them in HTML.
+
+Saved records are filtered by their persistent choice. Plain exports may intentionally include visit-only records when the user chooses export. An export is a private user file, not a shareable deployment artifact. The supplied content inventory is educational app content, not this personal-record schema.
+
+## 21 Maintain and rebuild the app
+
+Work in source-project. Use the tested Node 24.19.0 and Python 3.12.14 where practical. Runtime hosting needs neither; these tools are for maintenance. Install development dependencies on your own machine with npm ci. The current dev dependency is jsdom 30.1.3.
+
+~~~text
+cd source-project
+npm ci
+npm run build
+npm run check
+npm test
+~~~
+
+Edit source/ for app.js, modern.js, advance.js, context-info.js, vault.js, insights.js and player-tools.js. Their dist copies and strings.js are generated. Edit the other modules, data, CSS and HTML directly in source-project/dist, then rebuild. The English extraction tool relies on Node’s bundled Acorn through a private Node interface; verify it before changing Node versions.
+
+Build order: build-strings.cjs compiles interface copy; build-offline.py produces the modular manifest/worker; build-portable.py creates portable/Serein-v5.0.html and its companion worker. Never edit strings.js as the permanent source of copy.
+
+After a successful build and tests, copy the full source-project/dist to the package root dist. Restore dist/_headers if the copy removed it. Replace both files in the package root portable folder together. Update version, docs and checksums before deployment.
+
+Older phase0, dom, advance, context and portable-check scripts remain historical references. Current checks are the commands in package.json. source-content.json and asset-map.json are earlier extraction snapshots; do not regenerate the current product from those older snapshots.
+
+## 22 Deploy on Vercel
+
+The root vercel.json publishes the prebuilt dist folder. It selects the Other framework preset, skips install/build and leaves .html URLs intact. The editable source project is separate so hosting does not need the development toolchain.
+
+- Extract the complete package. Create a Git repository you control containing its root files and folders.
+- In your own Vercel account, add a project and import that repository.
+- Select the package root as Root Directory, not source-project or portable.
+- Confirm Framework Preset Other, empty Build Command, empty Install Command and Output Directory dist. Keep vercel.json at the root.
+- Deploy, then test /, /index.html#today, filtered Library routes, player, Help, manifest and sw.js over HTTPS.
+- Check the resulting project visibility and access deliberately. The original private Sites login does not transfer to Vercel.
+- For an update, replace the built dist and deploy a new version. Keep the previous deployment for rollback.
+
+Root configuration uses no-cache for static output so stable filenames are revalidated, and no-store for sw.js. No SPA catch-all rewrite is needed for the app’s hash routes. Publishing source-project, documentation or the entire package as the output directory is unnecessary.
+
+The package has been validated structurally against this configuration; no Vercel account deployment was performed during this handover. Official references: https://vercel.com/docs/project-configuration/vercel-json and https://vercel.com/docs/builds/configure-a-build.
+
+## 23 Deploy on Netlify
+
+For the simplest manual deployment, use the extracted dist folder. It already contains index.html, all app scripts/assets, manifest, offline list, worker and a _headers file for static-header handling.
+
+- Sign in to your own Netlify account and choose the intended team.
+- Open https://app.netlify.com/drop or the manual-deploy area.
+- Drag the dist folder itself to the drop zone. Do not drop the outer handover folder, source-project or the portable worker.
+- Open the returned netlify.app URL and run the publication checks.
+- To update manually, upload the entire new dist folder to that project’s deploy area.
+
+For Git-based deployment, import the complete package root. The root netlify.toml specifies publish = "dist" and an empty build command. This is a prebuilt deployment. Keep the original root structure and check that dashboard overrides do not select another publish directory.
+
+The _headers file gives a manual drop the same cache and basic content/referrer handling as the root configuration. The app’s content is local to each browser; Netlify hosting does not provide record sync, patient storage, login or an employer report.
+
+No Netlify account deployment was performed during this handover. Deployment visibility depends on your account and hosting settings. Official references: https://docs.netlify.com/start/quickstarts/netlify-drop-quickstart/ and https://docs.netlify.com/build/configure-builds/file-based-configuration/.
+
+## 24 Offline installation and rollback
+
+The portable HTML embeds code, images and fonts. Open it directly for core offline use without a worker. External reference/support sites still require internet. Browser storage and native APIs can differ for local files.
+
+The hosted modular app uses dist/sw.js and offline-assets.json. Users explicitly choose Me → Settings → App & reminders → Make available offline. The app verifies a genuine worker, prepares its listed files and reports success or a retryable error. Registration/readiness/cache waits are bounded.
+
+The portable/sw.js is a different worker for hosting the single document over HTTPS. Keep it beside Serein-v5.0.html; do not interchange it with dist/sw.js. Its shell parameter handles a renamed index.html.
+
+Installation support and shortcuts depend on the browser. The manifest provides Quick pause, Journal and Get help entries. Reminders are downloadable recurring .ics calendar events, with shift presets and editable days/time. They begin only when imported into a calendar; no push service exists.
+
+For rollback, retain the previous source/package and host deployment. Roll back the static release, then check version and offline cache update behaviour. Never clear personal data merely to resolve stale app content. Export records before moving origins or testing destructive data operations. Versioned caches update app content independently of the persistent record key.
+
+## 25 Validation and publication checklist
+
+| Automated group | Passed checks |
+| --- | --- |
+| Catalogue, engine, syntax, media and identity | 33 |
+| Existing behaviour and privacy | 67 |
+| Audit regression assertions across 42 scenarios | 247 |
+| Content preservation and portable package | 84 |
+| Hosted and portable workers | 10 |
+| Text contrast pairs at least 4.5 to 1 | 39 |
+| Border and focus pairs at least 3 to 1 | 18 |
+| Total reported checks | 498 |
+
+The audit fixed navigation/reopening, stale searches, skip routing, player pausing/replay/visuals, timer rounding, native callback cleanup, clipboard fallback, import failures, crypto cancellation, corrupt data, conflicting tabs, privacy labels, faint borders, offline hangs, calendar folding and image-observer lifecycle. Read AUDIT-REPORT.md for individual scenarios.
+
+These are code, DOM, VM and controlled-mock checks. Browser rendering, actual focus, screen-reader output, hardware APIs and Lighthouse were unavailable and remain outstanding. No performance scores or clinical validation were inferred from the automated checks.
+
+- Test widths 360, 390, 768, 1024 and 1440 px and 200% zoom.
+- Test keyboard only, VoiceOver/TalkBack, themes and reduced motion.
+- Test voice, ambient audio, vibration, wake/media controls and interruptions on real devices.
+- Test both offline distributions, install/update shortcuts and archive migration.
+- Measure Lighthouse, LCP, CLS and INP on the intended public host; verify reference/support links before launch.
+
+## 26 Troubleshooting
+
+| Symptom | Action |
+| --- | --- |
+| Old layout after an update | Check the displayed app version. Reload online with Ctrl Shift R. If offline content is installed, check for updates; export before any data-reset experiment. |
+| Blank or unstyled hosted page | Publish dist, with index.html inside it. Check script/CSS/assets paths and platform output directory; do not publish a ZIP file as a page. |
+| Missing personal entries on new host | A different origin has separate storage. Export from the old app and import on the new host. |
+| Storage full or unavailable | Keep the tab open and export. Resolve browser storage restrictions/capacity; imports roll back on write failure. |
+| Another tab changed saved data | Export local edits, close competing tabs and reload the newer archive before editing again. |
+| Archive cannot be read | Use Data & privacy to download the protected original bytes. Do not clear until a recovery copy exists. |
+| Forgotten lock passphrase | There is no recovery service. Use a known passphrase or an already unlocked/exported copy. |
+| No voice or wake lock | Use a supported HTTPS browser and locally installed English voices; text guidance remains available. |
+| Offline setup fails | Confirm correct sw.js/manifest, HTTPS and available storage. Retry; do not use an HTML fallback in place of the worker. |
+| Calendar reminder does nothing | Import the .ics into a calendar, then confirm selected weekdays, local time and notifications there. |
+| Shared link fails on another device | Use a hosted URL. A file:// path is local and requires that file on the receiving device. |
+| Public visitors cannot open old live link | The original site is private. Deploy the supplied dist under an account you control and choose access there. |
+
+## 27 Handover to a future developer
+
+Start by reading this document, START-HERE.md, source-project/README.md, the content inventory and the audit report. Keep stable catalogue IDs, v5 migration, opt-in record saving, local-only behaviour and HCA identity. Use a new branch or copy for changes, then build and run the current checks before replacing deployed output.
+
+Reusable task brief
+
+~~~text
+Maintain Serein 5.0.1 from the included source-project.
+Preserve all 15 practices, 14 guides, 6 studios, 3 journeys,
+8 base reflections and original safety/evidence content.
+Keep HCA branding, British English and secular content.
+Sidebar must have no hover help. Put essential guidance in
+content and longer explanations behind deliberate clicks.
+Preserve serein-hca-v3 schema 5 and older import support.
+Personal records remain opt-in; retain authenticated local
+encryption and safe clear/import/conflict behaviour.
+Do not add a backend, analytics, remote voice or third-party
+runtime dependency without an explicit product decision.
+Run npm run build, npm run check and npm test.
+Document changes, limitations and manual browser/device QA.
+Return complete runnable output and updated portable files.
+~~~
+
+Before expanding the product, decide explicitly whether global support localisation, translations, cloud sync, accounts, analytics or AI features belong in scope. The present English catalogue is a localisation foundation, not a completed multilingual product. A new backend or live AI service changes the privacy model and needs separate design and verification.
+
+A future developer can recover app behaviour from this source package without this chat. The ZIP does not include complete Git history; the audited commit identifier and fixtures provide a reference point, not a remote repository credential.
+
+## 28 Provenance references and owner records
+
+Release source: 60bf138a7911c926693aae685a5bba611e9d6df0. Original Sites project: appgprj_6ad10f44e88481918b3db8e35f08a6d5. Current live URL: https://serein-hca-studio.bouncyfield17.chatgpt.site. These identifiers do not grant access or transfer ownership.
+
+The portable HTML checksum and every supplied file checksum are recorded in PROVENANCE.json and SHA256SUMS.txt. Keep those files with the archive. The audited runtime is copied unchanged into this handover; deployment settings and documentation are additional packaging.
+
+Company identity displayed in the app: HEALTHCARE CROWN ACADEMY LTD, company number 17501904, 71–75 Shelton Street, Covent Garden, London WC2H 9JQ, ICO registration ZC273259. These details originated in the supplied brand material; the handover does not independently certify company status or accreditation.
+
+Hosting references checked on 16 October 2026
+
+- Vercel configuration: https://vercel.com/docs/project-configuration/vercel-json
+- Vercel build settings: https://vercel.com/docs/builds/configure-a-build
+- Netlify manual deployment: https://docs.netlify.com/start/quickstarts/netlify-drop-quickstart/
+- Netlify configuration: https://docs.netlify.com/build/configure-builds/file-based-configuration/
+
+Owner records to keep outside the shared account
+
+- Your own repository URL and hosting team/account owner.
+- Final public URL, custom-domain registrar and renewal responsibility.
+- Release archive location and a second backup location.
+- User archive/export process and passcode storage arrangements.
+- Named content reviewer and record of completed browser/device publication checks.

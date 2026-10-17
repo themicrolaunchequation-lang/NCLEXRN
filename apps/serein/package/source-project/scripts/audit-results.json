@@ -1,0 +1,173 @@
+{
+  "checks": 247,
+  "scenarios": [
+    {
+      "name": "Every studio and journey reopens from its existing route",
+      "result": "PASS"
+    },
+    {
+      "name": "Pending searches survive navigation without stale DOM writes",
+      "result": "PASS"
+    },
+    {
+      "name": "Quick check-in status survives Today updates",
+      "result": "PASS"
+    },
+    {
+      "name": "Box graphics never overlay another practice",
+      "result": "PASS"
+    },
+    {
+      "name": "Self-paced noticing keeps keyboard focus",
+      "result": "PASS"
+    },
+    {
+      "name": "Help, settings and search pause self-paced practices",
+      "result": "PASS"
+    },
+    {
+      "name": "Opening settings cancels Quick pause countdown",
+      "result": "PASS"
+    },
+    {
+      "name": "Replay creates a separate optional feedback record",
+      "result": "PASS"
+    },
+    {
+      "name": "Timer rounds across minute boundaries correctly",
+      "result": "PASS"
+    },
+    {
+      "name": "No-holds Box breathing shrinks on its out phase",
+      "result": "PASS"
+    },
+    {
+      "name": "Media controls pause grounding and are removed on exit",
+      "result": "PASS"
+    },
+    {
+      "name": "Late wake-lock grants are released after player exit",
+      "result": "PASS"
+    },
+    {
+      "name": "Team share has a manual-copy fallback without clipboard API",
+      "result": "PASS"
+    },
+    {
+      "name": "Invalid array shapes and missing secure UUID do not break migration",
+      "result": "PASS"
+    },
+    {
+      "name": "Plain import merges contacts and records without dropping existing data",
+      "result": "PASS"
+    },
+    {
+      "name": "Replace import removes the old unsubmitted draft",
+      "result": "PASS"
+    },
+    {
+      "name": "Quota failure rolls back import and reports failure",
+      "result": "PASS"
+    },
+    {
+      "name": "Unreadable stored data is protected and downloadable",
+      "result": "PASS"
+    },
+    {
+      "name": "Clearing data cancels encryption setup before it can write",
+      "result": "PASS"
+    },
+    {
+      "name": "Clearing data cancels an in-flight unlock without restoring plaintext",
+      "result": "PASS"
+    },
+    {
+      "name": "Clearing data cancels an in-flight lock removal",
+      "result": "PASS"
+    },
+    {
+      "name": "Writes use fresh IVs and never leak locked fields",
+      "result": "PASS"
+    },
+    {
+      "name": "Tab hidden during lock setup finishes locked",
+      "result": "PASS"
+    },
+    {
+      "name": "Leaving while encryption is pending triggers an unsaved-work prompt",
+      "result": "PASS"
+    },
+    {
+      "name": "Encrypted entry forms describe their actual saving mode",
+      "result": "PASS"
+    },
+    {
+      "name": "Private search and import buffers clear when records lock",
+      "result": "PASS"
+    },
+    {
+      "name": "All routed controls have names, IDs are unique and image alternatives exist",
+      "result": "PASS"
+    },
+    {
+      "name": "Desktop search width defeats the original fixed-icon rule",
+      "result": "PASS"
+    },
+    {
+      "name": "Skip to content retains the current page and route",
+      "result": "PASS"
+    },
+    {
+      "name": "Repeated navigation does not create duplicate history entries",
+      "result": "PASS"
+    },
+    {
+      "name": "Four-practice routines can reorder, complete and exit cleanly",
+      "result": "PASS"
+    },
+    {
+      "name": "Every journey completes, revisits, unmarks and resets",
+      "result": "PASS"
+    },
+    {
+      "name": "Journal editing, deletion and Undo preserve the intended record",
+      "result": "PASS"
+    },
+    {
+      "name": "Every guide can be saved, reopened and removed from the collection",
+      "result": "PASS"
+    },
+    {
+      "name": "Encrypted imports retain encryption by default and reject a wrong passcode",
+      "result": "PASS"
+    },
+    {
+      "name": "Only one lazy image observer is retained across route changes",
+      "result": "PASS"
+    },
+    {
+      "name": "Unicode calendar exports fold correctly and retain selected days",
+      "result": "PASS"
+    },
+    {
+      "name": "Offline setup times out instead of trapping its prepare button",
+      "result": "PASS"
+    },
+    {
+      "name": "A stale tab cannot overwrite a newer encrypted browser archive",
+      "result": "PASS"
+    },
+    {
+      "name": "Exiting a playing practice leaves its engine paused",
+      "result": "PASS"
+    },
+    {
+      "name": "Audit release version is consistent in the UI and metadata",
+      "result": "PASS"
+    },
+    {
+      "name": "Today remains understandable when all suggestions are excluded",
+      "result": "PASS"
+    }
+  ]
+}

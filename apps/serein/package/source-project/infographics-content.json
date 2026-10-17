@@ -1,0 +1,134 @@
+[
+  {
+    "id": "pressure-at-work", "title": "Pressure is a shared responsibility", "category": "Work", "kind": "Population estimate", "visual": "dots",
+    "metric": "16%", "metricLabel": "of working-age adults worldwide", "metricNote": "Estimated to have a mental disorder in 2023. WHO fact sheet, September 2026.",
+    "summary": "Workplace conditions matter alongside individual support. A pause can help you choose a next step; it cannot repair unsafe staffing or bullying.",
+    "who": "Healthcare workers, team leaders and educators.", "when": "When pressure keeps returning or a work barrier needs attention.", "why": "Move the conversation from personal blame to practical support and safer work design.",
+    "steps": [["Notice", "Name the pressure: workload, unclear expectations or limited support."], ["Ask", "Choose one specific change to discuss with a colleague or manager."], ["Follow up", "Agree who will act, what will change and when you will review it."]],
+    "limit": "This is a global working-age estimate, not a healthcare-only rate or a prediction about you. Serein has not been tested as a treatment.",
+    "source": {"title": "WHO: Mental health at work", "url": "https://www.who.int/news-room/fact-sheets/detail/mental-health-at-work", "date": "15 September 2026", "short": "WHO · 2026 / estimate year 2023"},
+    "action": {"label": "Build a work-barrier plan", "route": "toolkit/conditions"},
+    "artDirection": "A precise 100-dot grid with exactly 16 teal dots and 84 pale dots. Label the denominator and estimate year. Add a three-step Notice → Ask → Follow up path. Do not label this as a burnout rate."
+  },
+  {
+    "id": "gentle-breathing", "title": "Breathe gently, without forcing", "category": "Reset", "kind": "Practice guidance", "visual": "breath",
+    "metric": "1–5", "metricLabel": "an optional count, at your own pace", "metricNote": "Count gently on the in-breath and again on the out-breath, only if comfortable.",
+    "summary": "Gentle breathing is a choice. There is no need to hold your breath, fill your lungs fully or match somebody else's timing.",
+    "who": "People who find breath-focused practices comfortable.", "when": "During a safe pause, away from tasks that need your full attention.", "why": "Offer a simple point of attention during a pressured moment.",
+    "steps": [["Settle", "Sit or stand with support. Let your shoulders soften."], ["Breathe", "Let air come in gently and leave gently. An easy count may help."], ["Adapt", "Stop if dizzy or uncomfortable. Switch to noticing the room instead."]],
+    "limit": "NHS guidance suggests practising for at least five minutes. The count is a cue, not a fixed breathing prescription or a guaranteed outcome. New or severe breathing symptoms need appropriate medical attention.",
+    "source": {"title": "NHS: Breathing exercises for stress", "url": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/", "date": "Accessed 16 October 2026", "short": "NHS · breathing guidance / checked 2026"},
+    "action": {"label": "Find a comfortable practice", "route": "library/practices?style=breath"},
+    "artDirection": "Two large open arcs, In gently and Out gently, with a clear no-hold route. Use five small count dots per arc, labelled optional. Show a non-breath alternative. Avoid a rigid timed breathing prescription."
+  },
+  {
+    "id": "five-senses", "title": "Come back to the room", "category": "Reset", "kind": "Grounding exercise", "visual": "senses",
+    "metric": "5 · 4 · 3 · 2 · 1", "metricLabel": "five senses, one gentle sequence", "metricNote": "5 see · 4 feel · 3 hear · 2 smell · 1 taste",
+    "summary": "Grounding redirects attention to your surroundings. Use senses that are available and comfortable for you; completing every count is optional.",
+    "who": "People who prefer an external focus instead of following the breath.", "when": "When thoughts are racing and you can safely pause.", "why": "Make the next moment concrete through ordinary details around you.",
+    "steps": [["Look and feel", "Notice five visible details and four points of safe contact."], ["Listen and notice", "Notice three sounds, two smells and one taste, if accessible."], ["Choose", "Skip any sense that is uncomfortable. Decide one useful next action."]],
+    "limit": "The numbers organise an exercise; they are not a dose or a success score. Do not touch, smell or taste clinical materials. This is optional grounding, not trauma treatment.",
+    "source": {"title": "NHS inform: Grounding exercises", "url": "https://www.nhsinform.scot/healthy-living/mental-wellbeing/breathing-and-relaxation-exercises/grounding-exercises/", "date": "Accessed 16 October 2026", "short": "NHS inform · grounding / checked 2026"},
+    "action": {"label": "Explore grounding practices", "route": "library/practices?style=ground"},
+    "artDirection": "A descending five-row sensory ladder with eye, hand, ear, nose and taste icons. Pair each icon with text and its exact count. Include an accessible skip-or-adapt note; never rely on colour alone."
+  },
+  {
+    "id": "micro-breaks", "title": "A small break can make room", "category": "Reset", "kind": "Research summary", "visual": "breaks",
+    "metric": "22", "metricLabel": "independent study samples", "metricNote": "2,335 participants in a 2022 meta-analysis of micro-breaks, defined as breaks up to 10 minutes.",
+    "summary": "The review found small improvements in energy and fatigue. Overall task performance did not improve significantly.",
+    "who": "Workers and students planning realistic opportunities to pause.", "when": "Between tasks, when care coverage and local procedures allow.", "why": "Treat a break as recovery space without promising a productivity boost.",
+    "steps": [["Coordinate", "Arrange safe cover before stepping away from a responsibility."], ["Change focus", "Look away from the task, move comfortably or take a quiet pause."], ["Return", "Check what matters next. Longer or protected rest may still be needed."]],
+    "limit": "Mixed tasks and populations; not evidence that a specific Serein practice improves clinical performance. The study count and sample size describe the review, not an effect percentage.",
+    "source": {"title": "Albulescu et al.: Micro-breaks systematic review and meta-analysis", "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0272460", "date": "31 August 2022", "short": "Albulescu et al. · PLOS ONE · 2022"},
+    "action": {"label": "Find a short pause", "route": "library/practices?time=60"},
+    "artDirection": "A research snapshot with 22 sample tiles, N=2,335, and a short-break timeline capped at 10 minutes. Add three labelled findings: energy small improvement; fatigue small improvement; overall performance no significant change. No invented percentages or upward performance arrow."
+  },
+  {
+    "id": "sleep-recovery", "title": "Protect your sleep opportunity", "category": "Recovery", "kind": "Adult sleep guidance", "visual": "sleep",
+    "metric": "7+ hours", "metricLabel": "recommended daily for adults aged 18–60", "metricNote": "CDC guidance. Sleep needs vary with age; quality matters as well as duration.",
+    "summary": "Make recovery possible around the rota. A calm, quiet and cool sleep space can support a planned sleep opportunity.",
+    "who": "Adults planning recovery, especially around changing work patterns.", "when": "Before a stretch of shifts and when planning the next sleep period.", "why": "Protect time for sleep instead of treating it as whatever remains after work.",
+    "steps": [["Plan", "Agree a protected sleep window with the people you live with."], ["Prepare", "Reduce light and noise; make the room comfortable and cool."], ["Review", "Seek healthcare advice for recurring sleep problems or persistent sleepiness."]],
+    "limit": "The headline applies to ages 18–60; CDC lists 7–9 hours for 61–64 and 7–8 for 65+. This card is general guidance, not an individual shift-work sleep prescription.",
+    "source": {"title": "CDC: About sleep", "url": "https://www.cdc.gov/sleep/about/index.html", "date": "15 May 2024", "short": "CDC · About sleep · 2024"},
+    "action": {"label": "Plan a gentler transition", "route": "toolkit/transition"},
+    "artDirection": "A moon-shaped recovery clock with a clearly labelled 7+ hours segment. State adults 18–60 next to the number, not in tiny print. Use a Plan → Prepare → Review checklist and a small note that other ages differ."
+  },
+  {
+    "id": "fatigue-journey", "title": "Plan a safer journey home", "category": "Recovery", "kind": "Fatigue research context", "visual": "journey",
+    "metric": "17 hours", "metricLabel": "awake in research comparisons", "metricNote": "Some performance impairment was similar to a blood alcohol concentration of 0.05% in studies cited by NIOSH.",
+    "summary": "Drowsiness can affect judgement and attention. Plan alternatives before you reach the end of a demanding shift.",
+    "who": "Anyone travelling after long hours or insufficient sleep.", "when": "Before the shift and again before the journey home.", "why": "Make a transport plan while you can still consider your options clearly.",
+    "steps": [["Notice", "Take heavy eyelids, drifting attention or repeated yawning seriously."], ["Stop", "If sleepy, do not start or continue driving. Find a safe place to stop."], ["Arrange", "Choose safe transport or appropriate rest before travelling again."]],
+    "limit": "A laboratory comparison, not a personal alcohol reading or a legal driving limit. Less than 17 hours awake does not mean you are safe to drive. A brief app pause cannot restore fitness to drive.",
+    "source": {"title": "CDC/NIOSH: Impairments due to sleep deprivation", "url": "https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod3/08.html", "date": "Accessed 16 October 2026", "short": "CDC / NIOSH · nurse work-hour training"},
+    "action": {"label": "Make a transition plan", "route": "toolkit/transition"},
+    "artDirection": "A route splitting into safe transport and rest, beside a factual 17h research callout and 0.05% BAC comparison. Never draw a safe/unsafe cutoff at 17h or imply a breathing pause makes driving safe."
+  },
+  {
+    "id": "movement-week", "title": "Build movement into the week", "category": "Recovery", "kind": "Adult activity guidance", "visual": "movement",
+    "metric": "150 + 2", "metricLabel": "minutes of moderate activity + strength days", "metricNote": "At least 150 moderate-intensity minutes per week, plus muscle-strengthening activity on at least two days.",
+    "summary": "Activity can be spread through the week in manageable amounts. Some movement is better than none.",
+    "who": "Adults adapting activity to their ability, health and circumstances.", "when": "When planning the week rather than adding pressure to a difficult day.", "why": "Turn a broad recommendation into options that fit your life.",
+    "steps": [["Choose", "Pick comfortable movement you can repeat, such as walking or wheeling."], ["Spread", "Break activity into smaller amounts across the week."], ["Adapt", "Add strength work suited to you; seek individual advice when needed."]],
+    "limit": "CDC also describes vigorous-intensity alternatives. A gentle Serein stretch may not count as moderate activity or strength training. Follow personal advice for health conditions or activity restrictions.",
+    "source": {"title": "CDC: Adult activity overview", "url": "https://www.cdc.gov/physical-activity-basics/guidelines/adults.html", "date": "20 December 2023", "short": "CDC · adult activity guidance · 2023"},
+    "action": {"label": "Explore comfortable movement", "route": "library/practices"},
+    "artDirection": "A flexible weekly calendar with five optional 30-minute blocks and two strength-day markers, clearly labelled as one example rather than a required schedule. Feature 150 min + 2 days with explicit units."
+  },
+  {
+    "id": "understanding-burnout", "title": "Understand the burnout pattern", "category": "Work", "kind": "Occupational definition", "visual": "burnout",
+    "metric": "3", "metricLabel": "dimensions in the ICD-11 description", "metricNote": "Exhaustion · distance or cynicism about work · reduced professional effectiveness",
+    "summary": "WHO describes burnout in the work context. Recognising a pattern can help start a support conversation; it does not diagnose its cause.",
+    "who": "Workers and leaders noticing a persistent change in work experience.", "when": "When exhaustion, detachment or feeling ineffective keeps returning.", "why": "Use precise language and consider working conditions alongside support.",
+    "steps": [["Recognise", "Notice changes without turning the card into a personal score."], ["Discuss", "Talk with a trusted person about workload and support needs."], ["Seek support", "Ask for professional help when symptoms persist or affect daily life."]],
+    "limit": "ICD-11 treats burnout as an occupational phenomenon, not a medical condition. These three dimensions are not a self-diagnostic checklist; other conditions may need assessment.",
+    "source": {"title": "WHO: Burn-out as an occupational phenomenon", "url": "https://www.who.int/news/item/28-05-2019-burn-out-an-occupational-phenomenon-international-classification-of-diseases", "date": "28 May 2019", "short": "WHO · ICD-11 occupational context · 2019"},
+    "action": {"label": "Prepare a support conversation", "route": "toolkit/support"},
+    "artDirection": "Three equal connected panels labelled energy, relationship with work, and effectiveness. Use neutral icons and a clear work-context label. No diagnostic gauge, red risk score or claim that three ticks confirm burnout."
+  },
+  {
+    "id": "work-design", "title": "Find the work barrier", "category": "Work", "kind": "Work design framework", "visual": "domains",
+    "metric": "6", "metricLabel": "areas in the HSE Management Standards", "metricNote": "Demands · Control · Support · Relationships · Role · Change",
+    "summary": "A clear description of the work barrier helps a team discuss a practical change. Organisational problems need organisational action.",
+    "who": "Workers, line managers and teams reviewing recurring pressure.", "when": "Before a supervision, team review or work-design conversation.", "why": "Make the cause visible instead of asking people to cope indefinitely.",
+    "steps": [["Locate", "Choose the area closest to the problem you are facing."], ["Describe", "Write one factual example without patient or colleague identifiers."], ["Request", "Ask for a specific change and agree a review point."]],
+    "limit": "This is a UK work-design framework, not a clinical screening tool. Serein's draft is not an employer risk assessment or a substitute for local reporting procedures.",
+    "source": {"title": "HSE: What are the Management Standards?", "url": "https://www.hse.gov.uk/stress/standards/overview.htm", "date": "14 January 2025", "short": "HSE · Management Standards · 2025"},
+    "action": {"label": "Build a work-barrier plan", "route": "toolkit/conditions"},
+    "artDirection": "Six equal tiles arranged in a three-column by two-row grid, each with a clear icon and the exact HSE domain name. Connect them to a factual example → request → review path."
+  },
+  {
+    "id": "speak-up", "title": "Speak up clearly about safety", "category": "Work", "kind": "Team communication tool", "visual": "cus",
+    "metric": "C · U · S", "metricLabel": "a shared structure for a safety concern", "metricNote": "Concerned → Uncomfortable → Safety issue",
+    "summary": "TeamSTEPPS uses CUS to make the seriousness of a concern clear. Explain the issue and the action needed.",
+    "who": "Healthcare teams using an agreed safety communication approach.", "when": "When a safety concern needs to be heard and acted on.", "why": "Move from a vague worry to a clear, shared statement about safety.",
+    "steps": [["C — Concerned", "State what concerns you and describe the relevant facts."], ["U — Uncomfortable", "Explain why the situation makes you uncomfortable."], ["S — Safety issue", "Name the safety issue. Notify a supervisor if it is not acknowledged."]],
+    "limit": "Use local escalation procedures and urgent action when required; do not wait to work through this card in an emergency. It is not a patient-management protocol or evidence of a percentage reduction in harm.",
+    "source": {"title": "AHRQ TeamSTEPPS: CUS", "url": "https://www.ahrq.gov/teamstepps-program/curriculum/mutual/tools/cus.html", "date": "May 2023", "short": "AHRQ · TeamSTEPPS 3.0 · 2023"},
+    "action": {"label": "Prepare words for a conversation", "route": "toolkit/support"},
+    "artDirection": "Three ascending speech bubbles C, U and S with concise prompts. Add an explicit supervisor/escalation branch when the concern is not acknowledged. Use an original diagram; no AHRQ logo or implied endorsement."
+  },
+  {
+    "id": "end-shift", "title": "Close the shift with a next step", "category": "Recovery", "kind": "Serein reflection framework", "visual": "transition",
+    "metric": "3", "metricLabel": "optional prompts for the transition home", "metricNote": "Hand over · Acknowledge · Choose",
+    "summary": "Give unfinished work an appropriate handover, acknowledge what the day held and choose one manageable recovery action.",
+    "who": "Anyone leaving a demanding work period.", "when": "After clinical responsibilities are handed over and before the journey home.", "why": "Create a practical boundary between the working day and what comes next.",
+    "steps": [["Hand over", "Put outstanding work into the appropriate local handover process."], ["Acknowledge", "Notice one difficult part and one thing you contributed; sharing is optional."], ["Choose", "Pick a realistic next action: safe transport, food, rest or contacting someone."]],
+    "limit": "An original Serein educational adaptation, not a validated debrief protocol. Do not enter patient identifiers. It cannot resolve traumatic stress, unsafe work or fatigue on its own.",
+    "source": {"title": "Serein: Leave work at work studio", "url": "#toolkit/transition", "date": "Serein 5.1.0 · 16 October 2026", "short": "Serein · original educational framework · 2026"},
+    "action": {"label": "Build my transition plan", "route": "toolkit/transition"},
+    "artDirection": "An original three-station path from a work doorway to a recovery space. Label Hand over, Acknowledge and Choose. Show no patient information. Label the number as three prompts, never a study result."
+  },
+  {
+    "id": "privacy-choices", "title": "Know where your words stay", "category": "Privacy", "kind": "Current app behaviour", "visual": "privacy",
+    "metric": "3", "metricLabel": "data choices to understand", "metricNote": "This visit · Save in this browser · Optional journal lock",
+    "summary": "Serein keeps personal records in your browser. There is no cloud sync. Moving to a different website address needs an explicit export and import.",
+    "who": "Every Serein user, especially on shared devices or when changing hosts.", "when": "Before saving, enabling the journal lock, exporting or moving the app.", "why": "Make a clear choice about retention, access and recovery.",
+    "steps": [["This visit", "Personal entries remain temporary unless you choose to save them; drafts can use temporary tab storage."], ["This browser", "Saved entries remain in this browser profile. Other people with access may be able to read unlocked records."], ["Optional lock", "Encrypt journals, check-ins and contacts. Keep your passphrase; there is no reset service."]],
+    "limit": "The optional lock does not cover preferences, feedback or saved plans, and does not protect an unlocked device. The deployment ZIP contains app content, not your personal journal backup.",
+    "source": {"title": "Serein: Data and privacy", "url": "#me/data", "date": "Serein 5.1.0 · 16 October 2026", "short": "Serein · browser storage and vault implementation"},
+    "action": {"label": "Review data and privacy", "route": "me/data"},
+    "artDirection": "Three clearly separated browser, storage and padlock panels. Show exactly which three record types the optional lock covers. State no cloud sync and no passphrase reset. Never imply all app data is encrypted or that a deployment ZIP backs up journals."
+  }
+]

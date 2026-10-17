@@ -1,0 +1,5 @@
+node_modules/
+portable/
+*.tar.gz
+*.zip
+.DS_Store
