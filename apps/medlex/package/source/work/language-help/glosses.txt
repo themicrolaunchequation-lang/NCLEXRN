@@ -1,0 +1,109 @@
+fast|سريع|rápido|rapide
+heart|قلب|corazón|cœur
+condition|حالة|estado o afección|état ou affection
+slow|بطيء|lento|lent
+around|حول|alrededor de|autour de
+inflammation|التهاب|inflamación|inflammation
+muscle|عضلة|músculo|muscle
+links word parts|يربط أجزاء الكلمة|une las partes de una palabra|relie les éléments du mot
+within|داخل|dentro de|à l’intérieur de
+vessel|وعاء|vaso|vaisseau
+surgical repair|ترميم جراحي|reparación quirúrgica|réparation chirurgicale
+electricity|كهرباء|electricidad|électricité
+record|تسجيل|registro|enregistrement
+above or excessive|فوق أو مفرط|por encima o excesivo|au-dessus ou excessif
+pressure|ضغط|presión|pression
+fatty plaque|لويحة دهنية|placa grasa|plaque graisseuse
+hardening|تصلّب|endurecimiento|durcissement
+difficult or abnormal|صعب أو غير طبيعي|difícil o anormal|difficile ou anormal
+breathing|تنفّس|respiración|respiration
+without|بدون|sin|sans
+below or deficient (a form of hypo-)|أقل أو ناقص (صيغة من hypo-)|por debajo o deficiente (forma de hypo-)|en dessous ou déficient (forme de hypo-)
+oxygen|أكسجين|oxígeno|oxygène
+blood condition|حالة متعلقة بالدم|afección de la sangre|affection du sang
+bronchus|شُعبة هوائية|bronquio|bronche
+visual examination|فحص بصري|examen visual|examen visuel
+air|هواء|aire|air
+chest|صدر|tórax|thorax
+stomach|معدة|estómago|estomac
+intestine|أمعاء|intestino|intestin
+liver|كبد|hígado|foie
+enlargement|تضخّم|aumento de tamaño|augmentation de volume
+gallbladder|مرارة|vesícula biliar|vésicule biliaire
+surgical removal|استئصال جراحي|extirpación quirúrgica|ablation chirurgicale
+difficult|صعب|difícil|difficile
+swallowing or eating|بلع أو أكل|deglución o alimentación|déglutition ou alimentation
+nerve|عصب|nervio|nerf
+pain|ألم|dolor|douleur
+disease|مرض|enfermedad|maladie
+brain|دماغ|cerebro|cerveau
+half|نصف|mitad|moitié
+paralysis|شلل|parálisis|paralysie
+language or speech|لغة أو كلام|lenguaje o habla|langage ou parole
+joint|مفصل|articulación|articulation
+bone|عظم|hueso|os
+links two roots|يربط جذرين|une dos raíces|relie deux racines
+bone marrow here|نخاع العظم هنا|médula ósea en este contexto|moelle osseuse dans ce contexte
+pore or passage|مسام أو ممر|poro o conducto|pore ou passage
+skin|جلد|piel|peau
+under|تحت|debajo de|sous
+pertaining to|متعلق بـ|relativo a|relatif à
+life|حياة|vida|vie
+viewing|مشاهدة|observación|observation
+redness|احمرار|enrojecimiento|rougeur
+noun ending|نهاية اسمية|terminación nominal|terminaison nominale
+red|أحمر|rojo|rouge
+cell|خلية|célula|cellule
+white|أبيض|blanco|blanc
+clot|خثرة|coágulo|caillot
+deficiency|نقص|deficiencia|déficit
+without or deficient|بدون أو ناقص|sin o deficiente|sans ou déficient
+blood|دم|sangre|sang
+stopping or controlling|إيقاف أو ضبط|detención o control|arrêt ou contrôle
+lymph|لمف|linfa|lymphe
+gland or lymph node here|غدة أو عقدة لمفية هنا|glándula o ganglio linfático en este contexto|glande ou ganglion lymphatique dans ce contexte
+spleen|طحال|bazo|rate
+excessive|مفرط|excesivo|excessif
+sugar|سكر|azúcar|sucre
+below or deficient|أقل أو ناقص|por debajo o deficiente|en dessous ou déficient
+deficient|ناقص|deficiente|déficient
+thyroid gland|غدة درقية|glándula tiroides|glande thyroïde
+state or condition|حالة أو وضع|estado o afección|état ou affection
+secrete|يفرز|secretar|sécréter
+urine|بول|orina|urine
+kidney|كلية|riñón|rein
+stone|حصاة|cálculo|calcul
+condition or formation|حالة أو تكوّن|estado o formación|état ou formation
+bladder here|مثانة هنا|vejiga en este contexto|vessie dans ce contexte
+painful or difficult|مؤلم أو صعب|doloroso o difícil|douloureux ou difficile
+urine or urination condition|حالة متعلقة بالبول أو التبوّل|afección de la orina o de la micción|affection liée à l’urine ou à la miction
+scanty or few|قليل أو نادر|escaso o poco|peu abondant ou peu nombreux
+urine condition|حالة متعلقة بالبول|afección de la orina|affection liée à l’urine
+urea or urine|يوريا أو بول|urea u orina|urée ou urine
+ear|أذن|oído|oreille
+eye|عين|ojo|œil
+study or specialty|دراسة أو اختصاص|estudio o especialidad|étude ou spécialité
+nose|أنف|nariz|nez
+flow or discharge|سيلان أو إفراز|flujo o secreción|écoulement ou sécrétion
+testis|خصية|testículo|testicule
+prostate|بروستاتا|próstata|prostate
+uterus|رحم|útero|utérus
+fallopian tube here|قناة فالوب هنا|trompa de Falopio en este contexto|trompe de Fallope dans ce contexte
+before|قبل|antes de|avant
+birth|ولادة|nacimiento|naissance
+new|جديد|nuevo|nouveau
+first|أول|primero|premier
+pregnant person|شخص حامل|persona embarazada|personne enceinte
+not|ليس|no|non
+sleep|نوم|sueño|sommeil
+pleasure|متعة|placer|plaisir
+bacteria|بكتيريا|bacterias|bactéries
+producing|مُنتِج|que produce|qui produit
+radiation|إشعاع|radiación|rayonnement
+process of recording|عملية تسجيل|proceso de registro|processus d’enregistrement
+section or cut|مقطع أو قطع|sección o corte|section ou coupe
+beyond|ما وراء|más allá de|au-delà de
+sound|صوت|sonido|son
+drug|دواء|medicamento|médicament
+movement|حركة|movimiento|mouvement
+action or force|فعل أو قوة|acción o fuerza|action ou force

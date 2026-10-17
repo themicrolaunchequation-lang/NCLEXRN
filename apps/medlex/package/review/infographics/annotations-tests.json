@@ -1,0 +1,15 @@
+{
+  "method": "DOM emulator, fake IndexedDB, synthetic pointer/keyboard events and recorded canvas commands. No fresh browser/device rendering.",
+  "checks": {
+    "widthFitDefaultAndReadingSpace": true,
+    "penMarkerHighlighterColorsSizesUndoAndCancel": true,
+    "coloredNotesTextSafetyDragKeyboardDeleteAndUndo": true,
+    "posterIsolationKeyboardAddBackupClearAndRestore": true,
+    "backupValidation": true,
+    "indexedDBReload": true,
+    "repeatedOpenReturnsOriginalFocus": true,
+    "annotationStructuralAccessibility": true,
+    "localFallbackAndStorageFailureRecovery": true
+  },
+  "errors": []
+}

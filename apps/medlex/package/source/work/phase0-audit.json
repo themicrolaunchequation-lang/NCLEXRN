@@ -1,0 +1,2693 @@
+{
+  "errors": [],
+  "results": [
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "today",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "explore/terms",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "explore/elements",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "explore/lab",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "progress",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "tools",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "settings",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/outline",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/outcomes",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/bank",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/practice",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/classroom",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/independent",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/references",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/hub",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/adaptive",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/clinical",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/explain",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/confusions",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/matching",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/atlas",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/pronunciation",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/coding",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/educator",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/portfolio",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "studio/editor",
+      "overflow": false,
+      "small": [],
+      "violations": []
+    }
+  ]
+}

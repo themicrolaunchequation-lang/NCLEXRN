@@ -1,0 +1,125 @@
+[
+  {
+    "width": 390,
+    "theme": "light",
+    "state": "search",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "state": "onboarding",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "state": "account",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "state": "search",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "state": "onboarding",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "state": "account",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "high",
+    "state": "search",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "high",
+    "state": "onboarding",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "high",
+    "state": "account",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "state": "search",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "state": "onboarding",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "state": "account",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "state": "search",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "state": "onboarding",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "state": "account",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "high",
+    "state": "search",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "high",
+    "state": "onboarding",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "theme": "high",
+    "state": "account",
+    "violations": []
+  },
+  {
+    "textScale": 1.5,
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "textScale": 1.5,
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "textScale": 1.5,
+    "width": 1440,
+    "overflow": false
+  }
+]

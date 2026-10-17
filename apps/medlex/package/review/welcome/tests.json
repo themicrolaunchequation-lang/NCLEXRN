@@ -1,0 +1,31 @@
+{
+  "method": "JSDOM, native-dialog mocks and structural axe. No rendered contrast/layout/device assertion.",
+  "checks": {
+    "welcomeContentAndEmbeddedArt": true,
+    "motionAndReducedPreference": true,
+    "guidePagingKeyboardAndShortcutIsolation": true,
+    "guideTopicsAndStructuralAccessibility": true,
+    "closeCancelAndFocusReturn": true,
+    "destinationAndRouteCleanup": true,
+    "dailySessionEntry": true
+  },
+  "audits": [
+    {
+      "topic": 0,
+      "violations": []
+    },
+    {
+      "topic": 2,
+      "violations": []
+    },
+    {
+      "topic": 4,
+      "violations": []
+    },
+    {
+      "topic": 6,
+      "violations": []
+    }
+  ],
+  "errors": []
+}

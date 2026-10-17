@@ -1,0 +1,120 @@
+{
+  "method": "Synthetic pointer events, mock canvas draw commands and axe structural checks in JSDOM; not visual, contrast, touch-device or browser verification",
+  "results": [
+    {
+      "route": "library/lab",
+      "pointerDrag": true,
+      "pointerRelease": true
+    },
+    {
+      "route": "library/atlas",
+      "pointerDrag": true,
+      "pointerRelease": true
+    }
+  ],
+  "canvasDrawCalls": 92634,
+  "canvasFailureFallback": true,
+  "audits": [
+    {
+      "route": "today",
+      "violations": []
+    },
+    {
+      "route": "learn",
+      "violations": []
+    },
+    {
+      "route": "learn/module/ch1/overview",
+      "violations": []
+    },
+    {
+      "route": "learn/module/ch9/words",
+      "violations": []
+    },
+    {
+      "route": "learn/module/ch1/activities",
+      "violations": []
+    },
+    {
+      "route": "practice",
+      "violations": []
+    },
+    {
+      "route": "practice/adaptive",
+      "violations": []
+    },
+    {
+      "route": "practice/clinical",
+      "violations": []
+    },
+    {
+      "route": "practice/explain",
+      "violations": []
+    },
+    {
+      "route": "practice/coding",
+      "violations": []
+    },
+    {
+      "route": "practice/matching",
+      "violations": []
+    },
+    {
+      "route": "library/terms",
+      "violations": []
+    },
+    {
+      "route": "library/parts",
+      "violations": []
+    },
+    {
+      "route": "library/lab",
+      "violations": []
+    },
+    {
+      "route": "library/atlas",
+      "violations": []
+    },
+    {
+      "route": "library/pronunciation",
+      "violations": []
+    },
+    {
+      "route": "library/term/pericarditis",
+      "violations": []
+    },
+    {
+      "route": "progress",
+      "violations": []
+    },
+    {
+      "route": "progress/portfolio",
+      "violations": []
+    },
+    {
+      "route": "teach/assignments",
+      "violations": []
+    },
+    {
+      "route": "teach/resources",
+      "violations": []
+    },
+    {
+      "route": "teach/editor",
+      "violations": []
+    },
+    {
+      "route": "teach/evidence",
+      "violations": []
+    },
+    {
+      "route": "settings",
+      "violations": []
+    },
+    {
+      "route": "settings/data",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-16T14:55:09.666Z",
+  "method": "JSDOM functional audit; not a browser rendering, layout or full accessibility audit",
+  "routes": 418,
+  "checks": {
+    "termProfiles": 1480,
+    "malformedRouteRecovery": true,
+    "sharedPreview": true,
+    "wordSelection": true,
+    "sceneKeyboardResetReducedMotionAndDisposal": true,
+    "dirtyDraftNavigationProtection": true,
+    "mixedSession": true,
+    "realEncryptedExportAndValidatedDecryption": true,
+    "encryptedImportPreviewAndWrongPassword": true,
+    "manifestCredentialAttribute": true
+  },
+  "errors": []
+}

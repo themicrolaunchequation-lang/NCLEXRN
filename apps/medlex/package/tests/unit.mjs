@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {createStore} from '../src/state/runtime.js';
+import {selectDueCount,selectMastery,selectStreak}from'../src/state/pure-selectors.js';
+import {loadedCollections}from'../src/data/lazy.js';
+import{TERMS,COURSE_MODULES,QUOTES}from'../src/data/index.js';
+assert.deepEqual(loadedCollections(),[]);assert(Array.isArray(TERMS));assert.equal(TERMS.length,1480);assert.deepEqual(loadedCollections(),['TERMS']);assert.equal(COURSE_MODULES.length,26);assert.equal(typeof QUOTES[0],'string');
+const store=createStore({count:0}),seen=[];const unsub=store.subscribe(s=>seen.push(s.count));store.set({count:2});store.set(s=>({...s,count:s.count+1}));unsub();store.set({count:8});assert.deepEqual(seen,[2,3]);assert.equal(store.get().count,8);
+assert.equal(selectDueCount({a:{due:5},b:{due:20}},['a','b','c'],10),1);assert.equal(selectMastery(['a'],['a','b']),50);assert.equal(selectMastery([],[]),0);
+assert.equal(selectStreak({'2026-10-16':{items:1},'2026-10-15':{minutes:2},'2026-10-14':{items:0,minutes:1}},Date.UTC(2026,9,16,12)),2);
+console.log('Lazy decoding, store subscription and pure selectors passed.');

@@ -1,0 +1,5 @@
+/** Canonical destinations and lossless redirects from every historical area. */
+export const REDIRECTS={home:'today',modules:'learn',systems:'learn?view=systems',library:'library/terms',affixes:'library/parts',wordlab:'library/lab',toolkit:'teach/resources',tools:'teach/resources','explore/terms':'library/terms','explore/elements':'library/parts','explore/lab':'library/lab'};
+export const STUDIO_REDIRECTS={hub:'library/terms',adaptive:'practice/adaptive',clinical:'practice/clinical',explain:'practice/explain',confusions:'practice/confusions',matching:'practice/matching',atlas:'library/atlas',pronunciation:'library/pronunciation',coding:'practice/coding',educator:'teach/assignments',portfolio:'progress/portfolio',editor:'teach/editor'};
+export const MODULE_TAB_REDIRECTS={outline:'overview',outcomes:'overview',bank:'words',classroom:'activities',independent:'activities',references:'resources'};
+export const ROUTES={infographics:'infographics',today:'home',learn:'modules',practice:'practice',progress:'progress',settings:'settings',teach:'teach','library/terms':'library','library/parts':'affixes','library/lab':'wordlab'};

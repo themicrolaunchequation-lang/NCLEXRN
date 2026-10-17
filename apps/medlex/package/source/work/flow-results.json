@@ -1,0 +1,14 @@
+{
+  "baseline": true,
+  "clinical": true,
+  "explanation": true,
+  "editorial": true,
+  "assignments": true,
+  "educatorFeedback": true,
+  "encryptedRoundtrip": true,
+  "atlasJourney": true,
+  "focusMode": true,
+  "mobileNavigation": true,
+  "reducedMotion": true,
+  "errors": []
+}

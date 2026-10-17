@@ -1,0 +1,4841 @@
+{
+  "errors": [],
+  "results": [
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 768,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1024,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "today",
+      "hash": "#today",
+      "h1": [
+        "A little learning, every day."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn",
+      "hash": "#learn",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn?view=grid",
+      "hash": "#learn?view=grid",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn?view=systems",
+      "hash": "#learn?view=systems",
+      "h1": [
+        "Learn"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/overview",
+      "hash": "#learn/module/ch1/overview",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/words",
+      "hash": "#learn/module/ch1/words",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/practice",
+      "hash": "#learn/module/ch1/practice",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/activities",
+      "hash": "#learn/module/ch1/activities",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "learn/module/ch1/resources",
+      "hash": "#learn/module/ch1/resources",
+      "h1": [
+        "Basic word structure"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "practice",
+      "hash": "#practice",
+      "h1": [
+        "Practice"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "practice/adaptive",
+      "hash": "#practice/adaptive",
+      "h1": [
+        "Your adaptive pathway"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "practice/clinical",
+      "hash": "#practice/clinical",
+      "h1": [
+        "Clinical Note Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "practice/explain",
+      "hash": "#practice/explain",
+      "h1": [
+        "Patient Explanation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "practice/coding",
+      "hash": "#practice/coding",
+      "h1": [
+        "Documentation & Coding Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "practice/confusions",
+      "hash": "#practice/confusions",
+      "h1": [
+        "Confusable Terms Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "practice/matching",
+      "hash": "#practice/matching",
+      "h1": [
+        "Match Pairs Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "library/terms",
+      "hash": "#library/terms",
+      "h1": [
+        "Library"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "library/parts",
+      "hash": "#library/parts",
+      "h1": [
+        "Word parts"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "library/part/prefixes-0",
+      "hash": "#library/part/prefixes-0",
+      "h1": [
+        "a-"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "library/lab",
+      "hash": "#library/lab",
+      "h1": [
+        "Take a word apart.Put understanding together."
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "library/atlas",
+      "hash": "#library/atlas",
+      "h1": [
+        "Body-system atlas"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "library/pronunciation",
+      "hash": "#library/pronunciation",
+      "h1": [
+        "Pronunciation Studio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "library/term/pericarditis",
+      "hash": "#library/term/pericarditis",
+      "h1": [
+        "Pericarditis"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "progress",
+      "hash": "#progress",
+      "h1": [
+        "Progress"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "progress/portfolio",
+      "hash": "#progress/portfolio",
+      "h1": [
+        "Learning evidence portfolio"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "teach/assignments",
+      "hash": "#teach/assignments",
+      "h1": [
+        "Educator workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "teach/resources",
+      "hash": "#teach/resources",
+      "h1": [
+        "Make the coursework for your setting."
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "teach/editor",
+      "hash": "#teach/editor",
+      "h1": [
+        "Editorial review workspace"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "teach/evidence",
+      "hash": "#teach/evidence",
+      "h1": [
+        "Why these methods work"
+      ],
+      "overflow": false,
+      "primary": 0,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "settings",
+      "hash": "#settings",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "route": "settings/data",
+      "hash": "#settings/data",
+      "h1": [
+        "Settings"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "small": [],
+      "violations": []
+    }
+  ]
+}

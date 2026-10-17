@@ -1,0 +1,15 @@
+{
+  "legacyFiles": [
+    "components-01.css",
+    "components-02.css",
+    "components-03.css",
+    "components-04.css",
+    "components-05.css",
+    "components-06.css",
+    "components-07.css"
+  ],
+  "duplicateRulesRemoved": 4,
+  "originalBytes": 232339,
+  "consolidatedBytes": 232150,
+  "method": "Preserve rule order; remove only exact duplicate sibling rules; modern styles consume semantic tokens."
+}

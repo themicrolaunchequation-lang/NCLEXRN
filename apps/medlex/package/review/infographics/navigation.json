@@ -1,0 +1,13 @@
+{
+  "method": "JSDOM and fake IndexedDB; navigation with deferred file reads and writes. No native browser assertions.",
+  "checks": {
+    "deepLinkCloseThenSearch": true,
+    "deepLinkCloseThenGroup": true,
+    "abandonedBackupRead": true,
+    "restoreCompletesAfterNavigation": true,
+    "abandonedNotesBackupRead": true,
+    "notesRestoreCompletesAfterNavigation": true
+  },
+  "errors": [],
+  "rejections": []
+}

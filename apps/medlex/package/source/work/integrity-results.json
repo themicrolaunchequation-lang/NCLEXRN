@@ -1,0 +1,10 @@
+{
+  "contentCollections": 10,
+  "migration": true,
+  "legacyKeysUnchanged": true,
+  "v3Roundtrip": true,
+  "practiceModes": true,
+  "search": true,
+  "srsRatings": 4,
+  "errors": []
+}

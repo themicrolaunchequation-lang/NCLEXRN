@@ -1,0 +1,47 @@
+[
+  {
+    "id": "directions-3",
+    "size": [
+      1800,
+      2400
+    ],
+    "method": "Pillow typesetting and mathematically constructed schematic; no generated anatomy",
+    "question_answer_separate": true
+  },
+  {
+    "id": "directions-4",
+    "size": [
+      1800,
+      2400
+    ],
+    "method": "Pillow typesetting and mathematically constructed schematic; no generated anatomy",
+    "question_answer_separate": true
+  },
+  {
+    "id": "directions-5",
+    "size": [
+      1800,
+      2400
+    ],
+    "method": "Pillow typesetting and mathematically constructed schematic; no generated anatomy",
+    "question_answer_separate": true
+  },
+  {
+    "id": "directions-6",
+    "size": [
+      1800,
+      2400
+    ],
+    "method": "Pillow typesetting and mathematically constructed schematic; no generated anatomy",
+    "question_answer_separate": true
+  },
+  {
+    "id": "directions-7",
+    "size": [
+      1800,
+      2400
+    ],
+    "method": "Pillow typesetting and mathematically constructed schematic; no generated anatomy",
+    "question_answer_separate": true
+  }
+]

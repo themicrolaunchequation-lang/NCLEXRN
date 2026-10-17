@@ -1,0 +1,191 @@
+{
+  "checks": {
+    "twoStepSetupAndPlacement": true,
+    "doctorTraineeAndAssistingLanguage": true,
+    "keyboardPaletteTermSave": true,
+    "keyboardModuleTabs": true,
+    "versionHistoryAndRestore": true,
+    "draftReloadDeepLinkAndEscape": true,
+    "newBlankPreservesPrevious": true,
+    "keyboardWorksheetFourStepsAndPortfolio": true,
+    "mobileReferenceBottomSheet": true,
+    "selfReviewNotAutomaticCompletion": true,
+    "storageFailureRecoveryAndExport": true,
+    "resumableDailySession": true,
+    "dailyPlayerFeedbackAndSummary": true,
+    "v4BackupFromSettings": true,
+    "textScale150": true,
+    "reducedMotionNoTransforms": true
+  },
+  "errors": [],
+  "audits": [
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "worksheet-0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "worksheet-1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "worksheet-2",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "worksheet-3",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "worksheet-0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "worksheet-1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "worksheet-2",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "worksheet-3",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "worksheet-0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "worksheet-1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "worksheet-2",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "worksheet-3",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "worksheet-0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "worksheet-1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "worksheet-2",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "worksheet-3",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "worksheet-0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "worksheet-1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "worksheet-2",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "worksheet-3",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "worksheet-0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "worksheet-1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "worksheet-2",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "worksheet-3",
+      "overflow": false,
+      "violations": []
+    }
+  ]
+}

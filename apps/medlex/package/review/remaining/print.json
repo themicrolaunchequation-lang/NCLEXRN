@@ -1,0 +1,38 @@
+{
+  "documents": [
+    {
+      "document": "worksheet",
+      "pages": 3,
+      "pageSizePoints": [
+        595.91998,
+        842.88
+      ],
+      "brandPresent": true,
+      "characters": 1418,
+      "outOfSafeMargin": []
+    },
+    {
+      "document": "learner-pack",
+      "pages": 7,
+      "pageSizePoints": [
+        594.95996,
+        841.91998
+      ],
+      "brandPresent": true,
+      "characters": 8596,
+      "outOfSafeMargin": []
+    },
+    {
+      "document": "portfolio",
+      "pages": 2,
+      "pageSizePoints": [
+        595.91998,
+        842.88
+      ],
+      "brandPresent": true,
+      "characters": 932,
+      "outOfSafeMargin": []
+    }
+  ],
+  "method": "Chromium A4 PDFs; extracted text and 20-point safety bounds; selected rendered first/last pages visually inspected."
+}

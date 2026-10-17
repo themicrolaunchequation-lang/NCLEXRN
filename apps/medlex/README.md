@@ -1,0 +1,17 @@
+# MedLex — Healthcare Crown Academy
+
+Published at https://healthcarecrownacademy.co.uk/medlex (built into `site/medlex`).
+
+| Folder | What |
+|---|---|
+| `source/index.html` | The hosted build of MedLex 4.0 from the author's package (`dist/index.html`). `build-web.mjs` reads it. |
+| `src/hook.js`, `src/hook.css` | First-visit hook: decode one real term by tapping its parts. Words come from `TERMS.json`. |
+| `package/` | The author's full project (Vite source, data records, scripts, tests, docs, posters in `public/`). The built `dist/`, the duplicate upload zip and `node_modules` were left out. |
+| `web/` | Share image and icons (`node ../tools/render-art.cjs web/art.json`). |
+
+## Publish a change
+1. In `package/`: `npm ci`, then `npm run build` (needs Node 22.12+).
+2. Copy `package/dist/index.html` to `source/index.html` and any new posters stay in `package/public/infographics`.
+3. `node build-web.mjs`, then commit `site/medlex`.
+
+The build stops with a clear message if the app's code changes in a way its patches no longer match (poster paths, manifest link, worker registration).

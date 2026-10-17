@@ -1,0 +1,31 @@
+{
+  "release": "MedLex illustrated library and Today welcome",
+  "topics": 40,
+  "newSkillGuides": 5,
+  "pitfallsPosters": 2,
+  "mnemonicPosters": 5,
+  "uniqueMnemonicCues": 50,
+  "newDirectionsPosters": 2,
+  "groups": {
+    "Decode & pronounce": 9,
+    "Common pitfalls": 2,
+    "Memory cues": 5,
+    "Directions & position": 3,
+    "Body systems": 14,
+    "Clinical concepts": 7
+  },
+  "rasterGeneration": "40 individually generated illustrated PNG posters; app uses optimized WebP copies, not rasterized SVG boards",
+  "courseData": "Ten original datasets exactly preserved, verified by integrity suite",
+  "functionalEvidence": [
+    "npm test: all seven suites passed",
+    "Infographics: 12 functional checks and five structural axe states passed",
+    "Welcome: seven functional groups and four structural axe states passed",
+    "Production: nine route/key-interaction smoke passed",
+    "Hosted: real 40-WebP fetch/export passed",
+    "Worker: shell, 40 poster precache and offline poster fallback passed"
+  ],
+  "limits": [
+    "No fresh native browser/device rendering, visual contrast or touchscreen/fullscreen audit in this environment.",
+    "Generated conceptual medical illustrations and custom memory cues are not independently medically approved."
+  ]
+}

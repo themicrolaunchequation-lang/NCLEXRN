@@ -1,0 +1,18 @@
+/* A steady 1 cm desktop gutter, independent of the page's content length. */
+main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: 30px 1cm 42px;
+}
+.focus-reading main { max-width: none; }
+@media (max-width: 900px) {
+  main { padding: 24px; }
+}
+@media (max-width: 600px) {
+  main { padding: 22px 16px 32px; }
+}
+@media print {
+  main { padding: 0; }
+}

@@ -1,0 +1,4 @@
+Pillow>=12
+# Optional font subset regeneration only:
+fonttools>=4.61
+brotli>=1.2

@@ -1,0 +1,20 @@
+{
+  "v1V2ThroughV3ToV4": true,
+  "originalLegacyKeysUntouched": true,
+  "v3ToV4": true,
+  "allFieldsPreserved": true,
+  "separateIndexedDBStores": 7,
+  "backupV4Roundtrip": true,
+  "readbackAfterReload": true,
+  "quotaFailureAndRecovery": true,
+  "rollbackMirror": true,
+  "fsrsPreservesDueUntilRated": true,
+  "fsrsPredictionEqualsRating": true,
+  "dueFirstDailyQueue": true,
+  "tenObjectiveResponses": true,
+  "correctScore": 9,
+  "total": 10,
+  "spellingDiff": true,
+  "masteryDecay": true,
+  "errors": []
+}

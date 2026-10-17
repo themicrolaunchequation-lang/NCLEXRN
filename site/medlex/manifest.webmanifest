@@ -1,0 +1,36 @@
+{
+  "id": "/medlex/",
+  "name": "MedLex · Healthcare Crown Academy",
+  "short_name": "MedLex",
+  "description": "A modular medical terminology course for healthcare practitioners. 26 modules, 13 body-system banks of 100 terms, word elements, classroom activities and active practice.",
+  "start_url": "/medlex#today",
+  "scope": "/medlex",
+  "display": "standalone",
+  "background_color": "#F8F5EF",
+  "theme_color": "#10253A",
+  "lang": "en-GB",
+  "categories": [
+    "education",
+    "medical"
+  ],
+  "icons": [
+    {
+      "src": "/medlex/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/medlex/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/medlex/img/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

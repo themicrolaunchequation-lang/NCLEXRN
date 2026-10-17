@@ -1,0 +1,194 @@
+// Phase 1: canonical features/library/visuals implementation.
+import { chapter } from '../../state/selectors.js';
+import { esc } from '../../ui/dom.js';
+
+export const VISUAL_PATHS = {
+  nose: '<path d="M31 6 20 39q-10 10 3 14 9-7 18 0 13-4 3-14L35 6M22 45l6-2m8 0 6 2"/>',
+  senses: '<path d="M4 22q18-22 36 0Q22 44 4 22Z" fill="var(--sage)"/><circle cx="22" cy="22" r="7"/><path d="M43 10q18-7 16 11-1 9-10 13-1 18-11 14m8-26q0-8 7-6m-19 40 11 4m-13-13 11 4"/>',
+  body: '<circle cx="32" cy="11" r="6"/><path d="M23 25q9-7 18 0l9 16m-27-16-9 16m12-15v17l-5 15m17-32v17l5 15M26 43h12"/>',
+  bone: '<path d="m22 17 25 25c10-5 16 6 9 11-1 8-13 8-14-1L17 27C7 32 2 20 9 15c1-8 13-8 13 2Z" fill="var(--sage)"/><path d="m23 25 16 16"/>',
+  muscle: '<path d="M8 43q13-3 16-17l7-12 9 4-5 11q15-4 20 9 7 16-13 16H18Z" fill="var(--sage)"/><path d="m31 14 5-6 10 2 1 8-7 1M24 41q7-12 18-4"/>',
+  joint: '<path d="m18 7 7 19q9 6 3 13l-7 17m23-49-7 19q-9 6-3 13l7 17"/><circle cx="31" cy="32" r="9" fill="var(--sage)"/><path d="m25 29 12 6"/>',
+  skin: '<path d="M6 23q7-8 13 0t13 0 13 0 13 0v29H6Z" fill="var(--sage)"/><path d="M6 36h52M6 44h52M24 15l8 15v15m0-17q-12-7-9-18M45 34v13m-4-6h8"/>',
+  blood: '<path d="M32 5C25 17 12 28 12 40a20 20 0 0 0 40 0C52 28 39 17 32 5Z" fill="var(--sage)"/><ellipse cx="32" cy="41" rx="11" ry="7"/><ellipse cx="32" cy="41" rx="4" ry="2"/>',
+  lymph: '<path d="M15 8q18 22 34 0M15 56q18-22 34 0M32 19v26"/><ellipse cx="32" cy="17" rx="7" ry="5" fill="var(--sage)"/><ellipse cx="19" cy="33" rx="7" ry="5" fill="var(--sage)"/><ellipse cx="46" cy="33" rx="7" ry="5" fill="var(--sage)"/><ellipse cx="32" cy="48" rx="7" ry="5" fill="var(--sage)"/>',
+  endocrine: '<path d="M32 5v16m0 19v19M7 31h14m22 0h14m-8-19L39 22M15 12l10 10m-10 30 10-10m24 10L39 42"/><path d="M31 25q-16-16-17 1t17 10q16 16 18-1T31 25Z" fill="var(--sage)"/>',
+  heart: '<path d="M33 17q-5-11-16-7C3 15 8 34 18 43l15 13 15-14c12-12 14-29 1-32-8-3-14 2-16 7Z" fill="var(--sage)"/><path d="M34 18v13l9 12M33 31l-12 9M30 17 26 5m10 11L42 5"/>',
+  vessel: '<path d="M7 17h50v30H7Z" fill="var(--sage)"/><path d="M7 25h50M7 39h50m-42-7h31m-7-4 7 4-7 4"/>',
+  lungs: '<path d="M28 8v21L17 41m19-33v21l11 12M28 25C13 10 5 30 5 45q1 12 15 7l8-5Zm8 0c15-15 23 5 23 20q-1 12-15 7l-8-5Z" fill="var(--sage)"/><path d="M28 18h8M28 12h8"/>',
+  stomach: '<path d="M29 6v18q10 8 15-4 17 4 13 22-3 17-24 14L16 45q-9-3-9 8M36 6v13" fill="var(--sage)"/><path d="M16 45q6-12 18-8"/>',
+  liver: '<path d="M5 25q23-18 49-9 13 3 5 17L39 49 8 45Z" fill="var(--sage)"/><path d="m35 18-5 29m0-16 20 1"/>',
+  gut: '<path d="M13 12q-7 0-7 8v27q0 8 8 8h34q10 0 10-9V20q0-8-8-8H13Z"/><path d="M18 21h26q6 0 6 6t-6 6H21q-7 0-7 7t7 7h23M20 21v-7m24 33v11" fill="var(--sage)"/>',
+  brain: '<path d="M31 12q-9-11-17-1-12 2-9 14-9 12 1 20 0 13 14 11 8 7 12-2 6 9 13 2 14 1 14-11 9-8 1-20 2-12-9-14-10-10-19 1Z" fill="var(--sage)"/><path d="M32 12v42M16 15q-3 9 4 12m-7 7q12-6 12 5m-7 9q-7-7-12-3m42-30q3 9-4 12m7 7q-12-6-12 5m7 9q7-7 12-3"/>',
+  nerve: '<path d="M30 24 13 8m17 16 2-19m-2 19L49 9M25 28 7 32m19 0L14 48m22-19 20 7M32 36v24"/><path d="m26 43 12 5-12 5"/><circle cx="31" cy="29" r="8" fill="var(--sage)"/>',
+  eye: '<path d="M3 32q29-34 58 0-29 34-58 0Z" fill="var(--sage)"/><circle cx="32" cy="32" r="11"/><circle cx="32" cy="32" r="4" fill="currentColor"/>',
+  ear: '<path d="M18 28q-8-23 14-24 24 0 18 24-2 9-12 13-3 18-15 13-7-3-5-12m8-19q-2-12 9-11 12 0 8 13l-9 9v9"/>',
+  kidney: '<path d="M23 8C2 8 4 54 23 55c13 1 14-14 5-20q-8-5 0-11 9-9-5-16Z" fill="var(--sage)"/><path d="M41 8c21 0 19 46 0 47-13 1-14-14-5-20q8-5 0-11-9-9 5-16Z" fill="var(--sage)"/><path d="M28 30v29m8-29v29"/>',
+  bladder: '<path d="M15 7v18m34-18v18M12 33q20-16 40 0 3 15-15 20v8H27v-8Q9 48 12 33Z" fill="var(--sage)"/>',
+  male: '<ellipse cx="23" cy="39" rx="16" ry="17" fill="var(--sage)"/><path d="m35 27 20-20M42 7h13v13"/>',
+  female: '<circle cx="31" cy="24" r="16" fill="var(--sage)"/><path d="M31 40v20m-10-9h20"/>',
+  uterus: '<path d="M24 25q8 5 16 0l-2 16-6 8-6-8Zm0 1L12 14Q2 9 5 23q3 9 10 7m25-4 12-12q10-5 7 9-3 9-10 7M32 49v11" fill="var(--sage)"/><ellipse cx="13" cy="31" rx="7" ry="4"/><ellipse cx="51" cy="31" rx="7" ry="4"/>',
+  infant: '<circle cx="32" cy="14" r="9" fill="var(--sage)"/><path d="M13 31q19-15 38 0L40 57H24Zm0 0 29 21m9-21L24 57" fill="var(--sage)"/>',
+  mind: '<path d="M44 59V44q15-7 10-24Q48 2 29 5 9 8 12 27L5 39h9v12h14v8" fill="var(--sage)"/><path d="M25 22q0-8 8-6 6-6 11 1 8 2 4 9-1 8-9 5-8 5-11-3Z"/>',
+  cell: '<circle cx="32" cy="32" r="25" fill="var(--sage)"/><circle cx="30" cy="31" r="10"/><path d="m16 19 4-2m23 28 4-3m-30 2 4 3m25-27 3 2"/>',
+  microbe: '<circle cx="32" cy="32" r="18" fill="var(--sage)"/><path d="M32 4v10m0 36v10M4 32h10m36 0h10M12 12l8 8m24 24 8 8M12 52l8-8m24-24 8-8"/><circle cx="26" cy="28" r="3"/><circle cx="39" cy="34" r="3"/><path d="m26 41 4 2"/>',
+  scan: '<rect x="7" y="7" width="50" height="50" rx="8"/><circle cx="32" cy="29" r="16" fill="var(--sage)"/><path d="M17 52h30m-15-5v9M17 29h30m-15-15v30"/>',
+  capsule: '<path d="m18 9 37 37c13 15-8 25-18 15L3 24C-8 12 7-2 18 9Z" transform="translate(6 0) scale(.88)" fill="var(--sage)"/><path d="m19 44 22-23"/>',
+  leaf: '<path d="M8 49Q2 8 56 7q3 43-38 47Zm1 7L47 18M24 39l-2-13m2 13 14 1" fill="var(--sage)"/>',
+  research: '<path d="M8 55h48M13 49V34h9v15m6 0V23h9v26m6 0V9h9v40"/><path d="m8 23 15-9 11 4L54 3"/>',
+  book: '<path d="M32 13Q17 4 5 10v42q14-7 27 1 13-8 27-1V10q-12-6-27 3Zm0 0v40" fill="var(--sage)"/>',
+  test: '<path d="M23 6h18M26 6v25L13 52q-4 7 5 7h28q9 0 5-7L38 31V6M20 42h24" fill="var(--sage)"/><circle cx="29" cy="49" r="2"/><circle cx="38" cy="54" r="2"/>',
+  procedure: '<path d="m7 52 8-13L47 7l10 10-32 32Zm8-13 10 10M36 18l10 10M7 52l-3 8 9-3" fill="var(--sage)"/>',
+  symptom: '<path d="m36 4-22 31h17l-4 25 23-34H33Z" fill="var(--sage)"/>',
+  condition: '<path d="M6 32h12l7-17 12 34 8-17h13"/><circle cx="32" cy="32" r="28"/>',
+  measure: '<rect x="7" y="19" width="50" height="27" rx="4"/><path d="M17 19v14m10-14v9m10-9v14m10-14v9"/>',
+  movement: '<path d="M7 22h49m-12-12 12 12-12 12M57 45H8m12-12L8 45l12 12"/>',
+  device: '<rect x="10" y="6" width="44" height="52" rx="6"/><rect x="17" y="14" width="30" height="24" rx="2" fill="var(--sage)"/><path d="M20 47h7m10 0h7"/>',
+  process: '<path d="M53 20A23 23 0 0 0 12 16l-4 7m0-15v15h15M11 44a23 23 0 0 0 41 4l4-7m0 15V41H41"/>',
+  label: '<path d="M7 8h25l26 26-24 24L7 31Z" fill="var(--sage)"/><circle cx="20" cy="21" r="4"/>'
+};
+export const SYSTEM_VISUALS = {
+  3: 'body',
+  4: 'bone',
+  5: 'skin',
+  6: 'blood',
+  7: 'lymph',
+  8: 'endocrine',
+  9: 'heart',
+  10: 'lungs',
+  11: 'gut',
+  12: 'brain',
+  13: 'senses',
+  14: 'kidney',
+  15: 'male',
+  16: 'uterus',
+  17: 'infant',
+  18: 'mind',
+  19: 'cell',
+  20: 'microbe',
+  21: 'scan',
+  22: 'capsule',
+  23: 'leaf',
+  24: 'research'
+};
+export const ROOT_VISUALS = {
+  heart: 'heart',
+  muscle: 'muscle',
+  joint: 'joint',
+  bone: 'bone',
+  skin: 'skin',
+  blood: 'blood',
+  lymph: 'lymph',
+  brain: 'brain',
+  nerve: 'nerve',
+  ear: 'ear',
+  eye: 'eye',
+  stomach: 'stomach',
+  liver: 'liver',
+  intestine: 'gut',
+  kidney: 'kidney',
+  uterus: 'uterus',
+  nose: 'nose',
+  cell: 'cell',
+  vessel: 'vessel',
+  bronchus: 'lungs',
+  chest: 'lungs',
+  'bladder here': 'bladder',
+  'bone marrow here': 'bone'
+};
+export const CATEGORY_VISUALS = {
+  Structure: 'body',
+  Movement: 'movement',
+  Condition: 'condition',
+  Symptom: 'symptom',
+  Sign: 'condition',
+  Procedure: 'procedure',
+  Lesion: 'cell',
+  Test: 'test',
+  Process: 'process',
+  Organism: 'microbe',
+  Medicine: 'capsule',
+  Measurement: 'measure',
+  Device: 'device',
+  Function: 'process',
+  Descriptor: 'label',
+  Specialty: 'book',
+  Concept: 'book'
+};
+export const ORGAN_LABELS = {
+  nose: 'Nose',
+  senses: 'Sensory systems',
+  body: 'Body',
+  bone: 'Bone',
+  muscle: 'Muscle',
+  joint: 'Joint',
+  skin: 'Skin',
+  blood: 'Blood',
+  lymph: 'Lymphatic system',
+  endocrine: 'Endocrine system',
+  heart: 'Heart',
+  vessel: 'Blood vessel',
+  lungs: 'Lungs',
+  stomach: 'Stomach',
+  liver: 'Liver',
+  gut: 'Intestine',
+  brain: 'Brain',
+  nerve: 'Nerve',
+  eye: 'Eye',
+  ear: 'Ear',
+  kidney: 'Kidneys',
+  bladder: 'Bladder',
+  male: 'Male reproductive context',
+  female: 'Female reproductive context',
+  uterus: 'Uterus',
+  infant: 'Birth and newborn context',
+  mind: 'Mental health context',
+  cell: 'Cell',
+  microbe: 'Microorganism',
+  scan: 'Medical imaging',
+  capsule: 'Medicine',
+  leaf: 'Complementary therapy context',
+  research: 'Research and public health',
+  book: 'Learning concept'
+};
+export function termVisual(t) {
+  const root = t.parts.find(p => p.type === 'root' && ROOT_VISUALS[p.meaning]),
+    system = root ? ROOT_VISUALS[root.meaning] : SYSTEM_VISUALS[t.chapter] || 'book';
+  let category = t.category || '';
+  if (!category) {
+    if (t.parts.some(p => /surgical/.test(p.meaning))) category = 'Procedure';else if (t.parts.some(p => /record|examination|viewing/.test(p.meaning))) category = 'Test';else if (t.parts.some(p => /inflammation|disease|hardening|enlargement|paralysis|pain|blood condition/.test(p.meaning))) category = 'Condition';
+  }
+  return {
+    system,
+    label: root ? ORGAN_LABELS[system] || chapter(t.chapter).name : chapter(t.chapter).name,
+    category,
+    categoryIcon: CATEGORY_VISUALS[category] || ''
+  };
+}
+export function visualSVG(key, cls = '', hidden = true) {
+  return `<svg class="term-symbol ${cls}" viewBox="0 0 64 64" ${hidden ? 'aria-hidden="true"' : `role="img" aria-label="${esc(ORGAN_LABELS[key] || key)} icon"`} fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><use href="#medlex-visual-${key}"></use></svg>`;
+}
+export function termVisualIcon(t) {
+  const v = termVisual(t);
+  return visualSVG(v.system) + (v.categoryIcon && v.categoryIcon !== v.system ? `<span class="visual-category-mark">${visualSVG(v.categoryIcon)}</span>` : '');
+}
+export function arteryConcept() {
+  return `<svg class="artery-concept" viewBox="0 0 440 190" role="img" aria-label="Concept diagram of fatty plaque in an artery wall, with an open central passage"><rect x="20" y="40" width="400" height="110" rx="48" fill="var(--hero-bg)" stroke="var(--primary)" stroke-width="3"/><path class="artery-wall" d="M66 57h308q32 0 32 38t-32 38H66q-32 0-32-38t32-38Z" fill="var(--panel)" stroke="var(--primary)" stroke-width="2"/><path class="artery-plaque" d="M110 57q50 0 65 29t47-2 53-27Z" fill="var(--gold)" stroke="var(--ink)" stroke-width="1.5"/><path class="artery-passage" d="M74 107h273m-14-8 14 8-14 8" fill="none" stroke="var(--primary)" stroke-width="3"/><text x="33" y="28">Artery wall</text><path d="m80 31 0 14" stroke="var(--muted)"/><text x="100" y="177">Fatty plaque</text><path d="m194 158 0-64" stroke="var(--muted)"/><text x="270" y="177">Open passage</text><path d="m325 157 0-41" stroke="var(--muted)"/></svg>`;
+}
+export function termVisualPanel(t) {
+  const v = termVisual(t),
+    roots = t.parts.filter(p => p.type === 'root'),
+    special = t.id === 'atherosclerosis';
+  return `<details class="term-visual-panel"><summary><span class="visual-summary-icon">${visualSVG(v.system)}</span><span><strong>Visual learning cue</strong><small>${esc(v.label)}${v.category ? ' · ' + esc(v.category) : ''} · open illustration</small></span></summary><div class="visual-learning-grid"><figure>${special ? arteryConcept() : visualSVG(v.system, 'visual-large', false)}<figcaption>${special ? 'Concept illustration · not to scale.' : 'Original system / organ icon · schematic, not anatomical scale.'}</figcaption></figure><div><span class="eyebrow">CONNECT WORD AND CONTEXT</span><h2 class="visual-term-title">${esc(t.term)}</h2><dl><div><dt>Visual cue</dt><dd>${esc(v.label)}</dd></div><div><dt>Chapter</dt><dd>${esc(chapter(t.chapter).name)}</dd></div>${v.category ? `<div><dt>Concept type</dt><dd><span class="visual-type-inline">${visualSVG(v.categoryIcon)}${esc(v.category)}</span></dd></div>` : ''}${roots.length ? `<div><dt>Root clues</dt><dd>${roots.map(p => `${esc(p.text)} — ${esc(p.meaning)}`).join('; ')}</dd></div>` : ''}</dl><p class="language-note">${special ? esc(t.plain) : 'This visual connects the term to its learning context. Read the full definition for the specific meaning.'}</p><div class="term-actions"><a class="btn small" href="#learn/module/ch${t.chapter}/bank">Explore this chapter</a><a class="text-button" href="https://medlineplus.gov/${special ? 'ency/article/000171.htm' : 'anatomy.html'}" target="_blank" rel="noopener noreferrer">${special ? 'Related reference' : 'Anatomy reference'} ↗</a></div></div></div></details>`;
+}
+export function installVisualSymbols() {
+  if (document.getElementById('medlexVisualSymbols')) return;
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.id = 'medlexVisualSymbols';
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('width', '0');
+  svg.setAttribute('height', '0');
+  svg.style.cssText = 'position:absolute;overflow:hidden;pointer-events:none';
+  svg.innerHTML = Object.entries(VISUAL_PATHS).map(([key, path]) => `<symbol id="medlex-visual-${key}" viewBox="0 0 64 64">${path}</symbol>`).join('');
+  document.body.append(svg);
+}

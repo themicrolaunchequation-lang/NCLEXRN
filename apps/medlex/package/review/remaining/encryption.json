@@ -1,0 +1,7 @@
+{
+  "historicalV3AES256GCMDecrypt": true,
+  "v3LearningRecordRestored": true,
+  "v4EncryptedRoundtrip": true,
+  "wrongPasswordRejected": true,
+  "errors": []
+}

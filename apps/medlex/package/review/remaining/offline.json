@@ -1,0 +1,15 @@
+{
+  "manifestValid": true,
+  "iconSizesVerified": [
+    192,
+    512
+  ],
+  "serviceWorkerInstallCache": true,
+  "rasterPostersPrecached": 56,
+  "offlineRasterFetch": true,
+  "offlineNavigationFallback": true,
+  "unrelatedCachesPreserved": true,
+  "externalRequestsNotIntercepted": true,
+  "method": "Executed generated worker handlers with in-memory Cache API mocks; actual installability requires HTTPS and browser support",
+  "errors": []
+}

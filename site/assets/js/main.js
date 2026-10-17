@@ -660,6 +660,31 @@
       }));
     }
 
+    const decode = $('[data-mini-decode]');
+    if (decode) {
+      const result = $('[data-md-result]', decode);
+      const parts = $$('.md-part', decode);
+      parts.forEach((btn) => btn.addEventListener('click', () => {
+        if (btn.classList.contains('is-found')) return;
+        btn.classList.add('is-found');
+        btn.setAttribute('aria-pressed', 'true');
+        $('small', btn).textContent = btn.dataset.meaning;
+        const found = parts.filter((p) => p.classList.contains('is-found'));
+        if (found.length < parts.length) { result.textContent = found.length + ' of ' + parts.length + ' parts decoded'; return; }
+        result.innerHTML = '';
+        const sum = document.createElement('p');
+        sum.textContent = 'fast + heart + condition';
+        const def = document.createElement('p');
+        const term = document.createElement('strong');
+        term.textContent = 'Tachycardia';
+        def.append(term, ': the heart is beating faster than expected.');
+        const more = document.createElement('a');
+        more.href = '/medlex';
+        more.textContent = 'Decode 1,480 more in MedLex →';
+        result.append(sum, def, more);
+      }));
+    }
+
     const breath = $('[data-mini-breath]');
     if (breath) {
       const cue = $('[data-mb-cue]', breath);

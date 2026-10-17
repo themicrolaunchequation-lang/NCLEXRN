@@ -1,0 +1,17 @@
+{
+  "profile": "Chromium headless, 1440x900, local file, 4x CPU throttling; automated fill-to-result timing includes automation overhead and is not field INP",
+  "paints": [
+    {
+      "name": "first-paint",
+      "startTime": 336
+    },
+    {
+      "name": "first-contentful-paint",
+      "startTime": 336
+    }
+  ],
+  "termSearchMs": 161.65815699999985,
+  "paletteSearchMs": 139.80434499999956,
+  "externalRequests": [],
+  "errors": []
+}

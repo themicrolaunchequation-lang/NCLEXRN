@@ -1,0 +1,143 @@
+{
+  "phase": 0,
+  "release": "D1\u2013D18 defect corrections",
+  "schemaVersion": 3,
+  "contentPreserved": {
+    "collections": 10,
+    "terms": 1480,
+    "prefixes": 100,
+    "suffixes": 100,
+    "modules": 26
+  },
+  "size": {
+    "beforeBytes": 999971,
+    "beforeGzipBytes": 329074,
+    "afterBytes": 1029353,
+    "afterGzipBytes": 336385,
+    "sha256": "dc37cb74d2b11b1f7b4ccdfd55c48faada3f4a5b3e05a41cc2f662582d611d2b"
+  },
+  "layout": {
+    "mainViews": 336,
+    "worksheetViews": 48,
+    "totalViews": 384,
+    "widths": [
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "themes": [
+      "light",
+      "dark",
+      "high contrast"
+    ],
+    "overflow": 0,
+    "visibleTextBelow14px": 0,
+    "textScale150PercentChecks": 3
+  },
+  "axe": {
+    "mainViews": 168,
+    "worksheetStates": 24,
+    "dialogStates": 18,
+    "totalChecks": 210,
+    "violations": 0,
+    "browser": "Chromium 153"
+  },
+  "browserFlows": {
+    "D13": true,
+    "D6": true,
+    "D15": true,
+    "D7": true,
+    "D8": true,
+    "D18": true,
+    "D1": true,
+    "D3": true,
+    "D4": true,
+    "D2": true,
+    "storageFailure": true,
+    "D5": true,
+    "D10": true,
+    "D9": true,
+    "D11": true,
+    "D12": true,
+    "D14": true,
+    "D17": true
+  },
+  "dom": {
+    "worksheetRoute": true,
+    "allFourSteps": true,
+    "draftsPreserved": true,
+    "rowControls": true,
+    "printExports": true,
+    "portfolioSelfReview": true,
+    "completionUnchanged": true,
+    "storageFailureAndRecovery": true,
+    "exportWhileStorageBlocked": true,
+    "backupValidation": true,
+    "schedulerIntervalsExact": true,
+    "settingsAndPalette": true,
+    "onboardingFocus": true,
+    "milestoneHumanCopy": true,
+    "errors": []
+  },
+  "migrationAndIntegrity": {
+    "contentCollections": 10,
+    "migration": true,
+    "legacyKeysUnchanged": true,
+    "v3Roundtrip": true,
+    "practiceModes": true,
+    "search": true,
+    "srsRatings": 4,
+    "errors": []
+  },
+  "studios": {
+    "studios": 12,
+    "baselineItems": 12,
+    "reflectionTypes": 3,
+    "editorOverlay": true,
+    "assignments": true,
+    "feedback": true,
+    "expandedBackup": true,
+    "matchingBoard": true,
+    "onboarding": true,
+    "errors": []
+  },
+  "encryptedBackupFlows": {
+    "baseline": true,
+    "clinical": true,
+    "explanation": true,
+    "editorial": true,
+    "assignments": true,
+    "educatorFeedback": true,
+    "encryptedRoundtrip": true,
+    "atlasJourney": true,
+    "focusMode": true,
+    "mobileNavigation": true,
+    "reducedMotion": true,
+    "errors": []
+  },
+  "reducedMotion": [
+    {
+      "motion": "OS reduce",
+      "value": "reduce"
+    },
+    {
+      "motion": "Override full",
+      "value": "full"
+    },
+    {
+      "motion": "Override reduce",
+      "transformedOrAnimated": []
+    }
+  ],
+  "limits": [
+    "Only Phase 0 is implemented; Phases 1\u20136 await the requested review.",
+    "No v4 schema or IndexedDB migration is introduced yet. Existing v2/v3 and AES-GCM backups remain supported.",
+    "Chromium automation and visual spot checks do not certify WCAG compliance; human screen-reader, medical and curriculum review remain necessary.",
+    "Firefox, WebKit, physical mobile devices, final performance targets and full print-quality audit have not been verified in this phase."
+  ],
+  "screenshots": {
+    "files": 100,
+    "comparisonPairs": 40
+  }
+}

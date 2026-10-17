@@ -1,0 +1,43 @@
+{
+  "counts": {
+    "CHAPTERS": 24,
+    "TERMS": 1480,
+    "CODE_QUESTIONS": 8,
+    "CASES": 10,
+    "QUOTES": 4,
+    "SUFFIXES": 100,
+    "PREFIXES": 100,
+    "LESSONS": 7,
+    "CONFUSIONS": 6,
+    "COURSE_MODULES": 26
+  },
+  "moduleClassroomActivities": 128,
+  "moduleIndependentActivities": 78,
+  "termFields": [
+    "id",
+    "term",
+    "chapter",
+    "definition",
+    "plain",
+    "parts",
+    "example",
+    "aliases",
+    "note"
+  ],
+  "moduleFields": [
+    "id",
+    "chapter",
+    "title",
+    "track",
+    "subtitle",
+    "minutes",
+    "words",
+    "sections",
+    "outcomes",
+    "classroom",
+    "independent",
+    "case",
+    "reference",
+    "status"
+  ]
+}

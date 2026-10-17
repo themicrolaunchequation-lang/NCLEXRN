@@ -1,0 +1,18 @@
+{
+  "method": "Production minified HTML executed in JSDOM, without the test bridge",
+  "routes": [
+    "today",
+    "learn",
+    "learn/module/ch9/words",
+    "library/terms",
+    "library/lab",
+    "library/atlas",
+    "practice",
+    "progress",
+    "settings/data"
+  ],
+  "sharedPreview": true,
+  "wordSelection": true,
+  "sceneControls": true,
+  "errors": []
+}

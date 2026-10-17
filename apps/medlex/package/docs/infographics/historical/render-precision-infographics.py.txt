@@ -1,0 +1,157 @@
+from pathlib import Path
+import json,base64,re,io,math
+from PIL import Image,ImageDraw,ImageFont
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import sys
+ROOT=Path(__file__).resolve().parents[1];OUT=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else ROOT/'generated-infographics';ORIG=OUT/'originals';ORIG.mkdir(parents=True,exist_ok=True);(OUT/'review').mkdir(exist_ok=True)
+SERIF='/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf';SANS='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf';BOLD='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+W,H=1800,2400;BG='#F8F5EF';NAVY='#10253A';TEAL='#076D69';GOLD='#9A7026';MUTED='#4C616B';COPPER='#99512C'
+new=json.loads((ROOT/'src/features/infographics/catalog.json').read_text());audit=[]
+def font(n,bold=False,serif=False):return ImageFont.truetype(SERIF if serif else BOLD if bold else SANS,n)
+def wrap(draw,text,f,width):
+ lines=[];line=''
+ for word in text.split():
+  trial=(line+' '+word).strip()
+  if draw.textlength(trial,font=f)>width and line:lines.append(line);line=word
+  else:line=trial
+ if line:lines.append(line)
+ return lines
+def text(draw,xy,s,size=34,width=1500,fill=NAVY,bold=False,serif=False,leading=1.35):
+ f=font(size,bold,serif);x,y=xy
+ for line in wrap(draw,s,f,width):
+  box=draw.textbbox((x,y),line,font=f);assert box[2]<=W-55,(s,box)
+  draw.text((x,y),line,font=f,fill=fill);y+=round(size*leading)
+ return y
+
+def base(item):
+ im=Image.new('RGB',(W,H),BG);d=ImageDraw.Draw(im)
+ # Fine printed-paper frame, with deterministic typography and original crest.
+ d.rounded_rectangle((28,28,W-28,H-28),radius=32,outline='#DED6C2',width=2)
+ crest=Image.open(ROOT/'src/features/infographics/raster/MedLex-Crest.png').convert('RGBA');crest.thumbnail((136,136));im.paste(crest,(75,55),crest)
+ text(d,(242,62),'Healthcare Crown Academy',34,bold=True)
+ text(d,(242,104),'MedLex',57,fill=TEAL,serif=True)
+ d.line((75,214,W-75,214),fill=GOLD,width=3)
+ text(d,(78,245),'DIRECTIONS & POSITION  /  EXAM FOCUS',25,fill=TEAL,bold=True)
+ y=text(d,(75,295),item['title'],75,width=W-150,serif=True,leading=1.12)
+ return im,d,max(485,y+35)
+def footer(im,d,item,start):
+ y=max(start,2030);d.rounded_rectangle((75,y,W-75,y+205),radius=24,fill='#E8EFE9',outline='#AEC8B7',width=2)
+ text(d,(103,y+19),'RECALL BEFORE YOU CHECK',24,fill=TEAL,bold=True)
+ text(d,(103,y+60),item['question'],34,width=W-220,bold=True)
+ text(d,(75,2280),'Healthcare Crown Academy | MedLex',27,bold=True)
+ text(d,(75,2325),'Original schematic · Not to scale · Review before clinical teaching use',23,fill=MUTED)
+ p=ORIG/(item['id']+'.png');im.save(p);audit.append({'id':item['id'],'size':im.size,'method':'Pillow typesetting and mathematically constructed schematic; no generated anatomy','question_answer_separate':True});print(p)
+def card(d,box,label,body):
+ x,y,x2,y2=box;d.rounded_rectangle(box,radius=23,fill='white',outline='#D5DED8',width=2)
+ yy=text(d,(x+26,y+22),label,38,width=x2-x-52,bold=True,fill=TEAL)
+ text(d,(x+26,yy+12),body,30,width=x2-x-52)
+def plane_plot(kind):
+ fig=plt.figure(figsize=(5.2,6),dpi=180);fig.patch.set_alpha(0);ax=fig.add_subplot(projection='3d');ax.set_facecolor('none')
+ x0,x1=-.8,.8;y0,y1=-.5,.5;z0,z1=0,3.7
+ V=[[(x0,y0,z0),(x1,y0,z0),(x1,y0,z1),(x0,y0,z1)],[(x1,y0,z0),(x1,y1,z0),(x1,y1,z1),(x1,y0,z1)],[(x0,y1,z0),(x1,y1,z0),(x1,y1,z1),(x0,y1,z1)],[(x0,y0,z0),(x0,y1,z0),(x0,y1,z1),(x0,y0,z1)],[(x0,y0,z1),(x1,y0,z1),(x1,y1,z1),(x0,y1,z1)]]
+ ax.add_collection3d(Poly3DCollection(V,facecolors='#8CAAA4',edgecolors='#416862',linewidths=.7,alpha=.15))
+ if kind in ['sagittal','median','parasagittal']:
+  x=.36 if kind=='parasagittal' else 0;P=[(x,-.85,-.1),(x,.85,-.1),(x,.85,3.95),(x,-.85,3.95)];c=TEAL
+ elif kind=='coronal':P=[(-1.2,0,-.1),(1.2,0,-.1),(1.2,0,3.95),(-1.2,0,3.95)];c=COPPER
+ elif kind=='transverse':P=[(-1.2,-.85,1.8),(1.2,-.85,1.8),(1.2,.85,1.8),(-1.2,.85,1.8)];c='#466A97'
+ else:P=[(x,y,1.8+.85*x+.4*y) for x,y in [(-1.2,-.85),(1.2,-.85),(1.2,.85),(-1.2,.85)]];c=GOLD
+ ax.add_collection3d(Poly3DCollection([P],facecolors=c,edgecolors=c,linewidths=1.8,alpha=.62))
+ # Front marker gives one unambiguous orientation for every schematic block.
+ ax.text(0,-.64,.5,'FRONT',zdir='x',color=NAVY,fontsize=9,ha='center');ax.plot([0,0],[-.52,-.52],[0,3.7],color='#BAC8C1',ls=':',lw=.8)
+ ax.set(xlim=(-1.3,1.3),ylim=(-.9,.9),zlim=(-.1,4));ax.set_box_aspect((1.7,1.1,3.9));ax.view_init(elev=16,azim=-63);ax.set_axis_off();fig.subplots_adjust(0,0,1,1)
+ buf=io.BytesIO();fig.savefig(buf,format='png',transparent=True,pad_inches=0);plt.close(fig);buf.seek(0);return Image.open(buf).convert('RGBA')
+
+def planes(item,second=False):
+ im,d,y=base(item);kinds=['median','parasagittal','oblique'] if second else ['sagittal','coronal','transverse']
+ for i,kind in enumerate(kinds):
+  x=75+i*555;d.rounded_rectangle((x,y,x+540,y+1120),radius=25,fill='#FFFDF8',outline='#D7DED6',width=2)
+  term=item['terms'][i];text(d,(x+22,y+28),term['term'],34,width=498,bold=True,fill=TEAL)
+  plot=plane_plot(kind);plot.thumbnail((530,700));im.paste(plot,(x+(540-plot.width)//2,y+125),plot)
+  text(d,(x+27,y+850),term['definition'],35,width=485)
+ card(d,(75,y+1150,W-75,y+1450),'EXAM DISTINCTION',item['caution']+' '+item['terms'][3]['definition'])
+ footer(im,d,item,y+1480)
+
+def arrow(d,a,b,color=TEAL,width=8):
+ d.line((a,b),fill=color,width=width);theta=math.atan2(b[1]-a[1],b[0]-a[0]);L=23
+ d.polygon([b,(b[0]-L*math.cos(theta-.5),b[1]-L*math.sin(theta-.5)),(b[0]-L*math.cos(theta+.5),b[1]-L*math.sin(theta+.5))],fill=color)
+
+def positions(item):
+ im,d,y=base(item)
+ # Abstract side/profile figures are original schematics, with explicit contact labels.
+ for i,t in enumerate(item['terms']):
+  x=75+(i%2)*840;yy=y+(i//2)*690;d.rounded_rectangle((x,yy,x+810,yy+665),radius=25,fill='white',outline='#D5DED8',width=2)
+  text(d,(x+28,yy+23),t['term'],37,width=750,bold=True,fill=TEAL)
+  bed=yy+365;d.rounded_rectangle((x+35,bed,x+775,bed+28),radius=10,fill='#D8D7CC');d.line((x+65,bed+30,x+65,bed+88),fill=MUTED,width=9);d.line((x+735,bed+30,x+735,bed+88),fill=MUTED,width=9)
+  if i<2:
+   head=(x+155,bed-78);d.ellipse((head[0]-55,head[1]-55,head[0]+55,head[1]+55),fill='#C6D8CD',outline=NAVY,width=4)
+   # Face marker points up for supine and down for prone, explicitly labelled.
+   nose_y=head[1]-73 if i==0 else head[1]+73;d.polygon([(head[0]-14,head[1]+(-46 if i==0 else 46)),(head[0]+14,head[1]+(-46 if i==0 else 46)),(head[0],nose_y)],fill=TEAL)
+   d.rounded_rectangle((x+220,bed-112,x+600,bed-25),radius=37,fill='#DAE5DD',outline=NAVY,width=4);d.line((x+570,bed-65,x+730,bed-42),fill=NAVY,width=18)
+   text(d,(x+40,yy+145),'FACE UP' if i==0 else 'FACE DOWN',27,bold=True,fill=TEAL)
+  else:
+   # End-on view: side labels are the source of orientation, avoiding mirror ambiguity.
+   d.ellipse((x+205,yy+172,x+590,bed-7),fill='#DAE5DD',outline=NAVY,width=4)
+   d.line((x+225,yy+260,x+570,yy+260),fill='#AAC1B2',width=3)
+   top='RIGHT side up' if i==2 else 'LEFT side up';bottom='LEFT side down' if i==2 else 'RIGHT side down'
+   text(d,(x+260,yy+190),top,27,width=450,bold=True);text(d,(x+245,bed-74),bottom,27,width=490,bold=True,fill=TEAL)
+  text(d,(x+30,yy+480),t['definition'],35,width=745)
+ text(d,(82,y+1365),item['caution'],32,width=1630,bold=True,leading=1.22)
+ footer(im,d,item,y+1500)
+
+def movements(item):
+ im,d,y=base(item)
+ for i,t in enumerate(item['terms']):
+  x=75+(i%2)*840;yy=y+(i//2)*680;d.rounded_rectangle((x,yy,x+810,yy+655),radius=25,fill='white',outline='#D5DED8',width=2)
+  text(d,(x+28,yy+22),t['term'],35,width=750,bold=True,fill=TEAL)
+  if i==0:
+   # Same upper arm and hinge, with bent and straight forearm states.
+   pivot=(x+355,yy+305);d.line((x+355,yy+150,*pivot),fill=NAVY,width=18)
+   d.line((*pivot,x+525,yy+305),fill=TEAL,width=18);d.line((*pivot,x+355,yy+470),fill=COPPER,width=18)
+   d.ellipse((pivot[0]-16,pivot[1]-16,pivot[0]+16,pivot[1]+16),fill=GOLD)
+   text(d,(x+505,yy+330),'Flexion',27,fill=TEAL);text(d,(x+390,yy+440),'Extension',27,fill=COPPER)
+  elif i==1:
+   # Neutral arm and two path arrows about a shoulder; body midline is explicit.
+   d.line((x+340,yy+160,x+340,yy+460),fill='#A8BAB4',width=5)
+   d.ellipse((x+297,yy+133,x+383,yy+219),outline=NAVY,width=6)
+   d.line((x+340,yy+220,x+340,yy+445),fill=NAVY,width=14)
+   d.line((x+420,yy+247,x+420,yy+450),fill=COPPER,width=14);d.line((x+420,yy+247,x+645,yy+320),fill=TEAL,width=14)
+   arrow(d,(x+455,yy+340),(x+590,yy+340));arrow(d,(x+590,yy+390),(x+455,yy+390),COPPER)
+   text(d,(x+470,yy+190),'Away / toward',26,width=330);text(d,(x+80,yy+350),'Body midline',24,width=210)
+  else:
+   words=['Palm posterior','Palm anterior'] if i==2 else ['Toward shin','Toes point away']
+   for j,word in enumerate(words):
+    d.rounded_rectangle((x+42,yy+185+j*117,x+765,yy+278+j*117),radius=18,fill='#E8EFE9' if j==0 else '#F0E7DB')
+    text(d,(x+70,yy+212+j*117),word,38,width=670,bold=True,fill=TEAL if j==0 else COPPER)
+  text(d,(x+28,yy+495),t['definition'],31,width=750)
+ text(d,(82,y+1380),item['caution'],35,width=1630)
+ footer(im,d,item,y+1480)
+
+def quadrants(item):
+ im,d,y=base(item);text(d,(90,y),'ANTERIOR VIEW  ·  facing the patient',31,fill=TEAL,bold=True)
+ # Map is an original location schematic, not an organ atlas.
+ left,right,top,bottom=425,1375,y+160,y+1000;cx=(left+right)//2;cy=(top+bottom)//2
+ d.rounded_rectangle((left-70,top-90,right+70,bottom+120),radius=200,fill='#EAECE2',outline=NAVY,width=5)
+ colors=['#CEE0D7','#E5D4BE','#D2DDEC','#E8D8CA']
+ labels=[('RUQ','Patient’s right upper'),('LUQ','Patient’s left upper'),('RLQ','Patient’s right lower'),('LLQ','Patient’s left lower')]
+ for i,(short,meaning) in enumerate(labels):
+  x=left+(i%2)*(right-left)//2;yy=top+(i//2)*(bottom-top)//2
+  d.rectangle((x,yy,x+(right-left)//2,yy+(bottom-top)//2),fill=colors[i])
+  text(d,(x+100,yy+155),short,77,width=430,bold=True,fill=TEAL if i%2==0 else COPPER)
+  text(d,(x+35,yy+280),meaning,28,width=405)
+ d.line((cx,top-35,cx,bottom+35),fill=NAVY,width=6);d.line((left-35,cy,right+35,cy),fill=NAVY,width=6);d.ellipse((cx-16,cy-16,cx+16,cy+16),fill=GOLD,outline=BG,width=3)
+ text(d,(100,top+10),'PATIENT’S RIGHT',27,width=300,bold=True,fill=TEAL)
+ text(d,(right+40,top+10),'PATIENT’S LEFT',27,width=340,bold=True,fill=COPPER)
+ text(d,(1140,cy+28),'Umbilical line',25,width=560);text(d,(left, bottom+185),'The diagram shows quadrants, not organ boundaries.',30,width=1040,fill=MUTED)
+ card(d,(75,y+1270,W-75,y+1480),'EXAM DISTINCTION',item['caution'])
+ footer(im,d,item,2030)
+
+for item in new:
+ if item['id']=='directions-3':planes(item)
+ elif item['id']=='directions-4':planes(item,True)
+ elif item['id']=='directions-5':positions(item)
+ elif item['id']=='directions-6':movements(item)
+ elif item['id']=='directions-7':quadrants(item)
+(OUT/'review/precision-layout.json').write_text(json.dumps(audit,indent=2))

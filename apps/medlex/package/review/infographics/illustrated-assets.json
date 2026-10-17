@@ -1,0 +1,13 @@
+{
+  "all_raster_posters": 56,
+  "illustrated_replacements": 5,
+  "verified_webp_hashes": 56,
+  "new_pngs_verified": 16,
+  "production_prompts_removed_from_ui": true,
+  "method": "Pillow raster decode, SHA-256, production HTML content checks; illustrated poster review used the generated outputs and contact sheet.",
+  "standalone_bytes": 26053731,
+  "host_file_limit": 26214400,
+  "standalone_within_host_limit": true,
+  "webp_quality_of_five_replacements": 84,
+  "original_pngs_unchanged_by_optimization": true
+}

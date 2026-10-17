@@ -1,0 +1,511 @@
+{
+  "routes": [
+    {
+      "old": "home",
+      "expected": "today",
+      "actual": "#today"
+    },
+    {
+      "old": "modules",
+      "expected": "learn",
+      "actual": "#learn"
+    },
+    {
+      "old": "systems",
+      "expected": "learn?view=systems",
+      "actual": "#learn?view=systems"
+    },
+    {
+      "old": "library",
+      "expected": "library/terms",
+      "actual": "#library/terms"
+    },
+    {
+      "old": "affixes",
+      "expected": "library/parts",
+      "actual": "#library/parts"
+    },
+    {
+      "old": "wordlab",
+      "expected": "library/lab",
+      "actual": "#library/lab"
+    },
+    {
+      "old": "toolkit",
+      "expected": "teach/resources",
+      "actual": "#teach/resources"
+    },
+    {
+      "old": "tools",
+      "expected": "teach/resources",
+      "actual": "#teach/resources"
+    },
+    {
+      "old": "explore/terms",
+      "expected": "library/terms",
+      "actual": "#library/terms"
+    },
+    {
+      "old": "explore/elements",
+      "expected": "library/parts",
+      "actual": "#library/parts"
+    },
+    {
+      "old": "explore/lab",
+      "expected": "library/lab",
+      "actual": "#library/lab"
+    },
+    {
+      "old": "studio/hub",
+      "expected": "library/terms",
+      "actual": "#library/terms"
+    },
+    {
+      "old": "studio/adaptive",
+      "expected": "practice/adaptive",
+      "actual": "#practice/adaptive"
+    },
+    {
+      "old": "studio/clinical",
+      "expected": "practice/clinical",
+      "actual": "#practice/clinical"
+    },
+    {
+      "old": "studio/explain",
+      "expected": "practice/explain",
+      "actual": "#practice/explain"
+    },
+    {
+      "old": "studio/confusions",
+      "expected": "practice/confusions",
+      "actual": "#practice/confusions"
+    },
+    {
+      "old": "studio/matching",
+      "expected": "practice/matching",
+      "actual": "#practice/matching"
+    },
+    {
+      "old": "studio/atlas",
+      "expected": "library/atlas",
+      "actual": "#library/atlas"
+    },
+    {
+      "old": "studio/pronunciation",
+      "expected": "library/pronunciation",
+      "actual": "#library/pronunciation"
+    },
+    {
+      "old": "studio/coding",
+      "expected": "practice/coding",
+      "actual": "#practice/coding"
+    },
+    {
+      "old": "studio/educator",
+      "expected": "teach/assignments",
+      "actual": "#teach/assignments"
+    },
+    {
+      "old": "studio/portfolio",
+      "expected": "progress/portfolio",
+      "actual": "#progress/portfolio"
+    },
+    {
+      "old": "studio/editor",
+      "expected": "teach/editor",
+      "actual": "#teach/editor"
+    },
+    {
+      "old": "learn/module/ch1/outline",
+      "expected": "learn/module/ch1/overview",
+      "actual": "#learn/module/ch1/overview"
+    },
+    {
+      "old": "learn/module/ch1/outcomes",
+      "expected": "learn/module/ch1/overview",
+      "actual": "#learn/module/ch1/overview"
+    },
+    {
+      "old": "learn/module/ch1/bank",
+      "expected": "learn/module/ch1/words",
+      "actual": "#learn/module/ch1/words"
+    },
+    {
+      "old": "learn/module/ch1/classroom",
+      "expected": "learn/module/ch1/activities",
+      "actual": "#learn/module/ch1/activities?type=classroom"
+    },
+    {
+      "old": "learn/module/ch1/independent",
+      "expected": "learn/module/ch1/activities",
+      "actual": "#learn/module/ch1/activities?type=independent"
+    },
+    {
+      "old": "learn/module/ch1/references",
+      "expected": "learn/module/ch1/resources",
+      "actual": "#learn/module/ch1/resources"
+    },
+    {
+      "old": "module?id=ch1&tab=bank",
+      "expected": "learn/module/ch1/words",
+      "actual": "#learn/module/ch1/words?id=ch1&tab=bank"
+    },
+    {
+      "old": "module?id=ch1&tab=independent",
+      "expected": "learn/module/ch1/activities",
+      "actual": "#learn/module/ch1/activities?id=ch1&tab=independent&type=independent"
+    }
+  ],
+  "zoom": [
+    {
+      "route": "today",
+      "overflow": false
+    },
+    {
+      "route": "learn",
+      "overflow": false
+    },
+    {
+      "route": "learn/module/ch1/activities",
+      "overflow": false
+    },
+    {
+      "route": "practice",
+      "overflow": false
+    },
+    {
+      "route": "library/terms",
+      "overflow": false
+    },
+    {
+      "route": "library/term/pericarditis",
+      "overflow": false
+    },
+    {
+      "route": "progress",
+      "overflow": false
+    },
+    {
+      "route": "settings/data",
+      "overflow": false
+    },
+    {
+      "route": "worksheet/work",
+      "overflow": false
+    }
+  ],
+  "textScale": [
+    {
+      "width": 390,
+      "route": "today",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "learn",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "learn?view=grid",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "learn?view=systems",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "learn/module/ch1/overview",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "learn/module/ch1/words",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "learn/module/ch1/practice",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "learn/module/ch1/activities",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "learn/module/ch1/resources",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "practice",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "practice/adaptive",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "practice/clinical",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "practice/explain",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "practice/coding",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "practice/confusions",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "practice/matching",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "library/terms",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "library/parts",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "library/part/prefixes-0",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "library/lab",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "library/atlas",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "library/pronunciation",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "library/term/pericarditis",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "progress",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "progress/portfolio",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "teach/assignments",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "teach/resources",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "teach/editor",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "teach/evidence",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "settings",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "settings/data",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "today",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "learn",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "learn?view=grid",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "learn?view=systems",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "learn/module/ch1/overview",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "learn/module/ch1/words",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "learn/module/ch1/practice",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "learn/module/ch1/activities",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "learn/module/ch1/resources",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "practice",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "practice/adaptive",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "practice/clinical",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "practice/explain",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "practice/coding",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "practice/confusions",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "practice/matching",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "library/terms",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "library/parts",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "library/part/prefixes-0",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "library/lab",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "library/atlas",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "library/pronunciation",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "library/term/pericarditis",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "progress",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "progress/portfolio",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "teach/assignments",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "teach/resources",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "teach/editor",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "teach/evidence",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "settings",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "settings/data",
+      "overflow": false
+    }
+  ],
+  "zoomMethod": "720×450 CSS-pixel layout surrogate for a 1440×900 viewport at 200% zoom; actual browser chrome zoom remains a manual check",
+  "errors": []
+}

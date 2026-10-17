@@ -1,0 +1,32 @@
+{
+  "Phase-1.html": {
+    "bytes": 825643,
+    "gzipBytes": 418346,
+    "sha256": "9fafb84358b43eb9332c69a641f9e202809b28c9eb9716c10b15c05ffdbd1d39"
+  },
+  "Phase-2.html": {
+    "bytes": 838380,
+    "gzipBytes": 420916,
+    "sha256": "16be41a90b2db7bfc8c1f73e44f681ec57c87327e5de7a8ff4e1d0283a1a7b6e"
+  },
+  "Phase-3.html": {
+    "bytes": 832804,
+    "gzipBytes": 419335,
+    "sha256": "ebf38db1f720e1fa951833cf15aae2d2f3275f199b69ae3067606023ee8b3487"
+  },
+  "Phase-4.html": {
+    "bytes": 870827,
+    "gzipBytes": 428663,
+    "sha256": "e001d0c94e9170f4a90c00857156205443dc552b9f77b3fe1bc2f1e933095d30"
+  },
+  "Phase-5.html": {
+    "bytes": 916653,
+    "gzipBytes": 444432,
+    "sha256": "5b8e8d0ba4fe0db9366337cd3b27a67f74644e007f2e2db2f4ce514c1bbf8b94"
+  },
+  "Phase-6.html": {
+    "bytes": 921722,
+    "gzipBytes": 443552,
+    "sha256": "96cd0a5c115919cf15fd07140f70b48f915feb46c1ec3890437f9312acf95599"
+  }
+}

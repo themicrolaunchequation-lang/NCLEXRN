@@ -1,0 +1,33 @@
+{
+  "wordPartMeanings": 109,
+  "languages": [
+    "ar",
+    "es",
+    "fr",
+    "pt",
+    "hi",
+    "ur",
+    "bn",
+    "zh-CN",
+    "de",
+    "ru",
+    "id",
+    "ja",
+    "ko",
+    "tr",
+    "sw"
+  ],
+  "onboarding": true,
+  "settings": true,
+  "doctorFirst": true,
+  "traineeLabel": true,
+  "legacyStudentRole": true,
+  "preferencePersistence": true,
+  "backups": true,
+  "keyboardTips": true,
+  "pinnedMeanings": true,
+  "rtl": true,
+  "externalTranslationExplicit": true,
+  "sourceMeaningUnchanged": true,
+  "errors": []
+}

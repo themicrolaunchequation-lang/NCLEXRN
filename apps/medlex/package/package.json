@@ -1,0 +1,45 @@
+{
+  "name": "medlex-hca",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/pack-data.mjs && vite build && node scripts/finalize-build.mjs",
+    "build:test": "node scripts/pack-data.mjs && node scripts/test-bridge.mjs && vite build --mode test && node scripts/finalize-build.mjs --test",
+    "test": "node tests/run.mjs",
+    "test:browser": "node tests/remaining-audit.mjs",
+    "test:journeys": "node tests/journeys-v4.mjs",
+    "test:states": "node tests/states-v4.mjs",
+    "test:encryption": "node tests/encryption-v4.mjs",
+    "test:performance": "node tests/performance-v4.mjs",
+    "test:offline": "node tests/offline-v4.mjs",
+    "test:print": "node tests/print-v4.mjs",
+    "test:release": "node tests/release-dom.cjs && node tests/release-structure.cjs",
+    "test:infographics": "node tests/infographics.cjs && node tests/infographics-navigation.cjs && node tests/infographics-annotations.cjs && node tests/infographics-window.cjs",
+    "test:welcome": "node tests/welcome.cjs",
+    "test:hosted-infographics": "node tests/infographics-hosted.cjs"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0",
+    "vite-plugin-singlefile": "^2.3.0",
+    "@babel/parser": "^7.28.0",
+    "@babel/traverse": "^7.28.0",
+    "@babel/generator": "^7.28.0",
+    "@babel/types": "^7.28.0",
+    "terser": "^5.51.0",
+    "css-tree": "^3.2.1",
+    "jsdom": "^30.1.0",
+    "axe-core": "^4.14.0",
+    "playwright-core": "^1.64.0",
+    "@sparticuz/chromium": "^153.0.0",
+    "fake-indexeddb": "^6.0.0"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "ts-fsrs": "*"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}

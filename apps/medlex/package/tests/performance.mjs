@@ -1,0 +1,11 @@
+import fs from'node:fs';import path from'node:path';import{chromium}from'playwright-core';import c from'@sparticuz/chromium';
+const b=await chromium.launch({executablePath:process.env.MEDLEX_CHROMIUM||await c.executablePath(),args:c.args,headless:true});
+const p=await b.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'}),requests=[];p.on('request',r=>{if(/^https?:/.test(r.url()))requests.push(r.url())});
+const session=await p.context().newCDPSession(p);await session.send('Emulation.setCPUThrottlingRate',{rate:4});
+await p.goto('file://'+path.resolve('dist/MedLex.html'));await p.waitForTimeout(500);await p.keyboard.press('Escape');
+const paints=await p.evaluate(()=>performance.getEntriesByType('paint').map(e=>({name:e.name,startTime:e.startTime})));
+await p.evaluate(()=>{location.hash='explore/terms'});await p.locator('#librarySearch').waitFor();
+let start=performance.now();await p.locator('#librarySearch').fill('card');await p.waitForFunction(()=>document.querySelector('#resultsCount').textContent.includes('terms found')&&document.querySelector('#librarySearch').value==='card');const termSearchMs=performance.now()-start;
+await p.keyboard.press('Control+k');await p.locator('#globalSearch').waitFor();start=performance.now();await p.locator('#globalSearch').fill('card');await p.waitForFunction(()=>document.querySelector('#globalResults').textContent.includes('Terms'));const paletteSearchMs=performance.now()-start;
+const result={profile:'Chromium headless, local file, 4x CPU throttling, 1440x900; timings include automation overhead',paints,termSearchMs,paletteSearchMs,externalRequests:requests};
+fs.writeFileSync('review/phase1/performance.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));await b.close();

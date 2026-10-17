@@ -1,0 +1,44 @@
+/* MedLex first-visit hook: decode one term by tapping its parts. */
+.medlex-hook{width:min(720px,calc(100% - 24px));max-width:100%;max-height:calc(100dvh - 24px);padding:0;border:0;border-radius:28px;color:#F8F5EF;background:radial-gradient(120% 90% at 85% 0%,#1D4A52 0%,#10253A 55%,#0B1927 100%);box-shadow:0 30px 90px #07162388;overflow:auto;font-family:Studio,Inter,system-ui,sans-serif;animation:mh-in .45s cubic-bezier(.2,.7,.2,1)}
+.medlex-hook::backdrop{background:#071623E0;backdrop-filter:blur(6px)}
+@keyframes mh-in{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.medlex-hook :focus-visible{outline:3px solid #F1C56E;outline-offset:3px}
+.mh-inner{padding:clamp(20px,4.5vw,40px);text-align:center}
+.medlex-hook .mh-inner .mh-head{border:0;box-shadow:none;background:none;padding:0;position:static;display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:clamp(14px,3.5vh,30px);text-align:left}
+.mh-brand{display:flex;align-items:center;gap:12px;font:500 22px/1.1 Editorial,'Playfair Display',Georgia,serif}
+.mh-brand>span:last-child{display:grid}
+.mh-brand small{font:600 11px Studio,Inter,sans-serif;letter-spacing:.12em;color:#C7DCDA;margin-top:4px}
+.mh-crest{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#F8F5EF}
+.mh-crest svg{width:38px;height:38px}
+.mh-skip{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid #ffffff40;background:none;color:#E3EEEC;font:600 14px Studio,Inter,sans-serif;cursor:pointer}
+.mh-skip:hover{background:#ffffff14}
+.mh-eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;color:#F1C56E;margin:0 0 10px}
+.medlex-hook .mh-inner h2#mh-title{font:500 clamp(28px,5vw,40px)/1.12 Editorial,'Playfair Display',Georgia,serif;letter-spacing:-.02em;margin:0 auto 10px;max-width:22ch;color:#F8F5EF;font-family:Editorial,'Playfair Display',Georgia,serif!important}
+.medlex-hook .mh-inner h2#mh-title em{color:#F1C56E}
+.mh-lead{color:#C7DCDA;margin:0 auto 24px;max-width:44ch}
+.mh-word{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap;gap:6px;margin:0 auto 10px}
+.mh-part{display:grid;gap:6px;justify-items:center;min-width:88px;min-height:96px;padding:12px 16px;border-radius:18px;border:1.5px dashed #ffffff55;background:#ffffff0d;color:#F8F5EF;cursor:pointer;transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .2s,border-color .2s}
+.mh-part:hover{transform:translateY(-2px);border-color:#F1C56E}
+.mh-text{font:600 clamp(28px,6vw,44px)/1 Editorial,'Playfair Display',Georgia,serif;letter-spacing:.01em}
+.mh-meaning{font:600 12px Studio,Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#B6D0CF}
+.mh-part.is-found{border-style:solid;cursor:default}
+.mh-part.is-found .mh-meaning{text-transform:none;letter-spacing:0;font-size:15px;color:#10253A}
+.mh-prefix.is-found{background:#F1C56E;border-color:#F1C56E;color:#10253A}
+.mh-root.is-found{background:#9FD8C4;border-color:#9FD8C4;color:#10253A}
+.mh-suffix.is-found{background:#E9B6A0;border-color:#E9B6A0;color:#10253A}
+.mh-link{font:500 clamp(28px,6vw,44px)/1 Editorial,'Playfair Display',Georgia,serif;color:#8FA9AE;padding-bottom:44px}
+.mh-progress{font-size:14px;color:#B6D0CF;min-height:1.5em;margin:6px 0 0}
+.mh-result:not(:empty){margin:4px auto 0;max-width:52ch;animation:mh-in .4s cubic-bezier(.2,.7,.2,1)}
+.mh-sum{font-size:17px;color:#E3EEEC;margin:0 0 10px}
+.mh-sum b{color:#fff}
+.mh-def{font:500 clamp(19px,3.2vw,23px)/1.4 Editorial,'Playfair Display',Georgia,serif;margin:0 0 12px}
+.mh-def strong{color:#F1C56E;font-weight:600}
+.mh-note{font-size:14px;color:#B6D0CF;margin:0}
+.mh-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:clamp(18px,3.5vh,28px)}
+.mh-primary,.mh-secondary{min-height:48px;padding:0 22px;border-radius:999px;font:600 15px Studio,Inter,sans-serif;cursor:pointer}
+.mh-primary{background:#F1C56E;color:#10253A;border:0}
+.mh-primary:hover{background:#F6D68F}
+.mh-secondary{background:transparent;color:#F8F5EF;border:1px solid #ffffff55}
+.mh-secondary:hover{background:#ffffff14}
+@media(max-width:599px){.medlex-hook{width:100%;height:100dvh;max-height:100dvh;margin:0;border-radius:0}.mh-part{min-width:0;min-height:84px;padding:10px 12px}.mh-link{padding-bottom:38px}}
+@media(prefers-reduced-motion:reduce){.medlex-hook,.mh-result:not(:empty){animation:none}.mh-part{transition:none}.mh-part:hover{transform:none}}

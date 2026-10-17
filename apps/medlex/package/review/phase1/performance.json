@@ -1,0 +1,16 @@
+{
+  "profile": "Chromium headless, local file, 4x CPU throttling, 1440x900; timings include automation overhead",
+  "paints": [
+    {
+      "name": "first-paint",
+      "startTime": 308
+    },
+    {
+      "name": "first-contentful-paint",
+      "startTime": 308
+    }
+  ],
+  "termSearchMs": 142.5827900000004,
+  "paletteSearchMs": 17.731862999999976,
+  "externalRequests": []
+}

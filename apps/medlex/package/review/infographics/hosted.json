@@ -1,0 +1,11 @@
+{
+  "hostedEntryBytes": 1164006,
+  "standaloneBytes": 26056907,
+  "relativeRasterURLs": true,
+  "rasterRequests": 56,
+  "downloadedRasterEntries": 56,
+  "productionInkAndNoteExport": true,
+  "productionPosterIsolation": true,
+  "errors": [],
+  "method": "Production hosted HTML in JSDOM; fetch served actual dist raster bytes; archive signatures and entries verified."
+}

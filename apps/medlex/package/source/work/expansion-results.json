@@ -1,0 +1,12 @@
+{
+  "studios": 12,
+  "baselineItems": 12,
+  "reflectionTypes": 3,
+  "editorOverlay": true,
+  "assignments": true,
+  "feedback": true,
+  "expandedBackup": true,
+  "matchingBoard": true,
+  "onboarding": true,
+  "errors": []
+}

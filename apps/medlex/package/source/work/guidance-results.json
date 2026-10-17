@@ -1,0 +1,17 @@
+{
+  "worksheetRoute": true,
+  "allFourSteps": true,
+  "draftsPreserved": true,
+  "rowControls": true,
+  "printExports": true,
+  "portfolioSelfReview": true,
+  "completionUnchanged": true,
+  "storageFailureAndRecovery": true,
+  "exportWhileStorageBlocked": true,
+  "backupValidation": true,
+  "schedulerIntervalsExact": true,
+  "settingsAndPalette": true,
+  "onboardingFocus": true,
+  "milestoneHumanCopy": true,
+  "errors": []
+}

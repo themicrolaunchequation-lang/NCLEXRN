@@ -1,0 +1,16 @@
+{
+  "source_commit": "d86521dc63367170b161401fa571c9b3a0448c91",
+  "deployment_id": "appgdep_6ad37a54df088191b01995013b639cc0",
+  "deployment_status": "succeeded",
+  "live_url": "https://medlex-hca.bouncyfield17.chatgpt.site",
+  "node": "24.19.0",
+  "raster_posters": 56,
+  "new_png_posters": 16,
+  "original_memory_cues": 68,
+  "hosted_entry_bytes": 1164006,
+  "standalone_bytes": 26056907,
+  "standalone_sha256": "2940f6e04bb0ccf44a7d17ce5ae2584c97916198f90ccf149028b5a6864a2f44",
+  "checks": "Seven regression suites, 56-poster workflows, 16 new direct links/transcripts, drawing tools, colored notes, undo/redo, annotation reload/restore and storage-failure recovery, backup continuity, Today guide, hosted export, production smoke and offline worker checks passed. ZIPs receive CRC and SHA-256 verification.",
+  "limits": "Native browser/device rendering, real touch/fullscreen, rendered contrast and independent medical-editor review remain pending.",
+  "portable_source_build": "Clean npm ci and build passed on Node 24.19.0; standalone SHA-256 equals published artifact."
+}

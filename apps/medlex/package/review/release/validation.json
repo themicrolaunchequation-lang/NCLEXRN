@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-16",
+  "build_bytes": 935006,
+  "gzip_bytes": 447379,
+  "sha256": "94c3ea598f325bd04a81dde3514866e43510ebb3515cf90e17eeeb468f4b33b5",
+  "functional_audit": {
+    "date": "2026-10-16T14:55:09.666Z",
+    "method": "JSDOM functional audit; not a browser rendering, layout or full accessibility audit",
+    "routes": 418,
+    "checks": {
+      "termProfiles": 1480,
+      "malformedRouteRecovery": true,
+      "sharedPreview": true,
+      "wordSelection": true,
+      "sceneKeyboardResetReducedMotionAndDisposal": true,
+      "dirtyDraftNavigationProtection": true,
+      "mixedSession": true,
+      "realEncryptedExportAndValidatedDecryption": true,
+      "encryptedImportPreviewAndWrongPassword": true,
+      "manifestCredentialAttribute": true
+    },
+    "errors": []
+  },
+  "structural_audit": {
+    "method": "Synthetic pointer events, mock canvas draw commands and axe structural checks in JSDOM; not visual, contrast, touch-device or browser verification",
+    "results": [
+      {
+        "route": "library/lab",
+        "pointerDrag": true,
+        "pointerRelease": true
+      },
+      {
+        "route": "library/atlas",
+        "pointerDrag": true,
+        "pointerRelease": true
+      }
+    ],
+    "canvasDrawCalls": 92634,
+    "canvasFailureFallback": true,
+    "audits": [
+      {
+        "route": "today",
+        "violations": []
+      },
+      {
+        "route": "learn",
+        "violations": []
+      },
+      {
+        "route": "learn/module/ch1/overview",
+        "violations": []
+      },
+      {
+        "route": "learn/module/ch9/words",
+        "violations": []
+      },
+      {
+        "route": "learn/module/ch1/activities",
+        "violations": []
+      },
+      {
+        "route": "practice",
+        "violations": []
+      },
+      {
+        "route": "practice/adaptive",
+        "violations": []
+      },
+      {
+        "route": "practice/clinical",
+        "violations": []
+      },
+      {
+        "route": "practice/explain",
+        "violations": []
+      },
+      {
+        "route": "practice/coding",
+        "violations": []
+      },
+      {
+        "route": "practice/matching",
+        "violations": []
+      },
+      {
+        "route": "library/terms",
+        "violations": []
+      },
+      {
+        "route": "library/parts",
+        "violations": []
+      },
+      {
+        "route": "library/lab",
+        "violations": []
+      },
+      {
+        "route": "library/atlas",
+        "violations": []
+      },
+      {
+        "route": "library/pronunciation",
+        "violations": []
+      },
+      {
+        "route": "library/term/pericarditis",
+        "violations": []
+      },
+      {
+        "route": "progress",
+        "violations": []
+      },
+      {
+        "route": "progress/portfolio",
+        "violations": []
+      },
+      {
+        "route": "teach/assignments",
+        "violations": []
+      },
+      {
+        "route": "teach/resources",
+        "violations": []
+      },
+      {
+        "route": "teach/editor",
+        "violations": []
+      },
+      {
+        "route": "teach/evidence",
+        "violations": []
+      },
+      {
+        "route": "settings",
+        "violations": []
+      },
+      {
+        "route": "settings/data",
+        "violations": []
+      }
+    ],
+    "errors": []
+  },
+  "production_smoke": {
+    "method": "Production minified HTML executed in JSDOM, without the test bridge",
+    "routes": [
+      "today",
+      "learn",
+      "learn/module/ch9/words",
+      "library/terms",
+      "library/lab",
+      "library/atlas",
+      "practice",
+      "progress",
+      "settings/data"
+    ],
+    "sharedPreview": true,
+    "wordSelection": true,
+    "sceneControls": true,
+    "errors": []
+  },
+  "regression_suites": [
+    "unit",
+    "integrity",
+    "v4-data",
+    "audio-visual",
+    "phase0-dom",
+    "expansion-dom",
+    "language-help"
+  ],
+  "fresh_browser_rendering": "Not run: supported browser-control capability unavailable",
+  "real_device_acceptance": "Pending",
+  "offline_worker": {
+    "manifestValid": true,
+    "iconSizesVerified": [
+      192,
+      512
+    ],
+    "serviceWorkerInstallCache": true,
+    "offlineNavigationFallback": true,
+    "unrelatedCachesPreserved": true,
+    "externalRequestsNotIntercepted": true,
+    "method": "Executed generated worker handlers with in-memory Cache API mocks; actual installability requires HTTPS and browser support",
+    "errors": []
+  }
+}

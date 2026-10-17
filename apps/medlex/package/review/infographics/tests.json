@@ -1,0 +1,37 @@
+{
+  "method": "JSDOM, fake IndexedDB, synthetic events and structural axe. No fresh browser rendering/contrast/device check.",
+  "checks": {
+    "galleryAndSidebar": true,
+    "filtersAndEmptyState": true,
+    "viewerKeyboardZoomBounds": true,
+    "syntheticSwipeAndZoomPan": true,
+    "promptAndModuleContentRemoved": true,
+    "deepLinkAndLeaveNavigation": true,
+    "exportRasterBoardsAndLogo": true,
+    "imageValidationAndPack": true,
+    "imageDatabaseReload": true,
+    "restoreAndFileLimits": true,
+    "brokenImageFallback": true,
+    "newPosterDeepLinksAndTranscripts": true,
+    "imageSaveFailureRecovery": true
+  },
+  "audits": [
+    {
+      "mode": "gallery",
+      "violations": []
+    },
+    {
+      "mode": "viewer",
+      "violations": []
+    },
+    {
+      "mode": "studyText",
+      "violations": []
+    },
+    {
+      "mode": "recall",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

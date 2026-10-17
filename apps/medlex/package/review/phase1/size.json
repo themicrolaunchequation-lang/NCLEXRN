@@ -1,0 +1,12 @@
+{
+  "before": {
+    "bytes": 1113481,
+    "gzipBytes": 366915,
+    "sha256": "2e3c72cd866531ffb23a6ddb793d541de789b7e70905dca9d6224ef988baefe3"
+  },
+  "after": {
+    "bytes": 825643,
+    "gzipBytes": 416261,
+    "sha256": "9fafb84358b43eb9332c69a641f9e202809b28c9eb9716c10b15c05ffdbd1d39"
+  }
+}

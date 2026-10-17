@@ -1,0 +1,16 @@
+// Phase 1: canonical features/settings/index implementation.
+import { assistingLanguageField } from './language.js';
+import { voiceControls } from './voice.js';
+import { app } from '../../state/runtime.js';
+import { showModal } from '../../ui/components/index.js';
+import { esc } from '../../ui/dom.js';
+export function profile() {
+  app.activeTerm = null;
+  const p = app.v3.profile;
+  showModal(profileMarkup(), 'YOUR PRACTITIONER SPACE');
+}
+export function profileMarkup(includeTitle = true) {
+  const p = app.v3.profile;
+  const html = `<h2 id="modalTitle" class="modal-title">Your learning preferences.</h2><p class="modal-subtitle">Make MedLex comfortable for the way you learn.</p><form id="profileForm" class="profile-form"><label>Your name<input name="name" maxlength="40" value="${esc(app.state.name)}" autocomplete="given-name"></label><div class="settings-grid"><label>Role<select name="role">${['Doctor', 'Trainee', 'Nurse', 'Allied health', 'Clinical coder', 'Educator', 'Other'].map(x => `<option ${(p.role === 'Student' ? 'Trainee' : p.role) === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label><label>Daily goal<select name="goal">${[5, 10, 15, 20].map(x => `<option value="${x}" ${p.dailyGoalMin === x ? 'selected' : ''}>${x} minutes</option>`).join('')}</select></label><label>Appearance<select name="theme">${['light', 'dark', 'system'].map(x => `<option value="${x}" ${app.state.theme === x ? 'selected' : ''}>${x[0].toUpperCase() + x.slice(1)}</option>`).join('')}</select></label><label>Motion<select name="motion"><option value="system" ${app.state.reduced == null ? 'selected' : ''}>Follow device</option><option value="reduce" ${app.state.reduced === true ? 'selected' : ''}>Reduce motion</option><option value="full" ${app.state.reduced === false ? 'selected' : ''}>Full motion</option></select></label><label>Text size<select name="scale">${[[1, 'Default'], [1.125, 'Large'], [1.25, 'Larger'], [1.5, 'Largest · 150%']].map(([v, t]) => `<option value="${v}" ${p.textScale === v ? 'selected' : ''}>${t}</option>`).join('')}</select></label></div>${assistingLanguageField()}${voiceControls('settings')}<label class="field"><span>Review scheduler</span><select name="scheduler"><option value="classic" ${p.scheduler!=='fsrs'?'selected':''}>Classic</option><option value="fsrs" ${p.scheduler==='fsrs'?'selected':''}>FSRS</option></select><small>Switching preserves existing due dates. Your next rating uses the selected scheduler.</small></label><label class="inline-check"><input type="checkbox" name="teachMode" ${p.teachMode?'checked':''}>Show Teach in navigation</label><label class="inline-check"><input name="contrast" type="checkbox" ${p.highContrast ? 'checked' : ''}> Higher contrast</label><p class="access-note">Your preferences and learning records stay on this device. Export a backup to keep a portable copy. No patient information should be entered.</p><button class="btn primary" type="submit">Save preferences</button></form><hr class="divider"><div class="term-actions"><button class="btn" data-action="export">Export progress</button><a class="btn" href="#tools">Tools & restore</a><button class="btn" data-v3="reset">Reset progress</button></div>`;
+  return includeTitle ? html : html.replace(/<h2[^>]*>.*?<\/h2>/, "");
+}

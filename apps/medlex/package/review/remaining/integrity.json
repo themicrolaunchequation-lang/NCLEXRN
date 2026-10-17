@@ -1,0 +1,59 @@
+{
+  "collections": [
+    {
+      "name": "TERMS",
+      "records": 1480,
+      "sha256": "05bae7dda66eefdaf830655753d1aa7dd8eb6a1de0d8b6e5dc0c3bf30beb15bc"
+    },
+    {
+      "name": "PREFIXES",
+      "records": 100,
+      "sha256": "c6123e84bb12c3c21dc15673a866ea1f63a8a7ebf80ece4234bd1facb5c1da32"
+    },
+    {
+      "name": "SUFFIXES",
+      "records": 100,
+      "sha256": "b95a2424bf4cda76b444a25ff39cf50be895b4c25c6c2c03c5dfa5a678f17afc"
+    },
+    {
+      "name": "LESSONS",
+      "records": 7,
+      "sha256": "ec12e656e766e15e7eaf655fb90e0b3427558c3791dde2bb98e5cda890018e77"
+    },
+    {
+      "name": "CASES",
+      "records": 10,
+      "sha256": "7b02cc26daa207019ce25094bf2a2f08bb28a26679ab6b45da6e0ea84570866e"
+    },
+    {
+      "name": "CONFUSIONS",
+      "records": 6,
+      "sha256": "e0665f5871e9e959169e531303945c2b5db5ef1e98b9b842c59b7dd46ec0b4c3"
+    },
+    {
+      "name": "CODE_QUESTIONS",
+      "records": 8,
+      "sha256": "e1ae36d0123f04311a697da19a1c32724e6aff17c4f7da5b18fb458c127ea392"
+    },
+    {
+      "name": "QUOTES",
+      "records": 4,
+      "sha256": "502f4871dd2abd9d02edbb5da4ec6a4be2e60a4ca79b56cf5b03b1cad9a1bf17"
+    },
+    {
+      "name": "CHAPTERS",
+      "records": 24,
+      "sha256": "ce73967f95a24f6c1a6b889eaf25c836af03d078a17f96f3ae7b9550cbbc535d"
+    },
+    {
+      "name": "COURSE_MODULES",
+      "records": 26,
+      "sha256": "de4d96520ecadb784e0449031fb149ae7b731aba40b10ae5ea098db848649666"
+    }
+  ],
+  "migration": true,
+  "legacyKeysUnchanged": true,
+  "v3Roundtrip": true,
+  "srsRatings": 4,
+  "errors": []
+}

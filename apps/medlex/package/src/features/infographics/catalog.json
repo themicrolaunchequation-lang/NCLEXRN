@@ -1,0 +1,3547 @@
+[
+  {
+    "id": "ch1",
+    "number": 1,
+    "title": "Decode a medical word",
+    "module": "ch1",
+    "category": "Decode & pronounce",
+    "outcome": "Follow one word from components to precise meaning.",
+    "layout": "parts",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "pericarditis",
+        "term": "Pericarditis",
+        "definition": "Inflammation of the pericardium, the sac around the heart.",
+        "parts": [
+          {
+            "text": "peri",
+            "type": "prefix",
+            "meaning": "around"
+          },
+          {
+            "text": "card",
+            "type": "root",
+            "meaning": "heart"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "gastritis",
+        "term": "Gastritis",
+        "definition": "Inflammation of the stomach lining.",
+        "parts": [
+          {
+            "text": "gastr",
+            "type": "root",
+            "meaning": "stomach"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "nephrectomy",
+        "term": "Nephrectomy",
+        "definition": "Surgical removal of all or part of a kidney.",
+        "parts": [
+          {
+            "text": "nephr",
+            "type": "root",
+            "meaning": "kidney"
+          },
+          {
+            "text": "ectomy",
+            "type": "suffix",
+            "meaning": "surgical removal"
+          }
+        ]
+      },
+      {
+        "id": "angioplasty",
+        "term": "Angioplasty",
+        "definition": "A procedure that widens a narrowed or obstructed blood vessel.",
+        "parts": [
+          {
+            "text": "angi",
+            "type": "root",
+            "meaning": "vessel"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "plasty",
+            "type": "suffix",
+            "meaning": "surgical repair"
+          }
+        ]
+      }
+    ],
+    "caution": "Use suffix → root → prefix as a reading aid. The full clinical definition takes priority.",
+    "question": "Which part of pericarditis means inflammation?",
+    "answer": "-itis is the inflammation ending. The specific clinical structure is the pericardium.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 1, printed p. 2–15.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch2",
+    "number": 2,
+    "title": "Build a vocabulary that lasts",
+    "module": "ch2",
+    "category": "Decode & pronounce",
+    "outcome": "Move from recognition to recall, spelling and explanation.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "dyspnoea",
+        "term": "Dyspnoea",
+        "definition": "The subjective experience of difficult or uncomfortable breathing.",
+        "parts": [
+          {
+            "text": "dys",
+            "type": "prefix",
+            "meaning": "difficult or abnormal"
+          },
+          {
+            "text": "pnoea",
+            "type": "suffix",
+            "meaning": "breathing"
+          }
+        ]
+      },
+      {
+        "id": "hypoxaemia",
+        "term": "Hypoxaemia",
+        "definition": "A lower-than-expected oxygen level in arterial blood.",
+        "parts": [
+          {
+            "text": "hyp",
+            "type": "prefix",
+            "meaning": "below or deficient (a form of hypo-)"
+          },
+          {
+            "text": "ox",
+            "type": "root",
+            "meaning": "oxygen"
+          },
+          {
+            "text": "aemia",
+            "type": "suffix",
+            "meaning": "blood condition"
+          }
+        ]
+      },
+      {
+        "id": "aphasia",
+        "term": "Aphasia",
+        "definition": "An acquired impairment of language expression or comprehension.",
+        "parts": [
+          {
+            "text": "a",
+            "type": "prefix",
+            "meaning": "without"
+          },
+          {
+            "text": "phasia",
+            "type": "suffix",
+            "meaning": "language or speech"
+          }
+        ]
+      },
+      {
+        "id": "dysphagia",
+        "term": "Dysphagia",
+        "definition": "Difficulty swallowing.",
+        "parts": [
+          {
+            "text": "dys",
+            "type": "prefix",
+            "meaning": "difficult"
+          },
+          {
+            "text": "phagia",
+            "type": "suffix",
+            "meaning": "swallowing or eating"
+          }
+        ]
+      }
+    ],
+    "caution": "Study one meaning, retrieve it without looking, check spelling, and use a fictional example.",
+    "question": "Why are saved and self-rated familiar different from a correct answer?",
+    "answer": "Saving and familiarity are personal choices; an exercise records an actual response.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 2, printed p. 16–27.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "prefixes",
+    "number": 3,
+    "title": "Prefixes that change the message",
+    "module": "prefixes",
+    "category": "Decode & pronounce",
+    "outcome": "Compare amount, speed, location and time.",
+    "layout": "parts",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "prefixes-39",
+        "term": "hyper-",
+        "definition": "above normal or excessive",
+        "parts": []
+      },
+      {
+        "id": "prefixes-40",
+        "term": "hypo-",
+        "definition": "below normal or deficient",
+        "parts": []
+      },
+      {
+        "id": "prefixes-61",
+        "term": "peri-",
+        "definition": "around",
+        "parts": []
+      },
+      {
+        "id": "prefixes-43",
+        "term": "intra-",
+        "definition": "within",
+        "parts": []
+      }
+    ],
+    "caution": "A prefix modifies meaning. These examples are a selection, not a frequency-ranked top list.",
+    "question": "Which means around: peri- or intra-?",
+    "answer": "Peri- means around. Intra- means within.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Walker, Wood & Nicol, 3rd ed., Chapters 1–2 and relevant body-system chapters; MedlinePlus word-parts reference.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "suffixes",
+    "number": 4,
+    "title": "Read the ending first",
+    "module": "suffixes",
+    "category": "Decode & pronounce",
+    "outcome": "Separate conditions, procedures, pain and examination.",
+    "layout": "parts",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "suffixes-55",
+        "term": "-itis",
+        "definition": "inflammation",
+        "parts": []
+      },
+      {
+        "id": "suffixes-37",
+        "term": "-ectomy",
+        "definition": "surgical removal",
+        "parts": []
+      },
+      {
+        "id": "suffixes-7",
+        "term": "-scopy",
+        "definition": "visual examination with an instrument",
+        "parts": []
+      },
+      {
+        "id": "suffixes-16",
+        "term": "-algia",
+        "definition": "pain",
+        "parts": []
+      }
+    ],
+    "caution": "Similar endings can identify different concepts. Do not infer a diagnosis from a suffix alone.",
+    "question": "How do -itis and -ectomy differ?",
+    "answer": "-itis indicates inflammation; -ectomy indicates surgical removal.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Walker, Wood & Nicol, 3rd ed., Chapters 1–2 and relevant body-system chapters; MedlinePlus word-parts reference.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch3",
+    "number": 5,
+    "title": "Direction and position in clinical language",
+    "module": "ch3",
+    "category": "Directions & position",
+    "outcome": "Use paired spatial concepts to interpret a description.",
+    "layout": "opposites",
+    "icon": "body",
+    "terms": [
+      {
+        "id": "anterior",
+        "term": "Anterior",
+        "definition": "Towards the front of the body in anatomical position.",
+        "parts": []
+      },
+      {
+        "id": "posterior",
+        "term": "Posterior",
+        "definition": "Towards the back of the body in anatomical position.",
+        "parts": []
+      },
+      {
+        "id": "proximal",
+        "term": "Proximal",
+        "definition": "Nearer to the point of attachment or origin.",
+        "parts": []
+      },
+      {
+        "id": "distal",
+        "term": "Distal",
+        "definition": "Further from the point of attachment or origin.",
+        "parts": []
+      }
+    ],
+    "caution": "Orient descriptions to anatomical position. Proximal and distal require a reference point.",
+    "question": "Which is nearer a limb attachment: proximal or distal?",
+    "answer": "Proximal means nearer the point of attachment or origin.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 3, printed p. 28–46.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch4",
+    "number": 6,
+    "title": "Musculoskeletal words in focus",
+    "module": "ch4",
+    "category": "Body systems",
+    "outcome": "Separate pain, inflammation, bone and muscle concepts.",
+    "layout": "system",
+    "icon": "bone",
+    "terms": [
+      {
+        "id": "arthralgia",
+        "term": "Arthralgia",
+        "definition": "Pain in a joint.",
+        "parts": [
+          {
+            "text": "arthr",
+            "type": "root",
+            "meaning": "joint"
+          },
+          {
+            "text": "algia",
+            "type": "suffix",
+            "meaning": "pain"
+          }
+        ]
+      },
+      {
+        "id": "arthritis",
+        "term": "Arthritis",
+        "definition": "Inflammation of a joint or joints.",
+        "parts": [
+          {
+            "text": "arthr",
+            "type": "root",
+            "meaning": "joint"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "myalgia",
+        "term": "Myalgia",
+        "definition": "Pain in a muscle or muscles.",
+        "parts": [
+          {
+            "text": "my",
+            "type": "root",
+            "meaning": "muscle"
+          },
+          {
+            "text": "algia",
+            "type": "suffix",
+            "meaning": "pain"
+          }
+        ]
+      },
+      {
+        "id": "osteoporosis",
+        "term": "Osteoporosis",
+        "definition": "Reduced bone strength associated with low bone mass and structural deterioration.",
+        "parts": [
+          {
+            "text": "oste",
+            "type": "root",
+            "meaning": "bone"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "por",
+            "type": "root",
+            "meaning": "pore or passage"
+          },
+          {
+            "text": "osis",
+            "type": "suffix",
+            "meaning": "condition"
+          }
+        ]
+      }
+    ],
+    "caution": "A body-part root locates the concept; the ending helps identify the process.",
+    "question": "Do arthralgia and arthritis have the same meaning?",
+    "answer": "No. Joint pain and joint inflammation are different concepts.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 4, printed p. 47–79.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch5",
+    "number": 7,
+    "title": "Skin words by layer and task",
+    "module": "ch5",
+    "category": "Body systems",
+    "outcome": "Connect location, inflammation, appearance and sampling.",
+    "layout": "layers",
+    "icon": "skin",
+    "terms": [
+      {
+        "id": "dermatitis",
+        "term": "Dermatitis",
+        "definition": "Inflammation of the skin.",
+        "parts": [
+          {
+            "text": "dermat",
+            "type": "root",
+            "meaning": "skin"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "subcutaneous",
+        "term": "Subcutaneous",
+        "definition": "Situated or administered beneath the skin.",
+        "parts": [
+          {
+            "text": "sub",
+            "type": "prefix",
+            "meaning": "under"
+          },
+          {
+            "text": "cutane",
+            "type": "root",
+            "meaning": "skin"
+          },
+          {
+            "text": "ous",
+            "type": "suffix",
+            "meaning": "pertaining to"
+          }
+        ]
+      },
+      {
+        "id": "erythema",
+        "term": "Erythema",
+        "definition": "Redness of the skin.",
+        "parts": [
+          {
+            "text": "erythem",
+            "type": "root",
+            "meaning": "redness"
+          },
+          {
+            "text": "a",
+            "type": "suffix",
+            "meaning": "noun ending"
+          }
+        ]
+      },
+      {
+        "id": "biopsy",
+        "term": "Biopsy",
+        "definition": "Removal of cells or tissue for examination.",
+        "parts": [
+          {
+            "text": "bi",
+            "type": "root",
+            "meaning": "life"
+          },
+          {
+            "text": "opsy",
+            "type": "suffix",
+            "meaning": "viewing"
+          }
+        ]
+      }
+    ],
+    "caution": "An appearance term, a location term and a procedure term serve different purposes in a note.",
+    "question": "Is subcutaneous a diagnosis or a location descriptor?",
+    "answer": "It describes location beneath the skin.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 5, printed p. 80–107.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch6",
+    "number": 8,
+    "title": "Blood terminology without confusion",
+    "module": "ch6",
+    "category": "Body systems",
+    "outcome": "Keep cell names, cell counts and haemostasis distinct.",
+    "layout": "system",
+    "icon": "blood",
+    "terms": [
+      {
+        "id": "erythrocyte",
+        "term": "Erythrocyte",
+        "definition": "A red blood cell.",
+        "parts": [
+          {
+            "text": "erythr",
+            "type": "root",
+            "meaning": "red"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "cyte",
+            "type": "suffix",
+            "meaning": "cell"
+          }
+        ]
+      },
+      {
+        "id": "leucocyte",
+        "term": "Leucocyte",
+        "definition": "A white blood cell.",
+        "parts": [
+          {
+            "text": "leuc",
+            "type": "root",
+            "meaning": "white"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "cyte",
+            "type": "suffix",
+            "meaning": "cell"
+          }
+        ]
+      },
+      {
+        "id": "thrombocytopenia",
+        "term": "Thrombocytopenia",
+        "definition": "A reduced platelet count in the blood.",
+        "parts": [
+          {
+            "text": "thromb",
+            "type": "root",
+            "meaning": "clot"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "cyt",
+            "type": "root",
+            "meaning": "cell"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "penia",
+            "type": "suffix",
+            "meaning": "deficiency"
+          }
+        ]
+      },
+      {
+        "id": "haemostasis",
+        "term": "Haemostasis",
+        "definition": "The physiological process that stops bleeding.",
+        "parts": [
+          {
+            "text": "haem",
+            "type": "root",
+            "meaning": "blood"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "stasis",
+            "type": "suffix",
+            "meaning": "stopping or controlling"
+          }
+        ]
+      }
+    ],
+    "caution": "A cell name differs from a finding about its count or function.",
+    "question": "Which term identifies a low platelet count?",
+    "answer": "Thrombocytopenia.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 6, printed p. 108–134.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch7",
+    "number": 9,
+    "title": "Lymphatic and immune word map",
+    "module": "ch7",
+    "category": "Body systems",
+    "outcome": "Distinguish structures, enlargement and immune concepts.",
+    "layout": "network",
+    "icon": "lymph",
+    "terms": [
+      {
+        "id": "lymphadenopathy",
+        "term": "Lymphadenopathy",
+        "definition": "Abnormality of lymph nodes, commonly enlargement.",
+        "parts": [
+          {
+            "text": "lymph",
+            "type": "root",
+            "meaning": "lymph"
+          },
+          {
+            "text": "aden",
+            "type": "root",
+            "meaning": "gland or lymph node here"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "pathy",
+            "type": "suffix",
+            "meaning": "disease"
+          }
+        ]
+      },
+      {
+        "id": "splenomegaly",
+        "term": "Splenomegaly",
+        "definition": "Enlargement of the spleen.",
+        "parts": [
+          {
+            "text": "splen",
+            "type": "root",
+            "meaning": "spleen"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "megaly",
+            "type": "suffix",
+            "meaning": "enlargement"
+          }
+        ]
+      },
+      {
+        "id": "lymphocyte",
+        "term": "Lymphocyte",
+        "definition": "White cell type including B, T and natural killer cells.",
+        "parts": []
+      },
+      {
+        "id": "immunodeficiency",
+        "term": "Immunodeficiency",
+        "definition": "Reduced ability of the immune system to defend against infection.",
+        "parts": []
+      }
+    ],
+    "caution": "A term may identify an enlarged structure without identifying its cause.",
+    "question": "Does splenomegaly alone establish the cause of enlargement?",
+    "answer": "No. The word identifies spleen enlargement, not the cause.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 7, printed p. 135–152.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch8",
+    "number": 10,
+    "title": "Endocrine modifiers and measurements",
+    "module": "ch8",
+    "category": "Body systems",
+    "outcome": "Compare high and low, gland and blood findings.",
+    "layout": "opposites",
+    "icon": "endocrine",
+    "terms": [
+      {
+        "id": "hyperglycaemia",
+        "term": "Hyperglycaemia",
+        "definition": "A blood glucose concentration above the appropriate range.",
+        "parts": [
+          {
+            "text": "hyper",
+            "type": "prefix",
+            "meaning": "excessive"
+          },
+          {
+            "text": "glyc",
+            "type": "root",
+            "meaning": "sugar"
+          },
+          {
+            "text": "aemia",
+            "type": "suffix",
+            "meaning": "blood condition"
+          }
+        ]
+      },
+      {
+        "id": "hypoglycaemia",
+        "term": "Hypoglycaemia",
+        "definition": "A blood glucose concentration below the appropriate range.",
+        "parts": [
+          {
+            "text": "hypo",
+            "type": "prefix",
+            "meaning": "below or deficient"
+          },
+          {
+            "text": "glyc",
+            "type": "root",
+            "meaning": "sugar"
+          },
+          {
+            "text": "aemia",
+            "type": "suffix",
+            "meaning": "blood condition"
+          }
+        ]
+      },
+      {
+        "id": "hypothyroidism",
+        "term": "Hypothyroidism",
+        "definition": "A state of insufficient thyroid hormone action, usually from reduced production.",
+        "parts": [
+          {
+            "text": "hypo",
+            "type": "prefix",
+            "meaning": "deficient"
+          },
+          {
+            "text": "thyroid",
+            "type": "root",
+            "meaning": "thyroid gland"
+          },
+          {
+            "text": "ism",
+            "type": "suffix",
+            "meaning": "state or condition"
+          }
+        ]
+      },
+      {
+        "id": "endocrine",
+        "term": "Endocrine",
+        "definition": "Relating to hormones released into the circulation by glands or specialised cells.",
+        "parts": [
+          {
+            "text": "endo",
+            "type": "prefix",
+            "meaning": "within"
+          },
+          {
+            "text": "crine",
+            "type": "suffix",
+            "meaning": "secrete"
+          }
+        ]
+      }
+    ],
+    "caution": "Read the modifier and the measured concept together. A single word does not supply missing clinical context.",
+    "question": "Which modifier in hypoglycaemia means low or deficient?",
+    "answer": "Hypo-.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 8, printed p. 153–179.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch9",
+    "number": 11,
+    "title": "Cardiac words and affected structures",
+    "module": "ch9",
+    "category": "Body systems",
+    "outcome": "Separate rate, tissue inflammation and procedures.",
+    "layout": "layers",
+    "icon": "heart",
+    "terms": [
+      {
+        "id": "tachycardia",
+        "term": "Tachycardia",
+        "definition": "A heart rate faster than expected for the clinical context.",
+        "parts": [
+          {
+            "text": "tachy",
+            "type": "prefix",
+            "meaning": "fast"
+          },
+          {
+            "text": "card",
+            "type": "root",
+            "meaning": "heart"
+          },
+          {
+            "text": "ia",
+            "type": "suffix",
+            "meaning": "condition"
+          }
+        ]
+      },
+      {
+        "id": "myocarditis",
+        "term": "Myocarditis",
+        "definition": "Inflammation of the heart muscle.",
+        "parts": [
+          {
+            "text": "my",
+            "type": "root",
+            "meaning": "muscle"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "card",
+            "type": "root",
+            "meaning": "heart"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "pericarditis",
+        "term": "Pericarditis",
+        "definition": "Inflammation of the pericardium, the sac around the heart.",
+        "parts": [
+          {
+            "text": "peri",
+            "type": "prefix",
+            "meaning": "around"
+          },
+          {
+            "text": "card",
+            "type": "root",
+            "meaning": "heart"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "angioplasty",
+        "term": "Angioplasty",
+        "definition": "A procedure that widens a narrowed or obstructed blood vessel.",
+        "parts": [
+          {
+            "text": "angi",
+            "type": "root",
+            "meaning": "vessel"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "plasty",
+            "type": "suffix",
+            "meaning": "surgical repair"
+          }
+        ]
+      }
+    ],
+    "caution": "A heart-rate description is not the same as inflammation of a cardiac structure.",
+    "question": "Which identifies inflammation of heart muscle: myocarditis or pericarditis?",
+    "answer": "Myocarditis.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 9, printed p. 180–211.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch10",
+    "number": 12,
+    "title": "Breathing is not the same as oxygenation",
+    "module": "ch10",
+    "category": "Body systems",
+    "outcome": "Distinguish breathlessness, rate, blood oxygen and tissue oxygen.",
+    "layout": "opposites",
+    "icon": "lungs",
+    "terms": [
+      {
+        "id": "dyspnoea",
+        "term": "Dyspnoea",
+        "definition": "The subjective experience of difficult or uncomfortable breathing.",
+        "parts": [
+          {
+            "text": "dys",
+            "type": "prefix",
+            "meaning": "difficult or abnormal"
+          },
+          {
+            "text": "pnoea",
+            "type": "suffix",
+            "meaning": "breathing"
+          }
+        ]
+      },
+      {
+        "id": "tachypnoea",
+        "term": "Tachypnoea",
+        "definition": "An increased breathing rate for the relevant age and context.",
+        "parts": [
+          {
+            "text": "tachy",
+            "type": "prefix",
+            "meaning": "fast"
+          },
+          {
+            "text": "pnoea",
+            "type": "suffix",
+            "meaning": "breathing"
+          }
+        ]
+      },
+      {
+        "id": "hypoxaemia",
+        "term": "Hypoxaemia",
+        "definition": "A lower-than-expected oxygen level in arterial blood.",
+        "parts": [
+          {
+            "text": "hyp",
+            "type": "prefix",
+            "meaning": "below or deficient (a form of hypo-)"
+          },
+          {
+            "text": "ox",
+            "type": "root",
+            "meaning": "oxygen"
+          },
+          {
+            "text": "aemia",
+            "type": "suffix",
+            "meaning": "blood condition"
+          }
+        ]
+      },
+      {
+        "id": "hypoxia",
+        "term": "Hypoxia",
+        "definition": "Insufficient oxygen availability at the tissue level.",
+        "parts": [
+          {
+            "text": "hyp",
+            "type": "prefix",
+            "meaning": "below or deficient (a form of hypo-)"
+          },
+          {
+            "text": "ox",
+            "type": "root",
+            "meaning": "oxygen"
+          },
+          {
+            "text": "ia",
+            "type": "suffix",
+            "meaning": "condition"
+          }
+        ]
+      }
+    ],
+    "caution": "The presence of breathlessness alone does not establish a blood oxygen finding.",
+    "question": "Which term concerns low oxygen in arterial blood?",
+    "answer": "Hypoxaemia.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 10, printed p. 212–240.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch11",
+    "number": 13,
+    "title": "Digestive terms from meaning to procedure",
+    "module": "ch11",
+    "category": "Body systems",
+    "outcome": "Identify swallowing, lining inflammation, examination and removal.",
+    "layout": "system",
+    "icon": "stomach",
+    "terms": [
+      {
+        "id": "dysphagia",
+        "term": "Dysphagia",
+        "definition": "Difficulty swallowing.",
+        "parts": [
+          {
+            "text": "dys",
+            "type": "prefix",
+            "meaning": "difficult"
+          },
+          {
+            "text": "phagia",
+            "type": "suffix",
+            "meaning": "swallowing or eating"
+          }
+        ]
+      },
+      {
+        "id": "gastritis",
+        "term": "Gastritis",
+        "definition": "Inflammation of the stomach lining.",
+        "parts": [
+          {
+            "text": "gastr",
+            "type": "root",
+            "meaning": "stomach"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "gastroscopy",
+        "term": "Gastroscopy",
+        "definition": "Endoscopic examination of the upper digestive tract, including the stomach.",
+        "parts": [
+          {
+            "text": "gastr",
+            "type": "root",
+            "meaning": "stomach"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "scopy",
+            "type": "suffix",
+            "meaning": "visual examination"
+          }
+        ]
+      },
+      {
+        "id": "cholecystectomy",
+        "term": "Cholecystectomy",
+        "definition": "Surgical removal of the gallbladder.",
+        "parts": [
+          {
+            "text": "cholecyst",
+            "type": "root",
+            "meaning": "gallbladder"
+          },
+          {
+            "text": "ectomy",
+            "type": "suffix",
+            "meaning": "surgical removal"
+          }
+        ]
+      }
+    ],
+    "caution": "Distinguish a symptom from an examination and an operation.",
+    "question": "Does dysphagia mean a language problem?",
+    "answer": "No. Dysphagia means difficulty swallowing; language impairment is a different concept.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 11, printed p. 241–271.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch12",
+    "number": 14,
+    "title": "Neurological words with precise boundaries",
+    "module": "ch12",
+    "category": "Body systems",
+    "outcome": "Compare pain, nerve disease, paralysis and language impairment.",
+    "layout": "network",
+    "icon": "brain",
+    "terms": [
+      {
+        "id": "neuralgia",
+        "term": "Neuralgia",
+        "definition": "Pain along the distribution of a nerve.",
+        "parts": [
+          {
+            "text": "neur",
+            "type": "root",
+            "meaning": "nerve"
+          },
+          {
+            "text": "algia",
+            "type": "suffix",
+            "meaning": "pain"
+          }
+        ]
+      },
+      {
+        "id": "neuropathy",
+        "term": "Neuropathy",
+        "definition": "Disease or dysfunction of one or more nerves.",
+        "parts": [
+          {
+            "text": "neur",
+            "type": "root",
+            "meaning": "nerve"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "pathy",
+            "type": "suffix",
+            "meaning": "disease"
+          }
+        ]
+      },
+      {
+        "id": "hemiplegia",
+        "term": "Hemiplegia",
+        "definition": "Paralysis affecting one side of the body.",
+        "parts": [
+          {
+            "text": "hemi",
+            "type": "prefix",
+            "meaning": "half"
+          },
+          {
+            "text": "plegia",
+            "type": "suffix",
+            "meaning": "paralysis"
+          }
+        ]
+      },
+      {
+        "id": "aphasia",
+        "term": "Aphasia",
+        "definition": "An acquired impairment of language expression or comprehension.",
+        "parts": [
+          {
+            "text": "a",
+            "type": "prefix",
+            "meaning": "without"
+          },
+          {
+            "text": "phasia",
+            "type": "suffix",
+            "meaning": "language or speech"
+          }
+        ]
+      }
+    ],
+    "caution": "Preserve the specific function and location described by the term.",
+    "question": "Which term concerns language impairment?",
+    "answer": "Aphasia.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 12, printed p. 272–299.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch13",
+    "number": 15,
+    "title": "The senses and their word roots",
+    "module": "ch13",
+    "category": "Body systems",
+    "outcome": "Connect ear, eye and nose terminology.",
+    "layout": "system",
+    "icon": "senses",
+    "terms": [
+      {
+        "id": "otitis",
+        "term": "Otitis",
+        "definition": "Inflammation of the ear.",
+        "parts": [
+          {
+            "text": "ot",
+            "type": "root",
+            "meaning": "ear"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "ophthalmology",
+        "term": "Ophthalmology",
+        "definition": "The medical specialty concerned with the eyes and vision.",
+        "parts": [
+          {
+            "text": "ophthalm",
+            "type": "root",
+            "meaning": "eye"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "logy",
+            "type": "suffix",
+            "meaning": "study or specialty"
+          }
+        ]
+      },
+      {
+        "id": "rhinorrhoea",
+        "term": "Rhinorrhoea",
+        "definition": "Discharge from the nose.",
+        "parts": [
+          {
+            "text": "rhin",
+            "type": "root",
+            "meaning": "nose"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "rrhoea",
+            "type": "suffix",
+            "meaning": "flow or discharge"
+          }
+        ]
+      },
+      {
+        "id": "otoscopy",
+        "term": "Otoscopy",
+        "definition": "Visual examination of the ear canal and eardrum.",
+        "parts": []
+      }
+    ],
+    "caution": "Body-part roots guide orientation; verify whether the term is a finding, specialty or examination.",
+    "question": "Does otoscopy mean ear inflammation?",
+    "answer": "No. Otoscopy is examination; otitis is inflammation.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 13, printed p. 300–330.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch14",
+    "number": 16,
+    "title": "Urinary words that look alike",
+    "module": "ch14",
+    "category": "Body systems",
+    "outcome": "Separate blood, pain, amount, stones and examination.",
+    "layout": "opposites",
+    "icon": "kidney",
+    "terms": [
+      {
+        "id": "haematuria",
+        "term": "Haematuria",
+        "definition": "Blood in the urine.",
+        "parts": [
+          {
+            "text": "haemat",
+            "type": "root",
+            "meaning": "blood"
+          },
+          {
+            "text": "ur",
+            "type": "root",
+            "meaning": "urine"
+          },
+          {
+            "text": "ia",
+            "type": "suffix",
+            "meaning": "condition"
+          }
+        ]
+      },
+      {
+        "id": "dysuria",
+        "term": "Dysuria",
+        "definition": "Pain or discomfort during urination.",
+        "parts": [
+          {
+            "text": "dys",
+            "type": "prefix",
+            "meaning": "painful or difficult"
+          },
+          {
+            "text": "uria",
+            "type": "suffix",
+            "meaning": "urine or urination condition"
+          }
+        ]
+      },
+      {
+        "id": "oliguria",
+        "term": "Oliguria",
+        "definition": "A reduced volume of urine output.",
+        "parts": [
+          {
+            "text": "olig",
+            "type": "prefix",
+            "meaning": "scanty or few"
+          },
+          {
+            "text": "uria",
+            "type": "suffix",
+            "meaning": "urine condition"
+          }
+        ]
+      },
+      {
+        "id": "cystoscopy",
+        "term": "Cystoscopy",
+        "definition": "Visual examination of the bladder and urethra using a scope.",
+        "parts": [
+          {
+            "text": "cyst",
+            "type": "root",
+            "meaning": "bladder here"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "scopy",
+            "type": "suffix",
+            "meaning": "visual examination"
+          }
+        ]
+      }
+    ],
+    "caution": "Urine findings and urinary symptoms do not by themselves identify an underlying cause.",
+    "question": "Which refers to a low urine volume?",
+    "answer": "Oliguria.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 14, printed p. 331–357.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch15",
+    "number": 17,
+    "title": "Male reproductive language",
+    "module": "ch15",
+    "category": "Body systems",
+    "outcome": "Identify structure, inflammation and surgery.",
+    "layout": "system",
+    "icon": "male",
+    "terms": [
+      {
+        "id": "orchitis",
+        "term": "Orchitis",
+        "definition": "Inflammation of a testis.",
+        "parts": [
+          {
+            "text": "orch",
+            "type": "root",
+            "meaning": "testis"
+          },
+          {
+            "text": "itis",
+            "type": "suffix",
+            "meaning": "inflammation"
+          }
+        ]
+      },
+      {
+        "id": "prostatectomy",
+        "term": "Prostatectomy",
+        "definition": "Surgical removal of all or part of the prostate.",
+        "parts": [
+          {
+            "text": "prostat",
+            "type": "root",
+            "meaning": "prostate"
+          },
+          {
+            "text": "ectomy",
+            "type": "suffix",
+            "meaning": "surgical removal"
+          }
+        ]
+      },
+      {
+        "id": "prostate",
+        "term": "Prostate",
+        "definition": "Gland surrounding the proximal urethra and contributing seminal fluid.",
+        "parts": []
+      },
+      {
+        "id": "testis",
+        "term": "Testis",
+        "definition": "Gonad producing sperm and testosterone.",
+        "parts": []
+      }
+    ],
+    "caution": "A procedure name may not specify extent or indication; do not fill in missing details.",
+    "question": "Does prostatectomy alone specify whether removal is partial or radical?",
+    "answer": "No. Check the procedure documentation for its extent.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 15, printed p. 358–377.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch16",
+    "number": 18,
+    "title": "Female reproductive procedures",
+    "module": "ch16",
+    "category": "Body systems",
+    "outcome": "Keep uterus, tubes and ovaries conceptually separate.",
+    "layout": "system",
+    "icon": "female",
+    "terms": [
+      {
+        "id": "hysterectomy",
+        "term": "Hysterectomy",
+        "definition": "Surgical removal of the uterus.",
+        "parts": [
+          {
+            "text": "hyster",
+            "type": "root",
+            "meaning": "uterus"
+          },
+          {
+            "text": "ectomy",
+            "type": "suffix",
+            "meaning": "surgical removal"
+          }
+        ]
+      },
+      {
+        "id": "salpingectomy",
+        "term": "Salpingectomy",
+        "definition": "Surgical removal of a fallopian tube or tubes.",
+        "parts": [
+          {
+            "text": "salping",
+            "type": "root",
+            "meaning": "fallopian tube here"
+          },
+          {
+            "text": "ectomy",
+            "type": "suffix",
+            "meaning": "surgical removal"
+          }
+        ]
+      },
+      {
+        "id": "oophorectomy",
+        "term": "Oophorectomy",
+        "definition": "Surgical removal of an ovary or ovaries.",
+        "parts": []
+      },
+      {
+        "id": "ovary",
+        "term": "Ovary",
+        "definition": "Gonad producing oocytes and reproductive hormones.",
+        "parts": []
+      }
+    ],
+    "caution": "Do not assume that removing one structure means another was also removed.",
+    "question": "Does hysterectomy alone confirm ovary removal?",
+    "answer": "No. It identifies uterine removal; verify any additional procedure separately.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 16, printed p. 378–400.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch17",
+    "number": 19,
+    "title": "Pregnancy and newborn terminology",
+    "module": "ch17",
+    "category": "Body systems",
+    "outcome": "Use time labels and pregnancy-history words carefully.",
+    "layout": "timeline",
+    "icon": "infant",
+    "terms": [
+      {
+        "id": "prenatal",
+        "term": "Prenatal",
+        "definition": "Relating to the period before birth.",
+        "parts": [
+          {
+            "text": "pre",
+            "type": "prefix",
+            "meaning": "before"
+          },
+          {
+            "text": "nat",
+            "type": "root",
+            "meaning": "birth"
+          },
+          {
+            "text": "al",
+            "type": "suffix",
+            "meaning": "pertaining to"
+          }
+        ]
+      },
+      {
+        "id": "neonatal",
+        "term": "Neonatal",
+        "definition": "Relating to the newborn period, usually the first 28 days after birth.",
+        "parts": [
+          {
+            "text": "neo",
+            "type": "prefix",
+            "meaning": "new"
+          },
+          {
+            "text": "nat",
+            "type": "root",
+            "meaning": "birth"
+          },
+          {
+            "text": "al",
+            "type": "suffix",
+            "meaning": "pertaining to"
+          }
+        ]
+      },
+      {
+        "id": "primigravida",
+        "term": "Primigravida",
+        "definition": "A person who is pregnant for the first time.",
+        "parts": [
+          {
+            "text": "primi",
+            "type": "prefix",
+            "meaning": "first"
+          },
+          {
+            "text": "gravida",
+            "type": "root",
+            "meaning": "pregnant person"
+          }
+        ]
+      },
+      {
+        "id": "gravidity",
+        "term": "Gravidity",
+        "definition": "Number of pregnancies a person has had.",
+        "parts": []
+      }
+    ],
+    "caution": "Gravidity and parity count different aspects of pregnancy history. Verify the documented history.",
+    "question": "Which term identifies a first pregnancy?",
+    "answer": "Primigravida.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 17, printed p. 401–428.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch18",
+    "number": 20,
+    "title": "Mental health language with care",
+    "module": "ch18",
+    "category": "Clinical concepts",
+    "outcome": "Distinguish an observed symptom from broader clinical interpretation.",
+    "layout": "opposites",
+    "icon": "mind",
+    "terms": [
+      {
+        "id": "insomnia",
+        "term": "Insomnia",
+        "definition": "Difficulty initiating or maintaining sleep, or waking too early.",
+        "parts": [
+          {
+            "text": "in",
+            "type": "prefix",
+            "meaning": "not"
+          },
+          {
+            "text": "somn",
+            "type": "root",
+            "meaning": "sleep"
+          },
+          {
+            "text": "ia",
+            "type": "suffix",
+            "meaning": "condition"
+          }
+        ]
+      },
+      {
+        "id": "anhedonia",
+        "term": "Anhedonia",
+        "definition": "Reduced ability to experience interest or pleasure.",
+        "parts": [
+          {
+            "text": "an",
+            "type": "prefix",
+            "meaning": "without"
+          },
+          {
+            "text": "hedon",
+            "type": "root",
+            "meaning": "pleasure"
+          },
+          {
+            "text": "ia",
+            "type": "suffix",
+            "meaning": "condition"
+          }
+        ]
+      },
+      {
+        "id": "mood",
+        "term": "Mood",
+        "definition": "A sustained subjective emotional state.",
+        "parts": []
+      },
+      {
+        "id": "affect",
+        "term": "Affect",
+        "definition": "Observable expression of emotion.",
+        "parts": []
+      }
+    ],
+    "caution": "Use person-respecting wording. A symptom term alone does not establish a diagnosis.",
+    "question": "Which term concerns reduced ability to experience pleasure?",
+    "answer": "Anhedonia.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 18, printed p. 429–451.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch19",
+    "number": 21,
+    "title": "Oncology terms and what they do not imply",
+    "module": "ch19",
+    "category": "Clinical concepts",
+    "outcome": "Separate growth, behaviour and spread.",
+    "layout": "opposites",
+    "icon": "cell",
+    "terms": [
+      {
+        "id": "neoplasm",
+        "term": "Neoplasm",
+        "definition": "Abnormal new tissue growth.",
+        "parts": []
+      },
+      {
+        "id": "benign",
+        "term": "Benign",
+        "definition": "Non-malignant; a benign tumour does not invade surrounding tissue or metastasise.",
+        "parts": []
+      },
+      {
+        "id": "malignant",
+        "term": "Malignant",
+        "definition": "Describing cancer with the ability to invade tissue and potentially spread.",
+        "parts": []
+      },
+      {
+        "id": "metastasis",
+        "term": "Metastasis",
+        "definition": "Spread of cancer from its original site to another part of the body.",
+        "parts": []
+      }
+    ],
+    "caution": "The ending -oma does not by itself establish whether a growth is malignant.",
+    "question": "Are all neoplasms malignant?",
+    "answer": "No. A neoplasm may be benign or malignant.",
+    "source": "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/neoplasm",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 19, printed p. 452–474.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch20",
+    "number": 22,
+    "title": "Infection terminology in context",
+    "module": "ch20",
+    "category": "Clinical concepts",
+    "outcome": "Distinguish organism, presence in blood and clinical syndrome.",
+    "layout": "network",
+    "icon": "microbe",
+    "terms": [
+      {
+        "id": "pathogen",
+        "term": "Pathogen",
+        "definition": "An organism or agent capable of causing disease.",
+        "parts": [
+          {
+            "text": "path",
+            "type": "root",
+            "meaning": "disease"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "gen",
+            "type": "suffix",
+            "meaning": "producing"
+          }
+        ]
+      },
+      {
+        "id": "bacteraemia",
+        "term": "Bacteraemia",
+        "definition": "The presence of bacteria in the bloodstream.",
+        "parts": [
+          {
+            "text": "bacter",
+            "type": "root",
+            "meaning": "bacteria"
+          },
+          {
+            "text": "aemia",
+            "type": "suffix",
+            "meaning": "blood condition"
+          }
+        ]
+      },
+      {
+        "id": "sepsis",
+        "term": "Sepsis",
+        "definition": "Life-threatening organ dysfunction caused by a dysregulated response to infection.",
+        "parts": []
+      },
+      {
+        "id": "infection",
+        "term": "Infection",
+        "definition": "Invasion and multiplication of an infectious agent with a host response.",
+        "parts": []
+      }
+    ],
+    "caution": "Bacteraemia and sepsis are not interchangeable; a term alone does not replace clinical assessment.",
+    "question": "Do bacteraemia and sepsis mean the same thing?",
+    "answer": "No. They describe different concepts.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 20, printed p. 475–494.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch21",
+    "number": 23,
+    "title": "Imaging words and the resulting record",
+    "module": "ch21",
+    "category": "Clinical concepts",
+    "outcome": "Compare image-production processes and examination methods.",
+    "layout": "steps",
+    "icon": "scan",
+    "terms": [
+      {
+        "id": "radiography",
+        "term": "Radiography",
+        "definition": "The process of creating images using X-rays.",
+        "parts": [
+          {
+            "text": "radi",
+            "type": "root",
+            "meaning": "radiation"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "graphy",
+            "type": "suffix",
+            "meaning": "process of recording"
+          }
+        ]
+      },
+      {
+        "id": "radiograph",
+        "term": "Radiograph",
+        "definition": "Image produced using X-rays.",
+        "parts": []
+      },
+      {
+        "id": "tomography",
+        "term": "Tomography",
+        "definition": "Imaging that represents sections or slices of the body.",
+        "parts": [
+          {
+            "text": "tom",
+            "type": "root",
+            "meaning": "section or cut"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "graphy",
+            "type": "suffix",
+            "meaning": "process of recording"
+          }
+        ]
+      },
+      {
+        "id": "ultrasonography",
+        "term": "Ultrasonography",
+        "definition": "Imaging with high-frequency sound waves.",
+        "parts": [
+          {
+            "text": "ultra",
+            "type": "prefix",
+            "meaning": "beyond"
+          },
+          {
+            "text": "son",
+            "type": "root",
+            "meaning": "sound"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "graphy",
+            "type": "suffix",
+            "meaning": "process of recording"
+          }
+        ]
+      }
+    ],
+    "caution": "The name of a test does not state its findings. Keep the process and the resulting image distinct.",
+    "question": "Which is a resulting image: radiography or radiograph?",
+    "answer": "Radiograph.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 21, printed p. 495–512.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch22",
+    "number": 24,
+    "title": "Pharmacokinetics and pharmacodynamics",
+    "module": "ch22",
+    "category": "Clinical concepts",
+    "outcome": "Distinguish the body handling a medicine from its effects.",
+    "layout": "opposites",
+    "icon": "capsule",
+    "terms": [
+      {
+        "id": "pharmacokinetics",
+        "term": "Pharmacokinetics",
+        "definition": "The study of how the body absorbs, distributes, metabolises and eliminates a medicine.",
+        "parts": [
+          {
+            "text": "pharmac",
+            "type": "root",
+            "meaning": "drug"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "kinetics",
+            "type": "root",
+            "meaning": "movement"
+          }
+        ]
+      },
+      {
+        "id": "pharmacodynamics",
+        "term": "Pharmacodynamics",
+        "definition": "The study of a medicine’s effects and how those effects occur.",
+        "parts": [
+          {
+            "text": "pharmac",
+            "type": "root",
+            "meaning": "drug"
+          },
+          {
+            "text": "o",
+            "type": "vowel",
+            "meaning": "links word parts"
+          },
+          {
+            "text": "dynamics",
+            "type": "root",
+            "meaning": "action or force"
+          }
+        ]
+      },
+      {
+        "id": "contraindication",
+        "term": "Contraindication",
+        "definition": "Circumstance in which an intervention should not be used.",
+        "parts": []
+      },
+      {
+        "id": "bioavailability",
+        "term": "Bioavailability",
+        "definition": "The fraction of a dose that reaches the systemic circulation unchanged.",
+        "parts": []
+      }
+    ],
+    "caution": "This board teaches terminology, not drug choice or dosing.",
+    "question": "Which term concerns what the body does to a medicine?",
+    "answer": "Pharmacokinetics.",
+    "source": "https://medlineplus.gov/anatomy.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 22, printed p. 513–531.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch23",
+    "number": 25,
+    "title": "Complementary alternative and integrative",
+    "module": "ch23",
+    "category": "Clinical concepts",
+    "outcome": "Clarify how an approach is used, without claiming effectiveness.",
+    "layout": "opposites",
+    "icon": "leaf",
+    "terms": [
+      {
+        "id": "complementary-therapy",
+        "term": "Complementary therapy",
+        "definition": "An approach used alongside conventional medical care.",
+        "parts": []
+      },
+      {
+        "id": "alternative-therapy",
+        "term": "Alternative therapy",
+        "definition": "An approach used in place of conventional medical care.",
+        "parts": []
+      },
+      {
+        "id": "integrative-health",
+        "term": "Integrative health",
+        "definition": "Coordinated approach bringing conventional and complementary approaches together.",
+        "parts": []
+      },
+      {
+        "id": "herbal-medicine",
+        "term": "Herbal medicine",
+        "definition": "Use of plant-derived preparations for health-related purposes.",
+        "parts": []
+      }
+    ],
+    "caution": "Use alongside conventional care differs from use instead of it. A category label does not prove benefit or safety.",
+    "question": "Which label describes use alongside conventional care?",
+    "answer": "Complementary.",
+    "source": "https://www.nccih.nih.gov/health/complementary-alternative-or-integrative-health-whats-in-a-name",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 23, printed p. 532–536.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "ch24",
+    "number": 26,
+    "title": "Incidence prevalence and study questions",
+    "module": "ch24",
+    "category": "Clinical concepts",
+    "outcome": "Separate new cases, existing cases and research designs.",
+    "layout": "comparison",
+    "icon": "research",
+    "terms": [
+      {
+        "id": "incidence",
+        "term": "Incidence",
+        "definition": "The occurrence of new cases in a population at risk over a specified period.",
+        "parts": []
+      },
+      {
+        "id": "prevalence",
+        "term": "Prevalence",
+        "definition": "The proportion of a population with a condition at a specified time or during a defined period.",
+        "parts": []
+      },
+      {
+        "id": "cohort",
+        "term": "Cohort",
+        "definition": "A defined group of people followed or studied over time.",
+        "parts": []
+      },
+      {
+        "id": "cross-sectional-study",
+        "term": "Cross-sectional study",
+        "definition": "Study measuring variables within a population at a particular time.",
+        "parts": []
+      }
+    ],
+    "caution": "Counts need a defined population and time. No real-world percentages are claimed on this board.",
+    "question": "Which concept concerns new cases during a defined period?",
+    "answer": "Incidence.",
+    "source": "https://archive.cdc.gov/www_cdc_gov/csels/dsepd/ss1978/lesson3/section2.html",
+    "sourceNote": "Walker, Wood & Nicol, Mastering Medical Terminology, 3rd ed., Chapter 24, printed p. 537.",
+    "checked": "16 October 2026"
+  },
+  {
+    "id": "decode-1",
+    "number": 27,
+    "title": "Decode a term: a five-step method",
+    "module": "ch1",
+    "category": "Decode & pronounce",
+    "outcome": "Find the parts, form a provisional meaning, then verify the full term.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "decode-1-1",
+        "term": "1 · Inspect the whole word",
+        "definition": "Copy the exact spelling; look for familiar components."
+      },
+      {
+        "id": "decode-1-2",
+        "term": "2 · Find the suffix",
+        "definition": "The ending often signals a condition or procedure."
+      },
+      {
+        "id": "decode-1-3",
+        "term": "3 · Find the root and prefix",
+        "definition": "The root gives the core idea; a prefix modifies it if present."
+      },
+      {
+        "id": "decode-1-4",
+        "term": "4 · Assemble the meaning",
+        "definition": "For pericarditis: peri- around, cardi heart, -itis inflammation."
+      },
+      {
+        "id": "decode-1-5",
+        "term": "5 · Verify the complete definition",
+        "definition": "Pericarditis is inflammation of the pericardium, the sac around the heart."
+      }
+    ],
+    "caution": "Word parts suggest meaning. They cannot establish every clinical definition.",
+    "question": "Does every medical term contain a prefix?",
+    "answer": "No. Some terms lack a prefix and some resist useful decomposition.",
+    "source": "https://www.ncbi.nlm.nih.gov/books/NBK607453/",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "A large illustrated magnifying glass over PERI | CARD | ITIS, five numbered learning stations and a small book. Word structure is schematic, not anatomy."
+  },
+  {
+    "id": "decode-2",
+    "number": 28,
+    "title": "Read the modifier: prefixes in contrast",
+    "module": "prefixes",
+    "category": "Decode & pronounce",
+    "outcome": "Notice a small prefix before deciding what a term means.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "decode-2-1",
+        "term": "hyper- / hypo-",
+        "definition": "Above normal or excessive / below normal or deficient."
+      },
+      {
+        "id": "decode-2-2",
+        "term": "tachy- / brady-",
+        "definition": "Fast / slow."
+      },
+      {
+        "id": "decode-2-3",
+        "term": "intra- / inter-",
+        "definition": "Within / between."
+      },
+      {
+        "id": "decode-2-4",
+        "term": "peri- / endo-",
+        "definition": "Around / within."
+      },
+      {
+        "id": "decode-2-5",
+        "term": "Compare the complete terms",
+        "definition": "Hyperglycaemia and hypoglycaemia describe different blood glucose findings."
+      }
+    ],
+    "caution": "Confirm the whole term and its clinical context; a prefix alone is insufficient.",
+    "question": "What is the difference between intra- and inter-?",
+    "answer": "Intra- means within; inter- means between.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "Four rich visual pairs: high/low, fast/slow, inside/between, around/within. Use abstract objects rather than quantitative medical charts."
+  },
+  {
+    "id": "decode-3",
+    "number": 29,
+    "title": "The combining vowel: a useful bridge",
+    "module": "ch1",
+    "category": "Decode & pronounce",
+    "outcome": "Use common joining patterns without forcing exceptions.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "decode-3-1",
+        "term": "Root + consonant-starting suffix",
+        "definition": "arthr/o/pathy uses o as a joining vowel."
+      },
+      {
+        "id": "decode-3-2",
+        "term": "Root + vowel-starting suffix",
+        "definition": "hepat/ic usually omits the combining vowel."
+      },
+      {
+        "id": "decode-3-3",
+        "term": "Root + root",
+        "definition": "oste/o/arthr/itis retains the joining o between roots."
+      },
+      {
+        "id": "decode-3-4",
+        "term": "Prefix + root",
+        "definition": "sub/hepat/ic does not insert a combining vowel after the prefix."
+      }
+    ],
+    "caution": "These are common patterns. Verify the spelling of the established term.",
+    "question": "Is a joining o normally inserted between sub- and hepat-?",
+    "answer": "No: sub/hepat/ic.",
+    "source": "https://www.ncbi.nlm.nih.gov/books/NBK607453/table/ch1concepts.T.a_guidelines_on_combining/",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "Beautiful dimensional letter blocks linked by an o-shaped bridge; four precise example labels, not a biological diagram."
+  },
+  {
+    "id": "decode-4",
+    "number": 30,
+    "title": "Read it aloud: listen, chunk, blend",
+    "module": "ch1",
+    "category": "Decode & pronounce",
+    "outcome": "Build clear pronunciation while keeping spelling and meaning linked.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "decode-4-1",
+        "term": "Listen first",
+        "definition": "Check a dictionary recording or an approved pronunciation reference."
+      },
+      {
+        "id": "decode-4-2",
+        "term": "Chunk the spoken word",
+        "definition": "Use the reference syllables; written word parts are not always spoken syllables."
+      },
+      {
+        "id": "decode-4-3",
+        "term": "Notice the stressed syllable",
+        "definition": "Follow the pronunciation key; stress marks differ between dictionaries."
+      },
+      {
+        "id": "decode-4-4",
+        "term": "Blend and check",
+        "definition": "Say it slowly, then naturally. Compare again and retrieve the meaning."
+      }
+    ],
+    "caution": "Accents and accepted variants differ. Device speech is a practice aid, not an examiner.",
+    "question": "Are word-part divisions always identical to syllable divisions?",
+    "answer": "No. Morphological parts and spoken syllables serve different purposes.",
+    "source": "https://www.ncbi.nlm.nih.gov/books/NBK607453/",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "An illustrated clinician listening with headphones, a word on large cards and a non-quantitative sound ribbon. Four clear learning steps."
+  },
+  {
+    "id": "decode-5",
+    "number": 31,
+    "title": "Know when to stop splitting",
+    "module": "ch1",
+    "category": "Decode & pronounce",
+    "outcome": "Use context and references when word-part clues reach their limit.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "decode-5-1",
+        "term": "Established meaning wins",
+        "definition": "A literal split can miss the precise clinical meaning."
+      },
+      {
+        "id": "decode-5-2",
+        "term": "Eponyms need a definition",
+        "definition": "Parkinson disease cannot be decoded from a body root and suffix."
+      },
+      {
+        "id": "decode-5-3",
+        "term": "Abbreviations need confirmation",
+        "definition": "MRI means magnetic resonance imaging; local abbreviations can be ambiguous."
+      },
+      {
+        "id": "decode-5-4",
+        "term": "Context completes the reading",
+        "definition": "Check the sentence, body system and authorised reference; ask for clarification."
+      }
+    ],
+    "caution": "Never infer a diagnosis, extent of surgery or treatment from a word fragment.",
+    "question": "What should you do with an unclear abbreviation?",
+    "answer": "Confirm the documented meaning using authorised references or clarification.",
+    "source": "https://medlineplus.gov/medwords/abbreviations1.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "A dictionary, a puzzle piece that does not fit, a question card and a clinician reading a record. Clear stop-and-check concept."
+  },
+  {
+    "id": "pitfalls-1",
+    "number": 32,
+    "title": "Small spelling changes, different meanings",
+    "module": "ch1",
+    "category": "Common pitfalls",
+    "outcome": "Pause at similar-looking and similar-sounding terms.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "pitfalls-1-1",
+        "term": "dysphagia / dysphasia",
+        "definition": "Swallowing difficulty / a language impairment."
+      },
+      {
+        "id": "pitfalls-1-2",
+        "term": "ileum / ilium",
+        "definition": "Part of the small intestine / part of the hip bone."
+      },
+      {
+        "id": "pitfalls-1-3",
+        "term": "ureter / urethra",
+        "definition": "Kidney-to-bladder tube / bladder-to-outside passage."
+      },
+      {
+        "id": "pitfalls-1-4",
+        "term": "hyperglycaemia / hypoglycaemia",
+        "definition": "Blood glucose above / below the appropriate range."
+      }
+    ],
+    "caution": "Compare spelling, meaning and sentence context. Ask rather than guess.",
+    "question": "Which pair separates swallowing difficulty from language impairment?",
+    "answer": "Dysphagia and dysphasia.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "An illustrated proofreading desk with four large paired word cards, a magnifier highlighting the changed letters, restrained small organ symbols. No incorrect letter highlights."
+  },
+  {
+    "id": "pitfalls-2",
+    "number": 33,
+    "title": "Similar endings are not interchangeable",
+    "module": "suffixes",
+    "category": "Common pitfalls",
+    "outcome": "Separate a procedure, its process and its resulting record.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "pitfalls-2-1",
+        "term": "-ectomy",
+        "definition": "Surgical removal."
+      },
+      {
+        "id": "pitfalls-2-2",
+        "term": "-otomy",
+        "definition": "Incision into."
+      },
+      {
+        "id": "pitfalls-2-3",
+        "term": "-ostomy",
+        "definition": "Surgical creation of an opening."
+      },
+      {
+        "id": "pitfalls-2-4",
+        "term": "-gram / -graphy / -scopy",
+        "definition": "A resulting record / a recording process / visual examination with an instrument."
+      }
+    ],
+    "caution": "The ending -oma alone does not establish malignancy. Verify abbreviations and complete definitions.",
+    "question": "Which ending indicates removal: -ectomy or -otomy?",
+    "answer": "-ectomy.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "Elegant illustrated medical instruments, a document and an examination scope surrounding clear comparison labels. No graphic procedures."
+  },
+  {
+    "id": "mnemonics-1",
+    "number": 34,
+    "title": "10 memory cues · Modifiers and amounts",
+    "module": "prefixes",
+    "category": "Memory cues",
+    "outcome": "Use cues 1–10 to retrieve the actual word-part meaning.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "mnemonics-1-1",
+        "term": "hyper-",
+        "definition": "above normal or excessive",
+        "cue": "01 · HYPER reaches HIGHER."
+      },
+      {
+        "id": "mnemonics-1-2",
+        "term": "hypo-",
+        "definition": "below normal or deficient",
+        "cue": "02 · HYPO goes LOW."
+      },
+      {
+        "id": "mnemonics-1-3",
+        "term": "tachy-",
+        "definition": "fast",
+        "cue": "03 · A TACHometer suggests speed."
+      },
+      {
+        "id": "mnemonics-1-4",
+        "term": "brady-",
+        "definition": "slow",
+        "cue": "04 · BRADY: imagine a BRAKE."
+      },
+      {
+        "id": "mnemonics-1-5",
+        "term": "micro-",
+        "definition": "small",
+        "cue": "05 · A MICROscope reveals small things."
+      },
+      {
+        "id": "mnemonics-1-6",
+        "term": "macro-",
+        "definition": "large",
+        "cue": "06 · MACRO: imagine a large-scale view."
+      },
+      {
+        "id": "mnemonics-1-7",
+        "term": "poly-",
+        "definition": "many",
+        "cue": "07 · POLYgon: many sides."
+      },
+      {
+        "id": "mnemonics-1-8",
+        "term": "oligo-",
+        "definition": "few or little",
+        "cue": "08 · OLIGO: only a little."
+      },
+      {
+        "id": "mnemonics-1-9",
+        "term": "a- / an-",
+        "definition": "without or lacking",
+        "cue": "09 · A = ABSENT as a memory cue."
+      },
+      {
+        "id": "mnemonics-1-10",
+        "term": "dys-",
+        "definition": "difficult or abnormal",
+        "cue": "10 · DYS sounds like DIFFICULT."
+      }
+    ],
+    "caution": "Original MedLex memory cues for common word parts; not official definitions or a frequency-ranked top 50.",
+    "question": "What should you recall after the memory cue?",
+    "answer": "The correct word-part meaning, then the verified meaning of the complete term.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "TEN numbered, highly readable mini-scenes in a 2-column by 5-row illustrated editorial poster. Each scene has term, short exact meaning and a clearly labeled memory cue. Small meaningful illustrations support the cue; no large decorative centre taking space from the ten items."
+  },
+  {
+    "id": "mnemonics-2",
+    "number": 35,
+    "title": "10 memory cues · Location prefixes",
+    "module": "prefixes",
+    "category": "Memory cues",
+    "outcome": "Use cues 11–20 to retrieve the actual word-part meaning.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "mnemonics-2-1",
+        "term": "endo-",
+        "definition": "within",
+        "cue": "11 · ENDO: ENTER inside."
+      },
+      {
+        "id": "mnemonics-2-2",
+        "term": "ecto-",
+        "definition": "outside",
+        "cue": "12 · ECTO: EXIT to the outside."
+      },
+      {
+        "id": "mnemonics-2-3",
+        "term": "intra-",
+        "definition": "within",
+        "cue": "13 · INTRA: INside one space."
+      },
+      {
+        "id": "mnemonics-2-4",
+        "term": "inter-",
+        "definition": "between",
+        "cue": "14 · INTERval: a gap between."
+      },
+      {
+        "id": "mnemonics-2-5",
+        "term": "peri-",
+        "definition": "around",
+        "cue": "15 · PERImeter runs around."
+      },
+      {
+        "id": "mnemonics-2-6",
+        "term": "epi-",
+        "definition": "upon or on",
+        "cue": "16 · EPI: picture a label ON a box."
+      },
+      {
+        "id": "mnemonics-2-7",
+        "term": "sub-",
+        "definition": "under",
+        "cue": "17 · SUBmarine travels under water."
+      },
+      {
+        "id": "mnemonics-2-8",
+        "term": "supra-",
+        "definition": "above",
+        "cue": "18 · SUPRA: imagine a raised platform."
+      },
+      {
+        "id": "mnemonics-2-9",
+        "term": "trans-",
+        "definition": "across or through",
+        "cue": "19 · TRANSport travels across."
+      },
+      {
+        "id": "mnemonics-2-10",
+        "term": "retro-",
+        "definition": "behind or backward",
+        "cue": "20 · RETRO: look backward."
+      }
+    ],
+    "caution": "Original MedLex memory cues for common word parts; not official definitions or a frequency-ranked top 50.",
+    "question": "What should you recall after the memory cue?",
+    "answer": "The correct word-part meaning, then the verified meaning of the complete term.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "TEN numbered, highly readable mini-scenes in a 2-column by 5-row illustrated editorial poster. Each scene has term, short exact meaning and a clearly labeled memory cue. Small meaningful illustrations support the cue; no large decorative centre taking space from the ten items."
+  },
+  {
+    "id": "mnemonics-3",
+    "number": 36,
+    "title": "10 memory cues · Body roots: core systems",
+    "module": "ch1",
+    "category": "Memory cues",
+    "outcome": "Use cues 21–30 to retrieve the actual word-part meaning.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "mnemonics-3-1",
+        "term": "cardi/o",
+        "definition": "heart",
+        "cue": "21 · CARDIO workout: think heart."
+      },
+      {
+        "id": "mnemonics-3-2",
+        "term": "nephr/o",
+        "definition": "kidney",
+        "cue": "22 · NEPHRon: the kidney link."
+      },
+      {
+        "id": "mnemonics-3-3",
+        "term": "hepat/o",
+        "definition": "liver",
+        "cue": "23 · HEPATitis: think liver."
+      },
+      {
+        "id": "mnemonics-3-4",
+        "term": "gastr/o",
+        "definition": "stomach",
+        "cue": "24 · GASTRic: think stomach."
+      },
+      {
+        "id": "mnemonics-3-5",
+        "term": "enter/o",
+        "definition": "intestine",
+        "cue": "25 · ENTERic: think intestine."
+      },
+      {
+        "id": "mnemonics-3-6",
+        "term": "oste/o",
+        "definition": "bone",
+        "cue": "26 · OSTEOporosis: think bone."
+      },
+      {
+        "id": "mnemonics-3-7",
+        "term": "arthr/o",
+        "definition": "joint",
+        "cue": "27 · ARTHRitis: think joint."
+      },
+      {
+        "id": "mnemonics-3-8",
+        "term": "my/o",
+        "definition": "muscle",
+        "cue": "28 · MYO: picture a muscle moving."
+      },
+      {
+        "id": "mnemonics-3-9",
+        "term": "neur/o",
+        "definition": "nerve",
+        "cue": "29 · NEURon: think nerve."
+      },
+      {
+        "id": "mnemonics-3-10",
+        "term": "derm/o",
+        "definition": "skin",
+        "cue": "30 · DERMatologist: think skin."
+      }
+    ],
+    "caution": "Original MedLex memory cues for common word parts; not official definitions or a frequency-ranked top 50.",
+    "question": "What should you recall after the memory cue?",
+    "answer": "The correct word-part meaning, then the verified meaning of the complete term.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "TEN numbered, highly readable mini-scenes in a 2-column by 5-row illustrated editorial poster. Each scene has term, short exact meaning and a clearly labeled memory cue. Small meaningful illustrations support the cue; no large decorative centre taking space from the ten items."
+  },
+  {
+    "id": "mnemonics-4",
+    "number": 37,
+    "title": "10 memory cues · Body roots: organs and senses",
+    "module": "ch1",
+    "category": "Memory cues",
+    "outcome": "Use cues 31–40 to retrieve the actual word-part meaning.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "mnemonics-4-1",
+        "term": "haem/o",
+        "definition": "blood",
+        "cue": "31 · HAEMoglobin: think blood."
+      },
+      {
+        "id": "mnemonics-4-2",
+        "term": "pneum/o",
+        "definition": "lung or air",
+        "cue": "32 · PNEUmatic: think air."
+      },
+      {
+        "id": "mnemonics-4-3",
+        "term": "ot/o",
+        "definition": "ear",
+        "cue": "33 · OTOscope: think ear."
+      },
+      {
+        "id": "mnemonics-4-4",
+        "term": "ophthalm/o",
+        "definition": "eye",
+        "cue": "34 · OPHTHALMologist: think eye."
+      },
+      {
+        "id": "mnemonics-4-5",
+        "term": "rhin/o",
+        "definition": "nose",
+        "cue": "35 · RHINoplasty: think nose."
+      },
+      {
+        "id": "mnemonics-4-6",
+        "term": "cephal/o",
+        "definition": "head",
+        "cue": "36 · CEPHALic: picture a cap on the head."
+      },
+      {
+        "id": "mnemonics-4-7",
+        "term": "splen/o",
+        "definition": "spleen",
+        "cue": "37 · SPLENomegaly: picture the spleen."
+      },
+      {
+        "id": "mnemonics-4-8",
+        "term": "oophor/o",
+        "definition": "ovary",
+        "cue": "38 · OO: picture a pair of ovaries."
+      },
+      {
+        "id": "mnemonics-4-9",
+        "term": "hyster/o",
+        "definition": "uterus",
+        "cue": "39 · HYSTERectomy: link to the uterus."
+      },
+      {
+        "id": "mnemonics-4-10",
+        "term": "onc/o",
+        "definition": "tumour",
+        "cue": "40 · ONCology: think tumour."
+      }
+    ],
+    "caution": "Original MedLex memory cues for common word parts; not official definitions or a frequency-ranked top 50.",
+    "question": "What should you recall after the memory cue?",
+    "answer": "The correct word-part meaning, then the verified meaning of the complete term.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "TEN numbered, highly readable mini-scenes in a 2-column by 5-row illustrated editorial poster. Each scene has term, short exact meaning and a clearly labeled memory cue. Small meaningful illustrations support the cue; no large decorative centre taking space from the ten items."
+  },
+  {
+    "id": "mnemonics-5",
+    "number": 38,
+    "title": "10 memory cues · Conditions and procedures",
+    "module": "ch1",
+    "category": "Memory cues",
+    "outcome": "Use cues 41–50 to retrieve the actual word-part meaning.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "mnemonics-5-1",
+        "term": "-itis",
+        "definition": "inflammation",
+        "cue": "41 · ITIS: imagine an inflamed area."
+      },
+      {
+        "id": "mnemonics-5-2",
+        "term": "-ectomy",
+        "definition": "surgical removal",
+        "cue": "42 · ECTOMY: a part EXITS."
+      },
+      {
+        "id": "mnemonics-5-3",
+        "term": "-otomy",
+        "definition": "incision into",
+        "cue": "43 · OTOMY: OPEN by an incision."
+      },
+      {
+        "id": "mnemonics-5-4",
+        "term": "-ostomy",
+        "definition": "creation of an opening",
+        "cue": "44 · OSTOMY: an OPEN STOMA."
+      },
+      {
+        "id": "mnemonics-5-5",
+        "term": "-scopy",
+        "definition": "visual examination with an instrument",
+        "cue": "45 · SCOPY: SCOPE to see."
+      },
+      {
+        "id": "mnemonics-5-6",
+        "term": "-gram",
+        "definition": "a resulting record",
+        "cue": "46 · GRAM: a teleGRAM is a record."
+      },
+      {
+        "id": "mnemonics-5-7",
+        "term": "-graphy",
+        "definition": "a recording process",
+        "cue": "47 · GRAPHY: photoGRAPHY is a process."
+      },
+      {
+        "id": "mnemonics-5-8",
+        "term": "-megaly",
+        "definition": "enlargement",
+        "cue": "48 · MEGALY: imagine MEGA size."
+      },
+      {
+        "id": "mnemonics-5-9",
+        "term": "-algia",
+        "definition": "pain",
+        "cue": "49 · ALGIA: associate with an ACHE."
+      },
+      {
+        "id": "mnemonics-5-10",
+        "term": "-penia",
+        "definition": "deficiency or a reduced count",
+        "cue": "50 · PENIA: a PENNILESS shortage."
+      }
+    ],
+    "caution": "Original MedLex memory cues for common word parts; not official definitions or a frequency-ranked top 50.",
+    "question": "What should you recall after the memory cue?",
+    "answer": "The correct word-part meaning, then the verified meaning of the complete term.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "TEN numbered, highly readable mini-scenes in a 2-column by 5-row illustrated editorial poster. Each scene has term, short exact meaning and a clearly labeled memory cue. Small meaningful illustrations support the cue; no large decorative centre taking space from the ten items."
+  },
+  {
+    "id": "directions-1",
+    "number": 39,
+    "title": "Body directions: orient before describing",
+    "module": "ch3",
+    "category": "Directions & position",
+    "outcome": "Use anatomical position and the person’s own left and right.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "directions-1-1",
+        "term": "Anatomical position",
+        "definition": "Upright, facing forward, arms by the sides and palms forward."
+      },
+      {
+        "id": "directions-1-2",
+        "term": "Anterior / posterior",
+        "definition": "Toward the front / toward the back."
+      },
+      {
+        "id": "directions-1-3",
+        "term": "Superior / inferior",
+        "definition": "Toward the head / toward the feet in the upright body."
+      },
+      {
+        "id": "directions-1-4",
+        "term": "Medial / lateral",
+        "definition": "Toward / away from the body midline."
+      }
+    ],
+    "caution": "Left and right refer to the person being described, not the observer.",
+    "question": "Is medial toward or away from the body midline?",
+    "answer": "Toward the midline.",
+    "source": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "A clothed neutral mannequin and small front/back orientation vignettes. Conceptual visual, no precise anatomical landmarks; definitions carry the teaching meaning."
+  },
+  {
+    "id": "directions-2",
+    "number": 40,
+    "title": "Body directions: distance, depth and side",
+    "module": "ch3",
+    "category": "Directions & position",
+    "outcome": "Describe a structure relative to a stated reference point.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "directions-2-1",
+        "term": "Proximal / distal",
+        "definition": "Nearer / farther from a limb’s attachment or origin."
+      },
+      {
+        "id": "directions-2-2",
+        "term": "Superficial / deep",
+        "definition": "Closer to / farther from the body surface."
+      },
+      {
+        "id": "directions-2-3",
+        "term": "Ipsilateral / contralateral",
+        "definition": "On the same / opposite side of the body."
+      },
+      {
+        "id": "directions-2-4",
+        "term": "State the relationship",
+        "definition": "The elbow is proximal to the wrist. Skin is superficial to muscle."
+      }
+    ],
+    "caution": "A direction needs a reference. Proximal and distal do not mean simply up and down.",
+    "question": "Is the wrist proximal or distal to the elbow?",
+    "answer": "Distal.",
+    "source": "https://training.seer.cancer.gov/anatomy/body/terminology.html",
+    "sourceNote": "Source checks support terminology facts. MedLex examples and memory cues are original teaching aids, not frequency rankings or clinical validation.",
+    "checked": "16 October 2026",
+    "visual": "A clothed person, an isolated arm, a conceptual layered material and paired side markers. No complex diagrams or unprovided labels."
+  },
+  {
+    "id": "pitfalls-3",
+    "number": 41,
+    "title": "Similar roots, different tissues",
+    "module": "ch1",
+    "category": "Common pitfalls",
+    "outcome": "Distinguish similar forms and explain why the tempting alternative is wrong.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "pitfalls-3-1",
+        "term": "my/o",
+        "definition": "Muscle."
+      },
+      {
+        "id": "pitfalls-3-2",
+        "term": "myel/o",
+        "definition": "Bone marrow or spinal cord; context decides."
+      },
+      {
+        "id": "pitfalls-3-3",
+        "term": "myc/o",
+        "definition": "Fungus."
+      },
+      {
+        "id": "pitfalls-3-4",
+        "term": "myx/o",
+        "definition": "Mucus."
+      }
+    ],
+    "caution": "Read every letter. A similar sound does not establish the same meaning.",
+    "question": "Which root can refer to either marrow or spinal cord?",
+    "answer": "myel/o; verify the complete term and context.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sources": [
+      "https://medlineplus.gov/appendixa.html"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Four richly illustrated panels: a muscle model, a closed reference book with two bookmarks for the dual meaning, a stylized mushroom, and a glass vessel containing translucent gel. Conceptual objects only; no anatomical cross-sections.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "pitfalls-4",
+    "number": 42,
+    "title": "One or many? Singular and plural",
+    "module": "ch1",
+    "category": "Common pitfalls",
+    "outcome": "Distinguish similar forms and explain why the tempting alternative is wrong.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "pitfalls-4-1",
+        "term": "diagnosis → diagnoses",
+        "definition": "One diagnosis; more than one diagnosis."
+      },
+      {
+        "id": "pitfalls-4-2",
+        "term": "vertebra → vertebrae",
+        "definition": "One vertebra; more than one vertebra."
+      },
+      {
+        "id": "pitfalls-4-3",
+        "term": "bacterium → bacteria",
+        "definition": "One bacterium; more than one bacterium."
+      },
+      {
+        "id": "pitfalls-4-4",
+        "term": "ganglion → ganglia",
+        "definition": "One ganglion; more than one ganglion. Ganglions is also accepted."
+      }
+    ],
+    "caution": "These are examples, not a rule for every word. Check accepted variants.",
+    "question": "What is the plural of diagnosis?",
+    "answer": "Diagnoses.",
+    "source": "https://www.merriam-webster.com/dictionary/diagnosis",
+    "sources": [
+      "https://www.merriam-webster.com/dictionary/diagnosis",
+      "https://www.merriam-webster.com/dictionary/vertebra",
+      "https://www.merriam-webster.com/dictionary/bacterium",
+      "https://www.merriam-webster.com/dictionary/ganglion"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "One versus several illustrated index cards, spine-model pieces, conceptual microbes and beads. Four horizontal comparisons with the exact word pairs dominant. Do not label beads as anatomy.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "pitfalls-5",
+    "number": 43,
+    "title": "What an ending cannot tell you",
+    "module": "suffixes",
+    "category": "Common pitfalls",
+    "outcome": "Distinguish similar forms and explain why the tempting alternative is wrong.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "pitfalls-5-1",
+        "term": "-itis",
+        "definition": "Inflammation; the cause is not specified."
+      },
+      {
+        "id": "pitfalls-5-2",
+        "term": "-oma",
+        "definition": "Tumour or mass; the ending alone does not establish malignancy."
+      },
+      {
+        "id": "pitfalls-5-3",
+        "term": "-pathy",
+        "definition": "Disease; the precise disease still needs defining."
+      },
+      {
+        "id": "pitfalls-5-4",
+        "term": "-osis",
+        "definition": "A condition, often abnormal; verify the complete word."
+      }
+    ],
+    "caution": "Word parts offer clues. They do not establish cause, severity or a diagnosis.",
+    "question": "Does an -itis ending prove infection?",
+    "answer": "No. It indicates inflammation; the cause must be established separately.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sources": [
+      "https://medlineplus.gov/appendixa.html",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/inflammation",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/tumor"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Four substantial illustrated word cards with a magnifying glass, a closed evidence folder, a medical dictionary and a question card. No real lesions, biological pathways or diagnostic imagery.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "pitfalls-6",
+    "number": 44,
+    "title": "Abbreviations: clarify, do not guess",
+    "module": "ch1",
+    "category": "Common pitfalls",
+    "outcome": "Distinguish similar forms and explain why the tempting alternative is wrong.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "pitfalls-6-1",
+        "term": "MS",
+        "definition": "Can be misread between medicine names; write the full medicine name."
+      },
+      {
+        "id": "pitfalls-6-2",
+        "term": "Full wording",
+        "definition": "Write the intended medicine, site or action in full."
+      },
+      {
+        "id": "pitfalls-6-3",
+        "term": "D/C",
+        "definition": "Can be read as discharge or discontinue. Write the intended word."
+      },
+      {
+        "id": "pitfalls-6-4",
+        "term": "Safe next step",
+        "definition": "Use the approved local glossary and clarify unresolved ambiguity."
+      }
+    ],
+    "caution": "These are error-prone examples, not abbreviations to copy into clinical instructions.",
+    "question": "What should you do when an abbreviation has two plausible meanings?",
+    "answer": "Clarify the intended meaning and write it in full; do not choose by guesswork.",
+    "source": "https://home.ecri.org/blogs/guidance-insights-tools/list-of-error-prone-abbreviations",
+    "sources": [
+      "https://home.ecri.org/blogs/guidance-insights-tools/list-of-error-prone-abbreviations",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC3745070/"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "A calm educator and trainee reviewing a fictional blank chart, with a large magnifier and a full-word dictionary. Three ambiguous abbreviation cards become one clear written message. No medicine packaging, doses or patient details.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "clinical-1",
+    "number": 45,
+    "title": "Sign, symptom, syndrome, diagnosis",
+    "module": "ch1",
+    "category": "Clinical concepts",
+    "outcome": "Select the term that matches the evidence and preserve its limits.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "clinical-1-1",
+        "term": "Sign",
+        "definition": "An observed or measured finding, such as a measured temperature."
+      },
+      {
+        "id": "clinical-1-2",
+        "term": "Symptom",
+        "definition": "An experience reported by the person, such as nausea."
+      },
+      {
+        "id": "clinical-1-3",
+        "term": "Syndrome",
+        "definition": "A recognisable group of findings or symptoms occurring together."
+      },
+      {
+        "id": "clinical-1-4",
+        "term": "Diagnosis",
+        "definition": "Identification of a disease or condition using clinical evidence."
+      }
+    ],
+    "caution": "A finding is evidence. A diagnosis is an interpretation supported by evidence.",
+    "question": "Is a person reporting nausea describing a sign or a symptom?",
+    "answer": "A symptom.",
+    "source": "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/sign",
+    "sources": [
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/sign",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/symptom",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/syndrome",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/diagnosis"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Four conceptual scenes: a thermometer without numbers; a person reporting how they feel; a cluster of linked index cards; an educator assembling an evidence folder. No arrows implying an inevitable diagnostic pathway.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "clinical-2",
+    "number": 46,
+    "title": "Time course is not severity",
+    "module": "ch19",
+    "category": "Clinical concepts",
+    "outcome": "Select the term that matches the evidence and preserve its limits.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "clinical-2-1",
+        "term": "Acute",
+        "definition": "Begins or develops rapidly; often relatively short in course."
+      },
+      {
+        "id": "clinical-2-2",
+        "term": "Chronic",
+        "definition": "Persists over a long period."
+      },
+      {
+        "id": "clinical-2-3",
+        "term": "Recurrent",
+        "definition": "Returns after a period of absence or improvement."
+      },
+      {
+        "id": "clinical-2-4",
+        "term": "Remission",
+        "definition": "Disease findings decrease or disappear; this does not necessarily mean cure."
+      }
+    ],
+    "caution": "Acute does not simply mean severe. Chronic does not simply mean mild. Definitions of duration vary by condition.",
+    "question": "Does chronic tell you that a condition is mild?",
+    "answer": "No. It describes persistence, not severity.",
+    "source": "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/acute",
+    "sources": [
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/acute",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/chronic-disease",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/recurrent-cancer",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/remission"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Four independent calendar and bookmark vignettes: a sudden calendar page turn, a long row of pages, a returning bookmark, and a partly closed evidence folder. No statistical chart, threshold or guaranteed recovery story.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "clinical-3",
+    "number": 47,
+    "title": "Screening, diagnosis and prognosis",
+    "module": "ch24",
+    "category": "Clinical concepts",
+    "outcome": "Select the term that matches the evidence and preserve its limits.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "clinical-3-1",
+        "term": "Screening",
+        "definition": "Checks for disease before symptoms appear."
+      },
+      {
+        "id": "clinical-3-2",
+        "term": "Diagnostic evaluation",
+        "definition": "Investigates findings or symptoms to identify a condition."
+      },
+      {
+        "id": "clinical-3-3",
+        "term": "Differential diagnosis",
+        "definition": "The possible explanations being compared."
+      },
+      {
+        "id": "clinical-3-4",
+        "term": "Prognosis",
+        "definition": "The expected course or outcome of an established condition."
+      }
+    ],
+    "caution": "A screening result is not automatically a confirmed diagnosis. Prognosis is an estimate, not a promise.",
+    "question": "Which term refers to the expected course of a condition?",
+    "answer": "Prognosis.",
+    "source": "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/screening",
+    "sources": [
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/screening",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/diagnosis",
+      "https://medlineplus.gov/lab-tests/differential-diagnosis/",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/prognosis"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Four editorial scenes with an invitation envelope, a magnifying glass over an evidence folder, several possible-path index cards and an open horizon notebook. Avoid numerical predictions and an automatic screening-to-diagnosis arrow.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "clinical-4",
+    "number": 48,
+    "title": "Infection is not the same as colonization",
+    "module": "ch20",
+    "category": "Clinical concepts",
+    "outcome": "Select the term that matches the evidence and preserve its limits.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "clinical-4-1",
+        "term": "Infection",
+        "definition": "Microorganisms invade or multiply with a host response."
+      },
+      {
+        "id": "clinical-4-2",
+        "term": "Colonization",
+        "definition": "Microorganisms are carried without signs or symptoms of infection."
+      },
+      {
+        "id": "clinical-4-3",
+        "term": "Contamination",
+        "definition": "Unintended microorganisms are introduced onto a surface or into a sample."
+      },
+      {
+        "id": "clinical-4-4",
+        "term": "Inflammation",
+        "definition": "A tissue response that can have infectious or non-infectious causes."
+      }
+    ],
+    "caution": "A positive sample alone does not settle the distinction. Interpret it in clinical context.",
+    "question": "Does detecting an organism always establish infection?",
+    "answer": "No. Colonization or contamination may need to be considered in context.",
+    "source": "https://www.cdc.gov/infection-control/about/",
+    "sources": [
+      "https://www.cdc.gov/infection-control/about/",
+      "https://www.cdc.gov/infection-control/hcp/isolation-precautions/glossary.html",
+      "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/inflammation",
+      "https://www.cdc.gov/healthcare-associated-infections/hcp/cleaning-global/definitions.html"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Four separate conceptual laboratory vignettes: a host-response notebook, a quiet labelled sample container, a closed sample and gloved hand, and a neutral tissue-response symbol. No realistic microbes invading organs, no causal arrows or diagnostic test results.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "directions-3",
+    "number": 49,
+    "title": "The three standard body planes",
+    "module": "ch3",
+    "category": "Directions & position",
+    "outcome": "Describe the plane, position or movement using a stated reference.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "directions-3-1",
+        "term": "Sagittal",
+        "definition": "Separates right and left portions."
+      },
+      {
+        "id": "directions-3-2",
+        "term": "Coronal / frontal",
+        "definition": "Separates anterior and posterior portions."
+      },
+      {
+        "id": "directions-3-3",
+        "term": "Transverse / axial",
+        "definition": "Separates superior and inferior portions."
+      },
+      {
+        "id": "directions-3-4",
+        "term": "Plane and section",
+        "definition": "A plane is imaginary; a section is a cut or image along a plane."
+      }
+    ],
+    "caution": "Name the portions separated, not just the direction in which a line is drawn.",
+    "question": "Which plane separates anterior from posterior portions?",
+    "answer": "The coronal or frontal plane.",
+    "source": "https://training.seer.cancer.gov/anatomy/body/terminology.html",
+    "sources": [
+      "https://training.seer.cancer.gov/anatomy/body/terminology.html"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Illustrated watercolor study poster with tactile teaching props and exact definition cards; companion study text is the reference.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "directions-4",
+    "number": 50,
+    "title": "Median, parasagittal and oblique",
+    "module": "ch3",
+    "category": "Directions & position",
+    "outcome": "Describe the plane, position or movement using a stated reference.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "directions-4-1",
+        "term": "Median / midsagittal",
+        "definition": "A sagittal plane through the midline: equal right and left halves."
+      },
+      {
+        "id": "directions-4-2",
+        "term": "Parasagittal",
+        "definition": "A sagittal plane parallel to, but away from, the median plane."
+      },
+      {
+        "id": "directions-4-3",
+        "term": "Oblique",
+        "definition": "An angled plane outside the three standard orientations."
+      },
+      {
+        "id": "directions-4-4",
+        "term": "Key distinction",
+        "definition": "All median planes are sagittal; not all sagittal planes are median."
+      }
+    ],
+    "caution": "Sagittal alone does not mean equal halves.",
+    "question": "Must every sagittal section divide the body into equal halves?",
+    "answer": "No. Only a median or midsagittal section does so.",
+    "source": "https://training.seer.cancer.gov/anatomy/body/terminology.html",
+    "sources": [
+      "https://training.seer.cancer.gov/anatomy/body/terminology.html",
+      "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Illustrated watercolor study poster with tactile teaching props and exact definition cards; companion study text is the reference.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "directions-5",
+    "number": 51,
+    "title": "Patient positions: name the side",
+    "module": "ch3",
+    "category": "Directions & position",
+    "outcome": "Describe the plane, position or movement using a stated reference.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "directions-5-1",
+        "term": "Supine",
+        "definition": "Lying face up."
+      },
+      {
+        "id": "directions-5-2",
+        "term": "Prone",
+        "definition": "Lying face down."
+      },
+      {
+        "id": "directions-5-3",
+        "term": "Left lateral decubitus",
+        "definition": "Lying on the left side."
+      },
+      {
+        "id": "directions-5-4",
+        "term": "Right lateral decubitus",
+        "definition": "Lying on the right side."
+      }
+    ],
+    "caution": "In lateral decubitus, the named side is down. Use the patient’s side, not the observer’s.",
+    "question": "Which side is down in left lateral decubitus?",
+    "answer": "The patient’s left side.",
+    "source": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+    "sources": [
+      "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+      "https://www.ncbi.nlm.nih.gov/books/NBK565865/"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Illustrated watercolor study poster with tactile teaching props and exact definition cards; companion study text is the reference.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "directions-6",
+    "number": 52,
+    "title": "Movement pairs: describe the action",
+    "module": "ch4",
+    "category": "Directions & position",
+    "outcome": "Describe the plane, position or movement using a stated reference.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "directions-6-1",
+        "term": "Flexion / extension",
+        "definition": "At the elbow: decrease / increase the joint angle."
+      },
+      {
+        "id": "directions-6-2",
+        "term": "Abduction / adduction",
+        "definition": "For the arm: away from / toward the body midline."
+      },
+      {
+        "id": "directions-6-3",
+        "term": "Pronation / supination",
+        "definition": "Forearm rotation: palm posterior / anterior in anatomical position."
+      },
+      {
+        "id": "directions-6-4",
+        "term": "Dorsiflexion / plantar flexion",
+        "definition": "At the ankle: top of foot toward shin / toes point away."
+      }
+    ],
+    "caution": "These are named examples. Thumb and digit movements use specific reference planes.",
+    "question": "An arm returns toward the body midline. Is that abduction or adduction?",
+    "answer": "Adduction.",
+    "source": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-5-types-of-body-movements",
+    "sources": [
+      "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-5-types-of-body-movements"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Illustrated watercolor study poster with tactile teaching props and exact definition cards; companion study text is the reference.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "directions-7",
+    "number": 53,
+    "title": "Abdominal quadrants: the patient’s side",
+    "module": "ch3",
+    "category": "Directions & position",
+    "outcome": "Describe the plane, position or movement using a stated reference.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "directions-7-1",
+        "term": "RUQ",
+        "definition": "Right upper quadrant."
+      },
+      {
+        "id": "directions-7-2",
+        "term": "LUQ",
+        "definition": "Left upper quadrant."
+      },
+      {
+        "id": "directions-7-3",
+        "term": "RLQ",
+        "definition": "Right lower quadrant."
+      },
+      {
+        "id": "directions-7-4",
+        "term": "LLQ",
+        "definition": "Left lower quadrant."
+      }
+    ],
+    "caution": "Anterior view: the patient’s right appears on the viewer’s left. Quadrants describe location, not a diagnosis.",
+    "question": "In an anterior view, which upper quadrant appears on the viewer’s left?",
+    "answer": "The patient’s right upper quadrant (RUQ).",
+    "source": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology",
+    "sources": [
+      "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-6-anatomical-terminology"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Illustrated watercolor study poster with tactile teaching props and exact definition cards; companion study text is the reference.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "mnemonics-6",
+    "number": 54,
+    "title": "6 memory cues · Vessels and lymph",
+    "module": "ch9",
+    "category": "Memory cues",
+    "outcome": "Retrieve the exact word-part meaning after using an original memory cue.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "mnemonics-6-1",
+        "term": "angi/o",
+        "definition": "Vessel.",
+        "cue": "ANGIography pictures vessels."
+      },
+      {
+        "id": "mnemonics-6-2",
+        "term": "vascul/o",
+        "definition": "Blood vessel.",
+        "cue": "VASCUlar points to blood vessels."
+      },
+      {
+        "id": "mnemonics-6-3",
+        "term": "ven/o",
+        "definition": "Vein.",
+        "cue": "VENous gives the vein clue."
+      },
+      {
+        "id": "mnemonics-6-4",
+        "term": "phleb/o",
+        "definition": "Vein.",
+        "cue": "PHLEBotomy starts with the vein clue."
+      },
+      {
+        "id": "mnemonics-6-5",
+        "term": "arteri/o",
+        "definition": "Artery.",
+        "cue": "ARTERIal gives the artery clue."
+      },
+      {
+        "id": "mnemonics-6-6",
+        "term": "lymph/o",
+        "definition": "Lymph.",
+        "cue": "LYMPHatic gives the lymph clue."
+      }
+    ],
+    "caution": "Original memory cues, not definitions. Retrieve the actual meaning after using a cue.",
+    "question": "Which two listed forms both mean vein?",
+    "answer": "ven/o and phleb/o.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sources": [
+      "https://medlineplus.gov/appendixa.html"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Six richly illustrated flashcards, a vascular-model teaching prop without anatomical labels, a soft green bookmark and dictionary. Six exact word-part headings and short cue lines; no blood-flow arrows.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "mnemonics-7",
+    "number": 55,
+    "title": "6 memory cues · Cells and tissues",
+    "module": "ch4",
+    "category": "Memory cues",
+    "outcome": "Retrieve the exact word-part meaning after using an original memory cue.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "mnemonics-7-1",
+        "term": "cyt/o",
+        "definition": "Cell.",
+        "cue": "CYTOlogy studies cells."
+      },
+      {
+        "id": "mnemonics-7-2",
+        "term": "hist/o",
+        "definition": "Tissue.",
+        "cue": "HISTOlogy studies tissue."
+      },
+      {
+        "id": "mnemonics-7-3",
+        "term": "aden/o",
+        "definition": "Gland.",
+        "cue": "ADENoma carries the gland clue."
+      },
+      {
+        "id": "mnemonics-7-4",
+        "term": "myel/o",
+        "definition": "Spinal cord or bone marrow.",
+        "cue": "MYEL has two maps: cord and marrow."
+      },
+      {
+        "id": "mnemonics-7-5",
+        "term": "lip/o",
+        "definition": "Fat.",
+        "cue": "LIPid gives the fat clue."
+      },
+      {
+        "id": "mnemonics-7-6",
+        "term": "chondr/o",
+        "definition": "Cartilage.",
+        "cue": "CHONDROcytes are cartilage cells."
+      }
+    ],
+    "caution": "For myel/o, check the complete word: context selects cord or marrow. A cue is not a diagnosis.",
+    "question": "Does myel/o always mean spinal cord?",
+    "answer": "No. It can also refer to bone marrow.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sources": [
+      "https://medlineplus.gov/appendixa.html"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Six colourful study cards with conceptual cell and tissue teaching props, gland-like abstract beads, two bookmarks, oil droplets and a smooth cartilage-model prop. No histology labels or real anatomical slices.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  },
+  {
+    "id": "mnemonics-8",
+    "number": 56,
+    "title": "6 memory cues · Flow and tissue change",
+    "module": "suffixes",
+    "category": "Memory cues",
+    "outcome": "Retrieve the exact word-part meaning after using an original memory cue.",
+    "layout": "steps",
+    "icon": "book",
+    "terms": [
+      {
+        "id": "mnemonics-8-1",
+        "term": "-rrhea",
+        "definition": "Flow or discharge.",
+        "cue": "RRHEA: remember a flowing stream."
+      },
+      {
+        "id": "mnemonics-8-2",
+        "term": "-rrhagia",
+        "definition": "Excessive bleeding.",
+        "cue": "RRHAGIA: remember a bleeding clue."
+      },
+      {
+        "id": "mnemonics-8-3",
+        "term": "-stasis",
+        "definition": "Stopping or standing still.",
+        "cue": "STASIS stays still."
+      },
+      {
+        "id": "mnemonics-8-4",
+        "term": "-lysis",
+        "definition": "Breakdown or dissolution.",
+        "cue": "LYSIS loosens apart."
+      },
+      {
+        "id": "mnemonics-8-5",
+        "term": "-malacia",
+        "definition": "Abnormal softening.",
+        "cue": "MALACIA: imagine a softened model."
+      },
+      {
+        "id": "mnemonics-8-6",
+        "term": "-sclerosis",
+        "definition": "Abnormal hardening.",
+        "cue": "SCLEROSIS: imagine a hardened model."
+      }
+    ],
+    "caution": "These are meaning cues, not causes, diagnoses or treatment rules.",
+    "question": "Which ending suggests abnormal softening?",
+    "answer": "-malacia.",
+    "source": "https://medlineplus.gov/appendixa.html",
+    "sources": [
+      "https://medlineplus.gov/appendixa.html"
+    ],
+    "sourceNote": "Facts checked against the linked references on 17 October 2026. Original MedLex teaching examples and memory cues; independent medical-editor review is pending.",
+    "checked": "17 October 2026",
+    "visual": "Six conceptual object vignettes: stream, closed red ink bottle, still pendulum, dissolving chalk, soft model and hard model. No graphic bleeding, real tissue or causal pathways.",
+    "production": "generated-raster",
+    "edition": "exam-expansion-2026-10-17"
+  }
+]

@@ -46,7 +46,7 @@
       "foundingDate": "2026-10-06",
       "identifier": {"@type": "PropertyValue", "propertyID": "UK Companies House number", "value": "17501904"},
       "description": "UK-registered company dedicated to healthcare education, professional development, innovation and recognition.",
-      "brand": [{"@type": "Brand", "name": "Evinca"}, {"@type": "Brand", "name": "Carecraft"}, {"@type": "Brand", "name": "Serein"}]
+      "brand": [{"@type": "Brand", "name": "Evinca"}, {"@type": "Brand", "name": "Carecraft"}, {"@type": "Brand", "name": "Serein"}, {"@type": "Brand", "name": "MedLex"}]
     },
     {
       "@type": "WebApplication",
@@ -55,6 +55,16 @@
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any (web browser)",
       "description": "A daily 60-second scenario, 30 short lessons, interactive practice and visual guides for people who work in healthcare.",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"},
+      "publisher": {"@id": "https://healthcarecrownacademy.co.uk/#org"}
+    },
+    {
+      "@type": "WebApplication",
+      "name": "MedLex",
+      "url": "https://healthcarecrownacademy.co.uk/medlex",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any (web browser)",
+      "description": "A medical terminology course for healthcare practitioners: 26 modules, 1,480 terms, word elements, illustrated guides and active practice.",
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"},
       "publisher": {"@id": "https://healthcarecrownacademy.co.uk/#org"}
     },
@@ -344,8 +354,8 @@
   <div class="container">
     <header class="section-head reveal">
       <p class="eyebrow"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>Free apps · No account needed</p>
-      <h2 id="apps-title" class="section-title">Two companions for every shift. <span class="serif-italic">Try them right here.</span></h2>
-      <p class="section-lede">Carecraft sharpens how you think in a minute. Serein gives you a minute back. Both are free, open in your browser, and keep what you write on your own device.</p>
+      <h2 id="apps-title" class="section-title">Three companions for every shift. <span class="serif-italic">Try them right here.</span></h2>
+      <p class="section-lede">MedLex gives you the language of medicine. Carecraft sharpens how you think in a minute. Serein gives you a minute back. All three are free, open in your browser, and keep what you write on your own device.</p>
     </header>
 
     <div class="app-duo">
@@ -412,6 +422,35 @@
           <li><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Team toolkit</li>
         </ul>
         <a class="btn btn-lg btn-app btn-serein" href="/serein">Open Serein <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="app-card app-medlex reveal" aria-labelledby="medlex-title">
+        <div class="medlex-copy">
+          <div class="app-card-top">
+            <img class="app-crest" src="/medlex/icon.svg" alt="" width="56" height="56" loading="lazy">
+            <div>
+              <p class="card-kicker">Understand · MedLex</p>
+              <h3 id="medlex-title">Make sense of medicine, one word at a time.</h3>
+            </div>
+          </div>
+          <p class="app-lede">A medical terminology course that teaches you to decode words by their parts: 26 modules, 1,480 terms, 56 illustrated guides, worksheets and spaced practice.</p>
+          <ul class="app-facts" aria-label="MedLex at a glance">
+            <li><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>26 modules</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-search"/></svg>1,480 terms</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-download"/></svg>Works offline</li>
+          </ul>
+          <a class="btn btn-lg btn-app btn-medlex" href="/medlex">Open MedLex <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+
+        <div class="mini-decode" data-mini-decode>
+          <p class="mini-label"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>Decode a word · tap each part</p>
+          <div class="md-word" role="group" aria-label="Parts of tachycardia">
+            <button type="button" class="md-part md-prefix" data-meaning="fast" aria-pressed="false"><span>tachy</span><small>prefix</small></button>
+            <button type="button" class="md-part md-root" data-meaning="heart" aria-pressed="false"><span>card</span><small>root</small></button>
+            <button type="button" class="md-part md-suffix" data-meaning="condition" aria-pressed="false"><span>ia</span><small>suffix</small></button>
+          </div>
+          <p class="md-result" role="status" aria-live="polite" data-md-result>0 of 3 parts decoded</p>
+        </div>
       </article>
     </div>
     <p class="apps-note">Educational resources for people who work in healthcare. They are not clinical advice, assessment or accreditation. If you need support, please speak to someone you trust or your local services.</p>
@@ -860,6 +899,7 @@
         <a href="#academy">The Academy</a>
         <a href="/carecraft">Carecraft: learning app</a>
         <a href="/serein">Serein: well-being app</a>
+        <a href="/medlex">MedLex: medical terminology</a>
         <a href="#evinca">Evinca</a>
         <a href="#how">How it works</a>
         <a href="#readiness">Readiness check</a>

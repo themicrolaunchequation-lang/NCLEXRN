@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+const dir = process.argv.includes('--test') ? 'dist-test' : 'dist';
+let html = fs.readFileSync(`${dir}/index.html`,'utf8');
+const scripts = [];
+html = html.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/g,(_,s)=>{scripts.push(s);return '';});
+html = html.replace('</body>',()=>`<script>${scripts.join('\n')}</script></body>`);
+html = html.replace(/[ \t]+(?=\r?$)/gm, '');
+html += '\n<!-- Bundled dependency: fflate\n' + fs.readFileSync('node_modules/fflate/LICENSE','utf8') + '\n-->\n';
+html += '\n<!-- Bundled dependency: ts-fsrs\n' + fs.readFileSync('node_modules/ts-fsrs/LICENSE','utf8') + '\n-->\n';
+const posterFiles=fs.readdirSync('public/infographics').filter(x=>x.endsWith('.webp')).sort();
+let standalone=html;
+for(const file of posterFiles){const url='./infographics/'+file;if(!standalone.includes(url))throw Error('Missing poster reference: '+file);standalone=standalone.replaceAll(url,'data:image/webp;base64,'+fs.readFileSync('public/infographics/'+file).toString('base64'));}
+if(dir==='dist'&&Buffer.byteLength(standalone)>25*1024*1024)throw Error('Complete HTML exceeds the current host’s 25 MiB file limit. Optimize raster assets before publishing.');
+fs.writeFileSync(`${dir}/MedLex.html`,standalone);
+fs.writeFileSync(`${dir}/index.html`,html);
+console.log(`${dir}/index.html: ${Buffer.byteLength(html)} bytes; complete MedLex.html: ${Buffer.byteLength(standalone)} bytes; ${posterFiles.length} raster posters`);
+const {createHash}=await import('node:crypto');
+const digest=createHash('sha256').update(html);
+for(const file of posterFiles)digest.update(fs.readFileSync('public/infographics/'+file));
+const version=digest.digest('hex').slice(0,12);
+const manifest={id:'/',name:'MedLex · Healthcare Crown Academy',short_name:'MedLex',start_url:'./#today',scope:'./',display:'standalone',background_color:'#f5f6f5',theme_color:'#10253a',description:'Offline medical terminology learning',icons:[{src:'./icon-192.png',sizes:'192x192',type:'image/png',purpose:'any'},{src:'./icon-512.png',sizes:'512x512',type:'image/png',purpose:'any maskable'}]};
+fs.writeFileSync(`${dir}/manifest.webmanifest`,JSON.stringify(manifest));
+for(const file of ['icon.svg','icon-192.png','icon-512.png'])fs.copyFileSync('public/'+file,`${dir}/${file}`);
+fs.writeFileSync(`${dir}/sw.js`,`const CACHE='medlex-${version}';const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];const POSTERS=${JSON.stringify(posterFiles.map(x=>'./infographics/'+x))};self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>caches.open(CACHE).then(cache=>Promise.allSettled(POSTERS.map(path=>cache.add(path))))).then(()=>self.skipWaiting())));self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('medlex-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin)return;if(event.request.mode==='navigate'){event.respondWith(fetch(event.request).then(response=>{if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put('./index.html',copy));}return response;}).catch(()=>caches.match('./index.html')));}else if([...SHELL,...POSTERS].some(path=>new URL(path,self.registration.scope).pathname===url.pathname)){event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{if(response.ok)caches.open(CACHE).then(cache=>cache.put(event.request,response.clone()));return response;})));}});`);

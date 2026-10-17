@@ -1,0 +1,761 @@
+{
+  "errors": [],
+  "results": [
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "palette",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "onboarding0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "onboarding1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "account",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "termDialog",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "termExpanded",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "help",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "dailyQuestion",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "dailyAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "dailySpelling",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "flashFront",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "flashBack",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "build",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "matching",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "confusions",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "confusionAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "moduleSpellingAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "state": "listenAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "palette",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "onboarding0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "onboarding1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "account",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "termDialog",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "termExpanded",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "help",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "dailyQuestion",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "dailyAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "dailySpelling",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "flashFront",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "flashBack",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "build",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "matching",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "confusions",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "confusionAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "moduleSpellingAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "state": "listenAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "palette",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "onboarding0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "onboarding1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "account",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "termDialog",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "termExpanded",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "help",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "dailyQuestion",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "dailyAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "dailySpelling",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "flashFront",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "flashBack",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "build",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "matching",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "confusions",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "confusionAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "moduleSpellingAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "state": "listenAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "palette",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "onboarding0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "onboarding1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "account",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "termDialog",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "termExpanded",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "help",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "dailyQuestion",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "dailyAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "dailySpelling",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "flashFront",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "flashBack",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "build",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "matching",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "confusions",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "confusionAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "moduleSpellingAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "state": "listenAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "palette",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "onboarding0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "onboarding1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "account",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "termDialog",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "termExpanded",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "help",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "dailyQuestion",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "dailyAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "dailySpelling",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "flashFront",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "flashBack",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "build",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "matching",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "confusions",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "confusionAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "moduleSpellingAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 390,
+      "state": "listenAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "palette",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "onboarding0",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "onboarding1",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "account",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "termDialog",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "termExpanded",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "help",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "dailyQuestion",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "dailyAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "dailySpelling",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "flashFront",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "flashBack",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "build",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "matching",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "confusions",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "confusionAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "moduleSpellingAnswered",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "theme": "high",
+      "width": 1440,
+      "state": "listenAnswered",
+      "overflow": false,
+      "violations": []
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+[
+  {
+    "width": 390,
+    "theme": "light",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "high",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "high",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "high",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 390,
+    "theme": "high",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "light",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "light",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "light",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "light",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "dark",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "dark",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "dark",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "dark",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "high",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "high",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "high",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 768,
+    "theme": "high",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "light",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "light",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "light",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "light",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "dark",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "dark",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "dark",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "dark",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "high",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "high",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "high",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1024,
+    "theme": "high",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "high",
+    "step": 0,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "high",
+    "step": 1,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "high",
+    "step": 2,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "width": 1440,
+    "theme": "high",
+    "step": 3,
+    "overflow": false,
+    "formOverflow": 0,
+    "small": 0
+  },
+  {
+    "motion": "OS reduce",
+    "value": "reduce"
+  },
+  {
+    "motion": "Override full",
+    "value": "full"
+  },
+  {
+    "motion": "Override reduce",
+    "transformedOrAnimated": []
+  }
+]

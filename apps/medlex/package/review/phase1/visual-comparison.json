@@ -1,0 +1,910 @@
+{
+  "screenshotsPerBuild": 112,
+  "allTextEqual": true,
+  "allPageGeometryEqual": true,
+  "allImageSizesEqual": true,
+  "pixelExact": 93,
+  "maximumChangedPixelPercent": 0.0015610974515084105,
+  "beforeErrors": [],
+  "afterErrors": [],
+  "beforeViolations": 0,
+  "afterViolations": 0,
+  "results": [
+    {
+      "name": "today-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-terms-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-elements-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-lab-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "practice-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "progress-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "tools-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "settings-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-outline-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0013138014845956775
+    },
+    {
+      "name": "learn-module-ch1-outcomes-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-bank-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.00046123865641179383
+    },
+    {
+      "name": "learn-module-ch1-practice-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-classroom-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0005403798870606036
+    },
+    {
+      "name": "learn-module-ch1-independent-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-references-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0010229132569558102
+    },
+    {
+      "name": "studio-hub-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0007423216108378955
+    },
+    {
+      "name": "studio-adaptive-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-clinical-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.001155001155001155
+    },
+    {
+      "name": "studio-explain-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-confusions-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0015610974515084105
+    },
+    {
+      "name": "studio-matching-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-atlas-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0009514295228580942
+    },
+    {
+      "name": "studio-pronunciation-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 1,
+      "changedPixelPercent": 8.51578400565448e-05
+    },
+    {
+      "name": "studio-coding-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0008645470853956383
+    },
+    {
+      "name": "studio-educator-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.001069490120585011
+    },
+    {
+      "name": "studio-portfolio-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-editor-390-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0009537889265105633
+    },
+    {
+      "name": "today-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-terms-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-elements-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-lab-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "practice-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "progress-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "tools-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "settings-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-outline-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-outcomes-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-bank-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-practice-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-classroom-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-independent-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-references-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-hub-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-adaptive-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-clinical-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-explain-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-confusions-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-matching-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-atlas-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-pronunciation-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-coding-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-educator-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-portfolio-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-editor-1440-light",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "today-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-terms-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-elements-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-lab-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "practice-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "progress-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "tools-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "settings-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-outline-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-outcomes-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-bank-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-practice-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-classroom-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-independent-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-references-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-hub-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0007423216108378955
+    },
+    {
+      "name": "studio-adaptive-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-clinical-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 13,
+      "changedPixelPercent": 0.0012512512512512512
+    },
+    {
+      "name": "studio-explain-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-confusions-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0015610974515084105
+    },
+    {
+      "name": "studio-matching-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-atlas-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0009514295228580942
+    },
+    {
+      "name": "studio-pronunciation-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-coding-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0008645470853956383
+    },
+    {
+      "name": "studio-educator-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.001069490120585011
+    },
+    {
+      "name": "studio-portfolio-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-editor-390-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 12,
+      "changedPixelPercent": 0.0009537889265105633
+    },
+    {
+      "name": "today-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-terms-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-elements-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "explore-lab-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "practice-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "progress-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "tools-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "settings-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-outline-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-outcomes-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-bank-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-practice-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-classroom-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-independent-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "learn-module-ch1-references-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-hub-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-adaptive-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-clinical-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-explain-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-confusions-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-matching-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-atlas-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-pronunciation-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-coding-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-educator-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-portfolio-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    },
+    {
+      "name": "studio-editor-1440-dark",
+      "textEqual": true,
+      "rectsEqual": true,
+      "sameSize": true,
+      "changedPixels": 0,
+      "changedPixelPercent": 0.0
+    }
+  ]
+}

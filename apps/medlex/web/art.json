@@ -1,0 +1,15 @@
+{
+ "crest": "../package/public/icon.svg",
+ "outDir": ".",
+ "fontsCss": "fonts.css",
+ "photo": "../package/public/infographics/decode-1.webp",
+ "eyebrow": "HEALTHCARE CROWN ACADEMY",
+ "line1": "MedLex",
+ "line2": "One word at a time.",
+ "body": "Decode medical terminology by its parts: 26 modules, 1,480 terms and 56 illustrated guides.",
+ "pill": "Free · Private · Works offline",
+ "ink": "#10253A",
+ "paper": "#F8F5EF",
+ "accentLight": "#F1C56E",
+ "gold": "#E8C170"
+}

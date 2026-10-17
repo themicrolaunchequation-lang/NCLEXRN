@@ -1,0 +1,1475 @@
+# Content enrichment backlog
+
+Human medical-editor review is required. No medical definitions were added or changed in this upgrade.
+
+## Chapter 3 · The human body
+
+- Anterior (`anterior`): verified components
+- Posterior (`posterior`): verified components
+- Proximal (`proximal`): verified components
+- Distal (`distal`): verified components
+- Medial (`medial`): verified components
+- Lateral (`lateral`): verified components
+- Supine (`supine`): verified components
+- Prone (`prone`): verified components
+- Anatomical position (`anatomical-position`): plain-language explanation; verified components; realistic fictional example
+- Superior (`superior`): plain-language explanation; verified components; realistic fictional example
+- Inferior (`inferior`): plain-language explanation; verified components; realistic fictional example
+- Superficial (`superficial`): plain-language explanation; verified components; realistic fictional example
+- Deep (`deep`): plain-language explanation; verified components; realistic fictional example
+- Ipsilateral (`ipsilateral`): plain-language explanation; verified components; realistic fictional example
+- Contralateral (`contralateral`): plain-language explanation; verified components; realistic fictional example
+- Bilateral (`bilateral`): plain-language explanation; verified components; realistic fictional example
+- Unilateral (`unilateral`): plain-language explanation; verified components; realistic fictional example
+- Sagittal plane (`sagittal-plane`): plain-language explanation; verified components; realistic fictional example
+- Coronal plane (`coronal-plane`): plain-language explanation; verified components; realistic fictional example
+- Transverse plane (`transverse-plane`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 4 · Musculoskeletal system
+
+- Bone (`bone`): plain-language explanation; verified components; realistic fictional example
+- Cartilage (`cartilage`): plain-language explanation; verified components; realistic fictional example
+- Tendon (`tendon`): plain-language explanation; verified components; realistic fictional example
+- Ligament (`ligament`): plain-language explanation; verified components; realistic fictional example
+- Fascia (`fascia`): plain-language explanation; verified components; realistic fictional example
+- Periosteum (`periosteum`): plain-language explanation; verified components; realistic fictional example
+- Endosteum (`endosteum`): plain-language explanation; verified components; realistic fictional example
+- Osteoblast (`osteoblast`): plain-language explanation; verified components; realistic fictional example
+- Osteoclast (`osteoclast`): plain-language explanation; verified components; realistic fictional example
+- Osteocyte (`osteocyte`): plain-language explanation; verified components; realistic fictional example
+- Diaphysis (`diaphysis`): plain-language explanation; verified components; realistic fictional example
+- Epiphysis (`epiphysis`): plain-language explanation; verified components; realistic fictional example
+- Metaphysis (`metaphysis`): plain-language explanation; verified components; realistic fictional example
+- Marrow (`marrow`): plain-language explanation; verified components; realistic fictional example
+- Synovium (`synovium`): plain-language explanation; verified components; realistic fictional example
+- Bursa (`bursa`): plain-language explanation; verified components; realistic fictional example
+- Meniscus (`meniscus`): plain-language explanation; verified components; realistic fictional example
+- Vertebra (`vertebra`): plain-language explanation; verified components; realistic fictional example
+- Patella (`patella`): plain-language explanation; verified components; realistic fictional example
+- Scapula (`scapula`): plain-language explanation; verified components; realistic fictional example
+- Clavicle (`clavicle`): plain-language explanation; verified components; realistic fictional example
+- Humerus (`humerus`): plain-language explanation; verified components; realistic fictional example
+- Radius (`radius`): plain-language explanation; verified components; realistic fictional example
+- Ulna (`ulna`): plain-language explanation; verified components; realistic fictional example
+- Femur (`femur`): plain-language explanation; verified components; realistic fictional example
+- Tibia (`tibia`): plain-language explanation; verified components; realistic fictional example
+- Fibula (`fibula`): plain-language explanation; verified components; realistic fictional example
+- Pelvis (`pelvis`): plain-language explanation; verified components; realistic fictional example
+- Sternum (`sternum`): plain-language explanation; verified components; realistic fictional example
+- Sacrum (`sacrum`): plain-language explanation; verified components; realistic fictional example
+- Myofibril (`myofibril`): plain-language explanation; verified components; realistic fictional example
+- Sarcomere (`sarcomere`): plain-language explanation; verified components; realistic fictional example
+- Flexion (`flexion`): plain-language explanation; verified components; realistic fictional example
+- Extension (`extension`): plain-language explanation; verified components; realistic fictional example
+- Abduction (`abduction`): plain-language explanation; verified components; realistic fictional example
+- Adduction (`adduction`): plain-language explanation; verified components; realistic fictional example
+- Supination (`supination`): plain-language explanation; verified components; realistic fictional example
+- Pronation (`pronation`): plain-language explanation; verified components; realistic fictional example
+- Dorsiflexion (`dorsiflexion`): plain-language explanation; verified components; realistic fictional example
+- Plantar flexion (`plantar-flexion`): plain-language explanation; verified components; realistic fictional example
+- Inversion (`inversion`): plain-language explanation; verified components; realistic fictional example
+- Eversion (`eversion`): plain-language explanation; verified components; realistic fictional example
+- Circumduction (`circumduction`): plain-language explanation; verified components; realistic fictional example
+- Rotation (`rotation`): plain-language explanation; verified components; realistic fictional example
+- Contracture (`contracture`): plain-language explanation; verified components; realistic fictional example
+- Fracture (`fracture`): plain-language explanation; verified components; realistic fictional example
+- Dislocation (`dislocation`): plain-language explanation; verified components; realistic fictional example
+- Subluxation (`subluxation`): plain-language explanation; verified components; realistic fictional example
+- Sprain (`sprain`): plain-language explanation; verified components; realistic fictional example
+- Strain (`strain`): plain-language explanation; verified components; realistic fictional example
+- Contusion (`contusion`): plain-language explanation; verified components; realistic fictional example
+- Tendinitis (`tendinitis`): plain-language explanation; verified components; realistic fictional example
+- Tendinopathy (`tendinopathy`): plain-language explanation; verified components; realistic fictional example
+- Tenosynovitis (`tenosynovitis`): plain-language explanation; verified components; realistic fictional example
+- Bursitis (`bursitis`): plain-language explanation; verified components; realistic fictional example
+- Synovitis (`synovitis`): plain-language explanation; verified components; realistic fictional example
+- Gout (`gout`): plain-language explanation; verified components; realistic fictional example
+- Rheumatoid arthritis (`rheumatoid-arthritis`): plain-language explanation; verified components; realistic fictional example
+- Osteomalacia (`osteomalacia`): plain-language explanation; verified components; realistic fictional example
+- Rickets (`rickets`): plain-language explanation; verified components; realistic fictional example
+- Osteopenia (`osteopenia`): plain-language explanation; verified components; realistic fictional example
+- Scoliosis (`scoliosis`): plain-language explanation; verified components; realistic fictional example
+- Kyphosis (`kyphosis`): plain-language explanation; verified components; realistic fictional example
+- Lordosis (`lordosis`): plain-language explanation; verified components; realistic fictional example
+- Spondylosis (`spondylosis`): plain-language explanation; verified components; realistic fictional example
+- Spondylolisthesis (`spondylolisthesis`): plain-language explanation; verified components; realistic fictional example
+- Spondylitis (`spondylitis`): plain-language explanation; verified components; realistic fictional example
+- Radiculopathy (`radiculopathy`): plain-language explanation; verified components; realistic fictional example
+- Sciatica (`sciatica`): plain-language explanation; verified components; realistic fictional example
+- Lumbago (`lumbago`): plain-language explanation; verified components; realistic fictional example
+- Myositis (`myositis`): plain-language explanation; verified components; realistic fictional example
+- Myopathy (`myopathy`): plain-language explanation; verified components; realistic fictional example
+- Rhabdomyolysis (`rhabdomyolysis`): plain-language explanation; verified components; realistic fictional example
+- Muscular dystrophy (`muscular-dystrophy`): plain-language explanation; verified components; realistic fictional example
+- Fibromyalgia (`fibromyalgia`): plain-language explanation; verified components; realistic fictional example
+- Atrophy (`atrophy`): plain-language explanation; verified components; realistic fictional example
+- Hypertrophy (`hypertrophy`): plain-language explanation; verified components; realistic fictional example
+- Compartment syndrome (`compartment-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Osteonecrosis (`osteonecrosis`): plain-language explanation; verified components; realistic fictional example
+- Ankylosis (`ankylosis`): plain-language explanation; verified components; realistic fictional example
+- Crepitus (`crepitus`): plain-language explanation; verified components; realistic fictional example
+- Effusion (`effusion`): plain-language explanation; verified components; realistic fictional example
+- Foot drop (`foot-drop`): plain-language explanation; verified components; realistic fictional example
+- Arthroscopy (`arthroscopy`): plain-language explanation; verified components; realistic fictional example
+- Arthroplasty (`arthroplasty`): plain-language explanation; verified components; realistic fictional example
+- Arthrodesis (`arthrodesis`): plain-language explanation; verified components; realistic fictional example
+- Arthrocentesis (`arthrocentesis`): plain-language explanation; verified components; realistic fictional example
+- Osteotomy (`osteotomy`): plain-language explanation; verified components; realistic fictional example
+- Laminectomy (`laminectomy`): plain-language explanation; verified components; realistic fictional example
+- Discectomy (`discectomy`): plain-language explanation; verified components; realistic fictional example
+- Fasciotomy (`fasciotomy`): plain-language explanation; verified components; realistic fictional example
+- Tenotomy (`tenotomy`): plain-language explanation; verified components; realistic fictional example
+- Myorrhaphy (`myorrhaphy`): plain-language explanation; verified components; realistic fictional example
+- Reduction (`reduction`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 5 · Integumentary system
+
+- Epidermis (`epidermis`): plain-language explanation; verified components; realistic fictional example
+- Dermis (`dermis`): plain-language explanation; verified components; realistic fictional example
+- Hypodermis (`hypodermis`): plain-language explanation; verified components; realistic fictional example
+- Keratin (`keratin`): plain-language explanation; verified components; realistic fictional example
+- Melanin (`melanin`): plain-language explanation; verified components; realistic fictional example
+- Melanocyte (`melanocyte`): plain-language explanation; verified components; realistic fictional example
+- Keratinocyte (`keratinocyte`): plain-language explanation; verified components; realistic fictional example
+- Sebaceous gland (`sebaceous-gland`): plain-language explanation; verified components; realistic fictional example
+- Sweat gland (`sweat-gland`): plain-language explanation; verified components; realistic fictional example
+- Hair follicle (`hair-follicle`): plain-language explanation; verified components; realistic fictional example
+- Nail plate (`nail-plate`): plain-language explanation; verified components; realistic fictional example
+- Cuticle (`cuticle`): plain-language explanation; verified components; realistic fictional example
+- Stratum corneum (`stratum-corneum`): plain-language explanation; verified components; realistic fictional example
+- Collagen (`collagen`): plain-language explanation; verified components; realistic fictional example
+- Elastin (`elastin`): plain-language explanation; verified components; realistic fictional example
+- Macule (`macule`): plain-language explanation; verified components; realistic fictional example
+- Patch (`patch`): plain-language explanation; verified components; realistic fictional example
+- Papule (`papule`): plain-language explanation; verified components; realistic fictional example
+- Plaque (`plaque`): plain-language explanation; verified components; realistic fictional example
+- Nodule (`nodule`): plain-language explanation; verified components; realistic fictional example
+- Vesicle (`vesicle`): plain-language explanation; verified components; realistic fictional example
+- Bulla (`bulla`): plain-language explanation; verified components; realistic fictional example
+- Pustule (`pustule`): plain-language explanation; verified components; realistic fictional example
+- Wheal (`wheal`): plain-language explanation; verified components; realistic fictional example
+- Scale (`scale`): plain-language explanation; verified components; realistic fictional example
+- Crust (`crust`): plain-language explanation; verified components; realistic fictional example
+- Erosion (`erosion`): plain-language explanation; verified components; realistic fictional example
+- Ulcer (`ulcer`): plain-language explanation; verified components; realistic fictional example
+- Fissure (`fissure`): plain-language explanation; verified components; realistic fictional example
+- Excoriation (`excoriation`): plain-language explanation; verified components; realistic fictional example
+- Lichenification (`lichenification`): plain-language explanation; verified components; realistic fictional example
+- Eschar (`eschar`): plain-language explanation; verified components; realistic fictional example
+- Slough (`slough`): plain-language explanation; verified components; realistic fictional example
+- Granulation tissue (`granulation-tissue`): plain-language explanation; verified components; realistic fictional example
+- Keloid (`keloid`): plain-language explanation; verified components; realistic fictional example
+- Hypertrophic scar (`hypertrophic-scar`): plain-language explanation; verified components; realistic fictional example
+- Pruritus (`pruritus`): plain-language explanation; verified components; realistic fictional example
+- Xerosis (`xerosis`): plain-language explanation; verified components; realistic fictional example
+- Cyanosis (`cyanosis`): plain-language explanation; verified components; realistic fictional example
+- Pallor (`pallor`): plain-language explanation; verified components; realistic fictional example
+- Jaundice (`jaundice`): plain-language explanation; verified components; realistic fictional example
+- Petechiae (`petechiae`): plain-language explanation; verified components; realistic fictional example
+- Purpura (`purpura`): plain-language explanation; verified components; realistic fictional example
+- Ecchymosis (`ecchymosis`): plain-language explanation; verified components; realistic fictional example
+- Hyperpigmentation (`hyperpigmentation`): plain-language explanation; verified components; realistic fictional example
+- Hypopigmentation (`hypopigmentation`): plain-language explanation; verified components; realistic fictional example
+- Depigmentation (`depigmentation`): plain-language explanation; verified components; realistic fictional example
+- Alopecia (`alopecia`): plain-language explanation; verified components; realistic fictional example
+- Hirsutism (`hirsutism`): plain-language explanation; verified components; realistic fictional example
+- Hyperhidrosis (`hyperhidrosis`): plain-language explanation; verified components; realistic fictional example
+- Anhidrosis (`anhidrosis`): plain-language explanation; verified components; realistic fictional example
+- Acne vulgaris (`acne-vulgaris`): plain-language explanation; verified components; realistic fictional example
+- Rosacea (`rosacea`): plain-language explanation; verified components; realistic fictional example
+- Psoriasis (`psoriasis`): plain-language explanation; verified components; realistic fictional example
+- Eczema (`eczema`): plain-language explanation; verified components; realistic fictional example
+- Urticaria (`urticaria`): plain-language explanation; verified components; realistic fictional example
+- Angio-oedema (`angio-oedema`): plain-language explanation; verified components; realistic fictional example
+- Cellulitis (`cellulitis`): plain-language explanation; verified components; realistic fictional example
+- Impetigo (`impetigo`): plain-language explanation; verified components; realistic fictional example
+- Folliculitis (`folliculitis`): plain-language explanation; verified components; realistic fictional example
+- Furuncle (`furuncle`): plain-language explanation; verified components; realistic fictional example
+- Carbuncle (`carbuncle`): plain-language explanation; verified components; realistic fictional example
+- Abscess (`abscess`): plain-language explanation; verified components; realistic fictional example
+- Tinea (`tinea`): plain-language explanation; verified components; realistic fictional example
+- Onychomycosis (`onychomycosis`): plain-language explanation; verified components; realistic fictional example
+- Paronychia (`paronychia`): plain-language explanation; verified components; realistic fictional example
+- Scabies (`scabies`): plain-language explanation; verified components; realistic fictional example
+- Pediculosis (`pediculosis`): plain-language explanation; verified components; realistic fictional example
+- Verruca (`verruca`): plain-language explanation; verified components; realistic fictional example
+- Herpes zoster (`herpes-zoster`): plain-language explanation; verified components; realistic fictional example
+- Vitiligo (`vitiligo`): plain-language explanation; verified components; realistic fictional example
+- Melasma (`melasma`): plain-language explanation; verified components; realistic fictional example
+- Actinic keratosis (`actinic-keratosis`): plain-language explanation; verified components; realistic fictional example
+- Seborrhoeic keratosis (`seborrhoeic-keratosis`): plain-language explanation; verified components; realistic fictional example
+- Basal cell carcinoma (`basal-cell-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Squamous cell carcinoma (`squamous-cell-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Melanoma (`melanoma`): plain-language explanation; verified components; realistic fictional example
+- Naevus (`naevus`): plain-language explanation; verified components; realistic fictional example
+- Lipoma (`lipoma`): plain-language explanation; verified components; realistic fictional example
+- Epidermoid cyst (`epidermoid-cyst`): plain-language explanation; verified components; realistic fictional example
+- Pressure injury (`pressure-injury`): plain-language explanation; verified components; realistic fictional example
+- Burn (`burn`): plain-language explanation; verified components; realistic fictional example
+- Contact dermatitis (`contact-dermatitis`): plain-language explanation; verified components; realistic fictional example
+- Atopic dermatitis (`atopic-dermatitis`): plain-language explanation; verified components; realistic fictional example
+- Hidradenitis suppurativa (`hidradenitis-suppurativa`): plain-language explanation; verified components; realistic fictional example
+- Scleroderma (`scleroderma`): plain-language explanation; verified components; realistic fictional example
+- Ichthyosis (`ichthyosis`): plain-language explanation; verified components; realistic fictional example
+- Pemphigus (`pemphigus`): plain-language explanation; verified components; realistic fictional example
+- Bullous pemphigoid (`bullous-pemphigoid`): plain-language explanation; verified components; realistic fictional example
+- Dermoscopy (`dermoscopy`): plain-language explanation; verified components; realistic fictional example
+- Patch testing (`patch-testing`): plain-language explanation; verified components; realistic fictional example
+- Skin scraping (`skin-scraping`): plain-language explanation; verified components; realistic fictional example
+- Excision (`excision`): plain-language explanation; verified components; realistic fictional example
+- Cryotherapy (`cryotherapy`): plain-language explanation; verified components; realistic fictional example
+- Curettage (`curettage`): plain-language explanation; verified components; realistic fictional example
+- Debridement (`debridement`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 6 · Haematology
+
+- Plasma (`plasma`): plain-language explanation; verified components; realistic fictional example
+- Serum (`serum`): plain-language explanation; verified components; realistic fictional example
+- Haemoglobin (`haemoglobin`): plain-language explanation; verified components; realistic fictional example
+- Haematocrit (`haematocrit`): plain-language explanation; verified components; realistic fictional example
+- Platelet (`platelet`): plain-language explanation; verified components; realistic fictional example
+- Thrombocyte (`thrombocyte`): plain-language explanation; verified components; realistic fictional example
+- Neutrophil (`neutrophil`): plain-language explanation; verified components; realistic fictional example
+- Lymphocyte (`lymphocyte`): plain-language explanation; verified components; realistic fictional example
+- Monocyte (`monocyte`): plain-language explanation; verified components; realistic fictional example
+- Eosinophil (`eosinophil`): plain-language explanation; verified components; realistic fictional example
+- Basophil (`basophil`): plain-language explanation; verified components; realistic fictional example
+- Reticulocyte (`reticulocyte`): plain-language explanation; verified components; realistic fictional example
+- Megakaryocyte (`megakaryocyte`): plain-language explanation; verified components; realistic fictional example
+- Haematopoiesis (`haematopoiesis`): plain-language explanation; verified components; realistic fictional example
+- Erythropoiesis (`erythropoiesis`): plain-language explanation; verified components; realistic fictional example
+- Leucopoiesis (`leucopoiesis`): plain-language explanation; verified components; realistic fictional example
+- Thrombopoiesis (`thrombopoiesis`): plain-language explanation; verified components; realistic fictional example
+- Erythropoietin (`erythropoietin`): plain-language explanation; verified components; realistic fictional example
+- Thrombopoietin (`thrombopoietin`): plain-language explanation; verified components; realistic fictional example
+- Ferritin (`ferritin`): plain-language explanation; verified components; realistic fictional example
+- Transferrin (`transferrin`): plain-language explanation; verified components; realistic fictional example
+- Fibrinogen (`fibrinogen`): plain-language explanation; verified components; realistic fictional example
+- Fibrin (`fibrin`): plain-language explanation; verified components; realistic fictional example
+- Thrombin (`thrombin`): plain-language explanation; verified components; realistic fictional example
+- Prothrombin (`prothrombin`): plain-language explanation; verified components; realistic fictional example
+- Coagulation (`coagulation`): plain-language explanation; verified components; realistic fictional example
+- Fibrinolysis (`fibrinolysis`): plain-language explanation; verified components; realistic fictional example
+- Agglutination (`agglutination`): plain-language explanation; verified components; realistic fictional example
+- Haemolysis (`haemolysis`): plain-language explanation; verified components; realistic fictional example
+- Haemorrhage (`haemorrhage`): plain-language explanation; verified components; realistic fictional example
+- Thrombosis (`thrombosis`): plain-language explanation; verified components; realistic fictional example
+- Embolism (`embolism`): plain-language explanation; verified components; realistic fictional example
+- Coagulopathy (`coagulopathy`): plain-language explanation; verified components; realistic fictional example
+- Thrombophilia (`thrombophilia`): plain-language explanation; verified components; realistic fictional example
+- Haemophilia (`haemophilia`): plain-language explanation; verified components; realistic fictional example
+- Von Willebrand disease (`von-willebrand-disease`): plain-language explanation; verified components; realistic fictional example
+- Disseminated intravascular coagulation (`disseminated-intravascular-coagulation`): plain-language explanation; verified components; realistic fictional example
+- Pancytopenia (`pancytopenia`): plain-language explanation; verified components; realistic fictional example
+- Leucopenia (`leucopenia`): plain-language explanation; verified components; realistic fictional example
+- Leucocytosis (`leucocytosis`): plain-language explanation; verified components; realistic fictional example
+- Neutropenia (`neutropenia`): plain-language explanation; verified components; realistic fictional example
+- Neutrophilia (`neutrophilia`): plain-language explanation; verified components; realistic fictional example
+- Lymphopenia (`lymphopenia`): plain-language explanation; verified components; realistic fictional example
+- Lymphocytosis (`lymphocytosis`): plain-language explanation; verified components; realistic fictional example
+- Eosinophilia (`eosinophilia`): plain-language explanation; verified components; realistic fictional example
+- Basophilia (`basophilia`): plain-language explanation; verified components; realistic fictional example
+- Monocytosis (`monocytosis`): plain-language explanation; verified components; realistic fictional example
+- Thrombocytosis (`thrombocytosis`): plain-language explanation; verified components; realistic fictional example
+- Polycythaemia (`polycythaemia`): plain-language explanation; verified components; realistic fictional example
+- Erythrocytosis (`erythrocytosis`): plain-language explanation; verified components; realistic fictional example
+- Microcytosis (`microcytosis`): plain-language explanation; verified components; realistic fictional example
+- Macrocytosis (`macrocytosis`): plain-language explanation; verified components; realistic fictional example
+- Anisocytosis (`anisocytosis`): plain-language explanation; verified components; realistic fictional example
+- Poikilocytosis (`poikilocytosis`): plain-language explanation; verified components; realistic fictional example
+- Hypochromia (`hypochromia`): plain-language explanation; verified components; realistic fictional example
+- Spherocyte (`spherocyte`): plain-language explanation; verified components; realistic fictional example
+- Schistocyte (`schistocyte`): plain-language explanation; verified components; realistic fictional example
+- Target cell (`target-cell`): plain-language explanation; verified components; realistic fictional example
+- Sickle cell (`sickle-cell`): plain-language explanation; verified components; realistic fictional example
+- Iron deficiency anaemia (`iron-deficiency-anaemia`): plain-language explanation; verified components; realistic fictional example
+- Megaloblastic anaemia (`megaloblastic-anaemia`): plain-language explanation; verified components; realistic fictional example
+- Pernicious anaemia (`pernicious-anaemia`): plain-language explanation; verified components; realistic fictional example
+- Aplastic anaemia (`aplastic-anaemia`): plain-language explanation; verified components; realistic fictional example
+- Haemolytic anaemia (`haemolytic-anaemia`): plain-language explanation; verified components; realistic fictional example
+- Sickle cell disease (`sickle-cell-disease`): plain-language explanation; verified components; realistic fictional example
+- Thalassaemia (`thalassaemia`): plain-language explanation; verified components; realistic fictional example
+- Leukaemia (`leukaemia`): plain-language explanation; verified components; realistic fictional example
+- Acute myeloid leukaemia (`acute-myeloid-leukaemia`): plain-language explanation; verified components; realistic fictional example
+- Acute lymphoblastic leukaemia (`acute-lymphoblastic-leukaemia`): plain-language explanation; verified components; realistic fictional example
+- Chronic myeloid leukaemia (`chronic-myeloid-leukaemia`): plain-language explanation; verified components; realistic fictional example
+- Chronic lymphocytic leukaemia (`chronic-lymphocytic-leukaemia`): plain-language explanation; verified components; realistic fictional example
+- Myelodysplastic syndrome (`myelodysplastic-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Myelofibrosis (`myelofibrosis`): plain-language explanation; verified components; realistic fictional example
+- Polycythaemia vera (`polycythaemia-vera`): plain-language explanation; verified components; realistic fictional example
+- Essential thrombocythaemia (`essential-thrombocythaemia`): plain-language explanation; verified components; realistic fictional example
+- Multiple myeloma (`multiple-myeloma`): plain-language explanation; verified components; realistic fictional example
+- Monoclonal gammopathy (`monoclonal-gammopathy`): plain-language explanation; verified components; realistic fictional example
+- Full blood count (`full-blood-count`): plain-language explanation; verified components; realistic fictional example
+- Differential count (`differential-count`): plain-language explanation; verified components; realistic fictional example
+- Blood film (`blood-film`): plain-language explanation; verified components; realistic fictional example
+- Mean corpuscular volume (`mean-corpuscular-volume`): plain-language explanation; verified components; realistic fictional example
+- Mean corpuscular haemoglobin (`mean-corpuscular-haemoglobin`): plain-language explanation; verified components; realistic fictional example
+- Mean corpuscular haemoglobin concentration (`mean-corpuscular-haemoglobin-concentration`): plain-language explanation; verified components; realistic fictional example
+- Red cell distribution width (`red-cell-distribution-width`): plain-language explanation; verified components; realistic fictional example
+- Reticulocyte count (`reticulocyte-count`): plain-language explanation; verified components; realistic fictional example
+- Prothrombin time (`prothrombin-time`): plain-language explanation; verified components; realistic fictional example
+- Activated partial thromboplastin time (`activated-partial-thromboplastin-time`): plain-language explanation; verified components; realistic fictional example
+- International normalised ratio (`international-normalised-ratio`): plain-language explanation; verified components; realistic fictional example
+- D-dimer (`d-dimer`): plain-language explanation; verified components; realistic fictional example
+- Direct antiglobulin test (`direct-antiglobulin-test`): plain-language explanation; verified components; realistic fictional example
+- Indirect antiglobulin test (`indirect-antiglobulin-test`): plain-language explanation; verified components; realistic fictional example
+- Crossmatch (`crossmatch`): plain-language explanation; verified components; realistic fictional example
+- Blood group (`blood-group`): plain-language explanation; verified components; realistic fictional example
+- RhD antigen (`rhd-antigen`): plain-language explanation; verified components; realistic fictional example
+- Transfusion (`transfusion`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 7 · Lymphatic & immune systems
+
+- Immunodeficiency (`immunodeficiency`): verified components
+- Lymph (`lymph`): plain-language explanation; verified components; realistic fictional example
+- Lymph node (`lymph-node`): plain-language explanation; verified components; realistic fictional example
+- Lymphatic vessel (`lymphatic-vessel`): plain-language explanation; verified components; realistic fictional example
+- Thoracic duct (`thoracic-duct`): plain-language explanation; verified components; realistic fictional example
+- Right lymphatic duct (`right-lymphatic-duct`): plain-language explanation; verified components; realistic fictional example
+- Spleen (`spleen`): plain-language explanation; verified components; realistic fictional example
+- Thymus (`thymus`): plain-language explanation; verified components; realistic fictional example
+- Tonsil (`tonsil`): plain-language explanation; verified components; realistic fictional example
+- Adenoid (`adenoid`): plain-language explanation; verified components; realistic fictional example
+- Lymphoid tissue (`lymphoid-tissue`): plain-language explanation; verified components; realistic fictional example
+- Lacteal (`lacteal`): plain-language explanation; verified components; realistic fictional example
+- Chyle (`chyle`): plain-language explanation; verified components; realistic fictional example
+- Interstitial fluid (`interstitial-fluid`): plain-language explanation; verified components; realistic fictional example
+- Antigen (`antigen`): plain-language explanation; verified components; realistic fictional example
+- Antibody (`antibody`): plain-language explanation; verified components; realistic fictional example
+- Immunoglobulin (`immunoglobulin`): plain-language explanation; verified components; realistic fictional example
+- Immunoglobulin G (`immunoglobulin-g`): plain-language explanation; verified components; realistic fictional example
+- Immunoglobulin A (`immunoglobulin-a`): plain-language explanation; verified components; realistic fictional example
+- Immunoglobulin M (`immunoglobulin-m`): plain-language explanation; verified components; realistic fictional example
+- Immunoglobulin E (`immunoglobulin-e`): plain-language explanation; verified components; realistic fictional example
+- Immunoglobulin D (`immunoglobulin-d`): plain-language explanation; verified components; realistic fictional example
+- B lymphocyte (`b-lymphocyte`): plain-language explanation; verified components; realistic fictional example
+- T lymphocyte (`t-lymphocyte`): plain-language explanation; verified components; realistic fictional example
+- Plasma cell (`plasma-cell`): plain-language explanation; verified components; realistic fictional example
+- Memory cell (`memory-cell`): plain-language explanation; verified components; realistic fictional example
+- Natural killer cell (`natural-killer-cell`): plain-language explanation; verified components; realistic fictional example
+- Macrophage (`macrophage`): plain-language explanation; verified components; realistic fictional example
+- Dendritic cell (`dendritic-cell`): plain-language explanation; verified components; realistic fictional example
+- Mast cell (`mast-cell`): plain-language explanation; verified components; realistic fictional example
+- Complement (`complement`): plain-language explanation; verified components; realistic fictional example
+- Cytokine (`cytokine`): plain-language explanation; verified components; realistic fictional example
+- Chemokine (`chemokine`): plain-language explanation; verified components; realistic fictional example
+- Interleukin (`interleukin`): plain-language explanation; verified components; realistic fictional example
+- Interferon (`interferon`): plain-language explanation; verified components; realistic fictional example
+- Histamine (`histamine`): plain-language explanation; verified components; realistic fictional example
+- Phagocytosis (`phagocytosis`): plain-language explanation; verified components; realistic fictional example
+- Opsonisation (`opsonisation`): plain-language explanation; verified components; realistic fictional example
+- Antigen presentation (`antigen-presentation`): plain-language explanation; verified components; realistic fictional example
+- Clonal expansion (`clonal-expansion`): plain-language explanation; verified components; realistic fictional example
+- Immunological memory (`immunological-memory`): plain-language explanation; verified components; realistic fictional example
+- Innate immunity (`innate-immunity`): plain-language explanation; verified components; realistic fictional example
+- Adaptive immunity (`adaptive-immunity`): plain-language explanation; verified components; realistic fictional example
+- Humoral immunity (`humoral-immunity`): plain-language explanation; verified components; realistic fictional example
+- Cell-mediated immunity (`cell-mediated-immunity`): plain-language explanation; verified components; realistic fictional example
+- Active immunity (`active-immunity`): plain-language explanation; verified components; realistic fictional example
+- Passive immunity (`passive-immunity`): plain-language explanation; verified components; realistic fictional example
+- Natural immunity (`natural-immunity`): plain-language explanation; verified components; realistic fictional example
+- Acquired immunity (`acquired-immunity`): plain-language explanation; verified components; realistic fictional example
+- Immunisation (`immunisation`): plain-language explanation; verified components; realistic fictional example
+- Vaccination (`vaccination`): plain-language explanation; verified components; realistic fictional example
+- Booster (`booster`): plain-language explanation; verified components; realistic fictional example
+- Seroconversion (`seroconversion`): plain-language explanation; verified components; realistic fictional example
+- Serology (`serology`): plain-language explanation; verified components; realistic fictional example
+- Titre (`titre`): plain-language explanation; verified components; realistic fictional example
+- Immunoassay (`immunoassay`): plain-language explanation; verified components; realistic fictional example
+- Immunophenotyping (`immunophenotyping`): plain-language explanation; verified components; realistic fictional example
+- Flow cytometry (`flow-cytometry`): plain-language explanation; verified components; realistic fictional example
+- Hypersensitivity (`hypersensitivity`): plain-language explanation; verified components; realistic fictional example
+- Allergy (`allergy`): plain-language explanation; verified components; realistic fictional example
+- Anaphylaxis (`anaphylaxis`): plain-language explanation; verified components; realistic fictional example
+- Atopy (`atopy`): plain-language explanation; verified components; realistic fictional example
+- Autoimmunity (`autoimmunity`): plain-language explanation; verified components; realistic fictional example
+- Autoimmune disease (`autoimmune-disease`): plain-language explanation; verified components; realistic fictional example
+- Immunosuppression (`immunosuppression`): plain-language explanation; verified components; realistic fictional example
+- Primary immunodeficiency (`primary-immunodeficiency`): plain-language explanation; verified components; realistic fictional example
+- Secondary immunodeficiency (`secondary-immunodeficiency`): plain-language explanation; verified components; realistic fictional example
+- Severe combined immunodeficiency (`severe-combined-immunodeficiency`): plain-language explanation; verified components; realistic fictional example
+- Human immunodeficiency virus (`human-immunodeficiency-virus`): plain-language explanation; verified components; realistic fictional example
+- Acquired immunodeficiency syndrome (`acquired-immunodeficiency-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Lymphadenitis (`lymphadenitis`): plain-language explanation; verified components; realistic fictional example
+- Lymphangitis (`lymphangitis`): plain-language explanation; verified components; realistic fictional example
+- Lymphoedema (`lymphoedema`): plain-language explanation; verified components; realistic fictional example
+- Lymphocytopenia (`lymphocytopenia`): plain-language explanation; verified components; realistic fictional example
+- Splenitis (`splenitis`): plain-language explanation; verified components; realistic fictional example
+- Asplenia (`asplenia`): plain-language explanation; verified components; realistic fictional example
+- Hyposplenism (`hyposplenism`): plain-language explanation; verified components; realistic fictional example
+- Hypersplenism (`hypersplenism`): plain-language explanation; verified components; realistic fictional example
+- Splenic infarction (`splenic-infarction`): plain-language explanation; verified components; realistic fictional example
+- Splenic rupture (`splenic-rupture`): plain-language explanation; verified components; realistic fictional example
+- Lymphoma (`lymphoma`): plain-language explanation; verified components; realistic fictional example
+- Hodgkin lymphoma (`hodgkin-lymphoma`): plain-language explanation; verified components; realistic fictional example
+- Non-Hodgkin lymphoma (`non-hodgkin-lymphoma`): plain-language explanation; verified components; realistic fictional example
+- Burkitt lymphoma (`burkitt-lymphoma`): plain-language explanation; verified components; realistic fictional example
+- Follicular lymphoma (`follicular-lymphoma`): plain-language explanation; verified components; realistic fictional example
+- Diffuse large B-cell lymphoma (`diffuse-large-b-cell-lymphoma`): plain-language explanation; verified components; realistic fictional example
+- Lymphoblast (`lymphoblast`): plain-language explanation; verified components; realistic fictional example
+- Graft-versus-host disease (`graft-versus-host-disease`): plain-language explanation; verified components; realistic fictional example
+- Graft rejection (`graft-rejection`): plain-language explanation; verified components; realistic fictional example
+- Histocompatibility (`histocompatibility`): plain-language explanation; verified components; realistic fictional example
+- Human leucocyte antigen (`human-leucocyte-antigen`): plain-language explanation; verified components; realistic fictional example
+- Immunomodulator (`immunomodulator`): plain-language explanation; verified components; realistic fictional example
+- Immunotherapy (`immunotherapy`): plain-language explanation; verified components; realistic fictional example
+- Monoclonal antibody (`monoclonal-antibody`): plain-language explanation; verified components; realistic fictional example
+- Immunoglobulin replacement (`immunoglobulin-replacement`): plain-language explanation; verified components; realistic fictional example
+- Allergen (`allergen`): plain-language explanation; verified components; realistic fictional example
+- Skin prick test (`skin-prick-test`): plain-language explanation; verified components; realistic fictional example
+- Allergen-specific IgE (`allergen-specific-ige`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 8 · Endocrine system
+
+- Hormone (`hormone`): plain-language explanation; verified components; realistic fictional example
+- Endocrine gland (`endocrine-gland`): plain-language explanation; verified components; realistic fictional example
+- Exocrine gland (`exocrine-gland`): plain-language explanation; verified components; realistic fictional example
+- Hypothalamus (`hypothalamus`): plain-language explanation; verified components; realistic fictional example
+- Pituitary gland (`pituitary-gland`): plain-language explanation; verified components; realistic fictional example
+- Anterior pituitary (`anterior-pituitary`): plain-language explanation; verified components; realistic fictional example
+- Posterior pituitary (`posterior-pituitary`): plain-language explanation; verified components; realistic fictional example
+- Thyroid gland (`thyroid-gland`): plain-language explanation; verified components; realistic fictional example
+- Parathyroid gland (`parathyroid-gland`): plain-language explanation; verified components; realistic fictional example
+- Adrenal cortex (`adrenal-cortex`): plain-language explanation; verified components; realistic fictional example
+- Adrenal medulla (`adrenal-medulla`): plain-language explanation; verified components; realistic fictional example
+- Pancreatic islet (`pancreatic-islet`): plain-language explanation; verified components; realistic fictional example
+- Pineal gland (`pineal-gland`): plain-language explanation; verified components; realistic fictional example
+- Insulin (`insulin`): plain-language explanation; verified components; realistic fictional example
+- Glucagon (`glucagon`): plain-language explanation; verified components; realistic fictional example
+- Cortisol (`cortisol`): plain-language explanation; verified components; realistic fictional example
+- Aldosterone (`aldosterone`): plain-language explanation; verified components; realistic fictional example
+- Adrenaline (`adrenaline`): plain-language explanation; verified components; realistic fictional example
+- Noradrenaline (`noradrenaline`): plain-language explanation; verified components; realistic fictional example
+- Thyroxine (`thyroxine`): plain-language explanation; verified components; realistic fictional example
+- Triiodothyronine (`triiodothyronine`): plain-language explanation; verified components; realistic fictional example
+- Calcitonin (`calcitonin`): plain-language explanation; verified components; realistic fictional example
+- Parathyroid hormone (`parathyroid-hormone`): plain-language explanation; verified components; realistic fictional example
+- Growth hormone (`growth-hormone`): plain-language explanation; verified components; realistic fictional example
+- Prolactin (`prolactin`): plain-language explanation; verified components; realistic fictional example
+- Oxytocin (`oxytocin`): plain-language explanation; verified components; realistic fictional example
+- Antidiuretic hormone (`antidiuretic-hormone`): plain-language explanation; verified components; realistic fictional example
+- Melatonin (`melatonin`): plain-language explanation; verified components; realistic fictional example
+- Thyroid-stimulating hormone (`thyroid-stimulating-hormone`): plain-language explanation; verified components; realistic fictional example
+- Adrenocorticotropic hormone (`adrenocorticotropic-hormone`): plain-language explanation; verified components; realistic fictional example
+- Follicle-stimulating hormone (`follicle-stimulating-hormone`): plain-language explanation; verified components; realistic fictional example
+- Luteinising hormone (`luteinising-hormone`): plain-language explanation; verified components; realistic fictional example
+- Oestrogen (`oestrogen`): plain-language explanation; verified components; realistic fictional example
+- Progesterone (`progesterone`): plain-language explanation; verified components; realistic fictional example
+- Testosterone (`testosterone`): plain-language explanation; verified components; realistic fictional example
+- Androgen (`androgen`): plain-language explanation; verified components; realistic fictional example
+- Negative feedback (`negative-feedback`): plain-language explanation; verified components; realistic fictional example
+- Receptor (`receptor`): plain-language explanation; verified components; realistic fictional example
+- Target organ (`target-organ`): plain-language explanation; verified components; realistic fictional example
+- Homeostasis (`homeostasis`): plain-language explanation; verified components; realistic fictional example
+- Gluconeogenesis (`gluconeogenesis`): plain-language explanation; verified components; realistic fictional example
+- Glycogenesis (`glycogenesis`): plain-language explanation; verified components; realistic fictional example
+- Glycogenolysis (`glycogenolysis`): plain-language explanation; verified components; realistic fictional example
+- Lipolysis (`lipolysis`): plain-language explanation; verified components; realistic fictional example
+- Ketogenesis (`ketogenesis`): plain-language explanation; verified components; realistic fictional example
+- Diabetes mellitus (`diabetes-mellitus`): plain-language explanation; verified components; realistic fictional example
+- Type 1 diabetes (`type-1-diabetes`): plain-language explanation; verified components; realistic fictional example
+- Type 2 diabetes (`type-2-diabetes`): plain-language explanation; verified components; realistic fictional example
+- Gestational diabetes (`gestational-diabetes`): plain-language explanation; verified components; realistic fictional example
+- Insulin resistance (`insulin-resistance`): plain-language explanation; verified components; realistic fictional example
+- Diabetic ketoacidosis (`diabetic-ketoacidosis`): plain-language explanation; verified components; realistic fictional example
+- Hyperosmolar hyperglycaemic state (`hyperosmolar-hyperglycaemic-state`): plain-language explanation; verified components; realistic fictional example
+- Glycosuria (`glycosuria`): plain-language explanation; verified components; realistic fictional example
+- Ketonuria (`ketonuria`): plain-language explanation; verified components; realistic fictional example
+- Polydipsia (`polydipsia`): plain-language explanation; verified components; realistic fictional example
+- Polyphagia (`polyphagia`): plain-language explanation; verified components; realistic fictional example
+- Hyperthyroidism (`hyperthyroidism`): plain-language explanation; verified components; realistic fictional example
+- Thyrotoxicosis (`thyrotoxicosis`): plain-language explanation; verified components; realistic fictional example
+- Graves disease (`graves-disease`): plain-language explanation; verified components; realistic fictional example
+- Hashimoto thyroiditis (`hashimoto-thyroiditis`): plain-language explanation; verified components; realistic fictional example
+- Goitre (`goitre`): plain-language explanation; verified components; realistic fictional example
+- Thyroid nodule (`thyroid-nodule`): plain-language explanation; verified components; realistic fictional example
+- Thyroiditis (`thyroiditis`): plain-language explanation; verified components; realistic fictional example
+- Myxoedema (`myxoedema`): plain-language explanation; verified components; realistic fictional example
+- Thyroid storm (`thyroid-storm`): plain-language explanation; verified components; realistic fictional example
+- Hyperparathyroidism (`hyperparathyroidism`): plain-language explanation; verified components; realistic fictional example
+- Hypoparathyroidism (`hypoparathyroidism`): plain-language explanation; verified components; realistic fictional example
+- Hypercalcaemia (`hypercalcaemia`): plain-language explanation; verified components; realistic fictional example
+- Hypocalcaemia (`hypocalcaemia`): plain-language explanation; verified components; realistic fictional example
+- Acromegaly (`acromegaly`): plain-language explanation; verified components; realistic fictional example
+- Gigantism (`gigantism`): plain-language explanation; verified components; realistic fictional example
+- Growth hormone deficiency (`growth-hormone-deficiency`): plain-language explanation; verified components; realistic fictional example
+- Hypopituitarism (`hypopituitarism`): plain-language explanation; verified components; realistic fictional example
+- Panhypopituitarism (`panhypopituitarism`): plain-language explanation; verified components; realistic fictional example
+- Hyperprolactinaemia (`hyperprolactinaemia`): plain-language explanation; verified components; realistic fictional example
+- Prolactinoma (`prolactinoma`): plain-language explanation; verified components; realistic fictional example
+- Pituitary adenoma (`pituitary-adenoma`): plain-language explanation; verified components; realistic fictional example
+- Diabetes insipidus (`diabetes-insipidus`): plain-language explanation; verified components; realistic fictional example
+- Syndrome of inappropriate antidiuresis (`syndrome-of-inappropriate-antidiuresis`): plain-language explanation; verified components; realistic fictional example
+- Cushing syndrome (`cushing-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Cushing disease (`cushing-disease`): plain-language explanation; verified components; realistic fictional example
+- Addison disease (`addison-disease`): plain-language explanation; verified components; realistic fictional example
+- Adrenal insufficiency (`adrenal-insufficiency`): plain-language explanation; verified components; realistic fictional example
+- Hyperaldosteronism (`hyperaldosteronism`): plain-language explanation; verified components; realistic fictional example
+- Phaeochromocytoma (`phaeochromocytoma`): plain-language explanation; verified components; realistic fictional example
+- Congenital adrenal hyperplasia (`congenital-adrenal-hyperplasia`): plain-language explanation; verified components; realistic fictional example
+- Hirsutism (`hirsutism-ch8`): plain-language explanation; verified components; realistic fictional example
+- Hypogonadism (`hypogonadism`): plain-language explanation; verified components; realistic fictional example
+- Precocious puberty (`precocious-puberty`): plain-language explanation; verified components; realistic fictional example
+- Delayed puberty (`delayed-puberty`): plain-language explanation; verified components; realistic fictional example
+- Haemoglobin A1c (`haemoglobin-a1c`): plain-language explanation; verified components; realistic fictional example
+- Fasting plasma glucose (`fasting-plasma-glucose`): plain-language explanation; verified components; realistic fictional example
+- Oral glucose tolerance test (`oral-glucose-tolerance-test`): plain-language explanation; verified components; realistic fictional example
+- Thyroid function tests (`thyroid-function-tests`): plain-language explanation; verified components; realistic fictional example
+- ACTH stimulation test (`acth-stimulation-test`): plain-language explanation; verified components; realistic fictional example
+- Dexamethasone suppression test (`dexamethasone-suppression-test`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 9 · Cardiovascular system
+
+- Myocardium (`myocardium`): plain-language explanation; verified components; realistic fictional example
+- Endocardium (`endocardium`): plain-language explanation; verified components; realistic fictional example
+- Epicardium (`epicardium`): plain-language explanation; verified components; realistic fictional example
+- Pericardium (`pericardium`): plain-language explanation; verified components; realistic fictional example
+- Atrium (`atrium`): plain-language explanation; verified components; realistic fictional example
+- Ventricle (`ventricle`): plain-language explanation; verified components; realistic fictional example
+- Septum (`septum`): plain-language explanation; verified components; realistic fictional example
+- Aorta (`aorta`): plain-language explanation; verified components; realistic fictional example
+- Vena cava (`vena-cava`): plain-language explanation; verified components; realistic fictional example
+- Pulmonary artery (`pulmonary-artery`): plain-language explanation; verified components; realistic fictional example
+- Pulmonary vein (`pulmonary-vein`): plain-language explanation; verified components; realistic fictional example
+- Coronary artery (`coronary-artery`): plain-language explanation; verified components; realistic fictional example
+- Arteriole (`arteriole`): plain-language explanation; verified components; realistic fictional example
+- Venule (`venule`): plain-language explanation; verified components; realistic fictional example
+- Capillary (`capillary`): plain-language explanation; verified components; realistic fictional example
+- Mitral valve (`mitral-valve`): plain-language explanation; verified components; realistic fictional example
+- Tricuspid valve (`tricuspid-valve`): plain-language explanation; verified components; realistic fictional example
+- Aortic valve (`aortic-valve`): plain-language explanation; verified components; realistic fictional example
+- Pulmonary valve (`pulmonary-valve`): plain-language explanation; verified components; realistic fictional example
+- Sinoatrial node (`sinoatrial-node`): plain-language explanation; verified components; realistic fictional example
+- Atrioventricular node (`atrioventricular-node`): plain-language explanation; verified components; realistic fictional example
+- Bundle of His (`bundle-of-his`): plain-language explanation; verified components; realistic fictional example
+- Purkinje fibres (`purkinje-fibres`): plain-language explanation; verified components; realistic fictional example
+- Systole (`systole`): plain-language explanation; verified components; realistic fictional example
+- Diastole (`diastole`): plain-language explanation; verified components; realistic fictional example
+- Stroke volume (`stroke-volume`): plain-language explanation; verified components; realistic fictional example
+- Cardiac output (`cardiac-output`): plain-language explanation; verified components; realistic fictional example
+- Ejection fraction (`ejection-fraction`): plain-language explanation; verified components; realistic fictional example
+- Preload (`preload`): plain-language explanation; verified components; realistic fictional example
+- Afterload (`afterload`): plain-language explanation; verified components; realistic fictional example
+- Perfusion (`perfusion`): plain-language explanation; verified components; realistic fictional example
+- Ischaemia (`ischaemia`): plain-language explanation; verified components; realistic fictional example
+- Infarction (`infarction`): plain-language explanation; verified components; realistic fictional example
+- Angina pectoris (`angina-pectoris`): plain-language explanation; verified components; realistic fictional example
+- Myocardial infarction (`myocardial-infarction`): plain-language explanation; verified components; realistic fictional example
+- Acute coronary syndrome (`acute-coronary-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Coronary artery disease (`coronary-artery-disease`): plain-language explanation; verified components; realistic fictional example
+- Heart failure (`heart-failure`): plain-language explanation; verified components; realistic fictional example
+- Cardiomyopathy (`cardiomyopathy`): plain-language explanation; verified components; realistic fictional example
+- Dilated cardiomyopathy (`dilated-cardiomyopathy`): plain-language explanation; verified components; realistic fictional example
+- Hypertrophic cardiomyopathy (`hypertrophic-cardiomyopathy`): plain-language explanation; verified components; realistic fictional example
+- Restrictive cardiomyopathy (`restrictive-cardiomyopathy`): plain-language explanation; verified components; realistic fictional example
+- Pericardial effusion (`pericardial-effusion`): plain-language explanation; verified components; realistic fictional example
+- Cardiac tamponade (`cardiac-tamponade`): plain-language explanation; verified components; realistic fictional example
+- Arrhythmia (`arrhythmia`): plain-language explanation; verified components; realistic fictional example
+- Atrial fibrillation (`atrial-fibrillation`): plain-language explanation; verified components; realistic fictional example
+- Atrial flutter (`atrial-flutter`): plain-language explanation; verified components; realistic fictional example
+- Supraventricular tachycardia (`supraventricular-tachycardia`): plain-language explanation; verified components; realistic fictional example
+- Ventricular tachycardia (`ventricular-tachycardia`): plain-language explanation; verified components; realistic fictional example
+- Ventricular fibrillation (`ventricular-fibrillation`): plain-language explanation; verified components; realistic fictional example
+- Asystole (`asystole`): plain-language explanation; verified components; realistic fictional example
+- Heart block (`heart-block`): plain-language explanation; verified components; realistic fictional example
+- Bundle branch block (`bundle-branch-block`): plain-language explanation; verified components; realistic fictional example
+- Premature beat (`premature-beat`): plain-language explanation; verified components; realistic fictional example
+- Palpitation (`palpitation`): plain-language explanation; verified components; realistic fictional example
+- Syncope (`syncope`): plain-language explanation; verified components; realistic fictional example
+- Presyncope (`presyncope`): plain-language explanation; verified components; realistic fictional example
+- Orthopnoea (`orthopnoea`): plain-language explanation; verified components; realistic fictional example
+- Paroxysmal nocturnal dyspnoea (`paroxysmal-nocturnal-dyspnoea`): plain-language explanation; verified components; realistic fictional example
+- Murmur (`murmur`): plain-language explanation; verified components; realistic fictional example
+- Bruit (`bruit`): plain-language explanation; verified components; realistic fictional example
+- Thrill (`thrill`): plain-language explanation; verified components; realistic fictional example
+- Oedema (`oedema`): plain-language explanation; verified components; realistic fictional example
+- Hypotension (`hypotension`): plain-language explanation; verified components; realistic fictional example
+- Orthostatic hypotension (`orthostatic-hypotension`): plain-language explanation; verified components; realistic fictional example
+- Pulmonary hypertension (`pulmonary-hypertension`): plain-language explanation; verified components; realistic fictional example
+- Aneurysm (`aneurysm`): plain-language explanation; verified components; realistic fictional example
+- Aortic dissection (`aortic-dissection`): plain-language explanation; verified components; realistic fictional example
+- Arteriosclerosis (`arteriosclerosis`): plain-language explanation; verified components; realistic fictional example
+- Peripheral arterial disease (`peripheral-arterial-disease`): plain-language explanation; verified components; realistic fictional example
+- Claudication (`claudication`): plain-language explanation; verified components; realistic fictional example
+- Deep vein thrombosis (`deep-vein-thrombosis`): plain-language explanation; verified components; realistic fictional example
+- Thrombophlebitis (`thrombophlebitis`): plain-language explanation; verified components; realistic fictional example
+- Varicose veins (`varicose-veins`): plain-language explanation; verified components; realistic fictional example
+- Venous insufficiency (`venous-insufficiency`): plain-language explanation; verified components; realistic fictional example
+- Aortic stenosis (`aortic-stenosis`): plain-language explanation; verified components; realistic fictional example
+- Mitral regurgitation (`mitral-regurgitation`): plain-language explanation; verified components; realistic fictional example
+- Valve prolapse (`valve-prolapse`): plain-language explanation; verified components; realistic fictional example
+- Congenital heart disease (`congenital-heart-disease`): plain-language explanation; verified components; realistic fictional example
+- Atrial septal defect (`atrial-septal-defect`): plain-language explanation; verified components; realistic fictional example
+- Ventricular septal defect (`ventricular-septal-defect`): plain-language explanation; verified components; realistic fictional example
+- Patent ductus arteriosus (`patent-ductus-arteriosus`): plain-language explanation; verified components; realistic fictional example
+- Coarctation of the aorta (`coarctation-of-the-aorta`): plain-language explanation; verified components; realistic fictional example
+- Echocardiography (`echocardiography`): plain-language explanation; verified components; realistic fictional example
+- Angiography (`angiography`): plain-language explanation; verified components; realistic fictional example
+- Cardiac catheterisation (`cardiac-catheterisation`): plain-language explanation; verified components; realistic fictional example
+- Coronary angioplasty (`coronary-angioplasty`): plain-language explanation; verified components; realistic fictional example
+- Stent (`stent`): plain-language explanation; verified components; realistic fictional example
+- Coronary artery bypass graft (`coronary-artery-bypass-graft`): plain-language explanation; verified components; realistic fictional example
+- Cardioversion (`cardioversion`): plain-language explanation; verified components; realistic fictional example
+- Defibrillation (`defibrillation`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 10 · Respiratory system
+
+- Nasal cavity (`nasal-cavity`): plain-language explanation; verified components; realistic fictional example
+- Pharynx (`pharynx`): plain-language explanation; verified components; realistic fictional example
+- Larynx (`larynx`): plain-language explanation; verified components; realistic fictional example
+- Epiglottis (`epiglottis`): plain-language explanation; verified components; realistic fictional example
+- Trachea (`trachea`): plain-language explanation; verified components; realistic fictional example
+- Bronchus (`bronchus`): plain-language explanation; verified components; realistic fictional example
+- Bronchiole (`bronchiole`): plain-language explanation; verified components; realistic fictional example
+- Alveolus (`alveolus`): plain-language explanation; verified components; realistic fictional example
+- Pleura (`pleura`): plain-language explanation; verified components; realistic fictional example
+- Visceral pleura (`visceral-pleura`): plain-language explanation; verified components; realistic fictional example
+- Parietal pleura (`parietal-pleura`): plain-language explanation; verified components; realistic fictional example
+- Pleural space (`pleural-space`): plain-language explanation; verified components; realistic fictional example
+- Diaphragm (`diaphragm`): plain-language explanation; verified components; realistic fictional example
+- Mediastinum (`mediastinum`): plain-language explanation; verified components; realistic fictional example
+- Hilum (`hilum`): plain-language explanation; verified components; realistic fictional example
+- Carina (`carina`): plain-language explanation; verified components; realistic fictional example
+- Surfactant (`surfactant`): plain-language explanation; verified components; realistic fictional example
+- Cilia (`cilia`): plain-language explanation; verified components; realistic fictional example
+- Mucus (`mucus`): plain-language explanation; verified components; realistic fictional example
+- Ventilation (`ventilation`): plain-language explanation; verified components; realistic fictional example
+- Inspiration (`inspiration`): plain-language explanation; verified components; realistic fictional example
+- Expiration (`expiration`): plain-language explanation; verified components; realistic fictional example
+- Diffusion (`diffusion`): plain-language explanation; verified components; realistic fictional example
+- Gas exchange (`gas-exchange`): plain-language explanation; verified components; realistic fictional example
+- Tidal volume (`tidal-volume`): plain-language explanation; verified components; realistic fictional example
+- Vital capacity (`vital-capacity`): plain-language explanation; verified components; realistic fictional example
+- Residual volume (`residual-volume`): plain-language explanation; verified components; realistic fictional example
+- Total lung capacity (`total-lung-capacity`): plain-language explanation; verified components; realistic fictional example
+- Minute ventilation (`minute-ventilation`): plain-language explanation; verified components; realistic fictional example
+- Dead space (`dead-space`): plain-language explanation; verified components; realistic fictional example
+- Compliance (`compliance`): plain-language explanation; verified components; realistic fictional example
+- Airway resistance (`airway-resistance`): plain-language explanation; verified components; realistic fictional example
+- Respiratory rate (`respiratory-rate`): plain-language explanation; verified components; realistic fictional example
+- Oxygen saturation (`oxygen-saturation`): plain-language explanation; verified components; realistic fictional example
+- Partial pressure (`partial-pressure`): plain-language explanation; verified components; realistic fictional example
+- Eupnoea (`eupnoea`): plain-language explanation; verified components; realistic fictional example
+- Bradypnoea (`bradypnoea`): plain-language explanation; verified components; realistic fictional example
+- Hyperpnoea (`hyperpnoea`): plain-language explanation; verified components; realistic fictional example
+- Hypopnoea (`hypopnoea`): plain-language explanation; verified components; realistic fictional example
+- Hyperventilation (`hyperventilation`): plain-language explanation; verified components; realistic fictional example
+- Hypoventilation (`hypoventilation`): plain-language explanation; verified components; realistic fictional example
+- Hypercapnia (`hypercapnia`): plain-language explanation; verified components; realistic fictional example
+- Hypocapnia (`hypocapnia`): plain-language explanation; verified components; realistic fictional example
+- Respiratory acidosis (`respiratory-acidosis`): plain-language explanation; verified components; realistic fictional example
+- Respiratory alkalosis (`respiratory-alkalosis`): plain-language explanation; verified components; realistic fictional example
+- Cough (`cough`): plain-language explanation; verified components; realistic fictional example
+- Sputum (`sputum`): plain-language explanation; verified components; realistic fictional example
+- Haemoptysis (`haemoptysis`): plain-language explanation; verified components; realistic fictional example
+- Wheeze (`wheeze`): plain-language explanation; verified components; realistic fictional example
+- Stridor (`stridor`): plain-language explanation; verified components; realistic fictional example
+- Crackles (`crackles`): plain-language explanation; verified components; realistic fictional example
+- Pleural rub (`pleural-rub`): plain-language explanation; verified components; realistic fictional example
+- Pleuritic pain (`pleuritic-pain`): plain-language explanation; verified components; realistic fictional example
+- Pleurisy (`pleurisy`): plain-language explanation; verified components; realistic fictional example
+- Pleural effusion (`pleural-effusion`): plain-language explanation; verified components; realistic fictional example
+- Haemothorax (`haemothorax`): plain-language explanation; verified components; realistic fictional example
+- Empyema (`empyema`): plain-language explanation; verified components; realistic fictional example
+- Atelectasis (`atelectasis`): plain-language explanation; verified components; realistic fictional example
+- Pneumonia (`pneumonia`): plain-language explanation; verified components; realistic fictional example
+- Aspiration pneumonia (`aspiration-pneumonia`): plain-language explanation; verified components; realistic fictional example
+- Pneumonitis (`pneumonitis`): plain-language explanation; verified components; realistic fictional example
+- Bronchiectasis (`bronchiectasis`): plain-language explanation; verified components; realistic fictional example
+- Bronchiolitis (`bronchiolitis`): plain-language explanation; verified components; realistic fictional example
+- Asthma (`asthma`): plain-language explanation; verified components; realistic fictional example
+- Chronic obstructive pulmonary disease (`chronic-obstructive-pulmonary-disease`): plain-language explanation; verified components; realistic fictional example
+- Emphysema (`emphysema`): plain-language explanation; verified components; realistic fictional example
+- Chronic bronchitis (`chronic-bronchitis`): plain-language explanation; verified components; realistic fictional example
+- Pulmonary fibrosis (`pulmonary-fibrosis`): plain-language explanation; verified components; realistic fictional example
+- Interstitial lung disease (`interstitial-lung-disease`): plain-language explanation; verified components; realistic fictional example
+- Sarcoidosis (`sarcoidosis`): plain-language explanation; verified components; realistic fictional example
+- Silicosis (`silicosis`): plain-language explanation; verified components; realistic fictional example
+- Asbestosis (`asbestosis`): plain-language explanation; verified components; realistic fictional example
+- Pneumoconiosis (`pneumoconiosis`): plain-language explanation; verified components; realistic fictional example
+- Pulmonary embolism (`pulmonary-embolism`): plain-language explanation; verified components; realistic fictional example
+- Pulmonary oedema (`pulmonary-oedema`): plain-language explanation; verified components; realistic fictional example
+- Acute respiratory distress syndrome (`acute-respiratory-distress-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Respiratory failure (`respiratory-failure`): plain-language explanation; verified components; realistic fictional example
+- Obstructive sleep apnoea (`obstructive-sleep-apnoea`): plain-language explanation; verified components; realistic fictional example
+- Central sleep apnoea (`central-sleep-apnoea`): plain-language explanation; verified components; realistic fictional example
+- Cystic fibrosis (`cystic-fibrosis`): plain-language explanation; verified components; realistic fictional example
+- Tuberculosis (`tuberculosis`): plain-language explanation; verified components; realistic fictional example
+- Influenza (`influenza`): plain-language explanation; verified components; realistic fictional example
+- Laryngitis (`laryngitis`): plain-language explanation; verified components; realistic fictional example
+- Pharyngitis (`pharyngitis`): plain-language explanation; verified components; realistic fictional example
+- Sinusitis (`sinusitis`): plain-language explanation; verified components; realistic fictional example
+- Epistaxis (`epistaxis`): plain-language explanation; verified components; realistic fictional example
+- Lung carcinoma (`lung-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Mesothelioma (`mesothelioma`): plain-language explanation; verified components; realistic fictional example
+- Spirometry (`spirometry`): plain-language explanation; verified components; realistic fictional example
+- Peak expiratory flow (`peak-expiratory-flow`): plain-language explanation; verified components; realistic fictional example
+- Arterial blood gas (`arterial-blood-gas`): plain-language explanation; verified components; realistic fictional example
+- Pulse oximetry (`pulse-oximetry`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 11 · Digestive system
+
+- Oral cavity (`oral-cavity`): plain-language explanation; verified components; realistic fictional example
+- Tongue (`tongue`): plain-language explanation; verified components; realistic fictional example
+- Salivary gland (`salivary-gland`): plain-language explanation; verified components; realistic fictional example
+- Parotid gland (`parotid-gland`): plain-language explanation; verified components; realistic fictional example
+- Oesophagus (`oesophagus`): plain-language explanation; verified components; realistic fictional example
+- Stomach (`stomach`): plain-language explanation; verified components; realistic fictional example
+- Cardia (`cardia`): plain-language explanation; verified components; realistic fictional example
+- Fundus (`fundus`): plain-language explanation; verified components; realistic fictional example
+- Pylorus (`pylorus`): plain-language explanation; verified components; realistic fictional example
+- Duodenum (`duodenum`): plain-language explanation; verified components; realistic fictional example
+- Jejunum (`jejunum`): plain-language explanation; verified components; realistic fictional example
+- Ileum (`ileum`): plain-language explanation; verified components; realistic fictional example
+- Caecum (`caecum`): plain-language explanation; verified components; realistic fictional example
+- Appendix (`appendix`): plain-language explanation; verified components; realistic fictional example
+- Colon (`colon`): plain-language explanation; verified components; realistic fictional example
+- Rectum (`rectum`): plain-language explanation; verified components; realistic fictional example
+- Anus (`anus`): plain-language explanation; verified components; realistic fictional example
+- Liver (`liver`): plain-language explanation; verified components; realistic fictional example
+- Gallbladder (`gallbladder`): plain-language explanation; verified components; realistic fictional example
+- Pancreas (`pancreas`): plain-language explanation; verified components; realistic fictional example
+- Bile duct (`bile-duct`): plain-language explanation; verified components; realistic fictional example
+- Peritoneum (`peritoneum`): plain-language explanation; verified components; realistic fictional example
+- Mesentery (`mesentery`): plain-language explanation; verified components; realistic fictional example
+- Omentum (`omentum`): plain-language explanation; verified components; realistic fictional example
+- Villus (`villus`): plain-language explanation; verified components; realistic fictional example
+- Mucosa (`mucosa`): plain-language explanation; verified components; realistic fictional example
+- Peristalsis (`peristalsis`): plain-language explanation; verified components; realistic fictional example
+- Digestion (`digestion`): plain-language explanation; verified components; realistic fictional example
+- Absorption (`absorption`): plain-language explanation; verified components; realistic fictional example
+- Defecation (`defecation`): plain-language explanation; verified components; realistic fictional example
+- Mastication (`mastication`): plain-language explanation; verified components; realistic fictional example
+- Deglutition (`deglutition`): plain-language explanation; verified components; realistic fictional example
+- Bile (`bile`): plain-language explanation; verified components; realistic fictional example
+- Bilirubin (`bilirubin`): plain-language explanation; verified components; realistic fictional example
+- Amylase (`amylase`): plain-language explanation; verified components; realistic fictional example
+- Lipase (`lipase`): plain-language explanation; verified components; realistic fictional example
+- Pepsin (`pepsin`): plain-language explanation; verified components; realistic fictional example
+- Nausea (`nausea`): plain-language explanation; verified components; realistic fictional example
+- Emesis (`emesis`): plain-language explanation; verified components; realistic fictional example
+- Haematemesis (`haematemesis`): plain-language explanation; verified components; realistic fictional example
+- Melaena (`melaena`): plain-language explanation; verified components; realistic fictional example
+- Haematochezia (`haematochezia`): plain-language explanation; verified components; realistic fictional example
+- Dyspepsia (`dyspepsia`): plain-language explanation; verified components; realistic fictional example
+- Odynophagia (`odynophagia`): plain-language explanation; verified components; realistic fictional example
+- Reflux (`reflux`): plain-language explanation; verified components; realistic fictional example
+- Regurgitation (`regurgitation`): plain-language explanation; verified components; realistic fictional example
+- Diarrhoea (`diarrhoea`): plain-language explanation; verified components; realistic fictional example
+- Constipation (`constipation`): plain-language explanation; verified components; realistic fictional example
+- Steatorrhoea (`steatorrhoea`): plain-language explanation; verified components; realistic fictional example
+- Tenesmus (`tenesmus`): plain-language explanation; verified components; realistic fictional example
+- Flatulence (`flatulence`): plain-language explanation; verified components; realistic fictional example
+- Ascites (`ascites`): plain-language explanation; verified components; realistic fictional example
+- Anorexia (`anorexia`): plain-language explanation; verified components; realistic fictional example
+- Oesophagitis (`oesophagitis`): plain-language explanation; verified components; realistic fictional example
+- Gastro-oesophageal reflux disease (`gastro-oesophageal-reflux-disease`): plain-language explanation; verified components; realistic fictional example
+- Achalasia (`achalasia`): plain-language explanation; verified components; realistic fictional example
+- Hiatus hernia (`hiatus-hernia`): plain-language explanation; verified components; realistic fictional example
+- Peptic ulcer (`peptic-ulcer`): plain-language explanation; verified components; realistic fictional example
+- Duodenitis (`duodenitis`): plain-language explanation; verified components; realistic fictional example
+- Coeliac disease (`coeliac-disease`): plain-language explanation; verified components; realistic fictional example
+- Malabsorption (`malabsorption`): plain-language explanation; verified components; realistic fictional example
+- Crohn disease (`crohn-disease`): plain-language explanation; verified components; realistic fictional example
+- Ulcerative colitis (`ulcerative-colitis`): plain-language explanation; verified components; realistic fictional example
+- Irritable bowel syndrome (`irritable-bowel-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Diverticulum (`diverticulum`): plain-language explanation; verified components; realistic fictional example
+- Diverticulosis (`diverticulosis`): plain-language explanation; verified components; realistic fictional example
+- Diverticulitis (`diverticulitis`): plain-language explanation; verified components; realistic fictional example
+- Appendicitis (`appendicitis`): plain-language explanation; verified components; realistic fictional example
+- Colitis (`colitis`): plain-language explanation; verified components; realistic fictional example
+- Proctitis (`proctitis`): plain-language explanation; verified components; realistic fictional example
+- Haemorrhoid (`haemorrhoid`): plain-language explanation; verified components; realistic fictional example
+- Anal fissure (`anal-fissure`): plain-language explanation; verified components; realistic fictional example
+- Fistula (`fistula`): plain-language explanation; verified components; realistic fictional example
+- Ileus (`ileus`): plain-language explanation; verified components; realistic fictional example
+- Volvulus (`volvulus`): plain-language explanation; verified components; realistic fictional example
+- Intussusception (`intussusception`): plain-language explanation; verified components; realistic fictional example
+- Bowel obstruction (`bowel-obstruction`): plain-language explanation; verified components; realistic fictional example
+- Peritonitis (`peritonitis`): plain-language explanation; verified components; realistic fictional example
+- Hepatitis (`hepatitis`): plain-language explanation; verified components; realistic fictional example
+- Cirrhosis (`cirrhosis`): plain-language explanation; verified components; realistic fictional example
+- Hepatic steatosis (`hepatic-steatosis`): plain-language explanation; verified components; realistic fictional example
+- Portal hypertension (`portal-hypertension`): plain-language explanation; verified components; realistic fictional example
+- Hepatic encephalopathy (`hepatic-encephalopathy`): plain-language explanation; verified components; realistic fictional example
+- Cholelithiasis (`cholelithiasis`): plain-language explanation; verified components; realistic fictional example
+- Cholecystitis (`cholecystitis`): plain-language explanation; verified components; realistic fictional example
+- Cholangitis (`cholangitis`): plain-language explanation; verified components; realistic fictional example
+- Cholestasis (`cholestasis`): plain-language explanation; verified components; realistic fictional example
+- Pancreatitis (`pancreatitis`): plain-language explanation; verified components; realistic fictional example
+- Pancreatic insufficiency (`pancreatic-insufficiency`): plain-language explanation; verified components; realistic fictional example
+- Colonoscopy (`colonoscopy`): plain-language explanation; verified components; realistic fictional example
+- Sigmoidoscopy (`sigmoidoscopy`): plain-language explanation; verified components; realistic fictional example
+- Endoscopic retrograde cholangiopancreatography (`endoscopic-retrograde-cholangiopancreatography`): plain-language explanation; verified components; realistic fictional example
+- Gastrostomy (`gastrostomy`): plain-language explanation; verified components; realistic fictional example
+- Colectomy (`colectomy`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 12 · Nervous system
+
+- Neuron (`neuron`): plain-language explanation; verified components; realistic fictional example
+- Axon (`axon`): plain-language explanation; verified components; realistic fictional example
+- Dendrite (`dendrite`): plain-language explanation; verified components; realistic fictional example
+- Synapse (`synapse`): plain-language explanation; verified components; realistic fictional example
+- Neurotransmitter (`neurotransmitter`): plain-language explanation; verified components; realistic fictional example
+- Myelin (`myelin`): plain-language explanation; verified components; realistic fictional example
+- Neuroglia (`neuroglia`): plain-language explanation; verified components; realistic fictional example
+- Astrocyte (`astrocyte`): plain-language explanation; verified components; realistic fictional example
+- Oligodendrocyte (`oligodendrocyte`): plain-language explanation; verified components; realistic fictional example
+- Schwann cell (`schwann-cell`): plain-language explanation; verified components; realistic fictional example
+- Microglia (`microglia`): plain-language explanation; verified components; realistic fictional example
+- Cerebrum (`cerebrum`): plain-language explanation; verified components; realistic fictional example
+- Cerebellum (`cerebellum`): plain-language explanation; verified components; realistic fictional example
+- Brainstem (`brainstem`): plain-language explanation; verified components; realistic fictional example
+- Medulla oblongata (`medulla-oblongata`): plain-language explanation; verified components; realistic fictional example
+- Pons (`pons`): plain-language explanation; verified components; realistic fictional example
+- Midbrain (`midbrain`): plain-language explanation; verified components; realistic fictional example
+- Thalamus (`thalamus`): plain-language explanation; verified components; realistic fictional example
+- Hippocampus (`hippocampus`): plain-language explanation; verified components; realistic fictional example
+- Basal ganglia (`basal-ganglia`): plain-language explanation; verified components; realistic fictional example
+- Meninges (`meninges`): plain-language explanation; verified components; realistic fictional example
+- Dura mater (`dura-mater`): plain-language explanation; verified components; realistic fictional example
+- Arachnoid mater (`arachnoid-mater`): plain-language explanation; verified components; realistic fictional example
+- Pia mater (`pia-mater`): plain-language explanation; verified components; realistic fictional example
+- Cerebrospinal fluid (`cerebrospinal-fluid`): plain-language explanation; verified components; realistic fictional example
+- Spinal cord (`spinal-cord`): plain-language explanation; verified components; realistic fictional example
+- Cauda equina (`cauda-equina`): plain-language explanation; verified components; realistic fictional example
+- Cranial nerve (`cranial-nerve`): plain-language explanation; verified components; realistic fictional example
+- Peripheral nerve (`peripheral-nerve`): plain-language explanation; verified components; realistic fictional example
+- Ganglion (`ganglion`): plain-language explanation; verified components; realistic fictional example
+- Dermatome (`dermatome`): plain-language explanation; verified components; realistic fictional example
+- Motor cortex (`motor-cortex`): plain-language explanation; verified components; realistic fictional example
+- Sensory cortex (`sensory-cortex`): plain-language explanation; verified components; realistic fictional example
+- Autonomic nervous system (`autonomic-nervous-system`): plain-language explanation; verified components; realistic fictional example
+- Sympathetic nervous system (`sympathetic-nervous-system`): plain-language explanation; verified components; realistic fictional example
+- Parasympathetic nervous system (`parasympathetic-nervous-system`): plain-language explanation; verified components; realistic fictional example
+- Reflex (`reflex`): plain-language explanation; verified components; realistic fictional example
+- Action potential (`action-potential`): plain-language explanation; verified components; realistic fictional example
+- Depolarisation (`depolarisation`): plain-language explanation; verified components; realistic fictional example
+- Repolarisation (`repolarisation`): plain-language explanation; verified components; realistic fictional example
+- Paraesthesia (`paraesthesia`): plain-language explanation; verified components; realistic fictional example
+- Dysaesthesia (`dysaesthesia`): plain-language explanation; verified components; realistic fictional example
+- Anaesthesia (`anaesthesia`): plain-language explanation; verified components; realistic fictional example
+- Hyperalgesia (`hyperalgesia`): plain-language explanation; verified components; realistic fictional example
+- Allodynia (`allodynia`): plain-language explanation; verified components; realistic fictional example
+- Ataxia (`ataxia`): plain-language explanation; verified components; realistic fictional example
+- Dysarthria (`dysarthria`): plain-language explanation; verified components; realistic fictional example
+- Apraxia (`apraxia`): plain-language explanation; verified components; realistic fictional example
+- Agnosia (`agnosia`): plain-language explanation; verified components; realistic fictional example
+- Amnesia (`amnesia`): plain-language explanation; verified components; realistic fictional example
+- Hemiparesis (`hemiparesis`): plain-language explanation; verified components; realistic fictional example
+- Paraparesis (`paraparesis`): plain-language explanation; verified components; realistic fictional example
+- Paraplegia (`paraplegia`): plain-language explanation; verified components; realistic fictional example
+- Tetraplegia (`tetraplegia`): plain-language explanation; verified components; realistic fictional example
+- Monoplegia (`monoplegia`): plain-language explanation; verified components; realistic fictional example
+- Tremor (`tremor`): plain-language explanation; verified components; realistic fictional example
+- Dystonia (`dystonia`): plain-language explanation; verified components; realistic fictional example
+- Chorea (`chorea`): plain-language explanation; verified components; realistic fictional example
+- Bradykinesia (`bradykinesia`): plain-language explanation; verified components; realistic fictional example
+- Myoclonus (`myoclonus`): plain-language explanation; verified components; realistic fictional example
+- Spasticity (`spasticity`): plain-language explanation; verified components; realistic fictional example
+- Rigidity (`rigidity`): plain-language explanation; verified components; realistic fictional example
+- Hypotonia (`hypotonia`): plain-language explanation; verified components; realistic fictional example
+- Hyperreflexia (`hyperreflexia`): plain-language explanation; verified components; realistic fictional example
+- Hyporeflexia (`hyporeflexia`): plain-language explanation; verified components; realistic fictional example
+- Seizure (`seizure`): plain-language explanation; verified components; realistic fictional example
+- Epilepsy (`epilepsy`): plain-language explanation; verified components; realistic fictional example
+- Status epilepticus (`status-epilepticus`): plain-language explanation; verified components; realistic fictional example
+- Migraine (`migraine`): plain-language explanation; verified components; realistic fictional example
+- Cluster headache (`cluster-headache`): plain-language explanation; verified components; realistic fictional example
+- Meningitis (`meningitis`): plain-language explanation; verified components; realistic fictional example
+- Encephalopathy (`encephalopathy`): plain-language explanation; verified components; realistic fictional example
+- Myelitis (`myelitis`): plain-language explanation; verified components; realistic fictional example
+- Demyelination (`demyelination`): plain-language explanation; verified components; realistic fictional example
+- Multiple sclerosis (`multiple-sclerosis`): plain-language explanation; verified components; realistic fictional example
+- Parkinson disease (`parkinson-disease`): plain-language explanation; verified components; realistic fictional example
+- Motor neurone disease (`motor-neurone-disease`): plain-language explanation; verified components; realistic fictional example
+- Guillain-Barré syndrome (`guillain-barre-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Myasthenia gravis (`myasthenia-gravis`): plain-language explanation; verified components; realistic fictional example
+- Carpal tunnel syndrome (`carpal-tunnel-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Bell palsy (`bell-palsy`): plain-language explanation; verified components; realistic fictional example
+- Stroke (`stroke`): plain-language explanation; verified components; realistic fictional example
+- Transient ischaemic attack (`transient-ischaemic-attack`): plain-language explanation; verified components; realistic fictional example
+- Subarachnoid haemorrhage (`subarachnoid-haemorrhage`): plain-language explanation; verified components; realistic fictional example
+- Subdural haematoma (`subdural-haematoma`): plain-language explanation; verified components; realistic fictional example
+- Extradural haematoma (`extradural-haematoma`): plain-language explanation; verified components; realistic fictional example
+- Hydrocephalus (`hydrocephalus`): plain-language explanation; verified components; realistic fictional example
+- Raised intracranial pressure (`raised-intracranial-pressure`): plain-language explanation; verified components; realistic fictional example
+- Concussion (`concussion`): plain-language explanation; verified components; realistic fictional example
+- Coma (`coma`): plain-language explanation; verified components; realistic fictional example
+- Delirium (`delirium`): plain-language explanation; verified components; realistic fictional example
+- Dementia (`dementia`): plain-language explanation; verified components; realistic fictional example
+- Electroencephalography (`electroencephalography`): plain-language explanation; verified components; realistic fictional example
+- Nerve conduction study (`nerve-conduction-study`): plain-language explanation; verified components; realistic fictional example
+- Lumbar puncture (`lumbar-puncture`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 13 · The senses
+
+- Cornea (`cornea`): plain-language explanation; verified components; realistic fictional example
+- Sclera (`sclera`): plain-language explanation; verified components; realistic fictional example
+- Conjunctiva (`conjunctiva`): plain-language explanation; verified components; realistic fictional example
+- Iris (`iris`): plain-language explanation; verified components; realistic fictional example
+- Pupil (`pupil`): plain-language explanation; verified components; realistic fictional example
+- Lens (`lens`): plain-language explanation; verified components; realistic fictional example
+- Retina (`retina`): plain-language explanation; verified components; realistic fictional example
+- Macula (`macula`): plain-language explanation; verified components; realistic fictional example
+- Fovea (`fovea`): plain-language explanation; verified components; realistic fictional example
+- Optic disc (`optic-disc`): plain-language explanation; verified components; realistic fictional example
+- Optic nerve (`optic-nerve`): plain-language explanation; verified components; realistic fictional example
+- Choroid (`choroid`): plain-language explanation; verified components; realistic fictional example
+- Ciliary body (`ciliary-body`): plain-language explanation; verified components; realistic fictional example
+- Aqueous humour (`aqueous-humour`): plain-language explanation; verified components; realistic fictional example
+- Vitreous humour (`vitreous-humour`): plain-language explanation; verified components; realistic fictional example
+- Lacrimal gland (`lacrimal-gland`): plain-language explanation; verified components; realistic fictional example
+- Nasolacrimal duct (`nasolacrimal-duct`): plain-language explanation; verified components; realistic fictional example
+- Eyelid (`eyelid`): plain-language explanation; verified components; realistic fictional example
+- Pinna (`pinna`): plain-language explanation; verified components; realistic fictional example
+- External auditory canal (`external-auditory-canal`): plain-language explanation; verified components; realistic fictional example
+- Tympanic membrane (`tympanic-membrane`): plain-language explanation; verified components; realistic fictional example
+- Ossicle (`ossicle`): plain-language explanation; verified components; realistic fictional example
+- Malleus (`malleus`): plain-language explanation; verified components; realistic fictional example
+- Incus (`incus`): plain-language explanation; verified components; realistic fictional example
+- Stapes (`stapes`): plain-language explanation; verified components; realistic fictional example
+- Cochlea (`cochlea`): plain-language explanation; verified components; realistic fictional example
+- Vestibule (`vestibule`): plain-language explanation; verified components; realistic fictional example
+- Semicircular canal (`semicircular-canal`): plain-language explanation; verified components; realistic fictional example
+- Eustachian tube (`eustachian-tube`): plain-language explanation; verified components; realistic fictional example
+- Vestibulocochlear nerve (`vestibulocochlear-nerve`): plain-language explanation; verified components; realistic fictional example
+- Olfaction (`olfaction`): plain-language explanation; verified components; realistic fictional example
+- Gustation (`gustation`): plain-language explanation; verified components; realistic fictional example
+- Visual acuity (`visual-acuity`): plain-language explanation; verified components; realistic fictional example
+- Accommodation (`accommodation`): plain-language explanation; verified components; realistic fictional example
+- Refraction (`refraction`): plain-language explanation; verified components; realistic fictional example
+- Binocular vision (`binocular-vision`): plain-language explanation; verified components; realistic fictional example
+- Myopia (`myopia`): plain-language explanation; verified components; realistic fictional example
+- Hypermetropia (`hypermetropia`): plain-language explanation; verified components; realistic fictional example
+- Astigmatism (`astigmatism`): plain-language explanation; verified components; realistic fictional example
+- Presbyopia (`presbyopia`): plain-language explanation; verified components; realistic fictional example
+- Amblyopia (`amblyopia`): plain-language explanation; verified components; realistic fictional example
+- Strabismus (`strabismus`): plain-language explanation; verified components; realistic fictional example
+- Diplopia (`diplopia`): plain-language explanation; verified components; realistic fictional example
+- Nystagmus (`nystagmus`): plain-language explanation; verified components; realistic fictional example
+- Photophobia (`photophobia`): plain-language explanation; verified components; realistic fictional example
+- Scotoma (`scotoma`): plain-language explanation; verified components; realistic fictional example
+- Hemianopia (`hemianopia`): plain-language explanation; verified components; realistic fictional example
+- Nyctalopia (`nyctalopia`): plain-language explanation; verified components; realistic fictional example
+- Colour vision deficiency (`colour-vision-deficiency`): plain-language explanation; verified components; realistic fictional example
+- Anisocoria (`anisocoria`): plain-language explanation; verified components; realistic fictional example
+- Miosis (`miosis`): plain-language explanation; verified components; realistic fictional example
+- Mydriasis (`mydriasis`): plain-language explanation; verified components; realistic fictional example
+- Ptosis (`ptosis`): plain-language explanation; verified components; realistic fictional example
+- Proptosis (`proptosis`): plain-language explanation; verified components; realistic fictional example
+- Enophthalmos (`enophthalmos`): plain-language explanation; verified components; realistic fictional example
+- Blepharitis (`blepharitis`): plain-language explanation; verified components; realistic fictional example
+- Hordeolum (`hordeolum`): plain-language explanation; verified components; realistic fictional example
+- Chalazion (`chalazion`): plain-language explanation; verified components; realistic fictional example
+- Conjunctivitis (`conjunctivitis`): plain-language explanation; verified components; realistic fictional example
+- Keratitis (`keratitis`): plain-language explanation; verified components; realistic fictional example
+- Uveitis (`uveitis`): plain-language explanation; verified components; realistic fictional example
+- Iritis (`iritis`): plain-language explanation; verified components; realistic fictional example
+- Scleritis (`scleritis`): plain-language explanation; verified components; realistic fictional example
+- Cataract (`cataract`): plain-language explanation; verified components; realistic fictional example
+- Glaucoma (`glaucoma`): plain-language explanation; verified components; realistic fictional example
+- Retinal detachment (`retinal-detachment`): plain-language explanation; verified components; realistic fictional example
+- Macular degeneration (`macular-degeneration`): plain-language explanation; verified components; realistic fictional example
+- Diabetic retinopathy (`diabetic-retinopathy`): plain-language explanation; verified components; realistic fictional example
+- Papilloedema (`papilloedema`): plain-language explanation; verified components; realistic fictional example
+- Optic neuritis (`optic-neuritis`): plain-language explanation; verified components; realistic fictional example
+- Dacryocystitis (`dacryocystitis`): plain-language explanation; verified components; realistic fictional example
+- Xerophthalmia (`xerophthalmia`): plain-language explanation; verified components; realistic fictional example
+- Epiphora (`epiphora`): plain-language explanation; verified components; realistic fictional example
+- Tinnitus (`tinnitus`): plain-language explanation; verified components; realistic fictional example
+- Vertigo (`vertigo`): plain-language explanation; verified components; realistic fictional example
+- Otalgia (`otalgia`): plain-language explanation; verified components; realistic fictional example
+- Otorrhoea (`otorrhoea`): plain-language explanation; verified components; realistic fictional example
+- Conductive hearing loss (`conductive-hearing-loss`): plain-language explanation; verified components; realistic fictional example
+- Sensorineural hearing loss (`sensorineural-hearing-loss`): plain-language explanation; verified components; realistic fictional example
+- Presbycusis (`presbycusis`): plain-language explanation; verified components; realistic fictional example
+- Otitis externa (`otitis-externa`): plain-language explanation; verified components; realistic fictional example
+- Otitis media (`otitis-media`): plain-language explanation; verified components; realistic fictional example
+- Mastoiditis (`mastoiditis`): plain-language explanation; verified components; realistic fictional example
+- Otosclerosis (`otosclerosis`): plain-language explanation; verified components; realistic fictional example
+- Cholesteatoma (`cholesteatoma`): plain-language explanation; verified components; realistic fictional example
+- Labyrinthitis (`labyrinthitis`): plain-language explanation; verified components; realistic fictional example
+- Ménière disease (`meniere-disease`): plain-language explanation; verified components; realistic fictional example
+- Anosmia (`anosmia`): plain-language explanation; verified components; realistic fictional example
+- Hyposmia (`hyposmia`): plain-language explanation; verified components; realistic fictional example
+- Ageusia (`ageusia`): plain-language explanation; verified components; realistic fictional example
+- Dysgeusia (`dysgeusia`): plain-language explanation; verified components; realistic fictional example
+- Audiometry (`audiometry`): plain-language explanation; verified components; realistic fictional example
+- Tympanometry (`tympanometry`): plain-language explanation; verified components; realistic fictional example
+- Otoscopy (`otoscopy`): plain-language explanation; verified components; realistic fictional example
+- Ophthalmoscopy (`ophthalmoscopy`): plain-language explanation; verified components; realistic fictional example
+- Tonometry (`tonometry`): plain-language explanation; verified components; realistic fictional example
+- Perimetry (`perimetry`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 14 · Urinary system
+
+- Kidney (`kidney`): plain-language explanation; verified components; realistic fictional example
+- Renal cortex (`renal-cortex`): plain-language explanation; verified components; realistic fictional example
+- Renal medulla (`renal-medulla`): plain-language explanation; verified components; realistic fictional example
+- Renal pelvis (`renal-pelvis`): plain-language explanation; verified components; realistic fictional example
+- Renal calyx (`renal-calyx`): plain-language explanation; verified components; realistic fictional example
+- Nephron (`nephron`): plain-language explanation; verified components; realistic fictional example
+- Glomerulus (`glomerulus`): plain-language explanation; verified components; realistic fictional example
+- Bowman capsule (`bowman-capsule`): plain-language explanation; verified components; realistic fictional example
+- Proximal tubule (`proximal-tubule`): plain-language explanation; verified components; realistic fictional example
+- Loop of Henle (`loop-of-henle`): plain-language explanation; verified components; realistic fictional example
+- Distal tubule (`distal-tubule`): plain-language explanation; verified components; realistic fictional example
+- Collecting duct (`collecting-duct`): plain-language explanation; verified components; realistic fictional example
+- Ureter (`ureter`): plain-language explanation; verified components; realistic fictional example
+- Urinary bladder (`urinary-bladder`): plain-language explanation; verified components; realistic fictional example
+- Urethra (`urethra`): plain-language explanation; verified components; realistic fictional example
+- Detrusor (`detrusor`): plain-language explanation; verified components; realistic fictional example
+- Trigone (`trigone`): plain-language explanation; verified components; realistic fictional example
+- Renal artery (`renal-artery`): plain-language explanation; verified components; realistic fictional example
+- Renal vein (`renal-vein`): plain-language explanation; verified components; realistic fictional example
+- Juxtaglomerular apparatus (`juxtaglomerular-apparatus`): plain-language explanation; verified components; realistic fictional example
+- Filtration (`filtration`): plain-language explanation; verified components; realistic fictional example
+- Reabsorption (`reabsorption`): plain-language explanation; verified components; realistic fictional example
+- Tubular secretion (`tubular-secretion`): plain-language explanation; verified components; realistic fictional example
+- Excretion (`excretion`): plain-language explanation; verified components; realistic fictional example
+- Micturition (`micturition`): plain-language explanation; verified components; realistic fictional example
+- Diuresis (`diuresis`): plain-language explanation; verified components; realistic fictional example
+- Glomerular filtration rate (`glomerular-filtration-rate`): plain-language explanation; verified components; realistic fictional example
+- Estimated glomerular filtration rate (`estimated-glomerular-filtration-rate`): plain-language explanation; verified components; realistic fictional example
+- Creatinine (`creatinine`): plain-language explanation; verified components; realistic fictional example
+- Urea (`urea`): plain-language explanation; verified components; realistic fictional example
+- Albuminuria (`albuminuria`): plain-language explanation; verified components; realistic fictional example
+- Proteinuria (`proteinuria`): plain-language explanation; verified components; realistic fictional example
+- Pyuria (`pyuria`): plain-language explanation; verified components; realistic fictional example
+- Bacteriuria (`bacteriuria`): plain-language explanation; verified components; realistic fictional example
+- Anuria (`anuria`): plain-language explanation; verified components; realistic fictional example
+- Polyuria (`polyuria`): plain-language explanation; verified components; realistic fictional example
+- Nocturia (`nocturia`): plain-language explanation; verified components; realistic fictional example
+- Enuresis (`enuresis`): plain-language explanation; verified components; realistic fictional example
+- Urinary urgency (`urinary-urgency`): plain-language explanation; verified components; realistic fictional example
+- Urinary frequency (`urinary-frequency`): plain-language explanation; verified components; realistic fictional example
+- Urinary hesitancy (`urinary-hesitancy`): plain-language explanation; verified components; realistic fictional example
+- Urinary retention (`urinary-retention`): plain-language explanation; verified components; realistic fictional example
+- Urinary incontinence (`urinary-incontinence`): plain-language explanation; verified components; realistic fictional example
+- Stress incontinence (`stress-incontinence`): plain-language explanation; verified components; realistic fictional example
+- Urge incontinence (`urge-incontinence`): plain-language explanation; verified components; realistic fictional example
+- Overflow incontinence (`overflow-incontinence`): plain-language explanation; verified components; realistic fictional example
+- Post-void residual (`post-void-residual`): plain-language explanation; verified components; realistic fictional example
+- Renal colic (`renal-colic`): plain-language explanation; verified components; realistic fictional example
+- Costovertebral angle tenderness (`costovertebral-angle-tenderness`): plain-language explanation; verified components; realistic fictional example
+- Azotaemia (`azotaemia`): plain-language explanation; verified components; realistic fictional example
+- Acute kidney injury (`acute-kidney-injury`): plain-language explanation; verified components; realistic fictional example
+- Chronic kidney disease (`chronic-kidney-disease`): plain-language explanation; verified components; realistic fictional example
+- Kidney failure (`kidney-failure`): plain-language explanation; verified components; realistic fictional example
+- Prerenal (`prerenal`): plain-language explanation; verified components; realistic fictional example
+- Intrinsic renal (`intrinsic-renal`): plain-language explanation; verified components; realistic fictional example
+- Postrenal (`postrenal`): plain-language explanation; verified components; realistic fictional example
+- Glomerulonephritis (`glomerulonephritis`): plain-language explanation; verified components; realistic fictional example
+- Nephritic syndrome (`nephritic-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Nephrotic syndrome (`nephrotic-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Pyelonephritis (`pyelonephritis`): plain-language explanation; verified components; realistic fictional example
+- Cystitis (`cystitis`): plain-language explanation; verified components; realistic fictional example
+- Urethritis (`urethritis`): plain-language explanation; verified components; realistic fictional example
+- Interstitial nephritis (`interstitial-nephritis`): plain-language explanation; verified components; realistic fictional example
+- Acute tubular injury (`acute-tubular-injury`): plain-language explanation; verified components; realistic fictional example
+- Polycystic kidney disease (`polycystic-kidney-disease`): plain-language explanation; verified components; realistic fictional example
+- Hydronephrosis (`hydronephrosis`): plain-language explanation; verified components; realistic fictional example
+- Hydroureter (`hydroureter`): plain-language explanation; verified components; realistic fictional example
+- Ureterolithiasis (`ureterolithiasis`): plain-language explanation; verified components; realistic fictional example
+- Cystolithiasis (`cystolithiasis`): plain-language explanation; verified components; realistic fictional example
+- Urolithiasis (`urolithiasis`): plain-language explanation; verified components; realistic fictional example
+- Vesicoureteric reflux (`vesicoureteric-reflux`): plain-language explanation; verified components; realistic fictional example
+- Urethral stricture (`urethral-stricture`): plain-language explanation; verified components; realistic fictional example
+- Renal artery stenosis (`renal-artery-stenosis`): plain-language explanation; verified components; realistic fictional example
+- Renal cell carcinoma (`renal-cell-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Urothelial carcinoma (`urothelial-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Wilms tumour (`wilms-tumour`): plain-language explanation; verified components; realistic fictional example
+- Diabetic nephropathy (`diabetic-nephropathy`): plain-language explanation; verified components; realistic fictional example
+- Renal osteodystrophy (`renal-osteodystrophy`): plain-language explanation; verified components; realistic fictional example
+- Hyperkalaemia (`hyperkalaemia`): plain-language explanation; verified components; realistic fictional example
+- Hypokalaemia (`hypokalaemia`): plain-language explanation; verified components; realistic fictional example
+- Hyponatraemia (`hyponatraemia`): plain-language explanation; verified components; realistic fictional example
+- Hypernatraemia (`hypernatraemia`): plain-language explanation; verified components; realistic fictional example
+- Metabolic acidosis (`metabolic-acidosis`): plain-language explanation; verified components; realistic fictional example
+- Urinalysis (`urinalysis`): plain-language explanation; verified components; realistic fictional example
+- Urine culture (`urine-culture`): plain-language explanation; verified components; realistic fictional example
+- Urine microscopy (`urine-microscopy`): plain-language explanation; verified components; realistic fictional example
+- Urine specific gravity (`urine-specific-gravity`): plain-language explanation; verified components; realistic fictional example
+- Urine osmolality (`urine-osmolality`): plain-language explanation; verified components; realistic fictional example
+- Albumin-creatinine ratio (`albumin-creatinine-ratio`): plain-language explanation; verified components; realistic fictional example
+- Renal ultrasound (`renal-ultrasound`): plain-language explanation; verified components; realistic fictional example
+- Urography (`urography`): plain-language explanation; verified components; realistic fictional example
+- Urodynamics (`urodynamics`): plain-language explanation; verified components; realistic fictional example
+- Renal biopsy (`renal-biopsy`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 15 · Male reproductive system
+
+- Testis (`testis`): plain-language explanation; verified components; realistic fictional example
+- Scrotum (`scrotum`): plain-language explanation; verified components; realistic fictional example
+- Epididymis (`epididymis`): plain-language explanation; verified components; realistic fictional example
+- Vas deferens (`vas-deferens`): plain-language explanation; verified components; realistic fictional example
+- Spermatic cord (`spermatic-cord`): plain-language explanation; verified components; realistic fictional example
+- Seminal vesicle (`seminal-vesicle`): plain-language explanation; verified components; realistic fictional example
+- Ejaculatory duct (`ejaculatory-duct`): plain-language explanation; verified components; realistic fictional example
+- Prostate (`prostate`): plain-language explanation; verified components; realistic fictional example
+- Bulbourethral gland (`bulbourethral-gland`): plain-language explanation; verified components; realistic fictional example
+- Penis (`penis`): plain-language explanation; verified components; realistic fictional example
+- Glans penis (`glans-penis`): plain-language explanation; verified components; realistic fictional example
+- Prepuce (`prepuce`): plain-language explanation; verified components; realistic fictional example
+- Corpus cavernosum (`corpus-cavernosum`): plain-language explanation; verified components; realistic fictional example
+- Corpus spongiosum (`corpus-spongiosum`): plain-language explanation; verified components; realistic fictional example
+- Seminiferous tubule (`seminiferous-tubule`): plain-language explanation; verified components; realistic fictional example
+- Sertoli cell (`sertoli-cell`): plain-language explanation; verified components; realistic fictional example
+- Leydig cell (`leydig-cell`): plain-language explanation; verified components; realistic fictional example
+- Spermatozoon (`spermatozoon`): plain-language explanation; verified components; realistic fictional example
+- Spermatogonium (`spermatogonium`): plain-language explanation; verified components; realistic fictional example
+- Spermatocyte (`spermatocyte`): plain-language explanation; verified components; realistic fictional example
+- Spermatid (`spermatid`): plain-language explanation; verified components; realistic fictional example
+- Acrosome (`acrosome`): plain-language explanation; verified components; realistic fictional example
+- Flagellum (`flagellum`): plain-language explanation; verified components; realistic fictional example
+- Rete testis (`rete-testis`): plain-language explanation; verified components; realistic fictional example
+- Tunica albuginea (`tunica-albuginea`): plain-language explanation; verified components; realistic fictional example
+- Tunica vaginalis (`tunica-vaginalis`): plain-language explanation; verified components; realistic fictional example
+- Pampiniform plexus (`pampiniform-plexus`): plain-language explanation; verified components; realistic fictional example
+- Semen (`semen`): plain-language explanation; verified components; realistic fictional example
+- Spermatogenesis (`spermatogenesis`): plain-language explanation; verified components; realistic fictional example
+- Spermiogenesis (`spermiogenesis`): plain-language explanation; verified components; realistic fictional example
+- Ejaculation (`ejaculation`): plain-language explanation; verified components; realistic fictional example
+- Erection (`erection`): plain-language explanation; verified components; realistic fictional example
+- Emission (`emission`): plain-language explanation; verified components; realistic fictional example
+- Andrology (`andrology`): plain-language explanation; verified components; realistic fictional example
+- Urogenital (`urogenital`): plain-language explanation; verified components; realistic fictional example
+- Testicular (`testicular`): plain-language explanation; verified components; realistic fictional example
+- Prostatic (`prostatic`): plain-language explanation; verified components; realistic fictional example
+- Scrotal (`scrotal`): plain-language explanation; verified components; realistic fictional example
+- Epididymal (`epididymal`): plain-language explanation; verified components; realistic fictional example
+- Seminal (`seminal`): plain-language explanation; verified components; realistic fictional example
+- Cryptorchidism (`cryptorchidism`): plain-language explanation; verified components; realistic fictional example
+- Anorchia (`anorchia`): plain-language explanation; verified components; realistic fictional example
+- Monorchism (`monorchism`): plain-language explanation; verified components; realistic fictional example
+- Ectopic testis (`ectopic-testis`): plain-language explanation; verified components; realistic fictional example
+- Retractile testis (`retractile-testis`): plain-language explanation; verified components; realistic fictional example
+- Testicular torsion (`testicular-torsion`): plain-language explanation; verified components; realistic fictional example
+- Hydrocele (`hydrocele`): plain-language explanation; verified components; realistic fictional example
+- Varicocele (`varicocele`): plain-language explanation; verified components; realistic fictional example
+- Spermatocele (`spermatocele`): plain-language explanation; verified components; realistic fictional example
+- Epididymal cyst (`epididymal-cyst`): plain-language explanation; verified components; realistic fictional example
+- Epididymitis (`epididymitis`): plain-language explanation; verified components; realistic fictional example
+- Epididymo-orchitis (`epididymo-orchitis`): plain-language explanation; verified components; realistic fictional example
+- Prostatitis (`prostatitis`): plain-language explanation; verified components; realistic fictional example
+- Benign prostatic hyperplasia (`benign-prostatic-hyperplasia`): plain-language explanation; verified components; realistic fictional example
+- Prostate carcinoma (`prostate-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Testicular cancer (`testicular-cancer`): plain-language explanation; verified components; realistic fictional example
+- Seminoma (`seminoma`): plain-language explanation; verified components; realistic fictional example
+- Non-seminomatous germ cell tumour (`non-seminomatous-germ-cell-tumour`): plain-language explanation; verified components; realistic fictional example
+- Balanitis (`balanitis`): plain-language explanation; verified components; realistic fictional example
+- Posthitis (`posthitis`): plain-language explanation; verified components; realistic fictional example
+- Balanoposthitis (`balanoposthitis`): plain-language explanation; verified components; realistic fictional example
+- Phimosis (`phimosis`): plain-language explanation; verified components; realistic fictional example
+- Paraphimosis (`paraphimosis`): plain-language explanation; verified components; realistic fictional example
+- Priapism (`priapism`): plain-language explanation; verified components; realistic fictional example
+- Peyronie disease (`peyronie-disease`): plain-language explanation; verified components; realistic fictional example
+- Hypospadias (`hypospadias`): plain-language explanation; verified components; realistic fictional example
+- Epispadias (`epispadias`): plain-language explanation; verified components; realistic fictional example
+- Erectile dysfunction (`erectile-dysfunction`): plain-language explanation; verified components; realistic fictional example
+- Premature ejaculation (`premature-ejaculation`): plain-language explanation; verified components; realistic fictional example
+- Retrograde ejaculation (`retrograde-ejaculation`): plain-language explanation; verified components; realistic fictional example
+- Anejaculation (`anejaculation`): plain-language explanation; verified components; realistic fictional example
+- Haematospermia (`haematospermia`): plain-language explanation; verified components; realistic fictional example
+- Azoospermia (`azoospermia`): plain-language explanation; verified components; realistic fictional example
+- Oligozoospermia (`oligozoospermia`): plain-language explanation; verified components; realistic fictional example
+- Asthenozoospermia (`asthenozoospermia`): plain-language explanation; verified components; realistic fictional example
+- Teratozoospermia (`teratozoospermia`): plain-language explanation; verified components; realistic fictional example
+- Necrozoospermia (`necrozoospermia`): plain-language explanation; verified components; realistic fictional example
+- Aspermia (`aspermia`): plain-language explanation; verified components; realistic fictional example
+- Male infertility (`male-infertility`): plain-language explanation; verified components; realistic fictional example
+- Klinefelter syndrome (`klinefelter-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Androgen deficiency (`androgen-deficiency`): plain-language explanation; verified components; realistic fictional example
+- Gynaecomastia (`gynaecomastia`): plain-language explanation; verified components; realistic fictional example
+- Orchidectomy (`orchidectomy`): plain-language explanation; verified components; realistic fictional example
+- Orchidopexy (`orchidopexy`): plain-language explanation; verified components; realistic fictional example
+- Vasectomy (`vasectomy`): plain-language explanation; verified components; realistic fictional example
+- Vasovasostomy (`vasovasostomy`): plain-language explanation; verified components; realistic fictional example
+- Epididymectomy (`epididymectomy`): plain-language explanation; verified components; realistic fictional example
+- Varicocelectomy (`varicocelectomy`): plain-language explanation; verified components; realistic fictional example
+- Hydrocelectomy (`hydrocelectomy`): plain-language explanation; verified components; realistic fictional example
+- Circumcision (`circumcision`): plain-language explanation; verified components; realistic fictional example
+- Frenuloplasty (`frenuloplasty`): plain-language explanation; verified components; realistic fictional example
+- Transurethral resection of the prostate (`transurethral-resection-of-the-prostate`): plain-language explanation; verified components; realistic fictional example
+- Radical prostatectomy (`radical-prostatectomy`): plain-language explanation; verified components; realistic fictional example
+- Semen analysis (`semen-analysis`): plain-language explanation; verified components; realistic fictional example
+- Sperm count (`sperm-count`): plain-language explanation; verified components; realistic fictional example
+- Sperm motility (`sperm-motility`): plain-language explanation; verified components; realistic fictional example
+- Sperm morphology (`sperm-morphology`): plain-language explanation; verified components; realistic fictional example
+- Prostate-specific antigen (`prostate-specific-antigen`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 16 · Female reproductive system
+
+- Ovary (`ovary`): plain-language explanation; verified components; realistic fictional example
+- Oocyte (`oocyte`): plain-language explanation; verified components; realistic fictional example
+- Ovarian follicle (`ovarian-follicle`): plain-language explanation; verified components; realistic fictional example
+- Corpus luteum (`corpus-luteum`): plain-language explanation; verified components; realistic fictional example
+- Fallopian tube (`fallopian-tube`): plain-language explanation; verified components; realistic fictional example
+- Fimbria (`fimbria`): plain-language explanation; verified components; realistic fictional example
+- Uterus (`uterus`): plain-language explanation; verified components; realistic fictional example
+- Endometrium (`endometrium`): plain-language explanation; verified components; realistic fictional example
+- Myometrium (`myometrium`): plain-language explanation; verified components; realistic fictional example
+- Perimetrium (`perimetrium`): plain-language explanation; verified components; realistic fictional example
+- Cervix (`cervix`): plain-language explanation; verified components; realistic fictional example
+- Endocervix (`endocervix`): plain-language explanation; verified components; realistic fictional example
+- Ectocervix (`ectocervix`): plain-language explanation; verified components; realistic fictional example
+- Vagina (`vagina`): plain-language explanation; verified components; realistic fictional example
+- Vulva (`vulva`): plain-language explanation; verified components; realistic fictional example
+- Labium majus (`labium-majus`): plain-language explanation; verified components; realistic fictional example
+- Labium minus (`labium-minus`): plain-language explanation; verified components; realistic fictional example
+- Clitoris (`clitoris`): plain-language explanation; verified components; realistic fictional example
+- Bartholin gland (`bartholin-gland`): plain-language explanation; verified components; realistic fictional example
+- Perineum (`perineum`): plain-language explanation; verified components; realistic fictional example
+- Pelvic floor (`pelvic-floor`): plain-language explanation; verified components; realistic fictional example
+- Mammary gland (`mammary-gland`): plain-language explanation; verified components; realistic fictional example
+- Areola (`areola`): plain-language explanation; verified components; realistic fictional example
+- Lactiferous duct (`lactiferous-duct`): plain-language explanation; verified components; realistic fictional example
+- Menarche (`menarche`): plain-language explanation; verified components; realistic fictional example
+- Menstruation (`menstruation`): plain-language explanation; verified components; realistic fictional example
+- Ovulation (`ovulation`): plain-language explanation; verified components; realistic fictional example
+- Follicular phase (`follicular-phase`): plain-language explanation; verified components; realistic fictional example
+- Luteal phase (`luteal-phase`): plain-language explanation; verified components; realistic fictional example
+- Menopause (`menopause`): plain-language explanation; verified components; realistic fictional example
+- Perimenopause (`perimenopause`): plain-language explanation; verified components; realistic fictional example
+- Amenorrhoea (`amenorrhoea`): plain-language explanation; verified components; realistic fictional example
+- Oligomenorrhoea (`oligomenorrhoea`): plain-language explanation; verified components; realistic fictional example
+- Dysmenorrhoea (`dysmenorrhoea`): plain-language explanation; verified components; realistic fictional example
+- Heavy menstrual bleeding (`heavy-menstrual-bleeding`): plain-language explanation; verified components; realistic fictional example
+- Intermenstrual bleeding (`intermenstrual-bleeding`): plain-language explanation; verified components; realistic fictional example
+- Postmenopausal bleeding (`postmenopausal-bleeding`): plain-language explanation; verified components; realistic fictional example
+- Postcoital bleeding (`postcoital-bleeding`): plain-language explanation; verified components; realistic fictional example
+- Abnormal uterine bleeding (`abnormal-uterine-bleeding`): plain-language explanation; verified components; realistic fictional example
+- Dyspareunia (`dyspareunia`): plain-language explanation; verified components; realistic fictional example
+- Vaginismus (`vaginismus`): plain-language explanation; verified components; realistic fictional example
+- Vulvodynia (`vulvodynia`): plain-language explanation; verified components; realistic fictional example
+- Leucorrhoea (`leucorrhoea`): plain-language explanation; verified components; realistic fictional example
+- Pruritus vulvae (`pruritus-vulvae`): plain-language explanation; verified components; realistic fictional example
+- Pelvic inflammatory disease (`pelvic-inflammatory-disease`): plain-language explanation; verified components; realistic fictional example
+- Endometritis (`endometritis`): plain-language explanation; verified components; realistic fictional example
+- Cervicitis (`cervicitis`): plain-language explanation; verified components; realistic fictional example
+- Vaginitis (`vaginitis`): plain-language explanation; verified components; realistic fictional example
+- Vulvitis (`vulvitis`): plain-language explanation; verified components; realistic fictional example
+- Salpingitis (`salpingitis`): plain-language explanation; verified components; realistic fictional example
+- Oophoritis (`oophoritis`): plain-language explanation; verified components; realistic fictional example
+- Endometriosis (`endometriosis`): plain-language explanation; verified components; realistic fictional example
+- Adenomyosis (`adenomyosis`): plain-language explanation; verified components; realistic fictional example
+- Leiomyoma (`leiomyoma`): plain-language explanation; verified components; realistic fictional example
+- Endometrial polyp (`endometrial-polyp`): plain-language explanation; verified components; realistic fictional example
+- Ovarian cyst (`ovarian-cyst`): plain-language explanation; verified components; realistic fictional example
+- Polycystic ovary syndrome (`polycystic-ovary-syndrome`): plain-language explanation; verified components; realistic fictional example
+- Ovarian torsion (`ovarian-torsion`): plain-language explanation; verified components; realistic fictional example
+- Hydrosalpinx (`hydrosalpinx`): plain-language explanation; verified components; realistic fictional example
+- Bartholin cyst (`bartholin-cyst`): plain-language explanation; verified components; realistic fictional example
+- Bartholin abscess (`bartholin-abscess`): plain-language explanation; verified components; realistic fictional example
+- Bacterial vaginosis (`bacterial-vaginosis`): plain-language explanation; verified components; realistic fictional example
+- Vulvovaginal candidiasis (`vulvovaginal-candidiasis`): plain-language explanation; verified components; realistic fictional example
+- Trichomoniasis (`trichomoniasis`): plain-language explanation; verified components; realistic fictional example
+- Genital prolapse (`genital-prolapse`): plain-language explanation; verified components; realistic fictional example
+- Cystocele (`cystocele`): plain-language explanation; verified components; realistic fictional example
+- Rectocele (`rectocele`): plain-language explanation; verified components; realistic fictional example
+- Uterine prolapse (`uterine-prolapse`): plain-language explanation; verified components; realistic fictional example
+- Cervical intraepithelial neoplasia (`cervical-intraepithelial-neoplasia`): plain-language explanation; verified components; realistic fictional example
+- Cervical carcinoma (`cervical-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Endometrial carcinoma (`endometrial-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Ovarian carcinoma (`ovarian-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Vulvar carcinoma (`vulvar-carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Mastitis (`mastitis`): plain-language explanation; verified components; realistic fictional example
+- Fibroadenoma (`fibroadenoma`): plain-language explanation; verified components; realistic fictional example
+- Mastalgia (`mastalgia`): plain-language explanation; verified components; realistic fictional example
+- Galactorrhoea (`galactorrhoea`): plain-language explanation; verified components; realistic fictional example
+- Gynaecology (`gynaecology`): plain-language explanation; verified components; realistic fictional example
+- Colposcopy (`colposcopy`): plain-language explanation; verified components; realistic fictional example
+- Hysteroscopy (`hysteroscopy`): plain-language explanation; verified components; realistic fictional example
+- Hysterosalpingography (`hysterosalpingography`): plain-language explanation; verified components; realistic fictional example
+- Transvaginal ultrasound (`transvaginal-ultrasound`): plain-language explanation; verified components; realistic fictional example
+- Cervical screening (`cervical-screening`): plain-language explanation; verified components; realistic fictional example
+- HPV test (`hpv-test`): plain-language explanation; verified components; realistic fictional example
+- Cervical cytology (`cervical-cytology`): plain-language explanation; verified components; realistic fictional example
+- Endometrial biopsy (`endometrial-biopsy`): plain-language explanation; verified components; realistic fictional example
+- Dilatation and curettage (`dilatation-and-curettage`): plain-language explanation; verified components; realistic fictional example
+- Endometrial ablation (`endometrial-ablation`): plain-language explanation; verified components; realistic fictional example
+- Myomectomy (`myomectomy`): plain-language explanation; verified components; realistic fictional example
+- Oophorectomy (`oophorectomy`): plain-language explanation; verified components; realistic fictional example
+- Salpingo-oophorectomy (`salpingo-oophorectomy`): plain-language explanation; verified components; realistic fictional example
+- Tubal ligation (`tubal-ligation`): plain-language explanation; verified components; realistic fictional example
+- Cervical conisation (`cervical-conisation`): plain-language explanation; verified components; realistic fictional example
+- Vulvectomy (`vulvectomy`): plain-language explanation; verified components; realistic fictional example
+- Vaginoplasty (`vaginoplasty`): plain-language explanation; verified components; realistic fictional example
+- Pessary (`pessary`): plain-language explanation; verified components; realistic fictional example
+- Intrauterine device (`intrauterine-device`): plain-language explanation; verified components; realistic fictional example
+- In vitro fertilisation (`in-vitro-fertilisation`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 17 · Obstetrics & neonatology
+
+- Gravidity (`gravidity`): plain-language explanation; verified components; realistic fictional example
+- Parity (`parity`): plain-language explanation; verified components; realistic fictional example
+- Multigravida (`multigravida`): plain-language explanation; verified components; realistic fictional example
+- Nullipara (`nullipara`): plain-language explanation; verified components; realistic fictional example
+- Primipara (`primipara`): plain-language explanation; verified components; realistic fictional example
+- Gestation (`gestation`): plain-language explanation; verified components; realistic fictional example
+- Trimester (`trimester`): plain-language explanation; verified components; realistic fictional example
+- Embryo (`embryo`): plain-language explanation; verified components; realistic fictional example
+- Fetus (`fetus`): plain-language explanation; verified components; realistic fictional example
+- Placenta (`placenta`): plain-language explanation; verified components; realistic fictional example
+- Amnion (`amnion`): plain-language explanation; verified components; realistic fictional example
+- Amniotic fluid (`amniotic-fluid`): plain-language explanation; verified components; realistic fictional example
+- Umbilical cord (`umbilical-cord`): plain-language explanation; verified components; realistic fictional example
+- Ectopic pregnancy (`ectopic-pregnancy`): plain-language explanation; verified components; realistic fictional example
+- Placenta praevia (`placenta-praevia`): plain-language explanation; verified components; realistic fictional example
+- Placental abruption (`placental-abruption`): plain-language explanation; verified components; realistic fictional example
+- Pre-eclampsia (`pre-eclampsia`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 18 · Mental health
+
+- Cognition (`cognition`): verified components
+- Anxiety (`anxiety`): plain-language explanation; verified components; realistic fictional example
+- Depression (`depression`): plain-language explanation; verified components; realistic fictional example
+- Affect (`affect`): plain-language explanation; verified components; realistic fictional example
+- Mood (`mood`): plain-language explanation; verified components; realistic fictional example
+- Psychosis (`psychosis`): plain-language explanation; verified components; realistic fictional example
+- Hallucination (`hallucination`): plain-language explanation; verified components; realistic fictional example
+- Delusion (`delusion`): plain-language explanation; verified components; realistic fictional example
+- Obsession (`obsession`): plain-language explanation; verified components; realistic fictional example
+- Compulsion (`compulsion`): plain-language explanation; verified components; realistic fictional example
+- Panic attack (`panic-attack`): plain-language explanation; verified components; realistic fictional example
+- Phobia (`phobia`): plain-language explanation; verified components; realistic fictional example
+- Mania (`mania`): plain-language explanation; verified components; realistic fictional example
+- Hypomania (`hypomania`): plain-language explanation; verified components; realistic fictional example
+- Bipolar disorder (`bipolar-disorder`): plain-language explanation; verified components; realistic fictional example
+- Schizophrenia (`schizophrenia`): plain-language explanation; verified components; realistic fictional example
+- Post-traumatic stress disorder (`post-traumatic-stress-disorder`): plain-language explanation; verified components; realistic fictional example
+- Cognitive behavioural therapy (`cognitive-behavioural-therapy`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 19 · Oncology
+
+- Benign (`benign`): verified components
+- Malignant (`malignant`): verified components
+- Metastasis (`metastasis`): verified components
+- Neoplasm (`neoplasm`): plain-language explanation; verified components; realistic fictional example
+- Carcinoma (`carcinoma`): plain-language explanation; verified components; realistic fictional example
+- Sarcoma (`sarcoma`): plain-language explanation; verified components; realistic fictional example
+- Adenoma (`adenoma`): plain-language explanation; verified components; realistic fictional example
+- Adenocarcinoma (`adenocarcinoma`): plain-language explanation; verified components; realistic fictional example
+- Dysplasia (`dysplasia`): plain-language explanation; verified components; realistic fictional example
+- Anaplasia (`anaplasia`): plain-language explanation; verified components; realistic fictional example
+- Hyperplasia (`hyperplasia`): plain-language explanation; verified components; realistic fictional example
+- Metaplasia (`metaplasia`): plain-language explanation; verified components; realistic fictional example
+- Carcinoma in situ (`carcinoma-in-situ`): plain-language explanation; verified components; realistic fictional example
+- Invasion (`invasion`): plain-language explanation; verified components; realistic fictional example
+- Staging (`staging`): plain-language explanation; verified components; realistic fictional example
+- Grading (`grading`): plain-language explanation; verified components; realistic fictional example
+- Primary tumour (`primary-tumour`): plain-language explanation; verified components; realistic fictional example
+- Secondary tumour (`secondary-tumour`): plain-language explanation; verified components; realistic fictional example
+- Remission (`remission`): plain-language explanation; verified components; realistic fictional example
+- Recurrence (`recurrence`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 20 · Infectious & parasitic diseases
+
+- Sepsis (`sepsis`): verified components
+- Colonisation (`colonisation`): plain-language explanation; verified components; realistic fictional example
+- Infection (`infection`): plain-language explanation; verified components; realistic fictional example
+- Incubation period (`incubation-period`): plain-language explanation; verified components; realistic fictional example
+- Communicable (`communicable`): plain-language explanation; verified components; realistic fictional example
+- Contagious (`contagious`): plain-language explanation; verified components; realistic fictional example
+- Virulence (`virulence`): plain-language explanation; verified components; realistic fictional example
+- Bacterium (`bacterium`): plain-language explanation; verified components; realistic fictional example
+- Virus (`virus`): plain-language explanation; verified components; realistic fictional example
+- Fungus (`fungus`): plain-language explanation; verified components; realistic fictional example
+- Parasite (`parasite`): plain-language explanation; verified components; realistic fictional example
+- Protozoan (`protozoan`): plain-language explanation; verified components; realistic fictional example
+- Helminth (`helminth`): plain-language explanation; verified components; realistic fictional example
+- Antimicrobial (`antimicrobial`): plain-language explanation; verified components; realistic fictional example
+- Antibiotic (`antibiotic`): plain-language explanation; verified components; realistic fictional example
+- Antiviral (`antiviral`): plain-language explanation; verified components; realistic fictional example
+- Antifungal (`antifungal`): plain-language explanation; verified components; realistic fictional example
+- Resistance (`resistance`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 21 · Radiology & nuclear medicine
+
+- Radiograph (`radiograph`): plain-language explanation; verified components; realistic fictional example
+- Computed tomography (`computed-tomography`): plain-language explanation; verified components; realistic fictional example
+- Magnetic resonance imaging (`magnetic-resonance-imaging`): plain-language explanation; verified components; realistic fictional example
+- Fluoroscopy (`fluoroscopy`): plain-language explanation; verified components; realistic fictional example
+- Mammography (`mammography`): plain-language explanation; verified components; realistic fictional example
+- Scintigraphy (`scintigraphy`): plain-language explanation; verified components; realistic fictional example
+- Positron emission tomography (`positron-emission-tomography`): plain-language explanation; verified components; realistic fictional example
+- Single-photon emission computed tomography (`single-photon-emission-computed-tomography`): plain-language explanation; verified components; realistic fictional example
+- Radiopharmaceutical (`radiopharmaceutical`): plain-language explanation; verified components; realistic fictional example
+- Contrast medium (`contrast-medium`): plain-language explanation; verified components; realistic fictional example
+- Radiolucent (`radiolucent`): plain-language explanation; verified components; realistic fictional example
+- Radiopaque (`radiopaque`): plain-language explanation; verified components; realistic fictional example
+- Attenuation (`attenuation`): plain-language explanation; verified components; realistic fictional example
+- Echogenicity (`echogenicity`): plain-language explanation; verified components; realistic fictional example
+- Hypoechoic (`hypoechoic`): plain-language explanation; verified components; realistic fictional example
+- Hyperechoic (`hyperechoic`): plain-language explanation; verified components; realistic fictional example
+- Anechoic (`anechoic`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 22 · Pharmacology
+
+- Bioavailability (`bioavailability`): verified components
+- Absorption (`absorption-ch22`): plain-language explanation; verified components; realistic fictional example
+- Distribution (`distribution`): plain-language explanation; verified components; realistic fictional example
+- Metabolism (`metabolism`): plain-language explanation; verified components; realistic fictional example
+- Elimination (`elimination`): plain-language explanation; verified components; realistic fictional example
+- Half-life (`half-life`): plain-language explanation; verified components; realistic fictional example
+- Clearance (`clearance`): plain-language explanation; verified components; realistic fictional example
+- Agonist (`agonist`): plain-language explanation; verified components; realistic fictional example
+- Antagonist (`antagonist`): plain-language explanation; verified components; realistic fictional example
+- Therapeutic index (`therapeutic-index`): plain-language explanation; verified components; realistic fictional example
+- Adverse drug reaction (`adverse-drug-reaction`): plain-language explanation; verified components; realistic fictional example
+- Drug interaction (`drug-interaction`): plain-language explanation; verified components; realistic fictional example
+- Indication (`indication`): plain-language explanation; verified components; realistic fictional example
+- Contraindication (`contraindication`): plain-language explanation; verified components; realistic fictional example
+- Tolerance (`tolerance`): plain-language explanation; verified components; realistic fictional example
+- Dependence (`dependence`): plain-language explanation; verified components; realistic fictional example
+- Withdrawal (`withdrawal`): plain-language explanation; verified components; realistic fictional example
+- Loading dose (`loading-dose`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 23 · Complementary & alternative therapies
+
+- Complementary therapy (`complementary-therapy`): verified components
+- Alternative therapy (`alternative-therapy`): verified components
+- Integrative health (`integrative-health`): plain-language explanation; verified components; realistic fictional example
+- Acupuncture (`acupuncture`): plain-language explanation; verified components; realistic fictional example
+- Herbal medicine (`herbal-medicine`): plain-language explanation; verified components; realistic fictional example
+- Manual therapy (`manual-therapy`): plain-language explanation; verified components; realistic fictional example
+- Massage (`massage`): plain-language explanation; verified components; realistic fictional example
+- Mindfulness (`mindfulness`): plain-language explanation; verified components; realistic fictional example
+- Meditation (`meditation`): plain-language explanation; verified components; realistic fictional example
+- Biofeedback (`biofeedback`): plain-language explanation; verified components; realistic fictional example
+- Relaxation training (`relaxation-training`): plain-language explanation; verified components; realistic fictional example
+- Yoga (`yoga`): plain-language explanation; verified components; realistic fictional example
+- Tai chi (`tai-chi`): plain-language explanation; verified components; realistic fictional example
+- Naturopathy (`naturopathy`): plain-language explanation; verified components; realistic fictional example
+- Homeopathy (`homeopathy`): plain-language explanation; verified components; realistic fictional example
+- Placebo (`placebo`): plain-language explanation; verified components; realistic fictional example
+- Placebo effect (`placebo-effect`): plain-language explanation; verified components; realistic fictional example
+- Nocebo effect (`nocebo-effect`): plain-language explanation; verified components; realistic fictional example
+- Evidence-based practice (`evidence-based-practice`): plain-language explanation; verified components; realistic fictional example
+- Shared decision-making (`shared-decision-making`): plain-language explanation; verified components; realistic fictional example
+
+## Chapter 24 · Public health & research
+
+- Incidence (`incidence`): verified components
+- Prevalence (`prevalence`): verified components
+- Cohort (`cohort`): verified components
+- Case-control study (`case-control-study`): plain-language explanation; verified components; realistic fictional example
+- Cross-sectional study (`cross-sectional-study`): plain-language explanation; verified components; realistic fictional example
+- Randomised controlled trial (`randomised-controlled-trial`): plain-language explanation; verified components; realistic fictional example
+- Systematic review (`systematic-review`): plain-language explanation; verified components; realistic fictional example
+- Meta-analysis (`meta-analysis`): plain-language explanation; verified components; realistic fictional example
+- Bias (`bias`): plain-language explanation; verified components; realistic fictional example
+- Confounding (`confounding`): plain-language explanation; verified components; realistic fictional example
+- Relative risk (`relative-risk`): plain-language explanation; verified components; realistic fictional example
+- Odds ratio (`odds-ratio`): plain-language explanation; verified components; realistic fictional example
+- Absolute risk (`absolute-risk`): plain-language explanation; verified components; realistic fictional example
+- Sensitivity (`sensitivity`): plain-language explanation; verified components; realistic fictional example
+- Specificity (`specificity`): plain-language explanation; verified components; realistic fictional example
+- Positive predictive value (`positive-predictive-value`): plain-language explanation; verified components; realistic fictional example
+- Negative predictive value (`negative-predictive-value`): plain-language explanation; verified components; realistic fictional example
+- Confidence interval (`confidence-interval`): plain-language explanation; verified components; realistic fictional example
+- Statistical significance (`statistical-significance`): plain-language explanation; verified components; realistic fictional example
+- Morbidity (`morbidity`): plain-language explanation; verified components; realistic fictional example
+

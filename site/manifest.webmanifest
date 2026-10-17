@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Healthcare Crown Academy",
   "short_name": "Crown Academy",
-  "description": "Free learning and well-being apps (Carecraft and Serein), career tools and Evinca: evidence-based recognition for healthcare professionals worldwide.",
+  "description": "Free learning and well-being apps (MedLex, Carecraft and Serein), career tools and Evinca: evidence-based recognition for healthcare professionals worldwide.",
   "lang": "en-GB",
   "dir": "ltr",
   "start_url": "/?source=pwa",
@@ -25,6 +25,7 @@
   ],
   "shortcuts": [
     { "name": "Carecraft: today's 60-second scenario", "short_name": "Carecraft", "url": "/carecraft", "icons": [{ "src": "/carecraft/img/icon-192.png", "sizes": "192x192" }] },
+    { "name": "MedLex: decode medical terms", "short_name": "MedLex", "url": "/medlex", "icons": [{ "src": "/medlex/icon-192.png", "sizes": "192x192" }] },
     { "name": "Serein: take a small pause", "short_name": "Serein", "url": "/serein", "icons": [{ "src": "/serein/assets/icon-192.png", "sizes": "192x192" }] },
     { "name": "Join Evinca", "short_name": "Join", "url": "/#join", "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }] },
     { "name": "Recognition readiness check", "short_name": "Readiness", "url": "/#readiness", "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }] }

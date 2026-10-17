@@ -1,0 +1,161 @@
+// Phase 1: canonical ui/guidance implementation.
+import { STUDIO_INFO } from '../features/studios/index.js';
+import { activityDrafts, latestActivityDraft, relativeTime, sheetMeta } from '../features/worksheet/index.js';
+import { app } from '../state/runtime.js';
+import { $, esc, main, modal } from './dom.js';
+export const LEARNING_RESEARCH = {
+  active: {
+    title: 'Active learning · undergraduate STEM',
+    source: 'Freeman et al., PNAS (2014)',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4060654/',
+    facts: [['225', 'studies reviewed'], ['67', 'failure-rate comparisons']],
+    bars: [['Active learning', 21.8], ['Traditional lectures', 33.8]],
+    caption: 'Mean failure rates (%) in the review; lower is better. Undergraduate STEM findings, not a forecast for MedLex or clinical outcomes.'
+  },
+  recall: {
+    title: 'Retrieval + explanation · medical students',
+    source: 'Larsen, Butler & Roediger, Medical Education (2013)',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/23746156/',
+    facts: [['47', 'medical students'], ['6 months', 'final test interval']],
+    bars: [['Testing + explanation', 40], ['Review + explanation', 29]],
+    caption: 'Mean final test scores (%) after four weekly learning sessions. An 11 percentage-point difference in this study; not an app outcome guarantee.'
+  }
+};
+export const SECTION_GUIDES = {
+  outline: ['Module outline', 'A sequence of topics and suggested learning steps.', 'Connect the chapter before studying individual words.', 'At the beginning of a module.', 'Follow the sections, then move to the term bank and practice.', 'Learners and educators.'],
+  outcomes: ['Learning outcomes', 'Statements of what you should be able to demonstrate.', 'Make your learning goals and evidence explicit.', 'Before study and during reflection.', 'Review each statement; tick only when you can demonstrate it. A tick is self-assessment.', 'Learners with educator feedback.'],
+  bank: ['Term bank', 'The original terminology records for this module.', 'Connect spelling, meaning and word structure.', 'Before practice or whenever a word is unfamiliar.', 'Search, open a word, inspect its components and save it for later recall.', 'Anyone learning this chapter.'],
+  practice: ['Module practice', 'Recall and application exercises linked to this chapter.', 'Identify gaps that reading alone can hide.', 'After exploring the words, and again after a delay.', 'Choose a task, answer from memory and review feedback.', 'Independent learners or facilitated groups.'],
+  classroom: ['Classroom activities', 'Collaborative tasks with evidence to bring back.', 'Make reasoning visible through discussion and explanation.', 'During a facilitated teaching session.', 'Open an activity workspace, assign roles, record an explanation and compare feedback.', 'Educators, pairs and small groups.'],
+  independent: ['Independent study', 'Structured tasks for paper, cards or your own study workspace.', 'Turn review into recall, explanation and reflection.', 'Between classes and during later revision.', 'Open a worksheet, try from memory, verify and plan your next recall.', 'Self-directed learners.'],
+  references: ['References', 'Source information supporting the original module.', 'Keep learning material traceable.', 'When verifying terminology or preparing evidence.', 'Read the module references and record what you checked.', 'Learners and educators.']
+};
+export function researchHTML(key = 'recall') {
+  const r = LEARNING_RESEARCH[key];
+  return `<section class="research-box"><span class="eyebrow">RESEARCH CONTEXT · NOT YOUR SCORE</span><h3>${r.title}</h3><div class="research-facts">${r.facts.map(([n, l]) => `<div><strong>${n}</strong><span>${l}</span></div>`).join('')}</div>${r.bars.map(([l, n]) => `<div class="research-bar"><span>${l} <b>${n}%</b></span><i style="--bar:${n}%"></i></div>`).join('')}<p>${r.caption}</p><a href="${r.url}" target="_blank" rel="noopener noreferrer">${r.source} ↗</a></section>`;
+}
+export function guideContent(el) {
+  const h = guideFor(el);
+  return `<h2 id="modalTitle" class="modal-title">${esc(h.title)}</h2><dl class="guide-five">${['What', 'Why', 'When', 'How', 'Who'].map((k, i) => `<div><dt>${k}</dt><dd>${esc(h.rows[i])}</dd></div>`).join('')}</dl><a class="btn" href="#teach/evidence">Why this method works · sources and limitations</a>`;
+}
+export function guideButton(key, title = '') {
+  const label = key.startsWith('studio:') ? 'Guide' : 'How to use';
+  return `<button type="button" class="guide-link" data-guide="${key}" ${title ? `data-guide-title="${esc(title)}"` : ''} aria-label="${label}: ${esc(title || SECTION_GUIDES[key]?.[0] || 'this learning tool')}">${uiIcon('help')}<span>${label}</span></button>`;
+}
+export function hideGuide() {
+  clearTimeout(app.guideTimer);
+  if (app.guidePopup) {
+    app.guidePopup.remove();
+    app.guidePopup = null;
+  }
+  document.querySelectorAll('[aria-describedby="workspaceGuide"]').forEach(e => e.removeAttribute('aria-describedby'));
+}
+export function showGuide(el) {
+  hideGuide();
+  if (modal.open || innerWidth < 768 || !el.hasAttribute('data-hint') || el.closest('#sidebar')) return;
+  app.guidePopup = document.createElement('div');
+  app.guidePopup.id = 'workspaceGuide';
+  app.guidePopup.className = 'guide-popover micro-tip';
+  app.guidePopup.setAttribute('role', 'tooltip');
+  app.guidePopup.textContent = el.dataset.hint;
+  main.append(app.guidePopup);
+  el.setAttribute('aria-describedby', 'workspaceGuide');
+  const r = el.getBoundingClientRect(),
+    w = app.guidePopup.offsetWidth,
+    h = app.guidePopup.offsetHeight;
+  app.guidePopup.style.left = Math.max(8, Math.min(innerWidth - w - 8, r.left)) + 'px';
+  app.guidePopup.style.top = (r.bottom + h + 10 < innerHeight ? r.bottom + 8 : Math.max(8, r.top - h - 8)) + 'px';
+  app.guidePopup.addEventListener('pointerenter', () => clearTimeout(app.guideTimer));
+  app.guidePopup.addEventListener('pointerleave', hideGuide);
+}
+export function activityScene(type, i) {
+  const group = type === 'classroom',
+    kind = (group ? ['map', 'parts', 'spell', 'sort', 'code'] : ['cards', 'speak', 'note'])[i % (group ? 5 : 3)],
+    names = {
+      map: 'A concept map connecting word elements',
+      parts: 'Word components assembled into a complete term',
+      spell: 'A pencil and notebook for spelling recall',
+      sort: 'Terminology cards sorted into categories',
+      code: 'A reference book and a verification pathway',
+      cards: 'Recall cards with a question and a checked answer',
+      speak: 'A learner explaining a word using a speech bubble',
+      note: 'A study note with highlighted phrases and questions'
+    };
+  const motifs = {
+    map: '<path class="art-trace" d="M160 66V35m0 31-43 27m43-27 44 27" fill="none" stroke="#08706d" stroke-width="3"/><rect x="134" y="20" width="52" height="28" rx="7" fill="#10253a"/><rect x="88" y="82" width="58" height="30" rx="7" fill="#c8e0d7"/><rect x="178" y="82" width="58" height="30" rx="7" fill="#e5c6ab"/><circle cx="160" cy="65" r="12" fill="#fffdf7" stroke="#08706d" stroke-width="3"/>',
+    parts: '<rect x="55" y="39" width="61" height="52" rx="8" fill="#10253a"/><rect x="130" y="39" width="61" height="52" rx="8" fill="#08706d"/><rect x="205" y="39" width="61" height="52" rx="8" fill="#bd764a"/><path d="M75 57h21m-21 13h30m41-13h24m-24 13h21m57-13h24m-24 13h20" stroke="#fffdf7" stroke-width="3" stroke-linecap="round"/><path class="art-trace" d="M70 105h180" stroke="#08706d" stroke-width="3" stroke-dasharray="5 5"/>',
+    spell: '<rect x="83" y="18" width="142" height="97" rx="8" fill="#fffdf7" stroke="#10253a" stroke-width="2"/><path d="M106 35h94m-94 20h70m-70 20h94m-94 20h60" stroke="#c8e0d7" stroke-width="3"/><path class="art-trace" d="M106 56h41m-41 20h60" stroke="#08706d" stroke-width="4" stroke-linecap="round"/><g class="art-float"><path d="m200 85 37-48 9 8-37 48-14 6z" fill="#bd764a" stroke="#10253a" stroke-width="2"/></g>',
+    sort: '<path d="M61 35h78m42 0h78" stroke="#10253a" stroke-width="5" stroke-linecap="round"/><rect x="64" y="48" width="72" height="25" rx="6" fill="#08706d"/><rect x="64" y="82" width="72" height="25" rx="6" fill="#c8e0d7"/><rect x="184" y="48" width="72" height="25" rx="6" fill="#bd764a"/><rect x="184" y="82" width="72" height="25" rx="6" fill="#e5c6ab"/><path class="art-trace" d="M146 65h28m-8-7 8 7-8 7" fill="none" stroke="#08706d" stroke-width="3"/>',
+    code: '<path d="M66 32q39-15 76 0 39-15 76 0v71q-40-13-76 0-39-13-76 0z" fill="#fffdf7" stroke="#10253a" stroke-width="2"/><path d="M142 33v70m-59-49h38m-38 15h38m40-15h38m-38 15h38" stroke="#08706d" stroke-width="3"/><circle class="art-float" cx="239" cy="87" r="22" fill="#08706d"/><path class="art-trace" d="m229 87 7 7 13-16" fill="none" stroke="#fffdf7" stroke-width="3"/>',
+    cards: '<rect x="75" y="30" width="92" height="74" rx="8" fill="#e5c6ab" transform="rotate(-12 121 67)"/><rect x="133" y="25" width="100" height="79" rx="8" fill="#fffdf7" stroke="#10253a" stroke-width="2"/><path d="M153 48h57m-57 14h41" stroke="#08706d" stroke-width="4" stroke-linecap="round"/><circle class="art-float" cx="211" cy="92" r="18" fill="#08706d"/><path class="art-trace" d="m202 92 6 6 12-14" fill="none" stroke="#fffdf7" stroke-width="3"/>',
+    speak: '<circle cx="104" cy="57" r="17" fill="#bd764a"/><path d="M77 116V98q0-24 27-24t27 24v18" fill="#10253a"/><path d="M160 24h93q12 0 12 12v39q0 12-12 12h-60l-26 15 5-15h-12q-12 0-12-12V36q0-12 12-12" fill="#fffdf7" stroke="#08706d" stroke-width="2"/><path class="art-trace" d="M169 43h73m-73 17h52" stroke="#08706d" stroke-width="4" stroke-linecap="round"/>',
+    note: '<rect x="91" y="15" width="135" height="103" rx="7" fill="#fffdf7" stroke="#10253a" stroke-width="2"/><path d="M109 37h99m-99 18h76m-76 18h99m-99 18h59" stroke="#9fb6ae" stroke-width="3"/><path class="art-trace" d="M109 56h62m-62 18h42" stroke="#bd764a" stroke-width="7" opacity=".65"/><circle class="art-float" cx="226" cy="98" r="19" fill="#08706d"/><path d="M221 94q0-7 7-6 7 2-1 8v3m0 6h.1" fill="none" stroke="#fffdf7" stroke-width="3" stroke-linecap="round"/>'
+  };
+  return `<svg class="activity-art art-${kind}" viewBox="0 0 320 130" role="img" aria-label="${names[kind]}"><rect width="320" height="130" rx="16" fill="${group ? '#e7f1ec' : '#f4e9da'}"/><circle cx="285" cy="14" r="62" fill="${group ? '#c8e0d7' : '#e8d5bb'}" opacity=".6"/>${motifs[kind]}</svg>`;
+}
+export function activityCard(a, i, m, type) {
+  const id = m.id + '-' + type + '-' + i,
+    keys = activityDrafts(m.id, type, i),
+    latest = latestActivityDraft(m.id, type, i),
+    meta = latest ? sheetMeta(latest) : null;
+  return `<article class="activity-card workspace-activity">${activityScene(type, i)}<div class="activity-top"><span class="tag">${type === 'classroom' ? 'SECTION ' + a.section : 'INDEPENDENT STUDY'}</span><span class="status-chip">${app.course.activities[id] ? 'Completed' : keys.length ? 'Draft' : 'Not started'}</span></div><h3>${esc(a.title)}</h3><small class="muted">${esc(a.mode || a.minutes + ' min · independent')}</small><p>${esc(a.task)}</p><div class="activity-evidence"><span class="eyebrow">EVIDENCE TO BRING BACK</span><p>${esc(a.evidence)}</p></div><div class="activity-tools"><button class="btn primary" data-workspace="open" data-module="${m.id}" data-type="${type}" data-index="${i}">${latest ? 'Continue worksheet' : 'Start worksheet'} →</button>${latest ? `<p class="draft-meta">${meta.updated ? 'Edited ' + relativeTime(meta.updated) : 'Saved draft'}${keys.length > 1 ? ' · ' + keys.length + ' drafts' : ''}</p><button class="text-button" data-workspace="blank" data-module="${m.id}" data-type="${type}" data-index="${i}">New blank copy</button>` : ''}</div><label class="inline-check"><input type="checkbox" data-course-check="activity" data-id="${id}" ${app.course.activities[id] ? 'checked' : ''}> ${type === 'classroom' ? 'Activity completed' : 'Independent task completed'}</label></article>`;
+}
+export function activityFields(a, type) {
+  let fields = [['words', 'Key words / word components', 'List the words, break down components where appropriate, and explain meanings.'], ['attempt', 'First attempt · from memory', 'Write your explanation, sorting decisions, worked example or recall responses before checking.'], ['verification', 'Verify and improve', 'Which reference or companion record did you check? What did you correct, and why?'], ['evidence', 'Evidence and next recall', 'Record the evidence requested above and choose when to revisit it.']];
+  if (type === 'classroom') fields.splice(1, 0, ['roles', 'Group roles and peer feedback', 'Assign a facilitator, explainer and checker. Record a peer question and useful feedback.']);
+  return fields;
+}
+export function worksheetColumns(a) {
+  const t = (a.title + ' ' + a.task).toLowerCase();
+  if (/cod|classification|index route/.test(t)) return ['Documented term', 'Missing detail / question', 'Reference / edition', 'Verification and rationale'];
+  if (/spell|cover, write|spelling/.test(t)) return ['Target word', 'First recall attempt', 'Correction / spelling pattern'];
+  if (/sort|category|classify/.test(t)) return ['Term / expression', 'Category', 'Reason for the choice'];
+  if (/component|root|prefix|suffix|concept map/.test(t)) return ['Term / element', 'Components / connections', 'Meaning in context'];
+  return ['Word / concept', 'Explanation from memory', 'Question / verification'];
+}
+export const PAGE_GUIDES = {
+  today: ['Today', 'Your starting point for review, course progress and saved words.', 'Keep the next learning step visible.', 'At the start of a study session.', 'Continue a module, review due words or choose a short practice task.', 'Independent learners.'],
+  modules: ['Course modules', 'The complete sequence of 26 original modules.', 'Connect foundations, systems and applied terminology.', 'When planning or resuming study.', 'Filter the course, open a module and follow its outcomes and tasks.', 'Learners and educators.'],
+  library: ['Term library', 'A searchable collection of the original term records.', 'Find a word and connect its meaning to its chapter.', 'During study or verification.', 'Search and filter, open a term profile, then save or practise it.', 'Terminology learners.'],
+  wordlab: ['Word lab', 'A workspace for connecting word components.', 'Make word structure easier to inspect.', 'When exploring an unfamiliar constructed term.', 'Choose components, inspect the meaning and check the original term record.', 'Terminology learners.'],
+  systems: ['Body systems', 'A visual way to explore terminology by system.', 'Connect words with their anatomical context.', 'Before or alongside chapter study.', 'Select a system and explore its linked vocabulary.', 'Learners reviewing body-system vocabulary.'],
+  progress: ['Learning progress', 'Your locally recorded practice, completion and self-ratings.', 'Reflect on the evidence behind your next learning step.', 'After practice and when planning revision.', 'Review records, distinguish self-ratings from scored answers and choose what to revisit.', 'Learners and educators reviewing shared evidence.'],
+  toolkit: ['Learning tools', 'Planning, mapping and portable learning resources.', 'Support an organised learning workflow.', 'When preparing study, teaching or a backup.', 'Choose the tool that matches your task; review its instructions and save the result.', 'Learners and educators.']
+};
+export function guideFor(el) {
+  const key = el.dataset.guide || 'bank';
+  if (key.startsWith('studio:')) {
+    const h = STUDIO_INFO[key.slice(7)] || STUDIO_INFO.hub;
+    return {
+      title: h.title,
+      rows: [h.what, h.why, h.when, h.how, h.who],
+      research: key === 'studio:educator' ? 'active' : 'recall'
+    };
+  }
+  const h = SECTION_GUIDES[key] || PAGE_GUIDES[key] || SECTION_GUIDES.practice;
+  return {
+    title: el.dataset.guideTitle || h[0],
+    rows: h.slice(1),
+    research: key === 'classroom' ? 'active' : 'recall'
+  };
+}
+export function classroomSupport(m) {
+  return `<aside class="activity-card activity-support"><div class="activity-top"><span class="eyebrow">FACILITATOR'S DESK</span>${guideButton('classroom', 'Using the classroom activities')}</div><h3>Make the thinking visible.</h3><ol><li>Invite an explanation before revealing the companion wording.</li><li>Ask a peer to question one word choice.</li><li>Verify together and keep the revised evidence.</li></ol>${researchHTML('active')}<a class="btn" href="#studio/educator">Prepare an assignment pack →</a><p class="access-note">A teaching resource for ${esc(m.title)}; adapt the activities to your group.</p></aside>`;
+}
+export function uiIcon(kind) {
+  const paths = {
+    help: 'M12 17h.01M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2-3 4',
+    write: 'm4 20 4-1L20 7l-3-3L5 16l-1 4M14 7l3 3',
+    check: 'm5 12 4 4L19 6',
+    book: 'M12 5v15M3 5q5-2 9 0 4-2 9 0v14q-5-2-9 0-4-2-9 0z',
+    arrow: 'M4 12h16m-6-6 6 6-6 6',
+    save: 'M5 3h12l3 3v15H4V3h1m3 0v6h8V3M8 21v-7h8v7'
+  };
+  return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[kind] || paths.help}"/></svg>`;
+}
+export function inlineGuide(key) {
+  const studio = key.startsWith('studio:') ? STUDIO_INFO[key.slice(7)] : null,
+    h = studio ? [studio.title, studio.what, studio.why, studio.when, studio.how, studio.who] : SECTION_GUIDES[key] || PAGE_GUIDES[key] || SECTION_GUIDES.practice;
+  const steps = key === 'classroom' ? ['Choose a task', 'Explain together', 'Verify and keep evidence'] : key === 'independent' ? ['Recall first', 'Check a reference', 'Plan a later review'] : key === 'bank' ? ['Search a word', 'Explore its meaning', 'Recall it later'] : ['Choose your focus', 'Try it yourself', 'Review your evidence'];
+  return `<div class="start-guide-heading">${uiIcon(key === 'classroom' ? 'book' : 'write')}<div><span class="eyebrow">START HERE</span><p>${esc(h[4])}</p></div></div><ol>${steps.map((t, i) => `<li><span>${i + 1}</span>${esc(t)}</li>`).join('')}</ol>${guideButton(key, h[0])}`;
+}

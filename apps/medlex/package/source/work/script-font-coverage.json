@@ -1,0 +1,50 @@
+[
+  {
+    "language": "hi",
+    "characters": 67,
+    "missingGlyphs": [],
+    "font": "hi.ttf",
+    "latinFallback": "DejaVu Sans",
+    "nativeDeviceFontTest": true
+  },
+  {
+    "language": "bn",
+    "characters": 63,
+    "missingGlyphs": [],
+    "font": "bn.ttf",
+    "latinFallback": "DejaVu Sans",
+    "nativeDeviceFontTest": true
+  },
+  {
+    "language": "zh-CN",
+    "characters": 251,
+    "missingGlyphs": [],
+    "font": "sc.ttf",
+    "latinFallback": "DejaVu Sans",
+    "nativeDeviceFontTest": true
+  },
+  {
+    "language": "ja",
+    "characters": 257,
+    "missingGlyphs": [],
+    "font": "cjk.ttf",
+    "latinFallback": "DejaVu Sans",
+    "nativeDeviceFontTest": true
+  },
+  {
+    "language": "ko",
+    "characters": 213,
+    "missingGlyphs": [],
+    "font": "ko.ttf",
+    "latinFallback": "DejaVu Sans",
+    "nativeDeviceFontTest": true
+  },
+  {
+    "language": "ur",
+    "characters": 52,
+    "missingGlyphs": [],
+    "font": "arabic.ttf",
+    "latinFallback": "DejaVu Sans",
+    "nativeDeviceFontTest": true
+  }
+]
