@@ -796,3 +796,84 @@ input[aria-invalid="true"]{border-color:#F87171;box-shadow:0 0 0 4px rgba(248,11
 .md-result a{color:#F1C56E;font-weight:600}
 @media (max-width:860px){.app-medlex{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:480px){.md-part{min-width:0;padding:10px 12px}}
+
+/* ---------- Crown Suite identity: one jewel per app ---------- */
+:root{--j-medlex:#3557D6;--j-carecraft:#0F8A86;--j-serein:#5FB89E;--j-evinca:#D4A445}
+.jewel{display:inline-block;width:12px;height:12px;flex-shrink:0;transform:rotate(45deg);border-radius:3px;background:var(--jc,var(--gold-500));box-shadow:0 0 0 2px rgba(255,255,255,.18),0 0 12px var(--jc,var(--gold-500))}
+.jewel-medlex{--jc:var(--j-medlex)}.jewel-carecraft{--jc:var(--j-carecraft)}.jewel-serein{--jc:var(--j-serein)}.jewel-evinca{--jc:var(--j-evinca)}
+
+/* header launcher */
+.app-launcher{position:relative}
+.header-cta .chev{transform:rotate(90deg);width:14px;height:14px;transition:transform .3s var(--ease-out)}
+.header-cta[aria-expanded="true"] .chev{transform:rotate(-90deg)}
+.app-dock{position:absolute;right:0;top:calc(100% + 12px);width:min(360px,calc(100vw - 32px));padding:14px;border-radius:var(--radius-lg);background:#0B1530;border:1px solid rgba(232,193,112,.35);box-shadow:var(--shadow-lg);z-index:60;display:grid;gap:8px;animation:fade-up .25s var(--ease-out)}
+.app-dock[hidden]{display:none}
+.dock-title{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E8C170;padding:4px 6px 6px}
+.dock-app{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;border:1px solid rgba(232,193,112,.28);background:linear-gradient(135deg,rgba(243,217,155,.08),rgba(255,255,255,.02));color:#EEF1F8;transition:border-color .2s,transform .3s var(--ease-out),background-color .2s}
+.dock-app:hover,.dock-app:focus-visible{border-color:#E8C170;transform:translateX(3px);background:rgba(243,217,155,.12)}
+.dock-text{display:grid;line-height:1.3}.dock-text b{font-weight:600}.dock-text small{color:#AEB8D0;font-size:.8rem}
+.dock-app .i{width:16px;height:16px;color:#E8C170}
+.dock-pricing{padding:8px 6px 2px;font-size:.88rem;font-weight:600;color:#E8C170}
+.mobile-app{justify-content:flex-start;gap:.7em}
+
+/* hero launch buttons */
+.hero-dock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:28px 0 22px;max-width:680px}
+.hero-app{display:flex;align-items:center;gap:8px;padding:12px 10px;min-width:0;border-radius:16px;color:#1B1404;background:linear-gradient(135deg,var(--gold-300),var(--gold-500) 60%,var(--gold-600));box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 10px 26px -12px rgba(212,164,69,.8);transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out)}
+.hero-app:hover,.hero-app:focus-visible{transform:translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 16px 32px -12px rgba(212,164,69,.9)}
+.hero-app span:last-child{display:grid;line-height:1.15}
+.hero-app small{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.hero-app b{font-size:.9rem;white-space:nowrap}
+.hero-app .jewel{box-shadow:0 0 0 2px rgba(27,20,4,.25)}
+@media (max-width:720px){.hero-dock{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* build your crown */
+.crown-builder{background:var(--bg-alt)}
+.builder-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.interest-list{display:grid;gap:12px}
+.interest{display:flex;gap:16px;align-items:center;width:100%;padding:18px 20px;text-align:left;border-radius:var(--radius-lg);border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:inherit;cursor:pointer;box-shadow:var(--shadow-sm);transition:border-color .2s,transform .3s var(--ease-out),box-shadow .3s}
+.interest span:last-child{display:grid;gap:2px}.interest b{font-size:1.05rem;font-weight:600}.interest small{color:var(--text-muted)}
+.interest:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.interest:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.interest[aria-pressed="true"]{border-color:var(--jc);box-shadow:0 0 0 3px color-mix(in srgb,var(--jc) 25%,transparent),var(--shadow-md)}
+.interest .jewel{width:16px;height:16px}
+.crown-preview{text-align:center;padding:clamp(24px,3vw,40px);border-radius:var(--radius-xl);background:radial-gradient(120% 90% at 50% 0%,#15254D,#081128 70%);color:#EEF1F8;border:1px solid rgba(232,193,112,.3);box-shadow:var(--shadow-lg)}
+.crown-art{width:min(300px,80%);height:auto;margin:0 auto 14px;display:block;overflow:visible}
+.crown-shape{fill:rgba(243,217,155,.08);stroke:#E8C170;stroke-width:2.5;stroke-linejoin:round}
+.crown-base{stroke:#E8C170;stroke-width:4;stroke-linecap:round}
+.gem{fill:#1F3263;stroke:#E8C170;stroke-width:2;transition:fill .5s var(--ease-out),filter .5s}
+.crown-preview[data-medlex] .gem-medlex{fill:var(--j-medlex);filter:drop-shadow(0 0 8px var(--j-medlex))}
+.crown-preview[data-carecraft] .gem-carecraft{fill:var(--j-carecraft);filter:drop-shadow(0 0 8px var(--j-carecraft))}
+.crown-preview[data-serein] .gem-serein{fill:var(--j-serein);filter:drop-shadow(0 0 8px var(--j-serein))}
+.crown-preview[data-evinca] .gem-evinca{fill:var(--j-evinca);filter:drop-shadow(0 0 10px var(--j-evinca))}
+.crown-preview[data-all] .gem-all{fill:#F3D99B;filter:drop-shadow(0 0 10px #F3D99B)}
+.crown-label{font-family:var(--font-display);font-size:clamp(1.2rem,1rem + .8vw,1.6rem);line-height:1.3}
+.crown-price{color:#AEB8D0;min-height:1.6em;margin:8px 0 18px}
+.crown-price strong{color:#F3D99B}
+@media (max-width:860px){.builder-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* pricing */
+.billing-toggle{display:inline-flex;gap:4px;margin-top:22px;padding:4px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface)}
+.billing-toggle button{min-height:42px;padding:0 18px;border-radius:999px;font:inherit;font-weight:600;color:var(--text-muted);background:none;border:0;cursor:pointer}
+.billing-toggle button[aria-pressed="true"]{background:var(--btn-primary-bg);color:var(--btn-primary-fg)}
+.save-pill{margin-left:6px;padding:2px 8px;border-radius:999px;font-size:.72rem;background:var(--gold-300);color:#1B1404}
+.price-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.price-card{position:relative;display:flex;flex-direction:column;gap:12px;padding:24px 20px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.price-card .card-kicker{display:flex;align-items:center;gap:8px;margin:0;color:var(--text)}
+.price{font-family:var(--font-display);font-size:2.4rem;line-height:1}.price small{font-family:var(--font-sans);font-size:.9rem;color:var(--text-muted)}
+.price-note{font-size:.85rem;color:var(--text-muted)}
+.price-card ul{list-style:none;padding:0;margin:0 0 auto;display:grid;gap:8px;font-size:.92rem}
+.price-card li{display:flex;gap:8px;align-items:flex-start}.price-card li .i{width:16px;height:16px;flex-shrink:0;margin-top:3px;color:var(--teal)}
+.price-crown{background:radial-gradient(120% 90% at 50% 0%,#15254D,#081128 70%);color:#EEF1F8;border-color:#E8C170;box-shadow:0 20px 50px -20px rgba(212,164,69,.6)}
+.price-crown .card-kicker,.price-crown .price{color:#F3D99B}.price-crown .price small,.price-crown .price-note{color:#AEB8D0}.price-crown li .i{color:#E8C170}
+.price-crown::before{content:"Best value";position:absolute;top:-12px;right:16px;padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:700;background:linear-gradient(135deg,var(--gold-300),var(--gold-500));color:#1B1404}
+.code-row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:center;margin-top:28px;text-align:center}
+.code-note{flex-basis:100%;font-size:.85rem;color:var(--text-soft)}
+@media (max-width:1100px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.price-crown{grid-column:1/-1}}
+@media (max-width:560px){.price-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* MedLex becomes sapphire */
+.app-medlex{--app:#2A45B8;--app-text:#2A45B8;--app-soft:rgba(53,87,214,.07)}
+.app-medlex::before{background:linear-gradient(90deg,#3557D6,#A9BCFF)}
+:root[data-theme="dark"] .app-medlex{--app-text:#A9BCFF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .app-medlex{--app-text:#A9BCFF}}
+@media (prefers-reduced-motion:reduce){.app-dock{animation:none}.gem{transition:none}}

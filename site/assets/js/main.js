@@ -709,6 +709,63 @@
     }
   }
 
+  /* ---------- Crown Suite: app launcher, crown builder, pricing ---------- */
+  function initCrown() {
+    const launcher = $('[data-launcher]');
+    if (launcher) {
+      const btn = $('[data-launcher-toggle]', launcher), dock = $('#app-dock');
+      const set = (open) => { btn.setAttribute('aria-expanded', String(open)); dock.hidden = !open; if (open) $('a', dock).focus(); };
+      btn.addEventListener('click', () => set(dock.hidden));
+      document.addEventListener('click', (e) => { if (!launcher.contains(e.target)) set(false); });
+      launcher.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { set(false); btn.focus(); }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          const items = $$('a', dock), i = items.indexOf(document.activeElement);
+          if (i < 0) return;
+          e.preventDefault();
+          items[(i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length].focus();
+        }
+      });
+    }
+
+    const prices = { medlex: [6.99, 49.99], carecraft: [4.99, 49.99], serein: [4.99, 24.99] };
+    const names = { medlex: 'MedLex', carecraft: 'Carecraft', serein: 'Serein', evinca: 'Evinca' };
+    const preview = $('.crown-preview');
+    if (preview) {
+      const label = $('[data-crown-label]'), price = $('[data-crown-price]');
+      const chosen = new Set();
+      $$('[data-interests] .interest').forEach((b) => b.addEventListener('click', () => {
+        const app = b.dataset.app;
+        chosen.has(app) ? chosen.delete(app) : chosen.add(app);
+        b.setAttribute('aria-pressed', String(chosen.has(app)));
+        Object.keys(names).forEach((k) => preview.toggleAttribute('data-' + k, chosen.has(k)));
+        preview.toggleAttribute('data-all', chosen.size === 4);
+        const paid = [...chosen].filter((k) => prices[k]);
+        if (!chosen.size) { label.textContent = 'Choose an interest to light your crown.'; price.textContent = ''; return; }
+        label.textContent = 'Your crown: ' + [...chosen].map((k) => names[k]).join(' + ');
+        const sum = paid.reduce((n, k) => n + prices[k][0], 0);
+        price.innerHTML = '';
+        if (!paid.length) { price.textContent = 'Evinca stories are free. Start with a free account.'; return; }
+        const best = document.createElement('strong');
+        if (paid.length >= 2 && sum > 9.99) {
+          best.textContent = 'Crown Pass: £9.99/month';
+          price.append('Separately £' + sum.toFixed(2) + '/month. ', best, ' covers all of it.');
+        } else {
+          best.textContent = '£' + sum.toFixed(2) + '/month';
+          price.append('From ', best, ', or start free.');
+        }
+      }));
+    }
+
+    $$('[data-billing]').forEach((b) => b.addEventListener('click', () => {
+      const y = b.dataset.billing === 'y';
+      $$('[data-billing]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      $$('.price-card [data-m]').forEach((el) => { el.textContent = y ? el.dataset.y : el.dataset.m; });
+      $$('.price-card [data-per]').forEach((el) => { el.textContent = y ? '/year' : '/month'; });
+      $$('.price-card [data-note-m]').forEach((el) => { el.textContent = y ? el.dataset.noteY : el.dataset.noteM; });
+    }));
+  }
+
   function initServiceWorker() {
     if (!('serviceWorker' in navigator) || location.protocol !== 'https:') return;
     addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
@@ -730,6 +787,7 @@
   initReadiness();
   initTabs();
   initApps();
+  initCrown();
   initMissionWords();
   initJoinForm();
   initNewsForm();

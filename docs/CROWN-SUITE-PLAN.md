@@ -71,10 +71,10 @@ Free access needs only an account. The paywall is a **soft gate**: a friendly sh
 |---|---|---|
 | MedLex | Modules 1–3, word-part decoder, 10 practice items a day, 6 illustrated guides | All 26 modules and 1,480 terms, all 56 guides, worksheets and exports, unlimited spaced practice, certificate |
 | Carecraft | Daily 60-second scenario, 6 of 30 lessons, 3 practice activities, core toolkit | All 30 lessons and 90 visual guides, all 22 activities and simulations, Smart Review, certificate |
-| Serein | **All 15 practices, check-ins, journal and the "Get help" support pages, always free** | Journeys, routine builder, insights history, team toolkit and shared sessions, infographic library, certificate of participation |
+| Serein | 3 starter practices (Breathing Tide, Here & Now, Seated Reset), one check-in a day, and the "Get help" support page (always free, for safety) | All 15 practices, journal, journeys, routine builder, insights, team toolkit, infographic library, certificate of participation |
 | Evinca | Free story and existing levels (unchanged) | Crown Pass members get 15% off recognition assessment fees |
 
-Serein's core stays free on purpose: support for people who are struggling should never sit behind a payment.
+Decision (17 Oct 2026): Serein practices are paid beyond 3 starters. The "Get help" support page stays free for safety.
 
 Honest limit: because these apps run in the browser and work offline, a technical user could bypass a browser-only gate. Phase 5 closes this by moving premium content (MedLex modules 4–26, Carecraft lessons 7–30 and their guides, Serein journeys) into the private storage bucket that Evinca already uses for Learn & tools, delivered only to entitled accounts.
 
