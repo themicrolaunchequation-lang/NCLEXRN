@@ -2,33 +2,88 @@
   "id": "/",
   "name": "Healthcare Crown Academy",
   "short_name": "Crown Academy",
-  "description": "Free learning and well-being apps (MedLex, Carecraft and Serein), career tools and Evinca: evidence-based recognition for healthcare professionals worldwide.",
+  "description": "Five apps, one account: MedLex (medical terminology), Lumen (clinical study studio), Carecraft (practice scenarios), Serein (well-being) and Evinca (evidence-based recognition) for healthcare professionals worldwide.",
   "lang": "en-GB",
   "dir": "ltr",
   "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone"],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
+  ],
   "orientation": "any",
   "background_color": "#050A18",
   "theme_color": "#050A18",
-  "categories": ["education", "medical", "productivity"],
+  "categories": [
+    "education",
+    "medical",
+    "productivity"
+  ],
   "icons": [
-    { "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/assets/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "/assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
   ],
   "screenshots": [
-    { "src": "/assets/img/screenshot-wide.png", "sizes": "1440x900", "type": "image/png", "form_factor": "wide", "label": "Healthcare Crown Academy home page" },
-    { "src": "/assets/img/screenshot-mobile.png", "sizes": "390x844", "type": "image/png", "form_factor": "narrow", "label": "Healthcare Crown Academy on mobile" }
+    {
+      "src": "/assets/img/screenshot-wide.png",
+      "sizes": "1440x900",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Healthcare Crown Academy home page"
+    },
+    {
+      "src": "/assets/img/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Healthcare Crown Academy on mobile"
+    }
   ],
   "shortcuts": [
-    { "name": "Carecraft: today's 60-second scenario", "short_name": "Carecraft", "url": "/carecraft", "icons": [{ "src": "/carecraft/img/icon-192.png", "sizes": "192x192" }] },
-    { "name": "MedLex: decode medical terms", "short_name": "MedLex", "url": "/medlex", "icons": [{ "src": "/medlex/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Lumen: clinical study studio", "short_name": "Lumen", "url": "/lumen", "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Serein: take a small pause", "short_name": "Serein", "url": "/serein", "icons": [{ "src": "/serein/assets/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Join Evinca", "short_name": "Join", "url": "/#join", "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Recognition readiness check", "short_name": "Readiness", "url": "/#readiness", "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }] }
+    {
+      "name": "Join Evinca",
+      "short_name": "Join",
+      "url": "/#join",
+      "icons": [
+        {
+          "src": "/assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Recognition readiness check",
+      "short_name": "Readiness",
+      "url": "/#readiness",
+      "icons": [
+        {
+          "src": "/assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
   ]
 }

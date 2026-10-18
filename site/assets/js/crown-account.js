@@ -1,4 +1,4 @@
-/* Crown Suite account: one sign-in across healthcarecrownacademy.co.uk, MedLex, Carecraft, Serein and Evinca.
+/* Crown Suite account: one sign-in across healthcarecrownacademy.co.uk, MedLex, Carecraft, Serein, Lumen and Evinca.
    Reads the shared session cookie written by the account site (hca-auth.0, .1, ...), refreshes it when it
    expires, asks the database what this person can open (crown_entitlements) and shows an account button.
    Exposes window.HCA = { ready: Promise<entitlements>, signIn(), upgrade(app) } for app paywalls.
@@ -10,7 +10,7 @@
   const ACCOUNT = 'https://account.healthcarecrownacademy.co.uk/en';
   const COOKIE = 'hca-auth', CHUNK = 3000, DOMAIN = 'healthcarecrownacademy.co.uk';
   const onCrown = location.hostname === DOMAIN || location.hostname.endsWith('.' + DOMAIN);
-  const FREE = { signed_in: false, admin: false, medlex: 'free', carecraft: 'free', serein: 'free', crown: false };
+  const FREE = { signed_in: false, admin: false, medlex: 'free', carecraft: 'free', serein: 'free', lumen: 'free', crown: false };
 
   const readCookie = (n) => { const c = document.cookie.split('; ').find((x) => x.startsWith(n + '=')); return c ? decodeURIComponent(c.slice(n.length + 1)) : null; };
   const writeCookie = (n, v, age) => { document.cookie = `${n}=${encodeURIComponent(v)}; ${onCrown ? 'Domain=.' + DOMAIN + '; ' : ''}Path=/; Max-Age=${age}; Secure; SameSite=Lax`; };
@@ -49,9 +49,9 @@
     location.reload();
   }
 
-  const css = `.hca-acct{position:relative;font:600 14px/1.2 Inter,Geist,system-ui,sans-serif;z-index:2147483000}
-.hca-acct.floating{position:fixed;left:16px;bottom:16px}
-.hca-acct-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:4px 14px 4px 4px;border-radius:999px;border:1px solid rgba(232,193,112,.55);background:#0B1530;color:#F8F5EF;cursor:pointer;box-shadow:0 8px 24px -10px rgba(5,10,24,.6)}
+  const css = `.hca-acct{position:relative;font:600 14px/1.2 Inter,Geist,system-ui,sans-serif;z-index:999;white-space:nowrap}
+.hca-acct.floating{position:fixed;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.hca-acct-btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:4px 14px 4px 4px;border-radius:999px;border:1px solid rgba(232,193,112,.55);background:#0B1530;color:#F8F5EF;cursor:pointer;box-shadow:0 8px 24px -10px rgba(5,10,24,.6)}
 .hca-acct-btn.signed-out{padding:0 16px;background:linear-gradient(135deg,#F3D99B,#D4A445 60%,#B8862B);color:#1B1404;border:0}
 .hca-acct-btn:focus-visible{outline:3px solid #F1C56E;outline-offset:3px}
 .hca-av{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#F3D99B,#B8862B);color:#1B1404;font-weight:700}
@@ -63,9 +63,17 @@
 .hca-menu a,.hca-menu button{display:block;width:100%;text-align:left;padding:10px;border-radius:10px;color:#EEF1F8;background:none;border:0;font:inherit;text-decoration:none;cursor:pointer}
 .hca-menu a:hover,.hca-menu button:hover,.hca-menu a:focus-visible,.hca-menu button:focus-visible{background:rgba(243,217,155,.12);outline:none}
 .hca-menu .gold{color:#F3D99B}
-@media (max-width:760px){.hca-acct.floating{bottom:84px}}
-.hca-acct.floating.right{left:auto;right:16px;bottom:84px}
+.hca-acct.floating.right{left:auto;right:calc(16px + env(safe-area-inset-right,0px))}
 .hca-acct.floating.right .hca-menu{left:auto;right:0}
+.hca-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hca-ico{width:20px;height:20px;display:none}
+@media (max-width:760px){
+.hca-acct.floating,.hca-acct.floating.right{top:calc(8px + env(safe-area-inset-top,0px));bottom:auto;left:auto;right:calc(8px + env(safe-area-inset-right,0px))}
+.hca-acct.floating .hca-acct-btn{width:44px;height:44px;min-height:44px;padding:0;justify-content:center;opacity:.92}
+.hca-acct.floating .hca-acct-btn .hca-tag,.hca-acct.floating .hca-acct-btn .hca-lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hca-acct.floating .hca-ico{display:block}
+.hca-acct.floating .hca-menu,.hca-acct.floating.right .hca-menu{left:auto;right:0;bottom:auto;top:calc(100% + 8px);max-width:calc(100vw - 16px)}
+}
 @media print{.hca-acct{display:none}}
 .hca-pay{width:min(460px,calc(100% - 24px));max-width:100%;padding:0;border:1px solid rgba(232,193,112,.5);border-radius:24px;background:radial-gradient(120% 90% at 50% 0%,#15254D,#081128 70%);color:#EEF1F8;font:400 15px/1.5 Inter,Geist,system-ui,sans-serif;box-shadow:0 30px 80px rgba(5,10,24,.6)}
 .hca-pay::backdrop{background:rgba(5,10,24,.72);backdrop-filter:blur(4px)}
@@ -83,13 +91,14 @@
 
   function render(host, e) {
     const initials = (e.name || e.email || '?').split(/[\s@.]+/).filter(Boolean).slice(0, 2).map((x) => x[0].toUpperCase()).join('');
-    const plan = e.admin ? 'Admin' : e.crown ? 'Crown Pass' : ['medlex', 'carecraft', 'serein'].some((k) => e[k] === 'premium') ? 'Member+' : 'Free';
+    const plan = e.admin ? 'Admin' : e.crown ? 'Crown Pass' : ['medlex', 'carecraft', 'serein', 'lumen'].some((k) => e[k] === 'premium') ? 'Member+' : 'Free';
     host.innerHTML = '';
     const btn = document.createElement('button');
     btn.type = 'button';
     if (!e.signed_in) {
       btn.className = 'hca-acct-btn signed-out';
-      btn.textContent = 'Sign in';
+      btn.setAttribute('aria-label', 'Sign in');
+      btn.innerHTML = '<svg class="hca-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 4-6.5 8-6.5s7.2 2.3 8 6.5"/></svg><span class="hca-lbl">Sign in</span>';
       btn.addEventListener('click', () => { location.href = signInURL(); });
       host.append(btn);
       return;
@@ -113,6 +122,7 @@
     link('MedLex', 'https://medlex.healthcarecrownacademy.co.uk/');
     link('Carecraft', 'https://carecraft.healthcarecrownacademy.co.uk/');
     link('Serein', 'https://serein.healthcarecrownacademy.co.uk/');
+    link('Lumen', 'https://lumen.healthcarecrownacademy.co.uk/');
     link('Evinca', 'https://evinca.healthcarecrownacademy.co.uk/en');
     if (e.admin) link('Crown admin', `${ACCOUNT}/account/admin`, 'gold');
     const out = document.createElement('button');

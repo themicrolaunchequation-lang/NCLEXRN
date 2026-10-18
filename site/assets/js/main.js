@@ -3,7 +3,7 @@
 (() => {
   'use strict';
 
-  const cfg = Object.assign({ contactEmail: 'themicrolaunchequation@gmail.com' }, window.HCA_CONFIG || {});
+  const cfg = Object.assign({ contactEmail: 'hello@healthcarecrownacademy.co.uk' }, window.HCA_CONFIG || {});
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -104,6 +104,7 @@
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       btn.querySelector('use').setAttribute('href', open ? '#i-close' : '#i-menu');
       menu.hidden = !open;
+      document.documentElement.classList.toggle('menu-open', open);
     };
     btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
     menu.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
@@ -653,7 +654,7 @@
         strong.textContent = right ? 'Strongest choice. ' : 'A useful comparison. ';
         lead.append(strong, btn.dataset.why + (right ? '' : ' The strongest choice was B: ' + strongest.dataset.why));
         const more = document.createElement('a');
-        more.href = '/carecraft';
+        more.href = 'https://carecraft.healthcarecrownacademy.co.uk/';
         more.textContent = 'Try today’s scenario in Carecraft →';
         result.append(lead, more);
         strongest.focus({ preventScroll: true });
@@ -679,7 +680,7 @@
         term.textContent = 'Tachycardia';
         def.append(term, ': the heart is beating faster than expected.');
         const more = document.createElement('a');
-        more.href = '/medlex';
+        more.href = 'https://medlex.healthcarecrownacademy.co.uk/';
         more.textContent = 'Decode 1,480 more in MedLex →';
         result.append(sum, def, more);
       }));
@@ -709,6 +710,76 @@
     }
   }
 
+  /* ---------- Reserve a plan (pricing) ---------- */
+  function initReserve() {
+    const form = $('[data-reserve-form]');
+    if (!form) return null;
+    const wrap = $('#reserve');
+    const body = $('[data-reserve-body]', form);
+    const success = $('[data-reserve-success]', form);
+    const status = $('[data-reserve-status]', form);
+    const submit = $('[data-reserve-submit]', form);
+    const select = $('[data-reserve-plan]', form);
+    const email = form.elements.email;
+    const err = $('[data-error-for="email"]', form);
+    const planName = () => select.options[select.selectedIndex].text;
+    const fallback = (lead, linkText) => {
+      status.innerHTML = '';
+      const a = document.createElement('a');
+      a.className = 'inline-link';
+      a.href = mailtoFallback('Reserve a plan: ' + planName(), `Please reserve the ${planName()} plan for ${email.value.trim()}.`);
+      a.textContent = linkText;
+      status.append(lead, a, '.');
+    };
+    email.addEventListener('input', () => { email.removeAttribute('aria-invalid'); email.removeAttribute('aria-describedby'); err.textContent = ''; });
+    select.addEventListener('change', () => {
+      $$('.price-card[data-plan]').forEach((c) => c.classList.toggle('is-picked', c.dataset.plan === select.value));
+    });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      status.classList.remove('is-error');
+      const value = email.value.trim().toLowerCase();
+      if (!EMAIL_RE.test(value)) {
+        err.textContent = 'Please enter a valid email address.';
+        err.id = 'err-r-email';
+        email.setAttribute('aria-invalid', 'true');
+        email.setAttribute('aria-describedby', err.id);
+        email.focus();
+        return;
+      }
+      const isBot = String(form.elements.website.value || '').trim() !== '';
+      if (!backendReady()) { status.classList.add('is-error'); fallback('Online reservations are not available yet. ', 'Email us to reserve instead'); return; }
+      form.classList.add('is-loading');
+      submit.disabled = true;
+      try {
+        if (!isBot) await subscribe(value, 'plan-' + select.value);
+        if (form.elements.updates.checked && !isBot) {
+          try { await subscribe(value, 'hca-home-plan-updates'); } catch (_) { /* the reservation already landed */ }
+        }
+        $('[data-reserve-name]', form).textContent = planName();
+        body.hidden = true;
+        success.hidden = false;
+        success.focus();
+      } catch (_) {
+        status.classList.add('is-error');
+        fallback('Sorry, we could not save that (are you offline?). Please try again, or ', 'email us instead');
+      } finally {
+        form.classList.remove('is-loading');
+        submit.disabled = false;
+      }
+    });
+    return {
+      select: (plan) => { if (select.querySelector(`option[value="${plan}"]`)) select.value = plan; },
+      open: () => {
+        body.hidden = false;
+        success.hidden = true;
+        wrap.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'center' });
+        email.focus({ preventScroll: true });
+      }
+    };
+  }
+
   /* ---------- Crown Suite: app launcher, crown builder, pricing ---------- */
   function initCrown() {
     const launcher = $('[data-launcher]');
@@ -728,11 +799,38 @@
       });
     }
 
-    const prices = { medlex: [6.99, 49.99], lumen: [5.99, 49.99], carecraft: [4.99, 49.99], serein: [4.99, 24.99] };
+    // [monthly, yearly] in GBP. Keep in step with the price cards in home.html.
+    const prices = { medlex: [6.99, 49.99], lumen: [5.99, 42.99], carecraft: [4.99, 35.99], serein: [4.99, 35.99], crown: [9.99, 69.99] };
+    const PLANS = ['crown', 'medlex', 'carecraft', 'serein', 'lumen'];
+    const reserve = initReserve();
+    const pickPlan = (plan, scroll) => {
+      if (!PLANS.includes(plan)) return;
+      $$('.price-card[data-plan]').forEach((c) => c.classList.toggle('is-picked', c.dataset.plan === plan));
+      if (reserve) reserve.select(plan);
+      const card = document.getElementById('plan-' + plan);
+      if (scroll && card) card.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'center' });
+    };
+    $$('[data-reserve]').forEach((b) => b.addEventListener('click', () => {
+      pickPlan(b.dataset.reserve, false);
+      if (reserve) reserve.open();
+    }));
+    const wanted = new URLSearchParams(location.search).get('plan');
+    if (wanted && PLANS.includes(wanted)) {
+      pickPlan(wanted, false);
+      // Let the browser settle on #pricing first, then bring the chosen card into view.
+      setTimeout(() => pickPlan(wanted, true), 350);
+    }
     const names = { medlex: 'MedLex', lumen: 'Lumen', carecraft: 'Carecraft', serein: 'Serein', evinca: 'Evinca' };
     const preview = $('.crown-preview');
     if (preview) {
-      const label = $('[data-crown-label]'), price = $('[data-crown-price]');
+      const label = $('[data-crown-label]'), price = $('[data-crown-price]'), cta = $('[data-crown-cta]');
+      let ctaPlan = null;
+      if (cta) cta.addEventListener('click', (e) => {
+        if (!ctaPlan) return;
+        e.preventDefault();
+        history.replaceState(null, '', '?plan=' + ctaPlan + '#pricing');
+        pickPlan(ctaPlan, true);
+      });
       const chosen = new Set();
       $$('[data-interests] .interest').forEach((b) => b.addEventListener('click', () => {
         const app = b.dataset.app;
@@ -740,15 +838,17 @@
         b.setAttribute('aria-pressed', String(chosen.has(app)));
         Object.keys(names).forEach((k) => preview.toggleAttribute('data-' + k, chosen.has(k)));
         const paid = [...chosen].filter((k) => prices[k]);
+        ctaPlan = paid.length >= 2 ? 'crown' : paid.length === 1 ? paid[0] : null;
+        if (cta) cta.setAttribute('href', ctaPlan ? '?plan=' + ctaPlan + '#pricing' : '#pricing');
         if (!chosen.size) { label.textContent = 'Choose an interest to light your crown.'; price.textContent = ''; return; }
         label.textContent = 'Your crown: ' + [...chosen].map((k) => names[k]).join(' + ');
         const sum = paid.reduce((n, k) => n + prices[k][0], 0);
         price.innerHTML = '';
         if (!paid.length) { price.textContent = 'Evinca stories are free. Start with a free account.'; return; }
         const best = document.createElement('strong');
-        if (paid.length >= 2 && sum > 9.99) {
-          best.textContent = 'Crown Pass: £9.99/month';
-          price.append('Separately £' + sum.toFixed(2) + '/month. ', best, ' covers all of it.');
+        if (paid.length >= 2) {
+          best.textContent = 'Crown Pass: £' + prices.crown[0] + '/month';
+          price.append('We recommend the ', best, '. It covers every app; separately these cost £' + sum.toFixed(2) + '/month.');
         } else {
           best.textContent = '£' + sum.toFixed(2) + '/month';
           price.append('From ', best, ', or start free.');

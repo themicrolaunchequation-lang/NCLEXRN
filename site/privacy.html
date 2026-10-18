@@ -31,11 +31,12 @@
   <article class="container prose">
     <p class="eyebrow">Legal</p>
     <h1 class="section-title">Privacy notice</h1>
-    <p class="prose-meta">Last updated: 13 October 2026</p>
+    <p class="prose-meta">Last updated: 18 October 2026</p>
 
     <h2>Who we are</h2>
     <p>This website is run by <strong>HEALTHCARE CROWN ACADEMY LTD</strong>, a private company limited by shares, registered in England and Wales with company number 17501904 (“we”, “us”). We are the controller of the personal data described in this notice. <span data-registered-office></span> <span data-ico-line></span></p>
-    <p>Contact: <a href="mailto:themicrolaunchequation@gmail.com" data-contact-email>themicrolaunchequation@gmail.com</a></p>
+    <!-- TODO: add the ICO registration number (ZB…) to icoNumber in /assets/js/config.js once issued; it fills data-ico-line automatically. -->
+    <p>Contact: <a href="mailto:hello@healthcarecrownacademy.co.uk" data-contact-email>hello@healthcarecrownacademy.co.uk</a></p>
 
     <h2>What we collect</h2>
     <ul>
@@ -62,7 +63,15 @@
     <p>Where a provider processes data outside the UK, we rely on the safeguards UK data protection law requires, such as the UK International Data Transfer Addendum.</p>
 
     <h2>Cookies and storage</h2>
-    <p>We don't use advertising or analytics cookies. Your browser stores your light or dark theme choice and, if you install the app, a copy of the site for offline use. Neither is used to track you.</p>
+    <p>We don't use advertising or analytics cookies. Nothing we store is used to track you.</p>
+    <ul>
+      <li><strong>Account cookie (<code>hca-auth</code>):</strong> if you sign in, we set a strictly necessary cookie named <code>hca-auth</code> (split into parts such as <code>hca-auth.0</code>) on <code>.healthcarecrownacademy.co.uk</code>. It holds your sign-in session so one account works across this site and every app subdomain. It lasts up to a year, or until you sign out.</li>
+      <li><strong>App progress:</strong> MedLex, Carecraft, Serein and Lumen each keep your progress, notes and settings in your browser's local storage on their own subdomain (for example <code>medlex.healthcarecrownacademy.co.uk</code>). This stays on your device; clearing your browser data removes it.</li>
+      <li><strong>Preferences and offline use:</strong> your light or dark theme choice and, if you install an app, a copy of it for offline use.</li>
+    </ul>
+
+    <h2>Lumen and AI providers</h2>
+    <p>Lumen's optional AI features can use an AI provider key that you add yourself (for example from OpenAI, Anthropic or Google). Your key is stored in your browser, and your questions and the source text you choose are sent directly from your browser to that provider. They do not pass through our servers, and the provider's own privacy terms apply to that processing.</p>
 
     <h2>How long we keep it</h2>
     <p>We keep enquiries for as long as we need them to respond and follow up, and no longer than 24 months after our last contact with you. We keep subscriber emails until you unsubscribe.</p>
@@ -79,7 +88,7 @@
 <footer class="site-footer">
   <div class="container footer-legal">
     <p><strong>HEALTHCARE CROWN ACADEMY LTD</strong> is a private company limited by shares, registered in England and Wales, company number 17501904. <span data-registered-office></span> <span data-ico-line></span></p>
-    <p class="copyright">© <span data-year>2026</span> Healthcare Crown Academy Ltd. <a class="inline-link" href="/">Home</a></p>
+    <p class="copyright">© <span data-year>2026</span> Healthcare Crown Academy Ltd. <a class="inline-link" href="/">Home</a> · <a class="inline-link" href="/privacy">Privacy</a> · <a class="inline-link" href="/terms">Terms</a> · <a class="inline-link" href="/refunds">Subscriptions &amp; refunds</a></p>
   </div>
 </footer>
 </body>

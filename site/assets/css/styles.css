@@ -869,7 +869,7 @@ input[aria-invalid="true"]{border-color:#F87171;box-shadow:0 0 0 4px rgba(248,11
 .price-crown::before{content:"Best value";position:absolute;top:-12px;right:16px;padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:700;background:linear-gradient(135deg,var(--gold-300),var(--gold-500));color:#1B1404}
 .code-row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:center;margin-top:28px;text-align:center}
 .code-note{flex-basis:100%;font-size:.85rem;color:var(--text-soft)}
-@media (max-width:1100px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.price-crown{grid-column:1/-1}}
+@media (max-width:1100px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.price-grid{grid-template-columns:minmax(0,1fr)}}
 
 /* MedLex becomes sapphire */
@@ -878,3 +878,42 @@ input[aria-invalid="true"]{border-color:#F87171;box-shadow:0 0 0 4px rgba(248,11
 :root[data-theme="dark"] .app-medlex{--app-text:#A9BCFF}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .app-medlex{--app-text:#A9BCFF}}
 @media (prefers-reduced-motion:reduce){.app-dock{animation:none}.gem{transition:none}}
+
+/* ---------- Plan reservations, crown builder ticks, Lumen/Evinca cards, header a11y ---------- */
+.price-save{margin:0;font-size:.85rem;font-weight:600;color:var(--teal)}
+.price-crown .price-save{color:#7BE8D6}.price-crown .price-save-crown{color:#F3D99B}
+.price-card.is-picked{outline:3px solid var(--jc,var(--gold-500));outline-offset:3px}
+.price-card.is-picked::after{content:"Selected";position:absolute;top:-12px;left:16px;padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:700;background:var(--btn-primary-bg);color:var(--btn-primary-fg)}
+.price-crown.is-picked{outline-color:#F3D99B}
+.reserve{max-width:720px;margin:32px auto 0;text-align:center;scroll-margin-top:calc(var(--header-h) + 16px)}
+.reserve-form{padding:clamp(20px,3vw,32px);border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);text-align:left;display:block}
+.reserve-form h3{font-family:var(--font-display);font-weight:500;font-size:1.5rem}
+.reserve-lede{margin-top:6px;color:var(--text-muted)}
+.reserve-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:14px;margin:18px 0 12px}
+.reserve-form .consent{margin:4px 0 16px}
+.reserve-form .form-fine{margin-top:12px}
+.reserve-form.is-loading .btn-label{opacity:.6}
+.reserve-success:focus{outline:none}
+.reserve-success h3{margin-bottom:6px}
+.reserve .code-note{margin-top:14px}
+@media (max-width:560px){.reserve-fields{grid-template-columns:minmax(0,1fr)}}
+.interest{position:relative}
+.interest[aria-pressed="true"]::after{content:"\2713";position:absolute;top:50%;right:18px;transform:translateY(-50%);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--jc);color:#fff;font-weight:700;font-size:15px}
+.interest[aria-pressed="true"]{padding-right:60px}
+.app-mini-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.app-mini{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;align-items:start;padding:20px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);color:var(--text);transition:border-color .2s,transform .3s var(--ease-out)}
+.app-mini:hover{border-color:var(--jc);transform:translateY(-2px)}
+.app-mini .jewel{margin-top:6px;width:16px;height:16px}
+.app-mini-text{display:grid;gap:4px}.app-mini-text .card-kicker{margin:0}.app-mini-text b{font-size:1.1rem;font-weight:600}.app-mini-text small{color:var(--text-muted);font-size:.92rem}
+.app-mini-go{grid-column:2;display:inline-flex;align-items:center;gap:.4em;font-weight:600;color:var(--accent)}
+.app-mini-go .i{width:16px;height:16px}
+@media (max-width:760px){.app-mini-row{grid-template-columns:minmax(0,1fr)}}
+.site-header:not(.is-scrolled) :focus-visible,.mobile-menu :focus-visible{outline:3px solid #F1C56E;outline-offset:3px}
+.site-header :is(.icon-btn,.btn):focus-visible{outline:3px solid #F1C56E;outline-offset:3px}
+@media (max-width:960px){.site-header .icon-btn{width:44px;height:44px}}
+html.menu-open,html.menu-open body{overflow:hidden}
+@media (max-width:960px){.mobile-menu{max-height:calc(100dvh - var(--header-h));overflow-y:auto;overscroll-behavior:contain}}
+.reserve-form .form-status{margin-top:10px;font-size:.9rem}
+.reserve-form .form-status.is-error,.reserve-form .field-error{color:#B42318}
+:root[data-theme="dark"] .reserve-form .form-status.is-error,:root[data-theme="dark"] .reserve-form .field-error{color:#FCA5A5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .reserve-form .form-status.is-error,:root:not([data-theme="light"]) .reserve-form .field-error{color:#FCA5A5}}
