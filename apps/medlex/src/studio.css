@@ -1,0 +1,17 @@
+/* Learning Studio entry points inside MedLex (the studio itself is apps/shared/hca-studio.css) */
+.ms-row,.ms-cta{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 12px;border:1px solid var(--hs-j,#2541A8);border-radius:999px;background:transparent;color:var(--hs-j,#2541A8);font:inherit;font-size:14px;font-weight:600;line-height:1.15;cursor:pointer;overflow:hidden;transition:transform .2s,box-shadow .2s,background .2s}
+.ms-row svg,.ms-cta svg{width:16px;height:16px;flex:none}
+.ms-row{margin-top:10px}
+.ms-row:hover,.ms-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px -10px var(--hs-j,#2541A8)}
+.ms-cta{background:var(--hs-j,#2541A8);color:#fff;margin-right:10px}
+:root[data-hs-theme=dark] .ms-cta{background:var(--hs-j,#8FA7FF);color:#0B1A2B}
+.ms-cta.is-two{flex-wrap:wrap;column-gap:8px;row-gap:0;padding-block:6px}
+.ms-cta.is-two small{flex-basis:100%;margin:0 0 0 24px;font-size:12px;font-weight:500;opacity:.9;max-width:26ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ms-meter{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(127,127,127,.25)}
+.ms-meter b{display:block;height:100%;background:currentColor}
+.ms-row.is-busy,.ms-cta.is-busy{opacity:.7;cursor:progress}
+.ms-row:focus-visible,.ms-cta:focus-visible{outline:2px solid var(--hs-j,#2541A8);outline-offset:2px}
+.ms-toast{position:fixed;left:50%;bottom:24px;z-index:1900;max-width:calc(100% - 32px);padding:12px 18px;border-radius:14px;background:#10253A;color:#fff;font-size:14px;box-shadow:0 14px 34px -10px rgba(0,0,0,.5);opacity:0;transform:translate(-50%,12px);pointer-events:none;transition:opacity .25s,transform .3s}
+.ms-toast.is-on{opacity:1;transform:translate(-50%,0)}
+html[data-hs-motion=off] .ms-row,html[data-hs-motion=off] .ms-cta,html[data-hs-motion=off] .ms-toast{transition:none}
+@media (max-width:760px){.ms-cta{width:100%;justify-content:center;margin:0 0 10px}.header-actions .ms-cta+a{width:100%}}

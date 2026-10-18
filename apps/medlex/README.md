@@ -15,3 +15,9 @@ Published at https://healthcarecrownacademy.co.uk/medlex (built into `site/medle
 3. `node build-web.mjs`, then commit `site/medlex`.
 
 The build stops with a clear message if the app's code changes in a way its patches no longer match (poster paths, manifest link, worker registration).
+
+## Learning Studio
+
+Every module opens as a slide journey (`src/studio.js`, data from `src/studio-data.mjs`, engine in `apps/shared/hca-studio.*`).
+The web build adds a lazily loaded `studio.<hash>.js`; `src/studio-entry.js` (in the shell bundle) injects "Learn as slides"
+on the Learn page, each module row and each module page.

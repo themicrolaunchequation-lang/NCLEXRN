@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { studioData } from './src/studio-data.mjs';
 
 const VERSION = '4.0.1', BASE = '/medlex/', SCOPE = '/', SITE = 'https://medlex.healthcarecrownacademy.co.uk', HOME = 'https://healthcarecrownacademy.co.uk/';
 const OUT = path.resolve(process.argv[2] || '../../site/medlex');
@@ -38,7 +39,7 @@ let css = styles.join('\n').replace(/url\(["']?data:font\/woff2;base64,([A-Za-z0
   if (!files.includes(BASE + rel)) write(rel, buf);
   return `url("${rel}")`;
 });
-css += '\n' + read('src/hook.css') + '\n' + read('../shared/hca-shell.css') + '\n' + read('src/day.css');
+css += '\n' + read('src/hook.css') + '\n' + read('../shared/hca-shell.css') + '\n' + read('src/day.css') + '\n' + read('../shared/hca-studio.css') + '\n' + read('src/studio.css');
 
 let js = scripts[0];
 js = patch(js, '"./infographics/', `"${BASE}infographics/`, 'poster paths', 56);
@@ -79,14 +80,17 @@ const hookIds = ['pericarditis', 'tachycardia', 'hepatomegaly', 'hyperglycaemia'
 const hookTerms = hookIds.map(id => TERMS.find(t => t.id === id)).filter(t => t && t.parts.length > 1).map(({ term, plain, parts }) => ({ term, plain, parts }));
 const hook = `window.MEDLEX_HOOK_TERMS=${JSON.stringify(hookTerms)};\n` + read('src/hook.js');
 const partsMap = Object.fromEntries(TERMS.filter(t => t.parts && t.parts.length > 1).map(t => [t.id, t.parts.filter(p => p.type !== 'vowel').map(p => [p.text, p.type[0], p.meaning])]));
-const shellJs = `window.MEDLEX_PARTS=${JSON.stringify(partsMap)};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js');
+// Learning Studio: the engine, the module data and the deck builder load on first use; only the small entry script is in the shell.
+const studioJs = `window.MEDLEX_STUDIO=${JSON.stringify(studioData(BASE))};\n` + read('../shared/hca-studio.js') + '\n' + read('src/studio.js');
+const studioName = `studio.${hash(studioJs)}.js`;
+const shellJs = `window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_STUDIO_SRC=${JSON.stringify(BASE + studioName)};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');
 
 for (const f of fs.readdirSync(PUBLIC + '/infographics')) write('infographics/' + f, fs.readFileSync(`${PUBLIC}/infographics/${f}`));
 for (const f of ['icon-192.png', 'icon-512.png', 'icon.svg']) write(f, fs.readFileSync(`${PUBLIC}/${f}`));
 for (const f of ['og-image.png', 'apple-touch-icon.png', 'maskable-512.png']) if (fs.existsSync('web/' + f)) write('img/' + f, fs.readFileSync('web/' + f));
 
 const cssName = `app.${hash(css)}.css`, jsName = `app.${hash(js)}.js`, hookName = `hook.${hash(hook)}.js`, shellName = `shell.${hash(shellJs)}.js`;
-write(cssName, css); write(jsName, js); write(hookName, hook); write(shellName, shellJs);
+write(cssName, css); write(jsName, js); write(hookName, hook); write(shellName, shellJs); write(studioName, studioJs);
 
 write('manifest.webmanifest', JSON.stringify({
   id: BASE, name: 'MedLex · Healthcare Crown Academy', short_name: 'MedLex', description,
@@ -122,8 +126,8 @@ write('index.html', `<!DOCTYPE html>
 </html>
 `);
 
-const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs)}`;
-const shell = [SCOPE, BASE + cssName, BASE + jsName, BASE + hookName, BASE + shellName, BASE + 'manifest.webmanifest', BASE + 'icon-192.png', BASE + 'icon-512.png', ...files.filter(f => f.includes('/fonts/'))];
+const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs + studioJs)}`;
+const shell = [SCOPE, BASE + cssName, BASE + jsName, BASE + hookName, BASE + shellName, BASE + studioName, BASE + 'manifest.webmanifest', BASE + 'icon-192.png', BASE + 'icon-512.png', ...files.filter(f => f.includes('/fonts/'))];
 const posters = files.filter(f => f.includes('/infographics/'));
 fs.writeFileSync(path.join(OUT, 'sw.js'), `/* MedLex ${VERSION} offline worker for ${SCOPE}: app shell on install, posters cached as they are viewed. */
 const CACHE=${JSON.stringify(cache)},SHELL=${JSON.stringify(shell)},POSTERS=${JSON.stringify(posters)};
@@ -137,4 +141,4 @@ self.addEventListener('fetch',e=>{
 });
 `);
 
-console.log(JSON.stringify({ out: OUT, js: jsName, jsBytes: Buffer.byteLength(js), css: cssName, cssBytes: Buffer.byteLength(css), hookTerms: hookTerms.length, files: files.length }));
+console.log(JSON.stringify({ out: OUT, studio: studioName, studioBytes: Buffer.byteLength(studioJs), js: jsName, jsBytes: Buffer.byteLength(js), css: cssName, cssBytes: Buffer.byteLength(css), hookTerms: hookTerms.length, files: files.length }));
