@@ -304,6 +304,16 @@
         }
       ],
       "destination": "/lumen"
+    },
+    {
+      "source": "/",
+      "missing": [
+        {
+          "type": "host",
+          "value": "(medlex|carecraft|serein|lumen)\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "/home"
     }
   ],
   "redirects": [
@@ -350,6 +360,11 @@
       ],
       "destination": "https://lumen.healthcarecrownacademy.co.uk/",
       "permanent": false
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
