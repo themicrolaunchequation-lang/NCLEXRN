@@ -83,6 +83,7 @@
     if (!dark && !t && mqDark && mqDark.matches && !/light/.test(getComputedStyle(root).colorScheme || '')) dark = true;
     if (/^light$/.test(t)) dark = false;
     root.dataset.hsTheme = dark ? 'dark' : 'light';
+    if (cfg && cfg.mcrest) $$('.hs-mbrand img').forEach(i => { const u = cfg.mcrest(); if (i.getAttribute('src') !== u) i.setAttribute('src', u); });
   }
   function motionOff() {
     if (mqMotion && mqMotion.matches) return true;
@@ -171,7 +172,7 @@
     if (own) own.classList.add('hs-mbrand');
     if (!own && !$('.hs-mbrand', top)) {
       const mb = d.createElement('a'); mb.className = 'hs-mbrand'; mb.href = cfg.home || '#'; mb.setAttribute('aria-label', cfg.name);
-      mb.innerHTML = `<span class="hs-crest">${crestHTML || ''}</span><span>${esc(cfg.name)}</span>`; top.prepend(mb);
+      mb.innerHTML = `<span class="hs-crest">${cfg.mcrest ? `<img src="${esc(cfg.mcrest())}" alt="" width="34" height="34">` : (crestHTML || '')}</span><span>${esc(cfg.name)}</span>`; top.prepend(mb);
     }
     if (search && (search.parentNode !== top || search.nextSibling !== right)) top.insertBefore(search, right);
     { const ref = search || right; if (crumbs && crumbs.parentNode === top && crumbs.nextSibling !== ref) top.insertBefore(crumbs, ref); }

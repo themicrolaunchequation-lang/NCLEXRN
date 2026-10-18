@@ -51,7 +51,7 @@ function ccAfterRender(){
 }
 function ccShellInit(){
  const S=window.HCAShell;if(!S)return;
- S.init({app:'carecraft',observe:'body',name:'Carecraft',dayName:'My Day',home:'#/dashboard',help:()=>openAppGuide(0),
+ S.init({app:'carecraft',observe:'body',mcrest:()=>ccIsDark()?HCA_CREST_DARK:HCA_CREST,name:'Carecraft',dayName:'My Day',home:'#/dashboard',help:()=>openAppGuide(0),
   sel:{side:'#sidebar',brand:'.brand',navs:['nav'],top:'.topbar',crumbs:'.breadcrumb',search:'.search-launch',theme:'[data-action=appearance]',moveRight:['[data-action=appearance]','.profile-menu'],tabs:'.bottom-nav',content:'.workspace'},
   groups:[{first:'My Day',label:'Start'},{first:'Learn',label:'Build skills'},{first:'My Growth',label:'Reflect'}],
   motionOff:'.reduce-motion,[data-motion=reduce],.reduced-motion',drawer:on=>toggleMenu(on),

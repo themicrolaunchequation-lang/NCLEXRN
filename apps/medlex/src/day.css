@@ -40,9 +40,9 @@ body.hs main#main:has(.hs-day){padding:0;max-width:none}
 .ml-spark{position:absolute;width:.5em;height:.5em;border-radius:50%;background:#C8D6FF;box-shadow:0 0 1.1em .3em rgba(143,167,255,.7);opacity:0;animation:ml-spark 9s ease infinite}
 .ml-s1{left:22%;top:16%;animation-delay:.2s}.ml-s2{left:78%;top:26%;animation-delay:.5s}.ml-s3{left:60%;top:8%;animation-delay:.8s}
 @keyframes ml-spark{0%,30%{opacity:0;transform:scale(.4)}40%{opacity:1;transform:scale(1.2)}55%,100%{opacity:0;transform:scale(.4) translateY(-16px)}}
-@media(prefers-reduced-motion:reduce){.ml-row,.ml-tile,.ml-word,.ml-spark{animation:none}.ml-t1{transform:translate3d(-10em,0,0)}.ml-t3{transform:translate3d(10em,0,0)}.ml-word{opacity:1}.ml-spark{display:none}.ml-rig{transform:none}}
+@media(prefers-reduced-motion:reduce){.ml-row,.ml-tile,.ml-word,.ml-spark{animation:none}.ml-t1{margin-left:calc(-4.7em - 10em)}.ml-t3{margin-left:calc(-4.7em + 10em)}.ml-word{opacity:1}.ml-spark{display:none}.ml-rig{transform:none}}
 html[data-hs-motion=off] .ml-row,html[data-hs-motion=off] .ml-tile,html[data-hs-motion=off] .ml-word,html[data-hs-motion=off] .ml-spark,.today-still .ml-row,.today-still .ml-tile,.today-still .ml-word,.today-still .ml-spark,.today-still .hs-aurora i{animation:none}
-html[data-hs-motion=off] .ml-t1,.today-still .ml-t1{transform:translate3d(-10em,0,0)}html[data-hs-motion=off] .ml-t3,.today-still .ml-t3{transform:translate3d(10em,0,0)}
+html[data-hs-motion=off] .ml-t1,.today-still .ml-t1{margin-left:calc(-4.7em - 10em)}html[data-hs-motion=off] .ml-t3,.today-still .ml-t3{margin-left:calc(-4.7em + 10em)}
 html[data-hs-motion=off] .ml-word,.today-still .ml-word{opacity:1}html[data-hs-motion=off] .ml-spark,.today-still .ml-spark{display:none}html[data-hs-motion=off] .ml-rig,.today-still .ml-rig{transform:none}
 
 /* decode tile */
@@ -68,3 +68,6 @@ html[data-hs-motion=off] .ml-word,.today-still .ml-word{opacity:1}html[data-hs-m
 body.hs .course-part>div{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr));gap:12px}
 body.hs .course-part .module-row{margin:0;padding:16px 18px;min-height:0}
 body.hs .course-part .module-row::before,body.hs .course-part .module-row::after{display:none}
+
+@media(max-width:700px){body.hs main#main button,body.hs main#main a.btn{min-height:44px}body.hs .hs-top .search-trigger{min-height:44px;height:44px}}
+body.hs main h1[tabindex="-1"]:focus-visible{outline:0!important}

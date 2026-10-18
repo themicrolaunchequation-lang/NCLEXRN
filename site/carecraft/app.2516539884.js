@@ -95,6 +95,7 @@ const INFO_PNG={"communication":["/carecraft/guides/communication-1.png","/carec
     if (!dark && !t && mqDark && mqDark.matches && !/light/.test(getComputedStyle(root).colorScheme || '')) dark = true;
     if (/^light$/.test(t)) dark = false;
     root.dataset.hsTheme = dark ? 'dark' : 'light';
+    if (cfg && cfg.mcrest) $$('.hs-mbrand img').forEach(i => { const u = cfg.mcrest(); if (i.getAttribute('src') !== u) i.setAttribute('src', u); });
   }
   function motionOff() {
     if (mqMotion && mqMotion.matches) return true;
@@ -183,7 +184,7 @@ const INFO_PNG={"communication":["/carecraft/guides/communication-1.png","/carec
     if (own) own.classList.add('hs-mbrand');
     if (!own && !$('.hs-mbrand', top)) {
       const mb = d.createElement('a'); mb.className = 'hs-mbrand'; mb.href = cfg.home || '#'; mb.setAttribute('aria-label', cfg.name);
-      mb.innerHTML = `<span class="hs-crest">${crestHTML || ''}</span><span>${esc(cfg.name)}</span>`; top.prepend(mb);
+      mb.innerHTML = `<span class="hs-crest">${cfg.mcrest ? `<img src="${esc(cfg.mcrest())}" alt="" width="34" height="34">` : (crestHTML || '')}</span><span>${esc(cfg.name)}</span>`; top.prepend(mb);
     }
     if (search && (search.parentNode !== top || search.nextSibling !== right)) top.insertBefore(search, right);
     { const ref = search || right; if (crumbs && crumbs.parentNode === top && crumbs.nextSibling !== ref) top.insertBefore(crumbs, ref); }
@@ -603,7 +604,7 @@ function ccAfterRender(){
 }
 function ccShellInit(){
  const S=window.HCAShell;if(!S)return;
- S.init({app:'carecraft',observe:'body',name:'Carecraft',dayName:'My Day',home:'#/dashboard',help:()=>openAppGuide(0),
+ S.init({app:'carecraft',observe:'body',mcrest:()=>ccIsDark()?HCA_CREST_DARK:HCA_CREST,name:'Carecraft',dayName:'My Day',home:'#/dashboard',help:()=>openAppGuide(0),
   sel:{side:'#sidebar',brand:'.brand',navs:['nav'],top:'.topbar',crumbs:'.breadcrumb',search:'.search-launch',theme:'[data-action=appearance]',moveRight:['[data-action=appearance]','.profile-menu'],tabs:'.bottom-nav',content:'.workspace'},
   groups:[{first:'My Day',label:'Start'},{first:'Learn',label:'Build skills'},{first:'My Growth',label:'Reflect'}],
   motionOff:'.reduce-motion,[data-motion=reduce],.reduced-motion',drawer:on=>toggleMenu(on),
@@ -768,6 +769,7 @@ function renderDailyScenario(){const l=scenarioOfDay(),today=scenarioState().day
  return `<section class="scenario-card" aria-labelledby="daily-question-title"><div class="scenario-card-main"><div class="scenario-card-head"><span class="eyebrow" id="daily-question-title">TODAY’S 60-SECOND SCENARIO · ${esc(l.tag.toUpperCase())}</span><span class="scenario-chip">Fictional · Practice only</span></div><div id="dailyScenario">${scenarioBody(l,'daily',chosen)}</div>${chosen!==null?scenarioFooter(l,'daily'):''}</div>
  <div class="scenario-card-side" role="group" aria-label="Your scenario rhythm"><div class="scenario-flame" aria-hidden="true">${icon('spark')}</div><strong>${s.streak}</strong><span>day${s.streak===1?'':'s'} in a row</span><dl><div><dt>Scenarios explored</dt><dd>${s.answered}</dd></div><div><dt>Strongest choices</dt><dd>${s.strongest}</dd></div></dl><p>A new scenario arrives each day. Thinking first, then comparing, helps ideas stick.</p></div></section>`;}
 function answerScenario(where,id,answer){const l=scenarioFor(id,where);if(!l)return;answer=Number(answer);if(!l.order.includes(answer))return;const s=scenarioState(),day=localDay();if(where==='daily'||!s.days[day])s.days[day]={id,answer,correct:answer===l.order[l.correct]};s.seen=true;persist();
+ if(where==='daily'&&currentPage==='dashboard'&&window.HCAShell){render();$('#dailyScenario .scenario-reveal')?.focus({preventScroll:true});return;}
  const host=where==='hook'?$('#hookScenario'):$('#dailyScenario');if(!host)return;host.innerHTML=scenarioBody(l,where,answer);host.insertAdjacentHTML('afterend',scenarioFooter(l,where));if(where==='hook'){$('#ccHook')?.classList.add('is-answered');stopHookTimer();}
  if(where==='daily'){const side=$('.scenario-card-side');if(side){const st=scenarioStats();side.querySelector('strong').textContent=st.streak;side.querySelector('strong+span').textContent='day'+(st.streak===1?'':'s')+' in a row';const dd=side.querySelectorAll('dd');dd[0].textContent=st.answered;dd[1].textContent=st.strongest;}}
  host.querySelector('.scenario-reveal')?.focus({preventScroll:true});}

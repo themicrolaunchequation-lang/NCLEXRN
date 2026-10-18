@@ -1,5 +1,5 @@
 /* Lumen offline worker for /: app shell on install; engines (OCR, PDF, PowerPoint) and pictures cached when first used. */
-const CACHE='lumen-web-ff34758c11',SHELL=["/","/lumen/js/00.572fa348a2.js","/lumen/js/01.2baf75d93a.js","/lumen/js/pwa.9ce55d6233.js","/lumen/js/shell.1de85604cc.js","/lumen/manifest.webmanifest","/lumen/icon-192.png","/lumen/icon-512.png","/lumen/icon.svg"],LAZY=/^\/lumen\/(vendor|img|licenses)\//;
+const CACHE='lumen-web-40a89e3195',SHELL=["/","/lumen/js/00.572fa348a2.js","/lumen/js/01.2baf75d93a.js","/lumen/js/pwa.9ce55d6233.js","/lumen/js/shell.9213e07934.js","/lumen/manifest.webmanifest","/lumen/icon-192.png","/lumen/icon-512.png","/lumen/icon.svg"],LAZY=/^\/lumen\/(vendor|img|licenses)\//;
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('lumen-web-')&&k!==CACHE).map(k=>caches.open(k).then(old=>old.keys().then(reqs=>Promise.all(reqs.filter(r=>LAZY.test(new URL(r.url).pathname)).map(r=>old.match(r).then(res=>res&&caches.open(CACHE).then(c=>c.put(r,res)))))).then(()=>caches.delete(k)))))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{

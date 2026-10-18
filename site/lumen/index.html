@@ -1501,7 +1501,7 @@ html[data-motion=reduced] .hca10-coach, html[data-motion=reduced] .hca10-pulse, 
 <script src="/assets/js/crown-move.js"></script>
 <script defer src="/assets/js/crown-account.js"></script>
 <script defer src="/lumen/js/pwa.9ce55d6233.js"></script>
-<script src="/lumen/js/shell.1de85604cc.js"></script>
+<script src="/lumen/js/shell.9213e07934.js"></script>
 <style id="hca-shell">/* Healthcare Crown Academy shared shell + "My Day" bento system.
    Loaded after each app's own CSS. Everything is scoped under body.hs so apps that do not opt in are untouched.
    Class hooks (hs-*) are added by hca-shell.js; per-app files only map selectors and add the 3D signature object. */
@@ -1639,7 +1639,7 @@ body.hs .hs-help-btn svg{width:18px;height:18px}
   body.hs .hs-top .hs-mbrand{display:flex;flex:1 1 auto;align-items:center;gap:10px;min-width:0;color:var(--hs-ink);text-decoration:none;font:500 20px/1 var(--hs-serif);background:none;border:0;padding:0}
   body.hs .hs-top .hs-mbrand .hs-crest{width:34px;height:34px;flex:0 0 34px;border-radius:50%}
   body.hs .hs-top .hs-mbrand .hs-crest svg,body.hs .hs-top .hs-mbrand .hs-crest img{width:100%;height:100%;display:block}
-  body.hs .hs-top .hs-search{flex:0 0 44px;width:44px;margin:0;padding:0;justify-content:center;border-radius:12px}
+  body.hs .hs-top .hs-search{flex:0 0 44px;width:44px;min-width:44px;margin:0;padding:0;justify-content:center;border-radius:12px}
   body.hs .hs-top .hs-search>span,body.hs .hs-top .hs-search kbd{display:none}
   body.hs .hs-right{flex:0 0 auto;gap:2px}
   body.hs .hs-help-btn{width:44px;padding:0;justify-content:center}
@@ -1663,7 +1663,7 @@ body.hs .hs-acct-top .hca-menu{right:0;left:auto;top:calc(100% + 8px);bottom:aut
 body.hs .hs-tabs{display:none}
 @media(max-width:1023px){
   body.hs .hs-tabs{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;justify-content:space-around;align-items:stretch;gap:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));margin:0;
-    background:color-mix(in srgb,#F8F5EF 80%,transparent);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border:0;border-top:1px solid var(--hs-line);box-shadow:0 -8px 24px -16px rgba(16,37,58,.25)}
+    background:color-mix(in srgb,#F8F5EF 90%,transparent);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border:0;border-top:1px solid var(--hs-line);box-shadow:0 -8px 24px -16px rgba(16,37,58,.25)}
   :root[data-hs-theme=dark] body.hs .hs-tabs{background:color-mix(in srgb,#0B1A2B 82%,transparent)}
   body.hs .hs-tabs .hs-tab{position:relative;flex:1 1 0;min-width:0;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 2px;border:0;background:none;border-radius:12px;color:var(--hs-muted);font:600 11.5px/1.1 var(--hs-sans);text-decoration:none;cursor:pointer;letter-spacing:0}
   body.hs .hs-tabs .hs-tab svg,body.hs .hs-tabs .hs-tab i{width:22px;height:22px;font-size:22px;display:block}
@@ -1839,6 +1839,9 @@ body.hs .hs-theme-own .hs-t-sun{display:none}
 body.hs main :where(p,li,dd,blockquote){max-width:72ch}
 body.hs main .hs-card :where(p,li){max-width:60ch}
 
+@media(max-width:1023px){body.hs .hs-top .hs-mbrand{min-height:44px}}
+body.hs main h1[tabindex="-1"]:focus,body.hs main h1[tabindex="-1"]:focus-visible,body.hs main [tabindex="-1"]:focus-visible,body.hs main#main:focus-visible{outline:0;box-shadow:none}
+
 /* Lumen: map the shared HCA shell onto Lumen's React markup; floating-book hero. */
 body.hs{--sidebar-w:var(--hs-side)}
 @media(min-width:1024px){body.hs .app-main{margin-left:var(--hs-side);width:calc(100% - var(--hs-side));transition:margin-left .3s var(--hs-ease),width .3s var(--hs-ease)}}
@@ -1906,7 +1909,7 @@ body.hs .hs-top .hs-mbrand{display:none}
   body.hs .app-sidebar.hs-side{z-index:80}
   body.hs .app-shell.mobile-menu-open .hs-side{transform:none;visibility:visible}
   body.hs .hs-scrim{display:none}
-  body.hs .mobile-bottom-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;height:auto;justify-content:space-around;gap:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:color-mix(in srgb,#F8F5EF 80%,transparent);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border-top:1px solid var(--hs-line)}
+  body.hs .mobile-bottom-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;height:auto;justify-content:space-around;gap:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:color-mix(in srgb,#F8F5EF 90%,transparent);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border-top:1px solid var(--hs-line)}
   :root[data-hs-theme=dark] body.hs .mobile-bottom-nav{background:color-mix(in srgb,#0B1A2B 82%,transparent)}
   body.hs .mobile-bottom-nav>button{position:relative;flex:1 1 0;min-width:0;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;border-radius:12px;background:none;color:var(--hs-muted)}
   body.hs .mobile-bottom-nav>button>i{font-size:22px}
@@ -1957,6 +1960,10 @@ body.hs .hca-footer>div:last-child{flex:0 1 auto;max-width:100%}
 body.hs .empty-state{padding:32px 16px}
 body.hs .hca-footer{margin-top:24px}
 body.hs .hca-footer-links a.hca-ico{width:auto;height:auto;min-height:40px;padding:0 12px}
+:root[data-hs-theme=dark] body.hs .text-link{color:#B9A9FF}
+
+@media(max-width:700px){body.hs .workspace-main button,body.hs .workspace-main .button{min-height:44px;min-width:44px}}
+@media(max-width:700px){body.hs .workspace-main .segmented button,body.hs .workspace-main .button.secondary,body.hs .workspace-main .button.soft,body.hs .hca-footer a.hca-ico,body.hs .hca-footer button{min-height:44px}}
 </style>
 <body>
     <noscript><p style="padding:32px;font:18px system-ui">Lumen needs JavaScript to open your local learning workspace. Enable it to continue.</p></noscript><div id="root"></div>
