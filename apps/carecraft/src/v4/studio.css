@@ -1,0 +1,34 @@
+/* Learning Studio entry points inside Carecraft (the studio itself is apps/shared/hca-studio.css) */
+.cs-card-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-block:12px 4px}
+.cs-card-row .infographic-entry{margin:0}
+.cs-card-btn{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 12px;border:1px solid var(--accent);border-radius:999px;background:var(--accent);color:var(--accent-ink,#fff);font-size:var(--t-14,14px);font-weight:600;line-height:1.1;font-family:inherit;cursor:pointer;overflow:hidden;z-index:1;transition:transform .2s,box-shadow .2s}
+.cs-card-btn svg{width:16px;height:16px;flex:none}
+.cs-card-btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px -10px var(--accent)}
+.cs-card-btn.is-done{background:transparent;color:var(--accent)}
+.cs-meter{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.28)}
+.cs-meter b{display:block;height:100%;background:currentColor;opacity:.9}
+.cs-card-btn:focus-visible,.cs-cta:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+[data-theme="light"] .cs-card-btn:not(.is-done){background:#0A7C78;border-color:#0A7C78;color:#fff}
+
+.cs-intro-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:20px}
+.cs-cta{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:6px 22px 6px 16px;border:0;border-radius:999px;background:#FFFAF2;color:#10253A;font-family:inherit;text-align:left;cursor:pointer;box-shadow:0 12px 28px -14px rgba(0,0,0,.6);transition:transform .2s,box-shadow .2s}
+.cs-cta:hover{transform:translateY(-2px);box-shadow:0 18px 32px -14px rgba(0,0,0,.6)}
+.cs-cta svg{flex:none;width:28px;height:28px;padding:7px;border-radius:50%;background:#0A7C78;color:#fff}
+.cs-cta span{display:flex;flex-direction:column;line-height:1.2}
+.cs-cta b{font-size:15.5px;font-weight:700}
+.cs-cta small{font-size:12.5px;color:#4A5B6C}
+.cs-tools{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.cs-tools li{padding:5px 11px;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#E7F1F2;font-size:12.5px;font-weight:600}
+
+.cs-launch{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:0 0 20px;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,var(--raised),var(--mint,var(--raised)))}
+.cs-launch-copy{flex:1 1 320px;min-width:0}
+.cs-launch h3{margin:6px 0 4px;font-size:20px}
+.cs-launch p{margin:0;color:var(--muted);font-size:var(--t-14,14px);line-height:1.5;max-width:62ch}
+.cs-launch .cs-cta{background:#0A7C78;color:#fff;box-shadow:0 12px 24px -14px #0A7C78}
+.cs-launch .cs-cta small{color:#D9F2EF}
+.cs-launch .cs-cta svg{background:#fff;color:#0A7C78}
+[data-theme="dark"] .cs-launch .cs-cta{background:#8ED8CF;color:#10253A}
+[data-theme="dark"] .cs-launch .cs-cta small{color:#24485A}
+[data-theme="dark"] .cs-launch .cs-cta svg{background:#10253A;color:#8ED8CF}
+@media(max-width:760px){.cs-cta{width:100%}.cs-tools{display:none}.cs-launch{padding:16px}}
+html[data-motion=reduce] .cs-card-btn,html[data-motion=reduce] .cs-cta{transition:none}

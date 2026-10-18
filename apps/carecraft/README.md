@@ -37,3 +37,11 @@ Learn displays the complete 30-lesson library by default. Each lesson begins wit
 ## Today and the optional app guide — v4.4.0
 
 Today now has a personal greeting, original welcome illustration, time controls, direct routes into Learn / Practice / Toolkit, saved-session continuation, real learning counts and a reflection panel. The floating How to use Carecraft button opens five interactive guide chapters with working app shortcuts. Motion respects system and saved preferences. Infographic page selectors are above the image in a sticky control area. Production prompts and generation downloads have been removed from the app. Switching theme preserves raster lesson previews.
+
+## Learning Studio — v4.5.0
+
+Each lesson can be learned as a 14-slide journey (cover, three ideas, three infographic spotlight tours, a worked example,
+three checks, a reflection and a recap) with pen, marker, highlighter, shapes, text and laser tools. It is built by
+`src/v4/studio.js` on the shared engine in `apps/shared/hca-studio.*`; entry points are the Learn intro, a "Learn as slides"
+control on every lesson card and a launch card on the lesson page. Poster regions: `python3 ../tools/poster-regions.py
+src/v4/assets/infographics src/v4/studio-regions.json` after changing the infographic PNGs.
