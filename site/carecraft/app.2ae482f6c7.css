@@ -1612,3 +1612,9 @@ body.reduce-motion .hst .hst-confetti{display:none}
 [data-theme="dark"] .cs-launch .cs-cta svg{background:#10253A;color:#8ED8CF}
 @media(max-width:760px){.cs-cta{width:100%}.cs-tools{display:none}.cs-launch{padding:16px}}
 html[data-motion=reduce] .cs-card-btn,html[data-motion=reduce] .cs-cta{transition:none}
+
+/* Carecraft Learn (library, lesson page, pathways, saved): styles for learn-x.js and any reworked learn views (follow the stylesheet rules in test-v4.cjs; tokens come from design.css). */
+
+/* Carecraft Practice (activities, studios, simulations, review): styles for practice-x.js and any reworked practice views (follow the stylesheet rules in test-v4.cjs; tokens come from design.css). */
+
+/* Carecraft Toolkit (tools and workspaces): styles for toolkit-x.js and any reworked toolkit views (follow the stylesheet rules in test-v4.cjs; tokens come from design.css). */

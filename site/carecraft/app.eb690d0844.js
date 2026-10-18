@@ -1348,6 +1348,12 @@ function studioLessonCard(l){
  return `<section class="cs-launch" aria-label="Learning Studio"><div class="cs-launch-copy"><span class="eyebrow">LEARNING STUDIO</span><h3>${esc(p.done?'Revisit this lesson as a slide journey.':'Prefer a guided slideshow?')}</h3><p>${CC_STUDIO_SLIDES} slides: three ideas, a spotlight tour of the infographics, a worked example and three checks. Annotate with a pen, highlighter or shapes. ${p.started&&!p.done?`You are on slide ${Math.min(p.last+1,CC_STUDIO_SLIDES)}.`:''}</p></div><button type="button" class="cs-cta" data-action="studio" data-arg0="${l.id}" data-arg1="${p.started&&!p.done?p.last:0}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><span><b>${verb}</b><small>${l.time} min · ${CC_STUDIO_SLIDES} slides</small></span></button></section>`;
 }
 
+/* Carecraft Learn (library, lesson page, pathways, saved): new and reworked views live here so the redesign stays out of the long single-line source files. Loaded after studio.js, before events.js. */
+
+/* Carecraft Practice (activities, studios, simulations, review): new and reworked views live here so the redesign stays out of the long single-line source files. Loaded after studio.js, before events.js. */
+
+/* Carecraft Toolkit (tools and workspaces): new and reworked views live here so the redesign stays out of the long single-line source files. Loaded after studio.js, before events.js. */
+
 const actions={
  'app-guide':([index])=>openAppGuide(index),'app-guide-step':([index])=>changeAppGuide(index),'guide-go':([route])=>navigate(route),
  'infographics':([id])=>openInfographics(id),studio:([id,start])=>openStudio(id,start!==undefined&&start!==''?{start:+start}:{}),'info-page':([n])=>flipInfographic(+n),'info-zoom':()=>zoomInfographic(),'info-save':()=>saveInfographic(),
