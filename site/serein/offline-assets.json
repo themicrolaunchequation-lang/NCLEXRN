@@ -1,5 +1,5 @@
 {
- "cacheName": "serein-hca-v4-web-5.2.0-4fd5b2a9e6",
+ "cacheName": "serein-hca-v4-web-5.2.0-701255c632",
  "files": [
   "/",
   "/serein/fonts/9bc09e789d.woff2",
@@ -71,7 +71,7 @@
   "/serein/assets/walking-1.webp",
   "/serein/assets/walking-2.webp",
   "/serein/assets/walking-3.webp",
-  "/serein/app.32204abca2.css",
+  "/serein/app.4b6b55d93a.css",
   "/serein/app.22718198ae.js",
   "/serein/img/crest.svg",
   "/serein/manifest.webmanifest"

@@ -112,6 +112,41 @@ const pptxUrl = put(`vendor/pptx/pptxgen.${hash(pptx)}.js`, pptx);
     return seen.get(name);
   });
 }
+
+/* ---------- My Day: shared shell, new Today and top bar (see ../shared and src/day.js) ---------- */
+const replaceAll = (text, find, repl, label) => { const n = text.split(find).length - 1; if (!n) throw Error(`Expected at least one ${label}.`); return text.split(find).join(repl); };
+mod = replaceOnce(mod, "className:`app-sidebar`,inert", "className:`app-sidebar hs-side`,inert", 'sidebar class');
+mod = replaceOnce(mod, "className:`main-navigation`,\"aria-label\":`Main navigation`", "className:`main-navigation hs-nav`,\"aria-label\":`Main navigation`", 'main nav class');
+mod = replaceOnce(mod, "{className:n===t||t===`library`&&Ne?`active`:``,onClick:()=>le(t),title:", "{className:`hs-item ${n===t||t===`library`&&Ne?`active`:``}`,onClick:()=>le(t),title:", 'nav item class');
+mod = replaceOnce(mod, "[`home`,`home-5-line`,`Today`]", "[`home`,`home-5-line`,`My Day`]", 'nav label');
+mod = replaceOnce(mod, "Fe={home:`Today`,", "Fe={home:`My Day`,", 'crumb label');
+mod = replaceOnce(mod, "let titles={home:'Today',", "let titles={home:'My Day',", 'document title');
+mod = replaceOnce(mod, "nav('Today', 'home', 'home-5-line', 'T')", "nav('My Day', 'home', 'home-5-line', 'T')", 'command: my day');
+mod = replaceOnce(mod, "['Go to Today', ['G', 'T']]", "['Go to My Day', ['G', 'T']]", 'shortcut label');
+mod = replaceAll(mod, "the welcome banner on Today", "the welcome banner on My Day", 'banner command');
+mod = replaceOnce(mod, "under Today → Set goal", "under My Day → Set goal", 'ladder help');
+mod = replaceOnce(mod, "Today shows your progress against this number.", "My Day shows your progress against this number.", 'goal help');
+mod = replaceOnce(mod, "title: 'Start on Today', text: 'Today shows what to do next:", "title: 'Start on My Day', text: 'My Day shows what to do next:", 'guide step');
+mod = replaceOnce(mod, "Lumen shapes your Today plan around your goal.", "Lumen shapes your My Day plan around your goal.", 'hook copy');
+// the shell treats everything under 1024px as the compact layout
+mod = replaceOnce(mod, "(0,_.useState)(()=>window.innerWidth<=760)", "(0,_.useState)(()=>window.innerWidth<=1023)", 'compact state');
+mod = replaceOnce(mod, "let e=matchMedia(`(max-width: 760px)`),t=()=>p(e.matches)", "let e=matchMedia(`(max-width: 1023px)`),t=()=>p(e.matches)", 'compact query');
+mod = replaceOnce(mod, "{className:`app-topbar`,children:[(0,C.jsxs)(`div`,{className:`topbar-location`,", "{className:`app-topbar hs-top`,children:[HC(`button`,{type:`button`,className:`hs-mbrand`,onClick:()=>le(`home`),\"aria-label\":`Lumen: My Day`},HC(`span`,{className:`hs-crest`},HC(`img`,{src:HCACrest,alt:``,width:34,height:34})),HC(`span`,{},`Lumen`)),(0,C.jsxs)(`div`,{className:`topbar-location hs-crumbs`,", 'topbar start');
+mod = replaceOnce(mod, "children:Ne?`Your library`:`Your workspace`}", "children:Ne?`Your library`:`Lumen`}", 'breadcrumb home');
+{
+  const start = "(0,C.jsxs)(`div`,{className:`topbar-actions`,children:[", end = "]}),(0,C.jsx)(`main`,{id:`main-content`";
+  const a = once(mod, start, 'topbar actions'), z = once(mod, end, 'topbar end');
+  if (z < a) throw Error('Top bar markers are out of order.');
+  mod = mod.slice(0, a) + "HC(HCA11TopActions,{session:m===`session`})" + mod.slice(z);
+}
+mod = replaceOnce(mod, "(0,C.jsxs)(`nav`,{className:`secondary-navigation`,\"aria-label\":`Workspace resources`,", "(0,C.jsxs)(`nav`,{className:`secondary-navigation hs-nav`,\"aria-label\":`Workspace resources`,", 'resources nav class');
+mod = replaceOnce(mod, "(0,C.jsxs)(`button`,{title:`A little tour`,onClick:", "(0,C.jsxs)(`button`,{className:`hs-item`,title:`A little tour`,onClick:", 'tour item class');
+// Study desk: collapsible group
+mod = replaceOnce(mod, "const ui = HCA7Use(), t = HCA8UseTimer(), desk = ui.desk || {};\n  const item =", "const ui = HCA7Use(), t = HCA8UseTimer(), desk = ui.desk || {}, [fold, setFold] = _.useState(HCA11FoldOpen());\n  const item =", 'desk fold state');
+mod = replaceOnce(mod, "HC('div', { className: 'sidebar-divider' }),\n    HC('div', { className: 'sidebar-label' }, 'STUDY DESK'),\n    HC('nav', { className: 'secondary-navigation hca8-desk-nav', 'aria-label': 'Study desk' },", "HC('details', { className: 'hs-fold', open: fold, onToggle: e => { setFold(e.currentTarget.open); HCA11Fold(e.currentTarget.open); } }, HC('summary', {}, 'Study desk'),\n    HC('nav', { className: 'secondary-navigation hs-nav hca8-desk-nav', 'aria-label': 'Study desk' },", 'desk fold start');
+mod = replaceOnce(mod, "HC('span', {}, 'How to use the desk'))));\n}", "HC('span', {}, 'How to use the desk')))));\n}", 'desk fold end');
+mod = replaceOnce(mod, "className: desk[key] ? 'hca8-on' : '', onClick: () => key === 'calc'", "className: `hs-item ${desk[key] ? 'hca8-on' : ''}`, onClick: () => key === 'calc'", 'desk item class');
+mod = replaceOnce(mod, "/*HCA10:END*/", "/*HCA10:END*/\n" + fs.readFileSync('src/day.js', 'utf8'), 'HCA10 end');
 html = html.replace(modMatch[1], () => mod);
 
 /* ---------- Executable inline scripts -> hashed files ---------- */
@@ -140,6 +175,9 @@ put('manifest.webmanifest', JSON.stringify(manifest, null, 2));
 const pwa = put(`js/pwa.${hash('v1' + BASE)}.js`, `if('serviceWorker'in navigator&&location.protocol==='https:'&&location.pathname==='/')addEventListener('load',()=>navigator.serviceWorker.register('${BASE}sw.js',{scope:'/'}).catch(()=>{}));\n`);
 shell.push(pwa);
 
+const shellJs = put(`js/shell.${hash(fs.readFileSync('../shared/hca-shell.js', 'utf8'))}.js`, fs.readFileSync('../shared/hca-shell.js', 'utf8'));
+shell.push(shellJs);
+const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}</style>`;
 const head = `<link rel="canonical" href="${SITE}/">
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="apple-touch-icon" href="${BASE}icon-192.png">
@@ -152,6 +190,8 @@ ${licenceLinks}
 <script src="/assets/js/crown-move.js"></script>
 <script defer src="/assets/js/crown-account.js"></script>
 <script defer src="${pwa}"></script>
+<script src="${shellJs}"></script>
+${shellCss}
 `;
 const body = html.search(/<body[\s>]/);
 if (body < 0) throw Error('No <body> found.');
