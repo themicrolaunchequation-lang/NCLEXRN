@@ -322,7 +322,7 @@ function create(c){
  }
 
  function portableDistribution(){return document.querySelector('meta[name="serein-distribution"]')?.content==='portable';}
- function shellURL(){const url=new URL(portableDistribution()?location.href:'/serein',location.href);url.hash='';url.search='';return url;}
+ function shellURL(){const url=new URL(portableDistribution()?location.href:'/',location.href);url.hash='';url.search='';return url;}
  function offlineStatus(){if(location.protocol==='file:')return Serein.t("copy_0447");return offlineMessage||(offlineBusy?Serein.t("copy_0448"):offlineReady?Serein.t("copy_0449"):Serein.t("copy_0450"));}
  function refreshOfflineStatus(){const status=$('#offline-status'),button=$('#offline-prepare');if(status)status.textContent=offlineStatus();if(button){button.disabled=offlineBusy;button.textContent=offlineReady?Serein.t("copy_0439"):Serein.t("copy_0440");}}
  function bounded(promise){let timeout;return Promise.race([promise,new Promise((_,reject)=>{timeout=setTimeout(()=>reject(Error(Serein.t("copy_0451"))),15000);})]).finally(()=>clearTimeout(timeout));}
@@ -332,7 +332,7 @@ function create(c){
   try{
    const workerURL=new URL('/serein/sw.js',location.href),shell=shellURL();if(portableDistribution())workerURL.searchParams.set('shell',shell.pathname.split('/').pop());
    const check=await bounded(fetch(workerURL.href,{cache:'no-store'})),workerText=check.ok?await check.text():'';if(!check.ok||!/^\s*\/\*\s*SEREIN_OFFLINE_WORKER\b/.test(workerText)){offlineMessage=Serein.t("copy_0453");toast(offlineMessage);return;}
-   registration=await bounded(navigator.serviceWorker.register(workerURL.href,{scope:'/serein'}));await bounded(navigator.serviceWorker.ready);
+   registration=await bounded(navigator.serviceWorker.register(workerURL.href,{scope:'/'}));await bounded(navigator.serviceWorker.ready);
    const config=portableDistribution()?{cacheName:document.querySelector('meta[name="serein-offline-cache"]')?.content,files:[shell.href]}:await fetch('/serein/offline-assets.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(Serein.t("copy_0454"));return r.json();});
    if(!config.cacheName)throw Error(Serein.t("copy_0455"));const cache=await caches.open(config.cacheName);await bounded(cache.addAll(config.files));offlineReady=!!await cache.match(shell.href);if(!offlineReady)throw Error(Serein.t("copy_0456"));toast(Serein.t("copy_0457"));
   }catch{offlineMessage=Serein.t("copy_0458");toast(offlineMessage);}

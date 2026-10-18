@@ -3,8 +3,8 @@
   "name": "Serein · Healthcare Crown Academy",
   "short_name": "Serein",
   "description": "A little space for the people who care. Short practices, thoughtful reflection and practical support. Serein by Healthcare Crown Academy.",
-  "start_url": "/serein#today",
-  "scope": "/serein",
+  "start_url": "/#today",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#F8F5EF",
   "theme_color": "#10253A",
@@ -34,15 +34,15 @@
   "shortcuts": [
     {
       "name": "A small pause",
-      "url": "/serein#quick-start"
+      "url": "/#quick-start"
     },
     {
       "name": "My journal",
-      "url": "/serein#me/journal"
+      "url": "/#me/journal"
     },
     {
       "name": "Support",
-      "url": "/serein#support"
+      "url": "/#support"
     }
   ]
 }

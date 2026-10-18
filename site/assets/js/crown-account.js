@@ -110,9 +110,9 @@
     const link = (text, href, cls) => { const a = document.createElement('a'); a.href = href; a.textContent = text; if (cls) a.className = cls; menu.append(a); };
     link('My account', `${ACCOUNT}/account`);
     if (!e.crown && !e.admin) link('Upgrade to the Crown Pass', 'https://healthcarecrownacademy.co.uk/#pricing', 'gold');
-    link('MedLex', 'https://healthcarecrownacademy.co.uk/medlex');
-    link('Carecraft', 'https://healthcarecrownacademy.co.uk/carecraft');
-    link('Serein', 'https://healthcarecrownacademy.co.uk/serein');
+    link('MedLex', 'https://medlex.healthcarecrownacademy.co.uk/');
+    link('Carecraft', 'https://carecraft.healthcarecrownacademy.co.uk/');
+    link('Serein', 'https://serein.healthcarecrownacademy.co.uk/');
     link('Evinca', 'https://evinca.healthcarecrownacademy.co.uk/en');
     if (e.admin) link('Crown admin', `${ACCOUNT}/account/admin`, 'gold');
     const out = document.createElement('button');

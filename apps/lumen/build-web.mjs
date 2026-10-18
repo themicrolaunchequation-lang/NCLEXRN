@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-const BASE = '/lumen/', SITE = 'https://healthcarecrownacademy.co.uk';
+const BASE = '/lumen/', SITE = 'https://lumen.healthcarecrownacademy.co.uk';
 const OUT = path.resolve(process.argv[2] || '../../site/lumen');
 const hash = s => crypto.createHash('sha256').update(s).digest('hex').slice(0, 10);
 fs.rmSync(OUT, { recursive: true, force: true });
@@ -21,12 +21,13 @@ html = html.replace(/<script(\s+type="module")?>([\s\S]*?)<\/script>/g, (_, mod,
 });
 if (/<script>/.test(html)) throw Error('An executable inline script is left.');
 
-const head = `<link rel="canonical" href="${SITE}/lumen">
+const head = `<link rel="canonical" href="${SITE}/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Healthcare Crown Academy">
 <meta property="og:title" content="Lumen — your private clinical study studio">
 <meta property="og:description" content="Read PDFs and images, collect insights and practise recall in one calm workspace. Part of the Healthcare Crown Academy Crown Suite.">
-<meta property="og:url" content="${SITE}/lumen"><meta name="twitter:card" content="summary">
+<meta property="og:url" content="${SITE}/"><meta name="twitter:card" content="summary">
 <meta name="hca-account-position" content="right">
+<script src="/assets/js/crown-move.js"></script>
 <script defer src="/assets/js/crown-account.js"></script>
 `;
 const body = html.search(/<body[\s>]/);

@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-const VERSION = '4.0.1', BASE = '/medlex/', SCOPE = '/medlex', SITE = 'https://healthcarecrownacademy.co.uk';
+const VERSION = '4.0.1', BASE = '/medlex/', SCOPE = '/', SITE = 'https://medlex.healthcarecrownacademy.co.uk', HOME = 'https://healthcarecrownacademy.co.uk/';
 const OUT = path.resolve(process.argv[2] || '../../site/medlex');
 const PUBLIC = 'package/public';
 const read = f => fs.readFileSync(f, 'utf8');
@@ -72,20 +72,21 @@ write('index.html', `<!DOCTYPE html>
 <meta name="medlex-version" content="${VERSION}">
 <title>MedLex — medical terminology, one word at a time | Healthcare Crown Academy</title>
 <meta name="description" content="${description}">
-<link rel="canonical" href="${SITE}${SCOPE}">
+<link rel="canonical" href="${SITE}/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Healthcare Crown Academy">
 <meta property="og:title" content="MedLex — make sense of medicine, one word at a time">
 <meta property="og:description" content="26 modules, 1,480 terms and 56 illustrated guides. Learn to decode medical words by their parts. Free, private, works offline.">
-<meta property="og:url" content="${SITE}${SCOPE}"><meta property="og:image" content="${SITE}${BASE}img/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="${SITE}/"><meta property="og:image" content="${SITE}${BASE}img/og-image.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="${favicon}"><link rel="apple-touch-icon" href="${BASE}img/apple-touch-icon.png">
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="stylesheet" href="${BASE}${cssName}">
 <meta name="hca-app" content="medlex">
+<script src="/assets/js/crown-move.js"></script>
 <script defer src="/assets/js/crown-account.js"></script>
 <script defer src="${BASE}${hookName}"></script>
 <script defer src="${BASE}${jsName}"></script>
 </head>
-<body>${body}<noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:2rem auto;padding:0 1rem">MedLex needs JavaScript to run. Return to <a href="/">Healthcare Crown Academy</a>.</p></noscript>
+<body>${body}<noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:2rem auto;padding:0 1rem">MedLex needs JavaScript to run. Return to <a href="${HOME}">Healthcare Crown Academy</a>.</p></noscript>
 </body>
 </html>
 `);

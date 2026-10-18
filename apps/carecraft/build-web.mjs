@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-const VERSION = '4.5.0', BASE = '/carecraft/', SITE = 'https://healthcarecrownacademy.co.uk';
+const VERSION = '4.5.0', BASE = '/carecraft/', SITE = 'https://carecraft.healthcarecrownacademy.co.uk', HOME = 'https://healthcarecrownacademy.co.uk/';
 const OUT = path.resolve(process.argv[2] || '../../site/carecraft');
 const read = f => fs.readFileSync(f, 'utf8');
 const hash = s => crypto.createHash('sha256').update(s).digest('hex').slice(0, 10);
@@ -53,7 +53,7 @@ const title = 'Carecraft — 60-second scenarios and short lessons for healthcar
 const description = 'Carecraft by Healthcare Crown Academy: a daily 60-second scenario, 30 short lessons, interactive practice and visual guides for people who work in healthcare. Free, private, and your progress stays in your browser.';
 write('manifest.webmanifest', JSON.stringify({
   name: 'Carecraft · Healthcare Crown Academy', short_name: 'Carecraft', description,
-  id: BASE, start_url: '/carecraft', scope: '/carecraft', display: 'standalone',
+  id: BASE, start_url: '/', scope: '/', display: 'standalone',
   background_color: '#F8F5EF', theme_color: '#10253A', lang: 'en-GB', categories: ['education', 'medical'],
   icons: [
     { src: BASE + 'img/icon-192.png', sizes: '192x192', type: 'image/png' },
@@ -70,13 +70,13 @@ const html = `<!DOCTYPE html>
 <meta name="carecraft-version" content="${VERSION}">
 <title>${title}</title>
 <meta name="description" content="${description}">
-<link rel="canonical" href="${SITE}/carecraft">
+<link rel="canonical" href="${SITE}/">
 <meta name="theme-color" content="#10253A">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Healthcare Crown Academy">
 <meta property="og:title" content="Carecraft — one useful moment of learning a day">
 <meta property="og:description" content="A 60-second scenario, 30 short lessons and hands-on practice for people who work in healthcare.">
-<meta property="og:url" content="${SITE}/carecraft">
+<meta property="og:url" content="${SITE}/">
 <meta property="og:image" content="${SITE}${BASE}img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${BASE}img/crest.svg" type="image/svg+xml">
@@ -85,10 +85,11 @@ const html = `<!DOCTYPE html>
 <link rel="preload" href="${BASE}img/${index['today-welcome']}" as="image" fetchpriority="high">
 <link rel="stylesheet" id="carecraft-app-styles" href="${BASE}${cssName}">
 <meta name="hca-app" content="carecraft">
+<script src="/assets/js/crown-move.js"></script>
 <script defer src="/assets/js/crown-account.js"></script>
 <script defer id="carecraft-app-code" src="${BASE}${jsName}"></script>
 </head>
-<body><div id="app"></div><noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:4rem auto;padding:0 1rem">Carecraft needs JavaScript. You can also <a href="${BASE}download/Carecraft-v${VERSION}.html">download the offline edition</a> or return to <a href="/">Healthcare Crown Academy</a>.</p></noscript></body>
+<body><div id="app"></div><noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:4rem auto;padding:0 1rem">Carecraft needs JavaScript. You can also <a href="${BASE}download/Carecraft-v${VERSION}.html">download the offline edition</a> or return to <a href="${HOME}">Healthcare Crown Academy</a>.</p></noscript></body>
 </html>
 `;
 write('index.html', html);

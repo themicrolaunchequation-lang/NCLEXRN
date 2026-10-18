@@ -3,11 +3,50 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/((?!lumen).*)",
+      "source": "/((?!lumen|move).*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-rjNhrYj22/GDcjy/inMuzdyjLJgIteKj9bjsautKSfU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://ujeofxfbwivjmgrxqdcl.supabase.co; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'sha256-rjNhrYj22/GDcjy/inMuzdyjLJgIteKj9bjsautKSfU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://ujeofxfbwivjmgrxqdcl.supabase.co; manifest-src 'self'; worker-src 'self'; frame-src https://healthcarecrownacademy.co.uk; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        }
+      ],
+      "missing": [
+        {
+          "type": "host",
+          "value": "lumen\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ]
+    },
+    {
+      "source": "/lumen(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' blob: https://esm.run https://cdn.jsdelivr.net; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' data: blob: https://ujeofxfbwivjmgrxqdcl.supabase.co https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.groq.com https://api.deepseek.com https://api.mistral.ai https://api.cohere.ai https://api.cerebras.ai https://api.sambanova.ai https://integrate.api.nvidia.com https://openrouter.ai https://router.huggingface.co https://huggingface.co https://*.huggingface.co https://*.hf.co https://raw.githubusercontent.com https://api.dictionaryapi.dev https://api.mymemory.translated.net https://en.wikipedia.org https://simple.wikipedia.org https://en.wiktionary.org https://pubmed.ncbi.nlm.nih.gov https://eutils.ncbi.nlm.nih.gov https://esm.run https://cdn.jsdelivr.net http://localhost:11434 http://127.0.0.1:11434; manifest-src 'self'; frame-src https://healthcarecrownacademy.co.uk; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
         },
         {
           "key": "Strict-Transport-Security",
@@ -36,11 +75,11 @@
       ]
     },
     {
-      "source": "/lumen(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' blob: https://esm.run https://cdn.jsdelivr.net; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' data: blob: https://ujeofxfbwivjmgrxqdcl.supabase.co https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.groq.com https://api.deepseek.com https://api.mistral.ai https://api.cohere.ai https://api.cerebras.ai https://api.sambanova.ai https://integrate.api.nvidia.com https://openrouter.ai https://router.huggingface.co https://huggingface.co https://*.huggingface.co https://*.hf.co https://raw.githubusercontent.com https://api.dictionaryapi.dev https://api.mymemory.translated.net https://en.wikipedia.org https://simple.wikipedia.org https://en.wiktionary.org https://pubmed.ncbi.nlm.nih.gov https://eutils.ncbi.nlm.nih.gov https://esm.run https://cdn.jsdelivr.net http://localhost:11434 http://127.0.0.1:11434; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+          "value": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' blob: https://esm.run https://cdn.jsdelivr.net; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' data: blob: https://ujeofxfbwivjmgrxqdcl.supabase.co https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.groq.com https://api.deepseek.com https://api.mistral.ai https://api.cohere.ai https://api.cerebras.ai https://api.sambanova.ai https://integrate.api.nvidia.com https://openrouter.ai https://router.huggingface.co https://huggingface.co https://*.huggingface.co https://*.hf.co https://raw.githubusercontent.com https://api.dictionaryapi.dev https://api.mymemory.translated.net https://en.wikipedia.org https://simple.wikipedia.org https://en.wiktionary.org https://pubmed.ncbi.nlm.nih.gov https://eutils.ncbi.nlm.nih.gov https://esm.run https://cdn.jsdelivr.net http://localhost:11434 http://127.0.0.1:11434; manifest-src 'self'; frame-src https://healthcarecrownacademy.co.uk; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
         },
         {
           "key": "Strict-Transport-Security",
@@ -65,6 +104,33 @@
         {
           "key": "Cross-Origin-Opener-Policy",
           "value": "same-origin"
+        }
+      ],
+      "has": [
+        {
+          "type": "host",
+          "value": "lumen\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ]
+    },
+    {
+      "source": "/move",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none'; script-src 'self'; frame-ancestors https://medlex.healthcarecrownacademy.co.uk https://carecraft.healthcarecrownacademy.co.uk https://serein.healthcarecrownacademy.co.uk https://lumen.healthcarecrownacademy.co.uk"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
         }
       ]
     },
@@ -144,7 +210,7 @@
         },
         {
           "key": "Service-Worker-Allowed",
-          "value": "/serein"
+          "value": "/"
         }
       ]
     },
@@ -193,9 +259,97 @@
         },
         {
           "key": "Service-Worker-Allowed",
-          "value": "/medlex"
+          "value": "/"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "medlex\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "/medlex"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "carecraft\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "/carecraft"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "serein\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "/serein"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "lumen\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "/lumen"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/medlex",
+      "missing": [
+        {
+          "type": "host",
+          "value": "(medlex|carecraft|serein|lumen)\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "https://medlex.healthcarecrownacademy.co.uk/",
+      "permanent": false
+    },
+    {
+      "source": "/carecraft",
+      "missing": [
+        {
+          "type": "host",
+          "value": "(medlex|carecraft|serein|lumen)\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "https://carecraft.healthcarecrownacademy.co.uk/",
+      "permanent": false
+    },
+    {
+      "source": "/serein",
+      "missing": [
+        {
+          "type": "host",
+          "value": "(medlex|carecraft|serein|lumen)\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "https://serein.healthcarecrownacademy.co.uk/",
+      "permanent": false
+    },
+    {
+      "source": "/lumen",
+      "missing": [
+        {
+          "type": "host",
+          "value": "(medlex|carecraft|serein|lumen)\\.healthcarecrownacademy\\.co\\.uk"
+        }
+      ],
+      "destination": "https://lumen.healthcarecrownacademy.co.uk/",
+      "permanent": false
     }
   ]
 }
