@@ -45,6 +45,12 @@ js = patch(js, '"./infographics/', `"${BASE}infographics/`, 'poster paths', 56);
 js = patch(js, 'e.href="./manifest.webmanifest"', `e.href="${BASE}manifest.webmanifest"`, 'manifest link');
 js = patch(js, 'navigator.serviceWorker.register("./sw.js")', `navigator.serviceWorker.register("${BASE}sw.js",{scope:"${SCOPE}"})`, 'worker scope');
 
+// Remove the dead "Complete offline HTML" link (./MedLex.html is not published on the web).
+js = patch(js, '<a class="btn" href="./MedLex.html" download="MedLex-Complete.html">Complete offline HTML</a>', '', 'offline HTML link');
+// Plurals: "1 minute", "1 active day".
+js = patch(js, '${Math.max(1,Math.round(((e.finishedAt||Date.now())-e.started)/6e4))} minutes', '${(m=>m+(1===m?" minute":" minutes"))(Math.max(1,Math.round(((e.finishedAt||Date.now())-e.started)/6e4)))}', 'minutes plural');
+js = patch(js, '${u.filter(e=>e.done).length} active days this week', '${(n=>n+(1===n?" active day":" active days"))(u.filter(e=>e.done).length)} this week', 'week days plural');
+js = patch(js, '${Fn()} active days in your current streak', '${(n=>n+(1===n?" active day":" active days"))(Fn())} in your current streak', 'streak days plural');
 // Hook words: real terms from the course with prefix/root/suffix parts and plain meanings.
 const TERMS = JSON.parse(read('package/src/data/records/TERMS.json'));
 const hookIds = ['pericarditis', 'tachycardia', 'hepatomegaly', 'hyperglycaemia', 'haematuria', 'gastroenteritis'];

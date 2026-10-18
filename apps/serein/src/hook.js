@@ -1,5 +1,5 @@
 /* Serein first visit: one guided breath, then "How are you arriving?" with a matched one-minute practice.
-   Runs before the welcome steps; every screen can be skipped. Nothing is stored except the welcome flag the app already keeps. */
+   Runs before the welcome steps; every screen can be skipped. The chosen mood is kept as the first check-in, through the app's own quick check-in. */
 (function(S){
 'use strict';
 const MOODS=[
@@ -19,7 +19,7 @@ function later(fn,ms){timers.push(setTimeout(fn,ms));}
 function face(curve){return `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 9h.01 M16 9h.01 M7 15 Q12 ${curve} 17 15"/></svg>`;}
 function shell(inner,step){const crest=document.querySelector('.brand img')?.getAttribute('src');dialog.dataset.step=step;dialog.innerHTML=`<div class="sh-inner"><header class="sh-head"><span class="sh-brand">${crest?`<img src="${esc(crest)}" alt="" width="36" height="36">`:''}<span>SEREIN<small>HEALTHCARE CROWN ACADEMY</small></span></span><button type="button" class="sh-skip" data-sh="skip">Skip</button></header>${inner}</div>`;}
 function breathe(){clear();const still=reduced();
- shell(`<div class="sh-breath ${still?'is-still':''}"><p class="sh-eyebrow">BEFORE ANYTHING ELSE</p><h2 id="sh-title">Let’s take one easy breath together.</h2><div class="sh-orb" aria-hidden="true"><span class="sh-orb-ring"></span><span class="sh-orb-core"></span></div><p class="sh-cue" id="sh-cue" aria-live="polite">${still?'Breathe in gently through your nose… then let the breath go slowly. Take as long as you like.':'Get comfortable. Eyes can stay open.'}</p><p class="sh-count" id="sh-count">${still?'':'Three slow breaths · about 30 seconds'}</p><div class="sh-actions"><button type="button" class="button button-teal" data-sh="mood">${still?'I’m ready':'Continue when ready'}</button></div></div>`,'breath');
+ shell(`<div class="sh-breath ${still?'is-still':''}"><p class="sh-eyebrow">BEFORE ANYTHING ELSE</p><h2 id="sh-title">Let’s take three easy breaths together.</h2><div class="sh-orb" aria-hidden="true"><span class="sh-orb-ring"></span><span class="sh-orb-core"></span></div><p class="sh-cue" id="sh-cue" aria-live="polite">${still?'Breathe in gently through your nose… then let the breath go slowly. Take as long as you like.':'Get comfortable. Eyes can stay open.'}</p><p class="sh-count" id="sh-count">${still?'':'Three slow breaths · about 30 seconds'}</p><div class="sh-actions"><button type="button" class="button button-teal" data-sh="mood">${still?'I’m ready':'Continue when ready'}</button></div></div>`,'breath');
  dialog.querySelector('[data-sh="mood"]').focus({preventScroll:true});
  if(still)return;
  const orb=dialog.querySelector('.sh-orb'),cue=dialog.querySelector('#sh-cue'),count=dialog.querySelector('#sh-count');
@@ -33,7 +33,14 @@ function mood(){clear();chosen=null;
 function pick(i){chosen=MOODS[i];dialog.querySelectorAll('.sh-moods .mood').forEach((b,j)=>{b.classList.toggle('selected',j===i);b.setAttribute('aria-pressed',String(j===i));});
  dialog.querySelector('#sh-suggest').innerHTML=`<p>${esc(chosen.line)}</p><div class="sh-practice"><span class="sh-eyebrow">SUGGESTED FOR YOU</span><strong>${esc(title(chosen.practice))}</strong><button type="button" class="button button-teal" data-sh="begin">Begin this practice <span aria-hidden="true">→</span></button></div>`;}
 function close(){clear();if(dialog?.open)dialog.close();dialog?.remove();dialog=null;}
-function begin(){const m=chosen;close();ctx.finish();if(!m)return;setTimeout(()=>{const b=document.createElement('button');b.type='button';b.hidden=true;b.dataset.practice=m.practice;if(m.duration)b.dataset.duration=String(m.duration);document.body.append(b);b.click();b.remove();},60);}
+function tap(data){const b=document.createElement('button');b.type='button';b.hidden=true;Object.assign(b.dataset,data);document.body.append(b);b.click();b.remove();}
+function begin(){const m=chosen;close();ctx.finish();if(!m)return;setTimeout(()=>{
+ // Keep the answer as the first check-in through Today's own quick check-in (mood 1-5).
+ try{tap({mood:String(MOODS.indexOf(m)+1)});}catch{}
+ const d={practice:m.practice};if(m.duration)d.duration=String(m.duration);tap(d);
+ // "Begin this practice" already said begin: start playback without a second tap.
+ setTimeout(()=>{try{if(S.player?.engine?.state==='ready')S.player.playPause();}catch{}},80);
+},60);}
 function run(c){ctx=c;try{dialog=document.createElement('dialog');dialog.className='serein-hook';dialog.setAttribute('aria-labelledby','sh-title');document.body.append(dialog);
  dialog.addEventListener('cancel',e=>{e.preventDefault();close();ctx.onboard();});
  dialog.addEventListener('click',e=>{const b=e.target.closest('[data-sh]');if(!b)return;e.stopPropagation();const a=b.dataset.sh;

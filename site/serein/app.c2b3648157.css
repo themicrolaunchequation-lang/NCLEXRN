@@ -96,3 +96,7 @@ button:active,.card-open:active{transform:scale(.98)}
 .sibling-app{gap:8px;padding:10px 12px;border:1px solid #49686F;border-radius:12px;line-height:1.4}
 .sibling-app b{display:block;color:#F8F5EF;font-weight:600}
 .sibling-app:hover{border-color:#9FD8C4}
+
+/* Today hero at desktop widths: the image fills its grid cell instead of forcing a
+   16:10 box with a 360px floor that painted over the title and the start button. */
+@media(min-width:1024px){.pause-card{grid-template-columns:minmax(0,42%) minmax(0,1fr)}.pause-image{aspect-ratio:auto;min-width:0;min-height:0;height:100%}.pause-image img{position:absolute;inset:0}.pause-copy{min-width:0}}
