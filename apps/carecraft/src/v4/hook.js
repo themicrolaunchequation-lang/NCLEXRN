@@ -41,5 +41,7 @@ Object.assign(actions,{
  'scenario-lesson':([id])=>{closeHook();openLesson(id);},
  'scenario-another':([id])=>{const pool=scenarioPool(),order=HOOK_FIRST.filter(x=>pool.some(l=>l.id===x)),next=order[(order.indexOf(id)+1)%order.length]||pool[0].id;openHook(next);},
  'scenario-close':()=>closeHook(),
- 'scenario-open':([id])=>openHook(id)
+ 'scenario-open':([id])=>openHook(id),
+ 'day-start':()=>{const o=$('#dailyScenario .scenario-option:not([disabled])')||$('#dailyScenario .scenario-reveal');(o||$('#dailyScenario'))?.scrollIntoView({block:'center',behavior:studioReducedMotion()?'auto':'smooth'});o?.focus({preventScroll:true});},
+ 'gs-skip':()=>{state.onboarded=true;persist();render();}
 });

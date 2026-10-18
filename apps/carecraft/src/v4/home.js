@@ -1,5 +1,64 @@
 /* Today: a calm, personal starting point and a voluntary guided introduction. */
+/* My Day: a bento home built on the shared HCA shell (apps/shared). The scenario is answerable in place. */
+function ccHomeData(){
+ const picked=focusLessons().slice(0,3),next=picked.find(l=>!state.completed.includes(l.id))||picked[0],sc=scenarioOfDay(),st=scenarioState(),today=st.days[localDay()];
+ const chosen=today&&today.id===sc.id&&Number.isInteger(today.answer)?today.answer:null,answered=chosen!==null;
+ const activity=HCA_ACTIVITIES.find(a=>a.id===(ui.minutes===2?'movement':state.learningFocus==='digital'?'ai-case':'handover'))||HCA_ACTIVITIES[0];
+ const ls=state.lastSession,sessionToday=!!(ls&&ls.date&&new Date(ls.date).toDateString()===new Date().toDateString());
+ return {picked,next,sc,st,chosen,answered,activity,ls,sessionToday,reviews:hcaDue().length,reviewed:state.completed.length,stats:scenarioStats()};
+}
+function ccPlanItems(D){
+ const m=ui.minutes,items=[{title:D.sc.title,sub:'1 min · today’s scenario',done:D.answered,cta:{label:D.answered?'Revisit':'Start',attrs:{'data-action':'day-start'}}}];
+ const act={title:D.activity.title,sub:activityMinutes(D.activity)+' min · practice',cta:{label:'Try it',attrs:{'data-action':'activity','data-arg0':D.activity.id}}};
+ if(m===2)items.push({title:'A quiet minute',sub:'1 min · breathing reset',cta:{label:'Begin',attrs:{'data-action':'tool','data-arg0':'pause'}}});
+ else if(m===5){items.push(act);items.push({title:'A quiet minute',sub:'1 min · breathing reset',cta:{label:'Begin',attrs:{'data-action':'tool','data-arg0':'pause'}}});}
+ else{items.push({title:D.next.title,sub:D.next.time+' min · lesson',cta:{label:'Open',attrs:{'data-action':'lesson','data-arg0':D.next.id}}});if(1+D.next.time+activityMinutes(D.activity)<=10)items.push(act);}
+ return items;
+}
+function ccFan(D){return `<div class="cc-fan" role="img" aria-label="Today’s scenario: ${esc(D.sc.title)}"><div class="cc-sc cc-sc3"></div><div class="cc-sc cc-sc2"></div><div class="cc-sc cc-sc1"><span class="cc-tag">${esc(D.sc.tag.toUpperCase())}</span><b>${esc(D.sc.title)}</b><i class="cc-line"></i><i class="cc-line cc-short"></i><span class="cc-opts"><u>A</u><u>B</u><u>C</u></span></div></div>`;}
 function renderHome(){
+ const S=window.HCAShell;if(!S)return renderHomeClassic();
+ const D=ccHomeData(),wh=S.when(),first=(state.name||'').trim().split(/\s+/)[0],s=D.stats;
+ const mode=D.answered?(D.ls&&!D.sessionToday?'resume':'done'):'start';
+ const h1={start:'Your scenario <em>is ready.</em>',resume:'Pick up <em>where you left off.</em>',done:'That’s today <em>done.</em>'}[mode];
+ const lead={start:`${first?first+', one':'One'} moment from a working day. Think first, then compare the reasoning.`,resume:`${first?first+', your':'Your'} place is kept: ${resumeTitle()}.`,done:`${first?'Lovely, '+first+'. ':'Lovely. '}Another scenario keeps the habit warm.`}[mode];
+ const nextHook=HOOK_FIRST.filter(x=>x!==D.sc.id)[(new Date().getDate())%(HOOK_FIRST.length-1)]||HOOK_FIRST[0];
+ const hero={eyebrow:wh.eyebrow,h1,lead,
+  primary:mode==='start'?{label:'Start the scenario',icon:'play',attrs:{'data-action':'day-start'}}:mode==='resume'?{label:'Resume',icon:'play',attrs:{'data-action':'resume'}}:{label:'Done ✓',arrow:false,attrs:{'aria-disabled':'true','data-action':'day-start'}},
+  secondary:mode==='done'?{label:'Another scenario',attrs:{'data-action':'scenario-open','data-arg0':nextHook},arrow:false}:{label:'Show me around',attrs:{'data-action':'app-guide'},arrow:false},
+  meta:[{icon:'clock',text:'1 minute'},{icon:'layers',text:D.sc.tag},{icon:'check',text:'Fictional · practice only'}],art:ccFan(D)};
+ const fresh=!s.answered&&!D.reviewed&&!D.ls,steps=(D.answered?1:0)+(D.sessionToday?1:0);
+ const progress={eyebrow:'Today’s steps',streak:s.streak>0?s.streak:null,pct:fresh?0:steps/2,main:fresh?'1':steps,sub:fresh?'min to start':'of 2 steps',ringLabel:fresh?'One minute to start':`${steps} of 2 steps today`,
+  title:fresh?'Your first step today starts your streak':steps>=2?'Both steps done. Lovely.':'Small steps. Lasting value.',empty:fresh?'One scenario is all it takes. Rest is part of learning.':null,text:`${s.answered} ${s.answered===1?'scenario':'scenarios'} explored · ${s.strongest} strongest ${s.strongest===1?'choice':'choices'}.`,
+  week:S.week(new Set(Object.keys(D.st.days))),strip:[{v:String(D.reviewed),l:'of 30 reviewed'},{v:String(D.reviews),l:'to revisit'},{v:String(state.saved.length),l:'saved'}]};
+ const scenarioHtml=`<div id="dailyScenario" class="cc-daily">${scenarioBody(D.sc,'daily',D.chosen)}</div>${D.chosen!==null?scenarioFooter(D.sc,'daily'):''}`;
+ const cont=D.ls?{icon:'book',eyebrow:'Continue where you left off',title:esc(resumeTitle()),body:D.ls.kind==='activity'?'Pick up from your saved practice checkpoint.':'Return to the lesson step you last explored.',sub:D.ls.kind==='activity'?'Practice checkpoint':'Lesson · step '+(['learn','practice','reflect'].indexOf(D.ls.tab)+1||1)+' of 3',cta:{label:'Continue',attrs:{'data-action':'resume'}}}
+  :{icon:'book',eyebrow:'Start a lesson',title:esc(D.next.title),body:esc(D.next.description||D.next.tag),sub:D.next.tag+' · '+D.next.time+' min',cta:{label:'Open the lesson',attrs:{'data-action':'lesson','data-arg0':D.next.id}}};
+ const prac={icon:'practice',eyebrow:'Try something today',title:esc(D.activity.title),body:esc(D.activity.desc),sub:activityMinutes(D.activity)+' min · Fictional learning',cta:{label:'Explore this practice',attrs:{'data-action':'activity','data-arg0':D.activity.id}}};
+ const chips=`<div class="hs-seg" role="group" aria-label="Time you have">${[2,5,10].map(n=>`<button type="button" data-action="minutes" data-arg0="${n}" aria-pressed="${ui.minutes===n}">${n} min</button>`).join('')}</div>`;
+ const poster=(typeof INFO_PNG!=='undefined'&&INFO_PNG[D.next.id]||[])[0];
+ const atlas=`<button type="button" class="hs-card hs-atlas hs-c4 is-link" data-action="infographics" data-arg0="${esc(D.next.id)}"><div class="hs-atlas-img" aria-hidden="true">${poster?`<img src="${poster}" alt="" width="640" height="360" loading="lazy" decoding="async">`:''}</div><div class="hs-atlas-body"><p class="hs-eyebrow">Visual Atlas</p><h3>See the idea in one page.</h3><p>A three-page visual guide for every lesson: understand, apply, remember.</p><span class="hs-link"><span>Open the Atlas</span>${icon('arrow')}</span></div></button>`;
+ const gs=!state.onboarded?`<aside class="hs-card hs-gs hs-c4 is-static" aria-label="Getting started"><button type="button" class="hs-x" data-action="gs-skip" aria-label="Skip getting started"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>${renderOnboarding()}</aside>`:'';
+ const items=[{kind:'act',icon:'spark',eyebrow:'Today’s scenario',html:scenarioHtml,cls:'hs-star'},Object.assign({kind:'act'},cont),Object.assign({kind:'act'},prac),
+  {kind:'path',eyebrow:'Your plan',title:ui.minutes+'-minute plan',head:chips,items:ccPlanItems(D),foot:`<span class="hs-quote-mark" aria-hidden="true">“</span><blockquote id="quoteText">${esc(quotes[quoteIndex])}</blockquote>${btn('Next quote →','quote-next',[],'ghost')}`}];
+ if(gs){items.push({kind:'raw',html:gs,el:S.h('div',{class:'hs-c4 hs-gs-wrap'},gs)});items.push({kind:'raw',cls:'hs-c12',el:S.h('div',{class:'hs-c12'},atlas.replace('hs-c4','hs-c12'))});}else items.push({kind:'raw',cls:'hs-c4',el:S.h('div',{class:'hs-c4'},atlas)});
+ const day=S.day({hero,progress,items});
+ return day.outerHTML;
+}
+function ccAfterRender(){
+ const S=window.HCAShell,host=document.querySelector('[data-hs-day]');if(!S||!host||host.dataset.live)return;host.dataset.live='1';
+ S.animate(host);const hero=host.querySelector('.hs-hero');if(hero)S.tilt(hero,10);
+}
+function ccShellInit(){
+ const S=window.HCAShell;if(!S)return;
+ S.init({app:'carecraft',observe:'body',name:'Carecraft',dayName:'My Day',home:'#/dashboard',help:()=>openAppGuide(0),
+  sel:{side:'#sidebar',brand:'.brand',navs:['nav'],top:'.topbar',crumbs:'.breadcrumb',search:'.search-launch',theme:'[data-action=appearance]',moveRight:['[data-action=appearance]','.profile-menu'],tabs:'.bottom-nav',content:'.workspace'},
+  groups:[{first:'My Day',label:'Start'},{first:'Learn',label:'Build skills'},{first:'My Growth',label:'Reflect'}],
+  motionOff:'.reduce-motion,[data-motion=reduce],.reduced-motion',drawer:on=>toggleMenu(on),
+  streak:()=>{try{const n=scenarioStreak();return{text:n,label:n?n+'-day scenario streak':'Answer a scenario to start a streak'};}catch{return null;}}});
+}
+function renderHomeClassic(){
+
  const picked=focusLessons().slice(0,3),next=picked.find(l=>!state.completed.includes(l.id))||picked[0];
  const activity=HCA_ACTIVITIES.find(a=>a.id===(ui.minutes===2?'movement':state.learningFocus==='digital'?'ai-case':'handover'));
  const reviews=hcaDue().length,reviewed=state.completed.length;
@@ -17,7 +76,7 @@ function renderHome(){
 }
 
 const APP_GUIDE=[
- {label:'Start',icon:'home',title:'One useful loop. Your own pace.',lead:'Learn something, try it in a fictional situation, then keep one action to revisit.',steps:[['Make room','Use the 2, 5 or 10 minute buttons on Today to choose a starting point.'],['Pick a direction','Explore Learn, try Practice or open a tool. You can return whenever you need.']],tip:'The guide is always here on Today. Nothing starts automatically.',route:'library',cta:'Find my first lesson →'},
+ {label:'Start',icon:'home',title:'One useful loop. Your own pace.',lead:'Learn something, try it in a fictional situation, then keep one action to revisit.',steps:[['Make room','Use the 2, 5 or 10 minute buttons in your plan on My Day to choose a starting point.'],['Pick a direction','Explore Learn, try Practice or open a tool. You can return whenever you need.']],tip:'The guide is always in the top bar. Nothing starts automatically.',route:'library',cta:'Find my first lesson →'},
  {label:'Learn',icon:'book',title:'Read. Check. Make it your own.',lead:'Each lesson includes core reading, deeper teaching notes, a worked example and a visual companion.',steps:[['Read the lesson','Start with the ideas and teaching notes. Tap the infographic preview to flip between Understand, Apply and Remember.'],['Check and reflect','Explore the reasoning behind a practice answer. Then save a reflection or a next action. You can highlight reading text and add a note.']],tip:'Bookmark a lesson to return to it. Sources are available from Evidence & sources.',route:'library',cta:'Explore the lessons →'},
  {label:'Practice',icon:'practice',title:'A place to try another response.',lead:'Rehearse a decision with fictional cases, interactive studios and 3D simulations.',steps:[['Choose a format','Filter Practice by time, topic or format and open an activity. Use its activity guide when you need context.'],['Pause and compare','Read the feedback and try a different approach. Save the debrief when you want to keep a record.']],tip:'Practice supports learning. It does not assess clinical competence.',route:'practice',cta:'Choose a practice →'},
  {label:'Toolkit',icon:'tools',title:'Give the next conversation a shape.',lead:'Turn a useful principle into a draft, a reflection or a quiet reset.',steps:[['Open a useful tool','Try an SBAR handover, teach-back prompt, speaking-up planner or improvement test.'],['Make it yours','Edit a template with fictional details, then download or revisit your draft. You can also take an optional quiet minute.']],tip:'Use approved clinical systems for real records and confidential information.',route:'tools',cta:'Open the toolkit →'},

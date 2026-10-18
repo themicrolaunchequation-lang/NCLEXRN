@@ -197,6 +197,7 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
 
   function toggleDrawer(on) {
     const side = $(cfg.sel.side); if (!side) return;
+    if (cfg.drawer) { try { cfg.drawer(on); } catch { } d.body.classList.toggle('hs-drawer', on); return; }
     d.body.classList.toggle('hs-drawer', on);
     side.classList.toggle('open', on);
     if (on) { const f = $('.hs-item', side); setTimeout(() => f && f.focus(), 60); }
@@ -241,12 +242,12 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
       addEventListener('hashchange', () => { updateStreak(); toggleDrawer(false); }); addEventListener('storage', updateStreak);
       setInterval(() => { if (!d.hidden) updateStreak(); }, 4000);
     };
-    if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', go); else go();
+    if (cfg.wait && d.readyState === 'loading') d.addEventListener('DOMContentLoaded', go); else go();
   }
 
   /* ---------- My Day builder ---------- */
   const h = (tag, attrs, html) => { const e = d.createElement(tag); if (attrs) for (const k in attrs) { const v = attrs[k]; if (v == null || v === false) continue; if (k === 'class') e.className = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? '' : v); } if (html != null) e.innerHTML = html; return e; };
-  const act = (el, a) => { if (!a) return el; if (a.href) el.setAttribute('href', a.href); if (a.onClick) el.addEventListener('click', ev => { ev.preventDefault(); a.onClick(ev); }); return el; };
+  const act = (el, a) => { if (!a) return el; if (a.attrs) for (const k in a.attrs) el.setAttribute(k, a.attrs[k]); if (a.href) el.setAttribute('href', a.href); if (a.onClick) el.addEventListener('click', ev => { ev.preventDefault(); a.onClick(ev); }); return el; };
   function btn(a, cls) { const e = h(a.href ? 'a' : 'button', { class: 'hs-btn ' + cls, type: a.href ? null : 'button' }, `${a.icon ? icon(a.icon) : ''}<span>${esc(a.label)}</span>${a.arrow === false ? '' : icon('arrow')}`); return act(e, a); }
   function link(a) { const e = h(a.href ? 'a' : 'button', { class: 'hs-link', type: a.href ? null : 'button' }, `<span>${esc(a.label)}</span>${icon('arrow')}`); return act(e, a); }
 
@@ -262,7 +263,7 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
     const H = spec.hero, hero = h('section', { class: 'hs-hero hs-c8', 'aria-labelledby': 'hs-h1' });
     hero.innerHTML = `<div class="hs-aurora" aria-hidden="true"><i></i><i></i><i></i></div>`;
     const copy = h('div', { class: 'hs-hero-copy' });
-    copy.append(h('p', { class: 'hs-eyebrow' }, esc(H.eyebrow)), h('h1', { id: 'hs-h1' }, H.h1), h('p', { class: 'hs-lead' }, H.lead || ''));
+    copy.append(h('p', { class: 'hs-eyebrow' }, esc(H.eyebrow)), h('h1', { id: 'hs-h1' }, H.h1), h('p', { class: 'hs-lead' }, esc(H.lead || '')));
     const acts = h('div', { class: 'hs-hero-actions' }); acts.append(btn(H.primary, 'is-primary')); if (H.secondary) acts.append(btn(H.secondary, 'is-ghost'));
     copy.append(acts);
     if (H.meta && H.meta.length) copy.append(h('p', { class: 'hs-meta' }, H.meta.map(m => `<span>${m.icon ? icon(m.icon) : ''}${esc(m.text)}</span>`).join('')));
@@ -277,28 +278,27 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
       <div class="hs-week" role="list" aria-label="This week">${wk.map(w => `<span class="hs-wd${w.done ? ' is-done' : ''}${w.today ? ' is-today' : ''}" role="listitem" aria-label="${w.name}${w.done ? ', done' : w.today ? ', today' : ''}"><i></i>${w.l}</span>`).join('')}</div>
       ${Pg.strip && Pg.strip.length ? `<div class="hs-strip">${Pg.strip.map(s => `<span><b data-count="${esc(s.v)}">${esc(s.v)}</b>${esc(s.l)}</span>`).join('')}</div>` : ''}`;
     root_.append(rise(pc));
-    // action cards
-    (spec.actions || []).forEach(A => {
+    // ordered items: action cards, path card, raw cards
+    const items = spec.items || [...(spec.actions || []).map(a => Object.assign({ kind: 'act' }, a)), ...(spec.path ? [Object.assign({ kind: 'path' }, spec.path)] : [])];
+    items.forEach(A => {
+      if (A.kind === 'raw') { const el = A.el || h('div', { class: A.cls || 'hs-card' }, A.html); if (A.el && A.cls) el.className = A.cls; root_.append(rise(el)); return; }
+      if (A.kind === 'path') {
+        const Q = A, pcard = h('section', { class: 'hs-card hs-path hs-c8 is-static', 'aria-label': Q.title });
+        pcard.append(h('div', { class: 'hs-card-top' }, `<p class="hs-eyebrow">${esc(Q.eyebrow)}</p>${Q.head || ''}`), h('h2', null, esc(Q.title)));
+        const ul = h('ul', { class: 'hs-path-list' });
+        Q.items.forEach((it, k) => { const li = h('li', { class: it.done ? 'is-done' : '' }, `<span class="n" aria-hidden="true">${it.done ? icon('check') : k + 1}</span><span class="t"><b>${esc(it.title)}</b><span>${esc(it.sub || '')}</span></span>`); if (it.cta) { const g = h('span', { class: 'go' }); g.append(btn(it.cta, 'is-line')); li.append(g); } ul.append(li); });
+        pcard.append(ul); if (Q.foot) pcard.append(h('div', { class: 'hs-foot-row' }, Q.foot)); root_.append(rise(pcard)); return;
+      }
       const c = h('section', { class: 'hs-card hs-act hs-c4' + (A.cls ? ' ' + A.cls : '') });
-      c.append(h('div', { class: 'hs-card-top' }, `<span class="hs-tile">${icon(A.icon)}</span><p class="hs-eyebrow">${esc(A.eyebrow)}</p>`));
-      c.append(h('h3', null, A.title));
+      c.append(h('div', { class: 'hs-card-top' }, `<span class="hs-tile">${icon(A.icon)}</span><p class="hs-eyebrow">${esc(A.eyebrow)}</p>${A.chip ? `<span class="hs-chip">${esc(A.chip)}</span>` : ''}`));
+      if (A.title) c.append(h('h3', null, A.title));
       if (A.body) { if (typeof A.body === 'string') c.append(h('p', null, A.body)); else c.append(A.body); }
+      if (A.html) c.append(h('div', { class: 'hs-html' }, A.html));
       if (A.progress != null) c.append(h('div', { class: 'hs-prog', role: 'progressbar', 'aria-valuenow': Math.round(A.progress), 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-label': A.progressLabel || 'Progress' }, `<i style="--w:${A.progress}%"></i>`));
       if (A.sub) c.append(h('span', { class: 'hs-sub' }, esc(A.sub)));
       if (A.cta) c.append(link(A.cta));
       root_.append(rise(c));
     });
-    // path
-    if (spec.path) {
-      const Q = spec.path, pcard = h('section', { class: 'hs-card hs-path hs-c8 is-static', 'aria-label': Q.title });
-      pcard.append(h('div', { class: 'hs-card-top' }, `<p class="hs-eyebrow">${esc(Q.eyebrow)}</p>`), h('h2', null, esc(Q.title)));
-      const ul = h('ul', { class: 'hs-path-list' });
-      Q.items.forEach((it, k) => { const li = h('li', { class: it.done ? 'is-done' : '' }, `<span class="n" aria-hidden="true">${it.done ? icon('check') : k + 1}</span><span class="t"><b>${esc(it.title)}</b><span>${esc(it.sub || '')}</span></span>`); if (it.cta) { const g = h('span', { class: 'go' }); g.append(btn(it.cta, 'is-line')); li.append(g); } ul.append(li); });
-      pcard.append(ul); root_.append(rise(pcard));
-    }
-    // side card
-    if (spec.side) { const sd = spec.side; sd.el ? root_.append(rise(sd.el)) : null; }
-    // checklist (dismissible)
     return root_;
   }
 

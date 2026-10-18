@@ -23,7 +23,7 @@
   }
 
   S.init({
-    app: 'medlex', name: 'MedLex', dayName: 'My Day', home: '#today', help: helpMenu,
+    app: 'medlex', observe: 'body', name: 'MedLex', dayName: 'My Day', home: '#today', help: helpMenu,
     sel: { side: '#sidebar', brand: '.brand', navs: ['nav'], top: '.topbar', crumbs: '.breadcrumb', search: '.search-trigger', theme: '#themeButton', moveRight: ['#themeButton', '#profileInitial'], tabs: '.bottom-nav', content: '.app-shell' },
     groups: [{ first: 'My Day', label: 'Start' }, { first: 'Learn', label: 'Study' }, { first: 'Progress', label: 'You' }],
     more: true, motionOff: '.reduced-motion,[data-motion=reduce]',
