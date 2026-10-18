@@ -39,12 +39,13 @@ const recolour = s => palette.reduce((t, [re, to]) => t.replace(re, to), s);
 
 // Fonts and images leave the page as files.
 let css = recolour(style).replace(/url\("data:(font\/woff2);base64,([A-Za-z0-9+/=]+)"\)/g, (_, type, b64) => `url("${dataFile(type, b64, 'fonts').slice(BASE.length)}")`);
-css += '\n' + read('src/hook.css');
+css += '\n' + read('src/hook.css') + '\n' + read('../shared/hca-shell.css') + '\n' + read('src/day.css');
 let markup = recolour(body).replace(/src="data:([a-z+/]+);base64,([A-Za-z0-9+/=]+)"/g, (_, type, b64) => `src="${dataFile(type, b64, 'img')}"`);
 markup = markup.replace(`<span id="app-version">${FROM}</span>`, `<span id="app-version">${VERSION}</span>`);
 // Family link: Carecraft, the Academy's learning companion.
 markup = patch(markup, `class="by-hca">By Healthcare Crown Academy <span aria-hidden="true">↗</span></a>`, `class="by-hca">By Healthcare Crown Academy <span aria-hidden="true">↗</span></a><a href="https://carecraft.healthcarecrownacademy.co.uk/" class="by-hca sibling-app"><span><b>Learn something new?</b> Carecraft, 60-second scenarios</span> <span aria-hidden="true">→</span></a>`, 'sibling link');
 
+const shellJs = read('../shared/hca-shell.js') + '\n;\n' + read('src/day.js');
 let js = scripts.map(recolour).join('\n;\n');
 // The media map points at files instead of embedded data.
 js = js.replace(/S\.media=\{([\s\S]*?)\};/, (_, map) => 'S.media={' + [...map.matchAll(/"([^"]+)":"data:([a-z+/]+);base64,([A-Za-z0-9+/=]+)"/g)]
@@ -70,6 +71,18 @@ js = patch(js, `"copy_0555":"<section class=\\"context-evidence-section\\" aria-
 js = patch(js, `function openPractice(id,duration=null,preview=false,fromRoutine=false){let p=D.practices.find(x=>x.id===id);if(!p)return;`, `function openPractice(id,duration=null,preview=false,fromRoutine=false){let p=D.practices.find(x=>x.id===id);if(!p)return;if(window.HCA&&HCA.locked&&HCA.locked('serein')&&!['tide','ground','desk'].includes(id)){closeModal();closeSearch();state.routineQueue=[];HCA.paywall('serein','this practice');return;}`, 'practice gate');
 // No unsourced or U.S.-only statistics in the studios section.
 js = patch(js, /<section class=\\"context-stat\\"><strong>46%<\/strong>[\s\S]*?<\/section>\{v3\}/, '{v3}', 'remove 46% statistic');
+// ---- My Day + Visual Atlas names, shell data hooks ----
+js = patch(js, 'function today(){', 'function today(){if(globalThis.SereinDay&&globalThis.HCAShell)return SereinDay.render({c,state,D,A,store});', 'my day renderer');
+js = patch(js, 'const titles={today:Serein.t("copy_0002"),', "const titles={today:'My Day',", 'route title: my day');
+js = patch(js, "infographics:'Infographics',me:'Me'", "infographics:'Visual Atlas',me:'Me'", 'route title: atlas');
+js = patch(js, `const nav=[['today',Serein.t("copy_0002"),'today'],`, `const nav=[['today','My Day','today'],`, 'nav: my day');
+js = patch(js, `['infographics','Infographics','infographics']`, `['infographics','Visual Atlas','infographics']`, 'nav: atlas');
+js = patch(js, `groups.push(['Infographics',`, `groups.push(['Visual Atlas',`, 'search group: atlas');
+js = patch(js, `"copy_0759":"Browse educational infographics"`, `"copy_0759":"Browse the Visual Atlas"`, 'command label: atlas');
+js = patch(js, `S.insights={render:function(c){`, `S.insights={render:function(c){if(globalThis.SereinDay&&c.store.checkins.length===0&&c.store.feedback.length===0)return SereinDay.insightsEmpty(c);`, 'insights empty state');
+js = patch(js, `S.search={run:search,execute:command};`, `S.search={run:search,execute:command};S.stateRef=()=>store();S.themeToggle=()=>{const p=store().preferences;p.theme=document.body.dataset.theme==='night'?'light':'night';vault.persist();applyTheme();render();};`, 'shell data hooks');
+markup = patch(markup, `data-v5="back-today">Back to Today</button>`, `data-v5="back-today">Back to My Day</button>`, 'back to my day');
+js = shellJs + '\n;\n' + js;
 js += '\n;\n' + read('src/hook.js');
 
 const cssName = `app.${hash(css)}.css`, jsName = `app.${hash(js)}.js`;

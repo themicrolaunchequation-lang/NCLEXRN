@@ -718,7 +718,7 @@ body.hs .hs-top .hs-crumbs strong,body.hs .hs-top .hs-crumbs b{color:var(--hs-in
 body.hs .hs-top .hs-crumbs .hs-sep{opacity:.5}
 body.hs .hs-top .hs-search{flex:0 1 480px;min-width:0;width:auto;max-width:none;margin:0 auto;display:flex;align-items:center;gap:10px;height:42px;min-height:42px;padding:0 8px 0 14px;border-radius:999px;border:1px solid var(--hs-line);background:color-mix(in srgb,var(--hs-card) 82%,transparent);color:var(--hs-muted);font:500 14px/1 var(--hs-sans);cursor:pointer;text-align:left;box-shadow:none;transition:border-color .2s,box-shadow .2s}
 body.hs .hs-top .hs-search:hover{border-color:color-mix(in srgb,var(--hs-j) 55%,var(--hs-line));box-shadow:0 0 0 4px color-mix(in srgb,var(--hs-j) 12%,transparent)}
-body.hs .hs-top .hs-search>span:not(.hs-kbd):not(.icon){flex:1;text-align:left;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px;color:var(--hs-muted)}
+body.hs .hs-top .hs-search>span:not(.hs-kbd):not(.icon):not([data-icon]){flex:1;text-align:left;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px;color:var(--hs-muted)}
 body.hs .hs-top .hs-search svg{flex:0 0 18px;width:18px;height:18px;display:block}
 body.hs .hs-top .hs-search .hs-kbd,body.hs .hs-top .hs-search kbd{flex:0 0 auto;display:inline-block;margin:0;padding:4px 8px;border-radius:999px;border:1px solid var(--hs-line);background:var(--hs-soft);color:var(--hs-muted);font:600 11.5px/1 var(--hs-sans);position:static;width:auto;height:auto;clip:auto}
 body.hs .hs-right{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:flex-end;gap:8px}
@@ -940,6 +940,14 @@ body.hs .hs-foot-row .hs-quote-mark{font:500 36px/1 var(--hs-serif);color:var(--
 body.hs .hs-foot-row .button{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--hs-line);background:none;color:var(--hs-j);font:700 13px/1 var(--hs-sans);cursor:pointer;white-space:nowrap}
 @media(max-width:700px){body.hs .hs-foot-row{flex-wrap:wrap}body.hs .hs-foot-row blockquote{flex-basis:calc(100% - 50px)}}
 
+body.hs .hs-theme-own .hs-t-sun{display:none}
+:root[data-hs-theme=dark] body.hs .hs-theme-own .hs-t-sun{display:block}
+:root[data-hs-theme=dark] body.hs .hs-theme-own .hs-t-moon{display:none}
+
+/* line length */
+body.hs main :where(p,li,dd,blockquote){max-width:72ch}
+body.hs main .hs-card :where(p,li){max-width:60ch}
+
 /* Carecraft: map the shared HCA shell onto Carecraft's markup; My Day extras (scenario card, 3D scenario fan). */
 body.hs .sidebar-scroll{flex:1;min-height:0;overflow-y:auto;padding:0 0 8px;scrollbar-width:thin}
 body.hs .sidebar .brand{border-bottom:0}
@@ -1118,7 +1126,7 @@ const INFO_PNG={"communication":["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA
   /* ---------- environment sync ---------- */
   let cfg = null, mqDark = null, mqMotion = null;
   function syncTheme() {
-    let dark = false; const t = root.dataset.theme || '';
+    let dark = false; const t = root.dataset.theme || (d.body && d.body.dataset.theme) || '';
     try { const cs = getComputedStyle(root).colorScheme || ''; dark = /(^|\s)dark/.test(cs) && !/light/.test(cs); } catch { }
     if (!dark && /^(dark|night)$/.test(t)) dark = true;
     if (!dark && !t && mqDark && mqDark.matches && !/light/.test(getComputedStyle(root).colorScheme || '')) dark = true;
@@ -1208,18 +1216,24 @@ const INFO_PNG={"communication":["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA
     const search = $(S.search, top); if (search) search.classList.add('hs-search');
     let right = $('.hs-right', top);
     if (!right) { right = d.createElement('div'); right.className = 'hs-right'; top.append(right); }
-    if (!$('.hs-mbrand', top)) {
+    const own = S.mbrand && $(S.mbrand, top);
+    if (own) own.classList.add('hs-mbrand');
+    if (!own && !$('.hs-mbrand', top)) {
       const mb = d.createElement('a'); mb.className = 'hs-mbrand'; mb.href = cfg.home || '#'; mb.setAttribute('aria-label', cfg.name);
       mb.innerHTML = `<span class="hs-crest">${crestHTML || ''}</span><span>${esc(cfg.name)}</span>`; top.prepend(mb);
     }
-    if (search && search.parentNode !== top) top.insertBefore(search, right);
-    else if (search && search.nextSibling !== right && search.parentNode === top) top.insertBefore(search, right);
-    if (crumbs && crumbs.parentNode === top) top.insertBefore(crumbs, search || right);
+    if (search && (search.parentNode !== top || search.nextSibling !== right)) top.insertBefore(search, right);
+    { const ref = search || right; if (crumbs && crumbs.parentNode === top && crumbs.nextSibling !== ref) top.insertBefore(crumbs, ref); }
     // streak / ring chip
     if (cfg.streak && !$('.hs-streak', right)) { const s = d.createElement('a'); s.className = 'hs-streak'; s.href = cfg.home || '#'; s.hidden = true; right.prepend(s); }
     // theme toggle + profile etc. from the old actions container
     (S.moveRight || []).forEach(ms => $$(ms, top).forEach(el => { if (el.parentNode !== right && !right.contains(el)) { el.classList.add('hs-moved'); right.append(el); } }));
     const theme = S.theme && $(S.theme, top); if (theme) theme.classList.add('hs-ibtn', 'hs-theme-btn');
+    if (!theme && cfg.themeToggle && !$('.hs-theme-btn', right)) {
+      const tb = d.createElement('button'); tb.type = 'button'; tb.className = 'hs-ibtn hs-theme-btn hs-theme-own'; tb.setAttribute('aria-label', 'Switch between light and dark'); tb.title = 'Switch between light and dark';
+      tb.innerHTML = `<span class="hs-t-moon">${icon('moon')}</span><span class="hs-t-sun">${icon('sun')}</span>`; tb.addEventListener('click', () => { cfg.themeToggle(); setTimeout(syncTheme, 30); });
+      const st = $('.hs-streak', right); st ? st.after(tb) : right.prepend(tb);
+    }
     if (cfg.help && !$('.hs-help-btn', right)) {
       const h = d.createElement('button'); h.type = 'button'; h.className = 'hs-ibtn hs-help-btn'; h.setAttribute('aria-label', cfg.helpLabel || `How to use ${cfg.name}`); h.title = cfg.helpLabel || `How to use ${cfg.name}`;
       h.innerHTML = `${icon('help')}<span class="hs-lbl">Help</span>`; h.addEventListener('click', e => { e.preventDefault(); cfg.help(); });
@@ -1273,10 +1287,10 @@ const INFO_PNG={"communication":["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA
     cfg = c; mqDark = matchMedia('(prefers-color-scheme: dark)'); mqMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const go = () => {
       normalize(); mountChrome(); applyRail(); syncTheme(); syncMotion();
-      const schedule = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; normalize(); }); };
+      const schedule = () => { if (raf) return; raf = 1; Promise.resolve().then(() => { raf = 0; normalize(); }); };
       new MutationObserver(schedule).observe(d.body, { childList: true, subtree: cfg.observe !== 'body' });
       new MutationObserver(() => { syncTheme(); syncMotion(); }).observe(root, { attributes: true, attributeFilter: ['data-theme', 'class', 'data-motion', 'style'] });
-      new MutationObserver(() => syncMotion()).observe(d.body, { attributes: true, attributeFilter: ['class', 'data-motion'] });
+      new MutationObserver(() => { syncMotion(); syncTheme(); }).observe(d.body, { attributes: true, attributeFilter: ['class', 'data-motion', 'data-theme'] });
       mqDark.addEventListener && mqDark.addEventListener('change', syncTheme); mqMotion.addEventListener && mqMotion.addEventListener('change', syncMotion);
       matchMedia('(min-width:1024px)').addEventListener && matchMedia('(min-width:1024px)').addEventListener('change', () => { placeAccount(); applyRail(); toggleDrawer(false); });
       addEventListener('hashchange', () => { updateStreak(); toggleDrawer(false); }); addEventListener('storage', updateStreak);
@@ -1365,7 +1379,13 @@ const INFO_PNG={"communication":["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA
     hero.addEventListener('pointerleave', () => set(0, 0));
   }
 
-  global.HCAShell = { init, day, animate, tilt, icon, esc, h, btn, link, when, week, streakOf, dayKey, store, syncTheme, syncMotion, normalize, toggleDrawer, APPS, $, $$ };
+  /* animate a day screen once per DOM node, even when the host app morphs it in place */
+  function watchDay(mainSel) {
+    const main = $(mainSel); if (!main) return;
+    const scan = () => { const el = $('[data-hs-day]', main); if (el && !el.__hsLive) { el.__hsLive = true; animate(el); const hero = $('.hs-hero', el); if (hero) tilt(hero, cfg && cfg.tilt || 10); } };
+    new MutationObserver(scan).observe(main, { childList: true, subtree: true }); scan();
+  }
+  global.HCAShell = { watchDay, init, day, animate, tilt, icon, esc, h, btn, link, when, week, streakOf, dayKey, store, syncTheme, syncMotion, normalize, toggleDrawer, APPS, $, $$ };
 })(window);
 
 const sources={"team":{"name":"AHRQ · TeamSTEPPS 3.0 tools and demonstrations","url":"https://www.ahrq.gov/teamstepps-program/resources/additional/index.html","n":1},"share":{"name":"AHRQ · SHARE: essential steps of shared decision-making","url":"https://www.ahrq.gov/health-literacy/professional-training/shared-decision/tool/resource-1.html","n":3},"med":{"name":"WHO · Medication Without Harm","url":"https://www.who.int/initiatives/medication-without-harm","n":1},"ipc":{"name":"CDC · Standard and transmission-based precautions","url":"https://www.cdc.gov/infection-control/hcp/isolation-precautions/precautions.html","n":1},"ai":{"name":"WHO · AI ethics and governance guidance (2024)","url":"https://www.who.int/news/item/18-01-2024-who-releases-ai-ethics-and-governance-guidance-for-large-multi-modal-models","n":1},"patient":{"name":"WHO · Patient safety (2023)","url":"https://www.who.int/news-room/fact-sheets/detail/patient-safety"},"literacy":{"name":"AHRQ · Health Literacy Universal Precautions Toolkit, 3rd edition (2024)","url":"https://www.ahrq.gov/health-literacy/improve/precautions/toolkit.html"},"disability":{"name":"WHO · Disability (2023)","url":"https://www.who.int/news-room/fact-sheets/detail/disability-and-health"},"work":{"name":"WHO · Mental health at work (2026)","url":"https://www.who.int/news-room/fact-sheets/detail/mental-health-at-work"},"research-teachback":{"name":"Talevski et al. · PLOS ONE · 2020","url":"https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231350"},"research-medication":{"name":"Schnipper et al. · BMJ Quality & Safety · 2022","url":"https://qualitysafety.bmj.com/content/31/4/278"},"research-empathy":{"name":"Howick et al. · Journal of the Royal Society of Medicine · 2018","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC6047264/"},"research-handoff":{"name":"Starmer et al. · NEJM · 2014","url":"https://www.nejm.org/doi/abs/10.1056/NEJMsa1405556"},"research-ipc":{"name":"Pronovost et al. · NEJM · 2006","url":"https://www.nejm.org/doi/abs/10.1056/NEJMoa061115"},"research-harm":{"name":"Panagioti et al. · BMJ · 2019","url":"https://www.bmj.com/content/366/bmj.l4185"},"research-engagement":{"name":"Stacey et al. · Cochrane · 2024","url":"https://www.cochrane.org/evidence/CD001431_patient-decision-aids-help-people-who-are-facing-decisions-about-health-treatment-or-screening"},"research-digital":{"name":"Walters & Wilder · Scientific Reports · 2023","url":"https://www.nature.com/articles/s41598-023-41032-5"},"research-wellbeing":{"name":"Hodkinson et al. · BMJ · 2022","url":"https://www.bmj.com/content/378/bmj-2022-070442"},"research-access":{"name":"CDC · Disability and Health Data Now · 2025","url":"https://www.cdc.gov/disability-and-health/articles-documents/disability-and-health-data-now.html"},"research-audit":{"name":"Ivers et al. · Cochrane · 2025","url":"https://pubmed.ncbi.nlm.nih.gov/40130784/"},"research-interruptions":{"name":"Westbrook et al. · Archives of Internal Medicine · 2010","url":"https://pubmed.ncbi.nlm.nih.gov/20421552/"},"research-simulation":{"name":"Cook et al. · JAMA · 2011","url":"https://jamanetwork.com/journals/jama/article-abstract/1104300"}};

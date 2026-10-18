@@ -78,7 +78,7 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
   /* ---------- environment sync ---------- */
   let cfg = null, mqDark = null, mqMotion = null;
   function syncTheme() {
-    let dark = false; const t = root.dataset.theme || '';
+    let dark = false; const t = root.dataset.theme || (d.body && d.body.dataset.theme) || '';
     try { const cs = getComputedStyle(root).colorScheme || ''; dark = /(^|\s)dark/.test(cs) && !/light/.test(cs); } catch { }
     if (!dark && /^(dark|night)$/.test(t)) dark = true;
     if (!dark && !t && mqDark && mqDark.matches && !/light/.test(getComputedStyle(root).colorScheme || '')) dark = true;
@@ -168,18 +168,24 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
     const search = $(S.search, top); if (search) search.classList.add('hs-search');
     let right = $('.hs-right', top);
     if (!right) { right = d.createElement('div'); right.className = 'hs-right'; top.append(right); }
-    if (!$('.hs-mbrand', top)) {
+    const own = S.mbrand && $(S.mbrand, top);
+    if (own) own.classList.add('hs-mbrand');
+    if (!own && !$('.hs-mbrand', top)) {
       const mb = d.createElement('a'); mb.className = 'hs-mbrand'; mb.href = cfg.home || '#'; mb.setAttribute('aria-label', cfg.name);
       mb.innerHTML = `<span class="hs-crest">${crestHTML || ''}</span><span>${esc(cfg.name)}</span>`; top.prepend(mb);
     }
-    if (search && search.parentNode !== top) top.insertBefore(search, right);
-    else if (search && search.nextSibling !== right && search.parentNode === top) top.insertBefore(search, right);
-    if (crumbs && crumbs.parentNode === top) top.insertBefore(crumbs, search || right);
+    if (search && (search.parentNode !== top || search.nextSibling !== right)) top.insertBefore(search, right);
+    { const ref = search || right; if (crumbs && crumbs.parentNode === top && crumbs.nextSibling !== ref) top.insertBefore(crumbs, ref); }
     // streak / ring chip
     if (cfg.streak && !$('.hs-streak', right)) { const s = d.createElement('a'); s.className = 'hs-streak'; s.href = cfg.home || '#'; s.hidden = true; right.prepend(s); }
     // theme toggle + profile etc. from the old actions container
     (S.moveRight || []).forEach(ms => $$(ms, top).forEach(el => { if (el.parentNode !== right && !right.contains(el)) { el.classList.add('hs-moved'); right.append(el); } }));
     const theme = S.theme && $(S.theme, top); if (theme) theme.classList.add('hs-ibtn', 'hs-theme-btn');
+    if (!theme && cfg.themeToggle && !$('.hs-theme-btn', right)) {
+      const tb = d.createElement('button'); tb.type = 'button'; tb.className = 'hs-ibtn hs-theme-btn hs-theme-own'; tb.setAttribute('aria-label', 'Switch between light and dark'); tb.title = 'Switch between light and dark';
+      tb.innerHTML = `<span class="hs-t-moon">${icon('moon')}</span><span class="hs-t-sun">${icon('sun')}</span>`; tb.addEventListener('click', () => { cfg.themeToggle(); setTimeout(syncTheme, 30); });
+      const st = $('.hs-streak', right); st ? st.after(tb) : right.prepend(tb);
+    }
     if (cfg.help && !$('.hs-help-btn', right)) {
       const h = d.createElement('button'); h.type = 'button'; h.className = 'hs-ibtn hs-help-btn'; h.setAttribute('aria-label', cfg.helpLabel || `How to use ${cfg.name}`); h.title = cfg.helpLabel || `How to use ${cfg.name}`;
       h.innerHTML = `${icon('help')}<span class="hs-lbl">Help</span>`; h.addEventListener('click', e => { e.preventDefault(); cfg.help(); });
@@ -233,10 +239,10 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
     cfg = c; mqDark = matchMedia('(prefers-color-scheme: dark)'); mqMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const go = () => {
       normalize(); mountChrome(); applyRail(); syncTheme(); syncMotion();
-      const schedule = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; normalize(); }); };
-      new MutationObserver(schedule).observe(d.body, { childList: true, subtree: true });
+      const schedule = () => { if (raf) return; raf = 1; Promise.resolve().then(() => { raf = 0; normalize(); }); };
+      new MutationObserver(schedule).observe(d.body, { childList: true, subtree: cfg.observe !== 'body' });
       new MutationObserver(() => { syncTheme(); syncMotion(); }).observe(root, { attributes: true, attributeFilter: ['data-theme', 'class', 'data-motion', 'style'] });
-      new MutationObserver(() => syncMotion()).observe(d.body, { attributes: true, attributeFilter: ['class', 'data-motion'] });
+      new MutationObserver(() => { syncMotion(); syncTheme(); }).observe(d.body, { attributes: true, attributeFilter: ['class', 'data-motion', 'data-theme'] });
       mqDark.addEventListener && mqDark.addEventListener('change', syncTheme); mqMotion.addEventListener && mqMotion.addEventListener('change', syncMotion);
       matchMedia('(min-width:1024px)').addEventListener && matchMedia('(min-width:1024px)').addEventListener('change', () => { placeAccount(); applyRail(); toggleDrawer(false); });
       addEventListener('hashchange', () => { updateStreak(); toggleDrawer(false); }); addEventListener('storage', updateStreak);
@@ -325,7 +331,13 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
     hero.addEventListener('pointerleave', () => set(0, 0));
   }
 
-  global.HCAShell = { init, day, animate, tilt, icon, esc, h, btn, link, when, week, streakOf, dayKey, store, syncTheme, syncMotion, normalize, toggleDrawer, APPS, $, $$ };
+  /* animate a day screen once per DOM node, even when the host app morphs it in place */
+  function watchDay(mainSel) {
+    const main = $(mainSel); if (!main) return;
+    const scan = () => { const el = $('[data-hs-day]', main); if (el && !el.__hsLive) { el.__hsLive = true; animate(el); const hero = $('.hs-hero', el); if (hero) tilt(hero, cfg && cfg.tilt || 10); } };
+    new MutationObserver(scan).observe(main, { childList: true, subtree: true }); scan();
+  }
+  global.HCAShell = { watchDay, init, day, animate, tilt, icon, esc, h, btn, link, when, week, streakOf, dayKey, store, syncTheme, syncMotion, normalize, toggleDrawer, APPS, $, $$ };
 })(window);
 
 /* MedLex shell + "My Day". Reads the numbers the app exposes (window.__medlexDay, set by the patched Today renderer)
@@ -353,7 +365,7 @@ window.MEDLEX_PARTS={"tachycardia":[["tachy","p","fast"],["card","r","heart"],["
   }
 
   S.init({
-    app: 'medlex', name: 'MedLex', dayName: 'My Day', home: '#today', help: helpMenu,
+    app: 'medlex', observe: 'body', name: 'MedLex', dayName: 'My Day', home: '#today', help: helpMenu,
     sel: { side: '#sidebar', brand: '.brand', navs: ['nav'], top: '.topbar', crumbs: '.breadcrumb', search: '.search-trigger', theme: '#themeButton', moveRight: ['#themeButton', '#profileInitial'], tabs: '.bottom-nav', content: '.app-shell' },
     groups: [{ first: 'My Day', label: 'Start' }, { first: 'Learn', label: 'Study' }, { first: 'Progress', label: 'You' }],
     more: true, motionOff: '.reduced-motion,[data-motion=reduce]',
