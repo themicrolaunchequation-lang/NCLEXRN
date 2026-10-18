@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { studioData } from './src/studio-data.mjs';
+import { libData } from './src/lib-data.mjs';
 
 const VERSION = '4.0.1', BASE = '/medlex/', SCOPE = '/', SITE = 'https://medlex.healthcarecrownacademy.co.uk', HOME = 'https://healthcarecrownacademy.co.uk/';
 const OUT = path.resolve(process.argv[2] || '../../site/medlex');
@@ -39,7 +40,7 @@ let css = styles.join('\n').replace(/url\(["']?data:font\/woff2;base64,([A-Za-z0
   if (!files.includes(BASE + rel)) write(rel, buf);
   return `url("${rel}")`;
 });
-css += '\n' + read('src/hook.css') + '\n' + read('../shared/hca-shell.css') + '\n' + read('src/day.css') + '\n' + read('../shared/hca-studio.css') + '\n' + read('src/studio.css');
+css += '\n' + read('src/hook.css') + '\n' + read('../shared/hca-shell.css') + '\n' + read('src/day.css') + '\n' + read('../shared/hca-studio.css') + '\n' + read('src/studio.css') + '\n' + read('src/lib/lib.css');
 
 let js = scripts[0];
 js = patch(js, '"./infographics/', `"${BASE}infographics/`, 'poster paths', 56);
@@ -54,6 +55,8 @@ js = patch(js, '${u.filter(e=>e.done).length} active days this week', '${(n=>n+(
 js = patch(js, '${Fn()} active days in your current streak', '${(n=>n+(1===n?" active day":" active days"))(Fn())} in your current streak', 'streak days plural');
 // Hook words: real terms from the course with prefix/root/suffix parts and plain meanings.
 // Free plan: modules ch1, ch2, prefixes and suffixes. Gate inside the router so links, pushState navigation and typed URLs are all covered.
+js = patch(js, 'library:"library/terms",affixes', 'library:"library/parts",affixes', 'Library opens on word parts');
+js = patch(js, '"infographics"===a?Ma():', 'window.MedlexV5&&MedlexV5.route(a,i,t)?void 0:"infographics"===a?Ma():', 'Library, Atlas and Practice routes');
 js = patch(js, '(location.hash.slice(1)||"today"),{path:a,params:i}=e;', '(location.hash.slice(1)||"today"),{path:a,params:i}=e;{const g=a.match(/^learn\\/module\\/([^/]+)/);if(g&&window.HCA&&HCA.locked&&HCA.locked("medlex")&&!["ch1","ch2","prefixes","suffixes"].includes(g[1])){history.replaceState(null,"","#learn");setTimeout(()=>HCA.paywall("medlex","this module"));return fi()}}', 'module gate');
 // ---- My Day + Visual Atlas names, and the data hook the new home screen reads ----
 const patchAll = (text, from, to, label) => { const n = text.split(from).length - 1; if (!n) throw Error(`Patch "${label}" matched 0 times; the source changed.`); return text.split(from).join(to); };
@@ -80,17 +83,22 @@ const hookIds = ['pericarditis', 'tachycardia', 'hepatomegaly', 'hyperglycaemia'
 const hookTerms = hookIds.map(id => TERMS.find(t => t.id === id)).filter(t => t && t.parts.length > 1).map(({ term, plain, parts }) => ({ term, plain, parts }));
 const hook = `window.MEDLEX_HOOK_TERMS=${JSON.stringify(hookTerms)};\n` + read('src/hook.js');
 const partsMap = Object.fromEntries(TERMS.filter(t => t.parts && t.parts.length > 1).map(t => [t.id, t.parts.filter(p => p.type !== 'vowel').map(p => [p.text, p.type[0], p.meaning])]));
-// Learning Studio: the engine, the module data and the deck builder load on first use; only the small entry script is in the shell.
-const studioJs = `window.MEDLEX_STUDIO=${JSON.stringify(studioData(BASE))};\n` + read('../shared/hca-studio.js') + '\n' + read('src/studio.js');
-const studioName = `studio.${hash(studioJs)}.js`;
-const shellJs = `window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_STUDIO_SRC=${JSON.stringify(BASE + studioName)};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');
+// Learning Studio + Library: everything heavy loads on first use; only the small entry script is in the shell bundle.
+const engineJs = read('../shared/hca-studio.js');
+const studioJs = `window.MEDLEX_STUDIO=${JSON.stringify(studioData(BASE))};\n` + read('src/studio.js');
+const lib = libData(BASE); lib.data.glossaryCount = lib.glossary.length;
+const libJs = `window.MEDLEX_LIB=${JSON.stringify(lib.data)};\n` + ['core', 'library', 'atlas', 'practice'].map(f => read(`src/lib/${f}.js`)).join('\n');
+const glossJs = `window.MEDLEX_GLOSSARY=${JSON.stringify(lib.glossary)};`;
+const lazy = { engine: engineJs, studio: studioJs, lib: libJs, glossary: glossJs }, lazyName = Object.fromEntries(Object.entries(lazy).map(([k, v]) => [k, `${k}.${hash(v)}.js`]));
+const shellJs = `window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_SRC=${JSON.stringify(Object.fromEntries(Object.entries(lazyName).map(([k, v]) => [k, BASE + v])))};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');
 
 for (const f of fs.readdirSync(PUBLIC + '/infographics')) write('infographics/' + f, fs.readFileSync(`${PUBLIC}/infographics/${f}`));
+for (const f of fs.readdirSync('web/thumbs')) write('infographics/t/' + f, fs.readFileSync(`web/thumbs/${f}`));
 for (const f of ['icon-192.png', 'icon-512.png', 'icon.svg']) write(f, fs.readFileSync(`${PUBLIC}/${f}`));
 for (const f of ['og-image.png', 'apple-touch-icon.png', 'maskable-512.png']) if (fs.existsSync('web/' + f)) write('img/' + f, fs.readFileSync('web/' + f));
 
 const cssName = `app.${hash(css)}.css`, jsName = `app.${hash(js)}.js`, hookName = `hook.${hash(hook)}.js`, shellName = `shell.${hash(shellJs)}.js`;
-write(cssName, css); write(jsName, js); write(hookName, hook); write(shellName, shellJs); write(studioName, studioJs);
+write(cssName, css); write(jsName, js); write(hookName, hook); write(shellName, shellJs); for (const [k, v] of Object.entries(lazy)) write(lazyName[k], v);
 
 write('manifest.webmanifest', JSON.stringify({
   id: BASE, name: 'MedLex · Healthcare Crown Academy', short_name: 'MedLex', description,
@@ -126,9 +134,9 @@ write('index.html', `<!DOCTYPE html>
 </html>
 `);
 
-const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs + studioJs)}`;
-const shell = [SCOPE, BASE + cssName, BASE + jsName, BASE + hookName, BASE + shellName, BASE + studioName, BASE + 'manifest.webmanifest', BASE + 'icon-192.png', BASE + 'icon-512.png', ...files.filter(f => f.includes('/fonts/'))];
-const posters = files.filter(f => f.includes('/infographics/'));
+const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs + Object.values(lazy).join(''))}`;
+const shell = [SCOPE, BASE + cssName, BASE + jsName, BASE + hookName, BASE + shellName, ...Object.values(lazyName).map(n => BASE + n), BASE + 'manifest.webmanifest', BASE + 'icon-192.png', BASE + 'icon-512.png', ...files.filter(f => f.includes('/fonts/'))];
+const posters = files.filter(f => f.includes('/infographics/') && !f.includes('/infographics/t/'));
 fs.writeFileSync(path.join(OUT, 'sw.js'), `/* MedLex ${VERSION} offline worker for ${SCOPE}: app shell on install, posters cached as they are viewed. */
 const CACHE=${JSON.stringify(cache)},SHELL=${JSON.stringify(shell)},POSTERS=${JSON.stringify(posters)};
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting())));
@@ -141,4 +149,4 @@ self.addEventListener('fetch',e=>{
 });
 `);
 
-console.log(JSON.stringify({ out: OUT, studio: studioName, studioBytes: Buffer.byteLength(studioJs), js: jsName, jsBytes: Buffer.byteLength(js), css: cssName, cssBytes: Buffer.byteLength(css), hookTerms: hookTerms.length, files: files.length }));
+console.log(JSON.stringify({ out: OUT, lazy: lazyName, libBytes: Buffer.byteLength(libJs), js: jsName, jsBytes: Buffer.byteLength(js), css: cssName, cssBytes: Buffer.byteLength(css), hookTerms: hookTerms.length, files: files.length }));

@@ -2,7 +2,7 @@
    shows where you are, and loads the studio bundle (engine, module data, deck builder) the first time it is needed. */
 (function () {
   'use strict';
-  const SRC = window.MEDLEX_STUDIO_SRC; if (!SRC) return;
+  const SRC = window.MEDLEX_SRC; if (!SRC) return;
   const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => [...(r || document).querySelectorAll(s)];
   const none = { started: false, done: false, last: 0, at: 0, total: 0, pct: 0 };
   function prog(id) { try { const p = JSON.parse(localStorage.getItem('medlex.studio.v1.' + id) || 'null') || {}, n = p.total || 0, v = (p.visited || []).length; return { started: !!p.started, done: !!p.done, last: p.last || 0, at: p.at || 0, total: n, pct: n ? Math.round(100 * Math.min(v, n) / n) : 0 }; } catch { return none; } }
@@ -10,12 +10,24 @@
   const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4l13 8-13 8z"/></svg>';
   const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
 
-  let loading = null, toastT = 0;
+  let toastT = 0; const pending = {};
+  /* one loader for every lazily fetched bundle: engine, studio (module data + decks), lib (Library, Atlas, Practice), glossary */
+  window.MedlexLoad = name => {
+    const ready = { engine: () => window.HCAStudio, studio: () => window.MedlexStudio && window.MedlexStudio.ready, lib: () => window.MedlexLib && window.MedlexLib.route, glossary: () => window.MEDLEX_GLOSSARY }[name];
+    if (ready && ready()) return Promise.resolve();
+    return pending[name] || (pending[name] = new Promise((res, rej) => { const s = document.createElement('script'); s.src = SRC[name]; s.onload = res; s.onerror = () => { delete pending[name]; rej(new Error(name)); }; document.head.append(s); }));
+  };
   function say(msg) { let t = $('.ms-toast'); if (!t) { t = document.createElement('div'); t.className = 'ms-toast'; t.setAttribute('role', 'status'); document.body.append(t); } t.textContent = msg; t.classList.add('is-on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('is-on'), 4200); }
-  function load() {
-    if (window.MedlexStudio && window.MedlexStudio.ready) return Promise.resolve();
-    return loading || (loading = new Promise((res, rej) => { const s = document.createElement('script'); s.src = SRC; s.onload = res; s.onerror = () => { loading = null; rej(new Error('studio')); }; document.head.append(s); }));
-  }
+  const load = () => window.MedlexLoad('engine').then(() => window.MedlexLoad('studio'));
+  /* Library, Visual Atlas and Practice are rendered by lib.js; the app's router asks here first */
+  const MINE = /^(library|practice)(\/|$)|^infographics$/;
+  window.MedlexV5 = { route(path, params) {
+    if (!MINE.test(path)) return false;
+    if (window.MedlexLib && window.MedlexLib.route) return window.MedlexLib.route(path, params);
+    const m = $('#main'), want = location.hash; if (m) m.innerHTML = '<div class="lx-loading" role="status">Loading…</div>';
+    window.MedlexLoad('engine').then(() => window.MedlexLoad('lib')).then(() => { if (location.hash === want) window.MedlexLib.route(path, params); }).catch(() => { if (m) m.innerHTML = '<div class="lx-loading" role="alert">This page could not load. Check your connection and reload.</div>'; });
+    return true;
+  } };
   const FREE = ['ch1', 'ch2', 'prefixes', 'suffixes'];   /* same free modules as the router's gate */
   function gated(id) { try { const H = window.HCA; if (H && H.locked && H.locked('medlex') && !FREE.includes(id)) { setTimeout(() => H.paywall('medlex', 'this module')); return true; } } catch { } return false; }
   function open(id, opts, btn) {

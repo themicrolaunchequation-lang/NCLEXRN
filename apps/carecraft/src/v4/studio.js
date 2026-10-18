@@ -15,7 +15,7 @@ function ccIdeaSlide(l,i){
 function ccVisualSlide(l,n){
  const p=infographicPages(l)[n-1],R=CC_REGIONS[l.id]&&CC_REGIONS[l.id][String(n)];
  const intro=[l.description,'A fictional example from '+l.tag.toLowerCase()+'. Notice what changes between a weaker and a stronger response.',l.takeaway][n-1];
-  const regions=R?[{label:['The big picture','A fictional example','Carry it forward'][n-1],text:intro,rect:R?[0,Math.max(0,R.hero[1]-.008),1,R.hero[3]+.016]:[0,0,1,1]},...R.blocks.map((b,i)=>({label:(p.blocks[i]||{}).title||'Section '+(i+1),text:(p.blocks[i]||{}).text||'',rect:b})),{label:'In short',text:p.footer,rect:R.footer}]:[{label:p.title,text:intro,rect:[0,0,1,1]}];
+  const regions=R?[{label:'The whole guide',text:'Every page is one guide. Use the steps to move through it, or enlarge it to read it at full size.',rect:[0,0,1,1]},{label:['The big picture','A fictional example','Carry it forward'][n-1],text:intro,rect:R?[0,Math.max(0,R.hero[1]-.008),1,R.hero[3]+.016]:[0,0,1,1]},...R.blocks.map((b,i)=>({label:(p.blocks[i]||{}).title||'Section '+(i+1),text:(p.blocks[i]||{}).text||'',rect:b})),{label:'In short',text:p.footer,rect:R.footer}]:[{label:p.title,text:intro,rect:[0,0,1,1]}];
  return {id:'vis'+n,type:'visual',nav:`${p.label}: ${n===1?'the whole picture':p.title}`,eyebrow:`Visual guide ${n} of 3 · ${p.label}`,title:p.title,img:infoURI(l,n-1),alt:`${l.title}: ${p.label}. The full text of this poster is available below the tour.`,aspect:R?R.size[0]/R.size[1]:.55,regions,
   blocks:[{title:p.title,text:p.lead},...p.blocks,{title:'In short',text:p.footer}],download:`carecraft-${l.id}-${n}`};
 }

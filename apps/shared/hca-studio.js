@@ -18,7 +18,7 @@
     eye: 'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z', eyeoff: 'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM3 3l18 18',
     grid: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', notes: 'M4 4h16v13H8l-4 4zM8 9h8M8 13h5', full: 'M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5',
     close: 'M6 6l12 12M18 6L6 18', left: 'M15 6l-6 6 6 6', right: 'M9 6l6 6-6 6', check: 'M5 12.5l4.5 4.5L19 7', bulb: 'M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z',
-    play: 'M7 4l13 8-13 8z', down: 'M12 3v12M7 10l5 5 5-5M4 21h16', zin: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3M11 8v6M8 11h6', zout: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3M8 11h6',
+    play: 'M7 4l13 8-13 8z', expand: 'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7', down: 'M12 3v12M7 10l5 5 5-5M4 21h16', zin: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3M11 8v6M8 11h6', zout: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3M8 11h6',
     fit: 'M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3', arrow: 'M5 12h14M13 6l6 6-6 6', sparkle: 'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z',
     clock: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v6l4 2', layers: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', help: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5M12 17.5h.01',
     image: 'M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM21 15l-5-5L5 21', flag: 'M5 21V4M5 4h11l-2 4 2 4H5',
@@ -112,19 +112,20 @@
     terms(s, S) {
       const st = S.ss[s.id] || (S.ss[s.id] = { flipped: {} });
       return `<div class="hst-s hst-terms"><div class="hst-hd">${r(`<span class="hst-eyebrow">${esc(s.eyebrow || 'Key words')}</span><h2>${esc(s.title)}</h2>${s.lead ? `<p class="hst-lead">${esc(s.lead)}</p>` : ''}`, 0)}</div>
-        <div class="hst-tgrid">${(s.terms || []).map((t, i) => { const on = !!st.flipped[i]; return r(`<button type="button" class="hst-term${on ? ' is-on' : ''}" data-act="flip" data-i="${i}" aria-pressed="${on}"><span class="hst-term-parts">${(t.parts || [{ t: t.term }]).map(p => `<i class="k-${esc(p.k || 'r')}"><b>${esc(p.t)}</b>${on && p.m ? `<small>${esc(p.m)}</small>` : ''}</i>`).join('')}</span><span class="hst-term-name">${esc(t.term)}</span><span class="hst-term-def">${on ? esc(t.plain || '') : 'Tap to decode'}</span></button>`, i + 1); }).join('')}</div></div>`;
+        <div class="hst-tgrid">${(s.terms || []).map((t, i) => { const on = !!st.flipped[i]; return r(`<button type="button" class="hst-term${on ? ' is-on' : ''}" data-act="flip" data-i="${i}" aria-pressed="${on}"><span class="hst-term-parts">${(t.parts || [{ t: t.term }]).map(p => `<i class="k-${esc(p.k || 'r')}"><b>${esc(p.t)}</b>${on && p.m ? `<span class="hst-sm">${esc(p.m)}</span>` : ''}</i>`).join('')}</span><span class="hst-term-name">${esc(t.term)}</span><span class="hst-term-def">${on ? esc(t.plain || '') : 'Tap to decode'}</span></button>`, i + 1); }).join('')}</div></div>`;
     },
     visual(s, S) {
       const v = S.view(s), reg = s.regions || [], cur = reg[v.step] || {}, blocks = s.blocks || [];
       const tall = (s.aspect || 1) < .9;
       return `<div class="hst-s hst-visual${tall ? ' is-tall' : ''}"><div class="hst-vhead">${r(`<span class="hst-eyebrow">${esc(s.eyebrow || 'Visual guide')}</span><h2>${esc(s.title)}</h2>`, 0)}</div>
-        <div class="hst-vbody"><div class="hst-pwin" data-pwin tabindex="0" aria-label="Infographic. Use the view buttons to tour it, or drag to pan."><img class="hst-pimg" data-pimg src="${esc(s.img)}" alt="${esc(s.alt || s.title)}" draggable="false" decoding="async"><div class="hst-spot" data-spot aria-hidden="true"></div><div class="hst-pctl" role="group" aria-label="Poster controls">
+        <div class="hst-vbody"><div class="hst-pwin" data-pwin tabindex="0" aria-label="Infographic. Use the view buttons to tour it, or drag to pan."><img class="hst-pimg is-raw" data-pimg src="${esc(s.img)}" alt="${esc(s.alt || s.title)}" draggable="false" decoding="async"><div class="hst-spot" data-spot aria-hidden="true"></div><div class="hst-pctl" role="group" aria-label="Poster controls">
             <button type="button" data-act="vprev" aria-label="Previous view">${ic('left')}</button><span data-vstat>${v.step + 1} / ${reg.length}</span><button type="button" data-act="vnext" aria-label="Next view">${ic('right')}</button><i></i>
-            <button type="button" data-act="vzout" aria-label="Zoom out">${ic('zout')}</button><button type="button" data-act="vzin" aria-label="Zoom in">${ic('zin')}</button><button type="button" data-act="vfit" aria-label="Fit whole poster">${ic('fit')}</button><button type="button" data-act="vsave" aria-label="Save this view as an image">${ic('down')}</button></div></div>
+            <button type="button" data-act="vzout" aria-label="Zoom out">${ic('zout')}</button><button type="button" data-act="vzin" aria-label="Zoom in">${ic('zin')}</button><button type="button" data-act="vfit" aria-label="Fit whole poster">${ic('fit')}</button><button type="button" data-act="venlarge" aria-label="Enlarge the infographic">${ic('expand')}</button><button type="button" data-act="vsave" aria-label="Save this view as an image">${ic('down')}</button></div></div>
           <div class="hst-vside">
             <div class="hst-vtitle"><span class="hst-eyebrow">${esc(s.eyebrow || 'Visual guide')}</span><h2>${esc(s.title)}</h2></div>
             <div class="hst-vcap" data-vcap><span class="hst-eyebrow">${esc(String(cur.label || '').replace(/^\d+\.\s*/, ''))}</span><p>${esc(cur.text || '')}</p></div>
             <div class="hst-tour" role="group" aria-label="Tour the infographic">${reg.map((g, i) => `<button type="button" class="hst-tour-i${i === v.step ? ' is-on' : ''}" data-act="vgo" data-i="${i}"><b>${i + 1}</b><span>${esc(String(g.label).replace(/^\d+\.\s*/, ''))}</span></button>`).join('')}</div>
+            ${s.recall ? `<details class="hst-recall"><summary>Test yourself: ${esc(s.recall.q)}</summary><p>${esc(s.recall.a)}</p></details>` : ''}
             ${blocks.length ? `<details class="hst-tx"><summary>Read the text of this poster</summary>${blocks.map(b => `<h4>${esc(b.title)}</h4><p>${esc(b.text)}</p>`).join('')}</details>` : ''}
           </div></div></div>`;
     },
@@ -139,7 +140,7 @@
     check(s, S) {
       const rec = S.p.checks && S.p.checks[s.id], chosen = rec ? ckIdx(s, rec) : null, done = chosen !== null;
       return `<div class="hst-s hst-check"><div class="hst-ck-q">${r(`<span class="hst-eyebrow">${esc(s.eyebrow || 'Check your thinking')}</span>`, 0)}${r(`<h2>${esc(s.question)}</h2>`, 1)}${s.hint ? r(`<p class="hst-lead">${esc(s.hint)}</p>`, 2) : ''}</div>
-        <div class="hst-ck-a" role="group" aria-label="Answer options">${s.options.map((o, i) => { const cls = !done ? '' : i === s.correct ? ' is-right' : i === chosen ? ' is-wrong' : ' is-dim'; return r(`<button type="button" class="hst-opt${cls}" data-act="answer" data-i="${i}" ${done ? 'disabled' : ''}><span class="hst-opt-l">${'ABCD'[i]}</span><span class="hst-opt-t"><span>${esc(o)}</span>${done && (i === chosen || i === s.correct) && s.rationales && s.rationales[i] ? `<small>${i === s.correct ? '<b>Strongest choice. </b>' : ''}${esc(s.rationales[i])}</small>` : ''}</span></button>`, i + 1); }).join('')}
+        <div class="hst-ck-a" role="group" aria-label="Answer options">${s.options.map((o, i) => { const cls = !done ? '' : i === s.correct ? ' is-right' : i === chosen ? ' is-wrong' : ' is-dim'; return r(`<button type="button" class="hst-opt${cls}" data-act="answer" data-i="${i}" ${done ? 'disabled' : ''}><span class="hst-opt-l">${'ABCD'[i]}</span><span class="hst-opt-t"><span>${esc(o)}</span>${done && (i === chosen || i === s.correct) && s.rationales && s.rationales[i] ? `<span class="hst-sm">${i === s.correct ? '<b>Strongest choice. </b>' : ''}${esc(s.rationales[i])}</span>` : ''}</span></button>`, i + 1); }).join('')}
           ${done ? `<div class="hst-fb ${chosen === s.correct ? 'is-right' : 'is-wrong'}" role="status"><b>${chosen === s.correct ? 'Well chosen.' : 'A useful comparison.'}</b><span>${esc(s.takeaway || '')}</span></div>` : ''}</div></div>`;
     },
     reflect(s, S) {
@@ -265,12 +266,13 @@
     function blurText() { const a = d.activeElement; if (a && a.classList && a.classList.contains('hst-txn')) a.blur(); }
 
     function journey() {
+      if (deck.slides.length > 24) { const pc = Math.round(100 * (S.idx + 1) / deck.slides.length); el.jr.innerHTML = `<div class="hst-pbar" role="progressbar" aria-label="Journey progress" aria-valuemin="1" aria-valuemax="${deck.slides.length}" aria-valuenow="${S.idx + 1}"><i style="width:${pc}%"></i></div>`; return; }
       el.jr.innerHTML = deck.slides.map((s, i) => { const cls = i === S.idx ? 'is-cur' : S.p.visited.includes(i) ? 'is-seen' : ''; const ok = s.type === 'check' && P.checks[s.id]; return `<button type="button" class="hst-dot ${cls}${ok ? ' is-chk' : ''}" data-act="go" data-i="${i}" aria-label="Slide ${i + 1}: ${esc(slideTitle(s))}" aria-current="${i === S.idx ? 'step' : 'false'}" title="${esc(slideTitle(s))}"></button>`; }).join('');
     }
     const TYPE_LABEL = { cover: 'Welcome', idea: 'Idea', notes: 'Notice', terms: 'Words', visual: 'Visual', compare: 'Example', check: 'Check', reflect: 'Reflect', recap: 'Recap' };
     function slideTitle(s) { return s.nav || s.title || s.prompt || s.question || s.kicker || TYPE_LABEL[s.type] || 'Slide'; }
     function filmstrip() {
-      el.film.innerHTML = `<div class="hst-fh"><b>Your journey</b><span>${S.p.visited.length} of ${deck.slides.length} seen</span></div>` + deck.slides.map((s, i) => { const chk = s.type === 'check' && P.checks[s.id]; return `<button type="button" class="hst-fi${i === S.idx ? ' is-cur' : ''}" data-act="go" data-i="${i}" ${i === S.idx ? 'aria-current="step"' : ''}><span class="hst-fn">${S.p.visited.includes(i) && i !== S.idx ? ic('check') : i + 1}</span><span class="hst-ft"><small>${TYPE_LABEL[s.type] || ''}${chk ? (chk.correct ? ' · strongest' : ' · compared') : ''}</small><b>${esc(slideTitle(s))}</b></span>${hasInk(s) ? '<i class="hst-fink" title="Has annotations"></i>' : ''}</button>`; }).join('');
+      el.film.innerHTML = `<div class="hst-fh"><b>Your journey</b><span>${S.p.visited.length} of ${deck.slides.length} seen</span></div>` + deck.slides.map((s, i) => { const chk = s.type === 'check' && P.checks[s.id]; return `<button type="button" class="hst-fi${i === S.idx ? ' is-cur' : ''}" data-act="go" data-i="${i}" ${i === S.idx ? 'aria-current="step"' : ''}><span class="hst-fn">${S.p.visited.includes(i) && i !== S.idx ? ic('check') : i + 1}</span><span class="hst-ft"><span class="hst-sm">${esc(s.cat || TYPE_LABEL[s.type] || '')}${chk ? (chk.correct ? ' · strongest' : ' · compared') : ''}</span><b>${esc(slideTitle(s))}</b></span>${hasInk(s) ? '<i class="hst-fink" title="Has annotations"></i>' : ''}</button>`; }).join('');
       root.classList.toggle('has-film', S.film);
     }
     const hasInk = s => Object.keys(P.ink).some(k => k.startsWith(s.id + '|') || k.startsWith(s.id + '@')) && Object.entries(P.ink).some(([k, v]) => (k.startsWith(s.id + '|') || k.startsWith(s.id + '@')) && v && v.length);
@@ -288,7 +290,8 @@
         const sp = $('[data-spot]', win);
         if (sp) { const full = !reg || (rect[2] >= .99 && rect[3] >= .99), pad = 8; sp.hidden = full; sp.style.transition = quick ? 'none' : 'left .6s cubic-bezier(.22,.8,.26,1),top .6s cubic-bezier(.22,.8,.26,1),width .6s cubic-bezier(.22,.8,.26,1),height .6s cubic-bezier(.22,.8,.26,1)'; sp.style.left = v.tx + rect[0] * iw * v.s - pad + 'px'; sp.style.top = v.ty + rect[1] * ih * v.s - pad + 'px'; sp.style.width = rect[2] * iw * v.s + pad * 2 + 'px'; sp.style.height = rect[3] * ih * v.s + pad * 2 + 'px'; }
       };
-      if (img.complete && img.naturalWidth) place(); else img.addEventListener('load', place, { once: true });
+      let tries = 0; const go_ = () => { if (!img.isConnected) return; if (img.naturalWidth) { try { place(); img.classList.remove('is-raw'); } catch (e) { console.warn(e); } } else if (tries++ < 80) { requestAnimationFrame(go_); } };
+      img.addEventListener('load', go_, { once: true }); go_();
     }
     function setStep(i) {
       const s = slide(), reg = s.regions || [], v = S.view(s); const n = clamp(i, 0, reg.length - 1); if (n === v.step && !v.free) return; blurText();
@@ -296,6 +299,30 @@
       $$('.hst-tour-i', el.content).forEach((b, k) => b.classList.toggle('is-on', k === n)); const st = $('[data-vstat]', el.content); if (st) st.textContent = `${n + 1} / ${reg.length}`;
       const cap = $('[data-vcap]', el.content); if (cap) cap.innerHTML = `<span class="hst-eyebrow">${esc(String(reg[n].label).replace(/^\d+\.\s*/, ''))}</span><p>${esc(reg[n].text)}</p>`;
       if (S.tool !== 'none') {/* ink belongs to the view that was drawn on */ }
+    }
+    /* ----- enlarged infographic: a full-stage viewer with zoom, pan and pinch ----- */
+    function closeLightbox() { if (!S.lb) return; S.lb.el.remove(); S.lb = null; $('.hst-top', root).removeAttribute('inert'); $('.hst-body', root).removeAttribute('inert'); const b = $('[data-act=venlarge]', root); b && b.focus(); }
+    function openLightbox() {
+      const s = slide(); if (s.type !== 'visual' || S.lb) return; const lb = d.createElement('div'); lb.className = 'hst-lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', `${s.title}, enlarged`);
+      lb.innerHTML = `<div class="hst-lb-bar"><b>${esc(s.title)}</b><span>Scroll or pinch to zoom, drag to move, double-click to zoom in</span><div><button type="button" class="hst-ib" data-act="lbout" aria-label="Zoom out">${ic('zout')}</button><button type="button" class="hst-ib" data-act="lbin" aria-label="Zoom in">${ic('zin')}</button><button type="button" class="hst-ib" data-act="lbfit" aria-label="Fit to screen">${ic('fit')}</button><button type="button" class="hst-ib" data-act="lbsave" aria-label="Save the infographic">${ic('down')}</button><button type="button" class="hst-ib" data-act="lbclose" aria-label="Close the enlarged view">${ic('close')}</button></div></div><div class="hst-lb-stage" data-lbs tabindex="0" aria-label="Enlarged infographic. Use plus and minus to zoom, arrow keys to move."><img src="${esc(s.img)}" alt="${esc(s.alt || s.title)}" draggable="false"></div>`;
+      root.append(lb); $('.hst-top', root).setAttribute('inert', ''); $('.hst-body', root).setAttribute('inert', '');
+      const st = $('[data-lbs]', lb), im = $('img', lb), L = S.lb = { el: lb, st, im, s: 1, tx: 0, ty: 0, fit: 1, pts: new Map() };
+      const apply = () => { im.style.transform = `translate(${L.tx}px,${L.ty}px) scale(${L.s})`; };
+      const clampPan = () => { const w = im.naturalWidth * L.s, h = im.naturalHeight * L.s, W = st.clientWidth, H = st.clientHeight; L.tx = w <= W ? (W - w) / 2 : clamp(L.tx, W - w, 0); L.ty = h <= H ? (H - h) / 2 : clamp(L.ty, H - h, 0); };
+      L.fitTo = () => { const W = st.clientWidth, H = st.clientHeight; L.fit = Math.min(W / im.naturalWidth, H / im.naturalHeight); L.s = L.fit; clampPan(); apply(); };
+      L.zoom = (f, cx, cy) => { cx = cx == null ? st.clientWidth / 2 : cx; cy = cy == null ? st.clientHeight / 2 : cy; const ns = clamp(L.s * f, L.fit * .98, L.fit * 6), k = ns / L.s; L.tx = cx - (cx - L.tx) * k; L.ty = cy - (cy - L.ty) * k; L.s = ns; clampPan(); apply(); };
+      const ready = () => { im.style.width = im.naturalWidth + 'px'; im.style.height = im.naturalHeight + 'px'; L.fitTo(); }; if (im.complete && im.naturalWidth) ready(); else im.addEventListener('load', ready, { once: true });
+      L.ro = new ResizeObserver(() => { if (im.naturalWidth) { const was = L.s <= L.fit * 1.001; L.fitTo(); if (!was) { /* keep fitted */ } } }); L.ro.observe(st);
+      st.addEventListener('wheel', e => { e.preventDefault(); const r = st.getBoundingClientRect(); L.zoom(e.deltaY < 0 ? 1.15 : 1 / 1.15, e.clientX - r.left, e.clientY - r.top); }, { passive: false });
+      st.addEventListener('dblclick', e => { const r = st.getBoundingClientRect(); if (L.s > L.fit * 1.05) L.fitTo(); else L.zoom(2.4, e.clientX - r.left, e.clientY - r.top); });
+      let last = 0;
+      st.addEventListener('pointerdown', e => { st.setPointerCapture(e.pointerId); L.pts.set(e.pointerId, [e.clientX, e.clientY]); st.classList.add('is-pan'); last = L.pts.size === 2 ? Math.hypot(...[...L.pts.values()].reduce((a, b) => [a[0] - b[0], a[1] - b[1]])) : 0; });
+      st.addEventListener('pointermove', e => { const pt = L.pts.get(e.pointerId); if (!pt) return;
+        if (L.pts.size === 2) { L.pts.set(e.pointerId, [e.clientX, e.clientY]); const [a, b] = [...L.pts.values()], dd = Math.hypot(a[0] - b[0], a[1] - b[1]), r = st.getBoundingClientRect(); if (last) L.zoom(dd / last, (a[0] + b[0]) / 2 - r.left, (a[1] + b[1]) / 2 - r.top); last = dd; return; }
+        L.tx += e.clientX - pt[0]; L.ty += e.clientY - pt[1]; L.pts.set(e.pointerId, [e.clientX, e.clientY]); clampPan(); apply(); });
+      const up = e => { L.pts.delete(e.pointerId); last = 0; if (!L.pts.size) st.classList.remove('is-pan'); }; st.addEventListener('pointerup', up); st.addEventListener('pointercancel', up);
+      st.addEventListener('keydown', e => { const k = e.key; if (k === '+' || k === '=') L.zoom(1.25); else if (k === '-') L.zoom(1 / 1.25); else if (k === '0') L.fitTo(); else if (k.startsWith('Arrow')) { const m = 60; L.tx += k === 'ArrowLeft' ? m : k === 'ArrowRight' ? -m : 0; L.ty += k === 'ArrowUp' ? m : k === 'ArrowDown' ? -m : 0; clampPan(); apply(); } else return; e.preventDefault(); e.stopPropagation(); });
+      st.focus();
     }
     function zoomBy(f) { const s = slide(), v = S.view(s), win = $('[data-pwin]', el.content); if (!win) return; const cx = win.clientWidth / 2, cy = win.clientHeight / 2, ns = clamp(v.s * f, .15, 6), k = ns / v.s; v.tx = cx - (cx - v.tx) * k; v.ty = cy - (cy - v.ty) * k; v.s = ns; v.free = true; applyVisual(false); }
     function saveView() {
@@ -401,7 +428,7 @@
     /* ----- overview grid, keys, export ----- */
     function showGrid(on) {
       S.grid = on; el.ov.hidden = !on; if (!on) { el.ov.innerHTML = ''; root.focus(); return; }
-      el.ov.innerHTML = `<div class="hst-ovh"><b>All slides</b><span>Pick one to jump to it</span><button type="button" class="hst-ib" data-act="grid" aria-label="Close overview">${ic('close')}</button></div><div class="hst-ovg">${deck.slides.map((s, i) => `<button type="button" class="hst-ovi${i === S.idx ? ' is-cur' : ''}" data-act="go" data-i="${i}" data-close="1"><span class="hst-ovn">${i + 1}</span><small>${TYPE_LABEL[s.type] || ''}</small><b>${esc(slideTitle(s))}</b>${S.p.visited.includes(i) ? `<i class="hst-ovs">${ic('check')}</i>` : ''}${hasInk(s) ? '<i class="hst-fink"></i>' : ''}</button>`).join('')}</div>`;
+      el.ov.innerHTML = `<div class="hst-ovh"><b>All slides</b><span>Pick one to jump to it</span><button type="button" class="hst-ib" data-act="grid" aria-label="Close overview">${ic('close')}</button></div><div class="hst-ovg">${deck.slides.map((s, i) => `<button type="button" class="hst-ovi${i === S.idx ? ' is-cur' : ''}" data-act="go" data-i="${i}" data-close="1"><span class="hst-ovn">${i + 1}</span><span class="hst-sm">${TYPE_LABEL[s.type] || ''}</span><b>${esc(slideTitle(s))}</b>${S.p.visited.includes(i) ? `<i class="hst-ovs">${ic('check')}</i>` : ''}${hasInk(s) ? '<i class="hst-fink"></i>' : ''}</button>`).join('')}</div>`;
       const c = $('.hst-ovi.is-cur', el.ov); c && c.focus();
     }
     function showKeys() {
@@ -457,6 +484,8 @@
         case 'due': { const s = slide(), rf = (P.reflect[s.id] ||= {}); rf.dueDays = +b.dataset.n; $$('[data-act=due]', el.content).forEach(x => x.setAttribute('aria-pressed', String(x === b))); save(); break; }
         case 'saverf': { const s = slide(), rf = (P.reflect[s.id] ||= {}); rf.text = ($('[data-rf=text]', el.content) || {}).value || ''; const at = $('[data-rf=action]', el.content); if (at) rf.action = at.value.trim(); rf.dueDays = rf.dueDays || 3; rf.saved = true; save(); try { deck.onReflect && deck.onReflect(s, rf); } catch (er) { console.warn(er); } const sv = $('[data-saved]', el.content); if (sv) sv.textContent = 'Saved ✓'; toast('Reflection saved on this device.'); break; }
         case 'vprev': setStep(S.view(slide()).step - 1); break; case 'vnext': setStep(S.view(slide()).step + 1); break; case 'vgo': setStep(i); break;
+        case 'venlarge': openLightbox(); break; case 'lbclose': closeLightbox(); break; case 'lbin': S.lb && S.lb.zoom(1.3); break; case 'lbout': S.lb && S.lb.zoom(1 / 1.3); break; case 'lbfit': S.lb && S.lb.fitTo(); break;
+        case 'lbsave': { const sl = slide(), a = d.createElement('a'); a.href = sl.img; a.download = (sl.download || sl.id) + '.' + (/\.(png|webp|jpe?g)(\?|$)/i.exec(sl.img) || [0, 'png'])[1]; d.body.append(a); a.click(); a.remove(); break; }
         case 'vzin': zoomBy(1.3); break; case 'vzout': zoomBy(1 / 1.3); break; case 'vfit': { const v = S.view(slide()); v.step = 0; v.free = false; setStep(0); applyVisual(false); break; } case 'vsave': saveView(); break;
         case 'finish': finish(); break;
         case 'replay': S.p.done = false; S.p.checks = {}; S.p.visited = [0]; S.ss = {}; save(); flush(); go(0, -1); renderSlide(false); toast('Journey reset. Your notes and annotations are kept.'); break;
@@ -472,7 +501,7 @@
       if (!root.isConnected) return; e.stopPropagation(); const tag = (e.target.tagName || '').toLowerCase(), typing = tag === 'textarea' || tag === 'input' || e.target.isContentEditable;
       if (e.key === 'Tab') { const f = $$('button:not([disabled]):not([hidden]),textarea,input,[tabindex="0"],summary,[contenteditable=true]', root).filter(x => x.offsetParent !== null && !x.closest('[hidden]')); if (!f.length) return; const a = f[0], z = f[f.length - 1]; if (e.shiftKey && (d.activeElement === a || d.activeElement === root)) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && d.activeElement === z) { e.preventDefault(); a.focus(); } return; }
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z' && !typing) { e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
-      if (e.key === 'Escape') { e.preventDefault(); if (S.grid) showGrid(false); else if (typing) d.activeElement.blur(); else if (d.fullscreenElement) d.exitFullscreen(); else if (S.dockOpen) toggleDock(false); else close(); return; }
+      if (e.key === 'Escape') { e.preventDefault(); if (S.lb) closeLightbox(); else if (S.grid) showGrid(false); else if (typing) d.activeElement.blur(); else if (d.fullscreenElement) d.exitFullscreen(); else if (S.dockOpen) toggleDock(false); else close(); return; }
       if (typing || e.altKey || e.ctrlKey || e.metaKey) return;
       const k = e.key.toLowerCase();
       if (['arrowright', 'pagedown'].includes(k) || (k === ' ' && !e.target.closest('button'))) { e.preventDefault(); go(S.idx + 1, 1); }
@@ -490,7 +519,7 @@
     el.wrap.addEventListener('touchend', e => { if (!sw) return; const t = e.changedTouches[0], dx = t.clientX - sw[0], dy = t.clientY - sw[1]; sw = null; if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.6) go(S.idx + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); }, { passive: true });
 
     function close(silent) {
-      flush(); window.removeEventListener('keydown', onKey, true); window.removeEventListener('popstate', onPop); d.removeEventListener('fullscreenchange', onFs); ro.disconnect(); cancelAnimationFrame(raf); if (d.fullscreenElement) d.exitFullscreen().catch(() => { });
+      flush(); if (S.lb && S.lb.ro) S.lb.ro.disconnect(); window.removeEventListener('keydown', onKey, true); window.removeEventListener('popstate', onPop); d.removeEventListener('fullscreenchange', onFs); ro.disconnect(); cancelAnimationFrame(raf); if (d.fullscreenElement) d.exitFullscreen().catch(() => { });
       root.remove(); inerts.forEach(e => e.removeAttribute('inert')); d.documentElement.classList.remove('hst-lock'); current = null;
       if (!silent) { try { deck.onClose && deck.onClose(progress(app, deck.id)); } catch (e) { console.warn(e); } const o = S.opener; if (o && o.isConnected) { try { o.focus({ preventScroll: true }); } catch { } } }
     }
