@@ -52,6 +52,8 @@ js = patch(js, '${Math.max(1,Math.round(((e.finishedAt||Date.now())-e.started)/6
 js = patch(js, '${u.filter(e=>e.done).length} active days this week', '${(n=>n+(1===n?" active day":" active days"))(u.filter(e=>e.done).length)} this week', 'week days plural');
 js = patch(js, '${Fn()} active days in your current streak', '${(n=>n+(1===n?" active day":" active days"))(Fn())} in your current streak', 'streak days plural');
 // Hook words: real terms from the course with prefix/root/suffix parts and plain meanings.
+// Free plan: modules ch1, ch2, prefixes and suffixes. Gate inside the router so links, pushState navigation and typed URLs are all covered.
+js = patch(js, '(location.hash.slice(1)||"today"),{path:a,params:i}=e;', '(location.hash.slice(1)||"today"),{path:a,params:i}=e;{const g=a.match(/^learn\\/module\\/([^/]+)/);if(g&&window.HCA&&HCA.locked&&HCA.locked("medlex")&&!["ch1","ch2","prefixes","suffixes"].includes(g[1])){history.replaceState(null,"","#learn");setTimeout(()=>HCA.paywall("medlex","this module"));return fi()}}', 'module gate');
 const TERMS = JSON.parse(read('package/src/data/records/TERMS.json'));
 const hookIds = ['pericarditis', 'tachycardia', 'hepatomegaly', 'hyperglycaemia', 'haematuria', 'gastroenteritis'];
 const hookTerms = hookIds.map(id => TERMS.find(t => t.id === id)).filter(t => t && t.parts.length > 1).map(({ term, plain, parts }) => ({ term, plain, parts }));

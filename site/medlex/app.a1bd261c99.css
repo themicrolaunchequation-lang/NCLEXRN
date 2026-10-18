@@ -49,3 +49,12 @@
 .today-hero.daily-session-card .today-session-note{color:#c6d9d8}
 /* Route changes move focus to the heading or main region; show the ring only for keyboard focus. */
 h1:focus:not(:focus-visible),h2[tabindex="-1"]:focus:not(:focus-visible),main:focus:not(:focus-visible),#main:focus:not(:focus-visible),[tabindex="-1"]:focus:not(:focus-visible){outline:none}
+
+/* Jewel accent: MedLex sapphire replaces the teal primary. #3557D6 is the accent (indicators, rings),
+   #2541A8 carries text, links and buttons (white text, 8.7:1); dark mode uses #8FA7FF with navy text. */
+:root{--jewel:#3557D6;--brand-teal:#2541A8;--focus-ring:#3557D6;--surface-sunken:#EBEFFA}
+:root[data-theme=dark]{--jewel:#8FA7FF;--brand-teal:#8FA7FF;--focus-ring:#8FA7FF}
+:root.high-contrast{--brand-teal:#1C3285;--focus-ring:#1C3285}
+:root.high-contrast[data-theme=dark]{--brand-teal:#C2CEFF;--focus-ring:#e6cf79}
+.today-experience{--welcome-teal:#2541A8}
+.guide-demo-dots i.done{background:var(--jewel);border-color:var(--jewel)}

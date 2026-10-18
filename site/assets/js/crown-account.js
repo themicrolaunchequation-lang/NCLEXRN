@@ -1,7 +1,18 @@
 /* Crown Suite account: one sign-in across healthcarecrownacademy.co.uk, MedLex, Carecraft, Serein, Lumen and Evinca.
    Reads the shared session cookie written by the account site (hca-auth.0, .1, ...), refreshes it when it
    expires, asks the database what this person can open (crown_entitlements) and shows an account button.
-   Exposes window.HCA = { ready: Promise<entitlements>, signIn(), upgrade(app) } for app paywalls.
+   Exposes window.HCA for app paywalls:
+     HCA.ready              Promise<entitlements> ({signed_in, admin, crown, medlex|carecraft|serein|lumen: 'free'|'premium'})
+     HCA.signIn(mode?)      go to the account site ('signup' for a new account)
+     HCA.locked(app)        true when free-plan limits apply to this app right now (gates on, not premium/admin)
+     HCA.gate(app, what, allowed)  runs allowed() if premium, else opens the paywall (async, resolves true/false)
+     HCA.limit(kind, count) Lumen quotas: kind 'source' (free 3) or 'card' (free 50); count = how many the person
+                            already has. Returns true if one more is allowed, else opens the paywall and returns false.
+                            Lumen calls `window.HCA && HCA.gate && HCA.gate('source', count)`; gate(kind, number)
+                            is an alias of limit(kind, number). Always true while gates are off.
+     HCA.paywall(app, what) open the upgrade dialog;  HCA.upgrade(app) go to pricing.
+   Per-app free limits are chosen by <meta name="hca-app" content="medlex|carecraft|serein|lumen">.
+   Gates are off until paid plans can be bought (GATES_LIVE); preview them with ?gates=on.
    Plain ES2020, no dependencies. Works signed out and offline (everything stays free-tier). */
 (() => {
   'use strict';
@@ -148,20 +159,22 @@
   const gatesOn = GATES_LIVE || new URLSearchParams(location.search).get('gates') === 'on';
   const NAMES = { medlex: 'MedLex', carecraft: 'Carecraft', serein: 'Serein', lumen: 'Lumen' };
   const PERKS = {
-    medlex: ['All 26 modules and 1,480 terms', '56 illustrated guides', 'Spaced practice and worksheets', 'Completion certificate'],
-    carecraft: ['All 30 lessons and 90 visual guides', 'All 22 practice activities', 'Smart Review', 'Completion certificate'],
-    serein: ['All 15 practices', 'Journeys, routines and insights', 'Team toolkit', 'Participation certificate'],
-    lumen: ['More Academy AI help each day', 'Unlimited sources and notes', 'Recall cards and focus planner', 'Study certificate'],
+    medlex: ['All 26 modules and 1,480 terms', '56 illustrated guides', 'Spaced practice and worksheets'],
+    carecraft: ['All 30 lessons and 90 visual guides', 'All 22 practice activities', 'Smart Review'],
+    serein: ['All 15 practices', 'Journeys, routines and insights', 'Team toolkit'],
+    lumen: ['More Academy AI help each day', 'Unlimited sources and recall cards', 'Focus planner'],
   };
+  const PRICE = { medlex: '£4.99/month', carecraft: '£4.99/month', serein: '£4.99/month', lumen: '£4.99/month' };
+  const CROWN_PRICE = '£9.99/month';
   function paywall(app, what) {
     document.querySelector('.hca-pay')?.remove();
     const d = document.createElement('dialog');
     d.className = 'hca-pay';
     d.setAttribute('aria-labelledby', 'hca-pay-title');
     const signedIn = ent && ent.signed_in;
-    d.innerHTML = `<div class="hca-pay-in"><p class="hca-pay-eye">CROWN PASS · ${NAMES[app].toUpperCase()}</p><h2 id="hca-pay-title"></h2><p class="hca-pay-lead"></p><ul></ul>
-<p class="hca-pay-price"><b>£9.99/month</b> for every app, or ${NAMES[app]} on its own. Codes can be used at checkout.</p>
-<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/?plan=${app}#pricing">See plans</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
+    d.innerHTML = `<div class="hca-pay-in"><p class="hca-pay-eye">${NAMES[app].toUpperCase()} PREMIUM</p><h2 id="hca-pay-title"></h2><p class="hca-pay-lead"></p><ul></ul>
+<p class="hca-pay-price">${NAMES[app]} on its own <b>${PRICE[app]}</b>, or every app with the Crown Pass <b>${CROWN_PRICE}</b>. Codes can be used at checkout.</p>
+<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/?plan=${encodeURIComponent(app)}#pricing">See plans</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
     d.querySelector('h2').textContent = what ? `Unlock ${what}` : `Unlock all of ${NAMES[app]}`;
     d.querySelector('.hca-pay-lead').textContent = `This is part of ${NAMES[app]} premium. Everything you have done so far stays yours.`;
     for (const t of PERKS[app]) { const li = document.createElement('li'); li.textContent = t; d.querySelector('ul').append(li); }
@@ -171,58 +184,35 @@
     d.showModal();
     d.querySelector('.hca-pay-go').focus();
   }
+  const premium = (app, e = ent) => !!(e && (e.admin || e.crown || e[app] === 'premium'));
+  /** True when free-plan limits apply to `app` right now. Before entitlements load, a gated preview counts as locked. */
+  const locked = (app) => gatesOn && !premium(app);
   /** Runs `allowed` if this person has premium for the app; otherwise shows the paywall. */
   async function gate(app, what, allowed) {
     const e = ent || await ready;
-    if (!gatesOn || e.admin || e[app] === 'premium') { allowed(); return true; }
+    if (!gatesOn || premium(app, e)) { if (allowed) allowed(); return true; }
     paywall(app, what);
     return false;
   }
+  // Lumen free plan: up to 3 sources and 50 recall cards.
+  const LIMITS = { source: { max: 3, what: 'more than 3 sources' }, card: { max: 50, what: 'more than 50 recall cards' } };
+  const alias = { 'lumen-source': 'source', 'lumen-card': 'card', sources: 'source', cards: 'card' };
+  /** Lumen quota check: true if one more `kind` is allowed given `count` already used; else paywall and false. */
+  function limit(kind, count) {
+    const l = LIMITS[alias[kind] || kind];
+    if (!l || !locked('lumen') || !(Number(count) >= l.max)) return true;
+    paywall('lumen', l.what);
+    return false;
+  }
 
-  const appName = document.querySelector('meta[name="hca-app"]')?.content;
-  let replaying = false;
-  function guardClicks(test) {
-    document.addEventListener('click', (ev) => {
-      if (replaying || !gatesOn) return;
-      const hit = test(ev.target);
-      if (!hit) return;
-      if (ent && (ent.admin || ent[appName] === 'premium')) return;
-      ev.preventDefault(); ev.stopImmediatePropagation();
-      gate(appName, hit.what, () => { replaying = true; try { hit.el.click(); } finally { replaying = false; } });
-    }, true);
-  }
-  if (appName === 'serein') {
-    const free = new Set(['tide', 'ground', 'desk']);
-    guardClicks((t) => { const el = t.closest('[data-practice]'); return el && !free.has(el.dataset.practice) ? { el, what: 'this practice' } : null; });
-  }
-  if (appName === 'carecraft') {
-    // Published by the Carecraft build: the first 6 lessons and first 3 activities are free.
-    const freeLessons = () => new Set(window.CC_FREE?.lessons || []);
-    const freeActs = () => new Set(window.CC_FREE?.activities || []);
-    guardClicks((t) => {
-      const el = t.closest('[data-action="lesson"],[data-action="scenario-lesson"],[data-action="activity"]');
-      if (!el) return null;
-      const id = el.dataset.arg0;
-      if (el.dataset.action === 'activity') return freeActs().has(id) ? null : { el, what: 'this practice activity' };
-      return freeLessons().has(id) ? null : { el, what: 'this lesson' };
-    });
-  }
-  if (appName === 'medlex') {
-    const free = new Set(['ch1', 'ch2', 'prefixes']);
-    const check = () => {
-      if (!gatesOn) return;
-      const m = location.hash.match(/^#(?:learn\/)?module(?:\/([^/?&]+)|\?(?:.*&)?id=([^&]+))/);
-      const id = m && decodeURIComponent(m[1] || m[2]);
-      if (!id || free.has(id)) return;
-      gate('medlex', 'this module', () => {}).then((ok) => { if (!ok) history.replaceState(null, '', '#learn'), dispatchEvent(new HashChangeEvent('hashchange')); });
-    };
-    addEventListener('hashchange', check);
-    ready.then(check);
-  }
+  // Carecraft and MedLex gate inside their own code (entry points and router) through HCA.locked;
+  // see apps/carecraft/build-web.mjs and apps/medlex/build-web.mjs. Serein gates at its practice player.
   window.HCA = {
     ready,
     signIn: (mode) => { location.href = signInURL(mode); },
-    gate,
+    gate: (app, what, allowed) => (typeof what === 'number' || alias[app] || LIMITS[app]) && !NAMES[app] ? limit(app, what) : gate(app, what, allowed),
+    locked,
+    limit,
     paywall,
     upgrade: (app) => { location.href = 'https://healthcarecrownacademy.co.uk/?plan=' + encodeURIComponent(app || 'crown') + '#pricing'; },
   };

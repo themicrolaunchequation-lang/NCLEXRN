@@ -55,3 +55,19 @@
 /* Today hero at desktop widths: the image fills its grid cell instead of forcing a
    16:10 box with a 360px floor that painted over the title and the start button. */
 @media(min-width:1024px){.pause-card{grid-template-columns:minmax(0,42%) minmax(0,1fr)}.pause-image{aspect-ratio:auto;min-width:0;min-height:0;height:100%}.pause-image img{position:absolute;inset:0}.pause-copy{min-width:0}}
+
+/* Jewel accent: Serein sage #5FB89E carries accents, the orb, chips and active states.
+   Text and buttons stay on #2F6B5E (light, 5.2:1+) and #7FD0B5 (night, 6.2:1+) for WCAG AA. */
+:root{--jewel:#5FB89E;--color-surface-raised:#E6F3ED}
+body[data-theme=night]{--jewel:#7FD0B5;--color-accent:#7FD0B5}
+.category-row button[aria-pressed=true],.category-row button.active,.moment-chips button[aria-pressed=true],.time-chips button[aria-pressed=true],.time-chips button.active{border-color:var(--jewel);box-shadow:inset 0 0 0 1px var(--jewel)}
+.sidebar nav button.active{box-shadow:inset 4px 0 0 var(--jewel)}
+.sidebar nav button.active svg{fill:#5FB89E33;stroke:#7FD0B5}
+.mobile-nav button.active{box-shadow:inset 0 3px 0 var(--jewel)}
+.choice-card.selected,.ig-thumb[aria-pressed="true"]{border-color:var(--jewel)}
+.body-points button.active{background:#CDEBDF}
+.fallback-orb{background:radial-gradient(circle at 30% 25%,#D7F3E8,#5FB89E 45%,#2F6B5E 78%);box-shadow:0 0 60px #5FB89E55}
+.sh-orb-core{background:radial-gradient(circle at 38% 34%,#E9F6EF 0%,#5FB89E 38%,#2F6B5E 78%,#1B4A43 100%);box-shadow:0 0 60px #5FB89E66,inset 0 -10px 30px #10253A66}
+.sh-orb-ring{border-color:#5FB89E77}
+.orb-stage{background:radial-gradient(ellipse at 50% 45%,#1E5A52 0,#10253A 70%)}
+.card:hover,.practice-card:hover{border-color:var(--jewel)}

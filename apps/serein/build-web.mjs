@@ -34,7 +34,7 @@ const description = html.match(/<meta name="description" content="([^"]*)"/)[1];
 
 // Serein's palette: a calmer "serene sage" accent that is distinct from Carecraft's teal
 // while keeping the shared Healthcare Crown Academy navy, cream and gold.
-const palette = [[/#087D7A/gi, '#2F6B5E'], [/#79D4CA/gi, '#9FD8C4'], [/#245257/gi, '#2C5248']];
+const palette = [[/#087D7A/gi, '#2F6B5E'], [/#79D4CA/gi, '#7FD0B5'], [/#9FD8C4/gi, '#7FD0B5'], [/#245257/gi, '#2C5248']];
 const recolour = s => palette.reduce((t, [re, to]) => t.replace(re, to), s);
 
 // Fonts and images leave the page as files.
@@ -66,6 +66,10 @@ js = patch(js, `<span>Shout · free UK text support, 24/7</span></a></div>`, `<s
 js = patch(js, `<a class=\\"text-button\\" href=\\"https://www.who.int/health-topics/mental-health\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\">WHO information ↗</a>`, `<a class=\\"text-button\\" href=\\"${TT}\\" ${EXT}>NHS Talking Therapies ↗</a>`, 'professional support link');
 // Support: UK wording instead of historical U.S. workforce statistics.
 js = patch(js, `"copy_0555":"<section class=\\"context-evidence-section\\" aria-labelledby=\\"workplace-context-title\\"><div><p class=\\"eyebrow\\">WORKFORCE CONTEXT / U.S. / 2022</p><h2 id=\\"workplace-context-title\\">Support includes working conditions.</h2><p>Use these historical figures to understand why practical workplace support matters.</p></div><div class=\\"context-numbers\\">{v0}</div><p class=\\"small-note\\">CDC Quality of Worklife survey, published 2023. Self-reported U.S. workforce estimates, not a current local rate or a measure of Serein.</p>{v1}</section>"`, `"copy_0555":"<section class=\\"context-evidence-section\\" aria-labelledby=\\"workplace-context-title\\"><div><p class=\\"eyebrow\\">WORKFORCE CONTEXT / UNITED KINGDOM</p><h2 id=\\"workplace-context-title\\">Support includes working conditions.</h2><p>Pressure in health and care often comes from workload, staffing and rotas, not from the person. Practical support from your team, manager, occupational health or staff wellbeing service matters as much as any individual practice.</p></div><p class=\\"small-note\\">Serein is a self-care tool. It does not measure stress or burnout and does not replace workplace or clinical support.</p></section>"`, 'UK workforce context');
+// Free plan: three practices (tide, ground, desk). Gate at the player so every entry point (Library, preview, search, routines, team links) is covered. Get help is never gated.
+js = patch(js, `function openPractice(id,duration=null,preview=false,fromRoutine=false){let p=D.practices.find(x=>x.id===id);if(!p)return;`, `function openPractice(id,duration=null,preview=false,fromRoutine=false){let p=D.practices.find(x=>x.id===id);if(!p)return;if(window.HCA&&HCA.locked&&HCA.locked('serein')&&!['tide','ground','desk'].includes(id)){closeModal();closeSearch();state.routineQueue=[];HCA.paywall('serein','this practice');return;}`, 'practice gate');
+// No unsourced or U.S.-only statistics in the studios section.
+js = patch(js, /<section class=\\"context-stat\\"><strong>46%<\/strong>[\s\S]*?<\/section>\{v3\}/, '{v3}', 'remove 46% statistic');
 js += '\n;\n' + read('src/hook.js');
 
 const cssName = `app.${hash(css)}.css`, jsName = `app.${hash(js)}.js`;
