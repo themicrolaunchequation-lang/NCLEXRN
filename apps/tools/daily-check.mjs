@@ -47,5 +47,14 @@ await rule({ d: ago(1), a: ['serein'], s: 3, best: 5 }, [4, 5], 'yesterday keeps
 await rule({ d: ago(0), a: ['serein'], s: 3, best: 5 }, [3, 5], 'same day does not add a day');
 await rule({ d: ago(3), a: ['serein'], s: 9, best: 9 }, [1, 9], 'a gap restarts at 1, best is kept');
 await rule({ d: 'garbage', a: 'x', s: 'y', best: -4 }, [1, 1], 'a damaged cookie is treated as empty');
+// one streak everywhere: the app's own streak chip and progress flame show the shared number (Serein shows none)
+for (const a of ['medlex', 'carecraft', 'lumen', 'serein']) {
+  const ctx = await br.newContext({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true, serviceWorkers: 'block' }); await setCookie(ctx, { d: ago(0), a: ['serein'], s: 7, best: 9 });
+  const p = await page(ctx, a, errs); await p.waitForTimeout(800);
+  const r = await p.evaluate(() => ({ chip: (document.querySelector('.hs-streak')?.getAttribute('aria-label')) || '', flame: document.querySelector('.hs-progress .hs-flame')?.innerText.replace(/\s+/g, ' ') || '', card: document.querySelector('.hs-daily .dc-streak')?.innerText || '' }));
+  if (a === 'serein') ok(!/\d-day/.test(r.chip + r.flame + r.card), 'serein shows no streak number anywhere: ' + JSON.stringify(r));
+  else ok(/7-day Daily Crown streak/.test(r.chip) && /^7 /.test(r.flame) && /7-day streak/.test(r.card), a + ' top bar, progress card and Daily Crown card all say 7: ' + JSON.stringify(r));
+  await ctx.close();
+}
 ok(errs.length === 0, 'console errors: ' + errs.slice(0, 4).join(' || '));
 await br.close(); console.log(fails ? fails + ' FAILED' : 'ALL OK'); process.exit(fails ? 1 : 0);
