@@ -19,7 +19,7 @@
     const start = Math.max(0, order.findIndex(p => p.id === id));
     return L.openStudio({
       app: 'medlex-atlas', id: 'all', title: 'Visual Atlas', kicker: `${order.length} illustrated guides`, accent: '#3557D6', accentDark: '#2541A8', accentLight: '#8FA7FF', secPerSlide: 30, slides: order.map(slideFor),
-      onClose: () => { try { const cur = window.HCAStudio.progress('medlex-atlas', 'all'); st.atlasLast = (order[Math.min(cur.last, order.length - 1)] || order[0]).id; save(); } catch { } if (L.atlasRefresh) L.atlasRefresh(); }
+      onClose: () => { if (/[?&]topic=/.test(location.hash)) { try { history.replaceState(null, '', '#infographics'); } catch { } } try { const cur = window.HCAStudio.progress('medlex-atlas', 'all'); st.atlasLast = (order[Math.min(cur.last, order.length - 1)] || order[0]).id; save(); } catch { } if (L.atlasRefresh) L.atlasRefresh(); }
     }, { start });
   };
   const match = p => (AS.cat === 'All' || p.cat === AS.cat) && (!AS.q.trim() || (p.title + ' ' + p.outcome + ' ' + p.terms.map(t => t.term).join(' ')).toLowerCase().includes(AS.q.trim().toLowerCase()));
@@ -41,5 +41,10 @@
   L.act('acat', b => { AS.cat = b.dataset.c; AS.shown = 24; draw(); });
   L.act('amore', () => { AS.shown += 24; draw(); });
   L.act('asearch', t => { AS.q = t.value; AS.shown = 24; clearTimeout(AS.t); AS.t = setTimeout(draw, 100); });
-  L.on('atlas', () => view());
+  L.on('atlas', (path, params) => {
+    view();
+    /* deep links such as #infographics?topic=decode-1 (from My Day) open that guide straight away */
+    const t = params && params.get && params.get('topic');
+    if (t && order.some(p => p.id === t)) setTimeout(() => { if (location.hash.startsWith('#infographics')) L.openAtlas(t); }, 0);
+  });
 })();

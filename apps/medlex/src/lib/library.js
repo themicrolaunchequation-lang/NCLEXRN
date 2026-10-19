@@ -3,7 +3,8 @@
   'use strict';
   const L = window.MedlexLib; if (!L) return;
   const { D, st, save, esc, $, $$, words, wordById, wordByName, sysName, prefixes, suffixes, roots, partById, KIND, KIND_PL, isKnown, touch, isSaved, toggleSaved, ic, header, tabs, tile, mount, speak, canSpeak, loadGlossary, bare, sample, shuffle, uniq, lc, trim } = L;
-  const TABS = [['parts', 'Word parts', '#library/parts'], ['lab', 'Word lab', '#library/lab'], ['systems', 'Body systems', '#library/systems'], ['glossary', 'Glossary', '#library/glossary']];
+  const TABS = [['parts', 'Word parts', '#library/parts'], ['lab', 'Word lab', '#library/lab'], ['systems', 'Body systems', '#library/systems'], ['glossary', 'Glossary', '#library/glossary'], ['pronunciation', 'Pronunciation', '#library/pronunciation']];
+  L.libTabs = TABS;
   const nav = cur => tabs(TABS, cur, 'Library sections');
   const posterOf = id => D.atlas.find(p => p.id === id);
   const link = (w, text) => `<a class="lx-wl" href="#library/lab?w=${esc(w.id)}">${esc(text || w.term)}</a>`;
@@ -65,7 +66,7 @@
   function labDetail() {
     const w = wordById[LS.sel]; if (!w) return '';
     const real = w.p.filter(p => p[1] !== 'v'), rel = related(w), poster = posterOf('ch' + w.ch), sv = isSaved('w:' + w.id);
-    return `<article class="lx-lab-card" aria-labelledby="lx-lab-t"><div class="lx-lab-head"><div><span class="lx-sys">${esc(sysName(w.ch))}</span><h2 id="lx-lab-t">${esc(w.term)}</h2></div><div class="lx-lab-btns">${canSpeak() ? `<button type="button" class="btn lx-icon" data-lx="listen" data-t="${esc(w.term)}" aria-label="Hear ${esc(w.term)}">${ic('listen')}<span>Listen</span></button>` : ''}<button type="button" class="btn lx-icon" data-lx="saveword" data-id="${esc('w:' + w.id)}" aria-pressed="${sv}">${ic('save')}<span>${sv ? 'Saved' : 'Save'}</span></button></div></div>
+    return `<article class="lx-lab-card" aria-labelledby="lx-lab-t"><div class="lx-lab-head"><div><span class="lx-sys">${esc(sysName(w.ch))}</span><h2 id="lx-lab-t">${esc(w.term)}</h2></div><div class="lx-lab-btns">${canSpeak() ? `<button type="button" class="btn lx-icon" data-lx="listen" data-t="${esc(w.term)}" aria-label="Hear ${esc(w.term)}">${ic('listen')}<span>Listen</span></button>` : ''}<a class="btn lx-icon" href="#library/pronunciation?w=${esc(w.id)}">${ic('listen')}<span>Practise saying it</span></a><button type="button" class="btn lx-icon" data-lx="saveword" data-id="${esc('w:' + w.id)}" aria-pressed="${sv}">${ic('save')}<span>${sv ? 'Saved' : 'Save'}</span></button></div></div>
       <div class="lx-tiles lx-big" role="img" aria-label="${esc(w.term)} is made of ${esc(real.map(p => p[0] + ', ' + p[2]).join('; '))}">${w.p.map((p, i) => (i ? '<i class="lx-plus" aria-hidden="true">+</i>' : '') + tile(p[1], p[0], p[2], i)).join('')}</div>
       <div class="lx-reads"><div class="lx-read"><span>Built from</span><p>${esc(real.map(p => p[2]).join(' + '))}</p></div><div class="lx-read is-main"><span>In plain words</span><p>${esc(w.plain)}</p></div><div class="lx-read"><span>Clinical definition</span><p>${esc(w.def)}</p></div></div>
       ${w.ex ? `<p class="lx-example"><b>In use</b> ${esc(w.ex)}</p>` : ''}${w.note ? `<p class="lx-note"><b>Careful</b> ${esc(w.note)}</p>` : ''}
@@ -147,7 +148,8 @@
 
   L.on('library', (path, params) => {
     const seg = path.split('/'), s = seg[1] || 'parts';
-    if (s === 'lab' || s === 'pronunciation') viewLab(params);
+    if (s === 'pronunciation' && L.viewPronunciation) L.viewPronunciation(params);
+    else if (s === 'lab' || s === 'pronunciation') viewLab(params);
     else if (s === 'systems' || s === 'atlas') viewSystems();
     else if (s === 'system') viewSystem(seg[2]);
     else if (s === 'glossary' || s === 'terms' || s === 'term') viewGlossary(path, params);
