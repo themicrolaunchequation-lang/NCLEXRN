@@ -149,7 +149,7 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .site-header .icon-btn{border-color:rgba(255,255,255,.2);color:inherit}
 .site-header.is-scrolled .icon-btn{border-color:var(--line-strong)}
 .header-inner{position:relative;height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:inline-flex;align-items:center;gap:10px;color:inherit;min-width:0}
+.brand{display:inline-flex;align-items:center;gap:10px;color:inherit;min-width:0;min-height:44px}
 .brand-mark{width:34px;height:34px;flex:none;fill:none;stroke:var(--gold-400);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 .brand-mark circle{fill:var(--gold-400);stroke-width:2.4}
 .site-header.is-scrolled .brand-mark{stroke:var(--accent)}
@@ -338,7 +338,7 @@ html.menu-open,html.menu-open body{overflow:hidden}
 .window{width:118%;border-radius:12px 0 0 0;overflow:hidden;background:#F8F5EF;box-shadow:0 0 0 1px rgba(16,37,58,.08),0 30px 60px -28px rgba(16,37,58,.5)}
 .window-bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;background:#ECE7DD;border-bottom:1px solid rgba(16,37,58,.08)}
 .window-bar i{width:9px;height:9px;border-radius:50%;background:rgba(16,37,58,.18)}
-.window-bar span{margin-left:10px;font-size:.72rem;color:#5E6B7C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.window-bar span{margin-left:10px;font-size:.72rem;color:#3F4C5F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .window img{width:100%;height:auto}
 @supports (animation-timeline:view()){
   @media (prefers-reduced-motion:no-preference){
@@ -642,3 +642,7 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 .notfound-inner{display:flex;flex-direction:column;align-items:center;gap:18px;padding-block:64px}
 .notfound-mark{width:88px;height:88px}
 .notfound .section-lede{margin:0 auto 12px}
+
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-jewel{color:#0B1A2B}}
+:root[data-theme="dark"] .btn-jewel{color:#0B1A2B}
+.crown-tile:not(:nth-child(3)) .tile-label{display:none}
