@@ -1,0 +1,531 @@
+{
+ "hook-breath": {
+  "kind": "hero",
+  "files": [
+   {
+    "file": "hook-breath.webp",
+    "w": 1920,
+    "h": 1080
+   },
+   {
+    "file": "hook-breath-sm.webp",
+    "w": 960,
+    "h": 540
+   }
+  ],
+  "note": ""
+ },
+ "library-banner": {
+  "kind": "banner",
+  "files": [
+   {
+    "file": "library-banner.webp",
+    "w": 1920,
+    "h": 824
+   },
+   {
+    "file": "library-banner-sm.webp",
+    "w": 960,
+    "h": 412
+   }
+  ],
+  "note": ""
+ },
+ "practice-ankles": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-ankles.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-box": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-box.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-complete": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-complete.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-desk": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-desk.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-fullrelease": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-fullrelease.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-ground": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-ground.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-handreset": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-handreset.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-listen": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-listen.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-pause3": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-pause3.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-quietplace": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-quietplace.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-release": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-release.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-scan": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-scan.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-shoulderreset": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-shoulderreset.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-tide": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-tide.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-walk": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-walk.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "practice-winddown": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "practice-winddown.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "support-banner": {
+  "kind": "banner",
+  "files": [
+   {
+    "file": "support-banner.webp",
+    "w": 1920,
+    "h": 824
+   },
+   {
+    "file": "support-banner-sm.webp",
+    "w": 960,
+    "h": 412
+   }
+  ],
+  "note": ""
+ },
+ "today-hero-day": {
+  "kind": "hero",
+  "files": [
+   {
+    "file": "today-hero-day.webp",
+    "w": 1920,
+    "h": 1080
+   },
+   {
+    "file": "today-hero-day-sm.webp",
+    "w": 960,
+    "h": 540
+   }
+  ],
+  "note": ""
+ },
+ "today-hero-night": {
+  "kind": "hero",
+  "files": [
+   {
+    "file": "today-hero-night.webp",
+    "w": 1920,
+    "h": 1080
+   },
+   {
+    "file": "today-hero-night-sm.webp",
+    "w": 960,
+    "h": 540
+   }
+  ],
+  "note": ""
+ },
+ "visual-atlas-banner": {
+  "kind": "banner",
+  "files": [
+   {
+    "file": "visual-atlas-banner.webp",
+    "w": 1920,
+    "h": 824
+   },
+   {
+    "file": "visual-atlas-banner-sm.webp",
+    "w": 960,
+    "h": 412
+   }
+  ],
+  "note": ""
+ },
+ "empty-insights": {
+  "kind": "square",
+  "files": [
+   {
+    "file": "empty-insights.webp",
+    "w": 800,
+    "h": 800
+   }
+  ],
+  "note": ""
+ },
+ "empty-journal": {
+  "kind": "square",
+  "files": [
+   {
+    "file": "empty-journal.webp",
+    "w": 800,
+    "h": 800
+   }
+  ],
+  "note": ""
+ },
+ "empty-routine": {
+  "kind": "square",
+  "files": [
+   {
+    "file": "empty-routine.webp",
+    "w": 800,
+    "h": 567
+   }
+  ],
+  "note": "truncated source; cropped to 1200x850; please re-send"
+ },
+ "empty-saved": {
+  "kind": "square",
+  "files": [
+   {
+    "file": "empty-saved.webp",
+    "w": 800,
+    "h": 800
+   }
+  ],
+  "note": ""
+ },
+ "guide-boundaries": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "guide-boundaries.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "guide-difficult-talk": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "guide-difficult-talk.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "guide-manager-support": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "guide-manager-support.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "guide-peer-check": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "guide-peer-check.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "guide-priorities": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "guide-priorities.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "guide-small-win": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "guide-small-win.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "journey-shift-end": {
+  "kind": "banner",
+  "files": [
+   {
+    "file": "journey-shift-end.webp",
+    "w": 1920,
+    "h": 824
+   },
+   {
+    "file": "journey-shift-end-sm.webp",
+    "w": 960,
+    "h": 412
+   }
+  ],
+  "note": ""
+ },
+ "journey-shift-start": {
+  "kind": "banner",
+  "files": [
+   {
+    "file": "journey-shift-start.webp",
+    "w": 1920,
+    "h": 824
+   },
+   {
+    "file": "journey-shift-start-sm.webp",
+    "w": 960,
+    "h": 412
+   }
+  ],
+  "note": ""
+ },
+ "journey-week": {
+  "kind": "banner",
+  "files": [
+   {
+    "file": "journey-week.webp",
+    "w": 1920,
+    "h": 824
+   },
+   {
+    "file": "journey-week-sm.webp",
+    "w": 960,
+    "h": 412
+   }
+  ],
+  "note": ""
+ },
+ "onboard-setup": {
+  "kind": "tall",
+  "files": [
+   {
+    "file": "onboard-setup.webp",
+    "w": 900,
+    "h": 1125
+   }
+  ],
+  "note": ""
+ },
+ "onboard-welcome": {
+  "kind": "tall",
+  "files": [
+   {
+    "file": "onboard-welcome.webp",
+    "w": 900,
+    "h": 1125
+   }
+  ],
+  "note": ""
+ },
+ "privacy-device": {
+  "kind": "square",
+  "files": [
+   {
+    "file": "privacy-device.webp",
+    "w": 800,
+    "h": 800
+   }
+  ],
+  "note": ""
+ },
+ "toolkit-after-hard-moment": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "toolkit-after-hard-moment.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "toolkit-after-shift": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "toolkit-after-shift.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "toolkit-before-shift": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "toolkit-before-shift.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "toolkit-between-tasks": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "toolkit-between-tasks.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "toolkit-talking-to-others": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "toolkit-talking-to-others.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ },
+ "toolkit-this-week": {
+  "kind": "card",
+  "files": [
+   {
+    "file": "toolkit-this-week.webp",
+    "w": 1200,
+    "h": 675
+   }
+  ],
+  "note": ""
+ }
+}

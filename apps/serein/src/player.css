@@ -1,0 +1,161 @@
+/* Serein guided practice player: stage captions and timeline, step rail, quick sound controls, 3D lungs.
+ * The stage is always the deep navy; everything on it uses fixed light colours. Panels outside the stage use the theme tokens. */
+
+/* ---------- stage: caption, timeline, labels ---------- */
+.player-stage{--sp-hud-h:168px}
+.sp-hud{position:absolute;left:0;right:0;bottom:0;z-index:6;display:grid;gap:8px;padding:6px clamp(14px,2.4vw,28px) clamp(12px,1.8vw,18px);color:#F8F5EF;pointer-events:none;background:#0F2336EB}
+.sp-hud::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:56px;background:linear-gradient(to top,#0F2336EB,#0F233600);pointer-events:none}
+.sp-hud button{pointer-events:auto}
+.sp-caption{margin:2px auto 0;max-width:44ch;text-align:center;text-wrap:balance;font:500 clamp(20px,.8vw + 14px,26px)/1.3 var(--font-serif);color:#F8F5EF;height:2.6em;overflow:hidden;display:grid;align-items:center;align-content:center}
+.sp-next{text-align:center;color:#D4EAE3;letter-spacing:.02em}
+.sp-now{display:none;margin:0;text-align:center;font-size:13px;color:#D4EAE3}
+.sp-timeline{display:flex;gap:6px;list-style:none;margin:2px 0 0;padding:0}
+.sp-timeline>li{flex:var(--w,1) 1 0;min-width:0;display:flex}
+.sp-meta{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;font-size:12.5px;color:#BFD6D1;font-variant-numeric:tabular-nums}
+.sp-meta>span:first-child{text-align:left}.sp-meta>span:last-child{text-align:right}
+
+/* a step: card on the stage, row in the rail */
+.sp-step{position:relative;isolation:isolate;width:100%;min-width:0;min-height:56px;overflow:hidden;text-align:left;padding:9px 12px 11px;border-radius:12px;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:9px;align-items:center;
+  background:#FFFFFF12;border:1px solid #FFFFFF2E;color:#B9CCCB;transition:border-color .2s,color .2s,background .2s}
+.sp-step .sp-fill{position:absolute;inset:0;z-index:-1;transform-origin:left center;transform:scaleX(var(--p,0));background:linear-gradient(90deg,#5FB89E55,#7FD0B577);transition:transform .14s linear}
+.sp-step .sp-mark{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;font-size:12px;font-weight:600;border:1.5px solid #FFFFFF55;color:#D2E3E0;font-variant-numeric:tabular-nums}
+.sp-step .sp-text{display:grid;gap:1px;min-width:0}
+.sp-step .sp-name{font-size:13.5px;line-height:1.25;font-weight:500;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+.sp-step .sp-dur{font-size:12px;color:#A9C3C0;font-variant-numeric:tabular-nums}
+.sp-step .sp-bar{display:none}
+.sp-step[data-state=current]{border-color:#7FD0B5;color:#FFFFFF;background:#7FD0B51F}
+.sp-step[data-state=current] .sp-mark{background:#7FD0B5;border-color:#7FD0B5;color:#10253A}
+.sp-step[data-state=current] .sp-dur{color:#D6ECE6}
+.sp-step[data-state=done]{border-color:#7FD0B566;color:#CFE6DF}
+.sp-step[data-state=done] .sp-mark{background:#5FB89E33;border-color:#7FD0B5;color:#9CE3C8}
+.sp-step[data-state=next]{background:#FFFFFF0A;border-color:#FFFFFF1F;color:#A8BEBD}
+.sp-step:hover{border-color:#9AE0C7}
+.sp-step:focus-visible{outline:3px solid #F1C56E;outline-offset:2px}
+
+/* ---------- the stage makes room for the HUD ---------- */
+.player.sp-on .orb-stage{bottom:var(--sp-hud-h)}
+.player.sp-on #player-photo{height:calc(100% - var(--sp-hud-h))}
+.player.sp-on .advance-stage{bottom:var(--sp-hud-h)}
+.player.sp-on .ground-noticing{bottom:calc(var(--sp-hud-h) + 10px)}
+.player.sp-on .player-stage-labels{top:14px;left:14px;right:auto;bottom:auto;align-items:flex-start;max-width:46%}
+.player.sp-on .orb-legend{display:none}
+.player.sp-on .player-stage-labels .media-label{text-align:left}
+.player.sp-on #player-step-list{display:none}
+.player.sp-on .player-instructions>.instruction-current+.player-step-list{display:none}
+
+/* ---------- 3D lungs ---------- */
+.sp-lungs{position:absolute;left:0;right:0;bottom:0;top:70px;width:100%;height:calc(100% - 70px);display:block;pointer-events:none}
+.orb-stage[data-lungs] .orb-axis,.orb-stage[data-lungs] .orb-grid{display:none}
+.box-mode .sp-lungs,.box-mode .sp-breath-label{display:none}
+.sp-breath-label{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:4;display:flex;align-items:baseline;justify-content:center;gap:10px;white-space:nowrap;padding:8px 18px;border-radius:999px;background:#0F2336B3;border:1px solid #7FD0B544;color:#F8F5EF;font-family:var(--font-serif);pointer-events:none}
+.sp-breath-label[hidden]{display:none}
+.sp-bl-word{font-size:clamp(20px,1vw + 14px,26px);font-weight:500}
+.sp-bl-dots{color:#7FD0B5;font-size:22px;line-height:1}
+.sp-bl-count{display:inline-flex;align-items:baseline;gap:4px;font-variant-numeric:tabular-nums}
+.sp-bl-count b{font-size:clamp(26px,1.4vw + 16px,34px);font-weight:500;color:#9CE3C8;min-width:.7em;text-align:right}
+.sp-bl-count i{font:400 14px var(--font-sans);color:#BFD6D1;font-style:normal}
+.sp-breath-label[data-state=ready],.sp-breath-label[data-state=paused]{background:#0F233699}
+.sp-breath-label[data-state=ready] .sp-bl-word,.sp-breath-label[data-state=paused] .sp-bl-word{font-size:20px;color:#D4EAE3}
+
+/* ---------- step rail (text view) ---------- */
+.sp-rail{display:none}
+.player-scroll.text-focus{grid-template-columns:minmax(0,420px) minmax(0,360px);justify-content:center;column-gap:clamp(28px,5vw,72px);align-content:center;padding-inline:24px}
+.player-scroll.text-focus .player-instructions{max-width:420px;width:100%;margin:0;padding:36px 0}
+.player-scroll.text-focus .sp-rail{display:block;align-self:start;margin-top:36px;padding:20px 20px 16px;border-radius:var(--radius-lg,22px);background:var(--color-surface-raised);border:1px solid var(--color-border)}
+.sp-rail-eyebrow{margin:0 0 12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--color-accent)}
+.sp-rail-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sp-rail-list>li{display:block}
+.sp-rail-meta{margin:14px 2px 0;font-size:13px;color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+.sp-rail-step{min-height:52px;background:transparent;border:1px solid transparent;color:var(--color-text-muted);padding:8px 10px}
+.sp-rail-step .sp-fill{background:linear-gradient(90deg,color-mix(in srgb,var(--color-accent) 18%,transparent),color-mix(in srgb,var(--color-accent) 30%,transparent))}
+.sp-rail-step .sp-mark{border-color:var(--color-border);color:var(--color-text-muted);background:var(--color-surface)}
+.sp-rail-step .sp-dur{color:var(--color-text-muted)}
+.sp-rail-step[data-state=current]{background:var(--color-surface);border-color:var(--color-accent);color:var(--color-text)}
+.sp-rail-step[data-state=current] .sp-mark{background:var(--color-accent);border-color:var(--color-accent);color:var(--color-accent-contrast)}
+.sp-rail-step[data-state=current] .sp-dur{color:var(--color-text-muted)}
+.sp-rail-step[data-state=done]{color:var(--color-text);border-color:transparent}
+.sp-rail-step[data-state=done] .sp-mark{background:color-mix(in srgb,var(--color-accent) 16%,var(--color-surface));border-color:var(--color-accent);color:var(--color-accent)}
+.sp-rail-step[data-state=next]{background:transparent;border-color:transparent;color:var(--color-text-muted)}
+.sp-rail-step:hover{border-color:var(--color-accent)}
+.sp-rail-step:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+.sp-rail-step .sp-name{font-size:15px;-webkit-line-clamp:2}
+@media (max-width:899px){
+  .player-scroll.text-focus{grid-template-columns:minmax(0,520px);align-content:start;padding-inline:20px}
+  .player-scroll.text-focus .player-instructions{padding:24px 0 8px;max-width:none}
+  .player-scroll.text-focus .sp-rail{margin:8px 0 28px}
+}
+
+/* ---------- quick sound controls on the player controls ---------- */
+.sp-toggles{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:2px 0 6px}
+.sp-pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-border);border-radius:999px;background:var(--color-surface);padding-right:4px;min-height:44px}
+.sp-pill[hidden]{display:none}
+.sp-toggle{display:inline-flex;align-items:center;gap:7px;min-height:42px;min-width:0;padding:0 12px 0 13px;border-radius:999px;font-size:14px;font-weight:600;color:var(--color-text-muted)}
+.sp-toggle .sp-state{font-size:12px;font-weight:600;padding:1px 7px;border-radius:999px;background:color-mix(in srgb,var(--color-text-muted) 18%,transparent);color:var(--color-text-muted)}
+.sp-pill[data-on="1"]{border-color:var(--color-accent);background:color-mix(in srgb,var(--color-accent) 11%,var(--color-surface))}
+.sp-pill[data-on="1"] .sp-toggle{color:var(--color-accent)}
+.sp-pill[data-on="1"] .sp-toggle .sp-state{background:var(--color-accent);color:var(--color-accent-contrast)}
+.sp-toggle .sp-on-only{display:none}
+.sp-pill[data-on="1"] .sp-toggle .sp-on-only{display:inline}
+.sp-pill[data-on="1"] .sp-toggle .sp-off-only{display:none}
+.sp-toggle:focus-visible,.sp-vol:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+.sp-pill .sp-vol{width:84px;flex:0 0 84px;min-width:0;accent-color:var(--color-accent);margin:0 6px 0 0}
+.sp-pill[data-on="0"] .sp-vol{opacity:.5}
+.sp-sound .sp-sample{margin:8px 0 14px}
+
+/* ---------- controls layout ---------- */
+.player-controls{display:grid;grid-template-columns:minmax(0,1fr);row-gap:2px}
+.player-controls .timeline-row{float:none;width:auto;margin:0}
+.player-controls .player-bottom-line{clear:none;padding-top:2px}
+@media (min-width:1024px){
+  .player-controls{grid-template-columns:minmax(0,.82fr) minmax(0,1.5fr);grid-template-areas:"seek play" "status sound";column-gap:28px;row-gap:4px;align-items:center}
+  .player-controls .timeline-row{grid-area:seek}
+  .player-controls .playback-row{grid-area:play;padding-top:0}
+  .player-controls .player-bottom-line{grid-area:status;margin-top:0}
+  .player-controls .sp-toggles{grid-area:sound;margin:0}
+}
+@media (max-width:1023px){
+  .sp-toggles{flex-wrap:nowrap;margin:0 0 4px}
+  .sp-pill{flex:1 1 0;min-width:0;justify-content:center;padding-right:0}
+  .sp-toggle{flex:1;justify-content:center;padding:0 6px;gap:6px;font-size:14px}
+  .sp-pill .sp-vol{display:none}
+  .sp-toggle .sp-state{display:none}
+}
+.sp-toggle .sp-short{display:none}
+@media (max-width:1023px){.sp-toggle .sp-full{display:none}.sp-toggle .sp-short{display:inline}}
+.sp-toggle .sp-name{white-space:nowrap}
+
+/* ---------- layout of the stage view on wide screens: a wider stage, a slimmer panel ---------- */
+@media (min-width:1024px){
+  .player-scroll{grid-template-columns:minmax(0,1fr) minmax(320px,400px)}
+  .player.present .player-scroll{grid-template-columns:minmax(0,1.5fr) minmax(340px,460px)}
+  .player-scroll:not(.text-focus) .player-instructions{padding:36px 32px}
+}
+
+/* ---------- phones: compact timeline (a segmented bar and the current step) ---------- */
+@media (max-width:599px){
+  .player-stage{--sp-hud-h:140px;height:50dvh;min-height:300px}
+  .sp-hud{gap:6px;padding:4px 14px 10px}
+  .sp-caption{font-size:17px;height:3.9em;max-width:none}
+  .sp-meta{display:none}
+  .sp-now{display:block}
+  .sp-timeline{gap:5px;margin:0}
+  .sp-step{min-height:44px;padding:0;border:0;background:transparent;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:visible}
+  .sp-step .sp-fill,.sp-step .sp-text,.sp-step .sp-mark{display:none}
+  .sp-step .sp-bar{display:block;position:relative;width:100%;height:8px;border-radius:99px;background:#FFFFFF2E;overflow:hidden}
+  .sp-step .sp-bar i{position:absolute;inset:0;transform-origin:left center;transform:scaleX(var(--p,0));background:#7FD0B5;border-radius:99px;transition:transform .14s linear}
+  .sp-step[data-state=current] .sp-bar{background:#7FD0B544;height:10px}
+  .sp-step[data-state=done] .sp-bar i{background:#5FB89E}
+  .sp-step[data-state=current],.sp-step[data-state=done],.sp-step[data-state=next]{background:transparent;border:0}
+  .player.sp-on .player-stage-labels{max-width:calc(100% - 28px)}
+  .player.sp-on .stage-corner{display:none}
+  .sp-breath-label{top:44px;padding:6px 14px;gap:8px}
+  .player.sp-on .media-label{font-size:12px}
+  .player-controls{padding-top:6px}
+  .timer-ring{width:56px;height:56px}
+  .timer-ring>svg{width:56px;height:56px}
+  .player-controls .timeline-row{gap:12px}
+}
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion:reduce){.sp-step .sp-fill,.sp-step .sp-bar i,.sp-step{transition:none}}
+.reduce-motion .sp-step .sp-fill,.reduce-motion .sp-step .sp-bar i,.reduce-motion .sp-step{transition:none}

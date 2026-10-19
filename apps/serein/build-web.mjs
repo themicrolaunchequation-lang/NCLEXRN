@@ -94,6 +94,20 @@ js = shellJs + '\n;\n' + js;
 js += '\n;\n' + read('src/toolkit-data.js') + '\n;\n' + read('src/toolkit.js');
 js += '\n;\n' + read('src/hook.js');
 
+// ---- Guided practice player: voice guide, captions and timeline, 3D lungs, breath sounds, soft music ----
+// (src/player-voice.js, player-audio.js, lungs3d.js, player.js, player.css). Small asserted hooks into updatePlayer and the settings sheet.
+js = patch(js, `$('#player-cue').textContent=s.cue;`, `$('#player-cue').textContent=globalThis.SereinPlayer?SereinPlayer.cue(s):s.cue;`, 'player: caption line');
+js = patch(js, `advance.updateStage(s);modern?.playerUpdated(s);if(s.state==='complete'){stopTimer();if(orb)orb.stop();cancelVoice();}`, `advance.updateStage(s);modern?.playerUpdated(s);globalThis.SereinPlayer?.update(s,force);if(s.state==='complete'){stopTimer();if(orb)orb.stop();if(globalThis.SereinPlayer)SereinPlayer.complete(s);else cancelVoice();}`, 'player: update hook');
+js = patch(js, `function cancelVoice(){try{speechSynthesis.cancel();}catch{}}`, `function cancelVoice(){try{if(globalThis.SereinPlayer)SereinPlayer.silence();else speechSynthesis.cancel();}catch{}}`, 'player: cancel voice');
+js = patch(js, `function speak(text){if(!state.voice)return;`, `function speak(text){if(globalThis.SereinPlayer||!state.voice)return;`, 'player: legacy speaker retired');
+js = patch(js, `function extras(){\n  const voices=`, `function extras(){\n  if(globalThis.SereinPlayer)return SereinPlayer.extras(c);\n  const voices=`, 'player: sound settings');
+js = patch(js, `<input type=\\"checkbox\\" id=\\"session-voice\\">Optional local voice guidance</label>`, `<input type=\\"checkbox\\" id=\\"session-voice\\">Voice guide · spoken instructions</label>`, 'player: voice label');
+js = patch(js, `<p class=\\"small-note\\">Pause to change timing. Local voice availability depends on your browser.</p>`, `<p class=\\"small-note\\">Pause to change timing. Voices come from your device or browser.</p>`, 'player: settings note');
+js = patch(js, `localStorage.removeItem('serein-toolkit-v1');`, `localStorage.removeItem('serein-toolkit-v1');localStorage.removeItem('serein-player-v1');`, 'player: clear stored choices');
+js = patch(js, `if(finder.silent){state.voice=false;$('#session-voice').checked=false;$('#session-chime').checked=false;}`, `if(finder.silent){state.voice=false;$('#session-voice').checked=false;$('#session-chime').checked=false;globalThis.SereinPlayer?.quiet();}`, 'player: keep this pause silent');
+js += '\n;\n' + read('src/player-voice.js') + '\n;\n' + read('src/player-audio.js') + '\n;\n' + read('src/player.js') + '\n;\n' + read('src/lungs3d.js');
+css += '\n' + read('src/player.css');
+
 const cssName = `app.${hash(css)}.css`, jsName = `app.${hash(js)}.js`;
 write(cssName, css);
 write(jsName, js);

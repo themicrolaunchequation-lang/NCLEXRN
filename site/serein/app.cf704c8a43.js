@@ -434,7 +434,7 @@
 ;
 
 /* English copy catalogue; content libraries remain structured in Serein.data/content. */
-(function(S){'use strict';S.STRINGS={'en-GB':{"copy_0001":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"{v0}\"/></svg>","copy_0002":"Today","copy_0003":"My space","copy_0004":"Support","copy_0005":"Healthcare worker","copy_0006":"Choose a Serein JSON export.","copy_0007":"This file does not look like a Serein export.","copy_0008":"This archive uses a newer Serein version. Keep it unchanged and open it with that version.","copy_0009":"Not specified","copy_0010":"s-{v0}-{v1}","copy_0011":"Browser storage is unavailable. Your changes stay for this visit.","copy_0012":"(prefers-reduced-motion: reduce)","copy_0013":"{v0} min","copy_0014":"{v0}½ min","copy_0015":"<header class=\"page-header\"><div><p class=\"eyebrow\">{v0}</p><h1>{v1}</h1><p class=\"page-sub\">{v2}</p></div>{v3}</header>","copy_0016":"<span class=\"illustrative\" title=\"Illustrative, AI-generated image\" aria-label=\"Illustrative, AI-generated image\">ⓘ</span>","copy_0017":"Remove saved","copy_0018":"Save","copy_0019":"Remove saved reflection","copy_0020":"Save reflection","copy_0021":"<section class=\"quote-section\" aria-label=\"A Serein reflection\"><div><blockquote>{v0}</blockquote><cite>AN ORIGINAL SEREIN REFLECTION</cite></div><div class=\"quote-actions\"><button class=\"icon-btn\" data-action=\"save-word\" aria-label=\"{v1} reflection\" title=\"{v2}\" aria-pressed=\"{v3}\">{v4}</button><button class=\"icon-btn\" data-action=\"next-quote\" aria-label=\"Show another reflection\" title=\"Another reflection\">{v5}</button></div></section>","copy_0022":"A little low","copy_0023":"<button type=\"button\" class=\"mood {v0}\" data-mood=\"{v1}\" aria-pressed=\"{v2}\"><span class=\"mood-face\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M8 9h.01 M16 9h.01 M7 15 Q12 {v3} 17 15\"/></svg></span>{v4}</button>","copy_0024":"<div class=\"mood-row\" role=\"group\" aria-label=\"How are you feeling?\">{v0}</div>","copy_0025":"<section class=\"checkin-card\"><p class=\"eyebrow\">A MOMENT FOR YOU</p><h3>How are you, really?</h3><p>No perfect answer. Just a moment to notice.</p>{v0}<button class=\"text-button\" data-action=\"checkin\">Make a small check-in {v1}</button><p class=\"small-note\">Optional · Personal reflection, not an assessment</p></section>","copy_0026":"<article class=\"practice-card\" data-key=\"practice-","copy_0027":"\"><button class=\"card-open\" data-practice-detail=\"","copy_0028":"\"><div class=\"card-image\"><img src=\"","copy_0029":"Illustrative scene for ","copy_0030":"\" loading=\"lazy\" width=\"800\" height=\"600\">","copy_0031":"<span class=\"card-category\">","copy_0032":"</span></div><div class=\"card-body\"><h3>","copy_0033":"</p><div class=\"card-meta\"><span>","copy_0034":"Breath focus","copy_0035":"Gentle movement","copy_0036":"No breath focus","copy_0037":"</span></div></div></button><button class=\"icon-btn save-icon\" data-save-practice=\"","copy_0038":"Remove saved ","copy_0039":"<article class=\"resource-card\"><button class=\"card-open\" data-resource=\"{v0}\"><div class=\"card-image\"><img src=\"{v1}\" alt=\"{v2}\" loading=\"lazy\" width=\"500\" height=\"340\">{v3}<span class=\"card-category\">{v4}</span></div><div class=\"card-body\"><h3>{v5}</h3><p>{v6}</p><div class=\"card-meta\"><span>{v7}</span><span style=\"margin-left:auto\">{v8}</span></div></div></button></article>","copy_0040":"Good morning","copy_0041":"Good afternoon","copy_0042":"Good evening","copy_0043":"A LITTLE SPACE FOR THE PEOPLE WHO CARE","copy_0044":"{v0}. Make room for you.","copy_0045":"A space for you as a {v0}. Choose what fits this moment.","copy_0046":"<time class=\"date-label\">{v0}</time>","copy_0047":"data-practice=\"{v0}\" data-duration=\"{v1}\"","copy_0048":"a grounding pause","copy_0049":"<button class=\"moment {v0}\" data-moment=\"{v1}\" aria-pressed=\"{v2}\"><span class=\"moment-top\">0{v3} / YOUR MOMENT {v4}</span><strong>{v5}</strong><small>{v6}</small></button>","copy_0050":"Illustrative reference for ","copy_0051":"breath focus","copy_0052":"without breath focus","copy_0053":"<section class=\"hero\"><div class=\"hero-copy\"><p class=\"eyebrow\">YOUR NEXT SMALL STEP</p><h2>A little space.<em>Just for you.</em></h2><p>You care for others. You belong in that care.<br>A practical pause for the moment you are in.</p><div class=\"button-row\"><button class=\"button button-teal\" {v0}>Take {v1} {v2}</button><button class=\"button button-quiet\" data-nav=\"practices\">Find my practice ↗</button><button class=\"text-button\" data-adv=\"finder\">Help me choose →</button></div>{v3}</div><div class=\"hero-photo\"><img src=\"{v4}\" alt=\"Illustrative healthcare worker or colleagues in a quiet break space\" width=\"720\" height=\"610\" fetchpriority=\"high\">{v5}<div class=\"photo-caption\">Small pauses.<br>More room to be.<small>SEREIN / HEALTHCARE CROWN ACADEMY</small></div></div></section><div class=\"section-heading\"><div><h2>What would help right now?</h2><p>Start with your situation. There is no perfect choice.</p></div></div><section class=\"moment-grid\" aria-label=\"Your working moment\">{v6}</section><div class=\"recommend-row\"><section class=\"recommended\"><div class=\"recommended-image\"><img src=\"{v7}\" alt=\"{v8}\" loading=\"lazy\">{v9}</div><div class=\"recommended-copy\"><p class=\"eyebrow\">CHOSEN FOR THIS MOMENT</p><h3>{v10}</h3><p>{v11}</p><p class=\"recommend-reason\">{v12} · {v13} · {v14}</p><button class=\"button button-outline\" data-practice=\"{v15}\" data-duration=\"{v16}\">Explore this pause {v17}</button></div></section>{v18}</div><section class=\"action-band\"><div><p class=\"eyebrow\">FROM AWARENESS TO ACTION</p><h3>Put your next step into words.</h3><p>Prepare a useful support conversation, or make a gentler transition home.</p></div><button class=\"button\" data-action=\"work-tools\">Build a conversation {v19}</button></section><div class=\"section-heading\"><div><h2>Support for real working days</h2><p>Small actions. Useful conversations.</p></div><button class=\"text-button\" data-action=\"open-guides\">All guides {v20}</button></div><div class=\"resource-grid home-resources\">{v21}</div>{v22}","copy_0054":"<section class=\"advance-panel\"><h3>Your choices come first.</h3><p>No practice matches your current suggestion preferences. Adjust choices or restore a practice in My space.</p><button class=\"button button-teal\" data-adv=\"finder\">Help me choose →</button></section>","copy_0055":"Any time","copy_0056":"<button class=\"time-chip {v0}\" data-budget=\"{v1}\" aria-pressed=\"{v2}\">{v3}</button>","copy_0057":"Any style","copy_0058":"Without breath focus","copy_0059":"Grounding only","copy_0060":"<option value=\"{v0}\" {v1}>{v2}</option>","copy_0061":"Any comfortable space","copy_0062":"Seated pause","copy_0063":"Without guided movement","copy_0064":"<div class=\"filter-panel\"><div class=\"filter-top\"><div><span class=\"filter-label\">How much time do you have?</span><div class=\"time-chips\">{v0}</div></div><label class=\"search-input\">{v1}<span class=\"sr-only\">Search practices</span><input id=\"practice-query\" type=\"search\" placeholder=\"Find a practice…\" value=\"{v2}\"></label></div><div class=\"filter-lower\"><label>Practice style<select id=\"practice-style\">{v3}</select></label><label>Your setting<select id=\"practice-position\">{v4}</select></label><button class=\"text-button\" data-action=\"reset-filters\">Reset</button></div></div>","copy_0065":"<div class=\"empty\"><h3>A little adjustment?</h3><p>No practice matches all these choices. Try a different duration or explore a self-paced grounding practice.</p><button class=\"button button-teal\" data-action=\"reset-filters\">Explore all practices</button></div>","copy_0066":"<div class=\"result-count\"><span>Showing {v0} of {v1} practices</span><span>Self-paced options have no timer.</span></div><div class=\"practice-grid\">{v2}</div>","copy_0067":"Saved","copy_0068":"{v0} {v1} {v2}","copy_0069":"<div class=\"empty\"><h3>No guides found.</h3><p>Try another word or choose All.</p></div>","copy_0070":"<div class=\"result-count\">{v0} guides to explore</div><div class=\"resource-grid\">{v1}</div>","copy_0071":"PRACTICAL PAUSES / YOUR CHOICE","copy_0072":"Find your next small pause.","copy_0073":"{v0} experiences. Your time, your comfort, your way.","copy_0074":"<button class=\"button button-outline\" data-action=\"routine-builder\">{v0} My routine</button>","copy_0075":"<div class=\"library-tools\"><button class=\"button button-teal\" data-adv=\"finder\">Help me choose →</button><button class=\"text-button\" data-adv=\"journeys-open\">Explore a learning journey →</button></div>","copy_0076":"<button class=\"{v0}\" data-category=\"{v1}\" aria-pressed=\"{v2}\">{v3}</button>","copy_0077":"{v0}<div class=\"category-row\" role=\"group\" aria-label=\"Practice categories\">{v1}</div><div id=\"practice-results\" aria-live=\"polite\">{v2}</div><p class=\"trust-note\">Preference matches, not health recommendations. Practices are optional educational adaptations. You can change the focus, skip, pause, or stop whenever you need.</p>","copy_0078":"Practitioner care","copy_0079":"Shared practice","copy_0080":"Clinical practice","copy_0081":"<button class=\"{v0}\" data-guide-category=\"{v1}\">{v2}</button>","copy_0082":"<div class=\"filter-panel\"><label class=\"search-input\" style=\"display:block;max-width:none\">{v0}<span class=\"sr-only\">Search practical guides</span><input id=\"guide-query\" type=\"search\" placeholder=\"Boundaries, support, rest…\" value=\"{v1}\"></label></div><div class=\"category-row\">{v2}</div><div id=\"guide-results\">{v3}</div>","copy_0083":"<div class=\"segmented\" role=\"group\" aria-label=\"Explore content\"><button class=\"{v0}\" data-tab=\"practices\" aria-pressed=\"{v1}\">Guided practices</button><button class=\"{v2}\" data-tab=\"guides\" aria-pressed=\"{v3}\">Practical guides</button></div>{v4}{v5}","copy_0084":"REFLECTION, WITHOUT JUDGMENT","copy_0085":"What can you set down today?","copy_0086":"One thought. One useful next step. No need to solve the whole day.","copy_0087":"A moment of meaning","copy_0088":"Support I need","copy_0089":"Something to set down","copy_0090":"<button type=\"button\" data-prompt=\"{v0}\">{v1}</button>","copy_0091":"<div class=\"reflect-grid\">{v0}<form class=\"journal-panel\" id=\"journal-form\"><p class=\"eyebrow\">A LITTLE ROOM TO REFLECT</p><h2>Let the words arrive.</h2><p>A small win, a difficult moment, or a support you need. Keep this space free of patient details.</p><div class=\"journal-prompts\">{v1}</div><label class=\"sr-only\" for=\"journal-draft\">Your personal reflection</label><textarea class=\"field\" id=\"journal-draft\" maxlength=\"20000\" placeholder=\"Today, I want to acknowledge…\">{v2}</textarea><p class=\"small-note draft-status\" id=\"journal-draft-status\" role=\"status\">{v3}</p><label class=\"check-label\"><input type=\"checkbox\" name=\"persist\">Save on this browser for another day. Browser storage is not encrypted.</label><div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Keep this reflection {v4}</button><button class=\"text-button\" type=\"button\" data-action=\"reflection-history\">My reflections</button></div><p class=\"small-note\">Without saving, entries last for this visit. Nothing is monitored.</p>{v5}</form></div><div class=\"section-heading\"><div><h2>From reflection to a practical step</h2><p>Make a request, clarify a boundary, or leave the day more gently.</p></div></div><div class=\"support-grid\"><section class=\"support-card\">{v6}<h3>Find the words.</h3><p>Describe the situation and turn it into a clear support request.</p><button class=\"text-button\" data-action=\"work-tools\">Conversation builder →</button></section><section class=\"support-card\">{v7}<h3>Leave the day.</h3><p>Make a realistic handover, transition, and recovery plan.</p><button class=\"text-button\" data-action=\"transition-tools\">My transition home →</button></section><section class=\"support-card\">{v8}<h3>Return to your words.</h3><p>Your saved reflections and useful words, together in one place.</p><button class=\"text-button\" data-action=\"reflection-history\">Open my collection →</button></section></div>{v9}","copy_0092":"Saved in browser","copy_0093":"This visit only","copy_0094":"<p>{v0}</p>","copy_0095":"<h3>{v0}</h3><p>{v1}{v2}</p>{v3}","copy_0096":"<button data-edit-journal=\"{v0}\">Edit reflection</button>","copy_0097":"<button data-keep-entry=\"{v0}\" data-entry-type=\"{v1}\">Save in browser</button>","copy_0098":"<article class=\"entry\"><div class=\"entry-head\"><time datetime=\"{v0}\">{v1}</time><span class=\"memory-badge\">{v2}</span></div>{v3}<div class=\"entry-actions\">{v4}<button data-delete-entry=\"{v5}\" data-entry-type=\"{v6}\">Delete</button>{v7}</div></article>","copy_0099":"<div class=\"entries\">{v0}</div>","copy_0100":"<div class=\"empty\"><h3>A space to begin.</h3><p>Your entries will appear here. You can reflect without saving anything.</p><button class=\"button button-teal\" data-nav=\"reflect\">Make room to reflect</button></div>","copy_0101":"{v0} practices · {v1}","copy_0102":"Choose up to four practices. Each starts only when you choose.","copy_0103":"<button class=\"button button-teal\" data-action=\"start-routine\">Begin my routine →</button>","copy_0104":"<article class=\"routine-item\"><span class=\"routine-num\">0{v0}</span><img src=\"{v1}\" alt=\"Illustrative reference\" loading=\"lazy\"><div><h3>{v2}</h3><p>{v3} · {v4}</p></div><div class=\"routine-item-actions\"><button data-routine-move=\"{v5}\" data-direction=\"-1\" {v6} aria-label=\"Move {v7} up\">↑</button><button data-routine-move=\"{v8}\" data-direction=\"1\" {v9} aria-label=\"Move {v10} down\">↓</button><button data-routine-remove=\"{v11}\" aria-label=\"Remove {v12}\">×</button></div></article>","copy_0105":"<div class=\"routine-list\">{v0}</div>","copy_0106":"<section class=\"workspace-tools\"><div><h3>Your own small routine.</h3><p>{v0}</p></div><div class=\"button-row\"><button class=\"button button-outline\" data-action=\"routine-builder\">Build or edit</button>{v1}</div></section>{v2}","copy_0107":" + self-paced time","copy_0108":"{v0}{v1}","copy_0109":"All entries","copy_0110":"Last 7 days","copy_0111":"Last 30 days","copy_0112":"<div class=\"pattern-row\"><span>{v0}</span><div class=\"pattern-track\" aria-hidden=\"true\"><span style=\"width:{v1}%\"></span></div><b>{v2}</b></div>","copy_0113":"<div class=\"pattern-summary\"><div class=\"pattern-stat\"><span>Personal check-ins</span><strong>{v0}</strong><small>In the selected period</small></div><div class=\"pattern-stat\"><span>Words kept</span><strong>{v1}</strong><small>Your reflections</small></div><div class=\"pattern-stat\"><span>Practices saved</span><strong>{v2}</strong><small>Return when useful</small></div></div><div class=\"filter-panel\"><label class=\"field-label\" for=\"date-filter\">Look back over</label><select class=\"field\" id=\"date-filter\">{v3}</select></div><section class=\"pattern-bars\"><h3>Feelings you recorded.</h3><p>Counts of your own entries. Multiple entries on a day count separately; missing days are simply missing data.</p>{v4}</section>{v5}<p class=\"trust-note\">Personal awareness, not a health score or clinical assessment. These entries are not monitored by a care team or employer.</p>","copy_0114":"<section class=\"journal-panel\"><p class=\"eyebrow\">YOUR WORDS. YOUR CHOICE.</p><h2>Keep only what is useful.</h2><p>Practices work without an account. Preferences and collections stay in this browser. A check-in or reflection is kept beyond this visit only when you choose to save it.</p><div class=\"notice\">Browser storage is not encrypted or access-controlled. Others using this browser may be able to read saved entries. Do not include patient-identifying details or sensitive information.</div><div class=\"button-row\"><button class=\"button button-teal\" data-action=\"export\">{v0} Export my data</button><button class=\"button button-outline\" data-action=\"import\">{v1} Import an export</button><button class=\"text-button\" data-action=\"clear-data\">Clear Serein data</button></div><p class=\"small-note\" style=\"margin-top:18px\">Exports contain your words. Keep downloaded files private. An import can merge with existing entries or replace them after your confirmation.</p>{v2}</section>","copy_0115":"<div class=\"practice-grid\">{v0}</div>","copy_0116":"<div class=\"empty\"><h3>A collection that fits you.</h3><p>Save a practice with the bookmark button. Return to it whenever it is useful.</p><button class=\"button button-teal\" data-nav=\"practices\">Explore practices →</button></div>","copy_0117":"<div class=\"resource-grid\">{v0}</div>","copy_0118":"<div class=\"empty\"><h3>Your useful guides.</h3><p>Save a guide from its reading view to keep it here.</p><button class=\"button button-teal\" data-action=\"open-guides\">Explore guides →</button></div>","copy_0119":"<article class=\"entry\"><blockquote style=\"font:italic 26px/1.6 var(--serif)\">{v0}</blockquote><button class=\"text-button\" data-remove-word=\"{v1}\">Remove from collection</button></article>","copy_0120":"<div class=\"empty\"><h3>Words to return to.</h3><p>Save an original Serein reflection from the bottom of a page.</p></div>","copy_0121":"<div class=\"category-row\"><button data-saved-tab=\"practices\" class=\"{v0}\">Practices · {v1}</button><button data-saved-tab=\"guides\" class=\"{v2}\">Guides · {v3}</button><button data-saved-tab=\"words\" class=\"{v4}\">Words · {v5}</button></div>{v6}","copy_0122":"YOUR SMALL COLLECTION OF SUPPORT","copy_0123":"A space that feels like yours.","copy_0124":"Saved practices, useful words, and the patterns you choose to notice.","copy_0125":"My routine","copy_0126":"My patterns","copy_0127":"My data","copy_0128":"<button data-space-tab=\"{v0}\" class=\"{v1}\" aria-pressed=\"{v2}\">{v3}</button>","copy_0129":"<div class=\"segmented\" role=\"group\" aria-label=\"Your collections\">{v0}</div>{v1}","copy_0130":"SUPPORT IS PART OF CARE","copy_0131":"You do not have to hold it alone.","copy_0132":"A practical next step can start with another person.","copy_0133":"<section class=\"support-hero\"><div><p class=\"eyebrow\">HUMAN CONNECTION</p><h2>Ask before<br>you reach your limit.</h2><p>A trusted colleague, supervisor, or occupational health service can help you explore a practical next step.</p><button class=\"button button-teal\" style=\"margin-top:22px\" data-action=\"work-tools\">Prepare a support request {v0}</button></div><figure><img src=\"{v1}\" alt=\"Illustrative colleagues having a supportive conversation\" loading=\"lazy\">{v2}</figure></section><div class=\"support-grid\"><section class=\"support-card\">{v3}<h3>A workplace conversation.</h3><p>Clarify competing demands, ask for help, or agree what can change.</p><button class=\"text-button\" data-resource=\"manager-support\">Practical team support →</button></section><section class=\"support-card\">{v4}<h3>Professional support.</h3><p>If difficulties persist or affect your work or daily life, consider qualified professional support through your usual local service.</p><a class=\"text-button\" href=\"https://www.nhs.uk/nhs-services/mental-health-services/find-nhs-talking-therapies-for-anxiety-and-depression/\" target=\"_blank\" rel=\"noopener noreferrer\">NHS Talking Therapies ↗</a></section><section class=\"support-card\">{v5}<h3>Invite a shared pause.</h3><p>Ask permission, offer a choice, and adapt together. Presentation mode keeps the rest of your space out of view.</p><button class=\"text-button\" data-action=\"shared-practice\">How to present a practice →</button></section></div><p class=\"notice\" style=\"margin-top:24px\">Serein is not monitored and cannot provide urgent care. If there is immediate danger, use local emergency services or the nearest emergency department. Do not wait for a response from this app.</p>{v6}<div class=\"section-heading\"><div><h2>Make the next step practical.</h2><p>Short guides for real working days.</p></div></div><div class=\"resource-grid\">{v7}</div><section class=\"registration-panel\">{v8}<div><p class=\"eyebrow\">HEALTHCARE CROWN ACADEMY</p><h3>Clear information. Thoughtful care.</h3><p>ICO data protection registration ZC273259 · Registered 13 October 2026.<br>Registration identifies the company as a data controller; it is not a certification of this app.</p></div><a class=\"button button-outline\" href=\"https://ico.org.uk/ESDWebPages/Entry/ZC273259\" target=\"_blank\" rel=\"noopener noreferrer\">View public register ↗</a></section>{v9}","copy_0134":"Draft is in memory only. Temporary tab storage is unavailable; keep this tab open.","copy_0135":"Draft kept for this visit","copy_0136":"Drafts are kept in this tab for this visit. Saving an entry for another day is your choice.","copy_0137":"<button data-nav=\"{v0}\" class=\"{v1}\" {v2}>{v3}<span>{v4}</span></button>","copy_0138":"#{v0}","copy_0139":"<button data-action=\"undo\">Undo</button>","copy_0140":"How are you, really?","copy_0141":"<p>An optional personal reflection. Choose a feeling and add only what is useful.</p><form id=\"checkin-form\">{v0}<label class=\"field-label\" for=\"energy\">Your energy</label><select class=\"field\" id=\"energy\" name=\"energy\"><option>Not specified</option><option>Low energy</option><option>Some energy</option><option>Steady energy</option><option>Plenty of energy</option></select><label class=\"field-label\" for=\"checkin-note\">A little context, if useful</label><textarea id=\"checkin-note\" name=\"note\" class=\"field\" maxlength=\"6000\" rows=\"3\" placeholder=\"What is around this feeling? No patient details.\"></textarea><label class=\"check-label\"><input type=\"checkbox\" name=\"persist\">Save on this browser for another day. Browser storage is not encrypted.</label><p class=\"form-error\" id=\"checkin-error\" role=\"alert\"></p><div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Keep my check-in {v1}</button><button class=\"button button-quiet\" type=\"button\" data-action=\"close-modal\">Skip for now</button></div>{v2}<p class=\"small-note\">Without saving, it lasts for this visit. No one monitors these entries.</p></form>","copy_0142":"Choose the feeling closest to yours, or skip this check-in.","copy_0143":"Check-in saved in this browser.","copy_0144":"Check-in kept for this visit only.","copy_0145":"<li>{v0}</li>","copy_0146":"Saved · remove","copy_0147":"Save this guide","copy_0148":"<img class=\"article-image\" src=\"{v0}\" alt=\"{v1}\"><span class=\"tag\">{v2} / {v3}</span><p style=\"margin-top:15px\">{v4}</p>{v5}<ol class=\"article-steps\">{v6}</ol><p class=\"notice\">{v7}</p><div class=\"button-row\"><button class=\"button button-teal\" data-save-resource=\"{v8}\" aria-pressed=\"{v9}\">{v10} {v11}</button><button class=\"button button-quiet\" data-action=\"close-modal\">Return to my space</button></div><p class=\"small-note\" style=\"margin-top:20px\">Illustrative · AI-generated editorial image. Educational guidance, not individual treatment.</p>","copy_0149":"Make this space yours.","copy_0150":"Allied health professional","copy_0151":"Healthcare support worker","copy_0152":"Team leader","copy_0153":"<option {v0}>{v1}</option>","copy_0154":"One minute","copy_0155":"Two minutes","copy_0156":"Five minutes","copy_0157":"Open to different practices","copy_0158":"<p>Optional preferences help Serein fit your day. You can change them whenever you like.</p><form id=\"preferences-form\"><label class=\"field-label\" for=\"pref-role\">Your role</label><select class=\"field\" id=\"pref-role\" name=\"role\">{v0}</select><label class=\"field-label\" for=\"pref-time\">Usual time for a pause</label><select class=\"field\" id=\"pref-time\" name=\"time\">{v1}</select><label class=\"field-label\" for=\"pref-style\">Practice preference</label><select class=\"field\" id=\"pref-style\" name=\"style\">{v2}</select><label class=\"setting-row\"><span>Less motion<small>Still visuals and quiet transitions. Your device preference is also respected.</small></span><input name=\"motion\" type=\"checkbox\" {v3}></label><label class=\"setting-row\"><span>3D breathing visual<small>Optional. A still alternative and text guidance are always available.</small></span><input name=\"visual3d\" type=\"checkbox\" {v4}></label><label class=\"setting-row\"><span>Show original reflections<small>Secular Serein words at the end of selected pages.</small></span><input name=\"quotes\" type=\"checkbox\" {v5}></label>{v6}<div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Save my preferences</button><button class=\"button button-quiet\" type=\"button\" data-action=\"data-page\">My browser data →</button></div></form>","copy_0159":"<a class=\"source-link\" href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">{v1} ↗</a>","copy_0160":"<p>Short Serein practices are original educational adaptations, with illustrative imagery and optional timing. They are not copied clinical protocols or clinically validated Serein programs.</p>{v0}<p class=\"notice\">Movement images are AI-generated position illustrations. They are not anatomical standards or prescribed ranges. Choose a comfortable, suitable practice and stop or adapt for discomfort.</p>","copy_0161":"Your data, clearly explained.","copy_0162":"<p>Serein is a personal, browser-local educational workspace. It has no connected care team, patient records, or live monitoring.</p><h3>What is kept</h3><p>Preferences, bookmarks, saved words, and routines are stored in this browser. Check-ins and journal entries are stored beyond this visit only when you choose to save them. Unsaved submitted entries disappear on reload or when this page closes.</p><h3>What “saved” means</h3><p>Browser storage is not encrypted or access-controlled. Someone using the same browser profile may be able to see saved data. Clearing browser data can remove it. Export and import help you keep a copy.</p><h3>Unsubmitted drafts</h3><p>Journal drafts are kept temporarily in this tab’s session storage so a refresh can restore them. This is not encrypted. Submitted entries are kept for another day only when you choose Save on this browser. Clear Serein data also clears the temporary draft.</p><h3>Your control</h3><p>You can edit or delete individual reflections, delete check-ins, export an archive, import an earlier Serein export, or clear this app’s data. Do not enter patient-identifying details or sensitive health information.</p><h3>Practice memory, feedback and learning</h3><p>Remembered practice settings, explicit suggestion choices, journey step marks and plans you explicitly save stay in this browser. Practice feedback is visit-only unless you choose to save it. Saved feedback can influence suggestion order. You can remove responses, reset practice choices, delete plans, reset journeys, or clear all Serein data. Nothing is sent to employers or other people.</p><h3>Offline content and reminders</h3><p>The hosted edition can store app content offline when you choose. Clearing Serein data removes personal records; remove downloaded app content through your browser site-storage controls. Calendar reminders are downloaded files; they activate only after you import them, and you manage or delete them in your calendar.</p><h3>Media and voice</h3><p>Photographs and fonts are included with the app. Optional browser voice guidance uses a local voice only; it remains off if none is available. External reference links open third-party websites.</p><h3>Who provides Serein</h3><p>HEALTHCARE CROWN ACADEMY LTD · Company no. 17501904 · 71–75 Shelton Street, Covent Garden, London WC2H 9JQ. ICO data protection registration ZC273259, as supplied in the company brand kit.</p><p class=\"notice\">ICO registration is not an accreditation, a certification of this app, or a claim that browser storage is encrypted.</p><div class=\"button-row\"><button class=\"button button-teal\" data-action=\"data-page\">Manage my data</button><button class=\"button button-outline\" data-action=\"export\">Export my data</button></div>","copy_0163":"Find the words for support.","copy_0164":"A gentler transition home.","copy_0165":"What is happening?","copy_0166":"Several tasks need attention at once","copy_0167":"What support would help?","copy_0168":"Help agreeing priorities","copy_0169":"What next step could you suggest?","copy_0170":"A short check-in with the shift lead","copy_0171":"One agreed handover or next owner","copy_0172":"Confirm outstanding work in the approved system","copy_0173":"One transition action","copy_0174":"Change clothes and take a quiet moment","copy_0175":"One recovery support","copy_0176":"A meal, rest, or a trusted conversation","copy_0177":"<label class=\"field-label\" for=\"work-{v0}\">{v1}</label><input class=\"field\" id=\"work-{v2}\" name=\"field{v3}\" maxlength=\"600\" placeholder=\"{v4}\" required>","copy_0178":"<p>Prepare a practical next step. Your draft is temporary until you copy it. Keep it free of patient details.</p><div class=\"segmented\"><button data-tool-mode=\"conversation\" class=\"{v0}\">Support conversation</button><button data-tool-mode=\"transition\" class=\"{v1}\">Transition home</button></div><form id=\"work-form\" data-mode=\"{v2}\">{v3}<div class=\"button-row\"><button type=\"submit\" class=\"button button-teal\">Build my draft {v4}</button></div></form><label class=\"field-label\" for=\"work-output\">Your editable draft</label><textarea id=\"work-output\" class=\"field\" rows=\"5\"></textarea><button class=\"text-button\" data-action=\"copy-draft\">Copy my draft →</button><p class=\"small-note\" id=\"copy-note\" role=\"status\">Edit the draft so it sounds like you.</p>","copy_0179":"Build your own small routine.","copy_0180":"<label class=\"routine-option\"><input type=\"checkbox\" name=\"practice\" value=\"{v0}\" {v1}><span><strong>{v2}</strong><small>{v3} · {v4}</small></span></label>","copy_0181":"<p>Choose one to four practices. Each one starts only when you choose. You can reorder your routine in My space.</p><form id=\"routine-form\"><div class=\"routine-builder\">{v0}</div><p id=\"routine-error\" class=\"form-error\" role=\"alert\"></p><div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Save my routine</button><button class=\"button button-quiet\" type=\"button\" data-action=\"close-modal\">Keep exploring</button></div></form>","copy_0182":"Your routine has ended. Take what is useful into your day.","copy_0183":"Entry removed.","copy_0184":"Entry restored.","copy_0185":"Personal Serein data. Keep this file private.","copy_0186":"Export prepared. Keep the downloaded file private.","copy_0187":"Archive restored.","copy_0188":"Archive merged with your existing entries.","copy_0189":"{v0} {v1}","copy_0190":"<button class=\"search-result\" data-search-practice=\"{v0}\"><img src=\"{v1}\" alt=\"\"><span><strong>{v2}</strong><small>{v3} · {v4}</small></span><span>↗</span></button>","copy_0191":"<p class=\"search-group-label\">GUIDED PRACTICES</p>{v0}","copy_0192":"<button class=\"search-result\" data-search-resource=\"{v0}\"><img src=\"{v1}\" alt=\"\"><span><strong>{v2}</strong><small>{v3}</small></span><span>↗</span></button>","copy_0193":"<p class=\"search-group-label\">PRACTICAL GUIDES</p>{v0}","copy_0194":"<div class=\"empty\"><h3>No matches yet.</h3><p>Try breathing, grounding, support, or boundaries.</p></div>","copy_0195":"Practice saved to My space.","copy_0196":"Practice removed from saved.","copy_0197":"SEREIN / ROUTINE {v0} OF {v1}","copy_0198":"SEREIN / WATCH FIRST","copy_0199":"SEREIN / YOUR PRACTICE","copy_0200":"Finish my routine →","copy_0201":"Next in my routine →","copy_0202":"4 seconds per phase","copy_0203":"In 4 · out 6","copy_0204":"3 seconds per phase","copy_0205":"In 3 · out 3","copy_0206":"5 seconds per phase","copy_0207":"In 5 · out 5","copy_0208":"<label class=\"check-label\"><input type=\"checkbox\" id=\"session-noholds\">No holds · continuous breathing</label>","copy_0209":"<label class=\"field-label\" for=\"session-pace\">Comfortable pace</label><select class=\"field\" id=\"session-pace\"><option value=\"4-6\">{v0}</option><option value=\"3-3\">{v1}</option><option value=\"5-5\">{v2}</option></select>{v3}","copy_0210":"<label class=\"check-label\"><input type=\"checkbox\" id=\"session-relax\">Relax only · no guided movement</label>","copy_0211":"<option value=\"orb\" {v0}>3D breathing visual</option>","copy_0212":"<option value=\"map\">Body attention map</option>","copy_0213":"<label class=\"field-label\" for=\"session-duration\">Session length</label><select class=\"field\" id=\"session-duration\" {v0}>{v1}</select>{v2}<label class=\"check-label\"><input type=\"checkbox\" id=\"session-external\">Use external focus instead</label>{v3}<label class=\"check-label\"><input type=\"checkbox\" id=\"session-motion\" {v4} {v5}>Less motion</label><label class=\"check-label\"><input type=\"checkbox\" id=\"session-voice\">Optional local voice guidance</label><label class=\"field-label\" for=\"session-visual\">Visual view</label><select class=\"field\" id=\"session-visual\"><option value=\"photo\" {v6}>Illustrative photographs</option>{v7}<option value=\"text\">Text focus</option>{v8}</select><p class=\"small-note\">Pause to change timing. Local voice availability depends on your browser.</p>","copy_0214":"Remove saved practice","copy_0215":"Save practice","copy_0216":"{v0}-{v1}-{v2}-{v3}-{v4}","copy_0217":"A MOMENT, WITHOUT A TARGET","copy_0218":"FOLLOW AT A COMFORTABLE PACE","copy_0219":"STEP {v0} OF {v1}","copy_0220":"Illustrative, AI-generated position reference: {v0}","copy_0221":"Illustrative, AI-generated landscape","copy_0222":"Your pace. Your pause.","copy_0223":"{v0} / {v1} · {v2}","copy_0224":"<button data-player-step=\"","copy_0225":"<button data-noticed=\"","copy_0226":"\" aria-label=\"Notice item ","copy_0227":"{v0} / {v1}","copy_0228":"{v0} elapsed of {v1}","copy_0229":"Practice again","copy_0230":"Continue","copy_0231":"Pause","copy_0232":"Play preview","copy_0233":"Resume","copy_0234":"Begin practice","copy_0235":"<span>{v0}</span>","copy_0236":"Take what is useful into the rest of your day.","copy_0237":"Paused. Breathe naturally. Return when ready.","copy_0238":"Preview only. Follow along only if suitable.","copy_0239":"Put the screen away before walking.","copy_0240":"Stop or adapt if uncomfortable. Nothing is monitored.","copy_0241":"Optional visual · Follow your own pace","copy_0242":"Illustrative · AI-generated","copy_0243":"<div class=\"box-track\"><i class=\"box-edge edge-top\"></i><i class=\"box-edge edge-right\"></i><i class=\"box-edge edge-bottom\"></i><i class=\"box-edge edge-left\"></i><i class=\"box-marker\"></i><div class=\"box-center\"><strong></strong><span></span><small></small></div></div>","copy_0244":"Complete","copy_0245":"Follow your comfortable pace","copy_0246":"Paused","copy_0247":"Rest naturally","copy_0248":"Press Begin to start","copy_0249":"A local English voice is unavailable. Text guidance remains available.","copy_0250":"Voice is unavailable. Follow the text guidance.","copy_0251":"Reflection saved to My space.","copy_0252":"Reflection removed.","copy_0253":"Build or write your draft first.","copy_0254":"Draft copied.","copy_0255":"Select and copy the highlighted draft.","copy_0256":"Start with a clear space?","copy_0257":"<p>This removes Serein’s saved and visit-only entries, temporary journal draft, preferences, bookmarks, and routine from this browser. It does not affect other websites.</p><div class=\"notice\">Export anything you want to keep before clearing.</div><div class=\"button-row\"><button class=\"button button-outline\" data-action=\"export\">Export first</button><button class=\"button button-navy\" data-action=\"confirm-clear\">Clear my Serein data</button><button class=\"text-button\" data-action=\"close-modal\">Keep my data</button></div>","copy_0258":"Serein data cleared from this browser.","copy_0259":"A little space for human care.","copy_0260":"<p>Serein is a well-being studio by Healthcare Crown Academy. It brings together brief optional practices, personal reflection, and practical working-day support.</p><h3>Your pace. Your choice.</h3><p>{v0} guided experiences include breathing, grounding, awareness, gentle movement, and visualization. Six interactive studios and three flexible learning journeys connect personal practice with practical support. You can use text, illustrative photographs, optional 3D, and available local voice guidance.</p><p class=\"notice\">Educational practices, not individual medical treatment, clinical assessment, or emergency support. No professional accreditation or affiliation is implied.</p><p>By HEALTHCARE CROWN ACADEMY LTD · Company no. 17501904.</p>","copy_0261":"Make it an invitation, together.","copy_0262":"<ol><li>Ask permission and offer a genuine choice.</li><li>Choose a suitable practice and adapt to the person’s needs.</li><li>Use Present in the player. Your personal workspace is hidden behind an opaque backdrop.</li><li>Offer external focus, less motion, and skipping. A neutral response is valid.</li></ol><p class=\"notice\">Do not enter patient details. This is a shared educational prompt, not an assessment or clinical record.</p><div class=\"button-row\"><button class=\"button button-teal\" data-practice=\"ground\">Explore shared grounding →</button></div>","copy_0263":"That action could not finish. Your existing entries are kept.","copy_0264":"Your current draft is kept. Clear it to choose a new prompt.","copy_0265":"One moment I want to acknowledge today is…","copy_0266":"One support I would like to ask for is…","copy_0267":"One thing I can hand over or set down is…","copy_0268":"Keep this entry in your browser?","copy_0269":"<p>Browser storage is not encrypted or access-controlled. Others using this browser may be able to access it.</p><div class=\"button-row\"><button class=\"button button-teal\" data-confirm-keep=\"{v0}\" data-entry-type=\"{v1}\">Save in this browser</button><button class=\"text-button\" data-action=\"close-modal\">This visit only</button></div>","copy_0270":"Your reflection, in your words.","copy_0271":"Saved in this browser.","copy_0272":"Kept for this visit only.","copy_0273":"<form id=\"edit-journal-form\"><label class=\"sr-only\" for=\"edit-journal\">Edit reflection</label><textarea id=\"edit-journal\" class=\"field\" name=\"text\" maxlength=\"20000\" rows=\"8\">{v0}</textarea><p class=\"small-note\">{v1}</p><div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Keep my changes</button><button class=\"text-button\" type=\"button\" data-action=\"close-modal\">Cancel</button></div></form>","copy_0274":"Your preferences are saved in this browser.","copy_0275":"Write a thought first, however small.","copy_0276":"Reflection saved in this browser.","copy_0277":"Reflection kept for this visit only.","copy_0278":"A reflection needs at least a few words.","copy_0279":"Reflection updated.","copy_0280":"Choose one to four practices.","copy_0281":"Your routine is ready.","copy_0282":"I would like to discuss this situation: {v0}.\n\nThe support that would help is: {v1}.\n\nCould we agree this next step: {v2}?","copy_0283":"Before leaving: {v0}.\n\nMy transition: {v1}.\n\nMy recovery support: {v2}.","copy_0284":"Draft ready. Edit the words so they sound like you.","copy_0285":"Choose a Serein JSON export smaller than 8 MB.","copy_0286":"Restore your Serein archive.","copy_0287":"<p>This file contains {v0} check-ins, {v1} reflections, and {v2} saved practices, plus {v3} feedback responses and {v4} plans.</p><div class=\"notice\">Merge keeps your existing entries. Replace removes the current Serein data and restores this archive.</div><div class=\"button-row\"><button class=\"button button-teal\" data-action=\"import-merge\">Merge with my data</button><button class=\"button button-outline\" data-action=\"import-replace\">Replace with this archive</button><button class=\"text-button\" data-action=\"close-modal\">Cancel</button></div>","copy_0288":"That file could not be read. Choose a Serein JSON export.","copy_0289":"Saved data could not be read and has been kept unchanged. Open Me → Data & privacy to download a recovery copy.","copy_0290":"Earlier Serein entries are available in My space.","copy_0291":"No change","copy_0292":"<a class=\"source-link\" href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">{v1} ↗<small>{v2}</small></a>","copy_0293":"Extra large","copy_0294":"<fieldset class=\"comfort-fields\"><legend>Read comfortably</legend><label class=\"field-label\" for=\"pref-reading\">Text size</label><select id=\"pref-reading\" class=\"field\" name=\"readingSize\">{v0}</select><label class=\"field-label\" for=\"pref-theme\">Appearance</label><select id=\"pref-theme\" class=\"field\" name=\"theme\"><option value=\"light\">HCA ivory</option><option value=\"night\" {v1}>HCA navy night</option></select><label class=\"check-label\"><input type=\"checkbox\" name=\"readingWidth\" {v2}>Comfortable reading width</label><label class=\"check-label\"><input type=\"checkbox\" name=\"focus\" {v3}>Low-distraction layout · simplify decorative content</label></fieldset>","copy_0295":"this moment","copy_0296":"Fits {v0}","copy_0297":"{v0} within your time","copy_0298":"gentle movement","copy_0299":"marked helpful for you","copy_0300":"<button class=\"choice-card {v0}\" data-adv=\"finder-moment\" data-value=\"{v1}\" aria-pressed=\"{v2}\"><strong>{v3}</strong><span>{v4}</span></button>","copy_0301":"<p class=\"studio-question\">What is happening around this pause?</p><div class=\"choice-grid\">{v0}</div>","copy_0302":"My own pace","copy_0303":"No countdown","copy_0304":"A short, optional pause","copy_0305":"<button class=\"choice-card {v0}\" data-adv=\"finder-time\" data-value=\"{v1}\" aria-pressed=\"{v2}\"><strong>{v3}</strong><span>{v4}</span></button>","copy_0306":"<p class=\"studio-question\">How much time is available?</p><div class=\"choice-grid\">{v0}</div>","copy_0307":"<p class=\"studio-question\">What would feel comfortable?</p><label class=\"field-label\" for=\"finder-style\">Attention focus</label><select class=\"field\" id=\"finder-style\"><option value=\"any\">Open to different practices</option><option value=\"nonbreath\" {v0}>Without breath focus</option><option value=\"ground\" {v1}>Grounding only</option></select><label class=\"field-label\" for=\"finder-position\">Movement</label><select class=\"field\" id=\"finder-position\"><option value=\"any\">Any suitable practice</option><option value=\"seated\" {v2}>Seated practices</option><option value=\"still\" {v3}>Without guided movement</option></select><label class=\"check-label\"><input id=\"finder-silent\" type=\"checkbox\" {v4}>Keep this pause silent</label><p class=\"small-note\">These choices apply to this search. Your usual preferences stay available.</p>","copy_0308":"Show my choices","copy_0309":"{v0}{v1}<div class=\"studio-footer\"><button class=\"button button-quiet\" data-adv=\"finder-back\" {v2}>Back</button><button class=\"button button-teal\" data-adv=\"finder-next\">{v3} →</button></div>","copy_0310":"<article class=\"finder-result\"><span class=\"result-number\">0{v0}</span><div><h3>{v1}</h3><p>{v2}</p><p class=\"match-reason\">{v3}</p><div class=\"button-row\"><button class=\"button button-teal\" data-adv=\"finder-start\" data-id=\"{v4}\">Explore {v5} →</button><button class=\"text-button\" data-adv=\"evidence\" data-id=\"{v6}\">About this practice</button></div></div></article>","copy_0311":"<div class=\"empty\"><h3>No match for these choices.</h3><p>You can adjust the choices or restore a practice you previously excluded in My space.</p></div>","copy_0312":"<p class=\"eyebrow\">YOUR CHOICES / {v0}</p><p>Preference matches with a clear reason. Choose, adapt or leave any practice.</p><div class=\"finder-results\">{v1}</div><div class=\"button-row\"><button class=\"button button-outline\" data-adv=\"finder-back\">Adjust choices</button><button class=\"text-button\" data-adv=\"preferences-open\">Manage practice choices →</button></div>","copy_0313":"Find a pause that fits.","copy_0314":"<div class=\"studio-meter\"><span>STEP {v0} OF {v1}</span><div class=\"meter-track\"><span style=\"width:{v2}%\"></span></div></div>","copy_0315":"Continue my journey","copy_0316":"Explore this journey","copy_0317":"<section class=\"advance-launch\"><div><p class=\"eyebrow\">A PERSONAL PATH THROUGH YOUR DAY</p><h2>Start with what you need.</h2><p>Three small choices. One practice with a clear reason.</p></div><button class=\"button button-teal\" data-adv=\"finder\">Help me choose {v0}</button></section><div class=\"section-heading\"><div><h2>Put support into practice</h2><p>Rehearse, prepare and make your next step concrete.</p></div><button class=\"text-button\" data-adv=\"studios-open\">All six studios →</button></div><div class=\"studio-grid compact\">{v1}</div><section class=\"journey-invitation\"><div><p class=\"eyebrow\">LEARN AT YOUR OWN PACE</p><h3>{v2}</h3><p>{v3}</p></div><button class=\"button button-outline\" data-adv=\"journey\" data-id=\"{v4}\">{v5} →</button></section>","copy_0318":"guided steps","copy_0319":"An editorial count of this practice’s steps, not a measured health outcome.","copy_0320":"Why choose it?","copy_0321":"When might it fit?","copy_0322":"How to use it","copy_0323":"Who chooses?","copy_0324":"You decide whether it is suitable. {v0}","copy_0325":"<section><h4>{v0}</h4><p>{v1}</p></section>","copy_0326":"<section class=\"evidence-intro\"><p class=\"eyebrow\">WHAT / WHY / WHEN / HOW / WHO</p><h3>{v0}</h3><p>{v1}</p></section><div class=\"evidence-grid\">{v2}</div><div class=\"fact-card\"><strong>{v3}</strong><div><h4>{v4}</h4><p>{v5}</p></div></div><h4 class=\"source-heading\">Background & scope</h4>{v6}<p class=\"small-note\">Source mapping updated {v7}. Original educational adaptation; not a clinically validated Serein program. Images are illustrative. You can pause, adapt or stop.</p>","copy_0327":"Understand this practice.","copy_0328":"<div class=\"button-row\"><button class=\"button button-teal\" data-practice=\"{v0}\">Open practice →</button></div>","copy_0329":"<button type=\"button\" class=\"text-button practice-info\" data-adv=\"evidence\" data-id=\"{v0}\" aria-label=\"About {v1}\">About this practice {v2}</button>","copy_0330":"<button data-adv=\"feedback\" data-value=\"{v0}\" aria-pressed=\"false\">{v1}</button>","copy_0331":"Not settled","copy_0332":"A little settled","copy_0333":"Somewhat settled","copy_0334":"Very settled","copy_0335":"<option value=\"{v0}\">{v1} · {v2}</option>","copy_0336":"More often","copy_0337":"Try another time","copy_0338":"Do not suggest","copy_0339":"<button class=\"button button-outline\" data-adv=\"practice-choice\" data-id=\"{v0}\" data-value=\"{v1}\">{v2}</button>","copy_0340":"<p class=\"eyebrow\">JUST NOTICE</p><h3>How was that for you?</h3><p>No particular response is required. You choose whether to keep feedback.</p><div class=\"feedback-choices\">{v0}</div><label class=\"field-label\" for=\"session-after\">Optional: how settled do you feel now?</label><select id=\"session-after\" class=\"field\"><option value=\"\">Skip</option>{v1}</select><label class=\"check-label\"><input type=\"checkbox\" id=\"feedback-save\">Save this feedback for personal insights in this browser</label><p class=\"small-note\">Saved feedback is not encrypted. Without saving it lasts for this visit. Personal observations are not clinical scores.</p><p id=\"feedback-note\" role=\"status\"></p><div class=\"practice-preference-actions\"><span>Suggest this practice:</span>{v2}</div>","copy_0341":"Your saved practice settings have been applied. Voice remains off until enabled.","copy_0342":"Options are temporary unless you choose to remember them.","copy_0343":"<label class=\"field-label\" for=\"session-before\">Optional: how settled do you feel before starting?</label><select id=\"session-before\" class=\"field\"><option value=\"\">Skip</option>{v0}</select><label class=\"check-label\"><input type=\"checkbox\" id=\"session-remember\" {v1}>Remember timing, visual and comfort options for this practice</label><p id=\"memory-status\" class=\"small-note\">{v2}</p>","copy_0344":"<label class=\"check-label\"><input type=\"checkbox\" id=\"session-chime\" {v0}>Gentle phase-change tone · optional local audio</label>","copy_0345":"These practice options are remembered in this browser.","copy_0346":"Practice options are temporary.","copy_0347":"Stop or choose another focus. Human support may be more useful. There is no need to continue. ","copy_0348":"Thank you for noticing. ","copy_0349":"Saved in this browser for your insights.","copy_0350":"Removed from recommendations. You can restore it in My space.","copy_0351":"Serein will give other practices priority.","copy_0352":"This practice will be given more priority when it fits.","copy_0353":"Not suggested","copy_0354":"Given more priority","copy_0355":"Usual suggestion priority","copy_0356":" · Comfort options remembered","copy_0357":"<div><span><strong>{v0}</strong><small>{v1}{v2}</small></span><button class=\"text-button\" data-adv=\"restore-practice\" data-id=\"{v3}\">Reset choices & memory</button></div>","copy_0358":"<p>No practice choices or comfort options saved yet.</p>","copy_0359":"<section class=\"advance-panel\"><div class=\"section-heading\"><div><h2>Your practice choices</h2><p>Excluded practices remain accessible in the catalogue. You can restore suggestions here.</p></div></div><div class=\"preference-list\">{v0}</div></section>","copy_0360":"<i class=\"feedback-segment s{v0}\" style=\"width:{v1}%\"></i>","copy_0361":"<div><span>{v0}</span><div class=\"feedback-bar\" role=\"img\" aria-label=\"{v1}: {v2} helpful, {v3} no change, {v4} uncomfortable out of {v5} responses\">{v6}</div><b>{v7}</b></div>","copy_0362":"<div class=\"feedback-bars\">{v0}</div><p class=\"chart-legend\"><span>● Helpful</span><span>● No change</span><span>● Uncomfortable</span></p>","copy_0363":"<div class=\"empty\"><h3>Your experience will appear here.</h3><p>After a practice, choose optional feedback. Saving is always your choice.</p></div>","copy_0364":"<p class=\"notice\">Of {v0} paired observations: {v1} felt more settled, {v2} the same, and {v3} less settled. These observations cannot establish that a practice caused a change.</p>","copy_0365":"<p class=\"insight-sentence\">{v0} response{v1} marked helpful {v2}. {v3}.</p>","copy_0366":"This visit","copy_0367":"<article><div><strong>{v0} · {v1}</strong><small>{v2} · {v3} · {v4}</small></div><button class=\"text-button\" data-adv=\"delete-feedback\" data-id=\"{v5}\">Remove</button></article>","copy_0368":"<p>No responses for this period.</p>","copy_0369":"<section class=\"advance-panel\"><p class=\"eyebrow\">YOUR EXPERIENCE / YOUR INTERPRETATION</p><h2>What you chose to notice.</h2><p class=\"section-description\">Feedback from the selected period. Visit-only entries are included until reload; {v0} of {v1} are saved. Missing entries are unknown.</p><div class=\"insight-stats\"><div><strong>{v2}</strong><span>responses recorded</span></div><div><strong>{v3}</strong><span>marked helpful</span></div><div><strong>{v4}</strong><span>optional before/after pairs</span></div></div>{v5}{v6}{v7}<details class=\"feedback-history\"><summary>Explore or remove individual responses ({v8})</summary>{v9}</details><p class=\"small-note\">The charts describe your entries. They are not health assessments, treatment outcomes or employer reports.</p></section>{v10}","copy_0370":"<article class=\"studio-card\"><div class=\"studio-card-top\"><span class=\"studio-glyph\">{v0}</span><span class=\"tag\">{v1}</span></div><h3>{v2}</h3><p>{v3}</p><p class=\"studio-when\"><strong>When to use:</strong> {v4}</p><div class=\"studio-card-bottom\"><span>{v5} steps · Your pace</span><button type=\"button\" class=\"text-button context-detail-link\" data-context-open=\"studio:{v6}\" aria-haspopup=\"dialog\" aria-controls=\"serein-context-panel\" aria-expanded=\"false\">How it works</button><button class=\"button button-teal\" data-adv=\"studio\" data-id=\"{v7}\">Enter studio →</button></div></article>","copy_0371":"<header class=\"page-header\"><div><p class=\"eyebrow\">SEREIN / INTERACTIVE STUDIOS</p><h1>Make the next step real.</h1><p class=\"page-sub\">Six practical spaces to rehearse, prepare and take action. Drafts stay temporary unless you explicitly save a plan.</p></div></header><section class=\"studio-hero\"><div><p class=\"eyebrow\">FROM PERSONAL PAUSES TO PRACTICAL SUPPORT</p><h2>Find words.<br>Make room.<br><em>Change one thing.</em></h2><p>Choose a studio around the moment you are in. No patient information is needed.</p></div><div class=\"evidence-feature\"><strong>6</strong><h3>actions for healthier workplaces</h3><p>NIOSH’s 2024 Impact Wellbeing Guide sets out six evidence-informed organizational actions. These six Serein studios are original educational tools, not the guide’s six actions.</p><a href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">Read the source & scope ↗</a></div></section><div class=\"studio-grid\">{v1}</div>{v3}","copy_0372":"<label class=\"field-label\" for=\"studio-field-{v0}\">{v1}</label>","copy_0373":"<input type=\"date\" class=\"field\" id=\"studio-field-{v0}\" data-studio-field=\"{v1}\" value=\"{v2}\">","copy_0374":"<textarea rows=\"2\" class=\"field\" id=\"studio-field-{v0}\" data-studio-field=\"{v1}\" maxlength=\"1200\" placeholder=\"{v2}\">{v3}</textarea>","copy_0375":"<button class=\"text-button\" data-adv=\"studio-save\">Save this plan in this browser</button>","copy_0376":"<button class=\"button button-outline\" data-adv=\"team-present\">Open shared presentation →</button>","copy_0377":"<button class=\"button button-outline\" data-practice=\"ground\">Open a grounding pause →</button>","copy_0378":"<div class=\"result-heading\"><span class=\"studio-glyph\">{v0}</span><div><p class=\"eyebrow\">A PRACTICAL NEXT STEP</p><h3>{v1}</h3></div></div><label class=\"field-label\" for=\"studio-output\">Edit this so it sounds like you</label><textarea class=\"field studio-output\" id=\"studio-output\" rows=\"10\" maxlength=\"12000\">{v2}</textarea><div class=\"button-row\"><button class=\"button button-teal\" data-adv=\"studio-copy\">Copy my {v3}</button><button class=\"button button-outline\" data-adv=\"studio-download\">Download text</button>{v4}{v5}{v6}</div><p id=\"studio-result-status\" class=\"small-note\" role=\"status\">Draft stays temporary. Nothing is sent to anyone. Keep names and patient details out of this space.</p>","copy_0379":"<label class=\"field-label\" for=\"boundary-scenario\">A situation to rehearse</label><select class=\"field\" id=\"boundary-scenario\">{v0}</select><p class=\"scenario-context\">{v1}</p><p class=\"notice\">Use your professional responsibilities and workplace processes to guide real decisions.</p>","copy_0380":"<span class=\"response-rationale\">{v0}</span>","copy_0381":"<button class=\"choice-card {v0}\" data-adv=\"boundary-response\" data-value=\"{v1}\" aria-pressed=\"{v2}\"><strong>{v3}</strong>{v4}</button>","copy_0382":"<p class=\"studio-question\">{v0}</p><div class=\"response-options\">{v1}</div><p class=\"small-note\">A rehearsal with explanatory feedback, not a competence assessment.</p>","copy_0383":"Practical help","copy_0384":"Clarify responsibilities or available support.","copy_0385":"A quiet pause","copy_0386":"Choose an outward focus, without retelling the event.","copy_0387":"Human connection","copy_0388":"Prepare a conversation with someone trusted.","copy_0389":"<button class=\"choice-card {v0}\" data-adv=\"difficult-choice\" data-value=\"{v1}\" aria-pressed=\"{v2}\"><strong>{v3}</strong><span>{v4}</span></button>","copy_0390":"<p class=\"studio-question\">Which kind of support would you choose?</p><div class=\"choice-grid\">{v0}</div><p class=\"notice\">You do not have to describe what happened. If immediate safety is at issue, use your workplace escalation or usual urgent-care route.</p>","copy_0391":"<p class=\"notice\">You can change your mind, decline reflection, or choose qualified support. Serein is not monitored.</p>","copy_0392":"<p class=\"notice\">Participation is optional. Offer observing, external focus, skipping and leaving without explanation.</p>","copy_0393":"<label class=\"field-label\" for=\"team-practice\">Shared practice</label><select class=\"field\" id=\"team-practice\">{v0}</select><label class=\"field-label\" for=\"team-duration\">Available time</label><select id=\"team-duration\" class=\"field\">{v1}</select><p class=\"small-note\">Grounding is self-paced. Other choices use the selected time.</p>","copy_0394":"<label class=\"check-label\"><input type=\"checkbox\" id=\"team-external\" {v0}>Use an external-focus cue throughout</label><p>Shared presentation starts in text view, with sound off, reduced motion and no breath holds. Participants may adapt or sit out.</p>{v1}","copy_0395":"<section class=\"studio-intro\"><p>{v0}</p><p><strong>Use it:</strong> {v1}</p><p><strong>Your choice:</strong> {v2}</p></section>","copy_0396":"Build my draft","copy_0397":"<button class=\"button button-teal\" data-adv=\"studio-next\">{v0} →</button>","copy_0398":"<button class=\"button button-quiet\" data-action=\"close-modal\">Finish for now</button>","copy_0399":"{v0}{v1}<div class=\"studio-step-title\"><span class=\"tag\">{v2}</span><h3>{v3}</h3></div>{v4}<div class=\"studio-footer\"><button class=\"button button-quiet\" data-adv=\"studio-back\" {v5}>Back</button>{v6}</div><details class=\"studio-about\"><summary>Background & sources</summary><p>{v7} {v8}</p><p><strong>When:</strong> {v9}</p><p><strong>Who:</strong> {v10}</p>{v11}<p class=\"small-note\">Original educational tool. No automatic sending, reporting, clinical assessment or supervision.</p></details>","copy_0400":"Situation: {v0}\n\nI want to help within the priorities we agree. {v1}\n\nCould we agree: {v2}\n\nA check-back could be: {v3}\n\nAdapt this to the role, urgency and workplace process.","copy_0401":"I would like to discuss: {v0}\n\nThe impact on my work is: {v1}\n\nThe support I would like to request is: {v2}\n\nCould we discuss this with: {v3}\n\nA possible next step: {v4}\n\nProposed review: {v5}","copy_0402":"MY SHIFT TRANSITION\n\n□ Confirm through the approved handover: {v0}\n□ Leave for the agreed next opportunity: {v1}\n□ My transition action: {v2}\n□ Make it easier by: {v3}\n□ My recovery support: {v4}\n□ Support available: {v5}\n\nThis personal prompt does not replace handover or workplace records.","copy_0403":"ONE NEXT STEP\n\nMy chosen focus: {v0}\n\nPractical support: {v1}\nA person or service I could contact: {v2}\nWhen I could take this step: {v3}\n\nI can choose a different step or qualified support. No event details or disclosure are required.","copy_0404":"External-focus cues selected.","copy_0405":"OPTIONAL TEAM PAUSE\n\nOpening: {v0}\n\nPractice: {v1}\nTiming: {v2}\n\nOptions: observe, skip, keep eyes open, use external focus, or leave. Sound off, reduced motion, text-first presentation. {v3}\n\nClosing: {v4}\n\nDo not ask participants to disclose private experiences. Nothing is monitored or assessed.","copy_0406":"Agree a review date","copy_0407":"WORKING CONDITIONS ACTION PLAN\n\nBarrier: {v0}\nDesired improvement: {v1}\nProposed change: {v2}\nHow we will notice it happened: {v3}\nProposed owner (to be agreed): {v4}\nProposed review: {v5}\n\nUse appropriate workplace approval and escalation. This app does not assign tasks or notify the proposed owner.","copy_0408":"<details class=\"saved-plan\"><summary>{v0} · {v1}</summary><pre>{v2}</pre><button class=\"text-button\" data-adv=\"delete-plan\" data-id=\"{v3}\">Delete this plan</button></details>","copy_0409":"<p>A Working Conditions plan can be saved explicitly from its result screen.</p>","copy_0410":"<section class=\"advance-panel\"><div class=\"section-heading\"><div><h2>Plans you chose to keep</h2><p>Saved in this browser without encryption. No plan is sent or monitored.</p></div></div>{v0}</section>","copy_0411":"nature scene","copy_0412":"Begin exploring","copy_0413":"<article class=\"journey-card\"><img src=\"{v0}\" alt=\"Illustrative {v1}\" loading=\"lazy\"><div><p class=\"eyebrow\">5 STEPS / FLEXIBLE ORDER</p><h2>{v2}</h2><p>{v3}</p><details class=\"journey-outline\"><summary>View the five steps</summary><ol>{v4}</ol></details><progress max=\"5\" value=\"{v5}\" aria-label=\"{v6}: {v7} of 5 steps marked complete\"></progress><small>{v8} of 5 marked complete</small><button class=\"button button-teal\" data-adv=\"journey\" data-id=\"{v9}\">{v10} →</button></div></article>","copy_0414":"<header class=\"page-header\"><div><p class=\"eyebrow\">LEARN / TRY / REFLECT / APPLY</p><h1>Small steps. Your own pace.</h1><p class=\"page-sub\">Three flexible learning journeys. Fifteen short lessons. Your place is remembered without streaks or deadlines.</p></div></header><div class=\"journey-grid\">{v0}</div><section class=\"advance-panel\"><h3>Learning that leaves room for life.</h3><p>You decide when a step is complete. Skipping or returning is welcome. This is educational progress, without accreditation or clinical assessment.</p><button class=\"text-button\" data-adv=\"journey-reset-all\">Reset learning progress</button></section>","copy_0415":", marked complete","copy_0416":"<button data-adv=\"journey-step\" data-value=\"{v0}\" class=\"{v1}\" aria-label=\"{v2}. {v3}{v4}\" {v5}>{v6}</button>","copy_0417":"<p class=\"notice\">{v0}</p>","copy_0418":"<button class=\"button button-outline\" data-practice=\"{v0}\">Try {v1} →</button>","copy_0419":"<button class=\"text-button\" data-practice=\"{v0}\">Choose {v1}</button>","copy_0420":"<button class=\"button button-outline\" data-adv=\"studio\" data-id=\"{v0}\">Enter the studio →</button>","copy_0421":"Keep complete & continue","copy_0422":"Mark complete & continue","copy_0423":"<button class=\"text-button unmark-step\" data-adv=\"journey-unmark\">Mark this step incomplete</button>","copy_0424":"<div class=\"journey-step-nav\" aria-label=\"Journey steps\">{v0}</div><p class=\"eyebrow\">{v1} / STEP {v2} OF {v3}</p><h3>{v4}</h3><p class=\"lesson-text\">{v5}</p>{v6}<div class=\"button-row\">{v7}{v8}{v9}</div><div class=\"studio-footer\"><button class=\"button button-quiet\" data-adv=\"journey-previous\" {v10}>Previous</button><button class=\"button button-teal\" data-adv=\"journey-complete\">{v11} →</button></div><button class=\"text-button\" data-adv=\"journey-return\">Return to journeys</button>{v12}<p class=\"small-note\">Your step marks are saved in this browser. You can revisit in any order.</p>{v13}","copy_0425":"<div id=\"advance-stage\" class=\"advance-stage\" hidden></div>","copy_0426":"Attention map · not an anatomy assessment","copy_0427":"advance-stage body-attention","copy_0428":"Feet & support","copy_0429":"Whole body","copy_0430":"<button data-player-step=\"{v0}\" class=\"{v1}\" style=\"--point-y:{v2}%\" aria-current=\"{v3}\">{v4}</button>","copy_0431":"<svg viewBox=\"0 0 220 330\" aria-hidden=\"true\"><circle cx=\"110\" cy=\"44\" r=\"25\"/><path d=\"M90 80 Q110 70 130 80 L145 160 L135 190 L133 290 L115 290 L110 210 L105 290 L87 290 L85 190 L75 160Z\"/><path d=\"M89 85 L60 160 L66 190 M131 85 L160 160 L154 190\"/></svg><div class=\"body-points\">{v0}</div>","copy_0432":"advance-stage sensory-stage","copy_0433":"<div class=\"sensory-symbol\">{v0}</div><span>NOTICE YOUR ACTUAL SURROUNDINGS</span>","copy_0434":"Cycle {v0} · Your comfortable pace","copy_0435":"Local tone unavailable. Text and visual guidance remain available.","copy_0436":"Evidence, with its scope.","copy_0437":"<p>Each practice now has its own mapped background sources and adaptation notes. Source availability can change.</p>{v0}<p class=\"notice\">Editorial mapping updated {v1}. Content is educational; product outcomes have not been clinically established.</p>","copy_0438":"Your app, around your day.","copy_0439":"Check offline content","copy_0440":"Make available offline","copy_0441":"<button class=\"button button-teal\" id=\"offline-prepare\" data-adv=\"offline\" {v0}>{v1}</button><button class=\"button button-outline\" data-adv=\"install\">Install / add to home screen</button>","copy_0442":"<label><input type=\"checkbox\" name=\"days\" value=\"{v0}\" {v1}>{v2}</label>","copy_0443":"<section class=\"install-status\"><p class=\"eyebrow\">INSTALL / OFFLINE / REMINDERS</p><h3>Keep a little space close.</h3><p id=\"offline-status\">{v0}</p><div class=\"button-row\">{v1}</div><p id=\"install-note\" class=\"small-note\">Installation support varies. Your browser may offer Install, or Share → Add to Home Screen. Offline access stores app content on this device.</p></section><form id=\"reminder-form\"><h3>A reminder you control.</h3><p>Download a calendar reminder for the shift days and time you choose. It works after import through your calendar, even when Serein is closed.</p><label class=\"field-label\" for=\"reminder-title\">Reminder title</label><input class=\"field\" id=\"reminder-title\" name=\"title\" value=\"A little space for me\" maxlength=\"80\" required><label class=\"field-label\" for=\"reminder-time\">Local reminder time</label><input type=\"time\" class=\"field\" id=\"reminder-time\" name=\"time\" value=\"18:30\" required><fieldset class=\"reminder-days\"><legend>Repeat on</legend>{v2}</fieldset><p class=\"small-note\">Times follow the calendar’s local timezone. Choose days that fit your actual rota. Serein does not know your shifts or send push notifications.</p><p id=\"reminder-error\" role=\"alert\"></p><button type=\"submit\" class=\"button button-teal\">Download calendar reminder</button></form>","copy_0444":"Choose at least one day, a title and a valid time.","copy_0445":"DESCRIPTION:An optional Serein pause. Change or delete this reminder in your calendar.","copy_0446":"Calendar file prepared. Import it into your calendar and check the days and time.","copy_0447":"This single HTML already includes its core content and works offline. Installation requires HTTPS hosting with sw.js beside the HTML.","copy_0448":"Preparing offline content…","copy_0449":"Offline content is ready on this device.","copy_0450":"Use the hosted edition online first, then choose to save its content for offline use.","copy_0451":"Request timed out","copy_0452":"Offline installation requires a supported browser on HTTPS. The downloadable HTML already contains its core content.","copy_0453":"Offline helper sw.js is missing from this host. Upload the supplied sw.js beside this HTML, or use the hosted Serein edition. The app remains available online.","copy_0454":"Asset list unavailable","copy_0455":"Offline cache configuration missing","copy_0456":"Offline content incomplete","copy_0457":"App content is ready offline on this device.","copy_0458":"Offline setup could not finish. Check your connection, HTTPS hosting and available device storage, then try again.","copy_0459":"(display-mode: standalone)","copy_0460":"Serein is already running as an installed app.","copy_0461":"Use your browser’s Install option, or Share → Add to Home Screen. If unavailable, keep using the browser edition.","copy_0462":"An updated edition is available. Reconnect and use “Check for updates” in My app.","copy_0463":"<section class=\"advance-panel app-panel\"><p class=\"eyebrow\">SEREIN / ON YOUR DEVICE</p><h3>Ready when a pause is possible.</h3><p>The downloadable edition includes its core content. The hosted edition can be installed and explicitly prepared for offline use.</p><div class=\"button-row\"><button class=\"button button-teal\" data-adv=\"app-options\">Install, offline & reminders →</button><button class=\"text-button\" data-adv=\"app-update\">Check for updates</button></div><p class=\"small-note\">Personal data stays in this browser. Different browsers and the standalone file have separate storage; use export/import to transfer your data.</p></section>","copy_0464":"Use the hosted edition to check for app updates.","copy_0465":"Prepare offline access first, or reload online for the latest app.","copy_0466":"An update is ready.","copy_0467":"<p>Export anything you want to keep, then apply the update. Unsaved visit-only entries disappear on reload. Journal drafts remain in this tab when temporary storage is available.</p><div class=\"button-row\"><button class=\"button button-outline\" data-action=\"export\">Export first</button><button class=\"button button-teal\" data-adv=\"apply-update\">Apply update & reload</button></div>","copy_0468":"Update check complete. Reload online to use the latest published edition.","copy_0469":"Update check unavailable. Try again while online.","copy_0470":"Copied. Nothing was sent.","copy_0471":"Select the draft and copy it using your device controls.","copy_0472":"Response removed.","copy_0473":"Serein-{v0}-plan.txt","copy_0474":"Plan saved in this browser without encryption. You can delete it in the Toolkit. Nothing was sent.","copy_0475":"Your step is marked complete. Revisit whenever useful.","copy_0476":"Reset learning progress?","copy_0477":"<p>This removes your journey step marks. Your reflections, plans and practice choices remain available.</p><button class=\"button button-outline\" data-adv=\"journey-reset-confirm\">Reset step marks</button>","copy_0478":"<button class=\"search-result\" data-adv=\"studio\" data-id=\"{v0}\">{v1}<span><strong>{v2}</strong><small>Interactive studio</small></span><span>↗</span></button>","copy_0479":"<button class=\"search-result\" data-adv=\"journey\" data-id=\"{v0}\">{v1}<span><strong>{v2}</strong><small>Five-step learning journey</small></span><span>↗</span></button>","copy_0480":"<p class=\"search-group-label\">STUDIOS & JOURNEYS</p>{v0}{v1}","copy_0481":"Continuous breathing","copy_0482":"Removes the timed pauses between breathing in and out. Keep your breathing gentle and choose a comfortable pace.","copy_0483":"External focus","copy_0484":"Uses guidance about the room or your surroundings instead of focusing on breath or internal sensations. You can keep your eyes open.","copy_0485":"Practice memory","copy_0486":"Reuses timing, visual and comfort choices for this practice on this browser. Voice must still be enabled for each session. Reset saved choices in My patterns.","copy_0487":"Saved feedback","copy_0488":"Keeps this response after the visit and includes it in My patterns. Leave unchecked for visit-only feedback. You can delete saved responses later.","copy_0489":"App structure","copy_0490":"A count from this edition of Serein, not a research result.","copy_0491":"My reflections","copy_0492":"You choose whether this is suitable. {v0}","copy_0493":"guided steps in this practice","copy_0494":"The external figure supplies research or workforce context; it does not measure this Serein practice.","copy_0495":" Then choose one feasible next step.","copy_0496":"Healthcare workers using their own role, judgment and workplace arrangements.","copy_0497":" interactive steps","copy_0498":"Explore attention and comfort, then identify an approach you would choose again.","copy_0499":"Move from a practical barrier to words, ownership and a review point.","copy_0500":"Connect an agreed handover with a feasible transition and recovery support.","copy_0501":"Across visits whenever learning feels useful; there is no deadline.","copy_0502":"Open any lesson, explore its linked activity, and explicitly mark or unmark progress.","copy_0503":"Healthcare workers and learners; this is educational progress without accreditation.","copy_0504":"lessons in this journey","copy_0505":"Understand · try · reflect · apply","copy_0506":"Begin with a realistic intention and available support.","copy_0507":"Match a small pause to the space between responsibilities.","copy_0508":"Choose support without having to retell the event.","copy_0509":"Make a deliberate transition after an agreed handover.","copy_0510":"Select this moment to refresh recommendations, or use Help me choose for more options.","copy_0511":"Workers choosing a personal response to their current situation.","copy_0512":"All practices","copy_0513":"Explore every available practice type.","copy_0514":"Optional timing and visuals for gentle, unforced breathing.","copy_0515":"Use details in your real surroundings as an outward attention anchor.","copy_0516":"Small optional movements or relax-only attention in a suitable setting.","copy_0517":"Notice a supported sensation or an external detail without needing to change it.","copy_0518":"Use an imagined neutral setting, or choose actual room details instead.","copy_0519":"Saved practices","copy_0520":"Return to practices you bookmarked.","copy_0521":"Explore reflection, boundaries and practical working-day support.","copy_0522":"Mindfulness guides","copy_0523":"Explore optional attention and noticing practices.","copy_0524":"Shared practice guides","copy_0525":"Prepare a voluntary invitation and useful adaptations.","copy_0526":"Practice context guides","copy_0527":"Read educational prompts using your own professional responsibilities.","copy_0528":"Narrow the catalogue to an approach you want to explore.","copy_0529":"When comparing available practices or guides.","copy_0530":"Select the category, combine it with filters, then read the relevant activity information.","copy_0531":"People making their own content and comfort choices.","copy_0532":"All practical guides","copy_0533":"Saved practical guides","copy_0534":"Explore every available practical guide.","copy_0535":"Return to guides you bookmarked.","copy_0536":"Compare short readings about practical support and working life.","copy_0537":"When preparing a conversation or looking for an educational reference.","copy_0538":"Choose a category, read the guide, then adapt a next step to your setting.","copy_0539":"Healthcare workers and learners using professional judgment.","copy_0540":"practice bookmarks","copy_0541":"Saved guides","copy_0542":"guide bookmarks","copy_0543":"Saved words","copy_0544":"original reflections saved","copy_0545":"A collection of resources you explicitly chose to bookmark.","copy_0546":"Find your own useful references without repeating a search.","copy_0547":"When you want to revisit something saved.","copy_0548":"Open an item or remove its bookmark. Your other records are unaffected.","copy_0549":"The person using this browser; collections do not sync automatically.","copy_0550":"Current local collection count. You can remove bookmarks at any time.","copy_0551":"<button type=\"button\" class=\"text-button context-detail-link\" data-context-open=\"{v0}\" aria-haspopup=\"dialog\" aria-controls=\"{v1}\" aria-expanded=\"false\">{v2} <span aria-hidden=\"true\">→</span></button>","copy_0552":"Evidence & context","copy_0553":"<aside class=\"context-reading-note\" aria-label=\"Using this guide\"><p><strong>Why this guide:</strong> {v0}</p><p><strong>When to use it:</strong> {v1}</p>{v2}</aside>","copy_0554":"Explore the evidence & sources","copy_0555":"<section class=\"context-evidence-section\" aria-labelledby=\"workplace-context-title\"><div><p class=\"eyebrow\">WORKFORCE CONTEXT / UNITED KINGDOM</p><h2 id=\"workplace-context-title\">Support includes working conditions.</h2><p>Pressure in health and care often comes from workload, staffing and rotas, not from the person. Practical support from your team, manager, occupational health or staff wellbeing service matters as much as any individual practice.</p></div><p class=\"small-note\">Serein is a self-care tool. It does not measure stress or burnout and does not replace workplace or clinical support.</p></section>","copy_0556":"<button type=\"button\" class=\"context-tip-trigger\" data-context-tip=\"{v0}\" aria-label=\"Explain {v1}\"><span aria-hidden=\"true\">?</span></button>","copy_0557":"<div class=\"context-comparison\" role=\"img\" aria-label=\"{v0}: {v1}% in {v2}; {v3}% in {v4}\"><div><span>{v5}</span><i><b style=\"width:{v6}%\"></b></i><strong>{v7}%</strong></div><div><span>{v8}</span><i><b style=\"width:{v9}%\"></b></i><strong>{v10}%</strong></div></div>","copy_0558":"<div class=\"context-percent-track\" role=\"img\" aria-label=\"{v0}\"><span style=\"width:{v1}%\"></span></div>","copy_0559":"<small>{v0}{v1}</small>","copy_0560":"<small>{v0}</small>","copy_0561":"<article class=\"context-fact\"><span class=\"context-fact-kind\">{v0}</span><strong class=\"context-number\">{v1}</strong><p>{v2}</p>{v3}{v4}</article>","copy_0562":"HOW IT WORKS","copy_0563":"EVIDENCE & CONTEXT","copy_0564":"<div><dt>{v0}</dt><dd>{v1}</dd></div>","copy_0565":"<section class=\"context-numbers\" aria-label=\"Research context\">{v0}</section><p class=\"small-note\">Population figures provide background. They do not predict your experience or show that Serein produces a benefit.</p>","copy_0566":"<article><a href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">{v1} ↗</a><small>{v2}</small><p>{v3}</p></article>","copy_0567":"<article><a href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">{v1} ↗</a><p>{v2}</p></article>","copy_0568":"Original educational content. Adapt any next step to your role and setting.","copy_0569":"<header class=\"context-panel-head\"><div><span>{v0}</span><h2 id=\"context-card-title\">{v1}</h2>{v2}</div><button type=\"button\" data-context-close aria-label=\"Close details\">×</button></header><div class=\"context-panel-scroll\"><dl class=\"context-five\">{v3}</dl>{v4}<section class=\"context-sources\" aria-label=\"Sources and scope\"><h3>Sources & scope</h3>{v5}{v6}<p>Editorial source check: {v7}. {v8}</p></section></div><footer class=\"context-panel-foot\"><span>Take your time. Close when ready.</span><button type=\"button\" data-context-close>Close details</button></footer>","copy_0570":"Library","copy_0571":"Toolkit","copy_0572":"Say no kindly","copy_0573":"Ask for help","copy_0574":"Leave work at work","copy_0575":"After a hard moment","copy_0576":"Run a team pause","copy_0577":"Fix a work barrier","copy_0578":"<label class=\"field-label\" for=\"","copy_0579":"</label><select class=\"field\" id=\"","copy_0580":"<option value=\"","copy_0581":"<label class=\"setting-row\"><span>","copy_0582":"</span><input type=\"checkbox\" id=\"","copy_0583":"<header class=\"page-header\"><p class=\"eyebrow\">","copy_0584":"<section class=\"empty\"><svg viewBox=\"0 0 100 64\" aria-hidden=\"true\"><path d=\"M12 51h76M24 47c-8-24 6-31 18-16 8-26 28-20 20 7 19-13 28 4 12 9\"/><circle cx=\"77\" cy=\"15\" r=\"7\"/></svg><h2>","copy_0585":"Quick pause","copy_0586":"data-v5=\"quick\" class=\"quick-nav\"","copy_0587":"(prefers-color-scheme: dark)","copy_0588":"Your choices come first.","copy_0589":"No practice matches your suggestion choices. You can adjust them in Settings.","copy_0590":"<button class=\"button button-teal\" data-nav=\"me/settings\">Review practice choices</button>","copy_0591":"<section class=\"pause-card\"><div class=\"pause-image\"><img src=\"","copy_0592":"\" width=\"800\" height=\"500\" fetchpriority=\"high\"><span class=\"illustrative\" title=\"Illustrative, AI-generated image\">ⓘ</span></div><div class=\"pause-copy\"><p class=\"eyebrow\">YOUR PAUSE FOR RIGHT NOW</p><h2>","copy_0593":"</p><div class=\"card-meta\">","copy_0594":"</div><div class=\"button-row\"><button class=\"button button-teal\" data-practice=\"","copy_0595":"\">Start my pause ","copy_0596":"</button><button class=\"text-button\" data-adv=\"finder\">Something else</button></div><details class=\"time-choice\"><summary>Change time</summary><div class=\"time-chips\">","copy_0597":"My pace","copy_0598":"<button data-v5=\"home-time\" data-value=\"","copy_0599":"<button class=\"continue-card\" data-adv=\"journey\" data-id=\"","copy_0600":"\"><span><small>CONTINUE AT YOUR PACE</small><strong>","copy_0601":"<button class=\"continue-card\" data-nav=\"me/routine\"><span><small>YOUR CHOSEN SEQUENCE</small><strong>Return to my routine</strong></span>","copy_0602":"<button class=\"continue-card\" data-nav=\"toolkit\"><span><small>YOUR SAVED PLANS</small><strong>Return to a practical next step</strong></span>","copy_0603":"<div class=\"today-greeting\"><h1 class=\"today-greeting-title\">","copy_0604":"</time></div><div id=\"today-recommendation\">","copy_0605":"</div><section class=\"moment-section\"><h2 class=\"small-heading\">What moment are you in?</h2><div class=\"moment-chips\" role=\"group\" aria-label=\"Your working moment\">","copy_0606":"Before shift","copy_0607":"Between tasks","copy_0608":"After a difficult moment","copy_0609":"After shift","copy_0610":"<button data-moment=\"","copy_0611":"<div class=\"rotation-choice\"><span>This week:</span><button data-v5=\"rotation\" data-value=\"days\">Days</button><button data-v5=\"rotation\" data-value=\"nights\">Nights</button></div>","copy_0612":"</section><section class=\"quick-checkin\"><div><h2 class=\"small-heading\">A quick check-in</h2><p class=\"small-note\">Optional. One tap keeps it for this visit.</p></div>","copy_0613":"<div id=\"quick-checkin-actions\" role=\"status\"></div></section>","copy_0614":"<div id=\"today-reflection\">","copy_0615":"</div><div class=\"compact-links\"><button data-nav=\"library/guides\">Guides for real working days →</button><button data-nav=\"toolkit\">Toolkit →</button></div>","copy_0616":"<div id=\"filter-controls\">","copy_0617":"No movement","copy_0618":"<div class=\"active-filters\" aria-label=\"Active filters\">","copy_0619":"<button data-v5=\"clear-filter\" data-value=\"","copy_0620":"<button class=\"text-button\" data-action=\"reset-filters\">Clear all</button>","copy_0621":"<div class=\"library-heading\">","copy_0622":"YOUR LIBRARY","copy_0623":"Find what fits.","copy_0624":"Practices, useful guides and learning at your pace.","copy_0625":"<button class=\"button button-outline\" data-nav=\"toolkit\">","copy_0626":" Toolkit</button></div><div class=\"segmented\" role=\"group\" aria-label=\"Library content\">","copy_0627":"<button data-nav=\"library/","copy_0628":"<label class=\"search-input full-search\">","copy_0629":"<span class=\"sr-only\">Search guides</span><input id=\"guide-query\" type=\"search\" value=\"","copy_0630":"\" placeholder=\"Boundaries, support, rest…\"></label><div class=\"category-row\" role=\"group\" aria-label=\"Guide categories\">","copy_0631":"<button data-guide-category=\"","copy_0632":"</div><div id=\"guide-results\">","copy_0633":"<div class=\"library-actions\"><button class=\"button button-outline filters-launch\" data-v5=\"filters\">","copy_0634":" active</button><button class=\"text-button\" data-action=\"routine-builder\">Build a routine</button></div><div id=\"desktop-filters\">","copy_0635":"<div class=\"category-row\" role=\"group\" aria-label=\"Practice categories\">","copy_0636":"<button data-category=\"","copy_0637":"</div><div id=\"practice-results\">","copy_0638":"</div><p class=\"small-note\">Preference matches, not health recommendations. You can adapt, skip, pause or stop.</p>","copy_0639":"<section class=\"panel locked-panel\">","copy_0640":"<h2>Your private records are locked.</h2><p>Unlock to open your journal, check-ins and support contacts. Practices and the rest of Serein remain available.</p><button class=\"button button-teal\" data-v5=\"unlock\">Unlock private records</button><button class=\"text-button\" data-v5=\"encrypted-export\">Download encrypted archive</button></section>","copy_0641":"<section class=\"panel journal-history\"><div class=\"section-heading\"><h2>Your reflections</h2><label class=\"search-input\">","copy_0642":"<span class=\"sr-only\">Search your reflections</span><input type=\"search\" id=\"journal-query\" value=\"","copy_0643":"\" placeholder=\"Find your own words…\"></label></div><div id=\"journal-history\">","copy_0644":"<section class=\"panel\"><h2>Journal lock</h2><p>Optional encryption covers saved journals, check-ins and support contacts. Preferences, feedback and saved plans remain unencrypted.</p>","copy_0645":"<p class=\"notice\">Web Crypto is unavailable in this browser. Encryption is hidden; the app remains usable with its normal storage choices.</p>","copy_0646":" Lock enabled · ","copy_0647":"</p><div class=\"button-row\"><button class=\"button button-outline\" data-v5=\"","copy_0648":"Lock now","copy_0649":"</button><button class=\"text-button\" data-v5=\"remove-lock\">Remove lock</button></div>","copy_0650":"Lock after inactivity","copy_0651":"Lock when this tab is hidden","copy_0652":"<button class=\"button button-outline\" data-v5=\"setup-lock\">Set up a journal lock</button>","copy_0653":"<p class=\"small-note\">If you forget the passcode, locked entries cannot be recovered.</p></section>","copy_0654":"<form id=\"settings-form\"><section class=\"panel\"><h2>Comfort</h2>","copy_0655":"Text size","copy_0656":"Auto · follows your device","copy_0657":"HCA ivory","copy_0658":"HCA navy night","copy_0659":"High contrast","copy_0660":"Comfortable reading width","copy_0661":"Low-distraction layout","copy_0662":"Less motion","copy_0663":"Your device’s reduced-motion preference is also respected.","copy_0664":"3D breathing visual","copy_0665":"A still alternative and text remain available.","copy_0666":"Show original reflections","copy_0667":"Secular Serein words, without streaks or pressure.","copy_0668":"</section><section class=\"panel\"><h2>Practice defaults</h2>","copy_0669":"Your role","copy_0670":"Usual pause length","copy_0671":"Focus preference","copy_0672":"Shift pattern","copy_0673":"Prefer not to say","copy_0674":"<p class=\"small-note\">Changes apply immediately. A selected role does not certify suitability.</p></section>","copy_0675":"</form><section class=\"panel\"><h2>Reminders & app</h2>","copy_0676":"</section><section class=\"panel\"><h2>Privacy & data</h2><div class=\"button-row\"><button class=\"button button-outline\" data-nav=\"me/data\">Export, import & clear</button><button class=\"text-button\" data-action=\"privacy\">Privacy details</button><button class=\"text-button\" data-v5=\"scope\">About images, evidence & safety</button><button class=\"text-button\" data-v5=\"onboarding\">Reopen welcome guide</button></div></section>","copy_0677":"Journal","copy_0678":"Routine","copy_0679":"Insights","copy_0680":"Settings","copy_0681":"Data & privacy","copy_0682":"Look back over","copy_0683":"Last 90 days","copy_0684":"<section class=\"panel\"><h2>Recover your saved archive</h2><p>The existing browser archive could not be read. It has been kept unchanged. Download a recovery copy before clearing or importing data. New changes stay in memory until this is resolved.</p><button class=\"button button-teal\" data-v5=\"recovery-export\">Download original stored data</button></section>","copy_0685":"YOUR SPACE / YOUR CHOICE","copy_0686":"A little room for you.","copy_0687":"Keep what is useful. Return whenever you choose.","copy_0688":"<div class=\"me-tabs\" role=\"group\" aria-label=\"Your space\">","copy_0689":"<button data-nav=\"me/","copy_0690":"<section class=\"help-now\"><p class=\"eyebrow\">GET HELP NOW / UNITED KINGDOM</p><h2>Human support is close.</h2><p>If you or someone else is in immediate danger, call 999. Serein is not monitored and cannot provide urgent care.</p><div class=\"help-grid\"><a href=\"tel:999\"><strong>999</strong><span>Emergency services</span></a><a href=\"tel:111\"><strong>NHS 111 · option 2</strong><span>Urgent mental health help in England (111 for urgent medical advice)</span></a><a href=\"tel:116123\"><strong>Samaritans · 116 123</strong><span>Free listening support, day or night</span></a><a href=\"sms:85258?body=SHOUT\"><strong>Text SHOUT to 85258</strong><span>Shout · free UK text support, 24/7</span></a><a href=\"sms:85258?body=FRONTLINE\"><strong>Text FRONTLINE to 85258</strong><span>Shout · for health and care workers, 24/7</span></a><a href=\"https://www.practitionerhealth.nhs.uk/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>NHS Practitioner Health</strong><span>Confidential NHS support for health and care professionals · practitionerhealth.nhs.uk</span></a><a href=\"tel:111\"><strong>Scotland · NHS 24 on 111</strong><span>Urgent help, day or night</span></a><a href=\"tel:0800838587\"><strong>Scotland · Breathing Space</strong><span>0800 83 85 87 · listening and advice</span></a><a href=\"tel:08088088000\"><strong>Northern Ireland · Lifeline</strong><span>0808 808 8000 · crisis support, 24/7</span></a><a href=\"https://www.nhs.uk/nhs-services/mental-health-services/find-nhs-talking-therapies-for-anxiety-and-depression/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>NHS Talking Therapies</strong><span>Refer yourself for anxiety and depression support (England)</span></a></div><p class=\"small-note\">These routes are for the UK. Elsewhere, use the appropriate local emergency or support service. Calls and texts use your phone app.</p><details><summary>Service information & sources</summary><a class=\"source-link\" href=\"https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/\" target=\"_blank\" rel=\"noopener noreferrer\">NHS urgent support ↗</a><a class=\"source-link\" href=\"https://www.samaritans.org/how-we-can-help/contact-samaritan/talk-us-phone/\" target=\"_blank\" rel=\"noopener noreferrer\">Samaritans service information ↗</a><a class=\"source-link\" href=\"https://giveusashout.org/get-help/\" target=\"_blank\" rel=\"noopener noreferrer\">Shout service information ↗</a><p class=\"small-note\">Source check: 16 October 2026. Availability and service arrangements can change.</p></details></section>","copy_0691":"<section class=\"panel\"><h2>My support people</h2>","copy_0692":"<section class=\"panel\"><h2>My support people</h2><p>Choose people or services you would like to contact. Nothing is sent from this app.</p><div class=\"contact-list\">","copy_0693":"<article class=\"contact-card\"><div><h3>","copy_0694":"</small></div><a class=\"button button-outline\" href=\"tel:","copy_0695":"</a><button class=\"text-button\" data-v5=\"delete-contact\" data-id=\"","copy_0696":"</div><form id=\"support-contact-form\"><label class=\"field-label\" for=\"contact-name\">Name or service</label><input class=\"field\" id=\"contact-name\" name=\"name\" maxlength=\"100\" required><label class=\"field-label\" for=\"contact-role\">Role, if useful</label><input class=\"field\" id=\"contact-role\" name=\"role\" maxlength=\"100\"><label class=\"field-label\" for=\"contact-phone\">Phone</label><input class=\"field\" id=\"contact-phone\" name=\"phone\" type=\"tel\" maxlength=\"40\" required pattern=\"[+0-9 ()*#-]{3,40}\"><label class=\"check-label\"><input name=\"persist\" type=\"checkbox\">Save on this browser for another day</label><p class=\"small-note\">","copy_0697":"Saved contact details are included in your encrypted records.","copy_0698":"Saved contact details are unencrypted unless you enable the journal lock.","copy_0699":"</p><button class=\"button button-teal\" type=\"submit\">Add my support person</button><p class=\"form-error\" role=\"alert\" id=\"contact-error\"></p></form></section>","copy_0700":"YOUR TOOLKIT","copy_0701":"Make the next step practical.","copy_0702":"Six guided tools for words, choices and an editable plan.","copy_0703":"<a class=\"toolkit-infographics\" href=\"#infographics\">","copy_0704":"<span><strong>Explore the illustrated guides</strong><small>12 infographics · flip, enlarge and read the sources</small></span>","copy_0705":"<details class=\"panel\"><summary>Short draft tools</summary><p>Earlier compact three-question builders remain available here.</p><button class=\"text-button\" data-v5=\"legacy-tools\" data-value=\"conversation\">Short support draft</button><button class=\"text-button\" data-v5=\"legacy-tools\" data-value=\"transition\">Short transition draft</button></details>","copy_0706":" · safety & adaptation</summary><p>","copy_0707":"IMAGES / EVIDENCE / SAFETY","copy_0708":"Clear context. Your choice.","copy_0709":"Original educational tools, with relevant background sources and adaptation notes.","copy_0710":"<section class=\"panel\"><h2>About the images</h2><p>Illustrative, AI-generated photographs accompany the content. Infographics are AI-generated educational illustrations with sources and limitations. Their readable text and statistics have been editorially reviewed. These visuals are not anatomical standards, prescribed movement ranges or patient records.</p><h2>About evidence</h2><p>Sources support background principles. Serein has not been clinically validated as a treatment, and population figures do not predict a personal benefit.</p><h2>Current privacy choices</h2><p>Records are browser-local. Saving personal entries is opt-in. Optional encryption covers journals, check-ins and contacts; other saved preferences, feedback and plans remain unencrypted. Drafts use temporary tab storage, encrypted when the journal lock is enabled.</p>","copy_0711":"<details><summary>All original scope and privacy statements</summary><p class=\"notice\">The original default-storage statements below describe the unlocked mode. The optional journal lock now adds encryption to the specific records named above.</p>","copy_0712":"<a class=\"source-link\" href=\"","copy_0713":"\" target=\"_blank\" rel=\"noopener noreferrer\">","copy_0714":" · Serein · Healthcare Crown Academy","copy_0715":"<img class=\"article-image\" src=\"","copy_0716":"\"><p class=\"small-note\">Illustrative, AI-generated image</p>","copy_0717":"Choose a length","copy_0718":"<div class=\"button-row\"><button class=\"button button-teal\" data-v5=\"detail-start\" data-id=\"","copy_0719":"\">Start this practice</button><button class=\"button button-outline\" data-v5=\"detail-preview\" data-id=\"","copy_0720":"\">Watch first</button><button class=\"text-button\" data-save-practice=\"","copy_0721":"Preference updated.","copy_0722":"Private records could not be locked. Keep this tab open.","copy_0723":"Secure local encryption is unavailable in this browser.","copy_0724":"A private journal lock.","copy_0725":"Remove your journal lock?","copy_0726":"Unlock your private records.","copy_0727":"If you forget the passcode, locked entries cannot be recovered. Choose a passphrase you can keep safely.","copy_0728":"Removing the lock writes saved journals, check-ins and contacts back to normal unencrypted browser storage.","copy_0729":"Your passcode stays on this device and is never sent.","copy_0730":"</p><form id=\"vault-form\" data-mode=\"","copy_0731":"\"><label class=\"field-label\" for=\"vault-pass\">Passcode or passphrase</label><input class=\"field\" type=\"password\" id=\"vault-pass\" name=\"pass\" autocomplete=\"","copy_0732":"<label class=\"field-label\" for=\"vault-confirm\">Confirm passcode</label><input class=\"field\" type=\"password\" id=\"vault-confirm\" name=\"confirm\" autocomplete=\"new-password\" minlength=\"6\" required><label class=\"check-label\"><input type=\"checkbox\" name=\"understood\" required>I understand that a forgotten passcode cannot be recovered.</label>","copy_0733":"<label class=\"check-label\"><input type=\"checkbox\" name=\"understood\" required>I understand saved records will be unencrypted.</label>","copy_0734":"<p class=\"form-error\" id=\"vault-error\" role=\"alert\"></p><button type=\"submit\" class=\"button button-teal\">","copy_0735":"Enable encryption","copy_0736":"Remove lock","copy_0737":"Your archive, your choice.","copy_0738":"<p>Downloaded files contain personal records. Keep them private.</p><div class=\"button-row\">","copy_0739":"<button class=\"button button-teal\" data-v5=\"encrypted-export\">Download encrypted archive</button>","copy_0740":"<button class=\"button button-outline\" data-v5=\"plain-export\">Download plain archive</button></div><p class=\"small-note\">An encrypted archive requires its passcode. A plain archive can be read by anyone who opens the file.</p>","copy_0741":"Download an unencrypted archive?","copy_0742":"<p>This file includes your personal records in readable form, even when the journal lock is enabled.</p><label class=\"check-label\"><input type=\"checkbox\" id=\"plain-export-consent\">I understand and will keep the file private.</label><button class=\"button button-teal\" data-v5=\"plain-export-confirm\">Download plain archive</button><p id=\"export-error\" class=\"form-error\" role=\"alert\"></p>","copy_0743":"Get human support.","copy_0744":"<p class=\"eyebrow\">WELCOME TO SEREIN</p><h3>A little space for the people who care.</h3><p>Optional practices, personal reflection and practical working-day support.</p><p>Your personal records stay in this browser. Nothing is sent to employers, and there is no live monitoring.</p>","copy_0745":"<form id=\"onboarding-form\">","copy_0746":"<h3>Your words. Your choice.</h3><p>Saving journal entries, check-ins and support contacts is opt-in. Drafts are temporarily kept in this tab. Normal browser storage is unencrypted.</p><p>You can export, import or clear your records. Optional journal encryption adds a passcode lock to journals, check-ins and contacts.</p><p class=\"notice\">Keep patient-identifying information out of this space. Serein is educational and is not monitored.</p>","copy_0747":"Make a little room.","copy_0748":"<div class=\"onboarding-step\" data-step=\"","copy_0749":"<div class=\"button-row\"><button class=\"button button-teal\" data-v5=\"welcome-next\">","copy_0750":"Enter Serein","copy_0751":"</button><button class=\"text-button\" data-v5=\"welcome-skip\">Skip</button>","copy_0752":"<button class=\"text-button\" data-v5=\"welcome-lock\">Set up a journal lock</button>","copy_0753":"Start Box Breathing · 2 min","copy_0754":"New journal entry","copy_0755":"Quick check-in","copy_0756":"Export my data","copy_0757":"Switch to dark theme","copy_0758":"Get help now","copy_0759":"Browse the Visual Atlas","copy_0760":"Serein action","copy_0761":"Five-step learning journey","copy_0762":"Recent choices","copy_0763":"<section><h2 class=\"search-group-label\">","copy_0764":"<button class=\"search-result\" data-v5=\"command\" data-kind=\"","copy_0765":"\"><span class=\"search-icon\">","copy_0766":"No matches yet.","copy_0767":"Try a practice, support, journal or an action.","copy_0768":"HCA navy night enabled.","copy_0769":"Choose what fits.","copy_0770":"<button class=\"button button-teal\" data-v5=\"filters-done\">Show practices</button>","copy_0771":"Check-in kept for this visit.","copy_0772":"Kept for this visit.","copy_0773":"</p><button class=\"text-button\" data-v5=\"checkin-note\">Add a note</button><button class=\"text-button\" data-v5=\"save-quick-checkin\" ","copy_0774":">Save on this browser</button>","copy_0775":"A little context, if useful.","copy_0776":"<form id=\"quick-note-form\"><label class=\"field-label\" for=\"quick-note\">Your note · no patient details</label><textarea class=\"field\" id=\"quick-note\" name=\"note\" maxlength=\"6000\" rows=\"4\">","copy_0777":"</textarea><p class=\"small-note\">","copy_0778":"This check-in is saved.","copy_0779":"This check-in lasts for this visit only.","copy_0780":"</p><button class=\"button button-teal\" type=\"submit\">Keep my note</button></form>","copy_0781":"Choose a Serein archive smaller than 8 MB.","copy_0782":"Unlock private records before importing, then choose the file again.","copy_0783":"Open an encrypted archive.","copy_0784":"<p>Use the passcode for this archive. It is never sent anywhere.</p><form id=\"archive-pass-form\"><label class=\"field-label\" for=\"archive-pass\">Archive passcode</label><input type=\"password\" class=\"field\" id=\"archive-pass\" name=\"pass\" autocomplete=\"off\" required><button class=\"button button-teal\" type=\"submit\">Open archive</button><p id=\"archive-error\" class=\"form-error\" role=\"alert\"></p></form>","copy_0785":"This archive could not be read.","copy_0786":" responses and ","copy_0787":" plans.</p><p>Merge keeps existing entries. Replace restores this archive in their place.</p>","copy_0788":"<label class=\"check-label\"><input type=\"checkbox\" id=\"import-use-lock\" checked>Keep these records encrypted using the archive passcode</label><p class=\"notice\">If you uncheck this option, imported saved records use normal unencrypted browser storage.</p>","copy_0789":"<div class=\"button-row\"><button class=\"button button-teal\" data-v5=\"import-merge\">Merge with my records</button><button class=\"button button-outline\" data-v5=\"import-replace\">Replace with this archive</button><button class=\"text-button\" data-action=\"close-modal\">Cancel</button></div><p class=\"form-error\" id=\"import-error\" role=\"alert\"></p>","copy_0790":"Download the original recovery copy and clear the damaged archive before importing.","copy_0791":"The archive could not be saved. Existing records are kept; free browser storage and try again.","copy_0792":"Archive merged.","copy_0793":"Shift-aware reminder preset","copy_0794":"Choose my own time","copy_0795":"10 minutes after shift start","copy_0796":"End of shift","copy_0797":"Shift used for this reminder","copy_0798":"Day shift · 07:00–19:00","copy_0799":"Night shift · 19:00–07:00","copy_0800":"<p class=\"small-note\">These are editable presets, not your known rota. Confirm the actual shift time and weekdays before downloading.</p>","copy_0801":"Your keyboard shortcuts.","copy_0802":"<dl class=\"shortcut-list\">","copy_0803":"Quick pause, outside text fields","copy_0804":"Play or pause","copy_0805":"Previous or next step","copy_0806":"Restart practice","copy_0807":"Shared presentation","copy_0808":"Close the current sheet or exit practice","copy_0809":"Ctrl/⌘ K or /","copy_0810":"Search content and actions","copy_0811":"Open this guide","copy_0812":"About images, evidence & safety.","copy_0813":"Serein records and preferences cleared from this browser.","copy_0814":"Optional encryption is enabled for journals, check-ins and contacts. The normal-storage statements below apply to other data and to unlocked mode.","copy_0815":"The journal lock can optionally encrypt journals, check-ins and contacts. Without it, normal browser storage is unencrypted.","copy_0816":"The saved entry will be included in your encrypted private records. Keep your passcode safe.","copy_0817":"Browser storage is unencrypted. Other people using this browser profile may be able to read the entry.","copy_0818":"</p><div class=\"button-row\"><button class=\"button button-teal\" data-confirm-keep=\"","copy_0819":"\">Save in this browser</button><button class=\"text-button\" data-action=\"close-modal\">This visit only</button></div>","copy_0820":"Check-in saved.","copy_0821":"Contact removed.","copy_0822":"Unlock before restoring this contact.","copy_0823":"Confirm that you understand the file is unencrypted.","copy_0824":"Plain archive prepared. Keep it private.","copy_0825":"Encrypted archive prepared. Keep its passcode safe.","copy_0826":"Clipboard unavailable","copy_0827":"Link copied. No personal records are included.","copy_0828":"Select and copy the link.","copy_0829":"The passcodes do not match.","copy_0830":"Confirm that you understand the recovery limit.","copy_0831":"Confirm that saved records will be unencrypted.","copy_0832":"Journal encryption enabled.","copy_0833":"Lock removed. Saved records now use unencrypted browser storage.","copy_0834":"Private records unlocked.","copy_0835":"Enter a name or service.","copy_0836":"Enter a usable phone number.","copy_0837":"Support contact saved in this browser.","copy_0838":"Support contact kept for this visit.","copy_0839":"Note kept with your check-in.","copy_0840":"The passcode is incorrect, or this archive is damaged.","copy_0841":"<div id=\"player-extra-options\">","copy_0842":"<button class=\"button button-outline\" id=\"uncomfortable-support\" data-v5=\"help\" hidden>Find human support</button>","copy_0843":"% of this practice","copy_0844":"Saved · remove favourite","copy_0845":"Save to favourites","copy_0846":" · At your own pace","copy_0847":"Browser storage is not encrypted.","copy_0848":"Saved records are included in your encrypted archive.","copy_0849":"<section class=\"share-link\"><label class=\"field-label\" for=\"team-share-link\">Shared practice link · no personal records</label><input class=\"field\" id=\"team-share-link\" readonly><button class=\"button button-outline\" data-v5=\"share-team\">Copy a shared practice link</button><p class=\"small-note\">The link includes only a practice ID, duration and attention option. Local-file links must be opened on a device with that file; use the hosted edition to share between devices.</p></section>","copy_0850":"Serein · Healthcare Crown Academy","copy_0851":"Get help","copy_0852":"Something went wrong. Your saved records have not been cleared.","copy_0853":"That action could not finish. Keep this tab open and try again.","copy_0854":"Engine state invalid","copy_0855":"Pause invalid","copy_0856":"Legacy routes","copy_0857":"Store migration and round-trip","copy_0858":"Migration mismatch","copy_0859":"DOM IDs","copy_0860":"Duplicate ID","copy_0861":"Image alternatives","copy_0862":"Missing alt","copy_0863":"Control names","copy_0864":"Unnamed button","copy_0865":"Encryption round-trip","copy_0866":"SKIP · Web Crypto unavailable","copy_0867":"\" width=\"28\" height=\"23\" rx=\"5\" class=\"heat-cell mood-","copy_0868":" entries; average ","copy_0869":"No entry","copy_0870":"<section class=\"panel\"><h2>Feelings you recorded</h2><p>Last eight weeks. Each square represents a day; multiple check-ins are averaged for its shade. Missing days are unknown.</p><svg class=\"mood-calendar\" viewBox=\"0 0 310 216\" role=\"img\" aria-label=\"Check-ins over the last eight weeks. ","copy_0871":" entries in the selected period. A detailed table follows.\">","copy_0872":"</svg><p class=\"chart-legend\">□ No entry · Shading follows your own 1–5 feeling labels, without a health grade.</p><details><summary>View calendar as a table</summary><div class=\"table-scroll\"><table><caption>Daily check-in counts and average feeling</caption><thead><tr><th>Date</th><th>Entries</th><th>Average</th></tr></thead><tbody>","copy_0873":"\" class=\"pair-line\"/><circle cx=\"","copy_0874":"\" r=\"5\" class=\"pair-before\"/><circle cx=\"","copy_0875":"<section class=\"panel\"><h2>Before and after a pause</h2><p>","copy_0876":" optional pairs. Outlined dots show before; filled dots show after. These observations cannot establish that a practice caused a change.</p>","copy_0877":"<svg class=\"pair-chart\" viewBox=\"0 0 300 ","copy_0878":"\" role=\"img\" aria-label=\"","copy_0879":" paired settledness observations, each rated 1 to 5. Detailed values follow.\">","copy_0880":"<p class=\"empty-inline\">Optional paired observations will appear here when you choose to record them.</p>","copy_0881":"<details><summary>View pairs as a table</summary><div class=\"table-scroll\"><table><caption>Optional settledness observations</caption><thead><tr><th>Practice</th><th>Before</th><th>After</th></tr></thead><tbody>","copy_0882":"<section class=\"panel weekly\"><p class=\"eyebrow\">THIS WEEK / YOUR WORDS</p><h2>A moment to look back</h2><p>You recorded ","copy_0883":" practice responses this week. ","copy_0884":"You marked ","copy_0885":"You have not marked a practice helpful this week.","copy_0886":" Missing records simply mean no record was made.</p><button class=\"text-button\" data-nav=\"me/journal\">Write a reflection →</button></section>","copy_0887":"<section class=\"panel\"><h2>What you marked helpful, by moment</h2>","copy_0888":"<div class=\"insight-moment\"><h3>","copy_0889":" responses marked helpful.</p>","copy_0890":"<p class=\"small-note\">No helpful responses recorded for this moment.</p>","copy_0891":"<section class=\"panel\"><h2>Your records</h2><p>","copy_0892":" practice responses are saved. Visit-only entries disappear on reload.</p><details><summary>Explore or remove individual responses (","copy_0893":"<article class=\"entry\"><strong>","copy_0894":"</strong><p class=\"small-note\">","copy_0895":"</p><button class=\"text-button\" data-adv=\"delete-feedback\" data-id=\"","copy_0896":"\">Remove response</button></article>","copy_0897":"<div class=\"insight-stats\"><div><strong>","copy_0898":"</strong><span>check-ins in this period</span></div><div><strong>","copy_0899":"</strong><span>practice responses</span></div><div><strong>","copy_0900":"</strong><span>optional paired observations</span></div></div>","copy_0901":"<div class=\"insights-grid\">","copy_0902":"<p class=\"notice\">Personal observations, not a clinical assessment, treatment outcome or employer report. Nothing is monitored.</p>","copy_0903":"<fieldset class=\"player-extra-options\"><legend>Sound and device options</legend>","copy_0904":"<label class=\"field-label\" for=\"voice-choice\">Local English voice</label><select id=\"voice-choice\" class=\"field\">","copy_0905":"</select><label class=\"field-label\" for=\"voice-rate\">Voice speed</label><input id=\"voice-rate\" type=\"range\" min=\"0.6\" max=\"1.2\" step=\"0.05\" value=\"","copy_0906":"\"><p class=\"small-note\">Only installed local English voices appear. Voice is off until enabled for this session.</p>","copy_0907":"<p class=\"small-note\">No local English voice is available. Text guidance remains available.</p>","copy_0908":"<label class=\"field-label\" for=\"ambient-sound\">Ambient sound · off by default</label><select class=\"field\" id=\"ambient-sound\"><option value=\"off\">Off</option><option value=\"rain\">Rain</option><option value=\"ocean\">Ocean</option><option value=\"hum\">Hum</option></select><label class=\"field-label\" for=\"ambient-volume\">Ambient volume</label><input id=\"ambient-volume\" type=\"range\" min=\"0\" max=\"0.25\" step=\"0.01\" value=\"0.06\">","copy_0909":"<label class=\"check-label\"><input id=\"keep-awake\" type=\"checkbox\">Keep the screen awake while playing</label>","copy_0910":"<label class=\"check-label\"><input id=\"phase-haptics\" type=\"checkbox\">Brief vibration on phase changes</label>","copy_0911":"<button type=\"button\" class=\"text-button\" data-v5=\"shortcuts\">Keyboard shortcuts</button></fieldset>","copy_0912":"Screen wake lock is unavailable right now.","copy_0913":"Ambient audio is unavailable. Text guidance remains available.","copy_0914":"Your optional pause","copy_0915":"Beginning in ","copy_0916":"Serein isolated test","copy_0917":"Fixture only","copy_0918":"Crypto round-trip failed","copy_0919":"This encrypted archive has an unsupported format.","copy_0920":"The encrypted archive is damaged.","copy_0921":"The operation was cancelled because Serein data changed. No records were restored.","copy_0922":"The existing archive could not be read and has been protected. Open Data & privacy to download a recovery copy.","copy_0923":"Saved data changed in another tab. This tab has kept its changes in memory. Export them before reloading to avoid overwriting newer records.","copy_0924":"Browser storage is unavailable or full. Latest changes stay in memory; export a copy before leaving.","copy_0925":"Encrypted changes could not be saved. Keep this tab open and export a copy.","copy_0926":"Another privacy operation is finishing. Try again shortly.","copy_0927":"Use at least six characters. A longer passphrase is stronger.","copy_0928":"The journal lock is already enabled.","copy_0929":"Encryption was not enabled because the encrypted copy could not be saved.","copy_0930":"The lock is enabled. Check and remove any old copies in this browser.","copy_0931":"The passcode is incorrect, or the encrypted records are damaged. No records were opened.","copy_0932":"The lock was kept because normal storage could not be written.","copy_0933":"Another privacy operation is finishing. Try the export again shortly.","copy_0934":"Enable the journal lock to create an encrypted export.","copy_0935":" target=\"_blank\" rel=\"noopener noreferrer\"","copy_0936":"<header class=\"page-header infographic-heading\"><div><p class=\"eyebrow\">SEREIN / VISUAL LEARNING</p><h1>A clearer picture. A useful next step.</h1><p class=\"page-sub\">Twelve richly illustrated guides for real working days. Read at your pace, enlarge a page, or explore the sources.</p></div><span class=\"infographic-count\">12 illustrated guides</span></header>","copy_0937":"<div class=\"infographic-filters\" role=\"group\" aria-label=\"Infographic topics\">","copy_0938":"<button class=\"ig-filter\" data-ig=\"filter\" data-value=\"","copy_0939":"<section class=\"ig-viewer\" aria-label=\"Educational infographic viewer\" aria-roledescription=\"carousel\" data-key=\"infographic-reader\">","copy_0940":"<div class=\"ig-book\"><div class=\"ig-pagebar\"><div><span class=\"eyebrow\">","copy_0941":"</span><p id=\"ig-position\" aria-live=\"polite\" aria-atomic=\"true\">","copy_0942":"</p></div><div class=\"ig-turns\"><button class=\"icon-btn\" data-ig=\"previous\" aria-label=\"Previous infographic\"","copy_0943":"</button><button class=\"icon-btn\" data-ig=\"next\" aria-label=\"Next infographic\"","copy_0944":"<figure class=\"ig-figure\" aria-label=\"","copy_0945":"\"><button class=\"ig-artwork\" data-ig=\"zoom\" aria-label=\"Enlarge ","copy_0946":"\" aria-describedby=\"ig-image-help\"><img id=\"ig-image\" src=\"","copy_0947":"\" decoding=\"async\"></button><figcaption id=\"ig-image-help\">Illustrated infographic · Click to enlarge · Swipe or use the arrow buttons to flip</figcaption></figure>","copy_0948":"<div class=\"ig-actions\"><button class=\"button button-outline\" data-ig=\"zoom\">","copy_0949":" Enlarge image</button><a class=\"button button-outline\" href=\"","copy_0950":" Download image</a></div><p class=\"small-note ig-key-help\">With the viewer focused: ← / → changes the page; Home / End jumps to the first / last page. Pages never turn automatically.</p></div>","copy_0951":"<div class=\"ig-reading\" data-key=\"infographic-text\"><p class=\"eyebrow\">","copy_0952":"</h2><div class=\"ig-fact\"><strong>","copy_0953":"</p><dl class=\"ig-context\"><dt>Who it is for</dt><dd>","copy_0954":"</dd><dt>When to use it</dt><dd>","copy_0955":"</dd><dt>Why it matters</dt><dd>","copy_0956":"</dd></dl><h3>How to put it into practice</h3><ol class=\"ig-steps\">","copy_0957":"</ol><a class=\"button button-teal\" href=\"#","copy_0958":"</a><details class=\"ig-source\"><summary>Source, context &amp; limitations</summary><p>","copy_0959":"<section class=\"ig-collection\" aria-labelledby=\"ig-collection-heading\"><div class=\"section-heading\"><div><h2 id=\"ig-collection-heading\">Choose a page</h2><p>","copy_0960":"guides in the collection","copy_0961":"</p></div><a class=\"text-button\" href=\"#toolkit\">Return to Toolkit →</a></div><div class=\"ig-thumbnails\">","copy_0962":"<button class=\"ig-thumb\" data-ig=\"select\" data-id=\"","copy_0963":"\"><img src=\"","copy_0964":"\" width=\"120\" height=\"160\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span><small>","copy_0965":"<div class=\"ig-zoom\"><p class=\"small-note\">Scroll in both directions to explore the enlarged image. A text version and source details are available in the reader.</p><div class=\"ig-zoom-image-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Enlarged infographic; scroll horizontally and vertically\"><img src=\"","copy_0966":"\"></div><a class=\"button button-outline\" href=\"","copy_0967":" Download this infographic</a></div>","copy_0968":"perspective(1200px) rotateY(","copy_0969":"deg) translateX("}};S.locale='en-GB';S.t=function(key,vars){const text=S.STRINGS[S.locale]?.[key]??S.STRINGS['en-GB'][key]??key;return String(text).replace(/\{(v[0-9]+)\}/g,function(match,name){return vars&&Object.prototype.hasOwnProperty.call(vars,name)?String(vars[name]):match;});};})(globalThis.Serein=globalThis.Serein||{});
+(function(S){'use strict';S.STRINGS={'en-GB':{"copy_0001":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"{v0}\"/></svg>","copy_0002":"Today","copy_0003":"My space","copy_0004":"Support","copy_0005":"Healthcare worker","copy_0006":"Choose a Serein JSON export.","copy_0007":"This file does not look like a Serein export.","copy_0008":"This archive uses a newer Serein version. Keep it unchanged and open it with that version.","copy_0009":"Not specified","copy_0010":"s-{v0}-{v1}","copy_0011":"Browser storage is unavailable. Your changes stay for this visit.","copy_0012":"(prefers-reduced-motion: reduce)","copy_0013":"{v0} min","copy_0014":"{v0}½ min","copy_0015":"<header class=\"page-header\"><div><p class=\"eyebrow\">{v0}</p><h1>{v1}</h1><p class=\"page-sub\">{v2}</p></div>{v3}</header>","copy_0016":"<span class=\"illustrative\" title=\"Illustrative, AI-generated image\" aria-label=\"Illustrative, AI-generated image\">ⓘ</span>","copy_0017":"Remove saved","copy_0018":"Save","copy_0019":"Remove saved reflection","copy_0020":"Save reflection","copy_0021":"<section class=\"quote-section\" aria-label=\"A Serein reflection\"><div><blockquote>{v0}</blockquote><cite>AN ORIGINAL SEREIN REFLECTION</cite></div><div class=\"quote-actions\"><button class=\"icon-btn\" data-action=\"save-word\" aria-label=\"{v1} reflection\" title=\"{v2}\" aria-pressed=\"{v3}\">{v4}</button><button class=\"icon-btn\" data-action=\"next-quote\" aria-label=\"Show another reflection\" title=\"Another reflection\">{v5}</button></div></section>","copy_0022":"A little low","copy_0023":"<button type=\"button\" class=\"mood {v0}\" data-mood=\"{v1}\" aria-pressed=\"{v2}\"><span class=\"mood-face\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M8 9h.01 M16 9h.01 M7 15 Q12 {v3} 17 15\"/></svg></span>{v4}</button>","copy_0024":"<div class=\"mood-row\" role=\"group\" aria-label=\"How are you feeling?\">{v0}</div>","copy_0025":"<section class=\"checkin-card\"><p class=\"eyebrow\">A MOMENT FOR YOU</p><h3>How are you, really?</h3><p>No perfect answer. Just a moment to notice.</p>{v0}<button class=\"text-button\" data-action=\"checkin\">Make a small check-in {v1}</button><p class=\"small-note\">Optional · Personal reflection, not an assessment</p></section>","copy_0026":"<article class=\"practice-card\" data-key=\"practice-","copy_0027":"\"><button class=\"card-open\" data-practice-detail=\"","copy_0028":"\"><div class=\"card-image\"><img src=\"","copy_0029":"Illustrative scene for ","copy_0030":"\" loading=\"lazy\" width=\"800\" height=\"600\">","copy_0031":"<span class=\"card-category\">","copy_0032":"</span></div><div class=\"card-body\"><h3>","copy_0033":"</p><div class=\"card-meta\"><span>","copy_0034":"Breath focus","copy_0035":"Gentle movement","copy_0036":"No breath focus","copy_0037":"</span></div></div></button><button class=\"icon-btn save-icon\" data-save-practice=\"","copy_0038":"Remove saved ","copy_0039":"<article class=\"resource-card\"><button class=\"card-open\" data-resource=\"{v0}\"><div class=\"card-image\"><img src=\"{v1}\" alt=\"{v2}\" loading=\"lazy\" width=\"500\" height=\"340\">{v3}<span class=\"card-category\">{v4}</span></div><div class=\"card-body\"><h3>{v5}</h3><p>{v6}</p><div class=\"card-meta\"><span>{v7}</span><span style=\"margin-left:auto\">{v8}</span></div></div></button></article>","copy_0040":"Good morning","copy_0041":"Good afternoon","copy_0042":"Good evening","copy_0043":"A LITTLE SPACE FOR THE PEOPLE WHO CARE","copy_0044":"{v0}. Make room for you.","copy_0045":"A space for you as a {v0}. Choose what fits this moment.","copy_0046":"<time class=\"date-label\">{v0}</time>","copy_0047":"data-practice=\"{v0}\" data-duration=\"{v1}\"","copy_0048":"a grounding pause","copy_0049":"<button class=\"moment {v0}\" data-moment=\"{v1}\" aria-pressed=\"{v2}\"><span class=\"moment-top\">0{v3} / YOUR MOMENT {v4}</span><strong>{v5}</strong><small>{v6}</small></button>","copy_0050":"Illustrative reference for ","copy_0051":"breath focus","copy_0052":"without breath focus","copy_0053":"<section class=\"hero\"><div class=\"hero-copy\"><p class=\"eyebrow\">YOUR NEXT SMALL STEP</p><h2>A little space.<em>Just for you.</em></h2><p>You care for others. You belong in that care.<br>A practical pause for the moment you are in.</p><div class=\"button-row\"><button class=\"button button-teal\" {v0}>Take {v1} {v2}</button><button class=\"button button-quiet\" data-nav=\"practices\">Find my practice ↗</button><button class=\"text-button\" data-adv=\"finder\">Help me choose →</button></div>{v3}</div><div class=\"hero-photo\"><img src=\"{v4}\" alt=\"Illustrative healthcare worker or colleagues in a quiet break space\" width=\"720\" height=\"610\" fetchpriority=\"high\">{v5}<div class=\"photo-caption\">Small pauses.<br>More room to be.<small>SEREIN / HEALTHCARE CROWN ACADEMY</small></div></div></section><div class=\"section-heading\"><div><h2>What would help right now?</h2><p>Start with your situation. There is no perfect choice.</p></div></div><section class=\"moment-grid\" aria-label=\"Your working moment\">{v6}</section><div class=\"recommend-row\"><section class=\"recommended\"><div class=\"recommended-image\"><img src=\"{v7}\" alt=\"{v8}\" loading=\"lazy\">{v9}</div><div class=\"recommended-copy\"><p class=\"eyebrow\">CHOSEN FOR THIS MOMENT</p><h3>{v10}</h3><p>{v11}</p><p class=\"recommend-reason\">{v12} · {v13} · {v14}</p><button class=\"button button-outline\" data-practice=\"{v15}\" data-duration=\"{v16}\">Explore this pause {v17}</button></div></section>{v18}</div><section class=\"action-band\"><div><p class=\"eyebrow\">FROM AWARENESS TO ACTION</p><h3>Put your next step into words.</h3><p>Prepare a useful support conversation, or make a gentler transition home.</p></div><button class=\"button\" data-action=\"work-tools\">Build a conversation {v19}</button></section><div class=\"section-heading\"><div><h2>Support for real working days</h2><p>Small actions. Useful conversations.</p></div><button class=\"text-button\" data-action=\"open-guides\">All guides {v20}</button></div><div class=\"resource-grid home-resources\">{v21}</div>{v22}","copy_0054":"<section class=\"advance-panel\"><h3>Your choices come first.</h3><p>No practice matches your current suggestion preferences. Adjust choices or restore a practice in My space.</p><button class=\"button button-teal\" data-adv=\"finder\">Help me choose →</button></section>","copy_0055":"Any time","copy_0056":"<button class=\"time-chip {v0}\" data-budget=\"{v1}\" aria-pressed=\"{v2}\">{v3}</button>","copy_0057":"Any style","copy_0058":"Without breath focus","copy_0059":"Grounding only","copy_0060":"<option value=\"{v0}\" {v1}>{v2}</option>","copy_0061":"Any comfortable space","copy_0062":"Seated pause","copy_0063":"Without guided movement","copy_0064":"<div class=\"filter-panel\"><div class=\"filter-top\"><div><span class=\"filter-label\">How much time do you have?</span><div class=\"time-chips\">{v0}</div></div><label class=\"search-input\">{v1}<span class=\"sr-only\">Search practices</span><input id=\"practice-query\" type=\"search\" placeholder=\"Find a practice…\" value=\"{v2}\"></label></div><div class=\"filter-lower\"><label>Practice style<select id=\"practice-style\">{v3}</select></label><label>Your setting<select id=\"practice-position\">{v4}</select></label><button class=\"text-button\" data-action=\"reset-filters\">Reset</button></div></div>","copy_0065":"<div class=\"empty\"><h3>A little adjustment?</h3><p>No practice matches all these choices. Try a different duration or explore a self-paced grounding practice.</p><button class=\"button button-teal\" data-action=\"reset-filters\">Explore all practices</button></div>","copy_0066":"<div class=\"result-count\"><span>Showing {v0} of {v1} practices</span><span>Self-paced options have no timer.</span></div><div class=\"practice-grid\">{v2}</div>","copy_0067":"Saved","copy_0068":"{v0} {v1} {v2}","copy_0069":"<div class=\"empty\"><h3>No guides found.</h3><p>Try another word or choose All.</p></div>","copy_0070":"<div class=\"result-count\">{v0} guides to explore</div><div class=\"resource-grid\">{v1}</div>","copy_0071":"PRACTICAL PAUSES / YOUR CHOICE","copy_0072":"Find your next small pause.","copy_0073":"{v0} experiences. Your time, your comfort, your way.","copy_0074":"<button class=\"button button-outline\" data-action=\"routine-builder\">{v0} My routine</button>","copy_0075":"<div class=\"library-tools\"><button class=\"button button-teal\" data-adv=\"finder\">Help me choose →</button><button class=\"text-button\" data-adv=\"journeys-open\">Explore a learning journey →</button></div>","copy_0076":"<button class=\"{v0}\" data-category=\"{v1}\" aria-pressed=\"{v2}\">{v3}</button>","copy_0077":"{v0}<div class=\"category-row\" role=\"group\" aria-label=\"Practice categories\">{v1}</div><div id=\"practice-results\" aria-live=\"polite\">{v2}</div><p class=\"trust-note\">Preference matches, not health recommendations. Practices are optional educational adaptations. You can change the focus, skip, pause, or stop whenever you need.</p>","copy_0078":"Practitioner care","copy_0079":"Shared practice","copy_0080":"Clinical practice","copy_0081":"<button class=\"{v0}\" data-guide-category=\"{v1}\">{v2}</button>","copy_0082":"<div class=\"filter-panel\"><label class=\"search-input\" style=\"display:block;max-width:none\">{v0}<span class=\"sr-only\">Search practical guides</span><input id=\"guide-query\" type=\"search\" placeholder=\"Boundaries, support, rest…\" value=\"{v1}\"></label></div><div class=\"category-row\">{v2}</div><div id=\"guide-results\">{v3}</div>","copy_0083":"<div class=\"segmented\" role=\"group\" aria-label=\"Explore content\"><button class=\"{v0}\" data-tab=\"practices\" aria-pressed=\"{v1}\">Guided practices</button><button class=\"{v2}\" data-tab=\"guides\" aria-pressed=\"{v3}\">Practical guides</button></div>{v4}{v5}","copy_0084":"REFLECTION, WITHOUT JUDGMENT","copy_0085":"What can you set down today?","copy_0086":"One thought. One useful next step. No need to solve the whole day.","copy_0087":"A moment of meaning","copy_0088":"Support I need","copy_0089":"Something to set down","copy_0090":"<button type=\"button\" data-prompt=\"{v0}\">{v1}</button>","copy_0091":"<div class=\"reflect-grid\">{v0}<form class=\"journal-panel\" id=\"journal-form\"><p class=\"eyebrow\">A LITTLE ROOM TO REFLECT</p><h2>Let the words arrive.</h2><p>A small win, a difficult moment, or a support you need. Keep this space free of patient details.</p><div class=\"journal-prompts\">{v1}</div><label class=\"sr-only\" for=\"journal-draft\">Your personal reflection</label><textarea class=\"field\" id=\"journal-draft\" maxlength=\"20000\" placeholder=\"Today, I want to acknowledge…\">{v2}</textarea><p class=\"small-note draft-status\" id=\"journal-draft-status\" role=\"status\">{v3}</p><label class=\"check-label\"><input type=\"checkbox\" name=\"persist\">Save on this browser for another day. Browser storage is not encrypted.</label><div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Keep this reflection {v4}</button><button class=\"text-button\" type=\"button\" data-action=\"reflection-history\">My reflections</button></div><p class=\"small-note\">Without saving, entries last for this visit. Nothing is monitored.</p>{v5}</form></div><div class=\"section-heading\"><div><h2>From reflection to a practical step</h2><p>Make a request, clarify a boundary, or leave the day more gently.</p></div></div><div class=\"support-grid\"><section class=\"support-card\">{v6}<h3>Find the words.</h3><p>Describe the situation and turn it into a clear support request.</p><button class=\"text-button\" data-action=\"work-tools\">Conversation builder →</button></section><section class=\"support-card\">{v7}<h3>Leave the day.</h3><p>Make a realistic handover, transition, and recovery plan.</p><button class=\"text-button\" data-action=\"transition-tools\">My transition home →</button></section><section class=\"support-card\">{v8}<h3>Return to your words.</h3><p>Your saved reflections and useful words, together in one place.</p><button class=\"text-button\" data-action=\"reflection-history\">Open my collection →</button></section></div>{v9}","copy_0092":"Saved in browser","copy_0093":"This visit only","copy_0094":"<p>{v0}</p>","copy_0095":"<h3>{v0}</h3><p>{v1}{v2}</p>{v3}","copy_0096":"<button data-edit-journal=\"{v0}\">Edit reflection</button>","copy_0097":"<button data-keep-entry=\"{v0}\" data-entry-type=\"{v1}\">Save in browser</button>","copy_0098":"<article class=\"entry\"><div class=\"entry-head\"><time datetime=\"{v0}\">{v1}</time><span class=\"memory-badge\">{v2}</span></div>{v3}<div class=\"entry-actions\">{v4}<button data-delete-entry=\"{v5}\" data-entry-type=\"{v6}\">Delete</button>{v7}</div></article>","copy_0099":"<div class=\"entries\">{v0}</div>","copy_0100":"<div class=\"empty\"><h3>A space to begin.</h3><p>Your entries will appear here. You can reflect without saving anything.</p><button class=\"button button-teal\" data-nav=\"reflect\">Make room to reflect</button></div>","copy_0101":"{v0} practices · {v1}","copy_0102":"Choose up to four practices. Each starts only when you choose.","copy_0103":"<button class=\"button button-teal\" data-action=\"start-routine\">Begin my routine →</button>","copy_0104":"<article class=\"routine-item\"><span class=\"routine-num\">0{v0}</span><img src=\"{v1}\" alt=\"Illustrative reference\" loading=\"lazy\"><div><h3>{v2}</h3><p>{v3} · {v4}</p></div><div class=\"routine-item-actions\"><button data-routine-move=\"{v5}\" data-direction=\"-1\" {v6} aria-label=\"Move {v7} up\">↑</button><button data-routine-move=\"{v8}\" data-direction=\"1\" {v9} aria-label=\"Move {v10} down\">↓</button><button data-routine-remove=\"{v11}\" aria-label=\"Remove {v12}\">×</button></div></article>","copy_0105":"<div class=\"routine-list\">{v0}</div>","copy_0106":"<section class=\"workspace-tools\"><div><h3>Your own small routine.</h3><p>{v0}</p></div><div class=\"button-row\"><button class=\"button button-outline\" data-action=\"routine-builder\">Build or edit</button>{v1}</div></section>{v2}","copy_0107":" + self-paced time","copy_0108":"{v0}{v1}","copy_0109":"All entries","copy_0110":"Last 7 days","copy_0111":"Last 30 days","copy_0112":"<div class=\"pattern-row\"><span>{v0}</span><div class=\"pattern-track\" aria-hidden=\"true\"><span style=\"width:{v1}%\"></span></div><b>{v2}</b></div>","copy_0113":"<div class=\"pattern-summary\"><div class=\"pattern-stat\"><span>Personal check-ins</span><strong>{v0}</strong><small>In the selected period</small></div><div class=\"pattern-stat\"><span>Words kept</span><strong>{v1}</strong><small>Your reflections</small></div><div class=\"pattern-stat\"><span>Practices saved</span><strong>{v2}</strong><small>Return when useful</small></div></div><div class=\"filter-panel\"><label class=\"field-label\" for=\"date-filter\">Look back over</label><select class=\"field\" id=\"date-filter\">{v3}</select></div><section class=\"pattern-bars\"><h3>Feelings you recorded.</h3><p>Counts of your own entries. Multiple entries on a day count separately; missing days are simply missing data.</p>{v4}</section>{v5}<p class=\"trust-note\">Personal awareness, not a health score or clinical assessment. These entries are not monitored by a care team or employer.</p>","copy_0114":"<section class=\"journal-panel\"><p class=\"eyebrow\">YOUR WORDS. YOUR CHOICE.</p><h2>Keep only what is useful.</h2><p>Practices work without an account. Preferences and collections stay in this browser. A check-in or reflection is kept beyond this visit only when you choose to save it.</p><div class=\"notice\">Browser storage is not encrypted or access-controlled. Others using this browser may be able to read saved entries. Do not include patient-identifying details or sensitive information.</div><div class=\"button-row\"><button class=\"button button-teal\" data-action=\"export\">{v0} Export my data</button><button class=\"button button-outline\" data-action=\"import\">{v1} Import an export</button><button class=\"text-button\" data-action=\"clear-data\">Clear Serein data</button></div><p class=\"small-note\" style=\"margin-top:18px\">Exports contain your words. Keep downloaded files private. An import can merge with existing entries or replace them after your confirmation.</p>{v2}</section>","copy_0115":"<div class=\"practice-grid\">{v0}</div>","copy_0116":"<div class=\"empty\"><h3>A collection that fits you.</h3><p>Save a practice with the bookmark button. Return to it whenever it is useful.</p><button class=\"button button-teal\" data-nav=\"practices\">Explore practices →</button></div>","copy_0117":"<div class=\"resource-grid\">{v0}</div>","copy_0118":"<div class=\"empty\"><h3>Your useful guides.</h3><p>Save a guide from its reading view to keep it here.</p><button class=\"button button-teal\" data-action=\"open-guides\">Explore guides →</button></div>","copy_0119":"<article class=\"entry\"><blockquote style=\"font:italic 26px/1.6 var(--serif)\">{v0}</blockquote><button class=\"text-button\" data-remove-word=\"{v1}\">Remove from collection</button></article>","copy_0120":"<div class=\"empty\"><h3>Words to return to.</h3><p>Save an original Serein reflection from the bottom of a page.</p></div>","copy_0121":"<div class=\"category-row\"><button data-saved-tab=\"practices\" class=\"{v0}\">Practices · {v1}</button><button data-saved-tab=\"guides\" class=\"{v2}\">Guides · {v3}</button><button data-saved-tab=\"words\" class=\"{v4}\">Words · {v5}</button></div>{v6}","copy_0122":"YOUR SMALL COLLECTION OF SUPPORT","copy_0123":"A space that feels like yours.","copy_0124":"Saved practices, useful words, and the patterns you choose to notice.","copy_0125":"My routine","copy_0126":"My patterns","copy_0127":"My data","copy_0128":"<button data-space-tab=\"{v0}\" class=\"{v1}\" aria-pressed=\"{v2}\">{v3}</button>","copy_0129":"<div class=\"segmented\" role=\"group\" aria-label=\"Your collections\">{v0}</div>{v1}","copy_0130":"SUPPORT IS PART OF CARE","copy_0131":"You do not have to hold it alone.","copy_0132":"A practical next step can start with another person.","copy_0133":"<section class=\"support-hero\"><div><p class=\"eyebrow\">HUMAN CONNECTION</p><h2>Ask before<br>you reach your limit.</h2><p>A trusted colleague, supervisor, or occupational health service can help you explore a practical next step.</p><button class=\"button button-teal\" style=\"margin-top:22px\" data-action=\"work-tools\">Prepare a support request {v0}</button></div><figure><img src=\"{v1}\" alt=\"Illustrative colleagues having a supportive conversation\" loading=\"lazy\">{v2}</figure></section><div class=\"support-grid\"><section class=\"support-card\">{v3}<h3>A workplace conversation.</h3><p>Clarify competing demands, ask for help, or agree what can change.</p><button class=\"text-button\" data-resource=\"manager-support\">Practical team support →</button></section><section class=\"support-card\">{v4}<h3>Professional support.</h3><p>If difficulties persist or affect your work or daily life, consider qualified professional support through your usual local service.</p><a class=\"text-button\" href=\"https://www.nhs.uk/nhs-services/mental-health-services/find-nhs-talking-therapies-for-anxiety-and-depression/\" target=\"_blank\" rel=\"noopener noreferrer\">NHS Talking Therapies ↗</a></section><section class=\"support-card\">{v5}<h3>Invite a shared pause.</h3><p>Ask permission, offer a choice, and adapt together. Presentation mode keeps the rest of your space out of view.</p><button class=\"text-button\" data-action=\"shared-practice\">How to present a practice →</button></section></div><p class=\"notice\" style=\"margin-top:24px\">Serein is not monitored and cannot provide urgent care. If there is immediate danger, use local emergency services or the nearest emergency department. Do not wait for a response from this app.</p>{v6}<div class=\"section-heading\"><div><h2>Make the next step practical.</h2><p>Short guides for real working days.</p></div></div><div class=\"resource-grid\">{v7}</div><section class=\"registration-panel\">{v8}<div><p class=\"eyebrow\">HEALTHCARE CROWN ACADEMY</p><h3>Clear information. Thoughtful care.</h3><p>ICO data protection registration ZC273259 · Registered 13 October 2026.<br>Registration identifies the company as a data controller; it is not a certification of this app.</p></div><a class=\"button button-outline\" href=\"https://ico.org.uk/ESDWebPages/Entry/ZC273259\" target=\"_blank\" rel=\"noopener noreferrer\">View public register ↗</a></section>{v9}","copy_0134":"Draft is in memory only. Temporary tab storage is unavailable; keep this tab open.","copy_0135":"Draft kept for this visit","copy_0136":"Drafts are kept in this tab for this visit. Saving an entry for another day is your choice.","copy_0137":"<button data-nav=\"{v0}\" class=\"{v1}\" {v2}>{v3}<span>{v4}</span></button>","copy_0138":"#{v0}","copy_0139":"<button data-action=\"undo\">Undo</button>","copy_0140":"How are you, really?","copy_0141":"<p>An optional personal reflection. Choose a feeling and add only what is useful.</p><form id=\"checkin-form\">{v0}<label class=\"field-label\" for=\"energy\">Your energy</label><select class=\"field\" id=\"energy\" name=\"energy\"><option>Not specified</option><option>Low energy</option><option>Some energy</option><option>Steady energy</option><option>Plenty of energy</option></select><label class=\"field-label\" for=\"checkin-note\">A little context, if useful</label><textarea id=\"checkin-note\" name=\"note\" class=\"field\" maxlength=\"6000\" rows=\"3\" placeholder=\"What is around this feeling? No patient details.\"></textarea><label class=\"check-label\"><input type=\"checkbox\" name=\"persist\">Save on this browser for another day. Browser storage is not encrypted.</label><p class=\"form-error\" id=\"checkin-error\" role=\"alert\"></p><div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Keep my check-in {v1}</button><button class=\"button button-quiet\" type=\"button\" data-action=\"close-modal\">Skip for now</button></div>{v2}<p class=\"small-note\">Without saving, it lasts for this visit. No one monitors these entries.</p></form>","copy_0142":"Choose the feeling closest to yours, or skip this check-in.","copy_0143":"Check-in saved in this browser.","copy_0144":"Check-in kept for this visit only.","copy_0145":"<li>{v0}</li>","copy_0146":"Saved · remove","copy_0147":"Save this guide","copy_0148":"<img class=\"article-image\" src=\"{v0}\" alt=\"{v1}\"><span class=\"tag\">{v2} / {v3}</span><p style=\"margin-top:15px\">{v4}</p>{v5}<ol class=\"article-steps\">{v6}</ol><p class=\"notice\">{v7}</p><div class=\"button-row\"><button class=\"button button-teal\" data-save-resource=\"{v8}\" aria-pressed=\"{v9}\">{v10} {v11}</button><button class=\"button button-quiet\" data-action=\"close-modal\">Return to my space</button></div><p class=\"small-note\" style=\"margin-top:20px\">Illustrative · AI-generated editorial image. Educational guidance, not individual treatment.</p>","copy_0149":"Make this space yours.","copy_0150":"Allied health professional","copy_0151":"Healthcare support worker","copy_0152":"Team leader","copy_0153":"<option {v0}>{v1}</option>","copy_0154":"One minute","copy_0155":"Two minutes","copy_0156":"Five minutes","copy_0157":"Open to different practices","copy_0158":"<p>Optional preferences help Serein fit your day. You can change them whenever you like.</p><form id=\"preferences-form\"><label class=\"field-label\" for=\"pref-role\">Your role</label><select class=\"field\" id=\"pref-role\" name=\"role\">{v0}</select><label class=\"field-label\" for=\"pref-time\">Usual time for a pause</label><select class=\"field\" id=\"pref-time\" name=\"time\">{v1}</select><label class=\"field-label\" for=\"pref-style\">Practice preference</label><select class=\"field\" id=\"pref-style\" name=\"style\">{v2}</select><label class=\"setting-row\"><span>Less motion<small>Still visuals and quiet transitions. Your device preference is also respected.</small></span><input name=\"motion\" type=\"checkbox\" {v3}></label><label class=\"setting-row\"><span>3D breathing visual<small>Optional. A still alternative and text guidance are always available.</small></span><input name=\"visual3d\" type=\"checkbox\" {v4}></label><label class=\"setting-row\"><span>Show original reflections<small>Secular Serein words at the end of selected pages.</small></span><input name=\"quotes\" type=\"checkbox\" {v5}></label>{v6}<div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Save my preferences</button><button class=\"button button-quiet\" type=\"button\" data-action=\"data-page\">My browser data →</button></div></form>","copy_0159":"<a class=\"source-link\" href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">{v1} ↗</a>","copy_0160":"<p>Short Serein practices are original educational adaptations, with illustrative imagery and optional timing. They are not copied clinical protocols or clinically validated Serein programs.</p>{v0}<p class=\"notice\">Movement images are AI-generated position illustrations. They are not anatomical standards or prescribed ranges. Choose a comfortable, suitable practice and stop or adapt for discomfort.</p>","copy_0161":"Your data, clearly explained.","copy_0162":"<p>Serein is a personal, browser-local educational workspace. It has no connected care team, patient records, or live monitoring.</p><h3>What is kept</h3><p>Preferences, bookmarks, saved words, and routines are stored in this browser. Check-ins and journal entries are stored beyond this visit only when you choose to save them. Unsaved submitted entries disappear on reload or when this page closes.</p><h3>What “saved” means</h3><p>Browser storage is not encrypted or access-controlled. Someone using the same browser profile may be able to see saved data. Clearing browser data can remove it. Export and import help you keep a copy.</p><h3>Unsubmitted drafts</h3><p>Journal drafts are kept temporarily in this tab’s session storage so a refresh can restore them. This is not encrypted. Submitted entries are kept for another day only when you choose Save on this browser. Clear Serein data also clears the temporary draft.</p><h3>Your control</h3><p>You can edit or delete individual reflections, delete check-ins, export an archive, import an earlier Serein export, or clear this app’s data. Do not enter patient-identifying details or sensitive health information.</p><h3>Practice memory, feedback and learning</h3><p>Remembered practice settings, explicit suggestion choices, journey step marks and plans you explicitly save stay in this browser. Practice feedback is visit-only unless you choose to save it. Saved feedback can influence suggestion order. You can remove responses, reset practice choices, delete plans, reset journeys, or clear all Serein data. Nothing is sent to employers or other people.</p><h3>Offline content and reminders</h3><p>The hosted edition can store app content offline when you choose. Clearing Serein data removes personal records; remove downloaded app content through your browser site-storage controls. Calendar reminders are downloaded files; they activate only after you import them, and you manage or delete them in your calendar.</p><h3>Media and voice</h3><p>Photographs and fonts are included with the app. Optional browser voice guidance uses a local voice only; it remains off if none is available. External reference links open third-party websites.</p><h3>Who provides Serein</h3><p>HEALTHCARE CROWN ACADEMY LTD · Company no. 17501904 · 71–75 Shelton Street, Covent Garden, London WC2H 9JQ. ICO data protection registration ZC273259, as supplied in the company brand kit.</p><p class=\"notice\">ICO registration is not an accreditation, a certification of this app, or a claim that browser storage is encrypted.</p><div class=\"button-row\"><button class=\"button button-teal\" data-action=\"data-page\">Manage my data</button><button class=\"button button-outline\" data-action=\"export\">Export my data</button></div>","copy_0163":"Find the words for support.","copy_0164":"A gentler transition home.","copy_0165":"What is happening?","copy_0166":"Several tasks need attention at once","copy_0167":"What support would help?","copy_0168":"Help agreeing priorities","copy_0169":"What next step could you suggest?","copy_0170":"A short check-in with the shift lead","copy_0171":"One agreed handover or next owner","copy_0172":"Confirm outstanding work in the approved system","copy_0173":"One transition action","copy_0174":"Change clothes and take a quiet moment","copy_0175":"One recovery support","copy_0176":"A meal, rest, or a trusted conversation","copy_0177":"<label class=\"field-label\" for=\"work-{v0}\">{v1}</label><input class=\"field\" id=\"work-{v2}\" name=\"field{v3}\" maxlength=\"600\" placeholder=\"{v4}\" required>","copy_0178":"<p>Prepare a practical next step. Your draft is temporary until you copy it. Keep it free of patient details.</p><div class=\"segmented\"><button data-tool-mode=\"conversation\" class=\"{v0}\">Support conversation</button><button data-tool-mode=\"transition\" class=\"{v1}\">Transition home</button></div><form id=\"work-form\" data-mode=\"{v2}\">{v3}<div class=\"button-row\"><button type=\"submit\" class=\"button button-teal\">Build my draft {v4}</button></div></form><label class=\"field-label\" for=\"work-output\">Your editable draft</label><textarea id=\"work-output\" class=\"field\" rows=\"5\"></textarea><button class=\"text-button\" data-action=\"copy-draft\">Copy my draft →</button><p class=\"small-note\" id=\"copy-note\" role=\"status\">Edit the draft so it sounds like you.</p>","copy_0179":"Build your own small routine.","copy_0180":"<label class=\"routine-option\"><input type=\"checkbox\" name=\"practice\" value=\"{v0}\" {v1}><span><strong>{v2}</strong><small>{v3} · {v4}</small></span></label>","copy_0181":"<p>Choose one to four practices. Each one starts only when you choose. You can reorder your routine in My space.</p><form id=\"routine-form\"><div class=\"routine-builder\">{v0}</div><p id=\"routine-error\" class=\"form-error\" role=\"alert\"></p><div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Save my routine</button><button class=\"button button-quiet\" type=\"button\" data-action=\"close-modal\">Keep exploring</button></div></form>","copy_0182":"Your routine has ended. Take what is useful into your day.","copy_0183":"Entry removed.","copy_0184":"Entry restored.","copy_0185":"Personal Serein data. Keep this file private.","copy_0186":"Export prepared. Keep the downloaded file private.","copy_0187":"Archive restored.","copy_0188":"Archive merged with your existing entries.","copy_0189":"{v0} {v1}","copy_0190":"<button class=\"search-result\" data-search-practice=\"{v0}\"><img src=\"{v1}\" alt=\"\"><span><strong>{v2}</strong><small>{v3} · {v4}</small></span><span>↗</span></button>","copy_0191":"<p class=\"search-group-label\">GUIDED PRACTICES</p>{v0}","copy_0192":"<button class=\"search-result\" data-search-resource=\"{v0}\"><img src=\"{v1}\" alt=\"\"><span><strong>{v2}</strong><small>{v3}</small></span><span>↗</span></button>","copy_0193":"<p class=\"search-group-label\">PRACTICAL GUIDES</p>{v0}","copy_0194":"<div class=\"empty\"><h3>No matches yet.</h3><p>Try breathing, grounding, support, or boundaries.</p></div>","copy_0195":"Practice saved to My space.","copy_0196":"Practice removed from saved.","copy_0197":"SEREIN / ROUTINE {v0} OF {v1}","copy_0198":"SEREIN / WATCH FIRST","copy_0199":"SEREIN / YOUR PRACTICE","copy_0200":"Finish my routine →","copy_0201":"Next in my routine →","copy_0202":"4 seconds per phase","copy_0203":"In 4 · out 6","copy_0204":"3 seconds per phase","copy_0205":"In 3 · out 3","copy_0206":"5 seconds per phase","copy_0207":"In 5 · out 5","copy_0208":"<label class=\"check-label\"><input type=\"checkbox\" id=\"session-noholds\">No holds · continuous breathing</label>","copy_0209":"<label class=\"field-label\" for=\"session-pace\">Comfortable pace</label><select class=\"field\" id=\"session-pace\"><option value=\"4-6\">{v0}</option><option value=\"3-3\">{v1}</option><option value=\"5-5\">{v2}</option></select>{v3}","copy_0210":"<label class=\"check-label\"><input type=\"checkbox\" id=\"session-relax\">Relax only · no guided movement</label>","copy_0211":"<option value=\"orb\" {v0}>3D breathing visual</option>","copy_0212":"<option value=\"map\">Body attention map</option>","copy_0213":"<label class=\"field-label\" for=\"session-duration\">Session length</label><select class=\"field\" id=\"session-duration\" {v0}>{v1}</select>{v2}<label class=\"check-label\"><input type=\"checkbox\" id=\"session-external\">Use external focus instead</label>{v3}<label class=\"check-label\"><input type=\"checkbox\" id=\"session-motion\" {v4} {v5}>Less motion</label><label class=\"check-label\"><input type=\"checkbox\" id=\"session-voice\">Voice guide · spoken instructions</label><label class=\"field-label\" for=\"session-visual\">Visual view</label><select class=\"field\" id=\"session-visual\"><option value=\"photo\" {v6}>Illustrative photographs</option>{v7}<option value=\"text\">Text focus</option>{v8}</select><p class=\"small-note\">Pause to change timing. Voices come from your device or browser.</p>","copy_0214":"Remove saved practice","copy_0215":"Save practice","copy_0216":"{v0}-{v1}-{v2}-{v3}-{v4}","copy_0217":"A MOMENT, WITHOUT A TARGET","copy_0218":"FOLLOW AT A COMFORTABLE PACE","copy_0219":"STEP {v0} OF {v1}","copy_0220":"Illustrative, AI-generated position reference: {v0}","copy_0221":"Illustrative, AI-generated landscape","copy_0222":"Your pace. Your pause.","copy_0223":"{v0} / {v1} · {v2}","copy_0224":"<button data-player-step=\"","copy_0225":"<button data-noticed=\"","copy_0226":"\" aria-label=\"Notice item ","copy_0227":"{v0} / {v1}","copy_0228":"{v0} elapsed of {v1}","copy_0229":"Practice again","copy_0230":"Continue","copy_0231":"Pause","copy_0232":"Play preview","copy_0233":"Resume","copy_0234":"Begin practice","copy_0235":"<span>{v0}</span>","copy_0236":"Take what is useful into the rest of your day.","copy_0237":"Paused. Breathe naturally. Return when ready.","copy_0238":"Preview only. Follow along only if suitable.","copy_0239":"Put the screen away before walking.","copy_0240":"Stop or adapt if uncomfortable. Nothing is monitored.","copy_0241":"Optional visual · Follow your own pace","copy_0242":"Illustrative · AI-generated","copy_0243":"<div class=\"box-track\"><i class=\"box-edge edge-top\"></i><i class=\"box-edge edge-right\"></i><i class=\"box-edge edge-bottom\"></i><i class=\"box-edge edge-left\"></i><i class=\"box-marker\"></i><div class=\"box-center\"><strong></strong><span></span><small></small></div></div>","copy_0244":"Complete","copy_0245":"Follow your comfortable pace","copy_0246":"Paused","copy_0247":"Rest naturally","copy_0248":"Press Begin to start","copy_0249":"A local English voice is unavailable. Text guidance remains available.","copy_0250":"Voice is unavailable. Follow the text guidance.","copy_0251":"Reflection saved to My space.","copy_0252":"Reflection removed.","copy_0253":"Build or write your draft first.","copy_0254":"Draft copied.","copy_0255":"Select and copy the highlighted draft.","copy_0256":"Start with a clear space?","copy_0257":"<p>This removes Serein’s saved and visit-only entries, temporary journal draft, preferences, bookmarks, and routine from this browser. It does not affect other websites.</p><div class=\"notice\">Export anything you want to keep before clearing.</div><div class=\"button-row\"><button class=\"button button-outline\" data-action=\"export\">Export first</button><button class=\"button button-navy\" data-action=\"confirm-clear\">Clear my Serein data</button><button class=\"text-button\" data-action=\"close-modal\">Keep my data</button></div>","copy_0258":"Serein data cleared from this browser.","copy_0259":"A little space for human care.","copy_0260":"<p>Serein is a well-being studio by Healthcare Crown Academy. It brings together brief optional practices, personal reflection, and practical working-day support.</p><h3>Your pace. Your choice.</h3><p>{v0} guided experiences include breathing, grounding, awareness, gentle movement, and visualization. Six interactive studios and three flexible learning journeys connect personal practice with practical support. You can use text, illustrative photographs, optional 3D, and available local voice guidance.</p><p class=\"notice\">Educational practices, not individual medical treatment, clinical assessment, or emergency support. No professional accreditation or affiliation is implied.</p><p>By HEALTHCARE CROWN ACADEMY LTD · Company no. 17501904.</p>","copy_0261":"Make it an invitation, together.","copy_0262":"<ol><li>Ask permission and offer a genuine choice.</li><li>Choose a suitable practice and adapt to the person’s needs.</li><li>Use Present in the player. Your personal workspace is hidden behind an opaque backdrop.</li><li>Offer external focus, less motion, and skipping. A neutral response is valid.</li></ol><p class=\"notice\">Do not enter patient details. This is a shared educational prompt, not an assessment or clinical record.</p><div class=\"button-row\"><button class=\"button button-teal\" data-practice=\"ground\">Explore shared grounding →</button></div>","copy_0263":"That action could not finish. Your existing entries are kept.","copy_0264":"Your current draft is kept. Clear it to choose a new prompt.","copy_0265":"One moment I want to acknowledge today is…","copy_0266":"One support I would like to ask for is…","copy_0267":"One thing I can hand over or set down is…","copy_0268":"Keep this entry in your browser?","copy_0269":"<p>Browser storage is not encrypted or access-controlled. Others using this browser may be able to access it.</p><div class=\"button-row\"><button class=\"button button-teal\" data-confirm-keep=\"{v0}\" data-entry-type=\"{v1}\">Save in this browser</button><button class=\"text-button\" data-action=\"close-modal\">This visit only</button></div>","copy_0270":"Your reflection, in your words.","copy_0271":"Saved in this browser.","copy_0272":"Kept for this visit only.","copy_0273":"<form id=\"edit-journal-form\"><label class=\"sr-only\" for=\"edit-journal\">Edit reflection</label><textarea id=\"edit-journal\" class=\"field\" name=\"text\" maxlength=\"20000\" rows=\"8\">{v0}</textarea><p class=\"small-note\">{v1}</p><div class=\"button-row\"><button class=\"button button-teal\" type=\"submit\">Keep my changes</button><button class=\"text-button\" type=\"button\" data-action=\"close-modal\">Cancel</button></div></form>","copy_0274":"Your preferences are saved in this browser.","copy_0275":"Write a thought first, however small.","copy_0276":"Reflection saved in this browser.","copy_0277":"Reflection kept for this visit only.","copy_0278":"A reflection needs at least a few words.","copy_0279":"Reflection updated.","copy_0280":"Choose one to four practices.","copy_0281":"Your routine is ready.","copy_0282":"I would like to discuss this situation: {v0}.\n\nThe support that would help is: {v1}.\n\nCould we agree this next step: {v2}?","copy_0283":"Before leaving: {v0}.\n\nMy transition: {v1}.\n\nMy recovery support: {v2}.","copy_0284":"Draft ready. Edit the words so they sound like you.","copy_0285":"Choose a Serein JSON export smaller than 8 MB.","copy_0286":"Restore your Serein archive.","copy_0287":"<p>This file contains {v0} check-ins, {v1} reflections, and {v2} saved practices, plus {v3} feedback responses and {v4} plans.</p><div class=\"notice\">Merge keeps your existing entries. Replace removes the current Serein data and restores this archive.</div><div class=\"button-row\"><button class=\"button button-teal\" data-action=\"import-merge\">Merge with my data</button><button class=\"button button-outline\" data-action=\"import-replace\">Replace with this archive</button><button class=\"text-button\" data-action=\"close-modal\">Cancel</button></div>","copy_0288":"That file could not be read. Choose a Serein JSON export.","copy_0289":"Saved data could not be read and has been kept unchanged. Open Me → Data & privacy to download a recovery copy.","copy_0290":"Earlier Serein entries are available in My space.","copy_0291":"No change","copy_0292":"<a class=\"source-link\" href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">{v1} ↗<small>{v2}</small></a>","copy_0293":"Extra large","copy_0294":"<fieldset class=\"comfort-fields\"><legend>Read comfortably</legend><label class=\"field-label\" for=\"pref-reading\">Text size</label><select id=\"pref-reading\" class=\"field\" name=\"readingSize\">{v0}</select><label class=\"field-label\" for=\"pref-theme\">Appearance</label><select id=\"pref-theme\" class=\"field\" name=\"theme\"><option value=\"light\">HCA ivory</option><option value=\"night\" {v1}>HCA navy night</option></select><label class=\"check-label\"><input type=\"checkbox\" name=\"readingWidth\" {v2}>Comfortable reading width</label><label class=\"check-label\"><input type=\"checkbox\" name=\"focus\" {v3}>Low-distraction layout · simplify decorative content</label></fieldset>","copy_0295":"this moment","copy_0296":"Fits {v0}","copy_0297":"{v0} within your time","copy_0298":"gentle movement","copy_0299":"marked helpful for you","copy_0300":"<button class=\"choice-card {v0}\" data-adv=\"finder-moment\" data-value=\"{v1}\" aria-pressed=\"{v2}\"><strong>{v3}</strong><span>{v4}</span></button>","copy_0301":"<p class=\"studio-question\">What is happening around this pause?</p><div class=\"choice-grid\">{v0}</div>","copy_0302":"My own pace","copy_0303":"No countdown","copy_0304":"A short, optional pause","copy_0305":"<button class=\"choice-card {v0}\" data-adv=\"finder-time\" data-value=\"{v1}\" aria-pressed=\"{v2}\"><strong>{v3}</strong><span>{v4}</span></button>","copy_0306":"<p class=\"studio-question\">How much time is available?</p><div class=\"choice-grid\">{v0}</div>","copy_0307":"<p class=\"studio-question\">What would feel comfortable?</p><label class=\"field-label\" for=\"finder-style\">Attention focus</label><select class=\"field\" id=\"finder-style\"><option value=\"any\">Open to different practices</option><option value=\"nonbreath\" {v0}>Without breath focus</option><option value=\"ground\" {v1}>Grounding only</option></select><label class=\"field-label\" for=\"finder-position\">Movement</label><select class=\"field\" id=\"finder-position\"><option value=\"any\">Any suitable practice</option><option value=\"seated\" {v2}>Seated practices</option><option value=\"still\" {v3}>Without guided movement</option></select><label class=\"check-label\"><input id=\"finder-silent\" type=\"checkbox\" {v4}>Keep this pause silent</label><p class=\"small-note\">These choices apply to this search. Your usual preferences stay available.</p>","copy_0308":"Show my choices","copy_0309":"{v0}{v1}<div class=\"studio-footer\"><button class=\"button button-quiet\" data-adv=\"finder-back\" {v2}>Back</button><button class=\"button button-teal\" data-adv=\"finder-next\">{v3} →</button></div>","copy_0310":"<article class=\"finder-result\"><span class=\"result-number\">0{v0}</span><div><h3>{v1}</h3><p>{v2}</p><p class=\"match-reason\">{v3}</p><div class=\"button-row\"><button class=\"button button-teal\" data-adv=\"finder-start\" data-id=\"{v4}\">Explore {v5} →</button><button class=\"text-button\" data-adv=\"evidence\" data-id=\"{v6}\">About this practice</button></div></div></article>","copy_0311":"<div class=\"empty\"><h3>No match for these choices.</h3><p>You can adjust the choices or restore a practice you previously excluded in My space.</p></div>","copy_0312":"<p class=\"eyebrow\">YOUR CHOICES / {v0}</p><p>Preference matches with a clear reason. Choose, adapt or leave any practice.</p><div class=\"finder-results\">{v1}</div><div class=\"button-row\"><button class=\"button button-outline\" data-adv=\"finder-back\">Adjust choices</button><button class=\"text-button\" data-adv=\"preferences-open\">Manage practice choices →</button></div>","copy_0313":"Find a pause that fits.","copy_0314":"<div class=\"studio-meter\"><span>STEP {v0} OF {v1}</span><div class=\"meter-track\"><span style=\"width:{v2}%\"></span></div></div>","copy_0315":"Continue my journey","copy_0316":"Explore this journey","copy_0317":"<section class=\"advance-launch\"><div><p class=\"eyebrow\">A PERSONAL PATH THROUGH YOUR DAY</p><h2>Start with what you need.</h2><p>Three small choices. One practice with a clear reason.</p></div><button class=\"button button-teal\" data-adv=\"finder\">Help me choose {v0}</button></section><div class=\"section-heading\"><div><h2>Put support into practice</h2><p>Rehearse, prepare and make your next step concrete.</p></div><button class=\"text-button\" data-adv=\"studios-open\">All six studios →</button></div><div class=\"studio-grid compact\">{v1}</div><section class=\"journey-invitation\"><div><p class=\"eyebrow\">LEARN AT YOUR OWN PACE</p><h3>{v2}</h3><p>{v3}</p></div><button class=\"button button-outline\" data-adv=\"journey\" data-id=\"{v4}\">{v5} →</button></section>","copy_0318":"guided steps","copy_0319":"An editorial count of this practice’s steps, not a measured health outcome.","copy_0320":"Why choose it?","copy_0321":"When might it fit?","copy_0322":"How to use it","copy_0323":"Who chooses?","copy_0324":"You decide whether it is suitable. {v0}","copy_0325":"<section><h4>{v0}</h4><p>{v1}</p></section>","copy_0326":"<section class=\"evidence-intro\"><p class=\"eyebrow\">WHAT / WHY / WHEN / HOW / WHO</p><h3>{v0}</h3><p>{v1}</p></section><div class=\"evidence-grid\">{v2}</div><div class=\"fact-card\"><strong>{v3}</strong><div><h4>{v4}</h4><p>{v5}</p></div></div><h4 class=\"source-heading\">Background & scope</h4>{v6}<p class=\"small-note\">Source mapping updated {v7}. Original educational adaptation; not a clinically validated Serein program. Images are illustrative. You can pause, adapt or stop.</p>","copy_0327":"Understand this practice.","copy_0328":"<div class=\"button-row\"><button class=\"button button-teal\" data-practice=\"{v0}\">Open practice →</button></div>","copy_0329":"<button type=\"button\" class=\"text-button practice-info\" data-adv=\"evidence\" data-id=\"{v0}\" aria-label=\"About {v1}\">About this practice {v2}</button>","copy_0330":"<button data-adv=\"feedback\" data-value=\"{v0}\" aria-pressed=\"false\">{v1}</button>","copy_0331":"Not settled","copy_0332":"A little settled","copy_0333":"Somewhat settled","copy_0334":"Very settled","copy_0335":"<option value=\"{v0}\">{v1} · {v2}</option>","copy_0336":"More often","copy_0337":"Try another time","copy_0338":"Do not suggest","copy_0339":"<button class=\"button button-outline\" data-adv=\"practice-choice\" data-id=\"{v0}\" data-value=\"{v1}\">{v2}</button>","copy_0340":"<p class=\"eyebrow\">JUST NOTICE</p><h3>How was that for you?</h3><p>No particular response is required. You choose whether to keep feedback.</p><div class=\"feedback-choices\">{v0}</div><label class=\"field-label\" for=\"session-after\">Optional: how settled do you feel now?</label><select id=\"session-after\" class=\"field\"><option value=\"\">Skip</option>{v1}</select><label class=\"check-label\"><input type=\"checkbox\" id=\"feedback-save\">Save this feedback for personal insights in this browser</label><p class=\"small-note\">Saved feedback is not encrypted. Without saving it lasts for this visit. Personal observations are not clinical scores.</p><p id=\"feedback-note\" role=\"status\"></p><div class=\"practice-preference-actions\"><span>Suggest this practice:</span>{v2}</div>","copy_0341":"Your saved practice settings have been applied. Voice remains off until enabled.","copy_0342":"Options are temporary unless you choose to remember them.","copy_0343":"<label class=\"field-label\" for=\"session-before\">Optional: how settled do you feel before starting?</label><select id=\"session-before\" class=\"field\"><option value=\"\">Skip</option>{v0}</select><label class=\"check-label\"><input type=\"checkbox\" id=\"session-remember\" {v1}>Remember timing, visual and comfort options for this practice</label><p id=\"memory-status\" class=\"small-note\">{v2}</p>","copy_0344":"<label class=\"check-label\"><input type=\"checkbox\" id=\"session-chime\" {v0}>Gentle phase-change tone · optional local audio</label>","copy_0345":"These practice options are remembered in this browser.","copy_0346":"Practice options are temporary.","copy_0347":"Stop or choose another focus. Human support may be more useful. There is no need to continue. ","copy_0348":"Thank you for noticing. ","copy_0349":"Saved in this browser for your insights.","copy_0350":"Removed from recommendations. You can restore it in My space.","copy_0351":"Serein will give other practices priority.","copy_0352":"This practice will be given more priority when it fits.","copy_0353":"Not suggested","copy_0354":"Given more priority","copy_0355":"Usual suggestion priority","copy_0356":" · Comfort options remembered","copy_0357":"<div><span><strong>{v0}</strong><small>{v1}{v2}</small></span><button class=\"text-button\" data-adv=\"restore-practice\" data-id=\"{v3}\">Reset choices & memory</button></div>","copy_0358":"<p>No practice choices or comfort options saved yet.</p>","copy_0359":"<section class=\"advance-panel\"><div class=\"section-heading\"><div><h2>Your practice choices</h2><p>Excluded practices remain accessible in the catalogue. You can restore suggestions here.</p></div></div><div class=\"preference-list\">{v0}</div></section>","copy_0360":"<i class=\"feedback-segment s{v0}\" style=\"width:{v1}%\"></i>","copy_0361":"<div><span>{v0}</span><div class=\"feedback-bar\" role=\"img\" aria-label=\"{v1}: {v2} helpful, {v3} no change, {v4} uncomfortable out of {v5} responses\">{v6}</div><b>{v7}</b></div>","copy_0362":"<div class=\"feedback-bars\">{v0}</div><p class=\"chart-legend\"><span>● Helpful</span><span>● No change</span><span>● Uncomfortable</span></p>","copy_0363":"<div class=\"empty\"><h3>Your experience will appear here.</h3><p>After a practice, choose optional feedback. Saving is always your choice.</p></div>","copy_0364":"<p class=\"notice\">Of {v0} paired observations: {v1} felt more settled, {v2} the same, and {v3} less settled. These observations cannot establish that a practice caused a change.</p>","copy_0365":"<p class=\"insight-sentence\">{v0} response{v1} marked helpful {v2}. {v3}.</p>","copy_0366":"This visit","copy_0367":"<article><div><strong>{v0} · {v1}</strong><small>{v2} · {v3} · {v4}</small></div><button class=\"text-button\" data-adv=\"delete-feedback\" data-id=\"{v5}\">Remove</button></article>","copy_0368":"<p>No responses for this period.</p>","copy_0369":"<section class=\"advance-panel\"><p class=\"eyebrow\">YOUR EXPERIENCE / YOUR INTERPRETATION</p><h2>What you chose to notice.</h2><p class=\"section-description\">Feedback from the selected period. Visit-only entries are included until reload; {v0} of {v1} are saved. Missing entries are unknown.</p><div class=\"insight-stats\"><div><strong>{v2}</strong><span>responses recorded</span></div><div><strong>{v3}</strong><span>marked helpful</span></div><div><strong>{v4}</strong><span>optional before/after pairs</span></div></div>{v5}{v6}{v7}<details class=\"feedback-history\"><summary>Explore or remove individual responses ({v8})</summary>{v9}</details><p class=\"small-note\">The charts describe your entries. They are not health assessments, treatment outcomes or employer reports.</p></section>{v10}","copy_0370":"<article class=\"studio-card\"><div class=\"studio-card-top\"><span class=\"studio-glyph\">{v0}</span><span class=\"tag\">{v1}</span></div><h3>{v2}</h3><p>{v3}</p><p class=\"studio-when\"><strong>When to use:</strong> {v4}</p><div class=\"studio-card-bottom\"><span>{v5} steps · Your pace</span><button type=\"button\" class=\"text-button context-detail-link\" data-context-open=\"studio:{v6}\" aria-haspopup=\"dialog\" aria-controls=\"serein-context-panel\" aria-expanded=\"false\">How it works</button><button class=\"button button-teal\" data-adv=\"studio\" data-id=\"{v7}\">Enter studio →</button></div></article>","copy_0371":"<header class=\"page-header\"><div><p class=\"eyebrow\">SEREIN / INTERACTIVE STUDIOS</p><h1>Make the next step real.</h1><p class=\"page-sub\">Six practical spaces to rehearse, prepare and take action. Drafts stay temporary unless you explicitly save a plan.</p></div></header><section class=\"studio-hero\"><div><p class=\"eyebrow\">FROM PERSONAL PAUSES TO PRACTICAL SUPPORT</p><h2>Find words.<br>Make room.<br><em>Change one thing.</em></h2><p>Choose a studio around the moment you are in. No patient information is needed.</p></div><div class=\"evidence-feature\"><strong>6</strong><h3>actions for healthier workplaces</h3><p>NIOSH’s 2024 Impact Wellbeing Guide sets out six evidence-informed organizational actions. These six Serein studios are original educational tools, not the guide’s six actions.</p><a href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">Read the source & scope ↗</a></div></section><div class=\"studio-grid\">{v1}</div>{v3}","copy_0372":"<label class=\"field-label\" for=\"studio-field-{v0}\">{v1}</label>","copy_0373":"<input type=\"date\" class=\"field\" id=\"studio-field-{v0}\" data-studio-field=\"{v1}\" value=\"{v2}\">","copy_0374":"<textarea rows=\"2\" class=\"field\" id=\"studio-field-{v0}\" data-studio-field=\"{v1}\" maxlength=\"1200\" placeholder=\"{v2}\">{v3}</textarea>","copy_0375":"<button class=\"text-button\" data-adv=\"studio-save\">Save this plan in this browser</button>","copy_0376":"<button class=\"button button-outline\" data-adv=\"team-present\">Open shared presentation →</button>","copy_0377":"<button class=\"button button-outline\" data-practice=\"ground\">Open a grounding pause →</button>","copy_0378":"<div class=\"result-heading\"><span class=\"studio-glyph\">{v0}</span><div><p class=\"eyebrow\">A PRACTICAL NEXT STEP</p><h3>{v1}</h3></div></div><label class=\"field-label\" for=\"studio-output\">Edit this so it sounds like you</label><textarea class=\"field studio-output\" id=\"studio-output\" rows=\"10\" maxlength=\"12000\">{v2}</textarea><div class=\"button-row\"><button class=\"button button-teal\" data-adv=\"studio-copy\">Copy my {v3}</button><button class=\"button button-outline\" data-adv=\"studio-download\">Download text</button>{v4}{v5}{v6}</div><p id=\"studio-result-status\" class=\"small-note\" role=\"status\">Draft stays temporary. Nothing is sent to anyone. Keep names and patient details out of this space.</p>","copy_0379":"<label class=\"field-label\" for=\"boundary-scenario\">A situation to rehearse</label><select class=\"field\" id=\"boundary-scenario\">{v0}</select><p class=\"scenario-context\">{v1}</p><p class=\"notice\">Use your professional responsibilities and workplace processes to guide real decisions.</p>","copy_0380":"<span class=\"response-rationale\">{v0}</span>","copy_0381":"<button class=\"choice-card {v0}\" data-adv=\"boundary-response\" data-value=\"{v1}\" aria-pressed=\"{v2}\"><strong>{v3}</strong>{v4}</button>","copy_0382":"<p class=\"studio-question\">{v0}</p><div class=\"response-options\">{v1}</div><p class=\"small-note\">A rehearsal with explanatory feedback, not a competence assessment.</p>","copy_0383":"Practical help","copy_0384":"Clarify responsibilities or available support.","copy_0385":"A quiet pause","copy_0386":"Choose an outward focus, without retelling the event.","copy_0387":"Human connection","copy_0388":"Prepare a conversation with someone trusted.","copy_0389":"<button class=\"choice-card {v0}\" data-adv=\"difficult-choice\" data-value=\"{v1}\" aria-pressed=\"{v2}\"><strong>{v3}</strong><span>{v4}</span></button>","copy_0390":"<p class=\"studio-question\">Which kind of support would you choose?</p><div class=\"choice-grid\">{v0}</div><p class=\"notice\">You do not have to describe what happened. If immediate safety is at issue, use your workplace escalation or usual urgent-care route.</p>","copy_0391":"<p class=\"notice\">You can change your mind, decline reflection, or choose qualified support. Serein is not monitored.</p>","copy_0392":"<p class=\"notice\">Participation is optional. Offer observing, external focus, skipping and leaving without explanation.</p>","copy_0393":"<label class=\"field-label\" for=\"team-practice\">Shared practice</label><select class=\"field\" id=\"team-practice\">{v0}</select><label class=\"field-label\" for=\"team-duration\">Available time</label><select id=\"team-duration\" class=\"field\">{v1}</select><p class=\"small-note\">Grounding is self-paced. Other choices use the selected time.</p>","copy_0394":"<label class=\"check-label\"><input type=\"checkbox\" id=\"team-external\" {v0}>Use an external-focus cue throughout</label><p>Shared presentation starts in text view, with sound off, reduced motion and no breath holds. Participants may adapt or sit out.</p>{v1}","copy_0395":"<section class=\"studio-intro\"><p>{v0}</p><p><strong>Use it:</strong> {v1}</p><p><strong>Your choice:</strong> {v2}</p></section>","copy_0396":"Build my draft","copy_0397":"<button class=\"button button-teal\" data-adv=\"studio-next\">{v0} →</button>","copy_0398":"<button class=\"button button-quiet\" data-action=\"close-modal\">Finish for now</button>","copy_0399":"{v0}{v1}<div class=\"studio-step-title\"><span class=\"tag\">{v2}</span><h3>{v3}</h3></div>{v4}<div class=\"studio-footer\"><button class=\"button button-quiet\" data-adv=\"studio-back\" {v5}>Back</button>{v6}</div><details class=\"studio-about\"><summary>Background & sources</summary><p>{v7} {v8}</p><p><strong>When:</strong> {v9}</p><p><strong>Who:</strong> {v10}</p>{v11}<p class=\"small-note\">Original educational tool. No automatic sending, reporting, clinical assessment or supervision.</p></details>","copy_0400":"Situation: {v0}\n\nI want to help within the priorities we agree. {v1}\n\nCould we agree: {v2}\n\nA check-back could be: {v3}\n\nAdapt this to the role, urgency and workplace process.","copy_0401":"I would like to discuss: {v0}\n\nThe impact on my work is: {v1}\n\nThe support I would like to request is: {v2}\n\nCould we discuss this with: {v3}\n\nA possible next step: {v4}\n\nProposed review: {v5}","copy_0402":"MY SHIFT TRANSITION\n\n□ Confirm through the approved handover: {v0}\n□ Leave for the agreed next opportunity: {v1}\n□ My transition action: {v2}\n□ Make it easier by: {v3}\n□ My recovery support: {v4}\n□ Support available: {v5}\n\nThis personal prompt does not replace handover or workplace records.","copy_0403":"ONE NEXT STEP\n\nMy chosen focus: {v0}\n\nPractical support: {v1}\nA person or service I could contact: {v2}\nWhen I could take this step: {v3}\n\nI can choose a different step or qualified support. No event details or disclosure are required.","copy_0404":"External-focus cues selected.","copy_0405":"OPTIONAL TEAM PAUSE\n\nOpening: {v0}\n\nPractice: {v1}\nTiming: {v2}\n\nOptions: observe, skip, keep eyes open, use external focus, or leave. Sound off, reduced motion, text-first presentation. {v3}\n\nClosing: {v4}\n\nDo not ask participants to disclose private experiences. Nothing is monitored or assessed.","copy_0406":"Agree a review date","copy_0407":"WORKING CONDITIONS ACTION PLAN\n\nBarrier: {v0}\nDesired improvement: {v1}\nProposed change: {v2}\nHow we will notice it happened: {v3}\nProposed owner (to be agreed): {v4}\nProposed review: {v5}\n\nUse appropriate workplace approval and escalation. This app does not assign tasks or notify the proposed owner.","copy_0408":"<details class=\"saved-plan\"><summary>{v0} · {v1}</summary><pre>{v2}</pre><button class=\"text-button\" data-adv=\"delete-plan\" data-id=\"{v3}\">Delete this plan</button></details>","copy_0409":"<p>A Working Conditions plan can be saved explicitly from its result screen.</p>","copy_0410":"<section class=\"advance-panel\"><div class=\"section-heading\"><div><h2>Plans you chose to keep</h2><p>Saved in this browser without encryption. No plan is sent or monitored.</p></div></div>{v0}</section>","copy_0411":"nature scene","copy_0412":"Begin exploring","copy_0413":"<article class=\"journey-card\"><img src=\"{v0}\" alt=\"Illustrative {v1}\" loading=\"lazy\"><div><p class=\"eyebrow\">5 STEPS / FLEXIBLE ORDER</p><h2>{v2}</h2><p>{v3}</p><details class=\"journey-outline\"><summary>View the five steps</summary><ol>{v4}</ol></details><progress max=\"5\" value=\"{v5}\" aria-label=\"{v6}: {v7} of 5 steps marked complete\"></progress><small>{v8} of 5 marked complete</small><button class=\"button button-teal\" data-adv=\"journey\" data-id=\"{v9}\">{v10} →</button></div></article>","copy_0414":"<header class=\"page-header\"><div><p class=\"eyebrow\">LEARN / TRY / REFLECT / APPLY</p><h1>Small steps. Your own pace.</h1><p class=\"page-sub\">Three flexible learning journeys. Fifteen short lessons. Your place is remembered without streaks or deadlines.</p></div></header><div class=\"journey-grid\">{v0}</div><section class=\"advance-panel\"><h3>Learning that leaves room for life.</h3><p>You decide when a step is complete. Skipping or returning is welcome. This is educational progress, without accreditation or clinical assessment.</p><button class=\"text-button\" data-adv=\"journey-reset-all\">Reset learning progress</button></section>","copy_0415":", marked complete","copy_0416":"<button data-adv=\"journey-step\" data-value=\"{v0}\" class=\"{v1}\" aria-label=\"{v2}. {v3}{v4}\" {v5}>{v6}</button>","copy_0417":"<p class=\"notice\">{v0}</p>","copy_0418":"<button class=\"button button-outline\" data-practice=\"{v0}\">Try {v1} →</button>","copy_0419":"<button class=\"text-button\" data-practice=\"{v0}\">Choose {v1}</button>","copy_0420":"<button class=\"button button-outline\" data-adv=\"studio\" data-id=\"{v0}\">Enter the studio →</button>","copy_0421":"Keep complete & continue","copy_0422":"Mark complete & continue","copy_0423":"<button class=\"text-button unmark-step\" data-adv=\"journey-unmark\">Mark this step incomplete</button>","copy_0424":"<div class=\"journey-step-nav\" aria-label=\"Journey steps\">{v0}</div><p class=\"eyebrow\">{v1} / STEP {v2} OF {v3}</p><h3>{v4}</h3><p class=\"lesson-text\">{v5}</p>{v6}<div class=\"button-row\">{v7}{v8}{v9}</div><div class=\"studio-footer\"><button class=\"button button-quiet\" data-adv=\"journey-previous\" {v10}>Previous</button><button class=\"button button-teal\" data-adv=\"journey-complete\">{v11} →</button></div><button class=\"text-button\" data-adv=\"journey-return\">Return to journeys</button>{v12}<p class=\"small-note\">Your step marks are saved in this browser. You can revisit in any order.</p>{v13}","copy_0425":"<div id=\"advance-stage\" class=\"advance-stage\" hidden></div>","copy_0426":"Attention map · not an anatomy assessment","copy_0427":"advance-stage body-attention","copy_0428":"Feet & support","copy_0429":"Whole body","copy_0430":"<button data-player-step=\"{v0}\" class=\"{v1}\" style=\"--point-y:{v2}%\" aria-current=\"{v3}\">{v4}</button>","copy_0431":"<svg viewBox=\"0 0 220 330\" aria-hidden=\"true\"><circle cx=\"110\" cy=\"44\" r=\"25\"/><path d=\"M90 80 Q110 70 130 80 L145 160 L135 190 L133 290 L115 290 L110 210 L105 290 L87 290 L85 190 L75 160Z\"/><path d=\"M89 85 L60 160 L66 190 M131 85 L160 160 L154 190\"/></svg><div class=\"body-points\">{v0}</div>","copy_0432":"advance-stage sensory-stage","copy_0433":"<div class=\"sensory-symbol\">{v0}</div><span>NOTICE YOUR ACTUAL SURROUNDINGS</span>","copy_0434":"Cycle {v0} · Your comfortable pace","copy_0435":"Local tone unavailable. Text and visual guidance remain available.","copy_0436":"Evidence, with its scope.","copy_0437":"<p>Each practice now has its own mapped background sources and adaptation notes. Source availability can change.</p>{v0}<p class=\"notice\">Editorial mapping updated {v1}. Content is educational; product outcomes have not been clinically established.</p>","copy_0438":"Your app, around your day.","copy_0439":"Check offline content","copy_0440":"Make available offline","copy_0441":"<button class=\"button button-teal\" id=\"offline-prepare\" data-adv=\"offline\" {v0}>{v1}</button><button class=\"button button-outline\" data-adv=\"install\">Install / add to home screen</button>","copy_0442":"<label><input type=\"checkbox\" name=\"days\" value=\"{v0}\" {v1}>{v2}</label>","copy_0443":"<section class=\"install-status\"><p class=\"eyebrow\">INSTALL / OFFLINE / REMINDERS</p><h3>Keep a little space close.</h3><p id=\"offline-status\">{v0}</p><div class=\"button-row\">{v1}</div><p id=\"install-note\" class=\"small-note\">Installation support varies. Your browser may offer Install, or Share → Add to Home Screen. Offline access stores app content on this device.</p></section><form id=\"reminder-form\"><h3>A reminder you control.</h3><p>Download a calendar reminder for the shift days and time you choose. It works after import through your calendar, even when Serein is closed.</p><label class=\"field-label\" for=\"reminder-title\">Reminder title</label><input class=\"field\" id=\"reminder-title\" name=\"title\" value=\"A little space for me\" maxlength=\"80\" required><label class=\"field-label\" for=\"reminder-time\">Local reminder time</label><input type=\"time\" class=\"field\" id=\"reminder-time\" name=\"time\" value=\"18:30\" required><fieldset class=\"reminder-days\"><legend>Repeat on</legend>{v2}</fieldset><p class=\"small-note\">Times follow the calendar’s local timezone. Choose days that fit your actual rota. Serein does not know your shifts or send push notifications.</p><p id=\"reminder-error\" role=\"alert\"></p><button type=\"submit\" class=\"button button-teal\">Download calendar reminder</button></form>","copy_0444":"Choose at least one day, a title and a valid time.","copy_0445":"DESCRIPTION:An optional Serein pause. Change or delete this reminder in your calendar.","copy_0446":"Calendar file prepared. Import it into your calendar and check the days and time.","copy_0447":"This single HTML already includes its core content and works offline. Installation requires HTTPS hosting with sw.js beside the HTML.","copy_0448":"Preparing offline content…","copy_0449":"Offline content is ready on this device.","copy_0450":"Use the hosted edition online first, then choose to save its content for offline use.","copy_0451":"Request timed out","copy_0452":"Offline installation requires a supported browser on HTTPS. The downloadable HTML already contains its core content.","copy_0453":"Offline helper sw.js is missing from this host. Upload the supplied sw.js beside this HTML, or use the hosted Serein edition. The app remains available online.","copy_0454":"Asset list unavailable","copy_0455":"Offline cache configuration missing","copy_0456":"Offline content incomplete","copy_0457":"App content is ready offline on this device.","copy_0458":"Offline setup could not finish. Check your connection, HTTPS hosting and available device storage, then try again.","copy_0459":"(display-mode: standalone)","copy_0460":"Serein is already running as an installed app.","copy_0461":"Use your browser’s Install option, or Share → Add to Home Screen. If unavailable, keep using the browser edition.","copy_0462":"An updated edition is available. Reconnect and use “Check for updates” in My app.","copy_0463":"<section class=\"advance-panel app-panel\"><p class=\"eyebrow\">SEREIN / ON YOUR DEVICE</p><h3>Ready when a pause is possible.</h3><p>The downloadable edition includes its core content. The hosted edition can be installed and explicitly prepared for offline use.</p><div class=\"button-row\"><button class=\"button button-teal\" data-adv=\"app-options\">Install, offline & reminders →</button><button class=\"text-button\" data-adv=\"app-update\">Check for updates</button></div><p class=\"small-note\">Personal data stays in this browser. Different browsers and the standalone file have separate storage; use export/import to transfer your data.</p></section>","copy_0464":"Use the hosted edition to check for app updates.","copy_0465":"Prepare offline access first, or reload online for the latest app.","copy_0466":"An update is ready.","copy_0467":"<p>Export anything you want to keep, then apply the update. Unsaved visit-only entries disappear on reload. Journal drafts remain in this tab when temporary storage is available.</p><div class=\"button-row\"><button class=\"button button-outline\" data-action=\"export\">Export first</button><button class=\"button button-teal\" data-adv=\"apply-update\">Apply update & reload</button></div>","copy_0468":"Update check complete. Reload online to use the latest published edition.","copy_0469":"Update check unavailable. Try again while online.","copy_0470":"Copied. Nothing was sent.","copy_0471":"Select the draft and copy it using your device controls.","copy_0472":"Response removed.","copy_0473":"Serein-{v0}-plan.txt","copy_0474":"Plan saved in this browser without encryption. You can delete it in the Toolkit. Nothing was sent.","copy_0475":"Your step is marked complete. Revisit whenever useful.","copy_0476":"Reset learning progress?","copy_0477":"<p>This removes your journey step marks. Your reflections, plans and practice choices remain available.</p><button class=\"button button-outline\" data-adv=\"journey-reset-confirm\">Reset step marks</button>","copy_0478":"<button class=\"search-result\" data-adv=\"studio\" data-id=\"{v0}\">{v1}<span><strong>{v2}</strong><small>Interactive studio</small></span><span>↗</span></button>","copy_0479":"<button class=\"search-result\" data-adv=\"journey\" data-id=\"{v0}\">{v1}<span><strong>{v2}</strong><small>Five-step learning journey</small></span><span>↗</span></button>","copy_0480":"<p class=\"search-group-label\">STUDIOS & JOURNEYS</p>{v0}{v1}","copy_0481":"Continuous breathing","copy_0482":"Removes the timed pauses between breathing in and out. Keep your breathing gentle and choose a comfortable pace.","copy_0483":"External focus","copy_0484":"Uses guidance about the room or your surroundings instead of focusing on breath or internal sensations. You can keep your eyes open.","copy_0485":"Practice memory","copy_0486":"Reuses timing, visual and comfort choices for this practice on this browser. Voice must still be enabled for each session. Reset saved choices in My patterns.","copy_0487":"Saved feedback","copy_0488":"Keeps this response after the visit and includes it in My patterns. Leave unchecked for visit-only feedback. You can delete saved responses later.","copy_0489":"App structure","copy_0490":"A count from this edition of Serein, not a research result.","copy_0491":"My reflections","copy_0492":"You choose whether this is suitable. {v0}","copy_0493":"guided steps in this practice","copy_0494":"The external figure supplies research or workforce context; it does not measure this Serein practice.","copy_0495":" Then choose one feasible next step.","copy_0496":"Healthcare workers using their own role, judgment and workplace arrangements.","copy_0497":" interactive steps","copy_0498":"Explore attention and comfort, then identify an approach you would choose again.","copy_0499":"Move from a practical barrier to words, ownership and a review point.","copy_0500":"Connect an agreed handover with a feasible transition and recovery support.","copy_0501":"Across visits whenever learning feels useful; there is no deadline.","copy_0502":"Open any lesson, explore its linked activity, and explicitly mark or unmark progress.","copy_0503":"Healthcare workers and learners; this is educational progress without accreditation.","copy_0504":"lessons in this journey","copy_0505":"Understand · try · reflect · apply","copy_0506":"Begin with a realistic intention and available support.","copy_0507":"Match a small pause to the space between responsibilities.","copy_0508":"Choose support without having to retell the event.","copy_0509":"Make a deliberate transition after an agreed handover.","copy_0510":"Select this moment to refresh recommendations, or use Help me choose for more options.","copy_0511":"Workers choosing a personal response to their current situation.","copy_0512":"All practices","copy_0513":"Explore every available practice type.","copy_0514":"Optional timing and visuals for gentle, unforced breathing.","copy_0515":"Use details in your real surroundings as an outward attention anchor.","copy_0516":"Small optional movements or relax-only attention in a suitable setting.","copy_0517":"Notice a supported sensation or an external detail without needing to change it.","copy_0518":"Use an imagined neutral setting, or choose actual room details instead.","copy_0519":"Saved practices","copy_0520":"Return to practices you bookmarked.","copy_0521":"Explore reflection, boundaries and practical working-day support.","copy_0522":"Mindfulness guides","copy_0523":"Explore optional attention and noticing practices.","copy_0524":"Shared practice guides","copy_0525":"Prepare a voluntary invitation and useful adaptations.","copy_0526":"Practice context guides","copy_0527":"Read educational prompts using your own professional responsibilities.","copy_0528":"Narrow the catalogue to an approach you want to explore.","copy_0529":"When comparing available practices or guides.","copy_0530":"Select the category, combine it with filters, then read the relevant activity information.","copy_0531":"People making their own content and comfort choices.","copy_0532":"All practical guides","copy_0533":"Saved practical guides","copy_0534":"Explore every available practical guide.","copy_0535":"Return to guides you bookmarked.","copy_0536":"Compare short readings about practical support and working life.","copy_0537":"When preparing a conversation or looking for an educational reference.","copy_0538":"Choose a category, read the guide, then adapt a next step to your setting.","copy_0539":"Healthcare workers and learners using professional judgment.","copy_0540":"practice bookmarks","copy_0541":"Saved guides","copy_0542":"guide bookmarks","copy_0543":"Saved words","copy_0544":"original reflections saved","copy_0545":"A collection of resources you explicitly chose to bookmark.","copy_0546":"Find your own useful references without repeating a search.","copy_0547":"When you want to revisit something saved.","copy_0548":"Open an item or remove its bookmark. Your other records are unaffected.","copy_0549":"The person using this browser; collections do not sync automatically.","copy_0550":"Current local collection count. You can remove bookmarks at any time.","copy_0551":"<button type=\"button\" class=\"text-button context-detail-link\" data-context-open=\"{v0}\" aria-haspopup=\"dialog\" aria-controls=\"{v1}\" aria-expanded=\"false\">{v2} <span aria-hidden=\"true\">→</span></button>","copy_0552":"Evidence & context","copy_0553":"<aside class=\"context-reading-note\" aria-label=\"Using this guide\"><p><strong>Why this guide:</strong> {v0}</p><p><strong>When to use it:</strong> {v1}</p>{v2}</aside>","copy_0554":"Explore the evidence & sources","copy_0555":"<section class=\"context-evidence-section\" aria-labelledby=\"workplace-context-title\"><div><p class=\"eyebrow\">WORKFORCE CONTEXT / UNITED KINGDOM</p><h2 id=\"workplace-context-title\">Support includes working conditions.</h2><p>Pressure in health and care often comes from workload, staffing and rotas, not from the person. Practical support from your team, manager, occupational health or staff wellbeing service matters as much as any individual practice.</p></div><p class=\"small-note\">Serein is a self-care tool. It does not measure stress or burnout and does not replace workplace or clinical support.</p></section>","copy_0556":"<button type=\"button\" class=\"context-tip-trigger\" data-context-tip=\"{v0}\" aria-label=\"Explain {v1}\"><span aria-hidden=\"true\">?</span></button>","copy_0557":"<div class=\"context-comparison\" role=\"img\" aria-label=\"{v0}: {v1}% in {v2}; {v3}% in {v4}\"><div><span>{v5}</span><i><b style=\"width:{v6}%\"></b></i><strong>{v7}%</strong></div><div><span>{v8}</span><i><b style=\"width:{v9}%\"></b></i><strong>{v10}%</strong></div></div>","copy_0558":"<div class=\"context-percent-track\" role=\"img\" aria-label=\"{v0}\"><span style=\"width:{v1}%\"></span></div>","copy_0559":"<small>{v0}{v1}</small>","copy_0560":"<small>{v0}</small>","copy_0561":"<article class=\"context-fact\"><span class=\"context-fact-kind\">{v0}</span><strong class=\"context-number\">{v1}</strong><p>{v2}</p>{v3}{v4}</article>","copy_0562":"HOW IT WORKS","copy_0563":"EVIDENCE & CONTEXT","copy_0564":"<div><dt>{v0}</dt><dd>{v1}</dd></div>","copy_0565":"<section class=\"context-numbers\" aria-label=\"Research context\">{v0}</section><p class=\"small-note\">Population figures provide background. They do not predict your experience or show that Serein produces a benefit.</p>","copy_0566":"<article><a href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">{v1} ↗</a><small>{v2}</small><p>{v3}</p></article>","copy_0567":"<article><a href=\"{v0}\" target=\"_blank\" rel=\"noopener noreferrer\">{v1} ↗</a><p>{v2}</p></article>","copy_0568":"Original educational content. Adapt any next step to your role and setting.","copy_0569":"<header class=\"context-panel-head\"><div><span>{v0}</span><h2 id=\"context-card-title\">{v1}</h2>{v2}</div><button type=\"button\" data-context-close aria-label=\"Close details\">×</button></header><div class=\"context-panel-scroll\"><dl class=\"context-five\">{v3}</dl>{v4}<section class=\"context-sources\" aria-label=\"Sources and scope\"><h3>Sources & scope</h3>{v5}{v6}<p>Editorial source check: {v7}. {v8}</p></section></div><footer class=\"context-panel-foot\"><span>Take your time. Close when ready.</span><button type=\"button\" data-context-close>Close details</button></footer>","copy_0570":"Library","copy_0571":"Toolkit","copy_0572":"Say no kindly","copy_0573":"Ask for help","copy_0574":"Leave work at work","copy_0575":"After a hard moment","copy_0576":"Run a team pause","copy_0577":"Fix a work barrier","copy_0578":"<label class=\"field-label\" for=\"","copy_0579":"</label><select class=\"field\" id=\"","copy_0580":"<option value=\"","copy_0581":"<label class=\"setting-row\"><span>","copy_0582":"</span><input type=\"checkbox\" id=\"","copy_0583":"<header class=\"page-header\"><p class=\"eyebrow\">","copy_0584":"<section class=\"empty\"><svg viewBox=\"0 0 100 64\" aria-hidden=\"true\"><path d=\"M12 51h76M24 47c-8-24 6-31 18-16 8-26 28-20 20 7 19-13 28 4 12 9\"/><circle cx=\"77\" cy=\"15\" r=\"7\"/></svg><h2>","copy_0585":"Quick pause","copy_0586":"data-v5=\"quick\" class=\"quick-nav\"","copy_0587":"(prefers-color-scheme: dark)","copy_0588":"Your choices come first.","copy_0589":"No practice matches your suggestion choices. You can adjust them in Settings.","copy_0590":"<button class=\"button button-teal\" data-nav=\"me/settings\">Review practice choices</button>","copy_0591":"<section class=\"pause-card\"><div class=\"pause-image\"><img src=\"","copy_0592":"\" width=\"800\" height=\"500\" fetchpriority=\"high\"><span class=\"illustrative\" title=\"Illustrative, AI-generated image\">ⓘ</span></div><div class=\"pause-copy\"><p class=\"eyebrow\">YOUR PAUSE FOR RIGHT NOW</p><h2>","copy_0593":"</p><div class=\"card-meta\">","copy_0594":"</div><div class=\"button-row\"><button class=\"button button-teal\" data-practice=\"","copy_0595":"\">Start my pause ","copy_0596":"</button><button class=\"text-button\" data-adv=\"finder\">Something else</button></div><details class=\"time-choice\"><summary>Change time</summary><div class=\"time-chips\">","copy_0597":"My pace","copy_0598":"<button data-v5=\"home-time\" data-value=\"","copy_0599":"<button class=\"continue-card\" data-adv=\"journey\" data-id=\"","copy_0600":"\"><span><small>CONTINUE AT YOUR PACE</small><strong>","copy_0601":"<button class=\"continue-card\" data-nav=\"me/routine\"><span><small>YOUR CHOSEN SEQUENCE</small><strong>Return to my routine</strong></span>","copy_0602":"<button class=\"continue-card\" data-nav=\"toolkit\"><span><small>YOUR SAVED PLANS</small><strong>Return to a practical next step</strong></span>","copy_0603":"<div class=\"today-greeting\"><h1 class=\"today-greeting-title\">","copy_0604":"</time></div><div id=\"today-recommendation\">","copy_0605":"</div><section class=\"moment-section\"><h2 class=\"small-heading\">What moment are you in?</h2><div class=\"moment-chips\" role=\"group\" aria-label=\"Your working moment\">","copy_0606":"Before shift","copy_0607":"Between tasks","copy_0608":"After a difficult moment","copy_0609":"After shift","copy_0610":"<button data-moment=\"","copy_0611":"<div class=\"rotation-choice\"><span>This week:</span><button data-v5=\"rotation\" data-value=\"days\">Days</button><button data-v5=\"rotation\" data-value=\"nights\">Nights</button></div>","copy_0612":"</section><section class=\"quick-checkin\"><div><h2 class=\"small-heading\">A quick check-in</h2><p class=\"small-note\">Optional. One tap keeps it for this visit.</p></div>","copy_0613":"<div id=\"quick-checkin-actions\" role=\"status\"></div></section>","copy_0614":"<div id=\"today-reflection\">","copy_0615":"</div><div class=\"compact-links\"><button data-nav=\"library/guides\">Guides for real working days →</button><button data-nav=\"toolkit\">Toolkit →</button></div>","copy_0616":"<div id=\"filter-controls\">","copy_0617":"No movement","copy_0618":"<div class=\"active-filters\" aria-label=\"Active filters\">","copy_0619":"<button data-v5=\"clear-filter\" data-value=\"","copy_0620":"<button class=\"text-button\" data-action=\"reset-filters\">Clear all</button>","copy_0621":"<div class=\"library-heading\">","copy_0622":"YOUR LIBRARY","copy_0623":"Find what fits.","copy_0624":"Practices, useful guides and learning at your pace.","copy_0625":"<button class=\"button button-outline\" data-nav=\"toolkit\">","copy_0626":" Toolkit</button></div><div class=\"segmented\" role=\"group\" aria-label=\"Library content\">","copy_0627":"<button data-nav=\"library/","copy_0628":"<label class=\"search-input full-search\">","copy_0629":"<span class=\"sr-only\">Search guides</span><input id=\"guide-query\" type=\"search\" value=\"","copy_0630":"\" placeholder=\"Boundaries, support, rest…\"></label><div class=\"category-row\" role=\"group\" aria-label=\"Guide categories\">","copy_0631":"<button data-guide-category=\"","copy_0632":"</div><div id=\"guide-results\">","copy_0633":"<div class=\"library-actions\"><button class=\"button button-outline filters-launch\" data-v5=\"filters\">","copy_0634":" active</button><button class=\"text-button\" data-action=\"routine-builder\">Build a routine</button></div><div id=\"desktop-filters\">","copy_0635":"<div class=\"category-row\" role=\"group\" aria-label=\"Practice categories\">","copy_0636":"<button data-category=\"","copy_0637":"</div><div id=\"practice-results\">","copy_0638":"</div><p class=\"small-note\">Preference matches, not health recommendations. You can adapt, skip, pause or stop.</p>","copy_0639":"<section class=\"panel locked-panel\">","copy_0640":"<h2>Your private records are locked.</h2><p>Unlock to open your journal, check-ins and support contacts. Practices and the rest of Serein remain available.</p><button class=\"button button-teal\" data-v5=\"unlock\">Unlock private records</button><button class=\"text-button\" data-v5=\"encrypted-export\">Download encrypted archive</button></section>","copy_0641":"<section class=\"panel journal-history\"><div class=\"section-heading\"><h2>Your reflections</h2><label class=\"search-input\">","copy_0642":"<span class=\"sr-only\">Search your reflections</span><input type=\"search\" id=\"journal-query\" value=\"","copy_0643":"\" placeholder=\"Find your own words…\"></label></div><div id=\"journal-history\">","copy_0644":"<section class=\"panel\"><h2>Journal lock</h2><p>Optional encryption covers saved journals, check-ins and support contacts. Preferences, feedback and saved plans remain unencrypted.</p>","copy_0645":"<p class=\"notice\">Web Crypto is unavailable in this browser. Encryption is hidden; the app remains usable with its normal storage choices.</p>","copy_0646":" Lock enabled · ","copy_0647":"</p><div class=\"button-row\"><button class=\"button button-outline\" data-v5=\"","copy_0648":"Lock now","copy_0649":"</button><button class=\"text-button\" data-v5=\"remove-lock\">Remove lock</button></div>","copy_0650":"Lock after inactivity","copy_0651":"Lock when this tab is hidden","copy_0652":"<button class=\"button button-outline\" data-v5=\"setup-lock\">Set up a journal lock</button>","copy_0653":"<p class=\"small-note\">If you forget the passcode, locked entries cannot be recovered.</p></section>","copy_0654":"<form id=\"settings-form\"><section class=\"panel\"><h2>Comfort</h2>","copy_0655":"Text size","copy_0656":"Auto · follows your device","copy_0657":"HCA ivory","copy_0658":"HCA navy night","copy_0659":"High contrast","copy_0660":"Comfortable reading width","copy_0661":"Low-distraction layout","copy_0662":"Less motion","copy_0663":"Your device’s reduced-motion preference is also respected.","copy_0664":"3D breathing visual","copy_0665":"A still alternative and text remain available.","copy_0666":"Show original reflections","copy_0667":"Secular Serein words, without streaks or pressure.","copy_0668":"</section><section class=\"panel\"><h2>Practice defaults</h2>","copy_0669":"Your role","copy_0670":"Usual pause length","copy_0671":"Focus preference","copy_0672":"Shift pattern","copy_0673":"Prefer not to say","copy_0674":"<p class=\"small-note\">Changes apply immediately. A selected role does not certify suitability.</p></section>","copy_0675":"</form><section class=\"panel\"><h2>Reminders & app</h2>","copy_0676":"</section><section class=\"panel\"><h2>Privacy & data</h2><div class=\"button-row\"><button class=\"button button-outline\" data-nav=\"me/data\">Export, import & clear</button><button class=\"text-button\" data-action=\"privacy\">Privacy details</button><button class=\"text-button\" data-v5=\"scope\">About images, evidence & safety</button><button class=\"text-button\" data-v5=\"onboarding\">Reopen welcome guide</button></div></section>","copy_0677":"Journal","copy_0678":"Routine","copy_0679":"Insights","copy_0680":"Settings","copy_0681":"Data & privacy","copy_0682":"Look back over","copy_0683":"Last 90 days","copy_0684":"<section class=\"panel\"><h2>Recover your saved archive</h2><p>The existing browser archive could not be read. It has been kept unchanged. Download a recovery copy before clearing or importing data. New changes stay in memory until this is resolved.</p><button class=\"button button-teal\" data-v5=\"recovery-export\">Download original stored data</button></section>","copy_0685":"YOUR SPACE / YOUR CHOICE","copy_0686":"A little room for you.","copy_0687":"Keep what is useful. Return whenever you choose.","copy_0688":"<div class=\"me-tabs\" role=\"group\" aria-label=\"Your space\">","copy_0689":"<button data-nav=\"me/","copy_0690":"<section class=\"help-now\"><p class=\"eyebrow\">GET HELP NOW / UNITED KINGDOM</p><h2>Human support is close.</h2><p>If you or someone else is in immediate danger, call 999. Serein is not monitored and cannot provide urgent care.</p><div class=\"help-grid\"><a href=\"tel:999\"><strong>999</strong><span>Emergency services</span></a><a href=\"tel:111\"><strong>NHS 111 · option 2</strong><span>Urgent mental health help in England (111 for urgent medical advice)</span></a><a href=\"tel:116123\"><strong>Samaritans · 116 123</strong><span>Free listening support, day or night</span></a><a href=\"sms:85258?body=SHOUT\"><strong>Text SHOUT to 85258</strong><span>Shout · free UK text support, 24/7</span></a><a href=\"sms:85258?body=FRONTLINE\"><strong>Text FRONTLINE to 85258</strong><span>Shout · for health and care workers, 24/7</span></a><a href=\"https://www.practitionerhealth.nhs.uk/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>NHS Practitioner Health</strong><span>Confidential NHS support for health and care professionals · practitionerhealth.nhs.uk</span></a><a href=\"tel:111\"><strong>Scotland · NHS 24 on 111</strong><span>Urgent help, day or night</span></a><a href=\"tel:0800838587\"><strong>Scotland · Breathing Space</strong><span>0800 83 85 87 · listening and advice</span></a><a href=\"tel:08088088000\"><strong>Northern Ireland · Lifeline</strong><span>0808 808 8000 · crisis support, 24/7</span></a><a href=\"https://www.nhs.uk/nhs-services/mental-health-services/find-nhs-talking-therapies-for-anxiety-and-depression/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>NHS Talking Therapies</strong><span>Refer yourself for anxiety and depression support (England)</span></a></div><p class=\"small-note\">These routes are for the UK. Elsewhere, use the appropriate local emergency or support service. Calls and texts use your phone app.</p><details><summary>Service information & sources</summary><a class=\"source-link\" href=\"https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/\" target=\"_blank\" rel=\"noopener noreferrer\">NHS urgent support ↗</a><a class=\"source-link\" href=\"https://www.samaritans.org/how-we-can-help/contact-samaritan/talk-us-phone/\" target=\"_blank\" rel=\"noopener noreferrer\">Samaritans service information ↗</a><a class=\"source-link\" href=\"https://giveusashout.org/get-help/\" target=\"_blank\" rel=\"noopener noreferrer\">Shout service information ↗</a><p class=\"small-note\">Source check: 16 October 2026. Availability and service arrangements can change.</p></details></section>","copy_0691":"<section class=\"panel\"><h2>My support people</h2>","copy_0692":"<section class=\"panel\"><h2>My support people</h2><p>Choose people or services you would like to contact. Nothing is sent from this app.</p><div class=\"contact-list\">","copy_0693":"<article class=\"contact-card\"><div><h3>","copy_0694":"</small></div><a class=\"button button-outline\" href=\"tel:","copy_0695":"</a><button class=\"text-button\" data-v5=\"delete-contact\" data-id=\"","copy_0696":"</div><form id=\"support-contact-form\"><label class=\"field-label\" for=\"contact-name\">Name or service</label><input class=\"field\" id=\"contact-name\" name=\"name\" maxlength=\"100\" required><label class=\"field-label\" for=\"contact-role\">Role, if useful</label><input class=\"field\" id=\"contact-role\" name=\"role\" maxlength=\"100\"><label class=\"field-label\" for=\"contact-phone\">Phone</label><input class=\"field\" id=\"contact-phone\" name=\"phone\" type=\"tel\" maxlength=\"40\" required pattern=\"[+0-9 ()*#-]{3,40}\"><label class=\"check-label\"><input name=\"persist\" type=\"checkbox\">Save on this browser for another day</label><p class=\"small-note\">","copy_0697":"Saved contact details are included in your encrypted records.","copy_0698":"Saved contact details are unencrypted unless you enable the journal lock.","copy_0699":"</p><button class=\"button button-teal\" type=\"submit\">Add my support person</button><p class=\"form-error\" role=\"alert\" id=\"contact-error\"></p></form></section>","copy_0700":"YOUR TOOLKIT","copy_0701":"Make the next step practical.","copy_0702":"Six guided tools for words, choices and an editable plan.","copy_0703":"<a class=\"toolkit-infographics\" href=\"#infographics\">","copy_0704":"<span><strong>Explore the illustrated guides</strong><small>12 infographics · flip, enlarge and read the sources</small></span>","copy_0705":"<details class=\"panel\"><summary>Short draft tools</summary><p>Earlier compact three-question builders remain available here.</p><button class=\"text-button\" data-v5=\"legacy-tools\" data-value=\"conversation\">Short support draft</button><button class=\"text-button\" data-v5=\"legacy-tools\" data-value=\"transition\">Short transition draft</button></details>","copy_0706":" · safety & adaptation</summary><p>","copy_0707":"IMAGES / EVIDENCE / SAFETY","copy_0708":"Clear context. Your choice.","copy_0709":"Original educational tools, with relevant background sources and adaptation notes.","copy_0710":"<section class=\"panel\"><h2>About the images</h2><p>Illustrative, AI-generated photographs accompany the content. Infographics are AI-generated educational illustrations with sources and limitations. Their readable text and statistics have been editorially reviewed. These visuals are not anatomical standards, prescribed movement ranges or patient records.</p><h2>About evidence</h2><p>Sources support background principles. Serein has not been clinically validated as a treatment, and population figures do not predict a personal benefit.</p><h2>Current privacy choices</h2><p>Records are browser-local. Saving personal entries is opt-in. Optional encryption covers journals, check-ins and contacts; other saved preferences, feedback and plans remain unencrypted. Drafts use temporary tab storage, encrypted when the journal lock is enabled.</p>","copy_0711":"<details><summary>All original scope and privacy statements</summary><p class=\"notice\">The original default-storage statements below describe the unlocked mode. The optional journal lock now adds encryption to the specific records named above.</p>","copy_0712":"<a class=\"source-link\" href=\"","copy_0713":"\" target=\"_blank\" rel=\"noopener noreferrer\">","copy_0714":" · Serein · Healthcare Crown Academy","copy_0715":"<img class=\"article-image\" src=\"","copy_0716":"\"><p class=\"small-note\">Illustrative, AI-generated image</p>","copy_0717":"Choose a length","copy_0718":"<div class=\"button-row\"><button class=\"button button-teal\" data-v5=\"detail-start\" data-id=\"","copy_0719":"\">Start this practice</button><button class=\"button button-outline\" data-v5=\"detail-preview\" data-id=\"","copy_0720":"\">Watch first</button><button class=\"text-button\" data-save-practice=\"","copy_0721":"Preference updated.","copy_0722":"Private records could not be locked. Keep this tab open.","copy_0723":"Secure local encryption is unavailable in this browser.","copy_0724":"A private journal lock.","copy_0725":"Remove your journal lock?","copy_0726":"Unlock your private records.","copy_0727":"If you forget the passcode, locked entries cannot be recovered. Choose a passphrase you can keep safely.","copy_0728":"Removing the lock writes saved journals, check-ins and contacts back to normal unencrypted browser storage.","copy_0729":"Your passcode stays on this device and is never sent.","copy_0730":"</p><form id=\"vault-form\" data-mode=\"","copy_0731":"\"><label class=\"field-label\" for=\"vault-pass\">Passcode or passphrase</label><input class=\"field\" type=\"password\" id=\"vault-pass\" name=\"pass\" autocomplete=\"","copy_0732":"<label class=\"field-label\" for=\"vault-confirm\">Confirm passcode</label><input class=\"field\" type=\"password\" id=\"vault-confirm\" name=\"confirm\" autocomplete=\"new-password\" minlength=\"6\" required><label class=\"check-label\"><input type=\"checkbox\" name=\"understood\" required>I understand that a forgotten passcode cannot be recovered.</label>","copy_0733":"<label class=\"check-label\"><input type=\"checkbox\" name=\"understood\" required>I understand saved records will be unencrypted.</label>","copy_0734":"<p class=\"form-error\" id=\"vault-error\" role=\"alert\"></p><button type=\"submit\" class=\"button button-teal\">","copy_0735":"Enable encryption","copy_0736":"Remove lock","copy_0737":"Your archive, your choice.","copy_0738":"<p>Downloaded files contain personal records. Keep them private.</p><div class=\"button-row\">","copy_0739":"<button class=\"button button-teal\" data-v5=\"encrypted-export\">Download encrypted archive</button>","copy_0740":"<button class=\"button button-outline\" data-v5=\"plain-export\">Download plain archive</button></div><p class=\"small-note\">An encrypted archive requires its passcode. A plain archive can be read by anyone who opens the file.</p>","copy_0741":"Download an unencrypted archive?","copy_0742":"<p>This file includes your personal records in readable form, even when the journal lock is enabled.</p><label class=\"check-label\"><input type=\"checkbox\" id=\"plain-export-consent\">I understand and will keep the file private.</label><button class=\"button button-teal\" data-v5=\"plain-export-confirm\">Download plain archive</button><p id=\"export-error\" class=\"form-error\" role=\"alert\"></p>","copy_0743":"Get human support.","copy_0744":"<p class=\"eyebrow\">WELCOME TO SEREIN</p><h3>A little space for the people who care.</h3><p>Optional practices, personal reflection and practical working-day support.</p><p>Your personal records stay in this browser. Nothing is sent to employers, and there is no live monitoring.</p>","copy_0745":"<form id=\"onboarding-form\">","copy_0746":"<h3>Your words. Your choice.</h3><p>Saving journal entries, check-ins and support contacts is opt-in. Drafts are temporarily kept in this tab. Normal browser storage is unencrypted.</p><p>You can export, import or clear your records. Optional journal encryption adds a passcode lock to journals, check-ins and contacts.</p><p class=\"notice\">Keep patient-identifying information out of this space. Serein is educational and is not monitored.</p>","copy_0747":"Make a little room.","copy_0748":"<div class=\"onboarding-step\" data-step=\"","copy_0749":"<div class=\"button-row\"><button class=\"button button-teal\" data-v5=\"welcome-next\">","copy_0750":"Enter Serein","copy_0751":"</button><button class=\"text-button\" data-v5=\"welcome-skip\">Skip</button>","copy_0752":"<button class=\"text-button\" data-v5=\"welcome-lock\">Set up a journal lock</button>","copy_0753":"Start Box Breathing · 2 min","copy_0754":"New journal entry","copy_0755":"Quick check-in","copy_0756":"Export my data","copy_0757":"Switch to dark theme","copy_0758":"Get help now","copy_0759":"Browse the Visual Atlas","copy_0760":"Serein action","copy_0761":"Five-step learning journey","copy_0762":"Recent choices","copy_0763":"<section><h2 class=\"search-group-label\">","copy_0764":"<button class=\"search-result\" data-v5=\"command\" data-kind=\"","copy_0765":"\"><span class=\"search-icon\">","copy_0766":"No matches yet.","copy_0767":"Try a practice, support, journal or an action.","copy_0768":"HCA navy night enabled.","copy_0769":"Choose what fits.","copy_0770":"<button class=\"button button-teal\" data-v5=\"filters-done\">Show practices</button>","copy_0771":"Check-in kept for this visit.","copy_0772":"Kept for this visit.","copy_0773":"</p><button class=\"text-button\" data-v5=\"checkin-note\">Add a note</button><button class=\"text-button\" data-v5=\"save-quick-checkin\" ","copy_0774":">Save on this browser</button>","copy_0775":"A little context, if useful.","copy_0776":"<form id=\"quick-note-form\"><label class=\"field-label\" for=\"quick-note\">Your note · no patient details</label><textarea class=\"field\" id=\"quick-note\" name=\"note\" maxlength=\"6000\" rows=\"4\">","copy_0777":"</textarea><p class=\"small-note\">","copy_0778":"This check-in is saved.","copy_0779":"This check-in lasts for this visit only.","copy_0780":"</p><button class=\"button button-teal\" type=\"submit\">Keep my note</button></form>","copy_0781":"Choose a Serein archive smaller than 8 MB.","copy_0782":"Unlock private records before importing, then choose the file again.","copy_0783":"Open an encrypted archive.","copy_0784":"<p>Use the passcode for this archive. It is never sent anywhere.</p><form id=\"archive-pass-form\"><label class=\"field-label\" for=\"archive-pass\">Archive passcode</label><input type=\"password\" class=\"field\" id=\"archive-pass\" name=\"pass\" autocomplete=\"off\" required><button class=\"button button-teal\" type=\"submit\">Open archive</button><p id=\"archive-error\" class=\"form-error\" role=\"alert\"></p></form>","copy_0785":"This archive could not be read.","copy_0786":" responses and ","copy_0787":" plans.</p><p>Merge keeps existing entries. Replace restores this archive in their place.</p>","copy_0788":"<label class=\"check-label\"><input type=\"checkbox\" id=\"import-use-lock\" checked>Keep these records encrypted using the archive passcode</label><p class=\"notice\">If you uncheck this option, imported saved records use normal unencrypted browser storage.</p>","copy_0789":"<div class=\"button-row\"><button class=\"button button-teal\" data-v5=\"import-merge\">Merge with my records</button><button class=\"button button-outline\" data-v5=\"import-replace\">Replace with this archive</button><button class=\"text-button\" data-action=\"close-modal\">Cancel</button></div><p class=\"form-error\" id=\"import-error\" role=\"alert\"></p>","copy_0790":"Download the original recovery copy and clear the damaged archive before importing.","copy_0791":"The archive could not be saved. Existing records are kept; free browser storage and try again.","copy_0792":"Archive merged.","copy_0793":"Shift-aware reminder preset","copy_0794":"Choose my own time","copy_0795":"10 minutes after shift start","copy_0796":"End of shift","copy_0797":"Shift used for this reminder","copy_0798":"Day shift · 07:00–19:00","copy_0799":"Night shift · 19:00–07:00","copy_0800":"<p class=\"small-note\">These are editable presets, not your known rota. Confirm the actual shift time and weekdays before downloading.</p>","copy_0801":"Your keyboard shortcuts.","copy_0802":"<dl class=\"shortcut-list\">","copy_0803":"Quick pause, outside text fields","copy_0804":"Play or pause","copy_0805":"Previous or next step","copy_0806":"Restart practice","copy_0807":"Shared presentation","copy_0808":"Close the current sheet or exit practice","copy_0809":"Ctrl/⌘ K or /","copy_0810":"Search content and actions","copy_0811":"Open this guide","copy_0812":"About images, evidence & safety.","copy_0813":"Serein records and preferences cleared from this browser.","copy_0814":"Optional encryption is enabled for journals, check-ins and contacts. The normal-storage statements below apply to other data and to unlocked mode.","copy_0815":"The journal lock can optionally encrypt journals, check-ins and contacts. Without it, normal browser storage is unencrypted.","copy_0816":"The saved entry will be included in your encrypted private records. Keep your passcode safe.","copy_0817":"Browser storage is unencrypted. Other people using this browser profile may be able to read the entry.","copy_0818":"</p><div class=\"button-row\"><button class=\"button button-teal\" data-confirm-keep=\"","copy_0819":"\">Save in this browser</button><button class=\"text-button\" data-action=\"close-modal\">This visit only</button></div>","copy_0820":"Check-in saved.","copy_0821":"Contact removed.","copy_0822":"Unlock before restoring this contact.","copy_0823":"Confirm that you understand the file is unencrypted.","copy_0824":"Plain archive prepared. Keep it private.","copy_0825":"Encrypted archive prepared. Keep its passcode safe.","copy_0826":"Clipboard unavailable","copy_0827":"Link copied. No personal records are included.","copy_0828":"Select and copy the link.","copy_0829":"The passcodes do not match.","copy_0830":"Confirm that you understand the recovery limit.","copy_0831":"Confirm that saved records will be unencrypted.","copy_0832":"Journal encryption enabled.","copy_0833":"Lock removed. Saved records now use unencrypted browser storage.","copy_0834":"Private records unlocked.","copy_0835":"Enter a name or service.","copy_0836":"Enter a usable phone number.","copy_0837":"Support contact saved in this browser.","copy_0838":"Support contact kept for this visit.","copy_0839":"Note kept with your check-in.","copy_0840":"The passcode is incorrect, or this archive is damaged.","copy_0841":"<div id=\"player-extra-options\">","copy_0842":"<button class=\"button button-outline\" id=\"uncomfortable-support\" data-v5=\"help\" hidden>Find human support</button>","copy_0843":"% of this practice","copy_0844":"Saved · remove favourite","copy_0845":"Save to favourites","copy_0846":" · At your own pace","copy_0847":"Browser storage is not encrypted.","copy_0848":"Saved records are included in your encrypted archive.","copy_0849":"<section class=\"share-link\"><label class=\"field-label\" for=\"team-share-link\">Shared practice link · no personal records</label><input class=\"field\" id=\"team-share-link\" readonly><button class=\"button button-outline\" data-v5=\"share-team\">Copy a shared practice link</button><p class=\"small-note\">The link includes only a practice ID, duration and attention option. Local-file links must be opened on a device with that file; use the hosted edition to share between devices.</p></section>","copy_0850":"Serein · Healthcare Crown Academy","copy_0851":"Get help","copy_0852":"Something went wrong. Your saved records have not been cleared.","copy_0853":"That action could not finish. Keep this tab open and try again.","copy_0854":"Engine state invalid","copy_0855":"Pause invalid","copy_0856":"Legacy routes","copy_0857":"Store migration and round-trip","copy_0858":"Migration mismatch","copy_0859":"DOM IDs","copy_0860":"Duplicate ID","copy_0861":"Image alternatives","copy_0862":"Missing alt","copy_0863":"Control names","copy_0864":"Unnamed button","copy_0865":"Encryption round-trip","copy_0866":"SKIP · Web Crypto unavailable","copy_0867":"\" width=\"28\" height=\"23\" rx=\"5\" class=\"heat-cell mood-","copy_0868":" entries; average ","copy_0869":"No entry","copy_0870":"<section class=\"panel\"><h2>Feelings you recorded</h2><p>Last eight weeks. Each square represents a day; multiple check-ins are averaged for its shade. Missing days are unknown.</p><svg class=\"mood-calendar\" viewBox=\"0 0 310 216\" role=\"img\" aria-label=\"Check-ins over the last eight weeks. ","copy_0871":" entries in the selected period. A detailed table follows.\">","copy_0872":"</svg><p class=\"chart-legend\">□ No entry · Shading follows your own 1–5 feeling labels, without a health grade.</p><details><summary>View calendar as a table</summary><div class=\"table-scroll\"><table><caption>Daily check-in counts and average feeling</caption><thead><tr><th>Date</th><th>Entries</th><th>Average</th></tr></thead><tbody>","copy_0873":"\" class=\"pair-line\"/><circle cx=\"","copy_0874":"\" r=\"5\" class=\"pair-before\"/><circle cx=\"","copy_0875":"<section class=\"panel\"><h2>Before and after a pause</h2><p>","copy_0876":" optional pairs. Outlined dots show before; filled dots show after. These observations cannot establish that a practice caused a change.</p>","copy_0877":"<svg class=\"pair-chart\" viewBox=\"0 0 300 ","copy_0878":"\" role=\"img\" aria-label=\"","copy_0879":" paired settledness observations, each rated 1 to 5. Detailed values follow.\">","copy_0880":"<p class=\"empty-inline\">Optional paired observations will appear here when you choose to record them.</p>","copy_0881":"<details><summary>View pairs as a table</summary><div class=\"table-scroll\"><table><caption>Optional settledness observations</caption><thead><tr><th>Practice</th><th>Before</th><th>After</th></tr></thead><tbody>","copy_0882":"<section class=\"panel weekly\"><p class=\"eyebrow\">THIS WEEK / YOUR WORDS</p><h2>A moment to look back</h2><p>You recorded ","copy_0883":" practice responses this week. ","copy_0884":"You marked ","copy_0885":"You have not marked a practice helpful this week.","copy_0886":" Missing records simply mean no record was made.</p><button class=\"text-button\" data-nav=\"me/journal\">Write a reflection →</button></section>","copy_0887":"<section class=\"panel\"><h2>What you marked helpful, by moment</h2>","copy_0888":"<div class=\"insight-moment\"><h3>","copy_0889":" responses marked helpful.</p>","copy_0890":"<p class=\"small-note\">No helpful responses recorded for this moment.</p>","copy_0891":"<section class=\"panel\"><h2>Your records</h2><p>","copy_0892":" practice responses are saved. Visit-only entries disappear on reload.</p><details><summary>Explore or remove individual responses (","copy_0893":"<article class=\"entry\"><strong>","copy_0894":"</strong><p class=\"small-note\">","copy_0895":"</p><button class=\"text-button\" data-adv=\"delete-feedback\" data-id=\"","copy_0896":"\">Remove response</button></article>","copy_0897":"<div class=\"insight-stats\"><div><strong>","copy_0898":"</strong><span>check-ins in this period</span></div><div><strong>","copy_0899":"</strong><span>practice responses</span></div><div><strong>","copy_0900":"</strong><span>optional paired observations</span></div></div>","copy_0901":"<div class=\"insights-grid\">","copy_0902":"<p class=\"notice\">Personal observations, not a clinical assessment, treatment outcome or employer report. Nothing is monitored.</p>","copy_0903":"<fieldset class=\"player-extra-options\"><legend>Sound and device options</legend>","copy_0904":"<label class=\"field-label\" for=\"voice-choice\">Local English voice</label><select id=\"voice-choice\" class=\"field\">","copy_0905":"</select><label class=\"field-label\" for=\"voice-rate\">Voice speed</label><input id=\"voice-rate\" type=\"range\" min=\"0.6\" max=\"1.2\" step=\"0.05\" value=\"","copy_0906":"\"><p class=\"small-note\">Only installed local English voices appear. Voice is off until enabled for this session.</p>","copy_0907":"<p class=\"small-note\">No local English voice is available. Text guidance remains available.</p>","copy_0908":"<label class=\"field-label\" for=\"ambient-sound\">Ambient sound · off by default</label><select class=\"field\" id=\"ambient-sound\"><option value=\"off\">Off</option><option value=\"rain\">Rain</option><option value=\"ocean\">Ocean</option><option value=\"hum\">Hum</option></select><label class=\"field-label\" for=\"ambient-volume\">Ambient volume</label><input id=\"ambient-volume\" type=\"range\" min=\"0\" max=\"0.25\" step=\"0.01\" value=\"0.06\">","copy_0909":"<label class=\"check-label\"><input id=\"keep-awake\" type=\"checkbox\">Keep the screen awake while playing</label>","copy_0910":"<label class=\"check-label\"><input id=\"phase-haptics\" type=\"checkbox\">Brief vibration on phase changes</label>","copy_0911":"<button type=\"button\" class=\"text-button\" data-v5=\"shortcuts\">Keyboard shortcuts</button></fieldset>","copy_0912":"Screen wake lock is unavailable right now.","copy_0913":"Ambient audio is unavailable. Text guidance remains available.","copy_0914":"Your optional pause","copy_0915":"Beginning in ","copy_0916":"Serein isolated test","copy_0917":"Fixture only","copy_0918":"Crypto round-trip failed","copy_0919":"This encrypted archive has an unsupported format.","copy_0920":"The encrypted archive is damaged.","copy_0921":"The operation was cancelled because Serein data changed. No records were restored.","copy_0922":"The existing archive could not be read and has been protected. Open Data & privacy to download a recovery copy.","copy_0923":"Saved data changed in another tab. This tab has kept its changes in memory. Export them before reloading to avoid overwriting newer records.","copy_0924":"Browser storage is unavailable or full. Latest changes stay in memory; export a copy before leaving.","copy_0925":"Encrypted changes could not be saved. Keep this tab open and export a copy.","copy_0926":"Another privacy operation is finishing. Try again shortly.","copy_0927":"Use at least six characters. A longer passphrase is stronger.","copy_0928":"The journal lock is already enabled.","copy_0929":"Encryption was not enabled because the encrypted copy could not be saved.","copy_0930":"The lock is enabled. Check and remove any old copies in this browser.","copy_0931":"The passcode is incorrect, or the encrypted records are damaged. No records were opened.","copy_0932":"The lock was kept because normal storage could not be written.","copy_0933":"Another privacy operation is finishing. Try the export again shortly.","copy_0934":"Enable the journal lock to create an encrypted export.","copy_0935":" target=\"_blank\" rel=\"noopener noreferrer\"","copy_0936":"<header class=\"page-header infographic-heading\"><div><p class=\"eyebrow\">SEREIN / VISUAL LEARNING</p><h1>A clearer picture. A useful next step.</h1><p class=\"page-sub\">Twelve richly illustrated guides for real working days. Read at your pace, enlarge a page, or explore the sources.</p></div><span class=\"infographic-count\">12 illustrated guides</span></header>","copy_0937":"<div class=\"infographic-filters\" role=\"group\" aria-label=\"Infographic topics\">","copy_0938":"<button class=\"ig-filter\" data-ig=\"filter\" data-value=\"","copy_0939":"<section class=\"ig-viewer\" aria-label=\"Educational infographic viewer\" aria-roledescription=\"carousel\" data-key=\"infographic-reader\">","copy_0940":"<div class=\"ig-book\"><div class=\"ig-pagebar\"><div><span class=\"eyebrow\">","copy_0941":"</span><p id=\"ig-position\" aria-live=\"polite\" aria-atomic=\"true\">","copy_0942":"</p></div><div class=\"ig-turns\"><button class=\"icon-btn\" data-ig=\"previous\" aria-label=\"Previous infographic\"","copy_0943":"</button><button class=\"icon-btn\" data-ig=\"next\" aria-label=\"Next infographic\"","copy_0944":"<figure class=\"ig-figure\" aria-label=\"","copy_0945":"\"><button class=\"ig-artwork\" data-ig=\"zoom\" aria-label=\"Enlarge ","copy_0946":"\" aria-describedby=\"ig-image-help\"><img id=\"ig-image\" src=\"","copy_0947":"\" decoding=\"async\"></button><figcaption id=\"ig-image-help\">Illustrated infographic · Click to enlarge · Swipe or use the arrow buttons to flip</figcaption></figure>","copy_0948":"<div class=\"ig-actions\"><button class=\"button button-outline\" data-ig=\"zoom\">","copy_0949":" Enlarge image</button><a class=\"button button-outline\" href=\"","copy_0950":" Download image</a></div><p class=\"small-note ig-key-help\">With the viewer focused: ← / → changes the page; Home / End jumps to the first / last page. Pages never turn automatically.</p></div>","copy_0951":"<div class=\"ig-reading\" data-key=\"infographic-text\"><p class=\"eyebrow\">","copy_0952":"</h2><div class=\"ig-fact\"><strong>","copy_0953":"</p><dl class=\"ig-context\"><dt>Who it is for</dt><dd>","copy_0954":"</dd><dt>When to use it</dt><dd>","copy_0955":"</dd><dt>Why it matters</dt><dd>","copy_0956":"</dd></dl><h3>How to put it into practice</h3><ol class=\"ig-steps\">","copy_0957":"</ol><a class=\"button button-teal\" href=\"#","copy_0958":"</a><details class=\"ig-source\"><summary>Source, context &amp; limitations</summary><p>","copy_0959":"<section class=\"ig-collection\" aria-labelledby=\"ig-collection-heading\"><div class=\"section-heading\"><div><h2 id=\"ig-collection-heading\">Choose a page</h2><p>","copy_0960":"guides in the collection","copy_0961":"</p></div><a class=\"text-button\" href=\"#toolkit\">Return to Toolkit →</a></div><div class=\"ig-thumbnails\">","copy_0962":"<button class=\"ig-thumb\" data-ig=\"select\" data-id=\"","copy_0963":"\"><img src=\"","copy_0964":"\" width=\"120\" height=\"160\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span><small>","copy_0965":"<div class=\"ig-zoom\"><p class=\"small-note\">Scroll in both directions to explore the enlarged image. A text version and source details are available in the reader.</p><div class=\"ig-zoom-image-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Enlarged infographic; scroll horizontally and vertically\"><img src=\"","copy_0966":"\"></div><a class=\"button button-outline\" href=\"","copy_0967":" Download this infographic</a></div>","copy_0968":"perspective(1200px) rotateY(","copy_0969":"deg) translateX("}};S.locale='en-GB';S.t=function(key,vars){const text=S.STRINGS[S.locale]?.[key]??S.STRINGS['en-GB'][key]??key;return String(text).replace(/\{(v[0-9]+)\}/g,function(match,name){return vars&&Object.prototype.hasOwnProperty.call(vars,name)?String(vars[name]):match;});};})(globalThis.Serein=globalThis.Serein||{});
 
 
 ;
@@ -1149,7 +1149,7 @@ S.createVault=function(c){
   const env=validate(raw.vault),k=await derive(pass,env.salt,env.iterations),plain=await unseal(env,k);
   return c.normalise({...raw,...plain,vault:null});
  }
- function reset(){epoch++;draftEpoch++;key=null;memorySealed=null;try{localStorage.removeItem(KEY);lastStoredRaw=null;failed=false;localStorage.removeItem('serein-demo-v1');localStorage.removeItem('serein-toolkit-v1');sessionStorage.removeItem(DRAFT);sessionStorage.removeItem(SEALED_DRAFT);}catch{}}
+ function reset(){epoch++;draftEpoch++;key=null;memorySealed=null;try{localStorage.removeItem(KEY);lastStoredRaw=null;failed=false;localStorage.removeItem('serein-demo-v1');localStorage.removeItem('serein-toolkit-v1');localStorage.removeItem('serein-player-v1');sessionStorage.removeItem(DRAFT);sessionStorage.removeItem(SEALED_DRAFT);}catch{}}
  return {available,persist,enable,unlock,lock,remove,saveDraft,exportEncrypted,decryptArchive,validate,reset,flush:()=>queue,get enabled(){return !!data().vault},get locked(){return !!data().vault&&!key},get busy(){return busy},get pending(){return busy||pendingWrites>0||pendingDrafts>0}};
 };
 })(globalThis.Serein=globalThis.Serein||{});
@@ -1188,6 +1188,7 @@ S.createPlayerTools=function(c){
  let wake=null,wakePending=false,audio=null,nodes=[],gain=null,lastPhase='',lastSecond=-1,countdown=0,countdownTimer=0;
  const $=c.$,state=c.state;
  function extras(){
+  if(globalThis.SereinPlayer)return SereinPlayer.extras(c);
   const voices=globalThis.speechSynthesis?.getVoices?.().filter(x=>x.localService&&/^en/i.test(x.lang)).sort((a,b)=>Number(/^en-GB/.test(b.lang))-Number(/^en-GB/.test(a.lang)))||[];
   return Serein.t("copy_0903")+(voices.length?Serein.t("copy_0904")+voices.map(v=>Serein.t("copy_0580")+c.esc(v.voiceURI)+'" '+(c.store.preferences.voiceURI===v.voiceURI?'selected':'')+'>'+c.esc(v.name+' · '+v.lang)+'</option>').join('')+Serein.t("copy_0905")+(c.store.preferences.voiceRate||.86)+Serein.t("copy_0906"):Serein.t("copy_0907"))+((globalThis.AudioContext||globalThis.webkitAudioContext)?Serein.t("copy_0908"):'')+('wakeLock'in navigator?Serein.t("copy_0909"):'')+('vibrate'in navigator&&/Android/i.test(navigator.userAgent)?Serein.t("copy_0910"):'')+Serein.t("copy_0911");
  }
@@ -1927,12 +1928,12 @@ function openPractice(id,duration=null,preview=false,fromRoutine=false){let p=D.
 function playerSettings(p){return Serein.t("copy_0213",{v0:(p.selfPaced?'disabled':''),v1:(p.selfPaced?'<option>Self-paced</option>':p.durations.map(n=>Serein.t("copy_0060",{v0:(n),v1:(state.session.duration===n?'selected':''),v2:(durationLabel(n))})).join('')),v2:(p.breathFocus?Serein.t("copy_0209",{v0:(p.id==='box'?Serein.t("copy_0202"):Serein.t("copy_0203")),v1:(p.id==='box'?Serein.t("copy_0204"):Serein.t("copy_0205")),v2:(p.id==='box'?Serein.t("copy_0206"):Serein.t("copy_0207")),v3:(p.id==='box'?Serein.t("copy_0208"):'')}):''),v3:(p.movement?Serein.t("copy_0210"):''),v4:(reduced()?'checked':''),v5:(osMotion?.matches?'disabled':''),v6:(state.visual==='photo'?'selected':''),v7:(p.breathFocus?Serein.t("copy_0211",{v0:(state.visual==='orb'?'selected':'')}):''),v8:(p.id==='scan'?Serein.t("copy_0212"):'')});}
 function updatePlayerSave(){let saved=store.savedPractices.includes(state.session.practice.id);$('#player-save').setAttribute('aria-pressed',String(saved));$('#player-save').setAttribute('aria-label',saved?Serein.t("copy_0214"):Serein.t("copy_0215"));$('#player-save').style.color=saved?'var(--teal)':'';}
 function getPhoto(p,index){if(state.session.external)return D.frames.awareness[1];if(state.session.relaxOnly&&p.movement)return D.frames.release[3];if(p.id==='release'){let snap=state.session.snapshot();if(snap.state==='complete'||index===3)return D.frames.release[3];let key=['hands','shoulders','feet'][index];return D.frames[key][snap.phaseElapsed<5?(index===0?2:1):3];}let pair=p.photoPlan?.[Math.min(index,p.photoPlan.length-1)];return pair?D.frames[pair[0]][pair[1]]:p.photo;}
-function updatePlayer(force=false){const e=state.session;if(!e||!$('#player').open)return;let s=e.snapshot(),p=e.practice,key=Serein.t("copy_0216",{v0:(s.index),v1:(s.title),v2:(e.external),v3:(e.relaxOnly),v4:(s.state)});if(key!==lastStep||force){$('#player-step-label').textContent=s.state==='complete'?Serein.t("copy_0217"):p.breathFocus?Serein.t("copy_0218"):Serein.t("copy_0219",{v0:(s.index+1),v1:(p.steps.length)});$('#player-phase').textContent=s.title;$('#player-cue').textContent=s.cue;$('#player-photo').src=globalThis.Serein.mediaURL(getPhoto(p,s.index));$('#player-photo').alt=p.photoPlan?Serein.t("copy_0220",{v0:(p.steps[s.index]?.[0]||p.title)}):(p.cardAlt||Serein.t("copy_0221"));$('#stage-corner').textContent=p.breathFocus?Serein.t("copy_0222"):Serein.t("copy_0223",{v0:(s.index+1),v1:(p.steps.length),v2:(p.steps[s.index]?.[0]||'Rest')});const strip=$('#player-step-list'),phases=e.phases();if(strip.children.length!==phases.length||strip.dataset.practice!==p.id){strip.dataset.practice=p.id;strip.innerHTML=phases.map((x,i)=>Serein.t("copy_0224")+i+'" aria-label="Step '+(i+1)+': '+esc(x.title)+'">'+(i+1)+'</button>').join('');}for(const [i,button] of [...strip.children].entries()){button.setAttribute('aria-current',s.index===i?'step':'false');}if(p.selfPaced&&s.state!=='complete'){let count=D.groundSteps[s.index].count;const host=$('#ground-noticing');if(host.children.length!==count)host.innerHTML=Array.from({length:count},(_,i)=>Serein.t("copy_0225")+i+Serein.t("copy_0226")+(i+1)+'"></button>').join('');for(const [i,b] of [...host.children].entries()){b.setAttribute('aria-pressed',String(e.noticed.has(i)));b.textContent=e.noticed.has(i)?'✓':String(i+1);};}else $('#ground-noticing').innerHTML='';if(state.voice&&s.state==='playing'&&!state.preview)speak(s.cue);lastStep=key;}
+function updatePlayer(force=false){const e=state.session;if(!e||!$('#player').open)return;let s=e.snapshot(),p=e.practice,key=Serein.t("copy_0216",{v0:(s.index),v1:(s.title),v2:(e.external),v3:(e.relaxOnly),v4:(s.state)});if(key!==lastStep||force){$('#player-step-label').textContent=s.state==='complete'?Serein.t("copy_0217"):p.breathFocus?Serein.t("copy_0218"):Serein.t("copy_0219",{v0:(s.index+1),v1:(p.steps.length)});$('#player-phase').textContent=s.title;$('#player-cue').textContent=globalThis.SereinPlayer?SereinPlayer.cue(s):s.cue;$('#player-photo').src=globalThis.Serein.mediaURL(getPhoto(p,s.index));$('#player-photo').alt=p.photoPlan?Serein.t("copy_0220",{v0:(p.steps[s.index]?.[0]||p.title)}):(p.cardAlt||Serein.t("copy_0221"));$('#stage-corner').textContent=p.breathFocus?Serein.t("copy_0222"):Serein.t("copy_0223",{v0:(s.index+1),v1:(p.steps.length),v2:(p.steps[s.index]?.[0]||'Rest')});const strip=$('#player-step-list'),phases=e.phases();if(strip.children.length!==phases.length||strip.dataset.practice!==p.id){strip.dataset.practice=p.id;strip.innerHTML=phases.map((x,i)=>Serein.t("copy_0224")+i+'" aria-label="Step '+(i+1)+': '+esc(x.title)+'">'+(i+1)+'</button>').join('');}for(const [i,button] of [...strip.children].entries()){button.setAttribute('aria-current',s.index===i?'step':'false');}if(p.selfPaced&&s.state!=='complete'){let count=D.groundSteps[s.index].count;const host=$('#ground-noticing');if(host.children.length!==count)host.innerHTML=Array.from({length:count},(_,i)=>Serein.t("copy_0225")+i+Serein.t("copy_0226")+(i+1)+'"></button>').join('');for(const [i,b] of [...host.children].entries()){b.setAttribute('aria-pressed',String(e.noticed.has(i)));b.textContent=e.noticed.has(i)?'✓':String(i+1);};}else $('#ground-noticing').innerHTML='';if(state.voice&&s.state==='playing'&&!state.preview)speak(s.cue);lastStep=key;}
  let clock=e.practice.selfPaced?Serein.t("copy_0227",{v0:(s.index+1),v1:(p.steps.length)}):formatTime(s.remaining),current=Math.ceil(e.elapsed);if(clock!==lastClock||force){$('#player-clock').textContent=clock;$('#player-seek').value=String(current);$('#player-seek').setAttribute('aria-valuetext',Serein.t("copy_0228",{v0:(formatTime(e.elapsed)),v1:(formatTime(e.duration))}));lastClock=clock;}
  $('#player-play').innerHTML=icon(s.state==='playing'?'pause':'play')+Serein.t("copy_0235",{v0:(s.state==='complete'?Serein.t("copy_0229"):p.selfPaced&&s.state==='playing'?Serein.t("copy_0230"):s.state==='playing'?Serein.t("copy_0231"):state.preview?Serein.t("copy_0232"):s.state==='paused'?Serein.t("copy_0233"):Serein.t("copy_0234"))});
  $('#player-next').hidden=p.breathFocus||s.state==='complete';$('#player-status').textContent=s.state==='complete'?Serein.t("copy_0236"):s.state==='paused'?Serein.t("copy_0237"):state.preview?Serein.t("copy_0238"):p.id==='walk'&&s.index>0?Serein.t("copy_0239"):Serein.t("copy_0240");
  $('#player-feedback').hidden=s.state!=='complete'||state.preview;if($('#session-before'))$('#session-before').disabled=s.state!=='ready';$('#preview-continue').hidden=!state.preview;for(let id of ['session-duration','session-pace','session-noholds'])if($('#'+id))$('#'+id).disabled=s.state==='playing'||p.selfPaced;
- updatePlayerSave();applyPlayerVisual();updateBoxVisual(s);advance.updateStage(s);modern?.playerUpdated(s);if(s.state==='complete'){stopTimer();if(orb)orb.stop();cancelVoice();}
+ updatePlayerSave();applyPlayerVisual();updateBoxVisual(s);advance.updateStage(s);modern?.playerUpdated(s);globalThis.SereinPlayer?.update(s,force);if(s.state==='complete'){stopTimer();if(orb)orb.stop();if(globalThis.SereinPlayer)SereinPlayer.complete(s);else cancelVoice();}
 }
 function applyPlayerVisual(){let e=state.session;if(!e)return;let text=state.visual==='text';$('#player-stage').hidden=text;$('#player-photo').hidden=state.visual==='orb';$('#orb-stage').hidden=state.visual!=='orb';$('#player-orb-legend').hidden=state.visual!=='orb'||e.practice.id==='box';$('#orb-stage').classList.toggle('box-mode',e.practice.id==='box');if($('#box-guide'))$('#box-guide').hidden=e.practice.id!=='box';$('#player-scroll').classList.toggle('text-focus',text);$('#player-media-label').textContent=state.visual==='orb'?Serein.t("copy_0241"):Serein.t("copy_0242");}
 function updateBoxVisual(s){
@@ -1963,8 +1964,8 @@ function pausePlayer(){const e=state.session;if(!e||e.state!=='playing')return;e
 function restartPlayer(){modern?.stopPlayer();state.session.restart();stopTimer();cancelVoice();advance.resetFeedback();if($('#session-before'))$('#session-before').value='';modern?.preparePlayer();updatePlayer(true);syncPlayerMotion();}
 function playPause(){modern?.player.cancelCountdown();let e=state.session;if(!e)return;if(e.state==='complete')restartPlayer();advance.rememberPractice();advance.onPlay();if(advance.sessionMeta&&e.state==='ready')advance.sessionMeta.before=+$('#session-before')?.value||null;if(e.practice.selfPaced&&e.state==='playing'){e.next();updatePlayer(true);return;}if(e.state==='playing'){e.pause();stopTimer();cancelVoice();}else{e.play();startTimer();}updatePlayer(true);syncPlayerMotion();}
 function exitPlayer(endRoutine=true){if(state.session?.state==='playing')state.session.pause();modern?.stopPlayer();stopTimer();cancelVoice();$('#player').close();if(endRoutine)state.routineQueue=[];state.present=false;$('#player').classList.remove('present');if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});render();}
-function cancelVoice(){try{speechSynthesis.cancel();}catch{}}
-function speak(text){if(!state.voice)return;try{let voices=speechSynthesis.getVoices(),voice=voices.find(v=>v.localService&&v.voiceURI===store.preferences.voiceURI)||voices.find(v=>v.localService&&/^en-GB/i.test(v.lang))||voices.find(v=>v.localService&&/^en/i.test(v.lang));if(!voice){state.voice=false;$('#session-voice').checked=false;toast(Serein.t("copy_0249"));return;}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.voice=voice;u.rate=store.preferences.voiceRate||.86;speechSynthesis.speak(u);}catch{state.voice=false;toast(Serein.t("copy_0250"));}}
+function cancelVoice(){try{if(globalThis.SereinPlayer)SereinPlayer.silence();else speechSynthesis.cancel();}catch{}}
+function speak(text){if(globalThis.SereinPlayer||!state.voice)return;try{let voices=speechSynthesis.getVoices(),voice=voices.find(v=>v.localService&&v.voiceURI===store.preferences.voiceURI)||voices.find(v=>v.localService&&/^en-GB/i.test(v.lang))||voices.find(v=>v.localService&&/^en/i.test(v.lang));if(!voice){state.voice=false;$('#session-voice').checked=false;toast(Serein.t("copy_0249"));return;}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.voice=voice;u.rate=store.preferences.voiceRate||.86;speechSynthesis.speak(u);}catch{state.voice=false;toast(Serein.t("copy_0250"));}}
 $('#player').addEventListener('cancel',e=>{e.preventDefault();exitPlayer();});
 $('#player-seek').addEventListener('input',event=>{if(!state.session)return;state.session.seek(+event.target.value);updatePlayer(true);syncPlayerMotion();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.session?.state==='playing'){state.session.pause();stopTimer();cancelVoice();updatePlayer(true);}});
@@ -3008,3 +3009,1875 @@ function run(c){ctx=c;try{dialog=document.createElement('dialog');dialog.classNa
  dialog.showModal();breathe();}catch{close();c.onboard();}}
 S.hook={run};
 })(globalThis.Serein=globalThis.Serein||{});
+
+;
+/* Serein guided practice: voice guide.
+ *   SereinVoice.SCRIPTS   spoken scripts for all 15 practices (intro, step lines, mid-step prompts, outro)
+ *   SereinVoice.plan()    turns a practice (and the person's comfort options) into a step plan
+ *   SereinVoice.rank()    ranks the voices the browser offers, best first
+ *   SereinVoice.Narrator  sequential speechSynthesis queue: calm pacing, short pauses, never overlaps
+ * Everything is local: speechSynthesis only, no audio files, no network of our own. */
+(function (g) {
+  'use strict';
+
+  const OUTRO = 'Well done. Take one more easy breath before you go back.';
+  const SAFE = 'If anything does not feel comfortable, skip it, or stop whenever you like.';
+  const EXTERNAL = 'Look around the room you are actually in. Notice a neutral detail, or a place where you feel supported.';
+  const WORDS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+
+  /* Step lines are written to be heard once, slowly, by someone who is tired. Times are seconds from the start of a
+     step. A prompt with f (0-1) lands at that fraction of the step. minStep drops the optional prompts on short steps. */
+  const SCRIPTS = {
+    tide: {
+      kind: 'breath',
+      intro: 'Find a comfortable position. There is nothing to achieve here.',
+      outro: OUTRO,
+      captions: { in: 'Breathe in gently, only as far as feels comfortable.', out: 'Let the breath leave without forcing it.' },
+      reminders: [
+        { cycle: 3, text: 'Breathe in your own way. You can slow down, or stop, whenever you like.' },
+        { cycle: 6, text: 'Let your shoulders drop as the breath leaves.' },
+        { cycle: 10, text: 'There is nothing to get right.' }
+      ],
+      last: 'One more breath, and then we will finish.'
+    },
+    box: {
+      kind: 'breath',
+      intro: 'Find a comfortable position. We will breathe gently, one side of the square at a time.',
+      outro: OUTRO,
+      captions: { in: 'Breathe in gently, along the first side.', hold: 'Hold gently, only if that is comfortable.', out: 'Breathe out, along the next side.', rest: 'Rest gently, with no strain.' },
+      reminders: [
+        { cycle: 2, text: 'If a hold does not feel comfortable, make it shorter, or skip it.' },
+        { cycle: 5, text: 'Keep your shoulders soft.' }
+      ],
+      last: 'One more square, and then we will finish.'
+    },
+    ground: {
+      intro: 'Find a comfortable position. There is nothing to achieve here. Go at your own pace, and skip anything that does not feel right.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Look around you, and notice five things you can see. A colour, a shape, the way light meets a surface.', prompts: [{ at: 18, text: 'Take your time. You can tap a circle as you notice each one, or simply look.' }, { at: 55, text: 'When you are ready, press Continue.' }] },
+        { say: 'Now notice four things you can feel. Your feet supported by the floor, the chair beneath you, the fabric of your sleeve. There is no need to touch anything new.', prompts: [{ at: 20, text: 'Take a moment with each sensation.' }, { at: 55, text: 'Continue whenever you are ready.' }] },
+        { say: 'Next, notice three sounds. Near, or far away. If hearing is not available to you, notice three more things you can see.', prompts: [{ at: 18, text: 'Let the sounds come and go.' }, { at: 50, text: 'Continue whenever you are ready.' }] },
+        { say: 'Notice two smells, if there are any. If not, call to mind two familiar scents, or choose two colours instead.', prompts: [{ at: 20, text: 'There is no right answer here.' }, { at: 50, text: 'Continue whenever you are ready.' }] },
+        { say: 'Finally, notice one taste, if that is comfortable. Nothing needs to go in your mouth. Or name one thing you appreciate.', prompts: [{ at: 20, text: 'When you are ready, press Continue to finish.' }] }
+      ]
+    },
+    release: {
+      intro: 'Sit comfortably. Stop whenever you like.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Lightly close your hands.', prompts: [{ at: 6.5, text: 'Now let go. Let your fingers soften, and notice how that feels, without judging.' }, { at: 19, text: 'If this does not feel comfortable, skip it and just rest your hands.' }], relax: 'Let your hands rest, with comfortable support. No tensing is needed.' },
+        { say: 'Lift your shoulders just a little. Keep breathing.', prompts: [{ at: 5.5, text: 'And let them settle. There is no perfect position.' }, { at: 19, text: 'Notice the support of your chair.' }], relax: 'Let your shoulders rest, with comfortable support. No lifting is needed.' },
+        { say: 'Press your feet lightly into the floor.', prompts: [{ at: 5.5, text: 'And release. Let the effort in your feet and lower legs melt away.' }, { at: 19, text: 'Use only as much effort as feels easy.' }], relax: 'Let your feet and lower legs rest, with comfortable support.' },
+        { say: 'Now rest. Let your whole body be supported, and breathe naturally.', prompts: [{ at: 14, text: 'Notice what has changed, if anything. There is nothing to achieve.' }] }
+      ]
+    },
+    desk: {
+      intro: 'Sit comfortably. Move only as far as feels easy.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Gently lift your shoulders a little, then let them lower.', prompts: [{ at: 11, text: 'Once more, slowly. Lift, and lower. Keep breathing naturally.' }, { at: 23, text: 'Notice any difference.' }] },
+        { say: 'Slowly uncurl your fingers, then let your hands soften.', prompts: [{ at: 11, text: 'Open, and rest. Move only within a comfortable range.' }, { at: 23, text: 'Let your hands be heavy.' }] },
+        { say: 'Turn your head to the left, within a comfortable range. Then return to the centre.', prompts: [{ at: 13, text: 'Now to the right, slowly, and return to the centre.' }, { at: 24, text: 'Keep your shoulders soft.' }] }
+      ]
+    },
+    scan: {
+      intro: 'Find a comfortable position. There is nothing to fix.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Notice where your feet meet the floor, and where your body meets the chair. Nothing needs to change.', prompts: [{ f: 0.7, text: 'Let the surface do the holding.' }], minStep: 28 },
+        { say: 'Bring your attention to your legs. Notice whatever is there, or choose to look at the room instead.', prompts: [{ f: 0.62, text: 'There is no need to change anything.' }], minStep: 28 },
+        { say: 'Notice the weight and temperature of your hands.', prompts: [{ f: 0.5, text: 'Just noticing. Nothing to fix.' }], minStep: 22 },
+        { say: 'Notice your shoulders, and what is supporting them. There is no need to soften on command.', prompts: [{ f: 0.62, text: 'Let them be exactly as they are.' }], minStep: 28 },
+        { say: 'Notice your face, and your expression, without judging it.', prompts: [{ f: 0.5, text: 'If it feels comfortable, notice your jaw and eyes. You do not need to change them.' }], minStep: 28 },
+        { say: 'Now widen your attention to your whole body. Then, when you are ready, look around the room.', prompts: [{ f: 0.66, text: 'Take a moment before you return.' }], minStep: 28 }
+      ]
+    },
+    fullrelease: {
+      intro: 'Sit comfortably. Each effort is optional, and small. Stop whenever you like.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Optional: close your hands lightly, then let them open.', prompts: [{ f: 0.5, text: 'Release. Notice the difference between effort and ease.' }] },
+        { say: 'Optional: use a little effort in your arms, then release.', prompts: [{ f: 0.5, text: 'Let your arms rest. Keep breathing.' }] },
+        { say: 'Optional: make a small lift of your shoulders, then return comfortably.', prompts: [{ f: 0.5, text: 'And let them settle.' }] },
+        { say: 'Optional: press your feet lightly into the floor, then release.', prompts: [{ f: 0.5, text: 'Let your legs feel heavy, and supported.' }] },
+        { say: 'No effort now. Notice your chair supporting you.', prompts: [{ f: 0.45, text: 'There is nothing left to do. Just rest.' }] }
+      ]
+    },
+    handreset: {
+      intro: 'Rest your arms comfortably. Move gently, and stop whenever you like.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Rest your forearms comfortably, and keep your wrists neutral.' },
+        { say: 'Gently uncurl your fingers, within a comfortable range.', prompts: [{ f: 0.5, text: 'Slowly, and only as far as feels easy.' }], minStep: 20 },
+        { say: 'Return to a relaxed hand. There is no need to grip.' },
+        { say: 'Let your hands be supported. Stop whenever you prefer.' }
+      ]
+    },
+    shoulderreset: {
+      intro: 'Sit supported. Move gently, and stop whenever you like.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Sit supported, with your arms resting comfortably.' },
+        { say: 'If it is comfortable, lift your shoulders a little. Keep breathing naturally.', prompts: [{ f: 0.55, text: 'Only a little. There is no need to push.' }], minStep: 20 },
+        { say: 'Now return gently. There is no need to push your shoulders down.' },
+        { say: 'Notice the support beneath you. You can stop whenever you like.' }
+      ]
+    },
+    ankles: {
+      intro: 'Use a stable chair. Move gently, and stop whenever you like.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Support your leg and foot in a comfortable way.' },
+        { say: 'If it is comfortable, move one ankle gently up and down.', prompts: [{ f: 0.55, text: 'Slowly. Stop if you feel any discomfort.' }], minStep: 26 },
+        { say: 'Repeat on the other side, only if that is suitable for you.', prompts: [{ f: 0.55, text: 'Keep it small and easy.' }], minStep: 26 },
+        { say: 'Return both feet to comfortable support, and rest.' }
+      ]
+    },
+    listen: {
+      intro: 'Find a comfortable position. There is nothing to achieve here. We will simply listen.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Look around, and choose a comfortable position.', prompts: [{ f: 0.55, text: 'Let your eyes rest on something neutral.' }], minStep: 28 },
+        { say: 'Notice a sound nearby, or a nearby detail you can see.', prompts: [{ f: 0.5, text: 'Just listen. You do not need to name it.' }], minStep: 28 },
+        { say: 'Now notice something further away. There is no need to search hard.', prompts: [{ f: 0.55, text: 'Let it come to you.' }], minStep: 28 },
+        { say: 'Let your attention include the room as a whole. Sounds and silence together.', prompts: [{ f: 0.6, text: 'Rest here for a moment.' }], minStep: 28 }
+      ]
+    },
+    pause3: {
+      intro: 'Find a comfortable position. This is a short pause, and you can stop at any time.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Take a moment to notice how you are arriving. Thoughts, feelings, or what is around you.', prompts: [{ at: 24, text: 'Whatever is here is allowed. Simply notice.' }, { at: 44, text: 'You do not have to change anything.' }] },
+        { say: 'Now choose an anchor. Your natural breathing, your feet supported, or something you can see.', prompts: [{ at: 24, text: 'Rest your attention there. If it wanders, gently come back.' }, { at: 46, text: 'Coming back is the practice.' }] },
+        { say: 'Now widen your attention to include your body, and the room.', prompts: [{ at: 24, text: 'When you are ready, choose one useful next step.' }, { at: 46, text: 'Just one. It can be a small one.' }] }
+      ]
+    },
+    quietplace: {
+      intro: 'Find a comfortable position. You can keep your eyes open. Stop whenever you like.',
+      outro: OUTRO,
+      steps: [
+        { say: 'Choose an ordinary place that feels comfortable enough. Real, or imagined.', prompts: [{ f: 0.6, text: 'There is no need to make it perfect.' }], minStep: 28 },
+        { say: 'Notice any light, colours or textures. You can simply look at the picture.', prompts: [{ f: 0.55, text: 'Let the details be as faint, or as clear, as they are.' }], minStep: 28 },
+        { say: 'Stay a little longer. You do not need a vivid image. Keep your eyes open if you prefer.', prompts: [{ f: 0.62, text: 'Nothing to do. Just stay.' }], minStep: 28 },
+        { say: 'Now look around the room you are actually in, and notice what is supporting you.', prompts: [{ f: 0.6, text: 'Take a moment before you go back.' }], minStep: 28 }
+      ]
+    },
+    walk: {
+      intro: 'Choose a clear, level space, and stop whenever you like.',
+      outro: OUTRO,
+      steps: [
+        { say: 'While you are still, look ahead at the space you will use.', prompts: [{ f: 0.62, text: 'Put your screen away before you move.' }], minStep: 22 },
+        { say: 'Put the screen away before you move. Walk at your own comfortable pace.', prompts: [{ f: 0.55, text: 'Let each step be ordinary, and unhurried.' }], minStep: 28 },
+        { say: 'Notice the ordinary contact of your feet, and your surroundings. There is no need to change how you walk.', prompts: [{ f: 0.62, text: 'Let your attention rest on whatever you notice.' }], minStep: 28 },
+        { say: 'Come to a stop in a stable position, and bring your attention back to the room.' }
+      ]
+    },
+    winddown: {
+      intro: 'Find a supported position. There is nothing to achieve here, and no need to fall asleep.',
+      outro: 'Well done. You can rest here for as long as you like.',
+      steps: [
+        { say: 'Choose a comfortable, supported position. Let the surface take your weight.', prompts: [{ f: 0.6, text: 'There is nowhere you need to be.' }], minStep: 28 },
+        { say: 'Notice the surface that is supporting you. You are not trying to sleep.', prompts: [{ f: 0.6, text: 'Let your breathing be natural.' }], minStep: 28 },
+        { say: 'Let your hands and shoulders rest. There is no need to tense anything first.', prompts: [{ f: 0.6, text: 'Soften your jaw, if that feels comfortable.' }], minStep: 28 },
+        { say: 'Notice one thing that can wait until tomorrow, and set it down for now.', prompts: [{ f: 0.6, text: 'It will still be there. You do not have to solve it tonight.' }], minStep: 28 },
+        { say: 'You can end here, or carry on resting. There is nothing to achieve.', prompts: [{ f: 0.55, text: 'Rest as long as you like.' }], minStep: 28 }
+      ]
+    }
+  };
+
+  /* ---- plan: the same structure whatever the practice, so the player has one code path ---- */
+  function plan(practice, session) {
+    const sc = SCRIPTS[practice.id];
+    const mode = { relax: !!(session && session.relaxOnly), external: !!(session && session.external), noHolds: !!(session && session.noHolds) };
+    if (!sc) return { kind: 'steps', id: practice.id, intro: '', outro: OUTRO, steps: practice.steps.map(([title, cue]) => ({ title, say: cue, prompts: [] })), mode };
+    if (sc.kind === 'breath') return { kind: 'breath', id: practice.id, intro: sc.intro, outro: sc.outro, captions: sc.captions, reminders: sc.reminders, last: sc.last, mode };
+    const steps = practice.steps.map(([title, cue], i) => {
+      const s = sc.steps[i] || { say: cue };
+      let say = s.say, prompts = (s.prompts || []).slice();
+      if (mode.external) { say = EXTERNAL; prompts = []; }
+      else if (mode.relax && practice.movement) {
+        say = s.relax || 'Now, ' + title.toLowerCase() + '. Let it rest, with comfortable support. No tensing or movement is needed.';
+        prompts = [];
+      }
+      return { title, say, prompts, minStep: s.minStep || 0 };
+    });
+    return { kind: 'steps', id: practice.id, intro: mode.external ? 'Find a comfortable position. There is nothing to achieve here. ' + 'We will keep your attention on the room around you.' : sc.intro, outro: sc.outro, steps, mode };
+  }
+
+  /* The lead word and counts spoken for one breath phase: "In... two... three... four." */
+  function countWords(kind, seconds, gentle) {
+    const n = Math.max(1, Math.round(seconds));
+    const lead = kind === 'in' ? 'In' : kind === 'out' ? 'Out' : kind === 'hold' ? (gentle ? 'Hold gently' : 'Hold') : (gentle ? 'Rest gently' : 'Rest');
+    const out = [lead];
+    for (let i = 2; i <= n && i <= WORDS.length; i++) out.push(WORDS[i - 1]);
+    return out;
+  }
+
+  /* Rough speaking time, used by the fit check in the tests and to drop prompts that would be spoken late. */
+  function speakSeconds(text, rate) {
+    const words = String(text).trim().split(/\s+/).filter(Boolean).length;
+    const sentences = (String(text).match(/[.!?…]+/g) || []).length;
+    return words / (2.35 * (rate || 0.88) / 0.88) + Math.max(0, sentences - 1) * 0.5 + 0.35;
+  }
+
+  /* ---- voice ranking ---- */
+  const NOVELTY = /espeak|robot|novelty|bad news|good news|bubbles|cellos|zarvox|trinoids|whisper|bells|boing|organ|albert|fred|junior|ralph|kathy|superstar|wobble|jester|hysterical|deranged/i;
+  const NAME_BONUS = [
+    [/natural/i, 34], [/neural/i, 32], [/online/i, 30], [/premium/i, 26], [/enhanced/i, 22],
+    [/google uk english female/i, 26], [/sonia/i, 30], [/libby/i, 28], [/hazel/i, 14], [/serena/i, 20], [/kate/i, 18], [/samantha/i, 16], [/daniel/i, 16], [/stephanie|martha|fiona|moira|karen|tessa/i, 8]
+  ];
+  function score(v) {
+    const lang = String(v.lang || '').replace('_', '-');
+    let s = 0;
+    if (/^en-GB/i.test(lang)) s += 100; else if (/^en(-|$)/i.test(lang)) s += /^en-(AU|IE|ZA|NZ|IN)/i.test(lang) ? 46 : 40; else return -1e6;
+    const name = String(v.name || '');
+    for (const [re, b] of NAME_BONUS) if (re.test(name)) s += b;
+    if (/compact/i.test(name) || /compact/i.test(String(v.voiceURI || ''))) s -= 60;
+    if (NOVELTY.test(name)) s -= 300;
+    if (v.localService) s += 4;
+    if (v.default) s += 2;
+    return s;
+  }
+  function rank(list) {
+    const voices = Array.from(list || []).map(v => ({ v, s: score(v) })).filter(x => x.s > 0);
+    voices.sort((a, b) => b.s - a.s || String(a.v.name).localeCompare(String(b.v.name)));
+    return voices.map(x => x.v);
+  }
+  function pick(list, savedURI) {
+    const ranked = rank(list);
+    if (savedURI) { const chosen = ranked.find(v => v.voiceURI === savedURI); if (chosen) return chosen; }
+    return ranked[0] || null;
+  }
+
+  /* ---- narrator ---- */
+  function splitSentences(text) {
+    // Break on full stops and ellipses (a natural gap), keep short phrases together.
+    const parts = String(text).replace(/\s+/g, ' ').trim().match(/[^.!?…]+[.!?…]*/g) || [];
+    return parts.map(p => p.trim()).filter(Boolean).map(p => ({ text: p.replace(/[…]+$/, '').replace(/\.{2,}$/, '.'), gap: /…|\.\.\./.test(p) ? 600 : /[?]$/.test(p) ? 520 : /[.!]$/.test(p) ? 460 : 350 }));
+  }
+
+  class Narrator {
+    constructor(opts) {
+      this.opts = opts || {};
+      this.queue = []; this.token = 0; this.active = null; this.timer = 0; this.watchdog = 0; this.keep = 0; this.refs = [];
+      this.speaking = false; this.pending = false;
+    }
+    get synth() { return g.speechSynthesis || null; }
+    get available() { return !!(this.synth && g.SpeechSynthesisUtterance); }
+    get busy() { return this.pending || this.speaking || this.queue.length > 0; }
+    voice() { return this.opts.getVoice ? this.opts.getVoice() : null; }
+    rate() { return Math.min(1.2, Math.max(0.6, Number(this.opts.getRate ? this.opts.getRate() : 0.88) || 0.88)); }
+    emit(on) { if (this.speaking !== on) { this.speaking = on; try { this.opts.onSpeaking && this.opts.onSpeaking(on); } catch { /* ignore */ } } }
+    /* Queue text. tick lines are single count words; they are never queued behind other speech. */
+    say(text, o) {
+      if (!this.available || !text) return false;
+      o = o || {};
+      const parts = o.single ? [{ text: String(text), gap: o.gap == null ? 120 : o.gap }] : splitSentences(text);
+      for (const p of parts) this.queue.push({ text: p.text, gap: o.gap == null ? p.gap : o.gap, pitch: o.pitch, rate: o.rate });
+      if (!this.active && !this.timer) this.next();
+      return true;
+    }
+    next() {
+      clearTimeout(this.timer); this.timer = 0;
+      const item = this.queue.shift();
+      if (!item) { this.active = null; this.pending = false; this.emit(false); return; }
+      const synth = this.synth, token = this.token;
+      let u;
+      try { u = new g.SpeechSynthesisUtterance(item.text); } catch { this.active = null; return; }
+      const v = this.voice();
+      if (v) { u.voice = v; u.lang = v.lang; } else u.lang = 'en-GB';
+      u.rate = item.rate || this.rate(); u.pitch = item.pitch || 0.98; u.volume = 1;
+      this.refs.push(u); if (this.refs.length > 8) this.refs.shift(); // keeps utterances alive: Chrome drops events on collected ones
+      let done = false;
+      const finish = () => {
+        if (done) return; done = true;
+        clearTimeout(this.watchdog); clearInterval(this.keep);
+        if (token !== this.token) return;
+        this.active = null; this.pending = false;
+        if (this.queue.length) this.timer = setTimeout(() => this.next(), item.gap);
+        else this.timer = setTimeout(() => { this.timer = 0; if (!this.queue.length && !this.active) this.emit(false); else if (!this.active) this.next(); }, Math.min(item.gap, 450));
+      };
+      u.onstart = () => { if (token === this.token) { this.pending = false; this.emit(true); } };
+      u.onend = finish; u.onerror = ev => { if (ev && ev.error && ev.error !== 'canceled' && ev.error !== 'interrupted') { try { this.opts.onFail && this.opts.onFail(ev.error); } catch { /* ignore */ } } finish(); };
+      this.active = u; this.pending = true;
+      try { this.opts.onUtter && this.opts.onUtter(item); } catch { /* ignore */ }
+      // Some engines never report the end of an utterance; do not let the queue stall.
+      this.watchdog = setTimeout(finish, (speakSeconds(item.text, u.rate) + 3.5) * 1000);
+      // Chrome stops long network utterances after about 15 seconds; a pause/resume nudge keeps them going.
+      if (v && !v.localService) {
+        this.keep = setInterval(() => { try { if (synth.speaking && !synth.paused) { synth.pause(); synth.resume(); } } catch { /* ignore */ } }, 9000);
+      }
+      try { if (synth.paused) synth.resume(); synth.speak(u); } catch { finish(); }
+    }
+    /* Stop everything now. Late events from the cancelled utterance are ignored through the token. */
+    cancel() {
+      this.token++; this.queue.length = 0; this.active = null; this.pending = false;
+      clearTimeout(this.timer); clearTimeout(this.watchdog); clearInterval(this.keep); this.timer = 0;
+      try { const s = this.synth; if (s) s.cancel(); } catch { /* ignore */ }
+      this.emit(false);
+    }
+  }
+
+  g.SereinVoice = { SCRIPTS, OUTRO, SAFE, EXTERNAL, plan, countWords, speakSeconds, rank, pick, score, Narrator, splitSentences };
+})(globalThis);
+
+;
+/* Serein guided practice: synthesised sound. No audio files, no network.
+ *   Breath sounds   filtered-noise whoosh that rises on the in-breath and falls on the out-breath
+ *   Soft music      a generative pad per practice, fading in and out, ducked while the voice speaks
+ *   Bell            one soft bell when a practice finishes
+ * Everything is built from Web Audio nodes and is created only when a practice starts. The scheduling functions take
+ * any BaseAudioContext, so the tests can render them offline and measure the level. */
+(function (g) {
+  'use strict';
+  const AC = g.AudioContext || g.webkitAudioContext;
+  const OAC = g.OfflineAudioContext || g.webkitOfflineAudioContext;
+  const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+
+  function rng(seed) {
+    let a = (seed >>> 0) || 0x9e3779b9;
+    return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+
+  /* Paul Kellet's pink noise and a leaky-integrated brown noise, four seconds, looped. */
+  function noiseSet(ctx) {
+    if (ctx.__sereinNoise) return ctx.__sereinNoise;
+    const len = Math.floor(ctx.sampleRate * 4), r = rng(7);
+    const pink = ctx.createBuffer(1, len, ctx.sampleRate), brown = ctx.createBuffer(1, len, ctx.sampleRate);
+    const p = pink.getChannelData(0), b = brown.getChannelData(0);
+    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0, last = 0;
+    for (let i = 0; i < len; i++) {
+      const w = r() * 2 - 1;
+      b0 = 0.99886 * b0 + w * 0.0555179; b1 = 0.99332 * b1 + w * 0.0750759; b2 = 0.969 * b2 + w * 0.153852;
+      b3 = 0.8665 * b3 + w * 0.3104856; b4 = 0.55 * b4 + w * 0.5329522; b5 = -0.7616 * b5 - w * 0.016898;
+      p[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11; b6 = w * 0.115926;
+      last = (last + 0.02 * w) / 1.02; b[i] = last * 3.2;
+    }
+    // Cross-fade the loop point so it never clicks.
+    const n = Math.floor(ctx.sampleRate * 0.25);
+    for (const d of [p, b]) for (let i = 0; i < n; i++) { const k = i / n; d[i] = d[i] * k + d[len - n + i] * (1 - k); }
+    return (ctx.__sereinNoise = { pink, brown });
+  }
+
+  /* ---- the mixer: one chain per kind of sound, all through a soft limiter ---- */
+  function mixer(ctx) {
+    const master = ctx.createGain(); master.gain.value = 1;
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -22; comp.knee.value = 24; comp.ratio.value = 3; comp.attack.value = 0.02; comp.release.value = 0.4;
+    master.connect(comp); comp.connect(ctx.destination);
+    const musicIn = ctx.createGain(), musicFade = ctx.createGain(), musicDuck = ctx.createGain(), musicLevel = ctx.createGain();
+    const warm = ctx.createBiquadFilter(); warm.type = 'lowpass'; warm.frequency.value = 9000; warm.Q.value = 0.3;
+    musicIn.connect(warm); warm.connect(musicFade); musicFade.connect(musicDuck); musicDuck.connect(musicLevel); musicLevel.connect(master);
+    musicFade.gain.value = 0; musicDuck.gain.value = 1; musicLevel.gain.value = 0.1;
+    const breathIn = ctx.createGain(), breathLevel = ctx.createGain(); breathIn.connect(breathLevel); breathLevel.connect(master); breathLevel.gain.value = 0.1;
+    const bellIn = ctx.createGain(); bellIn.gain.value = 0.08; bellIn.connect(master);
+    return { master, comp, musicIn, musicFade, musicDuck, musicLevel, breathIn, breathLevel, bellIn };
+  }
+
+  /* ---- building blocks ---- */
+  function track(env, node) { env.live.add(node); node.onended = () => { env.live.delete(node); try { node.disconnect(); } catch { /* ignore */ } }; return node; }
+  function lowpass(env, dest, freq, q) { const f = env.ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = freq; f.Q.value = q == null ? 0.5 : q; f.connect(dest); return f; }
+  function slowLfo(env, rate, depth, param, phase) {
+    const o = env.ctx.createOscillator(), gn = env.ctx.createGain();
+    o.type = 'sine'; o.frequency.value = rate; gn.gain.value = depth; o.connect(gn); gn.connect(param);
+    o.start(env.t0 + (phase || 0)); env.sustain.push(o); return o;
+  }
+  function padNote(env, dest, freq, t, dur, peak, o) {
+    o = o || {};
+    const ctx = env.ctx, a = o.attack == null ? Math.min(4.5, dur * 0.35) : o.attack, r = o.release == null ? Math.min(5.5, dur * 0.45) : o.release;
+    const gn = ctx.createGain();
+    gn.gain.setValueAtTime(0, t); gn.gain.linearRampToValueAtTime(peak, t + a);
+    gn.gain.setValueAtTime(peak, Math.max(t + a, t + dur - r)); gn.gain.linearRampToValueAtTime(0, t + dur);
+    gn.connect(dest);
+    const det = o.detune == null ? 5 : o.detune;
+    for (const d of [-det, det]) {
+      const osc = track(env, ctx.createOscillator());
+      osc.type = o.type || 'sine'; osc.frequency.value = freq; osc.detune.value = d + (env.rand() - 0.5) * 3;
+      osc.connect(gn); osc.start(t); osc.stop(t + dur + 0.05);
+    }
+  }
+  function chord(env, dest, notes, t, dur, peak, o) {
+    const each = peak / Math.sqrt(notes.length);
+    notes.forEach((m, i) => padNote(env, dest, mtof(m), t + i * 0.18, dur, each * (i === 0 ? 1.15 : 1), o));
+  }
+  function bellTone(env, dest, midi, t, peak, decay) {
+    const ctx = env.ctx, f = mtof(midi), d = decay || 3.6;
+    const gn = ctx.createGain(); gn.gain.setValueAtTime(0.0001, t); gn.gain.linearRampToValueAtTime(peak, t + 0.03); gn.gain.exponentialRampToValueAtTime(0.0001, t + d); gn.connect(dest);
+    [[1, 1], [2.01, 0.3], [2.99, 0.1]].forEach(([k, v], i) => {
+      const o = track(env, ctx.createOscillator()), pg = ctx.createGain();
+      o.type = 'sine'; o.frequency.value = f * k; pg.gain.value = v; o.connect(pg); pg.connect(gn); o.start(t); o.stop(t + d + 0.1 + i * 0.01);
+    });
+  }
+  function pluck(env, dest, midi, t, peak) {
+    const ctx = env.ctx, o = track(env, ctx.createOscillator()), lp = ctx.createBiquadFilter(), gn = ctx.createGain();
+    o.type = 'triangle'; o.frequency.value = mtof(midi); lp.type = 'lowpass'; lp.frequency.setValueAtTime(2600, t); lp.frequency.exponentialRampToValueAtTime(420, t + 0.45); lp.Q.value = 0.4;
+    gn.gain.setValueAtTime(0.0001, t); gn.gain.linearRampToValueAtTime(peak, t + 0.012); gn.gain.exponentialRampToValueAtTime(0.0001, t + 0.62);
+    o.connect(lp); lp.connect(gn); gn.connect(dest); o.start(t); o.stop(t + 0.7);
+  }
+  function thump(env, dest, freq, t, peak, decay) {
+    const ctx = env.ctx, o = track(env, ctx.createOscillator()), gn = ctx.createGain();
+    o.type = 'sine'; o.frequency.setValueAtTime(freq * 1.5, t); o.frequency.exponentialRampToValueAtTime(freq, t + 0.12);
+    gn.gain.setValueAtTime(0.0001, t); gn.gain.linearRampToValueAtTime(peak, t + 0.04); gn.gain.exponentialRampToValueAtTime(0.0001, t + (decay || 0.7));
+    o.connect(gn); gn.connect(dest); o.start(t); o.stop(t + (decay || 0.7) + 0.1);
+  }
+  function drone(env, dest, midi, gain, type) {
+    const ctx = env.ctx, o = track(env, ctx.createOscillator()), gn = ctx.createGain();
+    o.type = type || 'sine'; o.frequency.value = mtof(midi); gn.gain.setValueAtTime(0, env.t0); gn.gain.linearRampToValueAtTime(gain, env.t0 + 5);
+    o.connect(gn); gn.connect(dest); o.start(env.t0); env.sustain.push(o); return gn;
+  }
+  function noiseBed(env, dest, kind, filterType, freq, q, gain) {
+    const ctx = env.ctx, src = track(env, ctx.createBufferSource()), f = ctx.createBiquadFilter(), gn = ctx.createGain();
+    src.buffer = env.noise[kind]; src.loop = true; f.type = filterType; f.frequency.value = freq; f.Q.value = q == null ? 0.6 : q;
+    gn.gain.setValueAtTime(0, env.t0); gn.gain.linearRampToValueAtTime(gain, env.t0 + 5);
+    src.connect(f); f.connect(gn); gn.connect(dest); src.start(env.t0, env.rand() * 2); env.sustain.push(src);
+    return { gain: gn, filter: f };
+  }
+
+  /* ---- moods. init() builds sustained layers; schedule() plays everything that falls before tEnd ---- */
+  const MOODS = {
+    /* tide: warm D major pad under an ocean swell that rises over the in-breath and falls over the out-breath */
+    tide: {
+      trim: 1,
+      init(env, o) {
+        const f = lowpass(env, env.dest, 1900, 0.4); slowLfo(env, 0.035, 520, f.frequency);
+        drone(env, f, 38, 0.1);
+        const sea = noiseBed(env, env.dest, 'brown', 'lowpass', 760, 0.5, 0.0001);
+        const cy = (o.cycle && o.cycle.length === 2) ? o.cycle : [4, 6];
+        return { f, sea, a: cy[0], b: cy[1], nextSwell: env.t0 + (o.cycleOffset ? Math.max(0, cy[0] + cy[1] - o.cycleOffset) : 0), nextChord: env.t0, chordIx: 0 };
+      },
+      schedule(env, s, end) {
+        const chords = [[50, 57, 62, 66, 69], [43, 50, 59, 62, 67], [47, 54, 62, 66, 69], [45, 52, 57, 64, 69]];
+        while (s.nextChord < end) { chord(env, s.f, chords[s.chordIx % 4], s.nextChord, 19, 0.34, { type: 'sine' }); s.nextChord += 14; s.chordIx++; }
+        const gp = s.sea.gain.gain, lo = 0.02, hi = 0.34;
+        while (s.nextSwell < end) {
+          const t = s.nextSwell, a = s.a, b = s.b;
+          // rise over the in-breath, fall over the out-breath, in small linear steps so the curves can never overlap
+          gp.setValueAtTime(lo, t);
+          for (let i = 1; i <= 12; i++) gp.linearRampToValueAtTime(lo + (hi - lo) * (0.5 - 0.5 * Math.cos(Math.PI * i / 12)), t + a * i / 12);
+          for (let i = 1; i <= 16; i++) gp.linearRampToValueAtTime(hi - (hi - lo) * (0.5 - 0.5 * Math.cos(Math.PI * i / 16)), t + a + b * i / 16);
+          s.nextSwell += a + b;
+        }
+      }
+    },
+    /* box: a steady soft pad with a faint pulse on every side of the square */
+    box: {
+      trim: 0.95,
+      init(env, o) {
+        const f = lowpass(env, env.dest, 1500, 0.4); slowLfo(env, 0.03, 300, f.frequency);
+        drone(env, f, 36, 0.08);
+        const ph = Math.max(2, Number(o.phaseSeconds) || 4);
+        return { f, ph, next: env.t0 + (o.phaseOffset ? Math.max(0, ph - o.phaseOffset) : 0), n: o.phaseIndex || 0, nextChord: env.t0, ix: 0 };
+      },
+      schedule(env, s, end) {
+        const chords = [[48, 55, 59, 62, 64], [41, 53, 57, 60, 64]];
+        while (s.nextChord < end) { chord(env, s.f, chords[s.ix % 2], s.nextChord, 30, 0.34, { type: 'sine' }); s.nextChord += 24; s.ix++; }
+        while (s.next < end) { thump(env, env.dest, 98, s.next, s.n % 4 === 0 ? 0.26 : 0.15, 0.7); s.next += s.ph; s.n++; }
+      }
+    },
+    /* ground: a low fifth with sparse, soft bells */
+    ground: {
+      trim: 2,
+      init(env) {
+        const f = lowpass(env, env.dest, 700, 0.4);
+        drone(env, f, 38, 0.2); drone(env, f, 45, 0.12); drone(env, f, 50, 0.05);
+        slowLfo(env, 0.03, 160, f.frequency);
+        return { next: env.t0 + 4 };
+      },
+      schedule(env, s, end) {
+        const notes = [74, 76, 78, 81, 83, 81, 78];
+        while (s.next < end) { bellTone(env, env.dest, notes[Math.floor(env.rand() * notes.length)], s.next, 0.2, 4.2); s.next += 7 + env.rand() * 6; }
+      }
+    },
+    /* descend: a slow warm pad that steps downwards (release, full release, body scan) */
+    descend: {
+      trim: 1.05,
+      init(env) {
+        const f = lowpass(env, env.dest, 1700, 0.3);
+        return { f, next: env.t0, ix: 0 };
+      },
+      schedule(env, s, end) {
+        const chords = [[53, 57, 60, 64], [52, 55, 59, 62], [50, 53, 57, 60], [48, 52, 55, 59]];
+        while (s.next < end) {
+          const m = chords[s.ix % chords.length], cut = [1700, 1350, 1050, 820][s.ix % 4];
+          s.f.frequency.cancelScheduledValues(Math.max(env.t0, s.next - 3)); s.f.frequency.setTargetAtTime(cut, Math.max(env.t0, s.next), 3);
+          chord(env, s.f, m, s.next, 22, 0.36, { type: 'triangle', detune: 6 });
+          padNote(env, s.f, mtof(m[0] - 12), s.next, 22, 0.1, { type: 'sine' });
+          s.next += 17; s.ix++;
+        }
+      }
+    },
+    /* airy: a light, high pad with a faint shimmer (desk, hand, shoulder and ankle practices) */
+    airy: {
+      trim: 1.08,
+      init(env) {
+        const f = lowpass(env, env.dest, 5200, 0.3); slowLfo(env, 0.09, 900, f.frequency);
+        const sh = env.ctx.createGain(); sh.gain.value = 0.0; sh.connect(f);
+        slowLfo(env, 0.11, 0.014, sh.gain); sh.gain.value = 0.016;
+        for (const m of [86, 93]) { const o = track(env, env.ctx.createOscillator()); o.type = 'sine'; o.frequency.value = mtof(m); o.connect(sh); o.start(env.t0); env.sustain.push(o); }
+        return { f, next: env.t0, ix: 0 };
+      },
+      schedule(env, s, end) {
+        const chords = [[62, 69, 73, 76, 78], [67, 71, 74, 78, 81]];
+        while (s.next < end) { chord(env, s.f, chords[s.ix % 2], s.next, 20, 0.3, { type: 'sine' }); padNote(env, s.f, mtof(50 + (s.ix % 2) * 5), s.next, 20, 0.07); s.next += 15; s.ix++; }
+      }
+    },
+    /* sparse: long silences with single soft tones and breaths of air (mindful listening) */
+    sparse: {
+      trim: 1.7,
+      init(env) {
+        const f = lowpass(env, env.dest, 1200, 0.3);
+        drone(env, f, 50, 0.025);
+        return { f, next: env.t0 + 2.5, n: 0 };
+      },
+      schedule(env, s, end) {
+        const notes = [62, 64, 66, 69, 71, 66];
+        while (s.next < end) {
+          if (s.n % 2 === 0) padNote(env, env.dest, mtof(notes[Math.floor(env.rand() * notes.length)]), s.next, 11, 0.28, { attack: 4.5, release: 6 });
+          else {
+            const src = track(env, env.ctx.createBufferSource()), bp = env.ctx.createBiquadFilter(), gn = env.ctx.createGain();
+            src.buffer = env.noise.pink; src.loop = true; bp.type = 'bandpass'; bp.frequency.value = 520 + env.rand() * 260; bp.Q.value = 1.1;
+            gn.gain.setValueAtTime(0, s.next); gn.gain.linearRampToValueAtTime(0.22, s.next + 3.6); gn.gain.linearRampToValueAtTime(0, s.next + 8);
+            src.connect(bp); bp.connect(gn); gn.connect(env.dest); src.start(s.next, env.rand() * 2); src.stop(s.next + 8.2);
+          }
+          s.n++; s.next += 11 + env.rand() * 9;
+        }
+      }
+    },
+    /* motif: a very short, gentle rising phrase over a barely-there pad (Three-Minute Pause) */
+    motif: {
+      trim: 2.1,
+      init(env) {
+        const f = lowpass(env, env.dest, 1400, 0.3);
+        return { f, next: env.t0 + 1.2, nextChord: env.t0 };
+      },
+      schedule(env, s, end) {
+        while (s.nextChord < end) { chord(env, s.f, [50, 57, 62, 66], s.nextChord, 30, 0.12, { type: 'sine' }); s.nextChord += 24; }
+        while (s.next < end) { [74, 78, 81].forEach((m, i) => bellTone(env, env.dest, m, s.next + i * 0.95, 0.24, 2.6)); s.next += 40; }
+      }
+    },
+    /* nature: soft stream and wind with an open pad (Quiet Place) */
+    nature: {
+      trim: 1.2,
+      init(env) {
+        const f = lowpass(env, env.dest, 2100, 0.3);
+        const stream = noiseBed(env, env.dest, 'pink', 'bandpass', 1500, 0.45, 0.16);
+        const wind = noiseBed(env, env.dest, 'brown', 'lowpass', 480, 0.4, 0.12);
+        slowLfo(env, 0.06, 0.07, wind.gain.gain); slowLfo(env, 0.045, 260, wind.filter.frequency);
+        return { f, stream, next: env.t0, nextWob: env.t0 + 1, ix: 0 };
+      },
+      schedule(env, s, end) {
+        const chords = [[55, 62, 66, 71], [60, 64, 67, 71, 74]];
+        while (s.next < end) { chord(env, s.f, chords[s.ix % 2], s.next, 26, 0.2, { type: 'sine' }); s.next += 20; s.ix++; }
+        while (s.nextWob < end) { s.stream.gain.gain.setTargetAtTime(0.1 + env.rand() * 0.1, s.nextWob, 1.1); s.nextWob += 2 + env.rand() * 2; }
+      }
+    },
+    /* walk: a light, steady pulse near 66 beats a minute with a soft pluck */
+    walk: {
+      trim: 1.7,
+      init(env) {
+        const f = lowpass(env, env.dest, 3200, 0.3);
+        return { f, beat: 60 / 66, next: env.t0 + 1, n: 0, nextChord: env.t0 };
+      },
+      schedule(env, s, end) {
+        const pat = [74, null, 69, 66, 74, 71, null, 66, 69, null, 74, 71];
+        while (s.nextChord < end) { chord(env, s.f, [50, 57, 62, 64, 69], s.nextChord, 28, 0.16, { type: 'sine' }); s.nextChord += 24; }
+        while (s.next < end) {
+          const m = pat[s.n % pat.length];
+          if (m != null) pluck(env, env.dest, m, s.next, 0.19);
+          if (s.n % 4 === 0) thump(env, env.dest, 73.4, s.next, 0.14, 0.55);
+          s.n++; s.next += s.beat;
+        }
+      }
+    },
+    /* winddown: very slow, dark and warm, fading away across the practice */
+    winddown: {
+      trim: 1, fadeOut: true,
+      init(env) {
+        const f = lowpass(env, env.dest, 440, 0.3);
+        return { f, next: env.t0, ix: 0 };
+      },
+      schedule(env, s, end) {
+        const chords = [[38, 45, 53, 57, 64], [34, 46, 53, 57, 62], [41, 48, 53, 57, 60], [36, 43, 52, 55, 59]];
+        while (s.next < end) { chord(env, s.f, chords[s.ix % 4], s.next, 34, 0.4, { type: 'triangle', attack: 9, release: 11, detune: 4 }); s.next += 24; s.ix++; }
+      }
+    }
+  };
+  const MOOD_FOR = { tide: 'tide', box: 'box', ground: 'ground', release: 'descend', fullrelease: 'descend', scan: 'descend', desk: 'airy', handreset: 'airy', shoulderreset: 'airy', ankles: 'airy', listen: 'sparse', pause3: 'motif', quietplace: 'nature', walk: 'walk', winddown: 'winddown' };
+
+  /* A running piece of music on any context. schedule(tEnd) plays everything before tEnd; stop(t) ends it. */
+  function createMusic(ctx, dest, practiceId, opts) {
+    opts = opts || {};
+    const name = MOOD_FOR[practiceId] || 'airy', mood = MOODS[name];
+    const trim = ctx.createGain(); trim.gain.value = (mood.trim || 1) * 0.5; trim.connect(dest);
+    const env = { ctx, dest: trim, rand: rng(opts.seed || 41), noise: noiseSet(ctx), live: new Set(), sustain: [], t0: opts.t0 == null ? ctx.currentTime : opts.t0 };
+    const st = mood.init(env, opts);
+    return {
+      name, mood, env,
+      schedule(tEnd) { mood.schedule(env, st, tEnd); },
+      stop(t) {
+        for (const n of Array.from(env.live)) { try { n.stop(t); } catch { /* already stopped */ } }
+        for (const n of env.sustain) { try { n.stop(t); } catch { /* already stopped */ } }
+        setTimeout(() => { try { trim.disconnect(); } catch { /* ignore */ } }, Math.max(0, (t - ctx.currentTime) * 1000) + 400);
+      }
+    };
+  }
+
+  /* ---- breath sounds ---- */
+  function breathCue(ctx, dest, noise, kind, dur, t, start) {
+    start = clamp(start || 0, 0, 0.9);
+    const left = Math.max(0.25, dur * (1 - start)), live = [];
+    const add = n => { live.push(n); return n; };
+    const done = () => { for (const n of live) { try { n.disconnect(); } catch { /* ignore */ } } };
+    if (kind === 'in' || kind === 'out') {
+      const src = add(ctx.createBufferSource()), bp = add(ctx.createBiquadFilter()), lp = add(ctx.createBiquadFilter()), gn = add(ctx.createGain());
+      src.buffer = noise.pink; src.loop = true; bp.type = 'bandpass'; bp.Q.value = 0.85; lp.type = 'lowpass'; lp.frequency.value = 4200; lp.Q.value = 0.3;
+      const lo = 330, hi = 1500, a = kind === 'in' ? lo : hi, b = kind === 'in' ? hi : lo;
+      bp.frequency.setValueAtTime(a * Math.pow(b / a, start), t); bp.frequency.exponentialRampToValueAtTime(b, t + left);
+      const peak = 1;
+      if (kind === 'in') {
+        const rise = Math.max(0.1, dur * 0.78 - dur * start);
+        gn.gain.setValueAtTime(0.0001 + peak * Math.min(1, start / 0.78), t);
+        if (start < 0.78) gn.gain.linearRampToValueAtTime(peak, t + rise);
+        gn.gain.linearRampToValueAtTime(0.0001, t + left);
+      } else {
+        const lvl = peak * 0.85 * Math.pow(1 - start, 1.6);
+        gn.gain.setValueAtTime(0.0001, t); gn.gain.linearRampToValueAtTime(lvl, t + Math.min(0.5, left * 0.2));
+        gn.gain.exponentialRampToValueAtTime(0.0001, t + left);
+      }
+      src.connect(bp); bp.connect(lp); lp.connect(gn); gn.connect(dest);
+      src.start(t, Math.random() * 2); src.stop(t + left + 0.1);
+      src.onended = done;
+    } else {
+      // Hold or rest: close to silence, with a faint warm tone.
+      const gn = add(ctx.createGain());
+      gn.gain.setValueAtTime(0.0001, t); gn.gain.linearRampToValueAtTime(0.045, t + Math.min(1.4, left * 0.4)); gn.gain.linearRampToValueAtTime(0.0001, t + left);
+      gn.connect(dest);
+      [146.83, 220].forEach((f, i) => { const o = add(ctx.createOscillator()), pg = add(ctx.createGain()); o.type = 'sine'; o.frequency.value = f; pg.gain.value = i ? 0.55 : 1; o.connect(pg); pg.connect(gn); o.start(t); o.stop(t + left + 0.1); if (!i) o.onended = done; });
+    }
+  }
+
+  function bellOnce(ctx, dest, t) {
+    const env = { ctx, rand: rng(3), live: new Set() };
+    bellTone(env, dest, 74, t, 0.6, 4.2); bellTone(env, dest, 81, t + 0.01, 0.2, 3.2);
+  }
+
+  /* Three seconds in; the wind-down also fades away across the whole practice. */
+  function musicFadeIn(param, t, mood, remaining) {
+    param.cancelScheduledValues(t); param.setValueAtTime(0, t); param.linearRampToValueAtTime(1, t + 3);
+    if (mood.fadeOut && remaining) { param.linearRampToValueAtTime(1, t + 3); param.linearRampToValueAtTime(0, t + Math.max(8, remaining)); }
+  }
+
+  /* ---- the live engine: one lazily created context shared by everything on the player ---- */
+  class Engine {
+    constructor() {
+      this.ctx = null; this.mix = null; this.music = null; this.timer = 0; this.closeTimer = 0; this.fading = []; this.suspended = false;
+      this.musicVol = 0.55; this.breathVol = 0.6; this.ducked = false; this.ambient = false; this.practice = '';
+    }
+    get supported() { return !!AC; }
+    /* Call from a tap: creates the context and resumes it. */
+    unlock() {
+      if (!AC) return false;
+      clearTimeout(this.closeTimer); this.closeTimer = 0;
+      if (!this.ctx || this.ctx.state === 'closed') {
+        try { this.ctx = new AC({ latencyHint: 'playback' }); } catch { try { this.ctx = new AC(); } catch { this.ctx = null; return false; } }
+        this.mix = mixer(this.ctx); this.applyLevels(true);
+      }
+      if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+      this.suspended = false;
+      return true;
+    }
+    get running() { return !!this.ctx && this.ctx.state === 'running'; }
+    applyLevels(now) {
+      if (!this.mix) return;
+      const t = this.ctx.currentTime, k = now ? 0.001 : 0.25;
+      this.mix.musicLevel.gain.setTargetAtTime(this.musicVol * 0.2 * (this.ambient ? 0.5 : 1), t, k);
+      this.mix.breathLevel.gain.setTargetAtTime(this.breathVol * 0.38, t, k);
+    }
+    setVolumes(m, b) { if (m != null) this.musicVol = clamp(m, 0, 1); if (b != null) this.breathVol = clamp(b, 0, 1); this.applyLevels(); }
+    setAmbient(on) { this.ambient = !!on; this.applyLevels(); }
+    duck(on) {
+      this.ducked = !!on;
+      if (!this.mix) return;
+      this.mix.musicDuck.gain.setTargetAtTime(on ? 0.4 : 1, this.ctx.currentTime, on ? 0.15 : 0.7);
+    }
+    /* Start a practice's music. Fades in over three seconds; winddown fades away over the whole practice. */
+    startMusic(id, o) {
+      o = o || {};
+      if (!this.unlock()) return false;
+      this.stopMusic(1.2, true);
+      const ctx = this.ctx, t = ctx.currentTime + 0.05;
+      this.practice = id;
+      this.music = createMusic(ctx, this.mix.musicIn, id, Object.assign({}, o, { t0: t }));
+      musicFadeIn(this.mix.musicFade.gain, t, this.music.mood, o.remaining);
+      this.music.schedule(t + 4);
+      clearInterval(this.timer);
+      this.timer = setInterval(() => { if (this.music && this.ctx && this.ctx.state === 'running') this.music.schedule(this.ctx.currentTime + 4); }, 400);
+      return true;
+    }
+    pause() {
+      if (!this.ctx || this.ctx.state !== 'running') return;
+      const t = this.ctx.currentTime;
+      if (this.mix) { this.mix.master.gain.cancelScheduledValues(t); this.mix.master.gain.setTargetAtTime(0, t, 0.07); }
+      this.suspended = true;
+      const ctx = this.ctx;
+      setTimeout(() => { if (this.suspended && this.ctx === ctx) ctx.suspend().catch(() => {}); }, 320);
+    }
+    resume() {
+      if (!this.ctx || this.ctx.state === 'closed') return false;
+      this.suspended = false;
+      const ctx = this.ctx, go = () => { if (this.mix) { const t = ctx.currentTime; this.mix.master.gain.cancelScheduledValues(t); this.mix.master.gain.setTargetAtTime(1, t, 0.6); } };
+      if (ctx.state === 'suspended') ctx.resume().then(go).catch(() => {}); else go();
+      return true;
+    }
+    stopMusic(fade, quick) {
+      if (!this.music || !this.ctx) { this.music = null; return; }
+      const ctx = this.ctx, t = ctx.currentTime, f = fade == null ? 4 : fade, m = this.music;
+      this.music = null; clearInterval(this.timer); this.timer = 0;
+      const gain = this.mix.musicFade.gain;
+      try { gain.cancelScheduledValues(t); gain.setValueAtTime(gain.value, t); gain.linearRampToValueAtTime(0, t + f); } catch { /* ignore */ }
+      m.stop(t + f + 0.1);
+      if (this.suspended && ctx.state === 'suspended') ctx.resume().catch(() => {});
+      if (!quick) this.scheduleClose(f + 3);
+    }
+    scheduleClose(seconds) {
+      clearTimeout(this.closeTimer);
+      this.closeTimer = setTimeout(() => {
+        if (this.music) return;
+        const ctx = this.ctx; this.ctx = null; this.mix = null;
+        if (ctx && ctx.state !== 'closed') ctx.close().catch(() => {});
+      }, seconds * 1000);
+    }
+    breath(kind, dur, start) {
+      if (!this.running || !this.mix) return;
+      breathCue(this.ctx, this.mix.breathIn, noiseSet(this.ctx), kind, dur, this.ctx.currentTime + 0.02, start);
+    }
+    bell() {
+      if (!this.running || !this.mix) return;
+      bellOnce(this.ctx, this.mix.bellIn, this.ctx.currentTime + 0.05);
+    }
+    /* Stop everything now and release the context shortly after. */
+    shutdown(fade) {
+      this.stopMusic(fade == null ? 4 : fade);
+      if (!this.ctx) return;
+      this.suspended = false;
+      if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+      if (this.mix) { const t = this.ctx.currentTime; this.mix.master.gain.cancelScheduledValues(t); this.mix.master.gain.setValueAtTime(1, t); }
+      this.scheduleClose((fade == null ? 4 : fade) + 3);
+    }
+  }
+
+  /* Offline render for the tests: music or breath sounds through the real mixer, ready to measure. */
+  function renderOffline(kind, id, seconds, opts) {
+    if (!OAC) return Promise.reject(new Error('OfflineAudioContext unavailable'));
+    opts = opts || {};
+    const sr = 22050, ctx = new OAC(1, Math.ceil(seconds * sr), sr), mix = mixer(ctx);
+    mix.musicLevel.gain.value = (opts.vol == null ? 0.55 : opts.vol) * 0.2; mix.breathLevel.gain.value = (opts.vol == null ? 0.6 : opts.vol) * 0.38;
+    if (kind === 'music') {
+      const m = createMusic(ctx, mix.musicIn, id, Object.assign({ t0: 0 }, opts));
+      musicFadeIn(mix.musicFade.gain, 0, m.mood, opts.remaining);
+      m.schedule(seconds);
+    } else if (kind === 'breath') {
+      const noise = noiseSet(ctx); let t = 0.1;
+      for (const [k, d] of (opts.seq || [['in', 4], ['out', 6], ['in', 4], ['out', 6]])) { breathCue(ctx, mix.breathIn, noise, k, d, t, 0); t += d; }
+    } else if (kind === 'bell') bellOnce(ctx, mix.bellIn, 0.1);
+    return ctx.startRendering();
+  }
+
+  g.SereinAudio = { Engine, MOODS, MOOD_FOR, renderOffline, supported: !!AC, engine: new Engine() };
+})(globalThis);
+
+;
+/* Serein guided practice: the player controller.
+ * Sits on top of the existing practice engine (Serein.player.engine) and the player markup:
+ *   - a voice guide with a scripted line for every step (src/player-voice.js), spoken by the best voice on the device
+ *   - captions and an instruction timeline on the stage, and a step rail beside the step panel in text view
+ *   - quick Voice / Music / Breath-sound controls on the player controls
+ *   - 3D lungs for the breathing tide (src/lungs3d.js), synthesised breath sounds and soft music (src/player-audio.js)
+ * It is driven by calls from updatePlayer (see the patches in build-web.mjs); nothing starts until a practice is playing. */
+(function (g) {
+  'use strict';
+  const V = g.SereinVoice, A = g.SereinAudio;
+  const doc = document;
+  const $ = (s, r) => (r || doc).querySelector(s);
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const KEY = 'serein-player-v1';
+  const canSpeak = !!(g.speechSynthesis && g.SpeechSynthesisUtterance);
+  const canSound = !!(g.AudioContext || g.webkitAudioContext);
+
+  /* ---- the person's choices (own key; voice choice and speed live in the app's preferences) ---- */
+  const DEFAULTS = { voice: true, music: true, breath: true, musicVol: 0.55, breathVol: 0.6 };
+  const prefs = Object.assign({}, DEFAULTS);
+  try { Object.assign(prefs, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch { /* storage unavailable: defaults apply */ }
+  function savePrefs() { try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch { /* ignore */ } }
+
+  const appPrefs = () => { try { return g.Serein.store.model.preferences || {}; } catch { return {}; } };
+  const app = () => g.Serein && g.Serein.app;
+  const engine = () => g.Serein && g.Serein.player && g.Serein.player.engine;
+  const toast = m => { try { g.Serein.ui.toast(m); } catch { /* ignore */ } };
+
+  /* ---- voice ---- */
+  const audio = A && A.engine;
+  const narrator = V && new V.Narrator({
+    getVoice: () => canSpeak ? V.pick(g.speechSynthesis.getVoices(), appPrefs().voiceURI) : null,
+    getRate: () => appPrefs().voiceRate || 0.88,
+    onSpeaking: on => { if (audio) audio.duck(on); },
+    onUtter: item => { if (!item.single) { P.sub = item.text; paintCaption(); } },
+    onFail: err => { if (err === 'not-allowed' && !P.warned) { P.warned = true; toast('Your browser blocked the voice. Tap Voice off and on to try again.'); } }
+  });
+
+  /* ---- state of the running practice ---- */
+  const P = {
+    engine: null, plan: null, mode: '', visit: null, introDone: false, outroDone: false, caption: '', phaseKey: '', counts: [], lastState: '', lastWall: 0, selfClock: 0,
+    muted: false, dom: null, ui: {}, outroTimer: 0, musicOn: false, sig: '', warned: false, sub: '', subQ: [], subEnd: 0, lastCycle: -1
+  };
+  const eff = {
+    get voice() { return prefs.voice && canSpeak && !P.muted; },
+    get music() { return prefs.music && canSound && !P.muted; },
+    get breath() { return prefs.breath && canSound && !P.muted; }
+  };
+  const isBreath = () => !!(P.plan && P.plan.kind === 'breath');
+  const preview = () => { const a = app(); return !!(a && a.state && a.state.preview); };
+
+  const kindOf = title => /out/i.test(title) ? 'out' : /hold/i.test(title) ? 'hold' : /rest/i.test(title) ? 'rest' : 'in';
+  const fmt = n => { n = Math.max(0, Math.round(n)); return Math.floor(n / 60) + ':' + String(n % 60).padStart(2, '0'); };
+  const fmtShort = n => n < 60 ? Math.round(n) + 's' : fmt(n);
+
+  /* ---- say something: caption always, voice when on ---- */
+  /* The line for this moment: shown in full in the step panel (and read by screen readers). */
+  function line(text) {
+    if (!text) return;
+    P.caption = text;
+    paintCaption();
+  }
+  /* Say something: spoken when the voice is on, and always shown as subtitles on the stage, a sentence at a time. */
+  function say(text, o) {
+    if (!text || preview()) return;
+    if (eff.voice && narrator && narrator.available) narrator.say(text, o);
+    else queueSubs(V.splitSentences(text));
+  }
+  function queueSubs(parts) {
+    const now = performance.now(), rate = appPrefs().voiceRate || 0.88;
+    let t = Math.max(now, P.subEnd || 0);
+    for (const p of parts) { const d = (V.speakSeconds(p.text, rate) + p.gap / 1000) * 1000; P.subQ.push({ text: p.text, start: t }); t += d; }
+    P.subEnd = t;
+    pumpSubs();
+  }
+  function pumpSubs() {
+    if (!P.subQ.length) return;
+    const now = performance.now(); let changed = false;
+    while (P.subQ.length && P.subQ[0].start <= now) { P.sub = P.subQ.shift().text; changed = true; }
+    if (changed) paintCaption();
+  }
+  function clearSubs() { P.subQ = []; P.subEnd = 0; }
+  const firstSentence = t => { const m = String(t || '').match(/^[^.!?…]+[.!?…]?/); return m ? m[0].trim() : ''; };
+
+  /* ---- plan & session lifecycle ---- */
+  function modeKey(e) { return (e.relaxOnly ? 'r' : '') + (e.external ? 'x' : '') + (e.noHolds ? 'n' : ''); }
+  function ensurePlan(e) {
+    const key = modeKey(e);
+    if (!P.plan || P.mode !== key) { P.plan = V.plan(e.practice, e); P.mode = key; P.visit = null; P.phaseKey = ''; P.counts = []; }
+    return P.plan;
+  }
+  function begin(e) {
+    P.engine = e; P.plan = null; P.mode = ''; P.visit = null; P.hadVisit = false; P.introDone = false; P.outroDone = false; P.phaseKey = ''; P.counts = [];
+    P.lastState = ''; P.selfClock = 0; P.lastWall = 0; P.caption = ''; P.sub = ''; clearSubs(); P.musicOn = false; P.sig = '';
+    const a = app();
+    // A shared team presentation starts silent; the person can still switch sound on.
+    P.muted = !!(a && a.state && a.state.present);
+    if (narrator) narrator.cancel();
+    clearTimeout(P.outroTimer);
+    if (audio) audio.stopMusic(2.5);
+    ensurePlan(e);
+    const p = $('#player'); p.classList.add('sp-on'); p.dataset.spPractice = e.practice.id; p.dataset.spBreath = isBreath() ? '1' : '0';
+    syncLegacy();
+  }
+  function syncLegacy() {
+    const a = app(), box = $('#session-voice');
+    if (box) box.checked = !!eff.voice;
+    if (a && a.state) a.state.voice = false; // the old one-line speaker is replaced by the voice guide
+  }
+  function reset() {
+    P.visit = null; P.introDone = false; P.outroDone = false; P.phaseKey = ''; P.counts = []; P.selfClock = 0; P.caption = ''; P.sub = ''; clearSubs(); P.musicOn = false;
+    clearTimeout(P.outroTimer);
+    if (narrator) narrator.cancel();
+    if (audio) audio.stopMusic(1.2);
+  }
+
+  /* ---- main entry: called from updatePlayer on every tick and every forced refresh ---- */
+  function update(s, force) { try { run(s, force); } catch (err) { fault(err); } }
+  /* Whatever goes wrong here must never take the practice player down with it. */
+  function fault(err) { if (!P.faulted) { P.faulted = true; try { console.warn('Serein guide:', err); } catch { /* ignore */ } } }
+  function run(s, force) {
+    const e = engine(); if (!e || !V) return;
+    if (e !== P.engine) begin(e);
+    const plan = ensurePlan(e);
+    if (s.state === 'ready' && P.lastState && P.lastState !== 'ready') reset();
+    ensureDom();
+    if (P.synced !== e) { P.synced = e; syncToggles(); }
+    const am = ambientOn(); if (am !== P.amb) { P.amb = am; if (audio) audio.setAmbient(am); }
+    if (!P.visit && !isBreath()) { P.caption = ''; P.sub = ''; }
+    if (!P.caption) P.caption = mainLine(s, plan);
+    pumpSubs();
+    renderTimeline(s, e);
+    paintCaption();
+    paintLabel(s, e);
+    if (P.lungs) P.lungs.sync(s);
+    if (!preview()) {
+      if (s.state === 'playing') {
+        if (P.lastState !== 'playing') onPlay(s, e);
+        if (isBreath()) breathTick(s, e); else guideTick(s, e);
+      } else if (P.lastState === 'playing' && s.state !== 'complete') onPause(s);
+    }
+    P.lastState = s.state;
+  }
+  function mainLine(s, plan) {
+    if (s.state === 'complete') return s.cue;
+    if (plan.kind === 'breath') return (plan.captions && plan.captions[kindOf((engine().phases()[s.index] || {}).title || '')]) || s.cue;
+    const st = plan.steps[s.index];
+    return st ? st.say : s.cue;
+  }
+  /* The caption the panel should show when a step changes (patched into updatePlayer). */
+  function cue(s) { try { return cueLine(s); } catch (err) { fault(err); return s.cue; } }
+  function cueLine(s) {
+    const e = engine();
+    if (!e || !V) return s.cue;
+    if (e !== P.engine) begin(e);
+    const plan = ensurePlan(e);
+    if (s.state === 'complete') return s.cue;
+    if (!isBreath() && P.visit && P.visit.index === s.index && P.caption) return P.caption;
+    return mainLine(s, plan);
+  }
+
+  function onPlay(s, e) {
+    const resumed = P.lastState === 'paused';
+    // This runs inside the Begin tap, so the audio context is allowed to start here.
+    if (audio && (eff.music || eff.breath)) {
+      audio.unlock(); audio.setVolumes(prefs.musicVol, prefs.breathVol); audio.setAmbient(ambientOn());
+      if (resumed && audio.ctx) audio.resume();
+      if (eff.music && !P.musicOn) startMusic(s, e);
+      if (resumed && P.musicOn && eff.music) audio.resume();
+    }
+    if (resumed) { P.resumeSay = true; if (P.visit) P.visit.resume = true; }
+    // Self-paced practices have no clock of their own; this one drives the gentle reminders.
+    clearInterval(P.selfTimer);
+    if (e.practice.selfPaced) P.selfTimer = setInterval(() => { const x = engine(); if (x && x === P.engine && x.state === 'playing') update(x.snapshot()); else clearInterval(P.selfTimer); }, 250);
+  }
+  function onPause() {
+    clearInterval(P.selfTimer);
+    if (narrator) narrator.cancel();
+    clearTimeout(P.outroTimer);
+    if (audio && audio.ctx) audio.pause();
+  }
+  function ambientOn() { const sel = $('#ambient-sound'); return !!(sel && sel.value && sel.value !== 'off'); }
+  function startMusic(s, e) {
+    if (!audio || !eff.music) return;
+    const o = { remaining: e.duration ? Math.max(0, e.duration - e.elapsed) : 0 };
+    const ph = e.phases();
+    if (e.practice.id === 'tide') { o.cycle = ph.map(x => x.seconds); const cyc = ph.reduce((a, x) => a + x.seconds, 0); o.cycleOffset = e.elapsed % cyc; }
+    if (e.practice.id === 'box') { o.phaseSeconds = ph[0].seconds; o.phaseOffset = s.phaseElapsed; o.phaseIndex = s.index; }
+    P.musicOn = audio.startMusic(e.practice.id, o);
+    audio.setVolumes(prefs.musicVol, prefs.breathVol);
+  }
+
+  /* ---- the guide for step-by-step practices ---- */
+  function stepSeconds(e) { return e.duration ? e.duration / e.phases().length : Infinity; }
+  function guideTick(s, e) {
+    const plan = P.plan, timed = !!e.duration, now = performance.now();
+    const dt = P.lastWall ? clamp((now - P.lastWall) / 1000, 0, 0.4) : 0; P.lastWall = now;
+    const idx = s.index, step = plan.steps[idx]; if (!step) return;
+    const len = stepSeconds(e);
+    let t;
+    if (timed) t = s.phaseElapsed; else t = (P.selfClock += dt);
+    let v = P.visit;
+    if (!v || v.index !== idx || (timed && t < v.lastT - 2)) {
+      if (!timed) { P.selfClock = 0; t = 0; }
+      v = P.visit = { index: idx, spoken: new Set(), lastT: t, resume: false };
+      const prompts = (step.prompts || []).map(p => ({ at: p.at != null ? p.at : p.f * len, text: p.text })).filter(p => !(step.minStep && len < step.minStep) && p.at <= len - 2.5);
+      v.prompts = prompts;
+      if (P.hadVisit) { if (narrator) narrator.cancel(); clearSubs(); }
+      P.hadVisit = true;
+      if (!P.introDone) { P.introDone = true; if (plan.intro) say(plan.intro); }
+      // Joining a step part-way (a skip back, a seek): say the step line only if it is still early.
+      if (t <= 8) say(step.say); else P.sub = firstSentence(step.say);
+      line(step.say);
+      prompts.forEach((p, i) => { if (p.at < t - 0.3) v.spoken.add(i); });
+      return;
+    }
+    v.lastT = t;
+    if (v.resume) { v.resume = false; if (P.resumeSay) { P.resumeSay = false; say(P.caption || step.say); } }
+    for (let i = 0; i < v.prompts.length; i++) {
+      const p = v.prompts[i];
+      if (v.spoken.has(i) || t < p.at) continue;
+      v.spoken.add(i);
+      if (t - p.at < 7) { say(p.text); line(p.text); }
+    }
+  }
+
+  /* ---- breath: counts, sounds, reminders ---- */
+  function breathTick(s, e) {
+    const plan = P.plan, ph = e.phases(), cyc = ph.reduce((a, x) => a + x.seconds, 0);
+    const cycle = Math.floor(e.elapsed / cyc), key = cycle + ':' + s.index;
+    const kind = kindOf(ph[s.index].title), secs = ph[s.index].seconds, t = s.phaseElapsed;
+    if (key !== P.phaseKey) {
+      const first = P.phaseKey === '';
+      P.phaseKey = key; P.counts = [];
+      const cap = (plan.captions && plan.captions[kind]) || s.cue;
+      line(cap); P.sub = cap; paintCaption();
+      if (first && !P.introDone) { P.introDone = true; say(plan.intro); }
+      if (eff.breath && audio && audio.running) audio.breath(kind === 'hold' || kind === 'rest' ? 'hold' : kind, secs, t / secs);
+      if (t < 1.2) planCounts(kind, secs, cycle, cyc, e);
+    }
+    if (P.counts.length && eff.voice) {
+      while (P.counts.length && t >= P.counts[0].at) {
+        const c = P.counts.shift();
+        if (t - c.at > 1.4) continue;
+        if (c.lead || !P.skipCounts) {
+          if (c.lead && narrator.busy) { P.skipCounts = true; P.counts.length = 0; break; }
+          if (c.lead) P.skipCounts = false;
+          narrator.say(c.text, { single: !c.sentence, gap: 90 });
+        }
+      }
+    }
+  }
+  function planCounts(kind, secs, cycle, cyc, e) {
+    const plan = P.plan, ph = e.phases(), total = e.duration ? Math.ceil(e.duration / cyc) : 99;
+    const counts = [];
+    const finalCycle = e.duration && (e.duration - e.elapsed) <= cyc + 0.6 && total >= 4;
+    P.skipCounts = false;
+    if (kind === 'in' && finalCycle && P.lastCycle !== cycle) { P.lastCycle = cycle; counts.push({ at: 0.1, text: plan.last, lead: true, sentence: true }); }
+    else if (cycle < 3) {
+      V.countWords(kind, secs, cycle < 2).forEach((w, i) => counts.push({ at: i * 1 + (i ? 0.05 : 0), text: w, lead: i === 0 }));
+    } else if (cycle < 6 || (kind === 'in' && cycle % 2 === 0)) {
+      counts.push({ at: 0.05, text: V.countWords(kind, secs, false)[0], lead: true });
+    }
+    // a spoken reminder partway through a long out-breath
+    const rem = (plan.reminders || []).find(r => r.cycle === cycle);
+    if (rem && secs >= 4.5 && (kind === 'out' || (plan.id === 'box' && kind === 'rest'))) counts.push({ at: 1.3, text: rem.text, lead: false, sentence: true });
+    P.counts = counts;
+  }
+
+  /* ---- finish: a soft bell, then the last words ---- */
+  function complete() { try { finish(); } catch (err) { fault(err); } }
+  function finish() {
+    const e = engine(); if (!e || !V || P.outroDone) { return; }
+    if (e !== P.engine) begin(e);
+    P.outroDone = true;
+    clearInterval(P.selfTimer);
+    if (preview()) return;
+    if (narrator) narrator.cancel();
+    if (audio && audio.ctx) { audio.stopMusic(4); if (eff.music || eff.breath || eff.voice) audio.bell(); }
+    if (eff.voice && P.plan) {
+      clearTimeout(P.outroTimer);
+      P.outroTimer = setTimeout(() => { if (eff.voice && engine() === e && e.state === 'complete') narrator.say(P.plan.outro); }, 1500);
+    }
+  }
+  /* Silence the voice now (the old cancelVoice hook: pause, restart, exit, tab hidden). */
+  function silence() {
+    clearTimeout(P.outroTimer);
+    P.counts = []; clearSubs();
+    if (narrator) narrator.cancel(); else { try { g.speechSynthesis.cancel(); } catch { /* ignore */ } }
+  }
+  function closed() {
+    clearInterval(P.selfTimer);
+    silence();
+    P.visit = null; P.hadVisit = false; P.introDone = false; P.outroDone = false; P.phaseKey = ''; P.counts = []; P.caption = ''; P.sub = ''; clearSubs(); P.musicOn = false; P.lastCycle = -1;
+    if (audio) audio.shutdown(4);
+    if (P.lungs) P.lungs.dispose();
+    P.engine = null; P.lastState = '';
+    const p = $('#player'); if (p) { p.classList.remove('sp-on'); }
+  }
+
+  /* ---- DOM: stage HUD, step rail, quick controls ---- */
+  const ICON = {
+    voice: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path class="sp-on-only" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="sp-off-only" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>',
+    music: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/><path class="sp-off-only" d="M3 3l18 18"/></svg>',
+    breath: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8"/><path class="sp-off-only" d="M3 3l18 18"/></svg>'
+  };
+  function ensureDom() {
+    if (P.dom && P.dom.stage.isConnected) return;
+    const stage = $('#player-stage'), scroll = $('#player-scroll'), controls = $('.player-controls');
+    if (!stage || !scroll || !controls) return;
+    const hud = doc.createElement('div'); hud.id = 'sp-hud'; hud.className = 'sp-hud';
+    hud.innerHTML = '<p class="sp-caption" id="sp-caption" aria-hidden="true"></p>'
+      + '<p class="sp-now" id="sp-now" aria-hidden="true"></p><ol class="sp-timeline" id="sp-timeline" aria-label="Practice steps"></ol>'
+      + '<div class="sp-meta" aria-hidden="true"><span id="sp-elapsed"></span><span class="sp-next" id="sp-next"></span><span id="sp-left"></span></div>';
+    stage.appendChild(hud);
+    const label = doc.createElement('div'); label.id = 'sp-breath-label'; label.className = 'sp-breath-label'; label.setAttribute('aria-hidden', 'true'); label.hidden = true;
+    label.innerHTML = '<span class="sp-bl-word"></span><span class="sp-bl-dots" aria-hidden="true">…</span><span class="sp-bl-count"><b></b><i></i></span>';
+    $('#orb-stage').appendChild(label);
+    const rail = doc.createElement('aside'); rail.id = 'sp-rail'; rail.className = 'sp-rail'; rail.setAttribute('aria-label', 'Your steps');
+    rail.innerHTML = '<p class="sp-rail-eyebrow">Your steps</p><ol class="sp-rail-list" id="sp-rail-list"></ol><p class="sp-rail-meta" id="sp-rail-meta"></p>';
+    scroll.appendChild(rail);
+    const tg = doc.createElement('div'); tg.className = 'sp-toggles'; tg.setAttribute('role', 'group'); tg.setAttribute('aria-label', 'Sound');
+    const pill = (id, ic, name, extra, short) => '<span class="sp-pill" data-for="' + id + '"><button type="button" class="sp-toggle" id="' + id + '" aria-pressed="false">' + ICON[ic] + '<span class="sp-name"><span class="sp-full">' + name + '</span><span class="sp-short">' + (short || name) + '</span></span><span class="sp-state" aria-hidden="true">On</span></button>' + (extra || '') + '</span>';
+    tg.innerHTML = (canSpeak ? pill('sp-voice', 'voice', 'Voice') : '')
+      + (canSound ? pill('sp-music', 'music', 'Music', '<input type="range" class="sp-vol" id="sp-music-vol" min="0" max="1" step="0.05" aria-label="Music volume">') : '')
+      + (canSound ? pill('sp-breath', 'breath', 'Breath sounds', '<input type="range" class="sp-vol" id="sp-breath-vol" min="0" max="1" step="0.05" aria-label="Breath sound volume">', 'Breath') : '');
+    controls.insertBefore(tg, $('.playback-row'));
+    P.dom = { stage, hud, label, rail, tg, scroll };
+    P.ui = { cap: $('#sp-caption'), next: $('#sp-next'), now: $('#sp-now'), tl: $('#sp-timeline'), el: $('#sp-elapsed'), left: $('#sp-left'), rl: $('#sp-rail-list'), rm: $('#sp-rail-meta') };
+    if (g.ResizeObserver) new ResizeObserver(() => stage.style.setProperty('--sp-hud-h', hud.offsetHeight + 'px')).observe(hud);
+    syncToggles();
+  }
+
+  function stepList(e) {
+    const p = e.practice;
+    if (p.breathFocus) return e.phases().map(x => ({ title: x.title, sec: x.seconds }));
+    const ph = e.phases(), per = e.duration ? e.duration / ph.length : null;
+    return p.steps.map(([title], i) => ({ title, sec: per }));
+  }
+  function stepButtons(list, e, cls) {
+    const timed = !!e.duration;
+    return list.map((x, i) => '<li style="--w:' + (x.sec || 1) + '"><button type="button" class="' + cls + '" data-player-step="' + i + '" data-i="' + i + '">'
+      + '<span class="sp-fill" aria-hidden="true"></span><span class="sp-mark" aria-hidden="true"></span>'
+      + '<span class="sp-text"><span class="sp-name">' + esc(x.title) + '</span>' + (timed && x.sec ? '<span class="sp-dur">' + fmtShort(x.sec) + '</span>' : '') + '</span>'
+      + '<span class="sp-bar" aria-hidden="true"><i></i></span></button></li>').join('');
+  }
+  function renderTimeline(s, e) {
+    const list = stepList(e), sig = e.practice.id + '|' + list.map(x => x.title + x.sec).join('|') + '|' + (e.duration || 'self');
+    const cyclic = !!e.practice.breathFocus;
+    if (sig !== P.sig) {
+      P.sig = sig;
+      P.ui.tl.innerHTML = stepButtons(list, e, 'sp-step');
+      P.ui.rl.innerHTML = stepButtons(list, e, 'sp-step sp-rail-step');
+      P.dom.hud.dataset.cyclic = cyclic ? '1' : '0'; P.dom.rail.dataset.cyclic = cyclic ? '1' : '0';
+    }
+    const done = s.state === 'complete';
+    for (const root of [P.ui.tl, P.ui.rl]) {
+      root.querySelectorAll('button').forEach((b, i) => {
+        const cur = !done && i === s.index, past = done || i < s.index;
+        const state = cur ? 'current' : past ? 'done' : 'next';
+        if (b.dataset.state !== state) {
+          b.dataset.state = state;
+          if (cur) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+          const x = list[i], timed = e.duration && x.sec;
+          b.setAttribute('aria-label', (cyclic ? 'Phase ' : 'Step ') + (i + 1) + ' of ' + list.length + ': ' + x.title + (timed ? ', ' + fmtShort(x.sec) : '') + (past && !cyclic ? ', done' : cur ? ', current' : ''));
+          b.querySelector('.sp-mark').textContent = past && !cyclic ? '✓' : String(i + 1);
+        }
+        const pr = cur ? (e.duration || cyclic ? clamp(s.progress, 0, 1) : 0.0) : past ? 1 : 0;
+        const q = pr.toFixed(3);
+        if (b.dataset.p !== q) { b.dataset.p = q; b.style.setProperty('--p', q); }
+      });
+    }
+    // labels: what comes next, and how long is left
+    const nextTitle = !done && s.index + 1 < list.length ? list[s.index + 1].title : (!done && cyclic ? list[0].title : '');
+    const nextText = done ? '' : nextTitle ? 'Next: ' + nextTitle : 'Next: finish';
+    setText(P.ui.next, nextText);
+    const cur = list[done ? list.length - 1 : s.index];
+    setText(P.ui.now, done ? '' : (cyclic ? 'Phase ' : 'Step ') + (s.index + 1) + ' of ' + list.length + ' · ' + cur.title + (cur.sec ? ' · ' + fmtShort(cur.sec) : ''));
+    let elapsed, left, rail;
+    if (e.duration) {
+      elapsed = fmt(e.elapsed) + ' elapsed'; left = fmt(Math.max(0, e.duration - e.elapsed)) + ' left';
+      if (cyclic) {
+        const cyc = e.phases().reduce((a, x) => a + x.seconds, 0), n = Math.ceil(e.duration / cyc);
+        elapsed = 'Breath ' + Math.min(n, Math.floor(e.elapsed / cyc) + 1) + ' of ' + n;
+      }
+      rail = elapsed + ' · ' + left;
+    } else { elapsed = 'Step ' + (done ? list.length : s.index + 1) + ' of ' + list.length; left = 'At your own pace'; rail = left + ' · no timer'; }
+    setText(P.ui.el, elapsed); setText(P.ui.left, left); setText(P.ui.rm, rail);
+  }
+  function setText(el, t) { if (el && el.textContent !== t) el.textContent = t; }
+  function paintCaption() {
+    if (!P.ui.cap) return;
+    const t = P.caption || '';
+    setText(P.ui.cap, P.sub || firstSentence(t));
+    const cue = $('#player-cue');
+    if (cue && t && !(P.engine && P.engine.state === 'complete') && cue.textContent !== t) cue.textContent = t;
+  }
+  function paintLabel(s, e) {
+    const L = P.dom && P.dom.label; if (!L) return;
+    const show = e.practice.id === 'tide' && s.state !== 'complete';
+    L.hidden = !show; if (!show) return;
+    const ph = e.phases()[s.index], word = $('.sp-bl-word', L), cnt = $('.sp-bl-count', L);
+    const w = s.state === 'ready' ? 'Ready when you are' : s.state === 'paused' ? 'Paused' : ph.title;
+    setText(word, w);
+    L.dataset.state = s.state; L.dataset.kind = kindOf(ph.title);
+    const dots = $('.sp-bl-dots', L);
+    const live = s.state === 'playing' || s.state === 'paused';
+    dots.hidden = !live; cnt.hidden = !live;
+    if (live) { setText(cnt.firstChild, String(clamp(Math.floor(s.phaseElapsed + 0.0001) + 1, 1, ph.seconds))); setText(cnt.lastChild, '/ ' + ph.seconds); }
+  }
+
+  /* ---- quick controls and settings ---- */
+  function syncToggles() {
+    const set = (id, on, label) => {
+      const b = $('#' + id); if (!b) return;
+      b.setAttribute('aria-pressed', String(!!on));
+      b.parentElement.dataset.on = on ? '1' : '0';
+      const st = b.querySelector('.sp-state'); if (st) st.textContent = on ? 'On' : 'Off';
+      b.setAttribute('aria-label', label + (on ? ': on' : ': off'));
+    };
+    set('sp-voice', eff.voice, 'Voice guide');
+    set('sp-music', eff.music, 'Music');
+    set('sp-breath', eff.breath, 'Breath sounds');
+    const breathing = isBreath(), bp = $('[data-for="sp-breath"]'); if (bp) bp.hidden = !breathing;
+    const mv = $('#sp-music-vol'), bv = $('#sp-breath-vol'); if (mv) mv.value = String(prefs.musicVol); if (bv) bv.value = String(prefs.breathVol);
+    const box = $('#session-voice'); if (box) box.checked = !!eff.voice;
+    const sm = $('#sp-set-music'), sb = $('#sp-set-breath'); if (sm) sm.checked = prefs.music; if (sb) sb.checked = prefs.breath;
+    const smv = $('#sp-set-music-vol'), sbv = $('#sp-set-breath-vol'); if (smv) smv.value = String(prefs.musicVol); if (sbv) sbv.value = String(prefs.breathVol);
+  }
+  function setVoice(on) {
+    prefs.voice = !!on; P.muted = false; savePrefs(); syncToggles(); syncLegacy();
+    const e = engine(); if (!e) return;
+    if (!on) { silence(); return; }
+    if (e.state === 'playing' && narrator) {
+      // Switched on mid-practice: say the current line again so it is heard straight away.
+      silence();
+      const s = e.snapshot();
+      if (isBreath()) { if (P.caption) narrator.say(P.caption); } else narrator.say(P.caption || mainLine(s, P.plan));
+      clearSubs();
+    }
+  }
+  function setMusic(on) {
+    prefs.music = !!on; P.muted = false; savePrefs(); syncToggles();
+    const e = engine(); if (!e || !audio) return;
+    if (!on) { audio.stopMusic(1.5); P.musicOn = false; }
+    else if (e.state === 'playing' && !preview()) { startMusic(e.snapshot(), e); }
+  }
+  function setBreath(on) { prefs.breath = !!on; P.muted = false; savePrefs(); syncToggles(); if (on && engine() && engine().state === 'playing' && audio) audio.unlock(); }
+
+  function voiceOptions() {
+    const list = canSpeak ? V.rank(g.speechSynthesis.getVoices()) : [];
+    const want = appPrefs().voiceURI || '';
+    const best = list[0];
+    return { list, html: '<option value=""' + (want ? '' : ' selected') + '>Automatic' + (best ? ' · ' + esc(best.name) : '') + '</option>' + list.map(v => '<option value="' + esc(v.voiceURI) + '"' + (v.voiceURI === want ? ' selected' : '') + '>' + esc(v.name + ' · ' + v.lang) + '</option>').join('') };
+  }
+  /* The "Voice and sound" part of the comfort sheet (replaces the old device-options block). */
+  function extras(c) {
+    const vo = voiceOptions(), rate = (c.store.preferences.voiceRate || 0.88);
+    let h = '<fieldset class="player-extra-options sp-sound"><legend>Voice and sound</legend>';
+    if (canSpeak) {
+      h += '<label class="field-label" for="voice-choice">Voice</label><select id="voice-choice" class="field">' + vo.html + '</select>'
+        + '<label class="field-label" for="voice-rate">Voice speed</label><input id="voice-rate" type="range" min="0.6" max="1.2" step="0.05" value="' + rate + '">'
+        + '<p class="small-note">Voices come from your device or browser. The best English voice is chosen for you, and a UK voice if there is one.</p>'
+        + '<button type="button" class="button button-outline sp-sample" id="sp-voice-test">Hear a sample</button>';
+    } else h += '<p class="small-note">This browser has no spoken voice. The written guidance stays on screen.</p>';
+    if (canSound) {
+      h += '<label class="check-label"><input type="checkbox" id="sp-set-music"' + (prefs.music ? ' checked' : '') + '>Soft music</label>'
+        + '<label class="field-label" for="sp-set-music-vol">Music volume</label><input id="sp-set-music-vol" type="range" min="0" max="1" step="0.05" value="' + prefs.musicVol + '">'
+        + '<label class="check-label"><input type="checkbox" id="sp-set-breath"' + (prefs.breath ? ' checked' : '') + '>Breath sounds · breathing practices only</label>'
+        + '<label class="field-label" for="sp-set-breath-vol">Breath sound volume</label><input id="sp-set-breath-vol" type="range" min="0" max="1" step="0.05" value="' + prefs.breathVol + '">'
+        + '<label class="field-label" for="ambient-sound">Ambient sound · off by default</label><select class="field" id="ambient-sound"><option value="off">Off</option><option value="rain">Rain</option><option value="ocean">Ocean</option><option value="hum">Hum</option></select>'
+        + '<label class="field-label" for="ambient-volume">Ambient volume</label><input id="ambient-volume" type="range" min="0" max="0.25" step="0.01" value="0.06">';
+    }
+    if ('wakeLock' in navigator) h += '<label class="check-label"><input id="keep-awake" type="checkbox">Keep the screen awake while playing</label>';
+    if ('vibrate' in navigator && /Android/i.test(navigator.userAgent)) h += '<label class="check-label"><input id="phase-haptics" type="checkbox">Brief vibration on phase changes</label>';
+    h += '<button type="button" class="text-button" data-v5="shortcuts">Keyboard shortcuts</button></fieldset>';
+    return h;
+  }
+  function refreshVoiceList() {
+    const sel = $('#voice-choice'); if (!sel) return;
+    sel.innerHTML = voiceOptions().html;
+  }
+
+  /* ---- events ---- */
+  doc.addEventListener('click', ev => {
+    const b = ev.target.closest && ev.target.closest('button'); if (!b) return;
+    if (b.id === 'sp-voice') setVoice(!eff.voice);
+    else if (b.id === 'sp-music') { setMusic(!eff.music); if (audio && eff.music) audio.unlock(); }
+    else if (b.id === 'sp-breath') setBreath(!eff.breath);
+    else if (b.id === 'sp-voice-test' && narrator) { silence(); narrator.say('Hello. This is how your voice guide will sound. Breathe in, gently.'); }
+  });
+  doc.addEventListener('input', ev => {
+    const t = ev.target;
+    if (t.id === 'sp-music-vol' || t.id === 'sp-set-music-vol') { prefs.musicVol = +t.value; savePrefs(); if (audio) audio.setVolumes(prefs.musicVol, null); syncToggles(); }
+    else if (t.id === 'sp-breath-vol' || t.id === 'sp-set-breath-vol') { prefs.breathVol = +t.value; savePrefs(); if (audio) audio.setVolumes(null, prefs.breathVol); syncToggles(); }
+    else if (t.id === 'ambient-sound' || t.id === 'ambient-volume') { if (audio) audio.setAmbient(ambientOn()); }
+  });
+  doc.addEventListener('change', ev => {
+    const t = ev.target;
+    if (t.id === 'session-voice') setVoice(t.checked);
+    else if (t.id === 'sp-set-music') setMusic(t.checked);
+    else if (t.id === 'sp-set-breath') setBreath(t.checked);
+    else if (t.id === 'ambient-sound') { if (audio) audio.setAmbient(ambientOn()); }
+    else if (t.id === 'voice-choice' || t.id === 'voice-rate') { /* stored by the app; picked up on the next line */ }
+  });
+  if (canSpeak && g.speechSynthesis.addEventListener) g.speechSynthesis.addEventListener('voiceschanged', refreshVoiceList);
+  const player = $('#player');
+  if (player) player.addEventListener('close', closed);
+
+  g.SereinPlayer = {
+    update, complete, silence, cue, extras, closed,
+    attachLungs(l) { P.lungs = l; },
+    prefs, P, eff,
+    debug() { return { prefs: Object.assign({}, prefs), caption: P.caption, plan: P.plan && P.plan.kind, muted: P.muted, musicOn: P.musicOn, counts: P.counts.length, audioState: audio && audio.ctx ? audio.ctx.state : 'none', busy: narrator ? narrator.busy : false }; }
+  };
+})(globalThis);
+
+;
+/* Serein guided practice: 3D lungs for the breathing tide.
+ * Raw WebGL, procedural geometry only (two lobed lungs from deformed spheres, a trachea and a branching bronchial tree).
+ * The lungs expand, brighten and fill with drifting air on the in-breath, and settle and dim on the out-breath, driven
+ * directly by the practice engine's phase and progress so they stay in step with the count.
+ * Falls back to a flat canvas drawing without WebGL, holds still-ish under reduced motion, stops when the tab is hidden,
+ * and frees every GL resource on dispose(). Replaces Serein.Orb (the plain sphere) for the tide. */
+(function (g) {
+  'use strict';
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = p => 0.5 - 0.5 * Math.cos(Math.PI * clamp(p, 0, 1));
+  const norm3 = v => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+
+  /* ---- the breathing shape, shared by the shader and the 2D fallback ---- */
+  const CENTRE = [0, 0.18, 0];
+  function breathe(p, b) {
+    const low = smooth(0.7, -0.9, p[1]);
+    const dx = (p[0] - CENTRE[0]) * (1 + (0.1 + 0.05 * low) * b);
+    const dz = (p[2] - CENTRE[2]) * (1 + (0.15 + 0.06 * low) * b);
+    const dy = (p[1] - CENTRE[1]) * (1 + 0.04 * b);
+    return [CENTRE[0] + dx, CENTRE[1] + dy - 0.1 * low * b, CENTRE[2] + dz];
+  }
+
+  /* ---- lung surface: a sphere deformed into a tapered, lobed lung ---- */
+  function lungPoint(th, ph, side) {
+    const py0 = Math.cos(th), r0 = Math.sin(th), cx = Math.cos(ph), cz = Math.sin(ph);
+    // a fuller, rounder silhouette than a plain sphere: dome at the top, broad shoulders, wide base
+    const fill = 0.78, rr = Math.pow(r0, fill), py = Math.sign(py0) * Math.pow(Math.abs(py0), 0.92);
+    const px = rr * cx, pz = rr * cz;
+    const t = (1 - py) / 2;
+    const wprof = 0.64 + 0.36 * smooth(0, 0.62, t), dprof = 0.66 + 0.34 * smooth(0, 0.5, t);
+    let x = px * 0.54 * wprof, y = py, z = pz * 0.46 * dprof;
+    const medial = px * side < 0;
+    if (medial) x *= 0.58;
+    x -= side * 0.06 * smooth(0.1, 1, py);
+    // fissures: shallow grooves that split the lung into lobes
+    const n1 = norm3([-side * 0.45, 0.8, 0.25]);
+    let groove = 0.07 * Math.exp(-Math.pow(dot([px, py, pz], n1) / 0.085, 2));
+    if (side < 0) { // right lung has a third lobe
+      const d2 = py - 0.34, w = smooth(-0.2, 0.4, pz) * smooth(0, 0.35, px * side);
+      groove += 0.06 * Math.exp(-Math.pow(d2 / 0.055, 2)) * w;
+    }
+    const k = 1 - groove;
+    x *= k; z *= k; y *= 1 - groove * 0.4;
+    if (side > 0) { // cardiac notch on the left lung
+      const dd = Math.pow(px + 0.7, 2) + Math.pow(py + 0.35, 2) + Math.pow(pz - 0.55, 2);
+      x += side * 0.2 * Math.exp(-dd / 0.2);
+    }
+    // the root of the lung, where the airway enters
+    const hh = Math.pow(px * side + 0.8, 2) + Math.pow(py - 0.15, 2) + Math.pow(pz, 2);
+    x += side * 0.06 * Math.exp(-hh / 0.06);
+    // a little organic irregularity
+    const w = 1 + 0.018 * Math.sin(5.1 * px + 2.3 * py + 1.1) * Math.cos(4.2 * pz - 1.7 * py);
+    x *= w; z *= w;
+    return [side * 0.6 + x, y * 0.95 - 0.08, z];
+  }
+  function buildLung(side, nt, np) {
+    const verts = (nt + 1) * (np + 1), pos = new Float32Array(verts * 6), idx = new Uint16Array(nt * np * 6);
+    const centre = [side * 0.6, -0.08, 0];
+    let o = 0;
+    for (let i = 0; i <= nt; i++) {
+      const th = clamp(i / nt * Math.PI, 1e-3, Math.PI - 1e-3);
+      for (let j = 0; j <= np; j++) {
+        const ph = j / np * Math.PI * 2, e = 1e-3;
+        const p = lungPoint(th, ph, side);
+        const a = lungPoint(th + e, ph, side), b = lungPoint(th - e, ph, side), c = lungPoint(th, ph + e, side), d = lungPoint(th, ph - e, side);
+        let n = cross([a[0] - b[0], a[1] - b[1], a[2] - b[2]], [c[0] - d[0], c[1] - d[1], c[2] - d[2]]);
+        if (Math.hypot(n[0], n[1], n[2]) < 1e-9) n = [p[0] - centre[0], p[1] - centre[1], p[2] - centre[2]];
+        n = norm3(n);
+        if (dot(n, [p[0] - centre[0], p[1] - centre[1], p[2] - centre[2]]) < 0) n = [-n[0], -n[1], -n[2]];
+        pos[o++] = p[0]; pos[o++] = p[1]; pos[o++] = p[2]; pos[o++] = n[0]; pos[o++] = n[1]; pos[o++] = n[2];
+      }
+    }
+    let q = 0;
+    for (let i = 0; i < nt; i++) for (let j = 0; j < np; j++) {
+      const a = i * (np + 1) + j, b = a + 1, c = a + np + 1, d = c + 1;
+      idx[q++] = a; idx[q++] = b; idx[q++] = c; idx[q++] = b; idx[q++] = d; idx[q++] = c;
+    }
+    return { pos, idx };
+  }
+
+  /* ---- airways: trachea, two main bronchi and a branching tree inside each lung ---- */
+  function buildAirways() {
+    const rand = rng(11), tubes = [], paths = [], lines = [];
+    const SEG = 8;
+    const top = [0, 1.34, 0];
+    let maxAlong = 0;
+    function tube(points, r0, r1, along0, rings) {
+      // returns {pos:[x,y,z,nx,ny,nz,along]*} and index data; pushes into tubes
+      const n = points.length, pos = [], idx = [];
+      let nrm = null, acc = along0;
+      for (let i = 0; i < n; i++) {
+        const prev = points[Math.max(0, i - 1)], next = points[Math.min(n - 1, i + 1)];
+        const tg = norm3([next[0] - prev[0], next[1] - prev[1], next[2] - prev[2]]);
+        if (!nrm) { const ref = Math.abs(tg[2]) < 0.9 ? [0, 0, 1] : [1, 0, 0]; nrm = norm3(cross(tg, ref)); }
+        else { const d = dot(nrm, tg); nrm = norm3([nrm[0] - d * tg[0], nrm[1] - d * tg[1], nrm[2] - d * tg[2]]); }
+        const bn = cross(tg, nrm);
+        if (i > 0) acc += Math.hypot(points[i][0] - points[i - 1][0], points[i][1] - points[i - 1][1], points[i][2] - points[i - 1][2]);
+        const f = i / (n - 1);
+        let rad = lerp(r0, r1, f);
+        if (rings) rad *= 1 + 0.07 * Math.max(0, Math.sin(acc * 78));
+        for (let s = 0; s <= SEG; s++) {
+          const a = s / SEG * Math.PI * 2, c = Math.cos(a), sn = Math.sin(a);
+          const nx = c * nrm[0] + sn * bn[0], ny = c * nrm[1] + sn * bn[1], nz = c * nrm[2] + sn * bn[2];
+          pos.push(points[i][0] + rad * nx, points[i][1] + rad * ny, points[i][2] + rad * nz, nx, ny, nz, acc);
+        }
+      }
+      for (let i = 0; i < n - 1; i++) for (let s = 0; s < SEG; s++) {
+        const a = i * (SEG + 1) + s, b = a + 1, c = a + SEG + 1, d = c + 1;
+        idx.push(a, c, b, b, c, d);
+      }
+      tubes.push({ pos, idx });
+      maxAlong = Math.max(maxAlong, acc);
+      return acc;
+    }
+    // a gently curved airway: a Hermite curve from the start, leaving along dir, to a point a little off to one side
+    function bend(p0, dir, len, steps, wob) {
+      const d2 = norm3([dir[0] + (rand() - 0.5) * wob, dir[1] + (rand() - 0.5) * wob - 0.05, dir[2] + (rand() - 0.5) * wob]);
+      const p1 = [p0[0] + (dir[0] + d2[0]) * 0.5 * len, p0[1] + (dir[1] + d2[1]) * 0.5 * len, p0[2] + (dir[2] + d2[2]) * 0.5 * len];
+      const pts = [];
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps, h00 = 2 * t * t * t - 3 * t * t + 1, h10 = t * t * t - 2 * t * t + t, h01 = -2 * t * t * t + 3 * t * t, h11 = t * t * t - t * t;
+        pts.push([0, 1, 2].map(k => h00 * p0[k] + h10 * len * dir[k] + h01 * p1[k] + h11 * len * d2[k]));
+      }
+      return { pts, dir: d2 };
+    }
+    function inside(p, side) {
+      const rx = 0.42 * (0.68 + 0.32 * smooth(0.8, -0.6, p[1]));
+      const dx = (p[0] - side * 0.7) / rx, dy = (p[1] + 0.1) / 0.84, dz = p[2] / 0.34;
+      return dx * dx + dy * dy + dz * dz < 1.0;
+    }
+    function rotateAround(v, axis, ang) {
+      const c = Math.cos(ang), s = Math.sin(ang), d = dot(axis, v), x = cross(axis, v);
+      return norm3([v[0] * c + x[0] * s + axis[0] * d * (1 - c), v[1] * c + x[1] * s + axis[1] * d * (1 - c), v[2] * c + x[2] * s + axis[2] * d * (1 - c)]);
+    }
+    function branch(start, dir, len, rad, depth, along, side, trail) {
+      const seg = bend(start, dir, len, 7, 0.35), end = seg.pts[seg.pts.length - 1];
+      const a1 = tube(seg.pts, rad, rad * 0.82, along, false);
+      lines.push({ pts: seg.pts, r: rad, a0: along, a1 });
+      const path = trail.concat(seg.pts.slice(1));
+      if (depth >= 4) { paths.push(path); return; }
+      let any = false;
+      for (let k = 0; k < 2; k++) {
+        const ref = Math.abs(seg.dir[1]) < 0.9 ? [0, 1, 0] : [1, 0, 0];
+        const ax = norm3(cross(seg.dir, ref));
+        const around = rotateAround(ax, seg.dir, depth * 1.1 + k * Math.PI + rand() * 0.4);
+        let cd = rotateAround(seg.dir, around, 0.38 + rand() * 0.3);
+        // lean towards the middle of the lung so the tree fills it rather than leaving it
+        const toC = norm3([side * 0.68 - end[0], -0.05 - end[1], -end[2]]);
+        cd = norm3([cd[0] + toC[0] * 0.35, cd[1] + toC[1] * 0.35, cd[2] + toC[2] * 0.35]);
+        let nl = len * (0.72 + rand() * 0.08), ok = false;
+        for (let tries = 0; tries < 4 && !ok; tries++) {
+          const probe = [end[0] + cd[0] * nl, end[1] + cd[1] * nl, end[2] + cd[2] * nl];
+          if (inside(probe, side)) ok = true; else nl *= 0.72;
+        }
+        if (!ok) continue;
+        any = true;
+        branch(end, cd, nl, rad * 0.74, depth + 1, a1, side, path);
+      }
+      if (!any) paths.push(path);
+    }
+    // trachea, with faint cartilage rings
+    const trachea = [];
+    for (let i = 0; i <= 14; i++) trachea.push([0, lerp(top[1], 0.66, i / 14), 0]);
+    const tEnd = tube(trachea, 0.085, 0.075, 0, true);
+    lines.push({ pts: trachea, r: 0.085, a0: 0, a1: tEnd });
+    const trail0 = [[0, 1.95, 0]].concat(trachea.slice(2));
+    for (const side of [-1, 1]) {
+      const root = [side * 0.04, 0.66, 0], hil = [side * 0.44, 0.3, 0.0];
+      const mainPts = [];
+      for (let i = 0; i <= 8; i++) { const f = i / 8; mainPts.push([lerp(root[0], hil[0], f), lerp(root[1], hil[1], f) - 0.05 * Math.sin(f * Math.PI), 0]); }
+      const aMain = tube(mainPts, 0.062, 0.052, tEnd, false);
+      lines.push({ pts: mainPts, r: 0.062, a0: tEnd, a1: aMain });
+      // inside the lung the main airway splits into its lobes: three on the right, two on the left
+      const lobes = side < 0
+        ? [[[side * 0.55, 0.7, 0.12], 0.34], [[side * 0.95, -0.05, 0.26], 0.36], [[side * 0.3, -0.9, 0.0], 0.52]]
+        : [[[side * 0.5, 0.75, 0.1], 0.4], [[side * 0.3, -0.9, 0.0], 0.56]];
+      const entry = [side * 0.52, 0.2, 0.0];
+      const stem = [hil, [lerp(hil[0], entry[0], 0.5), lerp(hil[1], entry[1], 0.5), 0], entry];
+      const aStem = tube(stem, 0.052, 0.046, aMain, false);
+      lines.push({ pts: stem, r: 0.052, a0: aMain, a1: aStem });
+      for (const [d, len] of lobes) branch(entry, norm3(d), len, 0.034, 0, aStem, side, trail0.concat(mainPts.slice(1), stem.slice(1)));
+    }
+    return { tubes, paths, lines, maxAlong };
+  }
+  function mergeTubes(tubes, maxAlong) {
+    let nv = 0, ni = 0;
+    for (const t of tubes) { nv += t.pos.length / 7; ni += t.idx.length; }
+    const pos = new Float32Array(nv * 7), idx = new Uint16Array(ni);
+    let vo = 0, io = 0, base = 0;
+    for (const t of tubes) {
+      for (let i = 0; i < t.pos.length; i += 7) { for (let k = 0; k < 6; k++) pos[vo++] = t.pos[i + k]; pos[vo++] = t.pos[i + 6] / maxAlong; }
+      for (let i = 0; i < t.idx.length; i++) idx[io++] = t.idx[i] + base;
+      base += t.pos.length / 7;
+    }
+    return { pos, idx };
+  }
+  function pathData(paths) {
+    return paths.map(pts => {
+      const acc = [0];
+      for (let i = 1; i < pts.length; i++) acc.push(acc[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1], pts[i][2] - pts[i - 1][2]));
+      return { pts, acc, len: acc[acc.length - 1] };
+    });
+  }
+  function onPath(path, u, out) {
+    const d = u * path.len;
+    let i = 1; while (i < path.acc.length - 1 && path.acc[i] < d) i++;
+    const f = clamp((d - path.acc[i - 1]) / ((path.acc[i] - path.acc[i - 1]) || 1), 0, 1), a = path.pts[i - 1], b = path.pts[i];
+    out[0] = lerp(a[0], b[0], f); out[1] = lerp(a[1], b[1], f); out[2] = lerp(a[2], b[2], f);
+  }
+
+  /* ---- matrices (column-major) ---- */
+  function perspective(fov, aspect, n, f) { const t = 1 / Math.tan(fov / 2), nf = 1 / (n - f); return [t / aspect, 0, 0, 0, 0, t, 0, 0, 0, 0, (f + n) * nf, -1, 0, 0, 2 * f * n * nf, 0]; }
+  function mul(a, b) { const o = new Array(16); for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) { let s = 0; for (let k = 0; k < 4; k++) s += a[k * 4 + r] * b[c * 4 + k]; o[c * 4 + r] = s; } return o; }
+  function rotY(a) { const c = Math.cos(a), s = Math.sin(a); return [c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1]; }
+  function rotX(a) { const c = Math.cos(a), s = Math.sin(a); return [1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1]; }
+  function trans(x, y, z) { return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1]; }
+  const mat3 = m => [m[0], m[1], m[2], m[4], m[5], m[6], m[8], m[9], m[10]];
+
+  /* ---- shaders ---- */
+  const BREATHE = `
+    uniform mediump float uB;
+    vec3 breathe(vec3 p){
+      float low=smoothstep(.7,-.9,p.y);
+      vec3 c=vec3(0.,.18,0.);
+      vec3 d=p-c;
+      d.x*=1.+(.1+.05*low)*uB;
+      d.z*=1.+(.15+.06*low)*uB;
+      d.y*=1.+.04*uB;
+      p=c+d; p.y-=.1*low*uB;
+      return p;
+    }`;
+  const VS_LUNG = `attribute vec3 aPos;attribute vec3 aNor;uniform mat4 uMVP;uniform mat3 uRot;varying vec3 vN;varying vec3 vW;varying float vY;${BREATHE}
+    void main(){vec3 p=breathe(aPos);vN=uRot*aNor;vW=uRot*p;vY=p.y;gl_Position=uMVP*vec4(p,1.);}`;
+  const FS_LUNG = `precision mediump float;varying vec3 vN;varying vec3 vW;varying float vY;uniform mediump float uB;uniform float uPass;uniform vec3 uEye;uniform float uTime;
+    void main(){
+      vec3 N=normalize(vN); if(uPass>.5)N=-N;
+      vec3 V=normalize(uEye-vW);
+      float ndv=clamp(dot(N,V),0.,1.);
+      float fres=pow(1.-ndv,2.2);
+      vec3 L=normalize(vec3(-.45,.7,.85));
+      float diff=clamp(dot(N,L)*.5+.5,0.,1.);
+      vec3 deep=vec3(.05,.25,.25),sage=vec3(.27,.58,.49),hi=vec3(.80,.95,.88);
+      vec3 col=mix(deep,sage,diff*.7+.12*uB);
+      col+=vec3(.04,.10,.07)*uB*(.5-.5*vY);
+      float spec=pow(max(dot(reflect(-L,N),V),0.),30.);
+      col+=hi*spec*.34;
+      col+=vec3(.36,.74,.62)*fres*(.4+.55*uB);
+      col*=.78+.4*uB;
+      float a=.2+.46*fres+.12*uB;
+      if(uPass>.5)a*=.55;
+      a=clamp(a,0.,.9);
+      gl_FragColor=vec4(col*a,a);
+    }`;
+  const VS_AIR = `attribute vec3 aPos;attribute vec3 aNor;attribute float aAlong;uniform mat4 uMVP;uniform mat3 uRot;varying vec3 vN;varying float vA;${BREATHE}
+    void main(){vec3 p=breathe(aPos);vN=uRot*aNor;vA=aAlong;gl_Position=uMVP*vec4(p,1.);}`;
+  const FS_AIR = `precision mediump float;varying vec3 vN;varying float vA;uniform float uFlow;uniform float uGlow;
+    void main(){
+      float band=exp(-pow((vA-uFlow)/.1,2.))*step(-.2,uFlow);
+      float tr=smoothstep(.24,.0,vA);
+      vec3 base=vec3(.3,.78,.66);
+      float gl=.2+.8*uGlow+.5*tr*uGlow;
+      float rim=pow(1.-abs(normalize(vN).z),2.)*.35;
+      vec3 col=base*(gl+rim)+vec3(.85,1.,.95)*band*.9;
+      float a=clamp(.55+.3*band+.25*tr*uGlow,0.,.95)*smoothstep(0.,.05,vA+.012);
+      gl_FragColor=vec4(col*a,a);
+    }`;
+  const VS_DOT = `attribute vec3 aPos;attribute vec2 aDot;uniform mat4 uMVP;uniform float uPx;varying float vAl;${BREATHE}
+    void main(){vec3 p=breathe(aPos);vec4 q=uMVP*vec4(p,1.);gl_Position=q;gl_PointSize=aDot.x*uPx/q.w;vAl=aDot.y;}`;
+  const FS_DOT = `precision mediump float;varying float vAl;
+    void main(){float d=length(gl_PointCoord-.5)*2.;float a=smoothstep(1.,.0,d);a*=a*vAl;gl_FragColor=vec4(vec3(.8,1.,.93)*a,a);}`;
+  const VS_HALO = `attribute vec2 aP;varying vec2 vUv;void main(){vUv=aP*.5+.5;gl_Position=vec4(aP,0.,1.);}`;
+  const FS_HALO = `precision mediump float;varying vec2 vUv;uniform float uB;uniform float uAspect;
+    void main(){vec2 d=(vUv-vec2(.5,.52))*vec2(uAspect,1.);float r=dot(d,d);float a=exp(-r*5.5)*(.1+.3*uB);
+      vec3 c=vec3(.28,.68,.58)*a;gl_FragColor=vec4(c,a*.9);}`;
+
+  /* ---- the component ---- */
+  const NS = 'http://www.w3.org/2000/svg';
+  class LungsOrb {
+    constructor(canvas, fallback) {
+      this.legacyCanvas = canvas; this.legacyFallback = fallback; this.host = canvas.parentElement;
+      this.reduced = false; this.frame = 0; this.mode = 'none'; this.cv = null; this.gl = null; this.ctx2 = null;
+      this.getSnap = null; this.model = { b: 0.32, kind: 'ready', p: 0, glow: 0.3, flow: -1, playing: false };
+      this.quality = 1; this.yaw = 0; this.pitch = 0; this.px = 0; this.py = 0; this.t0 = performance.now(); this.frames = 0; this.last = 0; this.idle = 0;
+      this.onVis = () => { if (!document.hidden && this.getSnap && !this.frame) this.loop(); };
+      this.onPtr = e => { const r = this.host.getBoundingClientRect(); this.px = clamp((e.clientX - r.left) / r.width * 2 - 1, -1, 1); this.py = clamp((e.clientY - r.top) / r.height * 2 - 1, -1, 1); };
+      this.disposed = true;
+      canvas.hidden = true; if (fallback) fallback.hidden = true;
+      if (g.SereinPlayer) g.SereinPlayer.attachLungs(this);
+    }
+    /* ---- lifecycle ---- */
+    ensure() {
+      if (!this.disposed && this.cv && this.cv.isConnected) return;
+      this.release();
+      this.disposed = false;
+      const cv = document.createElement('canvas');
+      cv.className = 'sp-lungs'; cv.setAttribute('aria-hidden', 'true'); cv.dataset.spMode = 'pending';
+      this.host.insertBefore(cv, this.legacyCanvas);
+      this.cv = cv;
+      let ok = false;
+      try { ok = this.initGL(cv); } catch (e) { ok = false; }
+      if (!ok) { this.releaseGL(); cv.remove(); const c2 = document.createElement('canvas'); c2.className = 'sp-lungs'; c2.setAttribute('aria-hidden', 'true'); this.host.insertBefore(c2, this.legacyCanvas); this.cv = c2; this.ctx2 = c2.getContext('2d'); this.mode = this.ctx2 ? '2d' : 'none'; if (!this.air) this.makeAir(); }
+      this.cv.dataset.spMode = this.mode;
+      this.host.dataset.lungs = this.mode;
+      document.addEventListener('visibilitychange', this.onVis);
+      this.host.addEventListener('pointermove', this.onPtr, { passive: true });
+    }
+    makeAir() {
+      this.air = buildAirways();
+      this.paths = pathData(this.air.paths);
+      this.nPart = 150;
+      this.parts = Array.from({ length: this.nPart }, (_, i) => ({ path: this.paths[i % this.paths.length], off: ((i * 0.6180339) % 1), size: 0.7 + ((i * 0.37) % 1) * 1.1, jit: [((i * 0.731) % 1 - 0.5) * 0.05, ((i * 0.419) % 1 - 0.5) * 0.05, ((i * 0.263) % 1 - 0.5) * 0.04] }));
+    }
+    initGL(cv) {
+      const gl = cv.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: true, powerPreference: 'low-power', preserveDrawingBuffer: false }) || cv.getContext('experimental-webgl');
+      if (!gl) return false;
+      const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(s)); return s; };
+      const prog = (vs, fs) => { const p = gl.createProgram(), a = sh(gl.VERTEX_SHADER, vs), b = sh(gl.FRAGMENT_SHADER, fs); gl.attachShader(p, a); gl.attachShader(p, b); gl.linkProgram(p); gl.deleteShader(a); gl.deleteShader(b); if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(p)); return p; };
+      this.gl = gl; this.res = { buffers: [], programs: [] };
+      const buf = (target, data, usage) => { const b = gl.createBuffer(); gl.bindBuffer(target, b); gl.bufferData(target, data, usage || gl.STATIC_DRAW); this.res.buffers.push(b); return b; };
+      this.pLung = prog(VS_LUNG, FS_LUNG); this.pAir = prog(VS_AIR, FS_AIR); this.pDot = prog(VS_DOT, FS_DOT); this.pHalo = prog(VS_HALO, FS_HALO);
+      this.res.programs.push(this.pLung, this.pAir, this.pDot, this.pHalo);
+      const loc = (p, n) => gl.getAttribLocation(p, n), uni = (p, n) => gl.getUniformLocation(p, n);
+      this.u = {};
+      for (const [k, p, names] of [['lung', this.pLung, ['uMVP', 'uRot', 'uB', 'uPass', 'uEye', 'uTime']], ['air', this.pAir, ['uMVP', 'uRot', 'uB', 'uFlow', 'uGlow']], ['dot', this.pDot, ['uMVP', 'uB', 'uPx']], ['halo', this.pHalo, ['uB', 'uAspect']]]) { this.u[k] = {}; for (const n of names) this.u[k][n] = uni(p, n); }
+      this.a = { lung: [loc(this.pLung, 'aPos'), loc(this.pLung, 'aNor')], air: [loc(this.pAir, 'aPos'), loc(this.pAir, 'aNor'), loc(this.pAir, 'aAlong')], dot: [loc(this.pDot, 'aPos'), loc(this.pDot, 'aDot')], halo: [loc(this.pHalo, 'aP')] };
+      this.lungs = [-1, 1].map(side => { const m = buildLung(side, 54, 72); return { vb: buf(gl.ARRAY_BUFFER, m.pos), ib: buf(gl.ELEMENT_ARRAY_BUFFER, m.idx), n: m.idx.length }; });
+      if (!this.air) this.makeAir();
+      const merged = mergeTubes(this.air.tubes, this.air.maxAlong);
+      this.airGeo = { vb: buf(gl.ARRAY_BUFFER, merged.pos), ib: buf(gl.ELEMENT_ARRAY_BUFFER, merged.idx), n: merged.idx.length };
+      this.dotData = new Float32Array(this.nPart * 5);
+      this.dotBuf = buf(gl.ARRAY_BUFFER, this.dotData, gl.DYNAMIC_DRAW);
+      this.haloBuf = buf(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]));
+      cv.addEventListener('webglcontextlost', this.lost = e => { e.preventDefault(); this.switchTo2D(); }, false);
+      this.mode = 'webgl';
+      return true;
+    }
+    switchTo2D() {
+      if (this.mode === '2d') return;
+      const wasRunning = !!this.frame;
+      this.releaseGL();
+      if (this.cv) this.cv.remove();
+      const c2 = document.createElement('canvas'); c2.className = 'sp-lungs'; c2.setAttribute('aria-hidden', 'true');
+      this.host.insertBefore(c2, this.legacyCanvas);
+      this.cv = c2; this.ctx2 = c2.getContext('2d'); this.mode = this.ctx2 ? '2d' : 'none'; c2.dataset.spMode = this.mode; this.host.dataset.lungs = this.mode;
+      if (wasRunning && this.getSnap) this.loop();
+    }
+    releaseGL() {
+      const gl = this.gl;
+      if (gl) {
+        try {
+          for (const b of this.res.buffers) gl.deleteBuffer(b);
+          for (const p of this.res.programs) gl.deleteProgram(p);
+          const ext = gl.getExtension('WEBGL_lose_context'); if (ext) ext.loseContext();
+        } catch { /* context already gone */ }
+      }
+      if (this.cv && this.lost) this.cv.removeEventListener('webglcontextlost', this.lost);
+      this.gl = null; this.res = null;
+    }
+    release() {
+      this.stop(); this.releaseGL();
+      if (this.cv) { this.cv.remove(); this.cv = null; }
+      this.ctx2 = null; this.mode = 'none';
+      document.removeEventListener('visibilitychange', this.onVis);
+      this.host.removeEventListener('pointermove', this.onPtr);
+    }
+    dispose() { this.release(); this.disposed = true; delete this.host.dataset.lungs; }
+
+    /* ---- model: where the breath is, straight from the practice engine ---- */
+    read(s) {
+      const eng = g.Serein && g.Serein.player && g.Serein.player.engine, m = this.model;
+      if (!s || !eng) return m;
+      let title = '';
+      try { title = (eng.phases()[s.index] || {}).title || s.title || ''; } catch { title = s.title || ''; }
+      const kind = /out/i.test(title) ? 'out' : /in\b/i.test(title) ? 'in' : /hold/i.test(title) ? 'holdFull' : /rest/i.test(title) ? 'holdEmpty' : 'in';
+      const p = clamp(s.progress || 0, 0, 1);
+      m.kind = kind; m.p = p; m.playing = s.state === 'playing';
+      if (s.state === 'ready') { m.b = 0.3; m.glow = 0.28; m.flow = -1; m.kind = 'ready'; return m; }
+      if (s.state === 'complete') { m.b = 0.35; m.glow = 0.3; m.flow = -1; m.kind = 'ready'; return m; }
+      let b = kind === 'in' ? ease(p) : kind === 'out' ? 1 - ease(p) : kind === 'holdFull' ? 1 : 0;
+      let glow = kind === 'in' ? 0.3 + 0.7 * ease(p) : kind === 'out' ? 0.2 + 0.7 * (1 - ease(p)) * 0.8 : kind === 'holdFull' ? 0.85 : 0.18;
+      m.flow = kind === 'in' ? p * 1.25 - 0.1 : kind === 'out' ? 1.15 - p * 1.25 : -1;
+      const pulse = (kind === 'holdFull' || kind === 'holdEmpty') ? Math.sin((performance.now() - this.t0) / 1000 * 2.2) * 0.06 : 0;
+      glow = clamp(glow + pulse, 0, 1);
+      if (this.still()) { b = 0.5 + (b - 0.5) * 0.4; glow = 0.45 + (glow - 0.45) * 0.4; m.flow = -1; }
+      m.b = b; m.glow = glow;
+      return m;
+    }
+    still() { return this.reduced || document.body.classList.contains('reduce-motion'); }
+    /* The controller calls this on every tick; it draws a frame itself when no animation loop is running. */
+    sync(s) {
+      this.read(s);
+      if (this.frame || this.disposed || !this.playerOpen()) return;
+      const now = performance.now();
+      if (now - (this.lastSync || 0) < (this.cost || 0) * 3) return; // a slow device is not asked for more than it can give
+      this.lastSync = now; this.render(false); this.cost = (this.cost || 0) * 0.7 + (performance.now() - now) * 0.3;
+    }
+    playerOpen() { const p = document.querySelector('#player'); return !!(p && p.open); }
+    draw() { if (!this.playerOpen()) return; this.ensure(); this.render(false); }
+    start(getSnapshot) {
+      this.stop(); this.getSnap = getSnapshot;
+      if (!this.playerOpen()) return;
+      this.ensure(); this.loop();
+    }
+    loop() {
+      cancelAnimationFrame(this.frame); this.frame = 0;
+      if (this.disposed || !this.getSnap) return;
+      this.frame = requestAnimationFrame(now => {
+        this.frame = 0;
+        if (document.hidden || !this.playerOpen()) return;
+        this.adapt(now);
+        const s = this.getSnap();
+        this.read(s);
+        this.render(true, now);
+        this.loop();
+      });
+    }
+    stop() { cancelAnimationFrame(this.frame); this.frame = 0; }
+
+    /* A slow device quietly renders at a lower resolution instead of stuttering. */
+    adapt(now) {
+      if (this.lastNow) {
+        const dt = now - this.lastNow;
+        if (dt < 400) { this.avg = this.avg ? this.avg * 0.9 + dt * 0.1 : dt; this.nAvg = (this.nAvg || 0) + 1; }
+        if (this.nAvg > 24 && this.avg > 42 && this.quality > 0.55) { this.quality = Math.max(0.55, this.quality - 0.15); this.nAvg = 0; this.avg = 0; }
+      }
+      this.lastNow = now;
+    }
+    /* ---- rendering ---- */
+    size() {
+      const r = this.cv.getBoundingClientRect(), dpr = Math.min(1.75, g.devicePixelRatio || 1) * this.quality;
+      const w = Math.max(1, Math.round(r.width * dpr)), h = Math.max(1, Math.round(r.height * dpr));
+      if (this.cv.width !== w || this.cv.height !== h) { this.cv.width = w; this.cv.height = h; }
+      return [w, h];
+    }
+    render(animating, now) {
+      if (this.disposed || !this.cv) return;
+      const tms = performance.now(), t = (tms - this.t0) / 1000;
+      this.frames++;
+      const st = this.still();
+      // idle sway of about 15 degrees each way, plus a little pointer parallax
+      const sway = st ? 0 : Math.sin(t * 0.26) * 0.26;
+      this.yaw += ((sway + this.px * 0.12) - this.yaw) * 0.12; this.pitch += ((this.py * 0.07 - 0.04) - this.pitch) * 0.1;
+      if (this.mode === 'webgl') this.renderGL(t); else if (this.mode === '2d') this.render2D(t);
+      this.cv.dataset.b = this.model.b.toFixed(3);
+    }
+    renderGL(t) {
+      const gl = this.gl; if (!gl) return;
+      const [w, h] = this.size(); gl.viewport(0, 0, w, h);
+      const m = this.model, aspect = w / h, fov = 34 * Math.PI / 180, tn = Math.tan(fov / 2);
+      const dist = Math.max(1.3 / tn, 1.36 / (tn * aspect)) * 1.04;
+      const proj = perspective(fov, aspect, 0.5, 20), view = trans(0, -0.18, -dist);
+      const rot = mul(rotX(this.pitch), rotY(this.yaw)), mvp = mul(proj, mul(view, rot)), rot3 = mat3(rot);
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      // halo
+      gl.disable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE); gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      gl.useProgram(this.pHalo); gl.bindBuffer(gl.ARRAY_BUFFER, this.haloBuf);
+      gl.enableVertexAttribArray(this.a.halo[0]); gl.vertexAttribPointer(this.a.halo[0], 2, gl.FLOAT, false, 0, 0);
+      gl.uniform1f(this.u.halo.uB, m.glow); gl.uniform1f(this.u.halo.uAspect, aspect); gl.drawArrays(gl.TRIANGLES, 0, 6);
+      gl.disableVertexAttribArray(this.a.halo[0]);
+      // airways first, so they show through the glass of the lungs
+      gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LEQUAL); gl.depthMask(true);
+      gl.useProgram(this.pAir); gl.bindBuffer(gl.ARRAY_BUFFER, this.airGeo.vb); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.airGeo.ib);
+      const A = this.a.air; gl.enableVertexAttribArray(A[0]); gl.enableVertexAttribArray(A[1]); gl.enableVertexAttribArray(A[2]);
+      gl.vertexAttribPointer(A[0], 3, gl.FLOAT, false, 28, 0); gl.vertexAttribPointer(A[1], 3, gl.FLOAT, false, 28, 12); gl.vertexAttribPointer(A[2], 1, gl.FLOAT, false, 28, 24);
+      gl.uniformMatrix4fv(this.u.air.uMVP, false, mvp); gl.uniformMatrix3fv(this.u.air.uRot, false, rot3);
+      gl.uniform1f(this.u.air.uB, m.b); gl.uniform1f(this.u.air.uFlow, m.flow); gl.uniform1f(this.u.air.uGlow, m.glow);
+      gl.drawElements(gl.TRIANGLES, this.airGeo.n, gl.UNSIGNED_SHORT, 0);
+      gl.disableVertexAttribArray(A[2]);
+      // lungs: far wall, then near wall, as translucent glass
+      gl.depthMask(false); gl.enable(gl.CULL_FACE);
+      gl.useProgram(this.pLung);
+      const L = this.a.lung; gl.enableVertexAttribArray(L[0]); gl.enableVertexAttribArray(L[1]);
+      gl.uniformMatrix4fv(this.u.lung.uMVP, false, mvp); gl.uniformMatrix3fv(this.u.lung.uRot, false, rot3);
+      gl.uniform1f(this.u.lung.uB, m.b); gl.uniform1f(this.u.lung.uTime, t); gl.uniform3f(this.u.lung.uEye, 0, 0.18, dist);
+      for (const pass of [1, 0]) {
+        gl.cullFace(pass ? gl.FRONT : gl.BACK); gl.uniform1f(this.u.lung.uPass, pass);
+        for (const lung of this.lungs) {
+          gl.bindBuffer(gl.ARRAY_BUFFER, lung.vb); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, lung.ib);
+          gl.vertexAttribPointer(L[0], 3, gl.FLOAT, false, 24, 0); gl.vertexAttribPointer(L[1], 3, gl.FLOAT, false, 24, 12);
+          gl.drawElements(gl.TRIANGLES, lung.n, gl.UNSIGNED_SHORT, 0);
+        }
+      }
+      gl.disableVertexAttribArray(L[0]); gl.disableVertexAttribArray(L[1]);
+      // drifting air
+      gl.disable(gl.CULL_FACE); gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      this.fillDots(m, t);
+      gl.useProgram(this.pDot); gl.bindBuffer(gl.ARRAY_BUFFER, this.dotBuf); gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.dotData);
+      const D = this.a.dot; gl.enableVertexAttribArray(D[0]); gl.enableVertexAttribArray(D[1]);
+      gl.vertexAttribPointer(D[0], 3, gl.FLOAT, false, 20, 0); gl.vertexAttribPointer(D[1], 2, gl.FLOAT, false, 20, 12);
+      gl.uniformMatrix4fv(this.u.dot.uMVP, false, mvp); gl.uniform1f(this.u.dot.uB, m.b); gl.uniform1f(this.u.dot.uPx, h * 0.021);
+      gl.drawArrays(gl.POINTS, 0, this.nPart);
+      gl.disableVertexAttribArray(D[0]); gl.disableVertexAttribArray(D[1]);
+      gl.depthMask(true); gl.disable(gl.BLEND);
+    }
+    fillDots(m, t) {
+      const out = [0, 0, 0], d = this.dotData, stag = 0.8;
+      const moving = m.kind === 'in' || m.kind === 'out', quiet = this.still();
+      for (let i = 0; i < this.nPart; i++) {
+        const q = this.parts[i];
+        let u, al;
+        if (moving && !quiet) {
+          const f = clamp(m.p * (1 + stag) - q.off * stag, 0, 1);
+          u = m.kind === 'in' ? f : 1 - f;
+          al = smooth(0, 0.07, u) * (1 - smooth(0.88, 1, u)) * (0.9 + 0.1 * Math.sin(t * 3 + i));
+        } else {
+          // holds and rests: a few faint motes shimmer where the air is
+          u = 0.25 + q.off * 0.7; al = (m.kind === 'holdFull' ? 0.22 : 0.07) * (0.5 + 0.5 * Math.sin(t * 1.4 + i * 1.7)) * (quiet ? 0.5 : 1);
+        }
+        onPath(q.path, u, out);
+        const o = i * 5;
+        d[o] = out[0] + q.jit[0]; d[o + 1] = out[1] + q.jit[1]; d[o + 2] = out[2] + q.jit[2]; d[o + 3] = q.size; d[o + 4] = clamp(al, 0, 1) * 0.9;
+      }
+    }
+
+    /* ---- flat fallback: the same lungs, drawn on a 2D canvas ---- */
+    render2D(t) {
+      const c = this.ctx2; if (!c) return;
+      const [w, h] = this.size(), m = this.model;
+      c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, w, h);
+      const u = Math.min(w / 2.9, h / 2.7), cx = w / 2, cy = h / 2 + u * 0.12;
+      const P = p => { const q = breathe([p[0], p[1], 0], m.b); return [cx + q[0] * u + Math.sin(this.yaw) * q[2] * u, cy - (q[1] + 0.02) * u]; };
+      const halo = c.createRadialGradient(cx, cy, 0, cx, cy, u * 1.9);
+      halo.addColorStop(0, `rgba(95,184,158,${0.1 + 0.26 * m.glow})`); halo.addColorStop(1, 'rgba(95,184,158,0)');
+      c.fillStyle = halo; c.fillRect(0, 0, w, h);
+      // lungs
+      for (const side of [-1, 1]) {
+        const shape = [[0.08, 0.86], [0.12, 0.28], [0.1, -0.2], [0.16, -0.7], [0.46, -0.96], [0.66, -0.52], [0.7, 0.2], [0.66, 0.8], [0.36, 0.97], [0.1, 0.84]];
+        const pts = shape.map(([x, y]) => P([side * x, y - 0.08, 0]));
+        c.beginPath(); c.moveTo((pts[0][0] + pts[1][0]) / 2, (pts[0][1] + pts[1][1]) / 2);
+        for (let i = 1; i <= pts.length; i++) { const a = pts[i % pts.length], b = pts[(i + 1) % pts.length]; c.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2); }
+        c.closePath();
+        const gr = c.createLinearGradient(cx + side * u * 0.7, cy - u, cx + side * u * 0.1, cy + u);
+        gr.addColorStop(0, `rgba(${90 + 50 * m.glow | 0},${170 + 55 * m.glow | 0},${150 + 40 * m.glow | 0},${0.22 + 0.5 * m.glow})`); gr.addColorStop(1, `rgba(26,96,96,${0.3 + 0.4 * m.glow})`);
+        c.fillStyle = gr; c.fill(); c.lineWidth = Math.max(1.5, u * 0.012); c.strokeStyle = `rgba(190,245,225,${0.25 + 0.55 * m.glow})`; c.stroke();
+      }
+      // airways
+      c.lineCap = 'round'; c.lineJoin = 'round';
+      for (const ln of this.air.lines) {
+        const pts = ln.pts.map(P);
+        c.beginPath(); pts.forEach(([x, y], i) => i ? c.lineTo(x, y) : c.moveTo(x, y));
+        const band = m.flow >= 0 ? Math.exp(-Math.pow(((ln.a0 + ln.a1) / 2 / this.air.maxAlong - m.flow) / 0.14, 2)) : 0;
+        c.strokeStyle = `rgba(${150 + 90 * band | 0},${235},${215},${0.35 + 0.4 * m.glow + 0.3 * band})`; c.lineWidth = Math.max(1, ln.r * u * 1.8); c.stroke();
+      }
+      // air
+      c.fillStyle = 'rgba(220,255,240,0.8)';
+      const out = [0, 0, 0], moving = m.kind === 'in' || m.kind === 'out';
+      if (moving && !this.still()) for (let i = 0; i < this.nPart; i += 2) {
+        const q = this.parts[i], f = clamp(m.p * 1.8 - q.off * 0.8, 0, 1), uu = m.kind === 'in' ? f : 1 - f;
+        const al = smooth(0, 0.07, uu) * (1 - smooth(0.88, 1, uu)); if (al < 0.05) continue;
+        onPath(q.path, uu, out); const [x, y] = P(out); c.globalAlpha = al * 0.8; c.beginPath(); c.arc(x, y, Math.max(1.2, u * 0.012 * q.size), 0, 6.283); c.fill();
+      }
+      c.globalAlpha = 1;
+    }
+    /* for tests */
+    debug() { return { mode: this.mode, frames: this.frames, yaw: this.yaw, pitch: this.pitch, running: !!this.frame, quality: this.quality, model: Object.assign({}, this.model), size: this.cv ? [this.cv.width, this.cv.height] : null, disposed: this.disposed, buffers: this.res ? this.res.buffers.length : 0 }; }
+    readPixels() {
+      if (!this.cv) return null;
+      this.render(false);
+      const tmp = document.createElement('canvas'); tmp.width = this.cv.width; tmp.height = this.cv.height;
+      const c = tmp.getContext('2d'); c.drawImage(this.cv, 0, 0);
+      return c.getImageData(0, 0, tmp.width, tmp.height).data;
+    }
+  }
+
+  g.SereinLungs = { LungsOrb, breathe, buildLung, buildAirways, lungPoint };
+  g.Serein = g.Serein || {};
+  g.Serein.Orb = LungsOrb;
+})(globalThis);
