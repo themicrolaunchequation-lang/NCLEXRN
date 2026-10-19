@@ -66,7 +66,7 @@
     const q = c.quote();
     const side = q ? `<aside class="hs-card hs-quote hs-c4 is-static" aria-label="A thought for today">${q}<div class="sr-support"><p class="hs-eyebrow">Support is one tap away</p><p>If today is heavy, you do not have to carry it alone.</p><button type="button" class="hs-btn is-line" data-v5="help"><span>Get help now</span></button></div></aside>` : `<aside class="hs-card hs-c4 is-static"><p class="hs-eyebrow">A gentle reminder</p><h3>You belong in the care you give.</h3></aside>`;
     const items = [{ kind: 'raw', cls: 'hs-c12', html: bar }, ...cards, { kind: 'raw', el: raw(path) }, { kind: 'raw', el: raw(side) }];
-    return S.day({ hero, progress, items }).outerHTML;
+    return S.day({ hero, progress, items, daily: { app: 'serein', done: doneToday } }).outerHTML;
   }
   const raw = html => { const w = document.createElement('div'); w.innerHTML = html; return w.firstElementChild; };
 

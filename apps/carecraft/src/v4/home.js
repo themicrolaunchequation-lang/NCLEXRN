@@ -42,7 +42,7 @@ function renderHome(){
  const items=[{kind:'act',icon:'spark',eyebrow:'Today’s scenario',html:scenarioHtml,cls:'hs-star'},Object.assign({kind:'act'},cont),Object.assign({kind:'act'},prac),
   {kind:'path',eyebrow:'Your plan',title:ui.minutes+'-minute plan',head:chips,items:ccPlanItems(D),foot:`<span class="hs-quote-mark" aria-hidden="true">“</span><blockquote id="quoteText">${esc(quotes[quoteIndex])}</blockquote>${btn('Next quote →','quote-next',[],'ghost')}`}];
  if(gs){items.push({kind:'raw',html:gs,el:S.h('div',{class:'hs-c4 hs-gs-wrap'},gs)});items.push({kind:'raw',cls:'hs-c12',el:S.h('div',{class:'hs-c12'},atlas.replace('hs-c4','hs-c12'))});}else items.push({kind:'raw',cls:'hs-c4',el:S.h('div',{class:'hs-c4'},atlas)});
- const day=S.day({hero,progress,items});
+ const day=S.day({hero,progress,items,daily:{app:'carecraft',done:!!(D.answered||D.sessionToday)}});
  return day.outerHTML;
 }
 function ccAfterRender(){

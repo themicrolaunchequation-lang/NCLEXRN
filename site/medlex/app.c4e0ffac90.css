@@ -399,6 +399,28 @@ body.hs main .hs-card :where(p,li){max-width:60ch}
 @media(max-width:1023px){body.hs .hs-top .hs-mbrand{min-height:44px}}
 body.hs main h1[tabindex="-1"]:focus,body.hs main h1[tabindex="-1"]:focus-visible,body.hs main [tabindex="-1"]:focus-visible,body.hs main#main:focus-visible{outline:0;box-shadow:none}
 
+/* Daily Crown card */
+body.hs .hs-daily{gap:14px}
+body.hs .dc-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 18px}
+body.hs .dc-top h2{margin:2px 0 0;font:600 clamp(20px,2.4vw,26px)/1.15 var(--hs-serif)}
+body.hs .dc-streak{display:inline-flex;align-items:center;gap:8px;margin:0;font:600 14px/1.3 var(--hs-sans);color:var(--hs-muted)}
+body.hs .dc-streak svg{width:20px;height:20px;color:var(--hs-gold);flex:none}
+body.hs .dc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+body.hs .dc-item{display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 14px;border:1px solid var(--hs-line);border-radius:16px;color:var(--hs-ink);text-decoration:none;background:transparent;transition:border-color .2s,background .2s}
+body.hs .dc-item.jewel-medlex{--dcj:#3557D6;--dci:#fff}body.hs .dc-item.jewel-carecraft{--dcj:#0F8A86;--dci:#fff}body.hs .dc-item.jewel-serein{--dcj:#5FB89E;--dci:#0B1A2B}body.hs .dc-item.jewel-lumen{--dcj:#8B6CF0;--dci:#fff}
+body.hs .dc-item:hover{border-color:var(--dcj)}
+body.hs .dc-item:focus-visible{outline:3px solid var(--dcj);outline-offset:2px}
+body.hs .dc-mark{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--dcj);display:inline-flex;align-items:center;justify-content:center;color:var(--dci)}
+body.hs .dc-mark svg{width:15px;height:15px}
+body.hs .is-done .dc-mark{background:var(--dcj);color:var(--dci)}
+body.hs .dc-t{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+body.hs .dc-t b{font:700 15px/1.25 var(--hs-sans)}
+body.hs .dc-t span{font:400 13px/1.3 var(--hs-sans);color:var(--hs-muted)}
+body.hs .dc-s{margin-left:auto;font:600 12px/1 var(--hs-sans);color:var(--hs-muted);white-space:nowrap}
+body.hs .is-done .dc-s{color:var(--hs-ink)}
+@media(max-width:1100px){body.hs .dc-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){body.hs .dc-list{grid-template-columns:1fr}}
+
 /* MedLex: map the shared shell onto MedLex's own markup, and its 3D signature object. */
 body.hs .hs-orig,body.hs .sidebar-note,body.hs .sidebar-bottom,body.hs .sidebar .nav-label,body.hs .sidebar .mobile-nav-close,body.hs .menu-toggle,body.hs .nav-scrim,body.hs .welcome-float,body.hs .sidebar .sidebar-footer{display:none}
 body.hs .hs-nav .hs-item .nav-text{display:block}

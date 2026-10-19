@@ -646,3 +646,12 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-jewel{color:#0B1A2B}}
 :root[data-theme="dark"] .btn-jewel{color:#0B1A2B}
 .crown-tile:not(:nth-child(3)) .tile-label{display:none}
+
+/* Daily Crown summary on the home page */
+.daily-home{padding-block:18px;background:var(--surface-2);border-block:1px solid var(--line)}
+.daily-home[hidden]{display:none}
+.daily-home-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px}
+.daily-home h2{margin:2px 0;font-size:1.35rem}.daily-home p{margin:0}
+.daily-home-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.daily-home-list a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line-strong);border-radius:999px;font-weight:600;font-size:.92rem}
+.daily-home-list .is-done a{border-color:#D4A445;background:rgba(212,164,69,.16)}

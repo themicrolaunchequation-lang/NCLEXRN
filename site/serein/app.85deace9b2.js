@@ -11,6 +11,7 @@
   const P = {
     home: 'M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z',
     book: 'M4 19.5V5a2 2 0 0 1 2-2h14v16H6.5A2.5 2.5 0 0 0 4 21.5M4 19.5A2.5 2.5 0 0 1 6.5 17H20',
+    crown: 'M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z',
     flame: 'M12 2.5c.6 3.4 4.8 5.3 4.8 10a4.8 4.8 0 0 1-9.6 0c0-1.9.9-3 1.9-4 0 1.9 1 2.9 2 2.9 0-3-1.1-5 .9-8.9z',
     search: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3',
     help: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5M12 17.5h.01',
@@ -262,6 +263,20 @@
     return `<svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trk" cx="60" cy="60" r="${r}"/><circle class="arc" cx="60" cy="60" r="${r}" style="--c:${c.toFixed(1)};--o:${o.toFixed(1)}"/></svg>`;
   }
 
+
+  /* Daily Crown: one short step in each app, one shared streak (HCA.daily, a first-party cookie). Serein shows no streak. */
+  const DC = { medlex: ['One word', 'Decode a word', 'https://medlex.healthcarecrownacademy.co.uk/#today'], carecraft: ['One scenario', 'Make a call', 'https://carecraft.healthcarecrownacademy.co.uk/#today'], serein: ['One breath', 'Pause for a minute', 'https://serein.healthcarecrownacademy.co.uk/#today'], lumen: ['Cards due', 'Review recall cards', 'https://lumen.healthcarecrownacademy.co.uk/#today'] };
+  function dailyCard(app) {
+    const D = global.HCA && global.HCA.daily && global.HCA.daily.get(); if (!D) return null;
+    const calm = app === 'serein', n = D.a.length, c = h('section', { class: 'hs-card hs-daily hs-c12 is-static', 'aria-labelledby': 'dc-h' });
+    const head = n >= D.total ? 'All four done today. Lovely.' : n ? `${n} of ${D.total} done today` : 'Your Daily Crown';
+    const note = calm ? 'No streak to keep. Take what fits today.' : D.s > 0 ? `${D.s}-day streak${D.best > D.s ? ` · best ${D.best}` : ''}` : 'One small step starts a streak';
+    c.innerHTML = `<div class="dc-top"><div><p class="hs-eyebrow">Daily Crown · about 5 minutes</p><h2 id="dc-h">${esc(head)}</h2></div><p class="dc-streak">${calm ? '' : icon('crown')}<span>${esc(note)}</span></p></div>`
+      + `<ol class="dc-list">${D.apps.map(a => { const x = DC[a], on = D.a.includes(a), here = a === app, href = here ? '#today' : x[2];
+        return `<li class="${on ? 'is-done' : ''}"><a class="dc-item jewel-${a}" href="${href}"><span class="dc-mark" aria-hidden="true">${on ? icon('check') : ''}</span><span class="dc-t"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></span><span class="dc-s">${on ? 'Done' : here ? 'Here' : 'Open'}${on ? '' : ''}</span></a></li>`; }).join('')}</ol>`;
+    return c;
+  }
+
   function day(spec) {
     const root_ = h('div', { class: 'hs-day', 'data-hs-day': '' });
     let i = 0; const rise = e => { e.style.setProperty('--i', i++); return e; };
@@ -284,6 +299,7 @@
       <div class="hs-week" role="list" aria-label="This week">${wk.map(w => `<span class="hs-wd${w.done ? ' is-done' : ''}${w.today ? ' is-today' : ''}" role="listitem" aria-label="${w.name}${w.done ? ', done' : w.today ? ', today' : ''}"><i></i>${w.l}</span>`).join('')}</div>
       ${Pg.strip && Pg.strip.length ? `<div class="hs-strip">${Pg.strip.map(s => `<span><b data-count="${esc(s.v)}">${esc(s.v)}</b>${esc(s.l)}</span>`).join('')}</div>` : ''}`;
     root_.append(rise(pc));
+    if (spec.daily) { if (spec.daily.done && global.HCA && global.HCA.daily) global.HCA.daily.done(spec.daily.app); const dc = dailyCard(spec.daily.app); if (dc) root_.append(rise(dc)); }
     // ordered items: action cards, path card, raw cards
     const items = spec.items || [...(spec.actions || []).map(a => Object.assign({ kind: 'act' }, a)), ...(spec.path ? [Object.assign({ kind: 'path' }, spec.path)] : [])];
     items.forEach(A => {
@@ -409,7 +425,7 @@
     const q = c.quote();
     const side = q ? `<aside class="hs-card hs-quote hs-c4 is-static" aria-label="A thought for today">${q}<div class="sr-support"><p class="hs-eyebrow">Support is one tap away</p><p>If today is heavy, you do not have to carry it alone.</p><button type="button" class="hs-btn is-line" data-v5="help"><span>Get help now</span></button></div></aside>` : `<aside class="hs-card hs-c4 is-static"><p class="hs-eyebrow">A gentle reminder</p><h3>You belong in the care you give.</h3></aside>`;
     const items = [{ kind: 'raw', cls: 'hs-c12', html: bar }, ...cards, { kind: 'raw', el: raw(path) }, { kind: 'raw', el: raw(side) }];
-    return S.day({ hero, progress, items }).outerHTML;
+    return S.day({ hero, progress, items, daily: { app: 'serein', done: doneToday } }).outerHTML;
   }
   const raw = html => { const w = document.createElement('div'); w.innerHTML = html; return w.firstElementChild; };
 
@@ -4090,6 +4106,7 @@ S.hook={run};
     const e = engine(); if (!e || !V || P.outroDone) { return; }
     if (e !== P.engine) begin(e);
     P.outroDone = true;
+    try { if (g.HCA && g.HCA.daily) g.HCA.daily.done('serein'); } catch { /* optional */ }
     clearInterval(P.selfTimer);
     if (preview()) return;
     if (narrator) narrator.cancel();

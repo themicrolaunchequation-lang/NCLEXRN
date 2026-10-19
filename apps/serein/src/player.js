@@ -299,6 +299,7 @@
     const e = engine(); if (!e || !V || P.outroDone) { return; }
     if (e !== P.engine) begin(e);
     P.outroDone = true;
+    try { if (g.HCA && g.HCA.daily) g.HCA.daily.done('serein'); } catch { /* optional */ }
     clearInterval(P.selfTimer);
     if (preview()) return;
     if (narrator) narrator.cancel();

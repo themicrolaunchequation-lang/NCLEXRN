@@ -87,7 +87,7 @@ function HCA11Day() {
       side.append(S0.link({ label: 'Read the story', onClick: () => HCA9Show('techniques') }));
     }
     items.push({ kind: 'raw', el: side });
-    const day = S0.day({ hero, progress, items });
+    const day = S0.day({ hero, progress, items, daily: { app: 'lumen', done: D.done > 0 } });
     host.replaceChildren(day); S0.animate(day); const hh = day.querySelector('.hs-hero'); if (hh) S0.tilt(hh, 10);
     return () => { host.replaceChildren(); };
   }, [sig]);

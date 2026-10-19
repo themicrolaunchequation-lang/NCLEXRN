@@ -31,7 +31,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   const parts = [...prefixes, ...roots, ...suffixes], partById = Object.fromEntries(parts.map(p => [p.id, p]));
   const KIND = { p: 'Prefix', r: 'Root', s: 'Suffix', v: 'Linking vowel' }, KIND_PL = { p: 'Prefixes', r: 'Roots', s: 'Suffixes' };
   const isKnown = id => !!st.know[id] || ((st.srs[id] || {}).b || 0) >= 3;
-  const touch = (id, ok) => { const s = st.srs[id] || { b: 0, d: 0 }; s.b = ok ? Math.min(5, s.b + 1) : 0; s.d = day() + (ok ? BOX_DAYS[s.b] : 1); st.srs[id] = s; st.days[day()] = (st.days[day()] || 0) + 1; save(); };
+  const touch = (id, ok) => { const s = st.srs[id] || { b: 0, d: 0 }; s.b = ok ? Math.min(5, s.b + 1) : 0; s.d = day() + (ok ? BOX_DAYS[s.b] : 1); st.srs[id] = s; st.days[day()] = (st.days[day()] || 0) + 1; save(); try { window.HCA && window.HCA.daily && window.HCA.daily.done('medlex'); } catch { } };
   const dueIds = () => Object.entries(st.srs).filter(([, s]) => s.b > 0 && s.d <= day()).map(([id]) => id);
   const knownCount = () => parts.filter(p => isKnown(p.id)).length + words.filter(w => isKnown('w:' + w.id)).length;
   const totalItems = parts.length + words.length;

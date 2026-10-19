@@ -109,6 +109,7 @@
     const due = { icon: 'refresh', eyebrow: 'Due reviews', title: D.due ? `${D.due} ${D.due === 1 ? 'word is' : 'words are'} ready` : 'You’re all caught up', body: D.due ? 'A few minutes now keeps them from slipping.' : 'Nothing is due. A quick meaning check is a nice extra.', cta: D.due ? { label: 'Review now', onClick: () => document.getElementById('hsDailyProxy').click() } : { label: 'Try a meaning check', onClick: () => document.getElementById('hsBonusProxy').click() } };
     const mod = { icon: 'book', eyebrow: 'Continue module', title: D.mod.title, body: D.mod.subtitle, progress: D.modPct, progressLabel: 'Module outcomes', sub: `${D.mastered} / ${D.modTotal} outcomes rated`, cta: { label: 'Continue module', href: `#learn/module/${D.mod.id}/overview` } };
     const day = S.day({
+      daily: { app: 'medlex', done: D.minutes > 0 },
       hero, progress, actions: [due, mod],
       path: {
         eyebrow: 'Your path today', title: 'Three small steps', items: [

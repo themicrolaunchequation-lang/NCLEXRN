@@ -222,8 +222,56 @@
 
   // Carecraft and MedLex gate inside their own code (entry points and router) through HCA.locked;
   // see apps/carecraft/build-web.mjs and apps/medlex/build-web.mjs. Serein gates at its practice player.
+
+  // Daily Crown: one first-party cookie shared by the four apps and the home page. Nothing leaves the browser.
+  // {d: 'YYYY-MM-DD' (last active day), a: apps done that day, s: streak in days, best}. The streak counts a day once anything is done.
+  const DAILY = (() => {
+    const KEY = 'hca-daily', APPS = ['medlex', 'carecraft', 'serein', 'lumen'];
+    const pad = (n) => String(n).padStart(2, '0');
+    const key = (t) => t.getFullYear() + '-' + pad(t.getMonth() + 1) + '-' + pad(t.getDate());
+    const today = () => key(new Date());
+    const yesterday = () => { const t = new Date(); t.setDate(t.getDate() - 1); return key(t); };
+    const read = () => {
+      let st = { d: '', a: [], s: 0, best: 0 };
+      try {
+        const m = document.cookie.split('; ').find((c) => c.startsWith(KEY + '='));
+        const v = m && JSON.parse(decodeURIComponent(m.slice(KEY.length + 1)));
+        if (v && typeof v === 'object') st = { d: /^\d{4}-\d{2}-\d{2}$/.test(v.d) ? v.d : '', a: Array.isArray(v.a) ? v.a.filter((x) => APPS.includes(x)) : [], s: Math.max(0, +v.s || 0), best: Math.max(0, +v.best || 0) };
+      } catch { /* a damaged cookie is treated as empty */ }
+      return st;
+    };
+    const write = (st) => {
+      try {
+        const host = location.hostname, shared = /(^|\.)healthcarecrownacademy\.co\.uk$/.test(host);
+        document.cookie = KEY + '=' + encodeURIComponent(JSON.stringify(st)) + '; Path=/; Max-Age=31536000; SameSite=Lax' + (shared ? '; Domain=.healthcarecrownacademy.co.uk' : '') + (location.protocol === 'https:' ? '; Secure' : '');
+      } catch { /* cookies blocked: Daily Crown simply stays empty */ }
+    };
+    /** What to show now: today's apps, and a streak that has lapsed reads as 0 (kindly: it restarts at 1 with the next activity). */
+    const get = () => {
+      const st = read(), t = today(), live = st.d === t, alive = live || st.d === yesterday();
+      return { d: st.d, a: live ? st.a : [], s: alive ? st.s : 0, best: st.best, total: APPS.length, apps: APPS.slice(), today: t };
+    };
+    const done = (app) => {
+      if (!APPS.includes(app)) return get();
+      const st = read(), t = today();
+      if (st.d === t) {
+        if (st.a.includes(app)) return get();
+        st.a.push(app);
+      } else {
+        st.s = st.d === yesterday() ? st.s + 1 : 1;
+        st.d = t; st.a = [app];
+      }
+      st.best = Math.max(st.best, st.s);
+      write(st);
+      try { window.dispatchEvent(new CustomEvent('hca-daily', { detail: get() })); } catch { /* ignore */ }
+      return get();
+    };
+    return { get, done, apps: APPS };
+  })();
+
   window.HCA = {
     ready,
+    daily: DAILY,
     signIn: (mode) => { location.href = signInURL(mode); },
     gate: (app, what, allowed) => (typeof what === 'number' || alias[app] || LIMITS[app]) && !NAMES[app] ? limit(app, what) : gate(app, what, allowed),
     locked,
@@ -234,7 +282,21 @@
     upgrade: (app) => { location.href = 'https://healthcarecrownacademy.co.uk/?plan=' + encodeURIComponent(app || 'crown') + '#pricing'; },
   };
 
+  /* Home page: a quiet summary of today's Daily Crown, only for people who have used an app. */
+  function dailyHome() {
+    const el = document.querySelector('[data-daily-home]'); if (!el) return;
+    const D = DAILY.get(); if (!D.a.length && !D.s) return;
+    const N = { medlex: 'MedLex · one word', carecraft: 'Carecraft · one scenario', serein: 'Serein · one breath', lumen: 'Lumen · cards due' };
+    const U = { medlex: 'https://medlex.healthcarecrownacademy.co.uk/#today', carecraft: 'https://carecraft.healthcarecrownacademy.co.uk/#today', serein: 'https://serein.healthcarecrownacademy.co.uk/#today', lumen: 'https://lumen.healthcarecrownacademy.co.uk/#today' };
+    el.querySelector('[data-daily-title]').textContent = D.a.length >= D.total ? 'All four done today. Lovely.' : D.a.length + ' of ' + D.total + ' done today';
+    el.querySelector('[data-daily-line]').textContent = D.s > 0 ? D.s + '-day streak' + (D.best > D.s ? ' · best ' + D.best : '') : 'One small step starts a streak.';
+    const ul = el.querySelector('[data-daily-list]'); ul.textContent = '';
+    D.apps.forEach((a) => { const li = document.createElement('li'), x = document.createElement('a'); li.className = D.a.includes(a) ? 'is-done' : ''; x.href = U[a]; x.textContent = N[a] + (D.a.includes(a) ? ' ✓' : ''); li.append(x); ul.append(li); });
+    el.hidden = false;
+  }
+
   function mount() {
+    dailyHome();
     const style = document.createElement('style');
     style.textContent = css;
     document.head.append(style);
