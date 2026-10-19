@@ -6,8 +6,8 @@ window.HCA_CONFIG = {
   // Legally required on a UK company website (Companies Act 2006 /
   // Trading Disclosures Regulations 2015). Copy it exactly from the
   // Companies House record, e.g. '1 Example Street, London, AB1 2CD'.
-  // ICO data protection registration number (starts with ZB). Empty = badges hidden.
-  icoNumber: '',
+  // ICO data protection registration number (starts with Z). Empty = badges hidden.
+  icoNumber: 'ZC273259',
 
   registeredOffice: '71-75 Shelton Street, Covent Garden, London, WC2H 9JQ',
 

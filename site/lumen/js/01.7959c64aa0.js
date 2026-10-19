@@ -8635,16 +8635,24 @@ function HCA5ProvidersDialog({ onClose }) {
   const commit = next => { setConfig(next); HCA5SaveConfig(next); };
   const update = (id, patch) => commit({ ...config, providers: { ...config.providers, [id]: { ...HCA5Settings(id), ...config.providers[id], ...patch } } });
   const move = (id, step) => { const order = [...config.order], i = order.indexOf(id); order.splice(i, 1); order.splice(i + step, 0, id); commit({ ...config, order }); };
-  const forgetAll = () => { commit({ order: config.order, providers: Object.fromEntries(Object.entries(config.providers).map(([id, p]) => [id, { ...p, key: '', enabled: false }])) }); ctx.toast('All AI keys removed from this device.'); };
+  const forgetAll = () => { commit({ order: config.order, providers: Object.fromEntries(Object.entries(config.providers).map(([id, p]) => [id, id === 'academy' ? p : { ...p, key: '', enabled: false }])) }); ctx.toast('All AI keys removed from this device. Academy AI is unchanged.'); };
   const ready = HCA5Ready();
-  return HC(A, { title: 'AI for your studies.', eyebrow: 'ACADEMY AI OR YOUR OWN KEYS', onClose, className: 'hca5-ai-dialog',
+  const own = config.order.filter(id => id !== 'academy'), row = id => HC(HCA5ProviderRow, { key: id, id, index: config.order.indexOf(id), count: config.order.length, config, update, move });
+  return HC(A, { title: 'AI for your studies.', eyebrow: 'ACADEMY AI OR YOUR OWN KEY', onClose, className: 'hca5-ai-dialog',
     footer: HC(_.Fragment, {}, HCABtn('Remove all keys', forgetAll, 'secondary', 'delete-bin-line'), HCABtn('Done', onClose, 'primary', 'check-line')) },
-    HC('p', {}, 'Members can sign in to Academy AI, with nothing to set up. You can also add your own key from one or more providers. Lumen tries them in this order. When one reaches its limit or fails, it moves to the next, then to browser AI, then to source tools that need no AI.'),
+    HC('p', {}, 'Two ways to get AI help. Use either, or both. Lumen tries them in the order shown. When one reaches its limit or fails, it moves to the next, then to browser AI, then to source tools that need no AI.'),
     HC('div', { className: 'hca5-chain', 'aria-label': 'Fallback order' },
       [...ready.map(id => HCA5Provider(id).name), 'Browser AI', 'Free local AI (if downloaded)', 'Source tools'].map((n, i, a) => HC(_.Fragment, { key: n }, HC('span', { className: i < ready.length ? 'live' : '' }, n), i < a.length - 1 && HCAIcon('arrow-right-s-line')))),
     HC('div', { className: 'hca-info-banner hca5-warning' }, HCAIcon('shield-check-line'),
-      HC('p', {}, HC('strong', {}, 'Never send patient-identifiable information. '), 'Only the page or passage you choose is sent, and only after you confirm. Keys and your sign-in stay in this browser, are not included in backups or exports, and go only to the service they belong to. Free tiers may keep or review prompts; each provider’s note says what is known.')),
-    HC('ul', { className: 'hca5-providers' }, config.order.map((id, i) => HC(HCA5ProviderRow, { key: id, id, index: i, count: config.order.length, config, update, move }))),
+      HC('p', {}, HC('strong', {}, 'Never send patient-identifiable information. '), 'Only the page or passage you choose is sent, and only after you confirm.')),
+    HC('section', { className: 'hca6-path', 'aria-labelledby': 'hca6-path-academy' },
+      HC('h3', { id: 'hca6-path-academy' }, 'Academy AI ', HC('span', {}, '(included with your plan)')),
+      HC('ul', { className: 'hca5-providers' }, row('academy')),
+      HC('p', { className: 'hca-small' }, 'You sign in once with your Healthcare Crown account; Lumen does not ask for or keep a separate password. Your chosen passage goes to the Academy’s AI service, which passes it to an AI provider (OpenAI, with Groq or Gemini as backup) to write the answer. The service does not log your text. To save cost, answers to structured requests such as quiz questions and recall cards are kept for up to 30 days, without your name or account, and reused if someone sends exactly the same text. A kept answer can quote your passage.')),
+    HC('section', { className: 'hca6-path', 'aria-labelledby': 'hca6-path-own' },
+      HC('h3', { id: 'hca6-path-own' }, 'Use my own key ', HC('span', {}, '(stays on this device, sent only to the provider)')),
+      HC('p', { className: 'hca-small' }, 'Your key is kept in this browser, is not included in backups or exports, and is never sent to Healthcare Crown Academy. Lumen sends it, with the passage you choose, only to the provider you pick. Free tiers may keep or review prompts; each provider’s note says what is known.'),
+      HC('ul', { className: 'hca5-providers' }, own.map(row))),
     HC('p', { className: 'hca-small' }, 'Free-tier limits change often. The notes reflect public information from October 2026; each provider’s console shows your exact limits.'));
 }
 
@@ -8772,7 +8780,7 @@ function HCA5PageStudio({ book, page, getText, onTranscript, selection }) {
       HC('div', { className: 'hca5-types', role: 'group', 'aria-label': 'Question types' }, allowedTypes.map(t =>
         HC('button', { key: t.id, type: 'button', title: t.hint, 'aria-pressed': types.includes(t.id), className: `hca4-tag ${types.includes(t.id) ? 'on' : ''}`, onClick: () => toggleType(t.id), disabled: engine === 'source' }, types.includes(t.id) && HCAIcon('check-line'), t.label))),
       HC('label', { className: 'hca-field' }, 'AI engine', HC('select', { value: engine, disabled: !!busy, onChange: e => setEngine(e.target.value) }, engineOptions.map(([v, l]) => HC('option', { key: v, value: v }, l)))),
-      HC('p', { className: 'hca-small' }, engineNote, HC('button', { className: 'text-link inline', onClick: () => ctx.setModal({ type: 'hca5-ai' }) }, ready.length ? 'Manage AI' : 'Sign in to Academy AI')),
+      HC('p', { className: 'hca-small' }, engineNote, HC('button', { className: 'text-link inline', onClick: () => ctx.setModal({ type: 'hca5-ai' }) }, ready.length ? 'Manage AI' : 'Set up AI')),
       engine === 'webllm' && !HCAAI.engine && HCABtn('Download & enable local AI', () => HCALoadWebLLM().then(() => refresh(n => n + 1)).catch(e => setError(e.message)), 'secondary', 'download-line', { disabled: !navigator.gpu }),
       HC('details', {}, HC('summary', {}, 'View the text that will be used'), HC('p', {}, bounded || 'No extracted text yet.')),
       input.length > 8000 && HC('small', {}, 'Using the first 8,000 characters. Select a passage for a focused result.'),
@@ -8833,89 +8841,81 @@ rs = function HCA5DialogRouter() {
 
 /*HCA5:END*//*HCA6:BEGIN*/
 /* HCA v6 — Lumen experience layer, injected after v5 (see lumen/tools/build.mjs).
-   Adds Academy AI: members sign in with their Evinca account and use the Academy's own AI service
-   (Supabase Edge Function "lumen-ai", see lumen/supabase). Nobody needs an API key.
-   Academy AI sits first in the fallback chain; members can still add their own keys after it.
-   The sign-in is stored apart from the workspace (IndexedDB key "academy"), never in backups. */
+   Adds Academy AI: the Academy's own AI service (Supabase Edge Function "lumen-ai"). Nobody needs an API key.
+   There is no separate Lumen sign-in. Lumen uses the shared Healthcare Crown account: the session cookie
+   written by the account site is read through window.HCA (site/assets/js/crown-account.js), which keeps the
+   access token fresh. Lumen never asks for, sends or stores an email or password, and never stores the token.
+   Academy AI sits first in the fallback chain; members can still add their own keys after it. */
 
-/* Public by design: the project address and its publishable key, as in the Evinca home page config. */
+/* Public by design: the project address and its publishable key, as in crown-account.js. */
 const HCA6Academy = {
   url: 'https://ujeofxfbwivjmgrxqdcl.supabase.co',
   key: 'sb_publishable_ie1qqB5QnaqUZPitNPfQCg__M46e7JL',
-  evinca: 'https://evinca.healthcarecrownacademy.co.uk',
+  account: 'https://account.healthcarecrownacademy.co.uk/en/account',
 };
-const HCA6_SESSION = 'lumen.academy.session';
 
 HCA5Providers.unshift({
   id: 'academy', name: 'Academy AI', kind: 'academy', model: 'academy', tier: 'academy',
-  free: 'Included with your Healthcare Crown Academy account, with a daily allowance. No key to set up.',
-  privacy: 'Runs on the Academy’s paid AI accounts (OpenAI, with Groq as backup), which do not use your text to train models. A request that another member already sent is answered from a shared store, without using your allowance.',
+  free: 'Included with your Healthcare Crown account, with a daily allowance. No key to set up.',
+  privacy: '',
 });
 if (!HCA5Store.config.order.includes('academy')) HCA5Store.config.order.unshift('academy');
 if (!HCA5Store.config.providers.academy) HCA5Store.config.providers.academy = { enabled: true };
 
-/* ---------- Sign-in (Supabase Auth, email and password, as in Evinca) ---------- */
-const HCA6Auth = { session: null, status: null };
-try {
-  const saved = HCA4Store.db ? await HCA4Read(HCA4Store.db, 'academy') : null;
-  HCA6Auth.session = saved?.refresh_token ? saved : JSON.parse(sessionStorage.getItem(HCA6_SESSION) || 'null');
-} catch {}
+/* ---------- The shared account ----------
+   state: 'checking' | 'out' (not signed in, or Lumen cannot see the account script) | 'in' | 'offline' (could not check) */
+const HCA6Auth = { state: 'checking', email: '', plan: '', status: null };
+const HCA6Wait = (promise, ms) => Promise.race([promise, new Promise((_, no) => setTimeout(() => no(new Error('timeout')), ms))]);
+const HCA6Locked = () => { try { return !!(window.HCA && HCA.locked && HCA.locked('lumen')); } catch { return false; } };
+const HCA6PlanName = e => (!e || !e.signed_in ? '' : e.admin ? 'Admin' : e.crown ? 'Crown Pass' : e.lumen === 'premium' ? 'Lumen premium' : 'Free plan');
 
-function HCA6Keep(session) {
-  HCA6Auth.session = session;
-  const remember = session?.remember !== false;
-  try { if (session && !remember) sessionStorage.setItem(HCA6_SESSION, JSON.stringify(session)); else sessionStorage.removeItem(HCA6_SESSION); } catch {}
-  if (HCA4Store.db) HCA4Write(HCA4Store.db, 'academy', session && remember ? session : null).catch(() => HCA4StorageProblem('db-only'));
-  window.dispatchEvent(new Event('hca5-ai-config'));
+/* Earlier versions asked for an Evinca email and password and kept a refresh token in IndexedDB ("academy") or in
+   sessionStorage. None of that is used any more: remove whatever an older version left on this device. */
+function HCA6ForgetOldSignIn() {
+  try { sessionStorage.removeItem('lumen.academy.session'); } catch {}
+  try { localStorage.removeItem('lumen.academy.session'); } catch {}
+  try { if (HCA4Store.db) HCA4Store.db.transaction('kv', 'readwrite').objectStore('kv').delete('academy'); } catch {}
 }
+HCA6ForgetOldSignIn();
 
-async function HCA6AuthFetch(path, body, token) {
-  let res;
-  try {
-    res = await fetch(`${HCA6Academy.url}/auth/v1/${path}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', apikey: HCA6Academy.key, ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-      body: JSON.stringify(body || {}),
-    });
-  } catch { throw new HCA5Error('Could not reach Healthcare Crown Academy. Check your connection.', 'network', 60); }
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new HCA5Error(data.error_description || data.msg || data.message || `Sign-in failed (${res.status}).`, res.status === 400 || res.status === 401 ? 'key' : 'request');
-  return data;
+let HCA6Checking = null;
+function HCA6Check() {
+  HCA6Checking ??= (async () => {
+    const before = `${HCA6Auth.state}|${HCA6Auth.email}|${HCA6Auth.plan}`;
+    try {
+      for (let i = 0; i < 40 && !(window.HCA && HCA.session); i++) await new Promise(r => setTimeout(r, 100)); // the account script loads just before Lumen
+      if (!(window.HCA && HCA.session)) { Object.assign(HCA6Auth, { state: 'out', email: '', plan: '' }); return; }
+      const s = await HCA6Wait(HCA.session(), 12000);
+      if (!s) { Object.assign(HCA6Auth, { state: 'out', email: '', plan: '', status: null }); return; }
+      const ent = await HCA6Wait(HCA.ready, 8000).catch(() => null);
+      Object.assign(HCA6Auth, { state: 'in', email: s.email || ent?.email || '', plan: HCA6PlanName(ent) });
+    } catch { Object.assign(HCA6Auth, { state: 'offline' }); }
+    finally {
+      HCA6Checking = null;
+      if (`${HCA6Auth.state}|${HCA6Auth.email}|${HCA6Auth.plan}` !== before) {
+        if (HCA6Auth.state === 'in') HCA5SetStatus(s => { delete s.until.academy; delete s.note.academy; }); // a fresh sign-in lifts any earlier rest
+        else HCA6Auth.status = null;
+        window.dispatchEvent(new Event('hca5-ai-config'));
+      }
+    }
+  })();
+  return HCA6Checking;
 }
-
-const HCA6FromAuth = (data, remember) => ({
-  email: data.user?.email || HCA6Auth.session?.email || '',
-  access_token: data.access_token, refresh_token: data.refresh_token,
-  expires_at: data.expires_at ? data.expires_at * 1000 : Date.now() + (data.expires_in || 3600) * 1000,
-  remember,
-});
-
-async function HCA6SignIn(email, password, remember) {
-  const data = await HCA6AuthFetch('token?grant_type=password', { email: email.trim(), password });
-  HCA6Keep(HCA6FromAuth(data, remember));
-  HCA5SetStatus(s => { delete s.until.academy; delete s.note.academy; });
-}
-
-async function HCA6SignOut() {
-  const token = HCA6Auth.session?.access_token;
-  HCA6Keep(null);
-  HCA6Auth.status = null;
-  if (token) HCA6AuthFetch('logout', {}, token).catch(() => {});
-}
-
-let HCA6Refreshing = null;
-async function HCA6Token(force = false) {
-  const s = HCA6Auth.session;
-  if (!s?.refresh_token) throw new HCA5Error('Sign in to use Academy AI.', 'key');
-  if (!force && s.expires_at - Date.now() > 60000) return s.access_token;
-  HCA6Refreshing ??= HCA6AuthFetch('token?grant_type=refresh_token', { refresh_token: s.refresh_token })
-    .then(data => { HCA6Keep(HCA6FromAuth(data, s.remember)); return data.access_token; })
-    .catch(err => { if (err.kind === 'key') HCA6Keep(null); throw err.kind === 'key' ? new HCA5Error('Your sign-in has expired. Sign in again to use Academy AI.', 'key') : err; })
-    .finally(() => { HCA6Refreshing = null; });
-  return HCA6Refreshing;
-}
+await Promise.race([HCA6Check(), new Promise(r => setTimeout(r, 1500))]);
+// Signing in, or out, in another tab or on the account site: look again when this tab is used.
+addEventListener('focus', () => { HCA6Check(); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) HCA6Check(); });
 
 /* ---------- Calling Academy AI ---------- */
+async function HCA6Token(force = false) {
+  if (!(window.HCA && HCA.session)) throw new HCA5Error('Sign in with your Healthcare Crown account to use Academy AI.', 'signin');
+  let s;
+  try { s = await HCA.session(force); }
+  catch { throw new HCA5Error('Could not reach Healthcare Crown Academy to check your sign-in. Check your connection.', 'network', 60); }
+  if (!s) { HCA6Check(); throw new HCA5Error('Sign in with your Healthcare Crown account to use Academy AI.', 'signin'); }
+  return s.access_token;
+}
+
 async function HCA6Post(body, signal, timeoutMs = 95000) {
   const send = async token => {
     const ctl = new AbortController(), stop = () => ctl.abort();
@@ -8936,18 +8936,22 @@ async function HCA6Post(body, signal, timeoutMs = 95000) {
   if (res.status === 401) res = await send(await HCA6Token(true));
   const data = await res.json().catch(() => ({}));
   if (res.ok) return data;
+  if (res.status === 401) { HCA6Check(); throw new HCA5Error('Your sign-in has expired. Sign in again to use Academy AI.', 'signin'); }
+  // The service's wording for 403 names another product; say it plainly here and keep the user's own keys in view.
+  if (res.status === 403) throw new HCA5Error('Academy AI is not switched on for this account yet. Your own keys still work.', 'plan', 1800);
   const message = data.message || `Academy AI failed (${res.status}).`;
-  if (res.status === 401) { HCA6Keep(null); throw new HCA5Error('Sign in again to use Academy AI.', 'key'); }
-  if (res.status === 403) throw new HCA5Error(message, 'key');
-  if (res.status === 429) throw new HCA5Error(message, 'quota', data.retryAfter || 3600);
+  if (res.status === 429) {
+    if (HCA6Auth.status?.limit) HCA6Auth.status = { ...HCA6Auth.status, remaining: 0, used: HCA6Auth.status.limit };
+    throw new HCA5Error(message, 'quota', data.retryAfter || 3600);
+  }
   if (res.status >= 500) throw new HCA5Error(message, 'server', data.retryAfter || 300);
   throw new HCA5Error(message, 'request');
 }
 
 async function HCA6Allowance() {
-  if (!HCA6Auth.session) return null;
-  try { HCA6Auth.status = await HCA6Post({ action: 'status' }, null, 20000); }
-  catch (err) { HCA6Auth.status = { error: err.message }; }
+  if (HCA6Auth.state !== 'in') return null;
+  try { HCA6Auth.status = { ...(await HCA6Post({ action: 'status' }, null, 20000)), checked: true }; }
+  catch (err) { HCA6Auth.status = { error: err.message, kind: err.kind || 'request' }; }
   window.dispatchEvent(new Event('hca5-ai-config'));
   return HCA6Auth.status;
 }
@@ -8960,54 +8964,59 @@ HCA5Call = async function HCA6Call(id, request) {
   if (typeof data.remaining === 'number' && HCA6Auth.status?.limit) HCA6Auth.status = { ...HCA6Auth.status, remaining: data.remaining, used: HCA6Auth.status.limit - data.remaining };
   return data.text || '';
 };
+/* Academy AI is offered only to a signed-in person whose plan includes it (when plan limits are on). */
+const HCA6Usable = () => HCA6Auth.state === 'in' && !HCA6Locked();
 HCA5Ready = function HCA6Ready() {
   const keys = HCA6Prev.Ready();
-  return HCA5Store.config.order.filter(id => (id === 'academy' ? !!HCA5Settings(id).enabled && !!HCA6Auth.session : keys.includes(id)));
+  return HCA5Store.config.order.filter(id => (id === 'academy' ? !!HCA5Settings(id).enabled && HCA6Usable() : keys.includes(id)));
 };
 
-/* ---------- The Academy AI row in the AI dialog ---------- */
+/* ---------- The Academy AI card in the AI dialog ---------- */
 function HCA6AcademyRow({ id, index, count, config, update, move }) {
-  const ctx = y(), s = { ...HCA5Settings(id), ...config.providers[id] }, session = HCA6Auth.session;
-  const [email, setEmail] = _.useState(session?.email || ''), [password, setPassword] = _.useState(''), [remember, setRemember] = _.useState(true);
-  const [busy, setBusy] = _.useState(false), [message, setMessage] = _.useState('');
-  const status = HCA5Status(), cooling = status.until[id] > Date.now(), allowance = HCA6Auth.status;
-  _.useEffect(() => { if (session && s.enabled && !allowance) HCA6Allowance(); }, [!!session, s.enabled]);
-  const signIn = async e => {
-    e?.preventDefault?.();
-    if (busy || !email || !password) return;
-    setBusy(true); setMessage('');
-    try { await HCA6SignIn(email, password, remember); setPassword(''); ctx.toast('Signed in to Academy AI.'); HCA6Allowance(); }
-    catch (err) { setMessage(/invalid/i.test(err.message) ? 'That email and password do not match a Healthcare Crown Academy account.' : err.message); }
-    setBusy(false);
-  };
-  const signOut = () => { HCA6SignOut(); setMessage(''); ctx.toast('Signed out of Academy AI on this device.'); };
+  const s = { ...HCA5Settings(id), ...config.providers[id] }, [busy, setBusy] = _.useState(false);
+  const status = HCA5Status(), cooling = status.until[id] > Date.now(), allowance = HCA6Auth.status, st = HCA6Auth.state, locked = st === 'in' && HCA6Locked();
+  _.useEffect(() => { if (HCA6Usable() && s.enabled && !HCA6Auth.status) HCA6Allowance(); }, [st, s.enabled, locked]);
+  const recheck = async () => { setBusy(true); HCA6Auth.status = null; await HCA6Check(); await HCA6Allowance(); setBusy(false); };
+  const signIn = mode => { if (window.HCA && HCA.signIn) HCA.signIn(mode); };
+  const note = (icon, text, role) => HC('p', { className: 'hca6-signed', role: role || 'status' }, HCAIcon(icon), HC('span', {}, text));
+  let body;
+  if (st === 'checking') body = note('refresh-line', 'Checking your sign-in…');
+  else if (st === 'offline') body = HC(_.Fragment, {},
+    note('error-warning-line', 'Could not reach Healthcare Crown Academy to check your sign-in. Check your connection.', 'alert'),
+    HC('div', { className: 'hca5-test' }, HCABtn(busy ? 'Checking…' : 'Try again', recheck, 'secondary', 'refresh-line', { disabled: busy })));
+  else if (st === 'out') body = HC(_.Fragment, {},
+    HC('p', {}, 'Sign in with your Healthcare Crown account to use Academy AI.'),
+    HC('div', { className: 'hca5-test' },
+      HCABtn('Sign in', () => signIn(), 'primary', 'arrow-right-line'),
+      HC('button', { type: 'button', className: 'text-link inline', onClick: () => signIn('signup') }, 'Create a free account')),
+    HC('p', { className: 'hca-small' }, 'One account for MedLex, Carecraft, Serein, Lumen and Evinca. You come straight back to Lumen, and your sources and cards stay on this device.'));
+  else if (locked) body = HC(_.Fragment, {},
+    note('lock-line', `Signed in as ${HCA6Auth.email || 'your account'}${HCA6Auth.plan ? ` (${HCA6Auth.plan})` : ''}. Academy AI is part of Lumen premium or the Crown Pass.`),
+    HC('div', { className: 'hca5-test' }, HCABtn('See plans', () => HCA.paywall('lumen', 'Academy AI'), 'primary', 'arrow-right-line')));
+  else {
+    const e = allowance && allowance.error ? allowance : null;
+    const line = allowance?.limit
+      ? `${allowance.remaining} of today’s ${allowance.limit} requests left; they reset at midnight UTC.`
+      : e ? e.error : 'Checking your allowance…';
+    body = HC(_.Fragment, {},
+      note(e ? 'error-warning-line' : 'shield-check-line', HC(_.Fragment, {}, 'Signed in as ', HC('strong', {}, HCA6Auth.email || 'your Healthcare Crown account'), HCA6Auth.plan ? ` (${HCA6Auth.plan}). ` : '. ', line), e ? 'alert' : 'status'),
+      HC('div', { className: 'hca5-test' },
+        e && e.kind === 'signin' && HCABtn('Sign in again', () => signIn(), 'primary', 'arrow-right-line'),
+        HCABtn(busy ? 'Checking…' : (e ? 'Try again' : 'Check allowance'), recheck, 'secondary', 'refresh-line', { disabled: busy }),
+        HC('a', { href: HCA6Academy.account, className: 'text-link inline' }, 'My account', HCAIcon('external-link-line'))),
+      HC('p', { className: 'hca-small' }, 'To sign out, use the account button on this page.'));
+  }
   return HC('li', { className: `hca5-provider hca6-academy ${s.enabled ? 'on' : ''}` },
     HC('div', { className: 'hca5-provider-head' },
-      HC('label', { className: 'hca5-switch' }, HC('input', { type: 'checkbox', checked: !!s.enabled, onChange: e => update(id, { enabled: e.target.checked }) }), HC('strong', {}, 'Academy AI')),
-      HC('span', { className: 'hca5-tier academy' }, 'Included for members'),
+      HC('label', { className: 'hca5-switch' }, HC('input', { type: 'checkbox', checked: !!s.enabled, onChange: e => update(id, { enabled: e.target.checked }) }), HC('strong', {}, 'Use Academy AI')),
       cooling && HC('span', { className: 'hca5-tier cooling' }, `Resting until ${new Date(status.until[id]).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`),
       HC('span', { className: 'grow' }),
-      allowance?.limit ? HC('span', { className: 'hca-small' }, `${allowance.remaining} of ${allowance.limit} left today`) : null,
       HC('span', { className: 'hca5-moves' },
         HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Try Academy AI earlier', disabled: index === 0, onClick: () => move(id, -1) }, HCAIcon('arrow-up-line')),
         HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Try Academy AI later', disabled: index === count - 1, onClick: () => move(id, 1) }, HCAIcon('arrow-down-line')))),
-    s.enabled && HC('div', { className: 'hca5-provider-body' },
-      HC('p', { className: 'hca-small' }, HCA5Provider(id).free, ' ', HCA5Provider(id).privacy),
-      session
-        ? HC(_.Fragment, {},
-            HC('p', { className: 'hca6-signed' }, HCAIcon('shield-check-line'), HC('span', {}, 'Signed in as ', HC('strong', {}, session.email || 'your Healthcare Crown Academy account'),
-              allowance?.limit ? `. ${allowance.remaining} of today’s ${allowance.limit} requests left; they reset at midnight UTC.` : allowance?.error ? `. ${allowance.error}` : '.')),
-            HC('div', { className: 'hca5-test' }, HCABtn('Sign out', signOut, 'secondary', 'close-line'), HCABtn('Check allowance', () => HCA6Allowance(), 'secondary', 'refresh-line')))
-        : HC('form', { className: 'hca6-signin', onSubmit: signIn },
-            HC('label', {}, 'Healthcare Crown Academy account email', HC('input', { type: 'email', value: email, onChange: e => setEmail(e.target.value), autoComplete: 'username', required: true })),
-            HC('label', {}, 'Password', HC('input', { type: 'password', value: password, onChange: e => setPassword(e.target.value), autoComplete: 'current-password', required: true })),
-            HC('label', { className: 'hca4-check' }, HC('input', { type: 'checkbox', checked: remember, onChange: e => setRemember(e.target.checked) }), 'Stay signed in on this device (otherwise you are signed out when you close the tab)'),
-            HC('div', { className: 'hca5-test' },
-              HCABtn(busy ? 'Signing in…' : 'Sign in', signIn, 'primary', 'arrow-right-line', { disabled: busy || !email || !password }),
-              HC('a', { href: `${HCA6Academy.evinca}/en/sign-in?mode=signup`, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, 'Create a free Healthcare Crown Academy account', HCAIcon('external-link-line')),
-              HC('a', { href: `${HCA6Academy.evinca}/en/sign-in`, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, 'Forgot your password?', HCAIcon('external-link-line')))),
-      message && HC('p', { className: 'hca-studio-error', role: 'alert' }, message),
-      HC('p', { className: 'hca-small' }, 'Your password goes only to Healthcare Crown Academy and is not stored. Lumen keeps a sign-in token in this browser, never in backups.')));
+    HC('div', { className: 'hca5-provider-body' },
+      body,
+      cooling && status.note[id] && HC('p', { className: 'hca-small' }, `Academy AI is resting: ${status.note[id]}. Lumen is using your other options meanwhile.`)));
 }
 HCA5ProviderRow = function HCA6ProviderRow(props) {
   return props.id === 'academy' ? HC(HCA6AcademyRow, props) : HC(HCA6Prev.Row, props);

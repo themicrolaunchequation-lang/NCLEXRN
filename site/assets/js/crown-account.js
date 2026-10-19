@@ -11,6 +11,9 @@
                             Lumen calls `window.HCA && HCA.gate && HCA.gate('source', count)`; gate(kind, number)
                             is an alias of limit(kind, number). Always true while gates are off.
      HCA.paywall(app, what) open the upgrade dialog;  HCA.upgrade(app) go to pricing.
+     HCA.session(force?)    Promise<{access_token, email, name, expires_at}|null>, refreshed when near expiry (force = refresh now);
+                            rejects if the network is down during a needed refresh.  HCA.token(force?) is just its access_token (or null).
+                            Use it to call the project's own functions as the signed-in person; never store or log the token.
    Per-app free limits are chosen by <meta name="hca-app" content="medlex|carecraft|serein|lumen">.
    Gates are off until paid plans can be bought (GATES_LIVE); preview them with ?gates=on.
    Plain ES2020, no dependencies. Works signed out and offline (everything stays free-tier). */
@@ -29,17 +32,29 @@
   function clear() { for (let i = 0; readCookie(`${COOKIE}.${i}`) !== null; i++) writeCookie(`${COOKIE}.${i}`, '', 0); }
   function save(session) { clear(); const v = JSON.stringify(session); for (let i = 0; i * CHUNK < v.length; i++) writeCookie(`${COOKIE}.${i}`, v.slice(i * CHUNK, (i + 1) * CHUNK), 31536000); }
 
-  async function session() {
+  // One refresh at a time: refresh tokens rotate, so two overlapping refreshes (account button + an app) must share a request.
+  let refreshing = null;
+  async function session(force) {
     let s = load();
     if (!s || !s.refresh_token) return null;
-    if (!s.expires_at || s.expires_at * 1000 < Date.now() + 60000) {
-      const r = await fetch(`${SUPABASE}/auth/v1/token?grant_type=refresh_token`, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ refresh_token: s.refresh_token }) });
-      if (!r.ok) { if (r.status === 400 || r.status === 401) clear(); return null; }
-      s = await r.json();
-      if (!s.expires_at && s.expires_in) s.expires_at = Math.floor(Date.now() / 1000) + s.expires_in;
-      save(s);
+    if (force || !s.expires_at || s.expires_at * 1000 < Date.now() + 60000) {
+      refreshing = refreshing || (async () => {
+        const r = await fetch(`${SUPABASE}/auth/v1/token?grant_type=refresh_token`, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ refresh_token: s.refresh_token }) });
+        if (!r.ok) { if (r.status === 400 || r.status === 401) clear(); return null; }
+        const n = await r.json();
+        if (!n.expires_at && n.expires_in) n.expires_at = Math.floor(Date.now() / 1000) + n.expires_in;
+        save(n);
+        return n;
+      })().finally(() => { refreshing = null; });
+      s = await refreshing;
     }
     return s;
+  }
+  /** The signed-in person's session for apps that call their own Supabase functions: {access_token, email, name, expires_at} or null.
+      Rejects only when the network is unreachable while a refresh is needed (callers should treat that as "offline", not "signed out"). */
+  async function currentSession(force) {
+    const s = await session(force);
+    return s && s.access_token ? { access_token: s.access_token, email: s.user?.email || '', name: s.user?.user_metadata?.full_name || '', expires_at: s.expires_at || 0 } : null;
   }
 
   async function entitlements() {
@@ -214,6 +229,8 @@
     locked,
     limit,
     paywall,
+    session: currentSession,
+    token: async (force) => (await currentSession(force))?.access_token || null,
     upgrade: (app) => { location.href = 'https://healthcarecrownacademy.co.uk/?plan=' + encodeURIComponent(app || 'crown') + '#pricing'; },
   };
 
