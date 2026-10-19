@@ -1169,7 +1169,7 @@ html[data-hs-motion=off] .tk-card,html[data-hs-motion=off] .tk-btn,html[data-hs-
 .hs-hero-art .sr-orb{position:relative;z-index:1}
 .hs-act>.sa-act{width:calc(100% + 0px);aspect-ratio:16/9;border-radius:12px;margin:0 0 12px}
 .tk-group>.sa-tk{width:100%;height:120px;border-radius:16px;margin:0 0 14px}
-.empty>.sa-empty,.sa-empty.sa-lone{width:min(100%,360px);aspect-ratio:4/3;height:auto;border-radius:18px;margin:0 auto 16px}
+.empty>.sa-empty,.sa-empty.sa-lone{width:min(100%,300px);aspect-ratio:1/1;height:auto;border-radius:18px;margin:0 auto 16px}
 .sr-invite-art.sa-has{background:none}.sr-invite-art.sa-has .sa-empty{width:100%;height:100%;border-radius:18px}
 .sa-priv{width:100%;height:150px;border-radius:14px;margin:0 0 16px}
 .onboarding-step>.sa-onb{width:100%;height:160px;border-radius:16px;margin:0 0 14px}
