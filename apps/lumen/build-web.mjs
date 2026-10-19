@@ -146,7 +146,32 @@ mod = replaceOnce(mod, "const ui = HCA7Use(), t = HCA8UseTimer(), desk = ui.desk
 mod = replaceOnce(mod, "HC('div', { className: 'sidebar-divider' }),\n    HC('div', { className: 'sidebar-label' }, 'STUDY DESK'),\n    HC('nav', { className: 'secondary-navigation hca8-desk-nav', 'aria-label': 'Study desk' },", "HC('details', { className: 'hs-fold', open: fold, onToggle: e => { setFold(e.currentTarget.open); HCA11Fold(e.currentTarget.open); } }, HC('summary', {}, 'Study desk'),\n    HC('nav', { className: 'secondary-navigation hs-nav hca8-desk-nav', 'aria-label': 'Study desk' },", 'desk fold start');
 mod = replaceOnce(mod, "HC('span', {}, 'How to use the desk'))));\n}", "HC('span', {}, 'How to use the desk')))));\n}", 'desk fold end');
 mod = replaceOnce(mod, "className: desk[key] ? 'hca8-on' : '', onClick: () => key === 'calc'", "className: `hs-item ${desk[key] ? 'hca8-on' : ''}`, onClick: () => key === 'calc'", 'desk item class');
-mod = replaceOnce(mod, "/*HCA10:END*/", "/*HCA10:END*/\n" + fs.readFileSync('src/day.js', 'utf8'), 'HCA10 end');
+mod = replaceOnce(mod, "/*HCA10:END*/", "/*HCA10:END*/\n" + fs.readFileSync('src/day.js', 'utf8') + '\n' + fs.readFileSync('src/reader.js', 'utf8'), 'HCA10 end');
+
+/* ---------- Reading room (src/reader.js): asserted hooks into the minified reader ---------- */
+// the app shell no longer takes the old "reader-view" styles (a 52px rail and no top bar that the shared shell replaced)
+mod = replaceOnce(mod, "className:`app-shell ${Ne?`reader-view`:``}", "className:`app-shell ${Ne?`hl-reader-on`:``}", 'app shell reader class');
+// page rail: image sources get real previews
+mod = replaceOnce(mod, "function _s({book:e,page:t,doc:n,active:r,onClick:i,cache:a}){", "function _s(props){return HC(HCA12RailThumb,props)}function HCA12RailOrig({book:e,page:t,doc:n,active:r,onClick:i,cache:a}){", 'page rail tile');
+// the study panel stays closed until asked for; the page rail remembers whether it was open
+mod = replaceOnce(mod, "[S,w]=(0,_.useState)(()=>window.innerWidth>=1100)", "[S,w]=(0,_.useState)(HCA12PanelInit)", 'study panel default');
+mod = replaceOnce(mod, "[T,D]=(0,_.useState)(null)", "[T,D]=(0,_.useState)(HCA12ThumbsInit)", 'page rail default');
+// whole page by default: spread only when wide enough, size from the stage, fit remembered per source type
+mod = replaceOnce(mod, "Ce=b===`flip`&&!be&&!((e.hcaRatio||1.414)<.9)||j!==null", "Ce=HCA12Spread(b,be,e,xe,j,t.settings,l)", 'spread rule');
+mod = replaceOnce(mod, "Ee=HCAReaderPageWidth(xe.width,xe.height,Ce,t.settings.readerFit||`width`,e.hcaRatio||1.414),De=Math.max(140,Ee)*A,", "De=HCA12PageW(xe,Ce,t.settings,e,A,l),", 'page width');
+mod = replaceOnce(mod, "Oe=De*(e.hcaRatio||1.414);", "Oe=De*HCA12Ratio(e,l);", 'page height');
+mod = replaceOnce(mod, "fit-${t.settings.readerFit||`width`}", "fit-${HCA12FitOf(t.settings,e)}", 'fit class');
+mod = replaceOnce(mod, "const hcaSetState=n,hcaToast=i;", "HCA12Probe({book:e,doc:u,record:f,page:l,setPage:Ae,mode:b,setMode:Fe,spread:Ce,stage:xe,zoom:A,setZoom:te,tool:re,setTool:ie,drawer:T,setDrawer:D,panel:S,setPanel:w,width:De,focused:o,setFocus:s,next:Me,prev:Ne,download:Ve});const hcaSetState=n,hcaToast=i;", 'reader probe');
+// page rail beside the stage (not over it) and a labelled "Pages" button
+mod = replaceOnce(mod, "children:[T&&(0,C.jsx)(vs,{book:e,doc:u,page:l,getText:ke,onPage:e=>{Ae(e),be&&D(null)},onClose:()=>D(null),initialTab:T}),(0,C.jsxs)(`div`,{className:`stage-topline`", "children:[(0,C.jsxs)(`div`,{className:`stage-topline`", 'stage children');
+mod = replaceOnce(mod, "(0,C.jsxs)(`div`,{className:`reader-stage surround-", "(0,C.jsxs)(`div`,{className:`hl-body`,children:[T&&(0,C.jsx)(vs,{book:e,doc:u,page:l,getText:ke,onPage:e=>{Ae(e),be&&D(null)},onClose:()=>{D(null),HCA12ThumbsSave(!1)},initialTab:T}),(0,C.jsxs)(`div`,{className:`reader-stage surround-", 'stage wrapper start');
+mod = replaceOnce(mod, "]}),(0,C.jsxs)(`div`,{className:`reader-bottom-toolbar`", "]})]}),(0,C.jsxs)(`div`,{className:`reader-bottom-toolbar`", 'stage wrapper end');
+mod = replaceOnce(mod, "(0,C.jsx)(O,{icon:`side-bar-line`,label:`Pages, contents, and bookmarks`,active:!!T,onClick:()=>D(T?null:`contents`)})", "(0,C.jsxs)(`button`,{type:`button`,className:`icon-button hl-pages ${T?`active`:``}`,\"aria-label\":`Pages, contents, and bookmarks`,\"aria-pressed\":!!T,title:`Pages, contents, and bookmarks`,onClick:()=>{D(T?null:`contents`),HCA12ThumbsSave(!T)},children:[(0,C.jsx)(E,{name:`side-bar-line`}),(0,C.jsx)(`span`,{children:`Pages`})]})", 'pages button');
+// bottom bar: fit menu + zoom replace the old two-way switch and the 65%-200% zoom
+mod = replaceOnce(mod, "(0,C.jsx)(HCAReaderFit,{}),", "", 'old fit switch');
+mod = replaceOnce(mod, "(0,C.jsxs)(`div`,{className:`zoom-controls`,children:[(0,C.jsx)(O,{icon:`subtract-line`,label:`Zoom out`,disabled:A<=.65||b===`text`,onClick:()=>te(e=>Math.max(.65,e-.1))}),(0,C.jsxs)(`button`,{className:`zoom-value`,title:`Reset to fit`,onClick:()=>te(1),children:[Math.round(A*100),`%`,(0,C.jsx)(E,{name:`arrow-down-s-line`})]}),(0,C.jsx)(O,{icon:`add-line`,label:`Zoom in`,disabled:A>=2||b===`text`,onClick:()=>te(e=>Math.min(2,e+.1))})]})", "b===`text`?(0,C.jsx)(`span`,{className:`hl-view-spacer`}):(0,C.jsx)(HCA12ViewControls,{book:e,zoom:A,setZoom:te,width:De})", 'zoom controls');
+// focus mode: an obvious, labelled way out
+mod = replaceOnce(mod, "icon:`fullscreen-exit-line`,onClick:()=>{s(!1),document.fullscreenElement&&document.exitFullscreen?.()},children:`Leave focus`", "icon:`close-line`,className:`hl-exit`,onClick:()=>{s(!1),document.fullscreenElement&&document.exitFullscreen?.()},children:`Exit full screen`", 'leave focus');
 html = html.replace(modMatch[1], () => mod);
 
 /* ---------- Executable inline scripts -> hashed files ---------- */
@@ -177,7 +202,7 @@ shell.push(pwa);
 
 const shellJs = put(`js/shell.${hash(fs.readFileSync('../shared/hca-shell.js', 'utf8'))}.js`, fs.readFileSync('../shared/hca-shell.js', 'utf8'));
 shell.push(shellJs);
-const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}</style>`;
+const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}\n${fs.readFileSync('src/reader.css', 'utf8')}</style>`;
 const head = `<link rel="canonical" href="${SITE}/">
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="apple-touch-icon" href="${BASE}icon-192.png">
