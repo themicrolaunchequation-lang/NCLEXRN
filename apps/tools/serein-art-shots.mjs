@@ -16,7 +16,7 @@ for (const [w, h, dark] of [[1440, 900, false], [1440, 900, true], [390, 844, fa
   await p.keyboard.press('Escape'); await p.waitForTimeout(300);
   for (const r of ROUTES) {
     await p.evaluate(x => { location.hash = x; }, r); await p.waitForTimeout(1100);
-    await p.evaluate(() => document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager')); await p.waitForTimeout(600);
+    await p.evaluate(() => document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager')); await p.waitForFunction(() => [...document.images].every(i => i.complete), null, { timeout: 8000 }).catch(() => {}); await p.waitForTimeout(300);
     const st = await p.evaluate(() => ({ n: document.querySelectorAll('.sa-img,.sa-swapped,.sa-pic').length, bad: [...document.querySelectorAll('img')].filter(i => i.complete && i.naturalWidth === 0 && i.src).length, ov: document.documentElement.scrollWidth > innerWidth + 1 }));
     await p.screenshot({ path: `${out}/${r.replace('/', '-')}-${tag}.png`, fullPage: true });
     await p.evaluate(AXE); const ax = await p.evaluate(async () => (await axe.run(document, { runOnly: ['wcag2a', 'wcag2aa'] })).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => v.id + ':' + v.nodes.length));
