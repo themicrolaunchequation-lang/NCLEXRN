@@ -128,7 +128,7 @@
     if (P.synced !== e) { P.synced = e; syncToggles(); }
     const am = ambientOn(); if (am !== P.amb) { P.amb = am; if (audio) audio.setAmbient(am); }
     if (!P.visit && !isBreath()) { P.caption = ''; P.sub = ''; }
-    if (!P.caption) P.caption = mainLine(s, plan);
+    if (!P.caption || (isBreath() && s.state !== 'playing')) P.caption = mainLine(s, plan);
     pumpSubs();
     renderTimeline(s, e);
     paintCaption();
@@ -175,7 +175,7 @@
     if (e.practice.selfPaced) P.selfTimer = setInterval(() => { const x = engine(); if (x && x === P.engine && x.state === 'playing') update(x.snapshot()); else clearInterval(P.selfTimer); }, 250);
   }
   function onPause() {
-    clearInterval(P.selfTimer);
+    clearInterval(P.selfTimer); P.sub = ''; clearSubs(); paintCaption();
     if (narrator) narrator.cancel();
     clearTimeout(P.outroTimer);
     if (audio && audio.ctx) audio.pause();

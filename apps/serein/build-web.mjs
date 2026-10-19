@@ -96,6 +96,7 @@ js += '\n;\n' + read('src/hook.js');
 
 // ---- Guided practice player: voice guide, captions and timeline, 3D lungs, breath sounds, soft music ----
 // (src/player-voice.js, player-audio.js, lungs3d.js, player.js, player.css). Small asserted hooks into updatePlayer and the settings sheet.
+markup = patch(markup, `<dialog id="player-settings" class="modal player-settings-sheet" aria-labelledby="player-settings-title"><header class="dialog-head">`, `<dialog id="player-settings" class="modal player-settings-sheet" aria-labelledby="player-settings-title"><header class="dialog-head" role="presentation">`, 'player: settings sheet is not a second banner');
 js = patch(js, `$('#player-cue').textContent=s.cue;`, `$('#player-cue').textContent=globalThis.SereinPlayer?SereinPlayer.cue(s):s.cue;`, 'player: caption line');
 js = patch(js, `advance.updateStage(s);modern?.playerUpdated(s);if(s.state==='complete'){stopTimer();if(orb)orb.stop();cancelVoice();}`, `advance.updateStage(s);modern?.playerUpdated(s);globalThis.SereinPlayer?.update(s,force);if(s.state==='complete'){stopTimer();if(orb)orb.stop();if(globalThis.SereinPlayer)SereinPlayer.complete(s);else cancelVoice();}`, 'player: update hook');
 js = patch(js, `function cancelVoice(){try{speechSynthesis.cancel();}catch{}}`, `function cancelVoice(){try{if(globalThis.SereinPlayer)SereinPlayer.silence();else speechSynthesis.cancel();}catch{}}`, 'player: cancel voice');

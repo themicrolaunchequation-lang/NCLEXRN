@@ -784,7 +784,7 @@ function create(c){
   else if(a==='finder-time'){finder.budget=d.value==='self'?'self':+d.value;finderRender();}
   else if(a==='finder-next'){finder.step=Math.min(3,finder.step+1);finderRender();}
   else if(a==='finder-back'){finder.step=Math.max(0,finder.step-1);finderRender();}
-  else if(a==='finder-start'){let p=D.practices.find(p=>p.id===d.id);state.moment=finder.moment;openPractice(p.id,chooseDuration(p,finder.budget==='self'?0:+finder.budget));if(finder.silent){state.voice=false;$('#session-voice').checked=false;$('#session-chime').checked=false;}}
+  else if(a==='finder-start'){let p=D.practices.find(p=>p.id===d.id);state.moment=finder.moment;openPractice(p.id,chooseDuration(p,finder.budget==='self'?0:+finder.budget));if(finder.silent){state.voice=false;$('#session-voice').checked=false;$('#session-chime').checked=false;globalThis.SereinPlayer?.quiet();}}
   else if(a==='evidence')evidence(d.id);
   else if(a==='explain')openModal(d.title,Serein.t("copy_0094",{v0:(esc(d.text))}));
   else if(a==='studios-open')navigate('studios');
@@ -3919,7 +3919,7 @@ S.hook={run};
     if (P.synced !== e) { P.synced = e; syncToggles(); }
     const am = ambientOn(); if (am !== P.amb) { P.amb = am; if (audio) audio.setAmbient(am); }
     if (!P.visit && !isBreath()) { P.caption = ''; P.sub = ''; }
-    if (!P.caption) P.caption = mainLine(s, plan);
+    if (!P.caption || (isBreath() && s.state !== 'playing')) P.caption = mainLine(s, plan);
     pumpSubs();
     renderTimeline(s, e);
     paintCaption();
@@ -3966,7 +3966,7 @@ S.hook={run};
     if (e.practice.selfPaced) P.selfTimer = setInterval(() => { const x = engine(); if (x && x === P.engine && x.state === 'playing') update(x.snapshot()); else clearInterval(P.selfTimer); }, 250);
   }
   function onPause() {
-    clearInterval(P.selfTimer);
+    clearInterval(P.selfTimer); P.sub = ''; clearSubs(); paintCaption();
     if (narrator) narrator.cancel();
     clearTimeout(P.outroTimer);
     if (audio && audio.ctx) audio.pause();
@@ -4000,10 +4000,17 @@ S.hook={run};
       if (P.hadVisit) { if (narrator) narrator.cancel(); clearSubs(); }
       P.hadVisit = true;
       if (!P.introDone) { P.introDone = true; if (plan.intro) say(plan.intro); }
-      // Joining a step part-way (a skip back, a seek): say the step line only if it is still early.
-      if (t <= 8) say(step.say); else P.sub = firstSentence(step.say);
-      line(step.say);
-      prompts.forEach((p, i) => { if (p.at < t - 0.3) v.spoken.add(i); });
+      // Joining a step part-way (a skip, a seek): pick up at the latest line that is already due.
+      const past = prompts.map((p, i) => ({ at: p.at, text: p.text, i })).filter(p => p.at <= t - 0.3);
+      if (past.length) {
+        past.forEach(p => v.spoken.add(p.i));
+        const last = past[past.length - 1];
+        line(last.text);
+        if (t - last.at < 5) say(last.text); else P.sub = firstSentence(last.text);
+      } else {
+        if (t <= 8) say(step.say); else P.sub = firstSentence(step.say);
+        line(step.say);
+      }
       return;
     }
     v.lastT = t;
@@ -4299,8 +4306,15 @@ S.hook={run};
   const player = $('#player');
   if (player) player.addEventListener('close', closed);
 
+  /* "Keep this pause silent" from the practice finder: no voice, music or breath sounds for this session only. */
+  function quiet() {
+    P.muted = true; syncToggles(); syncLegacy(); silence();
+    if (audio) audio.stopMusic(0.6);
+    P.musicOn = false;
+  }
+
   g.SereinPlayer = {
-    update, complete, silence, cue, extras, closed,
+    update, complete, silence, cue, extras, closed, quiet,
     attachLungs(l) { P.lungs = l; },
     prefs, P, eff,
     debug() { return { prefs: Object.assign({}, prefs), caption: P.caption, plan: P.plan && P.plan.kind, muted: P.muted, musicOn: P.musicOn, counts: P.counts.length, audioState: audio && audio.ctx ? audio.ctx.state : 'none', busy: narrator ? narrator.busy : false }; }
@@ -4802,7 +4816,7 @@ S.hook={run};
       gl.useProgram(this.pDot); gl.bindBuffer(gl.ARRAY_BUFFER, this.dotBuf); gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.dotData);
       const D = this.a.dot; gl.enableVertexAttribArray(D[0]); gl.enableVertexAttribArray(D[1]);
       gl.vertexAttribPointer(D[0], 3, gl.FLOAT, false, 20, 0); gl.vertexAttribPointer(D[1], 2, gl.FLOAT, false, 20, 12);
-      gl.uniformMatrix4fv(this.u.dot.uMVP, false, mvp); gl.uniform1f(this.u.dot.uB, m.b); gl.uniform1f(this.u.dot.uPx, h * 0.021);
+      gl.uniformMatrix4fv(this.u.dot.uMVP, false, mvp); gl.uniform1f(this.u.dot.uB, m.b); gl.uniform1f(this.u.dot.uPx, h * 0.085);
       gl.drawArrays(gl.POINTS, 0, this.nPart);
       gl.disableVertexAttribArray(D[0]); gl.disableVertexAttribArray(D[1]);
       gl.depthMask(true); gl.disable(gl.BLEND);
@@ -4823,7 +4837,7 @@ S.hook={run};
         }
         onPath(q.path, u, out);
         const o = i * 5;
-        d[o] = out[0] + q.jit[0]; d[o + 1] = out[1] + q.jit[1]; d[o + 2] = out[2] + q.jit[2]; d[o + 3] = q.size; d[o + 4] = clamp(al, 0, 1) * 0.9;
+        const sp = 1 + 5 * u; d[o] = out[0] + q.jit[0] * sp; d[o + 1] = out[1] + q.jit[1] * sp; d[o + 2] = out[2] + q.jit[2] * sp; d[o + 3] = q.size; d[o + 4] = clamp(al, 0, 1);
       }
     }
 

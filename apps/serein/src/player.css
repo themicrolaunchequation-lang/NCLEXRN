@@ -44,12 +44,13 @@
 .player.sp-on .player-instructions>.instruction-current+.player-step-list{display:none}
 
 /* ---------- 3D lungs ---------- */
+.player[data-sp-practice="ground"].sp-on .advance-stage{padding-bottom:50px;box-sizing:border-box}
 .sp-lungs{position:absolute;left:0;right:0;bottom:0;top:70px;width:100%;height:calc(100% - 70px);display:block;pointer-events:none}
 .orb-stage[data-lungs] .orb-axis,.orb-stage[data-lungs] .orb-grid{display:none}
 .box-mode .sp-lungs,.box-mode .sp-breath-label{display:none}
 .sp-breath-label{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:4;display:flex;align-items:baseline;justify-content:center;gap:10px;white-space:nowrap;padding:8px 18px;border-radius:999px;background:#0F2336B3;border:1px solid #7FD0B544;color:#F8F5EF;font-family:var(--font-serif);pointer-events:none}
 .sp-breath-label[hidden]{display:none}
-.sp-bl-word{font-size:clamp(20px,1vw + 14px,26px);font-weight:500}
+.sp-bl-word{font-size:clamp(19px,1vw + 13px,26px);font-weight:500}
 .sp-bl-dots{color:#7FD0B5;font-size:22px;line-height:1}
 .sp-bl-count{display:inline-flex;align-items:baseline;gap:4px;font-variant-numeric:tabular-nums}
 .sp-bl-count b{font-size:clamp(26px,1.4vw + 16px,34px);font-weight:500;color:#9CE3C8;min-width:.7em;text-align:right}
@@ -139,16 +140,19 @@
   .sp-meta{display:none}
   .sp-now{display:block}
   .sp-timeline{gap:5px;margin:0}
-  .sp-step{min-height:44px;padding:0;border:0;background:transparent;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:visible}
-  .sp-step .sp-fill,.sp-step .sp-text,.sp-step .sp-mark{display:none}
-  .sp-step .sp-bar{display:block;position:relative;width:100%;height:8px;border-radius:99px;background:#FFFFFF2E;overflow:hidden}
-  .sp-step .sp-bar i{position:absolute;inset:0;transform-origin:left center;transform:scaleX(var(--p,0));background:#7FD0B5;border-radius:99px;transition:transform .14s linear}
-  .sp-step[data-state=current] .sp-bar{background:#7FD0B544;height:10px}
-  .sp-step[data-state=done] .sp-bar i{background:#5FB89E}
-  .sp-step[data-state=current],.sp-step[data-state=done],.sp-step[data-state=next]{background:transparent;border:0}
+  .sp-timeline .sp-step{min-height:44px;padding:0;border:0;background:transparent;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:visible}
+  .sp-timeline .sp-step .sp-fill,.sp-timeline .sp-step .sp-text,.sp-timeline .sp-step .sp-mark{display:none}
+  .sp-timeline .sp-step .sp-bar{display:block;position:relative;width:100%;height:8px;border-radius:99px;background:#FFFFFF2E;overflow:hidden}
+  .sp-timeline .sp-step .sp-bar i{position:absolute;inset:0;transform-origin:left center;transform:scaleX(var(--p,0));background:#7FD0B5;border-radius:99px;transition:transform .14s linear}
+  .sp-timeline .sp-step[data-state=current] .sp-bar{background:#7FD0B544;height:10px}
+  .sp-timeline .sp-step[data-state=done] .sp-bar i{background:#5FB89E}
+  .sp-timeline .sp-step[data-state=current],.sp-timeline .sp-step[data-state=done],.sp-timeline .sp-step[data-state=next]{background:transparent;border:0}
   .player.sp-on .player-stage-labels{max-width:calc(100% - 28px)}
   .player.sp-on .stage-corner{display:none}
-  .sp-breath-label{top:44px;padding:6px 14px;gap:8px}
+  .sp-breath-label{top:8px;padding:5px 14px;gap:8px}
+  .sp-lungs{top:52px;height:calc(100% - 52px)}
+  .player[data-sp-breath="1"] .sp-caption{height:2.6em}
+  .player[data-sp-practice="ground"].sp-on .advance-stage{padding-bottom:58px;box-sizing:border-box}
   .player.sp-on .media-label{font-size:12px}
   .player-controls{padding-top:6px}
   .timer-ring{width:56px;height:56px}

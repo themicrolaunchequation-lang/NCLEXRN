@@ -492,7 +492,7 @@
       gl.useProgram(this.pDot); gl.bindBuffer(gl.ARRAY_BUFFER, this.dotBuf); gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.dotData);
       const D = this.a.dot; gl.enableVertexAttribArray(D[0]); gl.enableVertexAttribArray(D[1]);
       gl.vertexAttribPointer(D[0], 3, gl.FLOAT, false, 20, 0); gl.vertexAttribPointer(D[1], 2, gl.FLOAT, false, 20, 12);
-      gl.uniformMatrix4fv(this.u.dot.uMVP, false, mvp); gl.uniform1f(this.u.dot.uB, m.b); gl.uniform1f(this.u.dot.uPx, h * 0.021);
+      gl.uniformMatrix4fv(this.u.dot.uMVP, false, mvp); gl.uniform1f(this.u.dot.uB, m.b); gl.uniform1f(this.u.dot.uPx, h * 0.085);
       gl.drawArrays(gl.POINTS, 0, this.nPart);
       gl.disableVertexAttribArray(D[0]); gl.disableVertexAttribArray(D[1]);
       gl.depthMask(true); gl.disable(gl.BLEND);
@@ -513,7 +513,7 @@
         }
         onPath(q.path, u, out);
         const o = i * 5;
-        d[o] = out[0] + q.jit[0]; d[o + 1] = out[1] + q.jit[1]; d[o + 2] = out[2] + q.jit[2]; d[o + 3] = q.size; d[o + 4] = clamp(al, 0, 1) * 0.9;
+        const sp = 1 + 5 * u; d[o] = out[0] + q.jit[0] * sp; d[o + 1] = out[1] + q.jit[1] * sp; d[o + 2] = out[2] + q.jit[2] * sp; d[o + 3] = q.size; d[o + 4] = clamp(al, 0, 1);
       }
     }
 
