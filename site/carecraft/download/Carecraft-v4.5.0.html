@@ -2610,9 +2610,12 @@ const CC_REGIONS={"accountability":{"1":{"size":[1000,1813],"header":[0,0,1,0.16
     d.addEventListener('click', e => { if (d.body.classList.contains('hs-drawer') && e.target.closest && e.target.closest('.hs-side .hs-item,.hs-side .hs-brand')) setTimeout(() => toggleDrawer(false), 0); });
   }
 
+  /* One streak across the suite: the Daily Crown streak replaces each app's own count (Serein shows none). */
+  const shared = () => { const D = global.HCA && global.HCA.daily && global.HCA.daily.get(); return D && cfg && cfg.app !== 'serein' ? D.s : null; };
   function updateStreak() {
     if (!cfg || !cfg.streak) return; const el = $('.hs-streak'); if (!el) return;
     let v = null; try { v = cfg.streak(); } catch { }
+    const sh = shared(); if (sh !== null && v != null) v = { text: sh, label: sh ? `${sh}-day Daily Crown streak` : 'Start your Daily Crown streak' };
     if (v == null) { el.hidden = true; return; }
     el.hidden = false;
     const html = v.html || `${icon('flame')}<span>${esc(v.text != null ? v.text : v)}</span>`;
@@ -2630,6 +2633,7 @@ const CC_REGIONS={"accountability":{"1":{"size":[1000,1813],"header":[0,0,1,0.16
       new MutationObserver(() => { syncMotion(); syncTheme(); }).observe(d.body, { attributes: true, attributeFilter: ['class', 'data-motion', 'data-theme'] });
       mqDark.addEventListener && mqDark.addEventListener('change', syncTheme); mqMotion.addEventListener && mqMotion.addEventListener('change', syncMotion);
       matchMedia('(min-width:1024px)').addEventListener && matchMedia('(min-width:1024px)').addEventListener('change', () => { placeAccount(); applyRail(); toggleDrawer(false); });
+      addEventListener('hca-daily', updateStreak);
       addEventListener('hashchange', () => { updateStreak(); toggleDrawer(false); }); addEventListener('storage', updateStreak);
       setInterval(() => { if (!d.hidden) updateStreak(); }, 4000);
     };
@@ -2662,6 +2666,7 @@ const CC_REGIONS={"accountability":{"1":{"size":[1000,1813],"header":[0,0,1,0.16
   }
 
   function day(spec) {
+    if (spec.daily && spec.daily.done && global.HCA && global.HCA.daily) global.HCA.daily.done(spec.daily.app);
     const root_ = h('div', { class: 'hs-day', 'data-hs-day': '' });
     let i = 0; const rise = e => { e.style.setProperty('--i', i++); return e; };
     // hero
@@ -2677,13 +2682,13 @@ const CC_REGIONS={"accountability":{"1":{"size":[1000,1813],"header":[0,0,1,0.16
     // progress
     const Pg = spec.progress, pc = h('aside', { class: 'hs-card hs-progress hs-c4 is-static', 'aria-label': 'Your progress today' });
     const wk = Pg.week || [];
-    pc.innerHTML = `<div class="hs-card-top"><p class="hs-eyebrow">${esc(Pg.eyebrow || 'Today’s goal')}</p>${Pg.streak != null ? `<span class="hs-flame">${icon('flame')}<span data-count="${Pg.streak}">${Pg.streak}</span> ${Pg.streakLabel || 'day streak'}</span>` : ''}</div>
+    pc.innerHTML = `<div class="hs-card-top"><p class="hs-eyebrow">${esc(Pg.eyebrow || 'Today’s goal')}</p>${(() => { const sh = shared(), n = sh !== null ? (sh > 0 ? sh : null) : Pg.streak; return n != null ? `<span class="hs-flame">${icon('flame')}<span data-count="${n}">${n}</span> ${sh !== null ? 'day streak' : (Pg.streakLabel || 'day streak')}</span>` : ''; })()}</div>
       <div class="hs-ring-wrap"><div class="hs-ring" role="img" aria-label="${esc(Pg.ringLabel || '')}">${ringSVG(Pg.pct || 0)}<div class="hs-ring-c"><b data-count="${Pg.main}">${esc(Pg.main)}</b><span class="sm">${esc(Pg.sub || '')}</span></div></div>
       <div class="hs-prog-side"><h2>${esc(Pg.title || '')}</h2>${Pg.empty ? `<p class="hs-empty">${esc(Pg.empty)}</p>` : `<p>${esc(Pg.text || '')}</p>`}</div></div>
       <div class="hs-week" role="list" aria-label="This week">${wk.map(w => `<span class="hs-wd${w.done ? ' is-done' : ''}${w.today ? ' is-today' : ''}" role="listitem" aria-label="${w.name}${w.done ? ', done' : w.today ? ', today' : ''}"><i></i>${w.l}</span>`).join('')}</div>
       ${Pg.strip && Pg.strip.length ? `<div class="hs-strip">${Pg.strip.map(s => `<span><b data-count="${esc(s.v)}">${esc(s.v)}</b>${esc(s.l)}</span>`).join('')}</div>` : ''}`;
     root_.append(rise(pc));
-    if (spec.daily) { if (spec.daily.done && global.HCA && global.HCA.daily) global.HCA.daily.done(spec.daily.app); const dc = dailyCard(spec.daily.app); if (dc) root_.append(rise(dc)); }
+    if (spec.daily) { const dc = dailyCard(spec.daily.app); if (dc) root_.append(rise(dc)); }
     // ordered items: action cards, path card, raw cards
     const items = spec.items || [...(spec.actions || []).map(a => Object.assign({ kind: 'act' }, a)), ...(spec.path ? [Object.assign({ kind: 'path' }, spec.path)] : [])];
     items.forEach(A => {

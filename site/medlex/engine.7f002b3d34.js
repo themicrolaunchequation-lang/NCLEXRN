@@ -262,7 +262,7 @@
       el.content.className = cls;
     }
     function announce() { const s = slide(); root.setAttribute('aria-label', `${deck.title}: slide ${S.idx + 1} of ${deck.slides.length}, ${s.title || s.kicker || s.prompt || s.question || s.type}`); }
-    function go(i, dir) { i = clamp(i, 0, deck.slides.length - 1); if (i === S.idx && el.content.innerHTML) return; blurText(); S.dir = dir || (i > S.idx ? 1 : -1); S.idx = i; renderSlide(true); save(); }
+    function go(i, dir) { i = clamp(i, 0, deck.slides.length - 1); if (i === S.idx && el.content.innerHTML) return; blurText(); S.dir = dir || (i > S.idx ? 1 : -1); S.idx = i; { const t = deck.slides[i]; if (t && t.type === 'visual') S.view(t).free = false; } /* a guide always opens fitted, never at an old zoom */ renderSlide(true); save(); }
     function blurText() { const a = d.activeElement; if (a && a.classList && a.classList.contains('hst-txn')) a.blur(); }
 
     function journey() {
@@ -282,12 +282,12 @@
     /* ----- visual (poster tour) ----- */
     function applyVisual(instant) {
       const s = slide(); if (s.type !== 'visual') return; const win = $('[data-pwin]', el.content), img = $('[data-pimg]', el.content); if (!win || !img) return;
-      const place = () => {
+      const place = (inst) => {
         const v = S.view(s); el.slide.dataset.free = v.free ? '1' : '0'; const iw = img.naturalWidth || 1000, ih = img.naturalHeight || (iw / (s.aspect || .6)), Ww = win.clientWidth, Wh = win.clientHeight - 0;
         img.style.width = iw + 'px'; img.style.height = ih + 'px';
         const reg = (s.regions || [])[v.step], rect = reg && reg.rect || [0, 0, 1, 1];
         if (!v.free) { const top = 10, bot = 74, Hh = Math.max(60, Wh - top - bot), sc = Math.min(Ww / (rect[2] * iw), Hh / (rect[3] * ih)); v.s = sc; v.tx = Ww / 2 - (rect[0] + rect[2] / 2) * iw * sc; v.ty = top + Hh / 2 - (rect[1] + rect[3] / 2) * ih * sc; }
-        const quick = instant || reduced(); img.style.transition = quick ? 'none' : 'transform .6s cubic-bezier(.22,.8,.26,1)';
+        const quick = inst === true || instant || reduced(); img.style.transition = quick ? 'none' : 'transform .6s cubic-bezier(.22,.8,.26,1)';
         img.style.transform = `translate(${v.tx}px,${v.ty}px) scale(${v.s})`;
         const zn = $('[data-znote]', el.content); if (zn) { const hi = v.s > 1.001; zn.hidden = !hi; zn.textContent = hi ? `Zoom ${Math.round(v.s * 100)}% of the artwork\u2019s own size${v.s >= 3.99 ? ' (the most it will go)' : ''}. Past 100% the picture is enlarged, so small print can look soft. The poster\u2019s text is listed below.` : ''; }
         const sp = $('[data-spot]', win);
@@ -295,6 +295,9 @@
       };
       let tries = 0; const go_ = () => { if (!img.isConnected) return; if (img.naturalWidth) { try { place(); img.classList.remove('is-raw'); } catch (e) { console.warn(e); } } else if (tries++ < 80) { requestAnimationFrame(go_); } };
       img.addEventListener('load', go_, { once: true }); go_();
+      /* Re-fit whenever the poster window changes size (the journey list opening, a rotated phone, a resized browser), so the whole poster never ends up cropped or tiny. */
+      if (win._hstRO) win._hstRO.disconnect();
+      if (typeof ResizeObserver !== 'undefined') { let w0 = win.clientWidth, h0 = win.clientHeight; win._hstRO = new ResizeObserver(() => { if (!img.isConnected || !img.naturalWidth) return; if (win.clientWidth === w0 && win.clientHeight === h0) return; w0 = win.clientWidth; h0 = win.clientHeight; if (S.view(slide()).free || slide().id !== s.id) return; try { place(true); } catch (e) { console.warn(e); } }); win._hstRO.observe(win); }
     }
     function setStep(i) {
       const s = slide(), reg = s.regions || [], v = S.view(s); const n = clamp(i, 0, reg.length - 1); if (n === v.step && !v.free) return; blurText();
