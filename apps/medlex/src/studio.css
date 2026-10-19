@@ -20,3 +20,17 @@ html[data-hs-motion=off] .ms-row,html[data-hs-motion=off] .ms-cta,html[data-hs-m
   .view-header .header-actions:has(.ms-cta) .ms-cta{margin:0}
   .module-tabs{mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
 }
+
+/* Poster viewer: zoom note, enlarged-view note, and a toolbar that wraps on phones instead of scrolling sideways */
+.hst-znote{margin:0;padding:8px 12px;border-radius:10px;background:#FFF3D6;color:#5A3D00;font-size:13px;line-height:1.4}
+.hst-znote[hidden]{display:none}
+.hst-lb-bar{flex-wrap:wrap}
+.hst-lb-bar .hst-lb-note{flex:1 0 100%;order:5;white-space:normal;color:var(--st-txt,#fff);font-size:13px}
+.hst-lb-bar .hst-lb-note:empty{display:none}
+@media (max-width:760px){.hst-lb-bar span.hst-lb-note{display:block}.hst-lb-bar span.hst-lb-note:empty{display:none}}
+@media (max-width:700px){
+  .hst-dock{max-height:46dvh;overflow-y:auto}
+  .hst-row{flex-wrap:wrap;justify-content:center;overflow:visible;mask-image:none;scroll-snap-type:none}
+  .hst-dg{flex:0 1 auto;flex-wrap:wrap;justify-content:center}
+  .hst-dg+.hst-dg{padding-left:0;border-left:0}
+}
