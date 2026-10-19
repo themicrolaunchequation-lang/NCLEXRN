@@ -11462,11 +11462,11 @@ ke = function HCA11Today() {
 
 /* top bar: search pill, streak, theme, help (How to use Lumen), text size and back up */
 function HCA11TopActions({ theme, setTheme, privacy, session }) {
-  const ctx = y(), s = ctx.state, streak = HCA3Streaks(HCA3Activity(s)).current, I = HCA11S()?.icon;
+  const ctx = y(), s = ctx.state, streak = (window.HCA && window.HCA.daily ? window.HCA.daily.get().s : HCA3Streaks(HCA3Activity(s)).current), I = HCA11S()?.icon;
   return HC(_.Fragment, {},
     HC('button', { className: 'global-search-button hs-search', onClick: () => ctx.setModal({ type: 'search' }), 'aria-label': 'Search sources and notes' }, HC(E, { name: 'search-line' }), HC('span', {}, 'Search sources and notes'), HC('kbd', {}, /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘ K' : 'Ctrl K')),
     HC('div', { className: 'topbar-actions hs-right' },
-      HC('a', { className: 'hs-streak', href: '#home', 'aria-label': streak ? `${streak}-day streak` : 'Start a streak today', title: streak ? `${streak}-day streak` : 'Start a streak today', onClick: e => { e.preventDefault(); ctx.navigate('progress'); }, dangerouslySetInnerHTML: { __html: `${I ? I('flame') : ''}<span>${streak}</span>` } }),
+      HC('a', { className: 'hs-streak', href: '#home', 'aria-label': streak ? `${streak}-day Daily Crown streak` : 'Start your Daily Crown streak', title: streak ? `${streak}-day Daily Crown streak` : 'Start your Daily Crown streak', onClick: e => { e.preventDefault(); ctx.navigate('progress'); }, dangerouslySetInnerHTML: { __html: `${I ? I('flame') : ''}<span>${streak}</span>` } }),
       HC(HCAWorkspaceRuntime),
       HC('button', { type: 'button', className: 'local-first-pill hs-privacy', onClick: () => ctx.setModal({ type: 'privacy' }), 'aria-label': session ? 'Session only: storage details' : 'Local-first: storage details', title: 'Your work stays in this browser' }, HC(E, { name: 'shield-check-line' }), HC('span', {}, session ? 'Session only' : 'Local-first')),
       HC(O, { className: 'hs-ibtn hs-theme-btn', icon: s.settings.theme === 'light' ? 'moon-line' : 'sun-line', label: s.settings.theme === 'light' ? 'Switch to evening theme' : 'Switch to daylight theme', onClick: () => ctx.setState(x => ({ ...x, settings: { ...x.settings, theme: x.settings.theme === 'light' ? 'dark' : 'light' } })) }),
