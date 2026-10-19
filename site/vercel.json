@@ -348,7 +348,7 @@
         }
       ],
       "destination": "https://medlex.healthcarecrownacademy.co.uk/",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/carecraft",
@@ -359,7 +359,7 @@
         }
       ],
       "destination": "https://carecraft.healthcarecrownacademy.co.uk/",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/serein",
@@ -370,7 +370,7 @@
         }
       ],
       "destination": "https://serein.healthcarecrownacademy.co.uk/",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/lumen",
@@ -381,11 +381,21 @@
         }
       ],
       "destination": "https://lumen.healthcarecrownacademy.co.uk/",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/home",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/evinca",
+      "destination": "https://evinca.healthcarecrownacademy.co.uk/en",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/#pricing",
       "permanent": true
     }
   ]
