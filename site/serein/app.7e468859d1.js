@@ -3999,7 +3999,7 @@ S.hook={run};
       v.prompts = prompts;
       if (P.hadVisit) { if (narrator) narrator.cancel(); clearSubs(); }
       P.hadVisit = true;
-      if (!P.introDone) { P.introDone = true; if (plan.intro) say(plan.intro); }
+      if (!P.introDone) { P.introDone = true; if (plan.intro) { say(plan.intro); if (plan.kind === 'breath') preroll(e); } }
       // Joining a step part-way (a skip, a seek): pick up at the latest line that is already due.
       const past = prompts.map((p, i) => ({ at: p.at, text: p.text, i })).filter(p => p.at <= t - 0.3);
       if (past.length) {
@@ -4033,7 +4033,7 @@ S.hook={run};
       P.phaseKey = key; P.counts = [];
       const cap = (plan.captions && plan.captions[kind]) || s.cue;
       line(cap); P.sub = cap; paintCaption();
-      if (first && !P.introDone) { P.introDone = true; say(plan.intro); }
+      if (first && !P.introDone) { P.introDone = true; say(plan.intro); preroll(e); }
       if (eff.breath && audio && audio.running) audio.breath(kind === 'hold' || kind === 'rest' ? 'hold' : kind, secs, t / secs);
       if (t < 1.2) planCounts(kind, secs, cycle, cyc, e);
     }
@@ -4049,6 +4049,19 @@ S.hook={run};
       }
     }
   }
+  /* The spoken welcome comes first: the engine's clock is held at zero until the voice has finished, so the first breath is counted
+     like every other one. A pause, a mute or a long wait releases it. */
+  function preroll(e) {
+    if (!eff.voice || !narrator || !narrator.available || e.elapsed > 0.5 || preview()) return;
+    const t0 = performance.now(), release = () => { clearInterval(P.prerollT); delete e.tick; e.anchor = performance.now() + 400; P.phaseKey = ''; P.counts = []; };
+    e.tick = function (now) { this.anchor = now; };
+    clearInterval(P.prerollT);
+    P.prerollT = setInterval(() => {
+      const waited = performance.now() - t0;
+      if (engine() !== e || e.state !== 'playing') { clearInterval(P.prerollT); delete e.tick; return; }
+      if ((waited > 600 && !narrator.busy) || waited > 14000 || !eff.voice) release();
+    }, 100);
+  }
   function planCounts(kind, secs, cycle, cyc, e) {
     const plan = P.plan, ph = e.phases(), total = e.duration ? Math.ceil(e.duration / cyc) : 99;
     const counts = [];
@@ -4062,7 +4075,12 @@ S.hook={run};
     }
     // a spoken reminder partway through a long out-breath
     const rem = (plan.reminders || []).find(r => r.cycle === cycle);
-    if (rem && secs >= 4.5 && (kind === 'out' || (plan.id === 'box' && kind === 'rest'))) counts.push({ at: 1.3, text: rem.text, lead: false, sentence: true });
+    if (rem && secs >= 4.5 && (kind === 'out' || (plan.id === 'box' && kind === 'rest'))) {
+      // It must end before the next breath begins: use the first sentence when the whole line would not fit.
+      const room = secs - 0.8 - 0.9, rate = appPrefs().voiceRate || 0.88;
+      const text = V.speakSeconds(rem.text, rate) <= room ? rem.text : firstSentence(rem.text);
+      if (V.speakSeconds(text, rate) <= room) counts.push({ at: 0.8, text, lead: false, sentence: true });
+    }
     P.counts = counts;
   }
 
