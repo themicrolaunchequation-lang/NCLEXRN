@@ -1135,3 +1135,32 @@ html[data-hs-motion=off] .tk-card,html[data-hs-motion=off] .tk-btn,html[data-hs-
 /* ---------- motion ---------- */
 @media (prefers-reduced-motion:reduce){.sp-step .sp-fill,.sp-step .sp-bar i,.sp-step{transition:none}}
 .reduce-motion .sp-step .sp-fill,.reduce-motion .sp-step .sp-bar i,.reduce-motion .sp-step{transition:none}
+
+/* Serein artwork */
+.sa-img{display:block;max-width:100%;object-fit:cover}
+.sa-pic{display:block;margin:0}.sa-pic img{display:block;width:100%;height:100%;object-fit:cover}
+.sa-swapped{object-fit:cover}
+.sa-banner{border-radius:20px;overflow:hidden;margin:0 0 16px;aspect-ratio:1920/500;max-height:240px;background:#10253A}
+.sa-banner img{object-position:center}
+.hs-hero-art{position:relative;overflow:hidden;border-radius:inherit}
+.sa-hero{position:absolute;inset:0;z-index:0;opacity:.9}
+.hs-hero-art .sr-orb{position:relative;z-index:1}
+.hs-act>.sa-act{width:calc(100% + 0px);aspect-ratio:16/9;border-radius:12px;margin:0 0 12px}
+.tk-group>.sa-tk{width:100%;height:120px;border-radius:16px;margin:0 0 14px}
+.empty>.sa-empty,.sa-empty.sa-lone{width:min(100%,360px);aspect-ratio:4/3;height:auto;border-radius:18px;margin:0 auto 16px}
+.sr-invite-art.sa-has{background:none}.sr-invite-art.sa-has .sa-empty{width:100%;height:100%;border-radius:18px}
+.sa-priv{width:100%;height:150px;border-radius:14px;margin:0 0 16px}
+.onboarding-step>.sa-onb{width:100%;height:160px;border-radius:16px;margin:0 0 14px}
+.modal .article-image{object-fit:cover;max-height:300px;width:100%;border-radius:16px}
+dialog.serein-hook{position:relative}
+dialog.serein-hook>.sa-hook{position:absolute;inset:0;z-index:0;width:100%;height:100%;opacity:.5}
+dialog.serein-hook>.sa-hook img{width:100%;height:100%}
+dialog.serein-hook>.sh-inner{position:relative;z-index:1}
+.sa-done{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none}.sa-done img{width:100%;height:100%}
+.sa-done[hidden]{display:none}
+:root[data-hs-theme=dark] .sa-img,:root[data-hs-theme=dark] .sa-pic img,:root[data-hs-theme=dark] .sa-swapped{filter:brightness(.82)}
+@media (max-width:700px){
+  .sa-banner{aspect-ratio:960/412;max-height:none;border-radius:16px}
+  .tk-group>.sa-tk{height:96px}
+}
+main .sa-banner{width:100%;box-sizing:border-box}

@@ -362,6 +362,7 @@
       P.dom.hud.dataset.cyclic = cyclic ? '1' : '0'; P.dom.rail.dataset.cyclic = cyclic ? '1' : '0';
     }
     const done = s.state === 'complete';
+    if (g.SereinArt) g.SereinArt.complete(done);
     for (const root of [P.ui.tl, P.ui.rl]) {
       root.querySelectorAll('button').forEach((b, i) => {
         const cur = !done && i === s.index, past = done || i < s.index;

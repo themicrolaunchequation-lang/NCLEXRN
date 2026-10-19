@@ -106,8 +106,9 @@ js = patch(js, `<input type=\\"checkbox\\" id=\\"session-voice\\">Optional local
 js = patch(js, `<p class=\\"small-note\\">Pause to change timing. Local voice availability depends on your browser.</p>`, `<p class=\\"small-note\\">Pause to change timing. Voices come from your device or browser.</p>`, 'player: settings note');
 js = patch(js, `localStorage.removeItem('serein-toolkit-v1');`, `localStorage.removeItem('serein-toolkit-v1');localStorage.removeItem('serein-player-v1');`, 'player: clear stored choices');
 js = patch(js, `if(finder.silent){state.voice=false;$('#session-voice').checked=false;$('#session-chime').checked=false;}`, `if(finder.silent){state.voice=false;$('#session-voice').checked=false;$('#session-chime').checked=false;globalThis.SereinPlayer?.quiet();}`, 'player: keep this pause silent');
-js += '\n;\n' + read('src/player-voice.js') + '\n;\n' + read('src/player-audio.js') + '\n;\n' + read('src/player.js') + '\n;\n' + read('src/lungs3d.js');
-css += '\n' + read('src/player.css');
+js += '\n;\n' + read('src/player-voice.js') + '\n;\n' + read('src/player-audio.js') + '\n;\n' + read('src/player.js') + '\n;\n' + read('src/lungs3d.js') + '\n;\n' + read('src/art.js');
+css += '\n' + read('src/player.css') + '\n' + read('src/art.css');
+for (const f of fs.readdirSync('art')) if (/\.webp$/.test(f)) write('art/' + f, fs.readFileSync('art/' + f));
 
 const cssName = `app.${hash(css)}.css`, jsName = `app.${hash(js)}.js`;
 write(cssName, css);
@@ -153,7 +154,7 @@ write('index.html', `<!doctype html>
 `);
 
 // Offline: the page asks for this list when someone chooses "make available offline".
-const offline = [SCOPE, ...files.filter(f => !/index\.html$|og-image|maskable|apple-touch/.test(f))];
+const offline = [SCOPE, ...files.filter(f => !/index\.html$|og-image|maskable|apple-touch|\/art\//.test(f))];
 fs.writeFileSync(path.join(OUT, 'offline-assets.json'), JSON.stringify({ cacheName, files: offline }, null, 1));
 fs.writeFileSync(path.join(OUT, 'sw.js'), `/* SEREIN_OFFLINE_WORKER ${VERSION}: serves the saved copy of /serein when the network is unavailable. */
 const PREFIX='serein-hca-v4-',SHELL='${SCOPE}';
