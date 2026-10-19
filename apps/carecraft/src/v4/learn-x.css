@@ -75,7 +75,7 @@
 .lx-cmp-tag{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
 /* Key-term flip cards */
-.lx-flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:var(--s-12)}
+.lx-flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:var(--s-12)}
 .lx-flip{display:grid;min-height:11.5rem;padding:0;border:0;background:transparent;perspective:900px;text-align:left;color:var(--ink)}
 .lx-flip-in{display:grid;position:relative;transform-style:preserve-3d;transition:transform .5s var(--ease)}
 .lx-flip[aria-pressed=true] .lx-flip-in{transform:rotateY(180deg)}
@@ -310,4 +310,6 @@ html[data-motion="reduce"] .lx-flip[aria-pressed=true] .lx-flip-in{transform:non
 html[data-motion="reduce"] .lx-flip[aria-pressed=true] .lx-front{display:none}
 html[data-motion="reduce"] .lx-back{transform:none}
 html[data-motion="reduce"] .lx-flip:not([aria-pressed=true]) .lx-back{display:none}
-@media print{.lx-pager,.lx-flips,.lx-sc,.lx-spot,.lx-lad,.lx-calc{display:none}.lx-c{break-inside:avoid;border-color:#999}}
+@media print{.lx-pager,.lx-flips,.lx-k-sc,.lx-k-spot,.lx-k-lad,.lx-k-calc{display:none}.lx-c{break-inside:avoid;border-color:#999}}
+
+[data-theme="light"] .cs-launch .cs-cta small{color:#fff}
