@@ -209,10 +209,17 @@
       if (P.hadVisit) { if (narrator) narrator.cancel(); clearSubs(); }
       P.hadVisit = true;
       if (!P.introDone) { P.introDone = true; if (plan.intro) say(plan.intro); }
-      // Joining a step part-way (a skip back, a seek): say the step line only if it is still early.
-      if (t <= 8) say(step.say); else P.sub = firstSentence(step.say);
-      line(step.say);
-      prompts.forEach((p, i) => { if (p.at < t - 0.3) v.spoken.add(i); });
+      // Joining a step part-way (a skip, a seek): pick up at the latest line that is already due.
+      const past = prompts.map((p, i) => ({ at: p.at, text: p.text, i })).filter(p => p.at <= t - 0.3);
+      if (past.length) {
+        past.forEach(p => v.spoken.add(p.i));
+        const last = past[past.length - 1];
+        line(last.text);
+        if (t - last.at < 5) say(last.text); else P.sub = firstSentence(last.text);
+      } else {
+        if (t <= 8) say(step.say); else P.sub = firstSentence(step.say);
+        line(step.say);
+      }
       return;
     }
     v.lastT = t;
