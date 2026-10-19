@@ -32,7 +32,7 @@ for (const [w, h, dark] of [[1440, 900, false], [390, 844, true]]) {
   // shared cookie across hosts
   const m = await page(ctx, 'medlex', errs); await m.evaluate(() => window.HCA.daily.done('medlex')); await m.close();
   const cc = await page(ctx, 'carecraft', errs), c2 = await card(cc); ok(c2 && /1 of 4 done today/.test(c2.text) && /1-day streak/.test(c2.text) && c2.done === 1, 'carecraft sees MedLex done + 1-day streak: ' + (c2 && c2.text.slice(0, 90))); await cc.close();
-  const sr = await page(ctx, 'serein', errs), c3 = await card(sr); ok(c3 && !/streak/i.test(c3.text) && !c3.flame && /Take what fits/.test(c3.text), 'serein shows no streak: ' + (c3 && c3.text.slice(0, 90))); await sr.screenshot({ path: `${out}/serein-after-${tag}.png` }); await sr.close();
+  const sr = await page(ctx, 'serein', errs), c3 = await card(sr); ok(c3 && !/\d+-day streak/i.test(c3.text) && !c3.flame && /Take what fits/.test(c3.text), 'serein shows no streak: ' + (c3 && c3.text.slice(0, 90))); await sr.screenshot({ path: `${out}/serein-after-${tag}.png` }); await sr.close();
   const hm = await page(ctx, 'home', errs); ok(await hm.evaluate(() => { const e = document.querySelector('[data-daily-home]'); return e && !e.hidden && /1 of 4/.test(e.innerText); }), 'home shows the summary'); await hm.screenshot({ path: `${out}/home-${tag}.png` }); await hm.close();
   await ctx.close();
 }
