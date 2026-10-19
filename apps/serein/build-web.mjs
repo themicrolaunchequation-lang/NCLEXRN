@@ -39,7 +39,7 @@ const recolour = s => palette.reduce((t, [re, to]) => t.replace(re, to), s);
 
 // Fonts and images leave the page as files.
 let css = recolour(style).replace(/url\("data:(font\/woff2);base64,([A-Za-z0-9+/=]+)"\)/g, (_, type, b64) => `url("${dataFile(type, b64, 'fonts').slice(BASE.length)}")`);
-css += '\n' + read('src/hook.css') + '\n' + read('../shared/hca-shell.css') + '\n' + read('src/day.css');
+css += '\n' + read('src/hook.css') + '\n' + read('../shared/hca-shell.css') + '\n' + read('src/day.css') + '\n' + read('src/toolkit.css');
 let markup = recolour(body).replace(/src="data:([a-z+/]+);base64,([A-Za-z0-9+/=]+)"/g, (_, type, b64) => `src="${dataFile(type, b64, 'img')}"`);
 markup = markup.replace(`<span id="app-version">${FROM}</span>`, `<span id="app-version">${VERSION}</span>`);
 // Family link: Carecraft, the Academy's learning companion.
@@ -81,8 +81,17 @@ js = patch(js, `groups.push(['Infographics',`, `groups.push(['Visual Atlas',`, '
 js = patch(js, `"copy_0759":"Browse educational infographics"`, `"copy_0759":"Browse the Visual Atlas"`, 'command label: atlas');
 js = patch(js, `S.insights={render:function(c){`, `S.insights={render:function(c){if(globalThis.SereinDay&&c.store.checkins.length===0&&c.store.feedback.length===0)return SereinDay.insightsEmpty(c);`, 'insights empty state');
 js = patch(js, `S.search={run:search,execute:command};`, `S.search={run:search,execute:command};S.stateRef=()=>store();S.themeToggle=()=>{const p=store().preferences;p.theme=document.body.dataset.theme==='night'?'light':'night';vault.persist();applyTheme();render();};`, 'shell data hooks');
+// ---- Toolkit: hub by moment, ten tools with a live plan (src/toolkit*.js) ----
+js = patch(js, `route.view==='toolkit'?toolkit():`, `route.view==='toolkit'?(globalThis.SereinToolkit?SereinToolkit.hub({c,state,D,A,store,route}):toolkit()):`, 'toolkit hub');
+js = patch(js, `if(view==='toolkit'&&tab&&!A.studios.some(s=>s.id===tab))tab='';`, `if(view==='toolkit'&&tab&&!A.studios.some(s=>s.id===tab)&&!(globalThis.SereinToolkit&&SereinToolkit.has(tab)))tab='';`, 'toolkit route tab');
+js = patch(js, `}else c.advance.openStudio(r.tab);`, `}else if(globalThis.SereinToolkit&&SereinToolkit.has(r.tab))SereinToolkit.open(r.tab,{fromRoute:true});else c.advance.openStudio(r.tab);`, 'toolkit deep link');
+js = patch(js, `const recent=store().preferences.commandRecent||[],all=`, `if(globalThis.SereinToolkit)groups.splice(3,0,['Toolkit',SereinToolkit.tools.filter(x=>fuzzy(x.title+' '+x.blurb)).map(x=>({id:x.id,label:x.title,kind:'studio',sub:x.mins+' tool'}))]);const recent=store().preferences.commandRecent||[],all=`, 'toolkit search');
+js = patch(js, `localStorage.removeItem('serein-demo-v1');sessionStorage.removeItem(DRAFT);sessionStorage.removeItem(SEALED_DRAFT);}catch{}}`, `localStorage.removeItem('serein-demo-v1');localStorage.removeItem('serein-toolkit-v1');sessionStorage.removeItem(DRAFT);sessionStorage.removeItem(SEALED_DRAFT);}catch{}}`, 'clear toolkit data');
+js = patch(js, `s.id==='conditions'?Serein.t("copy_0375"):''`, `Serein.t("copy_0375")`, 'save any studio plan');
+js = patch(js, `You can delete it in Studios.`, `You can delete it in the Toolkit.`, 'saved plan wording');
 markup = patch(markup, `data-v5="back-today">Back to Today</button>`, `data-v5="back-today">Back to My Day</button>`, 'back to my day');
 js = shellJs + '\n;\n' + js;
+js += '\n;\n' + read('src/toolkit-data.js') + '\n;\n' + read('src/toolkit.js');
 js += '\n;\n' + read('src/hook.js');
 
 const cssName = `app.${hash(css)}.css`, jsName = `app.${hash(js)}.js`;
