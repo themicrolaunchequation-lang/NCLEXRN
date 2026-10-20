@@ -23,13 +23,10 @@ const PAGES = ['library', 'library/lab?w=angioplasty', 'library/systems', 'libra
   const { ctx, p, errs } = await session();
   await go(p, 'library');
   ok('Library opens on word parts', await p.evaluate(() => document.querySelector('.lx-tab.is-on')?.textContent === 'Word parts'));
-  ok('how-a-word-is-built diagram shows tiles', await p.evaluate(() => document.querySelectorAll('.lx-how .lx-tile').length === 3));
-  await p.click('[data-lx=how][data-id=tachycardia]'); ok('example word switches the diagram', await p.evaluate(() => /tachy/i.test(document.querySelector('.lx-how .lx-tiles').textContent)));
-  await p.fill('[data-lx-input=psearch]', 'heart'); await p.waitForTimeout(400);
-  ok('searching word parts by meaning finds the root', await p.evaluate(() => [...document.querySelectorAll('.lx-form')].some(e => /^card/.test(e.textContent))));
-  await p.click('.lx-know >> nth=0'); await p.waitForTimeout(400); const kn = await p.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('medlex.lib.v1')).know).length); ok('"I know this" is remembered', kn === 1, kn);
-  await p.fill('[data-lx-input=psearch]', ''); await p.click('[data-lx=pkind][data-k=s]'); await p.waitForTimeout(300);
-  ok('suffix filter lists suffixes with sub-filters', await p.evaluate(() => document.querySelectorAll('.lx-part.k-s').length > 8 && document.querySelectorAll('.lx-sub .lx-chip').length > 5));
+  /* word parts: the three quests (prefixes, roots, suffixes) replace the old reference page */
+  ok('Word parts shows the three quest tabs', await p.evaluate(() => document.querySelectorAll('.wq-tab').length === 3));
+  ok('a quest is loaded in a frame', await p.evaluate(() => /quest-/.test(document.querySelector('.wq-frame')?.getAttribute('src') || '')));
+  await p.click('[data-wq=root]'); await p.waitForTimeout(800); ok('Roots tab switches the quest', await p.evaluate(() => /quest-roots/.test(document.querySelector('.wq-frame').getAttribute('src'))));
   /* word lab: the old dropdown trap */
   await go(p, 'library/lab');
   const total = await p.evaluate(() => document.querySelectorAll('.lx-pick').length); ok('word lab lists all 75 decoded words', total === 75, total);
