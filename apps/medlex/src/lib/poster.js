@@ -314,7 +314,7 @@
     function close(silent) {
       const cb = opts && opts.onClose;
       if (S.edit) endEdit(); persist();
-      d.removeEventListener('keydown', onKey); d.removeEventListener('keyup', onKeyUp); try { dlg.close(); } catch { } dlg.remove(); V = null; if (!silent) { if (cb) { try { cb(); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); const back = d.querySelector(`.lx-atl[data-id="${poster().id}"]`) || d.querySelector('[data-lx=atlasopen]'); back && back.focus && back.focus({ preventScroll: true }); }
+      d.removeEventListener('keydown', onKey); d.removeEventListener('keyup', onKeyUp); try { dlg.close(); } catch { } dlg.remove(); V = null; if (!silent) { if (cb) { try { cb(poster().id); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); const back = d.querySelector(`.fb-enl[data-id="${poster().id}"]`) || d.querySelector(`.lx-atl[data-id="${poster().id}"]`) || d.querySelector('[data-lx=atlasopen]'); back && back.focus && back.focus({ preventScroll: true }); }
     }
     dlg.showModal(); setTool('select', true); open(S.i, true); $('.pv-stage').focus({ preventScroll: true });
     return { close, open };
