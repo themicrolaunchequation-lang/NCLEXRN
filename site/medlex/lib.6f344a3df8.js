@@ -57,7 +57,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   L.on = (name, fn) => { views[name] = fn; };
   L.route = (path, params) => {
     views.cleanup.splice(0).forEach(f => { try { f(); } catch { } });
-    try { const h = path === 'infographics' ? views.atlas : path.startsWith('library') ? views.library : views.practice; if (!h) return false; h(path, params); return true; }
+    try { const h = path === 'infographics' ? views.atlas : /^wordparts(\/|$)/.test(path) ? views.wordparts : path.startsWith('library') ? views.library : views.practice; if (!h) return false; h(path, params); return true; }
     catch (e) { console.error(e); mount(header('Something went wrong', 'Please reload the page. Your progress is stored on this device and is safe.')); return true; }
   };
   /* one delegated listener for every [data-lx] control on these pages */
@@ -73,7 +73,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   'use strict';
   const L = window.MedlexLib; if (!L) return;
   const { D, st, save, esc, $, $$, words, wordById, wordByName, sysName, prefixes, suffixes, roots, partById, KIND, KIND_PL, isKnown, touch, isSaved, toggleSaved, ic, header, tabs, tile, mount, speak, canSpeak, loadGlossary, bare, sample, shuffle, uniq, lc, trim } = L;
-  const TABS = [['parts', 'Word parts', '#library/parts'], ['lab', 'Word lab', '#library/lab'], ['systems', 'Body systems', '#library/systems'], ['glossary', 'Glossary', '#library/glossary'], ['pronunciation', 'Pronunciation', '#library/pronunciation']];
+  const TABS = [['lab', 'Word lab', '#library/lab'], ['systems', 'Body systems', '#library/systems'], ['glossary', 'Glossary', '#library/glossary'], ['pronunciation', 'Pronunciation', '#library/pronunciation']];
   L.libTabs = TABS;
   const nav = cur => tabs(TABS, cur, 'Library sections');
   const posterOf = id => D.atlas.find(p => p.id === id);
@@ -217,7 +217,8 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   const main_ = () => L.main();
 
   L.on('library', (path, params) => {
-    const seg = path.split('/'), s = seg[1] || 'parts';
+    const seg = path.split('/'), s = seg[1] || 'lab';
+    if ((s === 'parts' || s === 'part') && L.oldParts) return L.oldParts(path, params);
     if (s === 'pronunciation' && L.viewPronunciation) L.viewPronunciation(params);
     else if (s === 'lab' || s === 'pronunciation') viewLab(params);
     else if (s === 'systems' || s === 'atlas') viewSystems();
@@ -419,27 +420,63 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   L.viewPronunciation = view;
 })();
 
-/* MedLex Library > Word parts: the three interactive quests (prefixes, roots, suffixes) in one page, one frame at a time. */
+/* MedLex Word parts: its own sidebar page (#wordparts). A landing page with three studio cards (prefixes, roots, suffixes); each opens its
+   interactive quest in a frame inside the app (#wordparts/prefix|root|suffix) with a switcher and a way back. Old #library/parts links redirect here. */
 (function () {
   'use strict';
   const L = window.MedlexLib, LN = window.MEDLEX_LEARN; if (!L || !LN) return;
-  const { esc, $, header, tabs, mount } = L;
-  const KINDS = ['prefix', 'root', 'suffix'], KEY = 'medlex.quests.v1';
+  const { esc, $, header, mount, ic } = L;
+  const KINDS = ['prefix', 'root', 'suffix'];
+  /* each quest keeps its own progress in this browser (same origin as the frame): key and the lists it stores */
+  const INFO = {
+    prefix: { n: 66, key: 'prefixQuest66', c: '#3557D6', dk: '#8FA7FF', glyph: 'pre-', blurb: 'Small openers that change a word’s direction, size, number or time, such as hyper-, sub- and peri-.', eg: 'hyper- + tension' },
+    root: { n: 60, key: 'rootQuest60v1', c: '#0F7B78', dk: '#5FD0CB', glyph: 'root', blurb: 'The core of a word: the body part, organ or process it is about, such as cardi-, hepat- and nephr-.', eg: 'cardio + megaly' },
+    suffix: { n: 100, key: 'suffixQuest_v1', c: '#B4533A', dk: '#F0A58F', glyph: '-itis', blurb: 'Endings that say what happens or is done: inflammation, removal, study, a record or a procedure.', eg: 'gastr + itis' }
+  };
   const norm = k => ({ p: 'prefix', r: 'root', s: 'suffix', prefix: 'prefix', prefixes: 'prefix', root: 'root', roots: 'root', suffix: 'suffix', suffixes: 'suffix' }[String(k || '').toLowerCase()] || '');
-  L.viewQuests = kind => {
-    kind = norm(kind) || (() => { try { return norm(localStorage.getItem(KEY)); } catch { return ''; } })() || 'prefix';
-    const draw = k => {
-      try { localStorage.setItem(KEY, k); } catch { }
-      const [name, file] = LN.quests[k], url = LN.base + file + '.html';
-      mount(header('Word parts', 'Learn the pieces medical words are built from: quest through the prefixes, the roots and the suffixes.') + tabs(L.libTabs, 'parts', 'Library sections')
-        + `<div class="wq-tabs" role="tablist" aria-label="Kinds of word part">${KINDS.map(x => `<button type="button" class="wq-tab" role="tab" id="wq-t-${x}" aria-selected="${x === k}" aria-controls="wq-panel" tabindex="${x === k ? 0 : -1}" data-wq="${x}">${esc(LN.quests[x][0])}</button>`).join('')}</div>`
-        + `<div id="wq-panel" role="tabpanel" aria-labelledby="wq-t-${k}"><div class="wq-bar"><p>${esc(name)} quest. Your choices stay on this device.</p><a href="${url}" target="_blank" rel="noopener">Open full screen in a new tab</a></div><iframe class="wq-frame" title="${esc(name)} quest" src="${url}"></iframe></div>`, false);
-      const fr = $('.wq-frame'); if (window.MedlexFrame) window.MedlexFrame.wire(fr, { sibling: slug => { const n = KINDS.find(x => LN.quests[x][1] === slug); if (n && n !== k) { draw(n); const t = $(`#wq-t-${n}`); t && t.focus(); } }, leave: () => { } });
+  const progress = k => { try { const s = JSON.parse(localStorage.getItem(INFO[k].key) || 'null') || {}; return { done: Math.min((s.mastered || []).length, INFO[k].n), badges: (s.badges || []).length, xp: s.xp || 0 }; } catch { return { done: 0, badges: 0, xp: 0 }; } };
+  const url = k => LN.base + LN.quests[k][1] + '.html';
+  const tone = k => `style="--wp-c:${INFO[k].c};--wp-dk:${INFO[k].dk}"`;
+  const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
+
+  function landing() {
+    const card = k => {
+      const p = progress(k), I = INFO[k], name = LN.quests[k][0], pct = Math.round(100 * p.done / I.n);
+      const state = p.done ? `${p.done} of ${I.n} mastered` : 'Not started yet';
+      return `<article class="wp-card" ${tone(k)}><div class="wp-glyph" aria-hidden="true">${esc(I.glyph)}</div>
+        <h2>${esc(name)}</h2><p class="wp-blurb">${esc(I.blurb)}</p>
+        <p class="wp-eg"><span>For example</span> ${esc(I.eg)}</p>
+        <p class="wp-count"><b>${I.n}</b> ${esc(name.toLowerCase())} to learn</p>
+        <div class="wp-prog"><div class="wp-meter" role="img" aria-label="${esc(state)}"><i style="width:${pct}%"></i></div><p>${esc(state)}${p.badges ? ` · ${plural(p.badges, 'badge')}` : ''}</p></div>
+        <a class="wp-open" href="#wordparts/${k}" aria-label="Open the ${esc(name.toLowerCase())} studio">Open studio ${ic('arrow')}</a></article>`;
     };
-    draw(kind);
-    const root = $('#main');
-    root.addEventListener('click', e => { const b = e.target.closest && e.target.closest('[data-wq]'); if (b) draw(b.dataset.wq); });
-    root.addEventListener('keydown', e => { const b = e.target.closest && e.target.closest('[data-wq]'); if (!b || !/^Arrow(Left|Right)$/.test(e.key)) return; e.preventDefault(); const i = KINDS.indexOf(b.dataset.wq), n = KINDS[(i + (e.key === 'ArrowRight' ? 1 : 2)) % 3]; draw(n); const t = $(`#wq-t-${n}`); t && t.focus(); });
+    mount(header('Word parts', 'Medical words are built from prefixes, roots and suffixes. Pick a studio and learn them by playing.')
+      + `<div class="wp-grid">${KINDS.map(card).join('')}</div><p class="wp-note">Your progress stays on this device. Each studio opens right here, and you can switch between them any time.</p>`, true);
+  }
+
+  function studio(k) {
+    const name = LN.quests[k][0];
+    mount(`<div class="wp-studio" ${tone(k)}><div class="wp-bar"><a class="wp-back" href="#wordparts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All word studios</a>
+      <nav class="wp-switch" aria-label="Word studios">${KINDS.map(x => `<a href="#wordparts/${x}" class="wp-sw${x === k ? ' is-on' : ''}"${x === k ? ' aria-current="page"' : ''} ${tone(x)}>${esc(LN.quests[x][0])}</a>`).join('')}</nav></div>
+      <h1 class="wp-h1" tabindex="-1">${esc(name)} studio</h1>
+      <iframe class="wp-frame" title="${esc(name)} studio" src="${url(k)}"></iframe></div>`, true);
+    const fr = $('.wp-frame'), fit = () => {
+      const r = fr.getBoundingClientRect(), nav = $('.bottom-nav'), nb = nav && getComputedStyle(nav).position === 'fixed' && nav.offsetHeight ? nav.offsetHeight : 0;
+      fr.style.height = Math.max(420, innerHeight - r.top - nb - 14) + 'px';
+    };
+    fit(); requestAnimationFrame(fit); setTimeout(fit, 300); fr.addEventListener('load', fit); addEventListener('resize', fit); L.views.cleanup.push(() => removeEventListener('resize', fit));
+    if (window.MedlexFrame) window.MedlexFrame.wire(fr, { sibling: slug => { const n = KINDS.find(x => LN.quests[x][1] === slug); if (n) location.hash = '#wordparts/' + n; }, leave: () => { } });
+  }
+
+  L.on('wordparts', (path, params) => {
+    const k = norm(path.split('/')[1]) || norm(params && params.get && params.get('kind'));
+    if (k) studio(k); else landing();
+    document.title = (k ? LN.quests[k][0] + ' studio · ' : '') + 'Word parts · MedLex';
+  });
+  /* old Library links: #library/parts, #library/parts?kind=root, #library/part/<id> */
+  L.oldParts = (path, params) => {
+    const part = L.partById[path.split('/')[2]], k = norm(params && params.get && params.get('kind')) || norm(part && part.k), to = 'wordparts' + (k ? '/' + k : '');
+    history.replaceState(null, '', '#' + to); L.route(to, new URLSearchParams());
   };
 })();
 
@@ -759,7 +796,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
     function close(silent) {
       const cb = opts && opts.onClose;
       if (S.edit) endEdit(); persist();
-      d.removeEventListener('keydown', onKey); d.removeEventListener('keyup', onKeyUp); try { dlg.close(); } catch { } dlg.remove(); V = null; if (!silent) { if (cb) { try { cb(); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); const back = d.querySelector(`.lx-atl[data-id="${poster().id}"]`) || d.querySelector('[data-lx=atlasopen]'); back && back.focus && back.focus({ preventScroll: true }); }
+      d.removeEventListener('keydown', onKey); d.removeEventListener('keyup', onKeyUp); try { dlg.close(); } catch { } dlg.remove(); V = null; if (!silent) { if (cb) { try { cb(poster().id); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); const back = d.querySelector(`.fb-enl[data-id="${poster().id}"]`) || d.querySelector(`.lx-atl[data-id="${poster().id}"]`) || d.querySelector('[data-lx=atlasopen]'); back && back.focus && back.focus({ preventScroll: true }); }
     }
     dlg.showModal(); setTool('select', true); open(S.i, true); $('.pv-stage').focus({ preventScroll: true });
     return { close, open };
@@ -775,7 +812,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   const CATS = ['Decode & pronounce', 'Memory cues', 'Common pitfalls', 'Directions & position', 'Body systems', 'Clinical concepts'];
   const BLURB = { 'Decode & pronounce': 'How to take a word apart and say it', 'Memory cues': 'Hooks that make word parts stick', 'Common pitfalls': 'Look-alikes and traps to avoid', 'Directions & position': 'Planes, positions and body language', 'Body systems': 'One illustrated guide per system', 'Clinical concepts': 'Terms you meet in notes and reports' };
   const order = [...D.atlas].sort((a, b) => CATS.indexOf(a.cat) - CATS.indexOf(b.cat));
-  const AS = { cat: 'All', q: '', shown: 24 };
+  const AS = { cat: 'All', q: '' };
   const slideFor = p => ({
     id: p.id, type: 'visual', nav: p.title, cat: p.cat, eyebrow: p.cat, title: p.title, img: p.src, aspect: 1086 / 1448, download: 'medlex-' + p.id,
     alt: `${p.title}. ${p.outcome} The full text of this illustrated guide is listed below the viewer.`,
@@ -785,7 +822,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   });
   /* One guide in a clean pop-up with markup tools (poster.js). The Learning Studio tour stays available as L.openAtlasTour. */
   L.openAtlas = id => L.openPoster(order, id, {
-    onClose: () => { if (/[?&]topic=/.test(location.hash)) { try { history.replaceState(null, '', '#infographics'); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); }
+    onClose: pid => { if (pid) { st.atlasLast = pid; save(); } if (/[?&]topic=/.test(location.hash)) { try { history.replaceState(null, '', '#infographics'); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); }
   });
   L.openAtlasTour = id => {
     const start = Math.max(0, order.findIndex(p => p.id === id));
@@ -794,26 +831,104 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
       onClose: () => { if (/[?&]topic=/.test(location.hash)) { try { history.replaceState(null, '', '#infographics'); } catch { } } try { const cur = window.HCAStudio.progress('medlex-atlas', 'all'); st.atlasLast = (order[Math.min(cur.last, order.length - 1)] || order[0]).id; save(); } catch { } if (L.atlasRefresh) L.atlasRefresh(); }
     }, { start });
   };
+  /* ---------- flip book ---------- */
+  const INK = 'medlex.atlas.ink.v1';
+  const inked = () => { try { return JSON.parse(localStorage.getItem(INK) || '{}') || {}; } catch { return {}; } };
+  const svg = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`;
+  const I = { prev: svg('M15 5l-7 7 7 7'), next: svg('M9 5l7 7-7 7'), grid: svg('M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'), pen: svg('M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z') };
+  const FB = { i: Math.max(0, order.findIndex(p => p.id === st.atlasLast)), single: false, busy: false, list: order };
   const match = p => (AS.cat === 'All' || p.cat === AS.cat) && (!AS.q.trim() || (p.title + ' ' + p.outcome + ' ' + p.terms.map(t => t.term).join(' ')).toLowerCase().includes(AS.q.trim().toLowerCase()));
-  const card = p => `<button type="button" class="lx-atl" data-lx="atlasopen" data-id="${p.id}"><img src="${p.thumb}" alt="" loading="lazy" width="340" height="453"><span class="lx-atl-b"><span class="lx-s">${esc(p.cat)}</span><b>${esc(p.title)}</b><em>${esc(p.outcome)}</em></span><span class="lx-atl-open" aria-hidden="true">${ic('expand')}</span></button>`;
-  function draw() {
-    const out = $('#lx-atl-out'); if (!out) return;
-    $$('[data-lx=acat]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.c === AS.cat)));
-    const list = order.filter(match), shown = list.slice(0, AS.shown);
-    out.innerHTML = `<p class="lx-count" role="status">${list.length} of ${order.length} guides${AS.cat !== 'All' ? ` · ${esc(AS.cat)}` : ''}</p>` + (shown.length ? `<div class="lx-atlgrid">${shown.map(card).join('')}</div>${list.length > shown.length ? `<button type="button" class="btn lx-showmore" data-lx="amore">Show ${Math.min(24, list.length - shown.length)} more</button>` : ''}` : '<div class="lx-empty"><b>No guide matches.</b><span>Try a body system, or a word such as “prefix”.</span></div>');
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.hsMotion === 'off';
+  const pageHTML = (p, n, side) => {
+    if (!p) return `<div class="fb-pg fb-pg-${side} fb-blank"><div class="fb-end"><b>${side === 'l' ? 'The Visual Atlas' : 'End of the atlas'}</b><span>${side === 'l' ? 'Turn the page to begin.' : 'Use Contents to jump to any guide.'}</span></div></div>`;
+    const has = (inked()[p.id] || []).length > 0;
+    return `<figure class="fb-pg fb-pg-${side}"><div class="fb-art"><img src="${p.src}" alt="${esc(p.title)}. ${esc(p.outcome)}" draggable="false" decoding="async"></div><figcaption><span class="fb-cap"><span class="fb-cat">${esc(p.cat)}${has ? `<i class="fb-mark" title="You have marked up this page">${I.pen}Marked up</i>` : ''}</span><b>${esc(p.title)}</b></span><span class="fb-n">${n}</span><button type="button" class="fb-enl" data-lx="atlasopen" data-id="${p.id}" aria-label="Enlarge and mark up: ${esc(p.title)}">${ic('expand')}<span>Enlarge</span></button></figcaption></figure>`;
+  };
+  const step = () => FB.single ? 1 : 2;
+  const clampI = i => { const n = FB.list.length; i = Math.max(0, Math.min(n - 1, i)); return FB.single ? i : i - (i % 2); };
+  const pages = i => FB.single ? [FB.list[i]] : [FB.list[i], FB.list[i + 1]];
+  const counter = () => { const n = FB.list.length; if (!n) return 'No guides'; const a = FB.i + 1, b = Math.min(n, FB.i + step()); return (FB.single || a === b ? `Page ${a}` : `Pages ${a}–${b}`) + ` of ${n}`; };
+  function fill(root, i) { const [l, r] = pages(i); root.innerHTML = FB.single ? pageHTML(l, i + 1, 'r') : pageHTML(l, i + 1, 'l') + pageHTML(r, i + 2, 'r'); }
+  function ctl() {
+    const n = FB.list.length, pos = $('#fb-pos'); if (!pos) return;
+    pos.textContent = counter();
+    $('[data-lx=fbprev]').disabled = FB.i <= 0; $('[data-lx=fbnext]').disabled = FB.i + step() >= n;
+    const cur = FB.list[FB.i]; if (cur) { st.atlasLast = cur.id; save(); }
+  }
+  function render() {
+    const book = $('#fb-book'); if (!book) return;
+    book.classList.toggle('is-single', FB.single); book.classList.toggle('is-empty', !FB.list.length);
+    let none = book.querySelector('.fb-none'); if (none) none.remove();
+    if (!FB.list.length) { $('#fb-pages').innerHTML = ''; book.insertAdjacentHTML('beforeend', '<div class="lx-empty fb-none"><b>No guide matches.</b><span>Try a body system, or a word such as “prefix”.</span></div>'); ctl(); return; }
+    FB.i = clampI(FB.i); const pg = $('#fb-pages'); fill(pg, FB.i); ctl();
+  }
+  function turn(to) {
+    to = clampI(to); if (FB.busy || to === FB.i || !FB.list.length) return;
+    const pg = $('#fb-pages'), from = FB.i, fwd = to > from;
+    if (reduced() || FB.single) { FB.i = to; fill(pg, to); ctl(); if (FB.single) { pg.classList.remove('fb-fade'); void pg.offsetWidth; if (!reduced()) pg.classList.add('fb-fade'); } return; }
+    FB.busy = true;
+    const oldPgs = [...pg.children], leaf = document.createElement('div'); leaf.className = 'fb-leaf ' + (fwd ? 'fwd' : 'back');
+    const front = document.createElement('div'), back = document.createElement('div'); front.className = 'fb-face fb-front'; back.className = 'fb-face fb-back';
+    const tmp = document.createElement('div');
+    /* forward: the right page lifts and lands on the left; back: the left page lifts and lands on the right */
+    const [nl, nr] = pages(to), [ol, or] = pages(from);
+    if (fwd) { front.innerHTML = pageHTML(or, from + 2, 'r'); back.innerHTML = pageHTML(nl, to + 1, 'l'); tmp.innerHTML = pageHTML(nr, to + 2, 'r'); oldPgs[1].replaceWith(tmp.firstElementChild); }
+    else { front.innerHTML = pageHTML(ol, from + 1, 'l'); back.innerHTML = pageHTML(nr, to + 2, 'r'); tmp.innerHTML = pageHTML(nl, to + 1, 'l'); oldPgs[0].replaceWith(tmp.firstElementChild); }
+    leaf.append(front, back); pg.append(leaf);
+    const done = () => { if (!FB.busy) return; FB.busy = false; FB.i = to; fill(pg, to); ctl(); };
+    leaf.addEventListener('animationend', done); setTimeout(done, 900);
+    FB.i = to; { const pos = $('#fb-pos'); if (pos) pos.textContent = counter(); }
+  }
+  function applyFilter() {
+    const keep = (FB.list[FB.i] || {}).id; FB.list = order.filter(match); const k = FB.list.findIndex(p => p.id === keep); FB.i = k >= 0 ? k : 0; FB.i = FB.list.length ? clampI(FB.i) : 0; render();
+    const c = $('#fb-count'); if (c) c.textContent = `${FB.list.length} of ${order.length} guides`;
+  }
+  function size() {
+    const wrap = $('.fb'); if (!wrap) return;
+    const top = wrap.getBoundingClientRect().top + scrollY, bn = document.querySelector('.bottom-nav'), bh = bn && getComputedStyle(bn).position === 'fixed' && bn.offsetHeight ? bn.offsetHeight : 0, h = Math.max(380, innerHeight - top - bh - 12);
+    wrap.style.height = h + 'px';
+    const stage = $('#fb-stage'); if (!stage) return;
+    const single = stage.clientWidth < 600 || stage.clientWidth / Math.max(1, stage.clientHeight) < 0.95;
+    if (single !== FB.single) { FB.single = single; render(); }
+  }
+  function toc() {
+    const dlg = document.createElement('dialog'); dlg.className = 'fb-toc'; dlg.setAttribute('aria-label', 'Contents of the Visual Atlas');
+    const mk = inked(), cur = (FB.list[FB.i] || {}).id;
+    dlg.innerHTML = `<div class="fb-toc-h"><h2>Contents</h2><button type="button" class="btn" data-fbt="x">Close</button></div><div class="fb-toc-b">${FB.list.map((p, k) => ({ p, k })).reduce((h, { p, k }, j, arr) => (j && arr[j - 1].p.cat === p.cat ? h : h + `${j ? '</div>' : ''}<h3>${esc(p.cat)}</h3><div class="fb-toc-g">`) + `<button type="button" class="fb-th" data-fbt="go" data-k="${k}"${p.id === cur ? ' aria-current="true"' : ''}><img src="${p.thumb}" alt="" loading="lazy" width="340" height="453"><span><i>${k + 1}</i> ${esc(p.title)}${(mk[p.id] || []).length ? ' <em class="fb-dot" title="Marked up">' + I.pen + '<span class="sr-only">Marked up</span></em>' : ''}</span></button>`, '') + '</div>'}</div>`;
+    document.body.appendChild(dlg);
+    const shut = () => { try { dlg.close(); } catch { } dlg.remove(); const b = $('[data-lx=fbtoc]'); b && b.focus(); };
+    dlg.addEventListener('click', e => { const t = e.target.closest('[data-fbt]'); if (e.target === dlg) return shut(); if (!t) return; if (t.dataset.fbt === 'x') return shut(); FB.i = clampI(+t.dataset.k); render(); shut(); });
+    dlg.addEventListener('cancel', e => { e.preventDefault(); shut(); });
+    dlg.showModal(); const c = dlg.querySelector('[aria-current]') || dlg.querySelector('.fb-th'); c && c.scrollIntoView({ block: 'center' }); c && c.focus({ preventScroll: true });
   }
   function view() {
-    const last = D.atlas.find(p => p.id === st.atlasLast);
-    mount(header('Visual Atlas', `${order.length} illustrated guides. Open one to see it whole, zoom in, and mark it up with a pen, highlighter, notes and stickers.`, `<button type="button" class="btn primary" data-lx="atlasopen" data-id="${(last || order[0]).id}">${ic('play')}${last ? 'Continue the atlas' : 'Start the atlas'}</button>`) +
-      `<div class="lx-cats" role="group" aria-label="Guide topics"><button type="button" class="lx-cat" data-lx="acat" data-c="All" aria-pressed="true"><b>All guides</b><span class="lx-s">${order.length}</span></button>${CATS.map(c => `<button type="button" class="lx-cat" data-lx="acat" data-c="${esc(c)}" aria-pressed="false"><b>${esc(c)}</b><span class="lx-s">${order.filter(p => p.cat === c).length} · ${esc(BLURB[c])}</span></button>`).join('')}</div>
-      <div class="lx-bar"><label class="lx-search">${ic('search')}<span class="sr-only">Search the guides</span><input type="search" data-lx-input="asearch" placeholder="Search a topic or a word…" value="${esc(AS.q)}" autocomplete="off"></label></div><div id="lx-atl-out"></div>`);
-    draw();
+    mount(`<div class="fb"><div class="fb-bar"><div class="fb-tt"><h1 tabindex="-1">Visual Atlas</h1><span id="fb-count" class="lx-s" role="status">${order.length} of ${order.length} guides</span></div>
+      <label class="fb-sel"><span class="sr-only">Topic</span><select data-lx-change="acatsel" aria-label="Topic"><option value="All">All guides (${order.length})</option>${CATS.map(c => `<option value="${esc(c)}"${AS.cat === c ? ' selected' : ''}>${esc(c)} (${order.filter(p => p.cat === c).length})</option>`).join('')}</select></label>
+      <label class="lx-search fb-search">${ic('search')}<span class="sr-only">Search the guides</span><input type="search" data-lx-input="asearch" placeholder="Search a topic or a word…" value="${esc(AS.q)}" autocomplete="off"></label>
+      <button type="button" class="btn fb-toc-btn" data-lx="fbtoc" aria-haspopup="dialog" aria-label="Contents: jump to a guide">${I.grid}<span>Contents</span></button></div>
+      <div class="fb-stage" id="fb-stage" tabindex="-1"><div class="fb-book" id="fb-book" role="group" aria-roledescription="book" aria-label="Visual Atlas flip book. Use the left and right arrow keys to turn the page."><div class="fb-spine" aria-hidden="true"></div><div class="fb-pages" id="fb-pages"></div></div></div>
+      <div class="fb-nav"><button type="button" class="btn fb-pb" data-lx="fbprev" aria-label="Previous page">${I.prev}<span>Previous</span></button><span class="fb-pos" id="fb-pos" role="status" aria-live="polite"></span><button type="button" class="btn fb-pb" data-lx="fbnext" aria-label="Next page"><span>Next</span>${I.next}</button></div></div>`);
+    AS.q = AS.q || ''; FB.list = order.filter(match); const k = FB.list.findIndex(p => p.id === st.atlasLast); FB.i = Math.max(0, k);
+    size(); applyFilter(); size(); requestAnimationFrame(size);
+    const stage = $('#fb-stage'); let sx = null, sy = 0;
+    stage.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; sx = e.clientX; sy = e.clientY; });
+    stage.addEventListener('pointerup', e => { if (sx == null) return; const dx = e.clientX - sx, dy = e.clientY - sy; sx = null; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) turn(FB.i + (dx < 0 ? step() : -step())); });
+    stage.addEventListener('pointercancel', () => { sx = null; });
   }
-  L.atlasRefresh = () => { if (location.hash.startsWith('#infographics')) { const b = $('.header-actions [data-lx=atlasopen]'); const last = D.atlas.find(p => p.id === st.atlasLast); if (b && last) { b.dataset.id = last.id; b.lastChild.textContent = 'Continue the atlas'; } } };
-  L.act('acat', b => { AS.cat = b.dataset.c; AS.shown = 24; draw(); });
-  L.act('amore', () => { AS.shown += 24; draw(); });
-  L.act('asearch', t => { AS.q = t.value; AS.shown = 24; clearTimeout(AS.t); AS.t = setTimeout(draw, 100); });
+  L.atlasRefresh = () => { if ($('.fb')) { const cur = (FB.list[FB.i] || {}).id, id = st.atlasLast, k = FB.list.findIndex(p => p.id === id); if (k >= 0 && id !== cur) FB.i = clampI(k); render(); } };
+  L.act('acatsel', t => { AS.cat = t.value; applyFilter(); });
+  L.act('fbprev', () => turn(FB.i - step()));
+  L.act('fbnext', () => turn(FB.i + step()));
+  L.act('fbtoc', () => toc());
+  L.act('asearch', t => { AS.q = t.value; clearTimeout(AS.t); AS.t = setTimeout(applyFilter, 120); });
+  addEventListener('resize', () => { if ($('.fb')) size(); });
+  document.addEventListener('keydown', e => {
+    if (!$('.fb') || !location.hash.startsWith('#infographics') || document.querySelector('dialog[open]') || e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target, tag = t && t.tagName; if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); turn(FB.i + step()); } else if (e.key === 'ArrowLeft') { e.preventDefault(); turn(FB.i - step()); }
+  });
   L.on('atlas', (path, params) => {
+    const t0 = params && params.get && params.get('topic'); if (t0 && order.some(p => p.id === t0)) { st.atlasLast = t0; }
     view();
     /* deep links such as #infographics?topic=decode-1 (from My Day) open that guide straight away */
     const t = params && params.get && params.get('topic');
