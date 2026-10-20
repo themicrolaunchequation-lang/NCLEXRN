@@ -115,12 +115,18 @@ fs.writeFileSync(path.join(OUT, 'shared/a11y.css'), `/* Accessibility layer over
 html[data-mode=night] .viewer-sub{color:color-mix(in srgb,var(--muted,#aab) 62%,#fff)}
 html[data-mode=night] .term-atlas-open{color:color-mix(in srgb,var(--accent,#aab) 60%,#fff)}
 html[data-mode=night] .term-atlas-open small{color:color-mix(in srgb,var(--muted,#aab) 62%,#fff)}
+/* decks: the current slide in the slide list */
+button[data-nav][aria-current=true] span{color:color-mix(in srgb,var(--accent,#555) 58%,#000)}
+button[data-nav][aria-current=true] small{color:color-mix(in srgb,var(--muted,#566) 58%,#000)}
+html[data-mode=night] button[data-nav][aria-current=true] span{color:color-mix(in srgb,var(--accent,#aab) 60%,#fff)}
+html[data-mode=night] button[data-nav][aria-current=true] small{color:color-mix(in srgb,var(--muted,#aab) 62%,#fff)}
 /* quests: course path numbers, chip counts, badges you have not earned yet */
 .ml-coursepath a span{opacity:1;color:#4f5d6b}
 html[data-theme=dark] .ml-coursepath a span{color:#b4c0cd}
 .chip .n,.pill .n{opacity:1}
 .badge:not(.on){opacity:1;filter:grayscale(1);background:transparent;border-style:dashed}
 .badge:not(.on) .bn,.badge:not(.on) .bd{color:var(--mut,#5b6877)}
+html[data-theme=light] button.tapHint{color:hsl(var(--h) 62% 30%)}
 /* quests: opening a card is a real button now */
 .open-hit,button.tapHint{background:none;border:0;margin:0;color:inherit;text-align:inherit;cursor:pointer;font-family:inherit}
 .open-hit{padding:0;font:inherit;letter-spacing:inherit}
