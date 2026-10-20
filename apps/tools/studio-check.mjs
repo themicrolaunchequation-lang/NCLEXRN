@@ -99,7 +99,7 @@ for (const [app, cfg] of Object.entries(APPS)) {
     ok(app, 'mobile: canvas is portrait', await p.evaluate(() => document.querySelector('.hst-slide').dataset.o === 'p'));
     const small = await p.evaluate(() => [...document.querySelectorAll('.hst button')].filter(e => e.offsetParent && !e.closest('[hidden]') && !e.classList.contains('hst-dot')).map(e => [e, e.getBoundingClientRect()]).filter(([e, r]) => r.width && (r.width < 43.5 || r.height < 43.5)).map(([e, r]) => `${e.getAttribute('aria-label') || e.className}:${Math.round(r.width)}x${Math.round(r.height)}`));
     ok(app, 'mobile: touch targets are 44px', !small.length, small.join(', '));
-    for (const i of [0, 1, 3, 5, 7, 12, 13]) { await p.evaluate(i => document.querySelector(`.hst-dot:nth-child(${i + 1})`).click(), i); await p.waitForTimeout(700); const bad = await axe(p); ok(app, `mobile axe slide ${i + 1}`, !bad.length, bad.join(' | ')); if ([0, 3, 5].includes(i)) await p.screenshot({ path: `${out}/${app}-m${i + 1}.png` }); }
+    for (const i of [0, 1, 3, 5, 7, 12, 13]) { await p.evaluate(i => { const d = document.querySelectorAll('.hst-dot'); d[Math.min(i, d.length - 1)].click(); }, i); await p.waitForTimeout(700); const bad = await axe(p); ok(app, `mobile axe slide ${i + 1}`, !bad.length, bad.join(' | ')); if ([0, 3, 5].includes(i)) await p.screenshot({ path: `${out}/${app}-m${i + 1}.png` }); }
     await p.tap('.hst-annot'); await p.waitForTimeout(400); await p.screenshot({ path: `${out}/${app}-m-dock.png` });
     ok(app, 'mobile: tools dock fits the width', await p.evaluate(() => { const d = document.querySelector('.hst-dock').getBoundingClientRect(); return d.left >= 0 && d.right <= innerWidth + 1; }));
     ok(app, 'no console errors (mobile)', !errs.length, errs.join(' | ')); await ctx.close();
@@ -108,7 +108,7 @@ for (const [app, cfg] of Object.entries(APPS)) {
   {
     const { ctx, p, errs } = await session(app, cfg, { dark: true });
     await p.evaluate(cfg.open(cfg.id)); await p.waitForTimeout(1200);
-    for (const i of [0, 3, 5, 12, 13]) { await p.evaluate(i => document.querySelector(`.hst-dot:nth-child(${i + 1})`).click(), i); await p.waitForTimeout(700); const bad = await axe(p); ok(app, `dark host axe slide ${i + 1}`, !bad.length, bad.join(' | ')); }
+    for (const i of [0, 3, 5, 12, 13]) { await p.evaluate(i => { const d = document.querySelectorAll('.hst-dot'); d[Math.min(i, d.length - 1)].click(); }, i); await p.waitForTimeout(700); const bad = await axe(p); ok(app, `dark host axe slide ${i + 1}`, !bad.length, bad.join(' | ')); }
     await p.screenshot({ path: `${out}/${app}-dark-host.png` });
     await p.evaluate(() => document.querySelector('.hst-dot:nth-child(6)').click()); await p.waitForTimeout(500);
     let escaped = 0; for (let i = 0; i < 70; i++) { await p.keyboard.press('Tab'); const inside = await p.evaluate(() => { const a = document.activeElement; return !!(a && a.closest && a.closest('.hst')); }); if (!inside) escaped++; }
