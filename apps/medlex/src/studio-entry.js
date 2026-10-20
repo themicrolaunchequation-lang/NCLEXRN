@@ -25,7 +25,7 @@
   function say(msg) { let t = $('.ms-toast'); if (!t) { t = document.createElement('div'); t.className = 'ms-toast'; t.setAttribute('role', 'status'); document.body.append(t); } t.textContent = msg; t.classList.add('is-on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('is-on'), 4200); }
   const load = () => window.MedlexLoad('engine').then(() => window.MedlexLoad('studio'));
   /* Library, Visual Atlas and Practice are rendered by lib.js; the app's router asks here first */
-  const MINE = /^(library|practice)(\/|$)|^infographics$/;
+  const MINE = /^(library|practice|wordparts)(\/|$)|^infographics$/;
   window.MedlexV5 = { route(path, params) {
     if (!MINE.test(path)) return false;
     if (window.MedlexLib && window.MedlexLib.route) return window.MedlexLib.route(path, params);
@@ -120,7 +120,7 @@
     }
   }
   document.addEventListener('click', e => { const t = e.target.closest && e.target.closest('.module-row[data-deck] h3 a[href*="#learn/module/"], .module-row[data-deck] > a.icon-button'); if (t) { const row = t.closest('.module-row'); e.preventDefault(); e.stopPropagation(); open(row.dataset.deck); return; } const b = e.target.closest && e.target.closest('[data-ms-open]'); if (!b) return; e.preventDefault(); open(b.dataset.msOpen, b.dataset.msStart && b.dataset.msStart !== '0' ? { start: +b.dataset.msStart } : { start: 0 }, b); });
-  window.addEventListener('medlex-studio-closed', () => $$('[data-ms-open]').forEach(b => paint(b, prog(b.dataset.msOpen))));
+  window.addEventListener('medlex-studio-closed', () => $$('button[data-ms-open]').forEach(b => paint(b, prog(b.dataset.msOpen))));
   window.MedlexStudioEntry = { open, progress: prog };
   let raf = 0; const schedule = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; inject(); }); };
   const start = () => { const main = $('#main'); if (!main) return; new MutationObserver(schedule).observe(main, { childList: true, subtree: true }); window.addEventListener('hashchange', schedule); inject(); };

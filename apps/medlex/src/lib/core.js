@@ -56,7 +56,7 @@
   L.on = (name, fn) => { views[name] = fn; };
   L.route = (path, params) => {
     views.cleanup.splice(0).forEach(f => { try { f(); } catch { } });
-    try { const h = path === 'infographics' ? views.atlas : path.startsWith('library') ? views.library : views.practice; if (!h) return false; h(path, params); return true; }
+    try { const h = path === 'infographics' ? views.atlas : /^wordparts(\/|$)/.test(path) ? views.wordparts : path.startsWith('library') ? views.library : views.practice; if (!h) return false; h(path, params); return true; }
     catch (e) { console.error(e); mount(header('Something went wrong', 'Please reload the page. Your progress is stored on this device and is safe.')); return true; }
   };
   /* one delegated listener for every [data-lx] control on these pages */

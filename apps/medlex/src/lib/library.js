@@ -3,7 +3,7 @@
   'use strict';
   const L = window.MedlexLib; if (!L) return;
   const { D, st, save, esc, $, $$, words, wordById, wordByName, sysName, prefixes, suffixes, roots, partById, KIND, KIND_PL, isKnown, touch, isSaved, toggleSaved, ic, header, tabs, tile, mount, speak, canSpeak, loadGlossary, bare, sample, shuffle, uniq, lc, trim } = L;
-  const TABS = [['parts', 'Word parts', '#library/parts'], ['lab', 'Word lab', '#library/lab'], ['systems', 'Body systems', '#library/systems'], ['glossary', 'Glossary', '#library/glossary'], ['pronunciation', 'Pronunciation', '#library/pronunciation']];
+  const TABS = [['lab', 'Word lab', '#library/lab'], ['systems', 'Body systems', '#library/systems'], ['glossary', 'Glossary', '#library/glossary'], ['pronunciation', 'Pronunciation', '#library/pronunciation']];
   L.libTabs = TABS;
   const nav = cur => tabs(TABS, cur, 'Library sections');
   const posterOf = id => D.atlas.find(p => p.id === id);
@@ -147,7 +147,8 @@
   const main_ = () => L.main();
 
   L.on('library', (path, params) => {
-    const seg = path.split('/'), s = seg[1] || 'parts';
+    const seg = path.split('/'), s = seg[1] || 'lab';
+    if ((s === 'parts' || s === 'part') && L.oldParts) return L.oldParts(path, params);
     if (s === 'pronunciation' && L.viewPronunciation) L.viewPronunciation(params);
     else if (s === 'lab' || s === 'pronunciation') viewLab(params);
     else if (s === 'systems' || s === 'atlas') viewSystems();
