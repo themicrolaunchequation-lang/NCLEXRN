@@ -41,30 +41,15 @@ body.hs .hca-reader-root .reader-heading-actions .button.hl-exit{background:var(
 body.hs .hca-reader-root .reader-heading-actions .button.hl-exit:hover{opacity:.9}
 body.hs .hca-reader-root .reader-heading-actions .button.hl-exit i{font-size:18px}
 
-/* ---------- 3. Toolbar: grouped tools, labels when there is room, the rest under More ---------- */
+/* ---------- 3. Toolbar row: Pages and Search at the left, the arranged tools (toolbar.css) fill the rest ---------- */
 body.hs .hca-reader-root .reader-toolbar{display:flex;align-items:center;flex-wrap:nowrap;gap:8px;height:auto;min-height:var(--hl-bar);padding:4px 10px;border-bottom:1px solid var(--line);background:var(--surface);position:relative;z-index:35}
 body.hs .hca-reader-root .toolbar-left{display:flex;align-items:center;gap:4px;flex:none;width:auto}
-body.hs .hca-reader-root .toolbar-right{display:flex;align-items:center;flex:1 1 auto;min-width:0;margin-left:auto;justify-content:flex-end;width:auto;max-width:none}
+body.hs .hca-reader-root .toolbar-right{display:flex;align-items:center;flex:1 1 0;min-width:0;margin-left:0;justify-content:flex-start;width:auto;max-width:none}
 body.hs .hca-reader-root .toolbar-left>.icon-button{width:40px;min-width:40px;height:40px;min-height:40px;padding:0;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
 body.hs .hca-reader-root .toolbar-left>.icon-button.active{background:var(--green-light);color:var(--green)}
 body.hs .hca-reader-root .toolbar-left>.icon-button:hover{background:var(--surface-2)}
 body.hs .hca-reader-root .toolbar-left>.hl-pages span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-body.hs .hca-reader-root .reading-modes{display:inline-flex;gap:2px;padding:2px;border-radius:12px;background:var(--surface-2);margin:0 0 0 4px;flex:none}
-body.hs .hca-reader-root .reading-modes>button{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;border-radius:10px;font-size:13px;font-weight:500;color:var(--muted)}
-body.hs .hca-reader-root .reading-modes>button.selected{background:var(--surface);color:var(--ink-strong);box-shadow:0 1px 3px rgba(16,37,58,.14)}
-body.hs .hca-reader-root .reading-modes>button span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 body.hs .hca-reader-root .toolbar-divider{display:none}
-body.hs .hca-reader-root .hl-tools{display:flex;align-items:center;flex-wrap:nowrap;gap:8px;margin-left:auto;width:auto;max-width:100%}
-body.hs .hca-reader-root .hl-group{display:flex;align-items:center;gap:2px;padding:2px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);flex:none}
-body.hs .hca-reader-root .hl-wide{display:contents}
-body.hs .hca-reader-root .hl-tools .hca-reader-tool{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;min-width:40px;padding:0 10px;border:0;border-radius:10px;background:transparent;color:var(--ink);font-size:13px;font-weight:500;white-space:nowrap}
-body.hs .hca-reader-root .hl-tools .hca-reader-tool:hover:not(:disabled){background:var(--surface)}
-body.hs .hca-reader-root .hl-tools .hca-reader-tool.active{background:var(--green-light);color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
-body.hs .hca-reader-root .hl-tools .hca-reader-tool:disabled{opacity:.45}
-body.hs .hca-reader-root .hl-tools .hca-reader-tool i{font-size:18px;color:var(--green)}
-body.hs .hca-reader-root .hl-tools .hca-reader-tool span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-body.hs .hca-reader-root .hl-tools>.hl-present-btn{border:1px solid var(--line);background:var(--surface)}
-body.hs .hca-reader-root .hl-tools>.hl-present-btn span{position:static;width:auto;height:auto;overflow:visible;clip:auto}
 /* menus (More, Tools, Fit) */
 body.hs .hca-reader-root .hl-menu{position:relative;flex:none}
 body.hs .hca-reader-root .hl-menu>summary{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;min-width:40px;padding:0 10px;list-style:none;cursor:pointer;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font-size:13px;font-weight:500;white-space:nowrap}
@@ -72,8 +57,8 @@ body.hs .hca-reader-root .hl-menu>summary::-webkit-details-marker{display:none}
 body.hs .hca-reader-root .hl-menu>summary i{font-size:18px;color:var(--green)}
 body.hs .hca-reader-root .hl-menu>summary:hover{background:var(--surface-2)}
 body.hs .hca-reader-root .hl-menu[open]>summary{background:var(--green-light);border-color:var(--green);color:var(--green)}
-body.hs .hca-reader-root .hl-menu>summary span{display:inline;position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 body.hs .hca-reader-root .hl-menu>.hca-reader-more-menu{position:absolute;right:0;left:auto;top:calc(100% + 8px);bottom:auto;width:min(320px,calc(100vw - 16px));max-height:min(72dvh,600px);overflow:auto;overscroll-behavior:contain;z-index:120;padding:8px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:0 18px 50px rgba(16,37,58,.28)}
+body.hs .hca-reader-root .hl-menu[data-hl-align=left]>.hca-reader-more-menu{left:0;right:auto}
 body.hs .hca-reader-root .hl-menu .hca-reader-more-menu button{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:8px 12px;border-radius:10px;font-size:14px;line-height:1.35;text-align:left;color:var(--ink);background:none;border:0}
 body.hs .hca-reader-root .hl-menu .hca-reader-more-menu button:hover:not(:disabled){background:var(--green-light)}
 body.hs .hca-reader-root .hl-menu .hca-reader-more-menu button:disabled{opacity:.5}
@@ -84,27 +69,17 @@ body.hs .hca-reader-root .hl-menu-head{display:none;align-items:center;justify-c
 body.hs .hca-reader-root .hl-menu-head strong{font-size:15px}
 body.hs .hca-reader-root .hl-menu .hca-reader-more-menu button.hl-menu-x{width:auto;min-height:44px;padding:0 14px;border:1px solid var(--line);background:var(--surface);font-weight:600;gap:6px}
 body.hs .hca-reader-root .hl-menu .hca-reader-more-menu button.hl-menu-x i{color:var(--ink)}
-body.hs .hca-reader-root .hl-ovf,body.hs .hca-reader-root .hl-ovf-xs,body.hs .hca-reader-root .hl-ovf-nav{display:none}
-body.hs .hca-reader-root .hl-menu .hca-reader-more-menu .hl-ovf,body.hs .hca-reader-root .hl-menu .hca-reader-more-menu .hl-ovf-xs,body.hs .hca-reader-root .hl-menu .hca-reader-more-menu .hl-ovf-nav{display:none}
+body.hs .hca-reader-root .hl-ovf-nav{display:none}
+body.hs .hca-reader-root .hl-menu .hca-reader-more-menu .hl-ovf-nav{display:none}
 
-/* labels appear when the reader column is wide enough (it already accounts for the panel and the rail) */
+/* the Pages button shows its name when the reader column is wide enough (it already accounts for the panel and the rail) */
 @container hlmain (min-width:1180px){
-  body.hs .hca-reader-root .hl-tools .hca-reader-tool span,body.hs .hca-reader-root .hl-menu>summary span{display:inline;position:static;width:auto;height:auto;overflow:visible;clip:auto}
-  body.hs .hca-reader-root .toolbar-left>.hl-pages span,body.hs .hca-reader-root .reading-modes>button span{position:static;width:auto;height:auto;overflow:visible;clip:auto}
+  body.hs .hca-reader-root .toolbar-left>.hl-pages span{position:static;width:auto;height:auto;overflow:visible;clip:auto}
   body.hs .hca-reader-root .toolbar-left>.hl-pages{width:auto;padding:0 12px}
-  body.hs .hca-reader-root .hl-tools .hca-reader-tool{padding:0 12px}
 }
-/* narrower: Mark + note, Recall and Page studio move under More */
-@container hlmain (max-width:859px){
-  body.hs .hca-reader-root .hl-g-study,body.hs .hca-reader-root .hl-wide{display:none}
-  body.hs .hca-reader-root .hl-menu .hca-reader-more-menu .hl-ovf{display:flex}
-}
-/* phone width: one row; reading views and the app menu move under More, menus become sheets */
+/* phone width: one row, a little tighter, the gear lives in More */
 @container hlmain (max-width:599px){
-  body.hs .hca-reader-root .reading-modes{display:none}
   body.hs .hca-reader-root .reader-toolbar{padding:4px 6px;gap:4px}
-  body.hs .hca-reader-root .hl-tools{gap:4px}
-  body.hs .hca-reader-root .hl-menu .hca-reader-more-menu .hl-ovf-xs{display:flex}
 }
 @media (max-width:1023px){body.hs .hca-reader-root .hl-menu .hca-reader-more-menu .hl-ovf-nav{display:flex}}
 @media (max-width:759px){
@@ -259,7 +234,6 @@ body.hs.hl-present .hca-reader-root .page-turn-arrow{display:none}
   body.hs .hca-reader-root .toolbar-left>.icon-button,body.hs .hca-reader-root .bottom-nav-controls .icon-button,body.hs .hca-reader-root .hl-view>.icon-button{width:44px;min-width:44px;height:44px;min-height:44px}
   body.hs .hca-reader-root .hl-tools .hca-reader-tool,body.hs .hca-reader-root .hl-menu>summary{min-height:44px;min-width:44px}
   body.hs .hca-reader-root .hl-group{padding:2px}
-  body.hs .hca-reader-root .reading-modes>button{min-height:44px;min-width:44px;justify-content:center}
   body.hs .hca-reader-root .page-jump input{min-height:44px;height:44px;width:56px}
   body.hs .hca-reader-root .hl-menu .hca-reader-more-menu button{min-height:48px}
   body.hs .hca-reader-root .reader-heading-actions .button{min-height:44px}

@@ -205,6 +205,12 @@ mod = replaceOnce(mod, "item('play-fill', 'Present', 'Slides from your highlight
   mod = replaceOnce(mod, "onClick:()=>i<3?a(i+1):(e(),", "onClick:()=>i<o.length-1?a(i+1):(e(),", 'tour next');
   mod = replaceOnce(mod, "children:[i<3?`A little further`:`Make yourself at home`", "children:[i<o.length-1?`A little further`:`Make yourself at home`", 'tour button label');
 }
+/* ---------- Rail setting and the customisable reader toolbar (src/toolbar.js, src/toolbar.css; reader.js holds the rail logic) ---------- */
+mod = replaceOnce(mod, "/*HCA12:END*/", "/*HCA12:END*/\n" + fs.readFileSync('src/toolbar.js', 'utf8'), 'HCA13 toolbar');
+// the view buttons (Flipbook / Single / Text) are one of the arranged tools now: drawn by toolbar.js, not beside Pages and Search
+mod = replaceOnce(mod, ",(0,C.jsx)(`div`,{className:`segmented reading-modes`,children:[[`flip`,`book-open-line`,`Flipbook`],[`single`,`file-text-line`,`Single`],[`text`,`text`,`Text`]].map(([e,t,n])=>(0,C.jsxs)(`button`,{className:b===e?`selected`:``,onClick:()=>Fe(e),\"aria-label\":`${n} reading mode`,children:[(0,C.jsx)(E,{name:t}),(0,C.jsx)(`span`,{children:n})]},e))})", "", 'reading views out of the left cluster');
+// Settings: "Collapse the side bar while reading", a row after "Keep the motion gentle"
+mod = replaceOnce(mod, "onClick:()=>s(`reducedMotion`,!t.settings.reducedMotion),children:(0,C.jsx)(`span`,{})})]}),", "onClick:()=>s(`reducedMotion`,!t.settings.reducedMotion),children:(0,C.jsx)(`span`,{})})]}),(0,C.jsx)(HCA12RailSetting,{}),", 'settings: side bar row');
 html = html.replace(modMatch[1], () => mod);
 
 /* ---------- Executable inline scripts -> hashed files ---------- */
@@ -239,7 +245,7 @@ shell.push(pwa);
 
 const shellJs = put(`js/shell.${hash(fs.readFileSync('../shared/hca-shell.js', 'utf8'))}.js`, fs.readFileSync('../shared/hca-shell.js', 'utf8'));
 shell.push(shellJs);
-const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}\n${fs.readFileSync('src/reader.css', 'utf8')}</style>`;
+const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}\n${fs.readFileSync('src/reader.css', 'utf8')}\n${fs.readFileSync('src/toolbar.css', 'utf8')}</style>`;
 const head = `<link rel="canonical" href="${SITE}/">
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="apple-touch-icon" href="${BASE}icon-192.png">

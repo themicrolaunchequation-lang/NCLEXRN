@@ -1,0 +1,122 @@
+/* HCA v13: the arranged reader toolbar and the "Customise toolbar" dialog (src/toolbar.js). Appended after reader.css by build-web.mjs.
+   The bar is one flex row: .hl-items (groups of buttons, in the learner's order) then .hl-tail (More and the gear, always last).
+   toolbar.js decides how much fits: names become icons from the right ([data-ico]), then buttons from the right get .hl-spill and live under More.
+   No !important: specificity (body.hs .hca-reader-root ...) beats the bundle's own rules. */
+
+/* ---------- The bar ---------- */
+body.hs .hca-reader-root .hl-tools{display:flex;align-items:center;flex-wrap:nowrap;gap:8px;flex:1 1 0;min-width:0;width:100%;max-width:100%;margin:0}
+body.hs .hca-reader-root .hl-items{display:flex;align-items:center;gap:8px;flex:none}
+body.hs .hca-reader-root .hl-it{display:flex;align-items:center;flex:none}
+body.hs .hca-reader-root .hl-it.hl-spill,body.hs .hca-reader-root .hl-group.hl-empty{display:none}
+body.hs .hca-reader-root .hl-group{display:flex;align-items:center;gap:2px;padding:2px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);flex:none}
+body.hs .hca-reader-root .hl-group.hl-solo{padding:0;border:0;border-radius:0;background:none}
+body.hs .hca-reader-root .hl-tail{display:flex;align-items:center;gap:6px;margin-left:auto;flex:none}
+
+body.hs .hca-reader-root .hl-tools .hca-reader-tool{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;min-width:40px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);font-size:13px;font-weight:500;white-space:nowrap}
+body.hs .hca-reader-root .hl-tools .hca-reader-tool:hover:not(:disabled){background:var(--surface)}
+body.hs .hca-reader-root .hl-tools .hca-reader-tool.active,body.hs .hca-reader-root .hl-tools .hca-reader-tool.active:hover:not(:disabled){background:var(--green-light);color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+body.hs .hca-reader-root .hl-tools .hca-reader-tool:disabled{opacity:.45}
+body.hs .hca-reader-root .hl-tools .hca-reader-tool i{font-size:18px;color:var(--green)}
+body.hs .hca-reader-root .hl-tools .hl-menu>summary{position:relative}
+/* the bundle hides the name inside menu buttons below 1500px wide; the bar decides that itself */
+body.hs .hca-reader-root .hl-tools .hl-menu>summary>span{display:inline}
+
+/* reading view: three buttons, the chosen one raised (not green: it is a choice, not a tool that is on) */
+body.hs .hca-reader-root .hl-views{display:flex;align-items:center;gap:2px}
+body.hs .hca-reader-root .hl-tools .hl-view-btn{color:var(--muted)}
+body.hs .hca-reader-root .hl-tools .hl-view-btn i{color:inherit}
+body.hs .hca-reader-root .hl-tools .hl-view-btn[aria-pressed=true]{background:var(--surface);color:var(--ink-strong);box-shadow:0 1px 3px rgba(16,37,58,.14)}
+
+/* icons only (per button, from the right): the name stays in the page for screen readers and as the tooltip, but is not drawn */
+body.hs .hca-reader-root .hl-tools :is(.hl-it,.hl-tail)[data-ico="1"]:not([data-hl-try="lab"]) :is(.hca-reader-tool,.hl-menu>summary)>span:not(.hl-sr),
+body.hs .hca-reader-root .hl-tools :is(.hl-it,.hl-tail)[data-hl-try="ico"] :is(.hca-reader-tool,.hl-menu>summary)>span:not(.hl-sr){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+body.hs .hca-reader-root .hl-tools :is(.hl-it,.hl-tail)[data-ico="1"]:not([data-hl-try="lab"]) .hca-reader-tool,
+body.hs .hca-reader-root .hl-tools :is(.hl-it,.hl-tail)[data-hl-try="ico"] .hca-reader-tool{padding:0 8px}
+
+/* a tool that is on but lives under More says so on the More button */
+.hl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+body.hs .hca-reader-root .hl-more.has-active>summary{border-color:var(--green)}
+body.hs .hca-reader-root .hl-more .hl-dot{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 2px var(--surface)}
+body.hs .hca-reader-root .hl-more-menu .hl-more-foot{position:sticky;bottom:-8px;margin:8px -8px -8px;padding:6px 8px 8px;border-top:1px solid var(--line);background:var(--surface);border-radius:0 0 14px 14px}
+body.hs .hca-reader-root .hl-menu .hca-reader-more-menu p.hl-menu-sec{margin:8px 12px 2px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* the gear at the end of the bar */
+body.hs .hca-reader-root .hl-gear{display:inline-flex;align-items:center;justify-content:center;flex:none;width:40px;min-width:40px;height:40px;padding:0;border:1px solid transparent;border-radius:12px;background:none;color:var(--muted);cursor:pointer}
+body.hs .hca-reader-root .hl-gear:hover{background:var(--surface-2);color:var(--ink);border-color:var(--line)}
+body.hs .hca-reader-root .hl-gear i{font-size:19px}
+@container hlmain (max-width:599px){
+  body.hs .hca-reader-root .hl-gear{display:none}
+  body.hs .hca-reader-root .hl-items,body.hs .hca-reader-root .hl-tools{gap:4px}
+}
+@media (pointer:coarse),(max-width:759px){
+  body.hs .hca-reader-root .hl-tools .hca-reader-tool{min-height:44px;min-width:44px}
+  body.hs .hca-reader-root .hl-gear{width:44px;min-width:44px;height:44px}
+}
+
+/* ---------- Customise toolbar ---------- */
+.modal.hl-cz{max-width:min(760px,calc(100vw - 24px))}
+.hl-cz .modal-header h2{font-size:30px}
+.hl-cz .modal-footer{justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hl-cz-body{display:grid;gap:26px;font-size:14px;line-height:1.5}
+.hl-cz-intro{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.hl-cz-sec{margin:0;padding:0;border:0;min-width:0}
+.hl-cz-sec>h3,.hl-cz-set>legend{margin:0 0 10px;padding:0;font:600 16px/1.3 Inter,system-ui,sans-serif;color:var(--ink-strong);display:flex;align-items:baseline;gap:10px}
+.hl-cz-count{font-size:12px;font-weight:500;color:var(--muted)}
+.hl-cz-cat+.hl-cz-cat{margin-top:14px}
+.hl-cz-cat>h4>span{font-weight:500;letter-spacing:0;text-transform:none}
+.hl-cz-pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.hl-cz-pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:500 13px/1 Inter,system-ui,sans-serif;cursor:pointer}
+.hl-cz-pill i:first-child{font-size:18px;color:var(--green)}
+.hl-cz-pill i:last-child{font-size:16px;color:var(--muted)}
+.hl-cz-pill:hover:not(:disabled){background:var(--green-light);border-color:var(--green);color:var(--green)}
+.hl-cz-pill:disabled{opacity:.45;cursor:default}
+.hl-cz-cat>h4{margin:0 0 6px;font:700 11px/1.3 Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hl-cz-list{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:hlpos}
+.hl-cz-row{display:flex;align-items:center;gap:10px;padding:6px 6px 6px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);min-width:0}
+ol.hl-cz-list>.hl-cz-row::before{counter-increment:hlpos;content:counter(hlpos);flex:none;width:22px;font-size:12px;font-weight:600;color:var(--muted);text-align:right}
+.hl-cz-ico{flex:none;display:inline-flex;width:24px;justify-content:center}
+.hl-cz-ico i{font-size:20px;color:var(--green)}
+.hl-cz-name{flex:1 1 auto;min-width:0;display:grid;gap:1px}
+.hl-cz-name b{font-size:14px;font-weight:600;color:var(--ink-strong)}
+.hl-cz-name small{font-size:12px;line-height:1.4;color:var(--muted)}
+.hl-cz-btns{display:flex;gap:4px;flex:none}
+.hl-cz-btns button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:600 13px/1 Inter,system-ui,sans-serif;cursor:pointer}
+.hl-cz-btns button.hl-cz-txt{padding:0 12px}
+.hl-cz-btns button:hover:not(:disabled){background:var(--green-light);border-color:var(--green);color:var(--green)}
+.hl-cz-btns button:disabled{opacity:.4;cursor:default}
+.hl-cz-btns button i{font-size:18px}
+.hl-cz-empty,.hl-cz-note{margin:0;padding:12px 14px;border-radius:12px;background:var(--surface-2);color:var(--muted);font-size:13px}
+.hl-cz-note{margin-bottom:10px;color:var(--ink)}
+.hl-cz-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:6px}
+.hl-cz-opt{display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer}
+.hl-cz-opt.on{border-color:var(--green);background:var(--green-light)}
+.hl-cz-opt input{flex:none;width:20px;height:20px;margin:1px 0 0;accent-color:var(--green)}
+.hl-cz-opt span{display:grid;gap:1px;min-width:0}
+.hl-cz-opt b{font-size:14px;font-weight:600;color:var(--ink-strong)}
+.hl-cz-opt small{font-size:12px;line-height:1.4;color:var(--muted)}
+.hl-cz-opt:focus-within{outline:2px solid var(--green);outline-offset:2px}
+.hl-cz-penrow{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.hl-cz-inks{display:flex;gap:6px}
+.hl-cz-inks button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:3px solid var(--surface);border-radius:50%;box-shadow:0 0 0 1px var(--line);color:#fff;cursor:pointer}
+.hl-cz-inks button[aria-pressed=true]{box-shadow:0 0 0 2px var(--ink-strong)}
+.hl-cz-inks button i{font-size:18px}
+.hl-cz-width{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink-strong)}
+.hl-cz-width select{min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font-size:14px}
+.hl-cz-swrow{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:56px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);text-align:left;cursor:pointer}
+.hl-cz-swrow>span{display:grid;gap:2px;min-width:0}
+.hl-cz-swrow b{font-size:14px;font-weight:600;color:var(--ink-strong)}
+.hl-cz-swrow small{font-size:12px;line-height:1.4;color:var(--muted)}
+.hl-cz-sw{position:relative;flex:none;width:44px;height:26px;border-radius:13px;background:var(--line);transition:background .2s}
+.hl-cz-sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(16,37,58,.3);transition:transform .2s}
+.hl-cz-swrow.on .hl-cz-sw{background:var(--green)}
+.hl-cz-swrow.on .hl-cz-sw::after{transform:translateX(18px)}
+.hl-cz button:focus-visible,.hl-cz select:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+@media (max-width:560px){
+  .hl-cz .modal-header h2{font-size:26px}
+  .hl-cz-row{flex-wrap:wrap;padding:8px 8px 8px 10px}
+  .hl-cz-name{flex:1 1 calc(100% - 80px)}
+  .hl-cz-btns{flex:1 0 100%;justify-content:flex-end}
+  ol.hl-cz-list>.hl-cz-row::before{width:18px}
+}
+@media (prefers-reduced-motion:reduce){.hl-cz-sw,.hl-cz-sw::after{transition:none}}
+html[data-hs-motion=off] .hl-cz-sw,html[data-hs-motion=off] .hl-cz-sw::after{transition:none}
