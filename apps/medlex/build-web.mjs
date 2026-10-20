@@ -105,11 +105,20 @@ engineJs = patch(engineJs, "      if ((e.ctrlKey || e.metaKey) && e.key.toLowerC
 engineJs = patch(engineJs, "      root.classList.toggle('has-film', S.film);\n    }", "      root.classList.toggle('has-film', S.film);\n      if (hadFocus) { const c = el.film.querySelector('.hst-fi.is-cur'); c && c.focus({ preventScroll: true }); }\n    }", 'keep focus in the list');
 const studioJs = `window.MEDLEX_STUDIO=${JSON.stringify(studioData(BASE))};\n` + read('src/studio.js');
 const lib = libData(BASE); lib.data.glossaryCount = lib.glossary.length;
-const libJs = `window.MEDLEX_LIB=${JSON.stringify(lib.data)};\n` + ['core', 'library', 'pronounce', 'poster', 'atlas', 'practice'].map(f => read(`src/lib/${f}.js`)).join('\n');
+const libJs = `window.MEDLEX_LIB=${JSON.stringify(lib.data)};\n` + ['core', 'library', 'pronounce', 'quests', 'poster', 'atlas', 'practice'].map(f => read(`src/lib/${f}.js`)).join('\n');
 const glossJs = `window.MEDLEX_GLOSSARY=${JSON.stringify(lib.glossary)};`;
 const lazy = { engine: engineJs, studio: studioJs, lib: libJs, glossary: glossJs }, lazyName = Object.fromEntries(Object.entries(lazy).map(([k, v]) => [k, `${k}.${hash(v)}.js`]));
-const shellJs = `window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_SRC=${JSON.stringify(Object.fromEntries(Object.entries(lazyName).map(([k, v]) => [k, BASE + v])))};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');
+// Lessons: the 29 supplied decks (apps/medlex/learn, prepared by apps/tools/medlex-process-lessons.mjs) and the three Word-parts quests.
+const LDECKS = JSON.parse(read('learn/decks.json')), LTITLE = Object.fromEntries(LDECKS.map(d => [d.file.replace(/\.html$/, ''), { title: d.title, slides: d.slides }]));
+const LMAP = { ch1: 'basic-word-structure', ch2: 'building-vocabulary', prefixes: 'prefixes', suffixes: 'suffixes', ch3: 'human-body', ch4: 'musculoskeletal', ch5: 'integumentary', ch6: 'haematology', ch7: 'lymphatic-immune', ch8: 'endocrine', ch9: 'cardiovascular', ch10: 'respiratory', ch11: 'digestive', ch12: 'nervous', ch13: 'senses', ch14: 'urinary', ch15: 'male-reproductive', ch16: 'female-reproductive', ch17: 'obstetrics-neonatology', ch18: 'mental-health', ch19: 'oncology', ch20: 'infectious-parasitic', ch21: 'radiology-nuclear', ch22: 'pharmacology' };
+const LEXTRA = [
+  { id: 'history', before: 'ch1', sub: 'How medical words came to be.', free: true }, { id: 'components', after: 'ch1', sub: 'The building blocks of medical words.', free: true },
+  { id: 'country-differences', after: 'ch3', sub: 'Spelling and term differences between countries.' }, { id: 'procedures-treatment', after: 'ch22', sub: 'The language of what is done, and how.' }, { id: 'medical-coding', after: 'procedures-treatment', sub: 'How terms become codes.' }
+].map(x => ({ ...x, title: LTITLE[x.id].title, slides: LTITLE[x.id].slides }));
+const LEARN = { base: BASE + 'learn/', map: LMAP, titles: LTITLE, extra: LEXTRA, quests: { prefix: ['Prefixes', 'quest-prefixes'], root: ['Roots', 'quest-roots'], suffix: ['Suffixes', 'quest-suffixes'] } };
+const shellJs = `window.MEDLEX_LEARN=${JSON.stringify(LEARN)};window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_SRC=${JSON.stringify(Object.fromEntries(Object.entries(lazyName).map(([k, v]) => [k, BASE + v])))};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');
 
+(function copyLearn(dir, rel) { for (const e of fs.readdirSync(dir, { withFileTypes: true })) { if (e.isDirectory()) copyLearn(path.join(dir, e.name), rel + e.name + '/'); else if (e.name !== 'decks.json') write(rel + e.name, fs.readFileSync(path.join(dir, e.name))); } })('learn', 'learn/');
 for (const f of fs.readdirSync(PUBLIC + '/infographics')) write('infographics/' + f, fs.readFileSync(`${PUBLIC}/infographics/${f}`));
 for (const f of fs.readdirSync('web/thumbs')) write('infographics/t/' + f, fs.readFileSync(`web/thumbs/${f}`));
 for (const f of ['icon-192.png', 'icon-512.png', 'icon.svg']) write(f, fs.readFileSync(`${PUBLIC}/${f}`));
@@ -162,7 +171,7 @@ self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise
 self.addEventListener('fetch',e=>{
   const r=e.request,u=new URL(r.url);
   if(r.method!=='GET'||u.origin!==location.origin||!(u.pathname===${JSON.stringify(SCOPE)}||u.pathname.startsWith(${JSON.stringify(BASE)})))return;
-  if(r.mode==='navigate'){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(${JSON.stringify(SCOPE)},copy));}return res;}).catch(()=>caches.match(${JSON.stringify(SCOPE)})));return;}
+  if(r.mode==='navigate'&&r.destination==='document'){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(${JSON.stringify(SCOPE)},copy));}return res;}).catch(()=>caches.match(${JSON.stringify(SCOPE)})));return;}
   if(SHELL.includes(u.pathname)||POSTERS.includes(u.pathname))e.respondWith(caches.match(r).then(hit=>hit||fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;})));
 });
 `);

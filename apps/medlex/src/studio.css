@@ -34,3 +34,33 @@ html[data-hs-motion=off] .ms-row,html[data-hs-motion=off] .ms-cta,html[data-hs-m
   .hst-dg{flex:0 1 auto;flex-wrap:wrap;justify-content:center}
   .hst-dg+.hst-dg{padding-left:0;border-left:0}
 }
+
+/* Lessons: full-screen frame for the supplied decks */
+dialog.ml{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#0B1A2B;color:#F3EFE6;display:flex;flex-direction:column;overflow:hidden}
+dialog.ml:not([open]){display:none}
+dialog.ml::backdrop{background:#071320}
+.ml-bar{flex:none;display:flex;align-items:center;gap:12px;padding:8px 12px;min-height:60px;background:#10253A;border-bottom:1px solid rgba(255,255,255,.12)}
+.ml-bar h2{margin:0;flex:1;min-width:0;font:600 clamp(16px,2vw,21px)/1.2 var(--font-serif,'Playfair Display',Georgia,serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#F3EFE6}
+.ml-x{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.ml-x:hover{background:rgba(255,255,255,.18)}.ml-x svg{width:22px;height:22px}
+.ml-acts{display:flex;align-items:center;gap:8px;flex:none}
+.ml-done,.ml-new{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:transparent;color:#F3EFE6;font:600 14px/1 var(--font-sans,Inter,system-ui,sans-serif);display:inline-flex;align-items:center;cursor:pointer;text-decoration:none;white-space:nowrap}
+.ml-done:hover,.ml-new:hover{background:rgba(255,255,255,.12)}
+.ml-done[aria-pressed=true]{background:#3557D6;border-color:#8FA7FF}
+dialog.ml :focus-visible{outline:3px solid #8FA7FF;outline-offset:2px}
+.ml-body{position:relative;flex:1;min-height:0;background:#fff}
+.ml-frame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.ml-load{position:absolute;left:0;right:0;top:40%;text-align:center;margin:0;color:#4A5B6C;font-size:15px}.ml-load[hidden]{display:none}
+.ml-more{display:inline-block;margin:8px 0 0 14px;font-size:13px;font-weight:600;color:var(--lx-blue,#2541A8);text-decoration:underline;text-underline-offset:3px;min-height:24px}
+@media(max-width:700px){.ml-bar{gap:6px;padding:6px 8px}.ml-new{display:none}.ml-done{padding:0 12px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){dialog.ml *{transition:none!important}}
+
+/* Library > Word parts: the three quests in a frame */
+.wq-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.wq-tab{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--lx-line,#CBC1AE);background:transparent;color:inherit;font:600 15px/1 inherit;cursor:pointer}
+.wq-tab[aria-selected=true]{background:#3557D6;border-color:#3557D6;color:#fff}
+.wq-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+.wq-bar p{margin:0;font-size:14px;color:var(--lx-muted,#5E6B7C)}
+.wq-bar a{font-weight:600;min-height:24px}
+.wq-frame{display:block;width:100%;height:calc(100dvh - 190px);min-height:560px;border:1px solid var(--lx-line,#CBC1AE);border-radius:16px;background:#fff}
+@media(max-width:700px){.wq-frame{height:calc(100dvh - 150px);min-height:480px;border-radius:10px}}

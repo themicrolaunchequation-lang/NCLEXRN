@@ -2,146 +2,175 @@
  {
   "file": "basic-word-structure.html",
   "batch": 1,
+  "slides": 19,
   "title": "Basic Word Structure"
  },
  {
   "file": "building-vocabulary.html",
   "batch": 1,
+  "slides": 13,
   "title": "Building a Medical Vocabulary"
  },
  {
   "file": "components.html",
   "batch": 1,
+  "slides": 20,
   "title": "Components of Medical Terminology"
  },
  {
   "file": "history.html",
   "batch": 1,
+  "slides": 19,
   "title": "History of Medical Terminology"
  },
  {
   "file": "cardiovascular.html",
   "batch": 2,
+  "slides": 30,
   "title": "Cardiovascular system"
  },
  {
   "file": "country-differences.html",
   "batch": 2,
+  "slides": 20,
   "title": "Medical terminology across countries"
  },
  {
   "file": "human-body.html",
   "batch": 2,
+  "slides": 18,
   "title": "The human body"
  },
  {
   "file": "integumentary.html",
   "batch": 2,
+  "slides": 30,
   "title": "Integumentary system"
  },
  {
   "file": "musculoskeletal.html",
   "batch": 2,
+  "slides": 36,
   "title": "Musculoskeletal system"
  },
  {
   "file": "prefixes.html",
   "batch": 2,
+  "slides": 16,
   "title": "100 prefix forms"
  },
  {
   "file": "respiratory.html",
   "batch": 2,
+  "slides": 32,
   "title": "Respiratory system"
  },
  {
   "file": "suffixes.html",
   "batch": 2,
+  "slides": 17,
   "title": "100 suffix & ending forms"
  },
  {
   "file": "digestive.html",
   "batch": 3,
+  "slides": 27,
   "title": "Digestive system"
  },
  {
   "file": "endocrine.html",
   "batch": 3,
+  "slides": 28,
   "title": "Endocrine system"
  },
  {
   "file": "haematology.html",
   "batch": 3,
+  "slides": 29,
   "title": "Haematology"
  },
  {
   "file": "lymphatic-immune.html",
   "batch": 3,
+  "slides": 31,
   "title": "Lymphatic & immune systems"
  },
  {
   "file": "male-reproductive.html",
   "batch": 3,
+  "slides": 20,
   "title": "Male reproductive system"
  },
  {
   "file": "nervous.html",
   "batch": 3,
+  "slides": 29,
   "title": "Nervous system"
  },
  {
   "file": "senses.html",
   "batch": 3,
+  "slides": 20,
   "title": "The senses"
  },
  {
   "file": "urinary.html",
   "batch": 3,
+  "slides": 20,
   "title": "Urinary system"
  },
  {
   "file": "female-reproductive.html",
   "batch": 4,
+  "slides": 20,
   "title": "Female reproductive system"
  },
  {
   "file": "infectious-parasitic.html",
   "batch": 4,
+  "slides": 20,
   "title": "Infectious & parasitic diseases"
  },
  {
   "file": "medical-coding.html",
   "batch": 4,
+  "slides": 20,
   "title": "Introduction to medical coding"
  },
  {
   "file": "mental-health.html",
   "batch": 4,
+  "slides": 20,
   "title": "Mental health terminology"
  },
  {
   "file": "obstetrics-neonatology.html",
   "batch": 4,
+  "slides": 20,
   "title": "Obstetrics & neonatology"
  },
  {
   "file": "oncology.html",
   "batch": 4,
+  "slides": 10,
   "title": "Oncology"
  },
  {
   "file": "pharmacology.html",
   "batch": 4,
+  "slides": 20,
   "title": "Pharmacology & pharmacokinetics"
  },
  {
   "file": "procedures-treatment.html",
   "batch": 4,
+  "slides": 20,
   "title": "Procedures and treatment"
  },
  {
   "file": "radiology-nuclear.html",
   "batch": 4,
+  "slides": 10,
   "title": "Radiology & nuclear medicine"
  }
 ]

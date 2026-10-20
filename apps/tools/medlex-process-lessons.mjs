@@ -48,7 +48,7 @@ function process_(file, outName, { quest = false } = {}) {
 const decks = [];
 for (let b = 1; b <= 4; b++) {
   const dir = path.join(SRC, 'batch' + b);
-  for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.html')).sort()) { process_(path.join(dir, f), f); decks.push({ file: f, batch: b, title: (fs.readFileSync(path.join(dir, f), 'utf8').match(/<title>([^<]*?) — MedLex/) || [])[1] || f }); }
+  for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.html')).sort()) { process_(path.join(dir, f), f); decks.push({ file: f, batch: b, slides: +((fs.readFileSync(path.join(dir, f), 'utf8').match(/(\d+)-slide interactive/) || [])[1] || 0), title: (fs.readFileSync(path.join(dir, f), 'utf8').match(/<title>([^<]*?) — MedLex/) || [])[1] || f }); }
   fs.copyFileSync(path.join(dir, 'asset-credits.json'), path.join(OUT, 'credits', `batch${b}-asset-credits.json`));
 }
 const QUESTS = { 'suffix-quest': 'quest-suffixes.html', 'Medical-Roots': 'quest-roots.html', 'medical-prefix-quest': 'quest-prefixes.html' };

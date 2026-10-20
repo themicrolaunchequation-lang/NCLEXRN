@@ -1,0 +1,1 @@
+(function(){var mode;try{mode=localStorage.getItem('medlex-display-mode-v1')}catch(e){}if(mode!=='light'&&mode!=='dark'){mode=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',mode)})();

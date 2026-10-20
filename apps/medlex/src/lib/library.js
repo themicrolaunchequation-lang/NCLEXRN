@@ -153,6 +153,6 @@
     else if (s === 'systems' || s === 'atlas') viewSystems();
     else if (s === 'system') viewSystem(seg[2]);
     else if (s === 'glossary' || s === 'terms' || s === 'term') viewGlossary(path, params);
-    else { if (s === 'part' && partById[seg[2]]) { PS.q = partById[seg[2]].f; PS.kind = partById[seg[2]].k; } viewParts(); }
+    else { if (s === 'part' && partById[seg[2]]) { PS.q = partById[seg[2]].f; PS.kind = partById[seg[2]].k; } if (L.viewQuests) L.viewQuests((params && params.get && params.get('kind')) || (s === 'part' && partById[seg[2]] ? partById[seg[2]].k : '')); else viewParts(); }
   });
 })();
