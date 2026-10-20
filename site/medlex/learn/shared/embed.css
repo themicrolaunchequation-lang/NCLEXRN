@@ -1,0 +1,14 @@
+/* A deck inside the lesson viewer: one screen, no page scrolling. The slide is scaled to the room that is left (see resizeStage). */
+html.hca-embed,html.hca-embed body{height:100%;overflow:hidden}
+html.hca-embed .topbar{display:none!important}
+html.hca-embed .studio{height:100vh;align-items:start}
+html.hca-embed .sidebar{top:0;height:100vh;padding-top:18px;padding-bottom:18px}
+html.hca-embed .sideintro{padding-bottom:12px}
+html.hca-embed .workbench{padding:10px 24px 8px;align-self:start}
+html.hca-embed .workbench-heading{min-height:0;margin:0 0 8px}
+html.hca-embed .workbench-heading>div:first-child{display:none}
+html.hca-embed .workbench-heading>.workspace-actions{margin-left:auto}
+html.hca-embed .annotation-heading,html.hca-embed .annotation-caption,html.hca-embed .course-bottom{display:none}
+html.hca-embed .annotation-section{margin-top:8px}
+html.hca-embed .stage-wrap{max-height:none}
+@media(max-width:800px){html.hca-embed .workbench{padding:6px 10px}}

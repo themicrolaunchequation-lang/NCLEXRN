@@ -158,5 +158,33 @@ for (const [label, w, h, touch, dark] of [['desktop light', 1440, 900, false, fa
   await p.screenshot({ path: `${out}/${label.replace(' ', '-')}-panel.png` });
   ok(`no console errors (${label})`, errs.length === 0, errs.join(' | ')); await ctx.close();
 }
+/* ---------- 6. Quick tour tab, tour steps, clear toolbar and menu names ---------- */
+for (const [label, w, h, touch] of [['desktop', 1440, 900, false], ['phone', 390, 844, true]]) {
+  const { p, errs, ctx } = await session({ w, h, touch });
+  await p.evaluate(() => { location.hash = '#home'; }); await p.waitForTimeout(800);
+  const tab = p.locator('.hl-tour-tab'); ok(`${label}: Quick tour tab on My Day`, await tab.count() === 1);
+  const tb = await tab.boundingBox(); ok(`${label}: tab floats inside the screen, ≥44px`, tb && tb.height >= 44 && tb.y + tb.height <= h && tb.x + tb.width <= w && tb.y > h / 3, JSON.stringify(tb));
+  await p.evaluate(() => { location.hash = '#library'; }); await p.waitForTimeout(600); ok(`${label}: tab on the library`, await p.locator('.hl-tour-tab').count() === 1);
+  await p.evaluate(() => { location.hash = '#progress'; }); await p.waitForTimeout(600); ok(`${label}: no tab on other pages`, await p.locator('.hl-tour-tab').count() === 0);
+  await p.evaluate(() => { location.hash = '#home'; }); await p.waitForTimeout(600);
+  await p.locator('.hl-tour-tab').click(); await p.waitForTimeout(600);
+  ok(`${label}: the tab opens the tour`, /A little tour of Lumen/.test(await p.locator('[role=dialog]').first().innerText().catch(() => '')));
+  const v = await axe(p, '[role=dialog]'); ok(`${label}: axe tour (${v.join('; ') || 'clean'})`, v.length === 0);
+  let steps = 1; for (; steps < 8; steps++) { const nx = p.getByRole('button', { name: /^(A little further|Next|Begin)/ }); if (!(await nx.count())) break; await nx.first().click(); await p.waitForTimeout(250); }
+  ok(`${label}: tour has 5 steps`, /OF 5/i.test(await p.locator('[role=dialog]').first().innerText()) && steps === 5, 'steps ' + steps);
+  await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+  ok(`no console errors (${label} tour)`, errs.length === 0, errs.join(' | ')); await ctx.close();
+}
+{
+  const { p, errs, ctx } = await session({ w: 1440, h: 900 }); await importFiles(p, ['portrait.pdf']);
+  ok('reader: no Quick tour tab over the reader', await p.locator('.hl-tour-tab:visible').count() === 0);
+  const names = await p.evaluate(() => [...document.querySelectorAll('.hca-reader-root .reader-toolbar button, .hca-reader-root .reader-toolbar summary')].map(e => (e.getAttribute('aria-label') || e.textContent).trim()));
+  for (const n of ['Mark a region', 'Explain', 'Quiz & summary', 'Tools']) ok(`reader toolbar has "${n}"`, names.some(x => x.includes(n)), names.join(' | '));
+  ok('reader toolbar has no look-alike names', !names.some(x => /Recall page|Page studio|Study tools/.test(x)), names.join(' | '));
+  await p.getByRole('button', { name: /^Tools/ }).first().click(); await p.waitForTimeout(400);
+  const menu = await p.evaluate(() => { const m = document.querySelector('.hl-menu, .hca-reader-more-menu, [role=menu]'); return m ? m.innerText : document.body.innerText; });
+  ok('Tools menu is grouped and has no duplicate sticky note', /CAPTURE/i.test(menu) && /SHARE/i.test(menu) && !/Pin a sticky note/.test(menu), menu.slice(0, 200)); await p.keyboard.press('Escape');
+  ok('no console errors (reader names)', errs.length === 0, errs.join(' | ')); await ctx.close();
+}
 await browser.close();
 const bad = rows.filter(r => !r.pass); console.log(`\n${rows.length - bad.length}/${rows.length} checks passed`); if (bad.length) { console.log('FAILED:\n' + bad.map(b => ' - ' + b.name).join('\n')); process.exit(1); }

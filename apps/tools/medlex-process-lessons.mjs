@@ -135,3 +135,5 @@ button.tapHint{display:block;width:100%;padding-left:0;padding-right:0;color:hsl
 `);
 fs.writeFileSync(path.join(OUT, 'decks.json'), JSON.stringify(decks, null, 1));
 console.log(JSON.stringify({ files: stats.files, imagesReferenced: stats.img, imagesUnique: stats.imgUnique.size, scripts: stats.js.size, handlers: stats.handlers, linksRewritten: stats.links, MBin: +(stats.bytesIn / 1e6).toFixed(1), MBout: +(stats.bytesOut / 1e6).toFixed(1) }));
+/* the lesson viewer needs the decks to fit one screen */
+await import('./medlex-embed-fit.mjs');
