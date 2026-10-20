@@ -323,5 +323,11 @@ dialog.pv::backdrop{background:#071320}
   .pv-tg+.pv-tg{border-left:0;padding-left:0}.pv-bar{padding:4px 6px;gap:0 8px}
   .pv-zoom{right:8px;bottom:6px}.pv aside.pv-text{top:58px;bottom:130px;right:8px}
   .pv-cat{display:none}
+  .pv-ttl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .pv-top{justify-content:space-between}
+  .pv-opts{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:4px 10px;padding:4px 10px;border-radius:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .pv-opts::-webkit-scrollbar{display:none}
+  .pv-og{flex:none;flex-wrap:nowrap}
+  .pv-og+.pv-og{padding-left:10px;border-left:1px solid rgba(255,255,255,.16)}
 }
 @media(prefers-reduced-motion:reduce){.pv *{transition:none!important}}
