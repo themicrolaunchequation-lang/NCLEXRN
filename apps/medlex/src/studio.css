@@ -51,16 +51,16 @@ dialog.ml :focus-visible{outline:3px solid #8FA7FF;outline-offset:2px}
 .ml-body{position:relative;flex:1;min-height:0;background:#fff}
 .ml-frame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
 .ml-load{position:absolute;left:0;right:0;top:40%;text-align:center;margin:0;color:#4A5B6C;font-size:15px}.ml-load[hidden]{display:none}
-.ml-more{display:inline-block;margin:8px 0 0 14px;font-size:13px;font-weight:600;color:var(--lx-blue,#2541A8);text-decoration:underline;text-underline-offset:3px;min-height:24px}
+.ml-more{display:inline-block;margin:8px 0 0 14px;font-size:13px;font-weight:600;color:var(--hs-j,#2541A8);text-decoration:underline;text-underline-offset:3px;min-height:24px}
 @media(max-width:700px){.ml-bar{gap:6px;padding:6px 8px}.ml-new{display:none}.ml-done{padding:0 12px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){dialog.ml *{transition:none!important}}
 
 /* Library > Word parts: the three quests in a frame */
 .wq-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
-.wq-tab{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--lx-line,#CBC1AE);background:transparent;color:inherit;font:600 15px/1 inherit;cursor:pointer}
+.wq-tab{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--hs-line,#CBC1AE);background:transparent;color:var(--hs-ink,inherit);font:600 15px/1 inherit;cursor:pointer}
 .wq-tab[aria-selected=true]{background:#3557D6;border-color:#3557D6;color:#fff}
 .wq-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 10px}
-.wq-bar p{margin:0;font-size:14px;color:var(--lx-muted,#5E6B7C)}
+.wq-bar p{margin:0;font-size:14px;color:var(--hs-muted,#56626E)}
 .wq-bar a{font-weight:600;min-height:24px}
-.wq-frame{display:block;width:100%;height:calc(100dvh - 190px);min-height:560px;border:1px solid var(--lx-line,#CBC1AE);border-radius:16px;background:#fff}
+.wq-frame{display:block;width:100%;height:calc(100dvh - 190px);min-height:560px;border:1px solid var(--hs-line,#CBC1AE);border-radius:16px;background:#fff}
 @media(max-width:700px){.wq-frame{height:calc(100dvh - 150px);min-height:480px;border-radius:10px}}
