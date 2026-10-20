@@ -105,7 +105,7 @@ engineJs = patch(engineJs, "      if ((e.ctrlKey || e.metaKey) && e.key.toLowerC
 engineJs = patch(engineJs, "      root.classList.toggle('has-film', S.film);\n    }", "      root.classList.toggle('has-film', S.film);\n      if (hadFocus) { const c = el.film.querySelector('.hst-fi.is-cur'); c && c.focus({ preventScroll: true }); }\n    }", 'keep focus in the list');
 const studioJs = `window.MEDLEX_STUDIO=${JSON.stringify(studioData(BASE))};\n` + read('src/studio.js');
 const lib = libData(BASE); lib.data.glossaryCount = lib.glossary.length;
-const libJs = `window.MEDLEX_LIB=${JSON.stringify(lib.data)};\n` + ['core', 'library', 'pronounce', 'atlas', 'practice'].map(f => read(`src/lib/${f}.js`)).join('\n');
+const libJs = `window.MEDLEX_LIB=${JSON.stringify(lib.data)};\n` + ['core', 'library', 'pronounce', 'poster', 'atlas', 'practice'].map(f => read(`src/lib/${f}.js`)).join('\n');
 const glossJs = `window.MEDLEX_GLOSSARY=${JSON.stringify(lib.glossary)};`;
 const lazy = { engine: engineJs, studio: studioJs, lib: libJs, glossary: glossJs }, lazyName = Object.fromEntries(Object.entries(lazy).map(([k, v]) => [k, `${k}.${hash(v)}.js`]));
 const shellJs = `window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_SRC=${JSON.stringify(Object.fromEntries(Object.entries(lazyName).map(([k, v]) => [k, BASE + v])))};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');

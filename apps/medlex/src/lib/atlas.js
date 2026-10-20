@@ -15,7 +15,11 @@
     recall: p.q ? { q: p.q, a: p.a } : null,
     blocks: [{ title: p.title, text: p.outcome }, ...p.terms.map(t => ({ title: t.term, text: t.def })), ...(p.caution ? [{ title: 'Keep in mind', text: p.caution }] : []), ...(p.q ? [{ title: 'Recall question', text: `${p.q} ${p.a || ''}`.trim() }] : [])]
   });
-  L.openAtlas = id => {
+  /* One guide in a clean pop-up with markup tools (poster.js). The Learning Studio tour stays available as L.openAtlasTour. */
+  L.openAtlas = id => L.openPoster(order, id, {
+    onClose: () => { if (/[?&]topic=/.test(location.hash)) { try { history.replaceState(null, '', '#infographics'); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); }
+  });
+  L.openAtlasTour = id => {
     const start = Math.max(0, order.findIndex(p => p.id === id));
     return L.openStudio({
       app: 'medlex-atlas', id: 'all', title: 'Visual Atlas', kicker: `${order.length} illustrated guides`, accent: '#3557D6', accentDark: '#2541A8', accentLight: '#8FA7FF', secPerSlide: 30, slides: order.map(slideFor),
@@ -32,7 +36,7 @@
   }
   function view() {
     const last = D.atlas.find(p => p.id === st.atlasLast);
-    mount(header('Visual Atlas', `${order.length} illustrated guides. Open one to see it whole, step through it, enlarge it, draw on it and test yourself.`, `<button type="button" class="btn primary" data-lx="atlasopen" data-id="${(last || order[0]).id}">${ic('play')}${last ? 'Continue the atlas' : 'Start the atlas'}</button>`) +
+    mount(header('Visual Atlas', `${order.length} illustrated guides. Open one to see it whole, zoom in, and mark it up with a pen, highlighter, notes and stickers.`, `<button type="button" class="btn primary" data-lx="atlasopen" data-id="${(last || order[0]).id}">${ic('play')}${last ? 'Continue the atlas' : 'Start the atlas'}</button>`) +
       `<div class="lx-cats" role="group" aria-label="Guide topics"><button type="button" class="lx-cat" data-lx="acat" data-c="All" aria-pressed="true"><b>All guides</b><span class="lx-s">${order.length}</span></button>${CATS.map(c => `<button type="button" class="lx-cat" data-lx="acat" data-c="${esc(c)}" aria-pressed="false"><b>${esc(c)}</b><span class="lx-s">${order.filter(p => p.cat === c).length} · ${esc(BLURB[c])}</span></button>`).join('')}</div>
       <div class="lx-bar"><label class="lx-search">${ic('search')}<span class="sr-only">Search the guides</span><input type="search" data-lx-input="asearch" placeholder="Search a topic or a word…" value="${esc(AS.q)}" autocomplete="off"></label></div><div id="lx-atl-out"></div>`);
     draw();
