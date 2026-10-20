@@ -20,11 +20,15 @@ const label = e => ((e.getAttribute('aria-label') || e.innerText || e.title || '
 const list = async (sel) => p.evaluate(([sel, lab]) => { const f = new Function('e', 'return (' + lab + ')(e)'); return [...document.querySelectorAll(sel)].filter(e => e.getClientRects().length).map(e => f(e)); }, [sel, label.toString()]);
 await p.screenshot({ path: path.join(out, 'reader.png') });
 console.log('TOP BAR:', JSON.stringify(await p.evaluate(() => [...document.querySelectorAll('.reader-root button, .reader-root summary, .reader-root details > summary')].filter(e => e.getClientRects().length && e.getBoundingClientRect().top < 160).map(e => ((e.getAttribute('aria-label') || e.innerText || e.title || '').replace(/\s+/g, ' ').trim()).slice(0, 40)))));
-for (const name of ['Study tools', 'Tools', 'More', 'Page studio', 'Recall page']) {
-  const t = p.locator(`.reader-root >> text="${name}"`).first(); if (!(await t.count())) { console.log(name, ': not found'); continue; }
-  await t.click().catch(() => {}); await p.waitForTimeout(700);
-  const items = await p.evaluate(() => [...document.querySelectorAll('details[open] .hca-reader-more-menu button, details[open] .hca-reader-more-menu a, .hca-sidecar [role=tab], .hca-sidecar-tabs button')].filter(e => e.getClientRects().length).map(e => ((e.getAttribute('aria-label') || e.innerText || e.title || '').replace(/\s+/g, ' ').trim()).slice(0, 50)));
-  console.log(name.toUpperCase(), '->', JSON.stringify(items)); await p.screenshot({ path: path.join(out, name.replace(/\s/g, '-') + '.png') });
-  await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+const menuItems = () => p.evaluate(() => [...document.querySelectorAll('details[open] button, details[open] a, details[open] [role=menuitem], details[open] [role=menuitemradio]')].filter(e => e.getClientRects().length && !e.closest('summary')).map(e => ((e.getAttribute('aria-label') || e.innerText || e.title || '').replace(/\s+/g, ' ').trim()).slice(0, 48)));
+for (const name of ['More', 'Tools']) {
+  const t = p.locator('.reader-root summary').filter({ hasText: name }).first(); if (!(await t.count())) { console.log(name, ': no summary'); continue; }
+  await t.click().catch(() => {}); await p.waitForTimeout(600); console.log(name.toUpperCase(), '->', JSON.stringify(await menuItems())); await p.screenshot({ path: path.join(out, name + '.png') }); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+}
+for (const name of ['Recall page', 'Page studio', 'Study tools']) {
+  const t = p.locator('.reader-root button').filter({ hasText: name }).first(); if (!(await t.count())) { console.log(name, ': no button'); continue; }
+  await t.click().catch(() => {}); await p.waitForTimeout(800);
+  console.log(name.toUpperCase(), '-> panel tabs', JSON.stringify(await p.evaluate(() => [...document.querySelectorAll('.hl-tabs button, .hca-sidecar-tabs button')].map(e => (e.innerText || '').replace(/\s+/g, ' ').trim() + (e.getAttribute('aria-selected') === 'true' ? '*' : '')))), 'panel head:', await p.evaluate(() => (document.querySelector('.hl-sh, .hca-sidecar-header')?.innerText || '').replace(/\s+/g, ' ').slice(0, 80)));
+  await p.screenshot({ path: path.join(out, name.replace(/\s/g, '-') + '.png') });
 }
 await br.close();
