@@ -1,0 +1,1505 @@
+{
+  "upstream": "Health Icons",
+  "upstream_license": "CC0-1.0",
+  "verified_source": "https://healthicons.org/about",
+  "adaptations": "Styling and animation supplied by the user; their CC0 declaration is retained from supplied provenance, not an independent authorship verification.",
+  "assets": [
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0405-book.png",
+      "sha256": "722a3ef2ce86d38a3303b2f1f689f737e61b0ade9f197beb3d75dfdb9805f0da",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/objects/book",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0405-book.png",
+      "sha256": "74cc514194d1a79a88da796e9485c1e41c5e01557bc021c750c38ba352a37bb9",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/objects/book",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0405-book.png",
+      "sha256": "6296213eac17d6a015a59a68f7a6cb525dc32fcbdd5c3660b465b0270ac5d3d0",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/objects/book",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0011-cell-nuclei.png",
+      "sha256": "adb9383a14933e782ab0f55df29e72e77e83e538795513320da4b062aa6a5ea9",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/cell-nuclei",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0011-cell-nuclei.png",
+      "sha256": "7827846959f66f9102209ee67ec313f07eda8653f4fb163bb4257a120b06cda7",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/cell-nuclei",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0011-cell-nuclei.png",
+      "sha256": "48ecdb9d92e3925df3d6997836721c9b0e4c7bd62fc6e4afc6353422db320e5e",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/cell-nuclei",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0443-diagnostics.png",
+      "sha256": "eb3d82b1eb66f74214e73c7bd1176ed1395a1d20c8eb2a40fb7aacf3841108e6",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/diagnostics",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_101-200(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0443-diagnostics.png",
+      "sha256": "289a0f449ec90233109926ab22fbf30ff075e9dca87db7eb35d4d9fdd6f3499d",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/diagnostics",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0461-health-literacy.png",
+      "sha256": "add072e061d34595cbafaee2b339cef2378ddde9a3811a5c0e89925d23eb7d12",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/health-literacy",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0009-body.png",
+      "sha256": "5bf62587b68b6d8b26c7b84878d167c4f942e82048b777f98409529f5bca7091",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/body",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0009-body.png",
+      "sha256": "e8fea12b2a608bb71afc98ca06471d239f6e87582f59c0db2f3e49449bce9ce2",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/body",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0009-body.png",
+      "sha256": "a93d5e8d8bc6ee4e7ea07586e1ba546fbfc732e195e27d012889832a5ff6e433",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/body",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0443-diagnostics.png",
+      "sha256": "5a8801e83914767c02f002f8230059559a84b1e48bd76f7c3a5ea21086f8474a",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/diagnostics",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0381-world-care.png",
+      "sha256": "69c28fb163a9e664c3d194f3eb4f0597ff2ba75192def543ee422288a5290ab1",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/people/world-care",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0044-tissue.png",
+      "sha256": "468af463185636c0b015095c00d2e9639ba24a6f30d28f37ce6cdeb7a0ec49b1",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/tissue",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0037-skeleton.png",
+      "sha256": "8dddcce935aec8a87a9618431325115dc2cbbaf0db8a3e73fb1133285833c6e0",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/skeleton",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0037-skeleton.png",
+      "sha256": "1e2dda6c43c4d336cb0068b652746f121b157dd5c9b7e945cc5817c22fa95a3c",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/skeleton",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0022-joints.png",
+      "sha256": "842148f93047ece22a0e3758107f04e8edaa91565f7247b5e4e560c3f8ff6770",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/joints",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0022-joints.png",
+      "sha256": "b99b4de1e60d5b5b4811c2e3367b294b2e172e6e76e871ade1d881c725027c63",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/joints",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0022-joints.png",
+      "sha256": "6e785ec46528f1fffc0b7f34258bf57bc6a6a1e24444e72a4ea1d78076fe518a",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/joints",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0037-skeleton.png",
+      "sha256": "32431bbb4fbb565300dff8cde6b3f7d99d0d43573f78c9b2d849978a2d8293c0",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/skeleton",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0039-spine.png",
+      "sha256": "7f3d6ffbc7010d6eeb3019a43ee7c37cb8db27b877487e66acfd5899ea4fb0a3",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/spine",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0020-heart-organ.png",
+      "sha256": "054b5c17a3a4d0b730ad952075b807dcc69d91d7d90044901cec70b78af11552",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/heart-organ",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0020-heart-organ.png",
+      "sha256": "0560bdcfb9f215d143d0da3c79c0bee0cd887a729429b67d6712e39b850c34e2",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/heart-organ",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0437-heart-cardiogram.png",
+      "sha256": "c21f7368581c670bdd5b0b210697bf1334abdd72d37b4b74e31e7f7796f4f052",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/heart-cardiogram",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0437-heart-cardiogram.png",
+      "sha256": "fecf8093aba34f1816555903beeac3efd93c2a74ea2063b4e002755efa32e570",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/heart-cardiogram",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0020-heart-organ.png",
+      "sha256": "397b0bef87ba3bd372a17ec845da03e1d739e353d816c93dcb28619c147aae40",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/heart-organ",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0027-lungs.png",
+      "sha256": "1ade72ba124cf6252f61ce3ef02257250878734567f533bb1634d4d56ef454fd",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/lungs",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0027-lungs.png",
+      "sha256": "3550ac0ec29538453b7b8f6d86a25e7926bfb066bca3245e4a61ca550c806cd8",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/lungs",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0027-lungs.png",
+      "sha256": "54514a672c85d498ad9a9e392188add2712b2275f7cef9756f3b4a151730c162",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/lungs",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0041-stomach.png",
+      "sha256": "7a3f68cb1ccd7ff5d05609c9c83d951edf49253d9dda81e9ade69c8343e9d470",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/stomach",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0041-stomach.png",
+      "sha256": "30908f65fc2376b536694e51887a4c52de670382ff6ca4d12aa2cabb7b21c42d",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/stomach",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_101-200(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0021-intestine.png",
+      "sha256": "d78880a33b9a7a0d520ab3e1baa764b9acfb881cd753320a67c31b206cafa6cc",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/intestine",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0041-stomach.png",
+      "sha256": "069b0a4267c0b7c4c15a136cec8efaf927c9e4620f41921262894374b3d58628",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/stomach",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0028-lymph-nodes.png",
+      "sha256": "4e83752e7668b1243cc04bea50c4260373549eb80c80fd2c709f861bb97f9795",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/lymph-nodes",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0001-antibody.png",
+      "sha256": "f7eb97e16df1535a98a25db1dcb864549b058b4d954be7ed2e908203645544b8",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/antibody",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0001-antibody.png",
+      "sha256": "1bbf068e5d4168bb75ec8f4e252122c5be2e664e557db0ed2f49333ddbab2102",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/antibody",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0001-antibody.png",
+      "sha256": "9ca744ff6b102b8488498682e701be0d625f1157099f29977de14742b6d8f70d",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/antibody",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0006-blood-cells.png",
+      "sha256": "4c719b9592a97377b367fe10125c03f1f68bd5052838dda686b872734ee0889d",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/blood-cells",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0006-blood-cells.png",
+      "sha256": "1eb328e1aa0cd3eb8fd1ced7ec72d6669ed28da448d633804e267b71d1b5ea11",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/blood-cells",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0006-blood-cells.png",
+      "sha256": "e2d26ce1b90786ab8bca2b020336d043ce09f5df297db1931c7283fbb5b5bc7f",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/blood-cells",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0043-thyroid.png",
+      "sha256": "12e8351be1fc7c8c17729933c79392ec0dee6229f2dc22ca0699a00adbd792bf",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/thyroid",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0043-thyroid.png",
+      "sha256": "2722ffaff0a2ce51cbdf43c4b74fdd0a710814d3cfe3afd0a82a359dbc51e1db",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/thyroid",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0043-thyroid.png",
+      "sha256": "2e9937473d7f8371344f490a5284877c7cfc342a647b9c9473718f16c012b80d",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/thyroid",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0033-pancreas.png",
+      "sha256": "70fb169b9b55a46b4c29069cb0d2e737294ae1aa6c7d0b1bb3d4308a216728db",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/pancreas",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0158-urine-sample.png",
+      "sha256": "0170f409dd6eae441f0c254777a5f7878bd9dc529edc6a5dfcf5774bc0e97931",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/devices/urine-sample",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0023-kidneys.png",
+      "sha256": "67233c9677ae6d00b7526324f11af23b65104e51faf4a70e0e123ec032f389e3",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/kidneys",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0023-kidneys.png",
+      "sha256": "a23040f14b2893589806e5f379d23068139248b7ddcd558a5368c0808d2e35b8",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/kidneys",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0023-kidneys.png",
+      "sha256": "e493450ac37908ddf279cd791bfada8008cd3b81846efb2a65ae416b2a3cc59c",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/kidneys",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0031-neurology.png",
+      "sha256": "9d089eb23bf7ea71cd6a90b4a118fa918e960227d6932b600530f88235feff31",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/neurology",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0030-nerve.png",
+      "sha256": "4843fc22596f213a073308b7550e8ffdf34f30c68ca62410ac039a7c75b536f0",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/nerve",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0015-eye.png",
+      "sha256": "c8961cef8bef4f7aec4c6850fa67d7a6c9c608461f2cda9cd3d9b060b32368bc",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/eye",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0013-ear.png",
+      "sha256": "ed7f34bf52e57423e78820fab3221dad61de7d76278936ad98982ab03ac176a3",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/ear",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0015-eye.png",
+      "sha256": "0bc0c25dd6cc32162eff432d98259764c6205337b154750a70ea0cd45afdc122",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/eye",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0015-eye.png",
+      "sha256": "e2d1ac965820e6131d923e9338d1bf3c7c74bd9fb8e5d659919b17b00b6de929",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/eye",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0013-ear.png",
+      "sha256": "41f8180d08af65caab1c3b0e80fc5cb82d07ba57f52863767e3d1f66426327b0",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/ear",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0032-nose.png",
+      "sha256": "36e48a5adb493db571e341ae1eb1f935144a32ecbdd30263b0a5ae9640dd9a25",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/nose",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0401-tongue.png",
+      "sha256": "fa2c32d08531bad17b1435455f055c505fa9907274b0836ece6aaf9418900c89",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/emotions/tongue",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0036-prostate.png",
+      "sha256": "1589e091636b42c418fb227f00569055168ba94de8c13ca7fc4c0adc9cb3b325",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/prostate",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0293-sperm.png",
+      "sha256": "60bcffac32333d123a3abc119d0e3dadc2a1399a0d631611071a03557d6a0cfc",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/contraceptives/sperm",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0016-female-reproductive_system.png",
+      "sha256": "87c003b812fc07bdb362ce63aef585a81348cf30db369b40e4363314c6b483ed",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/female-reproductive_system",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0016-female-reproductive_system.png",
+      "sha256": "af26db01a8089be5f4118ef020f2c448f7efe09ed6c851a25e61d6539c570cb8",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/female-reproductive_system",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_101-200(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0016-female-reproductive_system.png",
+      "sha256": "173a22d20f56f0bca31ab14928827598beaaa801133115e98f9e3ab477a37080",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/female-reproductive_system",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0371-pregnant.png",
+      "sha256": "59d79ba2ed2b080d08df9386629a555c3284a08583dcd57d3c237676b596d16e",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/people/pregnant",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0347-fetus.png",
+      "sha256": "84cb290445206ce967bb2cb8a314270687cefa9aedf3f6d0a463ebee3c18258f",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/people/fetus",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0322-baby-0203m.png",
+      "sha256": "786783f83e02e7438ac34e7c437b021d516727c6b503391d787a7f80a82be049",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/people/baby-0203m",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0322-baby-0203m.png",
+      "sha256": "7031cdeb3c48a403c5dd33686a131ad558df93e6bc7bd1c7aab5fcff3aba80b7",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/people/baby-0203m",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0322-baby-0203m.png",
+      "sha256": "f3e047b242fdeb4a5102303964ef981944d60a7470351e5a2b5e8c2e4a8f423a",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/people/baby-0203m",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0046-tumour.png",
+      "sha256": "d949306987779b1dc09fdc337fe3e287371c7f0953e2fb0a92925389b53756aa",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/tumour",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0046-tumour.png",
+      "sha256": "79695b41034a41d57a20138387a309263044455e5853aa0093f228ce8dbc9f9a",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/tumour",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_001-100(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0046-tumour.png",
+      "sha256": "3b675bbec535f59092e7836b0c142d4036ac935c75367558a1830858f249076a",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/tumour",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0446-virus.png",
+      "sha256": "57124b7877ae32ebb34379fac18a9a1c2be59bbf49e9afeb439001fb82b30120",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/virus",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0446-virus.png",
+      "sha256": "182f19a9918bfc40c59f08347c964f745468af81bffc82150a52611ac8ad54c0",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/virus",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_101-200(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0446-virus.png",
+      "sha256": "c488f46f3ad8c5b1126e0a661dc5ab3b6860e8365c5d878f0e448b8425751b04",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/virus",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0433-animal-mosquitos.png",
+      "sha256": "abdcf63bf7862c78feb2e6c7db91196a290fdbfc245f121f04d00d733757e9d5",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/zoonoses/animal-mosquitos",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0004-bacteria.png",
+      "sha256": "5dca2b94a18ade2914ce22716c5eb0f9216751ddca23d8a076ab00dda4ae9a8d",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/body/bacteria",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0210-pill-1.png",
+      "sha256": "b3bd05bc5d3ed8bce791930fe1fec0fc5be538eb788fdbe79d8ef9a53de33076",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/medications/pill-1",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0129-medicine-bottle.png",
+      "sha256": "3d331bd5a7634b47ce3222174ec11ad10ea64e0767780e39b0dd16044601cc09",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/devices/medicine-bottle",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0210-pill-1.png",
+      "sha256": "53a900e6efa790e6fe6753c3b4a7d48334f53a2446c3dd25217ca16290e4123c",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/medications/pill-1",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_101-200(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0210-pill-1.png",
+      "sha256": "fd467c0641a6fdfb9bf2e402e3ef816ffa0bfe0c3235bdbd82103715de12cea1",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/medications/pill-1",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0226-general-surgery.png",
+      "sha256": "5eea51924975ed2f6c7b5b77e825f26879ae73d38754b517b153289693d7ec3f",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/specialties/general-surgery",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0248-radiology.png",
+      "sha256": "92affed57b1454c374af743ac428799572caabc079e7bbef0ab840db17c5be8d",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/specialties/radiology",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Stickers_200.zip",
+      "member": "Healthcare_1400_Asset_Pack/stickers/png512/0445-mental-health.png",
+      "sha256": "8b61dec6dcfe3f6fa86bd8cf3657e27325074655d3ef1bbad6f71354c762fdbe",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/mental-health",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "sticker adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0247-psychology.png",
+      "sha256": "ee9248ed962b7d2b64624b6f4fdafc50f95b8d5b06b81dfef425f0f97f2095a1",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/specialties/psychology",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Animated_3D_101-200(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/animated3d/poster512/0445-mental-health.png",
+      "sha256": "e091e2d6ef34bbe68deabe75d0ec0d122f824bae58f9a2c241d523acc70d7676",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/mental-health",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "extruded silhouette adaptation"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0445-mental-health.png",
+      "sha256": "05496ca1122bf8b082d32bf530b8bf7920e8551526f13d0ff058c289b6201cc8",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/symbols/mental-health",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0385-calm.png",
+      "sha256": "a6692bb4276768f37a1db4f6d97462cf203452b5999ea81a621b53121143b018",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/emotions/calm",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    },
+    {
+      "archive": "Healthcare_Icons_1000(1).zip",
+      "member": "Healthcare_1400_Asset_Pack/icons/png96/filled/0235-medical-records.png",
+      "sha256": "8e55e4dc68a16ac0533b9a8ce4a9f4aa55ea90be20efaab8c1dae14c11efd7cc",
+      "license": {
+        "upstream": "CC0-1.0",
+        "upstream_verified": true,
+        "verification_url": "https://healthicons.org/about",
+        "adaptations": "CC0-1.0 asserted by supplied SOURCE-AND-RIGHTS.md; authorship not independently verified"
+      },
+      "provenance": {
+        "source": "Health Icons (supplied provenance)",
+        "source_url": "https://healthicons.org/icon/filled/specialties/medical-records",
+        "pinned_commit_claim": "4e0717e76ea26c8caee9cac70a42f6620c669c20",
+        "type": "original icon export"
+      }
+    }
+  ],
+  "generated": "Generated course photographs and conceptual models were created with built-in image generation. Prompt sets are included where available. No patient images or diagnostic claims are implied."
+}
