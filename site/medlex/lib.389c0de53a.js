@@ -511,7 +511,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
     const restore = js => { S.items = JSON.parse(js); S.sel = null; paint(); persist(); updateBtns(); };
     function undo() { if (!S.undo.length) return; S.redo.push(JSON.stringify(S.items)); restore(S.undo.pop()); say('Undone'); }
     function redo() { if (!S.redo.length) return; S.undo.push(JSON.stringify(S.items)); restore(S.redo.pop()); say('Redone'); }
-    function updateBtns() { $('[data-pv=undo]').disabled = !S.undo.length; $('[data-pv=redo]').disabled = !S.redo.length; $('[data-pv=del]').disabled = !S.sel; $('[data-pv=clear]').disabled = !S.items.length; }
+    function updateBtns() { $('[data-pv=undo]').disabled = !S.undo.length; $('[data-pv=redo]').disabled = !S.redo.length; $('[data-pv=del]').disabled = !S.sel; $('[data-pv=clear]').disabled = !S.items.length; const a = d.activeElement; if (a && a.disabled && dlg.contains(a)) stage.focus({ preventScroll: true }); }
 
     /* ---------- drawing ---------- */
     function drawItem(c, it) {
@@ -713,7 +713,8 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
       else if (a === 'stk') { S.stk = v; if (S.sel) changeSelected(x => { if (x.t === 'sticker') x.k = v; }); updateOpts(); }
     });
     dlg.addEventListener('cancel', e => { e.preventDefault(); if (S.edit) { endEdit(); return; } if (S.sel) { S.sel = null; placeSel(); updateBtns(); return; } close(); });
-    dlg.addEventListener('keydown', e => {
+    const onKey = e => {
+      if (!dlg.isConnected) return;
       const typing = S.edit || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName); const k = e.key, mod = e.ctrlKey || e.metaKey;
       if (k === ' ' && !typing && e.target === stage) { S.space = true; e.preventDefault(); }
       if (typing) return;
@@ -727,13 +728,14 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
       else if ((k === 'ArrowLeft' || k === 'PageUp') && !S.sel) { open(S.i - 1); } else if ((k === 'ArrowRight' || k === 'PageDown') && !S.sel) { open(S.i + 1); }
       else if (S.sel && k.startsWith('Arrow')) { e.preventDefault(); const st2 = e.shiftKey ? 20 : 4, dx = k === 'ArrowLeft' ? -st2 : k === 'ArrowRight' ? st2 : 0, dy = k === 'ArrowUp' ? -st2 : k === 'ArrowDown' ? st2 : 0; changeSelected(x => { if (x.p) x.p = x.p.map(q => [q[0] + dx, q[1] + dy]); else { x.x += dx; x.y += dy; } }); }
       else if (k === 'Enter' && S.sel) { const it = S.items.find(i => i.id === S.sel); if (it && (it.t === 'text' || it.t === 'note')) { e.preventDefault(); beginEdit(it); } }
-    });
-    dlg.addEventListener('keyup', e => { if (e.key === ' ') S.space = false; });
+    };
+    const onKeyUp = e => { if (e.key === ' ') S.space = false; };
+    d.addEventListener('keydown', onKey); d.addEventListener('keyup', onKeyUp);
 
     function close(silent) {
       const cb = opts && opts.onClose;
       if (S.edit) endEdit(); persist();
-      try { dlg.close(); } catch { } dlg.remove(); V = null; if (!silent) { if (cb) { try { cb(); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); const back = d.querySelector(`.lx-atl[data-id="${poster().id}"]`) || d.querySelector('[data-lx=atlasopen]'); back && back.focus && back.focus({ preventScroll: true }); }
+      d.removeEventListener('keydown', onKey); d.removeEventListener('keyup', onKeyUp); try { dlg.close(); } catch { } dlg.remove(); V = null; if (!silent) { if (cb) { try { cb(); } catch { } } if (L.atlasRefresh) L.atlasRefresh(); const back = d.querySelector(`.lx-atl[data-id="${poster().id}"]`) || d.querySelector('[data-lx=atlasopen]'); back && back.focus && back.focus({ preventScroll: true }); }
     }
     dlg.showModal(); setTool('select', true); open(S.i, true); $('.pv-stage').focus({ preventScroll: true });
     return { close, open };

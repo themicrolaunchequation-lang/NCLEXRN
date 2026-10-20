@@ -300,9 +300,9 @@ dialog.pv::backdrop{background:#071320}
 .pv-opts{position:relative;z-index:3;flex:none;align-self:center;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px;max-width:calc(100vw - 16px);margin:0 8px 8px;padding:8px 14px;border-radius:18px;background:rgba(11,26,43,.86);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px)}
 .pv-opts[hidden],.pv-og[hidden]{display:none}
 .pv-og{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
-.pv-sw{width:34px;height:34px;border-radius:50%;background:var(--c);border:2px solid rgba(255,255,255,.35);padding:0;position:relative;margin:5px}
-.pv-sw::after{content:'';position:absolute;inset:-8px}
-.pv-sw[aria-pressed=true]{border-color:#fff;box-shadow:0 0 0 3px #3557D6}
+.pv-sw{width:44px;height:44px;border:0;background:transparent;padding:0;position:relative}
+.pv-sw::before{content:'';position:absolute;inset:7px;border-radius:50%;background:var(--c);border:2px solid rgba(255,255,255,.4)}
+.pv-sw[aria-pressed=true]::before{border-color:#fff;box-shadow:0 0 0 3px #3557D6}
 .pv-sz{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:transparent;display:inline-flex;align-items:center;justify-content:center}
 .pv-sz i{display:block;width:var(--d);height:var(--d);border-radius:50%;background:#F3EFE6}
 .pv-sz[aria-pressed=true],.pv-chip[aria-pressed=true],.pv-stkb[aria-pressed=true]{background:#3557D6;border-color:#8FA7FF}
