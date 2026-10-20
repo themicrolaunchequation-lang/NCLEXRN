@@ -71,6 +71,7 @@ for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true,
   // opening a quest card works from the keyboard (real buttons, no nested controls)
   const kb = await p.evaluate(async () => { const d = document.querySelector('.wp-frame').contentDocument, b = d.querySelector('button.tapHint'); if (!b) return 'no button'; b.focus(); const before = d.body.innerText.length; b.click(); await new Promise(r => setTimeout(r, 700)); return d.body.innerText.length > before ? 'opened' : 'not opened'; });
   ok(kb === 'opened', 'a roots card opens from its button: ' + kb);
+  await p.keyboard.press('Escape'); await p.waitForTimeout(500);   // the pop-up locks and dims the app behind it (as it should), so close it before using the studio switcher
   // the interactive handlers work without inline scripts: drive a search that finds nothing, then use the clear button
   await p.locator('a.wp-sw >> nth=2').click(); await p.waitForTimeout(1800);
   const clr = await p.evaluate(async () => { const d = document.querySelector('.wp-frame').contentDocument, i = d.querySelector('input[type=search],input[type=text]'); if (!i) return 'no search box'; i.value = 'zzzzqx'; i.dispatchEvent(new Event('input', { bubbles: true })); await new Promise(r => setTimeout(r, 400)); const b = d.querySelector('[data-oc="clearFilters()"]'); if (!b) return 'no clear button'; b.click(); await new Promise(r => setTimeout(r, 400)); return i.value === '' ? 'cleared' : 'value stays: ' + i.value; });

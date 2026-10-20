@@ -89,6 +89,19 @@ dialog.ml :focus-visible{outline:3px solid #8FA7FF;outline-offset:2px}
 :root[data-hs-theme=dark] .wp-sw.is-on{background:var(--wp-dk);border-color:var(--wp-dk);color:#0B1A2B}
 .wp-h1{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wp-frame{display:block;width:100%;height:70dvh;min-height:420px;border:0;border-radius:16px;background:transparent;overflow:hidden}
+/* while a quest pop-up is open, the frame is the screen part it is on, fixed in place (apps/medlex/src/lib/quests.js); a placeholder keeps its room in the page */
+.wp-frame.is-modal{position:fixed;left:var(--wp-l);top:var(--wp-t);width:var(--wp-w);height:var(--wp-h)!important;min-height:0;margin:0;border-radius:0;z-index:1500}
+.wp-hold{flex:none;width:100%}
+.wp-scrim{position:fixed;inset:0;z-index:1490;background:rgba(5,8,20,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+html.wp-lock{overflow:hidden;scrollbar-gutter:stable}
+/* toasts and confetti from the quests are drawn here, on the screen */
+.wp-toasts{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:1600;display:flex;flex-direction:column;align-items:center;gap:8px;width:min(92vw,520px);pointer-events:none}
+.wp-toast{max-width:100%;padding:12px 20px;border-radius:14px;background:#10253A;color:#fff;font-size:15px;line-height:1.45;font-weight:600;text-align:center;border:1px solid rgba(212,164,69,.65);box-shadow:0 14px 34px -10px rgba(0,0,0,.55);animation:wpToast .3s ease-out;transition:opacity .35s}
+.wp-toast.is-out{opacity:0}
+@keyframes wpToast{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.wp-fx{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:1700;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.wp-toast{animation:none;transition:none}}
+html[data-hs-motion=off] .wp-toast{animation:none;transition:none}
 @media(max-width:1100px){.wp-grid{grid-template-columns:1fr}.wp-card{display:grid;grid-template-columns:auto 1fr;column-gap:20px;align-items:start}.wp-card>*{grid-column:2}.wp-card .wp-glyph{grid-column:1;grid-row:1/4}.wp-open{align-self:start}}
 @media(max-width:700px){.wp-card{display:flex;padding:20px 18px}.wp-card h2{font-size:25px}.wp-open{width:100%}.wp-frame{border-radius:10px}.wp-bar{gap:4px}.wp-switch{width:100%}.wp-sw{flex:1;padding:0 8px}}
 @media(prefers-reduced-motion:reduce){.wp-open{transition:none}.wp-open:hover{transform:none}}

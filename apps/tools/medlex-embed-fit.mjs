@@ -137,16 +137,57 @@ html.hca-embed .term-atlas-close{font-size:16px;min-height:44px}
 html.hca-embed .term-atlas-detail .term-cue img{width:300px;height:270px}
 html.hca-embed .term-atlas-detail .term-cue img[data-kind=diagram]{width:520px;height:325px}
 `);
-/* Word parts quests (they carry html[data-theme]): shown in the MedLex page itself at their full height, so the page scrolls once and there is no page inside a page.
-   The parent (apps/medlex/src/lib/quests.js) sizes the frame to the quest and sets --hca-vt / --hca-vh (the part of the frame on screen) so pop-ups and toasts stay in view. */
+/* ===== Word parts quests (they carry html[data-theme]) =====
+   They are shown in the MedLex page itself at their full height, so the page scrolls once and there is no page inside a page.
+   Host: apps/medlex/src/lib/quests.js (sizes the frame to the quest; while a pop-up is open it makes the frame as tall as the screen part it is on, so a
+   pop-up is always fully on screen with its own scroll; draws toasts and confetti on the screen). Guest: apps/tools/medlex-quest-embed.js, copied to shared/js/quest-embed.js. */
 fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
 html.hca-embed[data-theme]{overflow:hidden}
+html.hca-embed[data-theme],html.hca-embed[data-theme] body{height:auto}
+html.hca-embed[data-theme] body{overflow-x:hidden;overflow-x:clip;overflow-y:visible}
 html.hca-embed[data-theme] .ml-brand,html.hca-embed[data-theme] .ml-coursepath{display:none}
-html.hca-embed[data-theme] .ml-coursehead{justify-content:flex-end}
-html.hca-embed[data-theme] .overlay{position:absolute!important;inset:auto 0!important;top:var(--hca-vt,0)!important;height:var(--hca-vh,100vh)!important}
-html.hca-embed[data-theme] #toasts,html.hca-embed[data-theme] #toast{position:absolute!important;bottom:auto!important;top:calc(var(--hca-vt,0px) + var(--hca-vh,100vh) - 90px)!important}
-html.hca-embed[data-theme] #confetti{position:absolute!important;top:var(--hca-vt,0)!important;height:var(--hca-vh,100vh)!important}
+html.hca-embed[data-theme] .ml-coursehead{justify-content:flex-end;padding-top:10px;padding-bottom:10px;border-bottom:0;background:none}
+html.hca-embed[data-theme] .overlay{overscroll-behavior:contain}
+html.hca-embed[data-theme] .overlay [tabindex="-1"]:focus{outline:0}
+html.hca-embed[data-theme].hca-fx #toasts,html.hca-embed[data-theme].hca-fx #toast,html.hca-embed[data-theme].hca-fx #confetti{display:none!important}
+html.hca-embed[data-theme] .modalHead{flex-wrap:wrap}
+html.hca-embed[data-theme] .seg>span{color:var(--txt)}
+html.hca-embed[data-theme] .iconBtn{min-width:44px;min-height:44px}
+html.hca-embed[data-theme] .pfx[role=button]{cursor:pointer}
+@media(max-width:760px){
+html.hca-embed[data-theme] :is(button,select,summary,.btn,a.medlex,a.linkBtn,input:not([type=checkbox]):not([type=radio])){min-height:44px}
+html.hca-embed[data-theme] :is(.spk,.mclose,.mnav,.iconbtn,.iconBtn,.ml-themeChoice,.x){min-width:44px}
+html.hca-embed[data-theme] :is(a.medlex,a.linkBtn){display:inline-flex;align-items:center}
+html.hca-embed[data-theme] :is(.miniAct,.icobtn,.open-hit){min-width:44px;min-height:44px}
+html.hca-embed[data-theme] .pfx[role=button]{display:flex;align-items:center;min-height:44px}
+html.hca-embed[data-theme] .scard .card-btns,html.hca-embed[data-theme] .cardTop{flex-wrap:wrap}
+html.hca-embed[data-theme] .cardActs{margin-left:auto;display:flex;gap:4px}
+html.hca-embed[data-theme] .dot{position:relative;width:44px;height:44px;background:none;transform:none}
+html.hca-embed[data-theme] .dot::after{content:"";position:absolute;inset:16px;border-radius:50%;background:var(--line)}
+html.hca-embed[data-theme] .dot.on::after{background:#0e7c7b;transform:scale(1.25)}
+}
+html.hca-embed[data-theme] .pfx[role=button]:focus-visible{outline:3px solid var(--ml-accent);outline-offset:4px;border-radius:8px}
 `);
+fs.copyFileSync(path.join(import.meta.dirname, 'medlex-quest-embed.js'), path.join(JS, 'quest-embed.js'));
+{
+  /* the prefix quest places its celebrations at "innerHeight / 3"; in a frame as tall as the quest that is far below the screen, so it asks the guest (hcaVY) where a third of the screen is */
+  let quests = 0, sites = 0;
+  for (const f of fs.readdirSync(DIR).filter(x => /^quest-.*\.html$/.test(x))) {
+    const p = path.join(DIR, f); let t = fs.readFileSync(p, 'utf8'), o = t;
+    for (const m of [...t.matchAll(/<script[^>]* src="shared\/js\/([0-9a-f]{16}\.js)"/g)]) {
+      const sp = path.join(JS, m[1]); if (!fs.existsSync(sp)) continue; let js = fs.readFileSync(sp, 'utf8');
+      if (!js.includes('function confettiBurst(') || js.includes('hcaVY')) continue;
+      let n = 0; js = js.replace(/confettiBurst\(innerWidth\/2,innerHeight\/([\d.]+),/g, (_, k) => { n++; return `confettiBurst(innerWidth/2,(window.hcaVY?hcaVY(${k}):innerHeight/${k}),`; });
+      if (!n) throw new Error('quest embed: no innerHeight celebrations found in ' + m[1]);
+      const nn = md5(js) + '.js'; fs.writeFileSync(path.join(JS, nn), js); if (nn !== m[1] && !fs.readdirSync(DIR).some(x => x !== f && x.endsWith('.html') && fs.readFileSync(path.join(DIR, x), 'utf8').includes('shared/js/' + m[1]))) fs.unlinkSync(sp);
+      t = t.split('shared/js/' + m[1]).join('shared/js/' + nn); sites += n;
+    }
+    if (!t.includes('shared/js/quest-embed.js')) { if (!t.includes('</body>')) throw new Error('quest embed: no </body> in ' + f); t = t.replace('</body>', () => '<script src="shared/js/quest-embed.js"></script>\n</body>'); }
+    if (t !== o) { fs.writeFileSync(p, t); quests++; }
+  }
+  console.log(`embed-fit: quests ${quests} pages updated, ${sites} celebration sites moved to hcaVY`);
+}
+/* ===== end of the Word parts quests block ===== */
 const OLD = "if(focused)scale=Math.min(scale,(innerHeight-172)/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=focused?";
 const NEW = "const emb=!focused&&document.documentElement.classList.contains('hca-embed'),wb=emb&&wrap.closest('.workbench');if(focused)scale=Math.min(scale,(innerHeight-172)/720);if(wb)scale=Math.min(scale,(innerHeight-(wb.scrollHeight-wrap.offsetHeight))/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=(focused||emb)?";
 // Reading view: a recall card became one run of text ("RECALL BEFORE REVEALCLICK TO REVEAL ..."); show its answer instead.
