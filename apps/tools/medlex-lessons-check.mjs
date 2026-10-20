@@ -61,6 +61,13 @@ for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true,
     ok(await f.locator('body').count() === 1 && (await p.locator('.wq-frame').getAttribute('src')).includes('quest-'), k + ' quest loads');
     const oc = await p.evaluate(() => document.querySelector('.wq-frame').contentDocument.querySelectorAll('[data-oc]').length); await p.screenshot({ path: `${out}/parts-${k}-${tag}.png` });
   }
+  // the quest's own navigation switches the page's tab and loads that quest (no missing pages)
+  await p.locator('[data-wq=prefix]').click(); await p.waitForTimeout(1500);
+  await p.evaluate(() => document.querySelector('.wq-frame').contentDocument.querySelector('.ml-coursepath a[href="quest-roots.html"]').click()); await p.waitForTimeout(1800);
+  ok(await p.locator('[data-wq=root][aria-selected=true]').count() === 1 && /quest-roots/.test(await p.locator('.wq-frame').getAttribute('src')), "the quest's own Roots link switches the tab");
+  // opening a quest card works from the keyboard (real buttons, no nested controls)
+  const kb = await p.evaluate(async () => { const d = document.querySelector('.wq-frame').contentDocument, b = d.querySelector('button.tapHint'); if (!b) return 'no button'; b.focus(); const before = d.body.innerText.length; b.click(); await new Promise(r => setTimeout(r, 700)); return d.body.innerText.length > before ? 'opened' : 'not opened'; });
+  ok(kb === 'opened', 'a roots card opens from its button: ' + kb);
   // the interactive handlers work without inline scripts: drive a search that finds nothing, then use the clear button
   await p.locator('[data-wq=suffix]').click(); await p.waitForTimeout(1800);
   const clr = await p.evaluate(async () => { const d = document.querySelector('.wq-frame').contentDocument, i = d.querySelector('input[type=search],input[type=text]'); if (!i) return 'no search box'; i.value = 'zzzzqx'; i.dispatchEvent(new Event('input', { bubbles: true })); await new Promise(r => setTimeout(r, 400)); const b = d.querySelector('[data-oc="clearFilters()"]'); if (!b) return 'no clear button'; b.click(); await new Promise(r => setTimeout(r, 400)); return i.value === '' ? 'cleared' : 'value stays: ' + i.value; });
