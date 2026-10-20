@@ -245,16 +245,16 @@
     stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
     stage.addEventListener('dblclick', e => { if (S.tool !== 'select') return; const it = hit(toWorld(e)); if (it && (it.t === 'text' || it.t === 'note')) beginEdit(it); else if (!it) { fitView(); } });
     stage.addEventListener('wheel', e => { e.preventDefault(); const r = stage.getBoundingClientRect(); zoomTo(S.s * (e.deltaY < 0 ? 1.12 : .89), e.clientX - r.left, e.clientY - r.top); }, { passive: false });
-    new ResizeObserver(() => { if (img.naturalWidth) fitView(true); }).observe(stage);
+    new ResizeObserver(() => { if (img.naturalWidth) { if (!S.ok) ready(); else fitView(true); } }).observe(stage);
 
     /* ---------- poster loading ---------- */
     function open(i, first) {
-      if (!first) { if (S.edit) endEdit(); persist(); } S.i = clamp(i, 0, list.length - 1); const p = poster();
+      if (!first) { if (S.edit) endEdit(); persist(); } S.i = clamp(i, 0, list.length - 1); S.ok = 0; const idx0 = S.i, p = poster();
       $('.pv-cat').textContent = p.cat; $('.pv-name').textContent = p.title; $('.pv-pos').textContent = `${S.i + 1} of ${list.length}`; dlg.setAttribute('aria-label', `${p.title}. Illustrated guide viewer`);
       $('[data-pv=prev]').disabled = S.i === 0; $('[data-pv=next]').disabled = S.i === list.length - 1;
       img.alt = `${p.title}. ${p.outcome}`; S.items = (load()[p.id] || []); S.undo = []; S.redo = []; S.sel = null;
-      const ready = () => { S.W = img.naturalWidth || 1086; S.H = img.naturalHeight || 1448; img.style.width = S.W + 'px'; img.style.height = S.H + 'px'; cv.width = S.W; cv.height = S.H; cv.style.width = S.W + 'px'; cv.style.height = S.H + 'px'; dom.style.width = S.W + 'px'; dom.style.height = S.H + 'px'; S.s = 0; fitView(); paint(); };
-      world.dataset.loading = '1'; img.onload = () => { delete world.dataset.loading; ready(); }; img.onerror = () => { delete world.dataset.loading; }; img.src = p.src; if (img.complete && img.naturalWidth) { delete world.dataset.loading; ready(); }
+      const ready = () => { S.ok = 1; S.W = img.naturalWidth || 1086; S.H = img.naturalHeight || 1448; img.style.width = S.W + 'px'; img.style.height = S.H + 'px'; cv.width = S.W; cv.height = S.H; cv.style.width = S.W + 'px'; cv.style.height = S.H + 'px'; dom.style.width = S.W + 'px'; dom.style.height = S.H + 'px'; S.s = 0; fitView(); paint(); };
+      world.dataset.loading = '1'; img.onload = () => { delete world.dataset.loading; ready(); }; img.onerror = () => { delete world.dataset.loading; }; img.src = p.src; if (img.complete && img.naturalWidth) { delete world.dataset.loading; ready(); } for (const ms of [120, 400, 1200, 3000]) setTimeout(() => { if (S.i === idx0 && img.naturalWidth && (!S.ok || S.s <= 0 || img.style.width !== S.W + 'px')) { delete world.dataset.loading; ready(); } }, ms);
       renderText(); st.atlasLast = p.id; L.save(); updateBtns();
       if (!first) say(`${p.title}, ${S.i + 1} of ${list.length}`);
     }

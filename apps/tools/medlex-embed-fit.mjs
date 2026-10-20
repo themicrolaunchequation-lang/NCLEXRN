@@ -137,6 +137,16 @@ html.hca-embed .term-atlas-close{font-size:16px;min-height:44px}
 html.hca-embed .term-atlas-detail .term-cue img{width:300px;height:270px}
 html.hca-embed .term-atlas-detail .term-cue img[data-kind=diagram]{width:520px;height:325px}
 `);
+/* Word parts quests (they carry html[data-theme]): shown in the MedLex page itself at their full height, so the page scrolls once and there is no page inside a page.
+   The parent (apps/medlex/src/lib/quests.js) sizes the frame to the quest and sets --hca-vt / --hca-vh (the part of the frame on screen) so pop-ups and toasts stay in view. */
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
+html.hca-embed[data-theme]{overflow:hidden}
+html.hca-embed[data-theme] .ml-brand,html.hca-embed[data-theme] .ml-coursepath{display:none}
+html.hca-embed[data-theme] .ml-coursehead{justify-content:flex-end}
+html.hca-embed[data-theme] .overlay{position:absolute!important;inset:auto 0!important;top:var(--hca-vt,0)!important;height:var(--hca-vh,100vh)!important}
+html.hca-embed[data-theme] #toasts,html.hca-embed[data-theme] #toast{position:absolute!important;bottom:auto!important;top:calc(var(--hca-vt,0px) + var(--hca-vh,100vh) - 90px)!important}
+html.hca-embed[data-theme] #confetti{position:absolute!important;top:var(--hca-vt,0)!important;height:var(--hca-vh,100vh)!important}
+`);
 const OLD = "if(focused)scale=Math.min(scale,(innerHeight-172)/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=focused?";
 const NEW = "const emb=!focused&&document.documentElement.classList.contains('hca-embed'),wb=emb&&wrap.closest('.workbench');if(focused)scale=Math.min(scale,(innerHeight-172)/720);if(wb)scale=Math.min(scale,(innerHeight-(wb.scrollHeight-wrap.offsetHeight))/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=(focused||emb)?";
 // Reading view: a recall card became one run of text ("RECALL BEFORE REVEALCLICK TO REVEAL ..."); show its answer instead.

@@ -37,12 +37,24 @@
     mount(`<div class="wp-studio" ${tone(k)}><div class="wp-bar"><a class="wp-back" href="#wordparts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All word studios</a>
       <nav class="wp-switch" aria-label="Word studios">${KINDS.map(x => `<a href="#wordparts/${x}" class="wp-sw${x === k ? ' is-on' : ''}"${x === k ? ' aria-current="page"' : ''} ${tone(x)}>${esc(LN.quests[x][0])}</a>`).join('')}</nav></div>
       <h1 class="wp-h1" tabindex="-1">${esc(name)} studio</h1>
-      <iframe class="wp-frame" title="${esc(name)} studio" src="${url(k)}"></iframe></div>`, true);
-    const fr = $('.wp-frame'), fit = () => {
+      <iframe class="wp-frame" scrolling="no" title="${esc(name)} studio" src="${url(k)}"></iframe></div>`, true);
+    /* The quest is shown at its full height, so the page scrolls once. The frame is sized to the quest, and the part of it that is on screen is passed in so its pop-ups stay in view. */
+    const fr = $('.wp-frame'); let ro = null, tid = 0;
+    const doc = () => { try { return fr.contentDocument; } catch (e) { return null; } };
+    const fit = () => {
+      const d = doc(); if (!d || !d.documentElement) return;
+      const sy = d.defaultView.scrollY || 0; let content = 0;
+      for (const e of d.body.children) { if (/^(SCRIPT|STYLE|CANVAS)$/.test(e.tagName)) continue; const cs = d.defaultView.getComputedStyle(e); if (cs.position === 'fixed' || cs.position === 'absolute' || cs.display === 'none') continue; content = Math.max(content, e.getBoundingClientRect().bottom + sy + (parseFloat(cs.marginBottom) || 0)); }
+      const h = Math.max(520, Math.ceil(content) + 24); if (Math.abs(h - fr.offsetHeight) > 1) fr.style.height = h + 'px';
       const r = fr.getBoundingClientRect(), nav = $('.bottom-nav'), nb = nav && getComputedStyle(nav).position === 'fixed' && nav.offsetHeight ? nav.offsetHeight : 0;
-      fr.style.height = Math.max(420, innerHeight - r.top - nb - 14) + 'px';
+      const bar = (() => { const b = document.querySelector('.topbar, header.hs-top, .hs-topbar'); const c = b && getComputedStyle(b); return c && (c.position === 'sticky' || c.position === 'fixed') ? b.offsetHeight : 0; })();
+      const vt0 = Math.max(r.top, bar), top = vt0 - r.top, vis = Math.max(320, Math.min(innerHeight - nb, r.bottom) - vt0);
+      d.documentElement.style.setProperty('--hca-vt', Math.min(top, Math.max(0, h - vis)) + 'px'); d.documentElement.style.setProperty('--hca-vh', vis + 'px');
     };
-    fit(); requestAnimationFrame(fit); setTimeout(fit, 300); fr.addEventListener('load', fit); addEventListener('resize', fit); L.views.cleanup.push(() => removeEventListener('resize', fit));
+    const watch = () => { const d = doc(); if (!d || !d.body) return; if (ro) ro.disconnect(); ro = new ResizeObserver(fit); ro.observe(d.body); ro.observe(d.documentElement); fit(); };
+    fr.addEventListener('load', () => { watch(); clearInterval(tid); tid = setInterval(fit, 400); });
+    fit(); addEventListener('resize', fit); addEventListener('scroll', fit, true);
+    L.views.cleanup.push(() => { removeEventListener('resize', fit); removeEventListener('scroll', fit, true); clearInterval(tid); if (ro) ro.disconnect(); });
     if (window.MedlexFrame) window.MedlexFrame.wire(fr, { sibling: slug => { const n = KINDS.find(x => LN.quests[x][1] === slug); if (n) location.hash = '#wordparts/' + n; }, leave: () => { } });
   }
 
