@@ -290,7 +290,7 @@ dialog.pv::backdrop{background:#071320}
 .pv-note.is-edit{background-color:inherit;box-shadow:0 8px 18px rgba(0,0,0,.3),0 0 0 3px #3557D6}
 .pv-selbox{position:absolute;pointer-events:none;border:calc(2px*var(--k,1)) dashed #3557D6;box-shadow:0 0 0 calc(1px*var(--k,1)) #fff;border-radius:4px}
 .pv-zoom{position:absolute;right:14px;bottom:10px;z-index:2;padding:4px;border-radius:999px;background:rgba(11,26,43,.78);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px)}
-.pv-zoom .pv-ib{border:0;background:transparent;width:40px;height:40px}
+.pv-zoom .pv-ib{border:0;background:transparent;width:44px;height:44px}
 .pv-pct{min-width:58px;min-height:44px;border:0;border-radius:999px;background:transparent;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
 .pv-pct:hover{background:rgba(255,255,255,.14)}
 .pv-text-panel,.pv aside.pv-text{position:absolute;right:14px;top:64px;bottom:150px;width:min(380px,calc(100vw - 28px));overflow:auto;z-index:4;padding:18px 20px;border-radius:16px;background:#FBF8F1;color:#24313A;box-shadow:0 20px 60px rgba(0,0,0,.5);font-size:15px;line-height:1.5}
