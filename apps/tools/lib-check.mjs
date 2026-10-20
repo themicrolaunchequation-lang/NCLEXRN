@@ -54,7 +54,7 @@ const PAGES = ['library', 'library/lab?w=angioplasty', 'library/systems', 'libra
   const fit = await p.evaluate(() => { const i = document.querySelector('.pv-img').getBoundingClientRect(), w = document.querySelector('.pv-stage').getBoundingClientRect(); return i.left >= w.left - 1 && i.right <= w.right + 1 && i.top >= w.top - 1 && i.bottom <= w.bottom + 1; });
   ok('the whole infographic fits the pop-up', fit);
   ok('the text of the guide (with its recall question) is offered', await p.evaluate(() => { document.querySelector('[data-pv=text]').click(); return !!document.querySelector('.pv-text details'); }));
-  await p.click('[data-pv=zin]'); await p.waitForTimeout(200); ok('zoom in works', await p.evaluate(() => parseInt(document.querySelector('.pv-pct').textContent) > 100));
+  { const w0 = await p.evaluate(() => document.querySelector('.pv-img').getBoundingClientRect().width); await p.click('[data-pv=zin]'); await p.waitForTimeout(200); ok('zoom in works (label is the real zoom, Fit when fitted)', await p.evaluate(w0 => document.querySelector('.pv-img').getBoundingClientRect().width > w0 * 1.1 && /^\d+%$/.test(document.querySelector('.pv-pct').textContent), w0)); }
   await p.keyboard.press('Escape'); await p.waitForTimeout(500); ok('Esc closes the pop-up back to the shelf', await p.evaluate(() => !document.querySelector('dialog.pv') && !!document.querySelector('.fb-book')));
   /* practice: complete every mode */
   await go(p, 'practice'); ok('practice offers eight modes', (await p.evaluate(() => document.querySelectorAll('.lx-mode').length)) === 8);

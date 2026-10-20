@@ -85,7 +85,7 @@
   }
   function tick() {
     const s = (performance.now() - R.t0) / 1000, t = $('#px-time'), bar = $('#px-prog');
-    if (t) t.textContent = fmt(s) + ' / ' + fmt(MAX); if (bar) bar.style.transform = `scaleX(${Math.min(1, s / MAX)})`;
+    if (t) t.textContent = fmt(s) + ' / ' + fmt(MAX); if (bar) bar.style.setProperty('transform', `scaleX(${Math.min(1, s / MAX)})`, 'important');
     const sr = $('#px-sr'); if (sr && Math.floor(s) !== R.lastSec) { R.lastSec = Math.floor(s); if (R.lastSec && R.lastSec % 3 === 0) sr.textContent = `Recording, ${R.lastSec} seconds`; }
     if (s >= MAX) stopRecording();
   }

@@ -28,7 +28,8 @@
   };
   /* ---------- flip book ---------- */
   const INK = 'medlex.atlas.ink.v1';
-  const inked = () => { try { return JSON.parse(localStorage.getItem(INK) || '{}') || {}; } catch { return {}; } };
+  const inked = () => { try { const o = JSON.parse(localStorage.getItem(INK) || '{}'); return o && typeof o === 'object' && !Array.isArray(o) ? o : {}; } catch { return {}; } };
+  const hasInk = id => { const a = inked()[id]; return Array.isArray(a) && a.length > 0; };
   const svg = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`;
   const I = { prev: svg('M15 5l-7 7 7 7'), next: svg('M9 5l7 7-7 7'), grid: svg('M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'), pen: svg('M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z') };
   const FB = { i: Math.max(0, order.findIndex(p => p.id === st.atlasLast)), single: false, busy: false, list: order };
@@ -36,7 +37,7 @@
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.hsMotion === 'off';
   const pageHTML = (p, n, side) => {
     if (!p) return `<div class="fb-pg fb-pg-${side} fb-blank"><div class="fb-end"><b>${side === 'l' ? 'The Visual Atlas' : 'End of the atlas'}</b><span>${side === 'l' ? 'Turn the page to begin.' : 'Use Contents to jump to any guide.'}</span></div></div>`;
-    const has = (inked()[p.id] || []).length > 0;
+    const has = hasInk(p.id);
     return `<figure class="fb-pg fb-pg-${side}"><div class="fb-art"><img src="${p.src}" alt="${esc(p.title)}. ${esc(p.outcome)}" draggable="false" decoding="async"></div><figcaption><span class="fb-cap"><span class="fb-cat">${esc(p.cat)}${has ? `<i class="fb-mark" title="You have marked up this page">${I.pen}Marked up</i>` : ''}</span><b>${esc(p.title)}</b></span><span class="fb-n">${n}</span><button type="button" class="fb-enl" data-lx="atlasopen" data-id="${p.id}" aria-label="Enlarge and mark up: ${esc(p.title)}">${ic('expand')}<span>Enlarge</span></button></figcaption></figure>`;
   };
   const step = () => FB.single ? 1 : 2;
@@ -58,7 +59,7 @@
     FB.i = clampI(FB.i); const pg = $('#fb-pages'); fill(pg, FB.i); ctl();
   }
   function turn(to) {
-    to = clampI(to); if (FB.busy || to === FB.i || !FB.list.length) return;
+    to = clampI(to); if (FB.busy) { FB.queued = to; return; } if (to === FB.i || !FB.list.length) return;
     const pg = $('#fb-pages'), from = FB.i, fwd = to > from;
     if (reduced() || FB.single) { FB.i = to; fill(pg, to); ctl(); if (FB.single) { pg.classList.remove('fb-fade'); void pg.offsetWidth; if (!reduced()) pg.classList.add('fb-fade'); } return; }
     FB.busy = true;
@@ -70,7 +71,7 @@
     if (fwd) { front.innerHTML = pageHTML(or, from + 2, 'r'); back.innerHTML = pageHTML(nl, to + 1, 'l'); tmp.innerHTML = pageHTML(nr, to + 2, 'r'); oldPgs[1].replaceWith(tmp.firstElementChild); }
     else { front.innerHTML = pageHTML(ol, from + 1, 'l'); back.innerHTML = pageHTML(nr, to + 2, 'r'); tmp.innerHTML = pageHTML(nl, to + 1, 'l'); oldPgs[0].replaceWith(tmp.firstElementChild); }
     leaf.append(front, back); pg.append(leaf);
-    const done = () => { if (!FB.busy) return; FB.busy = false; FB.i = to; fill(pg, to); ctl(); };
+    const done = () => { if (!FB.busy) return; FB.busy = false; FB.i = to; fill(pg, to); ctl(); const q = FB.queued; FB.queued = null; if (q != null && q !== FB.i) turn(q); };
     leaf.addEventListener('animationend', done); setTimeout(done, 900);
     FB.i = to; { const pos = $('#fb-pos'); if (pos) pos.textContent = counter(); }
   }
@@ -88,8 +89,8 @@
   }
   function toc() {
     const dlg = document.createElement('dialog'); dlg.className = 'fb-toc'; dlg.setAttribute('aria-label', 'Contents of the Visual Atlas');
-    const mk = inked(), cur = (FB.list[FB.i] || {}).id;
-    dlg.innerHTML = `<div class="fb-toc-h"><h2>Contents</h2><button type="button" class="btn" data-fbt="x">Close</button></div><div class="fb-toc-b">${FB.list.map((p, k) => ({ p, k })).reduce((h, { p, k }, j, arr) => (j && arr[j - 1].p.cat === p.cat ? h : h + `${j ? '</div>' : ''}<h3>${esc(p.cat)}</h3><div class="fb-toc-g">`) + `<button type="button" class="fb-th" data-fbt="go" data-k="${k}"${p.id === cur ? ' aria-current="true"' : ''}><img src="${p.thumb}" alt="" loading="lazy" width="340" height="453"><span><i>${k + 1}</i> ${esc(p.title)}${(mk[p.id] || []).length ? ' <em class="fb-dot" title="Marked up">' + I.pen + '<span class="sr-only">Marked up</span></em>' : ''}</span></button>`, '') + '</div>'}</div>`;
+    const mk = inked(), hasInkIn = (o, id) => Array.isArray(o[id]) && o[id].length > 0, cur = (FB.list[FB.i] || {}).id;
+    dlg.innerHTML = `<div class="fb-toc-h"><h2>Contents</h2><button type="button" class="btn" data-fbt="x">Close</button></div><div class="fb-toc-b">${FB.list.map((p, k) => ({ p, k })).reduce((h, { p, k }, j, arr) => (j && arr[j - 1].p.cat === p.cat ? h : h + `${j ? '</div>' : ''}<h3>${esc(p.cat)}</h3><div class="fb-toc-g">`) + `<button type="button" class="fb-th" data-fbt="go" data-k="${k}"${p.id === cur ? ' aria-current="true"' : ''}><img src="${p.thumb}" alt="" loading="lazy" width="340" height="453"><span><i>${k + 1}</i> ${esc(p.title)}${hasInkIn(mk, p.id) ? ' <em class="fb-dot" title="Marked up">' + I.pen + '<span class="sr-only">Marked up</span></em>' : ''}</span></button>`, '') + '</div>'}</div>`;
     document.body.appendChild(dlg);
     const shut = () => { try { dlg.close(); } catch { } dlg.remove(); const b = $('[data-lx=fbtoc]'); b && b.focus(); };
     dlg.addEventListener('click', e => { const t = e.target.closest('[data-fbt]'); if (e.target === dlg) return shut(); if (!t) return; if (t.dataset.fbt === 'x') return shut(); FB.i = clampI(+t.dataset.k); render(); shut(); });
@@ -105,6 +106,7 @@
       <div class="fb-nav"><button type="button" class="btn fb-pb" data-lx="fbprev" aria-label="Previous page">${I.prev}<span>Previous</span></button><span class="fb-pos" id="fb-pos" role="status" aria-live="polite"></span><button type="button" class="btn fb-pb" data-lx="fbnext" aria-label="Next page"><span>Next</span>${I.next}</button></div></div>`);
     AS.q = AS.q || ''; FB.list = order.filter(match); const k = FB.list.findIndex(p => p.id === st.atlasLast); FB.i = Math.max(0, k);
     size(); applyFilter(); size(); requestAnimationFrame(size);
+    if (FB.ro) FB.ro.disconnect(); FB.ro = new ResizeObserver(() => { if ($('.fb')) size(); }); FB.ro.observe(document.body); FB.ro.observe($('.fb-bar'));
     const stage = $('#fb-stage'); let sx = null, sy = 0;
     stage.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; sx = e.clientX; sy = e.clientY; });
     stage.addEventListener('pointerup', e => { if (sx == null) return; const dx = e.clientX - sx, dy = e.clientY - sy; sx = null; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) turn(FB.i + (dx < 0 ? step() : -step())); });
@@ -120,7 +122,8 @@
   document.addEventListener('keydown', e => {
     if (!$('.fb') || !location.hash.startsWith('#infographics') || document.querySelector('dialog[open]') || e.ctrlKey || e.metaKey || e.altKey) return;
     const t = e.target, tag = t && t.tagName; if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); turn(FB.i + step()); } else if (e.key === 'ArrowLeft') { e.preventDefault(); turn(FB.i - step()); }
+    const k = e.key, base = FB.busy && FB.queued != null ? FB.queued : FB.i;
+    if (k === 'ArrowRight' || k === 'PageDown') { e.preventDefault(); turn(base + step()); } else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); turn(base - step()); } else if (k === 'Home') { e.preventDefault(); turn(0); } else if (k === 'End') { e.preventDefault(); turn(FB.list.length - 1); }
   });
   L.on('atlas', (path, params) => {
     const t0 = params && params.get && params.get('topic'); if (t0 && order.some(p => p.id === t0)) { st.atlasLast = t0; }
