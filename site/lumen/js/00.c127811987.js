@@ -1,3 +1,4 @@
+if(typeof Promise.try!=='function'){Object.defineProperty(Promise,'try',{configurable:true,writable:true,value:function(f){var a=Array.prototype.slice.call(arguments,1);return new Promise(function(r){r(f.apply(void 0,a));});}});}
 (function(){
  const V={"lib":"/lumen/vendor/ocr/tesseract.000c27d9cd.js","worker":"/lumen/vendor/ocr/worker.4bc644d9a9.js","langDir":"/lumen/vendor/ocr/45b4cb3467"};let ready=null;
  const load=()=>ready??=new Promise((ok,bad)=>{if(window.Tesseract)return ok();const s=document.createElement('script');s.src=V.lib;s.onload=ok;s.onerror=()=>{ready=null;s.remove();bad(Error('The OCR engine could not load. Check your connection and try again.'))};document.head.appendChild(s)});

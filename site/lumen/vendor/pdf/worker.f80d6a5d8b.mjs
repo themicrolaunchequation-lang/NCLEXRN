@@ -1,3 +1,4 @@
+if(typeof Promise.try!=='function'){Object.defineProperty(Promise,'try',{configurable:true,writable:true,value:function(f){var a=Array.prototype.slice.call(arguments,1);return new Promise(function(r){r(f.apply(void 0,a));});}});}
 /* Legacy PDF compatibility bootstrap; upstream modules unchanged, wrapped for scope. */
 /*
 core-js compatibility modules, version 3.48.0 (bundled with pdfjs-dist 5.6.205 legacy build)

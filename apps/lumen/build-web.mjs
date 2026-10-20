@@ -93,7 +93,7 @@ const pptxUrl = put(`vendor/pptx/pptxgen.${hash(pptx)}.js`, pptx);
   const worker = evalLiteral(block.slice(4, m1 + 1));
   const data = evalLiteral(block.slice(m1 + 5, m2 + 1));
   const compat = evalLiteral(block.slice(m2 + 5, block.length - tail.length + 1));
-  const workerCode = compat + worker;
+  const workerCode = "if(typeof Promise.try!=='function'){Object.defineProperty(Promise,'try',{configurable:true,writable:true,value:function(f){var a=Array.prototype.slice.call(arguments,1);return new Promise(function(r){r(f.apply(void 0,a));});}});}\n" + compat + worker;
   const workerUrl = put(`vendor/pdf/worker.${hash(workerCode)}.mjs`, workerCode);
   const dataDir = `vendor/pdf/${hash(JSON.stringify(data))}`;
   let files = 0;
@@ -175,9 +175,13 @@ mod = replaceOnce(mod, "icon:`fullscreen-exit-line`,onClick:()=>{s(!1),document.
 html = html.replace(modMatch[1], () => mod);
 
 /* ---------- Executable inline scripts -> hashed files ---------- */
+// Older browsers (before Chrome 128 / Safari 18.2) have no Promise.try, which the PDF reader's messaging uses on the page and in its worker:
+// without it, adding a PDF stays on "Opening…" forever. The shim loads first (page) and is prepended to the worker.
+const PROMISE_TRY = "if(typeof Promise.try!=='function'){Object.defineProperty(Promise,'try',{configurable:true,writable:true,value:function(f){var a=Array.prototype.slice.call(arguments,1);return new Promise(function(r){r(f.apply(void 0,a));});}});}\n";
 let n = 0;
 const shell = [];
 html = html.replace(/<script(\s+type="module")?>([\s\S]*?)<\/script>/g, (_, isMod, code) => {
+  if (n === 0) code = PROMISE_TRY + code;
   const name = `js/${String(n++).padStart(2, '0')}.${hash(code)}.js`;
   shell.push(put(name, code));
   return `<script${isMod ? ' type="module"' : ''} src="${BASE}${name}"></script>`;
