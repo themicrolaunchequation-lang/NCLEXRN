@@ -249,7 +249,7 @@
 
     /* ---------- poster loading ---------- */
     function open(i, first) {
-      if (S.edit) endEdit(); persist(); S.i = clamp(i, 0, list.length - 1); const p = poster();
+      if (!first) { if (S.edit) endEdit(); persist(); } S.i = clamp(i, 0, list.length - 1); const p = poster();
       $('.pv-cat').textContent = p.cat; $('.pv-name').textContent = p.title; $('.pv-pos').textContent = `${S.i + 1} of ${list.length}`; dlg.setAttribute('aria-label', `${p.title}. Illustrated guide viewer`);
       $('[data-pv=prev]').disabled = S.i === 0; $('[data-pv=next]').disabled = S.i === list.length - 1;
       img.alt = `${p.title}. ${p.outcome}`; S.items = (load()[p.id] || []); S.undo = []; S.redo = []; S.sel = null;
