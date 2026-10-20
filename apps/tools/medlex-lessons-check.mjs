@@ -21,7 +21,7 @@ const axeOn = async (p, sel) => { await p.evaluate(AXE); return p.evaluate(async
   console.log('--- all lessons load (1440)'); const ctx = await br.newContext({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true });
   const files = [...decks.map(d => d.file.replace(/\.html$/, '')), 'quest-prefixes', 'quest-roots', 'quest-suffixes'];
   for (const f of files) {
-    const p = await ctx.newPage(), errs = []; p.on('console', m => { if (m.type() === 'error') errs.push(m.text().slice(0, 140)); }); p.on('pageerror', e => errs.push('PAGEERROR ' + String(e).slice(0, 140)));
+    const p = await ctx.newPage(), errs = []; p.on('response', r => { if (r.status() >= 400) errs.push('HTTP ' + r.status() + ' ' + r.url().slice(-70)); }); p.on('console', m => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errs.push(m.text().slice(0, 140)); }); p.on('pageerror', e => errs.push('PAGEERROR ' + String(e).slice(0, 140)));
     await p.goto(`${H}medlex/learn/${f}.html`, { waitUntil: 'load' }); await p.waitForTimeout(900);
     await p.evaluate(() => document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager')); await p.waitForTimeout(600);
     const r = await p.evaluate(() => ({ imgs: document.images.length, broken: [...document.images].filter(i => i.complete && !i.naturalWidth && i.src).length, slides: document.querySelectorAll('section.slide,.slide').length, h1: document.querySelectorAll('h1').length, links: [...document.querySelectorAll('a[href]')].filter(a => /chatgpt\.site/.test(a.href)).length, title: document.title.slice(0, 40) }));
