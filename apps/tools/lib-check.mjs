@@ -51,12 +51,11 @@ const PAGES = ['library', 'library/lab?w=angioplasty', 'library/systems', 'libra
   await go(p, 'infographics'); ok('atlas shelf lists 24 first of 56', await p.evaluate(() => document.querySelectorAll('.lx-atl').length === 24 && /56 of 56/.test(document.querySelector('.lx-count').textContent)));
   await p.click('[data-lx=acat][data-c="Memory cues"]'); await p.waitForTimeout(300); ok('category filter works', (await p.evaluate(() => document.querySelectorAll('.lx-atl').length)) === 8);
   await p.click('.lx-atl >> nth=2'); await p.waitForTimeout(1800);
-  const fit = await p.evaluate(() => { const i = document.querySelector('[data-pimg]').getBoundingClientRect(), w = document.querySelector('[data-pwin]').getBoundingClientRect(); return i.left >= w.left - 1 && i.right <= w.right + 1 && i.top >= w.top - 1 && i.bottom <= w.bottom + 1; });
-  ok('the whole infographic fits its pane', fit);
-  ok('recall question is offered', await p.evaluate(() => !!document.querySelector('.hst-recall')));
-  await p.click('[data-act=venlarge]'); await p.waitForTimeout(700); ok('Enlarge opens the full viewer', await p.evaluate(() => !!document.querySelector('.hst-lb img')));
-  await p.click('[data-act=lbin]'); await p.click('[data-act=lbfit]'); await p.keyboard.press('Escape'); await p.waitForTimeout(300); ok('Esc closes the enlarged view but not the atlas', await p.evaluate(() => !document.querySelector('.hst-lb') && !!document.querySelector('.hst')));
-  await p.keyboard.press('Escape'); await p.keyboard.press('Escape'); await p.waitForTimeout(500); ok('atlas closes back to the shelf', await p.evaluate(() => !document.querySelector('.hst') && !!document.querySelector('.lx-atlgrid')));
+  const fit = await p.evaluate(() => { const i = document.querySelector('.pv-img').getBoundingClientRect(), w = document.querySelector('.pv-stage').getBoundingClientRect(); return i.left >= w.left - 1 && i.right <= w.right + 1 && i.top >= w.top - 1 && i.bottom <= w.bottom + 1; });
+  ok('the whole infographic fits the pop-up', fit);
+  ok('the text of the guide (with its recall question) is offered', await p.evaluate(() => { document.querySelector('[data-pv=text]').click(); return !!document.querySelector('.pv-text details'); }));
+  await p.click('[data-pv=zin]'); await p.waitForTimeout(200); ok('zoom in works', await p.evaluate(() => parseInt(document.querySelector('.pv-pct').textContent) > 100));
+  await p.keyboard.press('Escape'); await p.waitForTimeout(500); ok('Esc closes the pop-up back to the shelf', await p.evaluate(() => !document.querySelector('dialog.pv') && !!document.querySelector('.lx-atlgrid')));
   /* practice: complete every mode */
   await go(p, 'practice'); ok('practice offers eight modes', (await p.evaluate(() => document.querySelectorAll('.lx-mode').length)) === 8);
   for (const mode of ['decode', 'explain', 'look', 'notes', 'coding', 'build', 'match', 'daily', 'review']) {
