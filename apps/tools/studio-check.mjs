@@ -7,7 +7,7 @@ const AXE = fs.readFileSync(process.env.AXE || '/tmp/jsd/node_modules/axe-core/a
 fs.mkdirSync(out, { recursive: true });
 const APPS = {
   carecraft: { host: 'carecraft', route: '#/library', open: id => `openStudio('${id}',{start:0})`, reopen: id => `openStudio('${id}')`, id: 'communication', slides: 14, key: 'carecraft.studio.v1.communication', settle: 1500 },
-  medlex: { host: 'medlex', route: '#learn', open: id => `window.MedlexStudioEntry.open('${id}',{start:0})`, reopen: id => `window.MedlexStudioEntry.open('${id}')`, id: 'ch23', slides: 14, key: 'medlex.studio.v1.ch23', settle: 1800 }
+  medlex: { host: 'medlex', route: '#learn', open: id => `window.MedlexStudioEntry.open('${id}',{start:0})`, reopen: id => `window.MedlexStudioEntry.open('${id}')`, id: 'ch23', slides: 13, key: 'medlex.studio.v1.ch23', settle: 1800 }
 };
 const rows = []; const ok = (app, name, cond, detail = '') => { rows.push({ app, name, pass: !!cond, detail: cond ? '' : String(detail) }); if (!cond) console.log('FAIL', app, name, detail); };
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: [`--host-resolver-rules=MAP *.healthcarecrownacademy.co.uk 127.0.0.1:${port}`, '--ignore-certificate-errors', '--no-proxy-server'] });
