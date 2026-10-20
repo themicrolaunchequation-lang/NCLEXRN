@@ -244,9 +244,9 @@ function renderGrid(){const list=filtered();const g=$("grid");g.classList.toggle
  $("resultsTxt").innerHTML=list.length?`Showing <b>${list.length}</b> of 100 suffixes${activeCat!=="Everything"?` in <b>${CAT_ICON[activeCat]} ${activeCat}</b>`:""}${favOnly?" (bookmarked)":""} — click a card to open its pop-up!`:"";
  if(!list.length){g.innerHTML=`<div class="empty">🔍 No suffixes match that search.<br><button class="btn" style="margin-top:14px" data-oc="clearFilters()">✖ Clear search &amp; filters</button></div>`;return}
  g.innerHTML=list.map((i,ord)=>{const d=DATA[i];const m=inSet(S.mastered,i),seen=inSet(S.viewed,i),fv=inSet(S.fav,i);
-  return `<article class="scard" data-i="${i}" style="--c:${CAT_COLOR[d[3]]};animation-delay:${Math.min(ord*22,650)}ms" tabindex="0" role="button" aria-label="Open ${d[0]} details">
+  return `<article class="scard" data-i="${i}" style="--c:${CAT_COLOR[d[3]]};animation-delay:${Math.min(ord*22,650)}ms" role="group" aria-label="${d[0]} suffix">
    <div class="top"><span class="emoji-bub">${d[4]}</span><span class="flags">${m?'<span class="flag master">★ MASTERED</span>':seen?'<span class="flag seen">👀 SEEN</span>':""}</span></div>
-   <div class="suf">${d[0]}</div>
+   <div class="suf"><button type="button" class="open-hit" aria-label="Open ${d[0]} details">${d[0]}</button></div>
    <span class="cat-chip">${CAT_ICON[d[3]]} ${d[3]}</span>
    <div class="meaning hideable">${esc(d[1])}</div>
    <div class="example hideable">e.g. <b>${esc(d[2])}</b></div>
@@ -264,7 +264,7 @@ $("grid").addEventListener("click",e=>{const b=e.target.closest("[data-act]");co
   else if(b.dataset.act==="fav")toggleFav(i);
   else openModal(i);return}
  if(seek)openModal(+seek.dataset.i)});
-$("grid").addEventListener("keydown",e=>{const seek=e.target.closest(".scard");if(seek&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openModal(+seek.dataset.i)}});
+$("grid").addEventListener("keydown",e=>{const seek=e.target.closest(".scard");if(seek&&seek===e.target&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openModal(+seek.dataset.i)}});
 $("pills").addEventListener("click",e=>{const p=e.target.closest("[data-cat]");if(!p)return;activeCat=p.dataset.cat;renderPills();renderGrid();resetFlash()});
 $("search").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();renderGrid();resetFlash()});
 $("sortSel").onchange=e=>{sortMode=e.target.value;if(sortMode==="shuffle")shuffleOrder=shuffle(DATA.map((_,i)=>i));renderGrid();resetFlash()};

@@ -160,7 +160,7 @@ function renderGrid(){
   $("emptyState").style.display=list.length?"none":"block";
   $("grid").innerHTML=list.map((d,i)=>{
     const c=CATS[d.cat],mas=state.mastered.has(d.id),st=state.stars.has(d.id);
-    return `<article class="card ${mas?"mastered":""}" tabindex="0" role="button" aria-label="Open root ${d.r}, meaning ${d.m}" data-id="${d.id}" data-icon="${d.icon}" style="--h:${c.h};--d:${Math.min(i,20)*35}ms">
+    return `<article class="card ${mas?"mastered":""}" role="group" aria-label="Root ${d.r}, meaning ${d.m}" data-id="${d.id}" data-icon="${d.icon}" style="--h:${c.h};--d:${Math.min(i,20)*35}ms">
     ${mas?'<div class="stamp">✓ MASTERED</div>':""}
     <div class="cardTop"><span class="catTag">${c.e} ${c.s}</span>
     <span class="cardActs"><button class="miniAct" data-card-speak="${d.id}" title="Listen" aria-label="Listen to ${d.r}">🔊</button><button class="miniAct ${st?"starred":""}" data-card-star="${d.id}" title="Star" aria-label="Star ${d.r}">${st?"⭐":"☆"}</button></span></div>
@@ -169,7 +169,7 @@ function renderGrid(){
     <div class="meaning">= ${d.m}</div>
     <div class="hookTease">🧠 “${d.hook}”</div>
     <span class="exChip">🔬 as in <b>${d.ex}</b></span>
-    <div class="tapHint">👆 TAP FOR PICTURE + HOOK + GAME</div></article>`}).join("");
+    <button type="button" class="tapHint" aria-label="Open root ${d.r}: picture, memory hook and game">👆 TAP FOR PICTURE + HOOK + GAME</button></article>`}).join("");
   attachTilt();
 }
 function attachTilt(){
@@ -261,7 +261,7 @@ $("grid").addEventListener("click",e=>{
   const st=e.target.closest("[data-card-star]");if(st){toggleStar(+st.dataset.cardStar);return}
   const card=e.target.closest(".card");if(card)openDetail(+card.dataset.id);
 });
-$("grid").addEventListener("keydown",e=>{const card=e.target.closest(".card");if(card&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openDetail(+card.dataset.id)}});
+$("grid").addEventListener("keydown",e=>{const card=e.target.closest(".card");if(card&&card===e.target&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openDetail(+card.dataset.id)}});
 /* toolbar events */
 $("catPills").addEventListener("click",e=>{const p=e.target.closest("[data-cat]");if(!p)return;filterCat=p.dataset.cat;sfx.click();renderCats();renderGrid()});
 $("searchInput").addEventListener("input",renderGrid);

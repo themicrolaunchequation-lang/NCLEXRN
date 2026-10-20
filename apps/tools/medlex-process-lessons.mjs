@@ -17,6 +17,30 @@ for (const d of ['shared/img', 'shared/js', 'credits']) fs.mkdirSync(path.join(O
 const EXT = { 'image/webp': 'webp', 'image/png': 'png', 'image/jpeg': 'jpg', 'image/jpg': 'jpg', 'image/gif': 'gif', 'image/svg+xml': 'svg' };
 const stats = { files: 0, img: 0, imgUnique: new Set(), js: new Set(), handlers: 0, links: 0, bytesIn: 0, bytesOut: 0 };
 
+/* Accessibility and link fixes for the quests: each [from, to, expectedCount] must match exactly, or the build stops. */
+const QUEST_PATCHES = [
+  // the quests' own Prefixes / Roots / Suffixes navigation used the original file names
+  ['medical-prefix-quest.html', 'quest-prefixes.html', 3], ['Medical-Roots-60-Interactive.html', 'quest-roots.html', 3], ['suffix-quest-100-medical-suffixes.html', 'quest-suffixes.html', 3],
+  // Roots and Suffixes cards held buttons inside a clickable card: the card becomes a group and opening is a real button
+  ['tabindex="0" role="button" aria-label="Open root ${d.r}, meaning ${d.m}"', 'role="group" aria-label="Root ${d.r}, meaning ${d.m}"', 1],
+  ['<div class="tapHint">\u{1F446} TAP FOR PICTURE + HOOK + GAME</div>', '<button type="button" class="tapHint" aria-label="Open root ${d.r}: picture, memory hook and game">\u{1F446} TAP FOR PICTURE + HOOK + GAME</button>', 1],
+  ['if(card&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openDetail(+card.dataset.id)}', 'if(card&&card===e.target&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openDetail(+card.dataset.id)}', 1],
+  ['tabindex="0" role="button" aria-label="Open ${d[0]} details"', 'role="group" aria-label="${d[0]} suffix"', 1],
+  ['<div class="suf">${d[0]}</div>', '<div class="suf"><button type="button" class="open-hit" aria-label="Open ${d[0]} details">${d[0]}</button></div>', 1],
+  ['if(seek&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openModal(+seek.dataset.i)}', 'if(seek&&seek===e.target&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openModal(+seek.dataset.i)}', 1],
+  // a scrolling shelf must be reachable by keyboard
+  ['id="badgeShelf"', 'id="badgeShelf" tabindex="0" role="region" aria-label="Badges you can earn"', 1]
+];
+function patchQuest(t, name) {
+  for (const [from, to, n] of QUEST_PATCHES) {
+    const count = t.split(from).length - 1;
+    if (count === 0) continue;                       // not every patch applies to every quest
+    if (count !== n && !/^(medical-prefix|Medical-Roots|suffix-quest)/.test(from)) throw new Error(`${name}: "${from.slice(0, 40)}" matched ${count}, expected ${n}`);
+    t = t.split(from).join(to);
+  }
+  return t;
+}
+
 function process_(file, outName, { quest = false } = {}) {
   let t = fs.readFileSync(file, 'utf8'); stats.bytesIn += t.length;
   /* 1. images */
@@ -25,6 +49,7 @@ function process_(file, outName, { quest = false } = {}) {
     const buf = Buffer.from(b64, 'base64'), name = md5(buf) + '.' + ext, p = path.join(OUT, 'shared/img', name);
     if (!fs.existsSync(p)) fs.writeFileSync(p, buf); stats.img++; stats.imgUnique.add(name); return 'shared/img/' + name;
   });
+  if (quest) t = patchQuest(t, outName);
   /* 2. inline handlers (only the quests have them; some sit inside script text, so this runs before scripts move out) */
   const hn = (t.match(/ onclick="/g) || []).length;
   if (hn) { t = t.replace(/ onclick="/g, ' data-oc="'); stats.handlers += hn; t = t.replace('</body>', '<script src="shared/js/oc.js"></script>\n</body>'); }
@@ -41,7 +66,7 @@ function process_(file, outName, { quest = false } = {}) {
   t = t.replace(/https:\/\/medlex-design-studio\.bouncyfield17\.chatgpt\.site\/(?:batch\d\/)?/g, () => { stats.links++; return '/#learn'; });
   if (SITE.test(t)) throw new Error('unreplaced preview link in ' + file);
   /* 5. not a page for search engines to list on its own */
-  t = t.replace('<head>', '<head>\n<meta name="robots" content="noindex">');
+  t = t.replace('<head>', '<head>\n<meta name="robots" content="noindex">'); t = t.replace('</head>', '<link rel="stylesheet" href="shared/a11y.css">\n</head>');
   fs.writeFileSync(path.join(OUT, outName), t); stats.files++; stats.bytesOut += t.length;
 }
 
@@ -81,6 +106,26 @@ fs.writeFileSync(path.join(OUT, 'shared/js/oc.js'), `/* Runs data-oc="fn(args)" 
     try { run(parse(el.getAttribute('data-oc')), { el, ev }); } catch (e) { console.warn('data-oc', e.message); }
   });
 })();
+`);
+fs.writeFileSync(path.join(OUT, 'shared/a11y.css'), `/* Accessibility layer over the supplied lessons (WCAG AA). It only darkens (day) or lightens (night) the lessons' own colours, and gives the quest cards real buttons. */
+/* decks: small muted text and the Illustrated terms link */
+.viewer-sub{opacity:1;color:color-mix(in srgb,var(--muted,#566) 58%,#000)}
+.term-atlas-open{color:color-mix(in srgb,var(--accent,#555) 58%,#000)}
+.term-atlas-open small{color:color-mix(in srgb,var(--muted,#566) 58%,#000)}
+html[data-mode=night] .viewer-sub{color:color-mix(in srgb,var(--muted,#aab) 62%,#fff)}
+html[data-mode=night] .term-atlas-open{color:color-mix(in srgb,var(--accent,#aab) 60%,#fff)}
+html[data-mode=night] .term-atlas-open small{color:color-mix(in srgb,var(--muted,#aab) 62%,#fff)}
+/* quests: course path numbers, chip counts, badges you have not earned yet */
+.ml-coursepath a span{opacity:1;color:#4f5d6b}
+html[data-theme=dark] .ml-coursepath a span{color:#b4c0cd}
+.chip .n,.pill .n{opacity:1}
+.badge:not(.on){opacity:1;filter:grayscale(1);background:transparent;border-style:dashed}
+.badge:not(.on) .bn,.badge:not(.on) .bd{color:var(--mut,#5b6877)}
+/* quests: opening a card is a real button now */
+.open-hit,button.tapHint{background:none;border:0;margin:0;color:inherit;text-align:inherit;cursor:pointer;font-family:inherit}
+.open-hit{padding:0;font:inherit;letter-spacing:inherit}
+button.tapHint{display:block;width:100%;padding-left:0;padding-right:0;color:hsl(var(--h) 95% 78%)}
+.open-hit:focus-visible,button.tapHint:focus-visible{outline:3px solid currentColor;outline-offset:3px;border-radius:6px}
 `);
 fs.writeFileSync(path.join(OUT, 'decks.json'), JSON.stringify(decks, null, 1));
 console.log(JSON.stringify({ files: stats.files, imagesReferenced: stats.img, imagesUnique: stats.imgUnique.size, scripts: stats.js.size, handlers: stats.handlers, linksRewritten: stats.links, MBin: +(stats.bytesIn / 1e6).toFixed(1), MBout: +(stats.bytesOut / 1e6).toFixed(1) }));

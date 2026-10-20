@@ -1,0 +1,19 @@
+/* Accessibility layer over the supplied lessons (WCAG AA). It only darkens (day) or lightens (night) the lessons' own colours, and gives the quest cards real buttons. */
+/* decks: small muted text and the Illustrated terms link */
+.viewer-sub{opacity:1;color:color-mix(in srgb,var(--muted,#566) 58%,#000)}
+.term-atlas-open{color:color-mix(in srgb,var(--accent,#555) 58%,#000)}
+.term-atlas-open small{color:color-mix(in srgb,var(--muted,#566) 58%,#000)}
+html[data-mode=night] .viewer-sub{color:color-mix(in srgb,var(--muted,#aab) 62%,#fff)}
+html[data-mode=night] .term-atlas-open{color:color-mix(in srgb,var(--accent,#aab) 60%,#fff)}
+html[data-mode=night] .term-atlas-open small{color:color-mix(in srgb,var(--muted,#aab) 62%,#fff)}
+/* quests: course path numbers, chip counts, badges you have not earned yet */
+.ml-coursepath a span{opacity:1;color:#4f5d6b}
+html[data-theme=dark] .ml-coursepath a span{color:#b4c0cd}
+.chip .n,.pill .n{opacity:1}
+.badge:not(.on){opacity:1;filter:grayscale(1);background:transparent;border-style:dashed}
+.badge:not(.on) .bn,.badge:not(.on) .bd{color:var(--mut,#5b6877)}
+/* quests: opening a card is a real button now */
+.open-hit,button.tapHint{background:none;border:0;margin:0;color:inherit;text-align:inherit;cursor:pointer;font-family:inherit}
+.open-hit{padding:0;font:inherit;letter-spacing:inherit}
+button.tapHint{display:block;width:100%;padding-left:0;padding-right:0;color:hsl(var(--h) 95% 78%)}
+.open-hit:focus-visible,button.tapHint:focus-visible{outline:3px solid currentColor;outline-offset:3px;border-radius:6px}

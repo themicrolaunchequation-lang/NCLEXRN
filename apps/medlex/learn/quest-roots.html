@@ -467,9 +467,10 @@ body{--pink:var(--ml-accent);--cyan:var(--ml-accent);--violet:var(--ml-accent);-
  .ml-foundation .ml-plus{display:none}
 }
 </style>
+<link rel="stylesheet" href="shared/a11y.css">
 </head>
 <body class="ml-root">
-<header class="ml-coursehead"><div class="ml-brand"><span class="ml-mark" aria-hidden="true">✳</span><div><strong>MedLex</strong><small>MEDICAL TERMINOLOGY STUDIO</small></div></div><nav class="ml-coursepath" aria-label="Course modules"><a href="medical-prefix-quest.html"><span>01</span>Prefixes</a><a href="Medical-Roots-60-Interactive.html" aria-current="page"><span>02</span>Roots</a><a href="suffix-quest-100-medical-suffixes.html"><span>03</span>Suffixes</a></nav><div class="ml-themeControls" role="group" aria-label="Page colour mode"><button type="button" class="ml-themeChoice" data-ml-theme="light" aria-pressed="false"><span aria-hidden="true">☀</span> Day</button><button type="button" class="ml-themeChoice" data-ml-theme="dark" aria-pressed="false"><span aria-hidden="true">☾</span> Night</button></div></header>
+<header class="ml-coursehead"><div class="ml-brand"><span class="ml-mark" aria-hidden="true">✳</span><div><strong>MedLex</strong><small>MEDICAL TERMINOLOGY STUDIO</small></div></div><nav class="ml-coursepath" aria-label="Course modules"><a href="quest-prefixes.html"><span>01</span>Prefixes</a><a href="quest-roots.html" aria-current="page"><span>02</span>Roots</a><a href="quest-suffixes.html"><span>03</span>Suffixes</a></nav><div class="ml-themeControls" role="group" aria-label="Page colour mode"><button type="button" class="ml-themeChoice" data-ml-theme="light" aria-pressed="false"><span aria-hidden="true">☀</span> Day</button><button type="button" class="ml-themeChoice" data-ml-theme="dark" aria-pressed="false"><span aria-hidden="true">☾</span> Night</button></div></header>
 <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
 
 
@@ -609,7 +610,7 @@ body{--pink:var(--ml-accent);--cyan:var(--ml-accent);--violet:var(--ml-accent);-
     </div>
     <div class="panel">
       <h3>🏅 Achievement shelf <span style="color:var(--mut);font-weight:700">(grey = still locked — go earn them!)</span></h3>
-      <div class="badges" id="badgeShelf"></div>
+      <div class="badges" id="badgeShelf" tabindex="0" role="region" aria-label="Badges you can earn"></div>
       <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn small ghost" id="btnPrint">🖨️ Print revision cards</button>
         <button class="btn small ghost" id="btnReset">↺ Reset progress</button>
@@ -723,7 +724,7 @@ body{--pink:var(--ml-accent);--cyan:var(--ml-accent);--violet:var(--ml-accent);-
 
 <div id="toasts" aria-live="polite"></div>
 
-<script src="shared/js/21a0bcde93e0f3a4.js"></script>
+<script src="shared/js/d3e1528ce149a4b9.js"></script>
 <div class="ml-coursefoot"><span><strong>MedLex · Roots Studio</strong><br>Healthcare Crown Academy · Medical Terminology</span><span>Find the core. Follow the connections.</span></div><script id="medlex-shared-intro" src="shared/js/6a84800f8e3a2d38.js"></script>
 <script id="medlex-theme-controls" src="shared/js/46fc1724b78c29fa.js"></script>
 <script src="shared/js/oc.js"></script>

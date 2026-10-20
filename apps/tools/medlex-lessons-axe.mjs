@@ -4,9 +4,11 @@ const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium
 const AXE = fs.readFileSync('/tmp/jsd/node_modules/axe-core/axe.min.js', 'utf8'), scheme = process.argv[2] || 'light';
 const decks = JSON.parse(fs.readFileSync('apps/medlex/learn/decks.json', 'utf8')).map(d => d.file.replace(/\.html$/, '')).concat(['quest-prefixes', 'quest-roots', 'quest-suffixes']);
 const br = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-proxy-server', '--ignore-certificate-errors', '--host-resolver-rules=MAP *.healthcarecrownacademy.co.uk 127.0.0.1:8443'] });
-const ctx = await br.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: scheme, ignoreHTTPSErrors: true }); const agg = {};
+const ctx = await br.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: scheme, reducedMotion: 'reduce', ignoreHTTPSErrors: true });
+if (scheme === 'dark') await ctx.addInitScript(() => { try { localStorage.setItem('medlex-display-mode-v1', 'dark'); } catch { } }); const agg = {};
 for (const f of decks) {
-  const p = await ctx.newPage(); await p.goto(`https://medlex.healthcarecrownacademy.co.uk/medlex/learn/${f}.html`, { waitUntil: 'load' }); await p.waitForTimeout(700);
+  const p = await ctx.newPage(); await p.goto(`https://medlex.healthcarecrownacademy.co.uk/medlex/learn/${f}.html`, { waitUntil: 'load' }); await p.waitForTimeout(1500);
+  if (scheme === 'dark') { await p.evaluate(() => { for (let i = 0; i < 2 && document.documentElement.dataset.mode && document.documentElement.dataset.mode !== 'night'; i++) { const b = [...document.querySelectorAll('button')].find(x => /^(day|night)$/i.test(x.textContent.trim())); b && b.click(); } }); await p.waitForTimeout(800); }
   await p.evaluate(AXE); const v = await p.evaluate(async () => (await axe.run(document, { runOnly: ['wcag2a', 'wcag2aa'] })).violations.map(x => ({ id: x.id, impact: x.impact, n: x.nodes.length, sel: x.nodes.slice(0, 2).map(n => String(n.target).slice(0, 60)), help: x.help })));
   for (const x of v) { const k = x.id + ' | ' + x.impact; (agg[k] ||= { files: [], nodes: 0, sel: x.sel, help: x.help }); agg[k].files.push(f); agg[k].nodes += x.n; }
   await p.close();
