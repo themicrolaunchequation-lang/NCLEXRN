@@ -127,6 +127,7 @@ body.hs .hca-footer-links a.hca-ico{width:auto;height:auto;min-height:40px;paddi
 .hl-tour-tab:hover{background:#5236B8}
 .hl-tour-tab:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px #6446D0}
 @media(max-width:1023px){.hl-tour-tab{bottom:calc(84px + env(safe-area-inset-bottom));right:12px}}
+body:has(.reader-stage) .hl-tour-tab{display:none}
 @media print{.hl-tour-tab{display:none}}
 /* menu section headings (Tools and More) */
 .hl-menu-sec{margin:10px 14px 2px;padding:0;font:700 11px/1.2 var(--hs-sans,Inter,system-ui,sans-serif);letter-spacing:.1em;text-transform:uppercase;color:var(--hs-muted,#56626E)}
