@@ -39,7 +39,7 @@ for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true,
   const order = rows.map(r => r.deck); const ix = k => order.indexOf(k);
   ok(ix('history') === ix('ch1') - 1 && ix('components') === ix('ch1') + 1 && ix('country-differences') === ix('ch3') + 1 && ix('procedures-treatment') === ix('ch22') + 1 && ix('medical-coding') === ix('procedures-treatment') + 1, 'new lessons sit in the right places');
   await p.screenshot({ path: `${out}/learn-${tag}.png` });
-  ok((await axeOn(p, '#main')).length === 0, 'axe on the Learn page');
+  { const a = await axeOn(p, "#main"); ok(a.length === 0, "axe on the Learn page: " + a.join(" | ")); }
   // viewer
   await p.locator('[data-ms-open="ch4"]').first().click(); await p.waitForTimeout(2500);
   ok(await p.locator('dialog.ml[open]').count() === 1, 'lesson viewer opens'); ok((await p.locator('#ml-t').innerText()).startsWith('Musculoskeletal'), 'viewer title: ' + await p.locator('#ml-t').innerText());
@@ -65,7 +65,7 @@ for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true,
   await p.locator('[data-wq=suffix]').click(); await p.waitForTimeout(1800);
   const clr = await p.evaluate(async () => { const d = document.querySelector('.wq-frame').contentDocument, i = d.querySelector('input[type=search],input[type=text]'); if (!i) return 'no search box'; i.value = 'zzzzqx'; i.dispatchEvent(new Event('input', { bubbles: true })); await new Promise(r => setTimeout(r, 400)); const b = d.querySelector('[data-oc="clearFilters()"]'); if (!b) return 'no clear button'; b.click(); await new Promise(r => setTimeout(r, 400)); return i.value === '' ? 'cleared' : 'value stays: ' + i.value; });
   ok(clr === 'cleared', 'handler replacement works (clear filters): ' + clr);
-  ok((await axeOn(p, '#main')).filter(x => !/frame/.test(x)).length === 0, 'axe on the Word parts page (outside the frame)');
+  { const a = (await axeOn(p, "#main")).filter(x => !/frame/.test(x)); ok(a.length === 0, "axe on the Word parts page: " + a.join(" | ")); }
   ok(errs.filter(e => !/Failed to load resource/.test(e)).length === 0, 'console errors on Word parts: ' + errs.slice(0, 2).join(' | '));
   await p.evaluate(() => { location.hash = '#library/parts?kind=root'; }); await p.waitForTimeout(1500); ok(await p.locator('[data-wq=root][aria-selected=true]').count() === 1, '?kind=root opens the roots quest');
   await ctx.close();
