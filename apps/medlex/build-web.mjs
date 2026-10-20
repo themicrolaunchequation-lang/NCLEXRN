@@ -55,12 +55,12 @@ js = patch(js, '${u.filter(e=>e.done).length} active days this week', '${(n=>n+(
 js = patch(js, '${Fn()} active days in your current streak', '${(n=>n+(1===n?" active day":" active days"))(Fn())} in your current streak', 'streak days plural');
 // Hook words: real terms from the course with prefix/root/suffix parts and plain meanings.
 // Free plan: modules ch1, ch2, prefixes and suffixes. Gate inside the router so links, pushState navigation and typed URLs are all covered.
-js = patch(js, 'library:"library/terms",affixes', 'library:"library/parts",affixes', 'Library opens on word parts');
+js = patch(js, 'library:"library/terms",affixes', 'library:"library/lab",affixes', 'Library opens on the word lab');
 js = patch(js, '"infographics"===a?Ma():', 'window.MedlexV5&&MedlexV5.route(a,i,t)?void 0:"infographics"===a?Ma():', 'Library, Atlas and Practice routes');
 js = patch(js, '(location.hash.slice(1)||"today"),{path:a,params:i}=e;', '(location.hash.slice(1)||"today"),{path:a,params:i}=e;{const g=a.match(/^learn\\/module\\/([^/]+)/);if(g&&window.HCA&&HCA.locked&&HCA.locked("medlex")&&!["ch1","ch2","prefixes","suffixes"].includes(g[1])){history.replaceState(null,"","#learn");setTimeout(()=>HCA.paywall("medlex","this module"));return fi()}}', 'module gate');
 // ---- My Day + Visual Atlas names, and the data hook the new home screen reads ----
 const patchAll = (text, from, to, label) => { const n = text.split(from).length - 1; if (!n) throw Error(`Patch "${label}" matched 0 times; the source changed.`); return text.split(from).join(to); };
-js = patch(js, '{today:"Today",learn:"Learn",practice:"Practice",progress:"Progress",library:"Library",settings:"Settings",teach:"Teach",infographics:"Infographics"}', '{today:"My Day",learn:"Learn",practice:"Practice",progress:"Progress",library:"Library",settings:"Settings",teach:"Teach",infographics:"Visual Atlas"}', 'route names');
+js = patch(js, '{today:"Today",learn:"Learn",practice:"Practice",progress:"Progress",library:"Library",settings:"Settings",teach:"Teach",infographics:"Infographics"}', '{today:"My Day",learn:"Learn",practice:"Practice",progress:"Progress",library:"Library",settings:"Settings",teach:"Teach",infographics:"Visual Atlas",wordparts:"Word parts"}', 'route names');
 js = patch(js, 'const rs={today:["Today",', 'const rs={today:["My Day",', 'page titles');
 js = patch(js, 'case"help":!function(){const e={today:["Today",', 'case"help":!function(){const e={today:["My Day",', 'help titles');
 js = patchAll(js, 'Back to Today', 'Back to My Day', 'back links');
@@ -75,6 +75,11 @@ js = patch(js, 'function Ms(){return function(){', 'window.__medlexStreak=()=>Fn
 js = patch(js, 'Zn(`<div class="today-experience ', 'window.__medlexDay={mod:e,mastered:Ae(e),modTotal:e.outcomes.length,word:i,minutes:l,goal:r,pct:c,week:u,streak:Fn(),due:Math.min(Xs(),10),resume:s?{index:o.index,total:o.items.length}:null,done:!!(o&&o.finished&&o.finishedAt&&new Date(o.finishedAt).toDateString()===new Date().toDateString()),draft:p?{title:(we(p[1])[p[2]][+p[3]]||{}).title||"Your saved worksheet",href:Ti({module:p[1],type:p[2],index:+p[3],key:d,step:ki(d).step||0}),edited:ki(d).updated?Ai(ki(d).updated):""}:null,name:t.state.name,guides:Ve.length,reduced:m,poster:We["decode-1"],sessions:t.state.history.length,saved:t.state.saved.length};Zn(`<div class="today-experience ', 'today data');
 body = patchAll(body, 'aria-label="Today"', 'aria-label="My Day"', 'nav aria-label');
 body = patchAll(body, '<span class="nav-text">Today</span>', '<span class="nav-text">My Day</span>', 'nav text');
+const WP_ICON = '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="2.5" y="8" width="5.5" height="8" rx="1.5"/><rect x="9.25" y="8" width="5.5" height="8" rx="1.5"/><rect x="16" y="8" width="5.5" height="8" rx="1.5"/></svg>';
+{ // Sidebar only (the first Learn link): on phones the sidebar is the "More" drawer, like Visual Atlas, so the bottom bar keeps its five places.
+  const LEARN_NAV = '<span class="nav-text">Learn</span></a>', at = body.indexOf(LEARN_NAV); if (at < 0 || body.split(LEARN_NAV).length !== 3) throw Error('Learn nav links changed');
+  body = body.slice(0, at + LEARN_NAV.length) + '<a href="#wordparts" data-page="wordparts" aria-label="Word parts">' + WP_ICON + '<span class="nav-text">Word parts</span></a>' + body.slice(at + LEARN_NAV.length);
+}
 body = patch(body, 'aria-label="Infographics"', 'aria-label="Visual Atlas"', 'atlas aria-label');
 body = patch(body, '<span class="nav-text">Infographics</span>', '<span class="nav-text">Visual Atlas</span>', 'atlas nav text');
 body = patch(body, '<strong id="crumb">Overview</strong>', '<strong id="crumb">My Day</strong>', 'crumb default');

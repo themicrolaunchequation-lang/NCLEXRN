@@ -54,27 +54,30 @@ for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true,
   await p.locator('[data-ms-open="history"]').first().click(); await p.waitForTimeout(2200); ok((await p.locator('#ml-t').innerText()).startsWith('History'), 'a new lesson opens: ' + await p.locator('#ml-t').innerText()); await p.keyboard.press('Escape'); await p.waitForTimeout(400);
   ok(errs.filter(e => !/Failed to load resource/.test(e)).length === 0, 'console errors: ' + errs.slice(0, 2).join(' | ')); await p.close();
   // Word parts
-  ({ p, errs } = await open(ctx, '#library/parts'));
-  ok(await p.locator('.wq-tab').count() === 3, 'Word parts has three quest tabs'); ok(await p.locator('.wq-frame').count() === 1, 'a quest is shown');
+  ({ p, errs } = await open(ctx, '#wordparts'));
+  ok(await p.locator('.wp-card').count() === 3, 'Word parts has three studio cards'); await p.screenshot({ path: `${out}/parts-cards-${tag}.png` });
+  { const a = (await axeOn(p, '#main')); ok(a.length === 0, 'axe on the Word parts cards: ' + a.join(' | ')); }
   for (const k of ['prefix', 'root', 'suffix']) {
-    await p.locator(`[data-wq=${k}]`).click(); await p.waitForTimeout(1800); const f = p.frameLocator('.wq-frame');
-    ok(await f.locator('body').count() === 1 && (await p.locator('.wq-frame').getAttribute('src')).includes('quest-'), k + ' quest loads');
-    const oc = await p.evaluate(() => document.querySelector('.wq-frame').contentDocument.querySelectorAll('[data-oc]').length); await p.screenshot({ path: `${out}/parts-${k}-${tag}.png` });
+    await p.evaluate(() => { location.hash = '#wordparts'; }); await p.waitForTimeout(500);
+    await p.locator(`a.wp-open[href="#wordparts/${k}"]`).click(); await p.waitForTimeout(1800); const f = p.frameLocator('.wp-frame');
+    ok(await p.locator('.wp-frame').count() === 1 && (await p.locator('.wp-frame').getAttribute('src')).includes('quest-') && p.context().pages().length === 1, k + ' studio opens in the same page');
+    await p.screenshot({ path: `${out}/parts-${k}-${tag}.png` });
   }
+  ok(await p.locator('.wp-back').count() === 1, 'a back link to all word studios');
   // the quest's own navigation switches the page's tab and loads that quest (no missing pages)
-  await p.locator('[data-wq=prefix]').click(); await p.waitForTimeout(1500);
-  await p.evaluate(() => document.querySelector('.wq-frame').contentDocument.querySelector('.ml-coursepath a[href="quest-roots.html"]').click()); await p.waitForTimeout(1800);
-  ok(await p.locator('[data-wq=root][aria-selected=true]').count() === 1 && /quest-roots/.test(await p.locator('.wq-frame').getAttribute('src')), "the quest's own Roots link switches the tab");
+  await p.locator('a.wp-sw >> nth=0').click(); await p.waitForTimeout(1500);
+  await p.evaluate(() => document.querySelector('.wp-frame').contentDocument.querySelector('.ml-coursepath a[href="quest-roots.html"]').click()); await p.waitForTimeout(1800);
+  ok(await p.locator('a.wp-sw.is-on', { hasText: 'Roots' }).count() === 1 && /quest-roots/.test(await p.locator('.wp-frame').getAttribute('src')), "the quest's own Roots link switches the studio");
   // opening a quest card works from the keyboard (real buttons, no nested controls)
-  const kb = await p.evaluate(async () => { const d = document.querySelector('.wq-frame').contentDocument, b = d.querySelector('button.tapHint'); if (!b) return 'no button'; b.focus(); const before = d.body.innerText.length; b.click(); await new Promise(r => setTimeout(r, 700)); return d.body.innerText.length > before ? 'opened' : 'not opened'; });
+  const kb = await p.evaluate(async () => { const d = document.querySelector('.wp-frame').contentDocument, b = d.querySelector('button.tapHint'); if (!b) return 'no button'; b.focus(); const before = d.body.innerText.length; b.click(); await new Promise(r => setTimeout(r, 700)); return d.body.innerText.length > before ? 'opened' : 'not opened'; });
   ok(kb === 'opened', 'a roots card opens from its button: ' + kb);
   // the interactive handlers work without inline scripts: drive a search that finds nothing, then use the clear button
-  await p.locator('[data-wq=suffix]').click(); await p.waitForTimeout(1800);
-  const clr = await p.evaluate(async () => { const d = document.querySelector('.wq-frame').contentDocument, i = d.querySelector('input[type=search],input[type=text]'); if (!i) return 'no search box'; i.value = 'zzzzqx'; i.dispatchEvent(new Event('input', { bubbles: true })); await new Promise(r => setTimeout(r, 400)); const b = d.querySelector('[data-oc="clearFilters()"]'); if (!b) return 'no clear button'; b.click(); await new Promise(r => setTimeout(r, 400)); return i.value === '' ? 'cleared' : 'value stays: ' + i.value; });
+  await p.locator('a.wp-sw >> nth=2').click(); await p.waitForTimeout(1800);
+  const clr = await p.evaluate(async () => { const d = document.querySelector('.wp-frame').contentDocument, i = d.querySelector('input[type=search],input[type=text]'); if (!i) return 'no search box'; i.value = 'zzzzqx'; i.dispatchEvent(new Event('input', { bubbles: true })); await new Promise(r => setTimeout(r, 400)); const b = d.querySelector('[data-oc="clearFilters()"]'); if (!b) return 'no clear button'; b.click(); await new Promise(r => setTimeout(r, 400)); return i.value === '' ? 'cleared' : 'value stays: ' + i.value; });
   ok(clr === 'cleared', 'handler replacement works (clear filters): ' + clr);
   { const a = (await axeOn(p, "#main")).filter(x => !/frame/.test(x)); ok(a.length === 0, "axe on the Word parts page: " + a.join(" | ")); }
   ok(errs.filter(e => !/Failed to load resource/.test(e)).length === 0, 'console errors on Word parts: ' + errs.slice(0, 2).join(' | '));
-  await p.evaluate(() => { location.hash = '#library/parts?kind=root'; }); await p.waitForTimeout(1500); ok(await p.locator('[data-wq=root][aria-selected=true]').count() === 1, '?kind=root opens the roots quest');
+  await p.evaluate(() => { location.hash = '#library/parts?kind=root'; }); await p.waitForTimeout(1500); ok(await p.locator('a.wp-sw.is-on', { hasText: 'Roots' }).count() === 1 && /wordparts\/root/.test(await p.evaluate(() => location.hash)), 'old ?kind=root link redirects to the roots studio');
   await ctx.close();
 }
 await br.close(); console.log(fails ? fails + ' FAILED' : 'ALL OK'); process.exit(fails ? 1 : 0);

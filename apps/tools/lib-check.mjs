@@ -22,11 +22,14 @@ const PAGES = ['library', 'library/lab?w=angioplasty', 'library/systems', 'libra
 {
   const { ctx, p, errs } = await session();
   await go(p, 'library');
-  ok('Library opens on word parts', await p.evaluate(() => document.querySelector('.lx-tab.is-on')?.textContent === 'Word parts'));
-  /* word parts: the three quests (prefixes, roots, suffixes) replace the old reference page */
-  ok('Word parts shows the three quest tabs', await p.evaluate(() => document.querySelectorAll('.wq-tab').length === 3));
-  ok('a quest is loaded in a frame', await p.evaluate(() => /quest-/.test(document.querySelector('.wq-frame')?.getAttribute('src') || '')));
-  await p.click('[data-wq=root]'); await p.waitForTimeout(800); ok('Roots tab switches the quest', await p.evaluate(() => /quest-roots/.test(document.querySelector('.wq-frame').getAttribute('src'))));
+  ok('Library opens on the word lab (Word parts has its own sidebar tab)', await p.evaluate(() => document.querySelector('.lx-tab.is-on')?.textContent === 'Word lab' && ![...document.querySelectorAll('.lx-tab')].some(a => a.textContent === 'Word parts')));
+  /* Word parts: own page with three studio cards; each opens in the same page */
+  await go(p, 'wordparts');
+  ok('Word parts page shows three studio cards', await p.evaluate(() => document.querySelectorAll('.wp-card').length === 3 && document.querySelector('[data-page=wordparts].active') !== null));
+  await p.click('.wp-open >> nth=0'); await p.waitForTimeout(900);
+  ok('a studio opens in a frame in the same page', await p.evaluate(() => /quest-prefixes/.test(document.querySelector('.wp-frame')?.getAttribute('src') || '') && location.hash === '#wordparts/prefix'));
+  await p.click('.wp-sw >> nth=1'); await p.waitForTimeout(800); ok('Roots switcher loads that studio', await p.evaluate(() => /quest-roots/.test(document.querySelector('.wp-frame').getAttribute('src'))));
+  await go(p, 'library/parts'); ok('old #library/parts redirects to Word parts', await p.evaluate(() => location.hash === '#wordparts' && document.querySelectorAll('.wp-card').length === 3));
   /* word lab: the old dropdown trap */
   await go(p, 'library/lab');
   const total = await p.evaluate(() => document.querySelectorAll('.lx-pick').length); ok('word lab lists all 75 decoded words', total === 75, total);
