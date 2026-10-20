@@ -148,6 +148,35 @@ mod = replaceOnce(mod, "HC('span', {}, 'How to use the desk'))));\n}", "HC('span
 mod = replaceOnce(mod, "className: desk[key] ? 'hca8-on' : '', onClick: () => key === 'calc'", "className: `hs-item ${desk[key] ? 'hca8-on' : ''}`, onClick: () => key === 'calc'", 'desk item class');
 mod = replaceOnce(mod, "/*HCA10:END*/", "/*HCA10:END*/\n" + fs.readFileSync('src/day.js', 'utf8') + '\n' + fs.readFileSync('src/reader.js', 'utf8'), 'HCA10 end');
 
+/* ---------- Workspace storage (src/storage.js + src/storage.css): "Your learning space" ---------- */
+// storage.js uses the bundle's own file store and helpers by name: fail the build loudly if one of them is renamed.
+for (const a of ['function ge(){return he||=new Promise', 'async function _e(e,t){L.set(e,t)', 'async function ve(e){if(L.has(e))return L.get(e)', 'async function ye(e){L.delete(e)', 'function R(e,t,n=`text/plain;charset=utf-8`)',
+  'function Ro(e){No.get(e)?.destroy()', 'async function Lo(e,t,n){if(No.has(t))return No.get(t)', 'function ee({icon:e=`book-open-line`', 'function WorkspaceHealth(){']) once(mod, a, `storage anchor ${a.slice(0, 40)}`);
+mod = replaceOnce(mod, "/*HCA12:END*/", "/*HCA12:END*/\n" + fs.readFileSync('src/storage.js', 'utf8'), 'HCA12 end (storage block follows)');
+// adding sources: warn at 80% of the learner's own limit, ask before going over it (and before the browser itself runs out)
+mod = replaceOnce(mod, "if(window.HCA&&HCA.limit&&!HCA.limit(`source`,HCA10SourceCount()+r.length))return!1;", "if(window.HCA&&HCA.limit&&!HCA.limit(`source`,HCA10SourceCount()+r.length))return!1;if(!await HCASpaceGate(r))return!1;", 'import: space gate');
+// bug fix: this pdf.js has no PDFDocumentProxy.destroy(), so releasing an opened source threw and "Remove source" did nothing until a reload
+mod = replaceOnce(mod, "function Ro(e){No.get(e)?.destroy(),No.delete(e)", "function Ro(e){{const d=No.get(e);try{d?.loadingTask?.destroy?.()}catch{}try{d?.destroy?.()}catch{}}No.delete(e)", 'release a source (pdf.js has no destroy())');
+// when a file could not be kept, say whether the browser is simply full
+mod = replaceOnce(mod, "P(`Sources opened for this session. Browser storage is unavailable; download a workspace backup before closing.`,`warning`)", "P(HCASpaceSaveFailMsg(),`warning`)", 'import: not kept message');
+// the privacy dialog opens with the storage card (Local-first pill); the old quota line is gone
+mod = replaceOnce(mod, "eyebrow:`THE IMPORTANT BOUNDARIES`,onClose:e,children:[(0,C.jsx)(`div`,{className:`privacy-hero-icon`,children:(0,C.jsx)(E,{name:`lock-line`})}),", "eyebrow:`THE IMPORTANT BOUNDARIES`,onClose:e,children:[HC(HCASpaceCard),(0,C.jsx)(`div`,{className:`privacy-hero-icon`,children:(0,C.jsx)(E,{name:`lock-line`})}),", 'privacy: storage card');
+mod = replaceOnce(mod, "(0,C.jsx)(WorkspaceHealth,{}),", "", 'privacy: old quota line');
+// Settings links to it
+mod = replaceOnce(mod, "(0,C.jsxs)(`div`,{className:`settings-links`,children:[(0,C.jsxs)(`button`,{className:`text-link`,onClick:()=>a({type:`privacy`}),children:[`Privacy & clinical boundaries`,", "(0,C.jsxs)(`div`,{className:`settings-links`,children:[(0,C.jsxs)(`button`,{className:`text-link`,onClick:()=>a({type:`space`}),children:[`Workspace storage and space limit`,(0,C.jsx)(E,{name:`arrow-right-line`})]}),(0,C.jsxs)(`button`,{className:`text-link`,onClick:()=>a({type:`privacy`}),children:[`Privacy & clinical boundaries`,", 'settings: storage link');
+// "could not be saved" bar offers the way to make room
+mod = replaceOnce(mod, "HCABtn('Download backup', () => ctx.backupWorkspace(), 'light', 'download-line'),", "HCABtn('Download backup', () => ctx.backupWorkspace(), 'light', 'download-line'),\n    HCABtn('Make room', () => ctx.setModal({ type: 'space', focus: 'room' }), 'light', 'folder-line'),", 'storage bar: make room');
+// "Your work and where it lives": the quota line becomes the learner's own space
+{
+  const start = "HC('div', { className: 'hca9-store-meter' },", end = "HC('div', { className: 'hca8-row' },\n      HCABtn('Back up now'";
+  const a = once(mod, start, 'saved meter start'), z = once(mod, end, 'saved meter end');
+  if (z < a) throw Error('Saved-meter markers are out of order.');
+  mod = mod.slice(0, a) + 'HC(HCASpaceMini),\n    ' + mod.slice(z);
+}
+// the reader: a source whose file is not on this device says why, and offers the way back
+mod = replaceOnce(mod, "if(!n)throw Error(`The original file is not in this browser. Restore a full workspace backup, or reimport the file. A sandboxed preview may be session-only.`);", "if(!n||HCASpaceIsStub(n))throw Error(HCASpaceMissingMsg());", 'reader: file not on this device');
+mod = replaceOnce(mod, "(0,C.jsx)(ee,{icon:`file-pdf-2-line`,title:`This source needs another look.`,text:g,children:(0,C.jsx)(k,{variant:`soft`,icon:`upload-2-line`,onClick:()=>r({type:`upload`}),children:`Import a source`})})", "HC(HCASpaceGap,{book:e,message:g,setModal:r})", 'reader: source panel');
+
 /* ---------- Reading room (src/reader.js): asserted hooks into the minified reader ---------- */
 // the app shell no longer takes the old "reader-view" styles (a 52px rail and no top bar that the shared shell replaced)
 mod = replaceOnce(mod, "className:`app-shell ${Ne?`reader-view`:``}", "className:`app-shell ${Ne?`hl-reader-on`:``}", 'app shell reader class');
@@ -239,7 +268,7 @@ shell.push(pwa);
 
 const shellJs = put(`js/shell.${hash(fs.readFileSync('../shared/hca-shell.js', 'utf8'))}.js`, fs.readFileSync('../shared/hca-shell.js', 'utf8'));
 shell.push(shellJs);
-const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}\n${fs.readFileSync('src/reader.css', 'utf8')}</style>`;
+const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}\n${fs.readFileSync('src/reader.css', 'utf8')}\n${fs.readFileSync('src/storage.css', 'utf8')}</style>`;
 const head = `<link rel="canonical" href="${SITE}/">
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="apple-touch-icon" href="${BASE}icon-192.png">
