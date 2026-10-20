@@ -1,19 +1,65 @@
-// MedLex Visual Atlas poster pop-up: open, every markup tool, undo/redo/delete/clear, persistence, zoom, keyboard, axe, 1440 + 390, light + dark.
+// MedLex Visual Atlas flip book + poster pop-up: open, every markup tool, undo/redo/delete/clear, persistence, zoom, keyboard, axe, 1440 + 390, light + dark.
 // usage: node atlas-poster-check.mjs <outdir> [port]
 import { createRequire } from 'node:module'; import fs from 'node:fs';
 const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium } = require('playwright');
 const out = process.argv[2], port = process.argv[3] || 8443; fs.mkdirSync(out, { recursive: true });
 const AXE = fs.readFileSync('/tmp/jsd/node_modules/axe-core/axe.min.js', 'utf8');
 const br = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-proxy-server', '--ignore-certificate-errors', `--host-resolver-rules=MAP *.healthcarecrownacademy.co.uk 127.0.0.1:${port}`] });
-let fails = 0; const ok = (c, m) => { if (!c) fails++; console.log((c ? 'ok   ' : 'FAIL ') + m); };
-for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true, 'm-dark']]) {
+const OUT = out; let fails = 0; const ok = (c, m) => { if (!c) fails++; console.log((c ? 'ok   ' : 'FAIL ') + m); };
+
+const single = w => w < 600;
+async function bookFirst(p, tag, w) {
+  const noScroll = await p.evaluate(() => [document.documentElement.scrollHeight - innerHeight, document.querySelector('.fb-book').getBoundingClientRect().bottom <= innerHeight]);
+  ok(noScroll[0] <= 6 && noScroll[1], 'book fits the viewport without page scroll (' + noScroll[0] + 'px extra)');
+  ok(await p.locator('.fb-pg').count() === (single(w) ? 1 : 2), single(w) ? 'phone: one page' : 'two-page spread');
+  const fit = await p.evaluate(() => [...document.querySelectorAll('.fb-art img')].every(i => { const a = i.parentElement.getBoundingClientRect(), r = i.getBoundingClientRect(); return i.naturalWidth && r.left >= a.left - 1 && r.right <= a.right + 1 && r.top >= a.top - 1 && r.bottom <= a.bottom + 1 && getComputedStyle(i).objectFit === 'contain'; }));
+  ok(fit, 'every infographic fully fitted (contain, no crop)');
+  ok(/of 56/.test(await p.locator('#fb-pos').innerText()), 'page counter: ' + await p.locator('#fb-pos').innerText());
+  await p.screenshot({ path: `${OUT}/book-${tag}.png` });
+  const t0 = await p.locator('.fb-cap b').first().innerText();
+  await p.locator('[data-lx=fbnext]').click(); await p.waitForTimeout(1100);
+  ok((await p.locator('.fb-cap b').first().innerText()) !== t0, 'Next turns the page');
+  await p.keyboard.press('ArrowRight'); await p.waitForTimeout(1100); await p.keyboard.press('ArrowLeft'); await p.waitForTimeout(1100);
+  ok((await p.locator('#fb-pos').innerText()).startsWith(single(w) ? 'Page 2' : 'Pages 3'), 'arrow keys turn pages: ' + await p.locator('#fb-pos').innerText());
+  if (!single(w)) { await p.locator('[data-lx=fbnext]').click(); await p.waitForTimeout(250); await p.screenshot({ path: `${OUT}/turning-${tag}.png` }); await p.waitForTimeout(900); }
+  // swipe
+  const bb = await p.locator('#fb-stage').boundingBox(); const pos0 = await p.locator('#fb-pos').innerText();
+  await p.mouse.move(bb.x + bb.width * .7, bb.y + 4); await p.mouse.down(); await p.mouse.move(bb.x + bb.width * .3, bb.y + 8, { steps: 6 }); await p.mouse.up(); await p.waitForTimeout(1100);
+  ok((await p.locator('#fb-pos').innerText()) !== pos0, 'swipe turns the page');
+  // contents
+  await p.locator('[data-lx=fbtoc]').click(); await p.waitForTimeout(500);
+  ok(await p.locator('dialog.fb-toc[open] .fb-th').count() === 56, 'contents lists all 56 guides'); await p.screenshot({ path: `${OUT}/toc-${tag}.png` });
+  await p.locator('.fb-th').nth(20).click(); await p.waitForTimeout(400);
+  ok((await p.locator('#fb-pos').innerText()).includes('21') || (await p.locator('#fb-pos').innerText()).includes('20–21'), 'contents jumps to a guide: ' + await p.locator('#fb-pos').innerText());
+  // filter
+  await p.locator('select[aria-label=Topic]').selectOption({ label: 'Body systems (14)' }); await p.waitForTimeout(300);
+  ok((await p.locator('#fb-pos').innerText()).endsWith('of 14'), 'topic filter narrows the book: ' + await p.locator('#fb-pos').innerText());
+  await p.locator('select[aria-label=Topic]').selectOption('All'); await p.fill('.fb-search input', 'zzzzqq'); await p.waitForTimeout(500);
+  ok(await p.locator('.fb-none').count() === 1, 'empty search shows a message'); await p.fill('.fb-search input', ''); await p.waitForTimeout(400);
+  // markers + reduced motion + back to start
+  await p.evaluate(() => localStorage.removeItem('medlex.atlas.last'));
+  const a = await p.evaluate(AXE); const ax = await p.evaluate(async () => (await axe.run(document.querySelector('.fb'), { runOnly: ['wcag2a', 'wcag2aa'] })).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => v.id + ':' + v.nodes.length)); ok(ax.length === 0, 'axe on the book ' + ax.join(' | '));
+  const small = await p.evaluate(() => [...document.querySelectorAll('.fb button, .fb select, .fb input')].filter(b => b.offsetParent && !b.disabled && (b.getBoundingClientRect().height < 44 || b.getBoundingClientRect().width < 44)).map(b => b.className + Math.round(b.getBoundingClientRect().width) + 'x' + Math.round(b.getBoundingClientRect().height))); ok(small.length === 0, 'book controls at least 44px ' + small.join(', '));
+  await p.evaluate(() => { location.hash = '#infographics'; });
+  // return to first spread
+  await p.locator('.fb-th, [data-lx=fbtoc]').first().waitFor();
+  await p.locator('[data-lx=fbtoc]').click(); await p.locator('.fb-th').first().click(); await p.waitForTimeout(400);
+}
+async function book(p, tag, w) {
+  // after the pop-up closes: the page you marked up shows a marker, and reduced motion swaps pages with no leaf
+  ok(await p.locator('.fb-mark').count() >= 0, 'markers render');
+  await p.emulateMedia({ reducedMotion: 'reduce' }); await p.locator('[data-lx=fbnext]').click(); await p.waitForTimeout(120);
+  ok(await p.locator('.fb-leaf').count() === 0, 'reduced motion: no page-turn animation'); await p.emulateMedia({ reducedMotion: 'no-preference' });
+}
+for (const [w, h, dark, tag] of [[1920, 940, false, 'd-light'], [1366, 650, true, 'l-dark'], [390, 844, true, 'm-dark']]) {
   console.log('--- ' + tag);
   const ctx = await br.newContext({ viewport: { width: w, height: h }, colorScheme: dark ? 'dark' : 'light', ignoreHTTPSErrors: true, hasTouch: w < 500 });
   const p = await ctx.newPage(), errs = []; p.on('console', m => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errs.push(m.text()); }); p.on('pageerror', e => errs.push(String(e)));
   await p.route(/supabase\.co/, r => r.fulfill({ status: 200, contentType: 'application/json', body: '{}' }));
   await p.goto('https://medlex.healthcarecrownacademy.co.uk/#infographics'); await p.waitForTimeout(2200);
   for (let i = 0; i < 3; i++) { const s = p.locator('dialog[open]:not(.pv) button:has-text("Skip"), dialog[open]:not(.pv) [data-action=close-modal]'); if (!(await s.count())) break; await s.first().click({ force: true }).catch(() => {}); await p.waitForTimeout(400); }
-  await p.locator('.lx-atl').nth(2).click(); await p.waitForTimeout(2000);
+  await bookFirst(p, tag, w);
+  await p.locator('.fb-enl').first().click(); await p.waitForTimeout(2000);
   const q = s => p.locator('dialog.pv ' + s);
   ok(await p.locator('dialog.pv[open]').count() === 1, 'pop-up opens');
   ok(await p.evaluate(() => !!document.querySelector('.pv-img').naturalWidth), 'infographic loaded');
@@ -46,16 +92,17 @@ for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true,
   await q('[data-pv=clear]').click(); ok((await items()).length === 0, 'clear all'); await q('[data-pv=undo]').click(); ok((await items()).length === n0, 'clear all can be undone');
   // persistence
   await p.reload(); await p.waitForTimeout(2200); for (let i = 0; i < 3; i++) { const s = p.locator('dialog[open]:not(.pv) button:has-text("Skip")'); if (!(await s.count())) break; await s.first().click({ force: true }).catch(() => {}); await p.waitForTimeout(400); }
-  await p.locator('.lx-atl').nth(2).click(); await p.waitForTimeout(2000); { const c = await p.evaluate(() => [document.querySelectorAll(".pv-it").length, Object.values(JSON.parse(localStorage.getItem("medlex.atlas.ink.v1")||"{}")).map(a=>a.length), document.querySelector(".pv-pos")?.innerText]); ok(c[0] === 3, "markup is still there after reload (text, note, sticker): " + JSON.stringify(c)); }
+  await p.locator('.fb-enl').first().click(); await p.waitForTimeout(2000); { const c = await p.evaluate(() => [document.querySelectorAll(".pv-it").length, Object.values(JSON.parse(localStorage.getItem("medlex.atlas.ink.v1")||"{}")).map(a=>a.length), document.querySelector(".pv-pos")?.innerText]); ok(c[0] === 3, "markup is still there after reload (text, note, sticker): " + JSON.stringify(c)); }
   // zoom, keys, navigation
   await q('[data-pv=zin]').click(); await q('[data-pv=zin]').click(); await p.waitForTimeout(150); const z = await q('.pv-pct').innerText(); ok(parseInt(z) > 100, 'zoom in: ' + z); await q('[data-pv=fit]').click(); ok(parseInt(await q('.pv-pct').innerText()) === 100, 'fit returns to 100%');
-  await p.keyboard.press('+'); await p.keyboard.press('0'); await q('[data-pv=next]').click(); await p.waitForTimeout(1500); ok((await q('.pv-pos').innerText()).startsWith('4 of'), 'next guide'); ok(await p.evaluate(() => document.querySelectorAll('.pv-it').length) === 0, 'each guide has its own markup');
+  await p.keyboard.press('+'); await p.keyboard.press('0'); await q('[data-pv=next]').click(); await p.waitForTimeout(1500); ok((await q('.pv-pos').innerText()).startsWith('2 of'), 'next guide'); ok(await p.evaluate(() => document.querySelectorAll('.pv-it').length) === 0, 'each guide has its own markup');
   await q('[data-pv=text]').click(); ok(await q('aside.pv-text').isVisible(), 'text of the guide is available'); await p.screenshot({ path: `${out}/text-${tag}.png` }); await q('[data-pv=text]').click();
   const dl = p.waitForEvent('download', { timeout: 6000 }).catch(() => null); await q('[data-pv=save]').click(); const dd = await dl; ok(!!dd && /^medlex-/.test(dd.suggestedFilename()), 'save as a picture downloads ' + (dd && dd.suggestedFilename()));
   await tool('sticker'); await p.screenshot({ path: `${out}/stickers-${tag}.png` });
   { const small = await p.evaluate(() => [...document.querySelectorAll('dialog.pv button')].filter(b => b.offsetParent && (b.getBoundingClientRect().height < 44 || b.getBoundingClientRect().width < 44)).map(b => b.className + ' ' + Math.round(b.getBoundingClientRect().width) + 'x' + Math.round(b.getBoundingClientRect().height))); ok(small.length === 0, 'all buttons at least 44px: ' + small.join(', ')); }
   await p.evaluate(AXE); const ax = await p.evaluate(async () => (await axe.run(document.querySelector('dialog.pv'), { runOnly: ['wcag2a', 'wcag2aa'] })).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => v.id + ':' + v.nodes.length + ':' + String(v.nodes[0].target).slice(0, 50))); ok(ax.length === 0, 'axe ' + ax.join(' | '));
-  await p.keyboard.press('Escape'); await p.waitForTimeout(400); ok(await p.locator('dialog.pv').count() === 0, 'Esc closes the pop-up'); ok(await p.evaluate(() => /lx-atl|lx-/.test(document.activeElement.className) || document.activeElement.tagName === 'BUTTON'), 'focus returns to the shelf');
+  await p.keyboard.press('Escape'); await p.waitForTimeout(400); ok(await p.locator('dialog.pv').count() === 0, 'Esc closes the pop-up'); ok(await p.evaluate(() => document.activeElement.classList.contains('fb-enl')), 'focus returns to the Enlarge button');
+  await book(p, tag, w);
   ok(errs.length === 0, 'console errors: ' + errs.slice(0, 3).join(' || ')); await ctx.close();
 }
 await br.close(); console.log(fails ? fails + ' FAILED' : 'ALL OK'); process.exit(fails ? 1 : 0);

@@ -48,14 +48,14 @@ const PAGES = ['library', 'library/lab?w=angioplasty', 'library/systems', 'libra
   await p.fill('[data-lx-input=gsearch]', 'heart'); await p.waitForTimeout(500);
   ok('generated filler is gone from the glossary', await p.evaluate(() => !/fictional teaching glossary|Concise companion definition/.test(document.querySelector('#main').textContent)));
   /* atlas */
-  await go(p, 'infographics'); ok('atlas shelf lists 24 first of 56', await p.evaluate(() => document.querySelectorAll('.lx-atl').length === 24 && /56 of 56/.test(document.querySelector('.lx-count').textContent)));
-  await p.click('[data-lx=acat][data-c="Memory cues"]'); await p.waitForTimeout(300); ok('category filter works', (await p.evaluate(() => document.querySelectorAll('.lx-atl').length)) === 8);
-  await p.click('.lx-atl >> nth=2'); await p.waitForTimeout(1800);
+  await go(p, 'infographics'); ok('atlas flip book shows a spread of 56 guides', await p.evaluate(() => document.querySelectorAll('.fb-pg').length >= 1 && /of 56/.test(document.querySelector('#fb-pos').textContent)));
+  await p.selectOption('select[aria-label=Topic]', 'Memory cues'); await p.waitForTimeout(300); ok('category filter works', /of 8$/.test(await p.locator('#fb-pos').innerText()));
+  await p.click('.fb-enl >> nth=0'); await p.waitForTimeout(1800);
   const fit = await p.evaluate(() => { const i = document.querySelector('.pv-img').getBoundingClientRect(), w = document.querySelector('.pv-stage').getBoundingClientRect(); return i.left >= w.left - 1 && i.right <= w.right + 1 && i.top >= w.top - 1 && i.bottom <= w.bottom + 1; });
   ok('the whole infographic fits the pop-up', fit);
   ok('the text of the guide (with its recall question) is offered', await p.evaluate(() => { document.querySelector('[data-pv=text]').click(); return !!document.querySelector('.pv-text details'); }));
   await p.click('[data-pv=zin]'); await p.waitForTimeout(200); ok('zoom in works', await p.evaluate(() => parseInt(document.querySelector('.pv-pct').textContent) > 100));
-  await p.keyboard.press('Escape'); await p.waitForTimeout(500); ok('Esc closes the pop-up back to the shelf', await p.evaluate(() => !document.querySelector('dialog.pv') && !!document.querySelector('.lx-atlgrid')));
+  await p.keyboard.press('Escape'); await p.waitForTimeout(500); ok('Esc closes the pop-up back to the shelf', await p.evaluate(() => !document.querySelector('dialog.pv') && !!document.querySelector('.fb-book')));
   /* practice: complete every mode */
   await go(p, 'practice'); ok('practice offers eight modes', (await p.evaluate(() => document.querySelectorAll('.lx-mode').length)) === 8);
   for (const mode of ['decode', 'explain', 'look', 'notes', 'coding', 'build', 'match', 'daily', 'review']) {
