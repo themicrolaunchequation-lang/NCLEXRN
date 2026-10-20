@@ -172,6 +172,39 @@ mod = replaceOnce(mod, "(0,C.jsx)(HCAReaderFit,{}),", "", 'old fit switch');
 mod = replaceOnce(mod, "(0,C.jsxs)(`div`,{className:`zoom-controls`,children:[(0,C.jsx)(O,{icon:`subtract-line`,label:`Zoom out`,disabled:A<=.65||b===`text`,onClick:()=>te(e=>Math.max(.65,e-.1))}),(0,C.jsxs)(`button`,{className:`zoom-value`,title:`Reset to fit`,onClick:()=>te(1),children:[Math.round(A*100),`%`,(0,C.jsx)(E,{name:`arrow-down-s-line`})]}),(0,C.jsx)(O,{icon:`add-line`,label:`Zoom in`,disabled:A>=2||b===`text`,onClick:()=>te(e=>Math.min(2,e+.1))})]})", "b===`text`?(0,C.jsx)(`span`,{className:`hl-view-spacer`}):(0,C.jsx)(HCA12ViewControls,{book:e,zoom:A,setZoom:te,width:De})", 'zoom controls');
 // focus mode: an obvious, labelled way out
 mod = replaceOnce(mod, "icon:`fullscreen-exit-line`,onClick:()=>{s(!1),document.fullscreenElement&&document.exitFullscreen?.()},children:`Leave focus`", "icon:`close-line`,className:`hl-exit`,onClick:()=>{s(!1),document.fullscreenElement&&document.exitFullscreen?.()},children:`Exit full screen`", 'leave focus');
+/* ---------- Clearer names, fewer look-alikes, a current tour and a floating tour tab ---------- */
+// study panel: "Study tools" clashed with Tools and with the study buttons; the panel tabs now say what they do
+mod = replaceOnce(mod, "HC(O,{icon:'close-line',label:'Close study tools',onClick:props.onClose})", "HC(O,{icon:'close-line',label:'Close study panel',onClick:props.onClose})", 'panel close label');
+mod = replaceOnce(mod, "role:'tablist','aria-label':'Study tools'},[['annotations','Notes & pen'],['recall','Page recall'],['studio','Page studio'],['companion','Lookup']]", "role:'tablist','aria-label':'Study panel'},[['annotations','Pen & notes'],['recall','Explain'],['studio','Quiz & summary'],['companion','Look up']]", 'panel tabs');
+mod = replaceOnce(mod, "[`Study tools`,S&&(0,C.jsx)(`span`,{className:`status-dot`})]", "[`Study panel`,S&&(0,C.jsx)(`span`,{className:`status-dot`})]", 'study panel button');
+// toolbar: Mark a region (was Mark + note, which sat beside Snip), Explain (was Recall page), Quiz & summary (was Page studio)
+mod = replaceOnce(mod, "label:'Mark + note',active:tool==='note-area'", "label:'Mark a region',active:tool==='note-area'", 'mark label');
+mod = replaceOnce(mod, "title:'Mark + note (M): drag a region, then write a note'", "title:'Mark a region (M): drag a box, then write a note'", 'mark title');
+mod = replaceOnce(mod, "label:rd.hidden?'Reveal page':'Recall page'", "label:rd.hidden?'Reveal page':'Explain'", 'recall label');
+mod = replaceOnce(mod, "HC(HCALabelTool,{icon:'sparkling-2-line',label:'Page studio',active:rd.tab==='studio'", "HC(HCALabelTool,{icon:'sparkling-2-line',label:'Quiz & summary',active:rd.tab==='studio'", 'studio label');
+// Tools menu: grouped, with the duplicate sticky note removed (the toolbar's Sticky note does the same)
+mod = replaceOnce(mod, "item('scissors-cut-line', 'Snip', 'Drag a box; copy, download or keep it',", "HC('p', { key: 'sec-capture', className: 'hl-menu-sec' }, 'Capture'), item('scissors-cut-line', 'Copy a region', 'Drag a box; copy, download or keep it',", 'tools: snip');
+mod = replaceOnce(mod, "item('gallery-line', 'Stickers', 'Drag clinical icons and labels onto the page',", "HC('p', { key: 'sec-add', className: 'hl-menu-sec' }, 'Add to the page'), item('gallery-line', 'Clinical stickers', 'Drag clinical icons and labels onto the page',", 'tools: stickers');
+mod = replaceOnce(mod, "item('sticky-note-line', 'Pin a sticky note', 'Click the exact spot on the page', () => pick('sticky'), { disabled: !imageMode, pressed: tool === 'sticky' }),", "", 'tools: duplicate sticky');
+mod = replaceOnce(mod, "item('stethoscope-line', 'Calculator',", "HC('p', { key: 'sec-work', className: 'hl-menu-sec' }, 'Look up and work out'), item('stethoscope-line', 'Calculator',", 'tools: calculator');
+mod = replaceOnce(mod, "item('search-line', 'Meaning', 'Plain definition of a word or term',", "item('search-line', 'Define a word', 'Plain definition of a word or term',", 'tools: meaning');
+mod = replaceOnce(mod, "item('play-fill', 'Present', 'Slides from your highlights, notes and snips',", "HC('p', { key: 'sec-share', className: 'hl-menu-sec' }, 'Share'), item('play-fill', 'Present', 'Slides from your highlights, notes and snips',", 'tools: present');
+// the tour: current names and features, five short steps, and the dots follow the number of steps
+{
+  const TOUR = [
+    { icon: 'book-open-line', title: 'Bring in your reading.', text: 'Add a PDF, a PowerPoint or a set of page images with Add a source. Everything opens on this device, and nothing is uploaded unless you choose to share an excerpt.' },
+    { icon: 'book-2-line', title: 'Read the way that suits you.', text: 'Switch between flipbook, single page and text view, fit the page or the width, search the book, and open Pages for contents and bookmarks.' },
+    { icon: 'mark-pen-line', title: 'Mark up the page.', text: 'Pen, highlighter, sticky note and Mark a region sit together in the toolbar. Open Pen & notes in the study panel to change colours, erase or undo.' },
+    { icon: 'brain-line', title: 'Study what you read.', text: 'Explain a page from memory, then reveal it and check. Quiz & summary makes practice questions and summaries, and Look up finds the passage. Any AI is optional and always labelled.' },
+    { icon: 'stack-line', title: 'Keep what matters.', text: 'Tools holds Copy a region, Magnifier, Clinical stickers, Calculator and Define a word, plus Present and Export for slides, Word, Markdown and cards. Back up your annotations from More.' }
+  ];
+  const a = mod.indexOf('o=[{icon:`book-open-line`,title:`A whole book. A little more space.`'), z = mod.indexOf('],s=o[i];', a);
+  if (a < 0 || z < 0) throw Error('Expected the tour steps.');
+  mod = mod.slice(0, a) + 'o=' + JSON.stringify(TOUR) + mod.slice(z + 1);
+  mod = replaceOnce(mod, '`A QUIETER WAY TO LEARN · ${i+1} OF 4`', '`A QUIETER WAY TO LEARN · ${i+1} OF ${o.length}`', 'tour count');
+  mod = replaceOnce(mod, "onClick:()=>i<3?a(i+1):(e(),", "onClick:()=>i<o.length-1?a(i+1):(e(),", 'tour next');
+  mod = replaceOnce(mod, "children:[i<3?`A little further`:`Make yourself at home`", "children:[i<o.length-1?`A little further`:`Make yourself at home`", 'tour button label');
+}
 html = html.replace(modMatch[1], () => mod);
 
 /* ---------- Executable inline scripts -> hashed files ---------- */

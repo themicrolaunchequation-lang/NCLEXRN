@@ -116,14 +116,14 @@ for (const [label, w, h, touch] of [['desktop', 1440, 900, false], ['laptop', 11
 for (const [label, w, h, touch] of [['desktop', 1440, 900, false], ['phone', 390, 844, true]]) {
   const { p, errs, ctx } = await session({ w, h, touch }); await sample(p);
   ok(`${label}: study panel is closed by default`, (await p.locator('.hl-sidecar').count()) === 0);
-  await p.getByRole('button', { name: /Study tools/ }).first().click(); await p.waitForTimeout(500);
+  await p.getByRole('button', { name: /Study panel/ }).first().click(); await p.waitForTimeout(500);
   const cl = p.locator('.hl-close'); const bb = await cl.boundingBox();
   ok(`${label}: panel has a labelled Close ≥44px`, bb && bb.width >= 44 && bb.height >= 44 && /Close/.test(await cl.textContent()), JSON.stringify(bb));
   const pr = await p.locator('.hl-sidecar').boundingBox(); ok(`${label}: panel fits the viewport`, pr.x >= -1 && pr.y >= -1 && pr.x + pr.width <= w + 1 && pr.y + pr.height <= h + 1, JSON.stringify(pr));
   const tabs = await p.evaluate(() => [...document.querySelectorAll('.hl-tab')].map(t => { const r = t.getBoundingClientRect(); return [r.left, r.right]; }));
   ok(`${label}: four tabs do not overlap`, tabs.length === 4 && tabs.every((t, i) => i === 0 || t[0] >= tabs[i - 1][1] - 1), JSON.stringify(tabs));
   ok(`${label}: tab text is not clipped`, await p.evaluate(() => [...document.querySelectorAll('.hl-tab')].every(t => t.scrollWidth <= t.clientWidth + 1 && [...t.querySelectorAll('span')].every(s => s.scrollWidth <= s.clientWidth + 1))));
-  for (const t of ['Page recall', 'Page studio', 'Lookup']) { await p.getByRole('tab', { name: t }).click(); await p.waitForTimeout(250); ok(`${label}: ${t} tab fits`, await p.evaluate(() => { const r = document.querySelector('.hl-sidecar').getBoundingClientRect(), c = document.querySelector('.hca-sidecar-content'); return c.scrollWidth <= c.clientWidth + 2 && r.right <= innerWidth + 1; })); }
+  for (const t of ['Explain', 'Quiz & summary', 'Look up']) { await p.getByRole('tab', { name: t }).click(); await p.waitForTimeout(250); ok(`${label}: ${t} tab fits`, await p.evaluate(() => { const r = document.querySelector('.hl-sidecar').getBoundingClientRect(), c = document.querySelector('.hca-sidecar-content'); return c.scrollWidth <= c.clientWidth + 2 && r.right <= innerWidth + 1; })); }
   await p.keyboard.press('Escape'); await p.waitForTimeout(300);
   if (w < 1180) ok(`${label}: Esc closes the overlay panel`, (await p.locator('.hl-sidecar').count()) === 0);
   else { await p.locator('.hl-close').click(); await p.waitForTimeout(300); ok(`${label}: Close closes the docked panel`, (await p.locator('.hl-sidecar').count()) === 0); }
@@ -152,7 +152,7 @@ for (const [label, w, h, touch, dark] of [['desktop light', 1440, 900, false, fa
   ok(`${label}: no horizontal overflow`, (await box(p)).doc[1] <= 0);
   const v = await axe(p, '.reader-root'); ok(`${label}: axe reader (${v.join('; ') || 'clean'})`, v.length === 0);
   if (touch) { const s = await small(p, '.hca-reader-root .reader-toolbar button, .hca-reader-root .reader-toolbar summary, .hca-reader-root .reader-bottom-toolbar button, .hca-reader-root .reader-bottom-toolbar summary, .hca-reader-root .reader-heading-actions button, .hca-reader-root .reader-title-group button'); ok(`${label}: reader controls ≥44px`, s.length === 0, JSON.stringify(s)); }
-  await p.getByRole('button', { name: /Study tools/ }).first().click(); await p.waitForTimeout(500);
+  await p.getByRole('button', { name: /Study panel/ }).first().click(); await p.waitForTimeout(500);
   const v2 = await axe(p, '.hl-sidecar'); ok(`${label}: axe study panel (${v2.join('; ') || 'clean'})`, v2.length === 0);
   if (touch) { const s = await small(p, '.hl-sidecar .hl-close, .hl-sidecar .hl-tab, .hl-sidecar .hl-pop'); ok(`${label}: panel controls ≥44px`, s.length === 0, JSON.stringify(s)); }
   await p.screenshot({ path: `${out}/${label.replace(' ', '-')}-panel.png` });

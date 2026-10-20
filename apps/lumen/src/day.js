@@ -102,6 +102,7 @@ ke = function HCA11Today() {
 function HCA11TopActions({ theme, setTheme, privacy, session }) {
   const ctx = y(), s = ctx.state, streak = (window.HCA && window.HCA.daily ? window.HCA.daily.get().s : HCA3Streaks(HCA3Activity(s)).current), I = HCA11S()?.icon;
   return HC(_.Fragment, {},
+    HC(HCATourTab),
     HC('button', { className: 'global-search-button hs-search', onClick: () => ctx.setModal({ type: 'search' }), 'aria-label': 'Search sources and notes' }, HC(E, { name: 'search-line' }), HC('span', {}, 'Search sources and notes'), HC('kbd', {}, /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘ K' : 'Ctrl K')),
     HC('div', { className: 'topbar-actions hs-right' },
       HC('a', { className: 'hs-streak', href: '#home', 'aria-label': streak ? `${streak}-day Daily Crown streak` : 'Start your Daily Crown streak', title: streak ? `${streak}-day Daily Crown streak` : 'Start your Daily Crown streak', onClick: e => { e.preventDefault(); ctx.navigate('progress'); }, dangerouslySetInnerHTML: { __html: `${I ? I('flame') : ''}<span>${streak}</span>` } }),
@@ -116,3 +117,18 @@ function HCA11Mount() { _.useEffect(() => { HCA11S()?.normalize(); }); return nu
 const HCA11PrevDialogs = rs;
 rs = function HCA11DialogRouter() { return HC(_.Fragment, {}, HC(HCA11PrevDialogs), HC(HCA11Mount)); };
 /*HCA11:END*/
+
+/* A floating "Quick tour" tab on My Day and the library only. It is mounted on the page itself (not inside a page section) so it floats, and it opens the app tour. */
+function HCATourTab() {
+  const ctx = y(), cref = _.useRef(ctx), route = () => (location.hash.slice(1).split('?')[0] || 'home'), [r, setR] = _.useState(route);
+  cref.current = ctx;
+  _.useEffect(() => { const f = () => setR(route()); addEventListener('hashchange', f); return () => removeEventListener('hashchange', f); }, []);
+  _.useEffect(() => {
+    if (r !== 'home' && r !== 'library') return undefined;
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'hl-tour-tab'; b.setAttribute('aria-label', 'Take a quick tour of Lumen');
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5zM6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5M22 9v6"/></svg><span>Quick tour</span>';
+    b.addEventListener('click', () => cref.current.setModal({ type: 'tour' }));
+    document.body.append(b); return () => b.remove();
+  }, [r]);
+  return null;
+}

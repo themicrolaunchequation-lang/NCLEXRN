@@ -11,6 +11,13 @@ const br = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-11
 const ctx = await br.newContext({ viewport: { width: W, height: H }, serviceWorkers: 'block', ignoreHTTPSErrors: true }); const p = await ctx.newPage();
 await p.goto('https://lumen.healthcarecrownacademy.co.uk/#library'); await p.waitForTimeout(2200);
 for (let i = 0; i < 4; i++) { const sk = p.getByRole('button', { name: /^(Skip|Skip for now)$/ }); if (await sk.count()) { await sk.first().click().catch(() => {}); await p.waitForTimeout(300); } else break; }
+await p.evaluate(() => { location.hash = '#home'; }); await p.waitForTimeout(1200); await p.screenshot({ path: path.join(out, 'home.png') });
+console.log('TOUR TAB on home:', await p.locator('.hl-tour-tab').count(), 'tab box', JSON.stringify(await p.locator('.hl-tour-tab').boundingBox()));
+await p.locator('.hl-tour-tab').click(); await p.waitForTimeout(700);
+for (let i = 1; i <= 5; i++) { console.log('TOUR step', i, '|', (await p.locator('.tour-modal .tour-title').innerText()).trim(), '|', (await p.locator('.tour-modal .modal-eyebrow, .tour-modal [class*=eyebrow]').first().innerText().catch(() => '')).trim()); await p.screenshot({ path: path.join(out, 'tour-' + i + '.png') }); if (i < 5) await p.getByRole('button', { name: /A little further/ }).click(); await p.waitForTimeout(300); }
+await p.keyboard.press('Escape'); await p.waitForTimeout(400);
+await p.evaluate(() => { location.hash = '#library'; }); await p.waitForTimeout(1200); console.log('TOUR TAB on library:', await p.locator('.hl-tour-tab').count()); await p.screenshot({ path: path.join(out, 'library.png') });
+await p.evaluate(() => { location.hash = '#progress'; }); await p.waitForTimeout(800); console.log('TOUR TAB on progress (expect 0):', await p.locator('.hl-tour-tab').count()); await p.evaluate(() => { location.hash = '#library'; }); await p.waitForTimeout(600);
 await p.getByRole('button', { name: /Add a source/ }).first().click(); await p.waitForTimeout(500);
 await p.locator('input[type=file]').first().setInputFiles(path.join(D, 'a.pdf')); await p.waitForTimeout(500);
 await p.locator('.modal input[type=checkbox]').first().check({ timeout: 4000 }).catch(() => {});
@@ -25,7 +32,7 @@ for (const name of ['More', 'Tools']) {
   const t = p.locator('.reader-root summary').filter({ hasText: name }).first(); if (!(await t.count())) { console.log(name, ': no summary'); continue; }
   await t.click().catch(() => {}); await p.waitForTimeout(600); console.log(name.toUpperCase(), '->', JSON.stringify(await menuItems())); await p.screenshot({ path: path.join(out, name + '.png') }); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
 }
-for (const name of ['Recall page', 'Page studio', 'Study tools']) {
+for (const name of ['Explain', 'Quiz & summary', 'Study panel']) {
   const t = p.locator('.reader-root button').filter({ hasText: name }).first(); if (!(await t.count())) { console.log(name, ': no button'); continue; }
   await t.click().catch(() => {}); await p.waitForTimeout(800);
   console.log(name.toUpperCase(), '-> panel tabs', JSON.stringify(await p.evaluate(() => [...document.querySelectorAll('.hl-tabs button, .hca-sidecar-tabs button')].map(e => (e.innerText || '').replace(/\s+/g, ' ').trim() + (e.getAttribute('aria-selected') === 'true' ? '*' : '')))), 'panel head:', await p.evaluate(() => (document.querySelector('.hl-sh, .hca-sidecar-header')?.innerText || '').replace(/\s+/g, ' ').slice(0, 80)));

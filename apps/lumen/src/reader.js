@@ -270,15 +270,29 @@ HCAReaderToolbar = function HCA12Toolbar(props) {
   const origItems = _.Children.toArray(more.props.children[1].props.children);
   const item = (t, label, icon, cls = '') => HC('button', { key: label, type: 'button', className: cls, onClick: t.props.onClick, disabled: t.props.disabled, 'aria-pressed': t.props.active }, HCAIcon(icon), t.props.label === 'Reveal page' ? 'Reveal page' : label);
   const slides = HCA12Type(props.book) === 'slides', views = [['flip', 'book-open-line', 'Flipbook'], ['single', 'file-text-line', 'Single page'], ['text', 'text', 'Text view']];
+  /* More: grouped under plain headings; the three study/markup buttons repeat here only where the toolbar is too narrow for them. */
+  const mapItem = it => { const ic = it.props.children?.[0]; return ic?.props?.name === 'expand-horizontal-line' ? _.cloneElement(it, {}, HCAIcon('layout-column-line'), ...it.props.children.slice(1)) : it; };
+  const rest = origItems.slice(1).map(mapItem), used = new Set(), seen = new Set();
+  const lab = it => String(_.Children.toArray(it.props.children).find(k => typeof k === 'string') || '');
+  const group = (title, re, extra = []) => {
+    const items = [...rest.filter(it => !used.has(it) && re.test(lab(it))), ...extra.filter(Boolean)].filter(it => { const l = lab(it) || it.key; if (seen.has(l)) return false; seen.add(l); return true; });
+    rest.forEach(it => { if (items.includes(it)) used.add(it); });
+    return items.length ? [HC('p', { key: 'sec-' + title, className: 'hl-menu-sec' }, title), ...items] : [];
+  };
+  const dl = L?.download && HC('button', { key: 'dl', type: 'button', disabled: props.book.kind === 'demo', onClick: L.download }, HCAIcon('download-line'), props.book.kind === 'images' ? 'Download this image' : 'Download original');
+  const present = slides && HC('button', { key: 'present', type: 'button', onClick: () => HCA12.setPresent?.(true) }, HCAIcon('play-fill'), 'Present as slides');
+  const refresh = HC('button', { key: 'refresh', type: 'button', onClick: HCA7Refresh }, HCAIcon('refresh-line'), 'Refresh Lumen');
+  const appMenu = HC('button', { key: 'menu', type: 'button', className: 'hl-ovf-xs', onClick: () => HCAShell?.toggleDrawer(true) }, HCAIcon('menu-line'), 'Open the app menu');
+  const viewItems = group('View', /Resize|Appearance|Fullscreen|focus|Compar|comparison/i);
+  const pageItems = group('This page', /Bookmark|Read aloud|Stop reading|Select text|Erase/i, [present]);
+  const fileItems = group('Your files', /Back up|Download|Export/i, [dl, refresh]);
+  const leftover = group('More', /./);
   const menu = HC('div', { className: 'hca-reader-more-menu hl-more-menu' },
     HCA12MenuHead('More'),
-    item(mark, 'Mark + note', 'crop-line', 'hl-ovf'), item(recall, recall.props.label, 'brain-line', 'hl-ovf'), item(studio, 'Page studio', 'sparkling-2-line', 'hl-ovf'),
+    HC('p', { key: 'sec-ovf', className: 'hl-menu-sec hl-ovf' }, 'Mark up and study'),
+    item(mark, 'Mark a region', 'crop-line', 'hl-ovf'), item(recall, recall.props.label, 'brain-line', 'hl-ovf'), item(studio, 'Quiz & summary', 'sparkling-2-line', 'hl-ovf'),
     ...views.map(([id, icon, label]) => HC('button', { key: id, type: 'button', className: 'hl-ovf-xs', 'aria-pressed': props.readMode === id, onClick: () => props.onMode(id) }, HCAIcon(icon), label)),
-    ...origItems.slice(1).map(it => { const ic = it.props.children?.[0]; return ic?.props?.name === 'expand-horizontal-line' ? _.cloneElement(it, {}, HCAIcon('layout-column-line'), ...it.props.children.slice(1)) : it; }),
-    slides && HC('button', { key: 'present', type: 'button', onClick: () => HCA12.setPresent?.(true) }, HCAIcon('play-fill'), 'Present as slides'),
-    L?.download && HC('button', { key: 'dl', type: 'button', disabled: props.book.kind === 'demo', onClick: L.download }, HCAIcon('download-line'), props.book.kind === 'images' ? 'Download this image' : 'Download original'),
-    HC('button', { key: 'refresh', type: 'button', onClick: HCA7Refresh }, HCAIcon('refresh-line'), 'Refresh Lumen'),
-    HC('button', { key: 'menu', type: 'button', className: 'hl-ovf-xs', onClick: () => HCAShell?.toggleDrawer(true) }, HCAIcon('menu-line'), 'Open the app menu'));
+    ...viewItems, ...pageItems, ...fileItems, ...leftover, appMenu);
   return HC('div', { className: 'hca-reader-tools hl-tools', 'aria-label': 'Page annotation tools' },
     HC('div', { className: 'hl-group', role: 'group', 'aria-label': 'Mark up the page' }, pen, hi, sticky, HC('span', { className: 'hl-wide' }, mark)),
     HC('div', { className: 'hl-group hl-g-study', role: 'group', 'aria-label': 'Study this page' }, recall, studio),

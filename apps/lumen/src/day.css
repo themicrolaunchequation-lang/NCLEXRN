@@ -120,3 +120,14 @@ body.hs .hca-footer-links a.hca-ico{width:auto;height:auto;min-height:40px;paddi
 
 @media(max-width:700px){body.hs .workspace-main button,body.hs .workspace-main .button{min-height:44px;min-width:44px}}
 @media(max-width:700px){body.hs .workspace-main .segmented button,body.hs .workspace-main .button.secondary,body.hs .workspace-main .button.soft,body.hs .hca-footer a.hca-ico,body.hs .hca-footer button{min-height:44px}}
+
+/* Floating quick-tour tab */
+.hl-tour-tab{position:fixed;right:16px;bottom:20px;z-index:40;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px 0 14px;border:0;border-radius:999px;background:#6446D0;color:#fff;font:600 14px/1 var(--hs-sans,Inter,system-ui,sans-serif);box-shadow:0 10px 28px rgba(31,18,84,.32);cursor:pointer}
+.hl-tour-tab svg{width:20px;height:20px}
+.hl-tour-tab:hover{background:#5236B8}
+.hl-tour-tab:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px #6446D0}
+@media(max-width:1023px){.hl-tour-tab{bottom:calc(84px + env(safe-area-inset-bottom));right:12px}}
+@media print{.hl-tour-tab{display:none}}
+/* menu section headings (Tools and More) */
+.hl-menu-sec{margin:10px 14px 2px;padding:0;font:700 11px/1.2 var(--hs-sans,Inter,system-ui,sans-serif);letter-spacing:.1em;text-transform:uppercase;color:var(--hs-muted,#56626E)}
+.hl-menu-sec:first-of-type{margin-top:4px}
