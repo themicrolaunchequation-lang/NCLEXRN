@@ -203,7 +203,7 @@
       const o = (w / h < .95) ? 'p' : 'l', L = o === 'l' ? LAND : PORT, s = Math.min(w / L.w, h / L.h);
       const changed = o !== S.orient; S.orient = o; S.scale = s;
       el.frame.style.width = L.w * s + 'px'; el.frame.style.height = L.h * s + 'px';
-      el.slide.style.width = L.w + 'px'; el.slide.style.height = L.h + 'px'; el.slide.style.transform = `scale(${s})`; el.slide.dataset.o = o;
+      el.slide.style.width = L.w + 'px'; el.slide.style.height = L.h + 'px'; el.slide.style.setProperty('transform', `scale(${s})`, 'important'); el.slide.dataset.o = o;
       sizeCanvas();
       if (changed) { renderSlide(false); } else { fitContent(); applyVisual(true); redraw(); }
     }
@@ -288,7 +288,7 @@
         const reg = (s.regions || [])[v.step], rect = reg && reg.rect || [0, 0, 1, 1];
         if (!v.free) { const top = 10, bot = 74, Hh = Math.max(60, Wh - top - bot), sc = Math.min(Ww / (rect[2] * iw), Hh / (rect[3] * ih)); v.s = sc; v.tx = Ww / 2 - (rect[0] + rect[2] / 2) * iw * sc; v.ty = top + Hh / 2 - (rect[1] + rect[3] / 2) * ih * sc; }
         const quick = inst === true || instant || reduced(); img.style.transition = quick ? 'none' : 'transform .6s cubic-bezier(.22,.8,.26,1)';
-        img.style.transform = `translate(${v.tx}px,${v.ty}px) scale(${v.s})`;
+        img.style.setProperty('transform', `translate(${v.tx}px,${v.ty}px) scale(${v.s})`, 'important');
         const zn = $('[data-znote]', el.content); if (zn) { const hi = v.s > 1.001; zn.hidden = !hi; zn.textContent = hi ? `Zoom ${Math.round(v.s * 100)}% of the artwork\u2019s own size${v.s >= 3.99 ? ' (the most it will go)' : ''}. Past 100% the picture is enlarged, so small print can look soft. The poster\u2019s text is listed below.` : ''; }
         const sp = $('[data-spot]', win);
         if (sp) { const full = !reg || (rect[2] >= .99 && rect[3] >= .99), pad = 8; sp.hidden = full; sp.style.transition = quick ? 'none' : 'left .6s cubic-bezier(.22,.8,.26,1),top .6s cubic-bezier(.22,.8,.26,1),width .6s cubic-bezier(.22,.8,.26,1),height .6s cubic-bezier(.22,.8,.26,1)'; sp.style.left = v.tx + rect[0] * iw * v.s - pad + 'px'; sp.style.top = v.ty + rect[1] * ih * v.s - pad + 'px'; sp.style.width = rect[2] * iw * v.s + pad * 2 + 'px'; sp.style.height = rect[3] * ih * v.s + pad * 2 + 'px'; }
@@ -313,7 +313,7 @@
       lb.innerHTML = `<div class="hst-lb-bar"><b>${esc(s.title)}</b><span>Scroll or pinch to zoom, drag to move, double-click to zoom in</span><span class="hst-lb-note" data-lbn role="status" aria-live="polite"></span><div><button type="button" class="hst-ib" data-act="lbout" aria-label="Zoom out">${ic('zout')}</button><button type="button" class="hst-ib" data-act="lbin" aria-label="Zoom in">${ic('zin')}</button><button type="button" class="hst-ib" data-act="lbfit" aria-label="Fit to screen">${ic('fit')}</button><button type="button" class="hst-ib" data-act="lbsave" aria-label="Save the infographic">${ic('down')}</button><button type="button" class="hst-ib" data-act="lbclose" aria-label="Close the enlarged view">${ic('close')}</button></div></div><div class="hst-lb-stage" data-lbs tabindex="0" aria-label="Enlarged infographic. Use plus and minus to zoom, arrow keys to move."><img src="${esc(s.img)}" alt="${esc(s.alt || s.title)}" draggable="false"></div>`;
       root.append(lb); $('.hst-top', root).setAttribute('inert', ''); $('.hst-body', root).setAttribute('inert', '');
       const st = $('[data-lbs]', lb), im = $('img', lb), L = S.lb = { el: lb, st, im, s: 1, tx: 0, ty: 0, fit: 1, pts: new Map() };
-      const apply = () => { im.style.transform = `translate(${L.tx}px,${L.ty}px) scale(${L.s})`; const zn = $('[data-lbn]', lb); if (zn) zn.textContent = L.s > L.fit * 1.02 ? `${Math.round(L.s * 100)}%${L.s > 1.001 ? ' \u00b7 enlarged past the artwork\u2019s own detail, so small print may look soft' : ''}` : ''; };
+      const apply = () => { im.style.setProperty('transform', `translate(${L.tx}px,${L.ty}px) scale(${L.s})`, 'important'); const zn = $('[data-lbn]', lb); if (zn) zn.textContent = L.s > L.fit * 1.02 ? `${Math.round(L.s * 100)}%${L.s > 1.001 ? ' \u00b7 enlarged past the artwork\u2019s own detail, so small print may look soft' : ''}` : ''; };
       const clampPan = () => { const w = im.naturalWidth * L.s, h = im.naturalHeight * L.s, W = st.clientWidth, H = st.clientHeight; L.tx = w <= W ? (W - w) / 2 : clamp(L.tx, W - w, 0); L.ty = h <= H ? (H - h) / 2 : clamp(L.ty, H - h, 0); };
       L.fitTo = () => { const W = st.clientWidth, H = st.clientHeight; L.fit = Math.min(W / im.naturalWidth, H / im.naturalHeight); L.s = L.fit; clampPan(); apply(); };
       L.zoom = (f, cx, cy) => { cx = cx == null ? st.clientWidth / 2 : cx; cy = cy == null ? st.clientHeight / 2 : cy; const ns = clamp(L.s * f, L.fit * .98, Math.max(4, L.fit * 1.05)), k = ns / L.s; L.tx = cx - (cx - L.tx) * k; L.ty = cy - (cy - L.ty) * k; L.s = ns; clampPan(); apply(); };
@@ -426,7 +426,7 @@
     /* pan the poster by dragging when no ink tool is active */
     el.content.addEventListener('pointerdown', e => {
       const win = e.target.closest('[data-pwin]'); if (!win || S.tool !== 'none' || e.target.closest('.hst-pctl')) return; const s = slide(), v = S.view(s); let sx = e.clientX, sy = e.clientY; win.setPointerCapture(e.pointerId); win.classList.add('is-pan');
-      const mv = ev => { el.slide.dataset.free = '1'; v.tx += (ev.clientX - sx) / S.scale; v.ty += (ev.clientY - sy) / S.scale; sx = ev.clientX; sy = ev.clientY; v.free = true; const img = $('[data-pimg]', el.content); img.style.transition = 'none'; img.style.transform = `translate(${v.tx}px,${v.ty}px) scale(${v.s})`; };
+      const mv = ev => { el.slide.dataset.free = '1'; v.tx += (ev.clientX - sx) / S.scale; v.ty += (ev.clientY - sy) / S.scale; sx = ev.clientX; sy = ev.clientY; v.free = true; const img = $('[data-pimg]', el.content); img.style.transition = 'none'; img.style.setProperty('transform', `translate(${v.tx}px,${v.ty}px) scale(${v.s})`, 'important'); };
       const up = () => { win.classList.remove('is-pan'); win.removeEventListener('pointermove', mv); win.removeEventListener('pointerup', up); win.removeEventListener('pointercancel', up); }; win.addEventListener('pointermove', mv); win.addEventListener('pointerup', up); win.addEventListener('pointercancel', up);
     });
     el.content.addEventListener('wheel', e => { const win = e.target.closest('[data-pwin]'); if (!win || !(e.ctrlKey || e.metaKey)) return; e.preventDefault(); const wr = win.getBoundingClientRect(); zoomBy(e.deltaY < 0 ? 1.12 : .89, e.clientX - wr.left, e.clientY - wr.top); }, { passive: false });

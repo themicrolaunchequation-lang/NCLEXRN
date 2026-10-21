@@ -127,8 +127,27 @@ html.hca-embed .term-atlas-detail .term-cue img{width:300px;height:270px}
 html.hca-embed .term-atlas-detail .term-cue img[data-kind=diagram]{width:520px;height:325px}
 
 html.hca-embed[data-theme]{overflow:hidden}
+html.hca-embed[data-theme],html.hca-embed[data-theme] body{height:auto}
+html.hca-embed[data-theme] body{overflow-x:hidden;overflow-x:clip;overflow-y:visible}
 html.hca-embed[data-theme] .ml-brand,html.hca-embed[data-theme] .ml-coursepath{display:none}
-html.hca-embed[data-theme] .ml-coursehead{justify-content:flex-end}
-html.hca-embed[data-theme] .overlay{position:absolute!important;inset:auto 0!important;top:var(--hca-vt,0)!important;height:var(--hca-vh,100vh)!important}
-html.hca-embed[data-theme] #toasts,html.hca-embed[data-theme] #toast{position:absolute!important;bottom:auto!important;top:calc(var(--hca-vt,0px) + var(--hca-vh,100vh) - 90px)!important}
-html.hca-embed[data-theme] #confetti{position:absolute!important;top:var(--hca-vt,0)!important;height:var(--hca-vh,100vh)!important}
+html.hca-embed[data-theme] .ml-coursehead{justify-content:flex-end;padding-top:10px;padding-bottom:10px;border-bottom:0;background:none}
+html.hca-embed[data-theme] .overlay{overscroll-behavior:contain}
+html.hca-embed[data-theme] .overlay [tabindex="-1"]:focus{outline:0}
+html.hca-embed[data-theme].hca-fx #toasts,html.hca-embed[data-theme].hca-fx #toast,html.hca-embed[data-theme].hca-fx #confetti{display:none!important}
+html.hca-embed[data-theme] .modalHead{flex-wrap:wrap}
+html.hca-embed[data-theme] .seg>span{color:var(--txt)}
+html.hca-embed[data-theme] .iconBtn{min-width:44px;min-height:44px}
+html.hca-embed[data-theme] .pfx[role=button]{cursor:pointer}
+@media(max-width:760px){
+html.hca-embed[data-theme] :is(button,select,summary,.btn,a.medlex,a.linkBtn,input:not([type=checkbox]):not([type=radio])){min-height:44px}
+html.hca-embed[data-theme] :is(.spk,.mclose,.mnav,.iconbtn,.iconBtn,.ml-themeChoice,.x){min-width:44px}
+html.hca-embed[data-theme] :is(a.medlex,a.linkBtn){display:inline-flex;align-items:center}
+html.hca-embed[data-theme] :is(.miniAct,.icobtn,.open-hit){min-width:44px;min-height:44px}
+html.hca-embed[data-theme] .pfx[role=button]{display:flex;align-items:center;min-height:44px}
+html.hca-embed[data-theme] .scard .card-btns,html.hca-embed[data-theme] .cardTop{flex-wrap:wrap}
+html.hca-embed[data-theme] .cardActs{margin-left:auto;display:flex;gap:4px}
+html.hca-embed[data-theme] .dot{position:relative;width:44px;height:44px;background:none;transform:none}
+html.hca-embed[data-theme] .dot::after{content:"";position:absolute;inset:16px;border-radius:50%;background:var(--line)}
+html.hca-embed[data-theme] .dot.on::after{background:#0e7c7b;transform:scale(1.25)}
+}
+html.hca-embed[data-theme] .pfx[role=button]:focus-visible{outline:3px solid var(--ml-accent);outline-offset:4px;border-radius:8px}
