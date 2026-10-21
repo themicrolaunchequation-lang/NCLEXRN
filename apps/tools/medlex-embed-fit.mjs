@@ -3,6 +3,8 @@
 //   - shared/js/embed.js   marks <html class="hca-embed"> when the deck is framed (a deck opened on its own is unchanged)
 //   - shared/embed.css     compact layout for that mode: no site header, the slide list scrolls inside its own column
 //   - resizeStage() in the deck script also scales the slide to the height that is left, not just the width
+//   - the slide itself (the 1280x720 stage): slimmer header/footer (56px more body height), term pictures laid out in the flow of their card, type of 13px and up.
+//     Check any change here with apps/tools/medlex-deck-audit.mjs (zero overlaps expected at every size).
 import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto';
 const DIR = path.resolve(import.meta.dirname, '../medlex/learn'), JS = path.join(DIR, 'shared/js');
 const md5 = s => crypto.createHash('md5').update(s).digest('hex').slice(0, 16);
@@ -75,17 +77,169 @@ html.hca-embed .workbench-heading .icon-button{height:30px;width:30px}
 @media(max-width:1399px){html.hca-embed .annotation-toolbar .clear-text{font-size:0;gap:0}}
 @media(min-width:1500px){html.hca-embed .viewer-sub{display:inline}}
 @media(max-width:800px){html.hca-embed .studio{align-items:stretch}html.hca-embed .workbench{padding:6px 10px;align-self:stretch;width:100%}html.hca-embed .workbench-heading{margin:0 0 6px}html.hca-embed .sidebar{height:auto}html.hca-embed .course-nav button{font-size:14px}}
-/* the slide itself: small type is lifted so it stays legible once the slide is scaled */
+/* ===== the slide itself (the 1280x720 stage) ===== */
+/* A slimmer slide header and footer give the slide body 56px more height; the stage keeps its 1280x720 shape, so annotations and the scale are unchanged. */
+html.hca-embed{--hca-body:396px}
+html.hca-embed .stage .slide-header{height:60px}
+html.hca-embed .stage .slide-brand img{width:36px;height:36px}
+html.hca-embed .stage .slide-brand>span{font-size:23px}
+html.hca-embed .stage .slide-academy{font-size:15px}
+html.hca-embed .stage .slides{top:60px;bottom:40px}
+html.hca-embed .stage .slide-footer{height:40px}
+html.hca-embed .course-view .slide.course-slide,html.hca-embed .stage .slide.course-slide{padding:24px 56px 22px}
+html.hca-embed .stage .course-body{height:var(--hca-body)}
+html.hca-embed .stage .detail-deck{height:var(--hca-body)}
+html.hca-embed .stage .table-scroll{max-height:346px}
+html.hca-embed .stage .root-search+.table-scroll{max-height:274px}
+/* type: small slide text is lifted to 12-14px so it stays readable once the slide is scaled */
 html.hca-embed .stage .eyebrow{font-size:13px;letter-spacing:2px}
-html.hca-embed .stage .slide-brand small,html.hca-embed .stage .slide-footer,html.hca-embed .stage #chapterLabel{font-size:12px}
-html.hca-embed .stage .source-note{font-size:11px}
-html.hca-embed .stage .anatomy-figure figcaption,html.hca-embed .stage .image-split figcaption,html.hca-embed .stage .cover-tags{font-size:13px}
-html.hca-embed .stage .image-label{font-size:11px}
-html.hca-embed .stage .tilt-control,html.hca-embed .stage .quiz-badge p,html.hca-embed .stage .takeaway>span,html.hca-embed .stage .route-foot,html.hca-embed .stage .flip-hint,html.hca-embed .stage .flashcard small,html.hca-embed .stage .detail-count{font-size:13px}
-html.hca-embed .stage .recall-card small,html.hca-embed .stage .recall-back i,html.hca-embed .stage .detail-card small,html.hca-embed .stage .quiz-meta,html.hca-embed .stage .course-table th{font-size:12px}
-html.hca-embed .stage .course-callout>b{font-size:12px;max-width:none;min-width:135px;white-space:nowrap}
-html.hca-embed .stage .detail-controls button{font-size:14px;min-height:34px}
+html.hca-embed .stage .slide-brand small,html.hca-embed .stage .slide-footer,html.hca-embed .stage #chapterLabel{font-size:13px}
 html.hca-embed .stage .slide-footer i{margin:0 8px}
+html.hca-embed .stage .source-note{font-size:13px;bottom:6px}
+html.hca-embed .stage .anatomy-figure figcaption,html.hca-embed .stage .image-split figcaption,html.hca-embed .stage .cover-tags{font-size:13px}
+html.hca-embed .stage .image-label{font-size:13px}
+html.hca-embed .stage .tilt-control,html.hca-embed .stage .quiz-badge p,html.hca-embed .stage .takeaway>span,html.hca-embed .stage .route-foot,html.hca-embed .stage .flip-hint,html.hca-embed .stage .flashcard small,html.hca-embed .stage .detail-count{font-size:13px}
+html.hca-embed .stage .detail-card small,html.hca-embed .stage .course-table th{font-size:13px}
+html.hca-embed .stage .detail-controls button{font-size:14px;min-height:34px}
+html.hca-embed .stage .slide-art small{font-size:13px;letter-spacing:.3px;max-width:128px}
+html.hca-embed .stage .slide-art{width:146px}
+html.hca-embed .stage .era-grid button small,html.hca-embed .stage .era-grid button>span{font-size:13px}
+html.hca-embed .stage .course-refs p{font-size:13px}
+html.hca-embed .stage .course-callout>b{font-size:13px;letter-spacing:1px;flex:0 0 150px;max-width:none;min-width:0;white-space:normal}
+html.hca-embed .stage .course-callout p{font-size:14px}
+html.hca-embed .stage .map-key span,html.hca-embed .stage .sequence-steps button,html.hca-embed .stage .sequence-controls,html.hca-embed .stage .sequence-controls button{font-size:13px}
+html.hca-embed .stage .quiz-meta{font-size:13px}
+html.hca-embed .stage .quiz-options button>span{font-size:13px}
+html.hca-embed .stage .quiz-reason{font-size:14px}
+html.hca-embed .stage .quiz-bottom .primary{font-size:13px}
+html.hca-embed .stage .quiz-bottom .text-button{font-size:13px}
+html.hca-embed .stage .bank-counter,html.hca-embed .stage .bank-label,html.hca-embed .stage .bank-cue{font-size:13px}
+/* term pictures: a readable size (about 92px), laid out in the flow of their card so nothing is pinned over text */
+html.hca-embed .stage .term-cue{--cw:92px;--ch:80px;--dw:136px;--dh:86px;min-width:0}
+html.hca-embed .stage .term-cue[data-count="2"]{--dw:124px;--dh:78px}
+html.hca-embed .stage .term-cue[data-count="3"]{--cw:64px;--ch:58px;--dw:96px;--dh:60px}
+html.hca-embed .stage .term-cue-images{flex-wrap:wrap;min-width:0;max-width:100%}
+html.hca-embed .stage .term-cue img{width:var(--cw)!important;height:var(--ch)!important;flex:0 0 auto}
+html.hca-embed .stage .term-cue img[data-kind=diagram]{width:var(--dw)!important;height:var(--dh)!important}
+html.hca-embed .stage .term-cue-caption{font-size:13px!important;max-width:170px;line-height:1.25}
+/* recall cards */
+html.hca-embed .stage .recall-card{height:auto;min-height:127px}
+html.hca-embed .stage .recall-card small{font-size:13px}
+html.hca-embed .stage .recall-front>span{font-size:13px}
+html.hca-embed .stage .recall-back>span{font-size:14px}
+html.hca-embed .stage .recall-back i{position:static;display:block;margin-top:8px;font-size:13px}
+html.hca-embed .stage .recall-card.has-term-cue{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:14px;align-items:center;padding:14px 16px!important;min-height:150px}
+html.hca-embed .stage .recall-card.has-term-cue>.term-cue{position:static;transform:none;grid-column:2;grid-row:1;width:auto;max-width:250px;justify-self:end}
+html.hca-embed .stage .recall-card.has-term-cue>.recall-front,html.hca-embed .stage .recall-card.has-term-cue>.recall-back{grid-column:1;grid-row:1;min-width:0}
+html.hca-embed .stage .recall-card.has-term-cue .recall-front strong{font-size:22px}
+html.hca-embed .stage .recall-card.has-term-cue .recall-back strong{font-size:20px}
+html.hca-embed .stage .course-flips.cols-3 .recall-card.has-term-cue>.term-cue,html.hca-embed .stage .course-flips.cols-2 .recall-card.has-term-cue>.term-cue{max-width:210px}
+/* word parts: the picture sits under the label, name and hint */
+html.hca-embed .stage .word-part.has-term-cue{display:flex;flex-direction:column;align-items:flex-start;padding:16px 14px;min-height:0}
+html.hca-embed .stage .word-part.has-term-cue>.term-cue{position:static;order:9;margin-top:auto;align-self:flex-start;width:auto}
+html.hca-embed .stage .word-part small{font-size:13px}
+html.hca-embed .stage .word-part>span:not(.term-cue){font-size:13px}
+html.hca-embed .stage .word-part.has-term-cue strong{font-size:34px;margin:10px 0}
+/* flash cards (study bank) */
+html.hca-embed .stage .bank-flip.has-term-cue{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:24px;align-items:center;padding:10px 22px;height:auto;min-height:124px;text-align:left}
+html.hca-embed .stage .bank-flip.has-term-cue>.term-cue{position:static;transform:none;grid-column:1;grid-row:1/span 3;width:auto;max-width:300px}
+html.hca-embed .stage .bank-flip.has-term-cue>.term-cue .term-cue-images{flex-wrap:wrap}
+html.hca-embed .stage .bank-flip.has-term-cue>:not(.term-cue){grid-column:2;min-width:0}
+html.hca-embed .stage .bank-flip.has-term-cue .bank-form{font-size:30px}
+html.hca-embed .stage .bank-example>.term-cue{--cw:56px;--ch:50px;--dw:80px;--dh:50px}
+/* word-building lab: parts and prompt on the left, the answer beside them (it was pinned over them) */
+html.hca-embed .stage .curated-builder .builder-parts>span.has-term-cue{padding:6px 12px!important;column-gap:10px}
+html.hca-embed .stage .curated-builder .builder-parts b{font-size:36px}
+html.hca-embed .stage .curated-builder .builder-parts small,html.hca-embed .stage .curated-builder .builder-top small{font-size:13px}
+html.hca-embed .stage .curated-builder .builder-prompt{font-size:14px}
+html.hca-embed .stage .curated-builder .primary{font-size:14px;padding:12px 18px}
+html.hca-embed .stage .curated-builder .builder-select{font-size:15px}
+html.hca-embed .stage .curated-builder .builder-result>strong{font-size:34px}
+html.hca-embed .stage .curated-builder .builder-result p{font-size:17px}
+html.hca-embed .stage .curated-builder .builder-result small{font-size:14px}
+html.hca-embed .stage .curated-builder .builder-result>.term-cue{float:none;display:flex;margin:12px 0 0;align-items:flex-start;justify-content:flex-start}
+html.hca-embed .stage .course-body>.curated-builder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);grid-template-rows:auto auto auto 1fr;column-gap:34px;align-content:start}
+html.hca-embed .stage .course-body>.curated-builder>.builder-top{grid-column:1/-1}
+html.hca-embed .stage .course-body>.curated-builder>.builder-parts{grid-column:1/-1;grid-row:2;flex-wrap:wrap;margin:16px 0 14px}
+html.hca-embed .stage .course-body>.curated-builder>.builder-prompt{grid-column:1;grid-row:3;margin-bottom:12px}
+html.hca-embed .stage .course-body>.curated-builder>.build-reveal{grid-column:1;grid-row:4;justify-self:start;align-self:start}
+html.hca-embed .stage .course-body>.curated-builder>.builder-result{position:static;grid-column:2;grid-row:3/5;min-height:0;padding-left:30px;align-self:start;left:auto;right:auto;bottom:auto;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:18px;align-content:start}
+html.hca-embed .stage .course-body>.curated-builder>.builder-result>*{grid-column:1;min-width:0}
+html.hca-embed .stage .course-body>.curated-builder>.builder-result>.term-cue{grid-column:2;grid-row:1/span 3;margin:0}
+/* pictures beside text in cards, shelves, tables, reveal rows and sequences */
+html.hca-embed .stage .detail-card>.term-shelf{float:right;flex-wrap:wrap;justify-content:flex-end;border:0;margin:0 0 6px 16px;padding:0;max-width:58%;gap:10px}
+html.hca-embed .stage .term-shelf:has(>.term-cue:nth-child(3))>.term-cue{--cw:68px;--ch:60px;--dw:100px;--dh:62px}
+html.hca-embed .stage .term-shelf .term-cue-caption{font-size:13px!important}
+html.hca-embed .stage .course-cards article>.term-shelf{max-width:190px}
+html.hca-embed .stage .course-table td>.term-cue{--cw:60px;--ch:56px;--dw:96px;--dh:60px;max-width:130px;float:none;display:inline-flex;vertical-align:middle;margin:0 12px 0 0}
+html.hca-embed .stage .course-table td>.term-cue img{padding:2px}
+html.hca-embed .stage .reveal-grid summary>.term-cue{--cw:80px;--ch:70px;--dw:110px;--dh:70px}
+html.hca-embed .stage .sequence-body{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:18px;align-content:start}
+html.hca-embed .stage .sequence-body>*{grid-column:1;min-width:0}
+html.hca-embed .stage .sequence-body>.term-cue{grid-column:2;grid-row:1/span 4}
+/* a table card with room: when a page holds three cards or fewer, the table card takes the full height of its column */
+html.hca-embed .stage .detail-page:has(>.detail-card:nth-child(3)):not(:has(>.detail-card:nth-child(4)))>.detail-card:has(.table-scroll){grid-row:span 2}
+html.hca-embed .stage .detail-page.single>.detail-card:has(.table-scroll){grid-row:auto}
+/* reveal rows: the picture sits before the + sign (the deck rotates every span in an open summary, which turned the pictures on their side) */
+html.hca-embed .stage .reveal-grid summary{align-items:center;justify-content:flex-start;gap:14px}
+html.hca-embed .stage .reveal-grid summary>.term-cue{order:1;margin:0 14px 0 auto;float:none}
+html.hca-embed .stage .reveal-grid details[open] summary span,html.hca-embed .stage .reveal-grid summary .term-cue,html.hca-embed .stage .reveal-grid summary .term-cue *{transform:none}
+html.hca-embed .stage .reveal-grid summary>span:not(.term-cue){order:2;flex:none}
+html.hca-embed .stage .reveal-grid details[open] summary>span:not(.term-cue){transform:rotate(45deg)}
+html.hca-embed .stage .reveal-grid summary .term-cue-images{display:flex}
+html.hca-embed .stage .reveal-grid details p{font-size:15px}
+html.hca-embed .stage .slide-art small{line-height:1.5}
+/* recall cards in a narrow column: three to a row inside a detail card the picture goes under the text and the repeated label is visually hidden */
+html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card{padding:10px 12px!important;min-height:0}
+html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card.has-term-cue{grid-template-columns:minmax(0,1fr);row-gap:6px;align-items:start;min-height:0}
+html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card.has-term-cue>.term-cue{grid-column:1;grid-row:2;justify-self:start;max-width:100%;--cw:56px;--ch:56px;--dw:80px;--dh:56px}
+html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card.has-term-cue>.recall-front,html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card.has-term-cue>.recall-back{grid-row:1}
+html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card small{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card strong{margin:0 0 6px;font-size:20px!important}
+html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card .recall-back strong{margin:0 0 4px}
+html.hca-embed .stage .detail-card .course-flips.cols-2 .recall-card.has-term-cue>.term-cue{--cw:76px;--ch:66px;--dw:110px;--dh:68px}
+/* picture label in the corner: a long label wraps, the box grows with it */
+html.hca-embed .stage .slide-art{height:auto;min-height:120px}
+html.hca-embed .stage .slide-art small{white-space:normal;overflow:visible;text-overflow:clip;text-align:center}
+html.hca-embed .stage .course-slide.visual-enhanced .course-title{padding-right:176px}
+/* source links: a long name wraps instead of being cut off */
+html.hca-embed .stage .source-note{flex-wrap:wrap;white-space:normal;row-gap:2px}
+html.hca-embed .stage .source-note a{max-width:none;overflow:visible;text-overflow:clip}
+html.hca-embed .stage .detail-card .course-flips.cols-3 .recall-card .term-cue-caption{display:none}
+html.hca-embed .stage .model-panel figcaption{font-size:13px}
+html.hca-embed .stage .sequence-label{font-size:13px!important}
+html.hca-embed .stage .table-scroll:has(+.course-callout){max-height:282px}
+html.hca-embed .stage .root-search+.table-scroll:has(+.course-callout){max-height:210px}
+html.hca-embed .stage .course-callout>b{letter-spacing:.6px;flex-basis:200px}
+html.hca-embed dialog .course-callout>b,html.hca-embed dialog .quiz-meta,html.hca-embed dialog .course-table th,html.hca-embed dialog .bank-counter,html.hca-embed dialog .model-panel figcaption,html.hca-embed dialog .sequence-label{font-size:13px!important}
+html.hca-embed .stage .detail-card details{display:flow-root}
+html.hca-embed .stage .slide-art{top:20px;padding:6px}
+html.hca-embed .stage .slide-art img{width:72px;height:66px}
+html.hca-embed .stage .slide-art.kind-icon img{width:62px;height:62px}
+html.hca-embed .stage .slide-art small{line-height:1.3}
+html.hca-embed .stage .curated-builder .builder-parts>span{flex:0 0 auto}
+html.hca-embed dialog .text-button{font-size:14px}
+html.hca-embed .term-atlas-head small{font-size:13px}
+html.hca-embed .stage .curated-builder .builder-parts{flex-wrap:wrap}
+html.hca-embed .stage .detail-card .curated-builder .term-cue{--cw:60px;--ch:56px;--dw:90px;--dh:58px}
+html.hca-embed .stage .detail-card .curated-builder .builder-parts b{font-size:26px}
+html.hca-embed .stage .detail-page:not(.single):not(:has(>.detail-card:nth-child(3)))>.detail-card:has(.curated-builder){grid-row:span 2}
+html.hca-embed .stage .detail-card .curated-builder .builder-parts>span.has-term-cue{padding:4px 8px!important}
+html.hca-embed .stage .detail-card .curated-builder .builder-result{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:14px}
+html.hca-embed .stage .detail-card .curated-builder .builder-result>*{grid-column:1;min-width:0}
+html.hca-embed .stage .detail-card .curated-builder .builder-result>.term-cue{grid-column:2;grid-row:1/span 3;margin:0}
+html.hca-embed .stage .detail-card .curated-builder .builder-parts{gap:8px}
+html.hca-embed .stage .detail-card .curated-builder .builder-parts>span.has-term-cue{column-gap:6px}
+/* three recall cards across the slide: tighter, so a revealed answer still fits two rows */
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card.has-term-cue{padding:12px 14px!important;column-gap:12px}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card.has-term-cue>.term-cue{max-width:192px}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card.has-term-cue>.term-cue[data-count="2"]{--cw:72px;--ch:64px;--dw:104px;--dh:66px}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card.has-term-cue>.term-cue[data-count="3"]{--cw:56px;--ch:56px;--dw:72px;--dh:56px}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card .term-cue-caption{display:none}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card .recall-back>span{font-size:13px;line-height:1.4}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card .recall-back i{margin-top:4px}
+html.hca-embed .stage .course-body>.course-flips.cols-2 .recall-card.has-term-cue>.term-cue{max-width:270px}
+html.hca-embed .stage .course-body>.course-flips.cols-2 .recall-card.has-term-cue>.term-cue[data-count="2"]{--cw:84px;--ch:74px;--dw:120px;--dh:76px}
 /* pop-ups: reading view, term pictures, overview and the editor dialogs */
 html.hca-embed dialog{width:min(1040px,calc(100vw - 28px));max-height:92vh;padding:22px 30px}
 html.hca-embed dialog p{font-size:17px;line-height:1.7}
@@ -136,6 +290,19 @@ html.hca-embed .term-atlas-card .term-cue-caption{font-size:14px}
 html.hca-embed .term-atlas-close{font-size:16px;min-height:44px}
 html.hca-embed .term-atlas-detail .term-cue img{width:300px;height:270px}
 html.hca-embed .term-atlas-detail .term-cue img[data-kind=diagram]{width:520px;height:325px}
+/* a phone: pop-ups use the whole width and the Illustrated terms grid is one column (two columns pushed the pictures over the words) */
+@media(max-width:700px){
+html.hca-embed dialog{padding:16px}
+html.hca-embed dialog .term-cue-images{flex-wrap:wrap}
+html.hca-embed dialog .term-cue img{flex:0 0 auto}
+html.hca-embed .term-atlas{padding:16px 14px}
+html.hca-embed .term-atlas h2{font-size:28px}
+html.hca-embed .term-atlas-grid{grid-template-columns:minmax(0,1fr)}
+html.hca-embed dialog .term-cue img{width:92px;height:74px}
+html.hca-embed dialog .term-cue img[data-kind=diagram]{width:132px;height:84px}
+html.hca-embed .term-atlas-detail .term-cue img{width:min(200px,42vw);height:auto;aspect-ratio:11 / 10}
+html.hca-embed .term-atlas-detail .term-cue img[data-kind=diagram]{width:min(300px,72vw);height:auto;aspect-ratio:8 / 5}
+}
 `);
 /* ===== Word parts quests (they carry html[data-theme]) =====
    They are shown in the MedLex page itself at their full height, so the page scrolls once and there is no page inside a page.
