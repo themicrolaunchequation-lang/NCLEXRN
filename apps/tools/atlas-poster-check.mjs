@@ -152,9 +152,11 @@ for (const [w, h, dpr] of MATRIX) for (const mode of ['normal', 'reduced', 'app-
 }
 { /* an image that never loads: the page is never left half-drawn, and Try again works */
   const { ctx, p, errs } = await openFresh({ w: 1280, h: 720, sw: 'block' });
-  await p.route(/infographics\/(?!t\/)ch\d+\.webp/, r => r.abort()); await p.locator('.fb-enl').nth(1).click(); await p.waitForTimeout(700);
-  ok(await p.locator('.pv-err').isVisible(), 'a guide that cannot load says so and offers Try again');
-  await p.unroute(/infographics\/(?!t\/)ch\d+\.webp/); await p.locator('[data-pv=retry]').click(); await p.waitForTimeout(900); ok(await insideStage(p) && !(await p.locator('.pv-err').isVisible()), 'Try again loads and fits the guide'); await ctx.close();
+  let blocked = 0;
+  await p.route(/infographics\/(?!t\/)ch10\.webp/, r => { blocked++; return r.abort(); });
+  await p.evaluate(() => window.MedlexLib.openAtlas('ch10')); await p.waitForTimeout(700);
+  ok(blocked > 0 && await p.locator('.pv-err').isVisible(), 'a guide that cannot load says so and offers Try again');
+  await p.unroute(/infographics\/(?!t\/)ch10\.webp/); await p.locator('[data-pv=retry]').click(); await p.waitForTimeout(900); ok(await insideStage(p) && !(await p.locator('.pv-err').isVisible()), 'Try again loads and fits the guide'); await ctx.close();
 }
 { /* odd data left in storage by older builds must not stop the pop-up from fitting, and good marks survive */
   const good = { t: 'pen', id: 'g1', c: '#D93A3A', w: 5, p: [[100, 100], [200, 150], [260, 130]] };
