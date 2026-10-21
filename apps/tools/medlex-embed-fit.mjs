@@ -11,6 +11,50 @@ const md5 = s => crypto.createHash('md5').update(s).digest('hex').slice(0, 16);
 fs.writeFileSync(path.join(JS, 'embed.js'), `/* Marks a deck that is shown inside the MedLex lesson viewer so embed.css can fit it to one screen. */
 try { if (window.top !== window) document.documentElement.classList.add('hca-embed'); } catch (e) { document.documentElement.classList.add('hca-embed'); }
 `);
+fs.appendFileSync(path.join(JS, 'embed.js'), String.raw`
+/* Viewer-only controls; medical text and the exported standalone decks are unchanged. */
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.documentElement.classList.contains('hca-embed') || !document.querySelector('.course-view')) return;
+  document.getElementById('mainDialog')?.setAttribute('aria-labelledby', 'dialogEyebrow');
+  const sidebar = document.querySelector('.sidebar'), atlas = document.querySelector('.term-atlas-open');
+  document.querySelectorAll('.detail-read').forEach(button => { button.textContent = 'Reading view'; });
+  if (atlas && atlas.firstChild?.nodeType === 3) atlas.firstChild.textContent = 'Illustrated terms ';
+  document.querySelectorAll('.build-reveal').forEach(button => { button.textContent = 'Build & explain'; });
+  const key = document.createElement('button'); key.type = 'button'; key.className = 'study-key-open'; key.textContent = 'Visual study key';
+  if (atlas) atlas.after(key); else if (sidebar) sidebar.prepend(key);
+  const sync = () => { key.disabled = !document.querySelector('.slide.active .slide-art'); };
+  new MutationObserver(sync).observe(document.getElementById('slides'), {subtree:true,attributes:true,attributeFilter:['class']}); sync();
+  let opener = null;
+  // Capture the visible opener before the existing deck code calls showModal().
+  document.addEventListener('click', function (event) { if (!event.target.closest('dialog')) opener = event.target.closest('button,a,input') || document.activeElement; }, true);
+  key.addEventListener('click', function () { document.querySelector('.slide.active .slide-art')?.click(); opener = key; });
+  document.addEventListener('click', function (event) {
+    const art = event.target.closest?.('.slide-art'); if (!art) return;
+    queueMicrotask(function () {
+      const model = window.HCAStudyModels?.[art.dataset.label], panel = document.querySelector('.art-inspector');
+      if (!model || !panel) return;
+      const image = panel.querySelector('img'), heading = panel.querySelector('h2'), note = panel.querySelector('p'), credit = panel.querySelector('a');
+      image.src = model.src; image.alt = model.alt; heading.textContent = model.alt;
+      note.textContent = 'A conceptual teaching illustration. Use the lesson text and sources for the precise clinical meaning.';
+      credit.href = model.source; credit.textContent = 'Artwork credits';
+    });
+  }, true);
+
+  const restore = new WeakMap();
+  new MutationObserver(function (changes) {
+    changes.forEach(function (change) {
+      const dlg = change.target; if (dlg.tagName !== 'DIALOG') return;
+      if (dlg.open) {
+        if (!restore.has(dlg)) restore.set(dlg, opener || document.activeElement);
+        if (!dlg.contains(document.activeElement)) (dlg.querySelector('button:not([disabled]),input,a[href]') || dlg).focus({preventScroll:true});
+      } else {
+        const back = restore.get(dlg); restore.delete(dlg);
+        if (back && back.isConnected && !document.querySelector('dialog[open]') && back.getClientRects().length) back.focus({preventScroll:true});
+      }
+    });
+  }).observe(document.body, {subtree:true,attributes:true,attributeFilter:['open']});
+});
+`);
 fs.writeFileSync(path.join(DIR, 'shared/embed.css'), `/* A deck inside the lesson viewer: one screen, no page scrolling. The slide is scaled up (or down) to fill the room that is left (see resizeStage). */
 html.hca-embed,html.hca-embed body{height:100%;overflow:hidden}
 html.hca-embed .topbar{display:none!important}
@@ -355,6 +399,159 @@ fs.copyFileSync(path.join(import.meta.dirname, 'medlex-quest-embed.js'), path.jo
   console.log(`embed-fit: quests ${quests} pages updated, ${sites} celebration sites moved to hcaVY`);
 }
 /* ===== end of the Word parts quests block ===== */
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
+/* MedLex lesson system. Shared by all 29 decks; viewer-only to preserve standalone exports. */
+html.hca-embed:not([data-theme]){--ui:#eef1f7;--paper:#fff;--surface:#fff;--ink:#10253a;--muted:#4a5d71;--line:#d4ddea;--accent:#3557d6;--accent-soft:#edf1ff;--shadow:0 18px 55px #10253a12;--prefix:#6843a8;--root:#087366;--suffix:#995117}
+html.hca-embed[data-mode=night]{--ui:#091421;--paper:#102133;--surface:#152a40;--ink:#f1f5fc;--muted:#b9c9dd;--line:#3c526e;--accent:#a7baff;--accent-soft:#203354;--prefix:#d0b5ff;--root:#86e2d0;--suffix:#ffd09b}
+html.hca-embed .sidebar{background:var(--paper);border-right:1px solid var(--line)}
+html.hca-embed .course-nav button{border-radius:8px;color:var(--muted)}
+html.hca-embed .course-nav button[aria-current=true]{background:var(--accent-soft);color:var(--ink)}
+html.hca-embed :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+/* Repeated corner symbols repeat the title and consume valuable reading space. */
+html.hca-embed .stage .slide-art{display:none}
+html.hca-embed .stage .course-slide.visual-enhanced .course-title{padding-right:0}
+html.hca-embed .stage .course-title h2{color:var(--ink);letter-spacing:-1.1px;max-width:1050px}
+html.hca-embed .stage .course-title em{color:var(--accent)}
+html.hca-embed .stage .course-title>p:last-child{font-size:17px;color:var(--muted)}
+html.hca-embed .stage .eyebrow{color:var(--accent);font-weight:750;letter-spacing:1.4px}
+html.hca-embed .stage .course-cards{gap:18px}
+html.hca-embed .stage .course-cards article{border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:inset 0 3px var(--accent);padding:22px 24px}
+html.hca-embed .stage .course-cards .card-index{float:none;display:block;margin:0 0 12px;font:700 16px/1 var(--sans);letter-spacing:.1em;color:var(--accent)}
+html.hca-embed .stage .course-cards h3{font:650 25px/1.2 var(--sans);margin:0 0 12px;color:var(--ink);letter-spacing:-.4px}
+html.hca-embed .stage .course-cards p{font-size:18px;line-height:1.55;color:var(--muted);max-width:48ch}
+html.hca-embed .stage .course-cards.cols-2{grid-auto-rows:1fr}
+html.hca-embed .stage .course-cards.cols-2 article{min-height:162px}
+html.hca-embed .stage .course-cards article>.term-shelf{float:none;max-width:none;margin:0 0 12px;justify-content:flex-start}
+html.hca-embed .stage .course-cards article>.term-shelf img{width:100px;height:80px}
+html.hca-embed .stage .course-cards article>.term-shelf img[data-kind=diagram]{width:150px;height:94px}
+html.hca-embed .stage .word-part{border-radius:12px;background:var(--surface);border-color:var(--line);border-top:4px solid currentColor;padding:18px 22px}
+html.hca-embed .stage .word-part small{font-size:15px;font-weight:700;letter-spacing:1px}
+html.hca-embed .stage .word-part>span:not(.term-cue){font-size:17px;line-height:1.4}
+html.hca-embed .stage .word-part.has-term-cue strong{font:650 42px/1.1 var(--sans);margin:14px 0}
+html.hca-embed .stage .word-part>.term-cue{--cw:132px;--ch:112px;--dw:220px;--dh:138px;margin-top:18px}
+html.hca-embed .stage .word-part>.term-cue .term-cue-caption{font-size:15px;max-width:240px}
+html.hca-embed .stage .detail-card{border-radius:12px;border-color:var(--line);background:var(--surface);color:var(--ink)}
+html.hca-embed .stage .detail-card>p{font-size:18px;line-height:1.55;color:var(--ink)}
+html.hca-embed .stage .detail-card>b,html.hca-embed .stage .detail-card>p b{font-weight:750;color:var(--ink)}
+html.hca-embed .stage .detail-card>h3,html.hca-embed .stage .detail-card>h4{color:var(--accent)}
+html.hca-embed .stage .detail-controls{border-bottom:1px solid var(--line);padding-bottom:8px}
+html.hca-embed .stage .detail-read{border-radius:6px;background:var(--accent-soft);color:var(--accent);font-weight:700}
+html.hca-embed .stage .recall-card{border-radius:12px;border-color:var(--line);background:var(--surface)}
+html.hca-embed .stage .recall-card small{color:var(--accent);font-weight:700;letter-spacing:1px}
+html.hca-embed .stage .quiz-options button{border-radius:9px;color:var(--ink);background:var(--surface);border-color:var(--line)}
+html.hca-embed .stage .reveal-grid details{border-radius:12px;border-color:var(--line)}
+html.hca-embed .stage .source-note{color:var(--muted)}
+html.hca-embed .stage .source-note a{color:var(--muted);text-underline-offset:3px}
+/* The top bar stays visible while long reading panels scroll. */
+html.hca-embed dialog{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:0 26px 24px;box-shadow:0 32px 120px #02091580}
+html.hca-embed dialog::backdrop{background:#071421b8;backdrop-filter:blur(4px)}
+html.hca-embed dialog .dialog-top,html.hca-embed .term-atlas-head{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding:20px 0 16px;margin-bottom:18px;gap:18px}
+html.hca-embed dialog .dialog-top h2{font:650 27px/1.25 var(--sans);letter-spacing:-.6px;color:var(--ink)}
+html.hca-embed dialog .dialog-top .icon-button,html.hca-embed .term-atlas-close{border:1px solid var(--line);border-radius:10px;flex-shrink:0;background:var(--accent-soft);color:var(--ink)}
+html.hca-embed dialog .reading-view .detail-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;color:var(--ink);font-size:20px}
+html.hca-embed dialog .reading-view .detail-card p{font-size:20px;line-height:1.65;color:var(--ink);max-width:68ch}
+html.hca-embed dialog .reading-view .detail-card strong,html.hca-embed dialog .reading-view .detail-card b{color:var(--ink);font-weight:750}
+html.hca-embed dialog .reading-view .term-shelf{float:none;border:0;display:flex;justify-content:flex-start;padding:16px;background:var(--accent-soft);border-radius:12px}
+html.hca-embed dialog .reading-view .term-shelf img{width:170px;height:140px;object-fit:contain}
+html.hca-embed dialog .reading-view .term-shelf img[data-kind=diagram]{width:240px;height:150px}
+html.hca-embed .term-atlas-card{border-radius:14px;background:var(--surface);border-color:var(--line);gap:12px}
+html.hca-embed .term-atlas-card:hover{border-color:var(--accent);box-shadow:0 4px 20px #10253a14}
+html.hca-embed .term-atlas-card p{color:var(--muted)}
+html.hca-embed .term-atlas-card>.term-cue{align-self:stretch;padding:12px;background:var(--accent-soft);border-radius:10px}
+html.hca-embed .term-atlas-detail{padding:12px}
+html.hca-embed .term-atlas-detail .term-cue-images{padding:20px;background:var(--accent-soft);border-radius:16px}
+html.hca-embed .term-atlas-detail .term-cue-caption{font-size:18px;max-width:55ch}
+/* Auto-height word studios: generous page width, constrained reading and games. */
+html.hca-embed[data-theme] :is(main,.wrap){max-width:1680px;width:100%;box-sizing:border-box;margin-inline:auto}
+html.hca-embed[data-theme] .ml-hero{max-width:1608px;margin-inline:auto}
+html.hca-embed[data-theme] .modal{border:1px solid var(--line);box-shadow:0 24px 90px #07142166}
+@media(max-width:700px){
+html.hca-embed dialog{padding:0 14px 18px;border-radius:12px}
+html.hca-embed dialog .dialog-top h2{font-size:23px}
+html.hca-embed .term-atlas-head{padding-top:16px}
+html.hca-embed dialog .reading-view .detail-card{padding:18px}
+html.hca-embed dialog .reading-view .detail-card p{font-size:18px}
+html.hca-embed dialog .reading-view .term-shelf img{width:104px;height:88px}
+html.hca-embed dialog .reading-view .term-shelf img[data-kind=diagram]{width:180px;height:112px}
+html.hca-embed .term-atlas-detail .term-cue-images{padding:10px}
+html.hca-embed :is(.detail-read,.term-atlas-back){min-height:44px}
+}
+@media(prefers-reduced-motion:reduce){html.hca-embed *,html.hca-embed *::before,html.hca-embed *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+`);
+
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
+/* A compound-word row shares its body with the decode sentence and callout. */
+html.hca-embed .stage .course-body>.word-parts>.word-part.has-term-cue{height:250px;padding:14px 18px}
+html.hca-embed .stage .word-part.has-term-cue strong{font-size:36px;margin:10px 0}
+html.hca-embed .stage .word-part>.term-cue{--cw:108px;--ch:86px;--dw:150px;--dh:94px;margin-top:auto}
+html.hca-embed .stage .word-part>.term-cue .term-cue-caption{font-size:13px}
+html.hca-embed .stage .word-part small{font-size:14px}
+html.hca-embed .stage .word-part>span:not(.term-cue){font-size:14px}
+html.hca-embed .stage .course-cards:has(+.course-callout) article{min-height:0;padding:14px 20px}
+html.hca-embed .stage .course-cards:has(+.course-callout) .card-index{margin-bottom:8px;font-size:14px}
+html.hca-embed .stage .course-cards:has(+.course-callout) h3{font-size:22px;margin-bottom:8px}
+html.hca-embed .stage .course-cards:has(+.course-callout) p{font-size:16px;line-height:1.45}
+`);
+// Reuse the supplied, credited raster teaching models for exact anatomical concepts.
+// Keep historical icon provenance and the explicit limits of the image; no pathology is inferred.
+const illustrationSources = {
+  'symbol-heart-organ': ['cardiovascular.html', 'Heart teaching model with the major vessels'],
+  'symbol-lungs': ['respiratory.html', 'Respiratory teaching model showing the lungs and airways'],
+  'symbol-neurology': ['nervous.html', 'Brain teaching model'],
+  'symbol-skeleton': ['musculoskeletal.html', 'Skeleton teaching model'],
+  'symbol-blood-cells': ['haematology.html', 'Conceptual illustration of blood cells']
+};
+const illustrationMap = Object.fromEntries(Object.entries(illustrationSources).map(([key, [file, alt]]) => {
+  const cover = fs.readFileSync(path.join(DIR, file), 'utf8').match(/<img id="coverImage"[^>]*src="([^"]+)"/);
+  if (!cover) throw new Error('Missing credited lesson illustration: ' + file);
+  return [key, { src: cover[1], alt, source: 'credits/batch' + JSON.parse(fs.readFileSync(path.join(DIR, 'decks.json'), 'utf8')).find(d => d.file === file).batch + '-asset-credits.json' }];
+}));
+const studyModels = Object.fromEntries(Object.entries(illustrationMap).map(([key, image]) => [key.replace('symbol-', '').replaceAll('-', ' '), image]));
+const bookCover = fs.readFileSync(path.join(DIR, 'basic-word-structure.html'), 'utf8').match(/<img id="coverImage"[^>]*src="([^"]+)"/)[1];
+studyModels.book = { src: bookCover, alt: 'Medical terminology study materials', source: 'credits/batch1-asset-credits.json' };
+fs.appendFileSync(path.join(JS, 'embed.js'), '\nwindow.HCAStudyModels=' + JSON.stringify(studyModels) + ';\n');
+for (const file of fs.readdirSync(DIR).filter(f => f.endsWith('.html'))) {
+  const p = path.join(DIR, file), original = fs.readFileSync(p, 'utf8');
+  const next = original.replace(/(<script id="termVisualData"[^>]*>)([\s\S]*?)(<\/script>)/, (_, start, raw, end) => {
+    const data = JSON.parse(raw);
+    for (const [key, image] of Object.entries(illustrationMap)) {
+      const asset = data.assets[key]; if (!asset || asset.src === image.src) continue;
+      asset.originalSource = asset.originalSource || asset.source;
+      Object.assign(asset, image, { kind: 'model', limitation: 'Conceptual teaching illustration of the named structure; not a diagnostic image or evidence of a particular pathology.' });
+    }
+    return start + JSON.stringify(data) + end;
+  });
+  if (next !== original) fs.writeFileSync(p, next);
+}
+
+// Objective cards keep their useful text; automatic keyword matches such as Collect → colon are not teaching images.
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
+html.hca-embed .stage .course-cards article>.term-shelf,html.hca-embed .stage .detail-card:has(>.course-cards)>.term-shelf{display:none}
+`);
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
+html.hca-embed .study-key-open{width:100%;min-height:44px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:600 14px var(--sans);text-align:left;cursor:pointer}
+html.hca-embed .study-key-open:disabled{opacity:.55;cursor:default}
+html.hca-embed .art-inspector img{display:block;width:min(480px,100%);height:min(360px,50vh);object-fit:contain;margin:20px auto;background:var(--accent-soft);border-radius:16px}
+`);
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
+html.hca-embed .stage .detail-card .word-part.has-term-cue{height:auto;min-height:0;padding:12px}
+html.hca-embed .stage .detail-card .word-part>.term-cue{--cw:78px;--ch:68px;--dw:112px;--dh:70px;margin-top:10px}
+html.hca-embed .stage .detail-card .word-part.has-term-cue strong{font-size:30px;margin:8px 0}
+html.hca-embed .stage .detail-page:has(.ga-lab){grid-template-columns:1.15fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr))}
+html.hca-embed .stage .detail-card:has(.ga-lab){grid-row:span 2}
+html.hca-embed .stage .detail-card:has(.ga-lab)>.term-shelf{display:none}
+html.hca-embed .stage .ga-lab p{font-size:16px;line-height:1.55}
+`);
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
+html.hca-embed dialog .dialog-top #dialogEyebrow{font:650 20px/1.3 var(--sans);letter-spacing:0;color:var(--ink);max-width:calc(100% - 60px)}
+`);
+// The quests animate every card, including cards far below the fold in a tall frame.
+// Remove staggered entry and permanent graphics-layer hints; hover feedback is immediate.
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), `
+html.hca-embed[data-theme] :is(.card,.scard){animation:none!important;transition:none!important;will-change:auto}
+html.hca-embed[data-theme] .overlay .modal{animation:none!important}
+html.hca-embed[data-theme] .card .newdot{animation:none!important;box-shadow:none}
+`);
 const OLD = "if(focused)scale=Math.min(scale,(innerHeight-172)/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=focused?";
 const NEW = "const emb=!focused&&document.documentElement.classList.contains('hca-embed'),wb=emb&&wrap.closest('.workbench');if(focused)scale=Math.min(scale,(innerHeight-172)/720);if(wb)scale=Math.min(scale,(innerHeight-(wb.scrollHeight-wrap.offsetHeight))/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=(focused||emb)?";
 // Reading view: a recall card became one run of text ("RECALL BEFORE REVEALCLICK TO REVEAL ..."); show its answer instead.

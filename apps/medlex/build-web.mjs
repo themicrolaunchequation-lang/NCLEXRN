@@ -43,6 +43,7 @@ let css = styles.join('\n').replace(/url\(["']?data:font\/woff2;base64,([A-Za-z0
 css += '\n' + read('src/hook.css') + '\n' + read('../shared/hca-shell.css') + '\n' + read('src/day.css') + '\n' + read('../shared/hca-studio.css') + '\n' + read('src/studio.css') + '\n' + read('src/lib/lib.css');
 
 let js = scripts[0];
+js = patch(js, '("all"===e||("done"===e?ke(t):"progress"===e?!ke(t)&&Ae(t)>0:!ke(t)&&!Ae(t)))', '(window.MedlexStudioEntry?MedlexStudioEntry.matches(t.id,e):("all"===e||("done"===e?ke(t):"progress"===e?!ke(t)&&Ae(t)>0:!ke(t)&&!Ae(t))))', 'lesson progress status filter');
 js = patch(js, '"./infographics/', `"${BASE}infographics/`, 'poster paths', 56);
 js = patch(js, 'e.href="./manifest.webmanifest"', `e.href="${BASE}manifest.webmanifest"`, 'manifest link');
 js = patch(js, 'navigator.serviceWorker.register("./sw.js")', `navigator.serviceWorker.register("${BASE}sw.js",{scope:"${SCOPE}"})`, 'worker scope');
@@ -115,7 +116,7 @@ const studioJs = `window.MEDLEX_STUDIO=${JSON.stringify(studioData(BASE))};\n` +
 const lib = libData(BASE); lib.data.glossaryCount = lib.glossary.length;
 const libJs = `window.MEDLEX_LIB=${JSON.stringify(lib.data)};\n` + ['core', 'library', 'pronounce', 'quests', 'poster', 'atlas', 'practice'].map(f => read(`src/lib/${f}.js`)).join('\n');
 const glossJs = `window.MEDLEX_GLOSSARY=${JSON.stringify(lib.glossary)};`;
-const lazy = { engine: engineJs, studio: studioJs, lib: libJs, glossary: glossJs }, lazyName = Object.fromEntries(Object.entries(lazy).map(([k, v]) => [k, `${k}.${hash(v)}.js`]));
+const lazy = { engine: engineJs, studio: studioJs, lib: libJs, glossary: glossJs, wordparts: read('src/lib/quests.js') }, lazyName = Object.fromEntries(Object.entries(lazy).map(([k, v]) => [k, `${k}.${hash(v)}.js`]));
 // Lessons: the 29 supplied decks (apps/medlex/learn, prepared by apps/tools/medlex-process-lessons.mjs) and the three Word-parts quests.
 const LDECKS = JSON.parse(read('learn/decks.json')), LTITLE = Object.fromEntries(LDECKS.map(d => [d.file.replace(/\.html$/, ''), { title: d.title, slides: d.slides }]));
 const LMAP = { ch1: 'basic-word-structure', ch2: 'building-vocabulary', prefixes: 'prefixes', suffixes: 'suffixes', ch3: 'human-body', ch4: 'musculoskeletal', ch5: 'integumentary', ch6: 'haematology', ch7: 'lymphatic-immune', ch8: 'endocrine', ch9: 'cardiovascular', ch10: 'respiratory', ch11: 'digestive', ch12: 'nervous', ch13: 'senses', ch14: 'urinary', ch15: 'male-reproductive', ch16: 'female-reproductive', ch17: 'obstetrics-neonatology', ch18: 'mental-health', ch19: 'oncology', ch20: 'infectious-parasitic', ch21: 'radiology-nuclear', ch22: 'pharmacology' };
@@ -123,6 +124,10 @@ const LEXTRA = [
   { id: 'history', before: 'ch1', sub: 'How medical words came to be.', free: true }, { id: 'components', after: 'ch1', sub: 'The building blocks of medical words.', free: true },
   { id: 'country-differences', after: 'ch3', sub: 'Spelling and term differences between countries.' }, { id: 'procedures-treatment', after: 'ch22', sub: 'The language of what is done, and how.' }, { id: 'medical-coding', after: 'procedures-treatment', sub: 'How terms become codes.' }
 ].map(x => ({ ...x, title: LTITLE[x.id].title, slides: LTITLE[x.id].slides }));
+for (const d of LDECKS) {
+  const text = read('learn/' + d.file), cover = text.match(/<img id="coverImage"[^>]*src="([^"]+)"[^>]*alt="([^"]*)"/);
+  if (cover) Object.assign(LTITLE[d.file.replace(/\.html$/, '')], { image: cover[1], alt: cover[2] });
+}
 const LEARN = { base: BASE + 'learn/', map: LMAP, titles: LTITLE, extra: LEXTRA, quests: { prefix: ['Prefixes', 'quest-prefixes'], root: ['Roots', 'quest-roots'], suffix: ['Suffixes', 'quest-suffixes'] } };
 const shellJs = `window.MEDLEX_LEARN=${JSON.stringify(LEARN)};window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_SRC=${JSON.stringify(Object.fromEntries(Object.entries(lazyName).map(([k, v]) => [k, BASE + v])))};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');
 

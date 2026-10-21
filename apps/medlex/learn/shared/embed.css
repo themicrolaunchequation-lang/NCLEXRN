@@ -316,3 +316,113 @@ html.hca-embed[data-theme] .dot::after{content:"";position:absolute;inset:16px;b
 html.hca-embed[data-theme] .dot.on::after{background:#0e7c7b;transform:scale(1.25)}
 }
 html.hca-embed[data-theme] .pfx[role=button]:focus-visible{outline:3px solid var(--ml-accent);outline-offset:4px;border-radius:8px}
+
+/* MedLex lesson system. Shared by all 29 decks; viewer-only to preserve standalone exports. */
+html.hca-embed:not([data-theme]){--ui:#eef1f7;--paper:#fff;--surface:#fff;--ink:#10253a;--muted:#4a5d71;--line:#d4ddea;--accent:#3557d6;--accent-soft:#edf1ff;--shadow:0 18px 55px #10253a12;--prefix:#6843a8;--root:#087366;--suffix:#995117}
+html.hca-embed[data-mode=night]{--ui:#091421;--paper:#102133;--surface:#152a40;--ink:#f1f5fc;--muted:#b9c9dd;--line:#3c526e;--accent:#a7baff;--accent-soft:#203354;--prefix:#d0b5ff;--root:#86e2d0;--suffix:#ffd09b}
+html.hca-embed .sidebar{background:var(--paper);border-right:1px solid var(--line)}
+html.hca-embed .course-nav button{border-radius:8px;color:var(--muted)}
+html.hca-embed .course-nav button[aria-current=true]{background:var(--accent-soft);color:var(--ink)}
+html.hca-embed :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+/* Repeated corner symbols repeat the title and consume valuable reading space. */
+html.hca-embed .stage .slide-art{display:none}
+html.hca-embed .stage .course-slide.visual-enhanced .course-title{padding-right:0}
+html.hca-embed .stage .course-title h2{color:var(--ink);letter-spacing:-1.1px;max-width:1050px}
+html.hca-embed .stage .course-title em{color:var(--accent)}
+html.hca-embed .stage .course-title>p:last-child{font-size:17px;color:var(--muted)}
+html.hca-embed .stage .eyebrow{color:var(--accent);font-weight:750;letter-spacing:1.4px}
+html.hca-embed .stage .course-cards{gap:18px}
+html.hca-embed .stage .course-cards article{border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:inset 0 3px var(--accent);padding:22px 24px}
+html.hca-embed .stage .course-cards .card-index{float:none;display:block;margin:0 0 12px;font:700 16px/1 var(--sans);letter-spacing:.1em;color:var(--accent)}
+html.hca-embed .stage .course-cards h3{font:650 25px/1.2 var(--sans);margin:0 0 12px;color:var(--ink);letter-spacing:-.4px}
+html.hca-embed .stage .course-cards p{font-size:18px;line-height:1.55;color:var(--muted);max-width:48ch}
+html.hca-embed .stage .course-cards.cols-2{grid-auto-rows:1fr}
+html.hca-embed .stage .course-cards.cols-2 article{min-height:162px}
+html.hca-embed .stage .course-cards article>.term-shelf{float:none;max-width:none;margin:0 0 12px;justify-content:flex-start}
+html.hca-embed .stage .course-cards article>.term-shelf img{width:100px;height:80px}
+html.hca-embed .stage .course-cards article>.term-shelf img[data-kind=diagram]{width:150px;height:94px}
+html.hca-embed .stage .word-part{border-radius:12px;background:var(--surface);border-color:var(--line);border-top:4px solid currentColor;padding:18px 22px}
+html.hca-embed .stage .word-part small{font-size:15px;font-weight:700;letter-spacing:1px}
+html.hca-embed .stage .word-part>span:not(.term-cue){font-size:17px;line-height:1.4}
+html.hca-embed .stage .word-part.has-term-cue strong{font:650 42px/1.1 var(--sans);margin:14px 0}
+html.hca-embed .stage .word-part>.term-cue{--cw:132px;--ch:112px;--dw:220px;--dh:138px;margin-top:18px}
+html.hca-embed .stage .word-part>.term-cue .term-cue-caption{font-size:15px;max-width:240px}
+html.hca-embed .stage .detail-card{border-radius:12px;border-color:var(--line);background:var(--surface);color:var(--ink)}
+html.hca-embed .stage .detail-card>p{font-size:18px;line-height:1.55;color:var(--ink)}
+html.hca-embed .stage .detail-card>b,html.hca-embed .stage .detail-card>p b{font-weight:750;color:var(--ink)}
+html.hca-embed .stage .detail-card>h3,html.hca-embed .stage .detail-card>h4{color:var(--accent)}
+html.hca-embed .stage .detail-controls{border-bottom:1px solid var(--line);padding-bottom:8px}
+html.hca-embed .stage .detail-read{border-radius:6px;background:var(--accent-soft);color:var(--accent);font-weight:700}
+html.hca-embed .stage .recall-card{border-radius:12px;border-color:var(--line);background:var(--surface)}
+html.hca-embed .stage .recall-card small{color:var(--accent);font-weight:700;letter-spacing:1px}
+html.hca-embed .stage .quiz-options button{border-radius:9px;color:var(--ink);background:var(--surface);border-color:var(--line)}
+html.hca-embed .stage .reveal-grid details{border-radius:12px;border-color:var(--line)}
+html.hca-embed .stage .source-note{color:var(--muted)}
+html.hca-embed .stage .source-note a{color:var(--muted);text-underline-offset:3px}
+/* The top bar stays visible while long reading panels scroll. */
+html.hca-embed dialog{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:0 26px 24px;box-shadow:0 32px 120px #02091580}
+html.hca-embed dialog::backdrop{background:#071421b8;backdrop-filter:blur(4px)}
+html.hca-embed dialog .dialog-top,html.hca-embed .term-atlas-head{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding:20px 0 16px;margin-bottom:18px;gap:18px}
+html.hca-embed dialog .dialog-top h2{font:650 27px/1.25 var(--sans);letter-spacing:-.6px;color:var(--ink)}
+html.hca-embed dialog .dialog-top .icon-button,html.hca-embed .term-atlas-close{border:1px solid var(--line);border-radius:10px;flex-shrink:0;background:var(--accent-soft);color:var(--ink)}
+html.hca-embed dialog .reading-view .detail-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;color:var(--ink);font-size:20px}
+html.hca-embed dialog .reading-view .detail-card p{font-size:20px;line-height:1.65;color:var(--ink);max-width:68ch}
+html.hca-embed dialog .reading-view .detail-card strong,html.hca-embed dialog .reading-view .detail-card b{color:var(--ink);font-weight:750}
+html.hca-embed dialog .reading-view .term-shelf{float:none;border:0;display:flex;justify-content:flex-start;padding:16px;background:var(--accent-soft);border-radius:12px}
+html.hca-embed dialog .reading-view .term-shelf img{width:170px;height:140px;object-fit:contain}
+html.hca-embed dialog .reading-view .term-shelf img[data-kind=diagram]{width:240px;height:150px}
+html.hca-embed .term-atlas-card{border-radius:14px;background:var(--surface);border-color:var(--line);gap:12px}
+html.hca-embed .term-atlas-card:hover{border-color:var(--accent);box-shadow:0 4px 20px #10253a14}
+html.hca-embed .term-atlas-card p{color:var(--muted)}
+html.hca-embed .term-atlas-card>.term-cue{align-self:stretch;padding:12px;background:var(--accent-soft);border-radius:10px}
+html.hca-embed .term-atlas-detail{padding:12px}
+html.hca-embed .term-atlas-detail .term-cue-images{padding:20px;background:var(--accent-soft);border-radius:16px}
+html.hca-embed .term-atlas-detail .term-cue-caption{font-size:18px;max-width:55ch}
+/* Auto-height word studios: generous page width, constrained reading and games. */
+html.hca-embed[data-theme] :is(main,.wrap){max-width:1680px;width:100%;box-sizing:border-box;margin-inline:auto}
+html.hca-embed[data-theme] .ml-hero{max-width:1608px;margin-inline:auto}
+html.hca-embed[data-theme] .modal{border:1px solid var(--line);box-shadow:0 24px 90px #07142166}
+@media(max-width:700px){
+html.hca-embed dialog{padding:0 14px 18px;border-radius:12px}
+html.hca-embed dialog .dialog-top h2{font-size:23px}
+html.hca-embed .term-atlas-head{padding-top:16px}
+html.hca-embed dialog .reading-view .detail-card{padding:18px}
+html.hca-embed dialog .reading-view .detail-card p{font-size:18px}
+html.hca-embed dialog .reading-view .term-shelf img{width:104px;height:88px}
+html.hca-embed dialog .reading-view .term-shelf img[data-kind=diagram]{width:180px;height:112px}
+html.hca-embed .term-atlas-detail .term-cue-images{padding:10px}
+html.hca-embed :is(.detail-read,.term-atlas-back){min-height:44px}
+}
+@media(prefers-reduced-motion:reduce){html.hca-embed *,html.hca-embed *::before,html.hca-embed *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* A compound-word row shares its body with the decode sentence and callout. */
+html.hca-embed .stage .course-body>.word-parts>.word-part.has-term-cue{height:250px;padding:14px 18px}
+html.hca-embed .stage .word-part.has-term-cue strong{font-size:36px;margin:10px 0}
+html.hca-embed .stage .word-part>.term-cue{--cw:108px;--ch:86px;--dw:150px;--dh:94px;margin-top:auto}
+html.hca-embed .stage .word-part>.term-cue .term-cue-caption{font-size:13px}
+html.hca-embed .stage .word-part small{font-size:14px}
+html.hca-embed .stage .word-part>span:not(.term-cue){font-size:14px}
+html.hca-embed .stage .course-cards:has(+.course-callout) article{min-height:0;padding:14px 20px}
+html.hca-embed .stage .course-cards:has(+.course-callout) .card-index{margin-bottom:8px;font-size:14px}
+html.hca-embed .stage .course-cards:has(+.course-callout) h3{font-size:22px;margin-bottom:8px}
+html.hca-embed .stage .course-cards:has(+.course-callout) p{font-size:16px;line-height:1.45}
+
+html.hca-embed .stage .course-cards article>.term-shelf,html.hca-embed .stage .detail-card:has(>.course-cards)>.term-shelf{display:none}
+
+html.hca-embed .study-key-open{width:100%;min-height:44px;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:600 14px var(--sans);text-align:left;cursor:pointer}
+html.hca-embed .study-key-open:disabled{opacity:.55;cursor:default}
+html.hca-embed .art-inspector img{display:block;width:min(480px,100%);height:min(360px,50vh);object-fit:contain;margin:20px auto;background:var(--accent-soft);border-radius:16px}
+
+html.hca-embed .stage .detail-card .word-part.has-term-cue{height:auto;min-height:0;padding:12px}
+html.hca-embed .stage .detail-card .word-part>.term-cue{--cw:78px;--ch:68px;--dw:112px;--dh:70px;margin-top:10px}
+html.hca-embed .stage .detail-card .word-part.has-term-cue strong{font-size:30px;margin:8px 0}
+html.hca-embed .stage .detail-page:has(.ga-lab){grid-template-columns:1.15fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr))}
+html.hca-embed .stage .detail-card:has(.ga-lab){grid-row:span 2}
+html.hca-embed .stage .detail-card:has(.ga-lab)>.term-shelf{display:none}
+html.hca-embed .stage .ga-lab p{font-size:16px;line-height:1.55}
+
+html.hca-embed dialog .dialog-top #dialogEyebrow{font:650 20px/1.3 var(--sans);letter-spacing:0;color:var(--ink);max-width:calc(100% - 60px)}
+
+html.hca-embed[data-theme] :is(.card,.scard){animation:none!important;transition:none!important;will-change:auto}
+html.hca-embed[data-theme] .overlay .modal{animation:none!important}
+html.hca-embed[data-theme] .card .newdot{animation:none!important;box-shadow:none}

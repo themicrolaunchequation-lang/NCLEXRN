@@ -2,7 +2,21 @@
    interactive quest in a frame inside the app (#wordparts/prefix|root|suffix) with a switcher and a way back. Old #library/parts links redirect here. */
 (function () {
   'use strict';
-  const L = window.MedlexLib, LN = window.MEDLEX_LEARN; if (!L || !LN) return;
+  const LN = window.MEDLEX_LEARN; if (!LN) return;
+  if (window.MedlexWordparts) { const lib = window.MedlexLib; if (lib) { lib.oldParts = window.MedlexWordparts.oldParts; lib.on('wordparts', window.MedlexWordparts.views.wordparts); } return; }
+  // A studio needs neither the slide engine nor the full Library data and tools.
+  const L = window.MedlexWordparts = (() => {
+    const $ = s => document.querySelector(s), views = { cleanup: [] };
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[c]));
+    return { $, esc, views, partById: {},
+      header: (title, lead) => `<header class="view-header modern-header"><div><h1 tabindex="-1">${esc(title)}</h1><p>${esc(lead)}</p></div></header>`,
+      mount: (text, focus) => { views.cleanup.splice(0).forEach(f => f()); const main = $('#main'); main.innerHTML = text; if (focus) $('h1')?.focus({preventScroll:true}); scrollTo(0,0); },
+      ic: () => '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+      reduced: () => matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.hsMotion === 'off',
+      on: (name, fn) => { views[name] = fn; },
+      route: (path, params) => { views.wordparts(path, params); return true; }
+    };
+  })();
   const { esc, $, header, mount, ic } = L;
   const KINDS = ['prefix', 'root', 'suffix'];
   /* each quest keeps its own progress in this browser (same origin as the frame): key and the lists it stores */
@@ -17,6 +31,13 @@
   const tone = k => `style="--wp-c:${INFO[k].c};--wp-dk:${INFO[k].dk}"`;
   const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
 
+  const prefetched = new Set();
+  document.addEventListener('pointerover', warm); document.addEventListener('focusin', warm);
+  function warm(event) {
+    const a = event.target.closest?.('a[href^="#wordparts/"]'), k = a && norm(a.hash.split('/')[1]);
+    if (!k || prefetched.has(k) || navigator.connection?.saveData) return; prefetched.add(k);
+    const link = document.createElement('link'); link.rel = 'prefetch'; link.href = url(k); document.head.append(link);
+  }
   function landing() {
     const card = k => {
       const p = progress(k), I = INFO[k], name = LN.quests[k][0], pct = Math.round(100 * p.done / I.n);
@@ -58,7 +79,8 @@
     mount(`<div class="wp-studio" ${tone(k)}><div class="wp-bar"><a class="wp-back" href="#wordparts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All word studios</a>
       <nav class="wp-switch" aria-label="Word studios">${KINDS.map(x => `<a href="#wordparts/${x}" class="wp-sw${x === k ? ' is-on' : ''}"${x === k ? ' aria-current="page"' : ''} ${tone(x)}>${esc(LN.quests[x][0])}</a>`).join('')}</nav></div>
       <h1 class="wp-h1" tabindex="-1">${esc(name)} studio</h1>
-      <iframe class="wp-frame" scrolling="no" title="${esc(name)} studio" src="${url(k)}"></iframe></div>`, true);
+      <div class="wp-loading" role="status">Opening ${esc(name.toLowerCase())} studio…<i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i></div>
+      <iframe class="wp-frame" aria-busy="true" scrolling="no" title="${esc(name)} studio" src="${url(k)}"></iframe></div>`, true);
     const fr = $('.wp-frame'), ro = new ResizeObserver(() => fit()), seen = new WeakSet();
     const S = cur = { fr, modal: null, timer: 0, last: 0, wait: null, fx: null, toastBox: null, gone: false };
     const win = () => { try { return fr.contentWindow; } catch (e) { return null; } };
@@ -81,7 +103,7 @@
     }
     function watch() {
       const d = doc(); if (!d || !d.body) return;
-      exitModal(); ro.disconnect(); ro.observe(d.documentElement); ro.observe(d.body); fit();
+      exitModal(); ro.disconnect(); ro.observe(d.documentElement); ro.observe(d.body); fit(); fr.setAttribute('aria-busy', 'false'); const skeleton = $('.wp-loading'); if (skeleton) skeleton.hidden = true;
     }
 
     /* ----- pop-up: the frame takes the part of itself that is on screen ----- */
@@ -198,7 +220,8 @@
   });
   /* old Library links: #library/parts, #library/parts?kind=root, #library/part/<id> */
   L.oldParts = (path, params) => {
-    const part = L.partById[path.split('/')[2]], k = norm(params && params.get && params.get('kind')) || norm(part && part.k), to = 'wordparts' + (k ? '/' + k : '');
+    const part = (window.MedlexLib || L).partById[path.split('/')[2]], k = norm(params && params.get && params.get('kind')) || norm(part && part.k), to = 'wordparts' + (k ? '/' + k : '');
     history.replaceState(null, '', '#' + to); L.route(to, new URLSearchParams());
   };
+  if (window.MedlexLib) { window.MedlexLib.oldParts = L.oldParts; window.MedlexLib.on('wordparts', L.views.wordparts); }
 })();

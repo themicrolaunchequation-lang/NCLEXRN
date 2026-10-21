@@ -1140,6 +1140,36 @@ html[data-hs-motion=off] .wp-toast{animation:none;transition:none}
 @media(prefers-reduced-motion:reduce){.wp-open{transition:none}.wp-open:hover{transform:none}}
 :root[data-hs-theme=dark] .wp-back{color:var(--hs-jewel-dk,#8FA7FF)}
 
+/* Learn: a consistent lesson collection in every course view. */
+.course-path .course-part>div:has(.ml-card){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.course-path .course-part{grid-column:1/-1;min-width:0}
+.module-row.ml-card{display:flex;flex-direction:column;align-items:stretch;gap:14px;margin:0;padding:20px;border:1px solid var(--border);border-radius:18px;background:var(--surface);color:var(--text);min-width:0;box-shadow:0 4px 18px #10253a06}
+.ml-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ml-card-number{font-size:14px;font-weight:750;letter-spacing:.1em;color:var(--text-muted)}
+.ml-card-status{font-size:12px;line-height:1.3;font-weight:650;padding:6px 10px;border-radius:6px;background:var(--surface-sunken);color:var(--text-muted)}
+.ml-card[data-state=progress] .ml-card-status{background:#e8eeff;color:#2541a8}.ml-card[data-state=done] .ml-card-status{background:#dcf3e9;color:#145b43}
+.ml-card-image{width:100%;height:132px;object-fit:cover;object-position:center;border-radius:10px;background:#eef1f6}
+.ml-card-copy{flex:1;min-width:0}.ml-card-copy h3{margin:0 0 8px;font-size:22px;line-height:1.2;letter-spacing:-.4px}.ml-card-copy h3 a{color:var(--text);text-decoration:none}.ml-card-copy h3 a:hover{text-decoration:underline}
+.ml-card-copy p{margin:0;color:var(--text-muted);font-size:14px;line-height:1.6}
+.ml-card-meta{margin:0;font-size:13px;color:var(--text-muted)}
+.ml-card-progress{display:grid;gap:6px}.ml-card-progress progress{appearance:none;display:block;width:100%;height:5px;border:0;border-radius:8px;overflow:hidden;background:var(--border)}
+.ml-card-progress progress::-webkit-progress-bar{background:var(--border)}.ml-card-progress progress::-webkit-progress-value{background:#3557d6;border-radius:8px}.ml-card-progress progress::-moz-progress-bar{background:#3557d6}.ml-card-progress span{font-size:12px;color:var(--text-muted)}
+.ml-card-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.ml-card-actions .ms-row{display:inline-flex;justify-content:center;min-width:112px;margin:0;padding:0 18px;white-space:nowrap;background:#3557d6;border:1px solid #3557d6;border-radius:9px;color:#fff;min-height:44px;font-size:14px}
+.ml-card-actions .ml-more{margin:0;font-size:12px;min-height:44px;display:inline-flex;align-items:center;color:var(--text-muted)}
+.ml-card :focus-visible{outline:3px solid #3557d6;outline-offset:4px}
+:root[data-theme=dark] .ml-card[data-state=progress] .ml-card-status{background:#20345b;color:#bdcdff}:root[data-theme=dark] .ml-card[data-state=done] .ml-card-status{background:#193d35;color:#9ce4cb}
+:root[data-theme=dark] .ml-card :focus-visible{outline-color:#a7baff}
+@media(max-width:1199px){.course-path .course-part>div:has(.ml-card){grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.course-path .course-part>div:has(.ml-card){grid-template-columns:minmax(0,1fr)}.module-row.ml-card{padding:18px}.ml-card-image{height:140px}}
+/* Word studios use the available app width, including on a wide desktop. */
+#main:has(.wp-studio){max-width:1800px;width:100%}.wp-studio{max-width:none;width:100%}.wp-frame{width:100%}
+.wp-loading{display:grid;gap:14px;padding:28px;border:1px solid var(--border);border-radius:18px;background:var(--surface);min-height:260px;color:var(--text)}
+.wp-loading i{display:block;height:16px;border-radius:6px;background:var(--surface-sunken)}.wp-loading i:nth-child(2){width:70%;height:44px}.wp-loading i:nth-child(3){width:85%}.wp-loading[hidden]{display:none}
+.ml-card-copy p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+:root[data-theme=dark] .ml-card-actions .ms-row{background:#a7baff;border-color:#a7baff;color:#10253a}
+:root[data-theme=dark] .ml-card-progress progress::-webkit-progress-value{background:#a7baff}
+.module-row.ml-card{flex-wrap:nowrap}.module-row.ml-card>*{min-width:0;max-width:100%}
+
 /* MedLex Library, Visual Atlas and Practice (lib/*.js). Uses the shell's light/dark tokens (--hs-*). */
 :root{--lx-p-bg:#FFEBC2;--lx-p-ink:#6B4400;--lx-r-bg:#DCE6FF;--lx-r-ink:#1E3A9E;--lx-s-bg:#EADFFF;--lx-s-ink:#4A2C99;--lx-v-bg:#E7E9ED;--lx-v-ink:#39454F;--lx-ok:#14724F;--lx-ok-bg:#E1F4EB;--lx-bad:#B4262F;--lx-bad-bg:#FCE9E9}
 :root[data-hs-theme=dark]{--lx-p-bg:#4A3A12;--lx-p-ink:#FFD98A;--lx-r-bg:#233A7A;--lx-r-ink:#C9D8FF;--lx-s-bg:#3B2D6B;--lx-s-ink:#DCCFFF;--lx-v-bg:#2B3946;--lx-v-ink:#C6D2DC;--lx-ok:#7BE0B3;--lx-ok-bg:#12372B;--lx-bad:#FF9AA0;--lx-bad-bg:#3E1D22}

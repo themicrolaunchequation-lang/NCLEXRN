@@ -1,0 +1,733 @@
+{
+  "decks": 29,
+  "slides": 634,
+  "fullInteractionAudit": {
+    "size": "1440x800",
+    "results": [
+      {
+        "deck": "basic-word-structure",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 693,
+          "small-cue": 40,
+          "scrolls": 2,
+          "small-img": 11
+        },
+        "run": "work/medlex/full-0/audit-1440x800-day.json"
+      },
+      {
+        "deck": "basic-word-structure",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 693,
+          "small-cue": 40,
+          "scrolls": 2,
+          "small-img": 11
+        },
+        "run": "work/medlex/full-0/audit-1440x800-night.json"
+      },
+      {
+        "deck": "building-vocabulary",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 466,
+          "small-cue": 36,
+          "small-img": 3,
+          "scrolls": 1
+        },
+        "run": "work/medlex/fixed-decks/audit-1440x800-day.json"
+      },
+      {
+        "deck": "building-vocabulary",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 466,
+          "small-cue": 36,
+          "small-img": 3,
+          "scrolls": 1
+        },
+        "run": "work/medlex/full-0/audit-1440x800-night.json"
+      },
+      {
+        "deck": "components",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 657,
+          "small-cue": 24,
+          "scrolls": 2,
+          "small-img": 3
+        },
+        "run": "work/medlex/fixed-decks/audit-1440x800-day.json"
+      },
+      {
+        "deck": "components",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 657,
+          "small-cue": 24,
+          "scrolls": 2,
+          "small-img": 3
+        },
+        "run": "work/medlex/full-0/audit-1440x800-night.json"
+      },
+      {
+        "deck": "history",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 523,
+          "small-cue": 38
+        },
+        "run": "work/medlex/full-0/audit-1440x800-day.json"
+      },
+      {
+        "deck": "history",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 522,
+          "small-cue": 37
+        },
+        "run": "work/medlex/full-0/audit-1440x800-night.json"
+      },
+      {
+        "deck": "cardiovascular",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1048,
+          "scrolls": 70,
+          "small-cue": 65,
+          "small-img": 43
+        },
+        "run": "work/medlex/full-0/audit-1440x800-day.json"
+      },
+      {
+        "deck": "cardiovascular",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1048,
+          "scrolls": 70,
+          "small-cue": 65,
+          "small-img": 43
+        },
+        "run": "work/medlex/full-0/audit-1440x800-night.json"
+      },
+      {
+        "deck": "country-differences",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 520,
+          "small-cue": 19,
+          "small-img": 7,
+          "scrolls": 20
+        },
+        "run": "work/medlex/full-0/audit-1440x800-day.json"
+      },
+      {
+        "deck": "country-differences",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 520,
+          "small-cue": 19,
+          "small-img": 7,
+          "scrolls": 20
+        },
+        "run": "work/medlex/full-0/audit-1440x800-night.json"
+      },
+      {
+        "deck": "human-body",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 526,
+          "small-cue": 25,
+          "scrolls": 28,
+          "small-img": 14
+        },
+        "run": "work/medlex/final-rerun/audit-1440x800-day.json"
+      },
+      {
+        "deck": "human-body",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 526,
+          "small-cue": 25,
+          "scrolls": 28,
+          "small-img": 14
+        },
+        "run": "work/medlex/full-0/audit-1440x800-night.json"
+      },
+      {
+        "deck": "integumentary",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 961,
+          "scrolls": 51,
+          "small-img": 23,
+          "small-cue": 56
+        },
+        "run": "work/medlex/full-1/audit-1440x800-day.json"
+      },
+      {
+        "deck": "integumentary",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 961,
+          "scrolls": 51,
+          "small-img": 23,
+          "small-cue": 56
+        },
+        "run": "work/medlex/full-1/audit-1440x800-night.json"
+      },
+      {
+        "deck": "musculoskeletal",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1242,
+          "small-img": 27,
+          "small-cue": 48,
+          "scrolls": 75
+        },
+        "run": "work/medlex/musculoskeletal-final/audit-1440x800-day.json"
+      },
+      {
+        "deck": "musculoskeletal",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1242,
+          "small-img": 27,
+          "small-cue": 48,
+          "scrolls": 75
+        },
+        "run": "work/medlex/full-1/audit-1440x800-night.json"
+      },
+      {
+        "deck": "prefixes",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 560,
+          "scrolls": 13,
+          "small-img": 12,
+          "small-cue": 14
+        },
+        "run": "work/medlex/full-1/audit-1440x800-day.json"
+      },
+      {
+        "deck": "prefixes",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 560,
+          "scrolls": 13,
+          "small-img": 12,
+          "small-cue": 14
+        },
+        "run": "work/medlex/full-1/audit-1440x800-night.json"
+      },
+      {
+        "deck": "respiratory",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 951,
+          "scrolls": 51,
+          "small-img": 31,
+          "small-cue": 42
+        },
+        "run": "work/medlex/full-1/audit-1440x800-day.json"
+      },
+      {
+        "deck": "respiratory",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 951,
+          "scrolls": 51,
+          "small-img": 31,
+          "small-cue": 42
+        },
+        "run": "work/medlex/full-1/audit-1440x800-night.json"
+      },
+      {
+        "deck": "suffixes",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 866,
+          "scrolls": 11,
+          "small-img": 25,
+          "small-cue": 7
+        },
+        "run": "work/medlex/fixed-decks/audit-1440x800-day.json"
+      },
+      {
+        "deck": "suffixes",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 865,
+          "scrolls": 11,
+          "small-img": 24,
+          "small-cue": 7
+        },
+        "run": "work/medlex/full-1/audit-1440x800-night.json"
+      },
+      {
+        "deck": "digestive",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1535,
+          "scrolls": 34,
+          "small-cue": 57,
+          "small-img": 44
+        },
+        "run": "work/medlex/full-1/audit-1440x800-day.json"
+      },
+      {
+        "deck": "digestive",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1535,
+          "scrolls": 34,
+          "small-cue": 57,
+          "small-img": 44
+        },
+        "run": "work/medlex/full-1/audit-1440x800-night.json"
+      },
+      {
+        "deck": "endocrine",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1150,
+          "small-img": 28,
+          "small-cue": 40,
+          "scrolls": 24
+        },
+        "run": "work/medlex/full-1/audit-1440x800-day.json"
+      },
+      {
+        "deck": "endocrine",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1150,
+          "small-img": 28,
+          "small-cue": 40,
+          "scrolls": 24
+        },
+        "run": "work/medlex/full-1/audit-1440x800-night.json"
+      },
+      {
+        "deck": "haematology",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1004,
+          "small-cue": 42,
+          "scrolls": 15,
+          "small-img": 31
+        },
+        "run": "work/medlex/full-2/audit-1440x800-day.json"
+      },
+      {
+        "deck": "haematology",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1004,
+          "small-cue": 42,
+          "scrolls": 15,
+          "small-img": 31
+        },
+        "run": "work/medlex/full-2/audit-1440x800-night.json"
+      },
+      {
+        "deck": "lymphatic-immune",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1612,
+          "small-img": 32,
+          "small-cue": 55,
+          "scrolls": 21
+        },
+        "run": "work/medlex/full-2/audit-1440x800-day.json"
+      },
+      {
+        "deck": "lymphatic-immune",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1617,
+          "small-img": 32,
+          "small-cue": 60,
+          "scrolls": 21
+        },
+        "run": "work/medlex/full-2/audit-1440x800-night.json"
+      },
+      {
+        "deck": "male-reproductive",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1108,
+          "small-img": 34,
+          "small-cue": 49,
+          "scrolls": 20
+        },
+        "run": "work/medlex/full-2/audit-1440x800-day.json"
+      },
+      {
+        "deck": "male-reproductive",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1108,
+          "small-img": 34,
+          "small-cue": 49,
+          "scrolls": 20
+        },
+        "run": "work/medlex/full-2/audit-1440x800-night.json"
+      },
+      {
+        "deck": "nervous",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1555,
+          "small-cue": 51,
+          "scrolls": 22,
+          "small-img": 24
+        },
+        "run": "work/medlex/full-2/audit-1440x800-day.json"
+      },
+      {
+        "deck": "nervous",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1555,
+          "small-cue": 51,
+          "scrolls": 22,
+          "small-img": 24
+        },
+        "run": "work/medlex/full-2/audit-1440x800-night.json"
+      },
+      {
+        "deck": "senses",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1251,
+          "small-cue": 46,
+          "small-img": 17,
+          "scrolls": 10
+        },
+        "run": "work/medlex/senses-final/audit-1440x800-day.json"
+      },
+      {
+        "deck": "senses",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1251,
+          "small-cue": 46,
+          "small-img": 17,
+          "scrolls": 10
+        },
+        "run": "work/medlex/full-2/audit-1440x800-night.json"
+      },
+      {
+        "deck": "urinary",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1063,
+          "scrolls": 24,
+          "small-cue": 32,
+          "small-img": 36
+        },
+        "run": "work/medlex/full-2/audit-1440x800-day.json"
+      },
+      {
+        "deck": "urinary",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1063,
+          "scrolls": 24,
+          "small-cue": 32,
+          "small-img": 36
+        },
+        "run": "work/medlex/full-2/audit-1440x800-night.json"
+      },
+      {
+        "deck": "female-reproductive",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1177,
+          "small-img": 36,
+          "small-cue": 68,
+          "scrolls": 22
+        },
+        "run": "work/medlex/full-2/audit-1440x800-day.json"
+      },
+      {
+        "deck": "female-reproductive",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1177,
+          "small-img": 36,
+          "small-cue": 68,
+          "scrolls": 22
+        },
+        "run": "work/medlex/full-2/audit-1440x800-night.json"
+      },
+      {
+        "deck": "infectious-parasitic",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1087,
+          "small-cue": 38,
+          "small-img": 24,
+          "scrolls": 19
+        },
+        "run": "work/medlex/full-3/audit-1440x800-day.json"
+      },
+      {
+        "deck": "infectious-parasitic",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1087,
+          "small-cue": 38,
+          "small-img": 24,
+          "scrolls": 19
+        },
+        "run": "work/medlex/full-3/audit-1440x800-night.json"
+      },
+      {
+        "deck": "medical-coding",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 988,
+          "small-cue": 41,
+          "scrolls": 7,
+          "small-img": 13
+        },
+        "run": "work/medlex/full-3/audit-1440x800-day.json"
+      },
+      {
+        "deck": "medical-coding",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 988,
+          "small-cue": 41,
+          "scrolls": 7,
+          "small-img": 13
+        },
+        "run": "work/medlex/full-3/audit-1440x800-night.json"
+      },
+      {
+        "deck": "mental-health",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 796,
+          "scrolls": 12,
+          "small-img": 7,
+          "small-cue": 22
+        },
+        "run": "work/medlex/full-3/audit-1440x800-day.json"
+      },
+      {
+        "deck": "mental-health",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 796,
+          "scrolls": 12,
+          "small-img": 7,
+          "small-cue": 22
+        },
+        "run": "work/medlex/full-3/audit-1440x800-night.json"
+      },
+      {
+        "deck": "obstetrics-neonatology",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 975,
+          "small-img": 29,
+          "small-cue": 57,
+          "scrolls": 20
+        },
+        "run": "work/medlex/fixed-decks/audit-1440x800-day.json"
+      },
+      {
+        "deck": "obstetrics-neonatology",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 975,
+          "small-img": 29,
+          "small-cue": 57,
+          "scrolls": 20
+        },
+        "run": "work/medlex/full-3/audit-1440x800-night.json"
+      },
+      {
+        "deck": "oncology",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 562,
+          "small-img": 14,
+          "small-cue": 27,
+          "scrolls": 22
+        },
+        "run": "work/medlex/full-3/audit-1440x800-day.json"
+      },
+      {
+        "deck": "oncology",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 562,
+          "small-img": 14,
+          "small-cue": 27,
+          "scrolls": 22
+        },
+        "run": "work/medlex/full-3/audit-1440x800-night.json"
+      },
+      {
+        "deck": "pharmacology",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 981,
+          "small-img": 8,
+          "small-cue": 47,
+          "scrolls": 14
+        },
+        "run": "work/medlex/full-3/audit-1440x800-day.json"
+      },
+      {
+        "deck": "pharmacology",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 981,
+          "small-img": 8,
+          "small-cue": 47,
+          "scrolls": 14
+        },
+        "run": "work/medlex/full-3/audit-1440x800-night.json"
+      },
+      {
+        "deck": "procedures-treatment",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1065,
+          "scrolls": 28,
+          "small-cue": 24,
+          "small-img": 33
+        },
+        "run": "work/medlex/full-3/audit-1440x800-day.json"
+      },
+      {
+        "deck": "procedures-treatment",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 1065,
+          "scrolls": 28,
+          "small-cue": 24,
+          "small-img": 33
+        },
+        "run": "work/medlex/full-3/audit-1440x800-night.json"
+      },
+      {
+        "deck": "radiology-nuclear",
+        "mode": "day",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 631,
+          "small-cue": 21,
+          "small-img": 13,
+          "scrolls": 8
+        },
+        "run": "work/medlex/full-3/audit-1440x800-day.json"
+      },
+      {
+        "deck": "radiology-nuclear",
+        "mode": "night",
+        "failingFindings": 0,
+        "warningCounts": {
+          "small-text": 631,
+          "small-cue": 21,
+          "small-img": 13,
+          "scrolls": 8
+        },
+        "run": "work/medlex/full-3/audit-1440x800-night.json"
+      }
+    ]
+  },
+  "otherSizes": [
+    {
+      "run": "work/medlex/width-1920/audit-1920x940-day.json",
+      "failingFindings": 0,
+      "coverage": "all slide initial states and viewer chrome/dialogs"
+    },
+    {
+      "run": "work/medlex/width-1920/audit-1920x940-night.json",
+      "failingFindings": 0,
+      "coverage": "all slide initial states and viewer chrome/dialogs"
+    },
+    {
+      "run": "work/medlex/width-1024/audit-1024x700-day.json",
+      "failingFindings": 0,
+      "coverage": "all slide initial states and viewer chrome/dialogs"
+    },
+    {
+      "run": "work/medlex/width-1024/audit-1024x700-night.json",
+      "failingFindings": 0,
+      "coverage": "all slide initial states and viewer chrome/dialogs"
+    },
+    {
+      "run": "work/medlex/width-390/audit-390x844-day.json",
+      "failingFindings": 0,
+      "coverage": "all slide initial states and viewer chrome/dialogs"
+    },
+    {
+      "run": "work/medlex/width-390/audit-390x844-night.json",
+      "failingFindings": 0,
+      "coverage": "all slide initial states and viewer chrome/dialogs"
+    }
+  ]
+}

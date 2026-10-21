@@ -35,7 +35,7 @@ for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true,
   let { p, errs } = await open(ctx, '#learn');
   const rows = await p.evaluate(() => [...document.querySelectorAll('.module-row')].map(r => ({ deck: r.dataset.deck || '', t: (r.querySelector('h3')?.textContent || '').trim(), b: (r.querySelector('.ms-row span')?.textContent || '') })));
   ok(rows.length === 31, 'Learn lists 26 modules + 5 new lessons (' + rows.length + ')');
-  const dk = rows.filter(r => r.b === 'Open the lesson').length; ok(dk === 29, '29 cards open a lesson (' + dk + ')'); ok(rows.filter(r => r.b === 'Learn as slides').length === 2, 'two modules without a deck keep their slides');
+  const dk = rows.filter(r => r.deck && r.b === 'Start').length; ok(dk === 29, '29 cards open a lesson (' + dk + ')'); ok(rows.filter(r => !r.deck && r.b === 'Start').length === 2, 'two modules without a deck keep their slides');
   const order = rows.map(r => r.deck); const ix = k => order.indexOf(k);
   ok(ix('history') === ix('ch1') - 1 && ix('components') === ix('ch1') + 1 && ix('country-differences') === ix('ch3') + 1 && ix('procedures-treatment') === ix('ch22') + 1 && ix('medical-coding') === ix('procedures-treatment') + 1, 'new lessons sit in the right places');
   await p.screenshot({ path: `${out}/learn-${tag}.png` });

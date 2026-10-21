@@ -70,7 +70,18 @@ function install() {
     const dlgRoot = b => inDlg && (b.el === dlg || b.el.matches('.reading-view,.term-atlas-grid,.term-atlas-detail,#dialogBody,.art-inspector'));
     const sc = el => (st && st.contains(el)) ? sscale : 1, lg = (el, v) => +(v / sc(el)).toFixed(0);
     const texts = [], ctls = [], imgs = [], borders = [];
-    const rng = document.createRange(), walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let n;
+    // Reject hidden subtrees once rather than querying visibility for every text node in
+    // hundreds of inactive detail panels. display:contents still exposes its children.
+    const rng = document.createRange(), walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (node.nodeType === 3) return NodeFilter.FILTER_ACCEPT;
+        if (node.matches('script,style,noscript,svg,option,template')) return NodeFilter.FILTER_REJECT;
+        const style = cs(node);
+        // visibility:hidden can be overridden by a visible child; keep walking it.
+        if (style.display !== 'contents' && (style.display === 'none' || style.opacity === '0' || style.contentVisibility === 'hidden')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_SKIP;
+      }
+    }); let n;
     while ((n = walker.nextNode())) {
       if (!/\S/.test(n.nodeValue)) continue;
       const el = n.parentElement; if (!el || el.closest('script,style,noscript,svg,option,template,#toast:not(.visible),[aria-hidden=true] .sr-only')) continue;

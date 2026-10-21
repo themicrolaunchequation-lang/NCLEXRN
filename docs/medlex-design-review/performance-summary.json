@@ -1,0 +1,1822 @@
+{
+  "method": "Five fresh contexts per studio and version; alternating order; unthrottled local HTTPS; Chromium; 1440x800; all non-MedLex external services stubbed. Frame load is navigation/load; grid ready additionally waits for finite card entry animations/transitions.",
+  "results": [
+    {
+      "studio": "prefix",
+      "before": {
+        "landingMs": 171,
+        "studioMs": 309,
+        "gridReadyMs": 1292,
+        "pendingAnimationMs": 955
+      },
+      "after": {
+        "landingMs": 123,
+        "studioMs": 316,
+        "gridReadyMs": 344,
+        "pendingAnimationMs": 0
+      }
+    },
+    {
+      "studio": "root",
+      "before": {
+        "landingMs": 160,
+        "studioMs": 337,
+        "gridReadyMs": 1590,
+        "pendingAnimationMs": 1200
+      },
+      "after": {
+        "landingMs": 101,
+        "studioMs": 364,
+        "gridReadyMs": 408,
+        "pendingAnimationMs": 0
+      }
+    },
+    {
+      "studio": "suffix",
+      "before": {
+        "landingMs": 176,
+        "studioMs": 416,
+        "gridReadyMs": 1473,
+        "pendingAnimationMs": 1050
+      },
+      "after": {
+        "landingMs": 139,
+        "studioMs": 449,
+        "gridReadyMs": 1146,
+        "pendingAnimationMs": 0
+      }
+    }
+  ],
+  "samples": [
+    {
+      "version": "before",
+      "kind": "prefix",
+      "run": 0,
+      "landingMs": 231,
+      "studioMs": 309,
+      "gridReadyMs": 1292,
+      "pendingAnimationMs": 955.0000000000001,
+      "domReady": 283.19999999925494,
+      "frameLoad": 284.59999999962747,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 23.09999999962747,
+          "bytes": 559
+        },
+        {
+          "name": "a11y.css",
+          "duration": 24,
+          "bytes": 2399
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 23,
+          "bytes": 579
+        },
+        {
+          "name": "embed.css",
+          "duration": 29.299999999813735,
+          "bytes": 27931
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 30,
+          "bytes": 54596
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 30.200000000186265,
+          "bytes": 3353
+        },
+        {
+          "name": "oc.js",
+          "duration": 24.100000000558794,
+          "bytes": 2210
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 25,
+          "bytes": 1616
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 32.89999999944121,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "prefix",
+      "run": 0,
+      "landingMs": 127,
+      "studioMs": 332,
+      "gridReadyMs": 388,
+      "pendingAnimationMs": 0,
+      "domReady": 300.59999999962747,
+      "frameLoad": 301.8999999994412,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 22.200000000186265,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 21.700000000186265,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 31,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 29.200000000186265,
+          "bytes": 38275
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 34,
+          "bytes": 54596
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 40.299999999813735,
+          "bytes": 3353
+        },
+        {
+          "name": "oc.js",
+          "duration": 34.299999999813735,
+          "bytes": 2210
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 41.299999999813735,
+          "bytes": 1616
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 41.90000000037253,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "root",
+      "run": 0,
+      "landingMs": 143,
+      "studioMs": 337,
+      "gridReadyMs": 1613,
+      "pendingAnimationMs": 1200,
+      "domReady": 316.6000000005588,
+      "frameLoad": 318.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 24.699999999254942,
+          "bytes": 559
+        },
+        {
+          "name": "a11y.css",
+          "duration": 26.300000000745058,
+          "bytes": 2399
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 25.300000000745058,
+          "bytes": 579
+        },
+        {
+          "name": "embed.css",
+          "duration": 34.59999999962747,
+          "bytes": 27931
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 35.19999999925494,
+          "bytes": 58486
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 27.40000000037253,
+          "bytes": 3430
+        },
+        {
+          "name": "oc.js",
+          "duration": 26.200000000186265,
+          "bytes": 2210
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 26.800000000745058,
+          "bytes": 1616
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 36.700000000186265,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "root",
+      "run": 0,
+      "landingMs": 126,
+      "studioMs": 385,
+      "gridReadyMs": 435,
+      "pendingAnimationMs": 0,
+      "domReady": 358.1000000005588,
+      "frameLoad": 359.6000000005588,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 38.200000000186265,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 20.5,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 25.399999999441206,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 24.299999999813735,
+          "bytes": 38275
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 27.100000000558794,
+          "bytes": 58486
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 37.39999999944121,
+          "bytes": 3430
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 37.59999999962747,
+          "bytes": 1616
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 36.700000000186265,
+          "bytes": 11637
+        },
+        {
+          "name": "oc.js",
+          "duration": 37.799999999813735,
+          "bytes": 2210
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "suffix",
+      "run": 0,
+      "landingMs": 205,
+      "studioMs": 475,
+      "gridReadyMs": 1452,
+      "pendingAnimationMs": 1050,
+      "domReady": 440,
+      "frameLoad": 443.6000000005588,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 21.700000000186265,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 21.59999999962747,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 21.90000000037253,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 33.299999999813735,
+          "bytes": 27931
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 61.10000000055879,
+          "bytes": 64412
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 65.19999999925494,
+          "bytes": 3408
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 65.59999999962747,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 69.3999999994412,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 70.1000000005588,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "suffix",
+      "run": 0,
+      "landingMs": 181,
+      "studioMs": 472,
+      "gridReadyMs": 1689,
+      "pendingAnimationMs": 0,
+      "domReady": 457.59999999962747,
+      "frameLoad": 460.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 41.799999999813735,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 41.80000000074506,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 43.200000000186265,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 44,
+          "bytes": 38275
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 53.700000000186265,
+          "bytes": 3408
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 53,
+          "bytes": 64412
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 44.89999999944121,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 46.89999999944121,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 54.39999999944121,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "prefix",
+      "run": 1,
+      "landingMs": 87,
+      "studioMs": 316,
+      "gridReadyMs": 344,
+      "pendingAnimationMs": 0,
+      "domReady": 282.5,
+      "frameLoad": 284.69999999925494,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 28.100000000558794,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 28.59999999962747,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 32.90000000037253,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 36.89999999944121,
+          "bytes": 38275
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 38.59999999962747,
+          "bytes": 54596
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 40.200000000186265,
+          "bytes": 3353
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 40.299999999813735,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 34.299999999813735,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 40.59999999962747,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "prefix",
+      "run": 1,
+      "landingMs": 171,
+      "studioMs": 354,
+      "gridReadyMs": 1350,
+      "pendingAnimationMs": 955.0000000000001,
+      "domReady": 332.09999999962747,
+      "frameLoad": 333.79999999981374,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 36.299999999813735,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 21.399999999441206,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 34.799999999813735,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 38.299999999813735,
+          "bytes": 27931
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 43.39999999944121,
+          "bytes": 54596
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 46.90000000037253,
+          "bytes": 3353
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 47.200000000186265,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 47.80000000074506,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 49.299999999813735,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "root",
+      "run": 1,
+      "landingMs": 117,
+      "studioMs": 352,
+      "gridReadyMs": 408,
+      "pendingAnimationMs": 0,
+      "domReady": 307,
+      "frameLoad": 310.20000000018626,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 35,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 41.5,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 45.90000000037253,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 45.299999999813735,
+          "bytes": 38275
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 50.59999999962747,
+          "bytes": 58486
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 52.5,
+          "bytes": 3430
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 51.299999999813735,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 51.5,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 52.5,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "root",
+      "run": 1,
+      "landingMs": 112,
+      "studioMs": 346,
+      "gridReadyMs": 1609,
+      "pendingAnimationMs": 1200,
+      "domReady": 323.20000000018626,
+      "frameLoad": 325.20000000018626,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 40.19999999925494,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 41.5,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 45.09999999962747,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 49.39999999944121,
+          "bytes": 27931
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 51,
+          "bytes": 58486
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 52,
+          "bytes": 3430
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 51.40000000037253,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 53.60000000055879,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 56.40000000037253,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "suffix",
+      "run": 1,
+      "landingMs": 150,
+      "studioMs": 491,
+      "gridReadyMs": 1707,
+      "pendingAnimationMs": 0,
+      "domReady": 461.5,
+      "frameLoad": 464,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 23.5,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 24.600000000558794,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 25.399999999441206,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 27.5,
+          "bytes": 38275
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 31,
+          "bytes": 64412
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 31.300000000745058,
+          "bytes": 3408
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 31.899999999441206,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 33.69999999925494,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 34.200000000186265,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "suffix",
+      "run": 1,
+      "landingMs": 155,
+      "studioMs": 356,
+      "gridReadyMs": 1473,
+      "pendingAnimationMs": 1050,
+      "domReady": 332.90000000037253,
+      "frameLoad": 334.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 15.100000000558794,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 42.90000000037253,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 42.90000000037253,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 43.30000000074506,
+          "bytes": 27931
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 47.40000000037253,
+          "bytes": 3408
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 46.90000000037253,
+          "bytes": 64412
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 47.40000000037253,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 47.59999999962747,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 47.799999999813735,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "prefix",
+      "run": 2,
+      "landingMs": 99,
+      "studioMs": 313,
+      "gridReadyMs": 1318,
+      "pendingAnimationMs": 955.0000000000001,
+      "domReady": 274.1000000005588,
+      "frameLoad": 275.40000000037253,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 15,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 39,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 39.19999999925494,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 42.799999999813735,
+          "bytes": 27931
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 50.90000000037253,
+          "bytes": 3353
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 51.59999999962747,
+          "bytes": 54596
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 53.80000000074506,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 54.09999999962747,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 61,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "prefix",
+      "run": 2,
+      "landingMs": 111,
+      "studioMs": 343,
+      "gridReadyMs": 369,
+      "pendingAnimationMs": 0,
+      "domReady": 319.29999999981374,
+      "frameLoad": 320.70000000018626,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 15.100000000558794,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 15.299999999813735,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 49.5,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 50.10000000055879,
+          "bytes": 38275
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 54.700000000186265,
+          "bytes": 3353
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 54.200000000186265,
+          "bytes": 54596
+        },
+        {
+          "name": "oc.js",
+          "duration": 55.40000000037253,
+          "bytes": 2210
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 55,
+          "bytes": 1616
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 55.69999999925494,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "root",
+      "run": 2,
+      "landingMs": 160,
+      "studioMs": 336,
+      "gridReadyMs": 1576,
+      "pendingAnimationMs": 1200,
+      "domReady": 313.70000000018626,
+      "frameLoad": 315.20000000018626,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 22.40000000037253,
+          "bytes": 559
+        },
+        {
+          "name": "a11y.css",
+          "duration": 24,
+          "bytes": 2399
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 23.399999999441206,
+          "bytes": 579
+        },
+        {
+          "name": "embed.css",
+          "duration": 30.799999999813735,
+          "bytes": 27931
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 31.5,
+          "bytes": 58486
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 28,
+          "bytes": 1616
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 31.700000000186265,
+          "bytes": 3430
+        },
+        {
+          "name": "oc.js",
+          "duration": 29,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 29.5,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "root",
+      "run": 2,
+      "landingMs": 92,
+      "studioMs": 360,
+      "gridReadyMs": 400,
+      "pendingAnimationMs": 0,
+      "domReady": 317.20000000018626,
+      "frameLoad": 319.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 28.200000000186265,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 27.899999999441206,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 28.199999999254942,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 39.59999999962747,
+          "bytes": 38275
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 27.200000000186265,
+          "bytes": 58486
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 79.29999999981374,
+          "bytes": 3430
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 83.40000000037253,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 85.8999999994412,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 86.09999999962747,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "suffix",
+      "run": 2,
+      "landingMs": 196,
+      "studioMs": 401,
+      "gridReadyMs": 1532,
+      "pendingAnimationMs": 1050,
+      "domReady": 383.70000000018626,
+      "frameLoad": 385.30000000074506,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 8.400000000372529,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 17.299999999813735,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 29.59999999962747,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 30.100000000558794,
+          "bytes": 27931
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 38.5,
+          "bytes": 64412
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 43.5,
+          "bytes": 3408
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 47.09999999962747,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 47.30000000074506,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 42.299999999813735,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "suffix",
+      "run": 2,
+      "landingMs": 114,
+      "studioMs": 446,
+      "gridReadyMs": 1146,
+      "pendingAnimationMs": 0,
+      "domReady": 419.80000000074506,
+      "frameLoad": 422.30000000074506,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 53.39999999944121,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 53.59999999962747,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 63.30000000074506,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 65.59999999962747,
+          "bytes": 38275
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 66.29999999981374,
+          "bytes": 64412
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 66.59999999962747,
+          "bytes": 3408
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 66.69999999925494,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 67,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 63,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "prefix",
+      "run": 3,
+      "landingMs": 146,
+      "studioMs": 287,
+      "gridReadyMs": 328,
+      "pendingAnimationMs": 0,
+      "domReady": 262.70000000018626,
+      "frameLoad": 265.70000000018626,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 55.299999999813735,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 57.09999999962747,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 58.90000000037253,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 65.1000000005588,
+          "bytes": 38275
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 65.90000000037253,
+          "bytes": 54596
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 66.09999999962747,
+          "bytes": 3353
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 64.20000000018626,
+          "bytes": 11637
+        },
+        {
+          "name": "oc.js",
+          "duration": 67,
+          "bytes": 2210
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 66.70000000018626,
+          "bytes": 1616
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "prefix",
+      "run": 3,
+      "landingMs": 187,
+      "studioMs": 269,
+      "gridReadyMs": 1244,
+      "pendingAnimationMs": 955.0000000000001,
+      "domReady": 245.69999999925494,
+      "frameLoad": 246.8999999994412,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 27.09999999962747,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 33.09999999962747,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 33.299999999813735,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 38.39999999944121,
+          "bytes": 27931
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 39.10000000055879,
+          "bytes": 54596
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 30,
+          "bytes": 3353
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 39.5,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 39.60000000055879,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 39.799999999813735,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "root",
+      "run": 3,
+      "landingMs": 101,
+      "studioMs": 409,
+      "gridReadyMs": 451,
+      "pendingAnimationMs": 0,
+      "domReady": 371.3999999994412,
+      "frameLoad": 373.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 24,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 24.40000000037253,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 27.5,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 36.89999999944121,
+          "bytes": 38275
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 41.299999999813735,
+          "bytes": 3430
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 40,
+          "bytes": 58486
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 42.19999999925494,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 32.299999999813735,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 35.700000000186265,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "root",
+      "run": 3,
+      "landingMs": 171,
+      "studioMs": 314,
+      "gridReadyMs": 1534,
+      "pendingAnimationMs": 1200,
+      "domReady": 295.09999999962747,
+      "frameLoad": 296.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 21.200000000186265,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 21.699999999254942,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 37.59999999962747,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 38.5,
+          "bytes": 27931
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 39,
+          "bytes": 58486
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 39.40000000037253,
+          "bytes": 3430
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 40.299999999813735,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 40.60000000055879,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 34.69999999925494,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "suffix",
+      "run": 3,
+      "landingMs": 85,
+      "studioMs": 449,
+      "gridReadyMs": 1114,
+      "pendingAnimationMs": 0,
+      "domReady": 428.90000000037253,
+      "frameLoad": 430.70000000018626,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 33,
+          "bytes": 4529
+        },
+        {
+          "name": "a11y.css",
+          "duration": 34.89999999944121,
+          "bytes": 2399
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 34.299999999813735,
+          "bytes": 579
+        },
+        {
+          "name": "embed.css",
+          "duration": 40.89999999944121,
+          "bytes": 38275
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 44.90000000037253,
+          "bytes": 3408
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 47.90000000037253,
+          "bytes": 64412
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 45.5,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 46.299999999813735,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 49.299999999813735,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "suffix",
+      "run": 3,
+      "landingMs": 176,
+      "studioMs": 429,
+      "gridReadyMs": 1433,
+      "pendingAnimationMs": 966.6200000000114,
+      "domReady": 403.70000000018626,
+      "frameLoad": 405.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 30.90000000037253,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 31,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 31.200000000186265,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 35.799999999813735,
+          "bytes": 27931
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 32,
+          "bytes": 3408
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 34.5,
+          "bytes": 64412
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 31.5,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 40,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 40.59999999962747,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "prefix",
+      "run": 4,
+      "landingMs": 160,
+      "studioMs": 286,
+      "gridReadyMs": 1257,
+      "pendingAnimationMs": 955.0000000000001,
+      "domReady": 257.70000000018626,
+      "frameLoad": 260.70000000018626,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 24.100000000558794,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 24.100000000558794,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 27.90000000037253,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 33.09999999962747,
+          "bytes": 27931
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 34.19999999925494,
+          "bytes": 54596
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 35.799999999813735,
+          "bytes": 3353
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 36.60000000055879,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 38.80000000074506,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 38,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "prefix",
+      "run": 4,
+      "landingMs": 123,
+      "studioMs": 282,
+      "gridReadyMs": 321,
+      "pendingAnimationMs": 0,
+      "domReady": 256.29999999981374,
+      "frameLoad": 257.79999999981374,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 29.799999999813735,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 29.5,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 29.399999999441206,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 37.69999999925494,
+          "bytes": 38275
+        },
+        {
+          "name": "5bf7a684857442ef.js",
+          "duration": 39.19999999925494,
+          "bytes": 54596
+        },
+        {
+          "name": "c6b8d416ee5d8c87.js",
+          "duration": 41,
+          "bytes": 3353
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 45.799999999813735,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 46.39999999944121,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 46.90000000037253,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "root",
+      "run": 4,
+      "landingMs": 181,
+      "studioMs": 360,
+      "gridReadyMs": 1590,
+      "pendingAnimationMs": 1200,
+      "domReady": 336.29999999981374,
+      "frameLoad": 338,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 34.89999999944121,
+          "bytes": 559
+        },
+        {
+          "name": "a11y.css",
+          "duration": 36.5,
+          "bytes": 2399
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 36.200000000186265,
+          "bytes": 579
+        },
+        {
+          "name": "embed.css",
+          "duration": 42.90000000037253,
+          "bytes": 27931
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 45.40000000037253,
+          "bytes": 58486
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 44.60000000055879,
+          "bytes": 3430
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 47,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 47.09999999962747,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 47.19999999925494,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "root",
+      "run": 4,
+      "landingMs": 75,
+      "studioMs": 364,
+      "gridReadyMs": 402,
+      "pendingAnimationMs": 0,
+      "domReady": 337.90000000037253,
+      "frameLoad": 340.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 19.90000000037253,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 20.700000000186265,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 25.200000000186265,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 36.200000000186265,
+          "bytes": 38275
+        },
+        {
+          "name": "d3e1528ce149a4b9.js",
+          "duration": 33.40000000037253,
+          "bytes": 58486
+        },
+        {
+          "name": "6a84800f8e3a2d38.js",
+          "duration": 52.59999999962747,
+          "bytes": 3430
+        },
+        {
+          "name": "oc.js",
+          "duration": 36.40000000037253,
+          "bytes": 2210
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 53.30000000074506,
+          "bytes": 1616
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 36.30000000074506,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "kind": "suffix",
+      "run": 4,
+      "landingMs": 160,
+      "studioMs": 416,
+      "gridReadyMs": 1549,
+      "pendingAnimationMs": 1050,
+      "domReady": 394.59999999962747,
+      "frameLoad": 396.5,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 17.299999999813735,
+          "bytes": 559
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 20.40000000037253,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 40.89999999944121,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 41.299999999813735,
+          "bytes": 27931
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 42.299999999813735,
+          "bytes": 64412
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 45.59999999962747,
+          "bytes": 3408
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 42.5,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 45.799999999813735,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 44.90000000037253,
+          "bytes": 11637
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "kind": "suffix",
+      "run": 4,
+      "landingMs": 139,
+      "studioMs": 351,
+      "gridReadyMs": 387,
+      "pendingAnimationMs": 0,
+      "domReady": 322.59999999962747,
+      "frameLoad": 325,
+      "images": 0,
+      "resources": [
+        {
+          "name": "embed.js",
+          "duration": 19.300000000745058,
+          "bytes": 4529
+        },
+        {
+          "name": "2829fe11732455ae.js",
+          "duration": 20.299999999813735,
+          "bytes": 579
+        },
+        {
+          "name": "a11y.css",
+          "duration": 30.5,
+          "bytes": 2399
+        },
+        {
+          "name": "embed.css",
+          "duration": 31.199999999254942,
+          "bytes": 38275
+        },
+        {
+          "name": "e5fa8a7bf0bb68ec.js",
+          "duration": 32.799999999813735,
+          "bytes": 3408
+        },
+        {
+          "name": "1665c7c35516ba7d.js",
+          "duration": 35.59999999962747,
+          "bytes": 64412
+        },
+        {
+          "name": "46fc1724b78c29fa.js",
+          "duration": 33.700000000186265,
+          "bytes": 1616
+        },
+        {
+          "name": "oc.js",
+          "duration": 36.299999999813735,
+          "bytes": 2210
+        },
+        {
+          "name": "quest-embed.js",
+          "duration": 37.5,
+          "bytes": 11637
+        }
+      ]
+    }
+  ]
+}

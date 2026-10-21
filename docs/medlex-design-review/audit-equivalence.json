@@ -1,0 +1,38 @@
+[
+  {
+    "slide": 3,
+    "identical": true,
+    "oldMs": 98.30000000074506,
+    "newMs": 58.89999999944121
+  },
+  {
+    "slide": 6,
+    "identical": true,
+    "oldMs": 83.5,
+    "newMs": 58.299999999813735
+  },
+  {
+    "slide": 9,
+    "identical": true,
+    "oldMs": 79.30000000074506,
+    "newMs": 56.39999999944121
+  },
+  {
+    "slide": 13,
+    "identical": true,
+    "oldMs": 78.8999999994412,
+    "newMs": 49.10000000055879
+  },
+  {
+    "slide": 21,
+    "identical": true,
+    "oldMs": 82.5,
+    "newMs": 55.80000000074506
+  },
+  {
+    "slide": 26,
+    "identical": true,
+    "oldMs": 80.1000000005588,
+    "newMs": 54
+  }
+]
