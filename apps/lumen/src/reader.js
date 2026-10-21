@@ -5,40 +5,70 @@
    into the minified reader (HCA12Probe, HCA12PageWidth, HCA12Spread, HCA12FitOf, HCA12ThumbsInit/Save, HCA12PanelInit).
 
    What it does
-   - Opening a source folds the navy rail (the learner's own rail choice comes back on leaving; a manual toggle while
-     reading is remembered for the next time) and hides the top bar so the page owns the screen.
+   - Opening a source folds the navy rail to icons (on screens wide enough for the rail) and hides the top bar so the page
+     owns the screen. The fold never touches the learner's saved choice: while reading, the shell sees a session value
+     instead (HCA12Rail). Opening the rail by hand lasts until the learner leaves the reader or opens another source; on
+     leaving, their own saved choice applies again. 'Collapse the side bar while reading' (lumen.rail.auto, on by default)
+     turns the fold off.
    - Every page-like source opens "Fit page": the whole page or slide is visible without scrolling, a spread when the
      stage is wide enough, one page otherwise. The fit choice is remembered per source type.
    - One compact toolbar (grouped tools, the rest under More), a docked page rail, a study panel that stays closed
      until asked for (side panel, overlay or bottom sheet) and a labelled Close/Exit on every expanded state. */
 
 const HCA12 = { present: false, setPresent: null, nat: new Map(), pr: new Map(), thumbs: new Map(), live: null, subs: new Set() };
-const HCA12Keys = { rail: 'lumen.rail', pre: 'lumen.rail.pre', read: 'lumen.rail.read', thumbs: 'lumen.reader.thumbs.v1' };
+const HCA12Keys = { rail: 'lumen.rail', pre: 'lumen.rail.pre', read: 'lumen.rail.read', auto: 'lumen.rail.auto', thumbs: 'lumen.reader.thumbs.v1' };
 const HCA12Del = k => { try { localStorage.removeItem(k); } catch { } };
 const HCA12Body = (name, on) => document.body.classList.toggle(name, !!on);
 
-/* ---------- Rail: fold while reading, give the learner's own choice back afterwards ---------- */
-function HCA12Rail() { try { HCAShell?.normalize(); } catch { } }
+/* ---------- Rail: folds while reading; the learner's own choice is never overwritten ---------- */
+// sess is a rail choice made by hand while reading ('1' = icons, '0' = expanded); it is forgotten on leaving or opening another source
+const HCA12Rail = { reading: false, sess: null, subs: new Set() };
+const HCA12RailAuto = () => HCA11Get(HCA12Keys.auto) !== '0';
+const HCA12RailLive = () => HCA12Rail.reading && HCA12RailAuto();
+function HCA12RailApply() { try { HCAShell?.normalize(); } catch { } }
+// The shell reads and writes the learner's rail choice through HCAShell.store. While reading, it is given the session value
+// instead, so the saved choice (lumen.rail) stays exactly as the learner left it.
+(function HCA12RailStore() {
+  const st = globalThis.HCAShell?.store; if (!st || st.hcaRail) return;
+  const get = st.get, set = st.set;
+  st.get = k => k === HCA12Keys.rail && HCA12RailLive() ? (HCA12Rail.sess ?? '1') : get.call(st, k);
+  st.set = (k, v) => { if (k === HCA12Keys.rail && HCA12RailLive()) { HCA12Rail.sess = v === '1' ? '1' : '0'; return; } set.call(st, k, v); };
+  st.hcaRail = true;
+})();
+// older builds folded the rail by overwriting the saved choice and keeping a copy in lumen.rail.pre (and remembered a manual
+// expand in lumen.rail.read, which kept the rail open on every later read): put the learner's choice back and drop both
+if (HCA11Get(HCA12Keys.pre) !== null) { HCA11Put(HCA12Keys.rail, HCA11Get(HCA12Keys.pre)); HCA12Del(HCA12Keys.pre); }
+HCA12Del(HCA12Keys.read);
+HCA12RailApply();
 function HCA12Enter() {
   HCA12Body('hl-reading', true);
-  let pre = HCA11Get(HCA12Keys.pre);                        // a leftover value means the tab closed mid-read: keep the original
-  if (pre === null) { pre = HCA11Get(HCA12Keys.rail) === '1' ? '1' : '0'; HCA11Put(HCA12Keys.pre, pre); }
-  HCA11Put(HCA12Keys.rail, HCA11Get(HCA12Keys.read) === '0' ? '0' : '1');
-  HCA12Rail();
-  try { HCAShell?.toggleDrawer(false); } catch { }           // phones: the drawer stays shut while reading
+  HCA12Rail.reading = true; HCA12Rail.sess = null;
+  HCA12RailApply();
+  try { HCAShell?.toggleDrawer(false); } catch { }           // phones and tablets: the drawer stays shut while reading
 }
 function HCA12Leave() {
   HCA12Body('hl-reading', false); HCA12Body('hl-focus', false); HCA12Body('hl-present', false);
-  const pre = HCA11Get(HCA12Keys.pre);
-  if (pre !== null) { HCA11Put(HCA12Keys.rail, pre); HCA12Del(HCA12Keys.pre); }
-  HCA12Rail();
+  HCA12Rail.reading = false; HCA12Rail.sess = null;
+  HCA12RailApply();
 }
-if (HCA11Get(HCA12Keys.pre) !== null) { HCA11Put(HCA12Keys.rail, HCA11Get(HCA12Keys.pre)); HCA12Del(HCA12Keys.pre); }   // crash recovery on load
-// a manual toggle while reading wins, and is what the next reading session starts with
-document.addEventListener('click', e => {
-  if (!document.body.classList.contains('hl-reading') || !e.target.closest?.('.hs-rail-toggle')) return;
-  setTimeout(() => HCA11Put(HCA12Keys.read, HCA11Get(HCA12Keys.rail) === '1' ? '1' : '0'), 0);
-});
+// another source opened inside the reader counts as a new reading session: fold again
+function HCA12RailBegin() { if (!HCA12Rail.reading) return; HCA12Rail.sess = null; HCA12RailApply(); }
+function HCA12RailSet(on) { HCA11Put(HCA12Keys.auto, on ? '1' : '0'); HCA12RailApply(); HCA12Rail.subs.forEach(f => f()); }
+function HCA12UseRailAuto() {
+  const [, t] = _.useState(0);
+  _.useEffect(() => { const f = () => t(n => n + 1); HCA12Rail.subs.add(f); return () => HCA12Rail.subs.delete(f); }, []);
+  return HCA12RailAuto();
+}
+function HCA12RailSwitch() {
+  const on = HCA12UseRailAuto();
+  return HC('button', { type: 'button', role: 'switch', 'aria-checked': on, 'aria-label': 'Collapse the side bar while reading', className: `switch ${on ? 'on' : ''}`, onClick: () => HCA12RailSet(!on) }, HC('span', {}));
+}
+// a row in Settings (same markup as "Keep the motion gentle")
+function HCA12RailSetting() {
+  return HC('div', { className: 'setting-block switch-setting' },
+    HC('div', {}, HC('h3', {}, 'Collapse the side bar while reading.'), HC('p', {}, 'On wide screens, opening a source folds the left menu to icons so the page has room. You can open it again while reading; it folds again next time. Your own choice for other pages comes back when you leave.')),
+    HC(HCA12RailSwitch, {}));
+}
 
 /* ---------- What is open right now (written by the hook the build adds inside the reader) ---------- */
 function HCA12Probe(p) {
@@ -46,6 +76,8 @@ function HCA12Probe(p) {
   HCA12.live = { ...p, ctx, tick: () => tick(n => n + 1) };
   _.useEffect(() => { HCA12.subs.forEach(f => f()); });
   const book = p.book;
+  // a source opens: the rail folds again, and the learner's chosen starting tool (toolbar.js) is active
+  _.useEffect(() => { HCA12RailBegin(); p.setTool(HCA13StartTool(p.mode)); }, [book.id]);
   _.useEffect(() => {
     // learn the page shape (and its natural size) as soon as the source opens, so the first paint is already the right shape
     if (book.kind === 'demo') { HCA12.nat.set(book.id, 820); return; }
@@ -118,7 +150,7 @@ const HCA12PrevReader = ys;
 ys = function HCA12Reader(props) {
   const ctx = y(), focus = !!ctx.readerFocus, [present, setPresent] = _.useState(false), fsMode = _.useRef('');
   HCA12.present = present; HCA12.setPresent = setPresent;
-  _.useEffect(() => { HCA12Enter(); return HCA12Leave; }, []);
+  _.useLayoutEffect(() => { HCA12Enter(); return HCA12Leave; }, []);
   _.useEffect(() => { HCA12Body('hl-focus', focus); }, [focus]);
   _.useEffect(() => {
     HCA12Body('hl-present', present);
@@ -249,7 +281,7 @@ function HCA12PresentHud({ onExit }) {
     HC('div', { className: 'hl-strip', ref: strip, role: 'list', 'aria-label': 'Slides' },
       Array.from({ length: count }, (_x, i) => HC('div', { role: 'listitem', key: i + 1 }, HC(HCA12Thumb, { book: L.book, page: i + 1, doc: L.doc, record: L.record, active: page === i + 1, onClick: () => L.setPage(i + 1) })))));
 }
-/* ---------- Toolbar: grouped tools, the rest under More ---------- */
+/* ---------- Menus used by the toolbar (see toolbar.js) ---------- */
 function HCA12UseMQ(q) {
   const [m, set] = _.useState(() => matchMedia(q).matches);
   _.useEffect(() => { const mq = matchMedia(q), f = () => set(mq.matches); mq.addEventListener('change', f); f(); return () => mq.removeEventListener('change', f); }, [q]);
@@ -262,45 +294,7 @@ function HCA12ToolsMenu(props) {
   const el = HCA7ToolsMenu(props), [summary, menu] = _.Children.toArray(el.props.children);
   return _.cloneElement(el, { className: `${el.props.className} hl-menu` }, summary, _.cloneElement(menu, {}, HCA12MenuHead('Tools'), ..._.Children.toArray(menu.props.children)));
 }
-const HCA12PrevToolbar = HCAReaderToolbar;
-HCAReaderToolbar = function HCA12Toolbar(props) {
-  const el = HCA12PrevToolbar(props), kids = _.Children.toArray(el.props.children), L = HCA12.live;
-  const tools = kids.filter(k => k.type === HCALabelTool && k.props.label !== 'Refresh'), [pen, hi, sticky, mark, recall, studio] = tools;
-  const more = kids.find(k => k.type === 'details' && !String(k.props.className).includes('hca7-tools'));
-  const origItems = _.Children.toArray(more.props.children[1].props.children);
-  const item = (t, label, icon, cls = '') => HC('button', { key: label, type: 'button', className: cls, onClick: t.props.onClick, disabled: t.props.disabled, 'aria-pressed': t.props.active }, HCAIcon(icon), t.props.label === 'Reveal page' ? 'Reveal page' : label);
-  const slides = HCA12Type(props.book) === 'slides', views = [['flip', 'book-open-line', 'Flipbook'], ['single', 'file-text-line', 'Single page'], ['text', 'text', 'Text view']];
-  /* More: grouped under plain headings; the three study/markup buttons repeat here only where the toolbar is too narrow for them. */
-  const mapItem = it => { const ic = it.props.children?.[0]; return ic?.props?.name === 'expand-horizontal-line' ? _.cloneElement(it, {}, HCAIcon('layout-column-line'), ...it.props.children.slice(1)) : it; };
-  const rest = origItems.slice(1).map(mapItem), used = new Set(), seen = new Set();
-  const lab = it => String(_.Children.toArray(it.props.children).find(k => typeof k === 'string') || '');
-  const group = (title, re, extra = []) => {
-    const items = [...rest.filter(it => !used.has(it) && re.test(lab(it))), ...extra.filter(Boolean)].filter(it => { const l = lab(it) || it.key; if (seen.has(l)) return false; seen.add(l); return true; });
-    rest.forEach(it => { if (items.includes(it)) used.add(it); });
-    return items.length ? [HC('p', { key: 'sec-' + title, className: 'hl-menu-sec' }, title), ...items] : [];
-  };
-  const dl = L?.download && HC('button', { key: 'dl', type: 'button', disabled: props.book.kind === 'demo', onClick: L.download }, HCAIcon('download-line'), props.book.kind === 'images' ? 'Download this image' : 'Download original');
-  const present = slides && HC('button', { key: 'present', type: 'button', onClick: () => HCA12.setPresent?.(true) }, HCAIcon('play-fill'), 'Present as slides');
-  const refresh = HC('button', { key: 'refresh', type: 'button', onClick: HCA7Refresh }, HCAIcon('refresh-line'), 'Refresh Lumen');
-  const appMenu = HC('button', { key: 'menu', type: 'button', className: 'hl-ovf-xs', onClick: () => HCAShell?.toggleDrawer(true) }, HCAIcon('menu-line'), 'Open the app menu');
-  const viewItems = group('View', /Resize|Appearance|Fullscreen|focus|Compar|comparison/i);
-  const pageItems = group('This page', /Bookmark|Read aloud|Stop reading|Select text|Erase/i, [present]);
-  const fileItems = group('Your files', /Back up|Download|Export/i, [dl, refresh]);
-  const leftover = group('More', /./);
-  const menu = HC('div', { className: 'hca-reader-more-menu hl-more-menu' },
-    HCA12MenuHead('More'),
-    HC('p', { key: 'sec-ovf', className: 'hl-menu-sec hl-ovf' }, 'Mark up and study'),
-    item(mark, 'Mark a region', 'crop-line', 'hl-ovf'), item(recall, recall.props.label, 'brain-line', 'hl-ovf'), item(studio, 'Quiz & summary', 'sparkling-2-line', 'hl-ovf'),
-    ...views.map(([id, icon, label]) => HC('button', { key: id, type: 'button', className: 'hl-ovf-xs', 'aria-pressed': props.readMode === id, onClick: () => props.onMode(id) }, HCAIcon(icon), label)),
-    ...viewItems, ...pageItems, ...fileItems, ...leftover, appMenu);
-  return HC('div', { className: 'hca-reader-tools hl-tools', 'aria-label': 'Page annotation tools' },
-    HC('div', { className: 'hl-group', role: 'group', 'aria-label': 'Mark up the page' }, pen, hi, sticky, HC('span', { className: 'hl-wide' }, mark)),
-    HC('div', { className: 'hl-group hl-g-study', role: 'group', 'aria-label': 'Study this page' }, recall, studio),
-    slides && HC('button', { type: 'button', className: 'hca-reader-tool hl-present-btn', onClick: () => HCA12.setPresent?.(true), title: 'Present these slides full screen' }, HCAIcon('play-fill'), HC('span', {}, 'Present')),
-    HC(HCA12ToolsMenu, props),
-    HC('details', { className: 'hca-reader-more hl-menu hl-more', onClick: e => { if (e.target.closest('.hl-more-menu button:not(.hl-menu-x)')) e.currentTarget.open = false; }, onKeyDown: e => { if (e.key === 'Escape') { e.currentTarget.open = false; e.stopPropagation(); } } },
-      HC('summary', { title: 'More: views, bookmark, compare, read aloud, appearance and more' }, HCAIcon('more-2-fill'), HC('span', {}, 'More')), menu));
-};
+/* The reader toolbar itself (HCAReaderToolbar) is in toolbar.js: the learner chooses and orders the buttons. */
 
 /* ---------- Bottom bar: fit menu and zoom ---------- */
 function HCA12ViewControls({ book, zoom, setZoom, width }) {
