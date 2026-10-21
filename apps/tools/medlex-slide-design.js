@@ -98,16 +98,29 @@
     });
   }
   // fit: a card whose text is longer than its box steps down a size (sd-fit1, then sd-fit2) before it is allowed to scroll
-  function over(e) { return e.scrollHeight > e.clientHeight + 1; }
+  function over(e) {
+    if (e.scrollHeight > e.clientHeight + 1) return true;
+    if (e.classList.contains('recall-card')) { // a button does not report its overflow: compare the last visible line with the card's bottom edge
+      var v = e.querySelector('.recall-back:not([hidden])') || e.querySelector('.recall-front'), last = v && v.lastElementChild;
+      return !!last && last.getBoundingClientRect().bottom > e.getBoundingClientRect().bottom - 6;
+    }
+    if (e.classList.contains('bank-flip')) {
+      var eb = e.getBoundingClientRect(), bad = false;
+      Array.prototype.forEach.call(e.children, function (c) { if (!c.hidden && c.getBoundingClientRect().height && c.getBoundingClientRect().bottom > eb.bottom - 4) bad = true; });
+      return bad;
+    }
+    return false;
+  }
   function fit(e) {
     if (!e.offsetParent) return;
-    e.classList.remove('sd-fit1', 'sd-fit2');
+    e.classList.remove('sd-fit1', 'sd-fit2', 'sd-fit3');
     if (!over(e)) return;
     e.classList.add('sd-fit1'); if (!over(e)) return;
-    e.classList.add('sd-fit2');
+    e.classList.add('sd-fit2'); if (!over(e)) return;
+    e.classList.add('sd-fit3');
   }
   function fitAll() {
-    document.querySelectorAll('.slide:not([hidden]) .detail-card:not(:has(.course-flips,.course-quiz,.study-bank,.sequence-lab,.table-scroll)), .slide:not([hidden]) .recall-card').forEach(fit);
+    document.querySelectorAll('.slide:not([hidden]) .detail-card:not(:has(.course-flips,.course-quiz,.study-bank,.sequence-lab,.table-scroll)), .slide:not([hidden]) .recall-card, .slide:not([hidden]) .bank-flip').forEach(fit);
   }
   var timer = 0; function later() { clearTimeout(timer); timer = setTimeout(function () { run(); fitAll(); }, 60); }
   run();

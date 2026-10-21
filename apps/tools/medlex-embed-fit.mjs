@@ -5,6 +5,9 @@
 //   - resizeStage() in the deck script also scales the slide to the height that is left, not just the width
 //   - the slide itself (the 1280x720 stage): slimmer header/footer (56px more body height), term pictures laid out in the flow of their card, type of 13px and up.
 //     Check any change here with apps/tools/medlex-deck-audit.mjs (zero overlaps expected at every size).
+//   - slide components (cards, recall cards, reveal rows, tables, quizzes, labs, flash-card bank, covers): apps/tools/medlex-slide-design.css (appended to embed.css below)
+//     and apps/tools/medlex-slide-design.js (copied to shared/js/slide-design.js; restructures how run-on card text is displayed, never the words).
+//     Find components with `node apps/tools/medlex-deck-audit.mjs <out> <port> --types`; look at slides with apps/tools/medlex-slide-shots.mjs.
 import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto';
 const DIR = path.resolve(import.meta.dirname, '../medlex/learn'), JS = path.join(DIR, 'shared/js');
 const md5 = s => crypto.createHash('md5').update(s).digest('hex').slice(0, 16);
