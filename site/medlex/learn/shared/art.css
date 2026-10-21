@@ -1,0 +1,5 @@
+/* MedLex artwork (written by apps/tools/medlex-art.mjs). Rendered illustrations replace the flat icon tiles: no night-mode inversion, soft depth. */
+img[data-art]{filter:none!important;object-fit:contain}
+.slide-art img[data-art]{filter:drop-shadow(0 3px 6px #0000001f)!important}
+html[data-mode=night] .slide-art.kind-icon img[data-art]{filter:drop-shadow(0 3px 6px #00000066)!important}
+.slide-art:has(img[data-art]) small{font-weight:600;letter-spacing:.2px}

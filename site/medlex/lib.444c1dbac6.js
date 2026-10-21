@@ -435,7 +435,23 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   };
   const norm = k => ({ p: 'prefix', r: 'root', s: 'suffix', prefix: 'prefix', prefixes: 'prefix', root: 'root', roots: 'root', suffix: 'suffix', suffixes: 'suffix' }[String(k || '').toLowerCase()] || '');
   const progress = k => { try { const s = JSON.parse(localStorage.getItem(INFO[k].key) || 'null') || {}; return { done: Math.min((s.mastered || []).length, INFO[k].n), badges: (s.badges || []).length, xp: s.xp || 0 }; } catch { return { done: 0, badges: 0, xp: 0 }; } };
-  const url = k => LN.base + LN.quests[k][1] + '.html';
+  /* no ".html": the host redirects "x.html" to "x" (clean URLs), which would cost the frame a whole extra round trip on every open */
+  const url = k => LN.base + LN.quests[k][1];
+  /* ---------- warm-up: fetch a studio page and the scripts and styles it names into the browser cache before it is opened (idle, hover, focus, touch) ---------- */
+  const warmed = {};
+  const slow = () => { const c = navigator.connection; return !!c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || '')); };
+  const idle = fn => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 600));
+  function warm(k) {
+    if (!k || warmed[k] || slow()) return; warmed[k] = 1;
+    const u = url(k);
+    fetch(u, { credentials: 'same-origin' }).then(r => r.ok ? r.text() : '').then(t => {
+      const seen = new Set(); let m; const re = /(?:src|href)="(shared\/[^"#?]+)"/g;
+      while ((m = re.exec(t))) if (!seen.has(m[1])) { seen.add(m[1]); fetch(new URL(m[1], new URL(u, location.href)).href, { credentials: 'same-origin' }).catch(() => { }); }
+    }).catch(() => { warmed[k] = 0; });
+  }
+  const warmAll = first => idle(() => (first ? [first, ...KINDS.filter(x => x !== first)] : KINDS).forEach((k, i) => setTimeout(() => warm(k), i * 400)));
+  const warmFrom = e => { const a = e.target.closest && e.target.closest('a[href^="#wordparts"]'); if (a) { const k = norm((a.getAttribute('href').split('/')[1] || '')); if (k) warm(k); else warmAll(); } };
+  ['pointerover', 'focusin', 'touchstart'].forEach(ev => document.addEventListener(ev, warmFrom, { passive: true }));
   const tone = k => `style="--wp-c:${INFO[k].c};--wp-dk:${INFO[k].dk}"`;
   const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
 
@@ -452,6 +468,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
     };
     mount(header('Word parts', 'Medical words are built from prefixes, roots and suffixes. Pick a studio and learn them by playing.')
       + `<div class="wp-grid">${KINDS.map(card).join('')}</div><p class="wp-note">Your progress stays on this device. Each studio opens right here, and you can switch between them any time.</p>`, true);
+    html.classList.remove('wp-wide'); warmAll();
   }
 
   /* ---------- the studio: a quest page in a frame inside the app ----------
@@ -480,8 +497,10 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
     mount(`<div class="wp-studio" ${tone(k)}><div class="wp-bar"><a class="wp-back" href="#wordparts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All word studios</a>
       <nav class="wp-switch" aria-label="Word studios">${KINDS.map(x => `<a href="#wordparts/${x}" class="wp-sw${x === k ? ' is-on' : ''}"${x === k ? ' aria-current="page"' : ''} ${tone(x)}>${esc(LN.quests[x][0])}</a>`).join('')}</nav></div>
       <h1 class="wp-h1" tabindex="-1">${esc(name)} studio</h1>
-      <iframe class="wp-frame" scrolling="no" title="${esc(name)} studio" src="${url(k)}"></iframe></div>`, true);
-    const fr = $('.wp-frame'), ro = new ResizeObserver(() => fit()), seen = new WeakSet();
+      <div class="wp-stage"><div class="wp-skel" role="status"><span class="wp-h1">Loading the ${esc(name.toLowerCase())} studio</span><i class="wp-sk-hero"></i><i class="wp-sk-row"></i><i class="wp-sk-grid"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></i></div>
+      <iframe class="wp-frame is-loading" scrolling="no" title="${esc(name)} studio" src="${url(k)}"></iframe></div></div>`, true);
+    html.classList.add('wp-wide');
+    const fr = $('.wp-frame'), skel = $('.wp-skel'), ro = new ResizeObserver(() => fit()), seen = new WeakSet();
     const S = cur = { fr, modal: null, timer: 0, last: 0, wait: null, fx: null, toastBox: null, gone: false };
     const win = () => { try { return fr.contentWindow; } catch (e) { return null; } };
     const doc = () => { try { return fr.contentDocument; } catch (e) { return null; } };
@@ -504,7 +523,14 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
     function watch() {
       const d = doc(); if (!d || !d.body) return;
       exitModal(); ro.disconnect(); ro.observe(d.documentElement); ro.observe(d.body); fit();
+      reveal();
     }
+    /* the skeleton stands in until the quest has drawn its first screen; the frame then fades in (no fade with reduced motion) */
+    function reveal() {
+      if (!skel || !skel.isConnected) return;
+      fr.classList.remove('is-loading'); skel.remove(); warmAll(k);
+    }
+    setTimeout(reveal, 20000);   /* never leave the skeleton up if the load event is lost */
 
     /* ----- pop-up: the frame takes the part of itself that is on screen ----- */
     function place(r) {   /* r: where the frame sits in the page (its own box, or the placeholder that holds its room) */
@@ -594,7 +620,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
     const themeWatch = new MutationObserver(pushTheme); themeWatch.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
     const teardown = () => {
       if (S.gone) return; exitModal(); S.gone = true; if (cur === S) cur = null;
-      removeEventListener('resize', relayout); removeEventListener('keydown', onKey); removeEventListener('storage', onStorage); removeEventListener('hashchange', onHash); document.removeEventListener('visibilitychange', onVis);
+      html.classList.remove('wp-wide'); removeEventListener('resize', relayout); removeEventListener('keydown', onKey); removeEventListener('storage', onStorage); removeEventListener('hashchange', onHash); document.removeEventListener('visibilitychange', onVis);
       clearInterval(S.timer); ro.disconnect(); themeWatch.disconnect();
       if (S.toastBox) S.toastBox.remove(); if (S.fx) S.fx.cv.remove();
       html.style.removeProperty('scroll-padding-top');
