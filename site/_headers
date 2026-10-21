@@ -29,6 +29,12 @@
 /medlex/app.*
   Cache-Control: public, max-age=31536000, immutable
 
+/medlex/learn/shared/js/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/medlex/learn/shared/*.css
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
 /medlex/sw.js
   Cache-Control: no-cache
   Service-Worker-Allowed: /medlex

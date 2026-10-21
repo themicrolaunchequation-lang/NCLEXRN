@@ -1,0 +1,64 @@
+diff --git a/site/_headers b/site/_headers
+index ff832ff..cd2e225 100644
+--- a/site/_headers
++++ b/site/_headers
+@@ -29,6 +29,12 @@
+ /medlex/app.*
+   Cache-Control: public, max-age=31536000, immutable
+ 
++/medlex/learn/shared/js/*
++  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
++
++/medlex/learn/shared/*.css
++  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
++
+ /medlex/sw.js
+   Cache-Control: no-cache
+   Service-Worker-Allowed: /medlex
+diff --git a/site/vercel.json b/site/vercel.json
+index 07a2149..9ce0da9 100644
+--- a/site/vercel.json
++++ b/site/vercel.json
+@@ -310,6 +310,42 @@
+         }
+       ]
+     },
++    {
++      "source": "/medlex/learn/shared/js/([0-9a-f]{16})\\.js",
++      "headers": [
++        {
++          "key": "Cache-Control",
++          "value": "public, max-age=31536000, immutable"
++        }
++      ]
++    },
++    {
++      "source": "/medlex/learn/shared/(img/[0-9a-f]{16}\\.(?:webp|png|jpg|svg)|fonts/(.*))",
++      "headers": [
++        {
++          "key": "Cache-Control",
++          "value": "public, max-age=31536000, immutable"
++        }
++      ]
++    },
++    {
++      "source": "/medlex/learn/shared/(a11y\\.css|embed\\.css|js/(?:embed|oc|quest-embed)\\.js)",
++      "headers": [
++        {
++          "key": "Cache-Control",
++          "value": "public, max-age=3600, stale-while-revalidate=86400"
++        }
++      ]
++    },
++    {
++      "source": "/medlex/learn/(quest-prefixes|quest-roots|quest-suffixes)(\\.html)?",
++      "headers": [
++        {
++          "key": "Cache-Control",
++          "value": "public, max-age=0, must-revalidate"
++        }
++      ]
++    },
+     {
+       "source": "/medlex/fonts/(.*)",
+       "headers": [

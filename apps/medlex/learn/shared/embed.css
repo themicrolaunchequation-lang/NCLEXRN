@@ -319,8 +319,5 @@ html.hca-embed[data-theme] .pfx[role=button]:focus-visible{outline:3px solid var
 /* Wider studio: the app now gives the frame up to 1680px; the quests' own caps (1280 to 1400px, hero and tabs 1328px) are lifted to the same limit so the extra width is used (more card columns, a roomier hero). */
 html.hca-embed[data-theme] :is(.wrap,main,.hero-inner,.hudIn,.ml-hero,.ml-foundation,.ml-deep,.ml-coursefoot,.tabs,.hero,.herostats,.mission),
 html.hca-embed[data-theme] body.ml-prefix>.hud,html.hca-embed[data-theme] body.ml-root main>.hud{max-width:1680px}
-/* Speed: the browser skips layout and paint of cards that are far off screen (content-visibility sees the visible part of the app page through the frame); 'auto' remembers each card's real height once seen. */
 html.hca-embed[data-theme] body{--ml-content-max:1680px}
-html.hca-embed[data-theme] #grid>*{content-visibility:auto;contain-intrinsic-size:auto 258px}
-html.hca-embed[data-theme] body.ml-root #grid>*{contain-intrinsic-size:auto 288px}
-html.hca-embed[data-theme] #grid>.scard{contain-intrinsic-size:auto 240px}
+/* (content-visibility on the cards was tried and dropped: the frame is as tall as the quest, so it only skips cards below the screen, and each one that scrolls into view changes the frame height by a few pixels, which moves the page.) */
