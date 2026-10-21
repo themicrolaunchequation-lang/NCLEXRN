@@ -108,7 +108,7 @@ function checkBadges(){
   BADGES.forEach(b=>{
     if(!S.badges.includes(b.id)&&b.ok()){
       S.badges.push(b.id);S.xp+=25;save();updateHUD();
-      setTimeout(()=>{toast("🏆 Badge unlocked: <b>"+b.i+" "+esc(b.n)+"</b> (+25 XP)");sndFanfare();confettiBurst(innerWidth/2,innerHeight/3,70)},450);
+      setTimeout(()=>{toast("🏆 Badge unlocked: <b>"+b.i+" "+esc(b.n)+"</b> (+25 XP)");sndFanfare();confettiBurst(innerWidth/2,(window.hcaVY?hcaVY(3):innerHeight/3),70)},450);
     }
   });
 }
@@ -508,7 +508,7 @@ function answerQ(pos,ev){
     gain=15+speedBonus+streakBonus;Q.score+=gain;
     S.quizCorrect++;S.bestStreak=Math.max(S.bestStreak,Q.streak);save();updateHUD();
     sndGood();
-    if(Q.streak>=3)confettiBurst(innerWidth/2,innerHeight/2.6,45);
+    if(Q.streak>=3)confettiBurst(innerWidth/2,(window.hcaVY?hcaVY(2.6):innerHeight/2.6),45);
     verdict="🎉 Correct! +"+gain+" XP"+(speedBonus?" (⚡ speed +"+speedBonus+")":"")+(streakBonus?" (🔥 streak +"+streakBonus+")":"");
     addXP(gain,"Quiz Quest",ev);
   }else{
@@ -543,7 +543,7 @@ function endQuiz(){
   }else detail+="<br>Flawless — every single prefix nailed! 👑";
   $("#endDetail").innerHTML=detail;
   if(r===10){S.perfectRounds++;save();sndFanfare();confettiRain();checkBadges()}
-  else if(r>=7){sndFanfare();confettiBurst(innerWidth/2,innerHeight/3,90)}
+  else if(r>=7){sndFanfare();confettiBurst(innerWidth/2,(window.hcaVY?hcaVY(3):innerHeight/3),90)}
   else sndGood();
   $("#quizEnd").scrollIntoView({behavior:"smooth",block:"center"});
 }
