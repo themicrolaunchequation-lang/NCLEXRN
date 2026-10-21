@@ -123,7 +123,8 @@ const LEXTRA = [
   { id: 'history', before: 'ch1', sub: 'How medical words came to be.', free: true }, { id: 'components', after: 'ch1', sub: 'The building blocks of medical words.', free: true },
   { id: 'country-differences', after: 'ch3', sub: 'Spelling and term differences between countries.' }, { id: 'procedures-treatment', after: 'ch22', sub: 'The language of what is done, and how.' }, { id: 'medical-coding', after: 'procedures-treatment', sub: 'How terms become codes.' }
 ].map(x => ({ ...x, title: LTITLE[x.id].title, slides: LTITLE[x.id].slides }));
-const LEARN = { base: BASE + 'learn/', map: LMAP, titles: LTITLE, extra: LEXTRA, quests: { prefix: ['Prefixes', 'quest-prefixes'], root: ['Roots', 'quest-roots'], suffix: ['Suffixes', 'quest-suffixes'] } };
+const LCOVER = Object.fromEntries(LDECKS.map(d => { const m = /<img[^>]+src="(shared\/img\/[a-z0-9]+\.webp)"/.exec(read('learn/' + d.file)); return [d.file.replace(/\.html$/, ''), m ? m[1] : '']; }).filter(x => x[1]));
+const LEARN = { base: BASE + 'learn/', covers: LCOVER, map: LMAP, titles: LTITLE, extra: LEXTRA, quests: { prefix: ['Prefixes', 'quest-prefixes'], root: ['Roots', 'quest-roots'], suffix: ['Suffixes', 'quest-suffixes'] } };
 const shellJs = `window.MEDLEX_LEARN=${JSON.stringify(LEARN)};window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_SRC=${JSON.stringify(Object.fromEntries(Object.entries(lazyName).map(([k, v]) => [k, BASE + v])))};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');
 
 (function copyLearn(dir, rel) { for (const e of fs.readdirSync(dir, { withFileTypes: true })) { if (e.isDirectory()) copyLearn(path.join(dir, e.name), rel + e.name + '/'); else if (e.name !== 'decks.json') write(rel + e.name, fs.readFileSync(path.join(dir, e.name))); } })('learn', 'learn/');

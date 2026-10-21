@@ -8,10 +8,11 @@
   const lget = () => { try { return JSON.parse(localStorage.getItem(LK) || '{}') || {}; } catch { return {}; } };
   const lput = (file, patch) => { try { const o = lget(); o[file] = Object.assign(o[file] || {}, patch); localStorage.setItem(LK, JSON.stringify(o)); } catch { } };
   const lessonFile = id => LN && (LN.map[id] || (LN.extra.find(x => x.id === id) || {}).id);
-  const lessonProg = file => { const p = lget()[file] || {}; return { started: !!p.started, done: !!p.done, last: 0, at: p.at || 0, total: 0, pct: 0, deck: true }; };
+  const deckPos = file => { try { const o = JSON.parse(localStorage.getItem('medlex-foundations-' + file + '-v2') || '{}') || {}; return Math.max(0, +o.index || 0); } catch { return 0; } };
+  const lessonProg = file => { const p = lget()[file] || {}, n = ((LN && LN.titles[file]) || {}).slides || 0, at = deckPos(file); return { started: !!p.started, done: !!p.done, last: 0, at: p.at || 0, total: n, pos: at, pct: p.done ? 100 : (p.started && n && at > 0 ? Math.min(99, Math.round(100 * (at + 1) / n)) : 0), deck: true }; };
   const none = { started: false, done: false, last: 0, at: 0, total: 0, pct: 0 };
   function prog(id) { if (lessonFile(id)) return lessonProg(lessonFile(id)); try { const p = JSON.parse(localStorage.getItem('medlex.studio.v1.' + id) || 'null') || {}, n = p.total || 0, v = (p.visited || []).length; return { started: !!p.started, done: !!p.done, last: p.last || 0, at: p.at || 0, total: n, pct: n ? Math.round(100 * Math.min(v, n) / n) : 0 }; } catch { return none; } }
-  const label = p => p.deck ? (p.done ? 'Lesson done · open again' : p.started ? 'Reopen the lesson' : 'Open the lesson') : p.done ? 'Replay as slides' : p.started && p.last > 0 ? `Resume slides · ${p.last + 1}/${p.total || 14}` : 'Learn as slides';
+  const label = p => p.done ? 'Review' : p.started ? 'Continue' : 'Start';
   const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4l13 8-13 8z"/></svg>';
   const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
 
@@ -90,8 +91,36 @@
   }
   function paint(b, p) {
     const l = label(p); b.dataset.msStart = p.started && !p.done ? p.last : 0;
-    b.innerHTML = (p.done ? CHECK : PLAY) + `<span>${l}</span>` + (p.started && !p.done && p.pct ? `<i class="ms-meter" aria-hidden="true"><b style="width:${p.pct}%"></b></i>` : '');
+    const card = b.classList.contains('ms-row') && b.closest('.lc');
+    b.innerHTML = (p.done ? CHECK : PLAY) + `<span>${l}</span>` + (!card && p.started && !p.done && p.pct ? `<i class="ms-meter" aria-hidden="true"><b style="width:${p.pct}%"></b></i>` : '');
     b.setAttribute('aria-label', `${l}${b.dataset.msTitle ? ': ' + b.dataset.msTitle : ''}`);
+  }
+
+  /* ---------- Learn cards: one consistent card per lesson (cover, number, status, title, purpose, facts, progress, one button) ---------- */
+  const BOOK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5V5.5"/></svg>';
+  function card(row) {
+    const btn = $('button[data-ms-open]', row), main = row.querySelector('.module-row-main'); if (!btn || !main) return;
+    const id = btn.dataset.msOpen, file = lessonFile(id), p = prog(id);
+    if (!row.classList.contains('lc')) {
+      row.classList.add('lc');
+      const sm = $('small', main), txt = sm ? sm.textContent : '', terms = /(\d[\d,]*) terms/.exec(txt), mins = /~?(\d+) min/.exec(txt), slides = file && LN.titles[file] ? LN.titles[file].slides : 0;
+      const facts = []; if (slides) facts.push(`<span>${slides} slides</span>`); facts.push(`<span>~${slides || !mins ? Math.max(5, Math.round((slides || 14) * .75 / 5) * 5) : mins[1]} min</span>`); if (terms) facts.push(`<span>${terms[1]} terms</span>`);
+      const cov = file && LN.covers && LN.covers[file], th = document.createElement('div'); th.className = 'lc-thumb'; th.setAttribute('aria-hidden', 'true');
+      th.innerHTML = cov ? `<img src="${LN.base + cov}" alt="" width="640" height="288" loading="lazy" decoding="async">` : '';
+      row.prepend(th);
+      const idx = $('.module-index', row); if (idx && !/^\d+$/.test(idx.textContent.trim())) { idx.innerHTML = BOOK; idx.classList.add('is-icon'); }
+      const pa = $('p', main), meta = document.createElement('p'); meta.className = 'lc-meta'; meta.innerHTML = facts.join('<i aria-hidden="true">·</i>');
+      const pr = document.createElement('div'); pr.className = 'lc-pr'; pr.innerHTML = '<div class="lc-bar" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="100"><i></i></div><span class="lc-ptxt"></span>';
+      const foot = document.createElement('div'); foot.className = 'lc-foot'; foot.append(btn); const more = $('.ml-more', main); if (more) foot.append(more);
+      (pa || $('h3', main)).after(meta); meta.after(pr); main.append(foot);
+    }
+    const state = p.done ? 'done' : p.started ? 'active' : 'new', chip = row.querySelector(':scope > .status-chip');
+    row.dataset.lcState = state;
+    if (chip) chip.textContent = state === 'done' ? 'Done' : state === 'active' ? 'In progress' : 'Not started';
+    const pct = state === 'done' ? 100 : state === 'active' ? p.pct : 0, bar = $('.lc-bar', row);
+    bar.setAttribute('aria-valuenow', pct); bar.firstElementChild.style.width = pct + '%';
+    $('.lc-ptxt', row).textContent = state === 'done' ? 'Completed' : state === 'active' ? (p.deck && p.total && p.pos > 0 ? `Slide ${Math.min(p.pos + 1, p.total)} of ${p.total}` : (pct ? `${pct}% through` : 'Started')) : 'Not started';
+    paint(btn, p);
   }
   function inject() {
     const main = $('#main'); if (!main) return;
@@ -106,6 +135,7 @@
       const b = make(x.id, x.title, 'ms-row'); row.querySelector('.module-row-main').append(b);
       if (x.before) anchor.before(row); else anchor.after(row);
     });
+    $$('.module-row[data-ms]', main).forEach(card);
     const ha = $('.view-header .header-actions', main);
     if (ha && !$('.ms-cta', ha)) {
       const here = modId(location.hash), link = $('a[href*="#learn/module/"]', ha);
@@ -120,7 +150,7 @@
     }
   }
   document.addEventListener('click', e => { const t = e.target.closest && e.target.closest('.module-row[data-deck] h3 a[href*="#learn/module/"], .module-row[data-deck] > a.icon-button'); if (t) { const row = t.closest('.module-row'); e.preventDefault(); e.stopPropagation(); open(row.dataset.deck); return; } const b = e.target.closest && e.target.closest('[data-ms-open]'); if (!b) return; e.preventDefault(); open(b.dataset.msOpen, b.dataset.msStart && b.dataset.msStart !== '0' ? { start: +b.dataset.msStart } : { start: 0 }, b); });
-  window.addEventListener('medlex-studio-closed', () => $$('button[data-ms-open]').forEach(b => paint(b, prog(b.dataset.msOpen))));
+  window.addEventListener('medlex-studio-closed', () => { $$('.module-row.lc').forEach(card); $$('button[data-ms-open]').forEach(b => { if (!b.closest('.lc')) paint(b, prog(b.dataset.msOpen)); }); });
   window.MedlexStudioEntry = { open, progress: prog };
   let raf = 0; const schedule = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; inject(); }); };
   const start = () => { const main = $('#main'); if (!main) return; new MutationObserver(schedule).observe(main, { childList: true, subtree: true }); window.addEventListener('hashchange', schedule); inject(); };
