@@ -145,6 +145,7 @@ Every app certificate carries a clear line: *"Self-paced educational completion.
 - `crown_codes`, `crown_code_redemptions`
 - `crown_progress` (opt-in sync), `crown_certificates`, `crown_admin_audit`
 - Row-level security: members read only their own rows; codes, grants and audit are admin-only.
+- **Grants (Supabase change from 30 Oct 2026):** new tables in `public` are no longer exposed to the Data API automatically. The migration must `grant` in the same file as each `create table`, matching the row-level security above: `select` to `anon` only for public data (none of these tables, `crown_verify()` is a function); `select, insert, update, delete` to `authenticated` for member-owned tables (`crown_progress`, own rows via RLS); `service_role` for all (edge functions); admin-only tables (`crown_codes`, `crown_grants`, `crown_admin_audit`) get no `anon` or `authenticated` grant and are reached through the `crown_admin_*` functions. Without a grant the API returns "permission denied". Also applies to `supabase db reset` and preview branches. Existing tables (`profiles`, `inquiries`, payment tables) keep their grants.
 - Functions: `crown_entitlements()` (what the signed-in person can open), `crown_generate_codes(...)`, `crown_issue_certificate(app, program)`, `crown_verify(serial)` (public), `crown_admin_overview()`.
 
 **Edge functions (same pattern as the existing Stripe ones):**
