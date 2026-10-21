@@ -1,0 +1,1295 @@
+{
+ "generatedBy": "apps/tools/medlex-art.mjs render",
+ "size": 512,
+ "assets": {
+  "symbol-admissions": {
+   "old": "shared/img/3be99a4c1693a922.webp",
+   "new": "shared/img/art-b5a5b42ebc8f4786.webp",
+   "alt": "A hospital entrance door beside a patient record, for admission to care",
+   "label": "admissions",
+   "pal": "place"
+  },
+  "symbol-allergies": {
+   "old": "shared/img/f9ff2d54e06f18e3.webp",
+   "new": "shared/img/art-84134979cc6bbf60.webp",
+   "alt": "A flower releasing pollen, a common allergy trigger",
+   "label": "allergies",
+   "pal": "immune"
+  },
+  "symbol-ambulatory-clinic": {
+   "old": "shared/img/df39258f61f7be7a.webp",
+   "new": "shared/img/art-82fd7f14ffc5a450.webp",
+   "alt": "A small outpatient clinic building with a teal awning",
+   "label": "ambulatory clinic",
+   "pal": "place"
+  },
+  "symbol-animal-mosquitos": {
+   "old": "shared/img/611604b36a244510.webp",
+   "new": "shared/img/art-0203b869d95a2083.webp",
+   "alt": "A mosquito, the insect that carries malaria and other infections",
+   "label": "mosquito",
+   "pal": "immune"
+  },
+  "symbol-antibody": {
+   "old": "shared/img/13814a801542be69.webp",
+   "new": "shared/img/art-1205797e0a2860cc.webp",
+   "alt": "Y-shaped antibodies attaching to a spiky antigen",
+   "label": "antibody",
+   "pal": "immune"
+  },
+  "symbol-anus": {
+   "old": "shared/img/be73d08e5a04f10b.webp",
+   "new": "shared/img/art-4accc6b7e9cb11f0.webp",
+   "alt": "The lower end of the large intestine leading to the anal canal",
+   "label": "anus",
+   "pal": "gi"
+  },
+  "symbol-arm": {
+   "old": "shared/img/2f733e707766e532.webp",
+   "new": "shared/img/art-011f2c80f27d548f.webp",
+   "alt": "A flexed arm with the biceps muscle shaded red",
+   "label": "arm",
+   "pal": "msk"
+  },
+  "symbol-asthma": {
+   "old": "shared/img/76280f73a2b96c3f.webp",
+   "new": "shared/img/art-3feb5ece778eed8c.webp",
+   "alt": "Lungs with a blue reliever inhaler, for asthma",
+   "label": "asthma",
+   "pal": "resp"
+  },
+  "symbol-autoimmune-disease": {
+   "old": "shared/img/ceff68025d589412.webp",
+   "new": "shared/img/art-dba84b25c1176e56.webp",
+   "alt": "Antibodies and a question mark, for autoimmune disease",
+   "label": "autoimmune disease",
+   "pal": "immune"
+  },
+  "symbol-baby-0306m": {
+   "old": "shared/img/39c824ed155ef668.webp",
+   "new": "shared/img/art-cc3c3b9039a81c67.webp",
+   "alt": "A baby curled up, shown inside a circle",
+   "label": "baby",
+   "pal": "repro"
+  },
+  "symbol-back-pain": {
+   "old": "shared/img/04f997f16778f920.webp",
+   "new": "shared/img/art-e7d8ddac387a1902.webp",
+   "alt": "A spine with a flash of pain",
+   "label": "back pain",
+   "pal": "msk"
+  },
+  "symbol-bacteria": {
+   "old": "shared/img/a3aa82ccb810e3ac.webp",
+   "new": "shared/img/art-39e538646a2b205b.webp",
+   "alt": "Rod-shaped and round bacteria",
+   "label": "bacteria",
+   "pal": "micro"
+  },
+  "symbol-biopsy": {
+   "old": "shared/img/68da14e7ab43df6c.webp",
+   "new": "shared/img/art-286c5516f67d26fc.webp",
+   "alt": "A biopsy needle beside the tissue sample it takes",
+   "label": "biopsy",
+   "pal": "onco"
+  },
+  "symbol-bladder": {
+   "old": "shared/img/bd87dabcd7d45190.webp",
+   "new": "shared/img/art-c5ec4be0073f2985.webp",
+   "alt": "The urinary bladder with the two ureters entering from above",
+   "label": "bladder",
+   "pal": "uro"
+  },
+  "symbol-blood-cells": {
+   "old": "shared/img/bb5f29a2d0b1acb0.webp",
+   "new": "shared/img/art-72a923f684558df0.webp",
+   "alt": "Red blood cells, a white cell and platelets",
+   "label": "blood cells",
+   "pal": "blood"
+  },
+  "symbol-blood-drop": {
+   "old": "shared/img/faaa964e2a186a29.webp",
+   "new": "shared/img/art-8e80bd96e70ca00d.webp",
+   "alt": "A glossy drop of blood",
+   "label": "blood",
+   "pal": "blood"
+  },
+  "symbol-blood-pressure": {
+   "old": "shared/img/99ca8eff3b9ac8b6.webp",
+   "new": "shared/img/art-a0a50ba95bd5a19b.webp",
+   "alt": "A blood pressure gauge with a dial",
+   "label": "blood pressure",
+   "pal": "cardio"
+  },
+  "symbol-blood-transfusion": {
+   "old": "shared/img/6741c5a3de0ee79c.webp",
+   "new": "shared/img/art-f35c5ad7d4b3a255.webp",
+   "alt": "A bag of donated blood for transfusion",
+   "label": "blood transfusion",
+   "pal": "blood"
+  },
+  "symbol-blood-vessel": {
+   "old": "shared/img/76bddb7759e61e20.webp",
+   "new": "shared/img/art-2554a957df07a296.webp",
+   "alt": "A blood vessel cut open to show red cells flowing inside",
+   "label": "blood vessel",
+   "pal": "cardio"
+  },
+  "symbol-body": {
+   "old": "shared/img/1ba868a1cb2d9973.webp",
+   "new": "shared/img/art-945c830110222f62.webp",
+   "alt": "A full human figure, front view",
+   "label": "the body",
+   "pal": "place"
+  },
+  "symbol-book": {
+   "old": "shared/img/9ea8ece10e34b3b4.webp",
+   "new": "shared/img/art-3fab002d5429fb5c.webp",
+   "alt": "A closed reference book with a leather cover",
+   "label": "book",
+   "pal": "doc"
+  },
+  "symbol-breasts": {
+   "old": "shared/img/44350b2d84a52f53.webp",
+   "new": "shared/img/art-f4aafbb4bb4ac2da.webp",
+   "alt": "A section through the breast showing lobules and ducts leading to the nipple",
+   "label": "breasts",
+   "pal": "repro"
+  },
+  "symbol-burn": {
+   "old": "shared/img/3500f172214ba3e8.webp",
+   "new": "shared/img/art-f486ed389c312f70.webp",
+   "alt": "A flame, the cause of a burn injury",
+   "label": "burn",
+   "pal": "skin"
+  },
+  "symbol-calendar": {
+   "old": "shared/img/316d9a64c58f62d7.webp",
+   "new": "shared/img/art-4cf6bf970f1ec026.webp",
+   "alt": "A monthly calendar with one day marked",
+   "label": "calendar",
+   "pal": "place"
+  },
+  "symbol-calm": {
+   "old": "shared/img/b4e06a807fa9dfcf.webp",
+   "new": "shared/img/art-815d19b4191e5a87.webp",
+   "alt": "A lotus flower, for calm and relaxation",
+   "label": "calm",
+   "pal": "feel"
+  },
+  "symbol-cardiology": {
+   "old": "shared/img/69d4a7e217a633fc.webp",
+   "new": "shared/img/art-b2001dcdefe15934.webp",
+   "alt": "A heart with a monitor trace, for cardiology",
+   "label": "cardiology",
+   "pal": "cardio"
+  },
+  "symbol-cell-nuclei": {
+   "old": "shared/img/3fa89af2b7e31bf7.webp",
+   "new": "shared/img/art-e115ca5ff0ebec45.webp",
+   "alt": "Cells each with a purple nucleus",
+   "label": "cell nuclei",
+   "pal": "micro"
+  },
+  "symbol-cervical-cancer": {
+   "old": "shared/img/f2281025bcdbd7d6.webp",
+   "new": "shared/img/art-a79a32507d18f999.webp",
+   "alt": "The uterus and cervix with an abnormal growth",
+   "label": "cervical cancer",
+   "pal": "onco"
+  },
+  "symbol-clinical-a": {
+   "old": "shared/img/6e9f2f85c951b8f4.webp",
+   "new": "shared/img/art-ef536449d688a084.webp",
+   "alt": "A clinical record on a clipboard",
+   "label": "clinical record",
+   "pal": "doc"
+  },
+  "symbol-colon": {
+   "old": "shared/img/07d795f62f8fc367.webp",
+   "new": "shared/img/art-d0b9e7de0c3ef997.webp",
+   "alt": "The large intestine with the small intestine inside its frame",
+   "label": "colon",
+   "pal": "gi"
+  },
+  "symbol-coughing": {
+   "old": "shared/img/75e0f9ae45dafb11.webp",
+   "new": "shared/img/art-49893b334a6771f8.webp",
+   "alt": "A mouth with a blast of air, for coughing",
+   "label": "coughing",
+   "pal": "resp"
+  },
+  "symbol-cpr": {
+   "old": "shared/img/6a8ebf2775ca5f37.webp",
+   "new": "shared/img/art-9f8e5a41d938ba2b.webp",
+   "alt": "Hands pressing on the chest during CPR",
+   "label": "CPR",
+   "pal": "cardio"
+  },
+  "symbol-diabetes": {
+   "old": "shared/img/449edf3610bbe5fc.webp",
+   "new": "shared/img/art-7113dc80cc4d3b41.webp",
+   "alt": "The pancreas with a drop of blood, for diabetes",
+   "label": "diabetes",
+   "pal": "endo"
+  },
+  "symbol-diabetes-measure": {
+   "old": "shared/img/e5b4f8529f21145d.webp",
+   "new": "shared/img/art-2c90104e1ba5597b.webp",
+   "alt": "A blood glucose meter showing a reading",
+   "label": "glucose meter",
+   "pal": "endo"
+  },
+  "symbol-dialysis": {
+   "old": "shared/img/5e16a631df0f0a07.webp",
+   "new": "shared/img/art-afbea6d1175c8a8e.webp",
+   "alt": "Kidneys with fluid, for dialysis",
+   "label": "dialysis",
+   "pal": "uro"
+  },
+  "symbol-diarrhea": {
+   "old": "shared/img/104722a93cd03455.webp",
+   "new": "shared/img/art-fd0c33d904fb5257.webp",
+   "alt": "The intestines with fluid, for diarrhoea",
+   "label": "diarrhoea",
+   "pal": "gi"
+  },
+  "symbol-discharge-lounge": {
+   "old": "shared/img/4b7f4bb09abb75d3.webp",
+   "new": "shared/img/art-cfecd9d9c6626238.webp",
+   "alt": "An exit door and a calendar, for going home from hospital",
+   "label": "discharge lounge",
+   "pal": "place"
+  },
+  "symbol-dizzy": {
+   "old": "shared/img/dac72e49044f0271.webp",
+   "new": "shared/img/art-2af3013a25fbd6bd.webp",
+   "alt": "A spiral, the feeling of dizziness",
+   "label": "dizziness",
+   "pal": "feel"
+  },
+  "symbol-doctor": {
+   "old": "shared/img/4204483f4bb1767a.webp",
+   "new": "shared/img/art-6a9ecbaabb990bcc.webp",
+   "alt": "A doctor in a white coat wearing a stethoscope",
+   "label": "doctor",
+   "pal": "place"
+  },
+  "symbol-ear": {
+   "old": "shared/img/ac92403917caab5e.webp",
+   "new": "shared/img/art-2409cc5017c6bee8.webp",
+   "alt": "The outer ear",
+   "label": "ear",
+   "pal": "sense"
+  },
+  "symbol-endocrinology": {
+   "old": "shared/img/b7fce958d38b6728.webp",
+   "new": "shared/img/art-0b361914f0e5a27b.webp",
+   "alt": "The thyroid and pancreas, glands of the endocrine system",
+   "label": "endocrinology",
+   "pal": "endo"
+  },
+  "symbol-enzyme": {
+   "old": "shared/img/f9ef5a416e9ea634.webp",
+   "new": "shared/img/art-c2207460fffd295f.webp",
+   "alt": "An enzyme with a pocket that fits one molecule",
+   "label": "enzyme",
+   "pal": "micro"
+  },
+  "symbol-exercise": {
+   "old": "shared/img/2acc1aee662adb32.webp",
+   "new": "shared/img/art-3028dda6cc1befc9.webp",
+   "alt": "A dumbbell, for exercise",
+   "label": "exercise",
+   "pal": "msk"
+  },
+  "symbol-eye": {
+   "old": "shared/img/93c4ce60883373ed.webp",
+   "new": "shared/img/art-f9710eef4c890b56.webp",
+   "alt": "An eye showing the iris, pupil and optic nerve",
+   "label": "eye",
+   "pal": "sense"
+  },
+  "symbol-family-planning": {
+   "old": "shared/img/c882f8e4dc53668a.webp",
+   "new": "shared/img/art-50d8256626d90ad8.webp",
+   "alt": "The female reproductive system with a calendar, for family planning",
+   "label": "family planning",
+   "pal": "repro"
+  },
+  "symbol-fetus": {
+   "old": "shared/img/30d484800a8cd983.webp",
+   "new": "shared/img/art-cc3c3b9039a81c67.webp",
+   "alt": "A fetus inside the womb",
+   "label": "fetus",
+   "pal": "repro"
+  },
+  "symbol-fever": {
+   "old": "shared/img/76b22bdb56f3e4e0.webp",
+   "new": "shared/img/art-e81567a67f04080a.webp",
+   "alt": "A thermometer showing a raised temperature",
+   "label": "fever",
+   "pal": "feel"
+  },
+  "symbol-foot": {
+   "old": "shared/img/d7c71e094bbf8fd0.webp",
+   "new": "shared/img/art-7a6e0cf603caa940.webp",
+   "alt": "A foot seen from the side",
+   "label": "foot",
+   "pal": "msk"
+  },
+  "symbol-gallbladder": {
+   "old": "shared/img/c94f615d7c1be26c.webp",
+   "new": "shared/img/art-5581e606e9b13eb2.webp",
+   "alt": "The gallbladder under the liver with its bile duct",
+   "label": "gallbladder",
+   "pal": "gi"
+  },
+  "symbol-gastroenterology": {
+   "old": "shared/img/443d464f19773691.webp",
+   "new": "shared/img/art-355a5148cbd85496.webp",
+   "alt": "The stomach under a magnifier, for gastroenterology",
+   "label": "gastroenterology",
+   "pal": "gi"
+  },
+  "symbol-general-surgery": {
+   "old": "shared/img/cf5a3c4004e3fe32.webp",
+   "new": "shared/img/art-b6df107c689edb95.webp",
+   "alt": "A surgical scalpel",
+   "label": "general surgery",
+   "pal": "tool"
+  },
+  "symbol-global-pandemic": {
+   "old": "shared/img/8614d191549b53f1.webp",
+   "new": "shared/img/art-dcac2f3cf313e6fb.webp",
+   "alt": "The globe with a virus particle, for a pandemic",
+   "label": "pandemic",
+   "pal": "micro"
+  },
+  "symbol-gluten": {
+   "old": "shared/img/5a0ce5745ec95c10.webp",
+   "new": "shared/img/art-6df5db6783664f09.webp",
+   "alt": "An ear of wheat, which contains gluten",
+   "label": "gluten",
+   "pal": "gi"
+  },
+  "symbol-gynecology": {
+   "old": "shared/img/ebf3b29ee3eb6a1f.webp",
+   "new": "shared/img/art-4bdb811bfa8eadae.webp",
+   "alt": "The uterus, fallopian tubes and ovaries",
+   "label": "gynaecology",
+   "pal": "repro"
+  },
+  "symbol-head": {
+   "old": "shared/img/2c26a218f838a91f.webp",
+   "new": "shared/img/art-6627fc850eaa16a0.webp",
+   "alt": "The head in profile with the brain shaded",
+   "label": "head",
+   "pal": "neuro"
+  },
+  "symbol-headache": {
+   "old": "shared/img/fc899094c1ddb2aa.webp",
+   "new": "shared/img/art-ff174c45872d64c7.webp",
+   "alt": "A head with a flash of pain, for headache",
+   "label": "headache",
+   "pal": "neuro"
+  },
+  "symbol-heart-cardiogram": {
+   "old": "shared/img/e801ad3a6320a185.webp",
+   "new": "shared/img/art-275fe21960af70a1.webp",
+   "alt": "A heart with an electrocardiogram trace across it",
+   "label": "heart trace",
+   "pal": "cardio"
+  },
+  "symbol-heart-organ": {
+   "old": "shared/img/42bd160ef232d6e3.webp",
+   "new": "shared/img/art-12800db31d7d635d.webp",
+   "alt": "The heart with the aorta in red and the vena cava in blue",
+   "label": "heart",
+   "pal": "cardio"
+  },
+  "symbol-heartbeat": {
+   "old": "shared/img/7776a6c5dccf1f46.webp",
+   "new": "shared/img/art-8d92eee2638dae15.webp",
+   "alt": "A heartbeat trace on a monitor screen",
+   "label": "heartbeat",
+   "pal": "cardio"
+  },
+  "symbol-height": {
+   "old": "shared/img/88dee68bb6b7bb68.webp",
+   "new": "shared/img/art-945c830110222f62.webp",
+   "alt": "A standing figure, for measuring height",
+   "label": "height",
+   "pal": "place"
+  },
+  "symbol-hematology": {
+   "old": "shared/img/76fee62d09cd73a3.webp",
+   "new": "shared/img/art-695121fd5273d2bf.webp",
+   "alt": "Blood cells with a blood sample tube, for haematology",
+   "label": "haematology",
+   "pal": "blood"
+  },
+  "symbol-hepatology": {
+   "old": "shared/img/092683c8e2232ba5.webp",
+   "new": "shared/img/art-41b7d6cd9df96135.webp",
+   "alt": "The liver under a magnifier, for hepatology",
+   "label": "hepatology",
+   "pal": "gi"
+  },
+  "symbol-hospital": {
+   "old": "shared/img/3b6d4e6c80b03ca1.webp",
+   "new": "shared/img/art-1fc55158d0002c17.webp",
+   "alt": "A hospital building with a red cross",
+   "label": "hospital",
+   "pal": "place"
+  },
+  "symbol-hpv": {
+   "old": "shared/img/a5391572afa90c5d.webp",
+   "new": "shared/img/art-b49b4da590311251.webp",
+   "alt": "A virus particle and the cervix, for HPV",
+   "label": "HPV",
+   "pal": "micro"
+  },
+  "symbol-icd-10": {
+   "old": "shared/img/636965f40fc63faa.webp",
+   "new": "shared/img/art-e383344f8af5a957.webp",
+   "alt": "A coding book and a patient record, for ICD-10",
+   "label": "ICD-10",
+   "pal": "doc"
+  },
+  "symbol-icd-11": {
+   "old": "shared/img/3148dc7bbbf3de3c.webp",
+   "new": "shared/img/art-dbfa650367adf075.webp",
+   "alt": "A coding book and a laptop, for ICD-11",
+   "label": "ICD-11",
+   "pal": "doc"
+  },
+  "symbol-inpatient": {
+   "old": "shared/img/39c2d6770e6559e5.webp",
+   "new": "shared/img/art-a4721845032c79ea.webp",
+   "alt": "A hospital bed, for an inpatient stay",
+   "label": "inpatient",
+   "pal": "place"
+  },
+  "symbol-insurance-card": {
+   "old": "shared/img/f300823623d51d20.webp",
+   "new": "shared/img/art-e9afcb4d0c344a27.webp",
+   "alt": "A health insurance card",
+   "label": "insurance card",
+   "pal": "doc"
+  },
+  "symbol-interoperability": {
+   "old": "shared/img/1eb3a3c2f238b419.webp",
+   "new": "shared/img/art-4eaebabcf3fc4841.webp",
+   "alt": "Linked systems sharing records",
+   "label": "interoperability",
+   "pal": "doc"
+  },
+  "symbol-intestinal-pain": {
+   "old": "shared/img/04fbe9dc0c4c7e28.webp",
+   "new": "shared/img/art-73232c0aafb47cd5.webp",
+   "alt": "The intestines with a flash of pain",
+   "label": "abdominal pain",
+   "pal": "gi"
+  },
+  "symbol-intestine": {
+   "old": "shared/img/be0a87e4bd4091e9.webp",
+   "new": "shared/img/art-b06fff502e553c16.webp",
+   "alt": "The small intestine coiled inside the large intestine",
+   "label": "intestine",
+   "pal": "gi"
+  },
+  "symbol-joints": {
+   "old": "shared/img/73499722f84ca92a.webp",
+   "new": "shared/img/art-76642796adb38364.webp",
+   "alt": "A knee joint with cartilage and the kneecap",
+   "label": "joints",
+   "pal": "msk"
+  },
+  "symbol-kidneys": {
+   "old": "shared/img/a1bf24c20dd62cad.webp",
+   "new": "shared/img/art-117f795caa8ce1b3.webp",
+   "alt": "The two kidneys with the adrenal glands and ureters",
+   "label": "kidneys",
+   "pal": "uro"
+  },
+  "symbol-lactation": {
+   "old": "shared/img/de84d5e186abac69.webp",
+   "new": "shared/img/art-f4aafbb4bb4ac2da.webp",
+   "alt": "A section through the breast showing milk ducts",
+   "label": "lactation",
+   "pal": "repro"
+  },
+  "symbol-laryngoscope": {
+   "old": "shared/img/a77a8c1a19faecb2.webp",
+   "new": "shared/img/art-c8c2b06664911c41.webp",
+   "alt": "A laryngoscope used to see the throat",
+   "label": "laryngoscope",
+   "pal": "tool"
+  },
+  "symbol-leg": {
+   "old": "shared/img/1e963aedd1024c3b.webp",
+   "new": "shared/img/art-80719502a66ed9b8.webp",
+   "alt": "A leg seen from the side",
+   "label": "leg",
+   "pal": "msk"
+  },
+  "symbol-liver": {
+   "old": "shared/img/a8ce365b02bf7af9.webp",
+   "new": "shared/img/art-a25df55d9de1f372.webp",
+   "alt": "The liver with the gallbladder beneath it",
+   "label": "liver",
+   "pal": "gi"
+  },
+  "symbol-loss-smell": {
+   "old": "shared/img/260be578345533ac.webp",
+   "new": "shared/img/art-3db614dfeb934248.webp",
+   "alt": "A nose with a question mark, for loss of smell",
+   "label": "loss of smell",
+   "pal": "sense"
+  },
+  "symbol-lungs": {
+   "old": "shared/img/5fe306feee9fb86c.webp",
+   "new": "shared/img/art-c2c826374aef6dce.webp",
+   "alt": "The lungs with the trachea and bronchial tree",
+   "label": "lungs",
+   "pal": "resp"
+  },
+  "symbol-lymph-nodes": {
+   "old": "shared/img/e88c08857f8a935e.webp",
+   "new": "shared/img/art-2260b96accf724b9.webp",
+   "alt": "A lymph node with the lymph vessels joining it",
+   "label": "lymph nodes",
+   "pal": "immune"
+  },
+  "symbol-lymphoma": {
+   "old": "shared/img/266e412af2953816.webp",
+   "new": "shared/img/art-a994c4f8d174f9fb.webp",
+   "alt": "A lymph node with abnormal growth, for lymphoma",
+   "label": "lymphoma",
+   "pal": "onco"
+  },
+  "symbol-malaria-microscope": {
+   "old": "shared/img/643804f0a915c284.webp",
+   "new": "shared/img/art-2019ae3a7c1b1c4e.webp",
+   "alt": "A microscope and blood cells, for finding malaria",
+   "label": "malaria microscopy",
+   "pal": "micro"
+  },
+  "symbol-malaria-testing": {
+   "old": "shared/img/32c76220c334bbd9.webp",
+   "new": "shared/img/art-380c8a5ec7d72d8c.webp",
+   "alt": "A blood sample tube and a mosquito, for malaria testing",
+   "label": "malaria test",
+   "pal": "micro"
+  },
+  "symbol-measles": {
+   "old": "shared/img/0c97e6b9302fbe69.webp",
+   "new": "shared/img/art-3ed5e203f81d4f30.webp",
+   "alt": "A head with a virus particle, for measles",
+   "label": "measles",
+   "pal": "skin"
+  },
+  "symbol-medical-records": {
+   "old": "shared/img/af76f39b0508ddf0.webp",
+   "new": "shared/img/art-ef536449d688a084.webp",
+   "alt": "A patient record on a clipboard",
+   "label": "medical records",
+   "pal": "doc"
+  },
+  "symbol-medical-sample": {
+   "old": "shared/img/89c0d0ca3b080eee.webp",
+   "new": "shared/img/art-254a6c83f476d091.webp",
+   "alt": "A blood sample in a laboratory tube",
+   "label": "medical sample",
+   "pal": "tool"
+  },
+  "symbol-medicines": {
+   "old": "shared/img/bdace74af71c6281.webp",
+   "new": "shared/img/art-c807a3ad3aa775fc.webp",
+   "alt": "A medicine bottle with tablets",
+   "label": "medicines",
+   "pal": "tool"
+  },
+  "symbol-mental-health": {
+   "old": "shared/img/e4f0ca20a44c6916.webp",
+   "new": "shared/img/art-0a21c504cf50ab14.webp",
+   "alt": "A head and a lotus, for mental health",
+   "label": "mental health",
+   "pal": "neuro"
+  },
+  "symbol-microscope": {
+   "old": "shared/img/6c52956d14d65a44.webp",
+   "new": "shared/img/art-285114f3f86bae54.webp",
+   "alt": "A laboratory microscope",
+   "label": "microscope",
+   "pal": "micro"
+  },
+  "symbol-mouth": {
+   "old": "shared/img/4a0b2f93b65e826f.webp",
+   "new": "shared/img/art-cc56e7c51832c0c0.webp",
+   "alt": "The mouth with lips and teeth",
+   "label": "mouth",
+   "pal": "gi"
+  },
+  "symbol-nausea": {
+   "old": "shared/img/2a336776e0db2e0b.webp",
+   "new": "shared/img/art-0a5a1b937c57449e.webp",
+   "alt": "A queasy stomach, for nausea",
+   "label": "nausea",
+   "pal": "gi"
+  },
+  "symbol-nephrology": {
+   "old": "shared/img/f6c088e3e33e3c32.webp",
+   "new": "shared/img/art-8312e5f42c61912c.webp",
+   "alt": "The kidneys under a magnifier, for nephrology",
+   "label": "nephrology",
+   "pal": "uro"
+  },
+  "symbol-nerve": {
+   "old": "shared/img/9c6a8c9a1495d8af.webp",
+   "new": "shared/img/art-02cbbc8d885a6f36.webp",
+   "alt": "A nerve cell with branching dendrites and a long axon",
+   "label": "nerve",
+   "pal": "neuro"
+  },
+  "symbol-neuro-surgery": {
+   "old": "shared/img/63ac48bb158a5571.webp",
+   "new": "shared/img/art-7b3a89614298d1a1.webp",
+   "alt": "The brain and a scalpel, for neurosurgery",
+   "label": "neurosurgery",
+   "pal": "neuro"
+  },
+  "symbol-neurology": {
+   "old": "shared/img/a0c6a4664f3e9d57.webp",
+   "new": "shared/img/art-6f573abb5493800f.webp",
+   "alt": "The brain with the cerebellum and brain stem",
+   "label": "neurology",
+   "pal": "neuro"
+  },
+  "symbol-nose": {
+   "old": "shared/img/8b6d3da1a7575518.webp",
+   "new": "shared/img/art-a0de2102b0d70fa2.webp",
+   "alt": "The nose in profile",
+   "label": "nose",
+   "pal": "sense"
+  },
+  "symbol-nurse": {
+   "old": "shared/img/eb4a45a88269f067.webp",
+   "new": "shared/img/art-cc921ee920dd7294.webp",
+   "alt": "A nurse in teal scrubs wearing a stethoscope",
+   "label": "nurse",
+   "pal": "place"
+  },
+  "symbol-obstetricsmonia": {
+   "old": "shared/img/f94a03d2f8fd79b2.webp",
+   "new": "shared/img/art-bc3b00de05464d65.webp",
+   "alt": "A baby in the womb, for obstetrics",
+   "label": "obstetrics",
+   "pal": "repro"
+  },
+  "symbol-occupational-therapy": {
+   "old": "shared/img/df1adea589fb1f5f.webp",
+   "new": "shared/img/art-4b8b022e0068c1e6.webp",
+   "alt": "An arm and a puzzle piece, for occupational therapy",
+   "label": "occupational therapy",
+   "pal": "msk"
+  },
+  "symbol-oncology": {
+   "old": "shared/img/93249413f3c70405.webp",
+   "new": "shared/img/art-9467d85cb2995d75.webp",
+   "alt": "A tumour made of abnormal cells",
+   "label": "oncology",
+   "pal": "onco"
+  },
+  "symbol-opthalmology": {
+   "old": "shared/img/16cddd09c3b43d94.webp",
+   "new": "shared/img/art-243e531e794e110f.webp",
+   "alt": "An eye under a magnifier, for ophthalmology",
+   "label": "ophthalmology",
+   "pal": "sense"
+  },
+  "symbol-orthopaedics": {
+   "old": "shared/img/d2975414f8debe50.webp",
+   "new": "shared/img/art-fa47049646a86406.webp",
+   "alt": "A knee joint and the spine, for orthopaedics",
+   "label": "orthopaedics",
+   "pal": "msk"
+  },
+  "symbol-outbreak": {
+   "old": "shared/img/e694e6f159b86cb0.webp",
+   "new": "shared/img/art-6dc06d94bc797976.webp",
+   "alt": "The globe with bacteria, for an outbreak",
+   "label": "outbreak",
+   "pal": "micro"
+  },
+  "symbol-outpatient": {
+   "old": "shared/img/a5c262bfaff4bfd5.webp",
+   "new": "shared/img/art-ea451a9009c521b4.webp",
+   "alt": "A clinic door, for an outpatient visit",
+   "label": "outpatient",
+   "pal": "place"
+  },
+  "symbol-pain": {
+   "old": "shared/img/e6375de4e42265e4.webp",
+   "new": "shared/img/art-8fa0d81ab3a54e18.webp",
+   "alt": "A figure with a flash of pain",
+   "label": "pain",
+   "pal": "feel"
+  },
+  "symbol-pain-managment": {
+   "old": "shared/img/65b376a020630464.webp",
+   "new": "shared/img/art-50c9f76d2443de24.webp",
+   "alt": "Tablets and a flash of pain, for pain management",
+   "label": "pain management",
+   "pal": "feel"
+  },
+  "symbol-palliative-care": {
+   "old": "shared/img/cf9cf1dcc6ea6dcb.webp",
+   "new": "shared/img/art-0efb4f00c2c3c367.webp",
+   "alt": "Hands holding a heart, for palliative care",
+   "label": "palliative care",
+   "pal": "feel"
+  },
+  "symbol-pancreas": {
+   "old": "shared/img/ad387c2df86f5a9d.webp",
+   "new": "shared/img/art-96c9791b1803e8c4.webp",
+   "alt": "The pancreas lying behind the stomach",
+   "label": "pancreas",
+   "pal": "endo"
+  },
+  "symbol-pediatrics": {
+   "old": "shared/img/ad864bab1dd18b08.webp",
+   "new": "shared/img/art-2d4bbb011ea688bf.webp",
+   "alt": "A child, for paediatrics",
+   "label": "paediatrics",
+   "pal": "repro"
+  },
+  "symbol-penis": {
+   "old": "shared/img/3825f9f0c23f1a30.webp",
+   "new": "shared/img/art-fd5f6b5a72875f71.webp",
+   "alt": "A section through the penis showing the erectile tissue and the urethra",
+   "label": "penis",
+   "pal": "repro"
+  },
+  "symbol-pharmacy": {
+   "old": "shared/img/9145eb2045778ace.webp",
+   "new": "shared/img/art-c807a3ad3aa775fc.webp",
+   "alt": "A pharmacy medicine bottle with tablets",
+   "label": "pharmacy",
+   "pal": "tool"
+  },
+  "symbol-physical-therapy": {
+   "old": "shared/img/21beea724089593d.webp",
+   "new": "shared/img/art-a52a521942f66e82.webp",
+   "alt": "A leg and a weight, for physiotherapy",
+   "label": "physiotherapy",
+   "pal": "msk"
+  },
+  "symbol-pill-1": {
+   "old": "shared/img/6cce76921b6ab59f.webp",
+   "new": "shared/img/art-a7f26fff49897b05.webp",
+   "alt": "A red and white capsule",
+   "label": "capsule",
+   "pal": "tool"
+  },
+  "symbol-pills-2": {
+   "old": "shared/img/7c034a886174b64a.webp",
+   "new": "shared/img/art-8234121b896d5926.webp",
+   "alt": "Tablets and capsules",
+   "label": "tablets",
+   "pal": "tool"
+  },
+  "symbol-pneumonia": {
+   "old": "shared/img/d14b04eb1e186b06.webp",
+   "new": "shared/img/art-0d6b81a6adb9c20c.webp",
+   "alt": "Lungs with fluid, for pneumonia",
+   "label": "pneumonia",
+   "pal": "resp"
+  },
+  "symbol-poison": {
+   "old": "shared/img/3f678b7341e9fd5c.webp",
+   "new": "shared/img/art-5fe540870ccf9df9.webp",
+   "alt": "A skull, the warning sign for poison",
+   "label": "poison",
+   "pal": "feel"
+  },
+  "symbol-ppe-sanitizer": {
+   "old": "shared/img/e7eb80b6d22af244.webp",
+   "new": "shared/img/art-ce8fa6208aafe135.webp",
+   "alt": "A hand sanitiser pump bottle",
+   "label": "hand sanitiser",
+   "pal": "tool"
+  },
+  "symbol-pregnant": {
+   "old": "shared/img/82dafa05800126c2.webp",
+   "new": "shared/img/art-cc3c3b9039a81c67.webp",
+   "alt": "A baby growing in the womb, for pregnancy",
+   "label": "pregnancy",
+   "pal": "repro"
+  },
+  "symbol-prescription-document": {
+   "old": "shared/img/22cd5989c5adeb9f.webp",
+   "new": "shared/img/art-6cd923209346f84f.webp",
+   "alt": "A prescription sheet marked Rx",
+   "label": "prescription",
+   "pal": "doc"
+  },
+  "symbol-prostate": {
+   "old": "shared/img/be0ce6527f976655.webp",
+   "new": "shared/img/art-a8bc313dd25e3bef.webp",
+   "alt": "The prostate gland below the bladder, around the urethra",
+   "label": "prostate",
+   "pal": "repro"
+  },
+  "symbol-prostate-cancer": {
+   "old": "shared/img/c3d3351b0fcf619d.webp",
+   "new": "shared/img/art-73f51a702e9b7a3e.webp",
+   "alt": "The prostate with an abnormal growth",
+   "label": "prostate cancer",
+   "pal": "onco"
+  },
+  "symbol-psychology": {
+   "old": "shared/img/620d2b7b70bfe6d7.webp",
+   "new": "shared/img/art-4f54dde64a040963.webp",
+   "alt": "A head and a puzzle piece, for psychology",
+   "label": "psychology",
+   "pal": "neuro"
+  },
+  "symbol-pulse-oximeter": {
+   "old": "shared/img/4f438c507e66cf9b.webp",
+   "new": "shared/img/art-0f367c33724980d6.webp",
+   "alt": "A pulse oximeter clipped on a finger",
+   "label": "pulse oximeter",
+   "pal": "tool"
+  },
+  "symbol-radiology": {
+   "old": "shared/img/ee8560fef515c7f3.webp",
+   "new": "shared/img/art-c4195136fafff1c6.webp",
+   "alt": "A chest X-ray film",
+   "label": "radiology",
+   "pal": "tool"
+  },
+  "symbol-register-book": {
+   "old": "shared/img/0afe8cd982a6a570.webp",
+   "new": "shared/img/art-3fab002d5429fb5c.webp",
+   "alt": "A register book with a leather cover",
+   "label": "register book",
+   "pal": "doc"
+  },
+  "symbol-skeleton": {
+   "old": "shared/img/560eedd309cde26e.webp",
+   "new": "shared/img/art-fe0bea07df8a60a8.webp",
+   "alt": "A human skeleton, front view",
+   "label": "skeleton",
+   "pal": "msk"
+  },
+  "symbol-skin-cancer": {
+   "old": "shared/img/4aa0a40b7b9d8dec.webp",
+   "new": "shared/img/art-bfd5b81c7297e47e.webp",
+   "alt": "An arm with an abnormal skin growth",
+   "label": "skin cancer",
+   "pal": "onco"
+  },
+  "symbol-skull": {
+   "old": "shared/img/48436b3f2b0f9c0c.webp",
+   "new": "shared/img/art-4d0d94a5bd9d3b06.webp",
+   "alt": "A human skull, front view",
+   "label": "skull",
+   "pal": "msk"
+  },
+  "symbol-sleepy": {
+   "old": "shared/img/ac8ab01c89669463.webp",
+   "new": "shared/img/art-e0ef4219f70d95a5.webp",
+   "alt": "A crescent moon with sleeping Zs",
+   "label": "sleep",
+   "pal": "feel"
+  },
+  "symbol-sonography": {
+   "old": "shared/img/4da47d235162a835.webp",
+   "new": "shared/img/art-f5b78da654790362.webp",
+   "alt": "An ultrasound scanner with its screen and probe",
+   "label": "sonography",
+   "pal": "tool"
+  },
+  "symbol-sperm": {
+   "old": "shared/img/a840b9d388c0eba9.webp",
+   "new": "shared/img/art-1c9dbb27c45db0e5.webp",
+   "alt": "A sperm cell with a head and a long tail",
+   "label": "sperm",
+   "pal": "repro"
+  },
+  "symbol-spine": {
+   "old": "shared/img/d8b509198be9d09d.webp",
+   "new": "shared/img/art-78afeae11fc82acc.webp",
+   "alt": "The spine, a stack of vertebrae with natural curves",
+   "label": "spine",
+   "pal": "msk"
+  },
+  "symbol-spleen": {
+   "old": "shared/img/2a5b6f20b407f481.webp",
+   "new": "shared/img/art-89d2b9e0cd5c62bc.webp",
+   "alt": "The spleen, a purple organ on the left of the abdomen",
+   "label": "spleen",
+   "pal": "immune"
+  },
+  "symbol-stent": {
+   "old": "shared/img/d2a317b601b7ada2.webp",
+   "new": "shared/img/art-1af18d1d2a8f205b.webp",
+   "alt": "A mesh stent holding open a narrowed blood vessel",
+   "label": "stent",
+   "pal": "cardio"
+  },
+  "symbol-sti": {
+   "old": "shared/img/01b2fecd093e841c.webp",
+   "new": "shared/img/art-8dce161e7a7643ed.webp",
+   "alt": "Bacteria and a virus, for sexually transmitted infections",
+   "label": "STI",
+   "pal": "micro"
+  },
+  "symbol-stomach": {
+   "old": "shared/img/8e1f41204cfdf10a.webp",
+   "new": "shared/img/art-bef96b9013acccb6.webp",
+   "alt": "The stomach with the oesophagus above and the duodenum below",
+   "label": "stomach",
+   "pal": "gi"
+  },
+  "symbol-sugar": {
+   "old": "shared/img/89a5133302e07f83.webp",
+   "new": "shared/img/art-9c4179ecd04e1eaa.webp",
+   "alt": "Sugar cubes",
+   "label": "sugar",
+   "pal": "gi"
+  },
+  "symbol-surgical-sterilization": {
+   "old": "shared/img/6bb758a7bdb92527.webp",
+   "new": "shared/img/art-2c56ee7ac0c2aa83.webp",
+   "alt": "A scalpel and drops, for sterile surgical equipment",
+   "label": "sterilisation",
+   "pal": "tool"
+  },
+  "symbol-sweating": {
+   "old": "shared/img/fbb239309f872e5b.webp",
+   "new": "shared/img/art-c23e95b0603fb51c.webp",
+   "alt": "A head with drops of sweat",
+   "label": "sweating",
+   "pal": "feel"
+  },
+  "symbol-syringe": {
+   "old": "shared/img/33db960110e64a83.webp",
+   "new": "shared/img/art-5ab41a815fe75ff2.webp",
+   "alt": "A syringe with a needle",
+   "label": "syringe",
+   "pal": "tool"
+  },
+  "symbol-syringe-vaccine": {
+   "old": "shared/img/e4897874e515b5a5.webp",
+   "new": "shared/img/art-c2b6c685ac86824e.webp",
+   "alt": "A syringe and a virus, for vaccination",
+   "label": "vaccine",
+   "pal": "tool"
+  },
+  "symbol-tb": {
+   "old": "shared/img/a25821bc4766548a.webp",
+   "new": "shared/img/art-bf1d56f69225a1eb.webp",
+   "alt": "Lungs and bacteria, for tuberculosis",
+   "label": "tuberculosis",
+   "pal": "resp"
+  },
+  "symbol-telemedicine": {
+   "old": "shared/img/bdf382a9eb996677.webp",
+   "new": "shared/img/art-989765a10f2997d0.webp",
+   "alt": "A laptop video call with a clinician",
+   "label": "telemedicine",
+   "pal": "place"
+  },
+  "symbol-testicles": {
+   "old": "shared/img/b7f6f5e88efe10f9.webp",
+   "new": "shared/img/art-031167c6a50ac801.webp",
+   "alt": "The testes with the epididymis and spermatic cord",
+   "label": "testes",
+   "pal": "repro"
+  },
+  "symbol-thyroid": {
+   "old": "shared/img/6d3cbc7cae5d1c00.webp",
+   "new": "shared/img/art-fc46f07148552693.webp",
+   "alt": "The butterfly-shaped thyroid gland around the windpipe",
+   "label": "thyroid",
+   "pal": "endo"
+  },
+  "symbol-tissue": {
+   "old": "shared/img/b4fefb2b00ed318c.webp",
+   "new": "shared/img/art-4c4322a65a26f2b2.webp",
+   "alt": "Sheets of tissue cells arranged in layers",
+   "label": "tissue",
+   "pal": "micro"
+  },
+  "symbol-tongue": {
+   "old": "shared/img/d42d4dbc6be5d6bd.webp",
+   "new": "shared/img/art-f0005c0f4e5d5eeb.webp",
+   "alt": "The tongue with its surface papillae",
+   "label": "tongue",
+   "pal": "gi"
+  },
+  "symbol-tooth": {
+   "old": "shared/img/81fb079b440b0003.webp",
+   "new": "shared/img/art-6e0cdd567082420d.webp",
+   "alt": "A tooth with its roots in the gum",
+   "label": "tooth",
+   "pal": "gi"
+  },
+  "symbol-tumour": {
+   "old": "shared/img/1d467057058f3edd.webp",
+   "new": "shared/img/art-9467d85cb2995d75.webp",
+   "alt": "A tumour made of abnormal cells",
+   "label": "tumour",
+   "pal": "onco"
+  },
+  "symbol-ultrasound-scanner": {
+   "old": "shared/img/d44525724a82e443.webp",
+   "new": "shared/img/art-f5b78da654790362.webp",
+   "alt": "An ultrasound scanner with its screen and probe",
+   "label": "ultrasound",
+   "pal": "tool"
+  },
+  "symbol-urine-sample": {
+   "old": "shared/img/84c2e803278aaab4.webp",
+   "new": "shared/img/art-0b9ee70048857d9f.webp",
+   "alt": "A urine sample in a specimen pot",
+   "label": "urine sample",
+   "pal": "uro"
+  },
+  "symbol-urology": {
+   "old": "shared/img/17ffc203c08248e2.webp",
+   "new": "shared/img/art-6a102df721d86df1.webp",
+   "alt": "The bladder under a magnifier, for urology",
+   "label": "urology",
+   "pal": "uro"
+  },
+  "symbol-vagina": {
+   "old": "shared/img/10992857d4e6974c.webp",
+   "new": "shared/img/art-4bdb811bfa8eadae.webp",
+   "alt": "The female reproductive tract",
+   "label": "vagina",
+   "pal": "repro"
+  },
+  "symbol-vih": {
+   "old": "shared/img/f6dfc32f8f7769e5.webp",
+   "new": "shared/img/art-69d4d935bdc0ff58.webp",
+   "alt": "A red awareness ribbon, for HIV",
+   "label": "HIV",
+   "pal": "micro"
+  },
+  "symbol-virus": {
+   "old": "shared/img/4630a907445fc8f7.webp",
+   "new": "shared/img/art-798d8c203d03cc49.webp",
+   "alt": "A spiky virus particle",
+   "label": "virus",
+   "pal": "micro"
+  },
+  "symbol-vomiting": {
+   "old": "shared/img/a734cd03bebecdc9.webp",
+   "new": "shared/img/art-eb47442a96e85468.webp",
+   "alt": "A stomach emptying, for vomiting",
+   "label": "vomiting",
+   "pal": "gi"
+  },
+  "symbol-weight": {
+   "old": "shared/img/f79a73e9201c74cf.webp",
+   "new": "shared/img/art-5b97027674a18e35.webp",
+   "alt": "Bathroom scales, for body weight",
+   "label": "weight",
+   "pal": "place"
+  },
+  "symbol-world-care": {
+   "old": "shared/img/1ce819570403abf9.webp",
+   "new": "shared/img/art-cc280cb65612c365.webp",
+   "alt": "The globe with hands holding a heart, for care worldwide",
+   "label": "world care",
+   "pal": "place"
+  },
+  "symbol-xray": {
+   "old": "shared/img/e8273b9ea52af60e.webp",
+   "new": "shared/img/art-c4195136fafff1c6.webp",
+   "alt": "A chest X-ray film",
+   "label": "X-ray",
+   "pal": "tool"
+  }
+ },
+ "decks": {
+  "basic-word-structure": {
+   "new": "shared/img/art-3fab002d5429fb5c.webp",
+   "alt": "A reference book, for the lesson on how medical words are built",
+   "label": "Word structure",
+   "pal": "doc"
+  },
+  "building-vocabulary": {
+   "new": "shared/img/art-3fab002d5429fb5c.webp",
+   "alt": "A reference book, for building a medical vocabulary",
+   "label": "Building vocabulary",
+   "pal": "doc"
+  },
+  "components": {
+   "new": "shared/img/art-3fab002d5429fb5c.webp",
+   "alt": "A reference book, for the parts that make up medical words",
+   "label": "Word parts",
+   "pal": "doc"
+  },
+  "history": {
+   "new": "shared/img/art-3fab002d5429fb5c.webp",
+   "alt": "A leather reference book, for the history of medical terms",
+   "label": "Medical history",
+   "pal": "doc"
+  },
+  "country-differences": {
+   "new": "shared/img/art-2ceeff561ccd58f6.webp",
+   "alt": "The globe, for spelling and usage differences between countries",
+   "label": "UK and US usage",
+   "pal": "place"
+  },
+  "prefixes": {
+   "new": "shared/img/art-3fab002d5429fb5c.webp",
+   "alt": "A reference book, for prefixes at the start of medical words",
+   "label": "Prefixes",
+   "pal": "doc"
+  },
+  "suffixes": {
+   "new": "shared/img/art-3fab002d5429fb5c.webp",
+   "alt": "A reference book, for suffixes at the end of medical words",
+   "label": "Suffixes",
+   "pal": "doc"
+  },
+  "human-body": {
+   "new": "shared/img/art-945c830110222f62.webp",
+   "alt": "A human figure, for the body and its organisation",
+   "label": "The human body",
+   "pal": "place"
+  },
+  "cardiovascular": {
+   "new": "shared/img/art-12800db31d7d635d.webp",
+   "alt": "The heart with the great vessels, for the cardiovascular system",
+   "label": "Heart and vessels",
+   "pal": "cardio"
+  },
+  "respiratory": {
+   "new": "shared/img/art-c2c826374aef6dce.webp",
+   "alt": "The lungs and windpipe, for the respiratory system",
+   "label": "Breathing",
+   "pal": "resp"
+  },
+  "digestive": {
+   "new": "shared/img/art-bef96b9013acccb6.webp",
+   "alt": "The stomach, for the digestive system",
+   "label": "Digestion",
+   "pal": "gi"
+  },
+  "endocrine": {
+   "new": "shared/img/art-fc46f07148552693.webp",
+   "alt": "The thyroid gland, for the endocrine system",
+   "label": "Hormones",
+   "pal": "endo"
+  },
+  "female-reproductive": {
+   "new": "shared/img/art-4bdb811bfa8eadae.webp",
+   "alt": "The uterus, tubes and ovaries, for the female reproductive system",
+   "label": "Female reproductive system",
+   "pal": "repro"
+  },
+  "male-reproductive": {
+   "new": "shared/img/art-031167c6a50ac801.webp",
+   "alt": "The testes, for the male reproductive system",
+   "label": "Male reproductive system",
+   "pal": "repro"
+  },
+  "haematology": {
+   "new": "shared/img/art-72a923f684558df0.webp",
+   "alt": "Red cells, a white cell and platelets, for haematology",
+   "label": "Blood",
+   "pal": "blood"
+  },
+  "infectious-parasitic": {
+   "new": "shared/img/art-39e538646a2b205b.webp",
+   "alt": "Bacteria, for infectious and parasitic disease",
+   "label": "Infections",
+   "pal": "micro"
+  },
+  "integumentary": {
+   "new": "shared/img/art-67a1db5431511cbc.webp",
+   "alt": "An arm, for the skin and its conditions",
+   "label": "Skin",
+   "pal": "skin"
+  },
+  "lymphatic-immune": {
+   "new": "shared/img/art-2260b96accf724b9.webp",
+   "alt": "A lymph node, for the lymphatic and immune systems",
+   "label": "Immune system",
+   "pal": "immune"
+  },
+  "mental-health": {
+   "new": "shared/img/art-6f573abb5493800f.webp",
+   "alt": "The brain, for mental health",
+   "label": "Mind",
+   "pal": "neuro"
+  },
+  "musculoskeletal": {
+   "new": "shared/img/art-fe0bea07df8a60a8.webp",
+   "alt": "The skeleton, for the musculoskeletal system",
+   "label": "Bones and muscles",
+   "pal": "msk"
+  },
+  "nervous": {
+   "new": "shared/img/art-02cbbc8d885a6f36.webp",
+   "alt": "A nerve cell, for the nervous system",
+   "label": "Nervous system",
+   "pal": "neuro"
+  },
+  "obstetrics-neonatology": {
+   "new": "shared/img/art-cc3c3b9039a81c67.webp",
+   "alt": "A baby in the womb, for obstetrics and newborn care",
+   "label": "Pregnancy and newborn",
+   "pal": "repro"
+  },
+  "oncology": {
+   "new": "shared/img/art-9467d85cb2995d75.webp",
+   "alt": "A tumour, for oncology",
+   "label": "Cancer",
+   "pal": "onco"
+  },
+  "pharmacology": {
+   "new": "shared/img/art-8234121b896d5926.webp",
+   "alt": "Tablets and capsules, for pharmacology",
+   "label": "Medicines",
+   "pal": "tool"
+  },
+  "procedures-treatment": {
+   "new": "shared/img/art-b6df107c689edb95.webp",
+   "alt": "A scalpel, for procedures and treatment",
+   "label": "Procedures",
+   "pal": "tool"
+  },
+  "medical-coding": {
+   "new": "shared/img/art-ef536449d688a084.webp",
+   "alt": "A patient record, for clinical coding",
+   "label": "Coding",
+   "pal": "doc"
+  },
+  "radiology-nuclear": {
+   "new": "shared/img/art-c4195136fafff1c6.webp",
+   "alt": "A chest X-ray, for radiology and nuclear medicine",
+   "label": "Imaging",
+   "pal": "tool"
+  },
+  "senses": {
+   "new": "shared/img/art-f9710eef4c890b56.webp",
+   "alt": "An eye, for the special senses",
+   "label": "The senses",
+   "pal": "sense"
+  },
+  "urinary": {
+   "new": "shared/img/art-117f795caa8ce1b3.webp",
+   "alt": "The kidneys, for the urinary system",
+   "label": "Urinary system",
+   "pal": "uro"
+  }
+ }
+}

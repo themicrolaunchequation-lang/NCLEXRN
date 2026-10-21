@@ -1,4 +1,5 @@
 // Local preview of site/ that mimics vercel.json: host rewrites, cleanUrls, headers (CSP).
+// HCA_CACHE=1 keeps the Cache-Control that vercel.json sets (default is no-store so edits show at once).
 // Usage: node apps/tools/serve-site.mjs [port]   (HTTPS, self-signed cert in $CERT_DIR or /tmp)
 // Chromium: --host-resolver-rules="MAP *.healthcarecrownacademy.co.uk 127.0.0.1:PORT" --ignore-certificate-errors
 import fs from 'node:fs'; import path from 'node:path'; import https from 'node:https'; import { execSync } from 'node:child_process';
@@ -19,5 +20,6 @@ https.createServer({ key: fs.readFileSync(dir + '/k.pem'), cert: fs.readFileSync
   let file = path.join(SITE, p); if (!file.startsWith(SITE)) { res.writeHead(403); return res.end(); }
   file = pick(file);
   if (!file) { const nf = path.join(SITE, '404.html'); res.writeHead(404, { ...hdr, 'Content-Type': types.html }); return res.end(fs.existsSync(nf) ? fs.readFileSync(nf) : 'Not found'); }
-  const ext = file.split('.').pop(); res.writeHead(200, { ...hdr, 'Content-Type': types[ext] || 'application/octet-stream', 'Cache-Control': 'no-store' }); fs.createReadStream(file).pipe(res);
+  if (process.env.HCA_CACHE) { const st = fs.statSync(file), et = '"' + st.size.toString(16) + '-' + Math.floor(st.mtimeMs).toString(16) + '"'; hdr.ETag = et; if (req.headers['if-none-match'] === et) { res.writeHead(304, hdr); return res.end(); } }
+  const ext = file.split('.').pop(); res.writeHead(200, { ...hdr, 'Content-Type': types[ext] || 'application/octet-stream', 'Cache-Control': process.env.HCA_CACHE && hdr['Cache-Control'] ? hdr['Cache-Control'] : 'no-store' }); fs.createReadStream(file).pipe(res);
 }).listen(port, () => console.log('serving', SITE, 'on', port));
