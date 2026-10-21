@@ -5,6 +5,9 @@
 //   - resizeStage() in the deck script also scales the slide to the height that is left, not just the width
 //   - the slide itself (the 1280x720 stage): slimmer header/footer (56px more body height), term pictures laid out in the flow of their card, type of 13px and up.
 //     Check any change here with apps/tools/medlex-deck-audit.mjs (zero overlaps expected at every size).
+//   - slide components (cards, recall cards, reveal rows, tables, quizzes, labs, flash-card bank, covers): apps/tools/medlex-slide-design.css (appended to embed.css below)
+//     and apps/tools/medlex-slide-design.js (copied to shared/js/slide-design.js; restructures how run-on card text is displayed, never the words).
+//     Find components with `node apps/tools/medlex-deck-audit.mjs <out> <port> --types`; look at slides with apps/tools/medlex-slide-shots.mjs.
 import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto';
 const DIR = path.resolve(import.meta.dirname, '../medlex/learn'), JS = path.join(DIR, 'shared/js');
 const md5 = s => crypto.createHash('md5').update(s).digest('hex').slice(0, 16);
@@ -360,6 +363,9 @@ fs.copyFileSync(path.join(import.meta.dirname, 'medlex-quest-embed.js'), path.jo
   console.log(`embed-fit: quests ${quests} pages updated, ${sites} celebration sites moved to hcaVY`);
 }
 /* ===== end of the Word parts quests block ===== */
+/* ===== slide design system: apps/tools/medlex-slide-design.css (appended to embed.css) and medlex-slide-design.js (shared/js/slide-design.js, viewer only) ===== */
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), '\n' + fs.readFileSync(path.join(import.meta.dirname, 'medlex-slide-design.css'), 'utf8'));
+fs.copyFileSync(path.join(import.meta.dirname, 'medlex-slide-design.js'), path.join(JS, 'slide-design.js'));
 const OLD = "if(focused)scale=Math.min(scale,(innerHeight-172)/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=focused?";
 const NEW = "const emb=!focused&&document.documentElement.classList.contains('hca-embed'),wb=emb&&wrap.closest('.workbench');if(focused)scale=Math.min(scale,(innerHeight-172)/720);if(wb)scale=Math.min(scale,(innerHeight-(wb.scrollHeight-wrap.offsetHeight))/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=(focused||emb)?";
 // Reading view: a recall card became one run of text ("RECALL BEFORE REVEALCLICK TO REVEAL ..."); show its answer instead.
@@ -379,6 +385,7 @@ for (const f of fs.readdirSync(DIR).filter(x => x.endsWith('.html'))) {
   const p = path.join(DIR, f); let t = fs.readFileSync(p, 'utf8'), o = t;
   for (const [a, b] of rename) t = t.split('shared/js/' + a).join('shared/js/' + b);
   if (!t.includes('shared/js/embed.js')) t = t.replace('<meta name="robots" content="noindex">', () => '<meta name="robots" content="noindex">\n<script src="shared/js/embed.js"></script>');
+  if (!f.startsWith('quest-') && !t.includes('shared/js/slide-design.js')) t = t.replace('<script src="shared/js/embed.js"></script>', () => '<script src="shared/js/embed.js"></script>\n<script src="shared/js/slide-design.js" defer></script>');
   if (!t.includes('shared/embed.css')) t = t.replace('<link rel="stylesheet" href="shared/a11y.css">', () => '<link rel="stylesheet" href="shared/a11y.css">\n<link rel="stylesheet" href="shared/embed.css">');
   if (!t.includes('shared/embed.css') || !t.includes('shared/js/embed.js')) throw new Error('could not add the embed files to ' + f);
   if (t !== o) { fs.writeFileSync(p, t); pages++; }

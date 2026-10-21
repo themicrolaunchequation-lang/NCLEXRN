@@ -21,6 +21,7 @@
 //   --shots N                            save screenshots of the first N faulty states (default 0)
 //   --strict                             also fail on small-img / small-cue / small-text
 //   --css file                           try a replacement for shared/embed.css without rebuilding (the deck's own embed.css is switched off)
+//   --types                              also print a roll-up of the slide COMPONENT TYPES met (cover, cards, recall cards, reveal rows, tables, quizzes, builders, step explorers, flash-card banks, ...) so a fix is made by component, not by slide
 //   --json file                          write all findings as JSON (default <outdir>/audit-<size>-<mode>.json)
 // Needs the local server (node apps/tools/serve-site.mjs <port>); Playwright from /opt/node22/lib/node_modules. Exit code 1 when a failing fault is found.
 import { createRequire } from 'node:module'; import fs from 'node:fs'; import path from 'node:path';
@@ -232,7 +233,10 @@ function install() {
 /* ---------------------------------------------------------------- node side */
 const br = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-proxy-server', '--ignore-certificate-errors', `--host-resolver-rules=MAP *.healthcarecrownacademy.co.uk 127.0.0.1:${port}`] });
 const decksAll = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, '../medlex/learn/decks.json'), 'utf8')).map(d => ({ file: d.file.replace(/\.html$/, ''), slides: d.slides, title: d.title }));
-let failing = 0, shotCount = 0; const allFindings = [];
+let failing = 0, shotCount = 0; const allFindings = []; const typeRoll = {};
+// component classes of the slide on screen (used by --types)
+const compSig = () => { const s = document.querySelector('.slide.active'); if (!s) return []; const q = sel => !!s.querySelector(sel); const out = []; if (q('.hero-copy')) out.push('cover'); if (q('.quiz-intro,.quiz-panel')) out.push('quiz-slide'); for (const [k, sel] of Object.entries({ 'detail-deck': '.detail-deck', 'numbered-cards': '.course-cards', 'recall-cards': '.recall-card', 'reveal-rows': '.reveal-grid', 'station-tiles': '.era-grid', 'word-part-chips': '.word-parts', 'picture+points': '.image-split', 'table': '.course-table', 'quiz': '.course-quiz', 'word-builder': '.curated-builder', 'step-explorer': '.sequence-lab', 'flash-bank': '.study-bank', 'reference-tiles': '.course-refs', 'source-desk': '.source-desk', 'picture-panel': '.model-panel', 'map-key': '.map-key', 'callout': '.course-callout', 'term-pictures': '.term-cue' })) if (q(sel)) out.push(k); return out; };
+const detailKinds = () => { const k = new Set(); document.querySelectorAll('.slide.active .detail-card').forEach(c => { k.add(c.querySelector('.recall-card') ? 'card:recall' : c.querySelector('.course-quiz') ? 'card:quiz' : c.querySelector('.curated-builder') ? 'card:builder' : c.querySelector('.sequence-lab') ? 'card:steps' : c.querySelector('.study-bank') ? 'card:flash-bank' : c.querySelector('table') ? 'card:table' : c.querySelector('.source-desk') ? 'card:sources' : c.querySelector('.model-panel') ? 'card:picture' : c.querySelector('details') ? 'card:details' : c.classList.contains('sd-card') ? 'card:numbered' : c.querySelector('.term-shelf') ? 'card:text+pictures' : 'card:text'); }); return [...k]; };
 
 async function openViewer(ctx, deckId) {
   const p = await ctx.newPage(); await p.route(/supabase\.co/, r => r.fulfill({ status: 200, contentType: 'application/json', body: '{}' }));
@@ -274,6 +278,7 @@ for (const [W, H] of SIZES) for (const mode of MODES) {
       if (!flags['chrome-only']) for (let i = 0; i < total; i++) {
         if (ONLY_SLIDES && !ONLY_SLIDES.includes(i + 1)) continue;
         await f.evaluate(i => window.MedLexCourse.go(i), i); await p.waitForTimeout(120);
+        if (flags.types) { const sg = (await f.evaluate(compSig)).concat(await f.evaluate(detailKinds)); for (const c of sg) (typeRoll[c] ||= { n: 0, ex: `${d.file}#${i + 1}` }).n++; }
         if (!flags['dialogs-only']) await scan(i + 1, 'initial');
         if (flags['no-states']) continue;
         const plan = await f.evaluate(() => window.__aud.plan());
@@ -323,4 +328,5 @@ for (const [W, H] of SIZES) for (const mode of MODES) {
   for (const x of findings.filter(x => x.type === 'driver')) console.log('DRIVER', x.deck, x.slide, x.state, x.a);
 }
 await br.close();
+if (flags.types) { console.log('--- slide component types (slides containing each)'); for (const [k, v] of Object.entries(typeRoll).sort((a, b) => b[1].n - a[1].n)) console.log(`${String(v.n).padStart(5)}  ${k.padEnd(20)} e.g. ${v.ex}`); }
 const bad = failing; console.log(bad ? `\n${bad} failing findings (overlap / clip / broken / page scroll / off-screen${flags.strict ? ' / small' : ''})` : '\nno failing findings'); process.exit(bad ? 1 : 0);
