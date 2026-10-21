@@ -316,3 +316,315 @@ html.hca-embed[data-theme] .dot::after{content:"";position:absolute;inset:16px;b
 html.hca-embed[data-theme] .dot.on::after{background:#0e7c7b;transform:scale(1.25)}
 }
 html.hca-embed[data-theme] .pfx[role=button]:focus-visible{outline:3px solid var(--ml-accent);outline-offset:4px;border-radius:8px}
+
+/* ===== MedLex slide design system (viewer only; appended to shared/embed.css by medlex-embed-fit.mjs) =====
+   Source: apps/tools/medlex-slide-design.css. Components are designed once and every deck uses them:
+   frame -> detail cards -> recall cards -> numbered cards -> callouts -> tables -> quizzes -> labs.
+   Rules: only the deck's own tokens (--accent, --accent-soft, --ink, --muted, --line, --surface) so Day/Night and every palette work;
+   stage px sizes (the stage is 1280x720 and scaled), body text 15-17px, labels 12-13px, headings 20-26px. */
+html.hca-embed .stage{--sd-r:14px;--sd-sh:0 1px 2px #10253b0d,0 10px 26px -14px #10253b3d;--sd-tint:color-mix(in srgb,var(--accent) 9%,var(--surface));--sd-tint2:color-mix(in srgb,var(--accent) 16%,var(--surface));--sd-body:var(--ink);--sd-soft:color-mix(in srgb,var(--ink) 74%,var(--surface))}
+html.hca-embed[data-mode=night] .stage{--sd-sh:0 1px 2px #0006,0 10px 26px -14px #000a}
+html.hca-embed .sd-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- frame: title, controls, body ---------- */
+/* the little corner symbol tile ("BOOK", "HEART ORGAN") says nothing; its room goes to the title and the content */
+html.hca-embed .stage .slide-art{display:none!important}
+html.hca-embed .stage .course-slide .course-title,html.hca-embed .stage .course-slide.visual-enhanced .course-title{height:auto;min-height:0;overflow:visible;padding-right:0;margin:0 0 14px}
+html.hca-embed .stage .course-slide .course-title>.eyebrow{font-size:13px;letter-spacing:1.8px;line-height:1.3;font-weight:700}
+html.hca-embed .stage .course-slide .course-title h2,html.hca-embed .stage .course-slide.visual-enhanced .course-title h2{font-size:calc(40px * var(--text-scale,1));line-height:1.08;margin:5px 0 4px;letter-spacing:-1.2px}
+html.hca-embed .stage .course-slide.visual-enhanced.long-title .course-title h2{font-size:calc(36px * var(--text-scale,1))}
+html.hca-embed .stage .course-slide .course-title>p:last-child,html.hca-embed .stage .course-slide.visual-enhanced .course-title>p:last-child{font-size:17px;line-height:1.4;color:var(--sd-soft);margin:6px 0 0;max-width:900px}
+html.hca-embed .stage .course-title>p.sd-generic-lead{display:none}
+html.hca-embed .stage .slide.course-slide:not([hidden]){display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0}
+html.hca-embed .stage .course-slide .course-title{flex:none}
+html.hca-embed .stage .course-slide .course-body{flex:1 1 auto;min-height:0;height:auto;display:flex;flex-direction:column;gap:14px}
+html.hca-embed .stage .course-slide .course-body>*{min-width:0}
+html.hca-embed .stage .slide.course-slide,html.hca-embed .course-view .slide.course-slide{padding-bottom:44px}
+html.hca-embed .stage .source-note{bottom:8px;font-size:13px;color:var(--muted)}
+/* detail slides: the "Detail 1 / 3 - Reading view - arrows" row sits on the title line instead of taking a row of its own */
+html.hca-embed .stage .course-body:has(>.detail-deck){position:static}
+html.hca-embed .stage .detail-deck{height:auto;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+html.hca-embed .stage .detail-controls{position:absolute;top:26px;right:56px;z-index:4;margin:0;gap:8px;align-items:center}
+html.hca-embed .stage .detail-count{font-size:13px;font-weight:700;letter-spacing:1.4px;color:var(--muted);margin-right:6px}
+html.hca-embed .stage .detail-controls button{min-height:38px;border-radius:10px;font-size:14px;font-weight:600;background:var(--surface);border:1px solid var(--line);color:var(--ink);padding:0 14px;box-shadow:none}
+html.hca-embed .stage .detail-controls .detail-prev,html.hca-embed .stage .detail-controls .detail-next{width:42px;padding:0;font-size:18px}
+html.hca-embed .stage .detail-controls button:hover:not(:disabled){border-color:var(--accent);background:var(--sd-tint)}
+html.hca-embed .stage .slide:has(.detail-controls) .course-title{padding-right:330px}
+html.hca-embed .stage .detail-page{gap:14px}
+
+/* ---------- detail cards: the base card ---------- */
+html.hca-embed .stage .detail-card,html.hca-embed .stage .reading-view .detail-card{border-radius:var(--sd-r);border:1px solid var(--line);background:var(--surface);box-shadow:var(--sd-sh);padding:20px 24px;font-size:17px;line-height:1.5;color:var(--sd-body)}
+html.hca-embed .stage .detail-card>p,html.hca-embed .stage .detail-card>p *{font-size:17px}
+html.hca-embed .stage .detail-card>p{margin:0;line-height:1.5}
+html.hca-embed .stage .detail-card>h3,html.hca-embed .stage .detail-card>h4{font-size:22px;line-height:1.2;margin:0 0 8px;font-weight:700;letter-spacing:-.2px}
+html.hca-embed .stage .detail-card b,html.hca-embed .stage .detail-card strong{font-weight:700;color:var(--ink)}
+html.hca-embed .stage .detail-card small{font-size:13px}
+html.hca-embed .stage .detail-card:not(:has(.table-scroll,.course-flips,.course-quiz,.study-bank,.sequence-lab,.curated-builder,.model-panel,.source-desk)){display:flex;flex-direction:column;justify-content:center}
+/* pictures beside the words: one picture group = a clear column on the right; several groups = one tidy strip under the text */
+html.hca-embed .stage .detail-card:has(>.term-shelf){display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:22px;row-gap:10px;align-items:center;align-content:center}
+html.hca-embed .stage .detail-card:has(>.term-shelf)>*{grid-column:1;min-width:0}
+html.hca-embed .stage .detail-card:has(>.term-shelf)>.term-shelf{grid-column:2;grid-row:1/span 5;float:none;margin:0;padding:0;max-width:300px;border:0;justify-content:center;align-self:center;gap:12px;flex-wrap:wrap}
+html.hca-embed .stage .detail-card:has(>.term-shelf>.term-cue:nth-child(2))>.term-shelf{grid-column:1/-1;grid-row:auto;max-width:none;justify-content:flex-start;align-self:end;gap:6px 22px;flex-wrap:wrap}
+html.hca-embed .stage .detail-card:has(>.term-shelf>.term-cue:nth-child(2)){grid-template-columns:minmax(0,1fr);align-content:space-between;align-items:start}
+html.hca-embed .stage .term-shelf>.term-cue{--cw:112px;--ch:98px;--dw:160px;--dh:100px;gap:6px}
+html.hca-embed .stage .term-shelf>.term-cue[data-count="2"]{--cw:84px;--ch:76px;--dw:134px;--dh:84px}
+html.hca-embed .stage .term-shelf>.term-cue[data-count="3"]{--cw:64px;--ch:58px;--dw:96px;--dh:60px}
+html.hca-embed .stage .term-shelf:has(>.term-cue:nth-child(2))>.term-cue{--cw:68px;--ch:60px;--dw:100px;--dh:62px;gap:3px}
+html.hca-embed .stage .term-shelf:has(>.term-cue:nth-child(2))>.term-cue[data-count="3"]{--cw:52px;--ch:48px;--dw:76px;--dh:50px}
+html.hca-embed .stage .term-shelf:has(>.term-cue:nth-child(2)) .term-cue-images{flex-wrap:nowrap}
+html.hca-embed .stage .term-shelf .term-cue-caption{font-size:13px!important;font-weight:700;color:var(--accent);max-width:170px}
+html.hca-embed .stage .term-cue img{border-radius:10px;border-color:color-mix(in srgb,var(--line) 80%,transparent)}
+html.hca-embed .stage .detail-card.sd-long,html.hca-embed .stage .detail-card.sd-long>p,html.hca-embed .stage .detail-card.sd-long .sd-desc{font-size:16px;line-height:1.45}
+
+/* ---------- numbered / structured cards (built by slide-design.js; also used in the Reading view) ---------- */
+html.hca-embed .sd-card,html.hca-embed .stage .detail-card.sd-card{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;row-gap:10px;align-items:center;align-content:center}
+html.hca-embed .sd-card.sd-nonum{grid-template-columns:minmax(0,1fr)}
+html.hca-embed .sd-card>.sd-num,html.hca-embed .stage .detail-card.sd-card>.sd-num{grid-column:1;grid-row:1;min-width:44px;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:var(--surface);font:700 18px/1 var(--sans,Inter,Arial,sans-serif);letter-spacing:.2px}
+html.hca-embed .sd-card>.sd-text{grid-column:2;grid-row:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+html.hca-embed .sd-card.sd-nonum>.sd-text{grid-column:1}
+html.hca-embed .sd-card .sd-kick{display:block;font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);line-height:1.2}
+html.hca-embed .sd-card .sd-head{margin:0;font:700 23px/1.2 var(--sans,Inter,Arial,sans-serif);letter-spacing:-.3px;color:var(--ink)}
+html.hca-embed .sd-card .sd-desc{margin:4px 0 0;font-size:17px;line-height:1.5}
+html.hca-embed .stage .detail-card.sd-card:has(>.term-shelf){grid-template-columns:auto minmax(0,1fr) auto}
+html.hca-embed .stage .detail-card.sd-card.sd-nonum:has(>.term-shelf){grid-template-columns:minmax(0,1fr) auto}
+html.hca-embed .stage .detail-card.sd-card:has(>.term-shelf)>.sd-num{grid-column:1;grid-row:1}
+html.hca-embed .stage .detail-card.sd-card:has(>.term-shelf)>.sd-text{grid-column:2;grid-row:1}
+html.hca-embed .stage .detail-card.sd-card.sd-nonum:has(>.term-shelf)>.sd-text{grid-column:1}
+html.hca-embed .stage .detail-card.sd-card:has(>.term-shelf)>.term-shelf{grid-column:3;grid-row:1}
+html.hca-embed .stage .detail-card.sd-card.sd-nonum:has(>.term-shelf)>.term-shelf{grid-column:2}
+html.hca-embed .stage .detail-card.sd-card:has(>.term-shelf>.term-cue:nth-child(2)){grid-template-columns:auto minmax(0,1fr)}
+html.hca-embed .stage .detail-card.sd-card.sd-nonum:has(>.term-shelf>.term-cue:nth-child(2)){grid-template-columns:minmax(0,1fr)}
+html.hca-embed .stage .detail-card.sd-card:has(>.term-shelf>.term-cue:nth-child(2))>.term-shelf{grid-column:1/-1;grid-row:2}
+
+/* ---------- recall cards (flip cards): term first, one clear action ---------- */
+html.hca-embed .stage .detail-card:has(>.course-flips.cols-1){padding:0;border:0;background:none;box-shadow:none;overflow:visible;display:block}
+html.hca-embed .stage .course-flips.cols-1,html.hca-embed .stage .detail-card:has(>.course-flips.cols-1)>.course-flips{height:100%}
+html.hca-embed .stage .recall-card{border-radius:var(--sd-r);border:1px solid var(--line);background:var(--surface);box-shadow:var(--sd-sh);padding:20px 24px!important;min-height:0;transition:border-color .18s,background-color .18s,box-shadow .18s}
+html.hca-embed .stage .course-flips.cols-1 .recall-card,html.hca-embed .stage .course-flips.cols-1{height:100%}
+html.hca-embed .stage .recall-card:hover{transform:none;border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--sd-sh)}
+html.hca-embed .stage .recall-card[aria-expanded=true]{background:var(--sd-tint);border-color:var(--accent);animation:none}
+html.hca-embed .stage .recall-card small{font-size:13px!important;font-weight:700;letter-spacing:1.4px;color:var(--accent);line-height:1.2}
+html.hca-embed .stage .recall-front{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:100%;min-width:0;gap:6px}
+html.hca-embed .stage .recall-front>small{display:none}
+html.hca-embed .stage .recall-card strong{font:600 28px/1.15 var(--serif);letter-spacing:-.4px;margin:0;color:var(--ink);overflow-wrap:anywhere}
+html.hca-embed .stage .recall-card.has-term-cue .recall-front strong,html.hca-embed .stage .recall-card.has-term-cue .recall-back strong{font-size:28px}
+html.hca-embed .stage .recall-front>span:last-child,html.hca-embed .stage .recall-back>i{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 14px;border-radius:999px;background:var(--sd-tint2);color:var(--accent);font:700 14px/1.2 var(--sans,Inter,Arial,sans-serif);letter-spacing:.2px}
+html.hca-embed .stage .recall-card:hover .recall-front>span:last-child{background:var(--accent);color:var(--surface)}
+html.hca-embed .stage .recall-back{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;height:100%;min-width:0}
+html.hca-embed .stage .recall-back[hidden]{display:none}
+html.hca-embed .stage .recall-back>small{font-size:13px}
+html.hca-embed .stage .recall-back strong{font-size:22px;color:var(--accent)}
+html.hca-embed .stage .recall-back>span,html.hca-embed .stage .recall-back>span.sd-def{font-size:19px!important;line-height:1.45;color:var(--ink);font-weight:500}
+html.hca-embed .stage .recall-card.has-term-cue{grid-template-columns:minmax(0,1fr) auto;column-gap:18px}
+html.hca-embed .stage .recall-card.has-term-cue>.term-cue{--cw:104px;--ch:92px;--dw:150px;--dh:94px;max-width:340px}
+html.hca-embed .stage .recall-card.has-term-cue>.term-cue[data-count="2"]{--cw:84px;--ch:76px;--dw:126px;--dh:80px}
+html.hca-embed .stage .recall-card.has-term-cue>.term-cue[data-count="3"]{--cw:64px;--ch:58px;--dw:96px;--dh:60px}
+html.hca-embed .stage .recall-card .term-cue-caption{font-size:13px!important;font-weight:600;color:var(--sd-soft);max-width:220px}
+html.hca-embed .stage .course-body>.course-flips{flex:1 1 auto;min-height:0;grid-auto-rows:minmax(0,1fr);gap:14px}
+html.hca-embed .stage .course-body>.course-flips .recall-card{height:100%;min-height:0}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card.has-term-cue>.term-cue{--cw:80px;--ch:72px;--dw:116px;--dh:72px;max-width:200px}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card.has-term-cue>.term-cue[data-count="2"]{--cw:64px;--ch:58px;--dw:96px;--dh:60px}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card strong,html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card.has-term-cue .recall-front strong{font-size:25px}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-back>span,html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-back>span.sd-def{font-size:16px!important;line-height:1.4}
+html.hca-embed .stage .course-body>.course-flips.cols-3 .recall-card .recall-front>small{display:none}
+
+/* ---------- numbered cards on deck slides (course-cards) ---------- */
+html.hca-embed .stage .course-body>.course-cards{flex:1 1 auto;min-height:0;grid-auto-rows:minmax(0,1fr);gap:14px;align-content:stretch}
+html.hca-embed .stage .course-cards article{border-radius:var(--sd-r);border:1px solid var(--line);background:var(--surface);box-shadow:var(--sd-sh);padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;align-content:center;align-items:start}
+html.hca-embed .stage .course-cards article>*{grid-column:2}
+html.hca-embed .stage .course-cards article>.card-index,html.hca-embed .stage .course-cards article>.sd-num{grid-column:1;grid-row:1/span 3;float:none;margin:0;min-width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:var(--surface);font:700 18px/1 var(--sans,Inter,Arial,sans-serif)}
+html.hca-embed .stage .course-cards h3,html.hca-embed .stage .course-cards.cols-2 h3{font:700 23px/1.2 var(--sans,Inter,Arial,sans-serif);letter-spacing:-.3px;margin:0 0 6px}
+html.hca-embed .stage .course-cards p,html.hca-embed .stage .course-cards.cols-2 p{font-size:17px;line-height:1.5;color:var(--sd-body);margin:0}
+html.hca-embed .stage .course-cards article:has(>.term-shelf){grid-template-columns:auto minmax(0,1fr) auto}
+html.hca-embed .stage .course-cards article>.term-shelf{grid-column:3;grid-row:1/span 3;float:none;max-width:260px;margin:0;justify-content:flex-end}
+html.hca-embed .stage .course-cards article:not(:has(>.card-index))>*{grid-column:1}
+html.hca-embed .stage .course-cards article:not(:has(>.card-index)):has(>.term-shelf){grid-template-columns:minmax(0,1fr) auto}
+html.hca-embed .stage .course-cards article:not(:has(>.card-index))>.term-shelf{grid-column:2}
+
+/* ---------- callout: one calm banner ---------- */
+html.hca-embed .stage .course-callout,html.hca-embed .stage .detail-card .course-callout{flex:none;border-radius:12px;border:1px solid color-mix(in srgb,var(--accent) 28%,var(--line));border-left:5px solid var(--accent);background:var(--sd-tint);padding:14px 20px;margin:0;gap:20px;align-items:center}
+html.hca-embed .stage .course-callout>b{font-size:13px;letter-spacing:1.4px;font-weight:800;flex:0 0 170px;color:var(--accent);text-transform:uppercase}
+html.hca-embed .stage .course-callout p,html.hca-embed .stage .detail-card .course-callout p{font-size:17px;line-height:1.5;color:var(--ink)}
+html.hca-embed .stage .course-callout p b{color:var(--ink)}
+
+/* ---------- reveal rows, era (station) tiles, word parts ---------- */
+html.hca-embed .stage .course-body>.reveal-grid,html.hca-embed .stage .course-body>.era-grid{flex:1 1 auto;min-height:0;align-content:stretch;gap:14px}
+html.hca-embed .stage .era-grid{grid-auto-rows:minmax(0,1fr)}
+html.hca-embed .stage .era-grid button{border-radius:var(--sd-r);border:1px solid var(--line);background:var(--surface);box-shadow:var(--sd-sh);padding:20px 24px;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:4px}
+html.hca-embed .stage .era-grid button small{font-size:13px;font-weight:700;letter-spacing:1.6px;color:var(--accent);margin:0}
+html.hca-embed .stage .era-grid button strong{font:600 26px/1.2 var(--serif);letter-spacing:-.4px}
+html.hca-embed .stage .era-grid button>span{font-size:14px;font-weight:700;color:var(--accent);margin:6px 0 0}
+html.hca-embed .stage .era-grid button:hover{background:var(--sd-tint);border-color:var(--accent);transform:none}
+html.hca-embed .stage .reveal-grid details{border-radius:var(--sd-r);border:1px solid var(--line);background:var(--surface);box-shadow:var(--sd-sh);padding:18px 22px;min-height:0}
+html.hca-embed .stage .reveal-grid details[open]{background:var(--sd-tint);border-color:var(--accent)}
+html.hca-embed .stage .reveal-grid summary{font:600 27px/1.2 var(--serif);letter-spacing:-.4px}
+html.hca-embed .stage .reveal-grid summary>span:not(.term-cue){width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--sd-tint2);color:var(--accent);font:600 22px/1 var(--sans,Inter,Arial,sans-serif)}
+html.hca-embed .stage .reveal-grid summary>.term-cue{--cw:104px;--ch:92px;--dw:140px;--dh:88px}
+html.hca-embed .stage .reveal-grid details p{font-size:17px;line-height:1.5;color:var(--ink);margin:12px 0 0}
+html.hca-embed .stage .course-body>.word-parts{flex:1 1 auto;min-height:0;gap:18px}
+html.hca-embed .stage .word-part{border-radius:var(--sd-r);border:1px solid var(--line);border-top:6px solid currentColor;background:var(--surface);box-shadow:var(--sd-sh);padding:20px 24px 18px;min-height:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:0}
+html.hca-embed .stage .word-part small{font-size:13px;font-weight:800;letter-spacing:1.8px;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,currentColor 13%,var(--surface));line-height:1.2}
+html.hca-embed .stage .word-part strong{font:600 50px/1.05 var(--serif);margin:12px 0 6px;letter-spacing:-1px}
+html.hca-embed .stage .word-part>span:not(.term-cue){font-size:15px;font-weight:700;color:currentColor;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:color-mix(in srgb,currentColor 35%,transparent)}
+html.hca-embed .stage .word-part.has-term-cue{min-height:0;padding:20px 22px 22px}
+html.hca-embed .stage .word-part.has-term-cue>.term-cue{--cw:92px;--ch:80px;--dw:150px;--dh:94px;margin-top:auto;padding-top:8px;gap:4px}
+html.hca-embed .stage .word-parts:has(>:nth-child(4))>.word-part.has-term-cue>.term-cue{--cw:76px;--ch:68px;--dw:120px;--dh:76px}
+html.hca-embed .stage .word-parts:has(>:nth-child(4)) .word-part strong{font-size:44px}
+html.hca-embed .stage .word-part.has-term-cue>.term-cue .term-cue-caption{font-size:13px!important;font-weight:600;color:var(--sd-soft);line-height:1.2}
+html.hca-embed .stage .word-part:hover,html.hca-embed .stage .word-part[aria-pressed=true]{background:var(--sd-tint)}
+html.hca-embed .stage .part-explanation{flex:none;border-left:5px solid var(--accent);background:var(--sd-tint);border-radius:0 12px 12px 0;padding:12px 20px;margin:0;min-height:0;font-size:19px;line-height:1.45;color:var(--ink);font-weight:500}
+
+/* ---------- picture + three points ---------- */
+html.hca-embed .stage .course-body>.image-split{flex:1 1 auto;min-height:0;height:auto;grid-template-columns:46% minmax(0,1fr);gap:36px}
+html.hca-embed .stage .image-split figure{border-radius:var(--sd-r);height:100%;min-height:0}
+html.hca-embed .stage .image-split img{height:auto;flex:1 1 auto;min-height:0;max-height:100%;border-radius:12px}
+html.hca-embed .stage .image-split figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+html.hca-embed .stage .image-split>div{display:flex;flex-direction:column;justify-content:center;gap:14px}
+html.hca-embed .stage .image-point{padding:0 0 0 18px;border-left:4px solid var(--accent);border-bottom:0}
+html.hca-embed .stage .image-point h3{font:700 23px/1.2 var(--sans,Inter,Arial,sans-serif);letter-spacing:-.3px;margin:0 0 4px}
+html.hca-embed .stage .image-point p{font-size:17px;line-height:1.5;color:var(--sd-body);margin:0}
+
+/* ---------- tables ---------- */
+html.hca-embed .stage .table-scroll{border-radius:var(--sd-r);border:1px solid var(--line);box-shadow:var(--sd-sh);background:var(--surface)}
+html.hca-embed .stage .course-body>.table-scroll,html.hca-embed .stage .course-body>.root-search+.table-scroll{flex:1 1 auto;min-height:0;max-height:none!important}
+html.hca-embed .stage .course-table{font-size:17px}
+html.hca-embed .stage .course-table th{font-size:13px;font-weight:800;letter-spacing:1.5px;padding:12px 18px;background:var(--sd-tint2);color:var(--accent)}
+html.hca-embed .stage .course-table td{padding:12px 18px;line-height:1.45;color:var(--sd-body);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+html.hca-embed .stage .course-table td:first-child{font:600 21px/1.25 var(--serif);color:var(--ink)}
+html.hca-embed .stage .course-table td:not(:first-child){color:var(--sd-body)}
+html.hca-embed .stage .course-table tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--accent) 4%,var(--surface))}
+html.hca-embed .stage .course-table tbody tr:hover td{background:var(--sd-tint)}
+html.hca-embed .stage .root-search{font-size:16px;padding:12px 16px;border-radius:12px;margin-bottom:10px}
+
+/* ---------- quiz ---------- */
+html.hca-embed .stage .course-quiz,html.hca-embed .stage .quiz-panel{border-radius:var(--sd-r);box-shadow:var(--sd-sh)}
+html.hca-embed .stage .course-body>.course-quiz{flex:1 1 auto;min-height:0;height:auto;max-width:none;width:100%;margin:0;padding:22px 30px;display:flex;flex-direction:column}
+html.hca-embed .stage .quiz-meta{font-size:13px;font-weight:700;letter-spacing:1.4px}
+html.hca-embed .stage .course-quiz h3{font:600 28px/1.25 var(--serif);letter-spacing:-.4px;margin:12px 0 16px}
+html.hca-embed .stage .quiz-options{gap:12px}
+html.hca-embed .stage .quiz-options button{font-size:17px;min-height:54px;border-radius:12px;padding:12px 16px;border-width:1.5px}
+html.hca-embed .stage .quiz-options button>span{width:30px;height:30px;border-radius:50%;font-size:14px;font-weight:700;background:var(--sd-tint);border-color:transparent;color:var(--accent)}
+html.hca-embed .stage .quiz-options button:hover{background:var(--sd-tint);border-color:var(--accent)}
+html.hca-embed .stage .quiz-reason{font-size:16px;line-height:1.5;color:var(--sd-body)}
+html.hca-embed .stage .quiz-bottom{margin-top:auto}
+html.hca-embed .stage .quiz-bottom .primary{font-size:15px;padding:12px 20px;border-radius:10px}
+html.hca-embed .stage .quiz-bottom .text-button{font-size:14px}
+html.hca-embed .stage .detail-card .course-quiz h3{font-size:24px}
+html.hca-embed .stage .detail-card .quiz-options button{font-size:16px;min-height:48px}
+
+/* ---------- reference tiles ---------- */
+html.hca-embed .stage .course-body>.course-refs{flex:1 1 auto;min-height:0;grid-auto-rows:minmax(0,1fr);gap:12px;align-content:stretch}
+html.hca-embed .stage .course-refs a{border-radius:var(--sd-r);box-shadow:var(--sd-sh);padding:14px 18px;align-items:center;min-height:0}
+html.hca-embed .stage .course-refs a>span{font:700 18px/1 var(--sans,Inter,Arial,sans-serif);color:var(--surface);background:var(--accent);min-width:38px;height:38px;border-radius:10px;display:grid;place-items:center}
+html.hca-embed .stage .course-refs b{font:700 17px/1.25 var(--sans,Inter,Arial,sans-serif);letter-spacing:-.1px}
+html.hca-embed .stage .course-refs p{font-size:14px;line-height:1.4;color:var(--sd-soft);margin:3px 0 0}
+html.hca-embed .stage .course-refs a>strong{font-size:18px}
+
+/* ---------- source desk ---------- */
+html.hca-embed .stage .source-desk h3{font-size:20px;margin:0 0 10px}
+html.hca-embed .stage .source-desk a{font-size:15px;line-height:1.5}
+html.hca-embed .stage .detail-card:has(.source-desk){align-content:start}
+
+/* three cards across: the number sits above the heading and the text is larger (a narrow column cannot afford a badge beside the words) */
+html.hca-embed .stage .course-cards:not(.cols-2) article{grid-template-columns:minmax(0,1fr);align-content:center;row-gap:0;padding:22px 24px}
+html.hca-embed .stage .course-cards:not(.cols-2) article>*,html.hca-embed .stage .course-cards:not(.cols-2) article>.card-index,html.hca-embed .stage .course-cards:not(.cols-2) article>.sd-num{grid-column:1;grid-row:auto}
+html.hca-embed .stage .course-cards:not(.cols-2) article>.card-index,html.hca-embed .stage .course-cards:not(.cols-2) article>.sd-num{margin:0 0 14px;justify-self:start;width:44px}
+html.hca-embed .stage .course-cards:not(.cols-2) h3{font-size:25px;margin-bottom:8px}
+html.hca-embed .stage .course-cards:not(.cols-2) p{font-size:18px}
+html.hca-embed .stage .course-cards:not(.cols-2) article:has(>.term-shelf){grid-template-columns:minmax(0,1fr)}
+html.hca-embed .stage .course-cards:not(.cols-2) article>.term-shelf{grid-column:1;grid-row:auto;justify-content:flex-start;margin-top:10px}
+/* detail cards with the number above the heading when three sit across */
+/* reveal rows with a number */
+html.hca-embed .stage .reveal-grid summary .sd-sum{display:flex;align-items:center;gap:14px;font-weight:inherit}
+html.hca-embed .stage .reveal-grid summary .sd-sum>i{font-style:normal;min-width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--accent);color:var(--surface);font:700 17px/1 var(--sans,Inter,Arial,sans-serif)}
+html.hca-embed .stage .reveal-grid details{display:grid;align-content:center}
+html.hca-embed .stage .reveal-grid summary{align-items:center}
+
+/* ---------- word-building lab ---------- */
+html.hca-embed .stage .curated-builder{border-radius:var(--sd-r);box-shadow:var(--sd-sh);padding:22px 30px}
+html.hca-embed .stage .course-body>.curated-builder{flex:1 1 auto;min-height:0;height:auto;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);grid-template-rows:auto auto auto auto 1fr;align-content:start;column-gap:28px}
+html.hca-embed .stage .course-body>.curated-builder>.builder-parts{grid-column:1;grid-row:2}
+html.hca-embed .stage .course-body>.curated-builder>.builder-prompt{grid-column:1;grid-row:3}
+html.hca-embed .stage .course-body>.curated-builder>.build-reveal{grid-column:1;grid-row:4}
+html.hca-embed .stage .course-body>.curated-builder>.builder-result{grid-column:2;grid-row:2/6;align-self:stretch;display:flex;flex-direction:column;justify-content:center;margin:18px 0 0}
+html.hca-embed .stage .course-body>.curated-builder>.builder-result>.term-cue{order:-1;margin:0 0 12px;align-self:flex-start}
+html.hca-embed .stage .curated-builder .builder-top small{font-size:13px;font-weight:700;letter-spacing:1.6px}
+html.hca-embed .stage .curated-builder .builder-top h3{font:600 26px/1.2 var(--serif);margin:6px 0 0}
+html.hca-embed .stage .curated-builder .builder-select{font-size:16px;padding:11px 14px;border-radius:10px}
+html.hca-embed .stage .course-body>.curated-builder>.builder-parts{gap:16px;margin:18px 0 16px}
+html.hca-embed .stage .curated-builder .builder-parts>span{border:0;border-bottom:5px solid currentColor;border-radius:14px 14px 4px 4px;background:color-mix(in srgb,currentColor 11%,var(--surface));padding:12px 20px 12px!important;min-width:120px}
+html.hca-embed .stage .curated-builder .builder-parts small{font-size:13px;font-weight:800;letter-spacing:1.6px}
+html.hca-embed .stage .curated-builder .builder-parts b{font:600 46px/1.05 var(--serif);margin:4px 0 0;letter-spacing:-1px}
+html.hca-embed .stage .curated-builder .builder-parts>span.has-term-cue{column-gap:14px}
+html.hca-embed .stage .curated-builder .builder-parts>span>.term-cue{--cw:64px;--ch:56px;--dw:96px;--dh:60px}
+html.hca-embed .stage .curated-builder .builder-parts>span.has-term-cue{padding:10px 14px!important;min-width:0}
+html.hca-embed .stage .curated-builder .builder-parts{gap:12px}
+html.hca-embed .stage .curated-builder .builder-prompt{font-size:17px;color:var(--sd-body)}
+html.hca-embed .stage .curated-builder .primary{font-size:16px;padding:13px 22px;border-radius:12px}
+html.hca-embed .stage .course-body>.curated-builder>.builder-result{border-left:0;background:var(--sd-tint);border-radius:12px;padding:18px 26px;align-self:stretch;border-bottom:4px solid var(--accent)}
+html.hca-embed .stage .course-body>.curated-builder>.builder-result:empty{background:none;border:0;padding:0}
+html.hca-embed .stage .curated-builder .builder-result>strong{font:600 32px/1.1 var(--serif);letter-spacing:-.6px}
+html.hca-embed .stage .course-body>.curated-builder .builder-result>strong{font-size:44px;letter-spacing:-.8px}
+html.hca-embed .stage .detail-card .curated-builder .builder-parts b{font-size:30px}
+html.hca-embed .stage .detail-card .curated-builder .builder-result p{font-size:17px}
+html.hca-embed .stage .detail-card .curated-builder .builder-result small{font-size:15px}
+html.hca-embed .stage .curated-builder .builder-result p{font-size:20px;line-height:1.45;margin:6px 0}
+html.hca-embed .stage .curated-builder .builder-result small{font-size:16px;color:var(--sd-body)}
+html.hca-embed .stage .curated-builder .builder-result>.term-cue{--cw:92px;--ch:80px;--dw:140px;--dh:88px}
+/* quiz: fuller answer buttons */
+html.hca-embed .stage .course-body>.course-quiz .quiz-options button{min-height:64px;font-size:19px}
+html.hca-embed .stage .course-body>.course-quiz .quiz-reason{font-size:17px}
+
+/* ---------- fit steps (slide-design.js): a card with more text than room gets one or two tighter sizes before it would scroll ---------- */
+html.hca-embed .stage .detail-card.sd-fit1{padding:14px 20px;font-size:15.5px;line-height:1.4}
+html.hca-embed .stage .detail-card.sd-fit1>p,html.hca-embed .stage .detail-card.sd-fit1 .sd-desc{font-size:15.5px;line-height:1.4}
+html.hca-embed .stage .detail-card.sd-fit1>h3,html.hca-embed .stage .detail-card.sd-fit1 .sd-head{font-size:20px}
+html.hca-embed .stage .detail-card.sd-fit1 .sd-num{min-width:38px;width:38px;height:38px;font-size:16px}
+html.hca-embed .stage .detail-card.sd-fit1 .term-shelf>.term-cue{--cw:76px;--ch:68px;--dw:110px;--dh:68px}
+html.hca-embed .stage .detail-card.sd-fit1 .term-shelf:has(>.term-cue:nth-child(2))>.term-cue{--cw:56px;--ch:50px;--dw:84px;--dh:52px}
+html.hca-embed .stage .detail-card.sd-fit2{padding:11px 16px;font-size:14.5px;line-height:1.35}
+html.hca-embed .stage .detail-card.sd-fit2>p,html.hca-embed .stage .detail-card.sd-fit2 .sd-desc{font-size:14.5px;line-height:1.35}
+html.hca-embed .stage .detail-card.sd-fit2>h3,html.hca-embed .stage .detail-card.sd-fit2 .sd-head{font-size:18px;margin-bottom:4px}
+html.hca-embed .stage .detail-card.sd-fit2 .term-shelf>.term-cue{--cw:56px;--ch:50px;--dw:84px;--dh:52px}
+html.hca-embed .stage .detail-card.sd-fit2 .term-shelf:has(>.term-cue:nth-child(2))>.term-cue{--cw:44px;--ch:40px;--dw:66px;--dh:42px}
+html.hca-embed .stage .detail-card.sd-fit2 .term-shelf .term-cue-caption{font-size:12px!important}
+html.hca-embed .stage .detail-card.sd-fit1 .curated-builder .builder-result>strong{font-size:26px}
+html.hca-embed .stage .detail-card.sd-fit2 .curated-builder .builder-result>strong{font-size:22px}
+html.hca-embed .stage .recall-card.sd-fit1{padding:14px 20px!important}
+html.hca-embed .stage .recall-card.sd-fit1 .recall-back>span,html.hca-embed .stage .recall-card.sd-fit1 .recall-back>span.sd-def{font-size:16px!important;line-height:1.35}
+html.hca-embed .stage .recall-card.sd-fit1 .recall-back strong{font-size:20px}
+html.hca-embed .stage .recall-card.sd-fit1 .recall-back>i,html.hca-embed .stage .recall-card.sd-fit1 .recall-front>span:last-child{margin-top:4px;padding:4px 12px;font-size:13px}
+html.hca-embed .stage .recall-card.sd-fit2{padding:10px 16px!important}
+html.hca-embed .stage .recall-card.sd-fit2 .recall-back>span,html.hca-embed .stage .recall-card.sd-fit2 .recall-back>span.sd-def{font-size:14.5px!important;line-height:1.3}
+html.hca-embed .stage .recall-card.sd-fit2 .recall-back strong{font-size:18px}
+html.hca-embed .stage .recall-card.sd-fit2 .recall-back>small{display:none}
+html.hca-embed .stage .recall-card.sd-fit2 .recall-back>i{margin-top:2px;padding:3px 10px;font-size:12.5px}
+
+/* ---------- flash-card bank (search, filter, one big card, previous / next) ---------- */
+html.hca-embed .stage .detail-card:has(.study-bank){padding:18px 24px;display:block}
+html.hca-embed .stage .study-bank{display:flex;flex-direction:column;height:100%;min-height:0;gap:0}
+html.hca-embed .stage .bank-controls{gap:10px}
+html.hca-embed .stage .bank-controls input,html.hca-embed .stage .bank-controls select{font-size:16px;padding:11px 14px;border-radius:10px}
+html.hca-embed .stage .bank-controls button,html.hca-embed .stage .bank-bottom button{font-size:15px;min-height:42px;border-radius:10px;padding:0 16px;font-weight:600}
+html.hca-embed .stage .bank-controls button:hover,html.hca-embed .stage .bank-bottom button:hover{border-color:var(--accent);background:var(--sd-tint)}
+html.hca-embed .stage .bank-counter{font-size:14px;padding:10px 2px;letter-spacing:.2px;color:var(--sd-soft)}
+html.hca-embed .stage .bank-flip,html.hca-embed .stage .bank-flip.has-term-cue{flex:1 1 auto;min-height:0;height:auto;border-radius:var(--sd-r);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));background:linear-gradient(135deg,var(--sd-tint2),var(--sd-tint));padding:20px 36px;box-shadow:var(--sd-sh)}
+html.hca-embed .stage .bank-flip.has-term-cue{column-gap:36px}
+html.hca-embed .stage .bank-flip:hover{transform:none;border-color:var(--accent)}
+html.hca-embed .stage .bank-flip .bank-form,html.hca-embed .stage .bank-flip.has-term-cue .bank-form{font:600 64px/1.05 var(--serif);letter-spacing:-1.2px}
+html.hca-embed .stage .bank-flip .bank-cue{font-size:18px;color:var(--sd-soft);margin-top:8px}
+html.hca-embed .stage .bank-flip.has-term-cue>.term-cue{--cw:150px;--ch:132px;--dw:230px;--dh:144px;max-width:260px}
+html.hca-embed .stage .bank-flip .term-cue-caption{font-size:14px!important;font-weight:600;color:var(--sd-soft)}
+html.hca-embed .stage .bank-flip.has-term-cue .bank-answer strong,html.hca-embed .stage .bank-answer strong{font-size:32px;font-family:var(--serif);font-weight:600;color:var(--accent)}
+html.hca-embed .stage .bank-flip.has-term-cue .bank-answer>span,html.hca-embed .stage .bank-answer>span{font-size:21px;line-height:1.4;color:var(--ink)}
+html.hca-embed .stage .bank-answer .bank-example{font-size:18px}
+html.hca-embed .stage .bank-example>.term-cue{--cw:52px;--ch:46px;--dw:76px;--dh:48px}
+html.hca-embed .stage .bank-bottom{margin-top:12px}
+html.hca-embed .stage .bank-label{font-size:14px;color:var(--sd-soft)}
+/* a page with only two cards: recall cards use the room */
+html.hca-embed .stage .detail-page:has(>.detail-card:nth-child(2)):not(:has(>.detail-card:nth-child(3))) .recall-card strong,html.hca-embed .stage .detail-page:has(>.detail-card:nth-child(2)):not(:has(>.detail-card:nth-child(3))) .recall-card.has-term-cue .recall-front strong{font-size:40px}
+html.hca-embed .stage .detail-page:has(>.detail-card:nth-child(2)):not(:has(>.detail-card:nth-child(3))) .recall-back>span,html.hca-embed .stage .detail-page:has(>.detail-card:nth-child(2)):not(:has(>.detail-card:nth-child(3))) .recall-back>span.sd-def{font-size:23px!important}
+/* details / summary inside a card */
+html.hca-embed .stage .detail-card summary{font-size:19px;font-weight:700;cursor:pointer;padding:4px 0;color:var(--ink)}
+html.hca-embed .stage .detail-card details[open]>summary{color:var(--accent)}
+html.hca-embed .stage .detail-card details>p{font-size:17px;line-height:1.5;margin:6px 0 0}

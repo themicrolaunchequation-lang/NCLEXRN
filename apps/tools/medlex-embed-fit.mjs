@@ -355,6 +355,9 @@ fs.copyFileSync(path.join(import.meta.dirname, 'medlex-quest-embed.js'), path.jo
   console.log(`embed-fit: quests ${quests} pages updated, ${sites} celebration sites moved to hcaVY`);
 }
 /* ===== end of the Word parts quests block ===== */
+/* ===== slide design system: apps/tools/medlex-slide-design.css (appended to embed.css) and medlex-slide-design.js (shared/js/slide-design.js, viewer only) ===== */
+fs.appendFileSync(path.join(DIR, 'shared/embed.css'), '\n' + fs.readFileSync(path.join(import.meta.dirname, 'medlex-slide-design.css'), 'utf8'));
+fs.copyFileSync(path.join(import.meta.dirname, 'medlex-slide-design.js'), path.join(JS, 'slide-design.js'));
 const OLD = "if(focused)scale=Math.min(scale,(innerHeight-172)/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=focused?";
 const NEW = "const emb=!focused&&document.documentElement.classList.contains('hca-embed'),wb=emb&&wrap.closest('.workbench');if(focused)scale=Math.min(scale,(innerHeight-172)/720);if(wb)scale=Math.min(scale,(innerHeight-(wb.scrollHeight-wrap.offsetHeight))/720);scale=Math.max(.12,scale);stage.style.transform=`scale(${scale})`;stage.style.left=(focused||emb)?";
 // Reading view: a recall card became one run of text ("RECALL BEFORE REVEALCLICK TO REVEAL ..."); show its answer instead.
@@ -374,6 +377,7 @@ for (const f of fs.readdirSync(DIR).filter(x => x.endsWith('.html'))) {
   const p = path.join(DIR, f); let t = fs.readFileSync(p, 'utf8'), o = t;
   for (const [a, b] of rename) t = t.split('shared/js/' + a).join('shared/js/' + b);
   if (!t.includes('shared/js/embed.js')) t = t.replace('<meta name="robots" content="noindex">', () => '<meta name="robots" content="noindex">\n<script src="shared/js/embed.js"></script>');
+  if (!f.startsWith('quest-') && !t.includes('shared/js/slide-design.js')) t = t.replace('<script src="shared/js/embed.js"></script>', () => '<script src="shared/js/embed.js"></script>\n<script src="shared/js/slide-design.js" defer></script>');
   if (!t.includes('shared/embed.css')) t = t.replace('<link rel="stylesheet" href="shared/a11y.css">', () => '<link rel="stylesheet" href="shared/a11y.css">\n<link rel="stylesheet" href="shared/embed.css">');
   if (!t.includes('shared/embed.css') || !t.includes('shared/js/embed.js')) throw new Error('could not add the embed files to ' + f);
   if (t !== o) { fs.writeFileSync(p, t); pages++; }
