@@ -140,6 +140,23 @@ dialog.ml :focus-visible{outline:3px solid #8FA7FF;outline-offset:2px}
 .wp-frame{display:block;width:100%;height:70dvh;min-height:420px;border:0;border-radius:16px;background:transparent;overflow:hidden}
 /* while a quest pop-up is open, the frame is the screen part it is on, fixed in place (apps/medlex/src/lib/quests.js); a placeholder keeps its room in the page */
 .wp-frame.is-modal{position:fixed;left:var(--wp-l);top:var(--wp-t);width:var(--wp-w);height:var(--wp-h)!important;min-height:0;margin:0;border-radius:0;z-index:1500}
+/* a studio uses the width it is given, up to 1680px of content (the app column otherwise stops at 1440px) */
+html.wp-wide body.hs main#main{max-width:1728px}
+.wp-stage{position:relative}
+.wp-frame.is-loading{opacity:0;pointer-events:none}
+.wp-frame{transition:opacity .25s ease}
+.wp-skel{position:absolute;inset:0;display:flex;flex-direction:column;gap:18px;padding:4px 0;overflow:hidden;pointer-events:none}
+.wp-skel i{display:block;border-radius:22px;background:var(--hs-soft,#EFEAE0);border:1px solid var(--hs-line,#E6E0D4);position:relative;overflow:hidden}
+.wp-sk-hero{height:min(46dvh,420px);flex:none}
+.wp-sk-row{height:56px;flex:none;max-width:70%}
+.wp-sk-grid{border:0!important;background:none!important;display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:16px;overflow:visible!important}
+.wp-sk-grid b{display:block;height:170px;border-radius:18px;background:var(--hs-soft,#EFEAE0);border:1px solid var(--hs-line,#E6E0D4);position:relative;overflow:hidden}
+.wp-skel i::after,.wp-sk-grid b::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--hs-card,#fff) 70%,transparent),transparent);animation:wpShim 1.4s ease-in-out infinite}
+.wp-sk-grid::after{display:none}
+@keyframes wpShim{to{transform:translateX(100%)}}
+@media(prefers-reduced-motion:reduce){.wp-skel i::after,.wp-sk-grid b::after{animation:none}.wp-frame{transition:none}}
+html[data-hs-motion=off] .wp-skel i::after,html[data-hs-motion=off] .wp-sk-grid b::after{animation:none}
+html[data-hs-motion=off] .wp-frame{transition:none}
 .wp-hold{flex:none;width:100%}
 .wp-scrim{position:fixed;inset:0;z-index:1490;background:rgba(5,8,20,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 html.wp-lock{overflow:hidden;scrollbar-gutter:stable}

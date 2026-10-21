@@ -170,17 +170,22 @@ write('index.html', `<!DOCTYPE html>
 </html>
 `);
 
-const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs + Object.values(lazy).join(''))}`;
+// Word parts studios (learn/quest-*.html and the scripts and styles each one names): kept by the worker so they open at once, also offline.
+const questPages = files.map(f => f.slice(BASE.length)).filter(f => /^learn\/quest-[a-z]+\.html$/.test(f));
+const questDisk = [...new Set(questPages.flatMap(f => [f, ...[...fs.readFileSync(path.join(OUT, f), 'utf8').matchAll(/(?:src|href)="(shared\/[^"#?]+)"/g)].map(m => 'learn/' + m[1])]))];
+const questFiles = questDisk.map(f => BASE + f.replace(/^(learn\/quest-[a-z]+)\.html$/, '$1'));   // the pages are asked for without ".html"
+const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs + Object.values(lazy).join('') + questDisk.map(f => fs.readFileSync(path.join(OUT, f), 'utf8')).join(''))}`;
 const shell = [SCOPE, BASE + cssName, BASE + jsName, BASE + hookName, BASE + shellName, ...Object.values(lazyName).map(n => BASE + n), BASE + 'manifest.webmanifest', BASE + 'icon-192.png', BASE + 'icon-512.png', ...files.filter(f => f.includes('/fonts/'))];
 const posters = files.filter(f => f.includes('/infographics/') && !f.includes('/infographics/t/'));
 fs.writeFileSync(path.join(OUT, 'sw.js'), `/* MedLex ${VERSION} offline worker for ${SCOPE}: app shell on install, posters cached as they are viewed. */
-const CACHE=${JSON.stringify(cache)},SHELL=${JSON.stringify(shell)},POSTERS=${JSON.stringify(posters)};
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting())));
+const CACHE=${JSON.stringify(cache)},SHELL=${JSON.stringify(shell)},POSTERS=${JSON.stringify(posters)},QUEST=${JSON.stringify(questFiles)};
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));e.waitUntil(caches.open(CACHE).then(c=>Promise.allSettled(QUEST.map(u=>c.add(u)))));});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('medlex-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{
   const r=e.request,u=new URL(r.url);
   if(r.method!=='GET'||u.origin!==location.origin||!(u.pathname===${JSON.stringify(SCOPE)}||u.pathname.startsWith(${JSON.stringify(BASE)})))return;
   if(r.mode==='navigate'&&r.destination==='document'){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(${JSON.stringify(SCOPE)},copy));}return res;}).catch(()=>caches.match(${JSON.stringify(SCOPE)})));return;}
+  if(QUEST.includes(u.pathname)){e.respondWith(caches.match(r).then(hit=>{const net=fetch(r).then(res=>{if(res.ok&&!res.redirected){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;}).catch(()=>hit);return hit||net;}));return;}
   if(SHELL.includes(u.pathname)||POSTERS.includes(u.pathname))e.respondWith(caches.match(r).then(hit=>hit||fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;})));
 });
 `);
