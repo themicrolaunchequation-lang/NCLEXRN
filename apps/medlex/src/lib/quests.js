@@ -121,6 +121,9 @@
     function scrollFrame(y) { const d = doc(), e = d && (d.scrollingElement || d.documentElement); if (e) e.scrollTo({ top: y, behavior: 'instant' }); }
     function enterModal() {
       if (S.modal || S.gone) return; const w = win(), d = doc(); if (!w || !d) return;
+      // A card can grow after its progress changes without resizing its outer wrapper.
+      // Measure the full quest before making a same-height placeholder for the pop-up.
+      fit();
       const r = fr.getBoundingClientRect(), hold = document.createElement('div'), scrim = document.createElement('div');
       hold.className = 'wp-hold'; hold.style.height = fr.offsetHeight + 'px'; hold.setAttribute('aria-hidden', 'true');
       scrim.className = 'wp-scrim'; scrim.setAttribute('aria-hidden', 'true');

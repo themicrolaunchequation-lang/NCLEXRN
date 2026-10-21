@@ -106,7 +106,17 @@ async function closeChecks(p, fr, k, how, sel, v0, expectFocusSel) {
   const v = await view(p), m = await open(fr);
   ok(t + 'pop-up closed, frame back in the page', !m && !/is-modal/.test(v.cls) && !v.lock && v.scrim === 0 && v.hold === 0, JSON.stringify(v));
   ok(t + 'page did not move', Math.abs(v.sy - v0.sy) <= 1, `${v0.sy} -> ${v.sy}`);
-  ok(t + 'frame height unchanged', Math.abs(v.h - v0.h) <= 2, `${v0.h} -> ${v.h}`);
+  const contentHeight = await fr.evaluate(() => {
+    const win = document.defaultView; let bottom = 0;
+    for (const el of document.body.children) {
+      if (/^(SCRIPT|STYLE|LINK|CANVAS)$/.test(el.tagName)) continue;
+      const style = win.getComputedStyle(el);
+      if (style.position === 'fixed' || style.position === 'absolute' || style.display === 'none') continue;
+      bottom = Math.max(bottom, el.getBoundingClientRect().bottom + win.scrollY + (parseFloat(style.marginBottom) || 0));
+    }
+    return Math.ceil(bottom);
+  });
+  ok(t + 'frame fits the quest after close', Math.abs(v.h - contentHeight) <= 2, `${v0.h} -> ${v.h}; quest ${contentHeight}`);
   if (expectFocusSel) { const f = await fr.evaluate(s => document.activeElement && document.activeElement.matches(s) ? 1 : (document.activeElement.tagName + '#' + document.activeElement.id + '.' + document.activeElement.className), expectFocusSel); ok(t + 'focus returned to the card', f === 1, f); }
   const sidebar = await p.evaluate(() => { const s = document.querySelector('.sidebar, #sidebar'); return s ? s.inert : null; }); ok(t + 'the app is live again', sidebar === false, sidebar);
 }
