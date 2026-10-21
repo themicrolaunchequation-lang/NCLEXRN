@@ -53,7 +53,16 @@ for (const [w, h, dark, tag] of [[1440, 900, false, 'd-light'], [390, 844, true,
   const hasBack = await p.evaluate(() => !!document.querySelector('.ml-frame').contentDocument.querySelector('a.back-library')); ok(hasBack, 'deck has its back link');
   await p.evaluate(() => document.querySelector('.ml-frame').contentDocument.querySelector('a.back-library').click()); await p.waitForTimeout(700); ok(await p.locator('dialog.ml').count() === 0, 'the deck back link closes the viewer'); ok(await p.evaluate(() => /#learn/.test(location.hash) || true), 'back on Learn');
   await p.locator('[data-ms-open="ch4"]').first().click(); await p.waitForTimeout(1500); await p.keyboard.press('Escape'); await p.waitForTimeout(500); ok(await p.locator('dialog.ml').count() === 0, 'Esc closes the viewer');
-  await p.locator('[data-ms-open="history"]').first().click(); await p.waitForTimeout(2200); ok((await p.locator('#ml-t').innerText()).startsWith('History'), 'a new lesson opens: ' + await p.locator('#ml-t').innerText()); await p.keyboard.press('Escape'); await p.waitForTimeout(400);
+  await p.locator('[data-ms-open="history"]').first().click(); await p.waitForTimeout(2200); ok((await p.locator('#ml-t').innerText()).startsWith('History'), 'a new lesson opens: ' + await p.locator('#ml-t').innerText());
+  await p.evaluate(() => document.querySelector('.ml-frame').contentDocument.querySelector('[data-nav="2"]').click());
+  await p.waitForTimeout(200);
+  const seen = await p.evaluate(() => JSON.parse(localStorage.getItem('medlex.lesson.v1') || '{}').history || {});
+  ok(seen.last === 2 && seen.visited?.includes(0) && seen.visited?.includes(2), 'slide visits and the last slide are remembered');
+  await p.keyboard.press('Escape'); await p.waitForTimeout(400);
+  ok((await p.locator('[data-deck="history"] .lc-ptxt').first().innerText()).includes('2 of 19'), 'card shows actual visited slides');
+  await p.locator('[data-ms-open="history"]').first().click(); await p.waitForTimeout(1200);
+  ok(await p.evaluate(() => document.querySelector('.ml-frame').contentDocument.querySelector('[data-nav="2"]').getAttribute('aria-current') === 'true'), 'Continue restores the last slide');
+  await p.keyboard.press('Escape'); await p.waitForTimeout(400);
   ok(errs.filter(e => !/Failed to load resource/.test(e)).length === 0, 'console errors: ' + errs.slice(0, 2).join(' | ')); await p.close();
   // Word parts
   ({ p, errs } = await open(ctx, '#wordparts'));
