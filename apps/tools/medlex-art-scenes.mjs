@@ -337,6 +337,32 @@ export const M = {
     row(44, 0, k.g('#f6c6e8', '#d38ac0')); row(84, 17, k.g('#f2b8e0', '#c878b4')); row(124, 0, k.g('#f6c6e8', '#d38ac0'));
     return sh(100, 176, 70) + glossy(c) + hl(60, 56, 26, 5, -5, .5);
   },
+  skin(k) {
+    return sh(100, 178, 72) + glossy(
+      path('M24 70C52 60 78 66 100 66C126 66 152 60 176 70V154C152 162 126 158 100 158C74 158 48 162 24 154Z', k.g('#f3bf91', '#d98b67')) +
+      path('M24 70C52 60 78 66 100 66C126 66 152 60 176 70V88C152 80 126 86 100 86C74 86 48 80 24 88Z', k.g('#ffe3c7', '#f4b493')) +
+      line('M24 88C50 80 76 86 100 86C126 86 152 80 176 88', '#bc765f', 2.5, .7) +
+      line('M42 124C60 112 72 138 90 124C110 108 124 136 146 122', '#c56268', 4, .75) +
+      circ(56, 118, 5, '#d07568') + circ(136, 136, 5, '#d07568')
+    ) + hl(70, 76, 34, 5, -8, .38);
+  },
+  hair(k) {
+    return sh(100, 178, 65) + glossy(
+      path('M34 78C60 72 142 72 166 78V150C138 158 62 158 34 150Z', k.g('#ffe0bc', '#dba078')) +
+      path('M34 78C60 72 142 72 166 78V92C134 86 66 86 34 92Z', '#f5c39f') +
+      path('M87 84C88 110 88 144 98 151C108 146 110 112 111 84Z', k.g('#a76348', '#693d31')) +
+      line('M99 148C98 112 96 80 94 54C92 39 96 27 106 19', '#5a342b', 10) +
+      line('M96 145C95 101 94 67 97 42', '#c39169', 2.5, .7)
+    ) + hl(64, 88, 23, 4, -8, .4);
+  },
+  nail(k) {
+    return sh(100, 178, 63) + glossy(
+      path('M32 140C34 102 58 78 92 78H138C158 78 172 94 172 114V156H44C36 156 30 148 32 140Z', k.g('#f8caa9', '#d18c6f')) +
+      path('M74 83C76 68 88 60 104 60H138C150 60 160 70 160 84V109C154 118 146 122 132 122H90C80 122 72 115 72 105Z', k.g('#fff0e7', '#e8b6aa'), '#c78e88', 2) +
+      path('M74 83C84 79 96 80 106 82', 'none', '#f7d7c7', 4) +
+      line('M48 149C74 142 120 145 164 148', '#b97b65', 2, .65)
+    ) + hl(112, 73, 28, 5, -8, .38);
+  },
   cells(k) {
     const cell = (x, y, r) => circ(x, y, r, k.rg('#d9f7dc', '#5cb36b', .4, .35, .85), 'stroke="#2f7a3c" stroke-width="2"') + circ(x - r * .1, y, r * .38, k.rg('#b69af0', '#5a3aa8'));
     return sh(100, 172, 66) + glossy(cell(66, 70, 34) + cell(134, 64, 28) + cell(120, 128, 36) + cell(58, 138, 24)) + hl(54, 56, 10, 6, -30, .6);
@@ -609,6 +635,10 @@ const child = (k) => M.person(k, { c1: '#ffd36a', c2: '#e0a01f', hair: '#7a4a22'
 
 // asset id (the decks' symbol-* assets) -> scene
 export const SCENES = {
+  'symbol-generated-brain': S('neuro', M.brain, 'A side view of the brain with its cerebellum and brain stem', 'brain'),
+  'symbol-generated-hair': S('skin', M.hair, 'A hair shaft growing from a follicle in the skin', 'hair'),
+  'symbol-generated-nail': S('skin', M.nail, 'A fingernail on the tip of a finger', 'nail'),
+  'symbol-generated-skin': S('skin', M.skin, 'A cross-section showing the surface and deeper layers of skin', 'skin'),
   'symbol-admissions': S('place', wb('door', 'records'), 'A hospital entrance door beside a patient record, for admission to care', 'admissions'),
   'symbol-allergies': S('immune', wb('flower', 'drops'), 'A flower releasing pollen, a common allergy trigger', 'allergies'),
   'symbol-ambulatory-clinic': S('place', M.clinic, 'A small outpatient clinic building with a teal awning', 'ambulatory clinic'),

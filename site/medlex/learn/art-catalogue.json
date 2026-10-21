@@ -1,33 +1,32 @@
 {
  "summary": {
   "generatedBy": "apps/tools/medlex-art.mjs catalogue",
-  "images": 377,
+  "images": 373,
   "byRating": {
    "brand": 2,
-   "good": 39,
+   "good": 35,
    "improved (rendered art)": 45,
    "schematic (informative, kept)": 291
   },
   "byKind": {
    "diagram": 291,
    "unknown": 45,
-   "anatomy (generated)": 4,
    "logo": 2,
    "cover": 35
   },
-  "totalBytes": 9446347,
+  "totalBytes": 9383621,
   "decks": {
    "basic-word-structure": {
     "slides": 19,
     "imgTags": 23,
-    "distinctFiles": 42,
-    "referencedBytes": 942041
+    "distinctFiles": 41,
+    "referencedBytes": 912431
    },
    "building-vocabulary": {
     "slides": 13,
     "imgTags": 17,
-    "distinctFiles": 29,
-    "referencedBytes": 817229
+    "distinctFiles": 28,
+    "referencedBytes": 787619
    },
    "cardiovascular": {
     "slides": 30,
@@ -56,8 +55,8 @@
    "endocrine": {
     "slides": 28,
     "imgTags": 32,
-    "distinctFiles": 21,
-    "referencedBytes": 320407
+    "distinctFiles": 20,
+    "referencedBytes": 304939
    },
    "female-reproductive": {
     "slides": 20,
@@ -74,26 +73,26 @@
    "history": {
     "slides": 19,
     "imgTags": 23,
-    "distinctFiles": 16,
-    "referencedBytes": 1587973
+    "distinctFiles": 15,
+    "referencedBytes": 1558363
    },
    "human-body": {
     "slides": 18,
     "imgTags": 22,
-    "distinctFiles": 14,
-    "referencedBytes": 294505
+    "distinctFiles": 13,
+    "referencedBytes": 279037
    },
    "infectious-parasitic": {
     "slides": 20,
     "imgTags": 24,
-    "distinctFiles": 19,
-    "referencedBytes": 307943
+    "distinctFiles": 17,
+    "referencedBytes": 262865
    },
    "integumentary": {
     "slides": 30,
     "imgTags": 34,
-    "distinctFiles": 32,
-    "referencedBytes": 778643
+    "distinctFiles": 29,
+    "referencedBytes": 731385
    },
    "lymphatic-immune": {
     "slides": 31,
@@ -122,44 +121,44 @@
    "musculoskeletal": {
     "slides": 36,
     "imgTags": 40,
-    "distinctFiles": 46,
-    "referencedBytes": 815687
+    "distinctFiles": 45,
+    "referencedBytes": 786077
    },
    "nervous": {
     "slides": 29,
     "imgTags": 33,
-    "distinctFiles": 39,
-    "referencedBytes": 533625
+    "distinctFiles": 38,
+    "referencedBytes": 518157
    },
    "obstetrics-neonatology": {
     "slides": 20,
     "imgTags": 24,
-    "distinctFiles": 21,
-    "referencedBytes": 295903
+    "distinctFiles": 20,
+    "referencedBytes": 266293
    },
    "oncology": {
     "slides": 10,
     "imgTags": 14,
-    "distinctFiles": 20,
-    "referencedBytes": 363207
+    "distinctFiles": 19,
+    "referencedBytes": 333597
    },
    "pharmacology": {
     "slides": 20,
     "imgTags": 24,
-    "distinctFiles": 19,
-    "referencedBytes": 313099
+    "distinctFiles": 18,
+    "referencedBytes": 283489
    },
    "prefixes": {
     "slides": 16,
     "imgTags": 20,
-    "distinctFiles": 123,
-    "referencedBytes": 939601
+    "distinctFiles": 122,
+    "referencedBytes": 909991
    },
    "procedures-treatment": {
     "slides": 20,
     "imgTags": 24,
-    "distinctFiles": 33,
-    "referencedBytes": 421989
+    "distinctFiles": 32,
+    "referencedBytes": 392379
    },
    "quest-prefixes": {
     "slides": 0,
@@ -188,8 +187,8 @@
    "respiratory": {
     "slides": 32,
     "imgTags": 36,
-    "distinctFiles": 27,
-    "referencedBytes": 478627
+    "distinctFiles": 26,
+    "referencedBytes": 449017
    },
    "senses": {
     "slides": 20,
@@ -200,14 +199,14 @@
    "suffixes": {
     "slides": 17,
     "imgTags": 21,
-    "distinctFiles": 128,
-    "referencedBytes": 1108983
+    "distinctFiles": 126,
+    "referencedBytes": 1063905
    },
    "urinary": {
     "slides": 20,
     "imgTags": 24,
-    "distinctFiles": 23,
-    "referencedBytes": 383485
+    "distinctFiles": 22,
+    "referencedBytes": 353875
    }
   }
  },
@@ -679,72 +678,6 @@
     }
    ],
    "terms": []
-  },
-  {
-   "file": "shared/img/899ed1d21bf08043.webp",
-   "bytes": 29610,
-   "width": 240,
-   "height": 219,
-   "kind": "anatomy (generated)",
-   "rating": "good",
-   "reasons": [],
-   "assetIds": [
-    "symbol-generated-skin"
-   ],
-   "slideUses": 0,
-   "termUses": 68,
-   "decks": 0,
-   "uses": [],
-   "terms": [
-    {
-     "deck": "basic-word-structure",
-     "term": "cutane/o"
-    },
-    {
-     "deck": "basic-word-structure",
-     "term": "derm/o · dermat/o"
-    },
-    {
-     "deck": "basic-word-structure",
-     "term": "dermatology"
-    },
-    {
-     "deck": "basic-word-structure",
-     "term": "dermat"
-    },
-    {
-     "deck": "basic-word-structure",
-     "term": "skin"
-    },
-    {
-     "deck": "basic-word-structure",
-     "term": "derm/o"
-    },
-    {
-     "deck": "basic-word-structure",
-     "term": "dermat/o"
-    },
-    {
-     "deck": "building-vocabulary",
-     "term": "dermat/o"
-    },
-    {
-     "deck": "building-vocabulary",
-     "term": "dermatology"
-    },
-    {
-     "deck": "building-vocabulary",
-     "term": "dermat"
-    },
-    {
-     "deck": "building-vocabulary",
-     "term": "skin"
-    },
-    {
-     "deck": "history",
-     "term": "derm/at/o · cutane-"
-    }
-   ]
   },
   {
    "file": "shared/img/1123cbb427867be2.png",
@@ -1745,72 +1678,6 @@
     {
      "deck": "endocrine",
      "term": "hypoglycemia"
-    }
-   ]
-  },
-  {
-   "file": "shared/img/c6a7ee4e00c865c0.webp",
-   "bytes": 15468,
-   "width": 240,
-   "height": 173,
-   "kind": "anatomy (generated)",
-   "rating": "good",
-   "reasons": [],
-   "assetIds": [
-    "symbol-generated-brain"
-   ],
-   "slideUses": 0,
-   "termUses": 30,
-   "decks": 0,
-   "uses": [],
-   "terms": [
-    {
-     "deck": "endocrine",
-     "term": "tremor"
-    },
-    {
-     "deck": "human-body",
-     "term": "meninges"
-    },
-    {
-     "deck": "infectious-parasitic",
-     "term": "meningitis"
-    },
-    {
-     "deck": "nervous",
-     "term": "cerebell/o"
-    },
-    {
-     "deck": "nervous",
-     "term": "gli/o"
-    },
-    {
-     "deck": "nervous",
-     "term": "meningitis"
-    },
-    {
-     "deck": "nervous",
-     "term": "Ataxia"
-    },
-    {
-     "deck": "nervous",
-     "term": "CNS / PNS"
-    },
-    {
-     "deck": "nervous",
-     "term": "Parasympathetic"
-    },
-    {
-     "deck": "nervous",
-     "term": "Tremor"
-    },
-    {
-     "deck": "nervous",
-     "term": "EEG"
-    },
-    {
-     "deck": "nervous",
-     "term": "Sympathetic"
     }
    ]
   },
@@ -7609,56 +7476,6 @@
    ]
   },
   {
-   "file": "shared/img/e40f7b76fd4e16f7.webp",
-   "bytes": 5990,
-   "width": 240,
-   "height": 240,
-   "kind": "anatomy (generated)",
-   "rating": "good",
-   "reasons": [],
-   "assetIds": [
-    "symbol-generated-nail"
-   ],
-   "slideUses": 0,
-   "termUses": 8,
-   "decks": 0,
-   "uses": [],
-   "terms": [
-    {
-     "deck": "integumentary",
-     "term": "onychomycosis"
-    },
-    {
-     "deck": "integumentary",
-     "term": "onych/o · ungu/o"
-    },
-    {
-     "deck": "integumentary",
-     "term": "Skin / hair / nail"
-    },
-    {
-     "deck": "integumentary",
-     "term": "onych"
-    },
-    {
-     "deck": "integumentary",
-     "term": "onych/o"
-    },
-    {
-     "deck": "integumentary",
-     "term": "ungu/o"
-    },
-    {
-     "deck": "integumentary",
-     "term": "nail"
-    },
-    {
-     "deck": "integumentary",
-     "term": "ungu"
-    }
-   ]
-  },
-  {
    "file": "shared/img/98e6f78d47019b96.webp",
    "bytes": 6118,
    "width": 480,
@@ -8285,48 +8102,6 @@
     {
      "deck": "suffixes",
      "term": "-esthesia"
-    }
-   ]
-  },
-  {
-   "file": "shared/img/2ee934ffb05007ff.webp",
-   "bytes": 11658,
-   "width": 240,
-   "height": 240,
-   "kind": "anatomy (generated)",
-   "rating": "good",
-   "reasons": [],
-   "assetIds": [
-    "symbol-generated-hair"
-   ],
-   "slideUses": 0,
-   "termUses": 6,
-   "decks": 0,
-   "uses": [],
-   "terms": [
-    {
-     "deck": "integumentary",
-     "term": "trich/o · pil/o"
-    },
-    {
-     "deck": "integumentary",
-     "term": "Skin / hair / nail"
-    },
-    {
-     "deck": "integumentary",
-     "term": "trich/o"
-    },
-    {
-     "deck": "integumentary",
-     "term": "pil/o"
-    },
-    {
-     "deck": "integumentary",
-     "term": "hair"
-    },
-    {
-     "deck": "integumentary",
-     "term": "trich"
     }
    ]
   },

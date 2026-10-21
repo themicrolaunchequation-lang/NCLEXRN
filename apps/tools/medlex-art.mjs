@@ -110,7 +110,7 @@ function toWebp(pngBuf) {
 async function render() {
   const only = arg('--only'); const br = await launch(); const ctx = await br.newContext({ viewport: { width: SIZE, height: SIZE }, deviceScaleFactor: 1 }); const p = await ctx.newPage();
   const prev = fs.existsSync(MAP) ? JSON.parse(fs.readFileSync(MAP, 'utf8')) : { assets: {}, decks: {} };
-  const oldFileOf = {}; for (const f of decks()) { const d = parseDeck(f); for (const [id, a] of Object.entries(d.assets)) if (a.kind === 'symbol') oldFileOf[id] ||= a.src; }
+  const oldFileOf = {}; for (const f of decks()) { const d = parseDeck(f); for (const [id, a] of Object.entries(d.assets)) if (SCENES[id]) oldFileOf[id] ||= a.src; }
   const map = { generatedBy: 'apps/tools/medlex-art.mjs render', size: SIZE, assets: {}, decks: {} }; const sheet = []; let total = 0, n = 0, biggest = 0;
   const shot = async (scene) => { await p.setContent(pageFor(scene), { waitUntil: 'load' }); const png = await p.locator('#c').screenshot({ omitBackground: true }); const webp = toWebp(png); const name = 'art-' + sha(webp) + '.webp'; fs.writeFileSync(path.join(IMG, name), webp); total += webp.length; n++; biggest = Math.max(biggest, webp.length); sheet.push(path.join(IMG, name)); return 'shared/img/' + name; };
   for (const [id, sc] of Object.entries(SCENES)) {

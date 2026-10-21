@@ -2,6 +2,34 @@
  "generatedBy": "apps/tools/medlex-art.mjs render",
  "size": 512,
  "assets": {
+  "symbol-generated-brain": {
+   "old": "shared/img/c6a7ee4e00c865c0.webp",
+   "new": "shared/img/art-c1c2c015565f2c1c.webp",
+   "alt": "A side view of the brain with its cerebellum and brain stem",
+   "label": "brain",
+   "pal": "neuro"
+  },
+  "symbol-generated-hair": {
+   "old": "shared/img/2ee934ffb05007ff.webp",
+   "new": "shared/img/art-7d39a191efcd4d21.webp",
+   "alt": "A hair shaft growing from a follicle in the skin",
+   "label": "hair",
+   "pal": "skin"
+  },
+  "symbol-generated-nail": {
+   "old": "shared/img/e40f7b76fd4e16f7.webp",
+   "new": "shared/img/art-5dbd2bea735f813b.webp",
+   "alt": "A fingernail on the tip of a finger",
+   "label": "nail",
+   "pal": "skin"
+  },
+  "symbol-generated-skin": {
+   "old": "shared/img/899ed1d21bf08043.webp",
+   "new": "shared/img/art-cd2544999af39f1a.webp",
+   "alt": "A cross-section showing the surface and deeper layers of skin",
+   "label": "skin",
+   "pal": "skin"
+  },
   "symbol-admissions": {
    "old": "shared/img/3be99a4c1693a922.webp",
    "new": "shared/img/art-b5a5b42ebc8f4786.webp",
