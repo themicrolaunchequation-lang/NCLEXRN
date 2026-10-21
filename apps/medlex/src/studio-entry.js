@@ -9,7 +9,14 @@
   const lput = (file, patch) => { try { const o = lget(); o[file] = Object.assign(o[file] || {}, patch); localStorage.setItem(LK, JSON.stringify(o)); } catch { } };
   const lessonFile = id => LN && (LN.map[id] || (LN.extra.find(x => x.id === id) || {}).id);
   const deckPos = file => { try { const o = JSON.parse(localStorage.getItem('medlex-foundations-' + file + '-v2') || '{}') || {}; return Math.max(0, +o.index || 0); } catch { return 0; } };
-  const lessonProg = file => { const p = lget()[file] || {}, n = ((LN && LN.titles[file]) || {}).slides || 0, at = deckPos(file); return { started: !!p.started, done: !!p.done, last: 0, at: p.at || 0, total: n, pos: at, pct: p.done ? 100 : (p.started && n && at > 0 ? Math.min(99, Math.round(100 * (at + 1) / n)) : 0), deck: true }; };
+  const lessonProg = file => {
+    const p = lget()[file] || {}, total = ((LN && LN.titles[file]) || {}).slides || 0;
+    const oldPos = Math.min(Math.max(0, total - 1), deckPos(file));
+    const visited = [...new Set((Array.isArray(p.visited) ? p.visited : []).filter(n => Number.isInteger(n) && n >= 0 && n < total))];
+    const last = Number.isInteger(p.last) && p.last >= 0 && p.last < total ? p.last : oldPos;
+    return { started: !!p.started, done: !!p.done, last, at: p.at || 0, total, pos: last,
+      pct: p.done ? 100 : total ? Math.round(100 * visited.length / total) : 0, visited: visited.length, deck: true };
+  };
   const none = { started: false, done: false, last: 0, at: 0, total: 0, pct: 0 };
   function prog(id) { if (lessonFile(id)) return lessonProg(lessonFile(id)); try { const p = JSON.parse(localStorage.getItem('medlex.studio.v1.' + id) || 'null') || {}, n = p.total || 0, v = (p.visited || []).length; return { started: !!p.started, done: !!p.done, last: p.last || 0, at: p.at || 0, total: n, pct: n ? Math.round(100 * Math.min(v, n) / n) : 0 }; } catch { return none; } }
   const label = p => p.done ? 'Review' : p.started ? 'Continue' : 'Start';
@@ -67,7 +74,7 @@
     const dlg = document.createElement('dialog'); dlg.className = 'ml'; dlg.setAttribute('aria-labelledby', 'ml-t');
     dlg.innerHTML = `<header class="ml-bar"><button type="button" class="ml-x" data-ml="close" aria-label="Close the lesson" title="Close (Esc)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><h2 id="ml-t"></h2><div class="ml-acts"><button type="button" class="ml-done" data-ml="done" aria-pressed="false"><span></span></button><a class="ml-new" target="_blank" rel="noopener">Open in a new tab</a></div></header><div class="ml-body"><iframe class="ml-frame" title="Lesson" src="about:blank"></iframe><p class="ml-load" role="status">Opening the lesson…</p></div>`;
     document.body.append(dlg);
-    const fr = dlg.querySelector('iframe'), q = s => dlg.querySelector(s); let cur = file, curId = id, tm = 0;
+    const fr = dlg.querySelector('iframe'), q = s => dlg.querySelector(s); let cur = file, curId = id, tm = 0, progressWatch = null;
     function show(f, i) {
       cur = f; curId = i || Object.keys(LN.map).find(k => LN.map[k] === f) || f; const t = lessonTitle(f, curId);
       q('#ml-t').textContent = t; fr.title = t + ' (lesson)'; dlg.setAttribute('aria-label', t); q('.ml-new').href = LN.base + f + '.html';
@@ -76,9 +83,25 @@
       clearTimeout(tm); tm = setTimeout(() => { try { if (window.HCA && window.HCA.daily) window.HCA.daily.done('medlex'); } catch { } }, 45000);
     }
     function paintDone(on) { const b = q('.ml-done'); b.setAttribute('aria-pressed', String(on)); b.querySelector('span').textContent = on ? 'Done ✓' : 'Mark as done'; }
-    fr.addEventListener('load', () => { q('.ml-load').hidden = true; });
+    fr.addEventListener('load', () => {
+      q('.ml-load').hidden = true;
+      if (progressWatch) { progressWatch.disconnect(); progressWatch = null; }
+      let doc; try { doc = fr.contentDocument; } catch { return; }
+      const courseNav = doc && doc.querySelector('.course-nav'); if (!courseNav) return;
+      const saved = lessonProg(cur), nav = [...courseNav.querySelectorAll('[data-nav]')];
+      if (saved.started && !saved.done && saved.last > 0) nav.find(b => Number(b.dataset.nav) === saved.last)?.click();
+      const record = () => {
+        const active = courseNav.querySelector('[data-nav][aria-current="true"]'); if (!active) return;
+        const last = Number(active.dataset.nav); if (!Number.isInteger(last) || last < 0 || last >= saved.total) return;
+        const old = lget()[cur] || {}, visited = [...new Set([...(Array.isArray(old.visited) ? old.visited : []), last])];
+        lput(cur, { last, visited, at: Date.now(), started: true });
+      };
+      progressWatch = new MutationObserver(record);
+      progressWatch.observe(courseNav, { subtree: true, attributes: true, attributeFilter: ['aria-current'] });
+      record();
+    });
     wireFrame(fr, { sibling: slug => { if (LN.titles[slug]) show(slug); }, leave: () => close() });
-    function close() { clearTimeout(tm); try { dlg.close(); } catch { } dlg.remove(); lv = null; window.dispatchEvent(new Event('medlex-studio-closed')); const back = document.querySelector(`[data-ms-open="${curId}"]`); back && back.focus && back.focus({ preventScroll: true }); }
+    function close() { clearTimeout(tm); if (progressWatch) progressWatch.disconnect(); try { dlg.close(); } catch { } dlg.remove(); lv = null; window.dispatchEvent(new Event('medlex-studio-closed')); const back = document.querySelector(`[data-ms-open="${curId}"]`); back && back.focus && back.focus({ preventScroll: true }); }
     dlg.addEventListener('click', e => { const b = e.target.closest('[data-ml]'); if (!b) return; if (b.dataset.ml === 'close') close(); else if (b.dataset.ml === 'done') { const on = b.getAttribute('aria-pressed') !== 'true'; lput(cur, { done: on, started: true }); paintDone(on); } });
     dlg.addEventListener('cancel', e => { e.preventDefault(); close(); });
     dlg.showModal(); show(file, id); lv = { close };
@@ -119,7 +142,7 @@
     if (chip) chip.textContent = state === 'done' ? 'Done' : state === 'active' ? 'In progress' : 'Not started';
     const pct = state === 'done' ? 100 : state === 'active' ? p.pct : 0, bar = $('.lc-bar', row);
     bar.setAttribute('aria-valuenow', pct); bar.firstElementChild.style.width = pct + '%';
-    $('.lc-ptxt', row).textContent = state === 'done' ? 'Completed' : state === 'active' ? (p.deck && p.total && p.pos > 0 ? `Slide ${Math.min(p.pos + 1, p.total)} of ${p.total}` : (pct ? `${pct}% through` : 'Started')) : 'Not started';
+    $('.lc-ptxt', row).textContent = state === 'done' ? 'Completed' : state === 'active' ? (p.deck && p.total ? `${p.visited} of ${p.total} slides viewed` : (pct ? `${pct}% through` : 'Started')) : 'Not started';
     paint(btn, p);
   }
   function inject() {

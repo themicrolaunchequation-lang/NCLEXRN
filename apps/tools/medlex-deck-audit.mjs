@@ -71,7 +71,17 @@ function install() {
     const dlgRoot = b => inDlg && (b.el === dlg || b.el.matches('.reading-view,.term-atlas-grid,.term-atlas-detail,#dialogBody,.art-inspector'));
     const sc = el => (st && st.contains(el)) ? sscale : 1, lg = (el, v) => +(v / sc(el)).toFixed(0);
     const texts = [], ctls = [], imgs = [], borders = [];
-    const rng = document.createRange(), walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let n;
+    // Skip inactive panels as subtrees; inspecting every hidden text node makes full-deck audits slow.
+    // display:contents exposes children, while visibility:hidden can be overridden by a child.
+    const rng = document.createRange(), walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (node.nodeType === Node.TEXT_NODE) return NodeFilter.FILTER_ACCEPT;
+        if (node.matches('script,style,noscript,svg,option,template')) return NodeFilter.FILTER_REJECT;
+        const style = cs(node);
+        if (style.display !== 'contents' && (style.display === 'none' || style.opacity === '0' || style.contentVisibility === 'hidden')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_SKIP;
+      }
+    }); let n;
     while ((n = walker.nextNode())) {
       if (!/\S/.test(n.nodeValue)) continue;
       const el = n.parentElement; if (!el || el.closest('script,style,noscript,svg,option,template,#toast:not(.visible),[aria-hidden=true] .sr-only')) continue;
