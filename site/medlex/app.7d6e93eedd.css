@@ -1175,6 +1175,11 @@ dialog.ml :focus-visible{outline:3px solid #8FA7FF;outline-offset:2px}
 .wp-frame.is-modal{position:fixed;left:var(--wp-l);top:var(--wp-t);width:var(--wp-w);height:var(--wp-h)!important;min-height:0;margin:0;border-radius:0;z-index:1500}
 /* a studio uses the width it is given, up to 1680px of content (the app column otherwise stops at 1440px) */
 html.wp-wide body.hs main#main{max-width:1728px}
+/* The supplied library and teaching canvas use the space beside MedLex's sidebar. */
+html.canvas-learn-active body main#main{max-width:none;margin:0;padding:0;min-height:0}
+html.canvas-learn-active .page-footer{display:none}
+.canvas-learn{width:100%;min-width:0;overflow:hidden}
+.canvas-learn-frame{display:block;width:100%;height:100%;border:0;background:#f5f1e9}
 .wp-stage{position:relative}
 .wp-frame.is-loading{opacity:0;pointer-events:none}
 .wp-frame{transition:opacity .25s ease}

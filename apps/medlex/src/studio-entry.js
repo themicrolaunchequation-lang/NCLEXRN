@@ -27,7 +27,16 @@
   const load = () => window.MedlexLoad('engine').then(() => window.MedlexLoad('studio'));
   /* Library, Visual Atlas and Practice are rendered by lib.js; the app's router asks here first */
   const MINE = /^(library|practice|wordparts)(\/|$)|^infographics$/;
+  let canvasCleanup = () => {};
   window.MedlexV5 = { route(path, params) {
+    canvasCleanup(); canvasCleanup = () => {};
+    document.documentElement.classList.toggle('canvas-learn-active', path === 'learn');
+    if (path === 'learn' && LN && LN.canvas) {
+      const lib = window.MedlexLib;
+      if (lib) lib.views.cleanup.splice(0).forEach(f => { try { f(); } catch {} });
+      showCanvasLibrary();
+      return true;
+    }
     if (!MINE.test(path)) return false;
     if (window.MedlexLib && window.MedlexLib.route) return window.MedlexLib.route(path, params);
     const m = $('#main'), want = location.hash; if (m) m.innerHTML = '<div class="lx-loading" role="status">Loading…</div>';
@@ -36,6 +45,42 @@
   } };
   const FREE = ['ch1', 'ch2', 'prefixes', 'suffixes'];   /* same free modules as the router's gate */
   function gated(id) { if (LN && LN.extra.some(x => x.id === id)) { if (LN.extra.find(x => x.id === id).free) return false; try { const H = window.HCA; if (H && H.locked && H.locked('medlex')) { setTimeout(() => H.paywall('medlex', 'this lesson')); return true; } } catch { } return false; } try { const H = window.HCA; if (H && H.locked && H.locked('medlex') && !FREE.includes(id)) { setTimeout(() => H.paywall('medlex', 'this module')); return true; } } catch { } return false; }
+  function showCanvasLibrary() {
+    const main = $('#main'); if (!main) return;
+    main.innerHTML = '<section class="canvas-learn" aria-label="MedLex Canvas Studio"><iframe class="canvas-learn-frame" title="MedLex Learn — Canvas Studio lesson library" allow="fullscreen" allowfullscreen></iframe></section>';
+    const frame = $('.canvas-learn-frame', main), area = $('.canvas-learn', main);
+    const fit = () => {
+      if (!area.isConnected) { observer.disconnect(); return; }
+      const tabs = $('.bottom-nav'), bar = tabs && getComputedStyle(tabs).display !== 'none' ? tabs.getBoundingClientRect().height : 0;
+      area.style.height = Math.max(240, innerHeight - area.getBoundingClientRect().top - bar) + 'px';
+    };
+    const observer = new ResizeObserver(fit); observer.observe(document.documentElement);
+    window.addEventListener('resize', fit);
+    canvasCleanup = () => { observer.disconnect(); window.removeEventListener('resize', fit); };
+    // Preserve the existing free/paid lesson checks for links and the lesson selector.
+    const blocked = slug => {
+      const id = Object.keys(LN.map).find(k => LN.map[k] === slug) || (LN.extra.some(x => x.id === slug) ? slug : null);
+      return id ? gated(id) : false;
+    };
+    frame.addEventListener('load', () => {
+      let doc; try { doc = frame.contentDocument; } catch { return; } if (!doc) return;
+      frame.title = 'MedLex Learn — ' + doc.title;
+      doc.addEventListener('click', e => {
+        const a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
+        const url = new URL(a.href), m = url.pathname.match(/\/canvas\/lessons\/([^/]+?)(?:\.html)?$/);
+        if (url.origin === location.origin && m && blocked(m[1])) { e.preventDefault(); e.stopImmediatePropagation(); }
+      }, true);
+      doc.addEventListener('change', e => {
+        if (e.target.id === 'lessonSelect' && blocked(e.target.value)) {
+          e.stopImmediatePropagation();
+          e.target.value = frame.contentWindow.location.pathname.split('/').pop().replace(/\.html$/, '');
+        }
+      }, true);
+      fit();
+    });
+    frame.src = LN.canvas + 'index.html';
+    scrollTo(0, 0); fit();
+  }
   function open(id, opts, btn) {
     if (gated(id)) return Promise.resolve();
     if (lessonFile(id)) { openLesson(lessonFile(id), id); return Promise.resolve(); }

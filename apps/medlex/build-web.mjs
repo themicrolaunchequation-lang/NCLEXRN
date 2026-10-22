@@ -124,10 +124,31 @@ const LEXTRA = [
   { id: 'country-differences', after: 'ch3', sub: 'Spelling and term differences between countries.' }, { id: 'procedures-treatment', after: 'ch22', sub: 'The language of what is done, and how.' }, { id: 'medical-coding', after: 'procedures-treatment', sub: 'How terms become codes.' }
 ].map(x => ({ ...x, title: LTITLE[x.id].title, slides: LTITLE[x.id].slides }));
 const LCOVER = Object.fromEntries(LDECKS.map(d => { const m = /<img[^>]+src="(shared\/img\/[a-z0-9]+\.webp)"/.exec(read('learn/' + d.file)); return [d.file.replace(/\.html$/, ''), m ? m[1] : '']; }).filter(x => x[1]));
-const LEARN = { base: BASE + 'learn/', covers: LCOVER, map: LMAP, titles: LTITLE, extra: LEXTRA, quests: { prefix: ['Prefixes', 'quest-prefixes'], root: ['Roots', 'quest-roots'], suffix: ['Suffixes', 'quest-suffixes'] } };
+const LEARN = { base: BASE + 'learn/', canvas: BASE + 'learn/canvas/', covers: LCOVER, map: LMAP, titles: LTITLE, extra: LEXTRA, quests: { prefix: ['Prefixes', 'quest-prefixes'], root: ['Roots', 'quest-roots'], suffix: ['Suffixes', 'quest-suffixes'] } };
 const shellJs = `window.MEDLEX_LEARN=${JSON.stringify(LEARN)};window.MEDLEX_PARTS=${JSON.stringify(partsMap)};window.MEDLEX_SRC=${JSON.stringify(Object.fromEntries(Object.entries(lazyName).map(([k, v]) => [k, BASE + v])))};\n` + read('../shared/hca-shell.js') + '\n' + read('src/day.js') + '\n' + read('src/studio-entry.js');
 
 (function copyLearn(dir, rel) { for (const e of fs.readdirSync(dir, { withFileTypes: true })) { if (e.isDirectory()) copyLearn(path.join(dir, e.name), rel + e.name + '/'); else if (e.name !== 'decks.json') write(rel + e.name, fs.readFileSync(path.join(dir, e.name))); } })('learn', 'learn/');
+// Preserve the supplied, self-contained Canvas Studio pages, including Save HTML.
+// Hash only executable scripts; curriculum JSON is data, not executable code.
+const canvasHashes = new Set();
+(function copyCanvas(dir, rel) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.isDirectory()) copyCanvas(path.join(dir, e.name), rel + e.name + '/');
+    else if (e.name.endsWith('.html')) {
+      const data = fs.readFileSync(path.join(dir, e.name));
+      for (const [, attrs, script] of data.toString().matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)) {
+        if (!/type=["']application\/json["']/.test(attrs)) canvasHashes.add("'sha256-" + crypto.createHash('sha256').update(script).digest('base64') + "'");
+      }
+      write(rel + e.name, data);
+    }
+  }
+})('canvas', 'learn/canvas/');
+const hostingPath = path.resolve('../../site/vercel.json');
+const hosting = JSON.parse(fs.readFileSync(hostingPath, 'utf8'));
+const canvasHeader = hosting.headers.find(h => h.source === '/medlex/learn/canvas/(.*)');
+if (!canvasHeader) throw Error('Missing Canvas Studio hosting headers');
+canvasHeader.headers.find(h => h.key === 'Content-Security-Policy').value = `default-src 'self'; script-src 'self' ${[...canvasHashes].sort().join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'`;
+fs.writeFileSync(hostingPath, JSON.stringify(hosting, null, 2) + '\n');
 for (const f of fs.readdirSync(PUBLIC + '/infographics')) write('infographics/' + f, fs.readFileSync(`${PUBLIC}/infographics/${f}`));
 for (const f of fs.readdirSync('web/thumbs')) write('infographics/t/' + f, fs.readFileSync(`web/thumbs/${f}`));
 for (const f of ['icon-192.png', 'icon-512.png', 'icon.svg']) write(f, fs.readFileSync(`${PUBLIC}/${f}`));
@@ -174,7 +195,10 @@ write('index.html', `<!DOCTYPE html>
 const questPages = files.map(f => f.slice(BASE.length)).filter(f => /^learn\/quest-[a-z]+\.html$/.test(f));
 const questDisk = [...new Set(questPages.flatMap(f => [f, ...[...fs.readFileSync(path.join(OUT, f), 'utf8').matchAll(/(?:src|href)="(shared\/[^"#?]+)"/g)].map(m => 'learn/' + m[1])]))];
 const questFiles = questDisk.map(f => BASE + f.replace(/^(learn\/quest-[a-z]+)\.html$/, '$1'));   // the pages are asked for without ".html"
-const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs + Object.values(lazy).join('') + questDisk.map(f => fs.readFileSync(path.join(OUT, f), 'utf8')).join(''))}`;
+const canvasDisk = files.filter(f => f.startsWith(BASE + 'learn/canvas/')).map(f => f.slice(BASE.length));
+const canvasHash = crypto.createHash('sha256');
+for (const f of canvasDisk.sort()) canvasHash.update(f).update(fs.readFileSync(path.join(OUT, f)));
+const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs + Object.values(lazy).join('') + canvasHash.digest('hex') + questDisk.map(f => fs.readFileSync(path.join(OUT, f), 'utf8')).join(''))}`;
 const shell = [SCOPE, BASE + cssName, BASE + jsName, BASE + hookName, BASE + shellName, ...Object.values(lazyName).map(n => BASE + n), BASE + 'manifest.webmanifest', BASE + 'icon-192.png', BASE + 'icon-512.png', ...files.filter(f => f.includes('/fonts/'))];
 const posters = files.filter(f => f.includes('/infographics/') && !f.includes('/infographics/t/'));
 fs.writeFileSync(path.join(OUT, 'sw.js'), `/* MedLex ${VERSION} offline worker for ${SCOPE}: app shell on install, posters cached as they are viewed. */
@@ -184,7 +208,8 @@ self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise
 self.addEventListener('fetch',e=>{
   const r=e.request,u=new URL(r.url);
   if(r.method!=='GET'||u.origin!==location.origin||!(u.pathname===${JSON.stringify(SCOPE)}||u.pathname.startsWith(${JSON.stringify(BASE)})))return;
-  if(r.mode==='navigate'&&r.destination==='document'){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(${JSON.stringify(SCOPE)},copy));}return res;}).catch(()=>caches.match(${JSON.stringify(SCOPE)})));return;}
+  if(u.pathname.startsWith(${JSON.stringify(BASE + 'learn/canvas/')})){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;}).catch(()=>caches.match(r)));return;}
+  if(r.mode==='navigate'&&r.destination==='document'&&u.pathname===${JSON.stringify(SCOPE)}){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(${JSON.stringify(SCOPE)},copy));}return res;}).catch(()=>caches.match(${JSON.stringify(SCOPE)})));return;}
   if(QUEST.includes(u.pathname)){e.respondWith(caches.match(r).then(hit=>{const net=fetch(r).then(res=>{if(res.ok&&!res.redirected){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;}).catch(()=>hit);return hit||net;}));return;}
   if(SHELL.includes(u.pathname)||POSTERS.includes(u.pathname))e.respondWith(caches.match(r).then(hit=>hit||fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;})));
 });
