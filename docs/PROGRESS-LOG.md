@@ -52,6 +52,7 @@ Covers everything done from the first request to 22 October 2026, across all ses
 1. Publish `work/serein-voice` and decide on `codex/medlex-rebase`; verify each page in a browser first.
 2. Backend (owner approval first): `lumen-ai` 403 for Crown Pass/Lumen-premium users; add `lumen` key to `crown_entitlements()`.
 3. Stripe checkout, billing portal, admin console, discount codes (owner adds Stripe keys as Supabase secrets, never in chat), then `GATES_LIVE=true`.
+3a. Stripe (22 Oct): live account HEALTHCARE CROWN ACADEMY LTD `acct_1UNyuEELw45NjhlB` connected to Claude (read-only check): £0 balance, no charges, no webhooks, 8 one-time USD prices (Evinca + LSS only), no Crown Suite products yet. Verification/payouts to confirm on the dashboard. Old test account "New business" `acct_1USDzY4HWr5jKvqT` is not ours to use.
 4. Owner to review Terms/Refunds/Privacy with a solicitor before taking payments.
 5. NMC revalidation pack: not requested yet.
 6. Rules: one session per task; push often; never hand-edit `site/<app>/`; never push Evinca `main` without the owner's word.
