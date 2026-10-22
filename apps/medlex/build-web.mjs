@@ -201,7 +201,7 @@ const questFiles = questDisk.map(f => BASE + f.replace(/^(learn\/quest-[a-z]+)\.
 const canvasDisk = files.filter(f => f.startsWith(BASE + 'learn/canvas/')).map(f => f.slice(BASE.length));
 const canvasHash = crypto.createHash('sha256');
 for (const f of canvasDisk.sort()) canvasHash.update(f).update(fs.readFileSync(path.join(OUT, f)));
-const cache = `medlex-web-${VERSION}-${hash(js + css + hook + shellJs + Object.values(lazy).join('') + canvasHash.digest('hex') + questDisk.map(f => fs.readFileSync(path.join(OUT, f), 'utf8')).join(''))}`;
+const cache = `medlex-web-${VERSION}-${hash('canvas-canonical-v1' + js + css + hook + shellJs + Object.values(lazy).join('') + canvasHash.digest('hex') + questDisk.map(f => fs.readFileSync(path.join(OUT, f), 'utf8')).join(''))}`;
 const shell = [SCOPE, BASE + cssName, BASE + jsName, BASE + hookName, BASE + shellName, ...Object.values(lazyName).map(n => BASE + n), BASE + 'manifest.webmanifest', BASE + 'icon-192.png', BASE + 'icon-512.png', ...files.filter(f => f.includes('/fonts/'))];
 const posters = files.filter(f => f.includes('/infographics/') && !f.includes('/infographics/t/'));
 fs.writeFileSync(path.join(OUT, 'sw.js'), `/* MedLex ${VERSION} offline worker for ${SCOPE}: app shell on install, posters cached as they are viewed. */
@@ -211,7 +211,7 @@ self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise
 self.addEventListener('fetch',e=>{
   const r=e.request,u=new URL(r.url);
   if(r.method!=='GET'||u.origin!==location.origin||!(u.pathname===${JSON.stringify(SCOPE)}||u.pathname.startsWith(${JSON.stringify(BASE)})))return;
-  if(u.pathname===${JSON.stringify(BASE + 'learn/canvas')}||u.pathname.startsWith(${JSON.stringify(BASE + 'learn/canvas/')})){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;}).catch(()=>caches.match(r)));return;}
+  if(u.pathname===${JSON.stringify(BASE + 'learn/canvas')}||u.pathname.startsWith(${JSON.stringify(BASE + 'learn/canvas/')})){const key=new URL(u);key.pathname=key.pathname.replace(/\\/index(?:\\.html)?$/,'').replace(/\\.html$/,'');e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(key.href,copy)));}return res;}).catch(()=>caches.match(key.href)));return;}
   if(r.mode==='navigate'&&r.destination==='document'&&u.pathname===${JSON.stringify(SCOPE)}){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(${JSON.stringify(SCOPE)},copy));}return res;}).catch(()=>caches.match(${JSON.stringify(SCOPE)})));return;}
   if(QUEST.includes(u.pathname)){e.respondWith(caches.match(r).then(hit=>{const net=fetch(r).then(res=>{if(res.ok&&!res.redirected){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;}).catch(()=>hit);return hit||net;}));return;}
   if(SHELL.includes(u.pathname)||POSTERS.includes(u.pathname))e.respondWith(caches.match(r).then(hit=>hit||fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;})));
