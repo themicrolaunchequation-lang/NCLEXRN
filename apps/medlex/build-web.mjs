@@ -135,7 +135,10 @@ const canvasHashes = new Set();
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.isDirectory()) copyCanvas(path.join(dir, e.name), rel + e.name + '/');
     else if (e.name.endsWith('.html')) {
-      const data = fs.readFileSync(path.join(dir, e.name));
+      let data = fs.readFileSync(path.join(dir, e.name));
+      // Vercel canonicalizes index.html to the directory URL without a trailing
+      // slash. Keep the attachment's relative links rooted in its own folder.
+      if (rel === 'learn/canvas/' && e.name === 'index.html') data = Buffer.from(data.toString().replace('<head>', `<head><base href="${BASE}learn/canvas/">`));
       for (const [, attrs, script] of data.toString().matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)) {
         if (!/type=["']application\/json["']/.test(attrs)) canvasHashes.add("'sha256-" + crypto.createHash('sha256').update(script).digest('base64') + "'");
       }
@@ -145,7 +148,7 @@ const canvasHashes = new Set();
 })('canvas', 'learn/canvas/');
 const hostingPath = path.resolve('../../site/vercel.json');
 const hosting = JSON.parse(fs.readFileSync(hostingPath, 'utf8'));
-const canvasHeader = hosting.headers.find(h => h.source === '/medlex/learn/canvas/(.*)');
+const canvasHeader = hosting.headers.find(h => h.source === '/medlex/learn/canvas(/.*)?');
 if (!canvasHeader) throw Error('Missing Canvas Studio hosting headers');
 canvasHeader.headers.find(h => h.key === 'Content-Security-Policy').value = `default-src 'self'; script-src 'self' ${[...canvasHashes].sort().join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'`;
 fs.writeFileSync(hostingPath, JSON.stringify(hosting, null, 2) + '\n');
@@ -208,7 +211,7 @@ self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise
 self.addEventListener('fetch',e=>{
   const r=e.request,u=new URL(r.url);
   if(r.method!=='GET'||u.origin!==location.origin||!(u.pathname===${JSON.stringify(SCOPE)}||u.pathname.startsWith(${JSON.stringify(BASE)})))return;
-  if(u.pathname.startsWith(${JSON.stringify(BASE + 'learn/canvas/')})){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;}).catch(()=>caches.match(r)));return;}
+  if(u.pathname===${JSON.stringify(BASE + 'learn/canvas')}||u.pathname.startsWith(${JSON.stringify(BASE + 'learn/canvas/')})){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;}).catch(()=>caches.match(r)));return;}
   if(r.mode==='navigate'&&r.destination==='document'&&u.pathname===${JSON.stringify(SCOPE)}){e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(${JSON.stringify(SCOPE)},copy));}return res;}).catch(()=>caches.match(${JSON.stringify(SCOPE)})));return;}
   if(QUEST.includes(u.pathname)){e.respondWith(caches.match(r).then(hit=>{const net=fetch(r).then(res=>{if(res.ok&&!res.redirected){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;}).catch(()=>hit);return hit||net;}));return;}
   if(SHELL.includes(u.pathname)||POSTERS.includes(u.pathname))e.respondWith(caches.match(r).then(hit=>hit||fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(r,copy));}return res;})));

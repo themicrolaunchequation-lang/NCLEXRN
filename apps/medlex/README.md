@@ -24,7 +24,8 @@ The sidebar and mobile **Learn** links (`#learn`) open the supplied Canvas Studi
 lesson links, the lesson selector and the library return links stay within that frame. Existing free/paid lesson checks still apply.
 
 Run `node build-web.mjs` from this directory after changes. It copies the self-contained pages into
-`site/medlex/learn/canvas/`, updates their script hashes in the scoped CSP in `site/vercel.json`, and changes the worker
+`site/medlex/learn/canvas/` (adding a hosted base URL to the index for Vercel's directory redirect),
+updates their script hashes in the scoped CSP in `site/vercel.json`, and changes the worker
 cache version when any supplied page changes. Viewed Canvas pages are cached individually, never as the app's root page.
 Notes, edits and drawings use the package's existing browser-local storage and Save HTML export.
 

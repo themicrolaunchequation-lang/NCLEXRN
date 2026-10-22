@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/((?!lumen|move|medlex/learn/canvas/).*)",
+      "source": "/((?!lumen|move|medlex/learn/canvas(?:/|$)).*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
@@ -81,7 +81,7 @@
       ]
     },
     {
-      "source": "/medlex/learn/((?!canvas/).*)",
+      "source": "/medlex/learn/((?!canvas(?:/|$)).*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "source": "/medlex/learn/canvas/(.*)",
+      "source": "/medlex/learn/canvas(/.*)?",
       "headers": [
         {
           "key": "Content-Security-Policy",

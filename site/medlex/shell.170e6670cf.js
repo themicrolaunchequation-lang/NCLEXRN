@@ -719,5 +719,12 @@ window.MEDLEX_LEARN={"base":"/medlex/learn/","canvas":"/medlex/learn/canvas/","c
   window.MedlexStudioEntry = { open, progress: prog };
   let raf = 0; const schedule = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; inject(); }); };
   const start = () => { const main = $('#main'); if (!main) return; new MutationObserver(schedule).observe(main, { childList: true, subtree: true }); window.addEventListener('hashchange', schedule); inject(); };
+  // Selecting Learn again returns from an embedded lesson to its index even
+  // though the outer app's hash is already #learn and no hashchange would fire.
+  document.addEventListener('click', e => {
+    if (e.target.closest && e.target.closest('a[href="#learn"]') && location.hash === '#learn' && $('.canvas-learn-frame')) {
+      e.preventDefault(); canvasCleanup(); showCanvasLibrary();
+    }
+  });
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', start) : start();
 })();
