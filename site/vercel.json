@@ -357,7 +357,7 @@
       ]
     },
     {
-      "source": "/medlex/learn/shared/(img/[0-9a-f]{16}\\.(?:webp|png|jpg|svg)|fonts/(.*))",
+      "source": "/medlex/learn/shared/(img/[0-9a-f]{16}\\.(?:webp|png|jpg|svg)|fonts/.*)",
       "headers": [
         {
           "key": "Cache-Control",
