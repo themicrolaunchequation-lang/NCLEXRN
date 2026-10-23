@@ -26,9 +26,38 @@
   sel:{side:'.sidebar',brand:'.brand-lockup',navs:['nav'],top:'.topbar',crumbs:'.topbar-context',moveRight:['.page-edit-trigger','.arabic-assist-toggle','.color-mode-button'],tabs:'.snle-mobile-tabs',content:'.main-canvas'},
   more:true,mcrest:()=>'/assets/crest.svg',streak:()=>{try{const s=JSON.parse(window.SNLEStorage.getItem('snle-react-interact-progress-v1')||'{}');return {text:s.streak||0,label:'Study streak'}}catch{return null}}
  });
+
+ // Release gate: no unverified authorship, endorsement or committee claims in preview.
+ const REVIEW_NOTICE='Draft — pending clinical review';
+ const unverifiedClaim=/meet your scientific committee|scientific committee|endorsed by|approved by (?:experts|clinicians)|verified by (?:experts|clinicians)/i;
+ function releaseSafeguards(){
+  // Exact-match claim controls only: avoid removing ordinary clinical education content.
+  document.querySelectorAll('button,a,[role="button"],.chip,.badge').forEach(el=>{
+   if(el.closest('[data-snle-release-hidden]'))return;
+   const t=(el.textContent||'').replace(/\\s+/g,' ').trim();
+   if(t.length<160 && unverifiedClaim.test(t)){el.hidden=true;el.setAttribute('aria-hidden','true');el.dataset.snleReleaseHidden='1'}
+  });
+  document.querySelectorAll('.standalone-modal,.dossier-dialog,[role="dialog"],dialog[open]').forEach(modal=>{
+   if(!modal.dataset.snleDraftNoticed){
+    const n=document.createElement('p');n.className='snle-review-notice';n.setAttribute('role','note');n.textContent=REVIEW_NOTICE;
+    modal.prepend(n);modal.dataset.snleDraftNoticed='1';
+   }
+   const title=(modal.querySelector('h1,h2,h3')?.textContent||'')+' '+(modal.getAttribute('aria-label')||'');
+   if(/scientific committee/i.test(title)){modal.hidden=true;modal.dataset.snleReleaseHidden='1';modal.setAttribute('aria-hidden','true')}
+  });
+  const main=document.querySelector('.main-canvas');
+  const homeActive=location.hash.replace(/^#\\/?/,'').split(/[?\\/]/)[0]==='home'||
+   document.querySelector('.sidebar [data-nav="home"].active');
+  if(main&&homeActive&&!main.querySelector(':scope > .snle-review-notice')){
+   const n=document.createElement('p');n.className='snle-review-notice';n.setAttribute('role','note');n.textContent=REVIEW_NOTICE;
+   main.prepend(n);
+  }
+ }
+
  const labels={'dossier-search':'Search clinical dossiers','dossier-specialty':'Filter by specialty','dossier-domain':'Filter by nursing domain','dossier-hyp':'Filter by study priority','tool-search':'Search clinical tools','group-select':'Filter tool groups','hyp-select':'Filter study priority','catalog-sort':'Sort clinical tools','mock-length':'Mock examination length','glossary-search':'Search glossary'};
  function decorate(){
   const main=$('.main-canvas');if(main){main.id='snle-content';main.tabIndex=-1}
+  releaseSafeguards();
   for(const [id,label]of Object.entries(labels)){const e=document.getElementById(id);if(e&&!e.hasAttribute('aria-label'))e.setAttribute('aria-label',label)}
   document.querySelectorAll('.sidebar [data-nav]').forEach(b=>b.setAttribute('aria-current',b.classList.contains('active')?'page':'false'));
   const brand=$('.brand-lockup');if(brand&&!brand.dataset.snleBrand){brand.dataset.snleBrand='1';brand.setAttribute('role','link');brand.tabIndex=0;const home=()=>$('.sidebar [data-nav="home"]')?.click();brand.addEventListener('click',home);brand.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();home()}})}
