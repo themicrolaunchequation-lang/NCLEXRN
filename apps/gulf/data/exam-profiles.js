@@ -49,8 +49,8 @@ export function assertBlueprint(profile){
 // Retake rules are shown as "pending regulator confirmation" wherever sources conflict. Never present a single figure as settled.
 export const RETAKE_NOTES=Object.freeze({
  snle:'SCFHS sources differ: the applicant guide describes up to four attempts a year, while the SCFHS dates page describes three attempts in an initial cycle with renewal provisions after a year. This is not a lifetime maximum. Confirm with SCFHS before relying on either.',
- qatar:'DHP pages differ (five consecutive attempts on one page, three on another). Pending confirmation from DHP.',
- dubai:'General DHA licensing rules apply: three attempts, with a fourth only by permission. Confirm the current rule with DHA.',
+ qatar:'DHP policy (v04) and the qualifying-examination page describe five attempts. A three-attempt line sits under physician specialties and does not clearly apply to nurses. Effective dates are not stated; pending written confirmation from DHP.',
+ dubai:'General DHA licensing rules apply: three attempts across UAE authorities, a fourth only with permission, and a two-year block after the third failure before new attempts. Sources differ on details; confirm with DHA.',
  abudhabi:'UAE-wide rules allow three attempts across authorities, with a possible final attempt subject to approval. Confirm with DOH.'
 });
 export const TIMING_NOTES=Object.freeze({qatar:'Qatar duration is disputed (3 hours on the current listing, 3½ hours in the blueprint PDF). Pending DHP confirmation.'});
