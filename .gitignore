@@ -1,3 +1,4 @@
 *.zip
 apps/carecraft/dist/
 node_modules/
+apps/gulf/dist/
