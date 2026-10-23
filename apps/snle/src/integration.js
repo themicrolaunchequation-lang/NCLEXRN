@@ -34,7 +34,7 @@
   // Exact-match claim controls only: avoid removing ordinary clinical education content.
   document.querySelectorAll('button,a,[role="button"],.chip,.badge').forEach(el=>{
    if(el.closest('[data-snle-release-hidden]'))return;
-   const t=(el.textContent||'').replace(/\\s+/g,' ').trim();
+   const t=(el.textContent||'').replace(/\s+/g,' ').trim();
    if(t.length<160 && unverifiedClaim.test(t)){el.hidden=true;el.setAttribute('aria-hidden','true');el.dataset.snleReleaseHidden='1'}
   });
   document.querySelectorAll('.standalone-modal,.dossier-dialog,[role="dialog"],dialog[open]').forEach(modal=>{
@@ -46,7 +46,7 @@
    if(/scientific committee/i.test(title)){modal.hidden=true;modal.dataset.snleReleaseHidden='1';modal.setAttribute('aria-hidden','true')}
   });
   const main=document.querySelector('.main-canvas');
-  const homeActive=location.hash.replace(/^#\\/?/,'').split(/[?\\/]/)[0]==='home'||
+  const homeActive=location.hash.replace(/^#\/?/,'').split(/[?\/]/)[0]==='home'||
    document.querySelector('.sidebar [data-nav="home"].active');
   if(main&&homeActive&&!main.querySelector(':scope > .snle-review-notice')){
    const n=document.createElement('p');n.className='snle-review-notice';n.setAttribute('role','note');n.textContent=REVIEW_NOTICE;
