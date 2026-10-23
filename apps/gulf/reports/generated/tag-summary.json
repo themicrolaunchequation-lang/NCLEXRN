@@ -1,0 +1,29 @@
+{
+  "runDate": "2026-10-23T16:48:35.542Z",
+  "source_sha256": "75e79310323b939ac4c65ed2f1c95aa3651e78b409d10a0ca0eeb46cdcac0996",
+  "questionCount": 1350,
+  "posterCount": 67,
+  "questionTagCounts": {
+    "Core": 1022,
+    "SA-only": 6,
+    "unclear": 322
+  },
+  "posterTagCounts": {
+    "Core": 53,
+    "SA-only": 1,
+    "unclear": 13
+  },
+  "domainCounts": {
+    "Nursing Fundamentals": 450,
+    "Adult Nursing": 470,
+    "Nursing Management and Leadership": 130,
+    "Maternal-Child Nursing": 300
+  },
+  "saudiWordingCount": 6,
+  "clinicalApprovals": 0,
+  "tagNotes": {
+    "Core": "Low-jurisdiction-signal CANDIDATE only; NOT clinically approved.",
+    "SA-only": "Explicit Saudi regulatory wording: local rewrite or exclude.",
+    "unclear": "Possible local policy or professional-scope dependency: manual review required."
+  }
+}

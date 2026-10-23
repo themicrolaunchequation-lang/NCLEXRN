@@ -1,0 +1,21 @@
+
+> gulf-region-exams-preview@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ unreviewed items and destination-mismatched items are rejected (1.010697ms)
+✔ all four real profiles remain blocked from full mocks (0.365673ms)
+✔ blueprint exactness and honest scoring work with explicitly synthetic fixtures (1.36347ms)
+✔ a jurisdiction with even one insufficient category cannot silently substitute unrelated content (0.38397ms)
+✔ four distinct exam profiles, not auto-published (1.666769ms)
+✔ SNLE source model preserves scaled scoring and two blocks (2.837988ms)
+✔ Qatar DHP counts are exact but full simulation remains blocked until duration conflict resolves (0.319213ms)
+✔ DHA and DOH unknown specifications must not be invented (0.465654ms)
+✔ shared app is independent from original SNLE storage and login (0.528479ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.338744

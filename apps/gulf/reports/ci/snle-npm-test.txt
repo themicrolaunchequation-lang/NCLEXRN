@@ -1,0 +1,22 @@
+
+> snle-clinical-learning-studio@1.0.0 test
+> node tests/integrity.mjs && node tests/journeys.mjs && node tests/persistence.mjs && node tests/libraries.mjs
+
+PASS source, every question field and key, posters, glossary, dossiers, binary images, original functions and Cloudflare size limits
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.goto: net::ERR_CONNECTION_REFUSED at https://snle.healthcarecrownacademy.co.uk/#home
+Call log:
+  - navigating to "https://snle.healthcarecrownacademy.co.uk/#home", waiting until "load"
+
+    at go (/home/runner/work/NCLEXRN/NCLEXRN/apps/snle/tests/journeys.mjs:13:32)
+    at /home/runner/work/NCLEXRN/NCLEXRN/apps/snle/tests/journeys.mjs:16:48 {
+  log: [
+    '  - navigating to "https://snle.healthcarecrownacademy.co.uk/#home", waiting until "load"'
+  ],
+  name: 'Error'
+}
+
+Node.js v24.21.0
