@@ -29,6 +29,7 @@ const dossiers=JSON.parse(dossierSource[1]);
 if(P.length!==67||Q.length!==1350||qids.size!==1350)throw Error('Source counts changed unexpectedly');
 for(const p of P)if(p.questionIds.some(id=>!qids.has(id)))throw Error('Missing linked question: '+p.id);
 let app=scripts[1].replace(/\blocalStorage\./g,'snleStorage.');
+app=app.replace('<div class="sidebar-author">by Hossam AlDhaher</div>','').replace('<h3>Made by Hossam AlDhaher</h3>','').replace('<b>Made by Hossam AlDhaher · View-only design:</b>','<b>View-only design:</b>');
 app=patch(app,"const P=window.SNLE_POSTERS","const snleStorage=window.SNLEStorage;\n    const P=window.SNLE_POSTERS",'safe storage');
 app=patch(app,"['reset','reset','Reset & Recharge','Wellbeing']","['reset','reset','Reset & Recharge','Wellbeing'],['progress','chart','My Progress','You']",'progress navigation');
 app=patch(app,'<strong>SNLE Evidence Lab</strong><span>React & Interact · HTML</span>','<strong>SNLE</strong><span>Healthcare Crown Academy</span>','suite branding');

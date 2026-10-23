@@ -28,7 +28,6 @@
  });
 
  // Release gate: no unverified authorship, endorsement or committee claims in preview.
- const REVIEW_NOTICE='Draft — pending clinical review';
  const unverifiedClaim=/meet your scientific committee|scientific committee|endorsed by|approved by (?:experts|clinicians)|verified by (?:experts|clinicians)/i;
  function releaseSafeguards(){
   // Exact-match claim controls only: avoid removing ordinary clinical education content.
@@ -38,20 +37,12 @@
    if(t.length<160 && unverifiedClaim.test(t)){el.hidden=true;el.setAttribute('aria-hidden','true');el.dataset.snleReleaseHidden='1'}
   });
   document.querySelectorAll('.standalone-modal,.dossier-dialog,[role="dialog"],dialog[open]').forEach(modal=>{
-   if(!modal.dataset.snleDraftNoticed){
-    const n=document.createElement('p');n.className='snle-review-notice';n.setAttribute('role','note');n.textContent=REVIEW_NOTICE;
-    modal.prepend(n);modal.dataset.snleDraftNoticed='1';
-   }
    const title=(modal.querySelector('h1,h2,h3')?.textContent||'')+' '+(modal.getAttribute('aria-label')||'');
    if(/scientific committee/i.test(title)){modal.hidden=true;modal.dataset.snleReleaseHidden='1';modal.setAttribute('aria-hidden','true')}
   });
   const main=document.querySelector('.main-canvas');
   const homeActive=location.hash.replace(/^#\/?/,'').split(/[?\/]/)[0]==='home'||
    document.querySelector('.sidebar [data-nav="home"].active');
-  if(main&&homeActive&&!main.querySelector(':scope > .snle-review-notice')){
-   const n=document.createElement('p');n.className='snle-review-notice';n.setAttribute('role','note');n.textContent=REVIEW_NOTICE;
-   main.prepend(n);
-  }
  }
 
  const labels={'dossier-search':'Search clinical dossiers','dossier-specialty':'Filter by specialty','dossier-domain':'Filter by nursing domain','dossier-hyp':'Filter by study priority','tool-search':'Search clinical tools','group-select':'Filter tool groups','hyp-select':'Filter study priority','catalog-sort':'Sort clinical tools','mock-length':'Mock examination length','glossary-search':'Search glossary'};
