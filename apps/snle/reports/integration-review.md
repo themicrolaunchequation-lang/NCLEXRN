@@ -4,6 +4,18 @@ Release state: **prepared and locally tested; not deployed or published**. The p
 
 The supplied master prompt requires a Cloudflare preview before production approval. This branch prepares the Academy connections and an isolated static app. Cloudflare access is unavailable, and the separate Interactive Labs collection is absent.
 
+## Independent review and release hold — 2026-10-23
+
+**Status: HOLD — preview and written owner approval required. Do not publish to `claude/loving-ptolemy-srrq02`.**
+
+- **Cloudflare preview URL:** PENDING — owner has not provided one; no preview URL is asserted or invented.
+- **Independent verification (reported by Claude, not rerun in this change):** integrity check passed; 58/58 journeys passed; 10/10 persistence checks passed; 31/31 library tests passed on `codex/snle-clinical-studio-integration`. Claude also reported that this branch is not missing commits from the live branch. These are external review claims, not a fresh CI attestation.
+- **Implemented as source-level safeguards in this branch:** neutralize the displayed Scientific Committee chip/control and committee dialog; neutralize short, explicit unsupported expert endorsement statements; show **“Draft — pending clinical review”** on home and in tool/dialog popups. The original teaching content remains retained for future owner verification.
+- **Paywall restriction:** SNLE must remain free of any paywall until clinical review is complete. This safeguard is a release requirement; the present changes do not add any paywall. Paid offerings elsewhere in the Academy are outside the SNLE-specific scope.
+- **Still to verify:** run the full test suite after these source edits; visually confirm home and every tool popup notice; inspect all visible authorship/credential/endorsement statements and suppress unverified claims; verify no SNLE paywall/entitlement gate; inspect Cloudflare preview functionality and accessibility.
+- **Unresolved blockers:** written confirmation of committee names/credentials and any endorsements; independent qualified clinical review; absent Interactive Labs source; Cloudflare preview URL and verification; owner approval in plain words after seeing the Cloudflare preview.
+- **Non-negotiable restrictions:** do not widen login/account redirect allowlists to preview hosts; do not change Vercel settings, domains, existing applications or production DNS; do not merge or publish to `claude/loving-ptolemy-srrq02` absent explicit owner approval.
+
 ## Preserved content and provenance
 
 The exact attachment is recoverable from source/original.html.gz. SHA-256: 75e79310323b939ac4c65ed2f1c95aa3651e78b409d10a0ca0eeb46cdcac0996. Counts are 1,350 main-bank questions, 67 canonical posters, 35 dossiers / 350 cases, 62 glossary entries, 73 unique embedded assets and 97 original named runtime functions. Historical metadata mentions 68 poster pages; one duplicate was already retired. No questions were invented to fill counts. The full v14 deployment package was unavailable.
@@ -21,7 +33,7 @@ PASS means the stated scope was verified. PRESERVED/PARTIAL means source preserv
 | Glossary data | PASS | All 62 records retained; search and teaching example exercised. |
 | Original runtime functions | PASS | All 97 named functions retained; specific web adaptations asserted during build. |
 | Home dashboard | PASS | Dashboard, practice start and original information overlays exercised. |
-| Scientific committee / learning journey / course library | PASS | All three teaching overlays open and close; supplied committee claims not independently verified. |
+| Scientific committee / learning journey / course library | RELEASE HOLD | Committee claim entry points suppressed pending written verification; original learning journey/course library preservation remains subject to post-edit regression tests. |
 | Every sidebar page | PASS | All nine routes navigate and survive refresh, including newly exposed My Progress. |
 | React & Interact catalogue | PASS | Search, HYP filtering, compact layout, sorting and sorting persistence exercised. |
 | All 67 tool popups | PASS | Each poster loaded; learn, poster, practice, evidence and summary tabs exercised. |
