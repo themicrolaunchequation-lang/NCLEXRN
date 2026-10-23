@@ -38,12 +38,12 @@ jobs:
       - name: Start an isolated HTTPS SNLE test server
         shell: bash
         run: |
-          mkdir -p apps/gulf/reports/ci/tls
+          mkdir -p /tmp/gulf-snle-ci-tls
           openssl req -x509 -nodes -newkey rsa:2048 -days 2 \
-            -keyout apps/gulf/reports/ci/tls/k.pem \
-            -out apps/gulf/reports/ci/tls/c.pem \
+            -keyout /tmp/gulf-snle-ci-tls/k.pem \
+            -out /tmp/gulf-snle-ci-tls/c.pem \
             -subj "/CN=snle.healthcarecrownacademy.co.uk"
-          PORT=8450 SNLE_CERT_DIR="$PWD/apps/gulf/reports/ci/tls" \
+          PORT=8450 SNLE_CERT_DIR="$PWD//tmp/gulf-snle-ci-tls" \
             node apps/snle/scripts/serve.mjs > /tmp/gulf-snle-preview-server.log 2>&1 &
           echo $! > /tmp/gulf-snle-preview-server.pid
           for i in {1..30}; do
@@ -114,9 +114,11 @@ jobs:
           } > apps/gulf/reports/ci/test-results.md
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add apps/gulf/reports/ci apps/gulf/reports/generated
+          git add apps/gulf/reports/ci/*.txt apps/gulf/reports/ci/*.md apps/gulf/reports/generated/*.csv apps/gulf/reports/generated/*.json
           if ! git diff --cached --quiet; then
             git commit -m 'test(gulf): commit isolated npm evidence and full review queues [skip ci]'
+            git fetch origin codex/gulf-nursing-exams-two-phases
+            git rebase -X theirs origin/codex/gulf-nursing-exams-two-phases
             git push origin HEAD:codex/gulf-nursing-exams-two-phases
           fi
       - name: Stop isolated preview server
