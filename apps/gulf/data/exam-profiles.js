@@ -18,12 +18,12 @@ export const PROFILES = Object.freeze({
   warning:'Blueprint allocations are documented. The official duration conflict and question-level clinical mapping remain open.'
  },
  dubai:{
-  id:'dubai',country:'United Arab Emirates',region:'Dubai',name:'DHA Registered Nurse',fullName:'Dubai DHA Registered Nurse Assessment',regulator:'Dubai Health Authority (DHA)',accent:'#a97637',stage:'Second Gulf edition',verification:'CBT_ROW_PENDING',publishable:false,
-  questions:null,minutes:null,blocks:null,breakMinutes:null,pass:'Not configured until the current DHA RN CBT row is independently verified',passingType:'unverified',
-  formatNote:'A 150-question/3-hour/50% RN CBT format is publicly reported, but this edition will not assert it as authoritative until the current DHA specialty-specific guideline row is captured and reviewed.',
+  id:'dubai',country:'United Arab Emirates',region:'Dubai',name:'DHA Registered Nurse',fullName:'Dubai DHA Registered Nurse Assessment',regulator:'Dubai Health Authority (DHA)',accent:'#a97637',stage:'Second Gulf edition',verification:'SPEC_PARTLY_VERIFIED',publishable:false,
+  questions:150,minutes:180,blocks:null,breakMinutes:null,pass:'50% published threshold; reported as pass or fail',passingType:'published-percentage',
+  formatNote:'DHA CBT guideline (Sep 2026) lists Registered Nurse as 150 questions, 3 hours, 50%. The 3 hours includes registration and introduction. Domain weights, breaks and block structure are not published in the sources reviewed.',
   domains:[{key:'fundamentals',label:'Nursing Fundamentals',count:null},{key:'adult',label:'Adult Nursing',count:null},{key:'maternal',label:'Maternal–Child Nursing',count:null},{key:'management',label:'Unit Management and Leadership',count:null}],
   sources:[{label:'Official DHA CBT assessment guideline',url:'https://dha.gov.ae/sheryan/wps/contenthandler/%21ut/p/digest%21L_negPqVWa2FDiru8UDKPw/war/SheryanHomeThemeStatic/themes/Portal8.5/docs/Final_Online_Exam_Guideline_CBT.pdf'},{label:'Official DHA Get Registered',url:'https://www.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG'}],
-  warning:'Exact current RN exam row and any category weights require primary-source confirmation before an exam-length mock.'
+  warning:'Domain weights are not published, so no official-style full mock is offered. Do not borrow weights from another regulator.'
  },
  abudhabi:{
   id:'abudhabi',country:'United Arab Emirates',region:'Abu Dhabi',name:'DOH Registered Nurse',fullName:'Abu Dhabi Department of Health Registered Nurse',regulator:'Department of Health – Abu Dhabi (DOH)',accent:'#526b96',stage:'Third Gulf edition',verification:'EXAM_SPEC_PENDING',publishable:false,
@@ -45,3 +45,13 @@ export function assertBlueprint(profile){
  if(profile.verification!=='SOURCE_VERIFIED')return {valid:false,reason:'One or more exam specifications remain unresolved'};
  return {valid:true,reason:'Blueprint arithmetic passes; content and release approval are separate gates'};
 }
+
+// Retake rules are shown as "pending regulator confirmation" wherever sources conflict. Never present a single figure as settled.
+export const RETAKE_NOTES=Object.freeze({
+ snle:'SCFHS sources differ: the applicant guide describes up to four attempts a year, while the SCFHS dates page describes three attempts in an initial cycle with renewal provisions after a year. This is not a lifetime maximum. Confirm with SCFHS before relying on either.',
+ qatar:'DHP pages differ (five consecutive attempts on one page, three on another). Pending confirmation from DHP.',
+ dubai:'General DHA licensing rules apply: three attempts, with a fourth only by permission. Confirm the current rule with DHA.',
+ abudhabi:'UAE-wide rules allow three attempts across authorities, with a possible final attempt subject to approval. Confirm with DOH.'
+});
+export const TIMING_NOTES=Object.freeze({qatar:'Qatar duration is disputed (3 hours on the current listing, 3½ hours in the blueprint PDF). Pending DHP confirmation.'});
+export const CONTENT_POLICY='All questions and tools are original educational material. They are not official exam content, are not endorsed by SCFHS, DHA, DOH or DHP, and do not predict a result. No official authorization to reproduce recalled exam questions was found, so none are used.';

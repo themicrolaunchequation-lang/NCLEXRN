@@ -19,8 +19,8 @@ test('Qatar DHP counts are exact but full simulation remains blocked until durat
  assert.deepEqual(p.domains.map(x=>x.count),[30,61,44,15]);assert.equal(p.domains.reduce((n,d)=>n+d.count,0),150);
  assert.equal(assertBlueprint(p).valid,false);assert.equal(p.verification,'DURATION_CONFLICT');
 });
-test('DHA remains unconfirmed; DOH source confirms count and time but not domains',()=>{
- const dha=PROFILES.dubai;assert.equal(dha.questions,null);assert.equal(dha.minutes,null);
+test('DHA headline spec is verified (Sep 2026 guideline); DHA and DOH weights stay unspecified',()=>{
+ const dha=PROFILES.dubai;assert.equal(dha.questions,150);assert.equal(dha.minutes,180);
  const doh=PROFILES.abudhabi;assert.equal(doh.questions,150);assert.equal(doh.minutes,180);
  for(const p of [dha,doh]){assert(p.domains.every(x=>x.count===null));assert.equal(assertBlueprint(p).valid,false)}
 });

@@ -1,4 +1,4 @@
-import {PROFILES,ORDER,getProfile,assertBlueprint} from './data/exam-profiles.js';
+import {PROFILES,ORDER,getProfile,assertBlueprint,RETAKE_NOTES,TIMING_NOTES,CONTENT_POLICY} from './data/exam-profiles.js';
 const $=id=>document.getElementById(id),state={selected:'qatar',tab:'overview'};
 const safeStore={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v);return true}catch{return false}}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -24,6 +24,8 @@ function overview(profile){
  const result=assertBlueprint(profile);
  return '<h4>What is verified — and what still needs review</h4><p>'+esc(profile.formatNote)+'</p>'+
  '<div class="info-callout"><strong>Clinical and regulatory hold:</strong> '+esc(profile.warning)+'</div>'+
+ '<p><strong>Retakes:</strong> '+esc(RETAKE_NOTES[profile.id]||'Pending regulator confirmation.')+'</p>'+(TIMING_NOTES[profile.id]?'<p><strong>Timing:</strong> '+esc(TIMING_NOTES[profile.id])+'</p>':'')+
+ '<p><strong>Content:</strong> '+esc(CONTENT_POLICY)+'</p>'+
  '<p><strong>Exam rule checker:</strong> '+esc(result.reason)+'</p>'+
  sources(profile)+
  '<div class="info-callout">No official pass probability is calculated. SNLE scaled scores cannot be derived from raw practice percentages. Gulf full-length mocks remain locked until approved question sets exist.</div>'+
