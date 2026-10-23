@@ -3,20 +3,114 @@
 > node tests/integrity.mjs && node tests/journeys.mjs && node tests/persistence.mjs && node tests/libraries.mjs
 
 PASS source, every question field and key, posters, glossary, dossiers, binary images, original functions and Cloudflare size limits
-node:internal/modules/run_main:107
-    triggerUncaughtException(
-    ^
-
-page.goto: net::ERR_CONNECTION_REFUSED at https://snle.healthcarecrownacademy.co.uk/#home
-Call log:
-  - navigating to "https://snle.healthcarecrownacademy.co.uk/#home", waiting until "load"
-
-    at go (/home/runner/work/NCLEXRN/NCLEXRN/apps/snle/tests/journeys.mjs:13:32)
-    at /home/runner/work/NCLEXRN/NCLEXRN/apps/snle/tests/journeys.mjs:16:48 {
-  log: [
-    '  - navigating to "https://snle.healthcarecrownacademy.co.uk/#home", waiting until "load"'
-  ],
-  name: 'Error'
-}
-
-Node.js v24.21.0
+PASS complete supplied question, poster and glossary counts
+PASS six apps in shared suite switcher
+PASS SNLE marked active in suite
+AXE home 
+PASS sidebar route home
+PASS refresh restores home
+PASS sidebar route guide
+PASS refresh restores guide
+PASS sidebar route glossary
+PASS refresh restores glossary
+PASS sidebar route labs
+PASS refresh restores labs
+PASS sidebar route tools
+PASS refresh restores tools
+PASS sidebar route dossier
+PASS refresh restores dossier
+PASS sidebar route practice
+PASS refresh restores practice
+PASS sidebar route reset
+PASS refresh restores reset
+PASS sidebar route progress
+PASS refresh restores progress
+PASS Interactive Labs index lists nine labs inside the app
+PASS lab 01_SNLE_Question_Blueprint is interactive
+PASS lab 05_Lead-in_Decoder is interactive
+PASS lab 09_SNLE_Decoding_Workflow is interactive
+PASS labs run under the site CSP with no errors: 
+PASS tool search filters catalogue
+CHECKED 10 / 67 complete tools
+CHECKED 20 / 67 complete tools
+CHECKED 30 / 67 complete tools
+CHECKED 40 / 67 complete tools
+CHECKED 50 / 67 complete tools
+CHECKED 60 / 67 complete tools
+PASS all 67 tools: Decision Lens case, answer review, follow-up and five popup tabs
+PASS original Coach Practice starts with four answer choices
+PASS original Coach Practice answer review and next decision
+PASS question flags persist
+PASS full 20-item Tutor Mock reaches performance report
+PASS answer history survives refresh
+PASS full timed Exam Simulation hides tutor feedback, handles midpoint break and reaches report
+PASS glossary search and teaching examples
+PASS CSP-safe focus view works
+PASS all 35 clinical dossiers accessible
+PASS clinical dossier practice preserved
+PASS clinical dossier feedback renders
+PASS SNLE Guide glance
+PASS SNLE Guide blueprint
+PASS SNLE Guide language
+PASS SNLE Guide day
+PASS SNLE Guide links
+PASS reset exercises and completion retained
+PASS original blue/green palette preserved
+PASS Arabic assist preserved
+PASS progress backup includes only SNLE records
+PASS shared Crown account displays authenticated learner
+PASS account survives app and popup rerenders without duplication
+PASS SNLE is linked from shared account menu
+PASS no horizontal overflow at 390
+PASS mobile More drawer navigates and closes at 390
+PASS tool popup accessible at 390
+AXE tools-390 
+PASS no horizontal overflow at 768
+PASS mobile More drawer navigates and closes at 768
+PASS tool popup accessible at 768
+AXE tools-768 
+PASS main website launcher lists six apps
+PASS main website SNLE card opens isolated app hostname
+PASS interest picker opens SNLE without changing paid plan prices
+PASS no application exceptions, CSP violations or missing hosted assets
+PASS sampled home and mobile catalogue accessibility scans pass
+PASS poster pen marks persist
+PASS poster teaching note persists
+PASS poster annotations restore after refresh
+PASS keyboard focus stays inside tool dialog
+PASS Escape closes tool dialog
+PASS reviewed backup import restores only SNLE records
+PASS learning information reopens after closing
+PASS learning remains available with browser storage blocked
+PASS app, questions and viewed poster work offline
+PASS persistence and offline journeys have no runtime exceptions
+PASS data-learning-journey-info opens teaching overlay
+PASS data-course-library-info opens teaching overlay
+PASS course library retains three companion links
+PASS tools companion contains all records
+PASS tools pagination works
+PASS tools search works
+PASS library poster opens
+PASS tools direct refresh works
+PASS tools phone layout has no horizontal overflow
+PASS questions companion contains all records
+PASS questions pagination works
+PASS questions search works
+PASS questions difficulty and HYP filters work
+PASS questions answer reveal is controlled
+PASS questions direct refresh works
+PASS questions phone layout has no horizontal overflow
+PASS dossiers companion contains all records
+PASS dossiers pagination works
+PASS dossiers search works
+PASS dossiers difficulty and HYP filters work
+PASS dossiers answer reveal is controlled
+PASS dossiers direct refresh works
+PASS dossiers phone layout has no horizontal overflow
+PASS tool HYP filter works
+PASS compact catalogue view works
+PASS catalogue sorting persists
+PASS five-stage study planner persists
+PASS reset timing evidence overlay opens
+PASS reset completion persists
+PASS companion views and supplemental journeys have no missing assets or exceptions

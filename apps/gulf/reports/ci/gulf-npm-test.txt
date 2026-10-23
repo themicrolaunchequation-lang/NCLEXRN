@@ -2,15 +2,15 @@
 > gulf-region-exams-preview@0.1.0 test
 > node --test tests/*.test.mjs
 
-✔ unreviewed items and destination-mismatched items are rejected (1.010697ms)
-✔ all four real profiles remain blocked from full mocks (0.365673ms)
-✔ blueprint exactness and honest scoring work with explicitly synthetic fixtures (1.36347ms)
-✔ a jurisdiction with even one insufficient category cannot silently substitute unrelated content (0.38397ms)
-✔ four distinct exam profiles, not auto-published (1.666769ms)
-✔ SNLE source model preserves scaled scoring and two blocks (2.837988ms)
-✔ Qatar DHP counts are exact but full simulation remains blocked until duration conflict resolves (0.319213ms)
-✔ DHA and DOH unknown specifications must not be invented (0.465654ms)
-✔ shared app is independent from original SNLE storage and login (0.528479ms)
+✔ unreviewed items and destination-mismatched items are rejected (0.552534ms)
+✔ all four real profiles remain blocked from full mocks (0.229226ms)
+✔ blueprint exactness and honest scoring work with explicitly synthetic fixtures (0.866319ms)
+✔ a jurisdiction with even one insufficient category cannot silently substitute unrelated content (0.212561ms)
+✔ four distinct exam profiles, not auto-published (0.75501ms)
+✔ SNLE source model preserves scaled scoring and two blocks (1.155044ms)
+✔ Qatar DHP counts are exact but full simulation remains blocked until duration conflict resolves (0.099811ms)
+✔ DHA remains unconfirmed; DOH source confirms count and time but not domains (0.199351ms)
+✔ shared app is independent from original SNLE storage and login (0.23146ms)
 ℹ tests 9
 ℹ suites 0
 ℹ pass 9
@@ -18,4 +18,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 86.338744
+ℹ duration_ms 47.746224
