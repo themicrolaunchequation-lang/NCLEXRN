@@ -1,5 +1,5 @@
 {
-  "runDate": "2026-10-23T17:01:32.141Z",
+  "runDate": "2026-10-23T17:12:36.232Z",
   "source_sha256": "75e79310323b939ac4c65ed2f1c95aa3651e78b409d10a0ca0eeb46cdcac0996",
   "questionCount": 1350,
   "posterCount": 67,
@@ -20,6 +20,21 @@
     "Maternal-Child Nursing": 300
   },
   "saudiWordingCount": 6,
+  "jurisdictionSignalCounts": {
+    "Units/lab convention": 58,
+    "Emergency number/escalation": 7,
+    "Drug-name variant": 18,
+    "Cultural/religious care": 3,
+    "Immunisation/screening schedule": 11,
+    "US-regulator/system": 1
+  },
+  "priorityCounts": {
+    "1": 6,
+    "2": 95,
+    "3": 300,
+    "4": 949
+  },
+  "spotCheckSampleSize": 57,
   "clinicalApprovals": 0,
   "tagNotes": {
     "Core": "Low-jurisdiction-signal CANDIDATE only; NOT clinically approved.",
