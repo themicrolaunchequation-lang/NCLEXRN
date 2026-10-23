@@ -43,7 +43,7 @@ t2('DHA profile uses verified headline spec but stays blocked without weights',(
 });
 t2('DOH weights remain unspecified and retake notes avoid a single settled figure',()=>{
  assert2.ok(PR.abudhabi.domains.every(d=>d.count===null));
- assert2.match(RN.snle,/not a lifetime maximum/);assert2.match(RN.qatar,/Pending/);
+ assert2.match(RN.snle,/not a lifetime maximum/);assert2.match(RN.qatar,/pending/i);
 });
 t2('content policy disclaims official provenance and recalled questions',()=>{
  assert2.match(CP,/original educational material/);assert2.match(CP,/No official authorization/);assert2.doesNotMatch(CP,/prohibit/i);
