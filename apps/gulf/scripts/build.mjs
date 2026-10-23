@@ -11,12 +11,13 @@ for(const name of ['index.html','app.js','styles.css','data/exam-profiles.js','e
  fs.mkdirSync(path.dirname(dest),{recursive:true});
  fs.copyFileSync(src,dest);
 }
+fs.copyFileSync(path.resolve(root,'../../site/assets/js/crown-account.js'),path.join(out,'crown-account.js'));
 fs.writeFileSync(path.join(out,'_headers'),[
  '/*',
  '  X-Content-Type-Options: nosniff',
  '  Referrer-Policy: strict-origin-when-cross-origin',
  '  X-Frame-Options: DENY',
- "  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+ "  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://ujeofxfbwivjmgrxqdcl.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
  '  Permissions-Policy: geolocation=(), camera=(), microphone=()',
  '',
  '/index.html',
@@ -27,6 +28,6 @@ fs.writeFileSync(path.join(out,'_headers'),[
 fs.writeFileSync(path.join(out,'robots.txt'),'User-agent: *\nDisallow: /\n');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 console.log('PASS isolated Cloudflare Pages output ('+manifest.name+')');
-for(const name of ['index.html','app.js','styles.css','data/exam-profiles.js','engine/assessment-engine.js','_headers','robots.txt']){
+for(const name of ['index.html','app.js','styles.css','data/exam-profiles.js','engine/assessment-engine.js','crown-account.js','_headers','robots.txt']){
  const s=fs.statSync(path.join(out,name));console.log(name+' '+s.size+' bytes');
 }

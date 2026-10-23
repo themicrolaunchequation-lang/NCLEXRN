@@ -8,8 +8,8 @@ const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8',
 http.createServer((req,res)=>{
  try{
   const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
-  const resolved=path.resolve(root,'.'+(pathname==='/'?'/index.html':pathname));
-  if(!resolved.startsWith(root+path.sep)&&resolved!==path.join(root,'index.html'))throw Error('Forbidden');
+  const resolved=pathname==='/crown-account.js'?path.resolve(root,'../../site/assets/js/crown-account.js'):path.resolve(root,'.'+(pathname==='/'?'/index.html':pathname));
+  if(!resolved.startsWith(root+path.sep)&&pathname!=='/crown-account.js')throw Error('Forbidden');
   const st=fs.statSync(resolved);
   if(!st.isFile())throw Error('Missing');
   res.writeHead(200,{'Content-Type':mime[path.extname(resolved)]||'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
