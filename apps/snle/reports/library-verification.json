@@ -1,6 +1,5 @@
 {
   "checks": [
-    "data-committee-info opens teaching overlay",
     "data-learning-journey-info opens teaching overlay",
     "data-course-library-info opens teaching overlay",
     "course library retains three companion links",

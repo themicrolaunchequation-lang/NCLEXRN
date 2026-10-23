@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" class="auto-theme"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c2e63">
+<title>SNLE Decoder Labs</title>
+<style>
+:root{
+  --ink:#10283c;--navy:#0c2e63;--navy2:#17457f;--teal:#0b7479;--teal-d:#075a5e;--teal-lt:#e6f4f5;
+  --mark:#ffd25e;--mark-soft:#fff4d2;--mark-line:#e6ac1f;--paper:#eaf0f6;--card:#fff;
+  --line:#dbe4ec;--line-2:#eef3f7;--muted:#5f7387;--good:#1a7a4c;--good-bg:#eaf7ef;--good-line:#a8d9bd;
+  --sh-1:0 1px 2px rgba(16,40,60,.06),0 6px 18px rgba(16,40,60,.07);
+}
+@media (prefers-color-scheme:dark){:root.auto-theme{
+  --ink:#e7eef5;--navy:#9fc4f0;--navy2:#b6d3f5;--teal:#5fc7cc;--teal-d:#8bdadd;--teal-lt:#0f2f36;
+  --mark-soft:#3a3116;--mark-line:#8a6d17;--paper:#0d1a26;--card:#132434;--line:#22384c;--line-2:#1a2c3d;
+  --muted:#93a8bb;--good:#5fd39a;--good-bg:#103224;--good-line:#1f6244;
+  --sh-1:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.35);
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-size:15px;line-height:1.55;
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 18px 56px}
+
+.hero{background:linear-gradient(150deg,var(--navy),var(--navy2));color:#fff;border-radius:26px;
+  padding:30px 30px 26px;box-shadow:0 20px 46px rgba(12,40,66,.22);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;
+  background:rgba(255,210,94,.14)}
+.hero h1{margin:0 0 8px;font-size:40px;line-height:1.05;letter-spacing:-.025em}
+.hero p{margin:0;max-width:640px;color:rgba(255,255,255,.9);font-size:15.5px;line-height:1.62}
+.hero .kicker{font-size:12px;font-weight:750;letter-spacing:.1em;opacity:.8}
+
+.dash{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;
+  margin-top:24px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);
+  border-radius:20px;padding:18px 20px;position:relative;z-index:1}
+.dash .ringwrap{display:flex;align-items:center;gap:14px}
+.dash svg{display:block}
+.dash .tr{stroke:rgba(255,255,255,.22)}
+.dash .vl{stroke:var(--mark);stroke-linecap:round;transition:stroke-dashoffset .7s cubic-bezier(.4,0,.2,1)}
+.dash .num{font-size:26px;font-weight:800;line-height:1}
+.dash .num small{display:block;font-size:11.5px;font-weight:650;opacity:.82;letter-spacing:.04em}
+.dstats{display:flex;gap:26px;flex-wrap:wrap}
+.dstat b{display:block;font-size:20px;line-height:1.1}
+.dstat span{font-size:12px;opacity:.82}
+.cta{border:0;border-radius:13px;padding:13px 20px;font-weight:750;font-size:14.5px;cursor:pointer;
+  background:var(--mark);color:#3a2a00;white-space:nowrap}
+.cta:hover{filter:brightness(1.05)}
+.cta.quiet{background:rgba(255,255,255,.16);color:#fff}
+
+.stage{margin-top:34px}
+.stage-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.stage-h h2{margin:0;font-size:22px;letter-spacing:-.015em}
+.stage-h em{font-style:normal;font-size:12.5px;font-weight:700;color:var(--teal-d);
+  background:var(--teal-lt);border-radius:999px;padding:4px 10px}
+.stage > p{margin:0 0 14px;color:var(--muted);font-size:14px;max-width:760px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;
+  text-decoration:none;color:inherit;box-shadow:var(--sh-1);transition:border-color .16s,transform .16s}
+.card:hover{border-color:var(--teal);transform:translateY(-3px)}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card .no{font-size:12px;font-weight:800;color:var(--teal-d);background:var(--teal-lt);
+  border-radius:999px;padding:5px 10px}
+.card .tick{font-size:11.5px;font-weight:750;padding:5px 9px;border-radius:999px;
+  background:var(--line-2);color:var(--muted);white-space:nowrap}
+.card .tick.done{background:var(--good-bg);color:var(--good)}
+.card h3{margin:12px 0 4px;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+.card p{margin:0 0 6px;color:var(--muted);font-size:13.5px;line-height:1.5}
+.card .bar{margin-top:auto;height:7px;border-radius:999px;background:var(--line);overflow:hidden;margin:14px 0 8px}
+.card .bar i{display:block;height:100%;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--teal-d),var(--teal));transition:width .6s cubic-bezier(.4,0,.2,1)}
+.card .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:650}
+.card .open{margin-top:12px;font-weight:750;font-size:13.5px;color:var(--navy)}
+
+.ev-band{margin-top:34px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--teal);
+  border-radius:20px;padding:22px 24px;box-shadow:var(--sh-1)}
+.ev-band h2{margin:0 0 12px;font-size:19px;letter-spacing:-.01em}
+.ev-band blockquote{margin:0 0 16px;padding:16px 18px;background:var(--teal-lt);border-radius:14px}
+.ev-band blockquote p{margin:0;font-size:17px;line-height:1.5;font-weight:650}
+.ev-band cite{display:block;margin-top:8px;font-style:normal;font-size:12.5px;color:var(--muted);font-weight:650}
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.ev-grid div{font-size:13.5px;line-height:1.6}
+.foot{margin-top:40px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.7}
+.foot button{border:1px solid var(--line);background:var(--card);border-radius:999px;
+  padding:8px 14px;font-size:12.5px;font-weight:650;cursor:pointer;margin-top:10px}
+.note{margin-top:22px;background:var(--mark-soft);border:1px solid var(--mark-line);border-radius:16px;
+  padding:14px 16px;font-size:13.5px;line-height:1.6}
+@media (max-width:760px){
+  .wrap{padding:14px 12px 40px}
+  .hero{padding:22px 20px;border-radius:20px}
+  .hero h1{font-size:29px}
+  .dash{grid-template-columns:1fr;gap:16px}
+  .cta{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head><body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">SNLE EVIDENCE LAB &nbsp;·&nbsp; INTERACTIVE DECODER SERIES</div>
+    <h1>Decode the question<br>before you answer it</h1>
+    <p>Nine infographic labs that take you from reading a stem to committing to an answer. Each poster is
+       clickable: open a region for the concept, a worked example and two exercises, with every answer
+       option explained &mdash; not just the correct one.</p>
+
+    <div class="dash">
+      <div class="ringwrap">
+        <svg width="76" height="76" viewBox="0 0 76 76" aria-hidden="true">
+          <circle class="tr" cx="38" cy="38" r="32" fill="none" stroke-width="7"></circle>
+          <circle id="ring" class="vl" cx="38" cy="38" r="32" fill="none" stroke-width="7"
+                  transform="rotate(-90 38 38)" stroke-dasharray="201" stroke-dashoffset="201"></circle>
+        </svg>
+        <div class="num"><span id="pct">0%</span><small>SERIES MASTERED</small></div>
+      </div>
+      <div class="dstats">
+        <div class="dstat"><b id="sEx">0 / 260</b><span>exercises mastered</span></div>
+        <div class="dstat"><b id="sLab">0 / 9</b><span>labs completed</span></div>
+        <div class="dstat"><b id="sAcc">&mdash;</b><span>first-attempt accuracy</span></div>
+      </div>
+      <button class="cta" id="go">Start lab 01</button>
+    </div>
+  </header>
+
+  <section class="stage"><div class="stage-h"><h2>Read the question</h2><em>Labs 01–02</em></div><p>Learn what an item is made of and how stems hide the decision.</p><div class="cards"><a class="card" id="c01" href="SNLE_Decoder_01_SNLE_Question_Blueprint_Interactive.html"><div class="top"><span class="no">Lab 01</span><span class="tick">Not started</span></div><h3>SNLE Question Blueprint</h3><p>Anatomy of a Question</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 20</b> exercises</span><span>5 regions</span></div><div class="open">Open lab</div></a><a class="card" id="c02" href="SNLE_Decoder_02_SNLE_Stem_Types_and_Scenario_Structures_Interactive.html"><div class="top"><span class="no">Lab 02</span><span class="tick">Not started</span></div><h3>SNLE Stem Types & Scenario Structures</h3><p>How stems hide the decision</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 20</b> exercises</span><span>5 regions</span></div><div class="open">Open lab</div></a></div></section>
+<section class="stage"><div class="stage-h"><h2>Find the evidence</h2><em>Labs 03–05</em></div><p>Spot the clue that changes urgency, then decode the task you are actually being asked to do.</p><div class="cards"><a class="card" id="c03" href="SNLE_Decoder_03_Clue_Atlas_Part_1_Interactive.html"><div class="top"><span class="no">Lab 03</span><span class="tick">Not started</span></div><h3>Clue Atlas Part 1</h3><p>Instability, timing & change</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 24</b> exercises</span><span>6 regions</span></div><div class="open">Open lab</div></a><a class="card" id="c04" href="SNLE_Decoder_04_Clue_Atlas_Part_2_Interactive.html"><div class="top"><span class="no">Lab 04</span><span class="tick">Not started</span></div><h3>Clue Atlas Part 2</h3><p>Vitals, labs, symptoms & statements</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 32</b> exercises</span><span>8 regions</span></div><div class="open">Open lab</div></a><a class="card" id="c05" href="SNLE_Decoder_05_Lead-in_Decoder_Interactive.html"><div class="top"><span class="no">Lab 05</span><span class="tick">Not started</span></div><h3>Lead-in Decoder</h3><p>What task is being tested?</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 40</b> exercises</span><span>10 regions</span></div><div class="open">Open lab</div></a></div></section>
+<section class="stage"><div class="stage-h"><h2>Choose the answer</h2><em>Labs 06–09</em></div><p>Match the reasoning function, defeat the distractors, and run the workflow under time.</p><div class="cards"><a class="card" id="c06" href="SNLE_Decoder_06_SNLE_Clinical_Judgment_Map_Interactive.html"><div class="top"><span class="no">Lab 06</span><span class="tick">Not started</span></div><h3>SNLE Clinical Judgment Map</h3><p>Six clinical-judgment functions</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 32</b> exercises</span><span>8 regions</span></div><div class="open">Open lab</div></a><a class="card" id="c07" href="SNLE_Decoder_07_Distractor_Psychology_Interactive.html"><div class="top"><span class="no">Lab 07</span><span class="tick">Not started</span></div><h3>Distractor Psychology</h3><p>The 10 wrong-answer traps</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 32</b> exercises</span><span>8 regions</span></div><div class="open">Open lab</div></a><a class="card" id="c08" href="SNLE_Decoder_08_How_the_Correct_Answer_Wins_Interactive.html"><div class="top"><span class="no">Lab 08</span><span class="tick">Not started</span></div><h3>How the Correct Answer Wins</h3><p>Clue → interpretation → decision → best answer</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 32</b> exercises</span><span>8 regions</span></div><div class="open">Open lab</div></a><a class="card" id="c09" href="SNLE_Decoder_09_SNLE_Decoding_Workflow_Interactive.html"><div class="top"><span class="no">Lab 09</span><span class="tick">Not started</span></div><h3>SNLE Decoding Workflow</h3><p>From reading to answering</p><div class="bar"><i></i></div><div class="meta"><span><b>0 / 28</b> exercises</span><span>7 regions</span></div><div class="open">Open lab</div></a></div></section>
+
+  <section class="ev-band">
+    <h2>Why decoding is worth practising</h2>
+    <blockquote><p>&ldquo;Only 9% of new graduate nurses now demonstrate the clinical judgment expected for entry to practice.&rdquo;<cite>Kavanagh & Sharpnack, Online Journal of Issues in Nursing, 2021</cite></p></blockquote>
+    <div class="ev-grid"><div>Assessments of more than 5,000 new graduates from over 140 programmes across 21 states found 23% met entry-level competency, down from 35% in 2005.<cite>Kavanagh & Szweda, Nursing Education Perspectives, 2017; del Bueno, Nursing Education Perspectives, 2005</cite></div><div>Across ten study techniques, practice testing and spaced practice were the only two rated high utility. Re-reading and highlighting were rated low.<cite>Dunlosky et al., Psychological Science in the Public Interest, 2013</cite></div></div>
+  </section>
+
+  <div class="note"><b>Your progress stays on this device.</b> It is saved in this browser only, so it will
+    not follow you to another phone or computer, and clearing site data will clear it.</div>
+
+  <div class="foot">
+    Built from the SNLE Decoder infographic series &nbsp;·&nbsp; By Hossam AlDhaher<br>
+    <button id="resetAll">Reset progress for all nine labs</button>
+  </div>
+</div>
+
+<script>
+var LABS=[{"num": "01", "title": "SNLE Question Blueprint", "subtitle": "Anatomy of a Question", "file": "SNLE_Decoder_01_SNLE_Question_Blueprint_Interactive.html", "sections": 5, "exercises": 20}, {"num": "02", "title": "SNLE Stem Types & Scenario Structures", "subtitle": "How stems hide the decision", "file": "SNLE_Decoder_02_SNLE_Stem_Types_and_Scenario_Structures_Interactive.html", "sections": 5, "exercises": 20}, {"num": "03", "title": "Clue Atlas Part 1", "subtitle": "Instability, timing & change", "file": "SNLE_Decoder_03_Clue_Atlas_Part_1_Interactive.html", "sections": 6, "exercises": 24}, {"num": "04", "title": "Clue Atlas Part 2", "subtitle": "Vitals, labs, symptoms & statements", "file": "SNLE_Decoder_04_Clue_Atlas_Part_2_Interactive.html", "sections": 8, "exercises": 32}, {"num": "05", "title": "Lead-in Decoder", "subtitle": "What task is being tested?", "file": "SNLE_Decoder_05_Lead-in_Decoder_Interactive.html", "sections": 10, "exercises": 40}, {"num": "06", "title": "SNLE Clinical Judgment Map", "subtitle": "Six clinical-judgment functions", "file": "SNLE_Decoder_06_SNLE_Clinical_Judgment_Map_Interactive.html", "sections": 8, "exercises": 32}, {"num": "07", "title": "Distractor Psychology", "subtitle": "The 10 wrong-answer traps", "file": "SNLE_Decoder_07_Distractor_Psychology_Interactive.html", "sections": 8, "exercises": 32}, {"num": "08", "title": "How the Correct Answer Wins", "subtitle": "Clue → interpretation → decision → best answer", "file": "SNLE_Decoder_08_How_the_Correct_Answer_Wins_Interactive.html", "sections": 8, "exercises": 32}, {"num": "09", "title": "SNLE Decoding Workflow", "subtitle": "From reading to answering", "file": "SNLE_Decoder_09_SNLE_Decoding_Workflow_Interactive.html", "sections": 7, "exercises": 28}];
+function read(num){
+  try{ return JSON.parse(localStorage.getItem("snle-decoder-v2-"+num)||"null")||null }catch(e){ return null }
+}
+function statsFor(l){
+  var s=read(l.num), ok=0, att=0, first=0;
+  if(s&&s.log){ Object.keys(s.log).forEach(function(k){
+    var r=s.log[k]; att++; if(r.ok) ok++; if(r.firstOk) first++;
+  })}
+  return {ok:ok,att:att,first:first,total:l.exercises,pct:Math.round(ok/l.exercises*100)};
+}
+function paint(){
+  var ok=0,tot=0,att=0,first=0,labsDone=0,next=null;
+  LABS.forEach(function(l){
+    var st=statsFor(l);
+    ok+=st.ok; tot+=st.total; att+=st.att; first+=st.first;
+    if(st.ok===st.total) labsDone++; else if(!next) next=l;
+    var card=document.getElementById("c"+l.num);
+    if(!card) return;
+    card.querySelector(".bar i").style.width=st.pct+"%";
+    card.querySelector(".meta b").textContent=st.ok+" / "+st.total;
+    var tick=card.querySelector(".tick");
+    if(st.ok===st.total){ tick.textContent="Mastered"; tick.classList.add("done") }
+    else if(st.ok){ tick.textContent=st.pct+"%" }
+    else { tick.textContent="Not started" }
+  });
+  var pct=tot?Math.round(ok/tot*100):0, C=2*Math.PI*32;
+  document.getElementById("pct").textContent=pct+"%";
+  var r=document.getElementById("ring");
+  r.style.strokeDasharray=C; r.style.strokeDashoffset=C*(1-pct/100);
+  document.getElementById("sEx").textContent=ok+" / "+tot;
+  document.getElementById("sLab").textContent=labsDone+" / 9";
+  document.getElementById("sAcc").textContent=att?Math.round(first/att*100)+"%":"\u2014";
+  var go=document.getElementById("go");
+  if(next){ go.textContent=(ok?"Continue with lab ":"Start lab ")+next.num; go.onclick=function(){ location.href=next.file } }
+  else { go.textContent="Revise from lab 01"; go.classList.add("quiet"); go.onclick=function(){ location.href=LABS[0].file } }
+}
+document.getElementById("resetAll").onclick=function(){
+  if(!confirm("Clear your saved answers for all nine labs on this device?")) return;
+  LABS.forEach(function(l){ try{ localStorage.removeItem("snle-decoder-v2-"+l.num) }catch(e){} });
+  paint();
+};
+paint();
+</script>
+</body></html>

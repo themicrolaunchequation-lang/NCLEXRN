@@ -64,7 +64,10 @@ html=html.replace('<div id="app">','<a class="snle-skip" href="#snle-content">Sk
 html=html.replace('</body>','<noscript><p>SNLE needs JavaScript to run. <a href="https://healthcarecrownacademy.co.uk/">Return to Healthcare Crown Academy</a>.</p></noscript></body>');
 write('assets/crest.svg',fs.readFileSync(path.join(REPO,'site/assets/img/favicon.svg')));
 const labsPath=path.join(ROOT,'source/SNLE_Decoder_Interactive_Labs_v3'),hasLabs=fs.existsSync(labsPath);
-if(hasLabs)fs.cpSync(labsPath,path.join(OUT,'SNLE_Decoder_Interactive_Labs_v3'),{recursive:true});
+if(hasLabs){const dest=path.join(OUT,'SNLE_Decoder_Interactive_Labs_v3');fs.cpSync(labsPath,dest,{recursive:true});
+ for(const f of fs.readdirSync(dest).filter(n=>n.endsWith('.html'))){const fp=path.join(dest,f);let h=fs.readFileSync(fp,'utf8'),i=0;
+  h=h.replace(/<script>([\s\S]*?)<\/script>/g,(_,code)=>{const n=f.replace(/\.html$/,'')+'.'+(i++)+'.js';fs.writeFileSync(path.join(dest,n),code);return '<script defer src="'+n+'"></script>'});
+  fs.writeFileSync(fp,h)}}
 write('assets/labs-status.js','window.SNLE_HAS_LABS='+JSON.stringify(hasLabs)+';');
 html=html.replace('<script defer src="'+urls.data+'">','<script defer src="/assets/labs-status.js"></script><script defer src="'+urls.data+'">');write('index.html',html);
 write('404.html','<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Page not found · SNLE</title><h1>Page not found</h1><p><a href="/">Return to SNLE Clinical Learning Studio</a></p></html>');

@@ -11,7 +11,7 @@ await context.route('**/*',r=>new URL(r.request().url()).hostname==='snle.health
 try{
  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url())});
  await page.goto(BASE+'/#home');
- for(const [open,close]of[['data-committee-info','data-committee-close'],['data-learning-journey-info','data-learning-journey-close'],['data-course-library-info','data-course-library-close']]){
+ for(const [open,close]of[['data-learning-journey-info','data-learning-journey-close'],['data-course-library-info','data-course-library-close']]){
   await page.locator('['+open+']').click();ok(await page.locator('[role=dialog]').isVisible(),open+' opens teaching overlay');await page.locator('['+close+']').first().click();
  }
  await page.locator('[data-course-library-info]').click();

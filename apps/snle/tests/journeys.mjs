@@ -19,7 +19,10 @@ try{
  await p.screenshot({path:path.join(OUT,'desktop-home.png')});await axe(p,'home');
  const nav=await p.locator('.sidebar [data-nav]').evaluateAll(es=>es.map(e=>e.dataset.nav));
  for(const v of nav){await p.locator('.sidebar [data-nav="'+v+'"]').click();ok(await p.evaluate(v=>location.hash==='#'+v,v),'sidebar route '+v);await p.reload();ok(await p.locator('.sidebar [data-nav="'+v+'"]').getAttribute('aria-current')==='page','refresh restores '+v)}
- await go(p,'labs');ok(await p.locator('iframe').count()===0&&/not available/.test(await p.locator('.page-content').innerText()),'missing separate Labs collection is clearly identified without a failed iframe');
+ await go(p,'labs');await p.locator('iframe').first().waitFor();const lf=p.frameLocator('iframe').first();await lf.locator('a[href*="Blueprint"]').first().waitFor({timeout:8000});ok(await lf.locator('a[href$=".html"]').count()>=9,'Interactive Labs index lists nine labs inside the app');
+ const lab=await p.context().newPage();const labErrors=[];lab.on('pageerror',e=>labErrors.push(e.message));lab.on('console',m=>{if(m.type()==='error')labErrors.push(m.text())});
+ for(const f of ['01_SNLE_Question_Blueprint','05_Lead-in_Decoder','09_SNLE_Decoding_Workflow']){await lab.goto(BASE+'/SNLE_Decoder_Interactive_Labs_v3/SNLE_Decoder_'+f+'_Interactive.html');await lab.waitForLoadState('load');ok(await lab.locator('button,[role=button],.hotspot,[data-region]').count()>3,'lab '+f+' is interactive')}
+ ok(labErrors.length===0,'labs run under the site CSP with no errors: '+labErrors.join('|'));await lab.close();
  await go(p,'tools');await p.locator('#tool-search').fill('ABCDE First-Look & Action Guide');await p.waitForFunction(()=>document.querySelectorAll('[data-poster]').length===1);ok(await p.locator('[data-poster]').count()===1,'tool search filters catalogue');await p.locator('#tool-search').fill('');await p.waitForFunction(()=>document.querySelectorAll('[data-poster]').length===67);
  const posters=await p.evaluate(()=>SNLE_POSTERS.map(p=>({id:p.id,title:p.title,questionIds:p.questionIds})));
  for(let i=0;i<posters.length;i++){

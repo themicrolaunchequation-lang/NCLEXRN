@@ -16,3 +16,9 @@
 /sw.js
   Cache-Control: no-cache
   Service-Worker-Allowed: /
+
+/SNLE_Decoder_Interactive_Labs_v3/*
+  ! X-Frame-Options
+  ! Content-Security-Policy
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'self'

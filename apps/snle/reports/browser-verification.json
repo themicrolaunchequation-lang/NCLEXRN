@@ -1,5 +1,5 @@
 {
-  "checks": 58,
+  "checks": 62,
   "passed": [
     "complete supplied question, poster and glossary counts",
     "six apps in shared suite switcher",
@@ -22,7 +22,11 @@
     "refresh restores reset",
     "sidebar route progress",
     "refresh restores progress",
-    "missing separate Labs collection is clearly identified without a failed iframe",
+    "Interactive Labs index lists nine labs inside the app",
+    "lab 01_SNLE_Question_Blueprint is interactive",
+    "lab 05_Lead-in_Decoder is interactive",
+    "lab 09_SNLE_Decoding_Workflow is interactive",
+    "labs run under the site CSP with no errors: ",
     "tool search filters catalogue",
     "all 67 tools: Decision Lens case, answer review, follow-up and five popup tabs",
     "original Coach Practice starts with four answer choices",
