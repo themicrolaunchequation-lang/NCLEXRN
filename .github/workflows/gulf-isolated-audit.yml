@@ -35,6 +35,26 @@ jobs:
         run: |
           cd apps/snle
           npx playwright install --with-deps chromium
+      - name: Start an isolated HTTPS SNLE test server
+        shell: bash
+        run: |
+          mkdir -p apps/gulf/reports/ci/tls
+          openssl req -x509 -nodes -newkey rsa:2048 -days 2 \
+            -keyout apps/gulf/reports/ci/tls/k.pem \
+            -out apps/gulf/reports/ci/tls/c.pem \
+            -subj "/CN=snle.healthcarecrownacademy.co.uk"
+          PORT=8450 SNLE_CERT_DIR="$PWD/apps/gulf/reports/ci/tls" \
+            node apps/snle/scripts/serve.mjs > /tmp/gulf-snle-preview-server.log 2>&1 &
+          echo $! > /tmp/gulf-snle-preview-server.pid
+          for i in {1..30}; do
+            if curl -k -sS --connect-timeout 2 -H "Host: snle.healthcarecrownacademy.co.uk" \
+              https://127.0.0.1:8450/ -o /dev/null; then
+              echo "Isolated HTTPS SNLE server ready"
+              break
+            fi
+            sleep 1
+          done
+          curl -k --fail --silent -H "Host: snle.healthcarecrownacademy.co.uk" https://127.0.0.1:8450/ -o /dev/null
       - name: Run SNLE npm test in isolated runner
         id: snle
         continue-on-error: true
@@ -84,6 +104,10 @@ jobs:
             git commit -m 'test(gulf): commit isolated npm evidence and full review queues [skip ci]'
             git push origin HEAD:codex/gulf-nursing-exams-two-phases
           fi
+      - name: Stop isolated preview server
+        if: always()
+        run: |
+          if [ -f /tmp/gulf-snle-preview-server.pid ]; then kill "$(cat /tmp/gulf-snle-preview-server.pid)" || true; fi
       - name: Fail if any test or generation failed
         if: always()
         shell: bash
