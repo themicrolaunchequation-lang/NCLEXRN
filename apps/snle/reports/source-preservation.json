@@ -1,0 +1,16 @@
+{
+  "originalSha256": "75e79310323b939ac4c65ed2f1c95aa3651e78b409d10a0ca0eeb46cdcac0996",
+  "questions": 1350,
+  "posters": 67,
+  "glossary": 62,
+  "dossiers": 35,
+  "dossierCases": 350,
+  "preservedFunctions": 97,
+  "uniqueAssetsVerified": 73,
+  "questionTextAndKeys": "unchanged",
+  "originalRecoverable": true,
+  "clinicalExpertValidation": "pending in imported source",
+  "missingDependencies": [
+    "SNLE_Decoder_Interactive_Labs_v3"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "snle-clinical-learning-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node tests/integrity.mjs && node tests/journeys.mjs && node tests/persistence.mjs && node tests/libraries.mjs",
+    "test:suite": "node tests/suite-regression.mjs",
+    "preview": "node scripts/serve.mjs",
+    "cloudflare:preview": "wrangler pages deploy dist --project-name snle-clinical-studio --branch codex-snle-preview"
+  },
+  "devDependencies": {
+    "wrangler": "4.152.0",
+    "playwright-core": "1.64.0",
+    "@babel/parser": "7.28.0",
+    "axe-core": "4.14.0"
+  }
+}
