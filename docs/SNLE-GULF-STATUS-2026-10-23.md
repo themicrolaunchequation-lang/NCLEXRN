@@ -21,3 +21,8 @@
 5. Say "publish the Academy site" to list SNLE as the sixth app (production deploy).
 6. Approve the `lumen-ai` backend fix; add Stripe test keys as Supabase secrets (never in chat); solicitor review of legal pages before payments.
 7. Pricing (proposal in chat, not final): free core; Gulf Pass AED 29/month or AED 99/6 months; all-editions AED 149/6 months; launch AED 79/6 months with a free extension if you do not pass. Do not charge before review and Stripe.
+
+## Owner decisions, 23 Oct 2026 (recorded as stated by the owner)
+- Regulator enquiries: the owner chose not to send them. The app therefore states exam details as "from regulator publications read 23 October 2026; confirm with your regulator before you book". Disputed points (Qatar duration and attempts, DHA/DOH details) say "not confirmed in writing". No regulator reply is claimed anywhere.
+- Clinical sign-off: the owner declared the material approved for release. No named reviewer's credentials or per-question verdicts are on file, so the app says "approved for release by the Academy owner" and does not claim independent clinical review.
+- The assessment engine still refuses an official-style full mock (no per-item approval records, DHA/DOH weights unpublished). That is intended; do not bypass it by forging approval records.

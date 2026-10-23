@@ -30,6 +30,6 @@ test('shared app is independent from original SNLE storage and login',()=>{
  assert(!app.includes('supabase.auth'));assert(!app.includes('CLOUDFLARE_API_TOKEN'));
  const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
  for(const id of ['overview','editions','comparison','governance','roadmap'])assert(html.includes('id="'+id+'"'));
- assert(html.includes('Draft — pending independent clinical and regulatory review.'));
+ assert(html.includes('Independent educational practice material.')&&html.includes('not endorsed by SCFHS, DHA, DOH or DHP'));
  assert(!html.includes('billing.stripe.com'));
 });
