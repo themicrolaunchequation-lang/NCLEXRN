@@ -19,9 +19,10 @@ test('Qatar DHP counts are exact but full simulation remains blocked until durat
  assert.deepEqual(p.domains.map(x=>x.count),[30,61,44,15]);assert.equal(p.domains.reduce((n,d)=>n+d.count,0),150);
  assert.equal(assertBlueprint(p).valid,false);assert.equal(p.verification,'DURATION_CONFLICT');
 });
-test('DHA and DOH unknown specifications must not be invented',()=>{
- for(const id of ['dubai','abudhabi']){const p=PROFILES[id];assert.equal(p.questions,null);assert.equal(p.minutes,null);
- assert(p.domains.every(x=>x.count===null));assert.equal(assertBlueprint(p).valid,false);}
+test('DHA remains unconfirmed; DOH source confirms count and time but not domains',()=>{
+ const dha=PROFILES.dubai;assert.equal(dha.questions,null);assert.equal(dha.minutes,null);
+ const doh=PROFILES.abudhabi;assert.equal(doh.questions,150);assert.equal(doh.minutes,180);
+ for(const p of [dha,doh]){assert(p.domains.every(x=>x.count===null));assert.equal(assertBlueprint(p).valid,false)}
 });
 test('shared app is independent from original SNLE storage and login',()=>{
  const app=fs.readFileSync(path.join(ROOT,'app.js'),'utf8');
