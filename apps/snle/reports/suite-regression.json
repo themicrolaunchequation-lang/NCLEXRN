@@ -1,0 +1,26 @@
+[
+  {
+    "app": "medlex",
+    "loads": true,
+    "suiteApps": 6,
+    "errors": []
+  },
+  {
+    "app": "carecraft",
+    "loads": true,
+    "suiteApps": 6,
+    "errors": []
+  },
+  {
+    "app": "serein",
+    "loads": true,
+    "suiteApps": 6,
+    "errors": []
+  },
+  {
+    "app": "lumen",
+    "loads": true,
+    "suiteApps": 6,
+    "errors": []
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "filename": "SNLE_Clinical_Learning_Studio_Enhanced33333.html",
+  "sha256": "75e79310323b939ac4c65ed2f1c95aa3651e78b409d10a0ca0eeb46cdcac0996",
+  "bytes": 29897744,
+  "source": "User-provided HTML, preserved without changes",
+  "completeV14PackageAvailable": false,
+  "missingDependencies": [
+    "SNLE_Decoder_Interactive_Labs_v3"
+  ]
+}

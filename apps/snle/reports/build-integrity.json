@@ -1,0 +1,26 @@
+{
+  "sourceSha256": "75e79310323b939ac4c65ed2f1c95aa3651e78b409d10a0ca0eeb46cdcac0996",
+  "buildHash": "70c526bb1be08423",
+  "posters": 67,
+  "questions": 1350,
+  "glossary": 62,
+  "assets": 73,
+  "files": 95,
+  "maxFileBytes": 3174348,
+  "totalBytes": 23999799,
+  "labs": "missing external package",
+  "urls": {
+    "prelude": "/assets/prelude.b8b73ede56e9.js",
+    "data": "/assets/data.1809ee2e2be1.js",
+    "guidance": "/assets/guidance.2e7766dedee5.js",
+    "app": "/assets/app.16e7b163a6eb.js",
+    "master": "/assets/enhancements.339de1defd28.js",
+    "account": "/assets/crown-account.b533b416f01a.js",
+    "shell": "/assets/hca-shell.c34a387c703b.js",
+    "integration": "/assets/integration.3ec7eaa0d3cc.js",
+    "css": "/assets/app.47ebe3f223b1.css",
+    "library": "/assets/library.9716061492e6.js",
+    "libraryCss": "/assets/library.f978634baddc.css",
+    "dossiers": "/assets/dossiers.48bc715141ef.js"
+  }
+}
