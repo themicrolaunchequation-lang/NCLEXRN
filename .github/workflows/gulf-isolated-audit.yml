@@ -70,6 +70,19 @@ jobs:
         run: |
           set -o pipefail
           npm test --prefix apps/gulf 2>&1 | tee apps/gulf/reports/ci/gulf-npm-test.txt
+      - name: Build isolated Gulf Cloudflare Pages dist
+        id: gulf_build
+        continue-on-error: true
+        run: |
+          npm run build --prefix apps/gulf
+      - name: Attach self-contained preview package
+        if: steps.gulf_build.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: gulf-pages-dist
+          path: apps/gulf/dist/
+          include-hidden-files: true
+          if-no-files-found: error
       - name: Generate verified review queues
         id: inventory
         continue-on-error: true
@@ -93,6 +106,7 @@ jobs:
             echo "- SNLE npm test: $SNLE_OUTCOME"
             echo "- Gulf npm test: $GULF_OUTCOME"
             echo "- Full source archive review inventory: $INVENTORY_OUTCOME"
+            echo "- Gulf Cloudflare Pages dist build: $GULF_BUILD_OUTCOME"
             echo "- Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             echo "- Tests and review queue generation ran in the GitHub-hosted ubuntu-latest runner."
             echo "- No publishing, domains, secrets, or original application files were touched."
@@ -119,3 +133,4 @@ jobs:
           test "$SNLE_OUTCOME" = "success"
           test "$GULF_OUTCOME" = "success"
           test "$INVENTORY_OUTCOME" = "success"
+          test "$GULF_BUILD_OUTCOME" = "success"
