@@ -1,0 +1,97 @@
+name: Gulf isolated audit and test evidence
+on:
+  push:
+    branches: [codex/gulf-nursing-exams-two-phases]
+    paths:
+      - '.github/workflows/gulf-isolated-audit.yml'
+      - 'apps/gulf/scripts/**'
+      - 'apps/gulf/tests/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Report exact source commit
+        run: |
+          echo "GULF_HEAD=$(git rev-parse HEAD)"
+          echo "SNLE_BASE=$(git merge-base HEAD origin/codex/snle-clinical-studio-integration)"
+          echo "SNLE_HEAD=$(git rev-parse origin/codex/snle-clinical-studio-integration)"
+          git diff --name-only origin/codex/snle-clinical-studio-integration..HEAD
+      - name: Install and build SNLE
+        run: |
+          npm ci --prefix apps/snle --include=dev
+          npm run build --prefix apps/snle
+      - name: Install browser runtime for SNLE tests
+        run: |
+          cd apps/snle
+          npx playwright install --with-deps chromium
+      - name: Run SNLE npm test in isolated runner
+        id: snle
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p apps/gulf/reports/ci
+          npm test --prefix apps/snle 2>&1 | tee apps/gulf/reports/ci/snle-npm-test.txt
+      - name: Run Gulf npm test in isolated runner
+        id: gulf
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm test --prefix apps/gulf 2>&1 | tee apps/gulf/reports/ci/gulf-npm-test.txt
+      - name: Generate verified review queues
+        id: inventory
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          node apps/gulf/scripts/build-crosswalk.mjs 2>&1 | tee apps/gulf/reports/ci/inventory-output.txt
+      - name: Record exact results and preserve generated evidence
+        if: always()
+        shell: bash
+        env:
+          SNLE_OUTCOME: ${{ steps.snle.outcome }}
+          GULF_OUTCOME: ${{ steps.gulf.outcome }}
+          INVENTORY_OUTCOME: ${{ steps.inventory.outcome }}
+        run: |
+          mkdir -p apps/gulf/reports/ci
+          {
+            echo "# GitHub Actions isolated audit results"
+            echo
+            echo "- Source HEAD before report commit: $(git rev-parse HEAD)"
+            echo "- SNLE npm test: $SNLE_OUTCOME"
+            echo "- Gulf npm test: $GULF_OUTCOME"
+            echo "- Full source archive review inventory: $INVENTORY_OUTCOME"
+            echo "- Workflow: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo "- Tests and review queue generation ran in the GitHub-hosted ubuntu-latest runner."
+            echo "- No publishing, domains, secrets, or original application files were touched."
+          } > apps/gulf/reports/ci/test-results.md
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/gulf/reports/ci apps/gulf/reports/generated
+          if ! git diff --cached --quiet; then
+            git commit -m 'test(gulf): commit isolated npm evidence and full review queues [skip ci]'
+            git push origin HEAD:codex/gulf-nursing-exams-two-phases
+          fi
+      - name: Fail if any test or generation failed
+        if: always()
+        shell: bash
+        env:
+          SNLE_OUTCOME: ${{ steps.snle.outcome }}
+          GULF_OUTCOME: ${{ steps.gulf.outcome }}
+          INVENTORY_OUTCOME: ${{ steps.inventory.outcome }}
+        run: |
+          test "$SNLE_OUTCOME" = "success"
+          test "$GULF_OUTCOME" = "success"
+          test "$INVENTORY_OUTCOME" = "success"
