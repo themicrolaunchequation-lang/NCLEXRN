@@ -43,7 +43,7 @@ jobs:
             -keyout /tmp/gulf-snle-ci-tls/k.pem \
             -out /tmp/gulf-snle-ci-tls/c.pem \
             -subj "/CN=snle.healthcarecrownacademy.co.uk"
-          PORT=8450 SNLE_CERT_DIR="$PWD//tmp/gulf-snle-ci-tls" \
+          PORT=8450 SNLE_CERT_DIR="/tmp/gulf-snle-ci-tls" \
             node apps/snle/scripts/serve.mjs > /tmp/gulf-snle-preview-server.log 2>&1 &
           echo $! > /tmp/gulf-snle-preview-server.pid
           for i in {1..30}; do
