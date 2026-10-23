@@ -27,11 +27,11 @@ export const PROFILES = Object.freeze({
  },
  abudhabi:{
   id:'abudhabi',country:'United Arab Emirates',region:'Abu Dhabi',name:'DOH Registered Nurse',fullName:'Abu Dhabi Department of Health Registered Nurse',regulator:'Department of Health – Abu Dhabi (DOH)',accent:'#526b96',stage:'Third Gulf edition',verification:'EXAM_SPEC_PENDING',publishable:false,
-  questions:null,minutes:null,blocks:null,breakMinutes:null,pass:'Not verified',passingType:'unverified',
-  formatNote:'The UAE unified PQR informs professional eligibility, not the exact DOH test timing, passing rules or nursing examination weights.',
+  questions:150,minutes:180,blocks:null,breakMinutes:null,pass:'Not verified',passingType:'unverified',
+  formatNote:'A 2024 official DOH nursing licensing circular identifies Registered Nurse CBT as 150 MCQs over 3 hours. Domain weights and pass mark remain unverified; UAE PQR is a qualifications framework, not an exam blueprint.',
   domains:[{key:'fundamentals',label:'Nursing Fundamentals',count:null},{key:'adult',label:'Adult Nursing',count:null},{key:'maternal',label:'Maternal–Child Nursing',count:null},{key:'management',label:'Management and Professional Practice',count:null}],
-  sources:[{label:'DOH professional qualification requirements',url:'https://www.doh.gov.ae/en/pqr'},{label:'UAE common PQR guidance',url:'https://mohap.gov.ae/en/w/evaluation-of-health-professional'}],
-  warning:'Regulator-specific RN blueprint, exam mode and scoring are unverified. Do not create an official-format simulation.'
+  sources:[{label:'DOH 2024 Nursing Licensing Circular (RN CBT)',url:'https://www.doh.gov.ae/-/media/Feature/Resources/Circulars/2024/151--2024.ashx'},{label:'DOH professional qualification requirements',url:'https://www.doh.gov.ae/en/pqr'},{label:'UAE common PQR guidance',url:'https://mohap.gov.ae/en/w/evaluation-of-health-professional'}],
+  warning:'RN CBT count/time documented in a DOH 2024 circular. RN topic weightings and passing standard remain unconfirmed: no official-format mock is enabled.'
  }
 });
 export const ORDER=['snle','qatar','dubai','abudhabi'];
