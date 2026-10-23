@@ -97,6 +97,7 @@ jobs:
           SNLE_OUTCOME: ${{ steps.snle.outcome }}
           GULF_OUTCOME: ${{ steps.gulf.outcome }}
           INVENTORY_OUTCOME: ${{ steps.inventory.outcome }}
+          GULF_BUILD_OUTCOME: ${{ steps.gulf_build.outcome }}
         run: |
           mkdir -p apps/gulf/reports/ci
           {
@@ -129,6 +130,7 @@ jobs:
           SNLE_OUTCOME: ${{ steps.snle.outcome }}
           GULF_OUTCOME: ${{ steps.gulf.outcome }}
           INVENTORY_OUTCOME: ${{ steps.inventory.outcome }}
+          GULF_BUILD_OUTCOME: ${{ steps.gulf_build.outcome }}
         run: |
           test "$SNLE_OUTCOME" = "success"
           test "$GULF_OUTCOME" = "success"
