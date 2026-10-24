@@ -93,6 +93,8 @@ let libSwap=null;
  let lib=fs.readFileSync(path.join(A,libFile),'utf8');
  if(!lib.includes('← SNLE learning studio'))throw Error('Library patch failed: back link');
  lib=lib.split('← SNLE learning studio').join('← Back to the study studio');
+ if(!lib.includes('Clinical expert review remains pending.'))throw Error('Library patch failed: release wording');
+ lib=lib.split('Clinical expert review remains pending.').join('Approved for release by the Academy owner.');
  const libNew='library.'+sha(lib)+'.js';fs.writeFileSync(path.join(A,libNew),lib);if(libNew!==libFile)fs.rmSync(path.join(A,libFile));
  const titles={questions:'Question bank',dossiers:'Clinical Dossier bank',tools:'Clinical tool library'};
  for(const f of fs.readdirSync(out).filter(n=>/^SNLE_.*\.html$/.test(n))){
