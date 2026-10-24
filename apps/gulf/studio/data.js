@@ -42,3 +42,43 @@
  }
 
 })();
+
+/* Library pages: "One at a time" study view with keyboard navigation (list view kept as an option). */
+(function(){
+ if(typeof document==='undefined')return;var body=document.body;if(!body||!body.dataset.library||body.dataset.library==='tools')return;
+ var KEY='gulf-lib-view',mode='one',idx=0,bar,go=null;
+ try{mode=localStorage.getItem(KEY)==='list'?'list':'one'}catch(e){}
+ var $=function(s){return document.querySelector(s)},noun=body.dataset.library==='dossiers'?'Case':'Question';
+ function cards(){var it=$('#items');return it?[].slice.call(it.querySelectorAll(':scope>article')):[]}
+ function build(){
+  var it=$('#items');if(!it||bar)return;
+  bar=document.createElement('div');bar.className='gulf-studybar';
+  bar.innerHTML='<div class="gulf-seg" role="group" aria-label="View"><button type="button" data-v="one">One at a time</button><button type="button" data-v="list">List</button></div><span class="gulf-pos" aria-live="polite"></span><div class="gulf-nav"><button type="button" data-step="-1" aria-label="Previous '+noun.toLowerCase()+'">← Previous</button><button type="button" data-step="1" aria-label="Next '+noun.toLowerCase()+'">Next →</button></div><span class="gulf-libkeys"><kbd>←</kbd> <kbd>→</kbd> move · <kbd>Space</kbd> reveal answer</span>';
+  bar.querySelectorAll('[data-v]').forEach(function(b){b.onclick=function(){mode=b.dataset.v;try{localStorage.setItem(KEY,mode)}catch(e){}apply(true)}});
+  bar.querySelectorAll('[data-step]').forEach(function(b){b.onclick=function(){step(+b.dataset.step)}});
+  it.before(bar);
+ }
+ function pageInfo(){var t=($('#position')||{}).textContent||'';var m=t.match(/(\d+)\s+of\s+(\d+)/);return m?[+m[1],+m[2]]:[1,1]}
+ function apply(scroll){
+  build();var cs=cards();body.classList.toggle('gulf-one',mode==='one');
+  if(!bar)return;bar.querySelectorAll('[data-v]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===mode)});
+  if(idx>=cs.length)idx=Math.max(0,cs.length-1);
+  cs.forEach(function(a,i){a.classList.toggle('gulf-cur',i===idx)});
+  var pi=pageInfo(),n=((pi[0]-1)*20)+idx+1,total=(($('#count')||{}).textContent||'').match(/(\d+)\s+of/);
+  bar.querySelector('.gulf-pos').textContent=mode==='one'&&cs.length?noun+' '+n+' of '+(total?total[1]:cs.length):'';
+  var prev=bar.querySelector('[data-step="-1"]'),next=bar.querySelector('[data-step="1"]');
+  prev.disabled=idx===0&&pi[0]===1;next.disabled=idx===cs.length-1&&pi[0]===pi[1];
+  if(scroll&&mode==='one')bar.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+ }
+ function step(d){
+  var cs=cards(),j=idx+d;
+  if(j>=0&&j<cs.length){idx=j;apply(true);return}
+  var b=$(d>0?'#next':'#previous');if(b&&!b.disabled){go=d>0?'first':'last';b.click()}
+ }
+ new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)}))return;var cs=cards();if(!cs.length)return;if(go){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
+ addEventListener('keydown',function(e){
+  if(mode!=='one'||e.ctrlKey||e.metaKey||e.altKey)return;var t=e.target;if(t&&/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName))return;if($('dialog[open]'))return;
+  if(e.key==='ArrowRight'||e.key==='j'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'||e.key==='k'){step(-1);e.preventDefault()}
+  else if(e.key===' '&&!(t&&t.closest&&t.closest('button,summary,a'))){var d=cards()[idx];d=d&&d.querySelector('details');if(d){d.open=!d.open;e.preventDefault()}}
+ });
+})();

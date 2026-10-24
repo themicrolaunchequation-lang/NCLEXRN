@@ -257,3 +257,28 @@ body[data-library] button:focus-visible,body[data-library] summary:focus-visible
 body[data-library] .pager{margin:20px 0;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-variant-numeric:tabular-nums}
 body[data-library] .pager #next{background:var(--ac);color:#fff}
 @media (max-width:600px){body[data-library] header{padding:22px 18px 18px}body[data-library] .filters{margin-top:0;padding:14px}body[data-library] #selects{display:grid;grid-template-columns:1fr 1fr;gap:10px}body[data-library] #selects label{min-width:0}body[data-library] article{padding:16px 16px 14px 20px}}
+/* Library: wider canvas, bigger reading type, one-at-a-time study view */
+body[data-library] main{max-width:min(1560px,100%);padding-inline:max(16px,2.5vw)}
+body[data-library] article h2{font-size:clamp(1.2rem,1rem + .6vw,1.5rem);line-height:1.45}
+body[data-library] article li{font-size:clamp(1.02rem,.95rem + .3vw,1.18rem);line-height:1.55}
+body[data-library] article p,body[data-library] details{font-size:clamp(1rem,.95rem + .2vw,1.1rem)}
+.gulf-studybar{position:sticky;top:0;z-index:6;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:0 0 14px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,#fff 92%,transparent);backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(20,30,45,.06)}
+.gulf-seg{display:flex;padding:3px;border-radius:999px;background:var(--ac-soft)}
+body[data-library] .gulf-seg button{min-height:36px;padding:4px 14px;border:0;background:transparent;color:var(--ac-ink)}
+body[data-library] .gulf-seg button[aria-pressed="true"]{background:var(--ac);color:#fff}
+.gulf-pos{font:600 .95rem var(--hs-sans);color:#14243a;font-variant-numeric:tabular-nums}
+.gulf-nav{display:flex;gap:8px;margin-left:auto}
+body[data-library] .gulf-nav button[data-step="1"]{background:var(--ac);color:#fff}
+body[data-library] .gulf-nav button:disabled{opacity:.4}
+.gulf-libkeys{flex-basis:100%;font-size:.78rem;color:#5b6576}
+.gulf-libkeys kbd{font:500 .74rem/1 var(--font-mono);padding:2px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff}
+body:not(.gulf-one) .gulf-nav,body:not(.gulf-one) .gulf-libkeys{display:none}
+@media (hover:none),(max-width:760px){.gulf-libkeys{display:none}}
+body.gulf-one #items>article{display:none}
+body.gulf-one #items>article.gulf-cur{display:block;min-height:calc(100dvh - 120px);padding:clamp(22px,3vw,40px) clamp(22px,4vw,56px);animation:gulf-rise .25s ease-out both}
+body.gulf-one #items>article.gulf-cur h2{font-size:clamp(1.35rem,1.05rem + 1vw,1.85rem);margin-bottom:18px}
+body.gulf-one #items>article.gulf-cur li{margin:10px 0;padding:10px 14px 10px 6px;border-radius:10px}
+body.gulf-one #items>article.gulf-cur li:hover{background:var(--ac-soft)}
+body.gulf-one #items>article.gulf-cur summary{font-size:1.05rem}
+@media (max-width:760px){.gulf-studybar{gap:8px}.gulf-nav{margin-left:0;flex:1}.gulf-nav button{flex:1}body.gulf-one #items>article.gulf-cur{min-height:0}}
+@media (prefers-reduced-motion:reduce){body.gulf-one #items>article.gulf-cur{animation:none}}
