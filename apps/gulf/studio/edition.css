@@ -500,3 +500,6 @@ body.gulf-slide-on{overflow:hidden}
  .gulf-toprow .gulf-plan .gulf-plan-acts{margin-top:4px}
  :root[data-edition] .decision-pulse-card .pulse-header{margin-bottom:0!important}
 }
+.gs-home{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:var(--ac-hl);color:var(--side-a,#14243a);font:700 .88rem var(--hs-sans);text-decoration:none;white-space:nowrap}
+.gs-home:hover{filter:brightness(1.08)}
+.gs-home:focus-visible{outline:2px solid #fff;outline-offset:2px}
