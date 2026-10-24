@@ -26,3 +26,8 @@
 - Regulator enquiries: the owner chose not to send them. The app therefore states exam details as "from regulator publications read 23 October 2026; confirm with your regulator before you book". Disputed points (Qatar duration and attempts, DHA/DOH details) say "not confirmed in writing". No regulator reply is claimed anywhere.
 - Clinical sign-off: the owner declared the material approved for release. No named reviewer's credentials or per-question verdicts are on file, so the app says "approved for release by the Academy owner" and does not claim independent clinical review.
 - The assessment engine still refuses an official-style full mock (no per-item approval records, DHA/DOH weights unpublished). That is intended; do not bypass it by forging approval records.
+
+## Gulf studio (24 Oct 2026)
+- The Gulf site root is now the full study studio (built from apps/snle) with an edition switch (Qatar, Dubai, Abu Dhabi), per-edition colour palettes, per-edition progress (storage prefix `snle-<edition>.`), and neutral wording for Saudi-specific terms. The exam comparison and planner moved to `/hub/`.
+- Build: `npm run build` in apps/gulf runs the SNLE build, copies it, and layers `studio/*` on top. Nothing in apps/snle is changed.
+- All editions share one question bank (1,350) for now; blueprint-specific mocks stay locked (see engine).

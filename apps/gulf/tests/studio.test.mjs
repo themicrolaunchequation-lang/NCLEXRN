@@ -1,0 +1,27 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+test('edition data layer neutralises Saudi-specific wording and keeps ids',()=>{
+ const win={GULF_EDITION:'qatar',SNLE_QUESTIONS:[{id:'Q1',stem:'A nurse in Saudi Arabia follows SCFHS rules for SNLE practice.'}],SNLE_POSTERS:[],SNLE_LEARNING:{glossary:[{term:'Saudi scope'}]}};
+ vm.runInNewContext(fs.readFileSync(path.join(ROOT,'studio/data.js'),'utf8'),{window:win,Object});
+ assert.equal(win.SNLE_QUESTIONS[0].id,'Q1');
+ assert.equal(win.SNLE_QUESTIONS[0].stem,'A nurse in your country follows regulator rules for licensing exam practice.');
+ assert.equal(win.SNLE_LEARNING.glossary[0].term,'local scope');
+});
+test('studio build output contains edition layers, hub and per-edition palettes',()=>{
+ execFileSync(process.execPath,[path.join(ROOT,'scripts/build.mjs')],{cwd:ROOT,stdio:'ignore'});
+ const html=fs.readFileSync(path.join(ROOT,'dist/index.html'),'utf8');
+ for(const k of ['gulf-pre','gulf-cfg','gulf-data','gulf-ui','gulf-css'])assert(html.includes('/assets/'+k+'.'),k);
+ assert(html.indexOf('/assets/gulf-pre.')<html.indexOf('/assets/data.')&&html.indexOf('/assets/gulf-data.')<html.indexOf('/assets/app.')&&html.indexOf('/assets/gulf-data.')>html.indexOf('/assets/data.'),'edition scripts run before data and app');
+ assert(fs.existsSync(path.join(ROOT,'dist/hub/index.html')));
+ const css=fs.readdirSync(path.join(ROOT,'dist/assets')).find(f=>/^gulf-css/.test(f));
+ const c=fs.readFileSync(path.join(ROOT,'dist/assets',css),'utf8');
+ for(const e of ['qatar','dubai','abudhabi'])assert(c.includes('data-edition="'+e+'"'),e);
+ assert(!/script[^>]*>[^<]/.test(html.replace(/<script[^>]*src=[^>]*><\/script>/g,'')),'no inline scripts');
+ assert(fs.readFileSync(path.join(ROOT,'dist/_headers'),'utf8').includes('noindex'));
+});

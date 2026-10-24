@@ -22,7 +22,8 @@ function sources(profile){
 }
 function overview(profile){
  const result=assertBlueprint(profile);
- return '<h4>What is verified — and what still needs review</h4><p>'+esc(profile.formatNote)+'</p>'+
+ const open=profile.id==='snle'?'https://snle.healthcarecrownacademy.co.uk/':'/?edition='+encodeURIComponent(profile.id)+'#home';
+ return '<p><a class="button-primary" href="'+esc(open)+'">Open the '+esc(profile.name)+' study studio <span aria-hidden="true">→</span></a></p>'+'<h4>What is verified — and what still needs review</h4><p>'+esc(profile.formatNote)+'</p>'+
  '<div class="info-callout"><strong>Clinical and regulatory hold:</strong> '+esc(profile.warning)+'</div>'+
  '<p><strong>Retakes:</strong> '+esc(RETAKE_NOTES[profile.id]||'Pending regulator confirmation.')+'</p>'+(TIMING_NOTES[profile.id]?'<p><strong>Timing:</strong> '+esc(TIMING_NOTES[profile.id])+'</p>':'')+
  '<p><strong>Content:</strong> '+esc(CONTENT_POLICY)+'</p>'+
