@@ -79,7 +79,7 @@
   v.className='gulf-verdict '+(ok?'is-ok':'is-no');
   v.innerHTML='<span>'+(ok?'Correct. '+L+' is the safest choice.':'Not quite. You chose '+L+'; the answer is '+a.dataset.right+'. Read why below.')+'</span><button type="button" class="gulf-again">Try again</button>';
   var d=a.querySelector('details');if(d)d.open=true;
-  if(!quiet){st.done[qid(a)]={p:L,ok:ok};save();score()}
+  if(!quiet){st.done[qid(a)]={p:L,ok:ok};save();score();if(window.GULF_LIB&&window.GULF_LIB.onChange)window.GULF_LIB.onChange()}
  }
  function unmark(a){delete a.dataset.picked;delete st.done[qid(a)];save();
   [].slice.call(a.querySelectorAll('ol>li')).forEach(function(li){li.classList.remove('gulf-right','gulf-wrong');li.removeAttribute('aria-disabled')});
@@ -98,7 +98,7 @@
   bar=document.createElement('div');bar.className='gulf-studybar';
   bar.innerHTML='<div class="gulf-seg" role="group" aria-label="View"><button type="button" data-v="one">One at a time</button><button type="button" data-v="list">List</button></div>'+
    '<div class="gulf-seg" role="group" aria-label="Show"><button type="button" data-r="all">All</button><button type="button" data-r="miss">Missed (0)</button><button type="button" data-r="star">Starred (0)</button></div>'+
-   '<button type="button" class="gulf-ftoggle" aria-expanded="false">Filters</button>'+
+   '<button type="button" class="gulf-ftoggle" aria-expanded="false">Filters</button><button type="button" class="gulf-slidebtn">▶ Slide view</button>'+
    '<div class="gulf-nav"><button type="button" data-step="-1" aria-label="Previous '+noun.toLowerCase()+'">← Previous</button><button type="button" data-step="1" aria-label="Next '+noun.toLowerCase()+'">Next →</button></div>'+
    '<div class="gulf-track" aria-hidden="true"><i></i></div>'+
    '<span class="gulf-pos" aria-live="polite"></span><span class="gulf-score"></span><span class="gulf-clearbox"><button type="button" class="gulf-clear" hidden>Clear my record</button></span>'+
@@ -135,16 +135,21 @@
   var prev=bar.querySelector('[data-step="-1"]'),next=bar.querySelector('[data-step="1"]');
   prev.disabled=idx===0&&pi[0]===1;next.disabled=!cs.length||(idx===cs.length-1&&pi[0]===pi[1]);
   var empty=$('#items>p'),msg=review==='miss'?'No missed '+noun.toLowerCase()+'s. Answer some questions, and any you get wrong will collect here.':'No starred '+noun.toLowerCase()+'s yet. Tap ☆ on any '+noun.toLowerCase()+' to save it here.';if(empty&&!cs.length&&review!=='all'&&empty.textContent!==msg)empty.textContent=msg;
-  score();
-  if(scroll&&mode==='one')bar.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'});
+  score();if(window.GULF_LIB&&window.GULF_LIB.onChange)window.GULF_LIB.onChange();
+  if(scroll&&mode==='one'&&!body.classList.contains('gulf-slide-on'))bar.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'});
  }
  function step(d){
   var cs=cards(),j=idx+d;
   if(j>=0&&j<cs.length){idx=j;apply(true);return}
   var b=$(d>0?'#next':'#previous');if(b&&!b.disabled){go=d>0?'first':'last';b.click()}
  }
- new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)||m.target.closest&&m.target.closest('article')}))return;var cs=cards();if(go&&cs.length){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs.length||!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
+ new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)||m.target.closest&&m.target.closest('article,.gulf-slide')}))return;var cs=cards();if(go&&cs.length){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs.length||!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
+ window.GULF_LIB={cards:cards,qid:qid,index:function(){return idx},step:step,mark:mark,unmark:unmark,state:function(){return st},save:save,score:score,paintStar:paintStar,pageInfo:pageInfo,noun:noun,lib:lib,edition:ed,apply:apply,
+  total:function(){var tm=(($('#count')||{}).textContent||'').match(/(\d+)\s+of/);return tm?+tm[1]:cards().length},
+  go:function(i){var cs=cards();if(i>=0&&i<cs.length){idx=i;apply(false)}},
+  onChange:null};
  addEventListener('keydown',function(e){
+  if(body.classList.contains('gulf-slide-on'))return;
   if(mode!=='one'||e.ctrlKey||e.metaKey||e.altKey)return;var t=e.target;if(t&&/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName))return;if($('dialog[open]'))return;
   var a=cards()[idx],k=e.key.toLowerCase();
   if(e.key==='ArrowRight'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'){step(-1);e.preventDefault()}

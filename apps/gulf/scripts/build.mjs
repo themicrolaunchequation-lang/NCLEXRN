@@ -49,6 +49,7 @@ const files={
  data:fs.readFileSync(path.join(root,'studio/data.js'),'utf8'),
  cfg:'window.GULF_CONFIG='+JSON.stringify(cfg)+';',
  ui:fs.readFileSync(path.join(root,'studio/ui.js'),'utf8'),
+ slides:fs.readFileSync(path.join(root,'studio/slides.js'),'utf8'),
  css:fs.readFileSync(path.join(root,'studio/edition.css'),'utf8')
 };
 // self-hosted fonts (SIL OFL; the CSP blocks font services)
@@ -56,7 +57,7 @@ const fontSrc=path.join(root,'studio/fonts'),fontNames=fs.readdirSync(fontSrc).f
 fs.mkdirSync(path.join(out,'assets/fonts'),{recursive:true});
 for(const f of fs.readdirSync(fontSrc))fs.copyFileSync(path.join(fontSrc,f),path.join(out,'assets/fonts',f));
 const urls={};
-for(const [k,ext] of [['pre','js'],['data','js'],['cfg','js'],['ui','js'],['css','css']]){
+for(const [k,ext] of [['pre','js'],['data','js'],['cfg','js'],['ui','js'],['slides','js'],['css','css']]){
  const name='/assets/gulf-'+k+'.'+sha(files[k])+'.'+ext;urls[k]=name;
  fs.writeFileSync(path.join(out,name.slice(1)),files[k]);
 }
@@ -104,9 +105,11 @@ let libSwap=null;
   const fp=path.join(out,f);let h=fs.readFileSync(fp,'utf8');const mode=(h.match(/data-library="([a-z]+)"/)||[])[1];if(!mode)continue;
   const dataTag=(h.match(/<script defer src="\/assets\/(?:data|dossiers)\.[a-f0-9]+\.js"><\/script>/)||[])[0];if(!dataTag)throw Error('Library page data script missing: '+f);
   const pre='<script defer src="'+urls.pre+'"></script>',layer='<script defer src="'+urls.cfg+'"></script><script defer src="'+urls.data+'"></script>';
+  const slides='<script defer src="'+urls.slides+'"></script>';
   // dossiers: the wording layer must be in place before the dossier file assigns its data; others: after the shared data
   h=h.replace(dataTag,mode==='dossiers'?pre+layer+dataTag:pre+dataTag+layer)
    .split('/assets/'+libFile).join('/assets/'+libNew)
+   .replace('<script defer src="/assets/'+libNew+'"></script>','<script defer src="/assets/'+libNew+'"></script>'+slides)
    .replace('</head>','<link rel="stylesheet" href="'+urls.css+'"><meta name="robots" content="noindex,nofollow"></head>')
    .replace(/<title>[^<]*<\/title>/,'<title>'+titles[mode]+' | Gulf Region Exams</title>').replace('Return to SNLE','Return to the study studio');
   fs.writeFileSync(fp,h);
