@@ -1,36 +1,97 @@
-/* Edition colour variations: override the shared palette per edition. */
-:root[data-edition="qatar"]{--primary:#8a2f4b;--snle-green:#6e2339;--snle-aqua:#e3b3c2;--snle-mint:#f7e9ee;--teal:#8a2f4b;--teal-soft:#f7e9ee;--ring:#8a2f4b;--green:#6e2339;--aqua:#e3b3c2;--mint:#f7e9ee;--paper-deep:#f6ecef;--line:#e5cdd5;--hs-jewel:#8a2f4b;--hs-jewel-ink:#6e2339;--hs-jewel-dk:#e8a6b9;--ac:#8a2f4b}
-:root[data-edition="dubai"]{--primary:#a96b1d;--snle-green:#85520f;--snle-aqua:#ebcd9a;--snle-mint:#fbf1e1;--teal:#a96b1d;--teal-soft:#fbf1e1;--ring:#a96b1d;--green:#85520f;--aqua:#ebcd9a;--mint:#fbf1e1;--paper-deep:#f8f0e2;--line:#ead9bd;--hs-jewel:#a96b1d;--hs-jewel-ink:#85520f;--hs-jewel-dk:#efc57d;--ac:#a96b1d}
-:root[data-edition="abudhabi"]{--primary:#3f5f8f;--snle-green:#2f4a73;--snle-aqua:#b4c6e0;--snle-mint:#e8eef7;--teal:#3f5f8f;--teal-soft:#e8eef7;--ring:#3f5f8f;--green:#2f4a73;--aqua:#b4c6e0;--mint:#e8eef7;--paper-deep:#e8eef6;--line:#cad6e6;--hs-jewel:#3f5f8f;--hs-jewel-ink:#2f4a73;--hs-jewel-dk:#a8c0e6;--ac:#3f5f8f}
-.gulf-switch{display:flex;gap:6px;margin:10px 16px 6px;padding:4px;border-radius:12px;background:rgba(255,255,255,.07)}
-.gulf-switch button{flex:1;min-height:44px;border:0;border-radius:9px;background:transparent;color:#d9e3ee;font:600 12px/1.2 system-ui,sans-serif;cursor:pointer;padding:6px 4px}
+/* Edition identities. Each edition has: --ac (fills; white text passes WCAG AA), --ac-ink (text on light), --ac-soft (tints), --ac-hl (decoration only, never text). */
+:root[data-edition="qatar"]{--ac:#8a1538;--ac-ink:#5e0e26;--ac-soft:#f7ebef;--ac-hl:#c9a96e;--primary:#8a1538;--snle-green:#5e0e26;--snle-aqua:#e3b3c2;--snle-mint:#f7ebef;--teal:#8a1538;--teal-soft:#f7ebef;--ring:#8a1538;--green:#5e0e26;--aqua:#e3b3c2;--mint:#f7ebef;--paper-deep:#f6ecef;--line:#e8d3da;--hs-jewel:#8a1538;--hs-jewel-ink:#5e0e26;--hs-jewel-dk:#e8a6b9}
+:root[data-edition="dubai"]{--ac:#9a6514;--ac-ink:#6b430a;--ac-soft:#fbf3e4;--ac-hl:#d9a441;--primary:#9a6514;--snle-green:#6b430a;--snle-aqua:#ebcd9a;--snle-mint:#fbf3e4;--teal:#9a6514;--teal-soft:#fbf3e4;--ring:#9a6514;--green:#6b430a;--aqua:#ebcd9a;--mint:#fbf3e4;--paper-deep:#f8f0e2;--line:#ecdcc0;--hs-jewel:#9a6514;--hs-jewel-ink:#6b430a;--hs-jewel-dk:#efc57d}
+:root[data-edition="abudhabi"]{--ac:#1f5f8b;--ac-ink:#164666;--ac-soft:#e7f0f7;--ac-hl:#c8b48a;--primary:#1f5f8b;--snle-green:#164666;--snle-aqua:#b4cde0;--snle-mint:#e7f0f7;--teal:#1f5f8b;--teal-soft:#e7f0f7;--ring:#1f5f8b;--green:#164666;--aqua:#b4cde0;--mint:#e7f0f7;--paper-deep:#e9f0f6;--line:#cbd9e6;--hs-jewel:#1f5f8b;--hs-jewel-ink:#164666;--hs-jewel-dk:#a8c6e6}
+[data-ed="qatar"]{--ac:#8a1538;--ac-ink:#5e0e26;--ac-soft:#f7ebef;--ac-hl:#c9a96e}
+[data-ed="dubai"]{--ac:#9a6514;--ac-ink:#6b430a;--ac-soft:#fbf3e4;--ac-hl:#d9a441}
+[data-ed="abudhabi"]{--ac:#1f5f8b;--ac-ink:#164666;--ac-soft:#e7f0f7;--ac-hl:#c8b48a}
+
+/* Motifs: one quiet pattern per edition, used only on identity surfaces (chooser cards, exam pass, guide hero), never on question screens.
+   Qatar: serrated edge (from the flag). Dubai: dune arcs. Abu Dhabi: lattice (mashrabiya). */
+.gulf-motif{display:block;position:absolute;left:0;right:0;top:0;height:10px;pointer-events:none}
+[data-edition="qatar"] .gulf-motif,.gulf-pick[data-ed="qatar"] .gulf-motif{background:conic-gradient(from 135deg at 50% 0,var(--ac) 90deg,transparent 0) 0 0/14px 10px repeat-x}
+[data-edition="dubai"] .gulf-motif,.gulf-pick[data-ed="dubai"] .gulf-motif{height:12px;background:linear-gradient(var(--ac),var(--ac)) 0 0/100% 3px no-repeat,radial-gradient(circle at 50% 100%,transparent 8px,var(--ac-hl) 9px 10.5px,transparent 11.5px) 0 2px/24px 10px repeat-x}
+[data-edition="abudhabi"] .gulf-motif,.gulf-pick[data-ed="abudhabi"] .gulf-motif{height:12px;background:repeating-linear-gradient(45deg,var(--ac) 0 1.5px,transparent 1.5px 8px),repeating-linear-gradient(-45deg,var(--ac) 0 1.5px,transparent 1.5px 8px);opacity:.75}
+
+/* The colour switch is replaced by edition palettes. */
+:root[data-edition] [data-color-mode]{display:none!important}
+
+/* Sidebar edition switch */
+.gulf-switch{display:flex;gap:4px;margin:10px 16px 6px;padding:4px;border-radius:12px;background:rgba(255,255,255,.07)}
+.gulf-switch button{flex:1;min-height:44px;border:0;border-radius:9px;background:transparent;color:#d9e3ee;font:600 12px/1.2 system-ui,sans-serif;cursor:pointer;padding:6px 4px;position:relative}
+.gulf-switch button::before{content:"";display:block;width:8px;height:8px;margin:0 auto 3px;border-radius:50%;background:var(--ac-hl)}
 .gulf-switch button[aria-pressed="true"]{background:var(--ac);color:#fff}
+.gulf-switch button:hover:not([aria-pressed="true"]){background:rgba(255,255,255,.1)}
 .gulf-switch button:focus-visible{outline:2px solid #D4A445;outline-offset:2px}
-.gulf-facts{margin:0 0 20px;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid var(--line,#e5e0d4);border-left:6px solid var(--ac,#356fb5)}
-.gulf-facts-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.gulf-facts-head h2{margin:0;font-size:1.15rem;flex:1}
-.gulf-facts-head a{color:var(--ac,#356fb5);font-weight:600}
-.gulf-dot{width:12px;height:12px;border-radius:50%;background:var(--ac,#356fb5)}
-.gulf-facts-list{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 8px;padding:0;list-style:none}
-.gulf-facts-list li{font-weight:600}
-.gulf-facts-note{margin:6px 0 0;font-size:.85rem;opacity:.85}
-#gulf-chooser{max-width:760px;width:calc(100% - 32px);border:0;border-radius:20px;padding:28px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
-#gulf-chooser::backdrop{background:rgba(11,26,43,.7)}
-.gulf-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0}
-.gulf-cards button{text-align:left;border:2px solid var(--ac);border-radius:16px;background:#fff;padding:16px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:44px}
-.gulf-cards button b{color:var(--ac);font-size:1.15rem}
-.gulf-cards button:hover,.gulf-cards button:focus-visible{background:var(--ac);color:#fff}
-.gulf-cards button:hover b,.gulf-cards button:focus-visible b{color:#fff}
-.gulf-note{font-size:.9rem}
+
+/* Exam pass (Today) */
+.gulf-pass{position:relative;overflow:hidden;margin:0 0 20px;padding:24px 22px 16px;border-radius:18px;background:linear-gradient(180deg,var(--ac-soft),#fff 70%);border:1px solid var(--line)}
+.gulf-pass-head{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;justify-content:space-between}
+.gulf-pass-head small{display:block;text-transform:uppercase;letter-spacing:.1em;font:700 .72rem/1.4 system-ui,sans-serif;color:var(--ac-ink)}
+.gulf-pass-head h2{margin:2px 0 0;font-size:1.2rem;line-height:1.3;color:#14243a}
+.gulf-pass-links{display:flex;gap:8px;flex-wrap:wrap}
+.gulf-pass-links a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--ac);color:var(--ac-ink);font-weight:600;text-decoration:none;background:#fff}
+.gulf-pass-links a:first-child{background:var(--ac);color:#fff}
+.gulf-pass-links a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.gulf-pass-note{margin:12px 0 0;font-size:.82rem;color:#4a5668}
+
+/* Fact tiles with a source-status chip (shared by Today and Guide) */
+.gulf-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0 4px}
+.gulf-tile{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid var(--line)}
+.gulf-tile small{text-transform:uppercase;letter-spacing:.08em;font-size:.7rem;font-weight:700;color:var(--ac-ink)}
+.gulf-tile strong{font-size:1.25rem;line-height:1.25;color:#14243a}
+.gulf-tile span{font-size:.8rem;color:#4a5668}
+.gulf-chip{align-self:flex-start;margin-top:6px;padding:2px 8px;border-radius:999px;font:600 .7rem/1.5 system-ui,sans-serif;font-style:normal}
+.gulf-chip.is-ok{background:#e6f4ea;color:#1d5b2e}
+.gulf-chip.is-check{background:#fff4d6;color:#6b4a00;border:1px dashed #c99a1e}
+.gulf-chip.is-none{background:#eef1f5;color:#3d4757}
+.gulf-chip.is-ok::before{content:"✓ "}
+.gulf-chip.is-check::before{content:"! "}
+
+/* Chooser: full-screen welcome so the unbranded shell is never shown behind it */
+:root[data-gulf-choose] .app-shell{visibility:hidden}
+#gulf-chooser{max-width:none;max-height:none;width:100%;height:100%;margin:0;border:0;padding:0;background:radial-gradient(circle at 15% 10%,#1d3557,transparent 45%),#0b1a2b;color:#eef3f8;overflow:auto}
+#gulf-chooser::backdrop{background:#0b1a2b}
+.gulf-chooser-in{max-width:980px;margin:0 auto;padding:clamp(28px,8vh,80px) 20px 40px}
+.gulf-kicker{text-transform:uppercase;letter-spacing:.12em;font:700 .75rem/1.4 system-ui,sans-serif;color:#d4a445}
+#gulf-chooser h1{margin:10px 0 8px;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15;color:#fff}
+#gulf-chooser p{max-width:620px;color:#c9d5e2}
+.gulf-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:28px 0}
+.gulf-pick{position:relative;overflow:hidden;text-align:left;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:#fff;color:#14243a;padding:28px 20px 20px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:44px;transition:transform .15s,box-shadow .15s}
+.gulf-pick small{text-transform:uppercase;letter-spacing:.08em;font-size:.7rem;font-weight:700;color:var(--ac-ink)}
+.gulf-pick b{font-size:1.6rem;color:var(--ac)}
+.gulf-pick em{font-style:normal;font-weight:600;font-size:.9rem;color:#4a5668}
+.gulf-pick i{font-style:normal;margin-top:8px;align-self:flex-start;padding:8px 14px;border-radius:999px;background:var(--ac);color:#fff;font-weight:600;font-size:.9rem}
+.gulf-pick:hover,.gulf-pick:focus-visible{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.35);outline:3px solid var(--ac-hl);outline-offset:2px}
+.gulf-note a{color:#f0d38f}
+@media (prefers-reduced-motion:reduce){.gulf-pick{transition:none}.gulf-pick:hover,.gulf-pick:focus-visible{transform:none}}
 
 .hs-apps-row{flex-wrap:wrap;gap:6px}
 :root[data-edition] .primary-button,:root[data-edition] .hero-cta,:root[data-edition] .btn-primary{background:var(--ac)}
 
-.gulf-guide-alert{margin:16px 0;padding:14px 18px;border-radius:14px;background:#fff7e8;border-left:5px solid var(--ac,#a96b1d)}
-.gulf-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:12px 0 18px}
-.gulf-guide-card{padding:16px;border-radius:14px;background:#fff;border:1px solid var(--line,#e5e0d4);border-top:4px solid var(--ac,#356fb5);display:flex;flex-direction:column;gap:4px}
-.gulf-guide-card small{text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;color:var(--ac)}
-.gulf-guide-card strong{font-size:1.3rem}
-.gulf-guide-table{width:100%;border-collapse:collapse;margin:8px 0 16px}
-.gulf-guide-table th,.gulf-guide-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line,#e5e0d4)}
-.gulf-guide h2{margin:24px 0 8px}
+/* Guide */
+.gulf-hero{position:relative}
+.gulf-guide-alert{margin:16px 0;padding:14px 18px;border-radius:14px;background:#fff8e6;border-left:5px solid #c99a1e}
+.gulf-guide h2{margin:28px 0 8px}
+.gulf-mix{display:flex;height:16px;border-radius:999px;overflow:hidden;margin:14px 0 10px;background:#eef1f5}
+.gulf-mix-seg.s0,.gulf-mix-key .s0{background:var(--ac)}
+.gulf-mix-seg.s1,.gulf-mix-key .s1{background:var(--ac-ink)}
+.gulf-mix-seg.s2,.gulf-mix-key .s2{background:var(--ac-hl)}
+.gulf-mix-seg.s3,.gulf-mix-key .s3{background:#8c97a6}
+.gulf-mix-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;padding:0;list-style:none;font-size:.9rem}
+.gulf-mix-key i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.gulf-steps{padding-left:1.2em}
+.gulf-steps li{margin:6px 0}
+.gulf-sources a{color:var(--ac-ink)}
+.gulf-guide-note{font-size:.85rem;color:#4a5668}
+
+/* Phones: compact pass so lessons stay above the fold */
+@media (max-width:760px){
+ .gulf-pass{padding:20px 14px 12px;border-radius:14px}
+ .gulf-pass-head h2{font-size:1.02rem}
+ .gulf-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .gulf-tile{padding:10px}
+ .gulf-tile strong{font-size:1.05rem}
+ .gulf-tile span{display:none}
+ .gulf-pass-links a{min-height:36px;padding:0 12px;font-size:.85rem}
+}

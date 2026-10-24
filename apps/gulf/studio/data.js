@@ -13,7 +13,7 @@
  if(E){
   function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
   var ds=E.domains||[],ok=ds.length===4&&ds.every(function(d){return typeof d.count==='number'});
-  function wt(i){return ok?ds[i].count+' of '+E.questions+' questions':'Weight not published'}
+  function wt(i){return ok?ds[i].count+' of '+E.questions+' questions':'Studio mix (no published split)'}
   window.GULF_WEIGHTS={f:wt(0),a:wt(1),m:wt(2),l:wt(3)};
   window.GULF_MOCKS=[20,50,100,E.questions];
   var KEYS=['Nursing Fundamentals','Adult Nursing','Maternal-Child Nursing','Nursing Management and Leadership'];
@@ -22,19 +22,22 @@
    window.GULF_BP_TEXT=ds[0].count+' Nursing Fundamentals · '+ds[1].count+' Adult Nursing · '+ds[2].count+' Maternal–Child Nursing · '+ds[3].count+' Management and Leadership.'}
   else{var Qs=window.SNLE_QUESTIONS||[],cnt=KEYS.map(function(k){return Qs.filter(function(q){return q.domain===k}).length}),tot=cnt.reduce(function(a,b){return a+b},0)||1;
    window.GULF_RATIOS=KEYS.map(function(k,i){return[k,cnt[i]/tot]});
-   window.GULF_BP_EYEBROW='PRACTICE SET · WEIGHTS NOT PUBLISHED';
-   window.GULF_BP_TEXT='The regulator has not published domain weights, so practice sets follow this studio\u2019s own question mix across all four domains.'}
+   window.GULF_BP_EYEBROW='PRACTICE SET · BALANCED STUDIO MIX';
+   window.GULF_BP_TEXT=E.regulatorShort+' does not publish how many questions come from each area, so sets are balanced across all four areas using this studio\u2019s own mix.'}
+  var CHIP={ok:'Published',check:'Check at booking',none:'Not published'};
+  window.GULF_UI={tiles:function(e){return '<div class="gulf-tiles">'+e.tiles.map(function(t){return '<div class="gulf-tile is-'+t.s+'"><small>'+esc(t.k)+'</small><strong>'+esc(t.v)+'</strong><span>'+esc(t.n)+'</span><em class="gulf-chip is-'+t.s+'">'+CHIP[t.s]+'</em></div>'}).join('')+'</div>'}};
+  var mix=ok?ds.map(function(d,i){return[d.label,d.count]}):KEYS.map(function(k,i){return[ds[i]?ds[i].label:k,Math.round(window.GULF_RATIOS[i][1]*100)]});
   window.GULF_GUIDE=function(){
-   var card=function(k,v,n){return '<div class="gulf-guide-card"><small>'+esc(k)+'</small><strong>'+esc(v)+'</strong>'+(n?'<span>'+esc(n)+'</span>':'')+'</div>'};
-   var rows=ds.map(function(d){return '<tr><td>'+esc(d.label)+'</td><td>'+(typeof d.count==='number'?esc(d.count+' of '+E.questions+' questions'):'Not published')+'</td></tr>'}).join('');
+      var bar='<div class="gulf-mix" role="img" aria-label="'+esc(mix.map(function(m){return m[0]+' '+m[1]+(ok?' questions':' percent')}).join(', '))+'">'+mix.map(function(m,i){var w=ok?m[1]/E.questions*100:m[1];return '<span class="gulf-mix-seg s'+i+'" style="flex-basis:'+w.toFixed(1)+'%"></span>'}).join('')+'</div>'+
+    '<ul class="gulf-mix-key">'+mix.map(function(m,i){return '<li><i class="s'+i+'"></i>'+esc(m[0])+' <b>'+esc(ok?m[1]+' of '+E.questions:m[1]+'%')+'</b></li>'}).join('')+'</ul>';
    var src=(E.sources||[]).map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.label)+' ↗</a></li>'}).join('');
-   return '<div class="page-content guide-page gulf-guide"><section class="page-hero"><div><span class="eyebrow">'+esc(E.regulator.toUpperCase())+'</span><h1>'+esc(E.short)+' Guide</h1><p>What the regulator publishes about this exam, and how to use this studio to prepare for it.</p></div></section>'+
-    '<div class="gulf-guide-alert"><b>Confirm with your regulator before you book.</b> Details below come from regulator publications read on 23 October 2026. Anything not published is marked as such.</div>'+
-    '<h2>At a glance</h2><div class="gulf-guide-grid">'+card('Questions',E.questions+' MCQs','Single best answer')+card('Time',(E.minutes/60)+' hours',E.notes.timing||(E.short==='DHA RN'?'Includes registration and introduction':''))+card('Pass standard',E.pass)+card('Retakes','See note below')+'</div>'+
-    '<p>'+esc(E.formatNote)+'</p><p><b>Retakes.</b> '+esc(E.notes.retake)+'</p>'+
-    '<h2>Blueprint</h2><table class="gulf-guide-table"><thead><tr><th>Domain</th><th>Published weight</th></tr></thead><tbody>'+rows+'</tbody></table>'+(ok?'':'<p>'+esc(E.warning)+'</p>')+
-    '<h2>How to use this studio</h2><ul><li>Start with <b>React &amp; Interact</b> and <b>Interactive Labs</b> to learn how questions hide the decision.</li><li>Use the <b>Practice Hub</b> for timed sets and the <b>Clinical Dossier</b> for case practice.</li><li>Use <b>My Progress</b> to see what to repeat. Each exam keeps its own record.</li></ul>'+
-    '<h2>Official sources</h2><ul>'+src+'</ul><p class="gulf-guide-note">'+esc(CFG.policy)+'</p></div>';
+   return '<div class="page-content guide-page gulf-guide"><section class="page-hero gulf-hero"><div><span class="eyebrow">'+esc(E.regulator.toUpperCase())+'</span><h1>'+esc(E.short)+' Guide</h1><p>'+esc(E.intro)+'</p></div></section>'+
+    window.GULF_UI.tiles(E)+
+    '<div class="gulf-guide-alert"><b>Check before you book.</b> These details come from regulator publications read on '+esc(CFG.checked)+'. Rules can change, so confirm with '+esc(E.regulatorShort)+'.</div>'+
+    '<h2>'+(ok?'Published blueprint':'How practice sets are balanced')+'</h2><p>'+esc(E.mix)+'</p>'+bar+
+    '<h2>Attempts</h2><p>'+esc(E.notes.retake)+'</p>'+
+    '<h2>How to use this studio</h2><ol class="gulf-steps"><li><b>Learn the pattern.</b> Start with React &amp; Interact and Interactive Labs to see how questions hide the decision.</li><li><b>Practise.</b> Use the Practice Hub for timed sets and the Clinical Dossier for case practice.</li><li><b>Repeat what you missed.</b> My Progress shows what to review. Each exam keeps its own record.</li></ol>'+
+    '<h2>Official sources</h2><ul class="gulf-sources">'+src+'</ul><p class="gulf-guide-note">'+esc(CFG.policy)+'</p></div>';
   };
  }
 

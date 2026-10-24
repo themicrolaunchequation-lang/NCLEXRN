@@ -22,21 +22,28 @@ for(const name of ['index.html','app.js','styles.css','data/exam-profiles.js','e
 }
 fs.copyFileSync(path.join(repo,'site/assets/js/crown-account.js'),path.join(hub,'crown-account.js'));
 // --- edition config (from the verified exam profiles) ---
-const {PROFILES,RETAKE_NOTES,TIMING_NOTES,CONTENT_POLICY}=await import(pathToFileURL(path.join(root,'data/exam-profiles.js')));
+const {PROFILES,RETAKE_NOTES}=await import(pathToFileURL(path.join(root,'data/exam-profiles.js')));
 const meta={
- qatar:{short:'DHP RGN',tab:'Qatar',accent:'#8a2f4b',regulatorShort:'DHP',region:'Qatar'},
- dubai:{short:'DHA RN',tab:'Dubai',accent:'#a96b1d',regulatorShort:'DHA',region:'Dubai'},
- abudhabi:{short:'DOH RN',tab:'Abu Dhabi',accent:'#3f5f8f',regulatorShort:'DOH',region:'Abu Dhabi'}
+ qatar:{short:'DHP RGN',tab:'Qatar',accent:'#8a1538',regulatorShort:'DHP',region:'Qatar',theme:'Pearl & Maroon',
+  tiles:[['Questions','150','ok','Multiple choice'],['Time','3 hours','check','An older DHP document says 3½ hours'],['Pass mark','50%','ok','Published minimum'],['Attempts','Up to 5','check','DHP policy v04']],
+  intro:'150 multiple-choice questions. The current DHP exam page says 3 hours; an older DHP blueprint document says 3½ hours, so check the time on your booking confirmation.',
+  mix:'DHP publishes how many questions come from each area. Practice sets in this studio follow that split.'},
+ dubai:{short:'DHA RN',tab:'Dubai',accent:'#9a6514',regulatorShort:'DHA',region:'Dubai',theme:'Desert Gold',
+  tiles:[['Questions','150','ok','Multiple choice'],['Time','3 hours','ok','Includes registration and introduction'],['Pass mark','50%','ok','Result shown as pass or fail'],['Attempts','3 across the UAE','check','A 4th only with permission']],
+  intro:'150 multiple-choice questions in 3 hours. The 3 hours includes registration and a short introduction, so your answering time is a little less.',
+  mix:'DHA does not publish how many questions come from each area. To keep practice fair, this studio spreads questions across all four areas using its own mix, shown below. It is not the DHA split.'},
+ abudhabi:{short:'DOH RN',tab:'Abu Dhabi',accent:'#1f5f8b',regulatorShort:'DOH',region:'Abu Dhabi',theme:'Gulf Sea',
+  tiles:[['Questions','150','ok','Multiple choice'],['Time','3 hours','ok','DOH nursing circular, 2024'],['Pass mark','Not published','none','DOH reports pass or fail only'],['Attempts','3 across the UAE','check','A final attempt may be approved']],
+  intro:'150 multiple-choice questions in 3 hours (DOH nursing licensing circular, 2024). DOH reports a pass or fail result and does not publish its pass mark.',
+  mix:'DOH does not publish how many questions come from each area. To keep practice fair, this studio spreads questions across all four areas using its own mix, shown below. It is not the DOH split.'}
 };
+const POLICY='Original practice material written for this studio. It is not official exam content, is not endorsed by DHP, DHA or DOH, and does not predict your result. No recalled exam questions are used.';
 const editions={};
 for(const id of Object.keys(meta)){
  const p=PROFILES[id],m=meta[id];
- const w=p.domains.every(d=>Number.isInteger(d.count))?'Domain weights '+p.domains.map(d=>d.count).join(' / '):'Domain weights not published';
- const pts=[p.questions+' questions',(p.minutes/60)+' hours'+(id==='qatar'?' (duration disputed)':id==='dubai'?' (includes registration and introduction)':''),
-  id==='abudhabi'?'Pass mark not published':String(p.pass).replace(/;.*$/,''),w,RETAKE_NOTES[id]].filter(Boolean);
- editions[id]={...m,fullName:p.fullName,regulator:p.regulator,questions:p.questions,minutes:p.minutes,pass:id==='abudhabi'?'Not published in the sources reviewed':String(p.pass).replace(/;.*$/,''),formatNote:p.formatNote,warning:p.warning,sources:p.sources,domains:p.domains.map(d=>({label:d.label,count:d.count})),facts:p.questions+' questions · '+(p.minutes/60)+' hours',points:pts.slice(0,4),notes:{retake:RETAKE_NOTES[id],timing:TIMING_NOTES[id]||''}};
+ editions[id]={...m,fullName:p.fullName,regulator:p.regulator,questions:p.questions,minutes:p.minutes,sources:p.sources,domains:p.domains.map(d=>({label:d.label,count:d.count})),facts:p.questions+' questions · '+(p.minutes/60)+' hours',notes:{retake:RETAKE_NOTES[id]},tiles:m.tiles.map(([k,v,s,n])=>({k,v,s,n}))};
 }
-const cfg={order:['qatar','dubai','abudhabi'],editions,policy:CONTENT_POLICY};
+const cfg={order:['qatar','dubai','abudhabi'],editions,policy:POLICY,checked:'23 October 2026'};
 const files={
  pre:fs.readFileSync(path.join(root,'studio/pre.js'),'utf8'),
  data:fs.readFileSync(path.join(root,'studio/data.js'),'utf8'),
@@ -57,6 +64,7 @@ after(/<script defer src="\/assets\/guidance\.[a-f0-9]+\.js"><\/script>/,'<scrip
 after(/<script defer src="\/assets\/integration\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.ui+'"></script><link rel="stylesheet" href="'+urls.css+'">');
 html=html.replace(/<meta name="description"[^>]*>/,'<meta name="description" content="Gulf Region Exams: independent educational practice for the Qatar, Dubai and Abu Dhabi nursing licensing exams. Not official exam content.">').replace(/<link rel="canonical"[^>]*>/,'<meta name="robots" content="noindex,nofollow">').replace('content="snle"','content="gulf"')
  .replace(/<title>[\s\S]*?<\/title>/,'<title>Gulf Region Exams | Healthcare Crown Academy</title>');
+html=html.replace(/\n\\n\\n\n/g,'\n');
 fs.writeFileSync(ip,html);
 // --- patch the studio app: edition-aware guide, domain weights, mock lengths ---
 const appFile=fs.readdirSync(path.join(out,'assets')).find(f=>/^app\.[a-f0-9]+\.js$/.test(f));
@@ -68,6 +76,7 @@ rep("const mock=(n)=>shuffle([['Nursing Fundamentals',.2],['Adult Nursing',.4],[
  "const mock=(n)=>{const R=window.GULF_RATIOS||[['Nursing Fundamentals',.2],['Adult Nursing',.4],['Maternal-Child Nursing',.3],['Nursing Management and Leadership',.1]];const take=R.map(([d,r])=>[d,Math.floor(n*r),n*r-Math.floor(n*r)]);let left=n-take.reduce((a,t)=>a+t[1],0);if(window.GULF_RATIOS){[...take].sort((a,b)=>b[2]-a[2]).forEach(t=>{if(left>0){t[1]++;left--}})}return shuffle(take.flatMap(([d,k])=>shuffle(Q.filter(q=>q.domain===d)).slice(0,window.GULF_RATIOS?k:Math.round(n*(R.find(x=>x[0]===d)||[0,0])[1]))))};",'mock ratios');
 rep('<span class="eyebrow">BLUEPRINT · 20 / 40 / 30 / 10</span>','<span class="eyebrow">${window.GULF_BP_EYEBROW||\'BLUEPRINT · 20 / 40 / 30 / 10\'}</span>','mock eyebrow');
 rep('<p>20% Nursing Fundamentals · 40% Adult Nursing · 30% Maternal–Child Nursing · 10% Management & Leadership.</p>','<p>${window.GULF_BP_TEXT||\'20% Nursing Fundamentals · 40% Adult Nursing · 30% Maternal–Child Nursing · 10% Management & Leadership.\'}</p>','mock blueprint text');
+rep("colorMode:snleStorage.getItem('snle-color-mode')||'green'","colorMode:window.GULF_EDITION?'green':(snleStorage.getItem('snle-color-mode')||'green')",'edition colour mode');
 rep('[20,50,100,200].map','(window.GULF_MOCKS||[20,50,100,200]).map','mock lengths');
 const appNew='app.'+sha(app)+'.js';
 fs.writeFileSync(path.join(out,'assets',appNew),app);
