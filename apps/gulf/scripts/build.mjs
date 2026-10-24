@@ -87,6 +87,27 @@ fs.writeFileSync(path.join(out,'assets',appNew),app);
 if(appNew!==appFile)fs.rmSync(path.join(out,'assets',appFile));
 {const hp=path.join(out,'index.html');let h=fs.readFileSync(hp,'utf8');if(!h.includes('/assets/'+appFile))throw Error('app reference missing');fs.writeFileSync(hp,h.split('/assets/'+appFile).join('/assets/'+appNew));}
 const appUrl='/assets/'+appNew,appOld='/assets/'+appFile;
+// --- Study libraries (question bank, dossier bank, tool library): edition wording, palette and fonts ---
+let libSwap=null;
+{const A=path.join(out,'assets'),libFile=fs.readdirSync(A).find(f=>/^library\.[a-f0-9]+\.js$/.test(f));
+ let lib=fs.readFileSync(path.join(A,libFile),'utf8');
+ if(!lib.includes('← SNLE learning studio'))throw Error('Library patch failed: back link');
+ lib=lib.split('← SNLE learning studio').join('← Back to the study studio');
+ const libNew='library.'+sha(lib)+'.js';fs.writeFileSync(path.join(A,libNew),lib);if(libNew!==libFile)fs.rmSync(path.join(A,libFile));
+ const titles={questions:'Question bank',dossiers:'Clinical Dossier bank',tools:'Clinical tool library'};
+ for(const f of fs.readdirSync(out).filter(n=>/^SNLE_.*\.html$/.test(n))){
+  const fp=path.join(out,f);let h=fs.readFileSync(fp,'utf8');const mode=(h.match(/data-library="([a-z]+)"/)||[])[1];if(!mode)continue;
+  const dataTag=(h.match(/<script defer src="\/assets\/(?:data|dossiers)\.[a-f0-9]+\.js"><\/script>/)||[])[0];if(!dataTag)throw Error('Library page data script missing: '+f);
+  const pre='<script defer src="'+urls.pre+'"></script>',layer='<script defer src="'+urls.cfg+'"></script><script defer src="'+urls.data+'"></script>';
+  // dossiers: the wording layer must be in place before the dossier file assigns its data; others: after the shared data
+  h=h.replace(dataTag,mode==='dossiers'?pre+layer+dataTag:pre+dataTag+layer)
+   .split('/assets/'+libFile).join('/assets/'+libNew)
+   .replace('</head>','<link rel="stylesheet" href="'+urls.css+'"><meta name="robots" content="noindex,nofollow"></head>')
+   .replace(/<title>[^<]*<\/title>/,'<title>'+titles[mode]+' | Gulf Region Exams</title>').replace('Return to SNLE','Return to the study studio');
+  fs.writeFileSync(fp,h);
+ }
+ libSwap=[libFile,libNew];
+}
 // --- Interactive Labs: neutral wording (the posters' own artwork still carries the original series title) ---
 const labsDir=path.join(out,'SNLE_Decoder_Interactive_Labs_v3');
 if(fs.existsSync(labsDir))for(const f of fs.readdirSync(labsDir).filter(n=>/\.(html|js)$/.test(n))){
@@ -96,7 +117,7 @@ if(fs.existsSync(labsDir))for(const f of fs.readdirSync(labsDir).filter(n=>/\.(h
 }
 // service worker: precache the new assets, new cache name
 const swp=path.join(out,'sw.js');let sw=fs.readFileSync(swp,'utf8');
-sw=sw.split(appOld).join(appUrl);
+sw=sw.split(appOld).join(appUrl);sw=sw.split('/assets/'+libSwap[0]).join('/assets/'+libSwap[1]);
 const buildId=sha(Object.values(urls).join('')+app+fs.readdirSync(path.join(out,'assets')).sort().join(''));
 sw=sw.replace(/CACHE='snle-web-[a-f0-9]+'/,"CACHE='gulf-web-"+buildId+"'").replace(/snle-web-/g,'gulf-web-');
 sw=sw.replace('SHELL=[','SHELL=['+[...Object.values(urls),...fontNames.map(f=>'/assets/fonts/'+f)].map(u=>JSON.stringify(u)).join(',')+',"/hub/",').replace(/CACHE='snle-web-/,"CACHE='gulf-web-");
