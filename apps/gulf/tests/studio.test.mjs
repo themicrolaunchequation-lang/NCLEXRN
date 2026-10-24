@@ -24,4 +24,8 @@ test('studio build output contains edition layers, hub and per-edition palettes'
  for(const e of ['qatar','dubai','abudhabi'])assert(c.includes('data-edition="'+e+'"'),e);
  assert(!/<script(?![^>]*\bsrc=)[^>]*>/.test(html),'no inline scripts');
  assert(fs.readFileSync(path.join(ROOT,'dist/_headers'),'utf8').includes('noindex'));
+ const labs=path.join(ROOT,'dist/SNLE_Decoder_Interactive_Labs_v3');
+ for(const f of fs.readdirSync(labs).filter(n=>/\.(html|js)$/.test(n)))assert(!/\bSNLE\b|\bSaudi\b/.test(fs.readFileSync(path.join(labs,f),'utf8').replace(/base64,[A-Za-z0-9+/=]+/g,'')),'labs neutral wording: '+f);
+ const app=fs.readFileSync(path.join(ROOT,'dist/assets',fs.readdirSync(path.join(ROOT,'dist/assets')).find(f=>/^app\.[a-f0-9]+\.js$/.test(f))),'utf8');
+ assert(app.includes('window.GULF_GUIDE')&&app.includes('window.GULF_RATIOS')&&app.includes('window.GULF_MOCKS'),'edition-aware guide, mock ratios and lengths patched');
 });

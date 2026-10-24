@@ -15,7 +15,12 @@
  if(!ed){chooser();return}
  var c=CFG.editions[ed];if(!c)return;
  document.title=c.short+' Study Studio | Healthcare Crown Academy';
- var UI=[[/\bSNLE\b/g,c.short],[/\bSCFHS\b/g,c.regulatorShort]];
+ var pass={qatar:'DHP publishes a 50% minimum for this exam; whether it is raw, equated or scaled is not confirmed.',dubai:'DHA publishes a 50% threshold and reports pass or fail.',abudhabi:'DOH reports pass or fail and does not publish a numeric pass mark in the sources reviewed.'}[ed];
+ var UI=[[/SCFHS reports the licensure result on a 200[–-]800 scale with 500 as the passing score\./g,pass],[/SCFHS reports a scaled score from 200 to 800, with 500 as the pass mark\.[^.]*\./g,pass],
+  [/This matches the scheduled midpoint break in the official 200-question SNLE structure\./g,'This is a study reset, not part of the regulator\u2019s exam format.'],
+  [/The app separates <b>study recovery<\/b> from the <b>official 200-question exam break<\/b>\./g,'The app separates study recovery from long-exam breaks.'],
+  [/For the 200-question SNLE structure in the guide used by this app: [^.]*\./g,'Plan your own breaks; confirm the official break rules with your regulator.'],
+  [/official 200-question SNLE structure/g,'regulator\u2019s exam format'],[/ blueprint tutor mock/g,' tutor mock'],[/Train the same blueprint in/g,'Train in'],[/\bSNLE\b/g,c.short],[/\bSCFHS\b/g,'exam']];
  function ui(s){for(var i=0;i<UI.length;i++)s=s.replace(UI[i][0],UI[i][1]);return s}
  function textSweep(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
