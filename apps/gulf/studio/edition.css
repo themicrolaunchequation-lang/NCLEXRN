@@ -312,3 +312,13 @@ body[data-library] details>p.gulf-r-trap{border-left-color:#c99a1e;background:#f
 body[data-library] details>p.gulf-r-alt{padding:6px 14px;border-left-color:#c6cbd3;font-size:.95rem}
 body[data-library] details h3{margin:16px 0 4px;font:600 1rem var(--hs-sans);color:var(--ac-ink)}
 @media (prefers-reduced-motion:reduce){.gulf-track i{transition:none}}
+/* Review, stars, saved record */
+body[data-library] .gulf-star{min-height:32px;min-width:32px;padding:0 6px;margin:-4px 8px 0 0;border:0;background:none;color:var(--ac-hl);font-size:1.25rem;line-height:1;vertical-align:-2px}
+body[data-library] .gulf-star[aria-pressed="true"]{color:#c99a1e}
+body[data-library] .gulf-star:hover{background:var(--ac-soft);color:var(--ac)}
+.gulf-verdict{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+body[data-library] .gulf-again{min-height:34px;padding:4px 14px;font-size:.85rem;background:#fff}
+.gulf-clearbox{margin-left:auto;font-size:.85rem;color:#4a5668;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+body[data-library] .gulf-clearbox button{min-height:32px;padding:2px 12px;font-size:.8rem}
+body[data-library] .gulf-clearbox [data-yes]{background:#b3261e;border-color:#b3261e;color:#fff}
+@media (max-width:760px){.gulf-studybar .gulf-seg{flex-wrap:wrap}.gulf-clearbox{margin-left:0}}

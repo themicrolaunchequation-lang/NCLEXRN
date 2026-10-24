@@ -43,20 +43,25 @@
 
 })();
 
-/* Library pages: "One at a time" practice view. Tap an answer to have it marked, reasoning laid out by role,
-   a session score, filters folded away, keyboard navigation. List view kept as an option. */
+/* Library pages: "One at a time" practice view. Answers are marked, reasoning laid out by role, progress and stars
+   saved on this device (per exam), Missed / Starred review, filters folded away, keyboard navigation. */
 (function(){
  if(typeof document==='undefined')return;var body=document.body;if(!body||!body.dataset.library||body.dataset.library==='tools')return;
- var KEY='gulf-lib-view',SKEY='gulf-lib-score-'+body.dataset.library,mode='one',idx=0,bar,go=null,filtersOpen=false,done={};
+ var lib=body.dataset.library,ed=window.GULF_EDITION||'gulf',KEY='gulf-lib-view',SKEY='gulf-'+ed+'-lib-'+lib,mode='one',idx=0,bar,go=null,filtersOpen=false,review='all',confirmClear=false;
+ var st={done:{},stars:{}};
  try{mode=localStorage.getItem(KEY)==='list'?'list':'one'}catch(e){}
- try{done=JSON.parse(sessionStorage.getItem(SKEY)||'{}')||{}}catch(e){done={}}
- var $=function(s){return document.querySelector(s)},noun=body.dataset.library==='dossiers'?'Case':'Question';
+ try{var raw=JSON.parse(localStorage.getItem(SKEY)||'null');if(raw&&typeof raw==='object'){st.done=raw.done||{};st.stars=raw.stars||{}}}catch(e){}
+ var $=function(s){return document.querySelector(s)},noun=lib==='dossiers'?'Case':'Question';
  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
  function cards(){var it=$('#items');return it?[].slice.call(it.querySelectorAll(':scope>article')):[]}
- function qid(a){var p=a.querySelector('p');return p?p.textContent.split('·')[0].trim():''}
- function save(){try{sessionStorage.setItem(SKEY,JSON.stringify(done))}catch(e){}}
+ function qid(a){var p=a.querySelector('p');return p?p.textContent.split('·')[0].replace(/[★☆]/g,'').trim():''}
+ function save(){try{localStorage.setItem(SKEY,JSON.stringify(st))}catch(e){}}
+ function counts(){var r=0,all=0,miss=0,star=0,k;for(k in st.done){var d=st.done[k];if(!d||typeof d!=='object')continue;all++;if(d.ok)r++;else miss++}for(k in st.stars)if(st.stars[k])star++;return{r:r,all:all,miss:miss,star:star}}
  function enhance(a){
   if(a.dataset.g)return;a.dataset.g='1';
+  var id=qid(a),meta=a.querySelector('p');
+  if(meta){var sb=document.createElement('button');sb.type='button';sb.className='gulf-star';sb.dataset.id=id;meta.prepend(sb);paintStar(sb)}
   var d=a.querySelector('details'),ol=a.querySelector('ol');if(!d||!ol)return;
   var right='';[].slice.call(d.querySelectorAll('p')).forEach(function(p){var b=p.querySelector('b'),t=b?b.textContent.trim():'';
    var m=t.match(/^Answer ([A-E]):?$/);if(m){right=m[1];p.className='gulf-r-ans'}
@@ -64,31 +69,53 @@
    else if(/^[A-E]:$/.test(t))p.className='gulf-r-alt';else if(!b&&!p.className)p.className='gulf-r-why'});
   if(!right)return;a.dataset.right=right;
   [].slice.call(ol.children).forEach(function(li,i){var L='ABCDE'[i];li.dataset.letter=L;li.setAttribute('role','button');li.tabIndex=0;li.setAttribute('aria-label','Answer '+L+': '+li.textContent)});
-  var id=qid(a);if(done[id]&&done[id].p)mark(a,done[id].p,true);
+  if(st.done[id]&&st.done[id].p)mark(a,st.done[id].p,true);
  }
+ function paintStar(b){var on=!!st.stars[b.dataset.id];b.textContent=on?'★':'☆';b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-label',(on?'Remove star from ':'Star ')+b.dataset.id);b.title=on?'Starred':'Star for later'}
  function mark(a,L,quiet){
   if(a.dataset.picked)return;a.dataset.picked=L;var ok=L===a.dataset.right;
   [].slice.call(a.querySelectorAll('ol>li')).forEach(function(li){li.classList.toggle('gulf-right',li.dataset.letter===a.dataset.right);li.classList.toggle('gulf-wrong',li.dataset.letter===L&&!ok);li.setAttribute('aria-disabled','true')});
-  var v=a.querySelector('.gulf-verdict');if(!v){v=document.createElement('p');v.className='gulf-verdict';v.setAttribute('role','status');a.querySelector('ol').after(v)}
-  v.className='gulf-verdict '+(ok?'is-ok':'is-no');v.textContent=ok?'Correct. '+L+' is the safest choice.':'Not quite. You chose '+L+'; the answer is '+a.dataset.right+'. Read why below.';
+  var v=a.querySelector('.gulf-verdict');if(!v){v=document.createElement('div');v.setAttribute('role','status');a.querySelector('ol').after(v)}
+  v.className='gulf-verdict '+(ok?'is-ok':'is-no');
+  v.innerHTML='<span>'+(ok?'Correct. '+L+' is the safest choice.':'Not quite. You chose '+L+'; the answer is '+a.dataset.right+'. Read why below.')+'</span><button type="button" class="gulf-again">Try again</button>';
   var d=a.querySelector('details');if(d)d.open=true;
-  if(!quiet){done[qid(a)]={p:L,ok:ok};save();score()}
+  if(!quiet){st.done[qid(a)]={p:L,ok:ok};save();score()}
  }
- function score(){if(!bar)return;var right=0,all=0;for(var k in done){if(!done[k]||typeof done[k]!=='object')continue;all++;if(done[k].ok)right++}
-  bar.querySelector('.gulf-score').textContent=all?right+' of '+all+' correct this session':'Tap an answer to check yourself';}
- function activeFilters(){var n=0,s=$('#search');if(s&&s.value.trim())n++;[].slice.call(document.querySelectorAll('#selects select,.filters select')).forEach(function(x){if(x.selectedIndex>0)n++});return n}
+ function unmark(a){delete a.dataset.picked;delete st.done[qid(a)];save();
+  [].slice.call(a.querySelectorAll('ol>li')).forEach(function(li){li.classList.remove('gulf-right','gulf-wrong');li.removeAttribute('aria-disabled')});
+  var v=a.querySelector('.gulf-verdict');if(v)v.remove();var d=a.querySelector('details');if(d)d.open=false;var f=a.querySelector('ol>li');if(f)f.focus();score()}
+ function score(){if(!bar)return;var c=counts();
+  bar.querySelector('.gulf-score').textContent=c.all?c.r+' of '+c.all+' correct':'Tap an answer to check yourself';
+  bar.querySelector('[data-r="miss"]').textContent='Missed ('+c.miss+')';bar.querySelector('[data-r="star"]').textContent='Starred ('+c.star+')';
+  bar.querySelector('.gulf-clear').hidden=!c.all&&!c.star;}
+ function activeFilters(){var n=0,s=$('#search');if(s&&s.value.trim())n++;[].slice.call(document.querySelectorAll('.filters select')).forEach(function(x){if(x.selectedIndex>0)n++});return n}
+ function rerender(){var s=$('#search');if(s)s.dispatchEvent(new Event('input',{bubbles:true}))}
+ function setReview(r){review=r;idx=0;
+  window.GULF_LIB_KEEP=r==='all'?null:function(rec){var id=String(rec.id);return r==='miss'?!!(st.done[id]&&st.done[id].ok===false):!!st.stars[id]};
+  rerender();apply(true)}
  function build(){
   var it=$('#items');if(!it||bar)return;
   bar=document.createElement('div');bar.className='gulf-studybar';
   bar.innerHTML='<div class="gulf-seg" role="group" aria-label="View"><button type="button" data-v="one">One at a time</button><button type="button" data-v="list">List</button></div>'+
-   '<button type="button" class="gulf-ftoggle" aria-expanded="false">Filters</button><span class="gulf-pos" aria-live="polite"></span><span class="gulf-score"></span>'+
+   '<div class="gulf-seg" role="group" aria-label="Show"><button type="button" data-r="all">All</button><button type="button" data-r="miss">Missed (0)</button><button type="button" data-r="star">Starred (0)</button></div>'+
+   '<button type="button" class="gulf-ftoggle" aria-expanded="false">Filters</button>'+
    '<div class="gulf-nav"><button type="button" data-step="-1" aria-label="Previous '+noun.toLowerCase()+'">← Previous</button><button type="button" data-step="1" aria-label="Next '+noun.toLowerCase()+'">Next →</button></div>'+
-   '<div class="gulf-track" aria-hidden="true"><i></i></div><span class="gulf-libkeys"><kbd>A</kbd>–<kbd>E</kbd> answer · <kbd>←</kbd> <kbd>→</kbd> move · <kbd>Space</kbd> show reasoning</span>';
+   '<div class="gulf-track" aria-hidden="true"><i></i></div>'+
+   '<span class="gulf-pos" aria-live="polite"></span><span class="gulf-score"></span><span class="gulf-clearbox"><button type="button" class="gulf-clear" hidden>Clear my record</button></span>'+
+   '<span class="gulf-libkeys"><kbd>A</kbd>–<kbd>E</kbd> answer · <kbd>←</kbd> <kbd>→</kbd> move · <kbd>S</kbd> star · <kbd>Space</kbd> reasoning</span>';
   bar.querySelectorAll('[data-v]').forEach(function(b){b.onclick=function(){mode=b.dataset.v;try{localStorage.setItem(KEY,mode)}catch(e){}apply(true)}});
+  bar.querySelectorAll('[data-r]').forEach(function(b){b.onclick=function(){setReview(b.dataset.r)}});
   bar.querySelectorAll('[data-step]').forEach(function(b){b.onclick=function(){step(+b.dataset.step)}});
   bar.querySelector('.gulf-ftoggle').onclick=function(){filtersOpen=!filtersOpen;apply(false);if(filtersOpen){var s=$('#search');if(s)s.focus()}};
+  bar.querySelector('.gulf-clearbox').addEventListener('click',function(e){var t=e.target;
+   if(t.classList.contains('gulf-clear')){t.parentNode.innerHTML='<span>Clear answers and stars for '+esc(noun.toLowerCase())+'s in this exam?</span> <button type="button" data-yes>Clear</button> <button type="button" data-no>Keep</button>';return}
+   if(t.hasAttribute('data-yes')){st={done:{},stars:{}};save();location.reload();return}
+   if(t.hasAttribute('data-no')){t.parentNode.innerHTML='<button type="button" class="gulf-clear">Clear my record</button>';score()}});
   it.before(bar);
-  it.addEventListener('click',function(e){var li=e.target.closest&&e.target.closest('ol>li[data-letter]');if(!li)return;var a=li.closest('article');if(a)mark(a,li.dataset.letter)});
+  it.addEventListener('click',function(e){var t=e.target;
+   var sb=t.closest&&t.closest('.gulf-star');if(sb){var id=sb.dataset.id;if(st.stars[id])delete st.stars[id];else st.stars[id]=1;save();paintStar(sb);score();return}
+   var ag=t.closest&&t.closest('.gulf-again');if(ag){unmark(ag.closest('article'));return}
+   var li=t.closest&&t.closest('ol>li[data-letter]');if(!li)return;var a=li.closest('article');if(a)mark(a,li.dataset.letter)});
   it.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('ol>li[data-letter]')){e.preventDefault();mark(e.target.closest('article'),e.target.dataset.letter)}});
   var f=document.querySelector('.filters');if(f)f.addEventListener('input',function(){setTimeout(function(){apply(false)},0)});
  }
@@ -96,15 +123,18 @@
  function apply(scroll){
   build();var cs=cards();cs.forEach(enhance);
   body.classList.toggle('gulf-one',mode==='one');body.classList.toggle('gulf-fclosed',mode==='one'&&!filtersOpen);
-  if(!bar)return;bar.querySelectorAll('[data-v]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===mode)});
+  if(!bar)return;bar.querySelectorAll('[data-v]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.v===mode))});
+  bar.querySelectorAll('[data-r]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.r===review))});
   var nf=activeFilters(),ft=bar.querySelector('.gulf-ftoggle');ft.textContent=(filtersOpen?'Hide filters':'Filters')+(nf?' · '+nf+' on':'');ft.setAttribute('aria-expanded',String(filtersOpen||mode!=='one'));
   if(idx>=cs.length)idx=Math.max(0,cs.length-1);
   cs.forEach(function(a,i){a.classList.toggle('gulf-cur',i===idx)});
   var pi=pageInfo(),n=((pi[0]-1)*20)+idx+1,tm=(($('#count')||{}).textContent||'').match(/(\d+)\s+of/),total=tm?+tm[1]:cs.length;
-  bar.querySelector('.gulf-pos').textContent=mode==='one'&&cs.length?noun+' '+n+' of '+total:'';
-  bar.querySelector('.gulf-track i').style.width=(total?Math.min(100,n/total*100):0).toFixed(2)+'%';
+  var lbl=review==='miss'?' missed':review==='star'?' starred':'';
+  bar.querySelector('.gulf-pos').textContent=mode==='one'&&cs.length?noun+' '+n+' of '+total+lbl:(cs.length?'':review==='all'?'':'Nothing here yet');
+  bar.querySelector('.gulf-track i').style.width=(total&&cs.length?Math.min(100,n/total*100):0).toFixed(2)+'%';
   var prev=bar.querySelector('[data-step="-1"]'),next=bar.querySelector('[data-step="1"]');
-  prev.disabled=idx===0&&pi[0]===1;next.disabled=idx===cs.length-1&&pi[0]===pi[1];
+  prev.disabled=idx===0&&pi[0]===1;next.disabled=!cs.length||(idx===cs.length-1&&pi[0]===pi[1]);
+  var empty=$('#items>p'),msg=review==='miss'?'No missed '+noun.toLowerCase()+'s. Answer some questions, and any you get wrong will collect here.':'No starred '+noun.toLowerCase()+'s yet. Tap ☆ on any '+noun.toLowerCase()+' to save it here.';if(empty&&!cs.length&&review!=='all'&&empty.textContent!==msg)empty.textContent=msg;
   score();
   if(scroll&&mode==='one')bar.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'});
  }
@@ -113,11 +143,12 @@
   if(j>=0&&j<cs.length){idx=j;apply(true);return}
   var b=$(d>0?'#next':'#previous');if(b&&!b.disabled){go=d>0?'first':'last';b.click()}
  }
- new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)||m.target.closest&&m.target.closest('article')}))return;var cs=cards();if(!cs.length)return;if(go){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
+ new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)||m.target.closest&&m.target.closest('article')}))return;var cs=cards();if(go&&cs.length){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs.length||!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
  addEventListener('keydown',function(e){
   if(mode!=='one'||e.ctrlKey||e.metaKey||e.altKey)return;var t=e.target;if(t&&/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName))return;if($('dialog[open]'))return;
   var a=cards()[idx],k=e.key.toLowerCase();
   if(e.key==='ArrowRight'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'){step(-1);e.preventDefault()}
+  else if(a&&k==='s'){var sb=a.querySelector('.gulf-star');if(sb){sb.click();e.preventDefault()}}
   else if(a&&/^[a-e]$/.test(k)&&a.querySelector('li[data-letter="'+k.toUpperCase()+'"]')){mark(a,k.toUpperCase());e.preventDefault()}
   else if(e.key===' '&&!(t&&t.closest&&t.closest('button,summary,a,li[data-letter]'))){var d=a&&a.querySelector('details');if(d){d.open=!d.open;e.preventDefault()}}
  });
