@@ -16,13 +16,38 @@
 /* The colour switch is replaced by edition palettes. */
 :root[data-edition] [data-color-mode]{display:none!important}
 
+/* Sidebar: each edition gets its own deep tone, active colour and motif strip; layout tightened so every item fits on a laptop screen. */
+:root[data-edition="qatar"]{--side-a:#2a0914;--side-b:#3d0d1d;--side-glow:rgba(201,169,110,.18)}
+:root[data-edition="dubai"]{--side-a:#21170a;--side-b:#33230f;--side-glow:rgba(217,164,65,.2)}
+:root[data-edition="abudhabi"]{--side-a:#0a1f33;--side-b:#0f2c47;--side-glow:rgba(200,180,138,.16)}
+:root[data-edition] .sidebar{background:radial-gradient(120% 220px at 20% 0,var(--side-glow),transparent 70%),linear-gradient(180deg,var(--side-a),var(--side-b))!important}
+:root[data-edition] .sidebar::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;z-index:3;pointer-events:none}
+:root[data-edition="qatar"] .sidebar::before{background:conic-gradient(from 135deg at 50% 0,var(--ac-hl) 90deg,transparent 0) 0 0/12px 6px repeat-x}
+:root[data-edition="dubai"] .sidebar::before{background:radial-gradient(circle at 50% 100%,transparent 5px,var(--ac-hl) 6px 7px,transparent 8px) 0 0/16px 6px repeat-x}
+:root[data-edition="abudhabi"] .sidebar::before{background:repeating-linear-gradient(45deg,var(--ac-hl) 0 1px,transparent 1px 6px),repeating-linear-gradient(-45deg,var(--ac-hl) 0 1px,transparent 1px 6px);opacity:.7}
+:root[data-edition] .sidebar .brand-lockup{background:transparent!important}
+:root[data-edition] .hs-tag{color:var(--ac-hl)!important}
+:root[data-edition] .sidebar nav button.active{border-color:color-mix(in srgb,var(--ac-hl) 45%,transparent)!important;background:linear-gradient(90deg,color-mix(in srgb,var(--ac) 55%,transparent),rgba(255,255,255,.04))!important;box-shadow:inset 4px 0 var(--ac-hl)!important}
+:root[data-edition] .sidebar nav button.active .nav-icon{background:var(--ac-hl)!important;border-color:var(--ac-hl)!important;color:var(--side-a)!important}
+:root[data-edition] .sidebar nav button.active::after{background:var(--ac-hl)!important}
+:root[data-edition] .sidebar nav button:hover:not(.active){background:rgba(255,255,255,.06)!important}
+:root[data-edition] .sidebar nav{gap:4px!important;margin-top:14px!important}
+:root[data-edition] .sidebar nav button{min-height:44px!important}
+:root[data-edition] .hs-nav{mask-image:linear-gradient(180deg,#000 calc(100% - 28px),transparent);-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 28px),transparent);padding-bottom:20px}
+:root[data-edition] .hs-apps-row{flex-wrap:nowrap;gap:3px;justify-content:space-between}
+:root[data-edition] .hs-apps-row .hs-app{width:28px;height:28px;font-size:12px;border-radius:8px}
+:root[data-edition] .hs-foot{background:linear-gradient(180deg,transparent,var(--side-b) 18px)!important}
+
 /* Sidebar edition switch */
-.gulf-switch{display:flex;gap:4px;margin:10px 16px 6px;padding:4px;border-radius:12px;background:rgba(255,255,255,.07)}
-.gulf-switch button{flex:1;min-height:44px;border:0;border-radius:9px;background:transparent;color:#d9e3ee;font:600 12px/1.2 system-ui,sans-serif;cursor:pointer;padding:6px 4px;position:relative}
-.gulf-switch button::before{content:"";display:block;width:8px;height:8px;margin:0 auto 3px;border-radius:50%;background:var(--ac-hl)}
-.gulf-switch button[aria-pressed="true"]{background:var(--ac);color:#fff}
+.gulf-switch{display:flex;gap:3px;margin:8px 16px 4px;padding:3px;border-radius:11px;background:rgba(255,255,255,.07)}
+.gulf-switch button{flex:1;min-height:36px;border:0;border-radius:8px;background:transparent;color:#e6ecf2;font:600 12px/1.2 system-ui,sans-serif;cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center;gap:5px}
+.gulf-switch button::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ac-hl)}
+.gulf-switch button[aria-pressed="true"]{background:var(--ac);color:#fff;box-shadow:0 0 0 1px var(--ac-hl) inset}
 .gulf-switch button:hover:not([aria-pressed="true"]){background:rgba(255,255,255,.1)}
 .gulf-switch button:focus-visible{outline:2px solid #D4A445;outline-offset:2px}
+.sidebar-collapsed .gulf-switch{flex-direction:column;margin:8px 6px}
+.sidebar-collapsed .gulf-switch button{font-size:0;gap:0;min-height:30px}
+.sidebar-collapsed .gulf-switch button::before{width:10px;height:10px}
 
 /* Exam pass (Today) */
 .gulf-pass{position:relative;overflow:hidden;margin:0 0 20px;padding:24px 22px 16px;border-radius:18px;background:linear-gradient(180deg,var(--ac-soft),#fff 70%);border:1px solid var(--line)}
@@ -66,7 +91,6 @@
 .gulf-note a{color:#f0d38f}
 @media (prefers-reduced-motion:reduce){.gulf-pick{transition:none}.gulf-pick:hover,.gulf-pick:focus-visible{transform:none}}
 
-.hs-apps-row{flex-wrap:wrap;gap:6px}
 :root[data-edition] .primary-button,:root[data-edition] .hero-cta,:root[data-edition] .btn-primary{background:var(--ac)}
 
 /* Guide */
