@@ -17,11 +17,11 @@ test('studio build output contains edition layers, hub and per-edition palettes'
  execFileSync(process.execPath,[path.join(ROOT,'scripts/build.mjs')],{cwd:ROOT,stdio:'ignore'});
  const html=fs.readFileSync(path.join(ROOT,'dist/index.html'),'utf8');
  for(const k of ['gulf-pre','gulf-cfg','gulf-data','gulf-ui','gulf-css'])assert(html.includes('/assets/'+k+'.'),k);
- assert(html.indexOf('/assets/gulf-pre.')<html.indexOf('/assets/data.')&&html.indexOf('/assets/gulf-data.')<html.indexOf('/assets/app.')&&html.indexOf('/assets/gulf-data.')>html.indexOf('/assets/data.'),'edition scripts run before data and app');
+ assert(html.indexOf('/assets/gulf-pre.')<html.indexOf('/assets/data.')&&html.indexOf('/assets/gulf-data.')<html.search(/\/assets\/app\.[a-f0-9]+\.js/)&&html.indexOf('/assets/gulf-data.')>html.indexOf('/assets/data.'),'edition scripts run before data and app');
  assert(fs.existsSync(path.join(ROOT,'dist/hub/index.html')));
  const css=fs.readdirSync(path.join(ROOT,'dist/assets')).find(f=>/^gulf-css/.test(f));
  const c=fs.readFileSync(path.join(ROOT,'dist/assets',css),'utf8');
  for(const e of ['qatar','dubai','abudhabi'])assert(c.includes('data-edition="'+e+'"'),e);
- assert(!/script[^>]*>[^<]/.test(html.replace(/<script[^>]*src=[^>]*><\/script>/g,'')),'no inline scripts');
+ assert(!/<script(?![^>]*\bsrc=)[^>]*>/.test(html),'no inline scripts');
  assert(fs.readFileSync(path.join(ROOT,'dist/_headers'),'utf8').includes('noindex'));
 });

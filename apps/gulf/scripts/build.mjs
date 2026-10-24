@@ -55,7 +55,7 @@ const after=(re,add)=>{const m=html.match(re);if(!m)throw Error('Studio page anc
 after(/<script defer src="\/assets\/prelude\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.pre+'"></script>');
 after(/<script defer src="\/assets\/guidance\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.cfg+'"></script><script defer src="'+urls.data+'"></script>');
 after(/<script defer src="\/assets\/integration\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.ui+'"></script><link rel="stylesheet" href="'+urls.css+'">');
-html=html.replace(/<link rel="canonical"[^>]*>/,'<meta name="robots" content="noindex,nofollow">').replace('content="snle"','content="gulf"')
+html=html.replace(/<meta name="description"[^>]*>/,'<meta name="description" content="Gulf Region Exams: independent educational practice for the Qatar, Dubai and Abu Dhabi nursing licensing exams. Not official exam content.">').replace(/<link rel="canonical"[^>]*>/,'<meta name="robots" content="noindex,nofollow">').replace('content="snle"','content="gulf"')
  .replace(/<title>[\s\S]*?<\/title>/,'<title>Gulf Region Exams | Healthcare Crown Academy</title>');
 fs.writeFileSync(ip,html);
 // service worker: precache the new assets, new cache name
