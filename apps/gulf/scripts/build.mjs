@@ -51,6 +51,10 @@ const files={
  ui:fs.readFileSync(path.join(root,'studio/ui.js'),'utf8'),
  css:fs.readFileSync(path.join(root,'studio/edition.css'),'utf8')
 };
+// self-hosted fonts (SIL OFL; the CSP blocks font services)
+const fontSrc=path.join(root,'studio/fonts'),fontNames=fs.readdirSync(fontSrc).filter(f=>f.endsWith('.woff2'));
+fs.mkdirSync(path.join(out,'assets/fonts'),{recursive:true});
+for(const f of fs.readdirSync(fontSrc))fs.copyFileSync(path.join(fontSrc,f),path.join(out,'assets/fonts',f));
 const urls={};
 for(const [k,ext] of [['pre','js'],['data','js'],['cfg','js'],['ui','js'],['css','css']]){
  const name='/assets/gulf-'+k+'.'+sha(files[k])+'.'+ext;urls[k]=name;
@@ -95,7 +99,7 @@ const swp=path.join(out,'sw.js');let sw=fs.readFileSync(swp,'utf8');
 sw=sw.split(appOld).join(appUrl);
 const buildId=sha(Object.values(urls).join('')+app+fs.readdirSync(path.join(out,'assets')).sort().join(''));
 sw=sw.replace(/CACHE='snle-web-[a-f0-9]+'/,"CACHE='gulf-web-"+buildId+"'").replace(/snle-web-/g,'gulf-web-');
-sw=sw.replace('SHELL=[','SHELL=['+Object.values(urls).map(u=>JSON.stringify(u)).join(',')+',"/hub/",').replace(/CACHE='snle-web-/,"CACHE='gulf-web-");
+sw=sw.replace('SHELL=[','SHELL=['+[...Object.values(urls),...fontNames.map(f=>'/assets/fonts/'+f)].map(u=>JSON.stringify(u)).join(',')+',"/hub/",').replace(/CACHE='snle-web-/,"CACHE='gulf-web-");
 fs.writeFileSync(swp,sw);
 const mp=path.join(out,'manifest.webmanifest'),mf=JSON.parse(fs.readFileSync(mp,'utf8'));mf.name='Gulf Region Exams';mf.short_name='Gulf Exams';fs.writeFileSync(mp,JSON.stringify(mf,null,2));
 // headers: the studio's own policy plus noindex everywhere (preview)

@@ -1,3 +1,29 @@
+/* Self-hosted type (SIL OFL): Fraunces for display, IBM Plex Sans (+ Arabic) for reading, IBM Plex Mono for numbers. */
+@font-face{font-family:"Editorial";src:url(/assets/fonts/fraunces-wght-5.1.0.woff2) format("woff2");font-weight:300 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url(/assets/fonts/fraunces-wght-italic-5.1.0.woff2) format("woff2");font-weight:300 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Studio";src:url(/assets/fonts/plex-sans-400-5.1.0.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Studio";src:url(/assets/fonts/plex-sans-500-5.1.0.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Studio";src:url(/assets/fonts/plex-sans-600-5.1.0.woff2) format("woff2");font-weight:600 800;font-display:swap}
+@font-face{font-family:"Studio";src:url(/assets/fonts/plex-arabic-400-5.1.0.woff2) format("woff2");font-weight:400 500;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF;font-display:swap}
+@font-face{font-family:"Studio";src:url(/assets/fonts/plex-arabic-600-5.1.0.woff2) format("woff2");font-weight:600 800;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF;font-display:swap}
+@font-face{font-family:"Noto Sans Arabic";src:url(/assets/fonts/plex-arabic-400-5.1.0.woff2) format("woff2");font-weight:400 500;font-display:swap}
+@font-face{font-family:"Noto Sans Arabic";src:url(/assets/fonts/plex-arabic-600-5.1.0.woff2) format("woff2");font-weight:600 800;font-display:swap}
+@font-face{font-family:"Numerals";src:url(/assets/fonts/plex-mono-500-5.1.0.woff2) format("woff2");font-weight:400 700;font-display:swap}
+/* The shared app names these families directly; map them to the same three faces so every screen matches. */
+@font-face{font-family:"Merriweather";src:url(/assets/fonts/fraunces-wght-5.1.0.woff2) format("woff2");font-weight:300 900;font-display:swap}
+@font-face{font-family:"Merriweather";src:url(/assets/fonts/fraunces-wght-italic-5.1.0.woff2) format("woff2");font-weight:300 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Crimson Text";src:url(/assets/fonts/fraunces-wght-5.1.0.woff2) format("woff2");font-weight:300 900;font-display:swap}
+@font-face{font-family:"Crimson Text";src:url(/assets/fonts/fraunces-wght-italic-5.1.0.woff2) format("woff2");font-weight:300 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Cabin";src:url(/assets/fonts/plex-sans-400-5.1.0.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Cabin";src:url(/assets/fonts/plex-sans-500-5.1.0.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Cabin";src:url(/assets/fonts/plex-sans-600-5.1.0.woff2) format("woff2");font-weight:600 800;font-display:swap}
+@font-face{font-family:"Lekton";src:url(/assets/fonts/plex-mono-500-5.1.0.woff2) format("woff2");font-weight:400 700;font-display:swap}
+@font-face{font-family:"Droid Sans Mono";src:url(/assets/fonts/plex-mono-500-5.1.0.woff2) format("woff2");font-weight:400 700;font-display:swap}
+:root[data-edition]{--hs-sans:Studio,"Segoe UI",system-ui,sans-serif;--hs-serif:Editorial,Georgia,serif;--font-sans:Studio,"Segoe UI",system-ui,sans-serif;--font-serif:Editorial,Georgia,serif;--font-mono:Numerals,Consolas,monospace}
+:root[data-edition] body{font-family:var(--hs-sans)}
+:root[data-edition] .arabic-assist-on [lang="ar"],:root[data-edition] [dir="rtl"]{font-family:Studio,"Noto Sans Arabic",Tahoma,sans-serif;line-height:1.85}
+:root[data-edition] .gulf-tile strong,:root[data-edition] .count-value,:root[data-edition] [class*="timer"],:root[data-edition] [class*="countdown"]{font-variant-numeric:tabular-nums}
+
 /* Edition identities. Each edition has: --ac (fills; white text passes WCAG AA), --ac-ink (text on light), --ac-soft (tints), --ac-hl (decoration only, never text). */
 :root[data-edition="qatar"]{--ac:#8a1538;--ac-ink:#5e0e26;--ac-soft:#f7ebef;--ac-hl:#c9a96e;--primary:#8a1538;--snle-green:#5e0e26;--snle-aqua:#e3b3c2;--snle-mint:#f7ebef;--teal:#8a1538;--teal-soft:#f7ebef;--ring:#8a1538;--green:#5e0e26;--aqua:#e3b3c2;--mint:#f7ebef;--paper-deep:#f6ecef;--line:#e8d3da;--hs-jewel:#8a1538;--hs-jewel-ink:#5e0e26;--hs-jewel-dk:#e8a6b9}
 :root[data-edition="dubai"]{--ac:#9a6514;--ac-ink:#6b430a;--ac-soft:#fbf3e4;--ac-hl:#d9a441;--primary:#9a6514;--snle-green:#6b430a;--snle-aqua:#ebcd9a;--snle-mint:#fbf3e4;--teal:#9a6514;--teal-soft:#fbf3e4;--ring:#9a6514;--green:#6b430a;--aqua:#ebcd9a;--mint:#fbf3e4;--paper-deep:#f8f0e2;--line:#ecdcc0;--hs-jewel:#9a6514;--hs-jewel-ink:#6b430a;--hs-jewel-dk:#efc57d}
@@ -32,7 +58,7 @@
 :root[data-edition] .sidebar nav button.active::after{background:var(--ac-hl)!important}
 :root[data-edition] .sidebar nav button:hover:not(.active){background:rgba(255,255,255,.06)!important}
 :root[data-edition] .sidebar nav{gap:4px!important;margin-top:14px!important}
-:root[data-edition] .sidebar nav button{min-height:44px!important}
+:root[data-edition] .sidebar nav button{min-height:40px!important}
 :root[data-edition] .hs-nav{mask-image:linear-gradient(180deg,#000 calc(100% - 28px),transparent);-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 28px),transparent);padding-bottom:20px}
 :root[data-edition] .hs-apps-row{flex-wrap:nowrap;gap:3px;justify-content:space-between}
 :root[data-edition] .hs-apps-row .hs-app{width:28px;height:28px;font-size:12px;border-radius:8px}
@@ -40,7 +66,7 @@
 
 /* Sidebar edition switch */
 .gulf-switch{display:flex;gap:3px;margin:8px 16px 4px;padding:3px;border-radius:11px;background:rgba(255,255,255,.07)}
-.gulf-switch button{flex:1;min-height:36px;border:0;border-radius:8px;background:transparent;color:#e6ecf2;font:600 12px/1.2 system-ui,sans-serif;cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center;gap:5px}
+.gulf-switch button{flex:1;min-height:36px;border:0;border-radius:8px;background:transparent;color:#e6ecf2;font:600 12px/1.2 var(--hs-sans);cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center;gap:5px}
 .gulf-switch button::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ac-hl)}
 .gulf-switch button[aria-pressed="true"]{background:var(--ac);color:#fff;box-shadow:0 0 0 1px var(--ac-hl) inset}
 .gulf-switch button:hover:not([aria-pressed="true"]){background:rgba(255,255,255,.1)}
@@ -119,3 +145,38 @@
  .gulf-tile span{display:none}
  .gulf-pass-links a{min-height:36px;padding:0 12px;font-size:.85rem}
 }
+
+/* ---- Release 1: polish ---- */
+/* Sidebar groups */
+.gulf-group{display:block;margin:8px 0 0 14px;font:700 .62rem/1.4 var(--hs-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ac-hl);opacity:.85}
+.sidebar-collapsed .gulf-group{font-size:0;height:1px;margin:8px 14px;background:rgba(255,255,255,.12)}
+/* Header: one clean crumb, slim on scroll */
+:root[data-edition] .hs-crumbs .eyebrow{display:none}
+:root[data-edition] .hs-crumbs::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ac);margin-right:8px;vertical-align:1px}
+:root[data-edition] .topbar{transition:min-height .2s ease,padding .2s ease,box-shadow .2s ease}
+:root[data-gulf-scrolled] .topbar{min-height:48px!important;padding-top:4px!important;padding-bottom:4px!important;box-shadow:0 6px 20px rgba(20,30,45,.08)}
+/* Reading progress line */
+.gulf-progress{position:fixed;left:0;right:0;top:0;height:3px;z-index:60;pointer-events:none;background:var(--ac);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+/* Back to top */
+.gulf-top{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:55;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ac-ink);font:600 18px/1 var(--hs-sans);box-shadow:0 8px 24px rgba(20,30,45,.16);cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s,transform .2s}
+.gulf-top.on{opacity:1;transform:none;pointer-events:auto}
+.gulf-top:hover{background:var(--ac);color:#fff}
+.gulf-top:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+@media (max-width:760px){.gulf-top{bottom:calc(84px + env(safe-area-inset-bottom,0px));width:42px;height:42px}}
+/* Footer */
+.gulf-foot{margin:48px 48px 0;padding:22px 0 28px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 28px;align-items:flex-start;justify-content:space-between;font-size:.85rem;color:#4a5668}
+.gulf-foot p{margin:0;max-width:62ch}
+.gulf-foot b{color:#14243a}
+.gulf-foot nav{display:flex;flex-wrap:wrap;gap:6px 16px}
+.gulf-foot a,.gulf-foot button{color:var(--ac-ink);font:600 .85rem/1.6 var(--hs-sans);text-decoration:none;background:none;border:0;padding:0;cursor:pointer}
+.gulf-foot a:hover,.gulf-foot button:hover{text-decoration:underline}
+@media (max-width:760px){.gulf-foot{margin:40px 16px 72px}}
+/* Phone tab bar in the edition colour */
+:root[data-edition] .hs-tab.active,:root[data-edition] .hs-tab[aria-current="page"]{color:var(--ac-ink)!important;background:var(--ac-soft)!important}
+:root[data-edition] .hs-tab.active svg,:root[data-edition] .hs-tab[aria-current="page"] svg{color:var(--ac)!important}
+/* Very light edition paper tone */
+:root[data-edition] body,:root[data-edition] .main-canvas{background-color:color-mix(in srgb,var(--ac-soft) 35%,#f6f7f5)}
+/* Calm entrances; nothing moves for reduced-motion users */
+@keyframes gulf-rise{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+.gulf-pass{animation:gulf-rise .35s ease-out both}
+@media (prefers-reduced-motion:reduce){.gulf-pass{animation:none}.gulf-top,.topbar,.gulf-progress{transition:none!important}}

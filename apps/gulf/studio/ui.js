@@ -28,7 +28,7 @@
  function ui(s){for(var i=0;i<UI.length;i++)s=s.replace(UI[i][0],UI[i][1]);return s}
  function textSweep(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
-  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-pass,#gulf-chooser'))continue;if(HIT.test(n.nodeValue))list.push(n)}
+  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-pass,.gulf-foot,#gulf-chooser'))continue;if(HIT.test(n.nodeValue))list.push(n)}
   list.forEach(function(t){t.nodeValue=ui(t.nodeValue.replace(/\bSaudi Arabia\b/g,'your country').replace(/\bSaudi\b/g,'local'))});
   if(root.querySelectorAll)root.querySelectorAll('[aria-label],[title]').forEach(function(e){['aria-label','title'].forEach(function(a){var v=e.getAttribute(a);if(v&&/SNLE|SCFHS/.test(v))e.setAttribute(a,ui(v))})});
  }
@@ -50,10 +50,33 @@
   var el=document.createElement('section');el.className='gulf-pass';el.setAttribute('aria-labelledby','gulf-pass-h');
   el.innerHTML='<span class="gulf-motif" aria-hidden="true"></span><div class="gulf-pass-head"><div><small>'+esc(c.region)+' · '+esc(c.regulatorShort)+'</small><h2 id="gulf-pass-h">'+esc(c.fullName)+'</h2></div><div class="gulf-pass-links"><a href="#guide">Exam guide</a><a href="/hub/#'+ed+'">Compare exams</a></div></div>'+
    window.GULF_UI.tiles(c)+
-   '<p class="gulf-pass-note">Original practice material · not official exam content · not endorsed by '+esc(c.regulatorShort)+'. Details checked '+esc(CFG.checked)+'; confirm with '+esc(c.regulatorShort)+' before you book.</p>';
+   '<p class="gulf-pass-note">Details checked '+esc(CFG.checked)+'. Confirm with '+esc(c.regulatorShort)+' before you book.</p>';
   var top=$('.topbar',main);if(top)top.after(el);else main.prepend(el);
  }
- function tick(){switcher();suiteChip();card();textSweep(document.body)}
+ function groups(){
+  var nav=$('.sidebar nav');if(!nav||$('.gulf-group',nav))return;
+  [['guide','Learn'],['dossier','Practise'],['progress','Track']].forEach(function(g){var b=$('[data-nav="'+g[0]+'"]',nav);if(!b)return;var l=document.createElement('span');l.className='gulf-group';l.setAttribute('aria-hidden','true');l.textContent=g[1];b.before(l)});
+ }
+ function footer(){
+  var main=$('.main-canvas');if(!main||$('.gulf-foot',main))return;
+  var f=document.createElement('footer');f.className='gulf-foot';
+  f.innerHTML='<p><b>'+esc(c.short)+' edition</b> · details checked '+esc(CFG.checked)+'. '+esc(CFG.policy)+'</p>'+
+   '<nav aria-label="Footer"><a href="#guide">Exam guide</a><a href="/hub/#'+ed+'">Compare exams</a><button type="button" data-gulf-switch>Switch exam</button><button type="button" data-gulf-top>Back to top ↑</button></nav>';
+  f.querySelector('[data-gulf-switch]').onclick=function(){try{localStorage.removeItem('gulf-edition')}catch(e){}location.href='/';};
+  f.querySelector('[data-gulf-top]').onclick=toTop;
+  main.append(f);
+ }
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function toTop(){scrollTo({top:0,behavior:reduce?'auto':'smooth'});var h=$('.main-canvas h1');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
+ var bar=document.createElement('div');bar.className='gulf-progress';bar.setAttribute('aria-hidden','true');
+ var up=document.createElement('button');up.type='button';up.className='gulf-top';up.setAttribute('aria-label','Back to top');up.textContent='↑';up.onclick=toTop;
+ document.body.append(bar,up);
+ var raf=0;function onScroll(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;var y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
+  bar.style.setProperty('--p',max>innerHeight*.5?Math.min(1,y/max).toFixed(4):0);
+  up.classList.toggle('on',y>innerHeight*1.5);
+  document.documentElement.toggleAttribute('data-gulf-scrolled',y>40)})}
+ addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
+ function tick(){switcher();groups();suiteChip();card();footer();textSweep(document.body);onScroll()}
  var t=null;new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=null;tick()},60)}).observe(document.body,{childList:true,subtree:true,characterData:true});
  addEventListener('hashchange',tick);tick();
 })();
