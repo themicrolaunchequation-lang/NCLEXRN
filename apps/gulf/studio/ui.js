@@ -3,7 +3,7 @@
  'use strict';
  var CFG=window.GULF_CONFIG||{},ed=window.GULF_EDITION,$=function(s,r){return(r||document).querySelector(s)};
  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
- function setEdition(id){try{localStorage.setItem('gulf-edition',id)}catch(e){}location.href='/#home';location.reload()}
+ function setEdition(id){try{localStorage.setItem('gulf-edition',id);sessionStorage.setItem('gulf-switched','1')}catch(e){}location.href='/#home';location.reload()}
  function chooser(){
   if($('#gulf-chooser'))return;var d=document.createElement('dialog');d.id='gulf-chooser';d.setAttribute('aria-labelledby','gulf-chooser-h');
   d.innerHTML='<div class="gulf-chooser-in"><span class="gulf-kicker">Healthcare Crown Academy · Gulf Region Exams</span><h1 id="gulf-chooser-h">Which licensing exam are you preparing for?</h1><p>One study studio, set up for each regulator. Switch at any time; each exam keeps its own progress.</p><div class="gulf-cards">'+
@@ -28,7 +28,7 @@
  function ui(s){for(var i=0;i<UI.length;i++)s=s.replace(UI[i][0],UI[i][1]);return s}
  function textSweep(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
-  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-pass,.gulf-foot,#gulf-chooser'))continue;if(HIT.test(n.nodeValue))list.push(n)}
+  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-pass,.gulf-plan,.gulf-foot,#gulf-chooser'))continue;if(HIT.test(n.nodeValue))list.push(n)}
   list.forEach(function(t){t.nodeValue=ui(t.nodeValue.replace(/\bSaudi Arabia\b/g,'your country').replace(/\bSaudi\b/g,'local'))});
   if(root.querySelectorAll)root.querySelectorAll('[aria-label],[title]').forEach(function(e){['aria-label','title'].forEach(function(a){var v=e.getAttribute(a);if(v&&/SNLE|SCFHS/.test(v))e.setAttribute(a,ui(v))})});
  }
@@ -76,7 +76,35 @@
   up.classList.toggle('on',y>innerHeight*1.5);
   document.documentElement.toggleAttribute('data-gulf-scrolled',y>40)})}
  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
- function tick(){switcher();groups();suiteChip();card();footer();textSweep(document.body);onScroll()}
+ try{if(sessionStorage.getItem('gulf-switched')){sessionStorage.removeItem('gulf-switched');document.documentElement.setAttribute('data-gulf-switched','');setTimeout(function(){document.documentElement.removeAttribute('data-gulf-switched')},1200)}}catch(e){}
+ var DKEY='gulf-'+ed+'-exam-date',BANK=(window.SNLE_QUESTIONS||[]).length;
+ function examDate(){try{var v=localStorage.getItem(DKEY);return /^\d{4}-\d{2}-\d{2}$/.test(v)?v:''}catch(e){return ''}}
+ function daysTo(v){var t=new Date(v+'T00:00:00'),n=new Date();n.setHours(0,0,0,0);return Math.round((t-n)/864e5)}
+ function plan(){
+  var pass=$('.main-canvas .gulf-pass');if(!pass){return}var ex=$('.main-canvas .gulf-plan');if(ex)return;
+  var h=new Date().getHours(),greet=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+  var v=examDate(),d=v?daysTo(v):null,body,count;
+  if(v&&d>=0){var pace=Math.max(10,Math.ceil(BANK/Math.max(d,1)/5)*5);
+   body='<h2>'+greet+'. '+(d===0?'Your exam is today.':d+' day'+(d===1?'':'s')+' to your exam.')+'</h2><p>'+(d===0?'Read the Guide once more and rest.':'A steady pace: about '+Math.min(pace,BANK)+' questions a day, with time to review what you miss.')+'</p>';
+   count='<b>'+d+'</b><span>days to go · '+esc(new Date(v+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}))+'</span><button type="button" data-gulf-date-clear>Change date</button>';}
+  else{body='<h2>'+greet+'. Ready for today’s set?</h2><p>Add your booking date and the studio will suggest a daily pace.</p>';
+   count='<label for="gulf-date">My '+esc(c.short)+' exam date</label><input id="gulf-date" type="date"><span>Saved on this device only.</span>';}
+  var el=document.createElement('section');el.className='gulf-plan';el.setAttribute('aria-label','Your plan');
+  el.innerHTML='<div>'+body+'<div class="gulf-plan-acts"><a href="#practice">Practise now</a><a href="#progress">See my progress</a></div></div><div class="gulf-count">'+count+'</div>';
+  var inp=el.querySelector('#gulf-date');if(inp){inp.min=new Date().toISOString().slice(0,10);inp.onchange=function(){if(!inp.value)return;try{localStorage.setItem(DKEY,inp.value)}catch(e){}el.remove();plan()}}
+  var clr=el.querySelector('[data-gulf-date-clear]');if(clr)clr.onclick=function(){try{localStorage.removeItem(DKEY)}catch(e){}el.remove();plan();var i=$('#gulf-date');if(i)i.focus()};
+  pass.after(el);
+ }
+ function keysHint(){var a=$('.main-canvas .question-actions');if(!a||$('.gulf-keys',a.parentElement))return;var k=document.createElement('p');k.className='gulf-keys';k.innerHTML='Keys: <kbd>A</kbd>–<kbd>E</kbd> choose · <kbd>Enter</kbd> check or next · <kbd>F</kbd> flag';a.after(k)}
+ addEventListener('keydown',function(e){
+  if(e.ctrlKey||e.metaKey||e.altKey||e.defaultPrevented)return;var t=e.target;if(t&&(/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||t.isContentEditable))return;
+  if($('dialog[open]'))return;var opts=document.querySelectorAll('.main-canvas .option-button');if(!opts.length)return;
+  var k=e.key.toLowerCase(),i='abcde'.indexOf(k);
+  if(i>-1&&k.length===1){if(opts[i]&&!opts[i].disabled){opts[i].click();opts[i].focus();e.preventDefault()}}
+  else if(k==='enter'&&!(t&&t.closest&&t.closest('button,a')&&!t.classList.contains('option-button'))){var b=$('.main-canvas .question-actions .primary-button');if(b&&!b.disabled){b.click();e.preventDefault()}}
+  else if(k==='f'){var f=$('.main-canvas .flag-button');if(f){f.click();e.preventDefault()}}
+ });
+ function tick(){switcher();groups();suiteChip();card();plan();footer();keysHint();textSweep(document.body);onScroll()}
  var t=null;new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=null;tick()},60)}).observe(document.body,{childList:true,subtree:true,characterData:true});
  addEventListener('hashchange',tick);tick();
 })();
