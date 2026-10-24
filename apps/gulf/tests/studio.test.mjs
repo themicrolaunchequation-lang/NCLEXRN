@@ -13,7 +13,7 @@ test('edition data layer neutralises Saudi-specific wording and keeps ids',()=>{
  assert.equal(win.SNLE_QUESTIONS[0].stem,'A nurse in your country follows regulator rules for licensing exam practice.');
  assert.equal(win.SNLE_LEARNING.glossary[0].term,'local scope');
 });
-test('studio build output contains edition layers, hub and per-edition palettes',()=>{
+test('studio build output contains edition layers, hub and per-edition palettes',async()=>{
  execFileSync(process.execPath,[path.join(ROOT,'scripts/build.mjs')],{cwd:ROOT,stdio:'ignore'});
  const html=fs.readFileSync(path.join(ROOT,'dist/index.html'),'utf8');
  for(const k of ['gulf-pre','gulf-cfg','gulf-data','gulf-ui','gulf-css'])assert(html.includes('/assets/'+k+'.'),k);
@@ -28,4 +28,10 @@ test('studio build output contains edition layers, hub and per-edition palettes'
  for(const f of fs.readdirSync(labs).filter(n=>/\.(html|js)$/.test(n)))assert(!/\bSNLE\b|\bSaudi\b/.test(fs.readFileSync(path.join(labs,f),'utf8').replace(/base64,[A-Za-z0-9+/=]+/g,'')),'labs neutral wording: '+f);
  const app=fs.readFileSync(path.join(ROOT,'dist/assets',fs.readdirSync(path.join(ROOT,'dist/assets')).find(f=>/^app\.[a-f0-9]+\.js$/.test(f))),'utf8');
  assert(app.includes('window.GULF_GUIDE')&&app.includes('window.GULF_RATIOS')&&app.includes('window.GULF_MOCKS'),'edition-aware guide, mock ratios and lengths patched');
+ const sw=fs.readFileSync(path.join(ROOT,'dist/sw.js'),'utf8'),appName=fs.readdirSync(path.join(ROOT,'dist/assets')).find(f=>/^app\.[a-f0-9]+\.js$/.test(f));
+ assert(sw.includes('/assets/'+appName),'service worker precaches the patched app file');
+ assert(/CACHE='gulf-web-[a-f0-9]+'/.test(sw)&&!/snle-web-/.test(sw),'own cache name, changes with content');
+ assert(!sw.includes('fe6b1333ddf3cb83'),'cache name is not inherited from the SNLE build');
+ const crypto=await import('node:crypto');
+ assert(appName.includes(crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,'dist/assets',appName))).digest('hex').slice(0,12)),'app file name carries a hash of its patched content (cache-safe)');
 });

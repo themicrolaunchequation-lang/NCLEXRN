@@ -69,7 +69,11 @@ rep("const mock=(n)=>shuffle([['Nursing Fundamentals',.2],['Adult Nursing',.4],[
 rep('<span class="eyebrow">BLUEPRINT · 20 / 40 / 30 / 10</span>','<span class="eyebrow">${window.GULF_BP_EYEBROW||\'BLUEPRINT · 20 / 40 / 30 / 10\'}</span>','mock eyebrow');
 rep('<p>20% Nursing Fundamentals · 40% Adult Nursing · 30% Maternal–Child Nursing · 10% Management & Leadership.</p>','<p>${window.GULF_BP_TEXT||\'20% Nursing Fundamentals · 40% Adult Nursing · 30% Maternal–Child Nursing · 10% Management & Leadership.\'}</p>','mock blueprint text');
 rep('[20,50,100,200].map','(window.GULF_MOCKS||[20,50,100,200]).map','mock lengths');
-fs.writeFileSync(path.join(out,'assets',appFile),app);
+const appNew='app.'+sha(app)+'.js';
+fs.writeFileSync(path.join(out,'assets',appNew),app);
+if(appNew!==appFile)fs.rmSync(path.join(out,'assets',appFile));
+{const hp=path.join(out,'index.html');let h=fs.readFileSync(hp,'utf8');if(!h.includes('/assets/'+appFile))throw Error('app reference missing');fs.writeFileSync(hp,h.split('/assets/'+appFile).join('/assets/'+appNew));}
+const appUrl='/assets/'+appNew,appOld='/assets/'+appFile;
 // --- Interactive Labs: neutral wording (the posters' own artwork still carries the original series title) ---
 const labsDir=path.join(out,'SNLE_Decoder_Interactive_Labs_v3');
 if(fs.existsSync(labsDir))for(const f of fs.readdirSync(labsDir).filter(n=>/\.(html|js)$/.test(n))){
@@ -79,6 +83,9 @@ if(fs.existsSync(labsDir))for(const f of fs.readdirSync(labsDir).filter(n=>/\.(h
 }
 // service worker: precache the new assets, new cache name
 const swp=path.join(out,'sw.js');let sw=fs.readFileSync(swp,'utf8');
+sw=sw.split(appOld).join(appUrl);
+const buildId=sha(Object.values(urls).join('')+app+fs.readdirSync(path.join(out,'assets')).sort().join(''));
+sw=sw.replace(/CACHE='snle-web-[a-f0-9]+'/,"CACHE='gulf-web-"+buildId+"'").replace(/snle-web-/g,'gulf-web-');
 sw=sw.replace('SHELL=[','SHELL=['+Object.values(urls).map(u=>JSON.stringify(u)).join(',')+',"/hub/",').replace(/CACHE='snle-web-/,"CACHE='gulf-web-");
 fs.writeFileSync(swp,sw);
 const mp=path.join(out,'manifest.webmanifest'),mf=JSON.parse(fs.readFileSync(mp,'utf8'));mf.name='Gulf Region Exams';mf.short_name='Gulf Exams';fs.writeFileSync(mp,JSON.stringify(mf,null,2));
