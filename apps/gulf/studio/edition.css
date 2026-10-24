@@ -428,3 +428,75 @@ body.gulf-slide-on{overflow:hidden}
 /* filters share the row: shrink evenly instead of scrolling (desktop) */
 @media (min-width:901px){.gs-filters{overflow:visible;mask-image:none}.gs-fsel{flex:1 1 0;min-width:86px;max-width:180px}.gs-fsearch{flex:1.3 1 0;min-width:110px;max-width:240px}}
 @media (min-width:901px) and (max-width:1400px){.gs-rev button[data-rv="all"]{display:none}.gs-fsel{min-width:78px}.gulf-slide .gs-top .gs-star{padding:0 10px}}
+
+/* ---- Fit each sidebar page to one screen on desktop: use the full width, kill dead space, keep type sizes ---- */
+@media (min-width:1100px){
+ :root[data-edition] .main-canvas .page-content{max-width:none!important;width:auto!important;margin-inline:clamp(20px,2vw,36px)!important;padding-top:16px!important;padding-bottom:12px!important}
+ :root[data-edition] .page-content .page-hero,:root[data-edition] .tools-intro,:root[data-edition] .practice-heading,:root[data-edition] .progress-heading{margin-bottom:12px!important;padding-top:0!important;min-height:0!important}
+ /* slim one-line footer */
+ .gulf-foot{margin:16px clamp(20px,2vw,36px) 0;padding:10px 0 12px;align-items:center;flex-wrap:nowrap}
+ .gulf-foot p{max-width:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+ .gulf-foot nav{flex:none}
+ /* Today: exam pass and plan side by side */
+ .gulf-toprow{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,30%);gap:14px;margin:12px clamp(20px,2vw,36px) 0}
+ .gulf-toprow .gulf-pass,.gulf-toprow .gulf-plan{margin:0}
+ .gulf-toprow .gulf-pass{padding:20px 18px 12px}
+ .gulf-toprow .gulf-tiles{margin-top:12px}
+ .gulf-toprow .gulf-plan{grid-template-columns:1fr;align-content:start;gap:10px;padding:16px 18px}
+ .gulf-toprow .gulf-plan-acts{margin-top:8px}
+ .gulf-toprow .gulf-count{flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:10px 14px}
+ .gulf-toprow .gulf-count b{font-size:1.8rem}
+ :root[data-edition] .home-view .hero-grid{gap:24px}
+ :root[data-edition] .home-view .home-intro-row{margin-bottom:6px}
+ :root[data-edition] .home-view .hero-actions{margin-top:16px}
+ :root[data-edition] .decision-pulse-card{padding:20px!important}
+ :root[data-edition] .decision-pulse-card .pulse-orbit{margin-top:12px!important}
+ /* content snapshot as one stats strip */
+ :root[data-edition] .content-snapshot{grid-template-columns:minmax(220px,22%) minmax(0,1fr)!important;align-items:center;padding:16px 22px!important;margin-top:16px!important}
+ :root[data-edition] .content-snapshot>div:first-child>p{display:none}
+ :root[data-edition] .content-snapshot h2{margin:4px 0 0!important}
+ :root[data-edition] .snapshot-stats{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+ :root[data-edition] .snapshot-stats>div{padding:8px 14px!important}
+ /* Guide: two columns */
+ .gulf-guide-cols{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px;align-items:start}
+ .gulf-guide-main .gulf-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .gulf-guide-side{display:flex;flex-direction:column;gap:6px;padding:18px 22px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+ .gulf-guide-side h2{margin:10px 0 6px!important}
+ .gulf-guide-side section:first-child h2{margin-top:0!important}
+ .gulf-guide-side p,.gulf-guide-side ol,.gulf-guide-side ul{margin:0 0 6px}
+ .gulf-guide .gulf-guide-main h2{margin:18px 0 6px}
+ .gulf-guide .gulf-guide-alert{margin:12px 0}
+ /* Glossary and Labs: panels fill the screen; they scroll inside, not the page */
+ :root[data-edition] .glossary-shell{height:calc(100vh - 64px - 150px - 60px)!important;min-height:520px}
+ :root[data-edition] .labs-page iframe{height:calc(100vh - 64px - 16px - 60px)!important;min-height:560px}
+ /* React & Interact and Clinical Dossier: denser grids */
+ :root[data-edition] .tool-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))!important;gap:14px!important}
+ :root[data-edition] .dossier-grid{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))!important;gap:14px!important}
+ :root[data-edition] .dossier-hero{padding:20px 26px!important;min-height:0!important}
+ /* Reset & Recharge: steps 2x2, library in one row */
+ :root[data-edition] .reset-checklist{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ :root[data-edition] .reset-library{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))!important;gap:12px!important}
+ :root[data-edition] .reset-library-heading{padding:4px!important;margin-top:16px!important}
+ :root[data-edition] .reset-studio{margin-top:12px}
+ /* Progress: tighter KPI cards */
+ :root[data-edition] .progress-kpis{margin-top:12px!important;margin-bottom:12px!important}
+
+ /* page titles: description beside the title instead of below it (same type sizes) */
+ :root[data-edition] :is(.page-hero,.tools-intro,.practice-heading,.progress-heading,.dossier-hero)>div:first-child{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:36px;align-items:end;max-width:none!important;width:100%}
+ :root[data-edition] :is(.page-hero,.tools-intro,.practice-heading,.progress-heading,.dossier-hero)>div:first-child>.eyebrow{grid-column:1/-1}
+ :root[data-edition] :is(.page-hero,.tools-intro,.practice-heading,.progress-heading,.dossier-hero)>div:first-child>h1{margin-bottom:0!important}
+ :root[data-edition] :is(.page-hero,.tools-intro,.practice-heading,.progress-heading,.dossier-hero)>div:first-child>p{margin:0 0 6px!important;max-width:70ch}
+ :root[data-edition] :is(.page-hero,.tools-intro,.practice-heading,.progress-heading){align-items:end;gap:24px}
+ :root[data-edition] .gulf-guide .gulf-hero>div{display:block}
+ .gulf-toprow .gulf-pass-note{display:none}
+ :root[data-edition] .home-view .trust-row{display:none}
+ :root[data-edition] .reset-stage-body>div,:root[data-edition] .reset-checklist{width:100%}
+ .gulf-foot p{max-width:none!important}
+ :root[data-edition] .hero-actions{flex-wrap:wrap;align-items:center}
+ :root[data-edition] .hero-actions .gulf-inline-links{margin:0 0 0 8px!important;gap:10px}
+ :root[data-edition] .hero-actions .gulf-inline-links>*{min-height:0!important;padding-block:8px!important}
+ .gulf-toprow{align-items:start}
+ .gulf-toprow .gulf-plan p{display:none}
+ .gulf-toprow .gulf-plan .gulf-plan-acts{margin-top:4px}
+ :root[data-edition] .decision-pulse-card .pulse-header{margin-bottom:0!important}
+}

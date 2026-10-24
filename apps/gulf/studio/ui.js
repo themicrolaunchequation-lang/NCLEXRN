@@ -46,12 +46,13 @@
  function card(){
   var main=$('.main-canvas');if(!main)return;
   var home=(location.hash.replace(/^#\/?/,'').split(/[?\/]/)[0]||'home')==='home';
-  var ex=$('.gulf-pass',main);if(!home){if(ex)ex.remove();return}if(ex)return;
+  var ex=$('.gulf-toprow',main);if(!home){if(ex)ex.remove();return}if(ex)return;
+  var row=document.createElement('div');row.className='gulf-toprow';
   var el=document.createElement('section');el.className='gulf-pass';el.setAttribute('aria-labelledby','gulf-pass-h');
   el.innerHTML='<span class="gulf-motif" aria-hidden="true"></span><div class="gulf-pass-head"><div><small>'+esc(c.region)+' · '+esc(c.regulatorShort)+'</small><h2 id="gulf-pass-h">'+esc(c.fullName)+'</h2></div><div class="gulf-pass-links"><a href="#guide">Exam guide</a><a href="/hub/#'+ed+'">Compare exams</a></div></div>'+
    window.GULF_UI.tiles(c)+
    '<p class="gulf-pass-note">Details checked '+esc(CFG.checked)+'. Confirm with '+esc(c.regulatorShort)+' before you book.</p>';
-  var top=$('.topbar',main);if(top)top.after(el);else main.prepend(el);
+  row.append(el);var top=$('.topbar',main);if(top)top.after(row);else main.prepend(row);
  }
  function groups(){
   var nav=$('.sidebar nav');if(!nav||$('.gulf-group',nav))return;
@@ -66,7 +67,7 @@
  function footer(){
   var main=$('.main-canvas');if(!main||$('.gulf-foot',main))return;
   var f=document.createElement('footer');f.className='gulf-foot';
-  f.innerHTML='<p><b>'+esc(c.short)+' edition</b> · details checked '+esc(CFG.checked)+'. '+esc(CFG.policy)+'</p>'+
+  f.innerHTML='<p title="'+esc(CFG.policy)+'"><b>'+esc(c.short)+' edition</b> · original practice material, not official exam content · not endorsed by DHP, DHA or DOH · details checked '+esc(CFG.checked)+'</p>'+
    '<nav aria-label="Footer"><a href="#guide">Exam guide</a><a href="/hub/#'+ed+'">Compare exams</a><button type="button" data-gulf-switch>Switch exam</button><button type="button" data-gulf-top>Back to top ↑</button></nav>';
   f.querySelector('[data-gulf-switch]').onclick=function(){try{localStorage.removeItem('gulf-edition')}catch(e){}location.href='/';};
   f.querySelector('[data-gulf-top]').onclick=toTop;
@@ -110,7 +111,8 @@
   else if(k==='enter'&&!(t&&t.closest&&t.closest('button,a')&&!t.classList.contains('option-button'))){var b=$('.main-canvas .question-actions .primary-button');if(b&&!b.disabled){b.click();e.preventDefault()}}
   else if(k==='f'){var f=$('.main-canvas .flag-button');if(f){f.click();e.preventDefault()}}
  });
- function tick(){switcher();groups();suiteChip();card();plan();footer();keysHint();textSweep(document.body);onScroll()}
+ function homeLinks(){if(innerWidth<1100)return;var r=$('.home-view .home-intro-row'),a=$('.home-view .hero-actions');if(r&&a&&r.parentElement!==a){r.classList.add('gulf-inline-links');a.append(r)}}
+ function tick(){homeLinks();switcher();groups();suiteChip();card();plan();footer();keysHint();textSweep(document.body);onScroll()}
  var t=null;new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=null;tick()},60)}).observe(document.body,{childList:true,subtree:true,characterData:true});
  addEventListener('hashchange',tick);tick();
 })();

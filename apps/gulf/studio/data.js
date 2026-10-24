@@ -31,13 +31,13 @@
       var bar='<div class="gulf-mix" role="img" aria-label="'+esc(mix.map(function(m){return m[0]+' '+m[1]+(ok?' questions':' percent')}).join(', '))+'">'+mix.map(function(m,i){var w=ok?m[1]/E.questions*100:m[1];return '<span class="gulf-mix-seg s'+i+'" style="flex-basis:'+w.toFixed(1)+'%"></span>'}).join('')+'</div>'+
     '<ul class="gulf-mix-key">'+mix.map(function(m,i){return '<li><i class="s'+i+'"></i>'+esc(m[0])+' <b>'+esc(ok?m[1]+' of '+E.questions:m[1]+'%')+'</b></li>'}).join('')+'</ul>';
    var src=(E.sources||[]).map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.label)+' ↗</a></li>'}).join('');
-   return '<div class="page-content guide-page gulf-guide"><section class="page-hero gulf-hero"><div><span class="eyebrow">'+esc(E.regulator.toUpperCase())+'</span><h1>'+esc(E.short)+' Guide</h1><p>'+esc(E.intro)+'</p></div></section>'+
+   return '<div class="page-content guide-page gulf-guide"><div class="gulf-guide-cols"><div class="gulf-guide-main"><section class="page-hero gulf-hero"><div><span class="eyebrow">'+esc(E.regulator.toUpperCase())+'</span><h1>'+esc(E.short)+' Guide</h1><p>'+esc(E.intro)+'</p></div></section>'+
     window.GULF_UI.tiles(E)+
     '<div class="gulf-guide-alert"><b>Check before you book.</b> These details come from regulator publications read on '+esc(CFG.checked)+'. Rules can change, so confirm with '+esc(E.regulatorShort)+'.</div>'+
-    '<h2>'+(ok?'Published blueprint':'How practice sets are balanced')+'</h2><p>'+esc(E.mix)+'</p>'+bar+
-    '<h2>Attempts</h2><p>'+esc(E.notes.retake)+'</p>'+
-    '<h2>How to use this studio</h2><ol class="gulf-steps"><li><b>Learn the pattern.</b> Start with React &amp; Interact and Interactive Labs to see how questions hide the decision.</li><li><b>Practise.</b> Use the Practice Hub for timed sets and the Clinical Dossier for case practice.</li><li><b>Repeat what you missed.</b> My Progress shows what to review. Each exam keeps its own record.</li></ol>'+
-    '<h2>Official sources</h2><ul class="gulf-sources">'+src+'</ul><p class="gulf-guide-note">'+esc(CFG.policy)+'</p></div>';
+    '<h2>'+(ok?'Published blueprint':'How practice sets are balanced')+'</h2><p>'+esc(E.mix)+'</p>'+bar+'</div>'+
+    '<div class="gulf-guide-side"><section><h2>Attempts</h2><p>'+esc(E.notes.retake)+'</p></section>'+
+    '<section><h2>How to use this studio</h2><ol class="gulf-steps"><li><b>Learn the pattern.</b> Start with React &amp; Interact and Interactive Labs to see how questions hide the decision.</li><li><b>Practise.</b> Use the Practice Hub for timed sets and the Clinical Dossier for case practice.</li><li><b>Repeat what you missed.</b> My Progress shows what to review. Each exam keeps its own record.</li></ol></section>'+
+    '<section><h2>Official sources</h2><ul class="gulf-sources">'+src+'</ul><p class="gulf-guide-note">'+esc(CFG.policy)+'</p></section></div></div></div>';
   };
  }
 
