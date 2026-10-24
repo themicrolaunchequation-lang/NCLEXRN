@@ -282,3 +282,33 @@ body.gulf-one #items>article.gulf-cur li:hover{background:var(--ac-soft)}
 body.gulf-one #items>article.gulf-cur summary{font-size:1.05rem}
 @media (max-width:760px){.gulf-studybar{gap:8px}.gulf-nav{margin-left:0;flex:1}.gulf-nav button{flex:1}body.gulf-one #items>article.gulf-cur{min-height:0}}
 @media (prefers-reduced-motion:reduce){body.gulf-one #items>article.gulf-cur{animation:none}}
+/* Library practice view: fold filters, compact header, answer feedback, structured reasoning */
+body.gulf-one header{padding:20px 28px 18px}
+body.gulf-one header h1{font-size:clamp(1.5rem,2.6vw,2.1rem);margin:4px 0 4px}
+body.gulf-one header p:last-child{font-size:.85rem}
+body.gulf-fclosed .filters,body.gulf-fclosed #count{display:none}
+body[data-library] .gulf-ftoggle{min-height:36px;padding:4px 14px;border-radius:999px}
+.gulf-score{font:500 .85rem var(--hs-sans);color:#4a5668;font-variant-numeric:tabular-nums}
+.gulf-track{flex-basis:100%;height:4px;border-radius:999px;background:var(--ac-soft);overflow:hidden}
+.gulf-track i{display:block;height:100%;background:var(--ac);border-radius:inherit;transition:width .3s ease}
+body:not(.gulf-one) .gulf-track,body:not(.gulf-one) .gulf-pos{display:none}
+body[data-library] ol>li[data-letter]{cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:12px 16px 12px 8px;margin:10px 0 10px -4px;list-style-position:inside;background:#fff;transition:border-color .15s,background .15s}
+body[data-library] ol:has(>li[data-letter]){padding-left:0}
+body[data-library] ol>li[data-letter]:hover:not([aria-disabled]){border-color:var(--ac);background:var(--ac-soft)}
+body[data-library] ol>li[data-letter]:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+body[data-library] ol>li[aria-disabled]{cursor:default}
+body[data-library] ol>li.gulf-right{border-color:#2e7d4f;background:#e9f6ee}
+body[data-library] ol>li.gulf-right::after{content:"  ✓ Correct answer";font:600 .85rem var(--hs-sans);color:#1d5b2e}
+body[data-library] ol>li.gulf-wrong{border-color:#b3261e;background:#fdecea}
+body[data-library] ol>li.gulf-wrong::after{content:"  ✕ Your choice";font:600 .85rem var(--hs-sans);color:#8c1d18}
+.gulf-verdict{margin:4px 0 14px;padding:12px 16px;border-radius:12px;font-weight:600}
+.gulf-verdict.is-ok{background:#e9f6ee;color:#1d5b2e}
+.gulf-verdict.is-no{background:#fdecea;color:#8c1d18}
+body[data-library] details>p{margin:10px 0;padding:10px 14px;border-radius:10px;background:#fff;border-left:4px solid var(--line)}
+body[data-library] details>p.gulf-r-ans{border-left-color:#2e7d4f}
+body[data-library] details>p.gulf-r-why{border-left-color:var(--ac)}
+body[data-library] details>p.gulf-r-pearl{border-left-color:var(--ac-hl);background:color-mix(in srgb,var(--ac-hl) 12%,#fff)}
+body[data-library] details>p.gulf-r-trap{border-left-color:#c99a1e;background:#fff8e6}
+body[data-library] details>p.gulf-r-alt{padding:6px 14px;border-left-color:#c6cbd3;font-size:.95rem}
+body[data-library] details h3{margin:16px 0 4px;font:600 1rem var(--hs-sans);color:var(--ac-ink)}
+@media (prefers-reduced-motion:reduce){.gulf-track i{transition:none}}

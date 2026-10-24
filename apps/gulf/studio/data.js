@@ -43,42 +43,82 @@
 
 })();
 
-/* Library pages: "One at a time" study view with keyboard navigation (list view kept as an option). */
+/* Library pages: "One at a time" practice view. Tap an answer to have it marked, reasoning laid out by role,
+   a session score, filters folded away, keyboard navigation. List view kept as an option. */
 (function(){
  if(typeof document==='undefined')return;var body=document.body;if(!body||!body.dataset.library||body.dataset.library==='tools')return;
- var KEY='gulf-lib-view',mode='one',idx=0,bar,go=null;
+ var KEY='gulf-lib-view',SKEY='gulf-lib-score-'+body.dataset.library,mode='one',idx=0,bar,go=null,filtersOpen=false,done={};
  try{mode=localStorage.getItem(KEY)==='list'?'list':'one'}catch(e){}
+ try{done=JSON.parse(sessionStorage.getItem(SKEY)||'{}')||{}}catch(e){done={}}
  var $=function(s){return document.querySelector(s)},noun=body.dataset.library==='dossiers'?'Case':'Question';
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  function cards(){var it=$('#items');return it?[].slice.call(it.querySelectorAll(':scope>article')):[]}
+ function qid(a){var p=a.querySelector('p');return p?p.textContent.split('·')[0].trim():''}
+ function save(){try{sessionStorage.setItem(SKEY,JSON.stringify(done))}catch(e){}}
+ function enhance(a){
+  if(a.dataset.g)return;a.dataset.g='1';
+  var d=a.querySelector('details'),ol=a.querySelector('ol');if(!d||!ol)return;
+  var right='';[].slice.call(d.querySelectorAll('p')).forEach(function(p){var b=p.querySelector('b'),t=b?b.textContent.trim():'';
+   var m=t.match(/^Answer ([A-E]):?$/);if(m){right=m[1];p.className='gulf-r-ans'}
+   else if(/^Clinical pearl:?$/i.test(t))p.className='gulf-r-pearl';else if(/^Trap:?$/i.test(t))p.className='gulf-r-trap';
+   else if(/^[A-E]:$/.test(t))p.className='gulf-r-alt';else if(!b&&!p.className)p.className='gulf-r-why'});
+  if(!right)return;a.dataset.right=right;
+  [].slice.call(ol.children).forEach(function(li,i){var L='ABCDE'[i];li.dataset.letter=L;li.setAttribute('role','button');li.tabIndex=0;li.setAttribute('aria-label','Answer '+L+': '+li.textContent)});
+  var id=qid(a);if(done[id]&&done[id].p)mark(a,done[id].p,true);
+ }
+ function mark(a,L,quiet){
+  if(a.dataset.picked)return;a.dataset.picked=L;var ok=L===a.dataset.right;
+  [].slice.call(a.querySelectorAll('ol>li')).forEach(function(li){li.classList.toggle('gulf-right',li.dataset.letter===a.dataset.right);li.classList.toggle('gulf-wrong',li.dataset.letter===L&&!ok);li.setAttribute('aria-disabled','true')});
+  var v=a.querySelector('.gulf-verdict');if(!v){v=document.createElement('p');v.className='gulf-verdict';v.setAttribute('role','status');a.querySelector('ol').after(v)}
+  v.className='gulf-verdict '+(ok?'is-ok':'is-no');v.textContent=ok?'Correct. '+L+' is the safest choice.':'Not quite. You chose '+L+'; the answer is '+a.dataset.right+'. Read why below.';
+  var d=a.querySelector('details');if(d)d.open=true;
+  if(!quiet){done[qid(a)]={p:L,ok:ok};save();score()}
+ }
+ function score(){if(!bar)return;var right=0,all=0;for(var k in done){if(!done[k]||typeof done[k]!=='object')continue;all++;if(done[k].ok)right++}
+  bar.querySelector('.gulf-score').textContent=all?right+' of '+all+' correct this session':'Tap an answer to check yourself';}
+ function activeFilters(){var n=0,s=$('#search');if(s&&s.value.trim())n++;[].slice.call(document.querySelectorAll('#selects select,.filters select')).forEach(function(x){if(x.selectedIndex>0)n++});return n}
  function build(){
   var it=$('#items');if(!it||bar)return;
   bar=document.createElement('div');bar.className='gulf-studybar';
-  bar.innerHTML='<div class="gulf-seg" role="group" aria-label="View"><button type="button" data-v="one">One at a time</button><button type="button" data-v="list">List</button></div><span class="gulf-pos" aria-live="polite"></span><div class="gulf-nav"><button type="button" data-step="-1" aria-label="Previous '+noun.toLowerCase()+'">← Previous</button><button type="button" data-step="1" aria-label="Next '+noun.toLowerCase()+'">Next →</button></div><span class="gulf-libkeys"><kbd>←</kbd> <kbd>→</kbd> move · <kbd>Space</kbd> reveal answer</span>';
+  bar.innerHTML='<div class="gulf-seg" role="group" aria-label="View"><button type="button" data-v="one">One at a time</button><button type="button" data-v="list">List</button></div>'+
+   '<button type="button" class="gulf-ftoggle" aria-expanded="false">Filters</button><span class="gulf-pos" aria-live="polite"></span><span class="gulf-score"></span>'+
+   '<div class="gulf-nav"><button type="button" data-step="-1" aria-label="Previous '+noun.toLowerCase()+'">← Previous</button><button type="button" data-step="1" aria-label="Next '+noun.toLowerCase()+'">Next →</button></div>'+
+   '<div class="gulf-track" aria-hidden="true"><i></i></div><span class="gulf-libkeys"><kbd>A</kbd>–<kbd>E</kbd> answer · <kbd>←</kbd> <kbd>→</kbd> move · <kbd>Space</kbd> show reasoning</span>';
   bar.querySelectorAll('[data-v]').forEach(function(b){b.onclick=function(){mode=b.dataset.v;try{localStorage.setItem(KEY,mode)}catch(e){}apply(true)}});
   bar.querySelectorAll('[data-step]').forEach(function(b){b.onclick=function(){step(+b.dataset.step)}});
+  bar.querySelector('.gulf-ftoggle').onclick=function(){filtersOpen=!filtersOpen;apply(false);if(filtersOpen){var s=$('#search');if(s)s.focus()}};
   it.before(bar);
+  it.addEventListener('click',function(e){var li=e.target.closest&&e.target.closest('ol>li[data-letter]');if(!li)return;var a=li.closest('article');if(a)mark(a,li.dataset.letter)});
+  it.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('ol>li[data-letter]')){e.preventDefault();mark(e.target.closest('article'),e.target.dataset.letter)}});
+  var f=document.querySelector('.filters');if(f)f.addEventListener('input',function(){setTimeout(function(){apply(false)},0)});
  }
  function pageInfo(){var t=($('#position')||{}).textContent||'';var m=t.match(/(\d+)\s+of\s+(\d+)/);return m?[+m[1],+m[2]]:[1,1]}
  function apply(scroll){
-  build();var cs=cards();body.classList.toggle('gulf-one',mode==='one');
+  build();var cs=cards();cs.forEach(enhance);
+  body.classList.toggle('gulf-one',mode==='one');body.classList.toggle('gulf-fclosed',mode==='one'&&!filtersOpen);
   if(!bar)return;bar.querySelectorAll('[data-v]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===mode)});
+  var nf=activeFilters(),ft=bar.querySelector('.gulf-ftoggle');ft.textContent=(filtersOpen?'Hide filters':'Filters')+(nf?' · '+nf+' on':'');ft.setAttribute('aria-expanded',String(filtersOpen||mode!=='one'));
   if(idx>=cs.length)idx=Math.max(0,cs.length-1);
   cs.forEach(function(a,i){a.classList.toggle('gulf-cur',i===idx)});
-  var pi=pageInfo(),n=((pi[0]-1)*20)+idx+1,total=(($('#count')||{}).textContent||'').match(/(\d+)\s+of/);
-  bar.querySelector('.gulf-pos').textContent=mode==='one'&&cs.length?noun+' '+n+' of '+(total?total[1]:cs.length):'';
+  var pi=pageInfo(),n=((pi[0]-1)*20)+idx+1,tm=(($('#count')||{}).textContent||'').match(/(\d+)\s+of/),total=tm?+tm[1]:cs.length;
+  bar.querySelector('.gulf-pos').textContent=mode==='one'&&cs.length?noun+' '+n+' of '+total:'';
+  bar.querySelector('.gulf-track i').style.width=(total?Math.min(100,n/total*100):0).toFixed(2)+'%';
   var prev=bar.querySelector('[data-step="-1"]'),next=bar.querySelector('[data-step="1"]');
   prev.disabled=idx===0&&pi[0]===1;next.disabled=idx===cs.length-1&&pi[0]===pi[1];
-  if(scroll&&mode==='one')bar.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  score();
+  if(scroll&&mode==='one')bar.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'});
  }
  function step(d){
   var cs=cards(),j=idx+d;
   if(j>=0&&j<cs.length){idx=j;apply(true);return}
   var b=$(d>0?'#next':'#previous');if(b&&!b.disabled){go=d>0?'first':'last';b.click()}
  }
- new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)}))return;var cs=cards();if(!cs.length)return;if(go){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
+ new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)||m.target.closest&&m.target.closest('article')}))return;var cs=cards();if(!cs.length)return;if(go){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
  addEventListener('keydown',function(e){
   if(mode!=='one'||e.ctrlKey||e.metaKey||e.altKey)return;var t=e.target;if(t&&/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName))return;if($('dialog[open]'))return;
-  if(e.key==='ArrowRight'||e.key==='j'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'||e.key==='k'){step(-1);e.preventDefault()}
-  else if(e.key===' '&&!(t&&t.closest&&t.closest('button,summary,a'))){var d=cards()[idx];d=d&&d.querySelector('details');if(d){d.open=!d.open;e.preventDefault()}}
+  var a=cards()[idx],k=e.key.toLowerCase();
+  if(e.key==='ArrowRight'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'){step(-1);e.preventDefault()}
+  else if(a&&/^[a-e]$/.test(k)&&a.querySelector('li[data-letter="'+k.toUpperCase()+'"]')){mark(a,k.toUpperCase());e.preventDefault()}
+  else if(e.key===' '&&!(t&&t.closest&&t.closest('button,summary,a,li[data-letter]'))){var d=a&&a.querySelector('details');if(d){d.open=!d.open;e.preventDefault()}}
  });
 })();
