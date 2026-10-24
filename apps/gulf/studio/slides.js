@@ -17,7 +17,7 @@
  var IC={pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="m14 6 3 3"/>',highlighter:'<path d="m9 15 6-6 3 3-6 6H9z"/><path d="M4 20h7"/><path d="m15 9 3-3 3 3-3 3"/>',marker:'<path d="M12 3 7 14h10z"/><path d="M9 14v4h6v-4"/><path d="M5 21h14"/>',eraser:'<path d="m7 21-4-4 10-10 7 7-7 7z"/><path d="M21 21H7"/>',note:'<path d="M5 3h14v12l-6 6H5z"/><path d="M13 21v-6h6"/>',undo:'<path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/>',redo:'<path d="m15 14 5-5-5-5"/><path d="M20 9H9a5 5 0 0 0 0 10h3"/>',clear:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',save:'<path d="M5 3h12l3 3v15H4V3z"/><path d="M8 3v6h8V3M8 21v-7h8v7"/>',full:'<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',close:'<path d="M6 6l12 12M18 6 6 18"/>',cursor:'<path d="M5 3l14 8-6 2-2 6z"/>'};
  function build(){
   if(root)return;root=document.createElement('div');root.className='gulf-slide';root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label',L.noun+' slide view');
-  root.innerHTML='<div class="gs-top"><span class="gulf-motif" aria-hidden="true"></span><span class="gs-pos" aria-live="polite"></span><button type="button" class="gs-star"></button><span class="gs-time" title="Time on this '+L.noun.toLowerCase()+'">0:00</span><div class="gs-size" role="group" aria-label="Text size"><button type="button" data-size="-1" aria-label="Smaller text">A−</button><button type="button" data-size="1" aria-label="Larger text">A+</button></div><button type="button" class="gs-full" aria-label="Full screen">'+svg(IC.full)+'</button><button type="button" class="gs-close" aria-label="Close slide view (Esc)">'+svg(IC.close)+'<span>Exit</span></button></div>'+
+  root.innerHTML='<div class="gs-top"><span class="gulf-motif" aria-hidden="true"></span><span class="gs-pos" aria-live="polite"></span><div class="gs-filters" role="group" aria-label="Filters"></div><button type="button" class="gs-star"></button><span class="gs-time" title="Time on this '+L.noun.toLowerCase()+'">0:00</span><div class="gs-size" role="group" aria-label="Text size"><button type="button" data-size="-1" aria-label="Smaller text">A−</button><button type="button" data-size="1" aria-label="Larger text">A+</button></div><button type="button" class="gs-full" aria-label="Full screen">'+svg(IC.full)+'</button><button type="button" class="gs-close" aria-label="Close slide view (Esc)">'+svg(IC.close)+'<span>Exit</span></button></div>'+
    '<div class="gs-main"><section class="gs-q" aria-label="'+L.noun+'"><div class="gs-qwrap"></div></section><aside class="gs-a" aria-label="Answer and reasoning"></aside></div>'+
    '<div class="gs-strip" role="navigation" aria-label="'+L.noun+'s on this page"></div>'+
    '<div class="gs-tools" role="toolbar" aria-label="Study tools">'+
@@ -50,6 +50,28 @@
    var o=e.target.closest('.gs-opt');if(o&&!o.hasAttribute('aria-disabled')){var a=L.cards()[L.index()];if(a)L.mark(a,o.dataset.l)}});
   new ResizeObserver(function(){if(open)sizeCanvas()}).observe(qpane);
   paintTools();
+ }
+ /* Filters in the top bar: proxies for the library's own controls, so its search and paging stay the single source of truth. */
+ function fire(el,type){el.dispatchEvent(new Event(type,{bubbles:true}))}
+ function buildFilters(){
+  var box=root.querySelector('.gs-filters');if(box.dataset.ok)return;var src=document.querySelector('#search');if(!src)return;box.dataset.ok='1';
+  var html='<span class="gs-fsearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg><input type="search" data-for="search" placeholder="Search a clue or topic" aria-label="Search"></span>';
+  var sels=[].slice.call(document.querySelectorAll('.filters select'));
+  sels.forEach(function(sel,i){var lab=sel.closest('label'),name=lab?(lab.firstChild&&lab.firstChild.textContent||lab.textContent).trim():'Filter';if(!sel.id)sel.id='gulf-f-'+i;
+   html+='<select class="gs-fsel" data-for="'+sel.id+'" aria-label="'+esc(name)+'" title="'+esc(name)+'">'+[].slice.call(sel.options).map(function(o,j){return '<option value="'+esc(o.value)+'">'+esc(j===0&&/^all\b/i.test(o.text)&&!/hyp/i.test(o.text)?name+': All':j===0&&sel.id==='sort'?'Sort: '+o.text:o.text)+'</option>'}).join('')+'</select>'});
+  html+='<div class="gs-rev" role="group" aria-label="Show"><button type="button" data-rv="all">All</button><button type="button" data-rv="miss">Missed</button><button type="button" data-rv="star">Starred</button></div><button type="button" class="gs-freset" hidden>Reset</button>';
+  box.innerHTML=html;
+  box.querySelector('[data-for="search"]').addEventListener('input',function(e){src.value=e.target.value;fire(src,'input')});
+  box.querySelectorAll('select').forEach(function(p){p.addEventListener('change',function(){var o=document.getElementById(p.dataset.for);o.value=p.value;fire(o,'change');syncFilters()})});
+  box.querySelectorAll('[data-rv]').forEach(function(b){b.onclick=function(){L.setReview(b.dataset.rv);syncFilters()}});
+  box.querySelector('.gs-freset').onclick=function(){src.value='';sels.forEach(function(s){s.selectedIndex=0});fire(src,'input');L.setReview('all');syncFilters()};
+ }
+ function syncFilters(){
+  var box=root.querySelector('.gs-filters');if(!box.dataset.ok)return;var n=0,src=document.querySelector('#search'),si=box.querySelector('[data-for="search"]');
+  if(src&&document.activeElement!==si)si.value=src.value;if(src&&src.value.trim())n++;
+  box.querySelectorAll('select').forEach(function(p){var o=document.getElementById(p.dataset.for);if(o){p.value=o.value;var on=o.selectedIndex>0&&o.id!=='sort';p.classList.toggle('is-on',on||(o.id==='sort'&&o.selectedIndex>0));if(on)n++}});
+  var c=L.counts(),rv=L.review();box.querySelectorAll('[data-rv]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.rv===rv));if(b.dataset.rv==='miss')b.textContent='Missed '+c.miss;if(b.dataset.rv==='star')b.textContent='★ '+c.star});
+  if(rv!=='all')n++;box.querySelector('.gs-freset').hidden=!n;
  }
  function toast(m){toastEl.textContent=m;toastEl.classList.add('on');clearTimeout(toastEl._t);toastEl._t=setTimeout(function(){toastEl.classList.remove('on')},1800)}
  function setTool(t){tool=t;paintTools();root.classList.toggle('gs-drawing',/^(pen|marker|highlighter|eraser)$/.test(t));root.classList.toggle('gs-noting',t==='note')}
@@ -90,7 +112,7 @@
    qwrap.append(el)})}
  /* render */
  function render(keepTimer){
-  var a=L.cards()[L.index()];if(!a){qwrap.innerHTML='<p class="gs-empty">No '+L.noun.toLowerCase()+'s match. Close the slide view and change the filters.</p>';apane.innerHTML='';strip.innerHTML='';return}
+  var a=L.cards()[L.index()];if(!a){qwrap.innerHTML='<p class="gs-empty">No '+L.noun.toLowerCase()+'s match. Change or reset the filters above.</p>';apane.innerHTML='';strip.innerHTML='';posEl.textContent='No matches';syncFilters();return}
   var id=L.qid(a);if(id!==cur){cur=id;keepTimer=false}
   var meta=a.querySelector('p'),h2=a.querySelector('h2'),lis=[].slice.call(a.querySelectorAll('ol>li')),picked=a.dataset.picked,right=a.dataset.right,r=rec(id);
   var metaTxt=meta?meta.textContent.replace(/[★☆]/g,'').trim():'';
@@ -100,7 +122,7 @@
   var v=a.querySelector('.gulf-verdict'),d=a.querySelector('details');
   if(picked){apane.classList.add('is-revealed');apane.innerHTML=(v?'<div class="'+v.className+'">'+v.innerHTML+'</div>':'')+(d?'<details open>'+d.innerHTML.replace(/<summary>[\s\S]*?<\/summary>/,'<summary>Reasoning</summary>')+'</details>':'')}
   else{apane.classList.remove('is-revealed');apane.innerHTML='<div class="gs-wait"><p class="gs-wait-h">Choose the safest answer.</p><p>Click an option or press <kbd>A</kbd>–<kbd>E</kbd>. Rule options out with <b>✕</b>. Draw on the question with the tools below.</p><button type="button" class="gs-reveal">Show reasoning without answering</button></div>'+(d?'<details>'+d.innerHTML.replace(/<summary>[\s\S]*?<\/summary>/,'<summary>Reasoning</summary>')+'</details>':'')}
-  var pi=L.pageInfo(),n=(pi[0]-1)*20+L.index()+1;posEl.textContent=L.noun+' '+n+' of '+L.total();
+  var pi=L.pageInfo(),n=(pi[0]-1)*20+L.index()+1;posEl.textContent=L.noun+' '+n+' of '+L.total();syncFilters();
   var st=L.state();strip.innerHTML=L.cards().map(function(c,i){var k=L.qid(c),dn=st.done[k],cls=(i===L.index()?' is-cur':'')+(dn?dn.ok?' is-ok':' is-no':'')+(st.stars[k]?' is-star':'');return '<button type="button" data-i="'+i+'" class="gs-dot'+cls+'" aria-label="'+esc(L.noun+' '+((pi[0]-1)*20+i+1)+(dn?dn.ok?', correct':', missed':'')+(st.stars[k]?', starred':''))+'"'+(i===L.index()?' aria-current="true"':'')+'>'+((pi[0]-1)*20+i+1)+'</button>'}).join('')+'<span class="gs-page">Page '+pi[0]+' of '+pi[1]+'</span>';
   root.querySelector('[data-nav="-1"]').disabled=L.index()===0&&pi[0]===1;root.querySelector('[data-nav="1"]').disabled=L.index()===L.cards().length-1&&pi[0]===pi[1];
   paintStar();
@@ -122,10 +144,11 @@
   else if(e.key===' '&&!(t&&t.closest&&t.closest('button,summary'))){var d=apane.querySelector('details');if(d){d.open=!d.open;apane.classList.add('is-revealed');e.preventDefault()}}
  }
  var lastFocus=null;
- function openSlide(){build();open=true;lastFocus=document.activeElement;body.classList.add('gulf-slide-on');root.hidden=false;render(false);clearInterval(timerId);timerId=setInterval(tick,1000);root.querySelector('.gs-close').focus()}
+ function openSlide(){build();buildFilters();open=true;lastFocus=document.activeElement;body.classList.add('gulf-slide-on');root.hidden=false;render(false);clearInterval(timerId);timerId=setInterval(tick,1000);root.querySelector('.gs-close').focus()}
  function close(){if(dirty)persist();open=false;body.classList.remove('gulf-slide-on');root.hidden=true;clearInterval(timerId);setTool('none');try{if(document.fullscreenElement)document.exitFullscreen()}catch(e){}if(lastFocus&&lastFocus.focus)lastFocus.focus()}
  document.addEventListener('keydown',function(e){if(open)keys(e)},true);
  L.onChange=function(){if(open)render(true)};
  document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.gulf-slidebtn'))openSlide()});
+ (function auto(){var tries=0;(function wait(){if(L.cards().length){openSlide();return}if(++tries<60)setTimeout(wait,100)})()})();
  addEventListener('beforeunload',function(){if(dirty)persist()});
 })();

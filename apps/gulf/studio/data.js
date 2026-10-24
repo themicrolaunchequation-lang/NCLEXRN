@@ -144,7 +144,7 @@
   var b=$(d>0?'#next':'#previous');if(b&&!b.disabled){go=d>0?'first':'last';b.click()}
  }
  new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)||m.target.closest&&m.target.closest('article,.gulf-slide')}))return;var cs=cards();if(go&&cs.length){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs.length||!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
- window.GULF_LIB={cards:cards,qid:qid,index:function(){return idx},step:step,mark:mark,unmark:unmark,state:function(){return st},save:save,score:score,paintStar:paintStar,pageInfo:pageInfo,noun:noun,lib:lib,edition:ed,apply:apply,
+ window.GULF_LIB={setReview:function(r){setReview(r)},review:function(){return review},counts:counts,cards:cards,qid:qid,index:function(){return idx},step:step,mark:mark,unmark:unmark,state:function(){return st},save:save,score:score,paintStar:paintStar,pageInfo:pageInfo,noun:noun,lib:lib,edition:ed,apply:apply,
   total:function(){var tm=(($('#count')||{}).textContent||'').match(/(\d+)\s+of/);return tm?+tm[1]:cards().length},
   go:function(i){var cs=cards();if(i>=0&&i<cs.length){idx=i;apply(false)}},
   onChange:null};
