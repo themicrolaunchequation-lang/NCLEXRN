@@ -4,16 +4,33 @@
  var CFG=window.GULF_CONFIG||{},ed=window.GULF_EDITION,$=function(s,r){return(r||document).querySelector(s)};
  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
  function setEdition(id){try{localStorage.setItem('gulf-edition',id);sessionStorage.setItem('gulf-switched','1')}catch(e){}location.href='/#home';location.reload()}
- function chooser(){
-  if($('#gulf-chooser'))return;var d=document.createElement('dialog');d.id='gulf-chooser';d.setAttribute('aria-labelledby','gulf-chooser-h');
-  d.innerHTML='<div class="gulf-chooser-in"><span class="gulf-kicker">Healthcare Crown Academy · Gulf Nursing Licensure Studio</span><h1 id="gulf-chooser-h">Which licensing exam are you preparing for?</h1><p>One study studio, set up for each regulator. Switch at any time; each exam keeps its own progress.</p><div class="gulf-cards">'+
-   CFG.order.map(function(id){var c=CFG.editions[id];return '<button type="button" class="gulf-pick" data-pick="'+id+'" data-ed="'+id+'"><span class="gulf-motif" aria-hidden="true"></span><small>'+esc(c.regulatorShort)+' · '+esc(c.theme)+'</small><b>'+esc(c.region)+'</b><span>'+esc(c.fullName)+'</span><em>'+esc(c.facts)+'</em><i aria-hidden="true">Start →</i></button>'}).join('')+
-   '</div><p class="gulf-note"><a href="/hub/">Compare all exams side by side</a> · Saudi Arabia (SNLE) is free</p></div>';
-  d.querySelectorAll('[data-pick]').forEach(function(b){b.onclick=function(){setEdition(b.dataset.pick)}});
-  d.addEventListener('cancel',function(e){e.preventDefault()});
-  document.body.append(d);try{d.showModal()}catch(e){d.setAttribute('open','')}
+ var IC={q:'<path d="M4 5h16M4 10h16M4 15h9M4 20h6"/><circle cx="17.5" cy="17.5" r="3"/><path d="m19.7 19.7 2 2"/>',hub:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>',dos:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/>',tools:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',labs:'<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/>',gl:'<path d="M4 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-4a2 2 0 0 0-2 2"/><path d="M16 9h4v9h-4"/>',sync:'<path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2"/><path d="M20 4v5h-5M4 20v-5h5"/>',guide:'<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>'};
+ function ico(k){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+IC[k]+'</svg>'}
+ function landingPage(){
+  if($('#gulf-landing'))return;var X=CFG.extra||{};
+  var L=document.createElement('main');L.id='gulf-landing';L.setAttribute('aria-labelledby','gl-h');
+  var cards=CFG.order.map(function(id){var c=CFG.editions[id],n=(X[id]||[]).length,t=c.tiles||[];
+   var facts=t.slice(0,3).map(function(x){return '<li><small>'+esc(x.k)+'</small><b>'+esc(x.v)+'</b></li>'}).join('');
+   var badge=id==='saudi'?'<em class="gl-badge is-free">Free</em>':n?'<em class="gl-badge">+'+n+' local questions</em>':'';
+   return '<li><button type="button" class="gl-exam" data-pick="'+id+'" data-ed="'+id+'"><span class="gulf-motif" aria-hidden="true"></span><span class="gl-meta"><small class="gl-reg">'+esc(c.short)+'</small>'+badge+'</span><b class="gl-region">'+esc(c.region)+'</b><span class="gl-name">'+esc(c.fullName)+'</span><ul class="gl-facts">'+facts+'</ul><span class="gl-go">Start with '+esc(c.tab)+' <span aria-hidden="true">→</span></span></button></li>'}).join('');
+  var feat=[['q','Question Bank','Every question in a slide view: answer, see the reasoning, cross out options, highlight and add notes. Missed and starred questions collect for review.'],
+   ['hub','Practice Hub','Timed sets that follow the published question split where the regulator gives one, and a balanced mix where it does not.'],
+   ['dos','Clinical Dossier','35 specialty dossiers, 350 linked cases: practise the same reasoning inside a full clinical story.'],
+   ['tools','React & Interact','67 clinical decision tools, from ABCDE to the Four Ts, each with its own questions.'],
+   ['labs','Interactive Labs','A nine-part course on how licensing questions are built, and how the safest answer wins.'],
+   ['gl','Bilingual glossary','The language of exam questions in English and Arabic, with worked examples.']].map(function(f){return '<li><span class="gl-ico">'+ico(f[0])+'</span><h3>'+f[1]+'</h3><p>'+f[2]+'</p></li>'}).join('');
+  L.innerHTML='<header class="gl-top"><a class="gl-brand" href="https://healthcarecrownacademy.co.uk/"><img src="/assets/crest.svg" width="34" height="34" alt=""><span><b>Gulf Nursing Licensure Studio</b><small>Healthcare Crown Academy</small></span></a><nav aria-label="Studio"><a href="#gl-exams">Exams</a><a href="#gl-inside">What’s inside</a><a href="/hub/">Compare exams</a></nav></header>'+
+   '<section class="gl-hero"><div class="gl-hero-in"><p class="gl-kicker">Saudi Arabia · Qatar · Dubai · Abu Dhabi</p><h1 id="gl-h">Your Gulf nursing licence, <em>one safe decision at a time.</em></h1><p class="gl-lede">Original practice for the Registered Nurse licensing exams in four Gulf regions, set up for each regulator’s published format. Pick your exam; your progress stays with it.</p><div class="gl-cta"><a class="gl-btn" href="#gl-exams">Choose your exam</a><a class="gl-btn is-ghost" href="/hub/">Compare the four exams</a></div>'+
+   '<ul class="gl-stats"><li><b>1,350+</b><span>original questions</span></li><li><b>67</b><span>clinical decision tools</span></li><li><b>350</b><span>dossier cases</span></li><li><b>4</b><span>exams, one account</span></li></ul></div><div class="gl-strip" aria-hidden="true">'+CFG.order.map(function(id){return '<span data-ed="'+id+'" class="gulf-pick"><span class="gulf-motif"></span></span>'}).join('')+'</div></section>'+
+   '<section class="gl-sec" id="gl-exams" aria-labelledby="gl-exams-h"><div class="gl-head"><p class="gl-kicker">Step 1</p><h2 id="gl-exams-h">Which licensing exam are you preparing for?</h2><p>Each exam has its own colours, facts, question order and progress. You can switch at any time from the menu.</p></div><ul class="gl-exams">'+cards+'</ul><p class="gl-small">Details come from regulator publications read on '+esc(CFG.checked)+'. Confirm with your regulator before you book.</p></section>'+
+   '<section class="gl-sec gl-how" aria-labelledby="gl-how-h"><div class="gl-head"><p class="gl-kicker">How it works</p><h2 id="gl-how-h">Three steps, every study day</h2></div><ol class="gl-steps"><li><b>Learn the pattern</b><p>Start with the Interactive Labs and the glossary to see how a question hides its decisive clue.</p></li><li><b>Practise the decision</b><p>Answer in the Question Bank or a timed set. Every answer explains why the safest option wins and why the others tempt.</p></li><li><b>Repeat what you missed</b><p>Missed and starred questions collect in one place. Sign in and your progress follows you between phone and computer.</p></li></ol></section>'+
+   '<section class="gl-sec" id="gl-inside" aria-labelledby="gl-inside-h"><div class="gl-head"><p class="gl-kicker">What’s inside</p><h2 id="gl-inside-h">One studio, six ways to study</h2></div><ul class="gl-feat">'+feat+'</ul></section>'+
+   '<section class="gl-sec"><div class="gl-honest"><h2>What this studio is, and what it is not</h2><ul><li>Original practice material written for this studio, approved for release by the Academy owner.</li><li>Not official exam content, and not endorsed by SCFHS, DHP, DHA or DOH.</li><li>It does not predict your result. No recalled exam questions are used.</li></ul></div></section>'+
+   '<footer class="gl-foot"><span>© Healthcare Crown Academy</span><nav aria-label="Footer"><a href="https://healthcarecrownacademy.co.uk/">Academy home</a><a href="/hub/">Compare exams</a><a href="#gl-exams">Choose an exam</a></nav></footer>';
+  L.querySelectorAll('[data-pick]').forEach(function(b){b.onclick=function(){setEdition(b.dataset.pick)}});
+  document.body.append(L);var h=$('#gl-h');if(h){h.setAttribute('tabindex','-1')}
  }
- if(!ed){document.documentElement.setAttribute('data-gulf-choose','');chooser();return}
+ if(!ed){document.documentElement.setAttribute('data-gulf-choose','');landingPage();return}
  var c=CFG.editions[ed];if(!c)return;
  document.title=c.short+' Study Studio | Healthcare Crown Academy';
  var pass={saudi:'',qatar:'DHP publishes a 50% minimum for this exam; whether it is raw, equated or scaled is not confirmed.',dubai:'DHA publishes a 50% threshold and reports pass or fail.',abudhabi:'DOH reports a pass or fail result and sets its cut score internally; no numeric pass mark is published.'}[ed];
@@ -29,7 +46,7 @@
  function ui(s){for(var i=0;i<UI.length;i++)s=s.replace(UI[i][0],UI[i][1]);return s}
  function textSweep(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
-  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-pass,.gulf-plan,.gulf-foot,.gulf-switch,#gulf-chooser'))continue;if(HIT.test(n.nodeValue))list.push(n)}
+  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-today,.gulf-spaces,.gulf-foot,.gulf-switch,#gulf-landing'))continue;if(HIT.test(n.nodeValue))list.push(n)}
   list.forEach(function(t){t.nodeValue=ed==='saudi'?ui(t.nodeValue):ui(t.nodeValue.replace(/\bSaudi Arabia\b/g,'your country').replace(/\bSaudi\b/g,'local'))});
   if(root.querySelectorAll)root.querySelectorAll('[aria-label],[title]').forEach(function(e){['aria-label','title'].forEach(function(a){var v=e.getAttribute(a);if(v&&/SNLE|SCFHS/.test(v))e.setAttribute(a,ui(v))})});
  }
@@ -44,16 +61,35 @@
   el.querySelectorAll('[data-ed]').forEach(function(b){b.onclick=function(){if(b.dataset.ed!==ed)setEdition(b.dataset.ed)}});
   var brand=$('.brand-lockup',side);(brand||side.firstChild).after(el);
  }
- function card(){
+ function today(){
   var main=$('.main-canvas');if(!main)return;
   var home=(location.hash.replace(/^#\/?/,'').split(/[?\/]/)[0]||'home')==='home';
-  var ex=$('.gulf-toprow',main);if(!home){if(ex)ex.remove();return}if(ex)return;
-  var row=document.createElement('div');row.className='gulf-toprow';
-  var el=document.createElement('section');el.className='gulf-pass';el.setAttribute('aria-labelledby','gulf-pass-h');
-  el.innerHTML='<span class="gulf-motif" aria-hidden="true"></span><div class="gulf-pass-head"><div><small>'+esc(c.region)+' · '+esc(c.regulatorShort)+'</small><h2 id="gulf-pass-h">'+esc(c.fullName)+'</h2></div><div class="gulf-pass-links"><a href="#guide">Exam guide</a><a href="/hub/#'+ed+'">Compare exams</a></div></div>'+
-   window.GULF_UI.tiles(c)+
-   '<p class="gulf-pass-note">Details checked '+esc(CFG.checked)+'. Confirm with '+esc(c.regulatorShort)+' before you book.</p>';
-  row.append(el);var top=$('.topbar',main);if(top)top.after(row);else main.prepend(row);
+  var ex=$('.gulf-today',main);if(!home){if(ex)ex.remove();document.documentElement.removeAttribute('data-gulf-today');return}
+  document.documentElement.setAttribute('data-gulf-today','');
+  var hv=$('.home-view',main);if(ex&&hv&&!$('.gulf-spaces',hv))ex.remove(),ex=null;if(ex)return;
+  var h=new Date().getHours(),greet=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+  var v=examDate(),d=v?daysTo(v):null,nQ=(window.SNLE_QUESTIONS||[]).length,nT=(window.SNLE_POSTERS||[]).length,nG=((window.SNLE_LEARNING||{}).glossary||[]).length;
+  var line,count;
+  if(v&&d>=0){var pace=Math.max(10,Math.ceil(nQ/Math.max(d,1)/5)*5);
+   line=d===0?'Your exam is today. Read the guide once more, then rest.':'A steady pace from here: about '+Math.min(pace,nQ)+' questions a day, with time to review what you miss.';
+   count='<div class="gt-count"><b>'+d+'</b><span>day'+(d===1?'':'s')+' to your exam</span><small>'+esc(new Date(v+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}))+'</small><button type="button" data-gulf-date-clear>Change date</button></div>';}
+  else{line='Add your booking date and the studio will suggest a daily pace.';
+   count='<div class="gt-count is-empty"><label for="gulf-date">My exam date</label><input id="gulf-date" type="date"><small>Saved on this device only.</small></div>';}
+  var T=document.createElement('section');T.className='gulf-today';T.setAttribute('aria-labelledby','gt-h');
+  T.innerHTML='<div class="gt-band"><span class="gulf-motif" aria-hidden="true"></span><div class="gt-copy"><p class="gt-kicker">'+esc(c.region)+' · '+esc(c.short)+'</p><h1 id="gt-h">'+greet+'.</h1><p class="gt-line">'+esc(line)+'</p><div class="gt-acts"><button type="button" class="gt-btn" data-gt-check>Start a 10-question check</button><a class="gt-btn is-ghost" href="/question-bank">Open the Question Bank</a><a class="gt-link" href="#guide">'+esc(c.short)+' guide</a></div></div>'+count+'</div>'+
+   '<div class="gt-facts"><h2 class="gt-sub">'+esc(c.fullName)+'</h2>'+window.GULF_UI.tiles(c)+'<p class="gt-note">Details checked '+esc(CFG.checked)+'. Confirm with '+esc(c.regulatorShort)+' before you book.</p></div>';
+  var inp=T.querySelector('#gulf-date');if(inp){inp.min=new Date().toISOString().slice(0,10);inp.onchange=function(){if(!inp.value)return;try{localStorage.setItem(DKEY,inp.value)}catch(e){}T.remove();today()}}
+  var clr=T.querySelector('[data-gulf-date-clear]');if(clr)clr.onclick=function(){try{localStorage.removeItem(DKEY)}catch(e){}T.remove();today();var i=$('#gulf-date');if(i)i.focus()};
+  T.querySelector('[data-gt-check]').onclick=function(){var b=[].slice.call(document.querySelectorAll('.home-view button,.home-view a')).filter(function(x){return /10-question check/i.test(x.textContent)})[0];if(b)b.click();else location.hash='#practice'};
+  var top=$('.topbar',main);if(top)top.after(T);else main.prepend(T);
+  // Study spaces replace the repeated hero; the progress card stays beside them.
+  if(hv&&!$('.gulf-spaces',hv)){
+   var sp=document.createElement('section');sp.className='gulf-spaces';sp.setAttribute('aria-labelledby','gs-h2');
+   var tiles=[['q','/question-bank','Question Bank',nQ.toLocaleString('en-GB')+' questions','Slide view, notes, review misses'],['hub','#practice','Practice Hub','Timed sets','Mock exams and short checks'],['dos','#dossier','Clinical Dossier','35 dossiers','350 linked cases'],['tools','#tools','React & Interact',nT+' tools','Decision frameworks'],['labs','#labs','Interactive Labs','9 labs','How questions are built'],['gl','#glossary','Glossary',nG+' terms','English and Arabic']];
+   sp.innerHTML='<h2 id="gs-h2" class="gt-sub">Study spaces</h2><ul>'+tiles.map(function(t){return '<li><a href="'+t[1]+'"><span class="gl-ico">'+ico(t[0])+'</span><b>'+t[2]+'</b><span class="gs-count">'+esc(t[3])+'</span><small>'+t[4]+'</small></a></li>'}).join('')+'</ul>';
+   var intro=$('.home-intro-row',hv);if(intro){intro.classList.add('gulf-more');sp.append(intro)}
+   var grid=$('.hero-grid',hv);if(grid)grid.prepend(sp);else hv.prepend(sp);
+  }
  }
  function groups(){
   var nav=$('.sidebar nav');if(!nav||$('.gulf-group',nav))return;
@@ -88,21 +124,6 @@
  var DKEY='gulf-'+ed+'-exam-date',BANK=(window.SNLE_QUESTIONS||[]).length;
  function examDate(){try{var v=localStorage.getItem(DKEY);return /^\d{4}-\d{2}-\d{2}$/.test(v)?v:''}catch(e){return ''}}
  function daysTo(v){var t=new Date(v+'T00:00:00'),n=new Date();n.setHours(0,0,0,0);return Math.round((t-n)/864e5)}
- function plan(){
-  var pass=$('.main-canvas .gulf-pass');if(!pass){return}var ex=$('.main-canvas .gulf-plan');if(ex)return;
-  var h=new Date().getHours(),greet=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
-  var v=examDate(),d=v?daysTo(v):null,body,count;
-  if(v&&d>=0){var pace=Math.max(10,Math.ceil(BANK/Math.max(d,1)/5)*5);
-   body='<h2>'+greet+'. '+(d===0?'Your exam is today.':d+' day'+(d===1?'':'s')+' to your exam.')+'</h2><p>'+(d===0?'Read the Guide once more and rest.':'A steady pace: about '+Math.min(pace,BANK)+' questions a day, with time to review what you miss.')+'</p>';
-   count='<b>'+d+'</b><span>days to go · '+esc(new Date(v+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}))+'</span><button type="button" data-gulf-date-clear>Change date</button>';}
-  else{body='<h2>'+greet+'. Ready for today’s set?</h2><p>Add your booking date and the studio will suggest a daily pace.</p>';
-   count='<label for="gulf-date">My '+esc(c.short)+' exam date</label><input id="gulf-date" type="date"><span>Saved on this device only.</span>';}
-  var el=document.createElement('section');el.className='gulf-plan';el.setAttribute('aria-label','Your plan');
-  el.innerHTML='<div>'+body+'<div class="gulf-plan-acts"><a href="#practice">Practise now</a><a href="#progress">See my progress</a></div></div><div class="gulf-count">'+count+'</div>';
-  var inp=el.querySelector('#gulf-date');if(inp){inp.min=new Date().toISOString().slice(0,10);inp.onchange=function(){if(!inp.value)return;try{localStorage.setItem(DKEY,inp.value)}catch(e){}el.remove();plan()}}
-  var clr=el.querySelector('[data-gulf-date-clear]');if(clr)clr.onclick=function(){try{localStorage.removeItem(DKEY)}catch(e){}el.remove();plan();var i=$('#gulf-date');if(i)i.focus()};
-  pass.after(el);
- }
  function keysHint(){var a=$('.main-canvas .question-actions');if(!a||$('.gulf-keys',a.parentElement))return;var k=document.createElement('p');k.className='gulf-keys';k.innerHTML='Keys: <kbd>A</kbd>–<kbd>E</kbd> choose · <kbd>Enter</kbd> check or next · <kbd>F</kbd> flag';a.after(k)}
  addEventListener('keydown',function(e){
   if(e.ctrlKey||e.metaKey||e.altKey||e.defaultPrevented)return;var t=e.target;if(t&&(/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||t.isContentEditable))return;
@@ -113,7 +134,7 @@
   else if(k==='f'){var f=$('.main-canvas .flag-button');if(f){f.click();e.preventDefault()}}
  });
  function homeLinks(){if(innerWidth<1100)return;var r=$('.home-view .home-intro-row'),a=$('.home-view .hero-actions');if(r&&a&&r.parentElement!==a){r.classList.add('gulf-inline-links');a.append(r)}}
- function tick(){homeLinks();switcher();groups();suiteChip();card();plan();footer();keysHint();textSweep(document.body);onScroll()}
+ function tick(){switcher();groups();suiteChip();today();footer();keysHint();textSweep(document.body);onScroll()}
  var t=null;new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=null;tick()},60)}).observe(document.body,{childList:true,subtree:true,characterData:true});
  addEventListener('hashchange',tick);tick();
 })();
