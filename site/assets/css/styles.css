@@ -15,8 +15,8 @@
   --gold-200:#F8E7BC; --gold-300:#F3D99B; --gold-400:#E8C170; --gold-500:#D4A445; --gold-600:#B8862B; --gold-700:#8A6317;
   --teal-400:#3FD8C2;
   /* jewels: the app colours, and a darker shade of each that passes AA as text on cream */
-  --j-medlex:#3557D6; --j-lumen:#8B6CF0; --j-carecraft:#0F8A86; --j-serein:#5FB89E; --j-evinca:#D4A445;
-  --jt-medlex:#2A45B8; --jt-lumen:#6446D0; --jt-carecraft:#0B6F6C; --jt-serein:#2B735E; --jt-evinca:#8A6317;
+  --j-medlex:#3557D6; --j-lumen:#8B6CF0; --j-carecraft:#0F8A86; --j-serein:#5FB89E; --j-evinca:#D4A445; --j-lss:#1F9D74;
+  --jt-medlex:#2A45B8; --jt-lumen:#6446D0; --jt-carecraft:#0B6F6C; --jt-serein:#2B735E; --jt-evinca:#8A6317; --jt-lss:#0D7A5F;
 
   /* light theme (default) */
   --bg:#F8F5EF; --bg-alt:#F1ECE2; --surface:#FFFFFF; --surface-2:#FBF9F4; --surface-glass:rgba(248,245,239,.82);
@@ -44,7 +44,7 @@
     --link:#A9BCFF; --accent:#E8C170;
     --btn-primary-bg:#F3F0E8; --btn-primary-fg:#0B1A2B;
     --focus:#F1C56E;
-    --jt-medlex:#A9BCFF; --jt-lumen:#C6B6FF; --jt-carecraft:#6FD3CC; --jt-serein:#8FD8BF; --jt-evinca:#E8C170;
+    --jt-medlex:#A9BCFF; --jt-lumen:#C6B6FF; --jt-carecraft:#6FD3CC; --jt-serein:#8FD8BF; --jt-evinca:#E8C170; --jt-lss:#6FD3B0;
     --shadow-sm:0 1px 2px rgba(0,0,0,.3);
     --shadow-md:0 2px 6px rgba(0,0,0,.28),0 14px 34px rgba(0,0,0,.32);
     --shadow-lg:0 10px 24px rgba(0,0,0,.35),0 40px 90px rgba(0,0,0,.45);
@@ -58,7 +58,7 @@
   --link:#A9BCFF; --accent:#E8C170;
   --btn-primary-bg:#F3F0E8; --btn-primary-fg:#0B1A2B;
   --focus:#F1C56E;
-  --jt-medlex:#A9BCFF; --jt-lumen:#C6B6FF; --jt-carecraft:#6FD3CC; --jt-serein:#8FD8BF; --jt-evinca:#E8C170;
+  --jt-medlex:#A9BCFF; --jt-lumen:#C6B6FF; --jt-carecraft:#6FD3CC; --jt-serein:#8FD8BF; --jt-evinca:#E8C170; --jt-lss:#6FD3B0;
   --shadow-sm:0 1px 2px rgba(0,0,0,.3);
   --shadow-md:0 2px 6px rgba(0,0,0,.28),0 14px 34px rgba(0,0,0,.32);
   --shadow-lg:0 10px 24px rgba(0,0,0,.35),0 40px 90px rgba(0,0,0,.45);
@@ -73,7 +73,7 @@
   --link:#BFCDFF; --accent:#E8C170;
   --btn-primary-bg:#F3F0E8; --btn-primary-fg:#0B1A2B;
   --focus:#F1C56E;
-  --jt-medlex:#A9BCFF; --jt-lumen:#C6B6FF; --jt-carecraft:#6FD3CC; --jt-serein:#8FD8BF; --jt-evinca:#E8C170;
+  --jt-medlex:#A9BCFF; --jt-lumen:#C6B6FF; --jt-carecraft:#6FD3CC; --jt-serein:#8FD8BF; --jt-evinca:#E8C170; --jt-lss:#6FD3B0;
   background:var(--bg); color:var(--text);
   color-scheme:dark;
 }
@@ -115,10 +115,11 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .jewel-carecraft{--jc:var(--j-carecraft);--jt:var(--jt-carecraft)}
 .jewel-serein{--jc:var(--j-serein);--jt:var(--jt-serein)}
 .jewel-evinca{--jc:var(--j-evinca);--jt:var(--jt-evinca)}
+.jewel-lss{--jc:var(--j-lss);--jt:var(--jt-lss)}
 .jewel{display:inline-block;width:10px;height:10px;flex-shrink:0;transform:rotate(45deg);border-radius:2.5px;background:var(--jc,var(--gold-500))}
 .app-chip{display:inline-grid;place-items:center;width:28px;height:28px;flex:none;border-radius:8px;font-family:var(--font-display);font-weight:600;font-size:15px;line-height:1;color:#fff;background:var(--jc);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
-.jewel-lumen .app-chip{background:#6446D0}.jewel-serein .app-chip{background:#2B735E}.jewel-evinca .app-chip{background:#8A6317}.jewel-carecraft .app-chip{background:#0B6F6C}.jewel-medlex .app-chip{background:#2A45B8}
-.t-medlex{color:#A9BCFF}.t-lumen{color:#C6B6FF}.t-carecraft{color:#6FD3CC}.t-serein{color:#8FD8BF}.t-evinca{color:#E8C170}
+.jewel-lumen .app-chip{background:#6446D0}.jewel-serein .app-chip{background:#2B735E}.jewel-evinca .app-chip{background:#8A6317}.jewel-carecraft .app-chip{background:#0B6F6C}.jewel-medlex .app-chip{background:#2A45B8}.jewel-lss .app-chip{background:#0D7A5F;font-size:11px;letter-spacing:.02em}
+.t-medlex{color:#A9BCFF}.t-lumen{color:#C6B6FF}.t-carecraft{color:#6FD3CC}.t-serein{color:#8FD8BF}.t-evinca{color:#E8C170}.t-lss{color:#6FD3B0}
 
 /* ---------- Buttons ---------- */
 .btn{--btn-h:48px;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:var(--btn-h);padding:0 1.3em;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:.97rem;letter-spacing:.003em;white-space:nowrap;transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out),background-color .2s,color .2s,border-color .2s}
@@ -655,3 +656,11 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 .daily-home-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .daily-home-list a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line-strong);border-radius:999px;font-weight:600;font-size:.92rem}
 .daily-home-list .is-done a{border-color:#D4A445;background:rgba(212,164,69,.16)}
+
+/* ---------- LSS Toolkit: a separate app (own sign-in and price), shown below the Crown Suite chapters ---------- */
+.also-head{margin:clamp(28px,4vw,48px) 0 0;padding-top:clamp(20px,3vw,32px);border-top:1px solid var(--line)}
+.also-head .eyebrow{color:var(--text-soft)}
+.also-note{margin-top:.9rem;font-size:.94rem;color:var(--text-muted);max-width:60ch}
+.also-note b{color:var(--text)}
+.dock-title.dock-also{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.mm-title.mm-also{margin-top:6px}
