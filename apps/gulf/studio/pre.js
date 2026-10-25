@@ -5,6 +5,7 @@
  try{var s=localStorage.getItem(KEY);if(ids.indexOf(s)>-1)ed=s}catch(e){}
  if(!ed&&/^snle\./.test(location.hostname)){ed='saudi';try{localStorage.setItem(KEY,ed)}catch(e){}}
  window.GULF_EDITION=ed;
+ try{if(localStorage.getItem('gulf-std')==='1')document.documentElement.setAttribute('data-gulf-std','')}catch(e){}
  if(!ed)return;
  document.documentElement.setAttribute('data-edition',ed);
  var P=ed==='saudi'?'':'snle-'+ed+'.',S=window.SNLEStorage;

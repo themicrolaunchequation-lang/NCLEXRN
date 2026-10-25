@@ -136,7 +136,51 @@
  function homeLinks(){if(innerWidth<1100)return;var r=$('.home-view .home-intro-row'),a=$('.home-view .hero-actions');if(r&&a&&r.parentElement!==a){r.classList.add('gulf-inline-links');a.append(r)}}
  function counts(){var n=(window.SNLE_QUESTIONS||[]).length;if(!n||n===1350)return;var f=n.toLocaleString('en-GB');
   document.querySelectorAll('.practice-heading,.bank-seal,.mock-command-center').forEach(function(r){var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,null),t;while((t=w.nextNode())){if(t.nodeValue.indexOf('1,350')>-1)t.nodeValue=t.nodeValue.split('1,350').join(f)}})}
- function tick(){counts();switcher();groups();suiteChip();today();footer();keysHint();textSweep(document.body);onScroll()}
+ /* Readiness radar: interactive domain ring (segment size = exam weight, fill = how much you have covered, colour = accuracy). */
+ function radarData(){
+  var P={};try{P=JSON.parse((window.SNLEStorage&&window.SNLEStorage.getItem('snle-react-interact-progress-v1'))||'{}')||{}}catch(e){}
+  var L={};try{L=(JSON.parse(localStorage.getItem('gulf-'+ed+'-lib-questions')||'{}')||{}).done||{}}catch(e){}
+  var Q=window.SNLE_QUESTIONS||[],byId={},bank={};Q.forEach(function(q){byId[q.id]=q.domain;bank[q.domain]=(bank[q.domain]||0)+1});
+  var R=window.GULF_RATIOS||[['Nursing Fundamentals',.2],['Adult Nursing',.4],['Maternal-Child Nursing',.3],['Nursing Management and Leadership',.1]];
+  var D=R.map(function(r){var d=(P.domains||{})[r[0]]||{},a=d.answered||0,c=d.correct||0;
+   Object.keys(L).forEach(function(id){if(byId[id]===r[0]&&L[id]&&typeof L[id]==='object'){a++;if(L[id].ok)c++}});
+   return {name:r[0],w:r[1],a:a,c:c,bank:bank[r[0]]||1}});
+  var A=D.reduce(function(t,d){return t+d.a},0),C=D.reduce(function(t,d){return t+d.c},0);
+  return {D:D,A:A,C:C,acc:A?Math.round(C/A*100):null,repair:(P.wrongIds||[]).length+Object.keys(L).filter(function(k){return L[k]&&L[k].ok===false}).length,streak:P.streak||0,tools:(P.studiedPosterIds||[]).length}
+ }
+ function arc(cx,cy,r,a0,a1){var p=function(a){return [cx+r*Math.sin(a),cy-r*Math.cos(a)]},s=p(a0),e=p(a1),l=(a1-a0)>Math.PI?1:0;return 'M'+s[0].toFixed(2)+' '+s[1].toFixed(2)+' A'+r+' '+r+' 0 '+l+' 1 '+e[0].toFixed(2)+' '+e[1].toFixed(2)}
+ function tone(d){if(!d.a)return 'none';var x=d.c/d.a;return x>=.7?'good':x>=.5?'mid':'low'}
+ function short(n){return n.replace('Nursing Management and Leadership','Management & Leadership').replace('Maternal-Child Nursing','Maternal–Child').replace('Nursing Fundamentals','Fundamentals')}
+ function radar(){
+  var card=$('.main-canvas .decision-pulse-card');if(!card)return;
+  var R=radarData(),sig=JSON.stringify(R);if(card.dataset.radar===sig)return;card.dataset.radar=sig;card.classList.add('gulf-radar-on');
+  var old=$('.gulf-radar',card),sel=old?+old.dataset.sel:-1;if(old)old.remove();
+  if(sel<0){var w=-1;R.D.forEach(function(d,i){if(d.a&&(w<0||d.c/d.a<R.D[w].c/R.D[w].a))w=i});sel=w<0?0:w}
+  var cx=110,cy=110,r=86,gap=.05,a=0,segs='';
+  R.D.forEach(function(d,i){var span=d.w*Math.PI*2,a0=a+gap/2,a1=a+span-gap/2,cov=d.a?Math.max(.04,d.c/d.a):0,af=a0+(a1-a0)*cov;
+   segs+='<g class="gr-seg is-'+tone(d)+(i===sel?' is-sel':'')+'" data-i="'+i+'" tabindex="0" role="button" aria-label="'+esc(short(d.name)+': '+d.a+' answered, '+(d.a?Math.round(d.c/d.a*100)+'% correct':'not started'))+'"><path class="gr-track" d="'+arc(cx,cy,r,a0,a1)+'"/>'+(d.a?'<path class="gr-fill" d="'+arc(cx,cy,r,a0,Math.max(af,a0+.02))+'"/>':'')+'<path class="gr-hit" d="'+arc(cx,cy,r,a0,a1)+'"/></g>';a+=span});
+  var el=document.createElement('div');el.className='gulf-radar';el.dataset.sel=sel;
+  el.innerHTML='<div class="gr-head"><span class="gr-kicker">Readiness map</span><span class="gr-streak" title="Study streak">'+R.streak+'-day streak</span></div>'+
+   '<div class="gr-body"><svg viewBox="0 0 220 220" class="gr-svg" role="group" aria-label="Accuracy and coverage by exam domain">'+segs+'<circle cx="110" cy="110" r="62" class="gr-core"/><text x="110" y="106" class="gr-big">'+(R.acc==null?'–':R.acc+'%')+'</text><text x="110" y="128" class="gr-sm">'+(R.A?'accuracy · '+R.A+' answered':'answer to begin')+'</text></svg>'+
+   '<div class="gr-detail" aria-live="polite"></div></div>'+
+   '<ul class="gr-stats"><li><b>'+R.A+'</b><span>answered</span></li><li><b>'+R.repair+'</b><span>to repair</span></li><li><b>'+R.tools+'</b><span>tools studied</span></li></ul>'+
+   '<p class="gr-legend"><i class="is-good"></i>70%+ <i class="is-mid"></i>50–69% <i class="is-low"></i>under 50% <i class="is-none"></i>not started · arc size = exam weight, fill = accuracy</p>';
+  function show(i){var d=R.D[i];el.dataset.sel=i;el.querySelectorAll('.gr-seg').forEach(function(g){g.classList.toggle('is-sel',+g.dataset.i===i)});
+   var acc=d.a?Math.round(d.c/d.a*100):null,next=!d.a?'Start with a short set in this area.':acc<50?'Priority: review the reasoning on your misses here first.':acc<70?'Close: one more focused set will lift this.':'Strong. Keep it warm with a few questions a week.';
+   el.querySelector('.gr-detail').innerHTML='<small>'+Math.round(d.w*100)+'% of the exam</small><h3>'+esc(short(d.name))+'</h3><p class="gr-num"><b>'+(acc==null?'–':acc+'%')+'</b> <span>'+d.c+' of '+d.a+' correct</span></p><div class="gr-bar"><i style="width:'+Math.min(100,d.a/d.bank*100).toFixed(1)+'%"></i></div><p class="gr-cov">'+d.a+' of '+d.bank.toLocaleString('en-GB')+' questions tried</p><p class="gr-next">'+next+'</p><a class="gr-go" href="/question-bank">Practise now →</a>'}
+  el.querySelectorAll('.gr-seg').forEach(function(g){var i=+g.dataset.i;g.addEventListener('click',function(){show(i)});g.addEventListener('mouseenter',function(){show(i)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(i)}})});
+  show(sel);card.append(el);
+ }
+ /* Standard view: calm, exam-centre palette (toggle in the top bar). */
+ function stdToggle(){
+  var bar=$('.topbar .hs-right')||$('.topbar');if(!bar||$('.gulf-std',bar))return;
+  var b=document.createElement('button');b.type='button';b.className='gulf-std';
+  var on=document.documentElement.hasAttribute('data-gulf-std');b.setAttribute('aria-pressed',String(on));b.title='Standard view: calm exam-centre colours';
+  b.innerHTML='<span aria-hidden="true">◐</span> '+(on?'Standard':'Edition');
+  b.onclick=function(){var v=!document.documentElement.hasAttribute('data-gulf-std');document.documentElement.toggleAttribute('data-gulf-std',v);try{localStorage.setItem('gulf-std',v?'1':'0')}catch(e){}b.setAttribute('aria-pressed',String(v));b.innerHTML='<span aria-hidden="true">◐</span> '+(v?'Standard':'Edition')};
+  bar.prepend(b);
+ }
+ function tick(){counts();radar();stdToggle();switcher();groups();suiteChip();today();footer();keysHint();textSweep(document.body);onScroll()}
  var t=null;new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=null;tick()},60)}).observe(document.body,{childList:true,subtree:true,characterData:true});
  addEventListener('hashchange',tick);tick();
 })();
