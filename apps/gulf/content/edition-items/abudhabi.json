@@ -1,0 +1,1417 @@
+[
+  {
+    "id": "AD-021",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Hand hygiene between tasks",
+    "stem": "After handling a patient’s soiled linen, a nurse removes gloves and prepares to adjust a clean vascular dressing. What is needed before the next task?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Perform hand hygiene before the clean task."
+      },
+      {
+        "label": "B",
+        "text": "Put on new gloves without cleaning the hands."
+      },
+      {
+        "label": "C",
+        "text": "Clean the hands only after both tasks are finished."
+      },
+      {
+        "label": "D",
+        "text": "Wipe the hands on a clean disposable towel."
+      }
+    ],
+    "key": "A",
+    "answerText": "Perform hand hygiene before the clean task.",
+    "rationale": "Glove removal can contaminate the hands. Hand hygiene is needed before a clean or aseptic task.",
+    "misconceptions": {
+      "B": "A new pair of gloves does not clean the hands.",
+      "C": "Delayed hand hygiene permits transfer of organisms.",
+      "D": "A dry towel is not an effective hand-hygiene method."
+    },
+    "pearl": "Clean hands are required between contaminated and clean care.",
+    "trap": "Mistaking gloves for hand hygiene.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-022",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Infusion rate calculation",
+    "stem": "A stable adult is prescribed 600 mL of intravenous fluid over 5 hours. What is the correct pump rate in mL/hour?",
+    "options": [
+      {
+        "label": "A",
+        "text": "60 mL/hour."
+      },
+      {
+        "label": "B",
+        "text": "240 mL/hour."
+      },
+      {
+        "label": "C",
+        "text": "12 mL/hour."
+      },
+      {
+        "label": "D",
+        "text": "120 mL/hour."
+      }
+    ],
+    "key": "D",
+    "answerText": "120 mL/hour.",
+    "rationale": "Divide the prescribed volume by the time in hours. The result is 120 mL/hour.",
+    "misconceptions": {
+      "A": "This halves the required rate.",
+      "B": "This doubles the required rate.",
+      "C": "This introduces a tenfold error."
+    },
+    "pearl": "For mL/hour, divide the volume by the duration in hours.",
+    "trap": "Changing the unit without checking the calculation.",
+    "difficulty": "Easy",
+    "judgment": "Generate Solutions",
+    "hyp": 80,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-023",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Suspected transfusion reaction",
+    "stem": "During the first minutes of a red-cell transfusion, a patient develops rigors and new flank pain. Which action comes first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Stop the transfusion and initiate the transfusion-reaction response."
+      },
+      {
+        "label": "B",
+        "text": "Slow the transfusion and reassess after 15 minutes."
+      },
+      {
+        "label": "C",
+        "text": "Give the next prescribed antipyretic while the blood continues."
+      },
+      {
+        "label": "D",
+        "text": "Finish the unit before sending a reaction sample."
+      }
+    ],
+    "key": "A",
+    "answerText": "Stop the transfusion and initiate the transfusion-reaction response.",
+    "rationale": "A suspected reaction requires stopping further exposure immediately. The nurse then supports the patient and follows the reaction protocol, including urgent notification.",
+    "misconceptions": {
+      "B": "Slowing leaves the suspected trigger running.",
+      "C": "Symptom treatment must not replace stopping the transfusion.",
+      "D": "Continuing exposure can worsen a serious reaction."
+    },
+    "pearl": "Stop a suspected transfusion reaction before completing the investigation.",
+    "trap": "Treating symptoms while the transfusion continues.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-024",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Orthostatic fall prevention",
+    "stem": "A patient taking a new antihypertensive feels faint while rising from bed. The nurse is beside the patient. What should happen first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask the patient to hold the bed while the nurse finishes another task."
+      },
+      {
+        "label": "B",
+        "text": "Support the patient into a safe sitting or lying position and reassess."
+      },
+      {
+        "label": "C",
+        "text": "Encourage walking to improve circulation."
+      },
+      {
+        "label": "D",
+        "text": "Leave the patient standing while obtaining a blood-pressure cuff."
+      }
+    ],
+    "key": "B",
+    "answerText": "Support the patient into a safe sitting or lying position and reassess.",
+    "rationale": "Presyncope creates an immediate fall risk. Positioning safely comes before a detailed assessment or further activity.",
+    "misconceptions": {
+      "A": "Holding furniture is not adequate protection from syncope.",
+      "C": "Continuing the walk increases the risk of collapse.",
+      "D": "Unsupported standing is unsafe while symptomatic."
+    },
+    "pearl": "Make the patient safe before investigating dizziness.",
+    "trap": "Continuing mobilization despite presyncope.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Older adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-025",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Heel pressure prevention",
+    "stem": "During skin assessment, a nurse finds an intact heel with nonblanching redness in an immobile patient. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Massage the red area until normal colour returns."
+      },
+      {
+        "label": "B",
+        "text": "Use a ring-shaped cushion directly around the heel."
+      },
+      {
+        "label": "C",
+        "text": "Keep the heel on the mattress and reassess next shift."
+      },
+      {
+        "label": "D",
+        "text": "Relieve heel pressure and begin an individualized pressure-injury care plan."
+      }
+    ],
+    "key": "D",
+    "answerText": "Relieve heel pressure and begin an individualized pressure-injury care plan.",
+    "rationale": "Nonblanching redness indicates pressure damage even when the skin is intact. Offloading and a care plan address the cause.",
+    "misconceptions": {
+      "A": "Massage can worsen damaged tissue.",
+      "B": "Ring devices can concentrate pressure on surrounding tissue.",
+      "C": "Continuing pressure can worsen the injury."
+    },
+    "pearl": "Intact skin can already have a pressure injury.",
+    "trap": "Waiting for skin breakdown before offloading.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-026",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Feeding tube displacement",
+    "stem": "After a patient coughs and vomits, the feeding tube’s external length differs from its documented position. What should the nurse do before using it?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give a small water flush and ask whether it feels normal."
+      },
+      {
+        "label": "B",
+        "text": "Check for a stomach sound while injecting air."
+      },
+      {
+        "label": "C",
+        "text": "Restart at half the prescribed feeding rate."
+      },
+      {
+        "label": "D",
+        "text": "Withhold tube use until placement is checked by the approved method."
+      }
+    ],
+    "key": "D",
+    "answerText": "Withhold tube use until placement is checked by the approved method.",
+    "rationale": "A displaced tube may deliver fluid into the airway or another unsafe position. A water trial or air sound does not reliably confirm safe placement.",
+    "misconceptions": {
+      "A": "A trial flush may itself enter the wrong location.",
+      "B": "Auscultation after air injection does not reliably confirm placement.",
+      "C": "A lower rate does not make a misplaced tube safe."
+    },
+    "pearl": "A possible displacement requires verification before further tube use.",
+    "trap": "Using tolerance or an air sound as proof of placement.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-027",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Sharps safety",
+    "stem": "During a clinic session, a nurse finds the injection area’s sharps container at its marked capacity. How should the used needle be managed?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Recap the needle so it can be carried safely."
+      },
+      {
+        "label": "B",
+        "text": "Push existing sharps down to make more room."
+      },
+      {
+        "label": "C",
+        "text": "Place the needle in clinical waste until the container is changed."
+      },
+      {
+        "label": "D",
+        "text": "Use an available approved container without recapping and arrange replacement of the full one."
+      }
+    ],
+    "key": "D",
+    "answerText": "Use an available approved container without recapping and arrange replacement of the full one.",
+    "rationale": "Used sharps require an approved container without overfilling. Recapping and manual compression increase needlestick risk.",
+    "misconceptions": {
+      "A": "Recapping creates a preventable needlestick risk.",
+      "B": "Pushing down contents risks injury from hidden sharps.",
+      "C": "A waste bag does not safely contain a used needle."
+    },
+    "pearl": "Replace sharps containers at the fill line.",
+    "trap": "Treating a full container as a reason to recap.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-028",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Heat stroke",
+    "stem": "An adult working outside is agitated and unable to follow commands after heavy exertion. Core temperature is 40.4°C. Help is on the way. Which action is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wrap the patient in a dry blanket to prevent shivering."
+      },
+      {
+        "label": "B",
+        "text": "Start rapid active cooling while protecting the airway and monitoring the patient."
+      },
+      {
+        "label": "C",
+        "text": "Give oral water and wait for the confusion to settle."
+      },
+      {
+        "label": "D",
+        "text": "Give paracetamol and repeat the temperature in 30 minutes."
+      }
+    ],
+    "key": "B",
+    "answerText": "Start rapid active cooling while protecting the airway and monitoring the patient.",
+    "rationale": "Heat exposure with central nervous system dysfunction suggests heat stroke. Cooling and emergency care must not be delayed; sweating does not exclude heat stroke.",
+    "misconceptions": {
+      "A": "A dry blanket impedes heat loss.",
+      "C": "Confusion makes oral intake unsafe and waiting delays treatment.",
+      "D": "Antipyretics do not treat heat accumulation from exertion."
+    },
+    "pearl": "Neurological change during heat exposure is an emergency.",
+    "trap": "Excluding heat stroke because the patient is sweating.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-029",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Sickle cell and acute chest syndrome",
+    "stem": "An adult with sickle cell disease develops pleuritic pain and rapid breathing. Oxygen saturation falls from 97% to 90%. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Restrict assessment to the original painful body site."
+      },
+      {
+        "label": "B",
+        "text": "Give oxygen as indicated and arrange urgent assessment for acute chest syndrome."
+      },
+      {
+        "label": "C",
+        "text": "Give the next analgesic and reassess at the routine interval."
+      },
+      {
+        "label": "D",
+        "text": "Encourage walking to improve ventilation before contacting the clinician."
+      }
+    ],
+    "key": "B",
+    "answerText": "Give oxygen as indicated and arrange urgent assessment for acute chest syndrome.",
+    "rationale": "New respiratory symptoms and hypoxaemia can signal acute chest syndrome. This can progress rapidly and requires urgent medical evaluation.",
+    "misconceptions": {
+      "A": "The new respiratory findings require broader assessment.",
+      "C": "Analgesia alone does not address the new hypoxaemia.",
+      "D": "Exertion can increase oxygen demand and delay urgent care."
+    },
+    "pearl": "A sickle cell pain admission can develop a respiratory emergency.",
+    "trap": "Attributing every new symptom to uncomplicated pain.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-030",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Hypoglycaemia during fasting",
+    "stem": "An adult choosing to fast reports hunger, sweating, and palpitations. Glucose is 3.2 mmol/L. The patient is alert and can swallow. What should the nurse prioritize?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Break the fast, take 15 g of fast-acting carbohydrate, and recheck glucose after 15 minutes."
+      },
+      {
+        "label": "B",
+        "text": "Continue fasting and recheck glucose at sunset."
+      },
+      {
+        "label": "C",
+        "text": "Take extra rapid-acting insulin and rest."
+      },
+      {
+        "label": "D",
+        "text": "Eat only a high-fat snack and recheck the next morning."
+      }
+    ],
+    "key": "A",
+    "answerText": "Break the fast, take 15 g of fast-acting carbohydrate, and recheck glucose after 15 minutes.",
+    "rationale": "The alert adult can swallow safely and needs prompt oral treatment of hypoglycaemia, even during a chosen fast. Give 15 g of fast-acting carbohydrate and recheck after 15 minutes; repeat treatment if glucose remains below 3.9 mmol/L, and seek urgent help if recovery fails or swallowing becomes unsafe.",
+    "misconceptions": {
+      "B": "Waiting allows hypoglycaemia to worsen.",
+      "C": "Additional insulin can lower glucose further.",
+      "D": "Fat slows absorption and overnight delay is unsafe."
+    },
+    "pearl": "Treat low glucose promptly even during a chosen fast.",
+    "trap": "Delaying necessary treatment to preserve the fast.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": {
+      "title": "American Diabetes Association — Low Blood Glucose (Hypoglycemia)",
+      "section": "Key points and Treating Low Blood Glucose: adult 15/15 rule",
+      "url": "https://diabetes.org/living-with-diabetes/hypoglycemia-low-blood-glucose",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: options, answerText, rationale, source. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-031",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "DKA and low potassium",
+    "stem": "An adult with DKA is being prepared for intravenous insulin. The latest potassium is 2.8 mmol/L. Which response is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Escalate the low potassium and arrange replacement before starting insulin."
+      },
+      {
+        "label": "B",
+        "text": "Start insulin immediately to shift potassium into the cells."
+      },
+      {
+        "label": "C",
+        "text": "Ignore potassium until the glucose concentration falls."
+      },
+      {
+        "label": "D",
+        "text": "Give routine bicarbonate instead of reporting the potassium."
+      }
+    ],
+    "key": "A",
+    "answerText": "Escalate the low potassium and arrange replacement before starting insulin.",
+    "rationale": "Insulin shifts potassium into cells and can worsen dangerous hypokalaemia. Current adult DKA guidance delays insulin when potassium is below 3.5 mmol/L while replacement is arranged.",
+    "misconceptions": {
+      "B": "An intracellular shift would worsen the existing deficit.",
+      "C": "Arrhythmias can occur before glucose has normalized.",
+      "D": "Bicarbonate is not a substitute for appropriate potassium management."
+    },
+    "pearl": "A low potassium level can change the order of DKA treatment.",
+    "trap": "Starting insulin without reviewing the potassium result.",
+    "difficulty": "Hard",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-032",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "G6PD deficiency and haemolysis",
+    "stem": "During a medication review, an adult with G6PD deficiency describes new yellow eyes and cola-coloured urine after a recent prescription. Which action is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Continue the medicine and encourage fluids as the only measure."
+      },
+      {
+        "label": "B",
+        "text": "Treat the urine colour as an expected effect of G6PD deficiency."
+      },
+      {
+        "label": "C",
+        "text": "Recommend an iron supplement without further assessment."
+      },
+      {
+        "label": "D",
+        "text": "Arrange urgent assessment for haemolysis and clarify the suspected medicine before further dosing."
+      }
+    ],
+    "key": "D",
+    "answerText": "Arrange urgent assessment for haemolysis and clarify the suspected medicine before further dosing.",
+    "rationale": "The symptom pattern suggests acute red-cell destruction. The suspected trigger and the patient’s clinical status need urgent review.",
+    "misconceptions": {
+      "A": "Fluids alone do not address potentially severe haemolysis.",
+      "B": "A new change must not be treated as a harmless baseline finding.",
+      "C": "Iron does not treat acute haemolysis and may be inappropriate."
+    },
+    "pearl": "New jaundice and dark urine in G6PD deficiency need prompt assessment.",
+    "trap": "Assuming inherited disease makes new symptoms routine.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-033",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "External haemorrhage after trauma",
+    "stem": "Following a collision, an adult has brisk bleeding from an open thigh wound. No airway or breathing problem is found. Which action should be started first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Clean the wound thoroughly before attempting haemostasis."
+      },
+      {
+        "label": "B",
+        "text": "Remove visible clots so the bleeding source can be inspected."
+      },
+      {
+        "label": "C",
+        "text": "Obtain a detailed medical history before touching the wound."
+      },
+      {
+        "label": "D",
+        "text": "Apply firm direct pressure to control the bleeding and activate trauma support."
+      }
+    ],
+    "key": "D",
+    "answerText": "Apply firm direct pressure to control the bleeding and activate trauma support.",
+    "rationale": "Uncontrolled external bleeding is the current life threat after airway and breathing have been assessed. Direct pressure should not wait for routine wound care or history.",
+    "misconceptions": {
+      "A": "Cleaning delays haemorrhage control.",
+      "B": "Removing clots can increase bleeding.",
+      "C": "The history must not delay controlling major blood loss."
+    },
+    "pearl": "Control a visible major haemorrhage promptly.",
+    "trap": "Completing routine wound care before haemorrhage control.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-034",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Stroke and swallowing safety",
+    "stem": "An adult with an acute stroke has a wet voice and coughs on saliva. No swallow assessment is recorded. What should the nurse do before offering oral intake?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Crush the tablets in food so they are easier to swallow."
+      },
+      {
+        "label": "B",
+        "text": "Allow fluids through a straw while the patient sits upright."
+      },
+      {
+        "label": "C",
+        "text": "Withhold oral intake and arrange a swallowing screen by a trained practitioner."
+      },
+      {
+        "label": "D",
+        "text": "Offer a small sip of water to see whether coughing occurs."
+      }
+    ],
+    "key": "C",
+    "answerText": "Withhold oral intake and arrange a swallowing screen by a trained practitioner.",
+    "rationale": "Stroke can impair swallowing and increase aspiration risk. Food, fluid, and oral medicines should wait until swallowing safety is established.",
+    "misconceptions": {
+      "A": "Crushed medicines and food can still be aspirated.",
+      "B": "A straw and posture do not establish swallowing safety.",
+      "D": "An unsupervised trial may cause aspiration."
+    },
+    "pearl": "Check swallowing safety before oral intake after stroke.",
+    "trap": "Using a small drink as an informal swallowing test.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-035",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Anaphylaxis first-line medicine",
+    "stem": "An adult suddenly develops noisy breathing, hives, and circulatory collapse after a medicine is given. The trigger is stopped and emergency help is present. Which treatment should the nurse prepare first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Intravenous corticosteroid as the first-line treatment."
+      },
+      {
+        "label": "B",
+        "text": "Nebulized bronchodilator as the only emergency medicine."
+      },
+      {
+        "label": "C",
+        "text": "Intramuscular adrenaline in the outer thigh."
+      },
+      {
+        "label": "D",
+        "text": "Oral antihistamine for the skin reaction."
+      }
+    ],
+    "key": "C",
+    "answerText": "Intramuscular adrenaline in the outer thigh.",
+    "rationale": "Airway or circulatory involvement after an allergen suggests anaphylaxis. Intramuscular adrenaline is first-line; other medicines must not delay it.",
+    "misconceptions": {
+      "A": "Corticosteroids are not first-line emergency treatment.",
+      "B": "A bronchodilator alone does not treat shock or upper-airway swelling.",
+      "D": "An antihistamine does not reverse airway or circulatory collapse."
+    },
+    "pearl": "Adrenaline is the first-line medicine for anaphylaxis.",
+    "trap": "Treating the rash instead of the life-threatening reaction.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-036",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Hyperkalaemia with ECG changes",
+    "stem": "A patient with acute kidney injury has potassium of 6.7 mmol/L and a widening QRS complex. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Activate urgent treatment and cardiac monitoring for life-threatening hyperkalaemia."
+      },
+      {
+        "label": "B",
+        "text": "Wait for the next routine electrolyte panel before reporting."
+      },
+      {
+        "label": "C",
+        "text": "Give a potassium-containing supplement to prevent muscle weakness."
+      },
+      {
+        "label": "D",
+        "text": "Focus on dietary teaching before contacting the clinical team."
+      }
+    ],
+    "key": "A",
+    "answerText": "Activate urgent treatment and cardiac monitoring for life-threatening hyperkalaemia.",
+    "rationale": "Severe hyperkalaemia with ECG changes can precede cardiac arrest. Monitoring and emergency treatment are needed without routine delays.",
+    "misconceptions": {
+      "B": "ECG changes make waiting unsafe.",
+      "C": "Potassium supplementation would worsen the abnormality.",
+      "D": "Dietary teaching cannot stabilize an immediate arrhythmia risk."
+    },
+    "pearl": "ECG changes make hyperkalaemia an immediate emergency.",
+    "trap": "Treating a dangerous result as a routine dietary issue.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-037",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Sepsis deterioration",
+    "stem": "A febrile adult develops rapid breathing and new confusion. Blood pressure falls to 84/48 mmHg. Which action is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait for a positive blood culture before escalating care."
+      },
+      {
+        "label": "B",
+        "text": "Ask the patient to drink water and walk to the bathroom."
+      },
+      {
+        "label": "C",
+        "text": "Activate urgent sepsis assessment and resuscitation while supporting airway and breathing."
+      },
+      {
+        "label": "D",
+        "text": "Give an antipyretic and review at the next observation round."
+      }
+    ],
+    "key": "C",
+    "answerText": "Activate urgent sepsis assessment and resuscitation while supporting airway and breathing.",
+    "rationale": "Hypotension and new altered mental status suggest severe circulatory compromise. Suspected sepsis requires urgent escalation rather than waiting for culture confirmation.",
+    "misconceptions": {
+      "A": "Cultures can take time and must not delay emergency care.",
+      "B": "Activity and oral fluids do not treat this unstable state.",
+      "D": "Reducing fever does not address shock."
+    },
+    "pearl": "Infection with shock signs needs an immediate response.",
+    "trap": "Waiting for proof of infection while perfusion fails.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-038",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Diabetic foot deterioration",
+    "stem": "An adult with neuropathy has an ulcerated toe and new fever. Redness has spread toward the ankle since yesterday. What should the nurse prioritize?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Advise warm foot soaks until the redness settles."
+      },
+      {
+        "label": "B",
+        "text": "Reassure the patient because neuropathy can reduce pain."
+      },
+      {
+        "label": "C",
+        "text": "Arrange urgent assessment for a spreading diabetic foot infection."
+      },
+      {
+        "label": "D",
+        "text": "Book the next routine podiatry visit and continue current dressings."
+      }
+    ],
+    "key": "C",
+    "answerText": "Arrange urgent assessment for a spreading diabetic foot infection.",
+    "rationale": "Systemic illness with spreading inflammation can indicate a serious foot infection. Neuropathy can conceal pain and does not lower the urgency.",
+    "misconceptions": {
+      "A": "Soaking does not treat the infection and can damage skin.",
+      "B": "Reduced pain is not evidence of a mild infection.",
+      "D": "Routine follow-up is too slow for spreading infection and fever."
+    },
+    "pearl": "A painless diabetic foot wound can still be dangerous.",
+    "trap": "Using pain severity to judge infection severity in neuropathy.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-039",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Postpartum uterine atony",
+    "stem": "After a vaginal birth, a woman has increasing bleeding and a soft uterus. Emergency support is activated. Which bedside action is indicated?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Apply perineal ice as the only bleeding intervention."
+      },
+      {
+        "label": "B",
+        "text": "Massage the uterus and start the postpartum-haemorrhage protocol with the team."
+      },
+      {
+        "label": "C",
+        "text": "Wait for a measured total blood loss before taking any action."
+      },
+      {
+        "label": "D",
+        "text": "Encourage walking to help the uterus contract."
+      }
+    ],
+    "key": "B",
+    "answerText": "Massage the uterus and start the postpartum-haemorrhage protocol with the team.",
+    "rationale": "A boggy uterus with heavy bleeding suggests uterine atony. Immediate uterine massage forms part of a coordinated haemorrhage response, not a substitute for the rest of the treatment bundle.",
+    "misconceptions": {
+      "A": "Perineal ice does not correct uterine atony.",
+      "C": "Measurement must not delay action on obvious heavy bleeding.",
+      "D": "Walking is unsafe during active haemorrhage."
+    },
+    "pearl": "Treat atony within an immediate coordinated haemorrhage response.",
+    "trap": "Waiting for a numerical threshold despite obvious heavy bleeding.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Postpartum",
+    "setting": "Maternity unit",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-040",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Severe pre-eclampsia warning signs",
+    "stem": "At 36 weeks, a pregnant patient has severe headache, upper abdominal pain, and blood pressure of 166/110 mmHg. What is the best action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Attribute the symptoms to ordinary pregnancy discomfort."
+      },
+      {
+        "label": "B",
+        "text": "Encourage oral fluids and recheck blood pressure tomorrow."
+      },
+      {
+        "label": "C",
+        "text": "Escalate urgently for severe pre-eclampsia assessment and treatment."
+      },
+      {
+        "label": "D",
+        "text": "Provide a dark room and defer review until the next clinic visit."
+      }
+    ],
+    "key": "C",
+    "answerText": "Escalate urgently for severe pre-eclampsia assessment and treatment.",
+    "rationale": "Severe hypertension with neurological or upper abdominal symptoms is a danger pattern. Urgent assessment and treatment reduce the risk of major maternal and fetal complications.",
+    "misconceptions": {
+      "A": "These symptoms are not routine pregnancy discomfort.",
+      "B": "Next-day review is unsafe with these findings.",
+      "D": "Comfort measures alone must not delay urgent treatment."
+    },
+    "pearl": "Severe hypertension with neurological symptoms in pregnancy needs urgent care.",
+    "trap": "Explaining danger signs as common pregnancy symptoms.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Pregnant adult",
+    "setting": "Maternity assessment",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-041",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Magnesium toxicity",
+    "stem": "A woman on intravenous magnesium sulfate has new respiratory depression and absent patellar reflexes. What should the nurse do immediately?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait for a magnesium result before changing the infusion."
+      },
+      {
+        "label": "B",
+        "text": "Stop magnesium, call urgent help, and support breathing while preparing the prescribed antidote."
+      },
+      {
+        "label": "C",
+        "text": "Reduce stimulation and continue the infusion at the same rate."
+      },
+      {
+        "label": "D",
+        "text": "Increase the infusion to prevent an eclamptic seizure."
+      }
+    ],
+    "key": "B",
+    "answerText": "Stop magnesium, call urgent help, and support breathing while preparing the prescribed antidote.",
+    "rationale": "Respiratory depression and absent reflexes suggest magnesium toxicity. Exposure must stop while ventilation is supported and calcium gluconate is prepared according to the emergency prescription or protocol.",
+    "misconceptions": {
+      "A": "Treatment must not wait for laboratory confirmation of a dangerous clinical pattern.",
+      "C": "Continuing the infusion can worsen toxicity.",
+      "D": "More magnesium can deepen respiratory depression."
+    },
+    "pearl": "Monitor breathing, reflexes, and urine output during magnesium treatment.",
+    "trap": "Waiting for a laboratory result despite respiratory depression.",
+    "difficulty": "Hard",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Pregnant or postpartum adult",
+    "setting": "Maternity unit",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-042",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Early neonatal jaundice",
+    "stem": "At a routine check, a nurse notices jaundice in a baby aged 8 hours. What is the most appropriate next action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Delay bilirubin testing until the next routine newborn visit."
+      },
+      {
+        "label": "B",
+        "text": "Recommend sunlight exposure instead of investigation."
+      },
+      {
+        "label": "C",
+        "text": "Arrange urgent clinical assessment and serum bilirubin measurement."
+      },
+      {
+        "label": "D",
+        "text": "Reassure the family that first-day jaundice is physiological."
+      }
+    ],
+    "key": "C",
+    "answerText": "Arrange urgent clinical assessment and serum bilirubin measurement.",
+    "rationale": "Jaundice in the first 24 hours can indicate significant disease, including haemolysis. It requires urgent evaluation rather than an assumption of physiological jaundice.",
+    "misconceptions": {
+      "A": "Delay can miss a rapid bilirubin rise.",
+      "B": "Sunlight is not a substitute for bilirubin measurement and treatment assessment.",
+      "D": "Physiological jaundice should not be assumed in the first day."
+    },
+    "pearl": "First-day jaundice needs urgent evaluation.",
+    "trap": "Treating early jaundice as an ordinary newborn variation.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Newborn",
+    "setting": "Postnatal ward",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-043",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Oral rehydration in a child",
+    "stem": "A child has diarrhoea and mild dehydration but remains alert and able to drink. Which initial nursing approach is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give oral rehydration solution in small frequent amounts and reassess."
+      },
+      {
+        "label": "B",
+        "text": "Use undiluted fruit juice as the main replacement fluid."
+      },
+      {
+        "label": "C",
+        "text": "Withhold fluid until all loose stools stop."
+      },
+      {
+        "label": "D",
+        "text": "Start a rapid intravenous bolus solely because diarrhoea is present."
+      }
+    ],
+    "key": "A",
+    "answerText": "Give oral rehydration solution in small frequent amounts and reassess.",
+    "rationale": "Oral rehydration solution replaces water and electrolytes in a child who can drink without shock. Reassessment identifies failure of the oral plan or deterioration.",
+    "misconceptions": {
+      "B": "High-sugar juice can worsen diarrhoea and has an unsuitable electrolyte balance.",
+      "C": "Withholding fluids worsens dehydration.",
+      "D": "Mild dehydration with safe oral intake does not itself require an intravenous bolus."
+    },
+    "pearl": "Use oral rehydration when a child can drink and has no shock.",
+    "trap": "Confusing diarrhoea with an automatic need for intravenous fluids.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Child",
+    "setting": "Paediatric assessment",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-044",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Infant respiratory deterioration",
+    "stem": "An infant being observed for bronchiolitis develops exhaustion, reduced responsiveness, and persistent hypoxaemia. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Offer a full bottle to improve the infant’s energy."
+      },
+      {
+        "label": "B",
+        "text": "Wait for the next scheduled saturation check."
+      },
+      {
+        "label": "C",
+        "text": "Provide routine discharge advice because bronchiolitis is usually viral."
+      },
+      {
+        "label": "D",
+        "text": "Activate urgent respiratory support and give oxygen according to the emergency pathway."
+      }
+    ],
+    "key": "D",
+    "answerText": "Activate urgent respiratory support and give oxygen according to the emergency pathway.",
+    "rationale": "Hypoxaemia and exhaustion can signal respiratory failure. The infant needs urgent support rather than feeding or routine observation.",
+    "misconceptions": {
+      "A": "Oral feeding during severe distress can increase aspiration risk.",
+      "B": "The persistent hypoxaemia is already established.",
+      "C": "A viral cause does not make respiratory failure safe for discharge."
+    },
+    "pearl": "An exhausted infant with respiratory distress needs urgent escalation.",
+    "trap": "Underestimating severity because the illness is viral.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Infant",
+    "setting": "Paediatric acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-045",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Inherited conditions and counselling",
+    "stem": "Parents who are biologically related ask whether their baby will definitely have the disorder seen in a relative. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reassure them that an unaffected parent excludes inherited risk."
+      },
+      {
+        "label": "B",
+        "text": "Give a fixed recurrence percentage without reviewing the diagnosis."
+      },
+      {
+        "label": "C",
+        "text": "Offer nonjudgmental referral for genetic counselling and individualized risk assessment."
+      },
+      {
+        "label": "D",
+        "text": "State that the next child will definitely be affected."
+      }
+    ],
+    "key": "C",
+    "answerText": "Offer nonjudgmental referral for genetic counselling and individualized risk assessment.",
+    "rationale": "Risk depends on the actual disorder, inheritance pattern, and family findings. Individual assessment supports informed choices without blame or false certainty.",
+    "misconceptions": {
+      "A": "Unaffected carriers can transmit some inherited conditions.",
+      "B": "A percentage requires a supported inheritance model and relevant information.",
+      "D": "Family relationship or history does not make disease inevitable."
+    },
+    "pearl": "Assess inherited risk individually and without blame.",
+    "trap": "Turning family history into a certain prediction.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 65,
+    "population": "Family",
+    "setting": "Maternal-child clinic",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-046",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Postpartum venous thrombosis",
+    "stem": "A postpartum patient develops new tenderness and swelling in one leg. She is stable and denies chest symptoms. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reassure her that one-sided swelling is expected after birth."
+      },
+      {
+        "label": "B",
+        "text": "Arrange urgent clinical assessment for possible deep vein thrombosis."
+      },
+      {
+        "label": "C",
+        "text": "Massage the calf to improve circulation."
+      },
+      {
+        "label": "D",
+        "text": "Suggest routine exercise and review at the six-week visit."
+      }
+    ],
+    "key": "B",
+    "answerText": "Arrange urgent clinical assessment for possible deep vein thrombosis.",
+    "rationale": "The postpartum period increases thromboembolic risk. New unilateral leg symptoms need urgent assessment even without current chest symptoms.",
+    "misconceptions": {
+      "A": "One-sided painful swelling must not be dismissed as routine.",
+      "C": "Massage is inappropriate when thrombosis is suspected.",
+      "D": "Routine delayed review can miss a significant clot."
+    },
+    "pearl": "New unilateral leg symptoms after birth require prompt assessment.",
+    "trap": "Assuming all postpartum swelling is normal.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Postpartum",
+    "setting": "Postnatal service",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-047",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Acuity-based prioritization",
+    "stem": "Four patients request nursing review at the same time. Which report should the nurse respond to first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "New stridor with increasing effort to breathe."
+      },
+      {
+        "label": "B",
+        "text": "Unchanged incisional discomfort awaiting the next prescribed dose."
+      },
+      {
+        "label": "C",
+        "text": "A request to discuss the planned discharge transport."
+      },
+      {
+        "label": "D",
+        "text": "Constipation for two days without pain or vomiting."
+      }
+    ],
+    "key": "A",
+    "answerText": "New stridor with increasing effort to breathe.",
+    "rationale": "New stridor suggests an evolving upper-airway obstruction. The other concerns need care but do not describe an immediate threat to ventilation.",
+    "misconceptions": {
+      "B": "Stable discomfort is lower priority than a threatened airway.",
+      "C": "Discharge planning can wait during an airway emergency.",
+      "D": "The stated constipation lacks acute danger signs."
+    },
+    "pearl": "Prioritize a newly threatened airway over stable care needs.",
+    "trap": "Using the order of requests instead of current acuity.",
+    "difficulty": "Easy",
+    "judgment": "Prioritize Hypotheses",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-048",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Learning from a near miss",
+    "stem": "A nurse prevents a medicine reaching the wrong patient during identification checks. What is the best quality-improvement response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Remove identification checks to reduce interruptions."
+      },
+      {
+        "label": "B",
+        "text": "Review how the mismatch arose and improve the vulnerable process."
+      },
+      {
+        "label": "C",
+        "text": "Close the matter because the final check worked."
+      },
+      {
+        "label": "D",
+        "text": "Remind only the involved nurse to be more careful."
+      }
+    ],
+    "key": "B",
+    "answerText": "Review how the mismatch arose and improve the vulnerable process.",
+    "rationale": "A successful interception can reveal an earlier process failure. Examining that process supports prevention beyond individual vigilance.",
+    "misconceptions": {
+      "A": "Removing a protective check increases risk.",
+      "C": "The earlier failure could recur despite this successful check.",
+      "D": "A reminder alone does not address the process weakness."
+    },
+    "pearl": "Near misses are opportunities to improve processes.",
+    "trap": "Assuming no harm means no process problem.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-049",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Interpreting audit rates",
+    "stem": "Two units have different numbers of patients with devices. Which measure is most useful for comparing their device-associated infection frequency?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The number of staff on duty when the first infection was detected."
+      },
+      {
+        "label": "B",
+        "text": "Infections per 1,000 device-days using the same case definition."
+      },
+      {
+        "label": "C",
+        "text": "The total number of infections without an exposure denominator."
+      },
+      {
+        "label": "D",
+        "text": "The total number of all ward admissions regardless of device use."
+      }
+    ],
+    "key": "B",
+    "answerText": "Infections per 1,000 device-days using the same case definition.",
+    "rationale": "Device-days measure relevant exposure time. A common case definition is also needed for a meaningful comparison.",
+    "misconceptions": {
+      "A": "Staffing at detection is not the exposure denominator.",
+      "C": "Raw counts may reflect different exposure volumes.",
+      "D": "All admissions do not measure time at risk from the device."
+    },
+    "pearl": "Compare rates using a relevant denominator and a consistent definition.",
+    "trap": "Interpreting raw counts as comparable risk.",
+    "difficulty": "Easy",
+    "judgment": "Analyze Cues",
+    "hyp": 65,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "AD-050",
+    "edition": "abudhabi",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Closed-loop critical communication",
+    "stem": "A critical test result is given verbally during a busy shift. Which communication step is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Read back the patient identifiers and result, confirm them, and escalate promptly."
+      },
+      {
+        "label": "B",
+        "text": "Write a brief number on scrap paper and confirm it after the shift."
+      },
+      {
+        "label": "C",
+        "text": "Repeat the result to another patient’s nurse without identifiers."
+      },
+      {
+        "label": "D",
+        "text": "Wait for the printed report before acknowledging the message."
+      }
+    ],
+    "key": "A",
+    "answerText": "Read back the patient identifiers and result, confirm them, and escalate promptly.",
+    "rationale": "Read-back checks that the receiver heard the correct patient and result. Prompt escalation is still needed after confirmation.",
+    "misconceptions": {
+      "B": "Delayed confirmation can leave a transcription error uncorrected.",
+      "C": "Missing identifiers creates a wrong-patient risk.",
+      "D": "Waiting for paper can delay action on a critical result."
+    },
+    "pearl": "Confirm both patient and result during critical verbal communication.",
+    "trap": "Treating a heard message as a confirmed message.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  }
+]

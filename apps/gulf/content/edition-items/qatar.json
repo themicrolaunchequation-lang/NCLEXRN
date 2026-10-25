@@ -1,0 +1,2977 @@
+[
+  {
+    "id": "QA-001",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Scope and competence",
+    "stem": "In a Qatar ward, an RGN is asked to perform an unfamiliar elective procedure. The nurse has no assessed competence in it. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Proceed while a colleague gives instructions by telephone."
+      },
+      {
+        "label": "B",
+        "text": "Perform it because a prescriber has requested it."
+      },
+      {
+        "label": "C",
+        "text": "Ask the patient to accept the additional risk."
+      },
+      {
+        "label": "D",
+        "text": "Explain the competence gap and arrange a suitably qualified practitioner."
+      }
+    ],
+    "key": "D",
+    "answerText": "Explain the competence gap and arrange a suitably qualified practitioner.",
+    "rationale": "The request does not establish competence. Arranging qualified help protects the patient without abandoning care.",
+    "misconceptions": {
+      "A": "Remote instructions do not establish assessed competence.",
+      "B": "An order does not extend the nurse’s competence.",
+      "C": "Patient agreement cannot replace professional competence."
+    },
+    "pearl": "Qatar RGN practice: Explain the competence gap and arrange a suitably qualified practitioner.",
+    "trap": "Remote instructions do not establish assessed competence.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.1.2–1.1.3, p.15",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-002",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Delegation checks",
+    "stem": "A Qatar RGN plans to delegate a stable patient’s scheduled care task. What must be checked before choosing the team member?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Choose the worker who agrees to accept responsibility."
+      },
+      {
+        "label": "B",
+        "text": "Confirm that the task fits the worker’s authorized role and demonstrated competence."
+      },
+      {
+        "label": "C",
+        "text": "Choose the worker who has the lightest workload."
+      },
+      {
+        "label": "D",
+        "text": "Use the worker who has observed the task most often."
+      }
+    ],
+    "key": "B",
+    "answerText": "Confirm that the task fits the worker’s authorized role and demonstrated competence.",
+    "rationale": "Willingness and availability do not establish authority or ability. Delegation must fit the person and the task.",
+    "misconceptions": {
+      "A": "Agreement does not create authority to perform a task.",
+      "C": "Workload matters only after role and ability are established.",
+      "D": "Observation alone does not establish competence."
+    },
+    "pearl": "Qatar RGN practice: Confirm that the task fits the worker’s authorized role and demonstrated competence.",
+    "trap": "Workload matters only after role and ability are established.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.3.1, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-003",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Delegation follow-up",
+    "stem": "In Qatar, an RGN has delegated care to a competent colleague. Which action best meets the RGN’s ongoing responsibility?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Remove the task from handover because it was delegated."
+      },
+      {
+        "label": "B",
+        "text": "Check the reported outcome and provide supervision matched to the task."
+      },
+      {
+        "label": "C",
+        "text": "Review the outcome only if the patient makes a complaint."
+      },
+      {
+        "label": "D",
+        "text": "Assume completion because the worker accepted the task."
+      }
+    ],
+    "key": "B",
+    "answerText": "Check the reported outcome and provide supervision matched to the task.",
+    "rationale": "Delegation does not end the need for oversight. Outcome review helps identify care that needs adjustment.",
+    "misconceptions": {
+      "A": "Delegated care can remain relevant at handover.",
+      "C": "Waiting for a complaint misses earlier signs of incomplete care.",
+      "D": "Acceptance is not evidence of a safe outcome."
+    },
+    "pearl": "Qatar RGN practice: Check the reported outcome and provide supervision matched to the task.",
+    "trap": "Waiting for a complaint misses earlier signs of incomplete care.",
+    "difficulty": "Medium",
+    "judgment": "Evaluate Outcomes",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.3.2–3.3.3, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-004",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Consent and understanding",
+    "stem": "Before an elective procedure in Qatar, a patient says, “I signed because I thought this was a blood test.” What should the nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask a relative to confirm that the procedure is acceptable."
+      },
+      {
+        "label": "B",
+        "text": "Repeat the procedure name and request another signature."
+      },
+      {
+        "label": "C",
+        "text": "Pause preparation and arrange an understandable explanation before consent is confirmed."
+      },
+      {
+        "label": "D",
+        "text": "Continue because the signed form is already in the record."
+      }
+    ],
+    "key": "C",
+    "answerText": "Pause preparation and arrange an understandable explanation before consent is confirmed.",
+    "rationale": "A signature alone does not show informed agreement. The misunderstanding must be addressed before the elective procedure proceeds.",
+    "misconceptions": {
+      "A": "A relative’s agreement does not replace the capable patient’s consent.",
+      "B": "Repeating a name does not explain the procedure.",
+      "D": "A form does not resolve the stated misunderstanding."
+    },
+    "pearl": "Qatar RGN practice: Pause preparation and arrange an understandable explanation before consent is confirmed.",
+    "trap": "A form does not resolve the stated misunderstanding.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.5, p.15",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-005",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Patient advocacy",
+    "stem": "A capable adult in Qatar wants the clinician to explain another treatment option. A relative asks the nurse to keep to the original plan. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Support the patient in discussing options with the treating clinician."
+      },
+      {
+        "label": "B",
+        "text": "Ask the family to decide which option will be discussed."
+      },
+      {
+        "label": "C",
+        "text": "Discourage further questions because a plan is documented."
+      },
+      {
+        "label": "D",
+        "text": "Ask the patient to decide without further information."
+      }
+    ],
+    "key": "A",
+    "answerText": "Support the patient in discussing options with the treating clinician.",
+    "rationale": "Care should support the patient’s informed participation. Family involvement should not prevent the patient from receiving information.",
+    "misconceptions": {
+      "B": "Family preference does not displace a capable adult’s voice.",
+      "C": "Documentation does not end the right to ask questions.",
+      "D": "A meaningful choice requires adequate information."
+    },
+    "pearl": "Qatar RGN practice: Support the patient in discussing options with the treating clinician.",
+    "trap": "Family preference does not displace a capable adult’s voice.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.3 and 1.2.5, p.15",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-006",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Confidentiality",
+    "stem": "On a Qatar ward, a visitor asks for an adult patient’s laboratory results. The nurse has not established permission to share them. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Verify identity and the authority to receive information before disclosure."
+      },
+      {
+        "label": "B",
+        "text": "Share only the abnormal results to limit disclosure."
+      },
+      {
+        "label": "C",
+        "text": "Give the results if the person knows the patient’s birth date."
+      },
+      {
+        "label": "D",
+        "text": "Ask another visitor to confirm the relationship."
+      }
+    ],
+    "key": "A",
+    "answerText": "Verify identity and the authority to receive information before disclosure.",
+    "rationale": "The request alone does not authorize disclosure. Identity and a valid basis for access must both be established.",
+    "misconceptions": {
+      "B": "Selected results are still confidential information.",
+      "C": "A known personal detail does not establish authority.",
+      "D": "Another visitor cannot establish consent or legal authority."
+    },
+    "pearl": "Qatar RGN practice: Verify identity and the authority to receive information before disclosure.",
+    "trap": "Selected results are still confidential information.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.4, p.15",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-007",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Privacy and dignity",
+    "stem": "During a bedside discussion in Qatar, nearby visitors can hear sensitive details. The patient is stable. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Omit the patient’s name but discuss the full history."
+      },
+      {
+        "label": "B",
+        "text": "Move the conversation to a private setting with the patient’s agreement."
+      },
+      {
+        "label": "C",
+        "text": "Continue quietly while using the patient’s room number."
+      },
+      {
+        "label": "D",
+        "text": "Ask visitors to ignore the conversation and continue."
+      }
+    ],
+    "key": "B",
+    "answerText": "Move the conversation to a private setting with the patient’s agreement.",
+    "rationale": "Avoidable exposure of personal information should be reduced. Omitting a name does not make an identifiable bedside conversation private.",
+    "misconceptions": {
+      "A": "The surroundings can identify the person without a name.",
+      "C": "Room context can still identify the patient.",
+      "D": "A request to ignore information does not protect privacy."
+    },
+    "pearl": "Qatar RGN practice: Move the conversation to a private setting with the patient’s agreement.",
+    "trap": "Room context can still identify the patient.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.4 and 1.2.6, p.15",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-008",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Respectful cultural care",
+    "stem": "A stable patient in Qatar requests a same-gender practitioner for intimate care. What should the nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Assume the request applies to every future procedure."
+      },
+      {
+        "label": "B",
+        "text": "Ask a family member to persuade the patient to withdraw it."
+      },
+      {
+        "label": "C",
+        "text": "Cancel all planned care until a same-gender team is available."
+      },
+      {
+        "label": "D",
+        "text": "Explore the preference and arrange suitable care where feasible without delaying urgent needs."
+      }
+    ],
+    "key": "D",
+    "answerText": "Explore the preference and arrange suitable care where feasible without delaying urgent needs.",
+    "rationale": "Preferences should be discussed individually and respected where feasible. The nurse must also account for the urgency of care.",
+    "misconceptions": {
+      "A": "An individual preference must not be generalized without discussion.",
+      "B": "Pressure from family can undermine the patient’s choice.",
+      "C": "A blanket cancellation may cause unnecessary delay."
+    },
+    "pearl": "Qatar RGN practice: Explore the preference and arrange suitable care where feasible without delaying urgent needs.",
+    "trap": "An individual preference must not be generalized without discussion.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.6–1.2.7, p.15",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-009",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Accurate documentation",
+    "stem": "After giving prescribed pain relief in Qatar, which entry best supports continuing care?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Record the intended response before reassessment occurs."
+      },
+      {
+        "label": "B",
+        "text": "Record the assessment, medicine given, time, and reassessed response."
+      },
+      {
+        "label": "C",
+        "text": "Record that all routine care was completed during the shift."
+      },
+      {
+        "label": "D",
+        "text": "Record the medicine only if pain remains severe."
+      }
+    ],
+    "key": "B",
+    "answerText": "Record the assessment, medicine given, time, and reassessed response.",
+    "rationale": "The record should show what was done and how the patient responded. Intended outcomes must not be recorded as observed facts.",
+    "misconceptions": {
+      "A": "An expected response is not a measured outcome.",
+      "C": "A broad completion statement omits important clinical details.",
+      "D": "Effective treatment still requires a record."
+    },
+    "pearl": "Qatar RGN practice: Record the assessment, medicine given, time, and reassessed response.",
+    "trap": "A broad completion statement omits important clinical details.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 2.1.12–2.1.13, p.17",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-010",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Clinical handover",
+    "stem": "A Qatar ward nurse hands over a patient with a new oxygen requirement. Which information is most important to communicate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Describe the change, current observations, actions taken, and required follow-up."
+      },
+      {
+        "label": "B",
+        "text": "Describe the admission diagnosis and leave changes in the chart."
+      },
+      {
+        "label": "C",
+        "text": "Report that the patient is comfortable without mentioning oxygen."
+      },
+      {
+        "label": "D",
+        "text": "List completed routine tasks before ending the handover."
+      }
+    ],
+    "key": "A",
+    "answerText": "Describe the change, current observations, actions taken, and required follow-up.",
+    "rationale": "A new oxygen requirement is a relevant change in condition. The receiving team needs the current situation and outstanding actions.",
+    "misconceptions": {
+      "B": "The chart does not replace communication of a significant change.",
+      "C": "Comfort does not establish stable oxygenation.",
+      "D": "Task completion does not explain the new clinical risk."
+    },
+    "pearl": "Qatar RGN practice: Describe the change, current observations, actions taken, and required follow-up.",
+    "trap": "The chart does not replace communication of a significant change.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 2.2.3, p.17",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-011",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Incident reporting",
+    "stem": "A nurse in Qatar identifies a medication near miss before a dose reaches the patient. Which response best supports safety?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Discuss it privately with the colleague and omit the report."
+      },
+      {
+        "label": "B",
+        "text": "Report it only if the patient later develops symptoms."
+      },
+      {
+        "label": "C",
+        "text": "Keep a personal note instead of using the reporting system."
+      },
+      {
+        "label": "D",
+        "text": "Address the immediate risk and report the near miss through the designated system."
+      }
+    ],
+    "key": "D",
+    "answerText": "Address the immediate risk and report the near miss through the designated system.",
+    "rationale": "A near miss can reveal a system weakness despite the absence of injury. Reporting allows the organization to assess the risk.",
+    "misconceptions": {
+      "A": "A private discussion alone prevents wider learning.",
+      "B": "No symptoms are required for a near miss to matter.",
+      "C": "A private note is not an organizational safety report."
+    },
+    "pearl": "Qatar RGN practice: Address the immediate risk and report the near miss through the designated system.",
+    "trap": "A private discussion alone prevents wider learning.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.2.7 and 3.2.10, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-012",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Unsafe practice escalation",
+    "stem": "A Qatar nurse sees a colleague preparing to use an unsafe workaround during care. What is the best immediate response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Leave correction to the colleague’s annual appraisal."
+      },
+      {
+        "label": "B",
+        "text": "Intervene to protect the patient and escalate the concern through the safety pathway."
+      },
+      {
+        "label": "C",
+        "text": "Wait until the end of the shift to discuss the practice."
+      },
+      {
+        "label": "D",
+        "text": "Collect examples for an audit before raising the concern."
+      }
+    ],
+    "key": "B",
+    "answerText": "Intervene to protect the patient and escalate the concern through the safety pathway.",
+    "rationale": "An immediate risk needs timely intervention. Later quality processes cannot replace protecting the current patient.",
+    "misconceptions": {
+      "A": "Annual appraisal is too late to protect the patient.",
+      "C": "End-of-shift discussion leaves the present risk active.",
+      "D": "An audit must not delay action on immediate danger."
+    },
+    "pearl": "Qatar RGN practice: Intervene to protect the patient and escalate the concern through the safety pathway.",
+    "trap": "End-of-shift discussion leaves the present risk active.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.9, p.16; 3.2.7, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-013",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Safeguarding vulnerable patients",
+    "stem": "An older patient in Qatar has unexplained bruising and appears afraid of a caregiver. The nurse is concerned about unsafe care. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait for proof of abuse before recording any concern."
+      },
+      {
+        "label": "B",
+        "text": "Promise the patient that no information will be shared."
+      },
+      {
+        "label": "C",
+        "text": "Arrange a safe assessment, document observations, and escalate the safeguarding concern."
+      },
+      {
+        "label": "D",
+        "text": "Ask the caregiver to explain before speaking with the patient."
+      }
+    ],
+    "key": "C",
+    "answerText": "Arrange a safe assessment, document observations, and escalate the safeguarding concern.",
+    "rationale": "The findings justify protective assessment and escalation, without assuming a diagnosis of abuse. Absolute secrecy could prevent appropriate protection.",
+    "misconceptions": {
+      "A": "Waiting for proof can leave the person exposed to harm.",
+      "B": "Necessary safeguarding escalation may require limited disclosure.",
+      "D": "The caregiver should not control the initial safety assessment."
+    },
+    "pearl": "Qatar RGN practice: Arrange a safe assessment, document observations, and escalate the safeguarding concern.",
+    "trap": "The caregiver should not control the initial safety assessment.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Older adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.3, p.15; 1.2.9, p.16; 3.2.5, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-014",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Infection prevention responsibilities",
+    "stem": "In a Qatar unit, a nurse finds that the required hand-hygiene supplies are empty before planned nonurgent patient contact. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask the patient whether hand hygiene can be omitted."
+      },
+      {
+        "label": "B",
+        "text": "Obtain a suitable hand-hygiene method before care and report the supply problem."
+      },
+      {
+        "label": "C",
+        "text": "Use new gloves as a substitute for hand hygiene."
+      },
+      {
+        "label": "D",
+        "text": "Proceed and perform hand hygiene after the visit."
+      }
+    ],
+    "key": "B",
+    "answerText": "Obtain a suitable hand-hygiene method before care and report the supply problem.",
+    "rationale": "A supply failure should be corrected rather than bypassed. Gloves do not replace hand hygiene.",
+    "misconceptions": {
+      "A": "Patient permission does not remove infection prevention duties.",
+      "C": "Gloves are not a substitute for clean hands.",
+      "D": "Cleaning later does not remove the risk at the time of care."
+    },
+    "pearl": "Qatar RGN practice: Obtain a suitable hand-hygiene method before care and report the supply problem.",
+    "trap": "Gloves are not a substitute for clean hands.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.2.9–3.2.10, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-015",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Recognizing competence limits",
+    "stem": "A Qatar RGN returns to a unit after new equipment has been introduced. A nonurgent treatment requires this device. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Obtain training and confirm competence before using the device independently."
+      },
+      {
+        "label": "B",
+        "text": "Use the device with settings copied from another patient."
+      },
+      {
+        "label": "C",
+        "text": "Rely on a brief demonstration by an available visitor."
+      },
+      {
+        "label": "D",
+        "text": "Try the device and request help only if an alarm sounds."
+      }
+    ],
+    "key": "A",
+    "answerText": "Obtain training and confirm competence before using the device independently.",
+    "rationale": "Safe care depends on current competence with the actual equipment. An alarm is not a substitute for preparation.",
+    "misconceptions": {
+      "B": "Settings must match the individual patient and prescription.",
+      "C": "A visitor’s demonstration does not establish clinical competence.",
+      "D": "Harm can occur before an alarm provides warning."
+    },
+    "pearl": "Qatar RGN practice: Obtain training and confirm competence before using the device independently.",
+    "trap": "Settings must match the individual patient and prescription.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.1.2–1.1.3, p.15; 3.2.6, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-016",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Conflicts of interest",
+    "stem": "A supplier offers a Qatar nurse a personal reward for recommending its wound products. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Accept it if the patient is told the product costs more."
+      },
+      {
+        "label": "B",
+        "text": "Recommend the product and let another nurse accept the reward."
+      },
+      {
+        "label": "C",
+        "text": "Decline the incentive and follow the conflict-of-interest disclosure process."
+      },
+      {
+        "label": "D",
+        "text": "Accept it if the product has been used on the ward before."
+      }
+    ],
+    "key": "C",
+    "answerText": "Decline the incentive and follow the conflict-of-interest disclosure process.",
+    "rationale": "Recommendations should be based on patient needs rather than personal reward. Moving the benefit to a colleague does not remove the conflict.",
+    "misconceptions": {
+      "A": "Cost disclosure does not remove the incentive’s influence.",
+      "B": "An indirect benefit can still distort clinical judgment.",
+      "D": "Previous use does not justify a personal inducement."
+    },
+    "pearl": "Qatar RGN practice: Decline the incentive and follow the conflict-of-interest disclosure process.",
+    "trap": "Previous use does not justify a personal inducement.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 65,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.10, p.16",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-017",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Records and privacy",
+    "stem": "A Qatar nurse finds a patient chart open on a shared workstation while the colleague has left. What should the nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Close only the patient’s name and leave clinical details visible."
+      },
+      {
+        "label": "B",
+        "text": "Photograph the screen to show the unit manager later."
+      },
+      {
+        "label": "C",
+        "text": "Secure the display using the approved method, then address the access lapse."
+      },
+      {
+        "label": "D",
+        "text": "Leave it open so the colleague can continue quickly."
+      }
+    ],
+    "key": "C",
+    "answerText": "Secure the display using the approved method, then address the access lapse.",
+    "rationale": "The immediate priority is to prevent unnecessary access to identifiable information. Creating a photograph can create an additional privacy risk.",
+    "misconceptions": {
+      "A": "Clinical details can still identify a patient.",
+      "B": "A photograph creates another copy of sensitive information.",
+      "D": "Convenience does not justify unattended access."
+    },
+    "pearl": "Qatar RGN practice: Secure the display using the approved method, then address the access lapse.",
+    "trap": "Convenience does not justify unattended access.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.2.4, p.15",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-018",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Resources and escalation",
+    "stem": "A Qatar nurse judges that current staffing cannot safely meet a patient’s monitoring needs. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait for the next staffing meeting before raising the issue."
+      },
+      {
+        "label": "B",
+        "text": "Escalate the specific care risk promptly and arrange a safe plan with the supervisor."
+      },
+      {
+        "label": "C",
+        "text": "Reduce the monitoring frequency without telling the team."
+      },
+      {
+        "label": "D",
+        "text": "Record the expected observations using the previous readings."
+      }
+    ],
+    "key": "B",
+    "answerText": "Escalate the specific care risk promptly and arrange a safe plan with the supervisor.",
+    "rationale": "The concern needs a timely plan based on the patient’s needs. An altered or false record would hide the risk rather than address it.",
+    "misconceptions": {
+      "A": "A later meeting does not resolve a current care gap.",
+      "C": "Monitoring requirements need clinical review, not silent reduction.",
+      "D": "Previous observations cannot be recorded as new measurements."
+    },
+    "pearl": "Qatar RGN practice: Escalate the specific care risk promptly and arrange a safe plan with the supervisor.",
+    "trap": "Monitoring requirements need clinical review, not silent reduction.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 2.1.4–2.1.5, p.16",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-019",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Sharing safety concerns",
+    "stem": "A Qatar nurse reports a safety concern but receives no clear plan. The risk continues. Which record is most useful?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Record that the shift was difficult and the team was busy."
+      },
+      {
+        "label": "B",
+        "text": "Record the nurse’s opinion about the colleague’s motives."
+      },
+      {
+        "label": "C",
+        "text": "Record that management was informed without further details."
+      },
+      {
+        "label": "D",
+        "text": "Record the observations, people contacted, times, advice received, and ongoing actions."
+      }
+    ],
+    "key": "D",
+    "answerText": "Record the observations, people contacted, times, advice received, and ongoing actions.",
+    "rationale": "Specific facts support safe follow-up and accountability. Opinions about motives do not describe the patient’s risk or response.",
+    "misconceptions": {
+      "A": "A general workload statement omits the safety issue.",
+      "B": "Speculation is not objective clinical documentation.",
+      "C": "A vague contact statement does not show what was communicated."
+    },
+    "pearl": "Qatar RGN practice: Record the observations, people contacted, times, advice received, and ongoing actions.",
+    "trap": "A general workload statement omits the safety issue.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.2.10, p.18; 2.2.3, p.17",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-020",
+    "edition": "qatar",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Emergency support and scope",
+    "stem": "A patient in Qatar deteriorates and needs an intervention outside the bedside RGN’s competence. What should the RGN do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait without intervening until the responsible clinician arrives."
+      },
+      {
+        "label": "B",
+        "text": "Activate urgent qualified help and provide emergency care within current competence."
+      },
+      {
+        "label": "C",
+        "text": "Leave the patient to locate someone who can perform the procedure."
+      },
+      {
+        "label": "D",
+        "text": "Attempt the procedure because the situation is urgent."
+      }
+    ],
+    "key": "B",
+    "answerText": "Activate urgent qualified help and provide emergency care within current competence.",
+    "rationale": "Urgency requires prompt escalation and appropriate immediate support. It does not make an untrained invasive intervention safe.",
+    "misconceptions": {
+      "A": "Appropriate immediate nursing support must not be withheld.",
+      "C": "Leaving can interrupt monitoring and immediate support.",
+      "D": "Urgency does not create competence in an unfamiliar procedure."
+    },
+    "pearl": "Qatar RGN practice: Activate urgent qualified help and provide emergency care within current competence.",
+    "trap": "Leaving can interrupt monitoring and immediate support.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.1.2–1.1.3, p.15; 2.1.9, p.17",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-021",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Hand hygiene between tasks",
+    "stem": "After removing gloves used for wound care, a nurse will help the same patient eat. What should the nurse do before the clean task?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Put on new gloves without cleaning the hands."
+      },
+      {
+        "label": "B",
+        "text": "Clean the hands only after both tasks are finished."
+      },
+      {
+        "label": "C",
+        "text": "Wipe the hands on a clean disposable towel."
+      },
+      {
+        "label": "D",
+        "text": "Perform hand hygiene before the clean task."
+      }
+    ],
+    "key": "D",
+    "answerText": "Perform hand hygiene before the clean task.",
+    "rationale": "Glove removal can contaminate the hands. Hand hygiene is needed before a clean or aseptic task.",
+    "misconceptions": {
+      "A": "A new pair of gloves does not clean the hands.",
+      "B": "Delayed hand hygiene permits transfer of organisms.",
+      "C": "A dry towel is not an effective hand-hygiene method."
+    },
+    "pearl": "Clean hands are required between contaminated and clean care.",
+    "trap": "Mistaking gloves for hand hygiene.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-022",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Infusion rate calculation",
+    "stem": "An adult is prescribed 240 mL of an intravenous solution over 2 hours. The pump accepts mL/hour. Which rate matches the order?",
+    "options": [
+      {
+        "label": "A",
+        "text": "240 mL/hour."
+      },
+      {
+        "label": "B",
+        "text": "12 mL/hour."
+      },
+      {
+        "label": "C",
+        "text": "120 mL/hour."
+      },
+      {
+        "label": "D",
+        "text": "60 mL/hour."
+      }
+    ],
+    "key": "C",
+    "answerText": "120 mL/hour.",
+    "rationale": "Divide the prescribed volume by the time in hours. The result is 120 mL/hour.",
+    "misconceptions": {
+      "A": "This doubles the required rate.",
+      "B": "This introduces a tenfold error.",
+      "D": "This halves the required rate."
+    },
+    "pearl": "For mL/hour, divide the volume by the duration in hours.",
+    "trap": "Changing the unit without checking the calculation.",
+    "difficulty": "Easy",
+    "judgment": "Generate Solutions",
+    "hyp": 80,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-023",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Suspected transfusion reaction",
+    "stem": "Ten minutes after a red-cell transfusion begins, an adult develops chills and new back pain. What should the nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give the next prescribed antipyretic while the blood continues."
+      },
+      {
+        "label": "B",
+        "text": "Finish the unit before sending a reaction sample."
+      },
+      {
+        "label": "C",
+        "text": "Stop the transfusion and initiate the transfusion-reaction response."
+      },
+      {
+        "label": "D",
+        "text": "Slow the transfusion and reassess after 15 minutes."
+      }
+    ],
+    "key": "C",
+    "answerText": "Stop the transfusion and initiate the transfusion-reaction response.",
+    "rationale": "A suspected reaction requires stopping further exposure immediately. The nurse then supports the patient and follows the reaction protocol, including urgent notification.",
+    "misconceptions": {
+      "A": "Symptom treatment must not replace stopping the transfusion.",
+      "B": "Continuing exposure can worsen a serious reaction.",
+      "D": "Slowing leaves the suspected trigger running."
+    },
+    "pearl": "Stop a suspected transfusion reaction before completing the investigation.",
+    "trap": "Treating symptoms while the transfusion continues.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-024",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Orthostatic fall prevention",
+    "stem": "An older adult becomes dizzy when sitting up after bed rest. The nurse is helping with the first walk. What is the safest immediate action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Encourage walking to improve circulation."
+      },
+      {
+        "label": "B",
+        "text": "Leave the patient standing while obtaining a blood-pressure cuff."
+      },
+      {
+        "label": "C",
+        "text": "Ask the patient to hold the bed while the nurse finishes another task."
+      },
+      {
+        "label": "D",
+        "text": "Support the patient into a safe sitting or lying position and reassess."
+      }
+    ],
+    "key": "D",
+    "answerText": "Support the patient into a safe sitting or lying position and reassess.",
+    "rationale": "Presyncope creates an immediate fall risk. Positioning safely comes before a detailed assessment or further activity.",
+    "misconceptions": {
+      "A": "Continuing the walk increases the risk of collapse.",
+      "B": "Unsupported standing is unsafe while symptomatic.",
+      "C": "Holding furniture is not adequate protection from syncope."
+    },
+    "pearl": "Make the patient safe before investigating dizziness.",
+    "trap": "Continuing mobilization despite presyncope.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Older adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-025",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Heel pressure prevention",
+    "stem": "A bedbound adult has intact skin but persistent heel redness that does not blanch. What is the most appropriate initial nursing action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Relieve heel pressure and begin an individualized pressure-injury care plan."
+      },
+      {
+        "label": "B",
+        "text": "Massage the red area until normal colour returns."
+      },
+      {
+        "label": "C",
+        "text": "Use a ring-shaped cushion directly around the heel."
+      },
+      {
+        "label": "D",
+        "text": "Keep the heel on the mattress and reassess next shift."
+      }
+    ],
+    "key": "A",
+    "answerText": "Relieve heel pressure and begin an individualized pressure-injury care plan.",
+    "rationale": "Nonblanching redness indicates pressure damage even when the skin is intact. Offloading and a care plan address the cause.",
+    "misconceptions": {
+      "B": "Massage can worsen damaged tissue.",
+      "C": "Ring devices can concentrate pressure on surrounding tissue.",
+      "D": "Continuing pressure can worsen the injury."
+    },
+    "pearl": "Intact skin can already have a pressure injury.",
+    "trap": "Waiting for skin breakdown before offloading.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-026",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Feeding tube displacement",
+    "stem": "Before a tube feed, a nurse notices that the external tube length is much greater than recorded. What should the nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Withhold tube use until placement is checked by the approved method."
+      },
+      {
+        "label": "B",
+        "text": "Give a small water flush and ask whether it feels normal."
+      },
+      {
+        "label": "C",
+        "text": "Check for a stomach sound while injecting air."
+      },
+      {
+        "label": "D",
+        "text": "Restart at half the prescribed feeding rate."
+      }
+    ],
+    "key": "A",
+    "answerText": "Withhold tube use until placement is checked by the approved method.",
+    "rationale": "A displaced tube may deliver fluid into the airway or another unsafe position. A water trial or air sound does not reliably confirm safe placement.",
+    "misconceptions": {
+      "B": "A trial flush may itself enter the wrong location.",
+      "C": "Auscultation after air injection does not reliably confirm placement.",
+      "D": "A lower rate does not make a misplaced tube safe."
+    },
+    "pearl": "A possible displacement requires verification before further tube use.",
+    "trap": "Using tolerance or an air sound as proof of placement.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-027",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Heat stroke",
+    "stem": "An outdoor worker collapses after exertion in the heat. The patient is confused, has a core temperature of 40.5°C, and is still sweating. Emergency help is being called. What should the nurse prioritize?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Start rapid active cooling while protecting the airway and monitoring the patient."
+      },
+      {
+        "label": "B",
+        "text": "Give oral water and wait for the confusion to settle."
+      },
+      {
+        "label": "C",
+        "text": "Give paracetamol and repeat the temperature in 30 minutes."
+      },
+      {
+        "label": "D",
+        "text": "Wrap the patient in a dry blanket to prevent shivering."
+      }
+    ],
+    "key": "A",
+    "answerText": "Start rapid active cooling while protecting the airway and monitoring the patient.",
+    "rationale": "Heat exposure with central nervous system dysfunction suggests heat stroke. Cooling and emergency care must not be delayed; sweating does not exclude heat stroke.",
+    "misconceptions": {
+      "B": "Confusion makes oral intake unsafe and waiting delays treatment.",
+      "C": "Antipyretics do not treat heat accumulation from exertion.",
+      "D": "A dry blanket impedes heat loss."
+    },
+    "pearl": "Neurological change during heat exposure is an emergency.",
+    "trap": "Excluding heat stroke because the patient is sweating.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-028",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Sickle cell and acute chest syndrome",
+    "stem": "An adult admitted with sickle cell pain develops fever, chest pain, and oxygen saturation of 89% on room air. What is the priority response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Restrict assessment to the original painful body site."
+      },
+      {
+        "label": "B",
+        "text": "Give oxygen as indicated and arrange urgent assessment for acute chest syndrome."
+      },
+      {
+        "label": "C",
+        "text": "Give the next analgesic and reassess at the routine interval."
+      },
+      {
+        "label": "D",
+        "text": "Encourage walking to improve ventilation before contacting the clinician."
+      }
+    ],
+    "key": "B",
+    "answerText": "Give oxygen as indicated and arrange urgent assessment for acute chest syndrome.",
+    "rationale": "New respiratory symptoms and hypoxaemia can signal acute chest syndrome. This can progress rapidly and requires urgent medical evaluation.",
+    "misconceptions": {
+      "A": "The new respiratory findings require broader assessment.",
+      "C": "Analgesia alone does not address the new hypoxaemia.",
+      "D": "Exertion can increase oxygen demand and delay urgent care."
+    },
+    "pearl": "A sickle cell pain admission can develop a respiratory emergency.",
+    "trap": "Attributing every new symptom to uncomplicated pain.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-029",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Hypoglycaemia during fasting",
+    "stem": "An alert adult taking insulin is fasting for Ramadan. The patient is shaking, can swallow safely, and has glucose of 3.1 mmol/L. What should the nurse advise first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Take extra rapid-acting insulin and rest."
+      },
+      {
+        "label": "B",
+        "text": "Eat only a high-fat snack and recheck the next morning."
+      },
+      {
+        "label": "C",
+        "text": "Break the fast, take 15 g of fast-acting carbohydrate, and recheck glucose after 15 minutes."
+      },
+      {
+        "label": "D",
+        "text": "Continue fasting and recheck glucose at sunset."
+      }
+    ],
+    "key": "C",
+    "answerText": "Break the fast, take 15 g of fast-acting carbohydrate, and recheck glucose after 15 minutes.",
+    "rationale": "The alert adult can swallow safely and needs prompt oral treatment of hypoglycaemia, even during a chosen fast. Give 15 g of fast-acting carbohydrate and recheck after 15 minutes; repeat treatment if glucose remains below 3.9 mmol/L, and seek urgent help if recovery fails or swallowing becomes unsafe.",
+    "misconceptions": {
+      "A": "Additional insulin can lower glucose further.",
+      "B": "Fat slows absorption and overnight delay is unsafe.",
+      "D": "Waiting allows hypoglycaemia to worsen."
+    },
+    "pearl": "Treat low glucose promptly even during a chosen fast.",
+    "trap": "Delaying necessary treatment to preserve the fast.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": {
+      "title": "American Diabetes Association — Low Blood Glucose (Hypoglycemia)",
+      "section": "Key points and Treating Low Blood Glucose: adult 15/15 rule",
+      "url": "https://diabetes.org/living-with-diabetes/hypoglycemia-low-blood-glucose",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: options, answerText, rationale, source. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-030",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "DKA and low potassium",
+    "stem": "An adult with diabetic ketoacidosis has received initial intravenous fluid. Potassium is 2.9 mmol/L, and intravenous insulin has not started. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Escalate the low potassium and arrange replacement before starting insulin."
+      },
+      {
+        "label": "B",
+        "text": "Start insulin immediately to shift potassium into the cells."
+      },
+      {
+        "label": "C",
+        "text": "Ignore potassium until the glucose concentration falls."
+      },
+      {
+        "label": "D",
+        "text": "Give routine bicarbonate instead of reporting the potassium."
+      }
+    ],
+    "key": "A",
+    "answerText": "Escalate the low potassium and arrange replacement before starting insulin.",
+    "rationale": "Insulin shifts potassium into cells and can worsen dangerous hypokalaemia. Current adult DKA guidance delays insulin when potassium is below 3.5 mmol/L while replacement is arranged.",
+    "misconceptions": {
+      "B": "An intracellular shift would worsen the existing deficit.",
+      "C": "Arrhythmias can occur before glucose has normalized.",
+      "D": "Bicarbonate is not a substitute for appropriate potassium management."
+    },
+    "pearl": "A low potassium level can change the order of DKA treatment.",
+    "trap": "Starting insulin without reviewing the potassium result.",
+    "difficulty": "Hard",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-031",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "G6PD deficiency and haemolysis",
+    "stem": "An adult with known G6PD deficiency develops dark urine, jaundice, and sudden fatigue after starting a new medicine. What is the best nursing response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Arrange urgent assessment for haemolysis and clarify the suspected medicine before further dosing."
+      },
+      {
+        "label": "B",
+        "text": "Continue the medicine and encourage fluids as the only measure."
+      },
+      {
+        "label": "C",
+        "text": "Treat the urine colour as an expected effect of G6PD deficiency."
+      },
+      {
+        "label": "D",
+        "text": "Recommend an iron supplement without further assessment."
+      }
+    ],
+    "key": "A",
+    "answerText": "Arrange urgent assessment for haemolysis and clarify the suspected medicine before further dosing.",
+    "rationale": "The symptom pattern suggests acute red-cell destruction. The suspected trigger and the patient’s clinical status need urgent review.",
+    "misconceptions": {
+      "B": "Fluids alone do not address potentially severe haemolysis.",
+      "C": "A new change must not be treated as a harmless baseline finding.",
+      "D": "Iron does not treat acute haemolysis and may be inappropriate."
+    },
+    "pearl": "New jaundice and dark urine in G6PD deficiency need prompt assessment.",
+    "trap": "Assuming inherited disease makes new symptoms routine.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-032",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "External haemorrhage after trauma",
+    "stem": "After a road-traffic crash, an adult has heavy bleeding from a lower-leg wound. The airway is patent and breathing is adequate. What should the nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Clean the wound thoroughly before attempting haemostasis."
+      },
+      {
+        "label": "B",
+        "text": "Remove visible clots so the bleeding source can be inspected."
+      },
+      {
+        "label": "C",
+        "text": "Obtain a detailed medical history before touching the wound."
+      },
+      {
+        "label": "D",
+        "text": "Apply firm direct pressure to control the bleeding and activate trauma support."
+      }
+    ],
+    "key": "D",
+    "answerText": "Apply firm direct pressure to control the bleeding and activate trauma support.",
+    "rationale": "Uncontrolled external bleeding is the current life threat after airway and breathing have been assessed. Direct pressure should not wait for routine wound care or history.",
+    "misconceptions": {
+      "A": "Cleaning delays haemorrhage control.",
+      "B": "Removing clots can increase bleeding.",
+      "C": "The history must not delay controlling major blood loss."
+    },
+    "pearl": "Control a visible major haemorrhage promptly.",
+    "trap": "Completing routine wound care before haemorrhage control.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-033",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Stroke and swallowing safety",
+    "stem": "An adult admitted with a suspected acute stroke asks for water. A swallow screen has not been completed. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Crush the tablets in food so they are easier to swallow."
+      },
+      {
+        "label": "B",
+        "text": "Allow fluids through a straw while the patient sits upright."
+      },
+      {
+        "label": "C",
+        "text": "Withhold oral intake and arrange a swallowing screen by a trained practitioner."
+      },
+      {
+        "label": "D",
+        "text": "Offer a small sip of water to see whether coughing occurs."
+      }
+    ],
+    "key": "C",
+    "answerText": "Withhold oral intake and arrange a swallowing screen by a trained practitioner.",
+    "rationale": "Stroke can impair swallowing and increase aspiration risk. Food, fluid, and oral medicines should wait until swallowing safety is established.",
+    "misconceptions": {
+      "A": "Crushed medicines and food can still be aspirated.",
+      "B": "A straw and posture do not establish swallowing safety.",
+      "D": "An unsupervised trial may cause aspiration."
+    },
+    "pearl": "Check swallowing safety before oral intake after stroke.",
+    "trap": "Using a small drink as an informal swallowing test.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-034",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Anaphylaxis first-line medicine",
+    "stem": "Soon after an antibiotic begins, an adult develops wheeze, widespread hives, and hypotension. The infusion is stopped and emergency help is called. Which medicine should be prioritized under the emergency protocol?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Oral antihistamine for the skin reaction."
+      },
+      {
+        "label": "B",
+        "text": "Intravenous corticosteroid as the first-line treatment."
+      },
+      {
+        "label": "C",
+        "text": "Nebulized bronchodilator as the only emergency medicine."
+      },
+      {
+        "label": "D",
+        "text": "Intramuscular adrenaline in the outer thigh."
+      }
+    ],
+    "key": "D",
+    "answerText": "Intramuscular adrenaline in the outer thigh.",
+    "rationale": "Airway or circulatory involvement after an allergen suggests anaphylaxis. Intramuscular adrenaline is first-line; other medicines must not delay it.",
+    "misconceptions": {
+      "A": "An antihistamine does not reverse airway or circulatory collapse.",
+      "B": "Corticosteroids are not first-line emergency treatment.",
+      "C": "A bronchodilator alone does not treat shock or upper-airway swelling."
+    },
+    "pearl": "Adrenaline is the first-line medicine for anaphylaxis.",
+    "trap": "Treating the rash instead of the life-threatening reaction.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-035",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Hyperkalaemia with ECG changes",
+    "stem": "An adult with kidney disease has potassium of 6.8 mmol/L and new peaked T waves. What should the nurse prioritize?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give a potassium-containing supplement to prevent muscle weakness."
+      },
+      {
+        "label": "B",
+        "text": "Focus on dietary teaching before contacting the clinical team."
+      },
+      {
+        "label": "C",
+        "text": "Activate urgent treatment and cardiac monitoring for life-threatening hyperkalaemia."
+      },
+      {
+        "label": "D",
+        "text": "Wait for the next routine electrolyte panel before reporting."
+      }
+    ],
+    "key": "C",
+    "answerText": "Activate urgent treatment and cardiac monitoring for life-threatening hyperkalaemia.",
+    "rationale": "Severe hyperkalaemia with ECG changes can precede cardiac arrest. Monitoring and emergency treatment are needed without routine delays.",
+    "misconceptions": {
+      "A": "Potassium supplementation would worsen the abnormality.",
+      "B": "Dietary teaching cannot stabilize an immediate arrhythmia risk.",
+      "D": "ECG changes make waiting unsafe."
+    },
+    "pearl": "ECG changes make hyperkalaemia an immediate emergency.",
+    "trap": "Treating a dangerous result as a routine dietary issue.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-036",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Sepsis deterioration",
+    "stem": "An adult with suspected infection becomes newly confused. Blood pressure is 82/46 mmHg and respiratory rate is 30/minute. What is the priority response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give an antipyretic and review at the next observation round."
+      },
+      {
+        "label": "B",
+        "text": "Wait for a positive blood culture before escalating care."
+      },
+      {
+        "label": "C",
+        "text": "Ask the patient to drink water and walk to the bathroom."
+      },
+      {
+        "label": "D",
+        "text": "Activate urgent sepsis assessment and resuscitation while supporting airway and breathing."
+      }
+    ],
+    "key": "D",
+    "answerText": "Activate urgent sepsis assessment and resuscitation while supporting airway and breathing.",
+    "rationale": "Hypotension and new altered mental status suggest severe circulatory compromise. Suspected sepsis requires urgent escalation rather than waiting for culture confirmation.",
+    "misconceptions": {
+      "A": "Reducing fever does not address shock.",
+      "B": "Cultures can take time and must not delay emergency care.",
+      "C": "Activity and oral fluids do not treat this unstable state."
+    },
+    "pearl": "Infection with shock signs needs an immediate response.",
+    "trap": "Waiting for proof of infection while perfusion fails.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-037",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Diabetic foot deterioration",
+    "stem": "A patient with diabetes has a foot ulcer that is now surrounded by spreading redness. The patient is febrile and feels unwell. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Book the next routine podiatry visit and continue current dressings."
+      },
+      {
+        "label": "B",
+        "text": "Advise warm foot soaks until the redness settles."
+      },
+      {
+        "label": "C",
+        "text": "Reassure the patient because neuropathy can reduce pain."
+      },
+      {
+        "label": "D",
+        "text": "Arrange urgent assessment for a spreading diabetic foot infection."
+      }
+    ],
+    "key": "D",
+    "answerText": "Arrange urgent assessment for a spreading diabetic foot infection.",
+    "rationale": "Systemic illness with spreading inflammation can indicate a serious foot infection. Neuropathy can conceal pain and does not lower the urgency.",
+    "misconceptions": {
+      "A": "Routine follow-up is too slow for spreading infection and fever.",
+      "B": "Soaking does not treat the infection and can damage skin.",
+      "C": "Reduced pain is not evidence of a mild infection."
+    },
+    "pearl": "A painless diabetic foot wound can still be dangerous.",
+    "trap": "Using pain severity to judge infection severity in neuropathy.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-038",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Acute coronary syndrome assessment",
+    "stem": "An adult with diabetes reports new chest pressure and nausea at rest. Blood pressure is stable. What should the nurse arrange promptly?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Urgent clinical assessment with a 12-lead ECG under the chest-pain pathway."
+      },
+      {
+        "label": "B",
+        "text": "Try an antacid and wait to see whether the discomfort resolves."
+      },
+      {
+        "label": "C",
+        "text": "Reassure the patient because the blood pressure is normal."
+      },
+      {
+        "label": "D",
+        "text": "Arrange routine outpatient review if the pain is not severe."
+      }
+    ],
+    "key": "A",
+    "answerText": "Urgent clinical assessment with a 12-lead ECG under the chest-pain pathway.",
+    "rationale": "Acute coronary syndrome may occur without collapse or severe pain. Prompt ECG and clinical assessment support time-sensitive treatment.",
+    "misconceptions": {
+      "B": "A treatment trial must not delay assessment for possible ischaemia.",
+      "C": "Normal blood pressure does not exclude acute coronary syndrome.",
+      "D": "Mild pain can still accompany a time-critical coronary event."
+    },
+    "pearl": "Assess possible cardiac ischaemia promptly even with atypical symptoms.",
+    "trap": "Letting stable vital signs falsely exclude myocardial ischaemia.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-039",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Postpartum uterine atony",
+    "stem": "Soon after birth, a woman has heavy vaginal bleeding and a boggy uterus. Help is being called. What immediate nursing action is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Massage the uterus and start the postpartum-haemorrhage protocol with the team."
+      },
+      {
+        "label": "B",
+        "text": "Wait for a measured total blood loss before taking any action."
+      },
+      {
+        "label": "C",
+        "text": "Encourage walking to help the uterus contract."
+      },
+      {
+        "label": "D",
+        "text": "Apply perineal ice as the only bleeding intervention."
+      }
+    ],
+    "key": "A",
+    "answerText": "Massage the uterus and start the postpartum-haemorrhage protocol with the team.",
+    "rationale": "A boggy uterus with heavy bleeding suggests uterine atony. Immediate uterine massage forms part of a coordinated haemorrhage response, not a substitute for the rest of the treatment bundle.",
+    "misconceptions": {
+      "B": "Measurement must not delay action on obvious heavy bleeding.",
+      "C": "Walking is unsafe during active haemorrhage.",
+      "D": "Perineal ice does not correct uterine atony."
+    },
+    "pearl": "Treat atony within an immediate coordinated haemorrhage response.",
+    "trap": "Waiting for a numerical threshold despite obvious heavy bleeding.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Postpartum",
+    "setting": "Maternity unit",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-040",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Severe pre-eclampsia warning signs",
+    "stem": "At 34 weeks, a pregnant patient reports severe headache and flashing lights. Blood pressure is 168/112 mmHg. What is the priority?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Encourage oral fluids and recheck blood pressure tomorrow."
+      },
+      {
+        "label": "B",
+        "text": "Escalate urgently for severe pre-eclampsia assessment and treatment."
+      },
+      {
+        "label": "C",
+        "text": "Provide a dark room and defer review until the next clinic visit."
+      },
+      {
+        "label": "D",
+        "text": "Attribute the symptoms to ordinary pregnancy discomfort."
+      }
+    ],
+    "key": "B",
+    "answerText": "Escalate urgently for severe pre-eclampsia assessment and treatment.",
+    "rationale": "Severe hypertension with neurological or upper abdominal symptoms is a danger pattern. Urgent assessment and treatment reduce the risk of major maternal and fetal complications.",
+    "misconceptions": {
+      "A": "Next-day review is unsafe with these findings.",
+      "C": "Comfort measures alone must not delay urgent treatment.",
+      "D": "These symptoms are not routine pregnancy discomfort."
+    },
+    "pearl": "Severe hypertension with neurological symptoms in pregnancy needs urgent care.",
+    "trap": "Explaining danger signs as common pregnancy symptoms.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Pregnant adult",
+    "setting": "Maternity assessment",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-041",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Magnesium toxicity",
+    "stem": "A woman receiving magnesium sulfate for pre-eclampsia becomes very drowsy. Respirations are 8/minute and patellar reflexes are absent. What should the nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Increase the infusion to prevent an eclamptic seizure."
+      },
+      {
+        "label": "B",
+        "text": "Wait for a magnesium result before changing the infusion."
+      },
+      {
+        "label": "C",
+        "text": "Stop magnesium, call urgent help, and support breathing while preparing the prescribed antidote."
+      },
+      {
+        "label": "D",
+        "text": "Reduce stimulation and continue the infusion at the same rate."
+      }
+    ],
+    "key": "C",
+    "answerText": "Stop magnesium, call urgent help, and support breathing while preparing the prescribed antidote.",
+    "rationale": "Respiratory depression and absent reflexes suggest magnesium toxicity. Exposure must stop while ventilation is supported and calcium gluconate is prepared according to the emergency prescription or protocol.",
+    "misconceptions": {
+      "A": "More magnesium can deepen respiratory depression.",
+      "B": "Treatment must not wait for laboratory confirmation of a dangerous clinical pattern.",
+      "D": "Continuing the infusion can worsen toxicity."
+    },
+    "pearl": "Monitor breathing, reflexes, and urine output during magnesium treatment.",
+    "trap": "Waiting for a laboratory result despite respiratory depression.",
+    "difficulty": "Hard",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Pregnant or postpartum adult",
+    "setting": "Maternity unit",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-042",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Early neonatal jaundice",
+    "stem": "A term newborn has visible jaundice at 10 hours of age. The baby is feeding but has not had a bilirubin measurement. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Arrange urgent clinical assessment and serum bilirubin measurement."
+      },
+      {
+        "label": "B",
+        "text": "Reassure the family that first-day jaundice is physiological."
+      },
+      {
+        "label": "C",
+        "text": "Delay bilirubin testing until the next routine newborn visit."
+      },
+      {
+        "label": "D",
+        "text": "Recommend sunlight exposure instead of investigation."
+      }
+    ],
+    "key": "A",
+    "answerText": "Arrange urgent clinical assessment and serum bilirubin measurement.",
+    "rationale": "Jaundice in the first 24 hours can indicate significant disease, including haemolysis. It requires urgent evaluation rather than an assumption of physiological jaundice.",
+    "misconceptions": {
+      "B": "Physiological jaundice should not be assumed in the first day.",
+      "C": "Delay can miss a rapid bilirubin rise.",
+      "D": "Sunlight is not a substitute for bilirubin measurement and treatment assessment."
+    },
+    "pearl": "First-day jaundice needs urgent evaluation.",
+    "trap": "Treating early jaundice as an ordinary newborn variation.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Newborn",
+    "setting": "Postnatal ward",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-043",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Oral rehydration in a child",
+    "stem": "A child with diarrhoea is alert, has mild dehydration, and can drink. There are no shock signs. What is the best initial fluid approach?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Start a rapid intravenous bolus solely because diarrhoea is present."
+      },
+      {
+        "label": "B",
+        "text": "Give oral rehydration solution in small frequent amounts and reassess."
+      },
+      {
+        "label": "C",
+        "text": "Use undiluted fruit juice as the main replacement fluid."
+      },
+      {
+        "label": "D",
+        "text": "Withhold fluid until all loose stools stop."
+      }
+    ],
+    "key": "B",
+    "answerText": "Give oral rehydration solution in small frequent amounts and reassess.",
+    "rationale": "Oral rehydration solution replaces water and electrolytes in a child who can drink without shock. Reassessment identifies failure of the oral plan or deterioration.",
+    "misconceptions": {
+      "A": "Mild dehydration with safe oral intake does not itself require an intravenous bolus.",
+      "C": "High-sugar juice can worsen diarrhoea and has an unsuitable electrolyte balance.",
+      "D": "Withholding fluids worsens dehydration."
+    },
+    "pearl": "Use oral rehydration when a child can drink and has no shock.",
+    "trap": "Confusing diarrhoea with an automatic need for intravenous fluids.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Child",
+    "setting": "Paediatric assessment",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-044",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Infant respiratory deterioration",
+    "stem": "An infant with bronchiolitis becomes drowsy and has marked chest recession. Oxygen saturation is persistently 87% on room air. What is the priority?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Offer a full bottle to improve the infant’s energy."
+      },
+      {
+        "label": "B",
+        "text": "Wait for the next scheduled saturation check."
+      },
+      {
+        "label": "C",
+        "text": "Provide routine discharge advice because bronchiolitis is usually viral."
+      },
+      {
+        "label": "D",
+        "text": "Activate urgent respiratory support and give oxygen according to the emergency pathway."
+      }
+    ],
+    "key": "D",
+    "answerText": "Activate urgent respiratory support and give oxygen according to the emergency pathway.",
+    "rationale": "Hypoxaemia and exhaustion can signal respiratory failure. The infant needs urgent support rather than feeding or routine observation.",
+    "misconceptions": {
+      "A": "Oral feeding during severe distress can increase aspiration risk.",
+      "B": "The persistent hypoxaemia is already established.",
+      "C": "A viral cause does not make respiratory failure safe for discharge."
+    },
+    "pearl": "An exhausted infant with respiratory distress needs urgent escalation.",
+    "trap": "Underestimating severity because the illness is viral.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Infant",
+    "setting": "Paediatric acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-045",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Inherited conditions and counselling",
+    "stem": "Parents with a family history of an inherited newborn disorder ask about the chance of another affected child. What is the best nursing response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "State that the next child will definitely be affected."
+      },
+      {
+        "label": "B",
+        "text": "Reassure them that an unaffected parent excludes inherited risk."
+      },
+      {
+        "label": "C",
+        "text": "Give a fixed recurrence percentage without reviewing the diagnosis."
+      },
+      {
+        "label": "D",
+        "text": "Offer nonjudgmental referral for genetic counselling and individualized risk assessment."
+      }
+    ],
+    "key": "D",
+    "answerText": "Offer nonjudgmental referral for genetic counselling and individualized risk assessment.",
+    "rationale": "Risk depends on the actual disorder, inheritance pattern, and family findings. Individual assessment supports informed choices without blame or false certainty.",
+    "misconceptions": {
+      "A": "Family relationship or history does not make disease inevitable.",
+      "B": "Unaffected carriers can transmit some inherited conditions.",
+      "C": "A percentage requires a supported inheritance model and relevant information."
+    },
+    "pearl": "Assess inherited risk individually and without blame.",
+    "trap": "Turning family history into a certain prediction.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 65,
+    "population": "Family",
+    "setting": "Maternal-child clinic",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-046",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Postpartum venous thrombosis",
+    "stem": "A woman five days after birth has new unilateral calf swelling and pain. She has no breathlessness. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Suggest routine exercise and review at the six-week visit."
+      },
+      {
+        "label": "B",
+        "text": "Reassure her that one-sided swelling is expected after birth."
+      },
+      {
+        "label": "C",
+        "text": "Arrange urgent clinical assessment for possible deep vein thrombosis."
+      },
+      {
+        "label": "D",
+        "text": "Massage the calf to improve circulation."
+      }
+    ],
+    "key": "C",
+    "answerText": "Arrange urgent clinical assessment for possible deep vein thrombosis.",
+    "rationale": "The postpartum period increases thromboembolic risk. New unilateral leg symptoms need urgent assessment even without current chest symptoms.",
+    "misconceptions": {
+      "A": "Routine delayed review can miss a significant clot.",
+      "B": "One-sided painful swelling must not be dismissed as routine.",
+      "D": "Massage is inappropriate when thrombosis is suspected."
+    },
+    "pearl": "New unilateral leg symptoms after birth require prompt assessment.",
+    "trap": "Assuming all postpartum swelling is normal.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Postpartum",
+    "setting": "Postnatal service",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-047",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Oxytocin and uterine tachysystole",
+    "stem": "A woman receiving oxytocin has six contractions in 10 minutes, averaged over 30 minutes, with recurrent late fetal heart decelerations. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Continue the dose and review the trace in an hour."
+      },
+      {
+        "label": "B",
+        "text": "Ask the woman to push before cervical assessment."
+      },
+      {
+        "label": "C",
+        "text": "Stop oxytocin, reposition the patient, and obtain urgent obstetric assessment."
+      },
+      {
+        "label": "D",
+        "text": "Increase oxytocin to complete birth sooner."
+      }
+    ],
+    "key": "C",
+    "answerText": "Stop oxytocin, reposition the patient, and obtain urgent obstetric assessment.",
+    "rationale": "Excessive contractions with an abnormal fetal heart pattern can impair fetal oxygenation. Stop the uterine stimulant and begin corrective measures with urgent team review.",
+    "misconceptions": {
+      "A": "An hour’s delay leaves the abnormal pattern untreated.",
+      "B": "Pushing is not a treatment for tachysystole and may be inappropriate.",
+      "D": "Increasing stimulation may worsen uteroplacental compromise."
+    },
+    "pearl": "Respond promptly to oxytocin-related excessive contractions with fetal compromise.",
+    "trap": "Continuing a stimulant despite a harmful contraction pattern.",
+    "difficulty": "Hard",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Pregnant adult",
+    "setting": "Labour ward",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-048",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Acuity-based prioritization",
+    "stem": "A nurse must assess one patient first. Which finding has the highest immediate priority?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Constipation for two days without pain or vomiting."
+      },
+      {
+        "label": "B",
+        "text": "New stridor with increasing effort to breathe."
+      },
+      {
+        "label": "C",
+        "text": "Unchanged incisional discomfort awaiting the next prescribed dose."
+      },
+      {
+        "label": "D",
+        "text": "A request to discuss the planned discharge transport."
+      }
+    ],
+    "key": "B",
+    "answerText": "New stridor with increasing effort to breathe.",
+    "rationale": "New stridor suggests an evolving upper-airway obstruction. The other concerns need care but do not describe an immediate threat to ventilation.",
+    "misconceptions": {
+      "A": "The stated constipation lacks acute danger signs.",
+      "C": "Stable discomfort is lower priority than a threatened airway.",
+      "D": "Discharge planning can wait during an airway emergency."
+    },
+    "pearl": "Prioritize a newly threatened airway over stable care needs.",
+    "trap": "Using the order of requests instead of current acuity.",
+    "difficulty": "Easy",
+    "judgment": "Prioritize Hypotheses",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-049",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Learning from a near miss",
+    "stem": "A wrong-patient medicine is detected before administration because a nurse checks identifiers. Which team response best reduces recurrence?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Review how the mismatch arose and improve the vulnerable process."
+      },
+      {
+        "label": "B",
+        "text": "Close the matter because the final check worked."
+      },
+      {
+        "label": "C",
+        "text": "Remind only the involved nurse to be more careful."
+      },
+      {
+        "label": "D",
+        "text": "Remove identification checks to reduce interruptions."
+      }
+    ],
+    "key": "A",
+    "answerText": "Review how the mismatch arose and improve the vulnerable process.",
+    "rationale": "A successful interception can reveal an earlier process failure. Examining that process supports prevention beyond individual vigilance.",
+    "misconceptions": {
+      "B": "The earlier failure could recur despite this successful check.",
+      "C": "A reminder alone does not address the process weakness.",
+      "D": "Removing a protective check increases risk."
+    },
+    "pearl": "Near misses are opportunities to improve processes.",
+    "trap": "Assuming no harm means no process problem.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-050",
+    "edition": "qatar",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Interpreting audit rates",
+    "stem": "A ward records 4 device-related infections during 1,000 device-days. Which measure best allows comparison with a month with a different number of device-days?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Infections per 1,000 device-days using the same case definition."
+      },
+      {
+        "label": "B",
+        "text": "The total number of infections without an exposure denominator."
+      },
+      {
+        "label": "C",
+        "text": "The total number of all ward admissions regardless of device use."
+      },
+      {
+        "label": "D",
+        "text": "The number of staff on duty when the first infection was detected."
+      }
+    ],
+    "key": "A",
+    "answerText": "Infections per 1,000 device-days using the same case definition.",
+    "rationale": "Device-days measure relevant exposure time. A common case definition is also needed for a meaningful comparison.",
+    "misconceptions": {
+      "B": "Raw counts may reflect different exposure volumes.",
+      "C": "All admissions do not measure time at risk from the device.",
+      "D": "Staffing at detection is not the exposure denominator."
+    },
+    "pearl": "Compare rates using a relevant denominator and a consistent definition.",
+    "trap": "Interpreting raw counts as comparable risk.",
+    "difficulty": "Easy",
+    "judgment": "Analyze Cues",
+    "hyp": 65,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-051",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0131",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Selecting a delegated activity",
+    "stem": "In Qatar, which activity is the best candidate for delegation to a team member whose role and competence for that activity have been verified? The RGN has assessed all four patients.",
+    "options": [
+      {
+        "label": "A",
+        "text": "Decide whether new chest pain can wait for medical review."
+      },
+      {
+        "label": "B",
+        "text": "Assist a stable patient with an agreed routine hygiene plan."
+      },
+      {
+        "label": "C",
+        "text": "Assess a newly confused patient’s change in condition."
+      },
+      {
+        "label": "D",
+        "text": "Choose a new care plan for an acutely breathless patient."
+      }
+    ],
+    "key": "B",
+    "answerText": "Assist a stable patient with an agreed routine hygiene plan.",
+    "rationale": "The routine activity can be matched to verified competence. The other choices require assessment or clinical decisions for new problems.",
+    "misconceptions": {
+      "A": "The worker should not decide the urgency of new chest pain.",
+      "C": "A new change in condition requires skilled assessment.",
+      "D": "Selecting a new plan involves clinical judgment."
+    },
+    "pearl": "Qatar RGN practice: Assist a stable patient with an agreed routine hygiene plan.",
+    "trap": "A new change in condition requires skilled assessment.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.3.1–3.3.3, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-052",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0132",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Delegation instructions",
+    "stem": "A Qatar RGN delegates planned walking assistance for a stable patient to a competent worker. Which instruction is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask the worker to walk the patient when time permits."
+      },
+      {
+        "label": "B",
+        "text": "Ask the worker to decide whether new dizziness is important."
+      },
+      {
+        "label": "C",
+        "text": "State the walking distance and leave the other details unstated."
+      },
+      {
+        "label": "D",
+        "text": "State the assistance needed, stop conditions, and when findings must be reported."
+      }
+    ],
+    "key": "D",
+    "answerText": "State the assistance needed, stop conditions, and when findings must be reported.",
+    "rationale": "The worker needs clear instructions and a route back to the supervisor. A distance alone does not explain the safety limits.",
+    "misconceptions": {
+      "A": "An open-ended request lacks clear timing and safety instructions.",
+      "B": "New symptoms should be reported rather than independently dismissed.",
+      "C": "Distance alone leaves support needs and escalation unclear."
+    },
+    "pearl": "Qatar RGN practice: State the assistance needed, stop conditions, and when findings must be reported.",
+    "trap": "An open-ended request lacks clear timing and safety instructions.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.3.2, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-053",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0135",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Checking delegation readiness",
+    "stem": "In Qatar, a new team member agrees to perform a routine activity but their competence record has not been checked. What should the RGN do before delegating?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Delegate and use completion time as the competence check."
+      },
+      {
+        "label": "B",
+        "text": "Ask another new employee whether the worker seems confident."
+      },
+      {
+        "label": "C",
+        "text": "Verify demonstrated competence for the activity before assigning it."
+      },
+      {
+        "label": "D",
+        "text": "Delegate because the worker volunteered without hesitation."
+      }
+    ],
+    "key": "C",
+    "answerText": "Verify demonstrated competence for the activity before assigning it.",
+    "rationale": "Confidence and willingness are not evidence of ability. Verification should precede the delegation decision.",
+    "misconceptions": {
+      "A": "Completion speed is not a valid competence assessment.",
+      "B": "Another person’s impression is not demonstrated competence.",
+      "D": "Volunteering does not demonstrate safe performance."
+    },
+    "pearl": "Qatar RGN practice: Verify demonstrated competence for the activity before assigning it.",
+    "trap": "Volunteering does not demonstrate safe performance.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.3.1, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-054",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0136",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Accountability after delegation",
+    "stem": "A Qatar RGN says, “Once I delegate, I no longer need to check that care.” Which response best reflects the RGN scope framework?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Oversight is needed only when a patient complains."
+      },
+      {
+        "label": "B",
+        "text": "Oversight transfers entirely to the receiving worker."
+      },
+      {
+        "label": "C",
+        "text": "Oversight is replaced by the worker’s written agreement."
+      },
+      {
+        "label": "D",
+        "text": "The delegating nurse must maintain appropriate oversight and review the outcome."
+      }
+    ],
+    "key": "D",
+    "answerText": "The delegating nurse must maintain appropriate oversight and review the outcome.",
+    "rationale": "Delegation requires continuing supervision appropriate to the task. The worker’s own accountability does not remove the delegator’s responsibilities.",
+    "misconceptions": {
+      "A": "A complaint is not the threshold for supervision.",
+      "B": "Both workers retain responsibilities for their own roles.",
+      "C": "A signature cannot replace clinical oversight."
+    },
+    "pearl": "Qatar RGN practice: The delegating nurse must maintain appropriate oversight and review the outcome.",
+    "trap": "A complaint is not the threshold for supervision.",
+    "difficulty": "Medium",
+    "judgment": "Analyze Cues",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.1.5, p.15; 3.3.3, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-055",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0138",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Unfamiliar transfer device",
+    "stem": "In Qatar, a worker says they have never used the transfer device required for a planned patient move. What should the RGN do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Proceed if the patient agrees to help with the lift."
+      },
+      {
+        "label": "B",
+        "text": "Let the worker learn by trying it on this transfer."
+      },
+      {
+        "label": "C",
+        "text": "Arrange trained assistance and training before the worker uses the device."
+      },
+      {
+        "label": "D",
+        "text": "Ask the worker to follow the picture on the device."
+      }
+    ],
+    "key": "C",
+    "answerText": "Arrange trained assistance and training before the worker uses the device.",
+    "rationale": "The person and equipment must be matched to verified competence. A patient transfer is not an unsupervised trial of unfamiliar equipment.",
+    "misconceptions": {
+      "A": "Patient agreement does not make an untrained lift safe.",
+      "B": "Trial and error exposes the patient to avoidable injury.",
+      "D": "A picture does not establish competence or safe technique."
+    },
+    "pearl": "Qatar RGN practice: Arrange trained assistance and training before the worker uses the device.",
+    "trap": "A picture does not establish competence or safe technique.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.3.1–3.3.2, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-056",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0139",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Outcome of delegated monitoring",
+    "stem": "A Qatar RGN delegates a glucose check to an authorized competent worker and sets a reporting threshold. The worker reports a result below that threshold. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Record the reading without reviewing the patient’s condition."
+      },
+      {
+        "label": "B",
+        "text": "Assess the patient promptly and start the indicated treatment pathway."
+      },
+      {
+        "label": "C",
+        "text": "Ask the worker to decide whether treatment is necessary."
+      },
+      {
+        "label": "D",
+        "text": "Wait for the next scheduled round to confirm the finding."
+      }
+    ],
+    "key": "B",
+    "answerText": "Assess the patient promptly and start the indicated treatment pathway.",
+    "rationale": "An out-of-limit result requires clinical evaluation and action. Delegating the measurement does not delegate away the need to respond.",
+    "misconceptions": {
+      "A": "A record alone does not address the abnormal result.",
+      "C": "The nurse must make or obtain the required clinical decision.",
+      "D": "Waiting may allow a low glucose level to worsen."
+    },
+    "pearl": "Qatar RGN practice: Assess the patient promptly and start the indicated treatment pathway.",
+    "trap": "The nurse must make or obtain the required clinical decision.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 2.1.12, p.17; 3.3.3, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-057",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0141",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Authority to perform a procedure",
+    "stem": "In Qatar, an RGN is asked to perform an elective procedure outside the RGN’s authorized role. Which response best follows the published RGN framework?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Proceed if the patient signs a separate permission form."
+      },
+      {
+        "label": "B",
+        "text": "Perform the procedure but ask someone else to document it."
+      },
+      {
+        "label": "C",
+        "text": "Decline that procedure, explain the scope limit, and arrange an authorized practitioner."
+      },
+      {
+        "label": "D",
+        "text": "Proceed because a senior colleague made the request."
+      }
+    ],
+    "key": "C",
+    "answerText": "Decline that procedure, explain the scope limit, and arrange an authorized practitioner.",
+    "rationale": "A request or consent form does not expand professional authority. The patient still needs a safe alternative care arrangement.",
+    "misconceptions": {
+      "A": "Patient permission does not create professional authority.",
+      "B": "Changing the author of the record does not authorize the action.",
+      "D": "Seniority does not expand the nurse’s scope."
+    },
+    "pearl": "Qatar RGN practice: Decline that procedure, explain the scope limit, and arrange an authorized practitioner.",
+    "trap": "Seniority does not expand the nurse’s scope.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.1.2–1.1.3, p.15; 1.3.1–1.3.2, p.16",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-058",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0142",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Broad scope versus personal competence",
+    "stem": "A procedure is listed within the Qatar RGN role, but a particular RGN has never learned it. The patient is stable. What should happen before that RGN performs it independently?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Let the patient decide whether training is needed."
+      },
+      {
+        "label": "B",
+        "text": "Complete the required preparation and competence assessment, with qualified care meanwhile."
+      },
+      {
+        "label": "C",
+        "text": "Proceed because broad professional scope is sufficient."
+      },
+      {
+        "label": "D",
+        "text": "Proceed after watching one online demonstration."
+      }
+    ],
+    "key": "B",
+    "answerText": "Complete the required preparation and competence assessment, with qualified care meanwhile.",
+    "rationale": "Broad scope and individual competence are separate requirements. Safe interim care prevents delay while the nurse prepares.",
+    "misconceptions": {
+      "A": "Training requirements are a professional responsibility.",
+      "C": "An activity within the profession may exceed an individual’s competence.",
+      "D": "An online demonstration alone is not an adequate competence assessment."
+    },
+    "pearl": "Qatar RGN practice: Complete the required preparation and competence assessment, with qualified care meanwhile.",
+    "trap": "An activity within the profession may exceed an individual’s competence.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 1.1.2–1.1.3, p.15",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-059",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0171",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Escalation without an effective response",
+    "stem": "In Qatar, a nurse reports worsening breathing, but no help arrives and the patient deteriorates further. What is the best next action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Activate the emergency escalation pathway and continue immediate nursing support."
+      },
+      {
+        "label": "B",
+        "text": "Repeat the same routine message and wait for a reply."
+      },
+      {
+        "label": "C",
+        "text": "Complete an incident report before requesting further help."
+      },
+      {
+        "label": "D",
+        "text": "Wait for the next senior ward round to explain the concern."
+      }
+    ],
+    "key": "A",
+    "answerText": "Activate the emergency escalation pathway and continue immediate nursing support.",
+    "rationale": "Continuing deterioration needs an effective urgent response. Administrative reporting must not delay the patient’s immediate care.",
+    "misconceptions": {
+      "B": "An ineffective routine message must not become a waiting loop.",
+      "C": "The report is secondary to emergency care.",
+      "D": "A scheduled round is too late for acute deterioration."
+    },
+    "pearl": "Qatar RGN practice: Activate the emergency escalation pathway and continue immediate nursing support.",
+    "trap": "An ineffective routine message must not become a waiting loop.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 2.1.9 and 2.1.12, p.17; 3.2.10, p.18",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "QA-060",
+    "edition": "qatar",
+    "kind": "localised",
+    "replaces": "Q0179",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Documenting escalation",
+    "stem": "After escalating an unresolved safety issue in Qatar, which entry best follows the RGN framework for safety communication?",
+    "options": [
+      {
+        "label": "A",
+        "text": "A statement that everyone was aware of the problem."
+      },
+      {
+        "label": "B",
+        "text": "A list of staff believed to be responsible for the delay."
+      },
+      {
+        "label": "C",
+        "text": "A note that an incident form will be completed later."
+      },
+      {
+        "label": "D",
+        "text": "Time-stamped observations, contacts, advice, interventions, and the patient’s response."
+      }
+    ],
+    "key": "D",
+    "answerText": "Time-stamped observations, contacts, advice, interventions, and the patient’s response.",
+    "rationale": "The record should allow another clinician to understand the risk and response. Blame and future intentions do not establish what happened.",
+    "misconceptions": {
+      "A": "A general awareness claim does not document communication.",
+      "B": "Attributing blame does not describe assessment or care.",
+      "C": "A future form does not replace current clinical documentation."
+    },
+    "pearl": "Qatar RGN practice: Time-stamped observations, contacts, advice, interventions, and the patient’s response.",
+    "trap": "A general awareness claim does not document communication.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Nursing Regulations in the State of Qatar — §2.2 Registered General Nurses Scope of Practice",
+      "section": "RGN 3.2.10, p.18; 2.1.13, p.17",
+      "url": "https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  }
+]

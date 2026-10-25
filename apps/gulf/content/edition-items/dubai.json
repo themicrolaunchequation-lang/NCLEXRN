@@ -1,0 +1,2977 @@
+[
+  {
+    "id": "DU-001",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Scope and competence",
+    "stem": "A DHA-licensed nurse is allocated a nonurgent procedure that the nurse has never been trained to perform. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask the patient to accept the additional risk."
+      },
+      {
+        "label": "B",
+        "text": "Explain the competence gap and arrange a suitably qualified practitioner."
+      },
+      {
+        "label": "C",
+        "text": "Proceed while a colleague gives instructions by telephone."
+      },
+      {
+        "label": "D",
+        "text": "Perform it because a prescriber has requested it."
+      }
+    ],
+    "key": "B",
+    "answerText": "Explain the competence gap and arrange a suitably qualified practitioner.",
+    "rationale": "The request does not establish competence. Arranging qualified help protects the patient without abandoning care.",
+    "misconceptions": {
+      "A": "Patient agreement cannot replace professional competence.",
+      "C": "Remote instructions do not establish assessed competence.",
+      "D": "An order does not extend the nurse’s competence."
+    },
+    "pearl": "DHA practice: Explain the competence gap and arrange a suitably qualified practitioner.",
+    "trap": "Remote instructions do not establish assessed competence.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "11.1.2 and 11.1.4, p.32",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-002",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Delegation checks",
+    "stem": "A nurse supervising care in a DHA-licensed facility plans to delegate a routine clinical task. Which check is essential?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Choose the worker who agrees to accept responsibility."
+      },
+      {
+        "label": "B",
+        "text": "Confirm that the task fits the worker’s authorized role and demonstrated competence."
+      },
+      {
+        "label": "C",
+        "text": "Choose the worker who has the lightest workload."
+      },
+      {
+        "label": "D",
+        "text": "Use the worker who has observed the task most often."
+      }
+    ],
+    "key": "B",
+    "answerText": "Confirm that the task fits the worker’s authorized role and demonstrated competence.",
+    "rationale": "Willingness and availability do not establish authority or ability. Delegation must fit the person and the task.",
+    "misconceptions": {
+      "A": "Agreement does not create authority to perform a task.",
+      "C": "Workload matters only after role and ability are established.",
+      "D": "Observation alone does not establish competence."
+    },
+    "pearl": "DHA practice: Confirm that the task fits the worker’s authorized role and demonstrated competence.",
+    "trap": "Workload matters only after role and ability are established.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "14.1.1 and 14.1.9, pp.36–37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-003",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Delegation follow-up",
+    "stem": "In Dubai, a nurse delegates an authorized task to a competent team member. Which follow-up is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Remove the task from handover because it was delegated."
+      },
+      {
+        "label": "B",
+        "text": "Check the reported outcome and provide supervision matched to the task."
+      },
+      {
+        "label": "C",
+        "text": "Review the outcome only if the patient makes a complaint."
+      },
+      {
+        "label": "D",
+        "text": "Assume completion because the worker accepted the task."
+      }
+    ],
+    "key": "B",
+    "answerText": "Check the reported outcome and provide supervision matched to the task.",
+    "rationale": "Delegation does not end the need for oversight. Outcome review helps identify care that needs adjustment.",
+    "misconceptions": {
+      "A": "Delegated care can remain relevant at handover.",
+      "C": "Waiting for a complaint misses earlier signs of incomplete care.",
+      "D": "Acceptance is not evidence of a safe outcome."
+    },
+    "pearl": "DHA practice: Check the reported outcome and provide supervision matched to the task.",
+    "trap": "Waiting for a complaint misses earlier signs of incomplete care.",
+    "difficulty": "Medium",
+    "judgment": "Evaluate Outcomes",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "14.1.2 and 14.1.13, pp.36–37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-004",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Consent and understanding",
+    "stem": "In a DHA-licensed unit, a patient awaiting an elective procedure cannot explain what the procedure involves despite a signed form. What should the nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask a relative to confirm that the procedure is acceptable."
+      },
+      {
+        "label": "B",
+        "text": "Repeat the procedure name and request another signature."
+      },
+      {
+        "label": "C",
+        "text": "Pause preparation and arrange an understandable explanation before consent is confirmed."
+      },
+      {
+        "label": "D",
+        "text": "Continue because the signed form is already in the record."
+      }
+    ],
+    "key": "C",
+    "answerText": "Pause preparation and arrange an understandable explanation before consent is confirmed.",
+    "rationale": "A signature alone does not show informed agreement. The misunderstanding must be addressed before the elective procedure proceeds.",
+    "misconceptions": {
+      "A": "A relative’s agreement does not replace the capable patient’s consent.",
+      "B": "Repeating a name does not explain the procedure.",
+      "D": "A form does not resolve the stated misunderstanding."
+    },
+    "pearl": "DHA practice: Pause preparation and arrange an understandable explanation before consent is confirmed.",
+    "trap": "A form does not resolve the stated misunderstanding.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "8.2.1–8.2.6, pp.17–18",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-005",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Patient advocacy",
+    "stem": "A capable adult in Dubai asks to discuss an alternative treatment. A family member prefers the proposed plan. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Support the patient in discussing options with the treating clinician."
+      },
+      {
+        "label": "B",
+        "text": "Ask the family to decide which option will be discussed."
+      },
+      {
+        "label": "C",
+        "text": "Discourage further questions because a plan is documented."
+      },
+      {
+        "label": "D",
+        "text": "Ask the patient to decide without further information."
+      }
+    ],
+    "key": "A",
+    "answerText": "Support the patient in discussing options with the treating clinician.",
+    "rationale": "Care should support the patient’s informed participation. Family involvement should not prevent the patient from receiving information.",
+    "misconceptions": {
+      "B": "Family preference does not displace a capable adult’s voice.",
+      "C": "Documentation does not end the right to ask questions.",
+      "D": "A meaningful choice requires adequate information."
+    },
+    "pearl": "DHA practice: Support the patient in discussing options with the treating clinician.",
+    "trap": "Family preference does not displace a capable adult’s voice.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "8.1.3 and 8.2.2, pp.15–17",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-006",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Confidentiality",
+    "stem": "In a Dubai clinic, a caller requests an adult patient’s test results and claims to be a relative. Permission to disclose has not been established. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give the results if the person knows the patient’s birth date."
+      },
+      {
+        "label": "B",
+        "text": "Ask another visitor to confirm the relationship."
+      },
+      {
+        "label": "C",
+        "text": "Verify identity and the authority to receive information before disclosure."
+      },
+      {
+        "label": "D",
+        "text": "Share only the abnormal results to limit disclosure."
+      }
+    ],
+    "key": "C",
+    "answerText": "Verify identity and the authority to receive information before disclosure.",
+    "rationale": "The request alone does not authorize disclosure. Identity and a valid basis for access must both be established.",
+    "misconceptions": {
+      "A": "A known personal detail does not establish authority.",
+      "B": "Another visitor cannot establish consent or legal authority.",
+      "D": "Selected results are still confidential information."
+    },
+    "pearl": "DHA practice: Verify identity and the authority to receive information before disclosure.",
+    "trap": "Selected results are still confidential information.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "9.1.1 and 9.1.5, pp.20–21",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-007",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Privacy and dignity",
+    "stem": "In a Dubai ward, a stable patient’s sensitive history is being discussed within hearing of unrelated visitors. What is the best action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Move the conversation to a private setting with the patient’s agreement."
+      },
+      {
+        "label": "B",
+        "text": "Continue quietly while using the patient’s room number."
+      },
+      {
+        "label": "C",
+        "text": "Ask visitors to ignore the conversation and continue."
+      },
+      {
+        "label": "D",
+        "text": "Omit the patient’s name but discuss the full history."
+      }
+    ],
+    "key": "A",
+    "answerText": "Move the conversation to a private setting with the patient’s agreement.",
+    "rationale": "Avoidable exposure of personal information should be reduced. Omitting a name does not make an identifiable bedside conversation private.",
+    "misconceptions": {
+      "B": "Room context can still identify the patient.",
+      "C": "A request to ignore information does not protect privacy.",
+      "D": "The surroundings can identify the person without a name."
+    },
+    "pearl": "DHA practice: Move the conversation to a private setting with the patient’s agreement.",
+    "trap": "Room context can still identify the patient.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "9.1.8, p.21",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-008",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Respectful cultural care",
+    "stem": "A stable patient in a DHA-licensed unit requests a same-gender practitioner for an intimate examination. What is the best initial response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask a family member to persuade the patient to withdraw it."
+      },
+      {
+        "label": "B",
+        "text": "Cancel all planned care until a same-gender team is available."
+      },
+      {
+        "label": "C",
+        "text": "Explore the preference and arrange suitable care where feasible without delaying urgent needs."
+      },
+      {
+        "label": "D",
+        "text": "Assume the request applies to every future procedure."
+      }
+    ],
+    "key": "C",
+    "answerText": "Explore the preference and arrange suitable care where feasible without delaying urgent needs.",
+    "rationale": "Preferences should be discussed individually and respected where feasible. The nurse must also account for the urgency of care.",
+    "misconceptions": {
+      "A": "Pressure from family can undermine the patient’s choice.",
+      "B": "A blanket cancellation may cause unnecessary delay.",
+      "D": "An individual preference must not be generalized without discussion."
+    },
+    "pearl": "DHA practice: Explore the preference and arrange suitable care where feasible without delaying urgent needs.",
+    "trap": "An individual preference must not be generalized without discussion.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "8.1.7, p.16",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-009",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Accurate documentation",
+    "stem": "After administering prescribed analgesia in Dubai, which record best supports safe continuing care?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Record that all routine care was completed during the shift."
+      },
+      {
+        "label": "B",
+        "text": "Record the medicine only if pain remains severe."
+      },
+      {
+        "label": "C",
+        "text": "Record the intended response before reassessment occurs."
+      },
+      {
+        "label": "D",
+        "text": "Record the assessment, medicine given, time, and reassessed response."
+      }
+    ],
+    "key": "D",
+    "answerText": "Record the assessment, medicine given, time, and reassessed response.",
+    "rationale": "The record should show what was done and how the patient responded. Intended outcomes must not be recorded as observed facts.",
+    "misconceptions": {
+      "A": "A broad completion statement omits important clinical details.",
+      "B": "Effective treatment still requires a record.",
+      "C": "An expected response is not a measured outcome."
+    },
+    "pearl": "DHA practice: Record the assessment, medicine given, time, and reassessed response.",
+    "trap": "A broad completion statement omits important clinical details.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "9.3.1 and 9.3.3, p.24",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-010",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Clinical handover",
+    "stem": "A patient in Dubai needs more oxygen than earlier in the shift. Which handover is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "List completed routine tasks before ending the handover."
+      },
+      {
+        "label": "B",
+        "text": "Describe the change, current observations, actions taken, and required follow-up."
+      },
+      {
+        "label": "C",
+        "text": "Describe the admission diagnosis and leave changes in the chart."
+      },
+      {
+        "label": "D",
+        "text": "Report that the patient is comfortable without mentioning oxygen."
+      }
+    ],
+    "key": "B",
+    "answerText": "Describe the change, current observations, actions taken, and required follow-up.",
+    "rationale": "A new oxygen requirement is a relevant change in condition. The receiving team needs the current situation and outstanding actions.",
+    "misconceptions": {
+      "A": "Task completion does not explain the new clinical risk.",
+      "C": "The chart does not replace communication of a significant change.",
+      "D": "Comfort does not establish stable oxygenation."
+    },
+    "pearl": "DHA practice: Describe the change, current observations, actions taken, and required follow-up.",
+    "trap": "The chart does not replace communication of a significant change.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "12.3.1–12.3.2, p.35",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-011",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Incident reporting",
+    "stem": "A nurse in Dubai detects a medication near miss before administration. Which action best supports learning and safety?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Address the immediate risk and report the near miss through the designated system."
+      },
+      {
+        "label": "B",
+        "text": "Discuss it privately with the colleague and omit the report."
+      },
+      {
+        "label": "C",
+        "text": "Report it only if the patient later develops symptoms."
+      },
+      {
+        "label": "D",
+        "text": "Keep a personal note instead of using the reporting system."
+      }
+    ],
+    "key": "A",
+    "answerText": "Address the immediate risk and report the near miss through the designated system.",
+    "rationale": "A near miss can reveal a system weakness despite the absence of injury. Reporting allows the organization to assess the risk.",
+    "misconceptions": {
+      "B": "A private discussion alone prevents wider learning.",
+      "C": "No symptoms are required for a near miss to matter.",
+      "D": "A private note is not an organizational safety report."
+    },
+    "pearl": "DHA practice: Address the immediate risk and report the near miss through the designated system.",
+    "trap": "A private discussion alone prevents wider learning.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "10.2.2–10.2.3, p.26",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-012",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Unsafe practice escalation",
+    "stem": "A Dubai nurse notices a colleague using a workaround that creates an immediate patient safety risk. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Intervene to protect the patient and escalate the concern through the safety pathway."
+      },
+      {
+        "label": "B",
+        "text": "Wait until the end of the shift to discuss the practice."
+      },
+      {
+        "label": "C",
+        "text": "Collect examples for an audit before raising the concern."
+      },
+      {
+        "label": "D",
+        "text": "Leave correction to the colleague’s annual appraisal."
+      }
+    ],
+    "key": "A",
+    "answerText": "Intervene to protect the patient and escalate the concern through the safety pathway.",
+    "rationale": "An immediate risk needs timely intervention. Later quality processes cannot replace protecting the current patient.",
+    "misconceptions": {
+      "B": "End-of-shift discussion leaves the present risk active.",
+      "C": "An audit must not delay action on immediate danger.",
+      "D": "Annual appraisal is too late to protect the patient."
+    },
+    "pearl": "DHA practice: Intervene to protect the patient and escalate the concern through the safety pathway.",
+    "trap": "End-of-shift discussion leaves the present risk active.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "10.1.4 and 10.1.7, p.25",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-013",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Safeguarding vulnerable patients",
+    "stem": "An older patient in Dubai has unexplained injuries and appears afraid of the accompanying caregiver. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait for proof of abuse before recording any concern."
+      },
+      {
+        "label": "B",
+        "text": "Promise the patient that no information will be shared."
+      },
+      {
+        "label": "C",
+        "text": "Arrange a safe assessment, document observations, and escalate the safeguarding concern."
+      },
+      {
+        "label": "D",
+        "text": "Ask the caregiver to explain before speaking with the patient."
+      }
+    ],
+    "key": "C",
+    "answerText": "Arrange a safe assessment, document observations, and escalate the safeguarding concern.",
+    "rationale": "The findings justify protective assessment and escalation, without assuming a diagnosis of abuse. Absolute secrecy could prevent appropriate protection.",
+    "misconceptions": {
+      "A": "Waiting for proof can leave the person exposed to harm.",
+      "B": "Necessary safeguarding escalation may require limited disclosure.",
+      "D": "The caregiver should not control the initial safety assessment."
+    },
+    "pearl": "DHA practice: Arrange a safe assessment, document observations, and escalate the safeguarding concern.",
+    "trap": "The caregiver should not control the initial safety assessment.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Older adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "8.1.13, p.17; 10.1.4, p.25",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-014",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Infection prevention responsibilities",
+    "stem": "Before nonurgent care during a DHA-licensed home visit, a nurse has no usable hand-hygiene product or washing facility. What should happen?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask the patient whether hand hygiene can be omitted."
+      },
+      {
+        "label": "B",
+        "text": "Obtain a suitable hand-hygiene method before care and report the supply problem."
+      },
+      {
+        "label": "C",
+        "text": "Use new gloves as a substitute for hand hygiene."
+      },
+      {
+        "label": "D",
+        "text": "Proceed and perform hand hygiene after the visit."
+      }
+    ],
+    "key": "B",
+    "answerText": "Obtain a suitable hand-hygiene method before care and report the supply problem.",
+    "rationale": "A supply failure should be corrected rather than bypassed. Gloves do not replace hand hygiene.",
+    "misconceptions": {
+      "A": "Patient permission does not remove infection prevention duties.",
+      "C": "Gloves are not a substitute for clean hands.",
+      "D": "Cleaning later does not remove the risk at the time of care."
+    },
+    "pearl": "DHA practice: Obtain a suitable hand-hygiene method before care and report the supply problem.",
+    "trap": "Gloves are not a substitute for clean hands.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Home healthcare",
+    "source": {
+      "title": "Standards for Home Healthcare Services, DHA/HRS/HPSD/ST-57, version 1",
+      "section": "13.5–13.9, p.47",
+      "url": "https://www.dha.gov.ae/uploads/012025/Home%20Healthcare%20Services2025156534.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: setting. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-015",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Recognizing competence limits",
+    "stem": "A DHA-licensed nurse returns after a long absence and is assigned a nonurgent treatment using an unfamiliar device. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Use the device with settings copied from another patient."
+      },
+      {
+        "label": "B",
+        "text": "Rely on a brief demonstration by an available visitor."
+      },
+      {
+        "label": "C",
+        "text": "Try the device and request help only if an alarm sounds."
+      },
+      {
+        "label": "D",
+        "text": "Obtain training and confirm competence before using the device independently."
+      }
+    ],
+    "key": "D",
+    "answerText": "Obtain training and confirm competence before using the device independently.",
+    "rationale": "Safe care depends on current competence with the actual equipment. An alarm is not a substitute for preparation.",
+    "misconceptions": {
+      "A": "Settings must match the individual patient and prescription.",
+      "B": "A visitor’s demonstration does not establish clinical competence.",
+      "C": "Harm can occur before an alarm provides warning."
+    },
+    "pearl": "DHA practice: Obtain training and confirm competence before using the device independently.",
+    "trap": "Settings must match the individual patient and prescription.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "11.1.4, p.32; 13.1.1, p.35",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-016",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Conflicts of interest",
+    "stem": "A supplier offers a Dubai nurse a personal incentive for directing patients to its products. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Decline the incentive and follow the conflict-of-interest disclosure process."
+      },
+      {
+        "label": "B",
+        "text": "Accept it if the product has been used on the ward before."
+      },
+      {
+        "label": "C",
+        "text": "Accept it if the patient is told the product costs more."
+      },
+      {
+        "label": "D",
+        "text": "Recommend the product and let another nurse accept the reward."
+      }
+    ],
+    "key": "A",
+    "answerText": "Decline the incentive and follow the conflict-of-interest disclosure process.",
+    "rationale": "Recommendations should be based on patient needs rather than personal reward. Moving the benefit to a colleague does not remove the conflict.",
+    "misconceptions": {
+      "B": "Previous use does not justify a personal inducement.",
+      "C": "Cost disclosure does not remove the incentive’s influence.",
+      "D": "An indirect benefit can still distort clinical judgment."
+    },
+    "pearl": "DHA practice: Decline the incentive and follow the conflict-of-interest disclosure process.",
+    "trap": "Previous use does not justify a personal inducement.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 65,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "10.4.2–10.4.5, pp.28–29",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-017",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Records and privacy",
+    "stem": "A nurse in Dubai notices an unattended workstation displaying a patient record in a public-facing area. What is the best immediate action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Secure the display using the approved method, then address the access lapse."
+      },
+      {
+        "label": "B",
+        "text": "Leave it open so the colleague can continue quickly."
+      },
+      {
+        "label": "C",
+        "text": "Close only the patient’s name and leave clinical details visible."
+      },
+      {
+        "label": "D",
+        "text": "Photograph the screen to show the unit manager later."
+      }
+    ],
+    "key": "A",
+    "answerText": "Secure the display using the approved method, then address the access lapse.",
+    "rationale": "The immediate priority is to prevent unnecessary access to identifiable information. Creating a photograph can create an additional privacy risk.",
+    "misconceptions": {
+      "B": "Convenience does not justify unattended access.",
+      "C": "Clinical details can still identify a patient.",
+      "D": "A photograph creates another copy of sensitive information."
+    },
+    "pearl": "DHA practice: Secure the display using the approved method, then address the access lapse.",
+    "trap": "Convenience does not justify unattended access.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "9.1.4, p.20; 9.2.8, p.23",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-018",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Resources and escalation",
+    "stem": "A Dubai nurse finds that workload prevents the monitoring required by a patient’s care plan. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reduce the monitoring frequency without telling the team."
+      },
+      {
+        "label": "B",
+        "text": "Record the expected observations using the previous readings."
+      },
+      {
+        "label": "C",
+        "text": "Wait for the next staffing meeting before raising the issue."
+      },
+      {
+        "label": "D",
+        "text": "Escalate the specific care risk promptly and arrange a safe plan with the supervisor."
+      }
+    ],
+    "key": "D",
+    "answerText": "Escalate the specific care risk promptly and arrange a safe plan with the supervisor.",
+    "rationale": "The concern needs a timely plan based on the patient’s needs. An altered or false record would hide the risk rather than address it.",
+    "misconceptions": {
+      "A": "Monitoring requirements need clinical review, not silent reduction.",
+      "B": "Previous observations cannot be recorded as new measurements.",
+      "C": "A later meeting does not resolve a current care gap."
+    },
+    "pearl": "DHA practice: Escalate the specific care risk promptly and arrange a safe plan with the supervisor.",
+    "trap": "Monitoring requirements need clinical review, not silent reduction.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "6.1.1, p.13; 10.1.4, p.25",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-019",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Sharing safety concerns",
+    "stem": "In Dubai, a nurse escalates an unresolved safety concern. Which documentation best supports follow-up?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Record the nurse’s opinion about the colleague’s motives."
+      },
+      {
+        "label": "B",
+        "text": "Record that management was informed without further details."
+      },
+      {
+        "label": "C",
+        "text": "Record the observations, people contacted, times, advice received, and ongoing actions."
+      },
+      {
+        "label": "D",
+        "text": "Record that the shift was difficult and the team was busy."
+      }
+    ],
+    "key": "C",
+    "answerText": "Record the observations, people contacted, times, advice received, and ongoing actions.",
+    "rationale": "Specific facts support safe follow-up and accountability. Opinions about motives do not describe the patient’s risk or response.",
+    "misconceptions": {
+      "A": "Speculation is not objective clinical documentation.",
+      "B": "A vague contact statement does not show what was communicated.",
+      "D": "A general workload statement omits the safety issue."
+    },
+    "pearl": "DHA practice: Record the observations, people contacted, times, advice received, and ongoing actions.",
+    "trap": "A general workload statement omits the safety issue.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "9.3.1 and 9.3.3, p.24; 10.1.4, p.25",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-020",
+    "edition": "dubai",
+    "kind": "practice-setting",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Emergency support and scope",
+    "stem": "In Dubai, a patient suddenly needs an intervention beyond the bedside nurse’s competence. Which response is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait without intervening until the responsible clinician arrives."
+      },
+      {
+        "label": "B",
+        "text": "Activate urgent qualified help and provide emergency care within current competence."
+      },
+      {
+        "label": "C",
+        "text": "Leave the patient to locate someone who can perform the procedure."
+      },
+      {
+        "label": "D",
+        "text": "Attempt the procedure because the situation is urgent."
+      }
+    ],
+    "key": "B",
+    "answerText": "Activate urgent qualified help and provide emergency care within current competence.",
+    "rationale": "Urgency requires prompt escalation and appropriate immediate support. It does not make an untrained invasive intervention safe.",
+    "misconceptions": {
+      "A": "Appropriate immediate nursing support must not be withheld.",
+      "C": "Leaving can interrupt monitoring and immediate support.",
+      "D": "Urgency does not create competence in an unfamiliar procedure."
+    },
+    "pearl": "DHA practice: Activate urgent qualified help and provide emergency care within current competence.",
+    "trap": "Leaving can interrupt monitoring and immediate support.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "10.8.3, p.31; 11.1.4, p.32",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-021",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Hand hygiene between tasks",
+    "stem": "A nurse removes gloves after helping with toileting and prepares the same patient’s oral medicines. What should happen before medicine preparation?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Perform hand hygiene before the clean task."
+      },
+      {
+        "label": "B",
+        "text": "Put on new gloves without cleaning the hands."
+      },
+      {
+        "label": "C",
+        "text": "Clean the hands only after both tasks are finished."
+      },
+      {
+        "label": "D",
+        "text": "Wipe the hands on a clean disposable towel."
+      }
+    ],
+    "key": "A",
+    "answerText": "Perform hand hygiene before the clean task.",
+    "rationale": "Glove removal can contaminate the hands. Hand hygiene is needed before a clean or aseptic task.",
+    "misconceptions": {
+      "B": "A new pair of gloves does not clean the hands.",
+      "C": "Delayed hand hygiene permits transfer of organisms.",
+      "D": "A dry towel is not an effective hand-hygiene method."
+    },
+    "pearl": "Clean hands are required between contaminated and clean care.",
+    "trap": "Mistaking gloves for hand hygiene.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-022",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Infusion rate calculation",
+    "stem": "A prescription requires 360 mL of intravenous fluid over 3 hours. Which pump setting in mL/hour is correct?",
+    "options": [
+      {
+        "label": "A",
+        "text": "12 mL/hour."
+      },
+      {
+        "label": "B",
+        "text": "120 mL/hour."
+      },
+      {
+        "label": "C",
+        "text": "60 mL/hour."
+      },
+      {
+        "label": "D",
+        "text": "240 mL/hour."
+      }
+    ],
+    "key": "B",
+    "answerText": "120 mL/hour.",
+    "rationale": "Divide the prescribed volume by the time in hours. The result is 120 mL/hour.",
+    "misconceptions": {
+      "A": "This introduces a tenfold error.",
+      "C": "This halves the required rate.",
+      "D": "This doubles the required rate."
+    },
+    "pearl": "For mL/hour, divide the volume by the duration in hours.",
+    "trap": "Changing the unit without checking the calculation.",
+    "difficulty": "Easy",
+    "judgment": "Generate Solutions",
+    "hyp": 80,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-023",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Suspected transfusion reaction",
+    "stem": "An adult receiving red cells develops fever and chest discomfort soon after the transfusion starts. What is the first nursing action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Slow the transfusion and reassess after 15 minutes."
+      },
+      {
+        "label": "B",
+        "text": "Give the next prescribed antipyretic while the blood continues."
+      },
+      {
+        "label": "C",
+        "text": "Finish the unit before sending a reaction sample."
+      },
+      {
+        "label": "D",
+        "text": "Stop the transfusion and initiate the transfusion-reaction response."
+      }
+    ],
+    "key": "D",
+    "answerText": "Stop the transfusion and initiate the transfusion-reaction response.",
+    "rationale": "A suspected reaction requires stopping further exposure immediately. The nurse then supports the patient and follows the reaction protocol, including urgent notification.",
+    "misconceptions": {
+      "A": "Slowing leaves the suspected trigger running.",
+      "B": "Symptom treatment must not replace stopping the transfusion.",
+      "C": "Continuing exposure can worsen a serious reaction."
+    },
+    "pearl": "Stop a suspected transfusion reaction before completing the investigation.",
+    "trap": "Treating symptoms while the transfusion continues.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-024",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Orthostatic fall prevention",
+    "stem": "During a first postoperative walk, a patient becomes light-headed on standing. What should the assisting nurse do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Leave the patient standing while obtaining a blood-pressure cuff."
+      },
+      {
+        "label": "B",
+        "text": "Ask the patient to hold the bed while the nurse finishes another task."
+      },
+      {
+        "label": "C",
+        "text": "Support the patient into a safe sitting or lying position and reassess."
+      },
+      {
+        "label": "D",
+        "text": "Encourage walking to improve circulation."
+      }
+    ],
+    "key": "C",
+    "answerText": "Support the patient into a safe sitting or lying position and reassess.",
+    "rationale": "Presyncope creates an immediate fall risk. Positioning safely comes before a detailed assessment or further activity.",
+    "misconceptions": {
+      "A": "Unsupported standing is unsafe while symptomatic.",
+      "B": "Holding furniture is not adequate protection from syncope.",
+      "D": "Continuing the walk increases the risk of collapse."
+    },
+    "pearl": "Make the patient safe before investigating dizziness.",
+    "trap": "Continuing mobilization despite presyncope.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Older adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-025",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Heel pressure prevention",
+    "stem": "A patient with reduced mobility has a painful, nonblanching red area on an intact heel. Which intervention is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Keep the heel on the mattress and reassess next shift."
+      },
+      {
+        "label": "B",
+        "text": "Relieve heel pressure and begin an individualized pressure-injury care plan."
+      },
+      {
+        "label": "C",
+        "text": "Massage the red area until normal colour returns."
+      },
+      {
+        "label": "D",
+        "text": "Use a ring-shaped cushion directly around the heel."
+      }
+    ],
+    "key": "B",
+    "answerText": "Relieve heel pressure and begin an individualized pressure-injury care plan.",
+    "rationale": "Nonblanching redness indicates pressure damage even when the skin is intact. Offloading and a care plan address the cause.",
+    "misconceptions": {
+      "A": "Continuing pressure can worsen the injury.",
+      "C": "Massage can worsen damaged tissue.",
+      "D": "Ring devices can concentrate pressure on surrounding tissue."
+    },
+    "pearl": "Intact skin can already have a pressure injury.",
+    "trap": "Waiting for skin breakdown before offloading.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-026",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Feeding tube displacement",
+    "stem": "A patient has pulled at a nasogastric feeding tube. Its external marking has moved since placement was confirmed. What is best before the next feed?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give a small water flush and ask whether it feels normal."
+      },
+      {
+        "label": "B",
+        "text": "Check for a stomach sound while injecting air."
+      },
+      {
+        "label": "C",
+        "text": "Restart at half the prescribed feeding rate."
+      },
+      {
+        "label": "D",
+        "text": "Withhold tube use until placement is checked by the approved method."
+      }
+    ],
+    "key": "D",
+    "answerText": "Withhold tube use until placement is checked by the approved method.",
+    "rationale": "A displaced tube may deliver fluid into the airway or another unsafe position. A water trial or air sound does not reliably confirm safe placement.",
+    "misconceptions": {
+      "A": "A trial flush may itself enter the wrong location.",
+      "B": "Auscultation after air injection does not reliably confirm placement.",
+      "C": "A lower rate does not make a misplaced tube safe."
+    },
+    "pearl": "A possible displacement requires verification before further tube use.",
+    "trap": "Using tolerance or an air sound as proof of placement.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-027",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Fundamentals",
+    "subdomain": "Sharps safety",
+    "stem": "A nurse finishes a subcutaneous injection and sees that the nearest sharps container is full. What should happen?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Place the needle in clinical waste until the container is changed."
+      },
+      {
+        "label": "B",
+        "text": "Use an available approved container without recapping and arrange replacement of the full one."
+      },
+      {
+        "label": "C",
+        "text": "Recap the needle so it can be carried safely."
+      },
+      {
+        "label": "D",
+        "text": "Push existing sharps down to make more room."
+      }
+    ],
+    "key": "B",
+    "answerText": "Use an available approved container without recapping and arrange replacement of the full one.",
+    "rationale": "Used sharps require an approved container without overfilling. Recapping and manual compression increase needlestick risk.",
+    "misconceptions": {
+      "A": "A waste bag does not safely contain a used needle.",
+      "C": "Recapping creates a preventable needlestick risk.",
+      "D": "Pushing down contents risks injury from hidden sharps."
+    },
+    "pearl": "Replace sharps containers at the fill line.",
+    "trap": "Treating a full container as a reason to recap.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-028",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Heat stroke",
+    "stem": "At a sporting event, an adult becomes confused and unsteady after prolonged exertion. Core temperature is 40.7°C. Emergency assistance has been activated. What is the priority while awaiting help?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give oral water and wait for the confusion to settle."
+      },
+      {
+        "label": "B",
+        "text": "Give paracetamol and repeat the temperature in 30 minutes."
+      },
+      {
+        "label": "C",
+        "text": "Wrap the patient in a dry blanket to prevent shivering."
+      },
+      {
+        "label": "D",
+        "text": "Start rapid active cooling while protecting the airway and monitoring the patient."
+      }
+    ],
+    "key": "D",
+    "answerText": "Start rapid active cooling while protecting the airway and monitoring the patient.",
+    "rationale": "Heat exposure with central nervous system dysfunction suggests heat stroke. Cooling and emergency care must not be delayed; sweating does not exclude heat stroke.",
+    "misconceptions": {
+      "A": "Confusion makes oral intake unsafe and waiting delays treatment.",
+      "B": "Antipyretics do not treat heat accumulation from exertion.",
+      "C": "A dry blanket impedes heat loss."
+    },
+    "pearl": "Neurological change during heat exposure is an emergency.",
+    "trap": "Excluding heat stroke because the patient is sweating.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-029",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Sickle cell and acute chest syndrome",
+    "stem": "During treatment of a sickle cell pain episode, an adult develops a new cough, breathlessness, and oxygen saturation of 88%. Which action is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Encourage walking to improve ventilation before contacting the clinician."
+      },
+      {
+        "label": "B",
+        "text": "Restrict assessment to the original painful body site."
+      },
+      {
+        "label": "C",
+        "text": "Give oxygen as indicated and arrange urgent assessment for acute chest syndrome."
+      },
+      {
+        "label": "D",
+        "text": "Give the next analgesic and reassess at the routine interval."
+      }
+    ],
+    "key": "C",
+    "answerText": "Give oxygen as indicated and arrange urgent assessment for acute chest syndrome.",
+    "rationale": "New respiratory symptoms and hypoxaemia can signal acute chest syndrome. This can progress rapidly and requires urgent medical evaluation.",
+    "misconceptions": {
+      "A": "Exertion can increase oxygen demand and delay urgent care.",
+      "B": "The new respiratory findings require broader assessment.",
+      "D": "Analgesia alone does not address the new hypoxaemia."
+    },
+    "pearl": "A sickle cell pain admission can develop a respiratory emergency.",
+    "trap": "Attributing every new symptom to uncomplicated pain.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-030",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Hypoglycaemia during fasting",
+    "stem": "A person using insulin becomes sweaty and tremulous while fasting. Glucose is 3.0 mmol/L; the person is awake and swallowing normally. What is the best immediate advice?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Break the fast, take 15 g of fast-acting carbohydrate, and recheck glucose after 15 minutes."
+      },
+      {
+        "label": "B",
+        "text": "Continue fasting and recheck glucose at sunset."
+      },
+      {
+        "label": "C",
+        "text": "Take extra rapid-acting insulin and rest."
+      },
+      {
+        "label": "D",
+        "text": "Eat only a high-fat snack and recheck the next morning."
+      }
+    ],
+    "key": "A",
+    "answerText": "Break the fast, take 15 g of fast-acting carbohydrate, and recheck glucose after 15 minutes.",
+    "rationale": "The alert adult can swallow safely and needs prompt oral treatment of hypoglycaemia, even during a chosen fast. Give 15 g of fast-acting carbohydrate and recheck after 15 minutes; repeat treatment if glucose remains below 3.9 mmol/L, and seek urgent help if recovery fails or swallowing becomes unsafe.",
+    "misconceptions": {
+      "B": "Waiting allows hypoglycaemia to worsen.",
+      "C": "Additional insulin can lower glucose further.",
+      "D": "Fat slows absorption and overnight delay is unsafe."
+    },
+    "pearl": "Treat low glucose promptly even during a chosen fast.",
+    "trap": "Delaying necessary treatment to preserve the fast.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": {
+      "title": "American Diabetes Association — Low Blood Glucose (Hypoglycemia)",
+      "section": "Key points and Treating Low Blood Glucose: adult 15/15 rule",
+      "url": "https://diabetes.org/living-with-diabetes/hypoglycemia-low-blood-glucose",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: options, answerText, rationale, source. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-031",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "DKA and low potassium",
+    "stem": "Before starting a prescribed DKA insulin infusion, the nurse receives a potassium result of 3.0 mmol/L. Initial fluid therapy is underway. What is the safest response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ignore potassium until the glucose concentration falls."
+      },
+      {
+        "label": "B",
+        "text": "Give routine bicarbonate instead of reporting the potassium."
+      },
+      {
+        "label": "C",
+        "text": "Escalate the low potassium and arrange replacement before starting insulin."
+      },
+      {
+        "label": "D",
+        "text": "Start insulin immediately to shift potassium into the cells."
+      }
+    ],
+    "key": "C",
+    "answerText": "Escalate the low potassium and arrange replacement before starting insulin.",
+    "rationale": "Insulin shifts potassium into cells and can worsen dangerous hypokalaemia. Current adult DKA guidance delays insulin when potassium is below 3.5 mmol/L while replacement is arranged.",
+    "misconceptions": {
+      "A": "Arrhythmias can occur before glucose has normalized.",
+      "B": "Bicarbonate is not a substitute for appropriate potassium management.",
+      "D": "An intracellular shift would worsen the existing deficit."
+    },
+    "pearl": "A low potassium level can change the order of DKA treatment.",
+    "trap": "Starting insulin without reviewing the potassium result.",
+    "difficulty": "Hard",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-032",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "G6PD deficiency and haemolysis",
+    "stem": "A patient with G6PD deficiency reports new dark urine and weakness after a medicine was added. The next dose is due. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Recommend an iron supplement without further assessment."
+      },
+      {
+        "label": "B",
+        "text": "Arrange urgent assessment for haemolysis and clarify the suspected medicine before further dosing."
+      },
+      {
+        "label": "C",
+        "text": "Continue the medicine and encourage fluids as the only measure."
+      },
+      {
+        "label": "D",
+        "text": "Treat the urine colour as an expected effect of G6PD deficiency."
+      }
+    ],
+    "key": "B",
+    "answerText": "Arrange urgent assessment for haemolysis and clarify the suspected medicine before further dosing.",
+    "rationale": "The symptom pattern suggests acute red-cell destruction. The suspected trigger and the patient’s clinical status need urgent review.",
+    "misconceptions": {
+      "A": "Iron does not treat acute haemolysis and may be inappropriate.",
+      "C": "Fluids alone do not address potentially severe haemolysis.",
+      "D": "A new change must not be treated as a harmless baseline finding."
+    },
+    "pearl": "New jaundice and dark urine in G6PD deficiency need prompt assessment.",
+    "trap": "Assuming inherited disease makes new symptoms routine.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-033",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "External haemorrhage after trauma",
+    "stem": "A trauma patient has a deep forearm wound with continuous heavy bleeding. The patient is speaking clearly and breathing normally. What is the priority action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Obtain a detailed medical history before touching the wound."
+      },
+      {
+        "label": "B",
+        "text": "Apply firm direct pressure to control the bleeding and activate trauma support."
+      },
+      {
+        "label": "C",
+        "text": "Clean the wound thoroughly before attempting haemostasis."
+      },
+      {
+        "label": "D",
+        "text": "Remove visible clots so the bleeding source can be inspected."
+      }
+    ],
+    "key": "B",
+    "answerText": "Apply firm direct pressure to control the bleeding and activate trauma support.",
+    "rationale": "Uncontrolled external bleeding is the current life threat after airway and breathing have been assessed. Direct pressure should not wait for routine wound care or history.",
+    "misconceptions": {
+      "A": "The history must not delay controlling major blood loss.",
+      "C": "Cleaning delays haemorrhage control.",
+      "D": "Removing clots can increase bleeding."
+    },
+    "pearl": "Control a visible major haemorrhage promptly.",
+    "trap": "Completing routine wound care before haemorrhage control.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-034",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Stroke and swallowing safety",
+    "stem": "A patient with new facial weakness following suspected stroke is prescribed oral tablets. Swallowing safety has not been assessed. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Withhold oral intake and arrange a swallowing screen by a trained practitioner."
+      },
+      {
+        "label": "B",
+        "text": "Offer a small sip of water to see whether coughing occurs."
+      },
+      {
+        "label": "C",
+        "text": "Crush the tablets in food so they are easier to swallow."
+      },
+      {
+        "label": "D",
+        "text": "Allow fluids through a straw while the patient sits upright."
+      }
+    ],
+    "key": "A",
+    "answerText": "Withhold oral intake and arrange a swallowing screen by a trained practitioner.",
+    "rationale": "Stroke can impair swallowing and increase aspiration risk. Food, fluid, and oral medicines should wait until swallowing safety is established.",
+    "misconceptions": {
+      "B": "An unsupervised trial may cause aspiration.",
+      "C": "Crushed medicines and food can still be aspirated.",
+      "D": "A straw and posture do not establish swallowing safety."
+    },
+    "pearl": "Check swallowing safety before oral intake after stroke.",
+    "trap": "Using a small drink as an informal swallowing test.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-035",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Anaphylaxis first-line medicine",
+    "stem": "After a known allergen exposure, an adult has tongue swelling, wheeze, and low blood pressure. Help has been activated. Which prescribed emergency medicine has priority?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Intramuscular adrenaline in the outer thigh."
+      },
+      {
+        "label": "B",
+        "text": "Oral antihistamine for the skin reaction."
+      },
+      {
+        "label": "C",
+        "text": "Intravenous corticosteroid as the first-line treatment."
+      },
+      {
+        "label": "D",
+        "text": "Nebulized bronchodilator as the only emergency medicine."
+      }
+    ],
+    "key": "A",
+    "answerText": "Intramuscular adrenaline in the outer thigh.",
+    "rationale": "Airway or circulatory involvement after an allergen suggests anaphylaxis. Intramuscular adrenaline is first-line; other medicines must not delay it.",
+    "misconceptions": {
+      "B": "An antihistamine does not reverse airway or circulatory collapse.",
+      "C": "Corticosteroids are not first-line emergency treatment.",
+      "D": "A bronchodilator alone does not treat shock or upper-airway swelling."
+    },
+    "pearl": "Adrenaline is the first-line medicine for anaphylaxis.",
+    "trap": "Treating the rash instead of the life-threatening reaction.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-036",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Hyperkalaemia with ECG changes",
+    "stem": "A haemodialysis patient has missed treatment. Potassium is 7.0 mmol/L with new ECG changes. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Give a potassium-containing supplement to prevent muscle weakness."
+      },
+      {
+        "label": "B",
+        "text": "Focus on dietary teaching before contacting the clinical team."
+      },
+      {
+        "label": "C",
+        "text": "Activate urgent treatment and cardiac monitoring for life-threatening hyperkalaemia."
+      },
+      {
+        "label": "D",
+        "text": "Wait for the next routine electrolyte panel before reporting."
+      }
+    ],
+    "key": "C",
+    "answerText": "Activate urgent treatment and cardiac monitoring for life-threatening hyperkalaemia.",
+    "rationale": "Severe hyperkalaemia with ECG changes can precede cardiac arrest. Monitoring and emergency treatment are needed without routine delays.",
+    "misconceptions": {
+      "A": "Potassium supplementation would worsen the abnormality.",
+      "B": "Dietary teaching cannot stabilize an immediate arrhythmia risk.",
+      "D": "ECG changes make waiting unsafe."
+    },
+    "pearl": "ECG changes make hyperkalaemia an immediate emergency.",
+    "trap": "Treating a dangerous result as a routine dietary issue.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-037",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Sepsis deterioration",
+    "stem": "A patient being treated for infection now has mottled skin, blood pressure of 80/44 mmHg, and reduced alertness. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask the patient to drink water and walk to the bathroom."
+      },
+      {
+        "label": "B",
+        "text": "Activate urgent sepsis assessment and resuscitation while supporting airway and breathing."
+      },
+      {
+        "label": "C",
+        "text": "Give an antipyretic and review at the next observation round."
+      },
+      {
+        "label": "D",
+        "text": "Wait for a positive blood culture before escalating care."
+      }
+    ],
+    "key": "B",
+    "answerText": "Activate urgent sepsis assessment and resuscitation while supporting airway and breathing.",
+    "rationale": "Hypotension and new altered mental status suggest severe circulatory compromise. Suspected sepsis requires urgent escalation rather than waiting for culture confirmation.",
+    "misconceptions": {
+      "A": "Activity and oral fluids do not treat this unstable state.",
+      "C": "Reducing fever does not address shock.",
+      "D": "Cultures can take time and must not delay emergency care."
+    },
+    "pearl": "Infection with shock signs needs an immediate response.",
+    "trap": "Waiting for proof of infection while perfusion fails.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-038",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Adult Nursing",
+    "subdomain": "Diabetic foot deterioration",
+    "stem": "During a diabetes review, a patient reports a foot wound with new swelling, fever, and rapidly worsening redness. What is the best next action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Arrange urgent assessment for a spreading diabetic foot infection."
+      },
+      {
+        "label": "B",
+        "text": "Book the next routine podiatry visit and continue current dressings."
+      },
+      {
+        "label": "C",
+        "text": "Advise warm foot soaks until the redness settles."
+      },
+      {
+        "label": "D",
+        "text": "Reassure the patient because neuropathy can reduce pain."
+      }
+    ],
+    "key": "A",
+    "answerText": "Arrange urgent assessment for a spreading diabetic foot infection.",
+    "rationale": "Systemic illness with spreading inflammation can indicate a serious foot infection. Neuropathy can conceal pain and does not lower the urgency.",
+    "misconceptions": {
+      "B": "Routine follow-up is too slow for spreading infection and fever.",
+      "C": "Soaking does not treat the infection and can damage skin.",
+      "D": "Reduced pain is not evidence of a mild infection."
+    },
+    "pearl": "A painless diabetic foot wound can still be dangerous.",
+    "trap": "Using pain severity to judge infection severity in neuropathy.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-039",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Postpartum uterine atony",
+    "stem": "A woman develops brisk bleeding after delivery. Her uterus feels soft on examination, and the haemorrhage team has been called. What should the nurse begin?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Encourage walking to help the uterus contract."
+      },
+      {
+        "label": "B",
+        "text": "Apply perineal ice as the only bleeding intervention."
+      },
+      {
+        "label": "C",
+        "text": "Massage the uterus and start the postpartum-haemorrhage protocol with the team."
+      },
+      {
+        "label": "D",
+        "text": "Wait for a measured total blood loss before taking any action."
+      }
+    ],
+    "key": "C",
+    "answerText": "Massage the uterus and start the postpartum-haemorrhage protocol with the team.",
+    "rationale": "A boggy uterus with heavy bleeding suggests uterine atony. Immediate uterine massage forms part of a coordinated haemorrhage response, not a substitute for the rest of the treatment bundle.",
+    "misconceptions": {
+      "A": "Walking is unsafe during active haemorrhage.",
+      "B": "Perineal ice does not correct uterine atony.",
+      "D": "Measurement must not delay action on obvious heavy bleeding."
+    },
+    "pearl": "Treat atony within an immediate coordinated haemorrhage response.",
+    "trap": "Waiting for a numerical threshold despite obvious heavy bleeding.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Postpartum",
+    "setting": "Maternity unit",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-040",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Severe pre-eclampsia warning signs",
+    "stem": "A woman at 32 weeks has new visual disturbance and persistent severe headache. Blood pressure is 170/114 mmHg. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Provide a dark room and defer review until the next clinic visit."
+      },
+      {
+        "label": "B",
+        "text": "Attribute the symptoms to ordinary pregnancy discomfort."
+      },
+      {
+        "label": "C",
+        "text": "Encourage oral fluids and recheck blood pressure tomorrow."
+      },
+      {
+        "label": "D",
+        "text": "Escalate urgently for severe pre-eclampsia assessment and treatment."
+      }
+    ],
+    "key": "D",
+    "answerText": "Escalate urgently for severe pre-eclampsia assessment and treatment.",
+    "rationale": "Severe hypertension with neurological or upper abdominal symptoms is a danger pattern. Urgent assessment and treatment reduce the risk of major maternal and fetal complications.",
+    "misconceptions": {
+      "A": "Comfort measures alone must not delay urgent treatment.",
+      "B": "These symptoms are not routine pregnancy discomfort.",
+      "C": "Next-day review is unsafe with these findings."
+    },
+    "pearl": "Severe hypertension with neurological symptoms in pregnancy needs urgent care.",
+    "trap": "Explaining danger signs as common pregnancy symptoms.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Pregnant adult",
+    "setting": "Maternity assessment",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-041",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Magnesium toxicity",
+    "stem": "During a magnesium sulfate infusion, a maternity patient develops slow breathing at 7/minute and loses deep tendon reflexes. What is the priority action?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reduce stimulation and continue the infusion at the same rate."
+      },
+      {
+        "label": "B",
+        "text": "Increase the infusion to prevent an eclamptic seizure."
+      },
+      {
+        "label": "C",
+        "text": "Wait for a magnesium result before changing the infusion."
+      },
+      {
+        "label": "D",
+        "text": "Stop magnesium, call urgent help, and support breathing while preparing the prescribed antidote."
+      }
+    ],
+    "key": "D",
+    "answerText": "Stop magnesium, call urgent help, and support breathing while preparing the prescribed antidote.",
+    "rationale": "Respiratory depression and absent reflexes suggest magnesium toxicity. Exposure must stop while ventilation is supported and calcium gluconate is prepared according to the emergency prescription or protocol.",
+    "misconceptions": {
+      "A": "Continuing the infusion can worsen toxicity.",
+      "B": "More magnesium can deepen respiratory depression.",
+      "C": "Treatment must not wait for laboratory confirmation of a dangerous clinical pattern."
+    },
+    "pearl": "Monitor breathing, reflexes, and urine output during magnesium treatment.",
+    "trap": "Waiting for a laboratory result despite respiratory depression.",
+    "difficulty": "Hard",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Pregnant or postpartum adult",
+    "setting": "Maternity unit",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-042",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Early neonatal jaundice",
+    "stem": "A newborn becomes visibly jaundiced 14 hours after birth. The family asks whether sunlight at home is enough. What should the nurse arrange?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reassure the family that first-day jaundice is physiological."
+      },
+      {
+        "label": "B",
+        "text": "Delay bilirubin testing until the next routine newborn visit."
+      },
+      {
+        "label": "C",
+        "text": "Recommend sunlight exposure instead of investigation."
+      },
+      {
+        "label": "D",
+        "text": "Arrange urgent clinical assessment and serum bilirubin measurement."
+      }
+    ],
+    "key": "D",
+    "answerText": "Arrange urgent clinical assessment and serum bilirubin measurement.",
+    "rationale": "Jaundice in the first 24 hours can indicate significant disease, including haemolysis. It requires urgent evaluation rather than an assumption of physiological jaundice.",
+    "misconceptions": {
+      "A": "Physiological jaundice should not be assumed in the first day.",
+      "B": "Delay can miss a rapid bilirubin rise.",
+      "C": "Sunlight is not a substitute for bilirubin measurement and treatment assessment."
+    },
+    "pearl": "First-day jaundice needs urgent evaluation.",
+    "trap": "Treating early jaundice as an ordinary newborn variation.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Newborn",
+    "setting": "Postnatal ward",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-043",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Oral rehydration in a child",
+    "stem": "A toddler with gastroenteritis has mild dehydration and drinks willingly. There is no severe lethargy or circulatory compromise. What is the best initial plan?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Start a rapid intravenous bolus solely because diarrhoea is present."
+      },
+      {
+        "label": "B",
+        "text": "Give oral rehydration solution in small frequent amounts and reassess."
+      },
+      {
+        "label": "C",
+        "text": "Use undiluted fruit juice as the main replacement fluid."
+      },
+      {
+        "label": "D",
+        "text": "Withhold fluid until all loose stools stop."
+      }
+    ],
+    "key": "B",
+    "answerText": "Give oral rehydration solution in small frequent amounts and reassess.",
+    "rationale": "Oral rehydration solution replaces water and electrolytes in a child who can drink without shock. Reassessment identifies failure of the oral plan or deterioration.",
+    "misconceptions": {
+      "A": "Mild dehydration with safe oral intake does not itself require an intravenous bolus.",
+      "C": "High-sugar juice can worsen diarrhoea and has an unsuitable electrolyte balance.",
+      "D": "Withholding fluids worsens dehydration."
+    },
+    "pearl": "Use oral rehydration when a child can drink and has no shock.",
+    "trap": "Confusing diarrhoea with an automatic need for intravenous fluids.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Child",
+    "setting": "Paediatric assessment",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-044",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Infant respiratory deterioration",
+    "stem": "A baby with a viral respiratory illness has poor feeding, severe retractions, and oxygen saturation of 86%. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Activate urgent respiratory support and give oxygen according to the emergency pathway."
+      },
+      {
+        "label": "B",
+        "text": "Offer a full bottle to improve the infant’s energy."
+      },
+      {
+        "label": "C",
+        "text": "Wait for the next scheduled saturation check."
+      },
+      {
+        "label": "D",
+        "text": "Provide routine discharge advice because bronchiolitis is usually viral."
+      }
+    ],
+    "key": "A",
+    "answerText": "Activate urgent respiratory support and give oxygen according to the emergency pathway.",
+    "rationale": "Hypoxaemia and exhaustion can signal respiratory failure. The infant needs urgent support rather than feeding or routine observation.",
+    "misconceptions": {
+      "B": "Oral feeding during severe distress can increase aspiration risk.",
+      "C": "The persistent hypoxaemia is already established.",
+      "D": "A viral cause does not make respiratory failure safe for discharge."
+    },
+    "pearl": "An exhausted infant with respiratory distress needs urgent escalation.",
+    "trap": "Underestimating severity because the illness is viral.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Infant",
+    "setting": "Paediatric acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-045",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Inherited conditions and counselling",
+    "stem": "A couple whose child has an inherited condition asks for a precise recurrence risk before another pregnancy. The diagnosis has not been fully characterized. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "State that the next child will definitely be affected."
+      },
+      {
+        "label": "B",
+        "text": "Reassure them that an unaffected parent excludes inherited risk."
+      },
+      {
+        "label": "C",
+        "text": "Give a fixed recurrence percentage without reviewing the diagnosis."
+      },
+      {
+        "label": "D",
+        "text": "Offer nonjudgmental referral for genetic counselling and individualized risk assessment."
+      }
+    ],
+    "key": "D",
+    "answerText": "Offer nonjudgmental referral for genetic counselling and individualized risk assessment.",
+    "rationale": "Risk depends on the actual disorder, inheritance pattern, and family findings. Individual assessment supports informed choices without blame or false certainty.",
+    "misconceptions": {
+      "A": "Family relationship or history does not make disease inevitable.",
+      "B": "Unaffected carriers can transmit some inherited conditions.",
+      "C": "A percentage requires a supported inheritance model and relevant information."
+    },
+    "pearl": "Assess inherited risk individually and without blame.",
+    "trap": "Turning family history into a certain prediction.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 65,
+    "population": "Family",
+    "setting": "Maternal-child clinic",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-046",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Maternal-Child Nursing",
+    "subdomain": "Postpartum venous thrombosis",
+    "stem": "During a postnatal visit, a woman reports a swollen painful leg that started today. One calf is visibly larger. What should the nurse arrange?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Massage the calf to improve circulation."
+      },
+      {
+        "label": "B",
+        "text": "Suggest routine exercise and review at the six-week visit."
+      },
+      {
+        "label": "C",
+        "text": "Reassure her that one-sided swelling is expected after birth."
+      },
+      {
+        "label": "D",
+        "text": "Arrange urgent clinical assessment for possible deep vein thrombosis."
+      }
+    ],
+    "key": "D",
+    "answerText": "Arrange urgent clinical assessment for possible deep vein thrombosis.",
+    "rationale": "The postpartum period increases thromboembolic risk. New unilateral leg symptoms need urgent assessment even without current chest symptoms.",
+    "misconceptions": {
+      "A": "Massage is inappropriate when thrombosis is suspected.",
+      "B": "Routine delayed review can miss a significant clot.",
+      "C": "One-sided painful swelling must not be dismissed as routine."
+    },
+    "pearl": "New unilateral leg symptoms after birth require prompt assessment.",
+    "trap": "Assuming all postpartum swelling is normal.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Postpartum",
+    "setting": "Postnatal service",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-047",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Acuity-based prioritization",
+    "stem": "At the start of a shift, which reported patient change requires the nurse’s first assessment?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Unchanged incisional discomfort awaiting the next prescribed dose."
+      },
+      {
+        "label": "B",
+        "text": "A request to discuss the planned discharge transport."
+      },
+      {
+        "label": "C",
+        "text": "Constipation for two days without pain or vomiting."
+      },
+      {
+        "label": "D",
+        "text": "New stridor with increasing effort to breathe."
+      }
+    ],
+    "key": "D",
+    "answerText": "New stridor with increasing effort to breathe.",
+    "rationale": "New stridor suggests an evolving upper-airway obstruction. The other concerns need care but do not describe an immediate threat to ventilation.",
+    "misconceptions": {
+      "A": "Stable discomfort is lower priority than a threatened airway.",
+      "B": "Discharge planning can wait during an airway emergency.",
+      "C": "The stated constipation lacks acute danger signs."
+    },
+    "pearl": "Prioritize a newly threatened airway over stable care needs.",
+    "trap": "Using the order of requests instead of current acuity.",
+    "difficulty": "Easy",
+    "judgment": "Prioritize Hypotheses",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-048",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Learning from a near miss",
+    "stem": "A label mismatch is caught before a dose reaches a patient. Which response best supports improvement?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Review how the mismatch arose and improve the vulnerable process."
+      },
+      {
+        "label": "B",
+        "text": "Close the matter because the final check worked."
+      },
+      {
+        "label": "C",
+        "text": "Remind only the involved nurse to be more careful."
+      },
+      {
+        "label": "D",
+        "text": "Remove identification checks to reduce interruptions."
+      }
+    ],
+    "key": "A",
+    "answerText": "Review how the mismatch arose and improve the vulnerable process.",
+    "rationale": "A successful interception can reveal an earlier process failure. Examining that process supports prevention beyond individual vigilance.",
+    "misconceptions": {
+      "B": "The earlier failure could recur despite this successful check.",
+      "C": "A reminder alone does not address the process weakness.",
+      "D": "Removing a protective check increases risk."
+    },
+    "pearl": "Near misses are opportunities to improve processes.",
+    "trap": "Assuming no harm means no process problem.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-049",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Interpreting audit rates",
+    "stem": "A team wants to compare device-related infections between two months with different device use. Which indicator is most appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The total number of all ward admissions regardless of device use."
+      },
+      {
+        "label": "B",
+        "text": "The number of staff on duty when the first infection was detected."
+      },
+      {
+        "label": "C",
+        "text": "Infections per 1,000 device-days using the same case definition."
+      },
+      {
+        "label": "D",
+        "text": "The total number of infections without an exposure denominator."
+      }
+    ],
+    "key": "C",
+    "answerText": "Infections per 1,000 device-days using the same case definition.",
+    "rationale": "Device-days measure relevant exposure time. A common case definition is also needed for a meaningful comparison.",
+    "misconceptions": {
+      "A": "All admissions do not measure time at risk from the device.",
+      "B": "Staffing at detection is not the exposure denominator.",
+      "D": "Raw counts may reflect different exposure volumes."
+    },
+    "pearl": "Compare rates using a relevant denominator and a consistent definition.",
+    "trap": "Interpreting raw counts as comparable risk.",
+    "difficulty": "Easy",
+    "judgment": "Analyze Cues",
+    "hyp": 65,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-050",
+    "edition": "dubai",
+    "kind": "clinical",
+    "replaces": null,
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Closed-loop critical communication",
+    "stem": "A laboratory clinician telephones a critical result to a ward nurse. What should the nurse do to confirm the message?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Repeat the result to another patient’s nurse without identifiers."
+      },
+      {
+        "label": "B",
+        "text": "Wait for the printed report before acknowledging the message."
+      },
+      {
+        "label": "C",
+        "text": "Read back the patient identifiers and result, confirm them, and escalate promptly."
+      },
+      {
+        "label": "D",
+        "text": "Write a brief number on scrap paper and confirm it after the shift."
+      }
+    ],
+    "key": "C",
+    "answerText": "Read back the patient identifiers and result, confirm them, and escalate promptly.",
+    "rationale": "Read-back checks that the receiver heard the correct patient and result. Prompt escalation is still needed after confirmation.",
+    "misconceptions": {
+      "A": "Missing identifiers creates a wrong-patient risk.",
+      "B": "Waiting for paper can delay action on a critical result.",
+      "D": "Delayed confirmation can leave a transcription error uncorrected."
+    },
+    "pearl": "Confirm both patient and result during critical verbal communication.",
+    "trap": "Treating a heard message as a confirmed message.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Acute care",
+    "source": null,
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-051",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0131",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Selecting a delegated activity",
+    "stem": "In a DHA-licensed unit, which activity is the best candidate for delegation to a worker with verified authority and competence for it? The supervising RN has assessed all four patients.",
+    "options": [
+      {
+        "label": "A",
+        "text": "Choose a new care plan for an acutely breathless patient."
+      },
+      {
+        "label": "B",
+        "text": "Decide whether new chest pain can wait for medical review."
+      },
+      {
+        "label": "C",
+        "text": "Assist a stable patient with an agreed routine hygiene plan."
+      },
+      {
+        "label": "D",
+        "text": "Assess a newly confused patient’s change in condition."
+      }
+    ],
+    "key": "C",
+    "answerText": "Assist a stable patient with an agreed routine hygiene plan.",
+    "rationale": "The routine activity can be matched to verified competence. The other choices require assessment or clinical decisions for new problems.",
+    "misconceptions": {
+      "A": "Selecting a new plan involves clinical judgment.",
+      "B": "The worker should not decide the urgency of new chest pain.",
+      "D": "A new change in condition requires skilled assessment."
+    },
+    "pearl": "DHA practice: Assist a stable patient with an agreed routine hygiene plan.",
+    "trap": "A new change in condition requires skilled assessment.",
+    "difficulty": "Medium",
+    "judgment": "Generate Solutions",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "14.1.1 and 14.1.9, pp.36–37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-052",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0132",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Delegation instructions",
+    "stem": "A nurse in Dubai delegates a stable patient’s planned assisted walk to a competent team member. Which instruction is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask the worker to decide whether new dizziness is important."
+      },
+      {
+        "label": "B",
+        "text": "State the walking distance and leave the other details unstated."
+      },
+      {
+        "label": "C",
+        "text": "State the assistance needed, stop conditions, and when findings must be reported."
+      },
+      {
+        "label": "D",
+        "text": "Ask the worker to walk the patient when time permits."
+      }
+    ],
+    "key": "C",
+    "answerText": "State the assistance needed, stop conditions, and when findings must be reported.",
+    "rationale": "The worker needs clear instructions and a route back to the supervisor. A distance alone does not explain the safety limits.",
+    "misconceptions": {
+      "A": "New symptoms should be reported rather than independently dismissed.",
+      "B": "Distance alone leaves support needs and escalation unclear.",
+      "D": "An open-ended request lacks clear timing and safety instructions."
+    },
+    "pearl": "DHA practice: State the assistance needed, stop conditions, and when findings must be reported.",
+    "trap": "An open-ended request lacks clear timing and safety instructions.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "14.1.3 and 14.1.10–14.1.11, pp.36–37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-053",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0135",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Checking delegation readiness",
+    "stem": "In Dubai, a new team member volunteers for a clinical activity. Their authorized role is known, but their competence has not been checked. What should the supervisor do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Delegate because the worker volunteered without hesitation."
+      },
+      {
+        "label": "B",
+        "text": "Delegate and use completion time as the competence check."
+      },
+      {
+        "label": "C",
+        "text": "Ask another new employee whether the worker seems confident."
+      },
+      {
+        "label": "D",
+        "text": "Verify demonstrated competence for the activity before assigning it."
+      }
+    ],
+    "key": "D",
+    "answerText": "Verify demonstrated competence for the activity before assigning it.",
+    "rationale": "Confidence and willingness are not evidence of ability. Verification should precede the delegation decision.",
+    "misconceptions": {
+      "A": "Volunteering does not demonstrate safe performance.",
+      "B": "Completion speed is not a valid competence assessment.",
+      "C": "Another person’s impression is not demonstrated competence."
+    },
+    "pearl": "DHA practice: Verify demonstrated competence for the activity before assigning it.",
+    "trap": "Volunteering does not demonstrate safe performance.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "14.1.6 and 14.1.9, pp.36–37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-054",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0136",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Accountability after delegation",
+    "stem": "A Dubai nurse says, “The worker accepted the task, so my supervision ends.” Which response best reflects DHA supervision standards?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The delegating nurse must maintain appropriate oversight and review the outcome."
+      },
+      {
+        "label": "B",
+        "text": "Oversight is needed only when a patient complains."
+      },
+      {
+        "label": "C",
+        "text": "Oversight transfers entirely to the receiving worker."
+      },
+      {
+        "label": "D",
+        "text": "Oversight is replaced by the worker’s written agreement."
+      }
+    ],
+    "key": "A",
+    "answerText": "The delegating nurse must maintain appropriate oversight and review the outcome.",
+    "rationale": "Delegation requires continuing supervision appropriate to the task. The worker’s own accountability does not remove the delegator’s responsibilities.",
+    "misconceptions": {
+      "B": "A complaint is not the threshold for supervision.",
+      "C": "Both workers retain responsibilities for their own roles.",
+      "D": "A signature cannot replace clinical oversight."
+    },
+    "pearl": "DHA practice: The delegating nurse must maintain appropriate oversight and review the outcome.",
+    "trap": "A complaint is not the threshold for supervision.",
+    "difficulty": "Medium",
+    "judgment": "Analyze Cues",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "14.1.2 and 14.1.13, pp.36–37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "FIXED",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Exact replacements applied: judgment. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-055",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0138",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Unfamiliar transfer device",
+    "stem": "In Dubai, a worker assigned to help with a transfer reports no training in the required lifting device. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ask the worker to follow the picture on the device."
+      },
+      {
+        "label": "B",
+        "text": "Proceed if the patient agrees to help with the lift."
+      },
+      {
+        "label": "C",
+        "text": "Let the worker learn by trying it on this transfer."
+      },
+      {
+        "label": "D",
+        "text": "Arrange trained assistance and training before the worker uses the device."
+      }
+    ],
+    "key": "D",
+    "answerText": "Arrange trained assistance and training before the worker uses the device.",
+    "rationale": "The person and equipment must be matched to verified competence. A patient transfer is not an unsupervised trial of unfamiliar equipment.",
+    "misconceptions": {
+      "A": "A picture does not establish competence or safe technique.",
+      "B": "Patient agreement does not make an untrained lift safe.",
+      "C": "Trial and error exposes the patient to avoidable injury."
+    },
+    "pearl": "DHA practice: Arrange trained assistance and training before the worker uses the device.",
+    "trap": "A picture does not establish competence or safe technique.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "14.1.9 and 14.1.11, p.37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-056",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0139",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Outcome of delegated monitoring",
+    "stem": "A Dubai nurse delegates a permitted glucose check with clear reporting limits. The competent worker reports a result below the agreed limit. What should the nurse do?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait for the next scheduled round to confirm the finding."
+      },
+      {
+        "label": "B",
+        "text": "Record the reading without reviewing the patient’s condition."
+      },
+      {
+        "label": "C",
+        "text": "Assess the patient promptly and start the indicated treatment pathway."
+      },
+      {
+        "label": "D",
+        "text": "Ask the worker to decide whether treatment is necessary."
+      }
+    ],
+    "key": "C",
+    "answerText": "Assess the patient promptly and start the indicated treatment pathway.",
+    "rationale": "An out-of-limit result requires clinical evaluation and action. Delegating the measurement does not delegate away the need to respond.",
+    "misconceptions": {
+      "A": "Waiting may allow a low glucose level to worsen.",
+      "B": "A record alone does not address the abnormal result.",
+      "D": "The nurse must make or obtain the required clinical decision."
+    },
+    "pearl": "DHA practice: Assess the patient promptly and start the indicated treatment pathway.",
+    "trap": "The nurse must make or obtain the required clinical decision.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 90,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "14.1.10 and 14.1.13, p.37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-057",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0141",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Authority to perform a procedure",
+    "stem": "In Dubai, a nurse is asked to perform an elective procedure outside the nurse’s DHA-authorized role. What is the best response?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Decline that procedure, explain the scope limit, and arrange an authorized practitioner."
+      },
+      {
+        "label": "B",
+        "text": "Proceed because a senior colleague made the request."
+      },
+      {
+        "label": "C",
+        "text": "Proceed if the patient signs a separate permission form."
+      },
+      {
+        "label": "D",
+        "text": "Perform the procedure but ask someone else to document it."
+      }
+    ],
+    "key": "A",
+    "answerText": "Decline that procedure, explain the scope limit, and arrange an authorized practitioner.",
+    "rationale": "A request or consent form does not expand professional authority. The patient still needs a safe alternative care arrangement.",
+    "misconceptions": {
+      "B": "Seniority does not expand the nurse’s scope.",
+      "C": "Patient permission does not create professional authority.",
+      "D": "Changing the author of the record does not authorize the action."
+    },
+    "pearl": "DHA practice: Decline that procedure, explain the scope limit, and arrange an authorized practitioner.",
+    "trap": "Seniority does not expand the nurse’s scope.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 85,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "11.1.2 and 11.1.4, p.32",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-058",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0142",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Broad scope versus personal competence",
+    "stem": "A procedure fits a Dubai nurse’s licensed role, but the nurse has no training or assessed competence for it. The situation is nonurgent. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Let the patient decide whether training is needed."
+      },
+      {
+        "label": "B",
+        "text": "Complete the required preparation and competence assessment, with qualified care meanwhile."
+      },
+      {
+        "label": "C",
+        "text": "Proceed because broad professional scope is sufficient."
+      },
+      {
+        "label": "D",
+        "text": "Proceed after watching one online demonstration."
+      }
+    ],
+    "key": "B",
+    "answerText": "Complete the required preparation and competence assessment, with qualified care meanwhile.",
+    "rationale": "Broad scope and individual competence are separate requirements. Safe interim care prevents delay while the nurse prepares.",
+    "misconceptions": {
+      "A": "Training requirements are a professional responsibility.",
+      "C": "An activity within the profession may exceed an individual’s competence.",
+      "D": "An online demonstration alone is not an adequate competence assessment."
+    },
+    "pearl": "DHA practice: Complete the required preparation and competence assessment, with qualified care meanwhile.",
+    "trap": "An activity within the profession may exceed an individual’s competence.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "11.1.2 and 11.1.4, p.32",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-059",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0171",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Escalation without an effective response",
+    "stem": "In Dubai, a nurse has reported a patient’s worsening breathing. No effective response occurs, and the patient continues to deteriorate. What is best?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Wait for the next senior ward round to explain the concern."
+      },
+      {
+        "label": "B",
+        "text": "Activate the emergency escalation pathway and continue immediate nursing support."
+      },
+      {
+        "label": "C",
+        "text": "Repeat the same routine message and wait for a reply."
+      },
+      {
+        "label": "D",
+        "text": "Complete an incident report before requesting further help."
+      }
+    ],
+    "key": "B",
+    "answerText": "Activate the emergency escalation pathway and continue immediate nursing support.",
+    "rationale": "Continuing deterioration needs an effective urgent response. Administrative reporting must not delay the patient’s immediate care.",
+    "misconceptions": {
+      "A": "A scheduled round is too late for acute deterioration.",
+      "C": "An ineffective routine message must not become a waiting loop.",
+      "D": "The report is secondary to emergency care."
+    },
+    "pearl": "DHA practice: Activate the emergency escalation pathway and continue immediate nursing support.",
+    "trap": "An ineffective routine message must not become a waiting loop.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 95,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "10.8.3, p.31; 14.1.8, p.37",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  },
+  {
+    "id": "DU-060",
+    "edition": "dubai",
+    "kind": "localised",
+    "replaces": "Q0179",
+    "domain": "Nursing Management and Leadership",
+    "subdomain": "Documenting escalation",
+    "stem": "Following escalation of an unresolved care risk in Dubai, which entry best meets the documentation standards?",
+    "options": [
+      {
+        "label": "A",
+        "text": "A statement that everyone was aware of the problem."
+      },
+      {
+        "label": "B",
+        "text": "A list of staff believed to be responsible for the delay."
+      },
+      {
+        "label": "C",
+        "text": "A note that an incident form will be completed later."
+      },
+      {
+        "label": "D",
+        "text": "Time-stamped observations, contacts, advice, interventions, and the patient’s response."
+      }
+    ],
+    "key": "D",
+    "answerText": "Time-stamped observations, contacts, advice, interventions, and the patient’s response.",
+    "rationale": "The record should allow another clinician to understand the risk and response. Blame and future intentions do not establish what happened.",
+    "misconceptions": {
+      "A": "A general awareness claim does not document communication.",
+      "B": "Attributing blame does not describe assessment or care.",
+      "C": "A future form does not replace current clinical documentation."
+    },
+    "pearl": "DHA practice: Time-stamped observations, contacts, advice, interventions, and the patient’s response.",
+    "trap": "A general awareness claim does not document communication.",
+    "difficulty": "Medium",
+    "judgment": "Take Action",
+    "hyp": 75,
+    "population": "Adult",
+    "setting": "Inpatient ward",
+    "source": {
+      "title": "Standards for Code of Ethics and Professional Conduct for Health Professionals, DHA/HRS/HPSD/ST-66, issue 1",
+      "section": "9.3.1 and 9.3.3, p.24",
+      "url": "https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf",
+      "accessed": "2026-10-25"
+    },
+    "review": {
+      "panel": "PASS",
+      "notes": "AI pre-review — not a licensed clinical sign-off. Final approval requires a real licensed nurse reviewer. Still pending review by a real licensed nurse; AI PASS does not authorize publication."
+    }
+  }
+]

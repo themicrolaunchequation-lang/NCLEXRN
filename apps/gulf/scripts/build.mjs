@@ -52,7 +52,14 @@ for(const id of Object.keys(meta)){
 const acct=fs.readFileSync(path.join(repo,'site/assets/js/crown-account.js'),'utf8');
 const sbKey=(acct.match(/const KEY = '(sb_publishable_[^']+)'/)||[])[1],sbUrl=(acct.match(/const SUPABASE = '([^']+)'/)||[])[1];
 if(!sbKey||!sbUrl)throw Error('Account sync: publishable key or URL not found in crown-account.js');
-const cfg={order:['saudi','qatar','dubai','abudhabi'],editions,policy:POLICY,checked:'23 October 2026',sb:{url:sbUrl,key:sbKey}};
+// Edition-specific questions (content/edition-items/<edition>.json): released by the Academy owner on 25 Oct 2026.
+const itemsDir=path.join(root,'content/edition-items'),extra={};
+for(const f of fs.existsSync(itemsDir)?fs.readdirSync(itemsDir).filter(n=>n.endsWith('.json')):[]){
+ const ed=f.replace(/\.json$/,''),items=JSON.parse(fs.readFileSync(path.join(itemsDir,f),'utf8'));
+ for(const q of items){if(!q.id||!q.stem||!Array.isArray(q.options)||!q.key||!q.options.some(o=>o.label===q.key))throw Error('Bad edition item '+ed+' '+(q.id||'?'));}
+ extra[ed]=items;
+}
+const cfg={extra,order:['saudi','qatar','dubai','abudhabi'],editions,policy:POLICY,checked:'23 October 2026',sb:{url:sbUrl,key:sbKey}};
 const files={
  pre:fs.readFileSync(path.join(root,'studio/pre.js'),'utf8'),
  data:fs.readFileSync(path.join(root,'studio/data.js'),'utf8'),
@@ -139,6 +146,19 @@ if(fs.existsSync(labsDir))for(const f of fs.readdirSync(labsDir).filter(n=>/\.(h
  t=t.replace(/Saudi Nursing Licensure Examination/g,'the regulator\u2019s nursing licensing examination').replace(/\bSNLE\b/g,'Exam').replace(/\bSaudi\b/g,'local');
  fs.writeFileSync(fp,t);
 }
+// --- Interactive Labs posters: neutral artwork by default; the Saudi edition swaps to the original (content/posters) ---
+{const pd=path.join(root,'content/posters');
+ if(fs.existsSync(labsDir)&&fs.existsSync(pd)){
+  const dest=path.join(labsDir,'posters');for(const v of ['neutral','saudi']){fs.mkdirSync(path.join(dest,v),{recursive:true});for(const f of fs.readdirSync(path.join(pd,v)))fs.copyFileSync(path.join(pd,v,f),path.join(dest,v,f))}
+  fs.writeFileSync(path.join(labsDir,'labs-edition.js'),"(function(){var e;try{e=localStorage.getItem('gulf-edition')}catch(x){}if(e!=='saudi')return;document.querySelectorAll('img[data-saudi]').forEach(function(i){i.src=i.getAttribute('data-saudi')})})();");
+  let n=0;for(const f of fs.readdirSync(labsDir).filter(x=>/^SNLE_Decoder_0\d_.*\.html$/.test(x))){
+   const num=f.match(/^SNLE_Decoder_(\d\d)_/)[1],fp=path.join(labsDir,f);let h=fs.readFileSync(fp,'utf8');
+   const re=/src="data:image\/[a-z]+;base64,[A-Za-z0-9+\/=]+"/;if(!re.test(h))throw Error('Lab poster image not found: '+f);
+   h=h.replace(re,'src="posters/neutral/lab-'+num+'.webp" data-saudi="posters/saudi/lab-'+num+'.webp"').replace('</body>','<script defer src="labs-edition.js"></script></body>');
+   fs.writeFileSync(fp,h);n++;
+  }
+  if(n!==9)throw Error('Expected 9 lab posters, replaced '+n);
+ }}
 // service worker: precache the new assets, new cache name
 const swp=path.join(out,'sw.js');let sw=fs.readFileSync(swp,'utf8');
 sw=sw.split(appOld).join(appUrl);sw=sw.split('/assets/'+libSwap[0]).join('/assets/'+libSwap[1]);

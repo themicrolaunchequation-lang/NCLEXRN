@@ -1,0 +1,154 @@
+id,url,opens(yes/no),rule_found(yes/no),quote_or_section
+QA-001,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.1.2–1.1.3, p.15; direct section read, not search-snippet substitution."
+QA-002,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.3.1, p.18; direct section read, not search-snippet substitution."
+QA-003,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.3.2–3.3.3, p.18; direct section read, not search-snippet substitution."
+QA-004,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.5, p.15; direct section read, not search-snippet substitution."
+QA-005,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.3 and 1.2.5, p.15; direct section read, not search-snippet substitution."
+QA-006,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.4, p.15; direct section read, not search-snippet substitution."
+QA-007,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.4 and 1.2.6, p.15; direct section read, not search-snippet substitution."
+QA-008,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.6–1.2.7, p.15; direct section read, not search-snippet substitution."
+QA-009,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 2.1.12–2.1.13, p.17; direct section read, not search-snippet substitution."
+QA-010,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 2.2.3, p.17; direct section read, not search-snippet substitution."
+QA-011,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.2.7 and 3.2.10, p.18; direct section read, not search-snippet substitution."
+QA-012,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.9, p.16; 3.2.7, p.18; direct section read, not search-snippet substitution."
+QA-013,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.3, p.15; 1.2.9, p.16; 3.2.5, p.18; direct section read, not search-snippet substitution."
+QA-014,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.2.9–3.2.10, p.18; direct section read, not search-snippet substitution."
+QA-015,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.1.2–1.1.3, p.15; 3.2.6, p.18; direct section read, not search-snippet substitution."
+QA-016,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.10, p.16; direct section read, not search-snippet substitution."
+QA-017,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.2.4, p.15; direct section read, not search-snippet substitution."
+QA-018,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 2.1.4–2.1.5, p.16; direct section read, not search-snippet substitution."
+QA-019,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.2.10, p.18; 2.2.3, p.17; direct section read, not search-snippet substitution."
+QA-020,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.1.2–1.1.3, p.15; 2.1.9, p.17; direct section read, not search-snippet substitution."
+QA-021,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-022,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-023,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-024,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-025,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-026,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-027,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-028,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-029,https://diabetes.org/living-with-diabetes/hypoglycemia-low-blood-glucose,yes,yes,Key points and Treating Low Blood Glucose: adult 15/15 rule; citation added during review.
+QA-030,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-031,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-032,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-033,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-034,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-035,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-036,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-037,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-038,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-039,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-040,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-041,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-042,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-043,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-044,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-045,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-046,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-047,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-048,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-049,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-050,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+QA-051,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.3.1–3.3.3, p.18; direct section read, not search-snippet substitution."
+QA-052,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.3.2, p.18; direct section read, not search-snippet substitution."
+QA-053,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.3.1, p.18; direct section read, not search-snippet substitution."
+QA-054,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.1.5, p.15; 3.3.3, p.18; direct section read, not search-snippet substitution."
+QA-055,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.3.1–3.3.2, p.18; direct section read, not search-snippet substitution."
+QA-056,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 2.1.12, p.17; 3.3.3, p.18; direct section read, not search-snippet substitution."
+QA-057,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.1.2–1.1.3, p.15; 1.3.1–1.3.2, p.16; direct section read, not search-snippet substitution."
+QA-058,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 1.1.2–1.1.3, p.15; direct section read, not search-snippet substitution."
+QA-059,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 2.1.9 and 2.1.12, p.17; 3.2.10, p.18; direct section read, not search-snippet substitution."
+QA-060,https://dhp.moph.gov.qa/en/Documents/Nursing%20Regulations%20in%20the%20State%20of%20Qatar.pdf,yes,yes,"RGN 3.2.10, p.18; 2.1.13, p.17; direct section read, not search-snippet substitution."
+DU-001,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"11.1.2 and 11.1.4, p.32; direct section read, not search-snippet substitution."
+DU-002,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"14.1.1 and 14.1.9, pp.36–37; direct section read, not search-snippet substitution."
+DU-003,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"14.1.2 and 14.1.13, pp.36–37; direct section read, not search-snippet substitution."
+DU-004,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"8.2.1–8.2.6, pp.17–18; direct section read, not search-snippet substitution."
+DU-005,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"8.1.3 and 8.2.2, pp.15–17; direct section read, not search-snippet substitution."
+DU-006,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"9.1.1 and 9.1.5, pp.20–21; direct section read, not search-snippet substitution."
+DU-007,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"9.1.8, p.21; direct section read, not search-snippet substitution."
+DU-008,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"8.1.7, p.16; direct section read, not search-snippet substitution."
+DU-009,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"9.3.1 and 9.3.3, p.24; direct section read, not search-snippet substitution."
+DU-010,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"12.3.1–12.3.2, p.35; direct section read, not search-snippet substitution."
+DU-011,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"10.2.2–10.2.3, p.26; direct section read, not search-snippet substitution."
+DU-012,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"10.1.4 and 10.1.7, p.25; direct section read, not search-snippet substitution."
+DU-013,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"8.1.13, p.17; 10.1.4, p.25; direct section read, not search-snippet substitution."
+DU-014,https://www.dha.gov.ae/uploads/012025/Home%20Healthcare%20Services2025156534.pdf,yes,yes,"13.5–13.9, p.47; direct section read, not search-snippet substitution."
+DU-015,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"11.1.4, p.32; 13.1.1, p.35; direct section read, not search-snippet substitution."
+DU-016,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"10.4.2–10.4.5, pp.28–29; direct section read, not search-snippet substitution."
+DU-017,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"9.1.4, p.20; 9.2.8, p.23; direct section read, not search-snippet substitution."
+DU-018,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"6.1.1, p.13; 10.1.4, p.25; direct section read, not search-snippet substitution."
+DU-019,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"9.3.1 and 9.3.3, p.24; 10.1.4, p.25; direct section read, not search-snippet substitution."
+DU-020,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"10.8.3, p.31; 11.1.4, p.32; direct section read, not search-snippet substitution."
+DU-021,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-022,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-023,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-024,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-025,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-026,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-027,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-028,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-029,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-030,https://diabetes.org/living-with-diabetes/hypoglycemia-low-blood-glucose,yes,yes,Key points and Treating Low Blood Glucose: adult 15/15 rule; citation added during review.
+DU-031,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-032,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-033,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-034,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-035,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-036,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-037,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-038,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-039,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-040,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-041,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-042,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-043,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-044,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-045,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-046,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-047,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-048,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-049,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-050,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+DU-051,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"14.1.1 and 14.1.9, pp.36–37; direct section read, not search-snippet substitution."
+DU-052,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"14.1.3 and 14.1.10–14.1.11, pp.36–37; direct section read, not search-snippet substitution."
+DU-053,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"14.1.6 and 14.1.9, pp.36–37; direct section read, not search-snippet substitution."
+DU-054,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"14.1.2 and 14.1.13, pp.36–37; direct section read, not search-snippet substitution."
+DU-055,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"14.1.9 and 14.1.11, p.37; direct section read, not search-snippet substitution."
+DU-056,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"14.1.10 and 14.1.13, p.37; direct section read, not search-snippet substitution."
+DU-057,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"11.1.2 and 11.1.4, p.32; direct section read, not search-snippet substitution."
+DU-058,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"11.1.2 and 11.1.4, p.32; direct section read, not search-snippet substitution."
+DU-059,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"10.8.3, p.31; 14.1.8, p.37; direct section read, not search-snippet substitution."
+DU-060,https://dha.gov.ae/uploads/012026/Standards%20for%20Code%20of%20Ethics%20and%20Professional%20Conduct%20for%20Health%20Professionals%20V1%20202613351.pdf,yes,yes,"9.3.1 and 9.3.3, p.24; direct section read, not search-snippet substitution."
+AD-021,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-022,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-023,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-024,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-025,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-026,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-027,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-028,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-029,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-030,https://diabetes.org/living-with-diabetes/hypoglycemia-low-blood-glucose,yes,yes,Key points and Treating Low Blood Glucose: adult 15/15 rule; citation added during review.
+AD-031,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-032,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-033,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-034,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-035,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-036,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-037,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-038,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-039,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-040,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-041,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-042,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-043,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-044,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-045,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-046,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-047,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-048,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-049,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+AD-050,,no,no,Not applicable: optional core clinical source is null; this is not a failed regulatory URL.
+WITHHELD-AD-SCOPE,https://www.doh.gov.ae/-/media/59C71DCFBE58464E9DBCE9463F05DA88.ashx,no,no,No question authored from this source: live content could not be opened. HTTP 503 / timeout / target unreachable. Published rule was not verified.
+WITHHELD-AD-RIGHTS,https://www.doh.gov.ae/-/media/E04904122AA0437AB409CBB1469C56B8.ashx,no,no,No question authored from this source: live content could not be opened. HTTP 503 / timeout / target unreachable. Published rule was not verified.
+WITHHELD-AD-SAFEGUARDING,https://www.doh.gov.ae/-/media/1D1CB7DD7DB1478D9BF4EF7E99FB7501.ashx,no,no,No question authored from this source: live content could not be opened. HTTP 503 / timeout / target unreachable. Published rule was not verified.

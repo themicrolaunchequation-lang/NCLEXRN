@@ -9,6 +9,19 @@
  if(ed!=='saudi'){['SNLE_POSTERS','SNLE_QUESTIONS','SNLE_LEARNING'].forEach(function(n){try{walk(window[n],0)}catch(e){}});
  var held;try{Object.defineProperty(window,'SNLE_DOSSIERS',{configurable:true,get:function(){return held},set:function(v){try{walk(v,0)}catch(e){}held=v}})}catch(e){}}
  window.GULF_FIX=fix;
+ // Edition-specific questions go first in this edition's bank, mapped to the shared question shape.
+ var X=((window.GULF_CONFIG||{}).extra||{})[ed];
+ if(Array.isArray(X)&&X.length&&Array.isArray(window.SNLE_QUESTIONS)){
+  var KIND={'practice-setting':'Gulf practice setting','localised':'Gulf practice setting','clinical':'Gulf clinical priorities'};
+  var mapped=X.map(function(q,i){var h=Number(q.hyp)||75,tn=KIND[q.kind]||'Gulf clinical priorities';
+   return {id:q.id,toolNumber:900,toolQuestionNumber:i+1,globalNumber:9000+i,tool:'G'+(q.kind==='clinical'?'02 ':'01 ')+tn,toolName:tn,stem:q.stem,options:q.options,key:q.key,
+    answerText:q.answerText||((q.options.filter(function(o){return o.label===q.key})[0]||{}).text||''),rationale:q.rationale||'',pearl:q.pearl||'',trap:q.trap||'',misconceptions:q.misconceptions||null,
+    studyFocus:q.pearl||'',domain:q.domain,subdomain:q.subdomain||'',process:q.subdomain||'',population:q.population||'',setting:q.setting||'',construct:q.subdomain||'',
+    hyp:h,hypBand:'HYP'+(h>=90?5:h>=80?4:h>=70?3:h>=60?2:1),difficulty:q.difficulty||'Medium',judgment:q.judgment||'Take Action',
+    evidence:q.source&&q.source.url?'Sourced: '+(q.source.title||q.source.url):'Edition item',quality:'Approved for release by the Academy owner',actionRequired:'',editionItem:true,source:q.source||null}});
+  window.GULF_EXTRA_IDS=mapped.map(function(q){return q.id});
+  window.SNLE_QUESTIONS=mapped.concat(window.SNLE_QUESTIONS);
+ }
  // Each edition gets its own stable question order in the libraries, so the four studios never open on the same items.
  // Saudi keeps the original order. Seeded, so a learner sees the same order every visit.
  function seeded(arr,seed){var h=2166136261;for(var i=0;i<seed.length;i++){h^=seed.charCodeAt(i);h=Math.imul(h,16777619)}
@@ -21,7 +34,7 @@
   window.GULF_ORDER=function(ha,hb,ka,kb){return band(hb)-band(ha)||hk(ka)-hk(kb)};
   var G=window.SNLE_LEARNING&&window.SNLE_LEARNING.glossary;
   if(Array.isArray(G)&&G.length){var pick=G.slice().filter(function(x){return x.term!=='Stem'}).sort(function(x,y){return hk(x.term)-hk(y.term)})[0];window.GULF_GLOSS={cat:pick.category,term:pick.term}}
-  if(Array.isArray(window.SNLE_QUESTIONS))seeded(window.SNLE_QUESTIONS,'gulf-'+ed+'-q');
+  if(Array.isArray(window.SNLE_QUESTIONS)){var nX=(window.GULF_EXTRA_IDS||[]).length,head=window.SNLE_QUESTIONS.slice(0,nX),tail=seeded(window.SNLE_QUESTIONS.slice(nX),'gulf-'+ed+'-q');window.SNLE_QUESTIONS.length=0;Array.prototype.push.apply(window.SNLE_QUESTIONS,head.concat(tail))}
   if(Array.isArray(window.SNLE_POSTERS))seeded(window.SNLE_POSTERS,'gulf-'+ed+'-t');
   if(window.SNLE_LEARNING&&Array.isArray(window.SNLE_LEARNING.glossary))seeded(window.SNLE_LEARNING.glossary,'gulf-'+ed+'-g');
   var dHeld=window.SNLE_DOSSIERS,desc=Object.getOwnPropertyDescriptor(window,'SNLE_DOSSIERS');
