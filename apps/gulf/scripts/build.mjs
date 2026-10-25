@@ -9,6 +9,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const repo=path.resolve(root,'../..');
 const snle=path.join(repo,'apps/snle');
 const out=path.join(root,'dist');
+const PUBLIC=process.env.GULF_PUBLIC==='1'; // set on the live snle project: allow search engines
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex').slice(0,12);
 execFileSync(process.execPath,[path.join(snle,'build.mjs')],{cwd:snle,stdio:['ignore','ignore','inherit']});
 fs.rmSync(out,{recursive:true,force:true});
@@ -76,7 +77,7 @@ const after=(re,add)=>{const m=html.match(re);if(!m)throw Error('Studio page anc
 after(/<script defer src="\/assets\/prelude\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.pre+'"></script>');
 after(/<script defer src="\/assets\/guidance\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.cfg+'"></script><script defer src="'+urls.data+'"></script>');
 after(/<script defer src="\/assets\/integration\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.ui+'"></script><script defer src="'+urls.sync+'"></script><link rel="stylesheet" href="'+urls.css+'">');
-html=html.replace(/<meta name="description"[^>]*>/,'<meta name="description" content="Gulf Nursing Licensure Studio: independent educational practice for the Saudi, Qatar, Dubai and Abu Dhabi nursing licensing exams. Not official exam content.">').replace(/<link rel="canonical"[^>]*>/,'<meta name="robots" content="noindex,nofollow">').replace('content="snle"','content="gulf"')
+html=html.replace(/<meta name="description"[^>]*>/,'<meta name="description" content="Gulf Nursing Licensure Studio: independent educational practice for the Saudi, Qatar, Dubai and Abu Dhabi nursing licensing exams. Not official exam content.">').replace(/<link rel="canonical"[^>]*>/,PUBLIC?'<link rel="canonical" href="https://snle.healthcarecrownacademy.co.uk/">':'<meta name="robots" content="noindex,nofollow">').replace('content="snle"','content="gulf"')
  .replace(/<title>[\s\S]*?<\/title>/,'<title>Gulf Nursing Licensure Studio | Healthcare Crown Academy</title>');
 html=html.replace(/\n\\n\\n\n/g,'\n');
 fs.writeFileSync(ip,html);
@@ -121,7 +122,7 @@ let libSwap=null;
   h=h.replace(dataTag,mode==='dossiers'?pre+layer+dataTag:pre+dataTag+layer)
    .split('/assets/'+libFile).join('/assets/'+libNew)
    .replace('<script defer src="/assets/'+libNew+'"></script>','<script defer src="/assets/'+libNew+'"></script>'+slides)
-   .replace('</head>','<link rel="stylesheet" href="'+urls.css+'"><meta name="robots" content="noindex,nofollow"></head>')
+   .replace('</head>','<link rel="stylesheet" href="'+urls.css+'">'+(PUBLIC?'':'<meta name="robots" content="noindex,nofollow">')+'</head>')
    .replace(/<title>[^<]*<\/title>/,'<title>'+titles[mode]+' | Gulf Nursing Licensure Studio</title>').replace('Return to SNLE','Return to the study studio');
   fs.writeFileSync(fp,h);
  }
@@ -144,11 +145,11 @@ fs.writeFileSync(swp,sw);
 const mp=path.join(out,'manifest.webmanifest'),mf=JSON.parse(fs.readFileSync(mp,'utf8'));mf.name='Gulf Nursing Licensure Studio';mf.short_name='Gulf Nursing';fs.writeFileSync(mp,JSON.stringify(mf,null,2));
 // headers: the studio's own policy plus noindex everywhere (preview)
 let hd=fs.readFileSync(path.join(out,'_headers'),'utf8');
-hd=hd.replace('/*\n','/*\n  X-Robots-Tag: noindex, nofollow\n');
+if(!PUBLIC)hd=hd.replace('/*\n','/*\n  X-Robots-Tag: noindex, nofollow\n');
 fs.writeFileSync(path.join(out,'_headers'),hd);
 {const rp=path.join(out,'_redirects'),prev=fs.existsSync(rp)?fs.readFileSync(rp,'utf8'):'';
  fs.writeFileSync(rp,prev+['/question-bank /SNLE_Question_Bank_ViewOnly_v19.html 200','/dossier-bank /SNLE_Clinical_Dossier_Question_Bank_ViewOnly_v23_1_Smaller_Stem.html 200','/tool-library /SNLE_All_Tools_ViewOnly_v19.html 200'].join('\n')+'\n')}
-fs.writeFileSync(path.join(out,'robots.txt'),'User-agent: *\nDisallow: /\n');
+fs.writeFileSync(path.join(out,'robots.txt'),PUBLIC?'User-agent: *\nAllow: /\n':'User-agent: *\nDisallow: /\n');
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 console.log('PASS Gulf studio + hub output ('+pkg.name+')');
 for(const n of ['index.html','sw.js','_headers','hub/index.html',...Object.values(urls).map(u=>u.slice(1))])console.log(n+' '+fs.statSync(path.join(out,n)).size+' bytes');
