@@ -24,6 +24,10 @@ fs.copyFileSync(path.join(repo,'site/assets/js/crown-account.js'),path.join(hub,
 // --- edition config (from the verified exam profiles) ---
 const {PROFILES,RETAKE_NOTES}=await import(pathToFileURL(path.join(root,'data/exam-profiles.js')));
 const meta={
+ saudi:{profile:'snle',short:'SNLE',tab:'Saudi',accent:'#087d72',regulatorShort:'SCFHS',region:'Saudi Arabia',theme:'Palm & Teal',
+  tiles:[['Questions','200','ok','Two blocks of 100'],['Time','4 hours','ok','2 × 120 minutes, with a scheduled break'],['Pass mark','500','ok','Scaled score, 200–800'],['Attempts','See guide','check','SCFHS sources differ']],
+  intro:'200 multiple-choice questions in two blocks of 100, each 120 minutes, with a scheduled break. SCFHS reports a scaled score from 200 to 800; 500 is the pass mark.',
+  mix:'SCFHS publishes how many questions come from each area. Practice sets in this studio follow that split.'},
  qatar:{short:'DHP RGN',tab:'Qatar',accent:'#8a1538',regulatorShort:'DHP',region:'Qatar',theme:'Pearl & Maroon',
   tiles:[['Questions','150','ok','Multiple choice'],['Time','3 hours','check','An older DHP document says 3½ hours'],['Pass mark','50%','ok','Published minimum'],['Attempts','Up to 5','check','DHP policy v04']],
   intro:'150 multiple-choice questions. The current DHP exam page says 3 hours; an older DHP blueprint document says 3½ hours, so check the time on your booking confirmation.',
@@ -37,16 +41,17 @@ const meta={
   intro:'150 multiple-choice questions in 3 hours (DOH nursing licensing circular, 2024). DOH reports a pass or fail result and does not publish its pass mark.',
   mix:'DOH does not publish how many questions come from each area. To keep practice fair, this studio spreads questions across all four areas using its own mix, shown below. It is not the DOH split.'}
 };
-const POLICY='Original practice material written for this studio. It is not official exam content, is not endorsed by DHP, DHA or DOH, and does not predict your result. No recalled exam questions are used.';
+const POLICY='Original practice material written for this studio. It is not official exam content, is not endorsed by SCFHS, DHP, DHA or DOH, and does not predict your result. No recalled exam questions are used.';
 const editions={};
+const m0=id=>meta[id].profile||id;
 for(const id of Object.keys(meta)){
- const p=PROFILES[id],m=meta[id];
- editions[id]={...m,fullName:p.fullName,regulator:p.regulator,questions:p.questions,minutes:p.minutes,sources:p.sources,domains:p.domains.map(d=>({label:d.label,count:d.count})),facts:p.questions+' questions · '+(p.minutes/60)+' hours',notes:{retake:RETAKE_NOTES[id]},tiles:m.tiles.map(([k,v,s,n])=>({k,v,s,n}))};
+ const p=PROFILES[m0(id)],m=meta[id];
+ editions[id]={...m,fullName:p.fullName,regulator:p.regulator,questions:p.questions,minutes:p.minutes,sources:p.sources,domains:p.domains.map(d=>({label:d.label,count:d.count})),facts:p.questions+' questions · '+(p.minutes/60)+' hours',notes:{retake:RETAKE_NOTES[m0(id)]},tiles:m.tiles.map(([k,v,s,n])=>({k,v,s,n}))};
 }
 const acct=fs.readFileSync(path.join(repo,'site/assets/js/crown-account.js'),'utf8');
 const sbKey=(acct.match(/const KEY = '(sb_publishable_[^']+)'/)||[])[1],sbUrl=(acct.match(/const SUPABASE = '([^']+)'/)||[])[1];
 if(!sbKey||!sbUrl)throw Error('Account sync: publishable key or URL not found in crown-account.js');
-const cfg={order:['qatar','dubai','abudhabi'],editions,policy:POLICY,checked:'23 October 2026',sb:{url:sbUrl,key:sbKey}};
+const cfg={order:['saudi','qatar','dubai','abudhabi'],editions,policy:POLICY,checked:'23 October 2026',sb:{url:sbUrl,key:sbKey}};
 const files={
  pre:fs.readFileSync(path.join(root,'studio/pre.js'),'utf8'),
  data:fs.readFileSync(path.join(root,'studio/data.js'),'utf8'),
@@ -71,8 +76,8 @@ const after=(re,add)=>{const m=html.match(re);if(!m)throw Error('Studio page anc
 after(/<script defer src="\/assets\/prelude\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.pre+'"></script>');
 after(/<script defer src="\/assets\/guidance\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.cfg+'"></script><script defer src="'+urls.data+'"></script>');
 after(/<script defer src="\/assets\/integration\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.ui+'"></script><script defer src="'+urls.sync+'"></script><link rel="stylesheet" href="'+urls.css+'">');
-html=html.replace(/<meta name="description"[^>]*>/,'<meta name="description" content="Gulf Region Exams: independent educational practice for the Qatar, Dubai and Abu Dhabi nursing licensing exams. Not official exam content.">').replace(/<link rel="canonical"[^>]*>/,'<meta name="robots" content="noindex,nofollow">').replace('content="snle"','content="gulf"')
- .replace(/<title>[\s\S]*?<\/title>/,'<title>Gulf Region Exams | Healthcare Crown Academy</title>');
+html=html.replace(/<meta name="description"[^>]*>/,'<meta name="description" content="Gulf Nursing Licensure Studio: independent educational practice for the Saudi, Qatar, Dubai and Abu Dhabi nursing licensing exams. Not official exam content.">').replace(/<link rel="canonical"[^>]*>/,'<meta name="robots" content="noindex,nofollow">').replace('content="snle"','content="gulf"')
+ .replace(/<title>[\s\S]*?<\/title>/,'<title>Gulf Nursing Licensure Studio | Healthcare Crown Academy</title>');
 html=html.replace(/\n\\n\\n\n/g,'\n');
 fs.writeFileSync(ip,html);
 // --- patch the studio app: edition-aware guide, domain weights, mock lengths ---
@@ -117,7 +122,7 @@ let libSwap=null;
    .split('/assets/'+libFile).join('/assets/'+libNew)
    .replace('<script defer src="/assets/'+libNew+'"></script>','<script defer src="/assets/'+libNew+'"></script>'+slides)
    .replace('</head>','<link rel="stylesheet" href="'+urls.css+'"><meta name="robots" content="noindex,nofollow"></head>')
-   .replace(/<title>[^<]*<\/title>/,'<title>'+titles[mode]+' | Gulf Region Exams</title>').replace('Return to SNLE','Return to the study studio');
+   .replace(/<title>[^<]*<\/title>/,'<title>'+titles[mode]+' | Gulf Nursing Licensure Studio</title>').replace('Return to SNLE','Return to the study studio');
   fs.writeFileSync(fp,h);
  }
  libSwap=[libFile,libNew];
@@ -136,7 +141,7 @@ const buildId=sha(Object.values(urls).join('')+app+fs.readdirSync(path.join(out,
 sw=sw.replace(/CACHE='snle-web-[a-f0-9]+'/,"CACHE='gulf-web-"+buildId+"'").replace(/snle-web-/g,'gulf-web-');
 sw=sw.replace('SHELL=[','SHELL=['+[...Object.values(urls),...fontNames.map(f=>'/assets/fonts/'+f)].map(u=>JSON.stringify(u)).join(',')+',"/hub/",').replace(/CACHE='snle-web-/,"CACHE='gulf-web-");
 fs.writeFileSync(swp,sw);
-const mp=path.join(out,'manifest.webmanifest'),mf=JSON.parse(fs.readFileSync(mp,'utf8'));mf.name='Gulf Region Exams';mf.short_name='Gulf Exams';fs.writeFileSync(mp,JSON.stringify(mf,null,2));
+const mp=path.join(out,'manifest.webmanifest'),mf=JSON.parse(fs.readFileSync(mp,'utf8'));mf.name='Gulf Nursing Licensure Studio';mf.short_name='Gulf Nursing';fs.writeFileSync(mp,JSON.stringify(mf,null,2));
 // headers: the studio's own policy plus noindex everywhere (preview)
 let hd=fs.readFileSync(path.join(out,'_headers'),'utf8');
 hd=hd.replace('/*\n','/*\n  X-Robots-Tag: noindex, nofollow\n');

@@ -6,9 +6,9 @@
  function setEdition(id){try{localStorage.setItem('gulf-edition',id);sessionStorage.setItem('gulf-switched','1')}catch(e){}location.href='/#home';location.reload()}
  function chooser(){
   if($('#gulf-chooser'))return;var d=document.createElement('dialog');d.id='gulf-chooser';d.setAttribute('aria-labelledby','gulf-chooser-h');
-  d.innerHTML='<div class="gulf-chooser-in"><span class="gulf-kicker">Healthcare Crown Academy · Gulf Region Exams</span><h1 id="gulf-chooser-h">Which licensing exam are you preparing for?</h1><p>One study studio, set up for each regulator. Switch at any time; each exam keeps its own progress.</p><div class="gulf-cards">'+
+  d.innerHTML='<div class="gulf-chooser-in"><span class="gulf-kicker">Healthcare Crown Academy · Gulf Nursing Licensure Studio</span><h1 id="gulf-chooser-h">Which licensing exam are you preparing for?</h1><p>One study studio, set up for each regulator. Switch at any time; each exam keeps its own progress.</p><div class="gulf-cards">'+
    CFG.order.map(function(id){var c=CFG.editions[id];return '<button type="button" class="gulf-pick" data-pick="'+id+'" data-ed="'+id+'"><span class="gulf-motif" aria-hidden="true"></span><small>'+esc(c.regulatorShort)+' · '+esc(c.theme)+'</small><b>'+esc(c.region)+'</b><span>'+esc(c.fullName)+'</span><em>'+esc(c.facts)+'</em><i aria-hidden="true">Start →</i></button>'}).join('')+
-   '</div><p class="gulf-note"><a href="/hub/">Compare all exams side by side</a> · <a href="https://snle.healthcarecrownacademy.co.uk/">Saudi Arabia (SNLE) has its own free app</a></p></div>';
+   '</div><p class="gulf-note"><a href="/hub/">Compare all exams side by side</a> · Saudi Arabia (SNLE) is free</p></div>';
   d.querySelectorAll('[data-pick]').forEach(function(b){b.onclick=function(){setEdition(b.dataset.pick)}});
   d.addEventListener('cancel',function(e){e.preventDefault()});
   document.body.append(d);try{d.showModal()}catch(e){d.setAttribute('open','')}
@@ -16,20 +16,21 @@
  if(!ed){document.documentElement.setAttribute('data-gulf-choose','');chooser();return}
  var c=CFG.editions[ed];if(!c)return;
  document.title=c.short+' Study Studio | Healthcare Crown Academy';
- var pass={qatar:'DHP publishes a 50% minimum for this exam; whether it is raw, equated or scaled is not confirmed.',dubai:'DHA publishes a 50% threshold and reports pass or fail.',abudhabi:'DOH reports a pass or fail result and sets its cut score internally; no numeric pass mark is published.'}[ed];
+ var pass={saudi:'',qatar:'DHP publishes a 50% minimum for this exam; whether it is raw, equated or scaled is not confirmed.',dubai:'DHA publishes a 50% threshold and reports pass or fail.',abudhabi:'DOH reports a pass or fail result and sets its cut score internally; no numeric pass mark is published.'}[ed];
  var UI=[[/SCFHS reports the licensure result on a 200[–-]800 scale with 500 as the passing score\./g,pass],[/SCFHS reports a scaled score from 200 to 800, with 500 as the pass mark\.[^.]*\./g,pass],
   [/This matches the scheduled midpoint break in the official 200-question SNLE structure\./g,'This is a study reset, not part of the regulator’s exam format.'],
   [/The app separates <b>study recovery<\/b> from the <b>official 200-question exam break<\/b>\./g,'The app separates study recovery from long-exam breaks.'],
   [/For the 200-question SNLE structure in the guide used by this app: [^.]*\./g,'Plan your own breaks; confirm the official break rules with your regulator.'],
   [/official 200-question SNLE structure/g,'regulator’s exam format'],[/ blueprint tutor mock/g,' tutor mock'],[/Train the same blueprint in/g,'Train in'],
   [/HYP ≥ 80 items/g,'high-yield items'],[/canonical tools/g,'study tools'],[/spans the complete four-domain blueprint/g,'spans all four nursing areas'],[/standardized items/g,'practice questions'],
-  [/not endorsed by SCFHS, DHA, DOH or DHP/g,'not endorsed by DHA, DOH or DHP'],[/\bSNLE\b/g,c.short],[/\bSCFHS\b/g,'exam']];
+  [/\bSNLE\b/g,c.short],[/\bSCFHS\b/g,'exam']];
  var HIT=/SNLE|SCFHS|Saudi|Train the same blueprint|blueprint tutor mock|HYP ≥ 80 items|canonical tools|standardized items|four-domain blueprint/;
+ if(ed==='saudi')UI=UI.filter(function(x){return !/SNLE|SCFHS|200/.test(String(x[0]))});
  function ui(s){for(var i=0;i<UI.length;i++)s=s.replace(UI[i][0],UI[i][1]);return s}
  function textSweep(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
   while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-pass,.gulf-plan,.gulf-foot,#gulf-chooser'))continue;if(HIT.test(n.nodeValue))list.push(n)}
-  list.forEach(function(t){t.nodeValue=ui(t.nodeValue.replace(/\bSaudi Arabia\b/g,'your country').replace(/\bSaudi\b/g,'local'))});
+  list.forEach(function(t){t.nodeValue=ed==='saudi'?ui(t.nodeValue):ui(t.nodeValue.replace(/\bSaudi Arabia\b/g,'your country').replace(/\bSaudi\b/g,'local'))});
   if(root.querySelectorAll)root.querySelectorAll('[aria-label],[title]').forEach(function(e){['aria-label','title'].forEach(function(a){var v=e.getAttribute(a);if(v&&/SNLE|SCFHS/.test(v))e.setAttribute(a,ui(v))})});
  }
  function suiteChip(){
@@ -67,7 +68,7 @@
  function footer(){
   var main=$('.main-canvas');if(!main||$('.gulf-foot',main))return;
   var f=document.createElement('footer');f.className='gulf-foot';
-  f.innerHTML='<p title="'+esc(CFG.policy)+'"><b>'+esc(c.short)+' edition</b> · original practice material, not official exam content · not endorsed by DHP, DHA or DOH · details checked '+esc(CFG.checked)+'</p>'+
+  f.innerHTML='<p title="'+esc(CFG.policy)+'"><b>'+esc(c.short)+' edition</b> · original practice material, not official exam content · not endorsed by SCFHS, DHP, DHA or DOH · details checked '+esc(CFG.checked)+'</p>'+
    '<nav aria-label="Footer"><a href="#guide">Exam guide</a><a href="/hub/#'+ed+'">Compare exams</a><button type="button" data-gulf-switch>Switch exam</button><button type="button" data-gulf-top>Back to top ↑</button></nav>';
   f.querySelector('[data-gulf-switch]').onclick=function(){try{localStorage.removeItem('gulf-edition')}catch(e){}location.href='/';};
   f.querySelector('[data-gulf-top]').onclick=toTop;

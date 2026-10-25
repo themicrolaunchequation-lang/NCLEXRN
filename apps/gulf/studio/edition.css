@@ -25,9 +25,11 @@
 :root[data-edition] .gulf-tile strong,:root[data-edition] .count-value,:root[data-edition] [class*="timer"],:root[data-edition] [class*="countdown"]{font-variant-numeric:tabular-nums}
 
 /* Edition identities. Each edition has: --ac (fills; white text passes WCAG AA), --ac-ink (text on light), --ac-soft (tints), --ac-hl (decoration only, never text). */
+:root[data-edition="saudi"]{--ac:#087d72;--ac-ink:#05584f;--ac-soft:#e3f3f0;--ac-hl:#c9a24a;--primary:#087d72;--snle-green:#05584f;--snle-aqua:#a9dcd3;--snle-mint:#e3f3f0;--teal:#087d72;--teal-soft:#e3f3f0;--ring:#087d72;--green:#05584f;--aqua:#a9dcd3;--mint:#e3f3f0;--paper-deep:#eaf4f1;--line:#cfe3de;--hs-jewel:#087d72;--hs-jewel-ink:#05584f;--hs-jewel-dk:#8fd3c6}
 :root[data-edition="qatar"]{--ac:#8a1538;--ac-ink:#5e0e26;--ac-soft:#f7ebef;--ac-hl:#c9a96e;--primary:#8a1538;--snle-green:#5e0e26;--snle-aqua:#e3b3c2;--snle-mint:#f7ebef;--teal:#8a1538;--teal-soft:#f7ebef;--ring:#8a1538;--green:#5e0e26;--aqua:#e3b3c2;--mint:#f7ebef;--paper-deep:#f6ecef;--line:#e8d3da;--hs-jewel:#8a1538;--hs-jewel-ink:#5e0e26;--hs-jewel-dk:#e8a6b9}
 :root[data-edition="dubai"]{--ac:#9a6514;--ac-ink:#6b430a;--ac-soft:#fbf3e4;--ac-hl:#d9a441;--primary:#9a6514;--snle-green:#6b430a;--snle-aqua:#ebcd9a;--snle-mint:#fbf3e4;--teal:#9a6514;--teal-soft:#fbf3e4;--ring:#9a6514;--green:#6b430a;--aqua:#ebcd9a;--mint:#fbf3e4;--paper-deep:#f8f0e2;--line:#ecdcc0;--hs-jewel:#9a6514;--hs-jewel-ink:#6b430a;--hs-jewel-dk:#efc57d}
 :root[data-edition="abudhabi"]{--ac:#1f5f8b;--ac-ink:#164666;--ac-soft:#e7f0f7;--ac-hl:#c8b48a;--primary:#1f5f8b;--snle-green:#164666;--snle-aqua:#b4cde0;--snle-mint:#e7f0f7;--teal:#1f5f8b;--teal-soft:#e7f0f7;--ring:#1f5f8b;--green:#164666;--aqua:#b4cde0;--mint:#e7f0f7;--paper-deep:#e9f0f6;--line:#cbd9e6;--hs-jewel:#1f5f8b;--hs-jewel-ink:#164666;--hs-jewel-dk:#a8c6e6}
+[data-ed="saudi"]{--ac:#087d72;--ac-ink:#05584f;--ac-soft:#e3f3f0;--ac-hl:#c9a24a}
 [data-ed="qatar"]{--ac:#8a1538;--ac-ink:#5e0e26;--ac-soft:#f7ebef;--ac-hl:#c9a96e}
 [data-ed="dubai"]{--ac:#9a6514;--ac-ink:#6b430a;--ac-soft:#fbf3e4;--ac-hl:#d9a441}
 [data-ed="abudhabi"]{--ac:#1f5f8b;--ac-ink:#164666;--ac-soft:#e7f0f7;--ac-hl:#c8b48a}
@@ -35,6 +37,7 @@
 /* Motifs: one quiet pattern per edition, used only on identity surfaces (chooser cards, exam pass, guide hero), never on question screens.
    Qatar: serrated edge (from the flag). Dubai: dune arcs. Abu Dhabi: lattice (mashrabiya). */
 .gulf-motif{display:block;position:absolute;left:0;right:0;top:0;height:10px;pointer-events:none}
+[data-edition="saudi"] .gulf-motif,.gulf-pick[data-ed="saudi"] .gulf-motif{background:conic-gradient(from 45deg,var(--ac-hl) 25%,transparent 0 50%,var(--ac-hl) 0 75%,transparent 0) 0 0/10px 10px;opacity:.85}
 [data-edition="qatar"] .gulf-motif,.gulf-pick[data-ed="qatar"] .gulf-motif{background:conic-gradient(from 135deg at 50% 0,var(--ac) 90deg,transparent 0) 0 0/14px 10px repeat-x}
 [data-edition="dubai"] .gulf-motif,.gulf-pick[data-ed="dubai"] .gulf-motif{height:12px;background:linear-gradient(var(--ac),var(--ac)) 0 0/100% 3px no-repeat,radial-gradient(circle at 50% 100%,transparent 8px,var(--ac-hl) 9px 10.5px,transparent 11.5px) 0 2px/24px 10px repeat-x}
 [data-edition="abudhabi"] .gulf-motif,.gulf-pick[data-ed="abudhabi"] .gulf-motif{height:12px;background:repeating-linear-gradient(45deg,var(--ac) 0 1.5px,transparent 1.5px 8px),repeating-linear-gradient(-45deg,var(--ac) 0 1.5px,transparent 1.5px 8px);opacity:.75}
@@ -43,11 +46,13 @@
 :root[data-edition] [data-color-mode]{display:none!important}
 
 /* Sidebar: each edition gets its own deep tone, active colour and motif strip; layout tightened so every item fits on a laptop screen. */
+:root[data-edition="saudi"]{--side-a:#062d29;--side-b:#0a3f39;--side-glow:rgba(201,162,74,.18)}
 :root[data-edition="qatar"]{--side-a:#2a0914;--side-b:#3d0d1d;--side-glow:rgba(201,169,110,.18)}
 :root[data-edition="dubai"]{--side-a:#21170a;--side-b:#33230f;--side-glow:rgba(217,164,65,.2)}
 :root[data-edition="abudhabi"]{--side-a:#0a1f33;--side-b:#0f2c47;--side-glow:rgba(200,180,138,.16)}
 :root[data-edition] .sidebar{background:radial-gradient(120% 220px at 20% 0,var(--side-glow),transparent 70%),linear-gradient(180deg,var(--side-a),var(--side-b))!important}
 :root[data-edition] .sidebar::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;z-index:3;pointer-events:none}
+:root[data-edition="saudi"] .sidebar::before{background:conic-gradient(from 45deg,var(--ac-hl) 25%,transparent 0 50%,var(--ac-hl) 0 75%,transparent 0) 0 0/6px 6px}
 :root[data-edition="qatar"] .sidebar::before{background:conic-gradient(from 135deg at 50% 0,var(--ac-hl) 90deg,transparent 0) 0 0/12px 6px repeat-x}
 :root[data-edition="dubai"] .sidebar::before{background:radial-gradient(circle at 50% 100%,transparent 5px,var(--ac-hl) 6px 7px,transparent 8px) 0 0/16px 6px repeat-x}
 :root[data-edition="abudhabi"] .sidebar::before{background:repeating-linear-gradient(45deg,var(--ac-hl) 0 1px,transparent 1px 6px),repeating-linear-gradient(-45deg,var(--ac-hl) 0 1px,transparent 1px 6px);opacity:.7}
@@ -226,6 +231,7 @@ body[data-library]{background:color-mix(in srgb,var(--ac-soft) 45%,#f6f7f5);colo
 body[data-library] main{max-width:1080px;padding:28px max(16px,env(safe-area-inset-left,0px)) 64px}
 body[data-library] header{position:relative;overflow:hidden;padding:30px 30px 26px;border:0;border-radius:20px;color:#eef3f8;background:radial-gradient(120% 260px at 15% 0,color-mix(in srgb,var(--ac-hl) 22%,transparent),transparent 70%),linear-gradient(160deg,var(--side-a,#0b1a2b),var(--side-b,#10253a))}
 body[data-library] header::before{content:"";position:absolute;left:0;right:0;top:0;height:10px}
+:root[data-edition="saudi"] body[data-library] header::before{background:conic-gradient(from 45deg,var(--ac-hl) 25%,transparent 0 50%,var(--ac-hl) 0 75%,transparent 0) 0 0/10px 10px}
 :root[data-edition="qatar"] body[data-library] header::before{background:conic-gradient(from 135deg at 50% 0,var(--ac-hl) 90deg,transparent 0) 0 0/14px 10px repeat-x}
 :root[data-edition="dubai"] body[data-library] header::before{background:radial-gradient(circle at 50% 100%,transparent 8px,var(--ac-hl) 9px 10.5px,transparent 11.5px) 0 0/24px 10px repeat-x}
 :root[data-edition="abudhabi"] body[data-library] header::before{background:repeating-linear-gradient(45deg,var(--ac-hl) 0 1.5px,transparent 1.5px 8px),repeating-linear-gradient(-45deg,var(--ac-hl) 0 1.5px,transparent 1.5px 8px);opacity:.8}
@@ -506,3 +512,6 @@ body.gulf-slide-on{overflow:hidden}
 @media (min-width:1100px){:root[data-edition] .tool-grid.compact-grid{grid-template-columns:repeat(auto-fill,minmax(400px,1fr))!important}}
 @media (min-width:1100px){:root[data-edition] .tool-grid.compact-grid{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))!important;gap:10px!important}:root[data-edition] .tool-card.compact{height:112px!important;min-height:0!important;overflow:hidden}:root[data-edition] .tool-card.compact img{height:100%!important;object-fit:cover}}
 @media (min-width:1100px){:root[data-edition] .dossier-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))!important}:root[data-edition] .dossier-card{padding:14px!important;gap:8px!important}:root[data-edition] .dossier-card>p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0!important}}
+
+.gulf-switch{flex-wrap:wrap}.gulf-switch button{flex:1 1 40%;min-height:32px}
+.gulf-cards{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}

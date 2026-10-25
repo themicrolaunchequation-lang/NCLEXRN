@@ -13,6 +13,11 @@ test('edition data layer neutralises Saudi-specific wording and keeps ids',()=>{
  assert.equal(win.SNLE_QUESTIONS[0].stem,'A nurse in your country follows regulator rules for licensing exam practice.');
  assert.equal(win.SNLE_LEARNING.glossary[0].term,'local scope');
 });
+test('Saudi edition keeps original SNLE wording',()=>{
+ const win={GULF_EDITION:'saudi',SNLE_QUESTIONS:[{id:'Q1',stem:'A nurse in Saudi Arabia follows SCFHS rules for SNLE practice.'}],SNLE_POSTERS:[],SNLE_LEARNING:{}};
+ vm.runInNewContext(fs.readFileSync(path.join(ROOT,'studio/data.js'),'utf8'),{window:win,Object});
+ assert.equal(win.SNLE_QUESTIONS[0].stem,'A nurse in Saudi Arabia follows SCFHS rules for SNLE practice.');
+});
 test('studio build output contains edition layers, hub and per-edition palettes',async()=>{
  execFileSync(process.execPath,[path.join(ROOT,'scripts/build.mjs')],{cwd:ROOT,stdio:'ignore'});
  const html=fs.readFileSync(path.join(ROOT,'dist/index.html'),'utf8');
@@ -21,7 +26,7 @@ test('studio build output contains edition layers, hub and per-edition palettes'
  assert(fs.existsSync(path.join(ROOT,'dist/hub/index.html')));
  const css=fs.readdirSync(path.join(ROOT,'dist/assets')).find(f=>/^gulf-css/.test(f));
  const c=fs.readFileSync(path.join(ROOT,'dist/assets',css),'utf8');
- for(const e of ['qatar','dubai','abudhabi'])assert(c.includes('data-edition="'+e+'"'),e);
+ for(const e of ['saudi','qatar','dubai','abudhabi'])assert(c.includes('data-edition="'+e+'"'),e);
  assert(!/<script(?![^>]*\bsrc=)[^>]*>/.test(html),'no inline scripts');
  assert(fs.readFileSync(path.join(ROOT,'dist/_headers'),'utf8').includes('noindex'));
  const labs=path.join(ROOT,'dist/SNLE_Decoder_Interactive_Labs_v3');
