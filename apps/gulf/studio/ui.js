@@ -29,7 +29,7 @@
  function ui(s){for(var i=0;i<UI.length;i++)s=s.replace(UI[i][0],UI[i][1]);return s}
  function textSweep(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
-  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-pass,.gulf-plan,.gulf-foot,#gulf-chooser'))continue;if(HIT.test(n.nodeValue))list.push(n)}
+  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-pass,.gulf-plan,.gulf-foot,.gulf-switch,#gulf-chooser'))continue;if(HIT.test(n.nodeValue))list.push(n)}
   list.forEach(function(t){t.nodeValue=ed==='saudi'?ui(t.nodeValue):ui(t.nodeValue.replace(/\bSaudi Arabia\b/g,'your country').replace(/\bSaudi\b/g,'local'))});
   if(root.querySelectorAll)root.querySelectorAll('[aria-label],[title]').forEach(function(e){['aria-label','title'].forEach(function(a){var v=e.getAttribute(a);if(v&&/SNLE|SCFHS/.test(v))e.setAttribute(a,ui(v))})});
  }

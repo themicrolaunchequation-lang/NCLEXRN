@@ -9,6 +9,17 @@
  if(ed!=='saudi'){['SNLE_POSTERS','SNLE_QUESTIONS','SNLE_LEARNING'].forEach(function(n){try{walk(window[n],0)}catch(e){}});
  var held;try{Object.defineProperty(window,'SNLE_DOSSIERS',{configurable:true,get:function(){return held},set:function(v){try{walk(v,0)}catch(e){}held=v}})}catch(e){}}
  window.GULF_FIX=fix;
+ // Each edition gets its own stable question order in the libraries, so the four studios never open on the same items.
+ // Saudi keeps the original order. Seeded, so a learner sees the same order every visit.
+ function seeded(arr,seed){var h=2166136261;for(var i=0;i<seed.length;i++){h^=seed.charCodeAt(i);h=Math.imul(h,16777619)}
+  function rnd(){h^=h<<13;h^=h>>>17;h^=h<<5;return((h>>>0)%1e6)/1e6}
+  for(var j=arr.length-1;j>0;j--){var k=Math.floor(rnd()*(j+1)),t=arr[j];arr[j]=arr[k];arr[k]=t}return arr}
+ var onLib=typeof document!=='undefined'&&document.body&&document.body.dataset&&document.body.dataset.library;
+ if(onLib&&ed!=='saudi'){
+  if(Array.isArray(window.SNLE_QUESTIONS))seeded(window.SNLE_QUESTIONS,'gulf-'+ed+'-q');
+  var dHeld=window.SNLE_DOSSIERS,desc=Object.getOwnPropertyDescriptor(window,'SNLE_DOSSIERS');
+  try{Object.defineProperty(window,'SNLE_DOSSIERS',{configurable:true,get:function(){return dHeld},set:function(v){if(desc&&desc.set){desc.set(v);v=desc.get()}if(Array.isArray(v)){seeded(v,'gulf-'+ed+'-d');v.forEach(function(d){if(Array.isArray(d.qs))seeded(d.qs,'gulf-'+ed+'-'+d.id)})}dHeld=v}})}catch(e){}
+ }
  // Edition-aware guide, domain weights and mock lengths (the shared SNLE originals describe the Saudi exam).
  var CFG=window.GULF_CONFIG||{},E=(CFG.editions||{})[ed];
  if(E){
