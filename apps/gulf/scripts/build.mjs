@@ -43,13 +43,17 @@ for(const id of Object.keys(meta)){
  const p=PROFILES[id],m=meta[id];
  editions[id]={...m,fullName:p.fullName,regulator:p.regulator,questions:p.questions,minutes:p.minutes,sources:p.sources,domains:p.domains.map(d=>({label:d.label,count:d.count})),facts:p.questions+' questions · '+(p.minutes/60)+' hours',notes:{retake:RETAKE_NOTES[id]},tiles:m.tiles.map(([k,v,s,n])=>({k,v,s,n}))};
 }
-const cfg={order:['qatar','dubai','abudhabi'],editions,policy:POLICY,checked:'23 October 2026'};
+const acct=fs.readFileSync(path.join(repo,'site/assets/js/crown-account.js'),'utf8');
+const sbKey=(acct.match(/const KEY = '(sb_publishable_[^']+)'/)||[])[1],sbUrl=(acct.match(/const SUPABASE = '([^']+)'/)||[])[1];
+if(!sbKey||!sbUrl)throw Error('Account sync: publishable key or URL not found in crown-account.js');
+const cfg={order:['qatar','dubai','abudhabi'],editions,policy:POLICY,checked:'23 October 2026',sb:{url:sbUrl,key:sbKey}};
 const files={
  pre:fs.readFileSync(path.join(root,'studio/pre.js'),'utf8'),
  data:fs.readFileSync(path.join(root,'studio/data.js'),'utf8'),
  cfg:'window.GULF_CONFIG='+JSON.stringify(cfg)+';',
  ui:fs.readFileSync(path.join(root,'studio/ui.js'),'utf8'),
  slides:fs.readFileSync(path.join(root,'studio/slides.js'),'utf8'),
+ sync:fs.readFileSync(path.join(root,'studio/sync.js'),'utf8'),
  css:fs.readFileSync(path.join(root,'studio/edition.css'),'utf8')
 };
 // self-hosted fonts (SIL OFL; the CSP blocks font services)
@@ -57,7 +61,7 @@ const fontSrc=path.join(root,'studio/fonts'),fontNames=fs.readdirSync(fontSrc).f
 fs.mkdirSync(path.join(out,'assets/fonts'),{recursive:true});
 for(const f of fs.readdirSync(fontSrc))fs.copyFileSync(path.join(fontSrc,f),path.join(out,'assets/fonts',f));
 const urls={};
-for(const [k,ext] of [['pre','js'],['data','js'],['cfg','js'],['ui','js'],['slides','js'],['css','css']]){
+for(const [k,ext] of [['pre','js'],['data','js'],['cfg','js'],['ui','js'],['slides','js'],['sync','js'],['css','css']]){
  const name='/assets/gulf-'+k+'.'+sha(files[k])+'.'+ext;urls[k]=name;
  fs.writeFileSync(path.join(out,name.slice(1)),files[k]);
 }
@@ -66,7 +70,7 @@ const ip=path.join(out,'index.html');let html=fs.readFileSync(ip,'utf8');
 const after=(re,add)=>{const m=html.match(re);if(!m)throw Error('Studio page anchor missing: '+re);html=html.replace(m[0],m[0]+add)};
 after(/<script defer src="\/assets\/prelude\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.pre+'"></script>');
 after(/<script defer src="\/assets\/guidance\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.cfg+'"></script><script defer src="'+urls.data+'"></script>');
-after(/<script defer src="\/assets\/integration\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.ui+'"></script><link rel="stylesheet" href="'+urls.css+'">');
+after(/<script defer src="\/assets\/integration\.[a-f0-9]+\.js"><\/script>/,'<script defer src="'+urls.ui+'"></script><script defer src="'+urls.sync+'"></script><link rel="stylesheet" href="'+urls.css+'">');
 html=html.replace(/<meta name="description"[^>]*>/,'<meta name="description" content="Gulf Region Exams: independent educational practice for the Qatar, Dubai and Abu Dhabi nursing licensing exams. Not official exam content.">').replace(/<link rel="canonical"[^>]*>/,'<meta name="robots" content="noindex,nofollow">').replace('content="snle"','content="gulf"')
  .replace(/<title>[\s\S]*?<\/title>/,'<title>Gulf Region Exams | Healthcare Crown Academy</title>');
 html=html.replace(/\n\\n\\n\n/g,'\n');
@@ -106,7 +110,8 @@ let libSwap=null;
   const fp=path.join(out,f);let h=fs.readFileSync(fp,'utf8');const mode=(h.match(/data-library="([a-z]+)"/)||[])[1];if(!mode)continue;
   const dataTag=(h.match(/<script defer src="\/assets\/(?:data|dossiers)\.[a-f0-9]+\.js"><\/script>/)||[])[0];if(!dataTag)throw Error('Library page data script missing: '+f);
   const pre='<script defer src="'+urls.pre+'"></script>',layer='<script defer src="'+urls.cfg+'"></script><script defer src="'+urls.data+'"></script>';
-  const slides='<script defer src="'+urls.slides+'"></script>';
+  const acctFile=fs.readdirSync(path.join(out,'assets')).find(f=>/^crown-account\.[a-f0-9]+\.js$/.test(f));
+  const slides='<script defer src="'+urls.slides+'"></script>'+(acctFile?'<script defer src="/assets/'+acctFile+'"></script>':'')+'<script defer src="'+urls.sync+'"></script>';
   // dossiers: the wording layer must be in place before the dossier file assigns its data; others: after the shared data
   h=h.replace(dataTag,mode==='dossiers'?pre+layer+dataTag:pre+dataTag+layer)
    .split('/assets/'+libFile).join('/assets/'+libNew)
