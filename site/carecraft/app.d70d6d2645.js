@@ -62,6 +62,7 @@ const CC_REGIONS={"accountability":{"1":{"size":[1000,1813],"header":[0,0,1,0.16
     { id: 'carecraft', name: 'Carecraft', url: 'https://carecraft.healthcarecrownacademy.co.uk/', c: '#0F8A86' },
     { id: 'serein', name: 'Serein', url: 'https://serein.healthcarecrownacademy.co.uk/', c: '#5FB89E' },
     { id: 'lumen', name: 'Lumen', url: 'https://lumen.healthcarecrownacademy.co.uk/', c: '#8B6CF0' },
+    { id: 'snle', name: 'SNLE', mark: 'N', url: 'https://snle.healthcarecrownacademy.co.uk/', c: '#347A9A' },
     { id: 'evinca', name: 'Evinca', url: 'https://evinca.healthcarecrownacademy.co.uk/en', c: '#D4A445' }
   ];
 
@@ -153,7 +154,7 @@ const CC_REGIONS={"accountability":{"1":{"size":[1000,1813],"header":[0,0,1,0.16
     let foot = $('.hs-foot', side);
     if (foot) return;
     foot = d.createElement('div'); foot.className = 'hs-foot';
-    foot.innerHTML = `<div class="hs-apps"><span class="hs-apps-label">Crown apps</span><div class="hs-apps-row" role="list">${APPS.map(a => `<a role="listitem" class="hs-app" href="${a.url}" style="--c:${a.c}" data-tip="${a.name}" aria-label="${a.name}"${a.id === cfg.app ? ' aria-current="true"' : ''}>${a.name[0]}</a>`).join('')}</div></div><div class="hs-acct-slot"><div data-crown-account></div></div>`;
+    foot.innerHTML = `<div class="hs-apps"><span class="hs-apps-label">Crown apps</span><div class="hs-apps-row" role="list">${APPS.map(a => `<a role="listitem" class="hs-app" href="${a.url}" style="--c:${a.c}" data-tip="${a.name}" aria-label="${a.name}"${a.id === cfg.app ? ' aria-current="true"' : ''}>${a.mark || a.name[0]}</a>`).join('')}</div></div><div class="hs-acct-slot"><div data-crown-account></div></div>`;
     side.append(foot);
   }
 
@@ -281,14 +282,14 @@ const CC_REGIONS={"accountability":{"1":{"size":[1000,1813],"header":[0,0,1,0.16
 
 
   /* Daily Crown: one short step in each app, one shared streak (HCA.daily, a first-party cookie). Serein shows no streak. */
-  const DC = { medlex: ['One word', 'Decode a word', 'https://medlex.healthcarecrownacademy.co.uk/#today'], carecraft: ['One scenario', 'Make a call', 'https://carecraft.healthcarecrownacademy.co.uk/#today'], serein: ['One breath', 'Pause for a minute', 'https://serein.healthcarecrownacademy.co.uk/#today'], lumen: ['Cards due', 'Review recall cards', 'https://lumen.healthcarecrownacademy.co.uk/#today'] };
+  const DC = { medlex: ['One word', 'Decode a word', 'https://medlex.healthcarecrownacademy.co.uk/#today'], carecraft: ['One scenario', 'Make a call', 'https://carecraft.healthcarecrownacademy.co.uk/#today'], serein: ['One breath', 'Pause for a minute', 'https://serein.healthcarecrownacademy.co.uk/#today'], lumen: ['Cards due', 'Review recall cards', 'https://lumen.healthcarecrownacademy.co.uk/#today'], snle: ['One decision', 'Explain a clinical decision', 'https://snle.healthcarecrownacademy.co.uk/#home'] };
   function dailyCard(app) {
     const D = global.HCA && global.HCA.daily && global.HCA.daily.get(); if (!D) return null;
     const calm = app === 'serein', n = D.a.length, c = h('section', { class: 'hs-card hs-daily hs-c12 is-static', 'aria-labelledby': 'dc-h' });
-    const head = n >= D.total ? 'All four done today. Lovely.' : n ? `${n} of ${D.total} done today` : 'Your Daily Crown';
+    const head = n >= D.total ? 'All ' + D.total + ' done today. Lovely.' : n ? `${n} of ${D.total} done today` : 'Your Daily Crown';
     const note = calm ? 'No streak to keep. Take what fits today.' : D.s > 0 ? `${D.s}-day streak${D.best > D.s ? ` · best ${D.best}` : ''}` : 'One small step starts a streak';
     c.innerHTML = `<div class="dc-top"><div><p class="hs-eyebrow">Daily Crown · about 5 minutes</p><h2 id="dc-h">${esc(head)}</h2></div><p class="dc-streak">${calm ? '' : icon('crown')}<span>${esc(note)}</span></p></div>`
-      + `<ol class="dc-list">${D.apps.map(a => { const x = DC[a], on = D.a.includes(a), here = a === app, href = here ? '#today' : x[2];
+      + `<ol class="dc-list">${D.apps.map(a => { const x = DC[a], on = D.a.includes(a), here = a === app, href = here ? (a === 'snle' ? '#home' : '#today') : x[2];
         return `<li class="${on ? 'is-done' : ''}"><a class="dc-item jewel-${a}" href="${href}"><span class="dc-mark" aria-hidden="true">${on ? icon('check') : ''}</span><span class="dc-t"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></span><span class="dc-s">${on ? 'Done' : here ? 'Here' : 'Open'}${on ? '' : ''}</span></a></li>`; }).join('')}</ol>`;
     return c;
   }

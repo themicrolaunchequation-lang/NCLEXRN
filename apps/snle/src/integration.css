@@ -1,0 +1,52 @@
+body[data-hs-app=snle]{--hs-jewel:#347A9A;--hs-jewel-ink:#1D5C79;--hs-jewel-dk:#94D5F0}
+body.hs .sidebar .sidebar-section-label,body.hs .sidebar-collapse{display:none}
+body.hs .hs-brand .hs-crest{background:url('/assets/crest.svg') center/contain no-repeat}
+body.hs .topbar{position:sticky;top:0;height:64px;padding:0 24px;min-width:0}
+body.hs .topbar-actions:empty{display:none}
+body.hs .main-canvas{margin-right:0;min-width:0}
+body.hs .sidebar-author{padding:16px 20px;color:#b7c9d9;font-size:11px}
+.snle-academy-link{display:block;margin-top:8px;color:#E8C170}
+body.hs.hs-rail .nav-label{display:none}
+body.hs .hs-nav .nav-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.snle-mobile-tabs{display:none}
+.decision-pulse-card .text-button{color:#d7f2ec!important}
+.catalog-meta{color:#506660!important}
+.snle-skip{position:fixed;left:12px;top:-100px;z-index:10000;background:white;color:#10253a;padding:12px}
+.snle-skip:focus{top:12px}
+.snle-case-journey{margin-top:22px;padding:24px;border:1px solid #b9ccc8;border-radius:18px;background:#f7faf9;color:#183d44}
+.snle-case-journey h3{font-size:24px}.snle-case-journey p{font-size:15px;line-height:1.65}
+.snle-learning-context{padding:12px;border-left:3px solid #ae873c;background:#fff7e3}
+.snle-current-note,.snle-exam-transfer{padding:18px;margin:16px 0;border-radius:12px;background:#e8f2f3}
+.snle-guided-case h4{font-size:21px;line-height:1.5}
+.snle-guided-case [role=group]{display:grid;gap:10px;margin:18px 0}
+.snle-guided-case [data-guidance-answer]{width:100%;padding:15px 18px;text-align:left;border:1px solid #a8c0c1;background:white;color:#183d44;border-radius:10px;line-height:1.6}
+.snle-guided-case [aria-pressed=true]{border:2px solid #176075;background:#e0f0f4}
+.snle-case-feedback{margin-top:20px;padding:20px;background:#edf4ec;border:1px solid #adc2aa;border-radius:12px}
+.snle-case-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:18px}
+#snle-help{max-width:720px;width:calc(100% - 32px);max-height:85dvh;overflow:auto;border:1px solid #b9c3ce;border-radius:18px;padding:28px;color:#183344;background:#faf8f2;font:16px/1.65 system-ui}
+#snle-help::backdrop{background:#091e37a6}
+#snle-help button{padding:10px 16px;margin:6px;border:1px solid #aab9c7;border-radius:10px;background:white;color:#183344}
+#snle-help [data-snle-help-close]{float:right}
+.snle-import{display:block;margin:16px 0}
+#snle-storage-status{position:fixed;z-index:20000;bottom:16px;left:16px;right:16px;padding:18px;background:#fff1dc;color:#593a12;border:1px solid #a7792a;border-radius:12px}
+@media(min-width:1024px){body.hs .main-canvas{margin-left:var(--hs-side)!important;width:calc(100% - var(--hs-side))!important}}
+@media(max-width:1023px){
+ body.hs .main-canvas{margin:0!important;width:100%!important;padding-bottom:74px}
+ body.hs .sidebar{position:fixed!important;inset:0 auto 0 0!important;width:min(320px,88vw)!important;height:100dvh;display:flex;flex-direction:column;overflow-y:auto;transform:translateX(-110%);z-index:1000;padding:0}
+ body.hs .sidebar nav{position:static;inset:auto;width:auto;height:auto;display:flex;flex-direction:column;overflow:visible;z-index:auto}
+ body.hs.hs-drawer .sidebar{transform:none;z-index:1000}
+ body.hs .snle-mobile-tabs{display:flex;position:fixed;bottom:0;inset-inline:0;z-index:45;background:#f8f5ef;border-top:1px solid #ded9ce;padding:8px 4px calc(8px + env(safe-area-inset-bottom));justify-content:space-around;min-height:62px}
+ body.hs .snle-mobile-tabs button{font-size:12px;min-width:44px;min-height:44px;border:0;background:none;color:#25485d;border-radius:9px}
+ body.hs .snle-mobile-tabs [aria-current=page]{background:#ddebf1;font-weight:700}
+ body.hs .hs-mbrand{max-width:112px}
+ body.hs .hs-top .hs-right{gap:5px}
+ body.hs .hs-top .page-edit-trigger b,body.hs .hs-top .color-mode-button>span:last-child{display:none}
+ .snle-case-journey{padding:16px}
+}
+@media(max-width:500px){body.hs .hs-mbrand .hs-crest{display:none}body.hs .hs-mbrand{font-size:16px}body.hs .topbar{padding:0 8px}body.hs .hs-top .arabic-assist-toggle{padding:6px;font-size:11px}.snle-case-journey h3{font-size:21px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* Clinical release gate: conspicuous on home and clinical popups in both palettes. */
+.snle-review-notice{display:block!important;position:relative;z-index:2;margin:12px 0 20px;padding:12px 16px;border:2px solid #8f5a21;border-radius:10px;background:#fff1d2;color:#4b2a0d;font:700 15px/1.45 system-ui,sans-serif;letter-spacing:.01em}
+[data-snle-release-hidden="1"]{display:none!important}

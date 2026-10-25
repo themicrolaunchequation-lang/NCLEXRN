@@ -13,6 +13,10 @@ const hash = s => crypto.createHash('sha256').update(s).digest('hex').slice(0, 1
 const write = (rel, data) => { const p = path.join(OUT, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, data); };
 const copy = (from, rel) => write(rel, fs.readFileSync(from));
 
+// A suite-navigation rebuild must retain the published offline edition when
+// the optional portable build input is absent in the checkout.
+const retainedDownloadPath = path.join(OUT, 'download', 'Carecraft-v' + VERSION + '.html');
+const retainedDownload = fs.existsSync(retainedDownloadPath) ? fs.readFileSync(retainedDownloadPath) : null;
 fs.rmSync(OUT, { recursive: true, force: true });
 
 // Images: lesson art, crest and the infographic pages are plain files.
@@ -48,6 +52,7 @@ write(jsName, scripts);
 
 const portable = `dist/Carecraft-v${VERSION}.html`;
 if (fs.existsSync(portable)) copy(portable, `download/Carecraft-v${VERSION}.html`);
+else if (retainedDownload) write(`download/Carecraft-v${VERSION}.html`, retainedDownload);
 else console.warn('Run node build.mjs first to publish the offline edition.');
 
 for (const f of ['icon-192.png', 'icon-512.png', 'maskable-512.png', 'apple-touch-icon.png', 'og-image.png']) if (fs.existsSync('web/' + f)) copy('web/' + f, 'img/' + f);

@@ -664,3 +664,14 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 .also-note b{color:var(--text)}
 .dock-title.dock-also{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
 .mm-title.mm-also{margin-top:6px}
+
+/* SNLE joins the suite without changing existing paid plans. */
+.jewel-snle{--jc:#347A9A;--jt:#1D5C79}.jewel-snle .app-chip{background:#1D5C79}.t-snle{color:#94D5F0}
+.interest-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+.crown-six .crown-tile:nth-child(1){--w:22%;--x:-43%;--t:60px;--z:-220px;--a:24deg;z-index:1}
+.crown-six .crown-tile:nth-child(2){--w:27%;--x:-28%;--t:28px;--z:-100px;--a:14deg;z-index:2}
+.crown-six .crown-tile:nth-child(3){--w:34%;--x:-10%;--t:0px;--z:0px;--a:4deg;z-index:3}
+.crown-six .crown-tile:nth-child(4){--w:34%;--x:12%;--t:0px;--z:0px;--a:-4deg;z-index:4}
+.crown-six .crown-tile:nth-child(5){--w:27%;--x:29%;--t:28px;--z:-100px;--a:-14deg;z-index:2}
+.crown-six .crown-tile:nth-child(6){--w:22%;--x:43%;--t:60px;--z:-220px;--a:-24deg;z-index:1}
+@media(max-width:640px){.interest-list{grid-template-columns:repeat(2,minmax(0,1fr))}.crown-six .crown-tile:nth-child(6) .tile-label{display:none}.crown-six .crown-tile:nth-child(1),.crown-six .crown-tile:nth-child(6){--t:40px;--z:-120px}.crown-six .crown-tile:nth-child(2),.crown-six .crown-tile:nth-child(5){--t:20px;--z:-60px}.crown-six .crown-tile:nth-child(4) .tile-label{display:inline-flex}}

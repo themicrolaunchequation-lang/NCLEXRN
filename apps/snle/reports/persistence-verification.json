@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "poster pen marks persist",
+    "poster teaching note persists",
+    "poster annotations restore after refresh",
+    "keyboard focus stays inside tool dialog",
+    "Escape closes tool dialog",
+    "reviewed backup import restores only SNLE records",
+    "learning information reopens after closing",
+    "learning remains available with browser storage blocked",
+    "app, questions and viewed poster work offline",
+    "persistence and offline journeys have no runtime exceptions"
+  ],
+  "errors": []
+}
