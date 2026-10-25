@@ -149,6 +149,7 @@
     link('Carecraft', 'https://carecraft.healthcarecrownacademy.co.uk/');
     link('Serein', 'https://serein.healthcarecrownacademy.co.uk/');
     link('Lumen', 'https://lumen.healthcarecrownacademy.co.uk/');
+    link('SNLE', 'https://snle.healthcarecrownacademy.co.uk/');
     link('Evinca', 'https://evinca.healthcarecrownacademy.co.uk/en');
     if (e.admin) link('Crown admin', `${ACCOUNT}/account/admin`, 'gold');
     const out = document.createElement('button');
@@ -226,7 +227,7 @@
   // Daily Crown: one first-party cookie shared by the four apps and the home page. Nothing leaves the browser.
   // {d: 'YYYY-MM-DD' (last active day), a: apps done that day, s: streak in days, best}. The streak counts a day once anything is done.
   const DAILY = (() => {
-    const KEY = 'hca-daily', APPS = ['medlex', 'carecraft', 'serein', 'lumen'];
+    const KEY = 'hca-daily', APPS = ['medlex', 'carecraft', 'serein', 'lumen', 'snle'];
     const pad = (n) => String(n).padStart(2, '0');
     const key = (t) => t.getFullYear() + '-' + pad(t.getMonth() + 1) + '-' + pad(t.getDate());
     const today = () => key(new Date());
@@ -286,9 +287,9 @@
   function dailyHome() {
     const el = document.querySelector('[data-daily-home]'); if (!el) return;
     const D = DAILY.get(); if (!D.a.length && !D.s) return;
-    const N = { medlex: 'MedLex · one word', carecraft: 'Carecraft · one scenario', serein: 'Serein · one breath', lumen: 'Lumen · cards due' };
-    const U = { medlex: 'https://medlex.healthcarecrownacademy.co.uk/#today', carecraft: 'https://carecraft.healthcarecrownacademy.co.uk/#today', serein: 'https://serein.healthcarecrownacademy.co.uk/#today', lumen: 'https://lumen.healthcarecrownacademy.co.uk/#today' };
-    el.querySelector('[data-daily-title]').textContent = D.a.length >= D.total ? 'All four done today. Lovely.' : D.a.length + ' of ' + D.total + ' done today';
+    const N = { medlex: 'MedLex · one word', carecraft: 'Carecraft · one scenario', serein: 'Serein · one breath', lumen: 'Lumen · cards due', snle: 'SNLE · one clinical decision' };
+    const U = { medlex: 'https://medlex.healthcarecrownacademy.co.uk/#today', carecraft: 'https://carecraft.healthcarecrownacademy.co.uk/#today', serein: 'https://serein.healthcarecrownacademy.co.uk/#today', lumen: 'https://lumen.healthcarecrownacademy.co.uk/#today', snle: 'https://snle.healthcarecrownacademy.co.uk/#home' };
+    el.querySelector('[data-daily-title]').textContent = D.a.length >= D.total ? 'All ' + D.total + ' done today. Lovely.' : D.a.length + ' of ' + D.total + ' done today';
     el.querySelector('[data-daily-line]').textContent = D.s > 0 ? D.s + '-day streak' + (D.best > D.s ? ' · best ' + D.best : '') : 'One small step starts a streak.';
     const ul = el.querySelector('[data-daily-list]'); ul.textContent = '';
     D.apps.forEach((a) => { const li = document.createElement('li'), x = document.createElement('a'); li.className = D.a.includes(a) ? 'is-done' : ''; x.href = U[a]; x.textContent = N[a] + (D.a.includes(a) ? ' ✓' : ''); li.append(x); ul.append(li); });
