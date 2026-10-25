@@ -46,7 +46,7 @@
  function ui(s){for(var i=0;i<UI.length;i++)s=s.replace(UI[i][0],UI[i][1]);return s}
  function textSweep(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
-  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-today,.gulf-spaces,.gulf-foot,.gulf-switch,#gulf-landing'))continue;if(HIT.test(n.nodeValue))list.push(n)}
+  while((n=w.nextNode())){var p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')continue;if(n.parentNode.closest&&n.parentNode.closest('.gulf-today,.gulf-spaces,.gulf-foot,.gulf-switch,.gulf-guide-side,.gulf-guide-note,#gulf-landing'))continue;if(HIT.test(n.nodeValue))list.push(n)}
   list.forEach(function(t){t.nodeValue=ed==='saudi'?ui(t.nodeValue):ui(t.nodeValue.replace(/\bSaudi Arabia\b/g,'your country').replace(/\bSaudi\b/g,'local'))});
   if(root.querySelectorAll)root.querySelectorAll('[aria-label],[title]').forEach(function(e){['aria-label','title'].forEach(function(a){var v=e.getAttribute(a);if(v&&/SNLE|SCFHS/.test(v))e.setAttribute(a,ui(v))})});
  }
@@ -134,7 +134,9 @@
   else if(k==='f'){var f=$('.main-canvas .flag-button');if(f){f.click();e.preventDefault()}}
  });
  function homeLinks(){if(innerWidth<1100)return;var r=$('.home-view .home-intro-row'),a=$('.home-view .hero-actions');if(r&&a&&r.parentElement!==a){r.classList.add('gulf-inline-links');a.append(r)}}
- function tick(){switcher();groups();suiteChip();today();footer();keysHint();textSweep(document.body);onScroll()}
+ function counts(){var n=(window.SNLE_QUESTIONS||[]).length;if(!n||n===1350)return;var f=n.toLocaleString('en-GB');
+  document.querySelectorAll('.practice-heading,.bank-seal,.mock-command-center').forEach(function(r){var w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT,null),t;while((t=w.nextNode())){if(t.nodeValue.indexOf('1,350')>-1)t.nodeValue=t.nodeValue.split('1,350').join(f)}})}
+ function tick(){counts();switcher();groups();suiteChip();today();footer();keysHint();textSweep(document.body);onScroll()}
  var t=null;new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=null;tick()},60)}).observe(document.body,{childList:true,subtree:true,characterData:true});
  addEventListener('hashchange',tick);tick();
 })();

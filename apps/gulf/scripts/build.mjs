@@ -143,18 +143,22 @@ let libSwap=null;
 const labsDir=path.join(out,'SNLE_Decoder_Interactive_Labs_v3');
 if(fs.existsSync(labsDir))for(const f of fs.readdirSync(labsDir).filter(n=>/\.(html|js)$/.test(n))){
  const fp=path.join(labsDir,f);let t=fs.readFileSync(fp,'utf8');
- t=t.replace(/Saudi Nursing Licensure Examination/g,'the regulator\u2019s nursing licensing examination').replace(/\bSNLE\b/g,'Exam').replace(/\bSaudi\b/g,'local');
+ t=t.replace(/Saudi Nursing Licensure Examination/g,'the regulator\u2019s nursing licensing examination').replace(/\bSNLE(?= [A-Z]{2,})/g,'EXAM').replace(/\bSNLE\b/g,'Exam').replace(/\bSaudi\b/g,'local');
  fs.writeFileSync(fp,t);
 }
 // --- Interactive Labs posters: neutral artwork by default; the Saudi edition swaps to the original (content/posters) ---
 {const pd=path.join(root,'content/posters');
  if(fs.existsSync(labsDir)&&fs.existsSync(pd)){
   const dest=path.join(labsDir,'posters');for(const v of ['neutral','saudi']){fs.mkdirSync(path.join(dest,v),{recursive:true});for(const f of fs.readdirSync(path.join(pd,v)))fs.copyFileSync(path.join(pd,v,f),path.join(dest,v,f))}
-  fs.writeFileSync(path.join(labsDir,'labs-edition.js'),"(function(){var e;try{e=localStorage.getItem('gulf-edition')}catch(x){}if(e!=='saudi')return;document.querySelectorAll('img[data-saudi]').forEach(function(i){i.src=i.getAttribute('data-saudi')})})();");
+  fs.writeFileSync(path.join(labsDir,'labs-edition.js'),"(function(){var e;try{e=localStorage.getItem('gulf-edition')}catch(x){}if(e)document.documentElement.setAttribute('data-edition',e);if(e!=='saudi')return;document.querySelectorAll('img[data-saudi]').forEach(function(i){i.src=i.getAttribute('data-saudi')})})();");
+  // Edition colours for the labs (they use a small set of CSS variables)
+  const pal={saudi:['#062d29','#087d72','#05584f','#e3f3f0','#c9a24a'],qatar:['#3d0d1d','#8a1538','#5e0e26','#f7ebef','#c9a96e'],dubai:['#33230f','#9a6514','#6b430a','#fbf3e4','#d9a441'],abudhabi:['#0f2c47','#1f5f8b','#164666','#e7f0f7','#c8b48a']};
+  fs.writeFileSync(path.join(labsDir,'labs-edition.css'),Object.entries(pal).map(([e,[navy,ac,ink,soft,hl]])=>`:root[data-edition="${e}"]{--navy:${navy};--teal:${ac};--teal-d:${ink};--teal-lt:${soft};--mark:${hl};--mark-soft:${soft};--mark-line:${hl};--paper:${soft}}`).join('\n')+'\n.cards{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))!important}\n:root[data-edition] .wrap{max-width:none!important}:root[data-edition] .hero{background:radial-gradient(70% 140% at 100% 0,rgba(255,255,255,.08),transparent 60%),linear-gradient(150deg,var(--navy),color-mix(in srgb,var(--navy) 70%,var(--teal)))!important}:root[data-edition] .hero::before,:root[data-edition] .hero::after{opacity:.12!important}\n');
+  {const ip=path.join(labsDir,'SNLE_Decoder_Lab_Index.html');let h=fs.readFileSync(ip,'utf8');h=h.replace('</head>','<script src="labs-edition.js"></script><link rel="stylesheet" href="labs-edition.css"></head>');fs.writeFileSync(ip,h)}
   let n=0;for(const f of fs.readdirSync(labsDir).filter(x=>/^SNLE_Decoder_0\d_.*\.html$/.test(x))){
    const num=f.match(/^SNLE_Decoder_(\d\d)_/)[1],fp=path.join(labsDir,f);let h=fs.readFileSync(fp,'utf8');
    const re=/src="data:image\/[a-z]+;base64,[A-Za-z0-9+\/=]+"/;if(!re.test(h))throw Error('Lab poster image not found: '+f);
-   h=h.replace(re,'src="posters/neutral/lab-'+num+'.webp" data-saudi="posters/saudi/lab-'+num+'.webp"').replace('</body>','<script defer src="labs-edition.js"></script></body>');
+   h=h.replace(re,'src="posters/neutral/lab-'+num+'.webp" data-saudi="posters/saudi/lab-'+num+'.webp"').replace('</head>','<link rel="stylesheet" href="labs-edition.css"></head>').replace('</body>','<script defer src="labs-edition.js"></script></body>');
    fs.writeFileSync(fp,h);n++;
   }
   if(n!==9)throw Error('Expected 9 lab posters, replaced '+n);
