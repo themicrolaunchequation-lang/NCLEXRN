@@ -93,6 +93,10 @@ rep('<span class="eyebrow">BLUEPRINT · 20 / 40 / 30 / 10</span>','<span class="
 rep('<p>20% Nursing Fundamentals · 40% Adult Nursing · 30% Maternal–Child Nursing · 10% Management & Leadership.</p>','<p>${window.GULF_BP_TEXT||\'20% Nursing Fundamentals · 40% Adult Nursing · 30% Maternal–Child Nursing · 10% Management & Leadership.\'}</p>','mock blueprint text');
 rep("colorMode:snleStorage.getItem('snle-color-mode')||'green'","colorMode:window.GULF_EDITION?'green':(snleStorage.getItem('snle-color-mode')||'green')",'edition colour mode');
 rep("catalogView:snleStorage.getItem('snle-catalog-view')||'cards'","catalogView:snleStorage.getItem('snle-catalog-view')||(window.GULF_EDITION?'compact':'cards')",'compact tools default');
+rep(".sort((a,b)=>Number(b.meanHyp||0)-Number(a.meanHyp||0)||a.title.localeCompare(b.title))",".sort((a,b)=>window.GULF_ORDER?window.GULF_ORDER(a.meanHyp,b.meanHyp,a.title,b.title):Number(b.meanHyp||0)-Number(a.meanHyp||0)||a.title.localeCompare(b.title))",'edition tool order');
+rep(".sort((a,b)=>b.hyp-a.hyp||a.title.localeCompare(b.title))",".sort((a,b)=>window.GULF_ORDER?window.GULF_ORDER(a.hyp,b.hyp,a.title,b.title):b.hyp-a.hyp||a.title.localeCompare(b.title))",'edition dossier order');
+rep("glossaryCategory:'Question anatomy'","glossaryCategory:(window.GULF_GLOSS||{}).cat||'Question anatomy'",'edition glossary category');
+rep("glossaryTerm:'Stem'","glossaryTerm:(window.GULF_GLOSS||{}).term||'Stem'",'edition glossary term');
 rep('[20,50,100,200].map','(window.GULF_MOCKS||[20,50,100,200]).map','mock lengths');
 const appNew='app.'+sha(app)+'.js';
 fs.writeFileSync(path.join(out,'assets',appNew),app);

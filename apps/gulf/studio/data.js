@@ -14,9 +14,16 @@
  function seeded(arr,seed){var h=2166136261;for(var i=0;i<seed.length;i++){h^=seed.charCodeAt(i);h=Math.imul(h,16777619)}
   function rnd(){h^=h<<13;h^=h>>>17;h^=h<<5;return((h>>>0)%1e6)/1e6}
   for(var j=arr.length-1;j>0;j--){var k=Math.floor(rnd()*(j+1)),t=arr[j];arr[j]=arr[k];arr[k]=t}return arr}
- var onLib=typeof document!=='undefined'&&document.body&&document.body.dataset&&document.body.dataset.library;
- if(onLib&&ed!=='saudi'){
+ if(ed!=='saudi'){
+  // Main-app lists: keep high-yield first (by HYP band), then an edition-specific order inside each band.
+  var hk=function(x){var h=2166136261,t=ed+'|'+x;for(var i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0};
+  var band=function(v){v=Number(v)||0;return v>=90?3:v>=80?2:v>=70?1:0};
+  window.GULF_ORDER=function(ha,hb,ka,kb){return band(hb)-band(ha)||hk(ka)-hk(kb)};
+  var G=window.SNLE_LEARNING&&window.SNLE_LEARNING.glossary;
+  if(Array.isArray(G)&&G.length){var pick=G.slice().filter(function(x){return x.term!=='Stem'}).sort(function(x,y){return hk(x.term)-hk(y.term)})[0];window.GULF_GLOSS={cat:pick.category,term:pick.term}}
   if(Array.isArray(window.SNLE_QUESTIONS))seeded(window.SNLE_QUESTIONS,'gulf-'+ed+'-q');
+  if(Array.isArray(window.SNLE_POSTERS))seeded(window.SNLE_POSTERS,'gulf-'+ed+'-t');
+  if(window.SNLE_LEARNING&&Array.isArray(window.SNLE_LEARNING.glossary))seeded(window.SNLE_LEARNING.glossary,'gulf-'+ed+'-g');
   var dHeld=window.SNLE_DOSSIERS,desc=Object.getOwnPropertyDescriptor(window,'SNLE_DOSSIERS');
   try{Object.defineProperty(window,'SNLE_DOSSIERS',{configurable:true,get:function(){return dHeld},set:function(v){if(desc&&desc.set){desc.set(v);v=desc.get()}if(Array.isArray(v)){seeded(v,'gulf-'+ed+'-d');v.forEach(function(d){if(Array.isArray(d.qs))seeded(d.qs,'gulf-'+ed+'-'+d.id)})}dHeld=v}})}catch(e){}
  }
