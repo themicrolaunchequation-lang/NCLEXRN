@@ -2,7 +2,8 @@
 (function(){
  var ed=window.GULF_EDITION;if(!ed)return;
  var rules=[[/the Kingdom of Saudi Arabia/gi,'your country'],[/Kingdom of Saudi Arabia/gi,'your country'],[/\bin Saudi Arabia\b/g,'in your country'],[/Saudi Arabia/g,'your country'],[/\bKSA\b/g,'your country'],[/Mumaris\+?/g,'the licensing portal'],[/\bSaudi\b/g,'local'],[/\bSCFHS\b/g,'regulator'],[/\bSNLE\b/g,'licensing exam']];
- function fix(s){for(var i=0;i<rules.length;i++)s=s.replace(rules[i][0],rules[i][1]);return s}
+ var post=[[/\blocal\/local\b/g,'local'],[/\blocal\/regulator\b/g,'local and regulator'],[/MOH consent\/rights/g,'health-ministry consent and patient-rights rules'],[/\bCBAHI standards\b/g,'national accreditation standards'],[/\bMOH\b/g,'the health ministry'],[/\bCBAHI\b/g,'the national accreditation body'],[/localize to local law/g,'apply local law'],[/licensing exam (professional-practice|legal\/professional) decisions/g,'Exam $1 decisions'],[/for licensing exam questions/g,'for exam questions'],[/the governing licensing exam framework/g,'the governing exam framework']];
+ function fix(s){for(var i=0;i<rules.length;i++)s=s.replace(rules[i][0],rules[i][1]);for(i=0;i<post.length;i++)s=s.replace(post[i][0],post[i][1]);return s}
  function walk(o,d){if(d>12||o==null)return;if(Array.isArray(o)){for(var i=0;i<o.length;i++){var v=o[i];if(typeof v==='string')o[i]=fix(v);else walk(v,d+1)}return}
   if(typeof o==='object'){for(var k in o){if(!Object.prototype.hasOwnProperty.call(o,k))continue;var v=o[k];if(typeof v==='string'){if(k!=='id'&&k!=='key'&&k!=='toolId'&&k!=='tool'&&!/^(?:image|img|src|url|href|poster)/i.test(k))o[k]=fix(v)}else walk(v,d+1)}}}
  ['SNLE_POSTERS','SNLE_QUESTIONS','SNLE_LEARNING'].forEach(function(n){try{walk(window[n],0)}catch(e){}});

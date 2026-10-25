@@ -58,7 +58,7 @@
   var nav=$('.sidebar nav');if(!nav||$('.gulf-group',nav))return;
   [['guide','Learn'],['dossier','Practise'],['progress','Track']].forEach(function(g){var b=$('[data-nav="'+g[0]+'"]',nav);if(!b)return;var l=document.createElement('span');l.className='gulf-group';l.setAttribute('aria-hidden','true');l.textContent=g[1];b.before(l)});
   var src=$('[data-nav="practice"]',nav);if(!src)return;
-  [['SNLE_Question_Bank_ViewOnly_v19.html','Question Bank','<path d="M4 5h16M4 10h16M4 15h9M4 20h6"/><circle cx="17.5" cy="17.5" r="3"/><path d="m19.7 19.7 2 2"/>']].forEach(function(x){
+  [['question-bank','Question Bank','<path d="M4 5h16M4 10h16M4 15h9M4 20h6"/><circle cx="17.5" cy="17.5" r="3"/><path d="m19.7 19.7 2 2"/>']].forEach(function(x){
    var a=document.createElement('a');a.className=src.className.replace(/\bactive\b/,'')+' gulf-libnav';a.href='/'+x[0];a.title=x[1];
    a.innerHTML='<span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+x[2]+'</svg></span><span>'+esc(x[1])+'</span>';
    src.after(a);

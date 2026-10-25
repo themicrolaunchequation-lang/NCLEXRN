@@ -82,6 +82,7 @@ rep("const mock=(n)=>shuffle([['Nursing Fundamentals',.2],['Adult Nursing',.4],[
 rep('<span class="eyebrow">BLUEPRINT · 20 / 40 / 30 / 10</span>','<span class="eyebrow">${window.GULF_BP_EYEBROW||\'BLUEPRINT · 20 / 40 / 30 / 10\'}</span>','mock eyebrow');
 rep('<p>20% Nursing Fundamentals · 40% Adult Nursing · 30% Maternal–Child Nursing · 10% Management & Leadership.</p>','<p>${window.GULF_BP_TEXT||\'20% Nursing Fundamentals · 40% Adult Nursing · 30% Maternal–Child Nursing · 10% Management & Leadership.\'}</p>','mock blueprint text');
 rep("colorMode:snleStorage.getItem('snle-color-mode')||'green'","colorMode:window.GULF_EDITION?'green':(snleStorage.getItem('snle-color-mode')||'green')",'edition colour mode');
+rep("catalogView:snleStorage.getItem('snle-catalog-view')||'cards'","catalogView:snleStorage.getItem('snle-catalog-view')||(window.GULF_EDITION?'compact':'cards')",'compact tools default');
 rep('[20,50,100,200].map','(window.GULF_MOCKS||[20,50,100,200]).map','mock lengths');
 const appNew='app.'+sha(app)+'.js';
 fs.writeFileSync(path.join(out,'assets',appNew),app);
@@ -135,6 +136,8 @@ const mp=path.join(out,'manifest.webmanifest'),mf=JSON.parse(fs.readFileSync(mp,
 let hd=fs.readFileSync(path.join(out,'_headers'),'utf8');
 hd=hd.replace('/*\n','/*\n  X-Robots-Tag: noindex, nofollow\n');
 fs.writeFileSync(path.join(out,'_headers'),hd);
+{const rp=path.join(out,'_redirects'),prev=fs.existsSync(rp)?fs.readFileSync(rp,'utf8'):'';
+ fs.writeFileSync(rp,prev+['/question-bank /SNLE_Question_Bank_ViewOnly_v19.html 200','/dossier-bank /SNLE_Clinical_Dossier_Question_Bank_ViewOnly_v23_1_Smaller_Stem.html 200','/tool-library /SNLE_All_Tools_ViewOnly_v19.html 200'].join('\n')+'\n')}
 fs.writeFileSync(path.join(out,'robots.txt'),'User-agent: *\nDisallow: /\n');
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 console.log('PASS Gulf studio + hub output ('+pkg.name+')');
