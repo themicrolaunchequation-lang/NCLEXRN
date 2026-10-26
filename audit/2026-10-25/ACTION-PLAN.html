@@ -41,9 +41,9 @@
 <section class="cover">
   <p class="eyebrow">Healthcare Crown Academy · 26 October 2026</p>
   <h1>Action plan</h1>
-  <p class="lead">What has already been fixed for you, the short list of things only you can do, and copy-paste prompts for everything else. Nothing has been published to your live website. All fixes are waiting on preview links for you to approve.</p>
+  <p class="lead">What has already been fixed for you, the short list of things only you can do, and copy-paste prompts for everything else. <b>Update 26 Oct 2026: the fixes and the new prices are now live</b> on healthcarecrownacademy.co.uk, the four app sites and Evinca, with your approval. The database prices and security changes have been applied.</p>
   <div class="stats">
-    <div class="stat ok"><b>12</b>findings fixed on preview<br><span class="meta">plus 3 partly fixed, 5 prepared</span></div>
+    <div class="stat ok"><b>12</b>findings fixed and live<br><span class="meta">plus 3 partly fixed, 5 prepared</span></div>
     <div class="stat you"><b>11</b>need a decision or access from you</div>
     <div class="stat later"><b>7</b>left for later fix prompts<br><span class="meta">1 finding withdrawn after re-test</span></div>
   </div>
@@ -54,9 +54,8 @@
 <h2>Part 1 — Your steps, in order</h2>
 <p>Tick each box as you go. For anything that needs an answer, the matching form in Part 3 is ready to copy, fill in and send to Claude.</p>
 
-<div class="step"><h3><span class="box"></span>1. Look at the two preview links (10 min)</h3>
-<p>Home site and apps: <b>nclexrn-site-gjmuf8avr-themicrolaunchequation-langs-projects.vercel.app</b><br>Evinca: <b>evinca-i2y4f90yz-themicrolaunchequation-langs-projects.vercel.app</b></p>
-<p class="meta">Open them while signed in to Vercel. Check the home page, the Gulf Nursing section, pricing (certificates now say "coming soon"), Serein (open it once in a private window: "Need urgent help now?" appears in the welcome), and one Evinca honoree page. If you're happy, send <b>Form A7</b>. Claude will then merge the fixes into your live branches.</p></div>
+<div class="step"><h3><span class="box"></span>1. Glance at the live site (5 min) <span class="tag done">live</span></h3>
+<p>Open <b>healthcarecrownacademy.co.uk/#pricing</b>. New prices: Crown Pass £5.99 a month or £39.99 a year; MedLex and Carecraft £2.99 or £19.99; Lumen £4.99 or £34.99; Serein free for everyone. Tell Claude if anything looks wrong. Rollback takes one click in Vercel (Deployments → previous production → Promote).</p></div>
 
 <div class="step"><h3><span class="box"></span>2. Check two web addresses on your phone (2 min)</h3>
 <p>Open <b>snle.healthcarecrownacademy.co.uk</b> and <b>lss.healthcarecrownacademy.co.uk</b>. Tell Claude whether each opens (<b>Form A2</b>). If one doesn't, Claude switches it off everywhere with one setting.</p></div>
@@ -85,13 +84,13 @@
 <div class="step"><h3><span class="box"></span>10. Solicitor review (owner task)</h3>
 <p>Terms, refunds and privacy pages should also cover Gulf Nursing and the LSS Toolkit. New UK subscription rules are expected from 1 January 2027 (<b>Form A6</b>).</p></div>
 
-<div class="step"><h3><span class="box"></span>11. Say yes to the prepared database file (1 min)</h3>
-<p><code>evinca/db/proposed/2026-10-26-audit-hardening.sql</code> tightens two functions, blocks one admin function for visitors, and validates newsletter emails. It was not applied. Reply "apply the proposed SQL" and Claude will apply it and re-check the security advisor.</p></div>
+<div class="step"><h3><span class="box"></span>11. Database changes <span class="tag done">applied</span></h3>
+<p><code>evinca/db/proposed/2026-10-26-audit-hardening.sql</code> tightens two functions, blocks one admin function for visitors, and validates newsletter emails. Applied on 26 Oct 2026, and the security advisor was re-checked. Nothing for you to do.</p></div>
 
 <div class="step"><h3><span class="box"></span>12. Optional: let Claude test the live site (5 min)</h3>
 <p>Add <b>healthcarecrownacademy.co.uk</b> and <b>*.healthcarecrownacademy.co.uk</b> to this environment's allowed domains, and create two test accounts (<b>Form A1</b>). This lets Claude test sign-in, real speed and the live pages.</p></div>
 
-<h2 class="pb">Part 2 — What Claude fixed without you (on preview, not live)</h2>
+<h2 class="pb">Part 2 — What Claude fixed (live since 26 Oct 2026)</h2>
 <table>
 <tr><th>Area</th><th>What changed</th><th>Finding</th></tr>
 <tr><td>Home page honesty</td><td>Removed "Approved for release by the Academy owner"; Gulf Nursing marked "Preview: clinical review in progress, free"; a correct statement of where each app keeps data; FAQ refund answer matches the refunds page; certificate perks say "coming soon"</td><td>HCA-03, 16, 32, CERT-01</td></tr>
@@ -106,11 +105,12 @@
 <tr><td>Evinca certificate</td><td>No longer prints "two independent, blind reviews" as fixed text; demo certificates say "Illustrative example, not an award"; method line and QR use your own domain (not evinca.org); stronger SAMPLE watermark</td><td>CERT-03, 04, 05, 08</td></tr>
 <tr><td>LSS certificate and tools</td><td>Seal says "COURSE COMPLETED", not "OFFICIAL CERTIFIED"; "applied competence" wording removed; generator and badge defaults say "SPECIMEN"</td><td>CERT-09, 10 (part), 12</td></tr>
 <tr><td>Question-bank checks</td><td>New read-only script <code>apps/snle/scripts/item-checks.mjs</code>: confirms the APGAR error and measures answer cues and units. No question was changed.</td><td>HCA-04, 05, 07</td></tr>
-<tr><td>Database (prepared, not applied)</td><td>SQL file for function hardening and newsletter validation</td><td>HCA-11, 12</td></tr>
+<tr><td>Database (applied)</td><td>New prices in the checkout table; Serein paid plans switched off; helper functions hardened; admin overview no longer callable by visitors; newsletter emails validated, with consent time recorded</td><td>HCA-11, 12, 15</td></tr>
+<tr><td>New prices (live)</td><td>Crown Pass £5.99/£39.99; MedLex and Carecraft £2.99/£19.99; Lumen £4.99/£34.99; Serein free. Home cards, interest picker, upgrade pop-up, search-engine data and refunds page all match the database.</td><td>Pricing strategy</td></tr>
 </table>
 <p class="note"><b>Checks run:</b> Serein and MedLex rebuilt from source; a clean rebuild was byte-identical before any edit. Regression crawl of 30 pages found 0 accessibility violations and no new errors. Evinca production build plus 117 automated assertions pass. Withdrawn: HCA-20. A re-test showed MedLex already skips its welcome on direct links. <b>Heads-up:</b> other branches (e.g. <code>claude/gulf-crosswalk</code>) also change the Gulf studio; merging may need a short conflict check on <code>site/home.html</code>.</p>
 
-<h3>Pricing summary (from PRICING-STRATEGY.md, for step 7)</h3>
+<h3>Pricing (applied 26 Oct; remaining options for step 7)</h3>
 <table>
 <tr><th>Product</th><th>Now</th><th>Recommended</th></tr>
 <tr><td>Crown Pass</td><td>£9.99/mo, £69.99/yr (checkout database says £79.99)</td><td><b>£5.99/mo, £39.99/yr</b>; founding members £29.99 first year (with a real end date)</td></tr>
