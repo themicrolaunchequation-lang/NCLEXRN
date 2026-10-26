@@ -120,3 +120,19 @@ Rough unit economics to check with your own numbers (fill in the inputs in `PROM
 6. **One price source** (`crown_plans`) feeding every surface.
 
 *Sources: see `market-price-scan.csv` for every competitor figure and URL (accessed 25 Oct 2026).*
+
+---
+
+## Applied 26 October 2026 (owner approval)
+
+Live on healthcarecrownacademy.co.uk and in `public.crown_plans` (checkout source):
+
+| Plan | Monthly | Yearly |
+|---|---|---|
+| Crown Pass (MedLex, Lumen, Carecraft; 15% off Evinca) | £5.99 | £39.99 |
+| MedLex | £2.99 | £19.99 |
+| Lumen | £4.99 | £34.99 |
+| Carecraft | £2.99 | £19.99 |
+| Serein | Free for everyone (paid plans deactivated, never gated) | — |
+
+Not yet applied (need a decision or a build): MedLex lifetime £29.99, founding-member offer (needs an end date), Gulf exam passes (after clinical review), regional band prices (needs Stripe multi-currency prices), Evinca fee changes (database fee rules and Stripe checkout; decide after the trust fixes settle). Payments remain switched off until Stripe is activated.
