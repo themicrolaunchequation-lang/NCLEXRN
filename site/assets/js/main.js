@@ -121,7 +121,7 @@
         const r = hero.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;
         const py = (e.clientY - r.top) / r.height - 0.5;
-        crown.style.setProperty('--ry', `${(px * 8).toFixed(2)}deg`);
+        crown.style.setProperty('--ry', `${(px * 5).toFixed(2)}deg`);
         crown.style.setProperty('--rx', `${(-py * 5).toFixed(2)}deg`);
       });
       hero.addEventListener('pointerleave', () => { crown.style.setProperty('--ry', '0deg'); crown.style.setProperty('--rx', '0deg'); });
@@ -131,6 +131,69 @@
       if (y > innerHeight * 1.2) return;
       crown.style.setProperty('--py', `${(-y * 0.08).toFixed(1)}px`);
     });
+  }
+
+  /* ---------- Hero ring: the app screens turn on a carousel; the front one rests and pops, then it moves on ----------
+     Hover pauses and lifts a screen, a side screen comes to the front on click or focus, and the front one plays its tour.
+     Reduced motion keeps the still fan from the stylesheet. */
+  function initCrownRing() {
+    const crown = $('[data-crown]'), hero = $('[data-hero]');
+    if (!crown || !hero || reduceMotion.matches) return;
+    const tiles = $$('.crown-tile', crown);
+    const N = tiles.length; if (N < 3) return;
+    crown.classList.add('is-ring');
+    const app = (t) => (t.className.match(/jewel-(\w+)/) || [])[1];
+    let pos = Math.max(0, tiles.findIndex((t) => app(t) === 'medlex'));
+    let from = pos, to = pos, t0 = 0, moving = false, restUntil = performance.now() + 3200, paused = 0, visible = true, raf = 0, hover = null;
+    const REST = 3000, MOVE = 1150;
+    const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+    const wrap = (d) => { d = ((d % N) + N) % N; return d > N / 2 ? d - N : d; };
+    const front = () => ((Math.round(pos) % N) + N) % N;
+    function layout() {
+      const w = crown.clientWidth, narrow = w < 560;
+      const R = w * (narrow ? 0.34 : 0.38), depth = narrow ? 320 : 560;
+      tiles.forEach((t, i) => {
+        const d = wrap(i - pos), a = (d * 2 * Math.PI) / N, c = Math.cos(a);
+        const x = Math.sin(a) * R, z = (c - 1) * depth, y = (1 - c) * (narrow ? -6 : -14);
+        const isFront = !moving && Math.abs(d) < 0.01;
+        const pop = isFront ? 1.06 : t === hover ? 1.03 : 1;
+        t.style.transform = `translate3d(calc(-50% + ${x.toFixed(1)}px), ${(y + (isFront ? -10 : t === hover ? -8 : 0)).toFixed(1)}px, ${z.toFixed(1)}px) rotateY(${(-Math.sin(a) * 28).toFixed(2)}deg) scale(${pop})`;
+        t.style.zIndex = String(Math.round(100 + c * 100));
+        t.style.opacity = String(Math.max(0, Math.min(1, 0.25 + c * 0.9)).toFixed(3));
+        t.classList.toggle('is-front', isFront);
+        t.tabIndex = c > -0.2 ? 0 : -1;
+        t.setAttribute('aria-hidden', c > -0.2 ? 'false' : 'true');
+      });
+    }
+    function goTo(i) {
+      const d = wrap(i - pos); if (Math.abs(d) < 0.01) return;
+      from = pos; to = pos + d; t0 = performance.now(); moving = true; kick();
+    }
+    function tick(now) {
+      raf = 0;
+      if (moving) {
+        const k = Math.min(1, (now - t0) / (MOVE * Math.max(1, Math.abs(to - from) * 0.6)));
+        pos = from + (to - from) * ease(k);
+        if (k >= 1) { pos = ((Math.round(to) % N) + N) % N; moving = false; restUntil = now + REST; }
+      } else if (!paused && visible && now >= restUntil) { from = pos; to = pos + 1; t0 = now; moving = true; }
+      layout();
+      if (moving || (!paused && visible)) raf = requestAnimationFrame(tick);
+    }
+    const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    tiles.forEach((t, i) => {
+      t.addEventListener('pointerenter', () => { paused++; hover = t; layout(); });
+      t.addEventListener('pointerleave', () => { paused = Math.max(0, paused - 1); hover = null; restUntil = performance.now() + 1400; layout(); kick(); });
+      t.addEventListener('focus', () => { paused++; goTo(i); });
+      t.addEventListener('blur', () => { paused = Math.max(0, paused - 1); restUntil = performance.now() + 2000; kick(); });
+      t.addEventListener('click', (e) => {
+        if (i !== front() || moving) { e.preventDefault(); goTo(i); return; }
+        if (window.HCATour && window.HCATour.has(app(t))) { e.preventDefault(); window.HCATour.open(app(t), t); }
+      });
+    });
+    if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { visible = en.isIntersecting; restUntil = performance.now() + 1200; kick(); }).observe(hero);
+    document.addEventListener('visibilitychange', () => { visible = !document.hidden; restUntil = performance.now() + 1200; kick(); });
+    addEventListener('resize', layout, { passive: true });
+    layout(); kick();
   }
 
   /* ---------- Toast ---------- */
@@ -430,9 +493,10 @@
       setTimeout(() => pickPlan(wanted, true), 350);
     }
 
-    const names = { medlex: 'MedLex', lumen: 'Lumen', carecraft: 'Carecraft', serein: 'Serein', evinca: 'Evinca', snle: 'Gulf Nursing' };
+    const names = { medlex: 'MedLex', lumen: 'Lumen', carecraft: 'Carecraft', serein: 'Serein', evinca: 'Evinca', snle: 'Gulf Nursing', lss: 'LSS Toolkit' };
     const urls = {
       snle: 'https://snle.healthcarecrownacademy.co.uk/',
+      lss: 'https://lss.healthcarecrownacademy.co.uk/',
       medlex: 'https://medlex.healthcarecrownacademy.co.uk/',
       lumen: 'https://lumen.healthcarecrownacademy.co.uk/',
       carecraft: 'https://carecraft.healthcarecrownacademy.co.uk/',
@@ -455,12 +519,22 @@
         pickPlan(ctaPlan, true);
       });
       const order = [];
+      const count = $('[data-crown-count]'), meter = $('[data-crown-meter]'), total = $$('[data-interests] .interest').length;
+      const cheer = (n) => (n === 0 ? '' : n === 1 ? ' · great start' : n < 4 ? ' · your crown is taking shape' : n < total ? ' · now that is a crown' : ' · the full crown!');
+      const extras = () => [order.includes('snle') && 'Gulf exam passes are US$25 a month or US$50 for 3 months.', order.includes('lss') && 'The LSS Toolkit is US$99 for 12 months, paid once.', order.includes('serein') && 'Serein is free for everyone.', order.includes('evinca') && 'Evinca stories are free.'].filter(Boolean).join(' ');
+      $$('[data-combo]').forEach((c) => c.addEventListener('click', () => {
+        const want = c.dataset.combo.split(',');
+        $$('[data-interests] .interest').forEach((b) => { if ((b.getAttribute('aria-pressed') === 'true') !== want.includes(b.dataset.app)) b.click(); });
+        $$('[data-combo]').forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+      }));
       $$('[data-interests] .interest').forEach((b) => b.addEventListener('click', () => {
         const app = b.dataset.app;
         const i = order.indexOf(app);
         if (i >= 0) order.splice(i, 1); else order.push(app);
         b.setAttribute('aria-pressed', String(i < 0));
         Object.keys(names).forEach((k) => preview.toggleAttribute('data-' + k, order.includes(k)));
+        if (count) { count.parentNode.lastChild.textContent = ' of ' + total + ' jewels lit' + cheer(order.length); count.textContent = String(order.length); }
+        if (meter) meter.style.width = (100 * order.length / total) + '%';
         const paid = order.filter((k) => prices[k]);
         ctaPlan = paid.length >= 2 ? 'crown' : paid.length === 1 ? paid[0] : null;
         cta.setAttribute('href', ctaPlan ? '?plan=' + ctaPlan + '#pricing' : '#pricing');
@@ -477,16 +551,18 @@
         open.setAttribute('href', urls[first]);
         label.textContent = 'Your crown: ' + order.map((k) => names[k]).join(' + ');
         price.innerHTML = '';
-        if (!paid.length) { price.textContent = order.includes('snle') ? 'Gulf Nursing exams are US$25 a month or US$50 for 3 months each.' + (order.includes('evinca') ? ' Evinca stories are free.' : '') : (order.includes('serein') ? 'Serein is free for everyone. Start whenever you are ready.' : 'Evinca stories are free. Start whenever you are ready.'); return; }
+        if (!paid.length) { price.textContent = extras() + ' Start whenever you are ready.'; return; }
         const best = document.createElement('strong');
         if (paid.length >= 2) {
           const sum = paid.reduce((n, k) => n + prices[k][0], 0);
           best.textContent = 'Crown Pass at £' + prices.crown[0].toFixed(2) + '/month';
-          price.append('Start free. Later, the ', best, ' covers them all; separately they would be £' + sum.toFixed(2) + '/month.');
+          price.append('Start free. Later, the ', best, ' covers ' + paid.map((k) => names[k]).join(' and ') + '; separately they would be £' + sum.toFixed(2) + '/month.');
         } else {
           best.textContent = '£' + prices[paid[0]][0].toFixed(2) + '/month';
           price.append('Start free. The full app is ', best, ', or every app with the Crown Pass at £' + prices.crown[0].toFixed(2) + '.');
         }
+        const more = extras().replace(/ ?Serein is free for everyone\.| ?Evinca stories are free\./g, '');
+        if (more) price.append(' ' + more.trim());
       }));
     }
 
@@ -510,6 +586,7 @@
   initMenu();
   initTheme();
   initCrownStage();
+  initCrownRing();
   initApps();
   initCrown();
   initNewsForm();
