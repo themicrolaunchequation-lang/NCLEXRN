@@ -118,6 +118,8 @@
     if (on) { SND.start(state.t.music); if (state.playing) narrate(); } else state.voiceDone = true;
   }
 
+  const clean = (x) => String(x || '').replace(/(^|\|)\s*[a-z]+:\s*/g, ' ').replace(/\s+/g, ' ').trim();
+  const who = (x, t) => { const k = [...new Set((String(x || '').match(/(?:^|\|)\s*([a-z]+):/g) || []).map((m) => m.replace(/[|:\s]/g, '')))]; return t.speakers && k.length ? k.map((n) => t.speakers[n] || n) : []; };
   const sayOf = (sc, t) => sc.k === 'hook' ? t.sayHook : sc.k === 'title' ? t.sayTitle : sc.k === 'end' ? t.sayEnd : sc.k === 'stats' ? sc.s[2] : sc.s[5];
   function narrate() {
     const s = state; if (!s) return;
@@ -128,11 +130,11 @@
 
   function sceneHTML(t, sc, n) {
     const mo = MOTIF[t.motif] || MOTIF.medal;
-    if (sc.k === 'hook') return `<div class="ts ts-hook"><div class="ts-mosaic">${t.bg.map((f, k) => `<img src="${IMG + f}.webp" alt="" style="--k:${k}">`).join('')}</div><span class="ts-veil"></span><div class="ts-motif">${mo.big()}</div><p class="ts-hk"><span>${t.hook[0].split(' ').map((w, i) => `<b style="--w:${i}">${esc(w)}</b>`).join(' ')}</span><em>${esc(t.hook[1])}</em></p></div>`;
+    if (sc.k === 'hook') return `<div class="ts ts-hook">${who(t.sayHook, t).length > 1 ? `<p class="ts-voices">${who(t.sayHook, t).map((n, i) => `<span style="--v:${i}">${esc(n)}</span>`).join('')}</p>` : ''}<div class="ts-mosaic">${t.bg.map((f, k) => `<img src="${IMG + f}.webp" alt="" style="--k:${k}">`).join('')}</div><span class="ts-veil"></span><div class="ts-motif">${mo.big()}</div><p class="ts-hk"><span>${t.hook[0].split(' ').map((w, i) => `<b style="--w:${i}">${esc(w)}</b>`).join(' ')}</span><em>${esc(t.hook[1])}</em></p></div>`;
     if (sc.k === 'title') return `<div class="ts ts-title"><span class="ts-aura"></span><p class="ts-eye">The one-minute tour</p><span class="ts-chip">${esc(t.chip)}</span><h2 class="ts-h">${esc(t.name)}</h2><p class="ts-tag">${esc(t.tag)}</p></div>`;
     if (sc.k === 'shot') {
       const [f, k, h, p, fc] = sc.s;
-      return `<div class="ts ts-shot" style="--fx:${fc[0] * 100}%;--fy:${fc[1] * 100}%"><div class="ts-win"><span class="ts-bar"><i></i><i></i><i></i></span><img src="${IMG + f}.webp" alt="" decoding="async"></div><div class="ts-accent">${mo.mini(n)}</div><div class="ts-cap"><p class="ts-k">${esc(k)}</p><h3>${esc(h)}</h3><p>${esc(p)}</p></div></div>`;
+      return `<div class="ts ts-shot" style="--fx:${fc[0] * 100}%;--fy:${fc[1] * 100}%"><div class="ts-win"><span class="ts-bar"><i></i><i></i><i></i></span><img src="${IMG + f}.webp" alt="" decoding="async"></div><div class="ts-accent">${mo.mini(n)}</div><div class="ts-cap">${who(sc.s[5], t).length > 1 || (t.speakers && who(sc.s[5], t).length) ? `<p class="ts-who">${who(sc.s[5], t).map((n) => `<span>${esc(n)}</span>`).join('')}</p>` : ''}<p class="ts-k">${esc(k)}</p><h3>${esc(h)}</h3><p>${esc(p)}</p></div></div>`;
     }
     if (sc.k === 'stats') return `<div class="ts ts-stats"><span class="ts-aura"></span><div class="ts-motif is-back">${mo.big()}</div><p class="ts-eye">${esc(t.name)} in numbers</p><ul>${sc.s[1].map(([v, l], i) => `<li style="--d:${i * 140}ms"><b data-n="${v}">${reduce.matches ? v.toLocaleString('en-GB') : '0'}</b><span>${esc(l)}</span></li>`).join('')}</ul></div>`;
     return `<div class="ts ts-end"><span class="ts-aura"></span><div class="ts-motif is-back">${mo.big()}</div><span class="ts-chip">${esc(t.chip)}</span><h2 class="ts-h">${esc(t.tag)}</h2><p class="ts-note">${esc(t.note)}</p><div class="ts-ctas"><a class="btn btn-gold btn-lg" href="${esc(t.url)}">${esc(t.cta)}</a><a class="btn btn-ghost btn-lg" href="/subscribe">See plans</a><button type="button" class="ts-replay" data-replay>Watch again</button></div></div>`;
@@ -155,7 +157,7 @@
     requestAnimationFrame(() => requestAnimationFrame(() => { if (el.isConnected && !el.classList.contains('is-off')) el.classList.add('is-on'); }));
     el.querySelectorAll('[data-n]').forEach((b, k) => { if (!reduce.matches) setTimeout(() => { SND.fx('pop', 0.25); count(b); }, 250 + k * 140); });
     const rp = el.querySelector('[data-replay]'); if (rp) rp.addEventListener('click', () => { go(0); play(true); });
-    cap.textContent = sayOf(sc, s.t);
+    cap.textContent = clean(sayOf(sc, s.t));
     [...bars.children].forEach((b, k) => { b.classList.toggle('is-done', k < i); b.style.setProperty('--p', k < i ? 1 : 0); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
     if (prev !== -1 || i > 0) SND.fx(sc.k === 'shot' ? 'whoosh' : sc.k === 'end' ? 'chime' : sc.k === 'title' ? 'chime' : 'whoosh', sc.k === 'shot' ? 0.32 : 0.4);
     const nx = s.list[i + 1]; if (nx && nx.k === 'shot') { const im = new Image(); im.src = IMG + nx.s[0] + '.webp'; }
