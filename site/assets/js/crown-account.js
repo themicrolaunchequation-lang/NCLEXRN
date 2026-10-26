@@ -275,7 +275,22 @@
     return { get, done, apps: APPS };
   })();
 
+  /** Stripe checkout for a plan id (e.g. 'crown-month', 'gulf-qatar-1m'). country = ISO code for regional pricing.
+      Signed-out people go to sign-in first and come back here. Resolves {error} instead of redirecting on failure. */
+  async function billing(body) {
+    const s = await session();
+    if (!s) { location.href = signInURL(); return { error: 'sign_in_required' }; }
+    try {
+      const r = await fetch(`${SUPABASE}/functions/v1/crown-billing`, { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + s.access_token, 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, return_url: location.href.split('#')[0].replace(/[?&]checkout=[^&]*(&session_id=[^&]*)?/, '') }) });
+      const j = await r.json().catch(() => ({ error: 'payment_request_failed' }));
+      if (j.url && /^https:\/\/(checkout|billing)\.stripe\.com\//.test(j.url)) { location.href = j.url; return j; }
+      return j.error ? j : { error: 'payment_request_failed' };
+    } catch { return { error: 'offline' }; }
+  }
+
   window.HCA = {
+    checkout: (plan, country) => billing({ action: 'checkout', plan, country }),
+    manageBilling: () => billing({ action: 'portal' }),
     ready,
     daily: DAILY,
     signIn: (mode) => { location.href = signInURL(mode); },

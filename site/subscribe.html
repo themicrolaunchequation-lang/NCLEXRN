@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Choose your plan — Healthcare Crown Academy</title>
+<meta name="description" content="Choose a Healthcare Crown Academy plan and pay securely with Stripe.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://healthcarecrownacademy.co.uk/subscribe">
+<meta name="theme-color" content="#050A18">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<script>document.documentElement.classList.replace('no-js','js');try{var t=localStorage.getItem('hca-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script src="/assets/js/config.js" defer></script>
+<script src="/assets/js/page.js" defer></script>
+<script src="/assets/js/crown-account.js" defer></script>
+<script src="/assets/js/subscribe.js" defer></script>
+</head>
+<body class="subpage">
+<header class="subpage-header island-dark">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Healthcare Crown Academy home">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="none" d="M8 41h8.5l4.5-14.5 5.2 11.5L32 20l5.8 18 5.2-11.5 4.5 14.5H56M18 48h28M32 7.5v8M28 11.5h8"/><circle cx="21" cy="19.6" r="1.4"/><circle cx="43" cy="19.6" r="1.4"/></svg>
+      <span class="brand-text"><span class="brand-name">Healthcare Crown</span><span class="brand-sub">Academy</span></span>
+    </a>
+    <div data-crown-account></div>
+  </div>
+</header>
+
+<main id="main" class="section">
+  <article class="container prose">
+    <p class="eyebrow">Plans</p>
+    <h1 class="section-title">Choose your plan</h1>
+    <p class="sub-note" data-sub-mode hidden><strong>Test mode:</strong> no real money is taken. Use card 4242 4242 4242 4242, any future date, any CVC.</p>
+    <p data-sub-msg role="status" aria-live="polite"></p>
+    <p><label for="sub-country">Your billing country</label><br>
+      <select id="sub-country" data-sub-country></select></p>
+    <p class="prose-meta" data-sub-band></p>
+    <h2>Crown Pass: every app</h2>
+    <ul class="sub-list">
+      <li><button class="btn btn-primary" data-plan="crown-month">Crown Pass monthly</button> <span data-price="crown-month"></span> · 7-day free trial</li>
+      <li><button class="btn btn-primary" data-plan="crown-year">Crown Pass yearly</button> <span data-price="crown-year"></span> · 7-day free trial</li>
+      <li data-founding><button class="btn btn-primary" data-plan="crown-year-founding">Founding member yearly</button> <span data-price="crown-year-founding"></span> first year, then <span data-price="crown-year"></span> · until 31 January 2027</li>
+    </ul>
+    <h2>Single apps</h2>
+    <ul class="sub-list">
+      <li><button class="btn btn-ghost" data-plan="medlex-month">MedLex monthly</button> <span data-price="medlex-month"></span> · <button class="btn btn-ghost" data-plan="medlex-year">yearly</button> <span data-price="medlex-year"></span></li>
+      <li><button class="btn btn-ghost" data-plan="carecraft-month">Carecraft monthly</button> <span data-price="carecraft-month"></span> · <button class="btn btn-ghost" data-plan="carecraft-year">yearly</button> <span data-price="carecraft-year"></span></li>
+      <li><button class="btn btn-ghost" data-plan="lumen-month">Lumen monthly</button> <span data-price="lumen-month"></span> · <button class="btn btn-ghost" data-plan="lumen-year">yearly</button> <span data-price="lumen-year"></span></li>
+    </ul>
+    <h2>Gulf Nursing exam passes</h2>
+    <p>Saudi Arabia (SNLE) is free. Other exams, one pass per exam, same price everywhere:</p>
+    <ul class="sub-list">
+      <li>Qatar: <button class="btn btn-ghost" data-plan="gulf-qatar-1m">1 month US$25</button> <button class="btn btn-ghost" data-plan="gulf-qatar-3m">3 months US$50</button></li>
+      <li>Dubai: <button class="btn btn-ghost" data-plan="gulf-dubai-1m">1 month US$25</button> <button class="btn btn-ghost" data-plan="gulf-dubai-3m">3 months US$50</button></li>
+      <li>Abu Dhabi: <button class="btn btn-ghost" data-plan="gulf-abudhabi-1m">1 month US$25</button> <button class="btn btn-ghost" data-plan="gulf-abudhabi-3m">3 months US$50</button></li>
+    </ul>
+    <p><button class="btn btn-ghost" data-manage>Manage or cancel my plan</button></p>
+    <p class="prose-meta">Payments are handled by Stripe. Subscriptions renew until you cancel; you can cancel any time from "Manage or cancel my plan". See <a href="/refunds">subscriptions &amp; refunds</a>.</p>
+  </article>
+</main>
+<style>.sub-list{list-style:none;padding:0;display:grid;gap:12px}.sub-list li{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.sub-note{padding:12px 16px;border-radius:12px;border:1px solid #D4A445}#sub-country{min-height:44px;padding:0 10px;border-radius:10px;font:inherit}</style>
+</body>
+</html>
