@@ -28,7 +28,7 @@ const DEFAULTS = {
   issued: '2026-09-25',
   expires: '2029-09-25',
   institute: 'Aurelian Institute of Process Excellence',
-  tagline: 'Certified Professional',
+  tagline: 'Specimen badge',
   verify: 'aurelian.example/verify',
   qrText: '',
   returnNotice: 'This card remains the property of the issuing institute. If found, please return it to the address below or report it at the verification page.',
@@ -134,7 +134,7 @@ function drawFront(ctx, data, s){
   }
   ctx.restore();
 
-  if (d.seal) { ctx.save(); ctx.translate(344, 426); ctx.scale(0.5, 0.5); LC.drawSeal(ctx, { sealTop: 'LEAN SIX SIGMA', sealBottom: 'GENUINE · CERTIFIED', sealLine1: 'OFFICIAL', sealLine2: 'CERTIFIED', logo: d.logo, sealLogo: false }); ctx.restore(); }
+  if (d.seal) { ctx.save(); ctx.translate(344, 426); ctx.scale(0.5, 0.5); LC.drawSeal(ctx, { sealTop: 'LEAN SIX SIGMA', sealBottom: d.sealBottom || 'SPECIMEN · NOT ISSUED', sealLine1: d.sealLine1 || 'SPECIMEN', sealLine2: d.sealLine2 || 'ONLY', logo: d.logo, sealLogo: false }); ctx.restore(); }
 
   // identity
   ctx.fillStyle = NAVY; ctx.textAlign = 'center';

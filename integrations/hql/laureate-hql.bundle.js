@@ -31,7 +31,7 @@ const DEFAULTS = {
   verify:'aurelian.example/verify',
   sig1Script:'Helena Voss', sig1Name:'Dr. Helena Voss', sig1Title:'Director of Certification',
   sig2Script:'M. Adeyemi', sig2Name:'Marcus Adeyemi, MBB', sig2Title:'Chair, Examination Board',
-  seal:true, sealTop:'LEAN SIX SIGMA', sealBottom:'GENUINE · CERTIFIED', sealLine1:'OFFICIAL', sealLine2:'CERTIFIED',
+  seal:true, sealTop:'LEAN SIX SIGMA', sealBottom:'SPECIMEN · NOT ISSUED', sealLine1:'SPECIMEN', sealLine2:'ONLY',
   hanko:true, hankoText:'認定',
   logo:null, sealLogo:false,
   // optional layout fields (used by integrations such as the HQL adapter)
@@ -539,7 +539,7 @@ const DEFAULTS = {
   issued: '2026-09-25',
   expires: '2029-09-25',
   institute: 'Aurelian Institute of Process Excellence',
-  tagline: 'Certified Professional',
+  tagline: 'Specimen badge',
   verify: 'aurelian.example/verify',
   qrText: '',
   returnNotice: 'This card remains the property of the issuing institute. If found, please return it to the address below or report it at the verification page.',
@@ -645,7 +645,7 @@ function drawFront(ctx, data, s){
   }
   ctx.restore();
 
-  if (d.seal) { ctx.save(); ctx.translate(344, 426); ctx.scale(0.5, 0.5); LC.drawSeal(ctx, { sealTop: 'LEAN SIX SIGMA', sealBottom: 'GENUINE · CERTIFIED', sealLine1: 'OFFICIAL', sealLine2: 'CERTIFIED', logo: d.logo, sealLogo: false }); ctx.restore(); }
+  if (d.seal) { ctx.save(); ctx.translate(344, 426); ctx.scale(0.5, 0.5); LC.drawSeal(ctx, { sealTop: 'LEAN SIX SIGMA', sealBottom: d.sealBottom || 'SPECIMEN · NOT ISSUED', sealLine1: d.sealLine1 || 'SPECIMEN', sealLine2: d.sealLine2 || 'ONLY', logo: d.logo, sealLogo: false }); ctx.restore(); }
 
   // identity
   ctx.fillStyle = NAVY; ctx.textAlign = 'center';
@@ -811,14 +811,14 @@ const CONFIG = {
   title: 'Certificate',
   subtitle: 'of Completion',
   statement: 'has successfully completed the professional learning program and assessment for',
-  learning: 'demonstrating applied competence across Define, Measure, Analyze, Improve, and Control, including statistical process control, capability analysis, and root-cause methods.',
+  learning: 'covering Define, Measure, Analyze, Improve and Control, including statistical process control, capability analysis and root-cause methods.',
   directorTitle: 'Authorised Course Director',
   disclaimer: "Educational Certificate of Completion. It confirms completion of this program's stated learning requirements and assessment. It does not constitute professional licensure, board certification, academic credit, CME, or CPD accreditation.",
   watermark: 'LSS • GB',
   sealTop: 'LEAN SIX SIGMA',
   sealBottom: 'HEALTHCARE · GREEN BELT',
-  sealLine1: 'OFFICIAL',
-  sealLine2: 'CERTIFIED',
+  sealLine1: 'COURSE',
+  sealLine2: 'COMPLETED',
   crest: null,       // image source; defaults to the app's CREST_URI
   signature: null,   // image source; defaults to the app's SIG_URI
   certKey: 'lss_cert'
@@ -853,7 +853,7 @@ function certificateData(cert){
     institute: CONFIG.issuer, title: CONFIG.title, subtitle: CONFIG.subtitle,
     statement: CONFIG.statement, programText: CONFIG.courseTitle, learning: CONFIG.learning, sashText: CONFIG.beltLabel,
     signatories: 1, sig1Image: signature(), sig1Script: '', sig1Name: CONFIG.directorTitle, sig1Title: CONFIG.issuer,
-    qr: true, qrText: qrPayload(cert), qrCaption: 'Scan to verify',
+    qr: true, qrText: qrPayload(cert), qrCaption: 'Scan for details',
     footer: ['Date issued ' + LC.formatDate(localDay(cert.issuedAt)), 'Assessment ' + assessment(cert), 'Certificate ID ' + (cert.code || '')],
     disclaimer: CONFIG.disclaimer,
     specimen: !!cert.preview, watermarkText: cert.preview ? '' : CONFIG.watermark,

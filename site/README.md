@@ -37,7 +37,7 @@ assets/js/main.js        all interactions
 assets/css/styles.css    design tokens, layout and animation
 manifest.webmanifest     app name, icons and shortcuts (PWA)
 sw.js                    offline support (bump VERSION on each release)
-netlify.toml             hosting settings and security headers
+vercel.json              hosting: rewrites, redirects, security headers
 ```
 
 ## Settings: `assets/js/config.js`
@@ -61,41 +61,15 @@ netlify.toml             hosting settings and security headers
 
 No database changes were needed. The tables, row-level security policies and function already exist in the evinca project.
 
-## Deploy (Netlify)
+## Deploy (Vercel)
 
-A Netlify project called **healthcarecrownacademy** already exists in your team. Production is public; previews require a team login.
+Production is the Vercel project **nclexrn-site** (team themicrolaunchequation-langs-projects), root directory `site`, no build command. It deploys automatically from the production branch `claude/loving-ptolemy-srrq02`; every other branch gets a preview URL. Routing, host rewrites for the app subdomains, redirects and security headers live in `vercel.json` (the only hosting config; the old `netlify.toml` and `_headers` were removed on 26 Oct 2026).
 
-Connect it to this repository once, and every push deploys automatically:
+Domains on the project: `healthcarecrownacademy.co.uk`, `www`, `medlex`, `carecraft`, `serein`, `lumen`. DNS is on Cloudflare (grey cloud). Evinca and `account.` are a separate Vercel project (`evinca`).
 
-1. Go to https://app.netlify.com/projects/healthcarecrownacademy.
-2. Open **Project configuration → Build & deploy → Link repository**, choose **GitHub**, then `themicrolaunchequation-lang/NCLEXRN`.
-3. Fill in the settings:
-   - **Branch to deploy:** the branch that holds this folder.
-   - **Base directory:** `site`
-   - **Build command:** leave empty.
-   - **Publish directory:** `site`
-4. Click **Deploy**. The site appears at `https://healthcarecrownacademy.netlify.app`.
+**Rollback:** Vercel → nclexrn-site → Deployments → pick the previous production deployment → Promote. Then revert the commit on the production branch.
 
-Why Netlify: its free plan allows commercial sites. Vercel's free Hobby plan is for non-commercial use only.
-
-## Connect the Porkbun domain
-
-1. **In Netlify:** open **Domain management → Add a domain**, enter `healthcarecrownacademy.co.uk`, then confirm. Netlify adds `www` too and redirects it to the main domain.
-2. **In Porkbun:** open **Domain Management → healthcarecrownacademy.co.uk → DNS**.
-   - Delete Porkbun's parking records: the `ALIAS` on the root and the `CNAME` on `*`, both pointing to `pixie.porkbun.com`. Delete any other root `A`/`AAAA` records too.
-   - Add these two records:
-
-     | Type | Host | Answer |
-     |---|---|---|
-     | `ALIAS` | *(blank)* | `apex-loadbalancer.netlify.com` |
-     | `CNAME` | `www` | `healthcarecrownacademy.netlify.app` |
-
-     If you prefer an `A` record for the root, use `75.2.60.5`.
-3. **Back in Netlify:** under **Domain management → HTTPS**, click **Verify DNS configuration**. The free Let's Encrypt certificate is issued once DNS has propagated, which usually takes minutes but can take a few hours.
-
-### Branded email (free)
-
-In Porkbun, open **Email Forwarding** and forward `hello@healthcarecrownacademy.co.uk` to `hello@healthcarecrownacademy.co.uk`. Keep the MX records Porkbun adds; they don't conflict with the website records above. Then update `contactEmail` in `config.js`.
+**Note:** Vercel's Hobby plan is for non-commercial use. Move the team to Pro before taking payments.
 
 ## Before launch: checklist
 

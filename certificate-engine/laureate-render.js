@@ -27,7 +27,7 @@ const DEFAULTS = {
   verify:'aurelian.example/verify',
   sig1Script:'Helena Voss', sig1Name:'Dr. Helena Voss', sig1Title:'Director of Certification',
   sig2Script:'M. Adeyemi', sig2Name:'Marcus Adeyemi, MBB', sig2Title:'Chair, Examination Board',
-  seal:true, sealTop:'LEAN SIX SIGMA', sealBottom:'GENUINE · CERTIFIED', sealLine1:'OFFICIAL', sealLine2:'CERTIFIED',
+  seal:true, sealTop:'LEAN SIX SIGMA', sealBottom:'SPECIMEN · NOT ISSUED', sealLine1:'SPECIMEN', sealLine2:'ONLY',
   hanko:true, hankoText:'認定',
   logo:null, sealLogo:false,
   // optional layout fields (used by integrations such as the HQL adapter)

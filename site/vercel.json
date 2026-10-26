@@ -563,6 +563,11 @@
       "source": "/medlex/learn/suffix-quest-100-medical-suffixes(.html)?",
       "destination": "/medlex/learn/quest-suffixes",
       "permanent": false
+    },
+    {
+      "source": "/medlex/learn/(basic-word-structure|building-vocabulary|cardiovascular|components|country-differences|digestive|endocrine|female-reproductive|haematology|history|human-body|infectious-parasitic|integumentary|lymphatic-immune|male-reproductive|medical-coding|mental-health|musculoskeletal|nervous|obstetrics-neonatology|oncology|pharmacology|prefixes|procedures-treatment|radiology-nuclear|respiratory|senses|suffixes|urinary)",
+      "destination": "/medlex/learn/canvas/lessons/$1",
+      "permanent": true
     }
   ]
 }

@@ -26,14 +26,14 @@ const CONFIG = {
   title: 'Certificate',
   subtitle: 'of Completion',
   statement: 'has successfully completed the professional learning program and assessment for',
-  learning: 'demonstrating applied competence across Define, Measure, Analyze, Improve, and Control, including statistical process control, capability analysis, and root-cause methods.',
+  learning: 'covering Define, Measure, Analyze, Improve and Control, including statistical process control, capability analysis and root-cause methods.',
   directorTitle: 'Authorised Course Director',
   disclaimer: "Educational Certificate of Completion. It confirms completion of this program's stated learning requirements and assessment. It does not constitute professional licensure, board certification, academic credit, CME, or CPD accreditation.",
   watermark: 'LSS • GB',
   sealTop: 'LEAN SIX SIGMA',
   sealBottom: 'HEALTHCARE · GREEN BELT',
-  sealLine1: 'OFFICIAL',
-  sealLine2: 'CERTIFIED',
+  sealLine1: 'COURSE',
+  sealLine2: 'COMPLETED',
   crest: null,       // image source; defaults to the app's CREST_URI
   signature: null,   // image source; defaults to the app's SIG_URI
   certKey: 'lss_cert'
@@ -68,7 +68,7 @@ function certificateData(cert){
     institute: CONFIG.issuer, title: CONFIG.title, subtitle: CONFIG.subtitle,
     statement: CONFIG.statement, programText: CONFIG.courseTitle, learning: CONFIG.learning, sashText: CONFIG.beltLabel,
     signatories: 1, sig1Image: signature(), sig1Script: '', sig1Name: CONFIG.directorTitle, sig1Title: CONFIG.issuer,
-    qr: true, qrText: qrPayload(cert), qrCaption: 'Scan to verify',
+    qr: true, qrText: qrPayload(cert), qrCaption: 'Scan for details',
     footer: ['Date issued ' + LC.formatDate(localDay(cert.issuedAt)), 'Assessment ' + assessment(cert), 'Certificate ID ' + (cert.code || '')],
     disclaimer: CONFIG.disclaimer,
     specimen: !!cert.preview, watermarkText: cert.preview ? '' : CONFIG.watermark,
