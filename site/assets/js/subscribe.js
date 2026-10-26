@@ -98,6 +98,10 @@
     render();
 
     const q = new URLSearchParams(location.search);
+    // Deep links from app paywalls: ?plan=medlex|carecraft|lumen|crown, ?exam=saudi|qatar|dubai|abudhabi
+    const ex = q.get('exam'); if (['saudi', 'qatar', 'dubai', 'abudhabi'].includes(ex)) { exam = ex; render(); document.querySelector('.sp-gulf')?.scrollIntoView({ block: 'center' }); }
+    const pl = q.get('plan'); const card = pl && document.querySelector(`[data-buy="${CSS.escape(pl)}"]`)?.closest('.sp-card');
+    if (card) { card.classList.add('is-picked'); setTimeout(() => card.scrollIntoView({ block: 'center' }), 200); }
     if (q.get('checkout') === 'success') msg('Welcome aboard. Your payment went through and your plan will be active within a minute.');
     if (q.get('checkout') === 'cancelled') msg('Checkout was cancelled. Nothing was charged.');
     try {

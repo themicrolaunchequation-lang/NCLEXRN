@@ -15,7 +15,7 @@
                             rejects if the network is down during a needed refresh.  HCA.token(force?) is just its access_token (or null).
                             Use it to call the project's own functions as the signed-in person; never store or log the token.
    Per-app free limits are chosen by <meta name="hca-app" content="medlex|carecraft|serein|lumen">.
-   Gates are off until paid plans can be bought (GATES_LIVE); preview them with ?gates=on.
+   Gates are on (GATES_LIVE): free-plan limits apply until someone has a plan. Turn them off with GATES_LIVE = false.
    Plain ES2020, no dependencies. Works signed out and offline (everything stays free-tier). */
 (() => {
   'use strict';
@@ -172,9 +172,9 @@
   ready.then((e) => { ent = e; });
 
   /* ---------- Free and paid limits ----------
-     Switched off until paid plans can be bought (GATES_LIVE). Preview with ?gates=on.
+     On since paid plans opened (26 Oct 2026).
      The "Get help" support in Serein and every app's first steps always stay free. */
-  const GATES_LIVE = false;
+  const GATES_LIVE = true;
   const gatesOn = GATES_LIVE || new URLSearchParams(location.search).get('gates') === 'on';
   const NAMES = { medlex: 'MedLex', carecraft: 'Carecraft', serein: 'Serein', lumen: 'Lumen' };
   const PERKS = {
@@ -194,7 +194,7 @@
     const signedIn = ent && ent.signed_in;
     d.innerHTML = `<div class="hca-pay-in"><p class="hca-pay-eye">${NAMES[app].toUpperCase()} PREMIUM</p><h2 id="hca-pay-title"></h2><p class="hca-pay-lead"></p><ul></ul>
 <p class="hca-pay-price">${NAMES[app]} on its own <b>${PRICE[app]}</b>, or every app with the Crown Pass <b>${CROWN_PRICE}</b>. Codes can be used at checkout.</p>
-<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/?plan=${encodeURIComponent(app)}#pricing">See plans</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
+<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/subscribe?plan=${encodeURIComponent(app)}">See plans</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
     d.querySelector('h2').textContent = what ? `Unlock ${what}` : `Unlock all of ${NAMES[app]}`;
     d.querySelector('.hca-pay-lead').textContent = `This is part of ${NAMES[app]} premium. Everything you have done so far stays yours.`;
     for (const t of PERKS[app]) { const li = document.createElement('li'); li.textContent = t; d.querySelector('ul').append(li); }
@@ -301,7 +301,8 @@
     session: currentSession,
     token: async (force) => (await currentSession(force))?.access_token || null,
     live: { ...LIVE },
-    upgrade: (app) => { location.href = 'https://healthcarecrownacademy.co.uk/?plan=' + encodeURIComponent(app || 'crown') + '#pricing'; },
+    upgrade: (app) => { location.href = 'https://healthcarecrownacademy.co.uk/subscribe?plan=' + encodeURIComponent(app || 'crown'); },
+    get gatesOn() { return gatesOn; },
   };
 
   /* Home page: a quiet summary of today's Daily Crown, only for people who have used an app. */
