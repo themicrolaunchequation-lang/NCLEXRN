@@ -11,8 +11,8 @@
   var L=document.createElement('main');L.id='gulf-landing';L.setAttribute('aria-labelledby','gl-h');
   var cards=CFG.order.map(function(id){var c=CFG.editions[id],n=(X[id]||[]).length,t=c.tiles||[];
    var facts=t.slice(0,3).map(function(x){return '<li><small>'+esc(x.k)+'</small><b>'+esc(x.v)+'</b></li>'}).join('');
-   var badge=id==='saudi'?'<em class="gl-badge is-free">Free</em>':n?'<em class="gl-badge">+'+n+' local questions</em>':'';
-   return '<li><button type="button" class="gl-exam" data-pick="'+id+'" data-ed="'+id+'"><span class="gulf-motif" aria-hidden="true"></span><span class="gl-meta"><small class="gl-reg">'+esc(c.short)+'</small>'+badge+'</span><b class="gl-region">'+esc(c.region)+'</b><span class="gl-name">'+esc(c.fullName)+'</span><ul class="gl-facts">'+facts+'</ul>'+(id==='saudi'?'<span class="gl-price">Free</span>':'<span class="gl-price">US$25 a month or US$50 for 3 months</span>')+'<span class="gl-go">Start with '+esc(c.tab)+' <span aria-hidden="true">→</span></span></button></li>'}).join('');
+   var badge=n?'<em class="gl-badge">+'+n+' local questions</em>':'';
+   return '<li><button type="button" class="gl-exam" data-pick="'+id+'" data-ed="'+id+'"><span class="gulf-motif" aria-hidden="true"></span><span class="gl-meta"><small class="gl-reg">'+esc(c.short)+'</small>'+badge+'</span><b class="gl-region">'+esc(c.region)+'</b><span class="gl-name">'+esc(c.fullName)+'</span><ul class="gl-facts">'+facts+'</ul>'+'<span class="gl-price">US$25 a month or US$50 for 3 months</span>'+'<span class="gl-go">Start with '+esc(c.tab)+' <span aria-hidden="true">→</span></span></button></li>'}).join('');
   var feat=[['q','Question Bank','Every question in a slide view: answer, see the reasoning, cross out options, highlight and add notes. Missed and starred questions collect for review.'],
    ['hub','Practice Hub','Timed sets that follow the published question split where the regulator gives one, and a balanced mix where it does not.'],
    ['dos','Clinical Dossier','35 specialty dossiers, 350 linked cases: practise the same reasoning inside a full clinical story.'],
