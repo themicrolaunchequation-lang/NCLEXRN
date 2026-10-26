@@ -406,8 +406,9 @@
     }
 
     // [monthly, yearly] in GBP. Keep in step with the price cards in home.html.
-    const prices = { medlex: [6.99, 49.99], lumen: [5.99, 42.99], carecraft: [4.99, 35.99], serein: [4.99, 35.99], crown: [9.99, 69.99] };
-    const PLANS = ['crown', 'medlex', 'carecraft', 'serein', 'lumen'];
+    // Serein is free for everyone, so it has no price and never counts as a paid app.
+    const prices = { medlex: [2.99, 19.99], lumen: [4.99, 34.99], carecraft: [2.99, 19.99], crown: [5.99, 39.99] };
+    const PLANS = ['crown', 'medlex', 'carecraft', 'lumen'];
     const reserve = initReserve();
     const pickPlan = (plan, scroll) => {
       if (!PLANS.includes(plan)) return;
@@ -474,15 +475,15 @@
         open.setAttribute('href', urls[first]);
         label.textContent = 'Your crown: ' + order.map((k) => names[k]).join(' + ');
         price.innerHTML = '';
-        if (!paid.length) { price.textContent = order.includes('snle') ? (order.includes('evinca') ? 'Gulf Nursing (preview) and Evinca stories are free. Start whenever you are ready.' : 'Gulf Nursing is free during its preview. Start whenever you are ready.') : 'Evinca stories are free. Start whenever you are ready.'; return; }
+        if (!paid.length) { price.textContent = order.includes('snle') ? (order.includes('evinca') ? 'Gulf Nursing (preview) and Evinca stories are free. Start whenever you are ready.' : 'Gulf Nursing is free during its preview. Start whenever you are ready.') : (order.includes('serein') ? 'Serein is free for everyone. Start whenever you are ready.' : 'Evinca stories are free. Start whenever you are ready.'); return; }
         const best = document.createElement('strong');
         if (paid.length >= 2) {
           const sum = paid.reduce((n, k) => n + prices[k][0], 0);
-          best.textContent = 'Crown Pass at £' + prices.crown[0] + '/month';
+          best.textContent = 'Crown Pass at £' + prices.crown[0].toFixed(2) + '/month';
           price.append('Start free. Later, the ', best, ' covers them all; separately they would be £' + sum.toFixed(2) + '/month.');
         } else {
           best.textContent = '£' + prices[paid[0]][0].toFixed(2) + '/month';
-          price.append('Start free. The full app is ', best, ', or every app with the Crown Pass at £' + prices.crown[0] + '.');
+          price.append('Start free. The full app is ', best, ', or every app with the Crown Pass at £' + prices.crown[0].toFixed(2) + '.');
         }
       }));
     }

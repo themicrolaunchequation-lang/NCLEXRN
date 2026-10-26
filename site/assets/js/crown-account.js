@@ -184,8 +184,8 @@
     lumen: ['More Academy AI help each day', 'Unlimited sources and recall cards', 'Focus planner'],
   };
   // Must match the pricing section on the home page and public.crown_plans (monthly).
-  const PRICE = { medlex: '£6.99/month', carecraft: '£4.99/month', serein: '£4.99/month', lumen: '£5.99/month' };
-  const CROWN_PRICE = '£9.99/month';
+  const PRICE = { medlex: '£2.99/month', carecraft: '£2.99/month', serein: 'free', lumen: '£4.99/month' };
+  const CROWN_PRICE = '£5.99/month';
   function paywall(app, what) {
     document.querySelector('.hca-pay')?.remove();
     const d = document.createElement('dialog');
@@ -206,11 +206,12 @@
   }
   const premium = (app, e = ent) => !!(e && (e.admin || e.crown || e[app] === 'premium'));
   /** True when free-plan limits apply to `app` right now. Before entitlements load, a gated preview counts as locked. */
-  const locked = (app) => gatesOn && !premium(app);
+  // Serein is free for everyone: never locked.
+  const locked = (app) => gatesOn && app !== 'serein' && !premium(app);
   /** Runs `allowed` if this person has premium for the app; otherwise shows the paywall. */
   async function gate(app, what, allowed) {
     const e = ent || await ready;
-    if (!gatesOn || premium(app, e)) { if (allowed) allowed(); return true; }
+    if (!gatesOn || app === 'serein' || premium(app, e)) { if (allowed) allowed(); return true; }
     paywall(app, what);
     return false;
   }
