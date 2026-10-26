@@ -1,4 +1,4 @@
-/* Plans page: monthly/yearly toggle, country pricing, Gulf exam passes, and Stripe checkout through window.HCA. */
+/* Plans page: monthly/yearly toggle, country pricing, Gulf Region exam passes, and Stripe checkout through window.HCA. */
 (() => {
   const SUPABASE = 'https://ujeofxfbwivjmgrxqdcl.supabase.co';
   const KEY = 'sb_publishable_ie1qqB5QnaqUZPitNPfQCg__M46e7JL';

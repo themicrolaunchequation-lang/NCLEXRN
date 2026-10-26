@@ -152,7 +152,7 @@
     link('Carecraft', 'https://carecraft.healthcarecrownacademy.co.uk/');
     link('Serein', 'https://serein.healthcarecrownacademy.co.uk/');
     link('Lumen', 'https://lumen.healthcarecrownacademy.co.uk/');
-    if (LIVE.snle) link('Gulf Nursing', 'https://snle.healthcarecrownacademy.co.uk/');
+    if (LIVE.snle) link('Gulf Region Nursing', 'https://snle.healthcarecrownacademy.co.uk/');
     link('Evinca', 'https://evinca.healthcarecrownacademy.co.uk/en');
     if (e.admin) link('Crown admin', `${ACCOUNT}/account/admin`, 'gold');
     const out = document.createElement('button');
@@ -308,7 +308,7 @@
   function dailyHome() {
     const el = document.querySelector('[data-daily-home]'); if (!el) return;
     const D = DAILY.get(); if (!D.a.length && !D.s) return;
-    const N = { medlex: 'MedLex · one word', carecraft: 'Carecraft · one scenario', serein: 'Serein · one breath', lumen: 'Lumen · cards due', snle: 'Gulf Nursing · one clinical decision' };
+    const N = { medlex: 'MedLex · one word', carecraft: 'Carecraft · one scenario', serein: 'Serein · one breath', lumen: 'Lumen · cards due', snle: 'Gulf Region Nursing · one clinical decision' };
     const U = { medlex: 'https://medlex.healthcarecrownacademy.co.uk/#today', carecraft: 'https://carecraft.healthcarecrownacademy.co.uk/#today', serein: 'https://serein.healthcarecrownacademy.co.uk/#today', lumen: 'https://lumen.healthcarecrownacademy.co.uk/#today', snle: 'https://snle.healthcarecrownacademy.co.uk/#home' };
     el.querySelector('[data-daily-title]').textContent = D.a.length >= D.total ? 'All ' + D.total + ' done today. Lovely.' : D.a.length + ' of ' + D.total + ' done today';
     el.querySelector('[data-daily-line]').textContent = D.s > 0 ? D.s + '-day streak' + (D.best > D.s ? ' · best ' + D.best : '') : 'One small step starts a streak.';
