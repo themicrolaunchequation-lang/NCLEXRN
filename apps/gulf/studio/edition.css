@@ -751,3 +751,5 @@ body.gulf-slide-on{overflow:hidden}
 .gr-legend{gap:4px 8px}
 :root[data-gulf-std] .mock-launch-panel *{-webkit-text-fill-color:currentColor;text-shadow:none!important}:root[data-gulf-std] .mock-launch-panel :is(div,span,p,li):not(button *){background-color:transparent}
 :root[data-gulf-std] .mock-launch-panel *,:root[data-gulf-std] .mock-length-display strong{-webkit-text-fill-color:#14243a!important}:root[data-gulf-std] .mock-launch-panel button *,:root[data-gulf-std] .mock-launch-panel button{-webkit-text-fill-color:#fff!important}
+
+.gl-price{display:block;margin:6px 0 2px;font:600 .82rem/1.4 Studio,system-ui,sans-serif;color:var(--ac-ink,#12233a)}

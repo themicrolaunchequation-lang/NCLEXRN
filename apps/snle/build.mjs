@@ -28,7 +28,16 @@ if(!dossierSource)throw Error('Cannot extract preserved dossier records');
 const dossiers=JSON.parse(dossierSource[1]);
 if(P.length!==67||Q.length!==1350||qids.size!==1350)throw Error('Source counts changed unexpectedly');
 for(const p of P)if(p.questionIds.some(id=>!qids.has(id)))throw Error('Missing linked question: '+p.id);
+// Questions removed from the live bank (src/excluded-items.json): applied on top of the untouched original.
+const EXCLUDED=JSON.parse(read('src/excluded-items.json')).ids;
+if(EXCLUDED.some(id=>!qids.has(id)))throw Error('Excluded id not in bank');
+const XS=new Set(EXCLUDED),LIVE_Q=Q.filter(q=>!XS.has(q.id));
+for(const p of P)if(!p.questionIds.some(id=>!XS.has(id)))throw Error('Poster left without questions: '+p.id);
+const QCOUNT=LIVE_Q.length.toLocaleString('en-GB');
+const dataScript=scripts[0]+'\n;(function(){var X=new Set('+JSON.stringify(EXCLUDED)+');window.SNLE_QUESTIONS=window.SNLE_QUESTIONS.filter(function(q){return !X.has(q.id)});window.SNLE_POSTERS.forEach(function(p){p.questionIds=p.questionIds.filter(function(id){return !X.has(id)})});})();\n';
 let app=scripts[1].replace(/\blocalStorage\./g,'snleStorage.');
+// Visible bank size follows the live bank (after src/excluded-items.json).
+app=app.split('1,350').join(QCOUNT);
 app=app.replace('<div class="sidebar-author">by Hossam AlDhaher</div>','').replace('<h3>Made by Hossam AlDhaher</h3>','').replace('<b>Made by Hossam AlDhaher · View-only design:</b>','<b>View-only design:</b>');
 app=patch(app,"const P=window.SNLE_POSTERS","const snleStorage=window.SNLEStorage;\n    const P=window.SNLE_POSTERS",'safe storage');
 app=patch(app,"['reset','reset','Reset & Recharge','Wellbeing']","['reset','reset','Reset & Recharge','Wellbeing'],['progress','chart','My Progress','You']",'progress navigation');
@@ -50,12 +59,12 @@ let master=scripts[2].replace(/\blocalStorage\./g,'window.SNLEStorage.');
 master=patch(master,'obs.observe(document.body, { childList: true, subtree: true });',"obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] });",'native dialog close visibility');
 const styles=[...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map(m=>m[1]).join('\n'),shared=p=>fs.readFileSync(path.join(REPO,p),'utf8');
 const urls={
- prelude:bundle('prelude',read('src/prelude.js'),'js'),data:bundle('data',scripts[0],'js'),
+ prelude:bundle('prelude',read('src/prelude.js'),'js'),data:bundle('data',dataScript,'js'),
  guidance:bundle('guidance',read('src/guidance.js'),'js'),app:bundle('app',app,'js'),
  master:bundle('enhancements',master,'js'),account:bundle('crown-account',shared('site/assets/js/crown-account.js'),'js'),
- shell:bundle('hca-shell',shared('apps/shared/hca-shell.js'),'js'),integration:bundle('integration',read('src/integration.js'),'js'),
+ shell:bundle('hca-shell',shared('apps/shared/hca-shell.js'),'js'),integration:bundle('integration',read('src/integration.js').replace('1,350',QCOUNT),'js'),
  css:bundle('app',styles+'\n'+shared('apps/shared/hca-shell.css')+'\n'+read('src/integration.css'),'css'),
- library:bundle('library',read('src/library.js'),'js'),libraryCss:bundle('library',read('src/library.css'),'css'),
+ library:bundle('library',read('src/library.js').replace('All 1,350','All '+QCOUNT),'js'),libraryCss:bundle('library',read('src/library.css'),'css'),
  dossiers:bundle('dossiers','window.SNLE_DOSSIERS='+JSON.stringify(dossiers)+';','js')
 };
 html=html.replace(/<script[^>]*>[\s\S]*?<\/script>/g,'').replace(/<style[^>]*>[\s\S]*?<\/style>/g,'');
@@ -82,5 +91,5 @@ for(const [name,mode,title]of[
 const buildHash=sha(Object.values(urls).join('')+provenance.sha256+hasLabs).slice(0,16);
 write('sw.js',read('src/worker.js').replace('__BUILD__',buildHash).replace('__SHELL__',JSON.stringify(['/',...Object.values(urls),'/assets/labs-status.js','/assets/crest.svg','/manifest.webmanifest'])));
 const maxFile=Math.max(...written.values());if(maxFile>25*1024*1024)throw Error('Asset exceeds Cloudflare Pages 25 MiB limit');
-const report={sourceSha256:provenance.sha256,buildHash,posters:P.length,questions:Q.length,glossary:L.glossary.length,assets,files:written.size,maxFileBytes:maxFile,totalBytes:[...written.values()].reduce((a,b)=>a+b,0),labs:hasLabs?'included':'missing external package',urls};
+const report={sourceSha256:provenance.sha256,buildHash,posters:P.length,questions:LIVE_Q.length,excludedQuestions:EXCLUDED.length,glossary:L.glossary.length,assets,files:written.size,maxFileBytes:maxFile,totalBytes:[...written.values()].reduce((a,b)=>a+b,0),labs:hasLabs?'included':'missing external package',urls};
 fs.mkdirSync(path.join(ROOT,'reports'),{recursive:true});fs.writeFileSync(path.join(ROOT,'reports/build-integrity.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));

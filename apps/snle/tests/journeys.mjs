@@ -14,7 +14,7 @@ async function go(p,v){await p.goto(BASE+'/#'+v);await p.locator('.sidebar [data
 async function axe(p,label){await p.route(BASE+'/assets/__axe_test.js',r=>r.fulfill({status:200,contentType:'text/javascript',body:fs.readFileSync(require.resolve('axe-core/axe.min.js'),'utf8')}));await p.addScriptTag({url:BASE+'/assets/__axe_test.js'});const v=await p.evaluate(async()=>{const r=await axe.run(document.querySelector('#app'),{runOnly:['wcag2a','wcag2aa','wcag21aa']});return r.violations.map(x=>({id:x.id,impact:x.impact,help:x.help,nodes:x.nodes.map(n=>({target:n.target,summary:n.failureSummary})).slice(0,5)}))});accessibility.push({page:label,violations:v});console.log('AXE '+label+' '+v.map(x=>x.id+':'+x.impact).join(', '))}
 try{
  const c=await context(),p=await page(c);await go(p,'home');
- ok(await p.evaluate(()=>SNLE_QUESTIONS.length===1350&&SNLE_POSTERS.length===67&&SNLE_LEARNING.glossary.length===62),'complete supplied question, poster and glossary counts');
+ ok(await p.evaluate(()=>SNLE_QUESTIONS.length===1297&&SNLE_POSTERS.length===67&&SNLE_LEARNING.glossary.length===62),'complete supplied question, poster and glossary counts');
  ok(await p.locator('.hs-app').count()===6,'six apps in shared suite switcher');ok(await p.locator('.hs-app[aria-label="SNLE"]').getAttribute('aria-current')==='true','SNLE marked active in suite');
  await p.screenshot({path:path.join(OUT,'desktop-home.png')});await axe(p,'home');
  const nav=await p.locator('.sidebar [data-nav]').evaluateAll(es=>es.map(e=>e.dataset.nav));

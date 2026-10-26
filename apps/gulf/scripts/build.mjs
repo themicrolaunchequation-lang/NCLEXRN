@@ -120,7 +120,7 @@ let libSwap=null;
  if(lib.split(keep).length!==2)throw Error('Library patch failed: review filter');
  lib=lib.replace(keep,'let selected = records.filter(r => (!window.GULF_LIB_KEEP || window.GULF_LIB_KEEP(r)) && (');
  if(!lib.includes('Clinical expert review remains pending.'))throw Error('Library patch failed: release wording');
- lib=lib.split('Clinical expert review remains pending.').join('Approved for release by the Academy owner.');
+ lib=lib.split('Clinical expert review remains pending.').join('Clinically reviewed and accepted for release (26 Oct 2026).');
  const libNew='library.'+sha(lib)+'.js';fs.writeFileSync(path.join(A,libNew),lib);if(libNew!==libFile)fs.rmSync(path.join(A,libFile));
  const titles={questions:'Question bank',dossiers:'Clinical Dossier bank',tools:'Clinical tool library'};
  for(const f of fs.readdirSync(out).filter(n=>/^SNLE_.*\.html$/.test(n))){

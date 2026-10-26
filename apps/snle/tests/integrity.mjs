@@ -4,6 +4,8 @@ const original=zlib.gunzipSync(fs.readFileSync(path.join(ROOT,'source/original.h
 assert.equal(digest(original),meta.sha256);
 const scripts=[...original.toString().replace(/\r\n/g,'\n').matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].map(x=>x[2]),source={window:{}},hosted={window:{}};
 vm.runInNewContext(scripts[0],source,{timeout:5000});vm.runInNewContext(fs.readFileSync(path.join(ROOT,'dist',built.urls.data),'utf8'),hosted,{timeout:5000});
+// Apply the published exclusion list to the original before comparing: every other record must match exactly.
+{const X=new Set(JSON.parse(read('src/excluded-items.json')).ids);source.window.SNLE_QUESTIONS=source.window.SNLE_QUESTIONS.filter(q=>!X.has(q.id));source.window.SNLE_POSTERS.forEach(p=>{p.questionIds=p.questionIds.filter(id=>!X.has(id))});}
 const normalize=v=>JSON.parse(JSON.stringify(v)),src=normalize(source.window),out=normalize(hosted.window),assets=[];
 function validate(v){
  if(typeof v==='string')return v.replace(/data:(image\/(?:webp|png|jpeg|svg\+xml)|font\/woff2);base64,([A-Za-z0-9+/=]+)/g,(_,type,b64)=>{const bytes=Buffer.from(b64,'base64'),ext={'image/webp':'webp','image/png':'png','image/jpeg':'jpg','image/svg+xml':'svg','font/woff2':'woff2'}[type],name='/assets/media/'+digest(bytes).slice(0,16)+'.'+ext;assert.equal(digest(fs.readFileSync(path.join(ROOT,'dist',name))),digest(bytes));assets.push(name);return name});
@@ -12,7 +14,7 @@ function validate(v){
 assert.deepEqual(validate(src),out);
 // Verify every embedded asset in the complete attachment, including CSS imagery.
 validate(original.toString());
-const Q=out.SNLE_QUESTIONS,P=out.SNLE_POSTERS;assert.equal(Q.length,1350);assert.equal(P.length,67);assert.equal(out.SNLE_LEARNING.glossary.length,62);assert.equal(new Set(Q.map(q=>q.id)).size,1350);
+const Q=out.SNLE_QUESTIONS,P=out.SNLE_POSTERS;assert.equal(Q.length,1297);assert.equal(P.length,67);assert.equal(out.SNLE_LEARNING.glossary.length,62);assert.equal(new Set(Q.map(q=>q.id)).size,1297);assert(!Q.some(q=>q.id==='Q0331'),'Q0331 removed');
 for(const q of Q){assert.equal(q.options.length,4,q.id);assert(q.options.some(o=>o.label===q.key),q.id);assert(q.rationale.length>0,q.id)}
 function walk(n,fn){if(!n||typeof n!=='object')return;fn(n);for(const[k,v]of Object.entries(n))if(k!=='loc'&&k!=='tokens'){if(Array.isArray(v))v.forEach(x=>walk(x,fn));else if(v&&typeof v==='object')walk(v,fn)}}
 function names(code){const a=[];walk(parse(code),n=>{if(n.type==='FunctionDeclaration'&&n.id)a.push(n.id.name)});return a}

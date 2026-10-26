@@ -18,7 +18,7 @@ try{
  const links=await page.locator('.library-choice').evaluateAll(elements=>elements.map(a=>a.href));ok(links.length===3,'course library retains three companion links');
  for(const url of links){
   const view=await context.newPage();view.on('pageerror',e=>errors.push(e.message));const response=await view.goto(url);assert.equal(response.status(),200);await view.locator('#items article').first().waitFor();
-  const mode=await view.locator('body').getAttribute('data-library'),count={tools:67,questions:1350,dossiers:350}[mode];ok((await view.locator('#count').innerText())===count+' of '+count+' records',mode+' companion contains all records');
+  const mode=await view.locator('body').getAttribute('data-library'),count={tools:67,questions:1297,dossiers:350}[mode];ok((await view.locator('#count').innerText())===count+' of '+count+' records',mode+' companion contains all records');
   await view.locator('#next').click();ok((await view.locator('#position').innerText()).startsWith('Page 2'),mode+' pagination works');
   await view.locator('#search').fill(mode==='tools'?'ABCDE':'patient');ok((await view.locator('#count').innerText()).includes('of '+count),mode+' search works');await view.locator('#search').fill('');
   await view.locator('#hyp').selectOption('90');await view.locator('#sort').selectOption('high');

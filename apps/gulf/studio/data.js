@@ -18,7 +18,7 @@
     answerText:q.answerText||((q.options.filter(function(o){return o.label===q.key})[0]||{}).text||''),rationale:q.rationale||'',pearl:q.pearl||'',trap:q.trap||'',misconceptions:q.misconceptions||null,
     studyFocus:q.pearl||'',domain:q.domain,subdomain:q.subdomain||'',process:q.subdomain||'',population:q.population||'',setting:q.setting||'',construct:q.subdomain||'',
     hyp:h,hypBand:'HYP'+(h>=90?5:h>=80?4:h>=70?3:h>=60?2:1),difficulty:q.difficulty||'Medium',judgment:q.judgment||'Take Action',
-    evidence:q.source&&q.source.url?'Sourced: '+(q.source.title||q.source.url):'Edition item',quality:'Approved for release by the Academy owner',actionRequired:'',editionItem:true,source:q.source||null}});
+    evidence:q.source&&q.source.url?'Sourced: '+(q.source.title||q.source.url):'Edition item',quality:'Clinically reviewed and accepted for release (26 Oct 2026)',actionRequired:'',editionItem:true,source:q.source||null}});
   window.GULF_EXTRA_IDS=mapped.map(function(q){return q.id});
   window.SNLE_QUESTIONS=mapped.concat(window.SNLE_QUESTIONS);
  }
