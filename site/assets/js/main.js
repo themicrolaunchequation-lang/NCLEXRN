@@ -409,6 +409,8 @@
     // Serein is free for everyone, so it has no price and never counts as a paid app.
     const prices = { medlex: [2.99, 19.99], lumen: [4.99, 34.99], carecraft: [2.99, 19.99], crown: [5.99, 39.99] };
     const PLANS = ['crown', 'medlex', 'carecraft', 'lumen'];
+    // Founding-member line disappears after its end date.
+    $$('[data-until]').forEach((el) => { if (Date.now() > Date.parse(el.dataset.until)) el.hidden = true; });
     const reserve = initReserve();
     const pickPlan = (plan, scroll) => {
       if (!PLANS.includes(plan)) return;
@@ -475,7 +477,7 @@
         open.setAttribute('href', urls[first]);
         label.textContent = 'Your crown: ' + order.map((k) => names[k]).join(' + ');
         price.innerHTML = '';
-        if (!paid.length) { price.textContent = order.includes('snle') ? (order.includes('evinca') ? 'Gulf Nursing (preview) and Evinca stories are free. Start whenever you are ready.' : 'Gulf Nursing is free during its preview. Start whenever you are ready.') : (order.includes('serein') ? 'Serein is free for everyone. Start whenever you are ready.' : 'Evinca stories are free. Start whenever you are ready.'); return; }
+        if (!paid.length) { price.textContent = order.includes('snle') ? (order.includes('evinca') ? 'The Saudi exam and Evinca stories are free. Start whenever you are ready.' : 'The Saudi exam is free; Qatar, Dubai and Abu Dhabi are US$25 a month. Start whenever you are ready.') : (order.includes('serein') ? 'Serein is free for everyone. Start whenever you are ready.' : 'Evinca stories are free. Start whenever you are ready.'); return; }
         const best = document.createElement('strong');
         if (paid.length >= 2) {
           const sum = paid.reduce((n, k) => n + prices[k][0], 0);
