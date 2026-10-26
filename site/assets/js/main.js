@@ -477,7 +477,7 @@
         open.setAttribute('href', urls[first]);
         label.textContent = 'Your crown: ' + order.map((k) => names[k]).join(' + ');
         price.innerHTML = '';
-        if (!paid.length) { price.textContent = order.includes('snle') ? (order.includes('evinca') ? 'The Saudi exam and Evinca stories are free. Start whenever you are ready.' : 'The Saudi exam is free; Qatar, Dubai and Abu Dhabi are US$25 a month. Start whenever you are ready.') : (order.includes('serein') ? 'Serein is free for everyone. Start whenever you are ready.' : 'Evinca stories are free. Start whenever you are ready.'); return; }
+        if (!paid.length) { price.textContent = order.includes('snle') ? 'Gulf Nursing exams are US$25 a month or US$50 for 3 months each.' + (order.includes('evinca') ? ' Evinca stories are free.' : '') : (order.includes('serein') ? 'Serein is free for everyone. Start whenever you are ready.' : 'Evinca stories are free. Start whenever you are ready.'); return; }
         const best = document.createElement('strong');
         if (paid.length >= 2) {
           const sum = paid.reduce((n, k) => n + prices[k][0], 0);

@@ -3,7 +3,7 @@
    static assets are stale-while-revalidate. Cross-origin requests
    (the Supabase API) are never cached. Bump VERSION on every release.
    /carecraft and /serein use content-hashed file names, so cached copies never go stale. */
-const VERSION = 'hca-v21';
+const VERSION = 'hca-v22';
 const CORE = [
   '/',
   '/privacy',
