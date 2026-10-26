@@ -11,7 +11,7 @@ let dialog=null,index=0,found=new Set();
 const label={prefix:'Prefix',root:'Root',suffix:'Suffix',vowel:'Link'};
 function solvable(t){return t.parts.map((p,i)=>i).filter(i=>t.parts[i].type!=='vowel');}
 function render(){const t=TERMS[index],need=solvable(t),done=need.every(i=>found.has(i));
- dialog.innerHTML=`<div class="mh-inner"><header class="mh-head"><span class="mh-brand"><span class="mh-crest" aria-hidden="true">${document.querySelector('.hca-crest')?.innerHTML||''}</span><span>MedLex<small>HEALTHCARE CROWN ACADEMY</small></span></span><button type="button" class="mh-skip" data-mh="close">Skip</button></header>
+ dialog.innerHTML=`<div class="mh-inner"><header class="mh-head"><span class="mh-brand"><span class="mh-crest" aria-hidden="true">${document.querySelector('.hca-crest')?.innerHTML||window.MEDLEX_CREST_SVG||''}</span><span>MedLex<small>HEALTHCARE CROWN ACADEMY</small></span></span><button type="button" class="mh-skip" data-mh="close">Skip</button></header>
  <p class="mh-eyebrow">DECODE YOUR FIRST TERM · ABOUT 10 SECONDS</p>
  <h2 id="mh-title">Every medical word is a puzzle <em>you can solve.</em></h2>
  <p class="mh-lead">${done?'Put together, the parts give you the meaning.':'Tap each part of the word to reveal what it means.'}</p>

@@ -427,7 +427,7 @@
       setTimeout(() => pickPlan(wanted, true), 350);
     }
 
-    const names = { medlex: 'MedLex', lumen: 'Lumen', carecraft: 'Carecraft', serein: 'Serein', evinca: 'Evinca', snle: 'SNLE' };
+    const names = { medlex: 'MedLex', lumen: 'Lumen', carecraft: 'Carecraft', serein: 'Serein', evinca: 'Evinca', snle: 'Gulf Nursing' };
     const urls = {
       snle: 'https://snle.healthcarecrownacademy.co.uk/',
       medlex: 'https://medlex.healthcarecrownacademy.co.uk/',
@@ -474,7 +474,7 @@
         open.setAttribute('href', urls[first]);
         label.textContent = 'Your crown: ' + order.map((k) => names[k]).join(' + ');
         price.innerHTML = '';
-        if (!paid.length) { price.textContent = order.includes('snle') ? (order.includes('evinca') ? 'SNLE learning and Evinca stories are free. Start whenever you are ready.' : 'SNLE learning is free. Start whenever you are ready.') : 'Evinca stories are free. Start whenever you are ready.'; return; }
+        if (!paid.length) { price.textContent = order.includes('snle') ? (order.includes('evinca') ? 'Gulf Nursing (preview) and Evinca stories are free. Start whenever you are ready.' : 'Gulf Nursing is free during its preview. Start whenever you are ready.') : 'Evinca stories are free. Start whenever you are ready.'; return; }
         const best = document.createElement('strong');
         if (paid.length >= 2) {
           const sum = paid.reduce((n, k) => n + prices[k][0], 0);

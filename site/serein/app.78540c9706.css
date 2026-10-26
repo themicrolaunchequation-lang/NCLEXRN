@@ -117,6 +117,11 @@ body[data-theme=night]{--jewel:#7FD0B5;--color-accent:#7FD0B5}
 .orb-stage{background:radial-gradient(ellipse at 50% 45%,#1E5A52 0,#10253A 70%)}
 .card:hover,.practice-card:hover{border-color:var(--jewel)}
 
+.sh-urgent{margin:14px 0 0;text-align:center}
+.sh-urgent-link{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #F1C56E80;background:none;color:#F8E3B0;font:inherit;font-size:14px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.sh-urgent-link:hover{background:#ffffff14}
+.sh-urgent-link:focus-visible{outline:3px solid #F1C56E;outline-offset:3px}
+
 /* Healthcare Crown Academy shared shell + "My Day" bento system.
    Loaded after each app's own CSS. Everything is scoped under body.hs so apps that do not opt in are untouched.
    Class hooks (hs-*) are added by hca-shell.js; per-app files only map selectors and add the 3D signature object. */

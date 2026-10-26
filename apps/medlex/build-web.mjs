@@ -86,7 +86,10 @@ body = patch(body, '<strong id="crumb">Overview</strong>', '<strong id="crumb">M
 const TERMS = JSON.parse(read('package/src/data/records/TERMS.json'));
 const hookIds = ['pericarditis', 'tachycardia', 'hepatomegaly', 'hyperglycaemia', 'haematuria', 'gastroenteritis'];
 const hookTerms = hookIds.map(id => TERMS.find(t => t.id === id)).filter(t => t && t.parts.length > 1).map(({ term, plain, parts }) => ({ term, plain, parts }));
-const hook = `window.MEDLEX_HOOK_TERMS=${JSON.stringify(hookTerms)};\n` + read('src/hook.js');
+// The shell moves .hca-crest before the hook opens, so the hook carries its own copy of the crest SVG.
+const crestSvg = (html.match(/<span class="hca-crest"[^>]*>(<svg[\s\S]*?<\/svg>)/) || [])[1] || '';
+if (!crestSvg) throw Error('MedLex crest SVG not found in source/index.html');
+const hook = `window.MEDLEX_HOOK_TERMS=${JSON.stringify(hookTerms)};\nwindow.MEDLEX_CREST_SVG=${JSON.stringify(crestSvg)};\n` + read('src/hook.js');
 const partsMap = Object.fromEntries(TERMS.filter(t => t.parts && t.parts.length > 1).map(t => [t.id, t.parts.filter(p => p.type !== 'vowel').map(p => [p.text, p.type[0], p.meaning])]));
 // Learning Studio + Library: everything heavy loads on first use; only the small entry script is in the shell bundle.
 let engineJs = read('../shared/hca-studio.js');

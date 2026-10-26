@@ -3000,7 +3000,7 @@ const title=id=>(S.data?.practices||[]).find(p=>p.id===id)?.title||'A short prac
 function clear(){timers.forEach(clearTimeout);timers=[];}
 function later(fn,ms){timers.push(setTimeout(fn,ms));}
 function face(curve){return `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 9h.01 M16 9h.01 M7 15 Q12 ${curve} 17 15"/></svg>`;}
-function shell(inner,step){const crest=document.querySelector('.brand img')?.getAttribute('src');dialog.dataset.step=step;dialog.innerHTML=`<div class="sh-inner"><header class="sh-head"><span class="sh-brand">${crest?`<img src="${esc(crest)}" alt="" width="36" height="36">`:''}<span>SEREIN<small>HEALTHCARE CROWN ACADEMY</small></span></span><button type="button" class="sh-skip" data-sh="skip">Skip</button></header>${inner}</div>`;}
+function shell(inner,step){const crest=document.querySelector('.brand img')?.getAttribute('src');dialog.dataset.step=step;dialog.innerHTML=`<div class="sh-inner"><header class="sh-head"><span class="sh-brand">${crest?`<img src="${esc(crest)}" alt="" width="36" height="36">`:''}<span>SEREIN<small>HEALTHCARE CROWN ACADEMY</small></span></span><button type="button" class="sh-skip" data-sh="skip">Skip</button></header>${inner}<p class="sh-urgent"><button type="button" class="sh-urgent-link" data-sh="help">Need urgent help now?</button></p></div>`;}
 function breathe(){clear();const still=reduced();
  shell(`<div class="sh-breath ${still?'is-still':''}"><p class="sh-eyebrow">BEFORE ANYTHING ELSE</p><h2 id="sh-title">Let’s take three easy breaths together.</h2><div class="sh-orb" aria-hidden="true"><span class="sh-orb-ring"></span><span class="sh-orb-core"></span></div><p class="sh-cue" id="sh-cue" aria-live="polite">${still?'Breathe in gently through your nose… then let the breath go slowly. Take as long as you like.':'Get comfortable. Eyes can stay open.'}</p><p class="sh-count" id="sh-count">${still?'':'Three slow breaths · about 30 seconds'}</p><div class="sh-actions"><button type="button" class="button button-teal" data-sh="mood">${still?'I’m ready':'Continue when ready'}</button></div></div>`,'breath');
  dialog.querySelector('[data-sh="mood"]').focus({preventScroll:true});
@@ -3024,9 +3024,14 @@ function begin(){const m=chosen;close();ctx.finish();if(!m)return;setTimeout(()=
  // "Begin this practice" already said begin: start playback without a second tap.
  setTimeout(()=>{try{if(S.player?.engine?.state==='ready')S.player.playPause();}catch{}},80);
 },60);}
-function run(c){ctx=c;try{dialog=document.createElement('dialog');dialog.className='serein-hook';dialog.setAttribute('aria-labelledby','sh-title');document.body.append(dialog);
+// Crisis support is never behind the welcome: open Get help directly.
+function openHelp(){setTimeout(()=>{try{document.querySelector('[data-v5="help"]')?.click();}catch{}},0);}
+// Arriving on a support or help link skips the welcome entirely (it can still run on a later visit).
+const helpLink=()=>/^#\/?(support|help|get-help|crisis)\b/i.test(location.hash||'');
+function run(c){ctx=c;if(helpLink()){openHelp();return;}try{dialog=document.createElement('dialog');dialog.className='serein-hook';dialog.setAttribute('aria-labelledby','sh-title');document.body.append(dialog);
  dialog.addEventListener('cancel',e=>{e.preventDefault();close();ctx.onboard();});
  dialog.addEventListener('click',e=>{const b=e.target.closest('[data-sh]');if(!b)return;e.stopPropagation();const a=b.dataset.sh;
+  if(a==='help'){close();openHelp();return;}
   if(a==='skip'||a==='setup'){close();ctx.onboard();}else if(a==='mood')mood();else if(a==='pick')pick(+b.dataset.i);else if(a==='begin')begin();});
  dialog.showModal();breathe();}catch{close();c.onboard();}}
 S.hook={run};
