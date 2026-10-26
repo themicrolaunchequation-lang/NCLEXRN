@@ -22,7 +22,7 @@
     const c = $('[data-sub-country]').value, band = bands[c] || 'A';
     for (const el of $$('[data-price]')) {
       const id = el.dataset.price, r = regional[id + ':' + band], p = plans[id];
-      el.textContent = band !== 'A' && r ? money(r.amount, r.currency) : p ? money(p.amount_gbp, 'gbp') : '';
+      el.textContent = band !== 'A' && r ? money(Number(r.amount), r.currency) : p ? money(Number(p.amount_gbp), 'gbp') : '';
     }
     $('[data-sub-band]').textContent = band === 'A' ? 'Prices in pounds sterling, VAT included where it applies.' : 'Reduced prices for your country, in US dollars.';
     const f = plans['crown-year-founding'];
@@ -37,12 +37,14 @@
     for (const [c, n] of opts) sel.add(new Option(n, c));
     const g = guessCountry(); sel.value = codes.includes(g) ? g : 'GB';
     sel.addEventListener('change', render);
-    try {
-      const [b, r, p] = await Promise.all([get('crown_country_bands?select=iso,band'), get('crown_regional_prices?select=plan_id,band,currency,amount'), get('crown_plans?select=id,amount_gbp,available_until,active')]);
-      bands = Object.fromEntries(b.map((x) => [x.iso, x.band]));
-      regional = Object.fromEntries(r.map((x) => [x.plan_id + ':' + x.band, x]));
-      plans = Object.fromEntries(p.filter((x) => x.active).map((x) => [x.id, x]));
-    } catch { msg('Prices could not be loaded. Please refresh the page.'); }
+    // Each list loads on its own; list prices are built in so the page never shows blanks.
+    plans = { 'crown-month': { amount_gbp: 5.99 }, 'crown-year': { amount_gbp: 39.99 }, 'crown-year-founding': { amount_gbp: 29.99, available_until: '2027-01-31T23:59:59Z' },
+      'medlex-month': { amount_gbp: 2.99 }, 'medlex-year': { amount_gbp: 19.99 }, 'carecraft-month': { amount_gbp: 2.99 }, 'carecraft-year': { amount_gbp: 19.99 },
+      'lumen-month': { amount_gbp: 4.99 }, 'lumen-year': { amount_gbp: 34.99 } };
+    const [b, r, p] = await Promise.allSettled([get('crown_country_bands?select=iso,band'), get('crown_regional_prices?select=plan_id,band,currency,amount'), get('crown_plans?select=id,amount_gbp,available_until,active')]);
+    if (b.status === 'fulfilled') bands = Object.fromEntries(b.value.map((x) => [x.iso, x.band]));
+    if (r.status === 'fulfilled') regional = Object.fromEntries(r.value.map((x) => [x.plan_id + ':' + x.band, x]));
+    if (p.status === 'fulfilled' && p.value.length) plans = Object.fromEntries(p.value.filter((x) => x.active).map((x) => [x.id, x]));
     render();
 
     const q = new URLSearchParams(location.search);
