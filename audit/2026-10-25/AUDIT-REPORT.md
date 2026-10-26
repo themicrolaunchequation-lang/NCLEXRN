@@ -5,6 +5,8 @@
 > **Read this first: how the evidence was gathered.**
 > The audit environment could not reach the live site. The network proxy refused connections to the domain; the fetch tool failed DNS for every host, including w3.org; and Vercel denied share-link access. Instead, I confirmed through the Vercel API that **production serves exactly the commits held in the two repositories**: `NCLEXRN@e0764db` for the home site and the four app subdomains, and `evinca@2806451` for Evinca and the account site. I then replayed `site/vercel.json` (redirects, clean URLs, host rewrites, security headers including CSP) inside Chromium, serving files from that exact commit. Rendered findings therefore reflect the production build, but **not** CDN behaviour, real DNS, TLS, real network timing or live backend responses. Every claim below is labelled observed, measured (lab), source-only, or needs verification.
 
+> **Update 26 Oct 2026:** HCA-20 (MedLex welcome intercepting deep links) is **withdrawn**. A clean-profile re-test showed MedLex already opens its welcome only on the home route; the original observation came from how the test navigated. Fix status for every finding is in the last column of `findings-register.csv`, and the plain-language summary is in `ACTION-PLAN.pdf`.
+
 ## Audit metadata
 
 | Item | Value |

@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Healthcare Crown Academy — Action Plan</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  :root { --ink:#12233A; --muted:#55657A; --gold:#A87B2E; --line:#D9DEE6; --soft:#F5F2EA; --ok:#1E6B4F; --warn:#9A5B00; --bad:#A12B2B; }
+  * { box-sizing: border-box; }
+  body { font: 10.5pt/1.5 "Segoe UI", Inter, Arial, sans-serif; color: var(--ink); margin: 0; background:#fff; }
+  h1 { font: 600 26pt/1.15 Georgia, serif; margin: 0 0 6px; }
+  h2 { font: 600 16pt/1.2 Georgia, serif; margin: 26px 0 8px; padding-top: 6px; border-top: 2px solid var(--gold); page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 16px 0 6px; page-break-after: avoid; }
+  p { margin: 6px 0; }
+  .eyebrow { color: var(--gold); font-weight: 700; letter-spacing: .12em; font-size: 9pt; text-transform: uppercase; }
+  .lead { font-size: 12pt; color: var(--muted); }
+  .cover { page-break-after: always; padding-top: 30mm; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 20px 0; }
+  .stat { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  .stat b { display: block; font-size: 20pt; font-family: Georgia, serif; }
+  .stat.ok b { color: var(--ok); } .stat.you b { color: var(--warn); } .stat.later b { color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; font-size: 9.5pt; page-break-inside: auto; }
+  th, td { border: 1px solid var(--line); padding: 5px 7px; text-align: left; vertical-align: top; }
+  th { background: var(--soft); font-weight: 600; }
+  tr { page-break-inside: avoid; }
+  .step { border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 6px; padding: 8px 12px; margin: 8px 0; page-break-inside: avoid; }
+  .step h3 { margin: 0 0 4px; }
+  .box { display: inline-block; width: 12px; height: 12px; border: 1.5px solid var(--ink); border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .meta { color: var(--muted); font-size: 9pt; }
+  pre { background: #F7F8FA; border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font: 8.6pt/1.45 Consolas, "Courier New", monospace; white-space: pre-wrap; word-break: break-word; page-break-inside: avoid; margin: 6px 0 12px; }
+  .tag { display: inline-block; font-size: 8pt; font-weight: 700; padding: 1px 6px; border-radius: 999px; border: 1px solid; }
+  .done { color: var(--ok); border-color: var(--ok); } .you { color: var(--warn); border-color: var(--warn); } .later { color: var(--muted); border-color: var(--muted); }
+  .note { background: var(--soft); border-radius: 6px; padding: 8px 12px; margin: 10px 0; }
+  .pb { page-break-before: always; }
+  a { color: var(--ink); }
+  code { font-family: Consolas, monospace; font-size: 9pt; background:#F3F4F6; padding: 0 3px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <p class="eyebrow">Healthcare Crown Academy · 26 October 2026</p>
+  <h1>Action plan</h1>
+  <p class="lead">What has already been fixed for you, the short list of things only you can do, and copy-paste prompts for everything else. Nothing has been published to your live website. All fixes are waiting on preview links for you to approve.</p>
+  <div class="stats">
+    <div class="stat ok"><b>12</b>findings fixed on preview<br><span class="meta">plus 3 partly fixed, 5 prepared</span></div>
+    <div class="stat you"><b>11</b>need a decision or access from you</div>
+    <div class="stat later"><b>7</b>left for later fix prompts<br><span class="meta">1 finding withdrawn after re-test</span></div>
+  </div>
+  <p><b>Start here:</b> Part 1 gives the 12 steps in order, with time estimates. Most take under five minutes.</p>
+  <p class="meta">Source files: <code>audit/2026-10-25/</code> on branch <code>claude/dazzling-noether-vpexec</code> of the NCLEXRN repository: AUDIT-REPORT.md, findings-register.csv (with a status column), PRICING-STRATEGY.md, CERTIFICATES-AUDIT.md, PROMPTS.md, coverage-inventory.csv, market-price-scan.csv, clinical-content-sample.csv.</p>
+</section>
+
+<h2>Part 1 — Your steps, in order</h2>
+<p>Tick each box as you go. For anything that needs an answer, the matching form in Part 3 is ready to copy, fill in and send to Claude.</p>
+
+<div class="step"><h3><span class="box"></span>1. Look at the two preview links (10 min)</h3>
+<p>Home site and apps: <b>nclexrn-site-gjmuf8avr-themicrolaunchequation-langs-projects.vercel.app</b><br>Evinca: <b>evinca-i2y4f90yz-themicrolaunchequation-langs-projects.vercel.app</b></p>
+<p class="meta">Open them while signed in to Vercel. Check the home page, the Gulf Nursing section, pricing (certificates now say "coming soon"), Serein (open it once in a private window: "Need urgent help now?" appears in the welcome), and one Evinca honoree page. If you're happy, send <b>Form A7</b>. Claude will then merge the fixes into your live branches.</p></div>
+
+<div class="step"><h3><span class="box"></span>2. Check two web addresses on your phone (2 min)</h3>
+<p>Open <b>snle.healthcarecrownacademy.co.uk</b> and <b>lss.healthcarecrownacademy.co.uk</b>. Tell Claude whether each opens (<b>Form A2</b>). If one doesn't, Claude switches it off everywhere with one setting.</p></div>
+
+<div class="step"><h3><span class="box"></span>3. Send one test email (2 min)</h3>
+<p>From a personal address, email <b>hello@healthcarecrownacademy.co.uk</b>. If it doesn't arrive, set up forwarding in Porkbun → Email Forwarding. Customers, refunds and security reports all use this address.</p></div>
+
+<div class="step"><h3><span class="box"></span>4. Turn on one Supabase setting (1 min)</h3>
+<p>Supabase → project <b>evinca</b> → Authentication → password settings → enable <b>Leaked password protection</b>.</p></div>
+
+<div class="step"><h3><span class="box"></span>5. Two Vercel settings (5 min)</h3>
+<p>(a) Upgrade team <b>themicrolaunchequation-lang's projects</b> to <b>Pro</b> before you take any payment (Hobby is non-commercial only). (b) Project <b>evinca</b> → Settings → Functions → region <b>London (lhr1)</b>, next to your database. Both settings take effect on the next deployment.</p></div>
+
+<div class="step"><h3><span class="box"></span>6. Tell Claude which AI service Lumen uses (5 min)</h3>
+<p>Lumen's "Academy AI" sends learners' text through your server to an AI provider. The privacy notice wrongly says it doesn't. Fill in <b>Form A6</b> (provider, region, how long answers are kept) so Claude can write the correct privacy text and the in-app notice.</p></div>
+
+<div class="step"><h3><span class="box"></span>7. Decide on prices (15 min)</h3>
+<p>Read section 3 of PRICING-STRATEGY.md (summary in Part 2 below) and fill in <b>Form A4</b>. Claude then puts one price list everywhere: home page, pop-up, checkout. Today these disagree.</p></div>
+
+<div class="step"><h3><span class="box"></span>8. Decide on certificates (10 min)</h3>
+<p>No app certificate exists yet. Choose: build them before launch, or keep "coming soon". Name who signs them (<b>Form A5</b>).</p></div>
+
+<div class="step"><h3><span class="box"></span>9. Book a qualified clinical reviewer (owner task)</h3>
+<p>Give them <code>apps/snle/reports/scoring-check.csv</code> (APGAR error Q0331: the answer should be 8, not 9), <code>units-check.csv</code> and <code>item-cues.json</code>. Keep Gulf Nursing free and marked "preview" until they sign off (<b>Form A3</b>).</p></div>
+
+<div class="step"><h3><span class="box"></span>10. Solicitor review (owner task)</h3>
+<p>Terms, refunds and privacy pages should also cover Gulf Nursing and the LSS Toolkit. New UK subscription rules are expected from 1 January 2027 (<b>Form A6</b>).</p></div>
+
+<div class="step"><h3><span class="box"></span>11. Say yes to the prepared database file (1 min)</h3>
+<p><code>evinca/db/proposed/2026-10-26-audit-hardening.sql</code> tightens two functions, blocks one admin function for visitors, and validates newsletter emails. It was not applied. Reply "apply the proposed SQL" and Claude will apply it and re-check the security advisor.</p></div>
+
+<div class="step"><h3><span class="box"></span>12. Optional: let Claude test the live site (5 min)</h3>
+<p>Add <b>healthcarecrownacademy.co.uk</b> and <b>*.healthcarecrownacademy.co.uk</b> to this environment's allowed domains, and create two test accounts (<b>Form A1</b>). This lets Claude test sign-in, real speed and the live pages.</p></div>
+
+<h2 class="pb">Part 2 — What Claude fixed without you (on preview, not live)</h2>
+<table>
+<tr><th>Area</th><th>What changed</th><th>Finding</th></tr>
+<tr><td>Home page honesty</td><td>Removed "Approved for release by the Academy owner"; Gulf Nursing marked "Preview: clinical review in progress, free"; a correct statement of where each app keeps data; FAQ refund answer matches the refunds page; certificate perks say "coming soon"</td><td>HCA-03, 16, 32, CERT-01</td></tr>
+<tr><td>Prices in the pop-up</td><td>Upgrade pop-up now shows the same monthly prices as the pricing section (MedLex £6.99, Lumen £5.99)</td><td>HCA-15</td></tr>
+<tr><td>Product names</td><td>"Gulf Nursing" used consistently (picker, account menu, Daily Crown, image text); app description says six apps</td><td>HCA-17, 38</td></tr>
+<tr><td>App on/off switch</td><td>One setting can hide every Gulf Nursing or LSS link if its address doesn't work (currently ON)</td><td>HCA-01, 02</td></tr>
+<tr><td>Serein crisis help</td><td>Opening a help/support link skips the welcome; the welcome now has "Need urgent help now?" (tested: one tap shows the crisis numbers)</td><td>HCA-19</td></tr>
+<tr><td>MedLex</td><td>Missing crest on the welcome fixed; lesson library text contrast 4.38:1 → 5.3:1, small text enlarged</td><td>HCA-28, 30</td></tr>
+<tr><td>Old pages</td><td>29 old MedLex lesson pages redirect to the new lesson library</td><td>HCA-27</td></tr>
+<tr><td>Tidy-up</td><td>Removed two unused hosting files; README describes the real (Vercel) setup; neutral 404 wording</td><td>HCA-25, 31</td></tr>
+<tr><td>Evinca demo people</td><td>13 fictional honorees: hidden from search engines, titled "Illustrative example", removed from the sitemap</td><td>HCA-14</td></tr>
+<tr><td>Evinca certificate</td><td>No longer prints "two independent, blind reviews" as fixed text; demo certificates say "Illustrative example, not an award"; method line and QR use your own domain (not evinca.org); stronger SAMPLE watermark</td><td>CERT-03, 04, 05, 08</td></tr>
+<tr><td>LSS certificate and tools</td><td>Seal says "COURSE COMPLETED", not "OFFICIAL CERTIFIED"; "applied competence" wording removed; generator and badge defaults say "SPECIMEN"</td><td>CERT-09, 10 (part), 12</td></tr>
+<tr><td>Question-bank checks</td><td>New read-only script <code>apps/snle/scripts/item-checks.mjs</code>: confirms the APGAR error and measures answer cues and units. No question was changed.</td><td>HCA-04, 05, 07</td></tr>
+<tr><td>Database (prepared, not applied)</td><td>SQL file for function hardening and newsletter validation</td><td>HCA-11, 12</td></tr>
+</table>
+<p class="note"><b>Checks run:</b> Serein and MedLex rebuilt from source; a clean rebuild was byte-identical before any edit. Regression crawl of 30 pages found 0 accessibility violations and no new errors. Evinca production build plus 117 automated assertions pass. Withdrawn: HCA-20. A re-test showed MedLex already skips its welcome on direct links. <b>Heads-up:</b> other branches (e.g. <code>claude/gulf-crosswalk</code>) also change the Gulf studio; merging may need a short conflict check on <code>site/home.html</code>.</p>
+
+<h3>Pricing summary (from PRICING-STRATEGY.md, for step 7)</h3>
+<table>
+<tr><th>Product</th><th>Now</th><th>Recommended</th></tr>
+<tr><td>Crown Pass</td><td>£9.99/mo, £69.99/yr (checkout database says £79.99)</td><td><b>£5.99/mo, £39.99/yr</b>; founding members £29.99 first year (with a real end date)</td></tr>
+<tr><td>MedLex</td><td>£6.99/mo</td><td>£2.99/mo, £19.99/yr, or £29.99 lifetime</td></tr>
+<tr><td>Lumen</td><td>£5.99/mo</td><td>£4.99/mo, £34.99/yr (covers AI cost)</td></tr>
+<tr><td>Carecraft</td><td>£4.99/mo</td><td>£2.99/mo, £19.99/yr</td></tr>
+<tr><td>Serein</td><td>£4.99/mo</td><td>Free for everyone</td></tr>
+<tr><td>Gulf exams</td><td>Saudi free; others unpriced</td><td>Free until clinically reviewed; then USD 39 for 3 months, or USD 79 for all four exams for a year</td></tr>
+<tr><td>Evinca</td><td>USD 19–499</td><td>USD 9–299 (e.g. individual $149 → $79)</td></tr>
+<tr><td>LSS Toolkit</td><td>USD 99/yr</td><td>Keep USD 99</td></tr>
+<tr><td>Regional</td><td>—</td><td>About 40% off for middle-income and 60% off for lower-income countries</td></tr>
+</table>
+
+<h2 class="pb">Part 3 — Forms: copy, fill in the [brackets], send to Claude</h2>
+
+<h3>A1. Live testing access (step 12)</h3>
+<pre>Access for the live audit:
+1. I added healthcarecrownacademy.co.uk and *.healthcarecrownacademy.co.uk to this environment's allowed domains: [done / not done]
+2. Test accounts (testing only, no real people):
+   - Free account email: [test-free@...]
+   - Crown Pass test account (admin-granted, no payment): [test-crown@...]
+   - Test inbox I control for verification emails: [address]
+3. You may sign in, sign out and trigger password recovery for these test accounts only: [yes/no]
+4. Google Search Console access or exported reports: [attached / not available]</pre>
+
+<h3>A2. Addresses and hosting (steps 2, 3, 5)</h3>
+<pre>Hosting facts:
+- snle.healthcarecrownacademy.co.uk opens on my phone: [yes / no]   It is hosted on: [not set up / Cloudflare Pages / other]
+- lss.healthcarecrownacademy.co.uk opens: [yes / no]   Operated by: [Healthcare Crown Academy Ltd / Health Quality Leaders Ltd / other]
+- I own evinca.org: [yes / no / don't know]
+- Test email to hello@healthcarecrownacademy.co.uk: [arrived / did not arrive]
+- Vercel plan: [Hobby / Pro]     Evinca region set to London: [yes / no]
+- Old Vercel projects nexusrn-public-beta / nexusrn-public-preview: [delete / keep / unsure]</pre>
+
+<h3>A3. Clinical review (step 9)</h3>
+<pre>Clinical review:
+- Reviewer name, profession, registration body and number: [___]
+- Scope: [UK nursing / Saudi SNLE / UAE DHA-DOH / Qatar DHP]
+- Q0331 (APGAR) should be corrected to 8: [yes / reviewer to confirm]
+- Glucose units: [show both mg/dL and mmol/L / per exam: ___]
+- Verified crisis numbers for Serein, with a source link each: Saudi Arabia [___], UAE [___], Qatar [___], others [___]
+- Until review: [keep Gulf Nursing as "Preview, free" / hide it]</pre>
+
+<h3>A4. Prices (step 7)</h3>
+<pre>Pricing decisions:
+- Recommended UK price list (PRICING-STRATEGY.md section 3.1): [approve all / changes: ___]
+- Serein fully free: [yes / no, keep at £___]
+- MedLex lifetime £29.99: [yes / no]
+- Gulf exams after review: [USD 39 / 3 months and 59 / 12 months per exam | Gulf Exam Pass USD 79 | included in Crown Pass]
+- Regional prices (bands A/B/C): [yes / no]; currencies: [GBP, USD, SAR, AED, EGP, INR, PHP ...]
+- Founding-member offer: price [£29.99 first year], end date [__], who qualifies [people who reserved]
+- Evinca fees (section 3.3): [approve / changes: ___]
+- VAT registered: [yes/no]; Stripe fee rate: [__% + __p]; AI cost per Lumen user per month: [£__ / unknown]</pre>
+
+<h3>A5. Certificates (step 8)</h3>
+<pre>Certificates:
+- App certificates: [build before paid launch / keep "coming soon"]
+- Crown Suite signatory: name [___], title [___], signature image [attached, with consent] or "sign as the company"
+- Evinca signatory: [named Chair ___ with consent / sign as the company until a board exists]
+- Rules: MedLex = 40-question final test at 80%+; Carecraft = 10 lessons + 20-question test at 80%+;
+  Serein = 7-day journey (participation); Lumen = [no certificate / ___]   [approve / edit]
+- LSS certificate issuer: [Health Quality Leaders Ltd / Healthcare Crown Academy Ltd]; verify web address: [___]
+- "Hossam AlDhaher, LSSMBB" in Carecraft: awarding body [___] or [remove the letters]</pre>
+
+<h3>A6. Legal and AI processor (steps 6, 10)</h3>
+<pre>Legal:
+- Lumen Academy AI provider: [OpenAI / Anthropic / Google / other], region [___], contract (DPA) signed [yes/no],
+  keep cached answers for [__ days]
+- Solicitor reviewing terms, refunds and subscription rules: [name / not yet]
+- Terms should cover: [Gulf Nursing, LSS Toolkit, Evinca]; LSS terms are [ours / theirs at ___]</pre>
+
+<h3>A7. Approval to publish (step 1)</h3>
+<pre>Approved to publish. Merge claude/dazzling-noether-vpexec (site fixes, not the audit folder if you prefer)
+into claude/loving-ptolemy-srrq02, and claude/audit-safe-fixes into evinca main.
+I checked both preview links. [Any change requests: ___]</pre>
+
+<h2 class="pb">Part 4 — Fix prompts for the remaining work</h2>
+<p>Paste one prompt per Claude Code session, in this order. Every prompt works on a separate branch and never publishes without your approval. Prompts marked <span class="tag done">mostly done</span> now only cover what is left.</p>
+
+<h3>B1. Containment <span class="tag done">mostly done</span>: switch off dead apps</h3>
+<pre>Repo themicrolaunchequation-lang/NCLEXRN. My answers to Form A2 are: [paste].
+In site/assets/js/crown-account.js set LIVE.snle / LIVE.lss to false for any address that does not work.
+Bump VERSION in site/sw.js. Test with the Playwright harness that no link to a switched-off app is visible
+on the home page, the app menus, the account menu or the Daily Crown. Push to a branch and give me the preview link.</pre>
+
+<h3>B2. Lumen privacy notice and AI notice <span class="tag you">needs Form A6</span></h3>
+<pre>Repo NCLEXRN, new branch from claude/loving-ptolemy-srrq02. Read audit/2026-10-25/AUDIT-REPORT.md HCA-08.
+My Form A6 answers: [paste].
+1. site/privacy.html: add "Lumen Academy AI" (text goes from the browser to our Supabase function lumen-ai, then to
+   [provider] in [region]; purpose; lawful basis; lumen_ai_cache kept [N] days; transfers; how to opt out).
+   Correct the sentence that says AI text never passes through our servers. Update "Last updated".
+2. Lumen (apps/lumen, rebuild with build-web.mjs): one-time notice before the first Academy AI call, including
+   "Do not include patient-identifiable information", with "Use Academy AI" / "Use my own key instead".
+3. Draft (do not apply) a purge job for lumen_ai_cache older than [N] days in evinca/db/proposed/.
+Run apps/tools/lumen-check.mjs, screenshot at 390px and 1366px, push branch only.</pre>
+
+<h3>B3. Evinca trust <span class="tag done">mostly done</span>: signatory</h3>
+<pre>Repo evinca, branch from claude/audit-safe-fixes. My Form A5 answer for the Evinca signatory: [paste].
+Update the certificate signature block in app/[locale]/verify/[id]/certificate/page.tsx and components/issuance-kit.tsx
+to the named signatory (or "For Healthcare Crown Academy Ltd"), version the rubric as "2026.1" with a link to /how-we-review,
+and add a test that fails if "evinca.org" or a fixed "two independent, blind reviews" string reappears.
+Run pnpm build and pnpm test:review. Push branch only.</pre>
+
+<h3>B4. One price list everywhere <span class="tag you">needs Form A4</span></h3>
+<pre>Repos NCLEXRN and evinca, new branches. My approved prices (Form A4): [paste].
+1. Write (do not apply) a migration in evinca/db/proposed/ setting public.crown_plans to these prices, adding one-off
+   Gulf exam products and regional band prices (band A/B/C, currency, amount).
+2. Generate site/assets/data/prices.json from the same values; home pricing, the paywall (crown-account.js PRICE) and the
+   JSON-LD offers must all read it. Remove hard-coded prices.
+3. Founding-member offer shown only before [end date], with the date visible; no struck-through prices unless charged before.
+4. If Serein is free: remove it from paid plans and paywall gating.
+5. Test: every plan's price is identical in home, paywall, prices.json and the migration. Screenshots with ?gates=on.
+Push branches only; list the migration for me to approve.</pre>
+
+<h3>B5. Question-bank corrections <span class="tag you">needs Form A3</span></h3>
+<pre>Repo NCLEXRN, apps/snle. My reviewer's decisions: [paste]. Do NOT edit source/original.html.gz.
+Add src/corrections.json (id, field, old, new, reason, reviewer, date) applied at build time in build.mjs.
+Apply the reviewer-approved changes (starting with Q0331 -> D/8). Fix the punctuation cue (consistent final full stops)
+as a formatting-only correction. Add glucose unit conversions per my policy. Re-run scripts/item-checks.mjs
+(target: 0 APGAR mismatches, 0 punctuation cues) and the apps/snle tests. Push branch only.</pre>
+
+<h3>B6. International crisis numbers <span class="tag you">needs Form A3</span></h3>
+<pre>Repo NCLEXRN, apps/serein. My verified numbers with sources: [paste].
+Add a country selector to Serein's Get help (default from browser language/time zone, user can change) showing these
+numbers with source link and "checked [date]"; keep the UK list unchanged. Rebuild with build-web.mjs; run
+apps/tools/serein-check.mjs and a clean-profile test of /#support. Push branch only.</pre>
+
+<h3>B7. Security hardening <span class="tag you">needs your approval</span></h3>
+<pre>Repos evinca and NCLEXRN, new branches. Read AUDIT-REPORT.md HCA-09 and HCA-13. Do not change live settings.
+1. Pull a read-only baseline of the live schema into evinca/supabase/migrations (I will provide database access).
+2. Newsletter double opt-in: pending status + confirmation token + Edge Function to send the email (draft, not deployed).
+3. Session hardening behind a flag: HttpOnly, host-only refresh cookie on the account site; short-lived access tokens
+   to our own subdomains via an allowlist; crown-account.js and lib/auth.ts use it when the flag is on.
+4. Lumen: self-host the scripts loaded from cdn.jsdelivr.net / esm.run and remove them from vercel.json CSP.
+Run builds and tests; push branches; list every step awaiting my approval.</pre>
+
+<h3>B8. Build real certificates <span class="tag you">needs Form A5</span></h3>
+<pre>Repos evinca and NCLEXRN, branch feat/certificates. My Form A5 answers: [paste].
+Server-side certificates only: crown_assessments + crown_submit_assessment(app, answers) scoring in the database,
+3 attempts a day, then crown_issue_certificate with serials MLX-/CCR-/SRN-YYYY-NNNNNN (allow lumen if approved).
+Account site: /account/certificates (list, PDF) and public /verify/c/[serial]; QR always points to that page.
+Wording: "Certificate of Completion" / "Certificate of Participation" + "Self-paced educational completion. Not a licence,
+accreditation, CPD credit or assessment of clinical competence." Admin revoke/reissue with audit rows.
+LSS: QR -> https://[verify domain]/verify/<code> backed by a lookup. End-to-end test: fail -> none; pass -> Active;
+revoke -> Revoked. Migrations prepared, not applied. Change pricing perks from "coming soon" only after this passes.</pre>
+
+<h3>B9. Speed and search <span class="tag later">any time</span></h3>
+<pre>Repos NCLEXRN and evinca, branch fix/perf-seo.
+1. MedLex: reserve space for late content (CLS < 0.1 at 390x844), lazy-load infographics, defer non-visible routes.
+2. Lumen: move inline bundles out of site/lumen/index.html (target < 50 KB) via apps/lumen/build-web.mjs; add og:image.
+3. Add MedLex Canvas lessons to the sitemap with self-canonicals and meta descriptions; 308 app paths requested on the
+   wrong host to the right host in site/vercel.json.
+Measure before/after with the Playwright lab script and paste the table. Push branch only.</pre>
+
+<h3>B10. Accessibility polish <span class="tag later">any time</span></h3>
+<pre>Repo NCLEXRN, branch fix/a11y. MedLex Today: exactly one visible h1 per route. Run axe-core (WCAG 2.2 AA)
+on home, every MedLex route, the Canvas library and 5 lessons, Carecraft, Serein and Lumen; report 0 violations
+or list what remains. Push branch only.</pre>
+
+<h3>B11. Legal pages draft <span class="tag you">needs Form A6</span></h3>
+<pre>Repo NCLEXRN, branch fix/legal-draft. My Form A6 answers: [paste]. Draft additions to site/terms.html,
+privacy.html and refunds.html covering Gulf Nursing, the LSS Toolkit (or a link to its operator's documents), and
+subscription renewal reminders and easy cancellation in line with the UK rules expected from 1 January 2027.
+Mark "for solicitor review"; do not publish.</pre>
+
+<h3>B12. Privacy-friendly visitor counts <span class="tag later">needs your approval</span></h3>
+<pre>Repos NCLEXRN and evinca, branch feat/analytics. Cookieless, aggregate counts only (no user IDs, no IPs):
+one table (event, app, day, count) plus an Edge Function. Events: landing_view, app_open, signup_start, signup_done,
+learning_start, lesson_complete, js_error. Small chart in account admin. Draft a privacy-notice paragraph and DPIA
+note for my review. Push branch only.</pre>
+
+<h2>Part 5 — Files</h2>
+<table>
+<tr><th>File (audit/2026-10-25/)</th><th>What it is</th></tr>
+<tr><td>ACTION-PLAN.pdf</td><td>This document</td></tr>
+<tr><td>AUDIT-REPORT.md</td><td>Full audit: scores, journeys, 39 findings, clinical review, roadmap</td></tr>
+<tr><td>findings-register.csv</td><td>Every finding, with evidence, fix, acceptance test and a 26 Oct status column</td></tr>
+<tr><td>PRICING-STRATEGY.md · market-price-scan.csv</td><td>Price review and 29 competitor price points with sources</td></tr>
+<tr><td>CERTIFICATES-AUDIT.md</td><td>Every certificate, 14 findings, minimum standard</td></tr>
+<tr><td>PROMPTS.md</td><td>Original prompt pack (Part 4 here is the updated version)</td></tr>
+<tr><td>coverage-inventory.csv · clinical-content-sample.csv</td><td>What was tested, and the 28 sampled questions</td></tr>
+<tr><td>apps/snle/reports/*</td><td>Question-bank check results for your clinical reviewer</td></tr>
+<tr><td>evinca: db/proposed/2026-10-26-audit-hardening.sql</td><td>Database changes waiting for your yes</td></tr>
+</table>
+<p class="meta">Prepared by Claude Code. Clinical comments are AI screening, not clinical approval. Market prices are indicative (from search summaries, 25 Oct 2026); confirm before publishing comparisons.</p>
+</body>
+</html>
