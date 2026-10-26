@@ -66,7 +66,7 @@ const files={
  cfg:'window.GULF_CONFIG='+JSON.stringify(cfg)+';',
  ui:fs.readFileSync(path.join(root,'studio/ui.js'),'utf8'),
  slides:fs.readFileSync(path.join(root,'studio/slides.js'),'utf8'),
- sync:fs.readFileSync(path.join(root,'studio/sync.js'),'utf8'),
+ sync:fs.readFileSync(path.join(root,'studio/sync.js'),'utf8')+'\n'+fs.readFileSync(path.join(root,'studio/gate.js'),'utf8'),
  css:fs.readFileSync(path.join(root,'studio/edition.css'),'utf8')
 };
 // self-hosted fonts (SIL OFL; the CSP blocks font services)

@@ -15,7 +15,7 @@
                             rejects if the network is down during a needed refresh.  HCA.token(force?) is just its access_token (or null).
                             Use it to call the project's own functions as the signed-in person; never store or log the token.
    Per-app free limits are chosen by <meta name="hca-app" content="medlex|carecraft|serein|lumen">.
-   Gates are off until paid plans can be bought (GATES_LIVE); preview them with ?gates=on.
+   Gates are on (GATES_LIVE): free-plan limits apply until someone has a plan. Turn them off with GATES_LIVE = false.
    Plain ES2020, no dependencies. Works signed out and offline (everything stays free-tier). */
 (() => {
   'use strict';
@@ -24,6 +24,9 @@
   const ACCOUNT = 'https://account.healthcarecrownacademy.co.uk/en';
   const COOKIE = 'hca-auth', CHUNK = 3000, DOMAIN = 'healthcarecrownacademy.co.uk';
   const onCrown = location.hostname === DOMAIN || location.hostname.endsWith('.' + DOMAIN);
+  // App availability switch. Set an app to false to hide every link to it (home page, app menus,
+  // account menu, Daily Crown) until its address works. One place for the whole suite.
+  const LIVE = { snle: true, lss: true };
   const FREE = { signed_in: false, admin: false, medlex: 'free', carecraft: 'free', serein: 'free', lumen: 'free', crown: false };
 
   const readCookie = (n) => { const c = document.cookie.split('; ').find((x) => x.startsWith(n + '=')); return c ? decodeURIComponent(c.slice(n.length + 1)) : null; };
@@ -149,7 +152,7 @@
     link('Carecraft', 'https://carecraft.healthcarecrownacademy.co.uk/');
     link('Serein', 'https://serein.healthcarecrownacademy.co.uk/');
     link('Lumen', 'https://lumen.healthcarecrownacademy.co.uk/');
-    link('SNLE', 'https://snle.healthcarecrownacademy.co.uk/');
+    if (LIVE.snle) link('Gulf Region Nursing', 'https://snle.healthcarecrownacademy.co.uk/');
     link('Evinca', 'https://evinca.healthcarecrownacademy.co.uk/en');
     if (e.admin) link('Crown admin', `${ACCOUNT}/account/admin`, 'gold');
     const out = document.createElement('button');
@@ -169,9 +172,9 @@
   ready.then((e) => { ent = e; });
 
   /* ---------- Free and paid limits ----------
-     Switched off until paid plans can be bought (GATES_LIVE). Preview with ?gates=on.
+     On since paid plans opened (26 Oct 2026).
      The "Get help" support in Serein and every app's first steps always stay free. */
-  const GATES_LIVE = false;
+  const GATES_LIVE = true;
   const gatesOn = GATES_LIVE || new URLSearchParams(location.search).get('gates') === 'on';
   const NAMES = { medlex: 'MedLex', carecraft: 'Carecraft', serein: 'Serein', lumen: 'Lumen' };
   const PERKS = {
@@ -180,8 +183,9 @@
     serein: ['All 15 practices', 'Journeys, routines and insights', 'Team toolkit'],
     lumen: ['More Academy AI help each day', 'Unlimited sources and recall cards', 'Focus planner'],
   };
-  const PRICE = { medlex: '£4.99/month', carecraft: '£4.99/month', serein: '£4.99/month', lumen: '£4.99/month' };
-  const CROWN_PRICE = '£9.99/month';
+  // Must match the pricing section on the home page and public.crown_plans (monthly).
+  const PRICE = { medlex: '£2.99/month', carecraft: '£2.99/month', serein: 'free', lumen: '£4.99/month' };
+  const CROWN_PRICE = '£5.99/month';
   function paywall(app, what) {
     document.querySelector('.hca-pay')?.remove();
     const d = document.createElement('dialog');
@@ -190,7 +194,7 @@
     const signedIn = ent && ent.signed_in;
     d.innerHTML = `<div class="hca-pay-in"><p class="hca-pay-eye">${NAMES[app].toUpperCase()} PREMIUM</p><h2 id="hca-pay-title"></h2><p class="hca-pay-lead"></p><ul></ul>
 <p class="hca-pay-price">${NAMES[app]} on its own <b>${PRICE[app]}</b>, or every app with the Crown Pass <b>${CROWN_PRICE}</b>. Codes can be used at checkout.</p>
-<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/?plan=${encodeURIComponent(app)}#pricing">See plans</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
+<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/subscribe?plan=${encodeURIComponent(app)}">See plans</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
     d.querySelector('h2').textContent = what ? `Unlock ${what}` : `Unlock all of ${NAMES[app]}`;
     d.querySelector('.hca-pay-lead').textContent = `This is part of ${NAMES[app]} premium. Everything you have done so far stays yours.`;
     for (const t of PERKS[app]) { const li = document.createElement('li'); li.textContent = t; d.querySelector('ul').append(li); }
@@ -202,11 +206,12 @@
   }
   const premium = (app, e = ent) => !!(e && (e.admin || e.crown || e[app] === 'premium'));
   /** True when free-plan limits apply to `app` right now. Before entitlements load, a gated preview counts as locked. */
-  const locked = (app) => gatesOn && !premium(app);
+  // Serein is free for everyone: never locked.
+  const locked = (app) => gatesOn && app !== 'serein' && !premium(app);
   /** Runs `allowed` if this person has premium for the app; otherwise shows the paywall. */
   async function gate(app, what, allowed) {
     const e = ent || await ready;
-    if (!gatesOn || premium(app, e)) { if (allowed) allowed(); return true; }
+    if (!gatesOn || app === 'serein' || premium(app, e)) { if (allowed) allowed(); return true; }
     paywall(app, what);
     return false;
   }
@@ -227,7 +232,7 @@
   // Daily Crown: one first-party cookie shared by the four apps and the home page. Nothing leaves the browser.
   // {d: 'YYYY-MM-DD' (last active day), a: apps done that day, s: streak in days, best}. The streak counts a day once anything is done.
   const DAILY = (() => {
-    const KEY = 'hca-daily', APPS = ['medlex', 'carecraft', 'serein', 'lumen', 'snle'];
+    const KEY = 'hca-daily', APPS = ['medlex', 'carecraft', 'serein', 'lumen', 'snle'].filter((a) => LIVE[a] !== false);
     const pad = (n) => String(n).padStart(2, '0');
     const key = (t) => t.getFullYear() + '-' + pad(t.getMonth() + 1) + '-' + pad(t.getDate());
     const today = () => key(new Date());
@@ -270,7 +275,22 @@
     return { get, done, apps: APPS };
   })();
 
+  /** Stripe checkout for a plan id (e.g. 'crown-month', 'gulf-qatar-1m'). country = ISO code for regional pricing.
+      Signed-out people go to sign-in first and come back here. Resolves {error} instead of redirecting on failure. */
+  async function billing(body) {
+    const s = await session();
+    if (!s) { location.href = signInURL(); return { error: 'sign_in_required' }; }
+    try {
+      const r = await fetch(`${SUPABASE}/functions/v1/crown-billing`, { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + s.access_token, 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, return_url: location.href.split('#')[0].replace(/[?&]checkout=[^&]*(&session_id=[^&]*)?/, '') }) });
+      const j = await r.json().catch(() => ({ error: 'payment_request_failed' }));
+      if (j.url && /^https:\/\/(checkout|billing)\.stripe\.com\//.test(j.url)) { location.href = j.url; return j; }
+      return j.error ? j : { error: 'payment_request_failed' };
+    } catch { return { error: 'offline' }; }
+  }
+
   window.HCA = {
+    checkout: (plan, country) => billing({ action: 'checkout', plan, country }),
+    manageBilling: () => billing({ action: 'portal' }),
     ready,
     daily: DAILY,
     signIn: (mode) => { location.href = signInURL(mode); },
@@ -280,14 +300,16 @@
     paywall,
     session: currentSession,
     token: async (force) => (await currentSession(force))?.access_token || null,
-    upgrade: (app) => { location.href = 'https://healthcarecrownacademy.co.uk/?plan=' + encodeURIComponent(app || 'crown') + '#pricing'; },
+    live: { ...LIVE },
+    upgrade: (app) => { location.href = 'https://healthcarecrownacademy.co.uk/subscribe?plan=' + encodeURIComponent(app || 'crown'); },
+    get gatesOn() { return gatesOn; },
   };
 
   /* Home page: a quiet summary of today's Daily Crown, only for people who have used an app. */
   function dailyHome() {
     const el = document.querySelector('[data-daily-home]'); if (!el) return;
     const D = DAILY.get(); if (!D.a.length && !D.s) return;
-    const N = { medlex: 'MedLex · one word', carecraft: 'Carecraft · one scenario', serein: 'Serein · one breath', lumen: 'Lumen · cards due', snle: 'SNLE · one clinical decision' };
+    const N = { medlex: 'MedLex · one word', carecraft: 'Carecraft · one scenario', serein: 'Serein · one breath', lumen: 'Lumen · cards due', snle: 'Gulf Region Nursing · one clinical decision' };
     const U = { medlex: 'https://medlex.healthcarecrownacademy.co.uk/#today', carecraft: 'https://carecraft.healthcarecrownacademy.co.uk/#today', serein: 'https://serein.healthcarecrownacademy.co.uk/#today', lumen: 'https://lumen.healthcarecrownacademy.co.uk/#today', snle: 'https://snle.healthcarecrownacademy.co.uk/#home' };
     el.querySelector('[data-daily-title]').textContent = D.a.length >= D.total ? 'All ' + D.total + ' done today. Lovely.' : D.a.length + ' of ' + D.total + ' done today';
     el.querySelector('[data-daily-line]').textContent = D.s > 0 ? D.s + '-day streak' + (D.best > D.s ? ' · best ' + D.best : '') : 'One small step starts a streak.';
@@ -296,7 +318,15 @@
     el.hidden = false;
   }
 
+  function hideOffline() {
+    for (const [app, on] of Object.entries(LIVE)) {
+      if (on) continue;
+      document.querySelectorAll(`.jewel-${app}, a[href*="//${app}.healthcarecrownacademy.co.uk"]`).forEach((el) => { el.style.display = 'none'; el.setAttribute('aria-hidden', 'true'); });
+    }
+  }
+
   function mount() {
+    hideOffline();
     dailyHome();
     const style = document.createElement('style');
     style.textContent = css;
