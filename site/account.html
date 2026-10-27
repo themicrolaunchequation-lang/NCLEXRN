@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My account — Healthcare Crown Academy</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://healthcarecrownacademy.co.uk/account">
+<meta name="theme-color" content="#050A18">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<script>document.documentElement.classList.replace('no-js','js');try{var t=localStorage.getItem('hca-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script src="/assets/js/config.js" defer></script>
+<script src="/assets/js/page.js" defer></script>
+<script src="/assets/js/crown-account.js" defer></script>
+<script src="/assets/js/account.js" defer></script>
+<style>
+.ac-hero{padding:clamp(40px,6vw,72px) 0 clamp(80px,9vw,110px);background:radial-gradient(90% 120% at 50% 0%,#17304C,#0B1A2B 70%)}
+.ac-hero-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
+.ac-who{display:flex;align-items:center;gap:16px}
+.ac-av{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--gold-300),var(--gold-500));color:#1B1404;font-weight:800;font-size:1.3rem;flex:none}
+.ac-hero h1{margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(1.8rem,1.3rem + 2vw,2.6rem);line-height:1.1}
+.ac-mail{margin:4px 0 0;color:var(--text-muted)}
+.ac-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid var(--line-strong)}
+.ac-badge.gold{background:linear-gradient(135deg,var(--gold-300),var(--gold-500));color:#1B1404;border:0}
+.ac-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:18px;margin-top:-60px;position:relative}
+.ac-card{padding:24px;border-radius:var(--radius-xl,22px);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-md)}
+.ac-card h2{margin:0 0 4px;font-family:var(--font-display);font-weight:500;font-size:1.35rem}
+.ac-card .ac-sub{margin:0 0 14px;color:var(--text-muted);font-size:.92rem}
+.ac-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.ac-row:first-of-type{border-top:0}
+.ac-row b{font-weight:700}
+.ac-row span{color:var(--text-muted);text-align:right}
+.ac-pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:700;background:#E3F5EC;color:#137556}
+.ac-pill.warn{background:#FBF1DE;color:#8A5A12}.ac-pill.off{background:#EEF1F4;color:#5B6B7C}
+.ac-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.ac-apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.ac-app{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:16px;border:1px solid var(--line);text-decoration:none;color:inherit;transition:transform .15s,border-color .15s}
+.ac-app:hover,.ac-app:focus-visible{transform:translateY(-2px);border-color:var(--gold-500)}
+.ac-app b{font-size:1rem}.ac-app small{color:var(--text-muted)}
+.ac-empty{margin:0;color:var(--text-muted)}
+.ac-signed-out{text-align:center;padding:40px 24px}
+.ac-wide{grid-column:1/-1}
+</style>
+</head>
+<body class="subpage">
+<header class="subpage-header island-dark">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Healthcare Crown Academy home">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="none" d="M8 41h8.5l4.5-14.5 5.2 11.5L32 20l5.8 18 5.2-11.5 4.5 14.5H56M18 48h28M32 7.5v8M28 11.5h8"/><circle cx="21" cy="19.6" r="1.4"/><circle cx="43" cy="19.6" r="1.4"/></svg>
+      <span class="brand-text"><span class="brand-name">Healthcare Crown</span><span class="brand-sub">Academy</span></span>
+    </a>
+    <div data-crown-account></div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="ac-hero island-dark">
+    <div class="container ac-hero-in">
+      <div class="ac-who">
+        <span class="ac-av" data-ac-initials aria-hidden="true">·</span>
+        <div><p class="eyebrow">My account</p><h1 data-ac-name>Loading your account…</h1><p class="ac-mail" data-ac-email></p></div>
+      </div>
+      <span class="ac-badge" data-ac-badge hidden></span>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="ac-grid" data-ac-content>
+      <section class="ac-card ac-signed-out ac-wide" data-ac-out hidden>
+        <h2>Sign in to see your account</h2>
+        <p class="ac-sub">Your plans, exam passes and apps, all in one place.</p>
+        <div class="ac-actions" style="justify-content:center"><a class="btn btn-primary" data-ac-signin href="#">Sign in</a><a class="btn btn-ghost" href="/subscribe">See plans</a></div>
+      </section>
+
+      <section class="ac-card" data-ac-in hidden aria-labelledby="ac-plan-h">
+        <h2 id="ac-plan-h">Your plan</h2>
+        <p class="ac-sub">MedLex, Carecraft, Lumen and the Crown Pass.</p>
+        <div data-ac-plan><p class="ac-empty">Checking…</p></div>
+        <div class="ac-actions">
+          <button type="button" class="btn btn-primary" data-ac-manage hidden>Manage or cancel</button>
+          <a class="btn btn-primary" href="/subscribe" data-ac-choose hidden>Choose a plan</a>
+          <a class="btn btn-ghost" href="/subscribe?refund=1">Request a refund</a>
+        </div>
+      </section>
+
+      <section class="ac-card" data-ac-in hidden aria-labelledby="ac-gulf-h">
+        <h2 id="ac-gulf-h">Gulf Region exam passes</h2>
+        <p class="ac-sub">SNLE, Qatar, Dubai and Abu Dhabi. Paid once, never renewed automatically.</p>
+        <div data-ac-gulf><p class="ac-empty">Checking…</p></div>
+        <div class="ac-actions">
+          <a class="btn btn-primary" href="https://snle.healthcarecrownacademy.co.uk/">Open the exam studio</a>
+          <a class="btn btn-ghost" href="/subscribe#gulf">Buy a pass</a>
+        </div>
+      </section>
+
+      <section class="ac-card ac-wide" data-ac-in hidden aria-labelledby="ac-apps-h">
+        <h2 id="ac-apps-h">Your apps</h2>
+        <p class="ac-sub">One sign-in for all of them.</p>
+        <div class="ac-apps" data-ac-apps></div>
+      </section>
+
+      <section class="ac-card" data-ac-in hidden aria-labelledby="ac-more-h">
+        <h2 id="ac-more-h">Also from the Academy</h2>
+        <div class="ac-row"><b>Evinca recognition profile</b><span><a class="inline-link" href="https://account.healthcarecrownacademy.co.uk/en/account">Open</a></span></div>
+        <div class="ac-row"><b>Lean Six Sigma Green Belt</b><span><a class="inline-link" href="https://lss.healthcarecrownacademy.co.uk/">Open</a> · own sign-in</span></div>
+      </section>
+
+      <section class="ac-card" data-ac-in hidden aria-labelledby="ac-help-h">
+        <h2 id="ac-help-h">Help</h2>
+        <div class="ac-row"><b>Refund rules</b><span>Full within 3 days, unused part within 14 days · <a class="inline-link" href="/refunds">details</a></span></div>
+        <div class="ac-row"><b>Contact</b><span><a class="inline-link" href="mailto:themicrolaunchequation@gmail.com">themicrolaunchequation@gmail.com</a></span></div>
+        <div class="ac-actions"><button type="button" class="btn btn-ghost" data-ac-signout>Sign out</button></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-legal">
+    <p><strong>HEALTHCARE CROWN ACADEMY LTD</strong> is a private company limited by shares, registered in England and Wales, company number 17501904. <span data-registered-office></span> <span data-ico-line></span></p>
+    <p class="copyright">© <span data-year>2026</span> Healthcare Crown Academy Ltd. <a class="inline-link" href="/">Home</a> · <a class="inline-link" href="/privacy">Privacy</a> · <a class="inline-link" href="/terms">Terms</a> · <a class="inline-link" href="/refunds">Subscriptions &amp; refunds</a></p>
+  </div>
+</footer>
+</body>
+</html>

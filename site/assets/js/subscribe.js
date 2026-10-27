@@ -180,6 +180,7 @@
         go: w.go, cta: w.cta });
     }
     if (q.get('checkout') === 'cancelled') msg('Checkout was cancelled. Nothing was charged.', 'info');
+    if (q.get('refund') === '1') { history.replaceState(null, '', location.pathname); askRefund(); }
     if (q.get('checkout')) history.replaceState(null, '', location.pathname + location.hash);
     try {
       const s = await (await fetch(`${SUPABASE}/functions/v1/crown-billing`, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: '{"action":"status"}' })).json();
