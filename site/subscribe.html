@@ -179,7 +179,7 @@
     <form method="dialog">
       <h2 id="consent-h">Before you pay</h2>
       <p>Your access starts straight away after payment.</p>
-      <label class="sp-check"><input type="checkbox" data-consent-box required> I want my access to start now. I understand I can get a <b>full refund within 3 days</b> of paying, and after that, <b>within 14 days</b>, a refund of the unused part only.</label>
+      <label class="sp-check"><input type="checkbox" data-consent-box required> <span>I want my access to start now. I understand I can get a <b>full refund within 3 days</b> of paying, and after that, <b>within 14 days</b>, a refund of the unused part only.</span></label>
       <p class="sp-fine"><a href="/refunds">Subscriptions and refunds</a></p>
       <div class="sp-dialog-row"><button value="cancel" class="btn btn-ghost" formnovalidate>Cancel</button><button value="ok" class="btn btn-primary" data-consent-go disabled>Continue to secure payment</button></div>
     </form>
@@ -251,7 +251,7 @@
 .sp-exams button{display:grid;gap:2px;min-height:64px;padding:10px 6px;border-radius:14px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text);font:inherit;cursor:pointer;text-align:center}
 .sp-exams small{color:var(--text-soft);font-size:.75rem}
 .sp-exams [aria-checked=true]{border:2px solid var(--j-lss);background:color-mix(in srgb,var(--j-lss) 10%,var(--surface))}
-.sp-dialog{max-width:460px;width:calc(100% - 32px);border:0;border-radius:20px;padding:24px;background:var(--surface,#132a40);color:var(--text,#fff);box-shadow:0 24px 60px rgba(0,0,0,.45)}.sp-dialog::backdrop{background:rgba(5,12,20,.6)}.sp-dialog h2{margin:0 0 8px}.sp-check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;line-height:1.45}.sp-check input{margin-top:4px;width:18px;height:18px;flex:none}.sp-dialog-row{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}.sp-dialog-col{display:grid;gap:10px;margin-top:12px}
+.sp-dialog{max-width:460px;width:calc(100% - 32px);border:0;border-radius:20px;padding:24px;background:var(--surface,#132a40);color:var(--text,#fff);box-shadow:0 24px 60px rgba(0,0,0,.45)}.sp-dialog::backdrop{background:rgba(5,12,20,.6)}.sp-dialog{text-align:left}.sp-dialog h2{margin:0 0 8px}.sp-dialog .sp-fine{text-align:left}.sp-check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;line-height:1.45}.sp-check input{margin-top:4px;width:18px;height:18px;flex:none}.sp-dialog-row{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}.sp-dialog-col{display:grid;gap:10px;margin-top:12px}
 .sp-teams{margin-top:24px;padding:clamp(22px,4vw,40px);border-radius:var(--radius-xl);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-md)}.sp-teams-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:12px 0}.sp-team{padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03)}.sp-team h3{margin:0 0 6px}.sp-team p{margin:6px 0}
 .sp-passes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:14px}
 .sp-pass{position:relative;display:grid;gap:4px;justify-items:center;padding:20px 12px;border-radius:18px;border:1px solid var(--line-strong);background:var(--surface);color:var(--text);font:inherit;cursor:pointer;transition:transform .2s var(--ease-out),box-shadow .2s}

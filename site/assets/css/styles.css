@@ -955,7 +955,7 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 @keyframes spin{to{transform:rotate(360deg)}}
 .stamp{position:absolute;right:-6%;bottom:8%;padding:6px 12px;border:2px solid #6FD3B0;border-radius:8px;color:#6FD3B0;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-12deg);animation:stampin 6s ease-in-out infinite}
 @keyframes stampin{0%,20%{opacity:0;transform:rotate(-12deg) scale(1.8)}28%,90%{opacity:1;transform:rotate(-12deg) scale(1)}100%{opacity:0}}
-.sp{position:absolute;left:calc(10% + var(--i) * 15%);top:calc(10% + (var(--i) * 37 % 80) * 1%);width:10px;height:10px;background:#F8E7BC;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:twinkle 2.4s calc(var(--i) * .35s) ease-in-out infinite}
+.mo-sp{position:absolute;left:calc(10% + var(--i) * 15%);top:calc(10% + (var(--i) * 37 % 80) * 1%);width:10px;height:10px;background:#F8E7BC;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:twinkle 2.4s calc(var(--i) * .35s) ease-in-out infinite}
 @keyframes twinkle{0%,100%{transform:scale(0);opacity:0}50%{transform:scale(1.4);opacity:1}}
 .ts-accent .mo-medal{width:120px;margin:0 auto}
 @media (prefers-reduced-motion:reduce){.mo *,.mo,.ts-accent{animation:none!important}.fb-spine,.fb-bone,.spc-line,.bl-c{stroke-dashoffset:0}.spc-pt,.tb,.sbar b,.wp-m{opacity:1}}
