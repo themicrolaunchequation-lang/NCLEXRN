@@ -8,6 +8,10 @@
     plan_unavailable: 'That plan is not available any more.',
     payments_unavailable: 'Payments are not open yet. Please try again soon.',
     no_customer: 'There is no plan on this account yet.',
+    consent_required: 'Please confirm that you want access to start now.',
+    nothing_to_refund: 'We could not find a payment to refund on this account.',
+    already_refunded: 'This account has already had an automatic refund for this. Please email hello@healthcarecrownacademy.co.uk and we will help.',
+    outside_window: 'Automatic refunds are available within 14 days of your first payment. Please email hello@healthcarecrownacademy.co.uk if something went wrong.',
     offline: 'You seem to be offline. Please check your connection.',
   };
   const msg = (t) => { const m = $('[data-sub-msg]'); m.textContent = t; m.hidden = !t; };
@@ -50,11 +54,35 @@
     for (const b of $$('[data-exam]')) b.setAttribute('aria-checked', String(b.dataset.exam === exam));
   }
 
+  // Ask for express consent to start access now (UK Consumer Contracts Regulations 2013) before every checkout.
+  function consent() {
+    const d = $('[data-consent-dialog]'), box = $('[data-consent-box]'), go = $('[data-consent-go]');
+    if (!d || !d.showModal) return Promise.resolve(window.confirm('Your access starts straight away. Full refund within 3 days of paying; within 14 days you get back the unused part. Continue?'));
+    box.checked = false; go.disabled = true;
+    box.onchange = () => { go.disabled = !box.checked; };
+    d.showModal();
+    return new Promise((res) => { d.onclose = () => res(d.returnValue === 'ok' && box.checked); });
+  }
+
+  async function askRefund() {
+    const d = $('[data-refund-dialog]');
+    d.showModal();
+    const kind = await new Promise((res) => { d.onclose = () => res(d.returnValue); });
+    if (kind !== 'subscription' && kind !== 'gulf') return;
+    msg('Checking your payment…');
+    const r = await HCA.refund(kind);
+    if (r && r.error) { if (r.error !== 'sign_in_required') msg(ERR[r.error] || 'Something went wrong. Please try again in a moment.'); return; }
+    if (r.trial) return msg('Your free trial has been cancelled. You have not been charged.');
+    const amt = r.amount != null ? money(r.amount, r.currency) : '';
+    msg(r.full ? `Done. We have refunded ${amt} in full. It usually reaches your card in 5 to 10 days.` : `Done. We have refunded ${amt} for the unused part. It usually reaches your card in 5 to 10 days.`);
+  }
+
   async function buy(btn, plan) {
     if (!window.HCA) return;
+    if (plan !== 'manage' && !(await consent())) return;
     const label = btn.innerHTML;
     btn.disabled = true; btn.textContent = 'Opening secure checkout…'; msg('');
-    const r = plan === 'manage' ? await HCA.manageBilling() : await HCA.checkout(plan, $('[data-sub-country]').value);
+    const r = plan === 'manage' ? await HCA.manageBilling() : await HCA.checkout(plan, $('[data-sub-country]').value, true);
     btn.disabled = false; btn.innerHTML = label;
     if (r && r.error && r.error !== 'sign_in_required') msg(ERR[r.error] || 'Something went wrong. Please try again in a moment.');
   }
@@ -83,6 +111,7 @@
     radios('[data-period]', 'period', (v) => { period = v; render(); });
     radios('[data-exam]', 'exam', (v) => { exam = v; render(); });
     document.addEventListener('click', (e) => {
+      if (e.target.closest('[data-refund-open]')) { askRefund(); return; }
       const b = e.target.closest('[data-buy],[data-plan],[data-pass],[data-manage]'); if (!b) return;
       if (b.dataset.buy) buy(b, `${b.dataset.buy}-${period}`);
       else if (b.dataset.plan) buy(b, b.dataset.plan);
