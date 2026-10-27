@@ -3,7 +3,7 @@
    expires, asks the database what this person can open (crown_entitlements) and shows an account button.
    Exposes window.HCA for app paywalls:
      HCA.ready              Promise<entitlements> ({signed_in, admin, crown, medlex|carecraft|serein|lumen: 'free'|'premium'})
-     HCA.signIn(mode?)      go to the account site ('signup' for a new account)
+     HCA.signIn(mode?)      open the sign-in window on this page ('signup' for a new account)
      HCA.locked(app)        true when free-plan limits apply to this app right now (gates on, not premium/admin)
      HCA.gate(app, what, allowed)  runs allowed() if premium, else opens the paywall (async, resolves true/false)
      HCA.limit(kind, count) Lumen quotas: kind 'source' (free 3) or 'card' (free 50); count = how many the person
@@ -70,7 +70,6 @@
     } catch { return { ...FREE }; }
   }
 
-  const signInURL = (mode) => `${ACCOUNT}/sign-in?${mode === 'signup' ? 'mode=signup&' : ''}next=${encodeURIComponent(location.href)}`;
   async function signOut() {
     const s = load();
     clear();
@@ -116,7 +115,106 @@
 .hca-pay-row{display:flex;flex-wrap:wrap;gap:10px}
 .hca-pay-go{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:linear-gradient(135deg,#F3D99B,#D4A445 60%,#B8862B);color:#1B1404;font-weight:700;text-decoration:none}
 .hca-pay-alt{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:none;color:#EEF1F8;font:inherit;font-weight:600;cursor:pointer}
-.hca-pay :focus-visible{outline:3px solid #F1C56E;outline-offset:3px}`;
+.hca-pay :focus-visible{outline:3px solid #F1C56E;outline-offset:3px}
+.hca-auth-tabs{display:flex;gap:4px;margin:0 0 16px;padding:4px;border-radius:999px;background:rgba(255,255,255,.07)}
+.hca-auth-tabs button{flex:1;min-height:40px;border:0;border-radius:999px;background:none;color:#EEF1F8;font:inherit;font-weight:600;cursor:pointer}
+.hca-auth-tabs [aria-selected=true]{background:#F8F5EF;color:#0B1530}
+.hca-auth label{display:grid;gap:4px;margin:0 0 12px;font-weight:600;font-size:14px}
+.hca-auth input{min-height:46px;padding:0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-weight:400}
+.hca-auth input:focus{outline:2px solid #F1C56E;border-color:transparent}
+.hca-auth [hidden]{display:none}
+.hca-auth .hca-pay-go{width:100%;justify-content:center;border:0;font:inherit;font-weight:700;cursor:pointer}
+.hca-auth .hca-pay-go:disabled{opacity:.6;cursor:progress}
+.hca-auth-msg{margin:0 0 12px;padding:10px 12px;border-radius:12px;font-size:14px}
+.hca-auth-msg[data-tone=error]{background:rgba(229,90,70,.16);color:#FFC9BF}.hca-auth-msg[data-tone=ok]{background:rgba(95,184,158,.16);color:#BDEBD9}
+.hca-auth-fine{margin:12px 0 0;font-size:12.5px;color:#AEB8D0}.hca-auth-fine a{color:#F3D99B}
+.hca-auth-link{padding:0;border:0;background:none;color:#F3D99B;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer}`;
+
+  /* ---------- Sign in or create an account here, without leaving the Academy ----------
+     Same account as Evinca and every app: the session goes into the shared hca-auth cookie. */
+  const AUTH_ERR = [[/invalid login/i, 'That email and password do not match. Try again, or reset your password.'],
+    [/not confirmed/i, 'Please open the confirmation link we emailed you, then sign in.'],
+    [/already registered|already been registered/i, 'An account already uses this email. Sign in instead.'],
+    [/password/i, 'Please choose a password of at least 8 characters.'],
+    [/rate limit|too many/i, 'Too many tries. Please wait a minute and try again.']];
+  const authText = (m) => (AUTH_ERR.find(([re]) => re.test(m)) || [, 'Something went wrong. Please try again.'])[1];
+  async function authCall(path, body) {
+    const r = await fetch(`${SUPABASE}/auth/v1/${path}`, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.msg || j.error_description || j.message || j.error || String(r.status));
+    return j;
+  }
+  const keep = (n) => { if (!n.expires_at && n.expires_in) n.expires_at = Math.floor(Date.now() / 1000) + n.expires_in; save(n); };
+  const here = () => location.href.split('#')[0];
+  /** Opens the sign-in window. mode: 'signin' or 'signup'. Resolves true once the person is signed in. */
+  function authDialog(mode, why) {
+    document.querySelector('.hca-pay')?.remove();
+    const d = document.createElement('dialog');
+    d.className = 'hca-pay hca-auth';
+    d.setAttribute('aria-labelledby', 'hca-auth-title');
+    d.innerHTML = `<form class="hca-pay-in" novalidate><p class="hca-pay-eye">HEALTHCARE CROWN ACADEMY</p><h2 id="hca-auth-title"></h2><p class="hca-pay-lead"></p>
+<div class="hca-auth-tabs" role="tablist"><button type="button" role="tab" data-m="signup">Create account</button><button type="button" role="tab" data-m="signin">Sign in</button></div>
+<p class="hca-auth-msg" role="alert" hidden></p>
+<label data-only="signup">Your name<input name="name" autocomplete="name" maxlength="120"></label>
+<label>Email<input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+<label data-hide="reset">Password<input name="password" type="password" minlength="8" required></label>
+<button class="hca-pay-go" type="submit"></button>
+<p class="hca-auth-fine"><button type="button" class="hca-auth-link" data-reset>Forgotten your password?</button></p>
+<p class="hca-auth-fine" data-only="signup">One free account for every Healthcare Crown app. You must be 16 or over. By creating an account you agree to our <a href="https://healthcarecrownacademy.co.uk/terms" target="_blank" rel="noopener">terms</a> and <a href="https://healthcarecrownacademy.co.uk/privacy" target="_blank" rel="noopener">privacy notice</a>.</p>
+<div class="hca-pay-row" style="margin-top:14px"><button type="button" class="hca-pay-alt" data-close>Not now</button></div></form>`;
+    document.body.append(d);
+    const f = d.querySelector('form'), note = d.querySelector('.hca-auth-msg'), go = d.querySelector('.hca-pay-go');
+    const say = (t, tone = 'error') => { note.hidden = !t; note.textContent = t || ''; note.dataset.tone = tone; };
+    const set = (m) => {
+      mode = m; say('');
+      d.querySelector('h2').textContent = m === 'signup' ? 'Create your free account' : m === 'reset' ? 'Reset your password' : 'Welcome back';
+      d.querySelector('.hca-pay-lead').textContent = why || (m === 'signup' ? 'It takes 20 seconds. Then you go straight on.' : m === 'reset' ? 'We will email you a link to choose a new password.' : 'Sign in to carry on.');
+      go.textContent = m === 'signup' ? 'Create account and continue' : m === 'reset' ? 'Send reset link' : 'Sign in and continue';
+      d.querySelector('.hca-auth-tabs').hidden = m === 'reset';
+      d.querySelectorAll('[role=tab]').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.m === m)));
+      d.querySelectorAll('[data-only]').forEach((x) => { x.hidden = x.dataset.only !== m; });
+      d.querySelectorAll('[data-hide]').forEach((x) => { x.hidden = x.dataset.hide === m; });
+      f.password.autocomplete = m === 'signup' ? 'new-password' : 'current-password';
+    };
+    set(mode === 'signup' ? 'signup' : 'signin');
+    return new Promise((done) => {
+      let ok = false;
+      d.addEventListener('close', () => { d.remove(); done(ok); });
+      d.addEventListener('click', (e) => {
+        const t = e.target.closest('[data-m]'); if (t) set(t.dataset.m);
+        if (e.target.closest('[data-reset]')) set('reset');
+        if (e.target.closest('[data-close]') || e.target === d) d.close();
+      });
+      f.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = f.email.value.trim(), password = f.password.value;
+        if (!/^\S+@\S+\.\S+$/.test(email)) return say('Please enter your email address.');
+        if (mode !== 'reset' && password.length < 8) return say('Please enter a password of at least 8 characters.');
+        go.disabled = true; say('');
+        try {
+          if (mode === 'signin') { keep(await authCall('token?grant_type=password', { email, password })); ok = true; d.close(); return; }
+          if (mode === 'reset') { await authCall('recover?redirect_to=' + encodeURIComponent(ACCOUNT + '/account'), { email }); say('If an account uses that email, we have sent a link to choose a new password.', 'ok'); return; }
+          const j = await authCall('signup?redirect_to=' + encodeURIComponent(here()), { email, password, data: { full_name: f.name.value.trim() || undefined } });
+          if (j.access_token) { keep(j); ok = true; d.close(); return; }
+          say(`Almost done. We sent a link to ${email}. Open it and you will come back here signed in.`, 'ok');
+        } catch (err) { say(authText(String(err.message || ''))); } finally { go.disabled = false; }
+      });
+      d.showModal();
+      (mode === 'signup' ? f.name : f.email).focus();
+    });
+  }
+  // Coming back from the "confirm your email" link: the new session arrives in the address (#access_token=...).
+  (async () => {
+    const h = new URLSearchParams(location.hash.slice(1));
+    if (!h.get('access_token') || !h.get('refresh_token') || h.get('type') === 'recovery') return;
+    const n = { access_token: h.get('access_token'), refresh_token: h.get('refresh_token'), token_type: 'bearer', expires_in: Number(h.get('expires_in')) || 3600, expires_at: Number(h.get('expires_at')) || 0 };
+    try { const u = await fetch(`${SUPABASE}/auth/v1/user`, { headers: { apikey: KEY, Authorization: 'Bearer ' + n.access_token } }); if (u.ok) n.user = await u.json(); } catch { /* the next refresh fills it in */ }
+    if (!n.expires_at) delete n.expires_at;
+    keep(n);
+    history.replaceState(null, '', location.pathname + location.search);
+    location.reload();
+  })();
+  const signInHere = (mode, why) => authDialog(mode, why).then((ok) => { if (ok) location.reload(); return ok; });
 
   function render(host, e) {
     const initials = (e.name || e.email || '?').split(/[\s@.]+/).filter(Boolean).slice(0, 2).map((x) => x[0].toUpperCase()).join('');
@@ -128,7 +226,7 @@
       btn.className = 'hca-acct-btn signed-out';
       btn.setAttribute('aria-label', 'Sign in');
       btn.innerHTML = '<svg class="hca-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 4-6.5 8-6.5s7.2 2.3 8 6.5"/></svg><span class="hca-lbl">Sign in</span>';
-      btn.addEventListener('click', () => { location.href = signInURL(); });
+      btn.addEventListener('click', () => signInHere('signin'));
       host.append(btn);
       return;
     }
@@ -198,7 +296,7 @@
     d.querySelector('h2').textContent = what ? `Unlock ${what}` : `Unlock all of ${NAMES[app]}`;
     d.querySelector('.hca-pay-lead').textContent = `This is part of ${NAMES[app]} premium. Everything you have done so far stays yours.`;
     for (const t of PERKS[app]) { const li = document.createElement('li'); li.textContent = t; d.querySelector('ul').append(li); }
-    d.addEventListener('click', (e) => { if (e.target.closest('[data-close]') || e.target === d) d.close(); if (e.target.closest('[data-in]')) location.href = signInURL(); });
+    d.addEventListener('click', (e) => { if (e.target.closest('[data-close]') || e.target === d) d.close(); if (e.target.closest('[data-in]')) { d.close(); signInHere('signin'); } });
     d.addEventListener('close', () => d.remove());
     document.body.append(d);
     d.showModal();
@@ -285,10 +383,15 @@
   })();
 
   /** Stripe checkout for a plan id (e.g. 'crown-month', 'gulf-qatar-1m'). country = ISO code for regional pricing.
-      Signed-out people go to sign-in first and come back here. Resolves {error} instead of redirecting on failure. */
+      Signed-out people sign in or sign up in a window first, then carry on. Resolves {error} instead of redirecting on failure. */
   async function billing(body) {
-    const s = await session();
-    if (!s) { location.href = signInURL(); return { error: 'sign_in_required' }; }
+    let s = await session();
+    if (!s) {
+      // Sign in or sign up right here, then carry straight on to payment.
+      if (!(await authDialog(body.action === 'checkout' ? 'signup' : 'signin', body.action === 'checkout' ? 'Create a free account, or sign in, and we take you straight to secure payment.' : ''))) return { error: 'sign_in_required' };
+      s = await session();
+      if (!s) return { error: 'sign_in_required' };
+    }
     try {
       const r = await fetch(`${SUPABASE}/functions/v1/crown-billing`, { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + s.access_token, 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, return_url: location.href.split('#')[0].replace(/[?&]checkout=[^&]*(&session_id=[^&]*)?/, '') }) });
       const j = await r.json().catch(() => ({ error: 'payment_request_failed' }));
@@ -303,7 +406,7 @@
     manageBilling: () => billing({ action: 'portal' }),
     ready,
     daily: DAILY,
-    signIn: (mode) => { location.href = signInURL(mode); },
+    signIn: (mode) => signInHere(mode),
     signOut: () => signOut(),
     gate: (app, what, allowed) => (typeof what === 'number' || alias[app] || LIMITS[app]) && !NAMES[app] ? limit(app, what) : gate(app, what, allowed),
     locked,
