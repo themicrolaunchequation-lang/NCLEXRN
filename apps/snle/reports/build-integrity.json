@@ -1,6 +1,6 @@
 {
   "sourceSha256": "75e79310323b939ac4c65ed2f1c95aa3651e78b409d10a0ca0eeb46cdcac0996",
-  "buildHash": "e5eda23d77fc4c9a",
+  "buildHash": "de2a8e37ce6bf5d8",
   "posters": 67,
   "questions": 1297,
   "excludedQuestions": 53,
@@ -8,7 +8,7 @@
   "assets": 73,
   "files": 95,
   "maxFileBytes": 3175004,
-  "totalBytes": 24004423,
+  "totalBytes": 24005299,
   "labs": "included",
   "urls": {
     "prelude": "/assets/prelude.b8b73ede56e9.js",
@@ -16,7 +16,7 @@
     "guidance": "/assets/guidance.109527ad5fc7.js",
     "app": "/assets/app.27d2decb3363.js",
     "master": "/assets/enhancements.339de1defd28.js",
-    "account": "/assets/crown-account.d115b644b279.js",
+    "account": "/assets/crown-account.4cf2161d9d04.js",
     "shell": "/assets/hca-shell.c34a387c703b.js",
     "integration": "/assets/integration.f319b096bb39.js",
     "css": "/assets/app.289a5dbc6a94.css",
