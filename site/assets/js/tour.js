@@ -62,7 +62,7 @@
   const pulse = () => `<div class="mo mo-pulse"><svg viewBox="0 0 320 90" aria-hidden="true"><polyline class="ecg" points="0,50 60,50 75,50 85,20 95,80 105,42 115,50 175,50 190,50 200,22 210,78 220,44 230,50 320,50"/></svg>
       <div class="map">${[['Riyadh', 'SNLE', 18, 58], ['Doha', 'DHP', 66, 40], ['Dubai', 'DHA', 86, 46], ['Abu Dhabi', 'DOH', 78, 60]].map(([c, r, x, y], i) => `<span class="pin" style="--x:${x}%;--y:${y}%;--i:${i}"><i></i><b>${c}</b><small>${r}</small></span>`).join('')}</div>
       <p class="bil"><span lang="ar" dir="rtl">تمريض</span> · Nursing</p></div>`;
-  const medal = () => `<div class="mo mo-medal"><span class="md"><span class="md-in">E</span></span><span class="md-r"></span><b class="stamp">Verified</b>${[0, 1, 2, 3, 4, 5].map((i) => `<i class="sp" style="--i:${i}"></i>`).join('')}</div>`;
+  const medal = () => `<div class="mo mo-medal"><span class="md"><span class="md-in">E</span></span><span class="md-r"></span><b class="stamp">Verified</b>${[0, 1, 2, 3, 4, 5].map((i) => `<i class="mo-sp" style="--i:${i}"></i>`).join('')}</div>`;
   const MOTIF = {
     quality: { big: () => fishbone() + spc(), mini: (k) => [spc(true), fishbone(true), bell()][k % 3] },
     words: { big: words, mini: () => words() }, talk: { big: talk, mini: talk }, breath: { big: breath, mini: breath },
