@@ -10,8 +10,8 @@
     no_customer: 'There is no plan on this account yet.',
     consent_required: 'Please confirm that you want access to start now.',
     nothing_to_refund: 'We could not find a payment to refund on this account.',
-    already_refunded: 'This account has already had an automatic refund for this. Please email hello@healthcarecrownacademy.co.uk and we will help.',
-    outside_window: 'Automatic refunds are available within 14 days of your first payment. Please email hello@healthcarecrownacademy.co.uk if something went wrong.',
+    already_refunded: 'This account has already had an automatic refund for this. Please email themicrolaunchequation@gmail.com and we will help.',
+    outside_window: 'Automatic refunds are available within 14 days of your first payment. Please email themicrolaunchequation@gmail.com if something went wrong.',
     offline: 'You seem to be offline. Please check your connection.',
   };
   // Short notices (errors, info) appear as a toast at the bottom of the screen, wherever the person is.
@@ -110,7 +110,7 @@
     result({ tone: 'refund', kicker: 'Refund confirmed', title: 'Your money is on its way', amount: `${amt}<small>${r.full ? 'Full refund' : 'Unused part'}</small>`,
       text: 'We have sent the refund to the card you paid with.',
       steps: ['It usually reaches your card in 5 to 10 working days, depending on your bank.', 'Your paid access has ended. Your free features and saved work stay.', 'Stripe will email you a receipt for the refund.'],
-      fine: `Refunded on ${when}. Questions? hello@healthcarecrownacademy.co.uk` });
+      fine: `Refunded on ${when}. Questions? themicrolaunchequation@gmail.com` });
   }
 
   async function buy(btn, plan) {
