@@ -10,8 +10,8 @@
     no_customer: 'There is no plan on this account yet.',
     consent_required: 'Please confirm that you want access to start now.',
     nothing_to_refund: 'We could not find a payment to refund on this account.',
-    already_refunded: 'This account has already had an automatic refund for this. Please email themicrolaunchequation@gmail.com and we will help.',
-    outside_window: 'Automatic refunds are available within 14 days of your first payment. Please email themicrolaunchequation@gmail.com if something went wrong.',
+    already_refunded: 'The instant refund button has already been used for this on your account. Your legal right to cancel still applies: email themicrolaunchequation@gmail.com and we will deal with it.',
+    outside_window: 'Your 14-day cancellation period has ended, so there is no change-of-mind refund. You can still stop renewal at any time. If something went wrong or does not work as described, email themicrolaunchequation@gmail.com and we will put it right.',
     offline: 'You seem to be offline. Please check your connection.',
   };
   // Short notices (errors, info) appear as a toast at the bottom of the screen, wherever the person is.
@@ -67,14 +67,20 @@
       const app = el.dataset.show, m = price(app + '-month'), y = price(app + '-year');
       const note = $(`[data-sub-note="${app}"]`);
       if (period === 'year' && y) {
-        el.textContent = money(y.amount / 12, y.cur);
-        note.textContent = `Billed ${fmt(y)} a year` + (m ? ` · save ${money(m.amount * 12 - y.amount, y.cur)}` : '');
+        // The yearly charge is what people pay, so it is shown as the main price (CAP/CMA price transparency).
+        el.textContent = fmt(y);
+        note.textContent = `About ${money(y.amount / 12, y.cur)} a month` + (m ? ` · save ${money(m.amount * 12 - y.amount, y.cur)} a year` : '');
       } else if (m) {
         el.textContent = fmt(m);
         note.textContent = y ? `Billed monthly · or ${fmt(y)} a year` : 'Billed monthly';
       }
     }
-    for (const el of $$('[data-per]')) el.textContent = '/month';
+    for (const el of $$('[data-per]')) el.textContent = period === 'year' ? '/year' : '/month';
+    const tn = $('[data-trial-note]'), cp = price(`crown-${period}`);
+    if (tn && cp) {
+      const first = new Date(Date.now() + 7 * 864e5).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      tn.textContent = `£0 today. Then ${fmt(cp)} a ${period}, taken on ${first} and renewing automatically. Cancel before then and you pay nothing.`;
+    }
     const parts = ['medlex', 'carecraft', 'lumen'].map((a) => price(a + '-month')).filter(Boolean);
     if (parts.length === 3) $('[data-worth]').textContent = money(parts.reduce((n, x) => n + x.amount, 0), parts[0].cur);
     $('[data-sub-band]').textContent = band() === 'A' ? 'Prices in pounds sterling. VAT included where it applies.' : 'Fair pricing for your country, in US dollars.';

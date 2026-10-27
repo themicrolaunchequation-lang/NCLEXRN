@@ -512,12 +512,7 @@
       const openLabel = open.firstChild;
       const defaults = { label: label.textContent, price: price.textContent, open: openLabel.textContent, href: open.getAttribute('href') };
       let ctaPlan = null;
-      cta.addEventListener('click', (e) => {
-        if (!ctaPlan) return;
-        e.preventDefault();
-        history.replaceState(null, '', '?plan=' + ctaPlan + '#pricing');
-        pickPlan(ctaPlan, true);
-      });
+      // The button links straight to the live plans page (/subscribe?plan=...).
       const order = [];
       const count = $('[data-crown-count]'), meter = $('[data-crown-meter]'), total = $$('[data-interests] .interest').length;
       const cheer = (n) => (n === 0 ? '' : n === 1 ? ' · great start' : n < 4 ? ' · your crown is taking shape' : n < total ? ' · now that is a crown' : ' · the full crown!');
@@ -527,18 +522,34 @@
         $$('[data-interests] .interest').forEach((b) => { if ((b.getAttribute('aria-pressed') === 'true') !== want.includes(b.dataset.app)) b.click(); });
         $$('[data-combo]').forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
       }));
+      // The crown drawing: a lit jewel sends out a small burst of sparks and a shimmer runs along the outline.
+      const art = $('[data-crw]', preview), tpl = art && $('.crw-burst-tpl', art), shine = art && $('.crw-shine', art);
+      const celebrate = (app) => {
+        const gem = art && $('.crw-gem-' + app, art);
+        if (!gem || reduceMotion.matches) return;
+        const burst = tpl.cloneNode(true);
+        burst.setAttribute('class', 'crw-burst');
+        burst.setAttribute('transform', 'translate(' + gem.getAttribute('cx') + ' ' + gem.getAttribute('cy') + ')');
+        art.appendChild(burst);
+        setTimeout(() => burst.remove(), 1000);
+        shine.classList.remove('is-run');
+        void shine.getBoundingClientRect();
+        shine.classList.add('is-run');
+      };
       $$('[data-interests] .interest').forEach((b) => b.addEventListener('click', () => {
         const app = b.dataset.app;
         const i = order.indexOf(app);
         if (i >= 0) order.splice(i, 1); else order.push(app);
         b.setAttribute('aria-pressed', String(i < 0));
         Object.keys(names).forEach((k) => preview.toggleAttribute('data-' + k, order.includes(k)));
+        preview.toggleAttribute('data-crw-full', order.length === total);
+        if (i < 0) celebrate(app);
         if (count) { count.parentNode.lastChild.textContent = ' of ' + total + ' jewels lit' + cheer(order.length); count.textContent = String(order.length); }
         if (meter) meter.style.width = (100 * order.length / total) + '%';
         const paid = order.filter((k) => prices[k]);
         ctaPlan = paid.length >= 2 ? 'crown' : paid.length === 1 ? paid[0] : null;
-        cta.setAttribute('href', ctaPlan ? '?plan=' + ctaPlan + '#pricing' : '#pricing');
-        cta.textContent = ctaPlan ? 'Reserve ' + (ctaPlan === 'crown' ? 'Crown Pass' : names[ctaPlan]) : 'See plans';
+        cta.setAttribute('href', ctaPlan ? '/subscribe?plan=' + ctaPlan : '/subscribe');
+        cta.textContent = ctaPlan ? (ctaPlan === 'crown' ? 'Try the Crown Pass free' : 'Get ' + names[ctaPlan]) : 'See plans';
         if (!order.length) {
           label.textContent = defaults.label;
           price.textContent = defaults.price;

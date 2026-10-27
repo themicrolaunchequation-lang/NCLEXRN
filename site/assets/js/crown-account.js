@@ -247,19 +247,28 @@
       } catch { /* a damaged cookie is treated as empty */ }
       return st;
     };
-    const write = (st) => {
+    const OFF = 'hca-daily-off';
+    const setCookie = (name, value, age) => {
       try {
         const host = location.hostname, shared = /(^|\.)healthcarecrownacademy\.co\.uk$/.test(host);
-        document.cookie = KEY + '=' + encodeURIComponent(JSON.stringify(st)) + '; Path=/; Max-Age=31536000; SameSite=Lax' + (shared ? '; Domain=.healthcarecrownacademy.co.uk' : '') + (location.protocol === 'https:' ? '; Secure' : '');
+        document.cookie = name + '=' + value + '; Path=/; Max-Age=' + age + '; SameSite=Lax' + (shared ? '; Domain=.healthcarecrownacademy.co.uk' : '') + (location.protocol === 'https:' ? '; Secure' : '');
       } catch { /* cookies blocked: Daily Crown simply stays empty */ }
+    };
+    // The person can switch the streak off (privacy notice): we then delete it and remember the choice.
+    const isOff = () => document.cookie.split('; ').some((c) => c === OFF + '=1');
+    const write = (st) => { if (!isOff()) setCookie(KEY, encodeURIComponent(JSON.stringify(st)), 31536000); };
+    const setOff = (off) => {
+      if (off) { setCookie(KEY, '', 0); setCookie(OFF, '1', 31536000 * 5); } else setCookie(OFF, '', 0);
+      try { window.dispatchEvent(new CustomEvent('hca-daily', { detail: get() })); } catch { /* ignore */ }
     };
     /** What to show now: today's apps, and a streak that has lapsed reads as 0 (kindly: it restarts at 1 with the next activity). */
     const get = () => {
+      if (isOff()) return { d: '', a: [], s: 0, best: 0, total: APPS.length, apps: APPS.slice(), today: today(), off: true };
       const st = read(), t = today(), live = st.d === t, alive = live || st.d === yesterday();
       return { d: st.d, a: live ? st.a : [], s: alive ? st.s : 0, best: st.best, total: APPS.length, apps: APPS.slice(), today: t };
     };
     const done = (app) => {
-      if (!APPS.includes(app)) return get();
+      if (!APPS.includes(app) || isOff()) return get();
       const st = read(), t = today();
       if (st.d === t) {
         if (st.a.includes(app)) return get();
@@ -273,7 +282,7 @@
       try { window.dispatchEvent(new CustomEvent('hca-daily', { detail: get() })); } catch { /* ignore */ }
       return get();
     };
-    return { get, done, apps: APPS };
+    return { get, done, apps: APPS, isOff, setOff };
   })();
 
   /** Stripe checkout for a plan id (e.g. 'crown-month', 'gulf-qatar-1m'). country = ISO code for regional pricing.
