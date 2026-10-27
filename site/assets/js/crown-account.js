@@ -193,7 +193,7 @@
         go.disabled = true; say('');
         try {
           if (mode === 'signin') { keep(await authCall('token?grant_type=password', { email, password })); ok = true; d.close(); return; }
-          if (mode === 'reset') { await authCall('recover?redirect_to=' + encodeURIComponent(ACCOUNT + '/account'), { email }); say('If an account uses that email, we have sent a link to choose a new password.', 'ok'); return; }
+          if (mode === 'reset') { await authCall('recover?redirect_to=' + encodeURIComponent(here()), { email }); say('If an account uses that email, we have sent a link to choose a new password.', 'ok'); return; }
           const j = await authCall('signup?redirect_to=' + encodeURIComponent(here()), { email, password, data: { full_name: f.name.value.trim() || undefined } });
           if (j.access_token) { keep(j); ok = true; d.close(); return; }
           say(`Almost done. We sent a link to ${email}. Open it and you will come back here signed in.`, 'ok');
@@ -206,14 +206,47 @@
   // Coming back from the "confirm your email" link: the new session arrives in the address (#access_token=...).
   (async () => {
     const h = new URLSearchParams(location.hash.slice(1));
-    if (!h.get('access_token') || !h.get('refresh_token') || h.get('type') === 'recovery') return;
+    if (!h.get('access_token') || !h.get('refresh_token')) return;
+    const recovery = h.get('type') === 'recovery';
     const n = { access_token: h.get('access_token'), refresh_token: h.get('refresh_token'), token_type: 'bearer', expires_in: Number(h.get('expires_in')) || 3600, expires_at: Number(h.get('expires_at')) || 0 };
     try { const u = await fetch(`${SUPABASE}/auth/v1/user`, { headers: { apikey: KEY, Authorization: 'Bearer ' + n.access_token } }); if (u.ok) n.user = await u.json(); } catch { /* the next refresh fills it in */ }
     if (!n.expires_at) delete n.expires_at;
     keep(n);
     history.replaceState(null, '', location.pathname + location.search);
+    // A password-reset link: ask for the new password here, then carry on signed in.
+    if (recovery) await newPassword(n.access_token);
     location.reload();
   })();
+  function newPassword(token) {
+    const d = document.createElement('dialog');
+    d.className = 'hca-pay hca-auth';
+    d.setAttribute('aria-labelledby', 'hca-np-title');
+    d.innerHTML = `<form class="hca-pay-in" novalidate><p class="hca-pay-eye">HEALTHCARE CROWN ACADEMY</p><h2 id="hca-np-title">Choose a new password</h2>
+<p class="hca-pay-lead">You are signed in. Pick a new password for every Healthcare Crown app and Evinca.</p><p class="hca-auth-msg" role="alert" hidden></p>
+<label>New password<input name="p1" type="password" autocomplete="new-password" minlength="8" required></label>
+<label>Type it again<input name="p2" type="password" autocomplete="new-password" minlength="8" required></label>
+<button class="hca-pay-go" type="submit">Save new password</button></form>`;
+    const go = () => document.body.append(d);
+    document.body ? go() : document.addEventListener('DOMContentLoaded', go);
+    const f = d.querySelector('form'), note = d.querySelector('.hca-auth-msg'), btn = d.querySelector('.hca-pay-go');
+    const say = (t) => { note.hidden = !t; note.textContent = t; note.dataset.tone = 'error'; };
+    return new Promise((done) => {
+      d.addEventListener('close', () => { d.remove(); done(); });
+      f.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (f.p1.value.length < 8) return say('Please use at least 8 characters.');
+        if (f.p1.value !== f.p2.value) return say('The two passwords do not match.');
+        btn.disabled = true;
+        try {
+          const r = await fetch(`${SUPABASE}/auth/v1/user`, { method: 'PUT', headers: { apikey: KEY, Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify({ password: f.p1.value }) });
+          if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.msg || j.message || ''); }
+          d.close();
+        } catch (err) { say(/different|same/i.test(err.message) ? 'Please choose a password you have not used before.' : 'We could not save it. The link may have expired: ask for a new one.'); btn.disabled = false; }
+      });
+      const open = () => { d.showModal(); f.p1.focus(); };
+      d.isConnected ? open() : document.addEventListener('DOMContentLoaded', open);
+    });
+  }
   const signInHere = (mode, why) => authDialog(mode, why).then((ok) => { if (ok) location.reload(); return ok; });
 
   function render(host, e) {
