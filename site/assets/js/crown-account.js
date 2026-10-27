@@ -284,12 +284,13 @@
       const r = await fetch(`${SUPABASE}/functions/v1/crown-billing`, { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + s.access_token, 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, return_url: location.href.split('#')[0].replace(/[?&]checkout=[^&]*(&session_id=[^&]*)?/, '') }) });
       const j = await r.json().catch(() => ({ error: 'payment_request_failed' }));
       if (j.url && /^https:\/\/(checkout|billing)\.stripe\.com\//.test(j.url)) { location.href = j.url; return j; }
-      return j.error ? j : { error: 'payment_request_failed' };
+      return j;
     } catch { return { error: 'offline' }; }
   }
 
   window.HCA = {
-    checkout: (plan, country) => billing({ action: 'checkout', plan, country }),
+    checkout: (plan, country, consent) => billing({ action: 'checkout', plan, country, consent: consent === true }),
+    refund: (kind) => billing({ action: 'refund', kind }),
     manageBilling: () => billing({ action: 'portal' }),
     ready,
     daily: DAILY,

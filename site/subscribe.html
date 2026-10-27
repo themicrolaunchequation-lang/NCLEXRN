@@ -102,7 +102,7 @@
     <ul class="sp-trust" aria-label="Why it is safe to try">
       <li><b>7-day free trial</b><span>on the Crown Pass</span></li>
       <li><b>Cancel any time</b><span>in two clicks, no calls</span></li>
-      <li><b>14-day cancellation right</b><span>see <a href="/refunds">refunds</a></span></li>
+      <li><b>Full refund within 3 days</b><span>unused part within 14 days · <a href="/refunds">refunds</a></span></li>
       <li><b>Secure payment</b><span>by Stripe; we never see your card</span></li>
     </ul>
 
@@ -165,14 +165,36 @@
       <details><summary>Can I cancel any time?</summary><p>Yes. Use “Manage or cancel my plan” below. Your plan stays active until the end of the period you have paid for, and your progress is never deleted.</p></details>
       <details><summary>Why is the price different in my country?</summary><p>Prices follow World Bank income groups so the Academy is fair everywhere. Upper-middle-income countries pay less, and lower-income countries pay least, in US dollars. Gulf Region exam passes cost the same everywhere.</p></details>
       <details><summary>Can I pay in my own currency?</summary><p>Stripe may offer your local currency at checkout. You can always choose to pay in the plan’s own currency instead.</p></details>
-      <details><summary>Do you offer refunds?</summary><p>UK customers have a 14-day right to cancel. Full details are on our <a href="/refunds">subscriptions and refunds</a> page.</p></details>
+      <details><summary>Do you offer refunds?</summary><p>Yes, and you can do it yourself with “Request a refund” below. You get a full refund within 3 days of paying. Within 14 days you get back the unused part. Full details are on our <a href="/refunds">subscriptions and refunds</a> page.</p></details>
     </section>
 
     <div class="sp-manage">
       <p>Already a member?</p>
       <button type="button" class="btn btn-ghost" data-manage>Manage or cancel my plan</button>
+      <button type="button" class="btn btn-ghost" data-refund-open>Request a refund</button>
     </div>
   </div>
+
+  <dialog class="sp-dialog" data-consent-dialog aria-labelledby="consent-h">
+    <form method="dialog">
+      <h2 id="consent-h">Before you pay</h2>
+      <p>Your access starts straight away after payment.</p>
+      <label class="sp-check"><input type="checkbox" data-consent-box required> I want my access to start now. I understand I can get a <b>full refund within 3 days</b> of paying, and after that, <b>within 14 days</b>, a refund of the unused part only.</label>
+      <p class="sp-fine"><a href="/refunds">Subscriptions and refunds</a></p>
+      <div class="sp-dialog-row"><button value="cancel" class="btn btn-ghost" formnovalidate>Cancel</button><button value="ok" class="btn btn-primary" data-consent-go disabled>Continue to secure payment</button></div>
+    </form>
+  </dialog>
+  <dialog class="sp-dialog" data-refund-dialog aria-labelledby="refund-h">
+    <form method="dialog">
+      <h2 id="refund-h">Request a refund</h2>
+      <p>Full refund within 3 days of paying. Within 14 days, you get back the unused part. Your access ends when the refund is made.</p>
+      <div class="sp-dialog-col">
+        <button value="subscription" class="btn btn-primary">My plan (MedLex, Carecraft, Lumen or Crown Pass)</button>
+        <button value="gulf" class="btn btn-primary">My Gulf Region exam pass</button>
+        <button value="cancel" class="btn btn-ghost">Close</button>
+      </div>
+    </form>
+  </dialog>
 </main>
 <style>
 .sp{padding-bottom:72px}
@@ -229,6 +251,7 @@
 .sp-exams button{display:grid;gap:2px;min-height:64px;padding:10px 6px;border-radius:14px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text);font:inherit;cursor:pointer;text-align:center}
 .sp-exams small{color:var(--text-soft);font-size:.75rem}
 .sp-exams [aria-checked=true]{border:2px solid var(--j-lss);background:color-mix(in srgb,var(--j-lss) 10%,var(--surface))}
+.sp-dialog{max-width:460px;width:calc(100% - 32px);border:0;border-radius:20px;padding:24px;background:var(--surface,#132a40);color:var(--text,#fff);box-shadow:0 24px 60px rgba(0,0,0,.45)}.sp-dialog::backdrop{background:rgba(5,12,20,.6)}.sp-dialog h2{margin:0 0 8px}.sp-check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;line-height:1.45}.sp-check input{margin-top:4px;width:18px;height:18px;flex:none}.sp-dialog-row{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}.sp-dialog-col{display:grid;gap:10px;margin-top:12px}
 .sp-teams{margin-top:24px;padding:clamp(22px,4vw,40px);border-radius:var(--radius-xl);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-md)}.sp-teams-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:12px 0}.sp-team{padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03)}.sp-team h3{margin:0 0 6px}.sp-team p{margin:6px 0}
 .sp-passes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:14px}
 .sp-pass{position:relative;display:grid;gap:4px;justify-items:center;padding:20px 12px;border-radius:18px;border:1px solid var(--line-strong);background:var(--surface);color:var(--text);font:inherit;cursor:pointer;transition:transform .2s var(--ease-out),box-shadow .2s}
