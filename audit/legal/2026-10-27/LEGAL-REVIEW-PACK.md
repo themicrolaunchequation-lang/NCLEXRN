@@ -66,24 +66,38 @@ Prepared 27 October 2026 for an external reviewer (a UK solicitor, or an AI lega
 
 All prices are the total paid. No VAT is added.
 
-### Academy subscriptions (renew automatically; monthly or yearly)
+**Updated 27 Oct 2026: pricing simplified to three plans.** New buyers can only buy these three. Single-app plans (MedLex, Carecraft or Lumen on their own) and one-exam Gulf passes were withdrawn for new buyers the same day. Nobody had bought them with real money; any test holder keeps access until it ends.
 
-| Plan | Monthly | Yearly | Free trial |
-|---|---|---|---|
-| Crown Pass (MedLex + Carecraft + Lumen premium) | £5.99 | £39.99 (founding price £29.99 for people who join by 31 Jan 2027) | 7 days |
-| MedLex | £2.99 | £19.99 | none |
-| Carecraft | £2.99 | £19.99 | none |
-| Lumen | £4.99 | £34.99 | none |
+### 1. Crown Pass (subscription; renews automatically; monthly or yearly)
 
-Some countries see lower regional prices in US dollars. Planned: Crown Pass yearly to £49.99 for **new** members from 1 Feb 2027 (existing members keep their price until renewal and get 30 days' notice of any change).
+| Monthly | Yearly | Free trial |
+|---|---|---|
+| £5.99 | £39.99. Founding price: first year £29.99 for people who join by 31 Jan 2027, then renews at £39.99 | 7 days |
 
-### One-off purchases (never renew)
+- Includes MedLex, Carecraft and Lumen premium (Serein is free for everyone).
+- On the yearly view during the founding period the plans page shows "~~£39.99~~ **£29.99** /first year" and "Founding price until 31 January 2027. Then £39.99 a year." £39.99 is the real standard yearly price (charged at renewal and to anyone joining after the offer).
+- Some countries see lower regional prices in US dollars.
+- Planned: Crown Pass yearly to £49.99 for **new** members from 1 Feb 2027 (existing members keep their price and get 30 days' notice of any change).
+
+### 2. Gulf Pass (one-off payment; never renews)
+
+| Length | Price |
+|---|---|
+| 3 months | US$50 |
+| 6 months | US$69 |
+
+- Covers all four Gulf Region nursing exams (Saudi SNLE, Qatar DHP, Dubai DHA, Abu Dhabi DOH) **and includes the Crown Pass for the same time**. Same price in every country.
+- If the Gulf Pass is refunded, both the exam access and the included Crown Pass end.
+
+### 3. Lean Six Sigma Green Belt (one-off payment; never renews; own site and own terms)
+
+US$99 for 12 months (planned US$149 for new buyers from 1 Feb 2027).
+
+### Not on the self-service plans page
 
 | Product | Price |
 |---|---|
-| Gulf Region exam pass (one exam) | 1 month US$25 · 3 months US$50 · 6 months US$69 |
-| Lean Six Sigma Green Belt, full access for 12 months | US$99 (US$79 per seat for teams of 10+ until 31 Jan 2027, then US$99; planned individual US$149 from 1 Feb 2027) |
-| Carecraft team | £30 per learner a year (10–49), £20 from 50 learners (sold by invoice/agreement, not self-checkout) |
+| Team plans (Carecraft; Green Belt) | By email and invoice only ("Teams of 10 or more: email us for a team pilot"). Current offers: Carecraft £30 per learner a year (10–49), £20 from 50; Green Belt US$79 per seat (10+) until 31 Jan 2027, then US$99 |
 | Evinca review fees (paid launch June 2027) | Rising Star US$39 · Individual US$49 · Leadership US$149 · Team US$299; reduced "access" fees for eligible countries (see Part 7) |
 
 ---
@@ -92,7 +106,7 @@ Some countries see lower regional prices in US dollars. Planned: Crown Pass year
 
 ### Before payment (Academy)
 1. The plans page shows the yearly amount as the main price, with "About £x a month · save £y a year" underneath.
-2. For the Crown Pass trial the card says: "£0 today. Then £39.99 a year, taken on [date] and renewing automatically…"
+2. For the Crown Pass trial the card says, for example: "£0 today. Then £29.99 on [date], renewing automatically at £39.99 a year. Cancel before then and you pay nothing." (founding year) or "£0 today. Then £5.99 on [date], renewing automatically." (monthly).
 3. Pressing a plan opens a dialog **"Before you pay"**: "Please confirm how your access starts. This is separate from any marketing choice." with an unticked box:
    > "I ask for my access to start now, during my 14-day cancellation period. I understand that if I cancel within that period I get a **full refund within 3 days** of paying, and after that a refund **minus the days I have used**."
    The "Continue to secure payment" button stays disabled until it is ticked. The server refuses checkout unless consent is true, and stores the consent time and version (`2026-10-27b`) in Stripe metadata.
@@ -109,7 +123,7 @@ Same pattern: an unticked box at checkout: "I ask for my access to start now, du
   - **Days 4 to 14:** refund minus the days used: price × days used ÷ days in the period. Example on the page: £39.99 yearly, 6 days used → £0.66 kept, £39.33 refunded. Trial days are never charged.
   - **During a free trial:** the trial is cancelled; nothing is charged.
   - **Converted from trial:** the 14 days still run from the trial start; conversion does not start a new period.
-  - **Gulf passes:** the same window and calculation; the pass ends.
+  - **Gulf Pass:** the same window and calculation; the pass ends, including the Crown Pass that came with it.
   - **Lean Six Sigma:** the same window and calculation; access ends and any certificate is withdrawn.
   - **Limit:** the instant button works once per person per product. The pages say this limit never affects legal rights; anyone can still ask by email and rely on statutory remedies.
   - Access ends immediately; Stripe sends the refund to the original card.
@@ -187,6 +201,9 @@ Under-18s: accounts allowed from 16. No marketing by default, no profiling, the 
 11. **Registered office.** The address is a registered-office service. Is it acceptable as the geographic address customers can use?
 12. **Evinca.** Are the stage refund amounts ("at least 50%") and the publication/revocation rule fair? What must be in place before paid launch?
 13. **Team plans.** Carecraft and Lean Six Sigma team plans are B2B. Do they need separate business terms?
+14. **Gulf Pass bundle (new, 27 Oct).** A one-off US$ payment that also gives the Crown Pass (normally a GBP subscription) for 3 or 6 months, with no renewal. Are the terms clear that the included Crown Pass ends with the Gulf Pass and never turns into a paid subscription? Does the refunds page describe the bundle well enough?
+15. **Founding price display (new, 27 Oct).** The yearly card shows £39.99 struck through next to £29.99 "first year". £39.99 is the standard yearly price and the renewal price. Is this a fair price comparison under the DMCCA unfair commercial practices rules and CMA pricing guidance, and is the deadline "until 31 January 2027" genuine urgency rather than pressure? (The owner will not extend it.)
+16. **Withdrawing single-app plans.** Single-app plans were withdrawn before any real sale. Is the sentence "Anyone who already has a single-app plan keeps it on the same terms" enough, or should it be removed since no real customer has one?
 
 ### Things the owner is doing outside the documents
 - Supplier data processing agreements (DPAs): accept or download and file one per supplier (see Part 8B).
@@ -301,8 +318,8 @@ This page explains how paid plans work, how to cancel and what you get back. It 
 
 #### What you can buy
 
-- **Subscriptions** that renew automatically until you stop them: the Crown Pass (MedLex, Carecraft and Lumen premium, with a 7-day free trial), and MedLex, Carecraft or Lumen on their own. You can pay monthly or yearly.
-- **Gulf Region Nursing exam passes** for one exam (Saudi SNLE, Qatar, Dubai or Abu Dhabi): 1, 3 or 6 months, paid once and **never renewed automatically**.
+- **Subscriptions** that renew automatically until you stop them: the Crown Pass (MedLex, Carecraft and Lumen premium, with a 7-day free trial). You can pay monthly or yearly. Anyone who already has a single-app plan keeps it on the same terms.
+- **The Gulf Pass**: all four Gulf Region Nursing exams (Saudi SNLE, Qatar, Dubai and Abu Dhabi) plus the Crown Pass, for 3 or 6 months, paid once and **never renewed automatically**. Earlier one-exam passes (1, 3 or 6 months) work the same way until they end.
 - Serein is free for everyone. The Lean Six Sigma Green Belt toolkit and Evinca recognition fees have their own terms, shown in those apps.
 
 Each paid plan is an **ongoing online service**: continuing access to our learning apps, their updates and, where included, AI help. That is why the cancellation and refund rules below follow the rules for services.
