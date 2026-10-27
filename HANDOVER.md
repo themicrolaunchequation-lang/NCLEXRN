@@ -56,7 +56,7 @@ Contact email on both sites stays themicrolaunchequation@gmail.com.
    `update profiles set is_admin = true where email = 'SECOND_EMAIL';`
 4. Solicitor review of the policy texts before taking payments.
 5. Before charging: activate Stripe, add refund/terms details, follow `PRICING_STRIPE_RELEASE.md`.
-6. Optional: Porkbun email forwarding `hello@healthcarecrownacademy.co.uk` → Gmail, then update `contactEmail`.
+6. Optional: Porkbun email forwarding `themicrolaunchequation@gmail.com` → Gmail, then update `contactEmail`.
 7. Replace illustrative samples with real, consenting honorees over time.
 
 ## Prompt to continue in a new chat

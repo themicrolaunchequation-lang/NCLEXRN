@@ -45,7 +45,7 @@ netlify.toml             hosting settings and security headers
 | Key | What to put there |
 |---|---|
 | `registeredOffice` | **Required by UK law.** The registered office address exactly as Companies House shows it. It appears in the footer and the privacy notice. |
-| `contactEmail` | Currently `hello@healthcarecrownacademy.co.uk`. Switch it to `hello@healthcarecrownacademy.co.uk` once email forwarding is set up (below). |
+| `contactEmail` | Currently `themicrolaunchequation@gmail.com`. Switch it to `themicrolaunchequation@gmail.com` once email forwarding is set up (below). |
 | `evincaUrl` | The Evinca app's public URL once it's live. It shows an "Open the Evinca platform" button. |
 | `supabaseUrl`, `supabaseKey` | Already set to the `evinca` project. This is the publishable key, which is safe in the browser. |
 
@@ -95,7 +95,7 @@ Why Netlify: its free plan allows commercial sites. Vercel's free Hobby plan is 
 
 ### Branded email (free)
 
-In Porkbun, open **Email Forwarding** and forward `hello@healthcarecrownacademy.co.uk` to `hello@healthcarecrownacademy.co.uk`. Keep the MX records Porkbun adds; they don't conflict with the website records above. Then update `contactEmail` in `config.js`.
+In Porkbun, open **Email Forwarding** and forward `themicrolaunchequation@gmail.com` to `themicrolaunchequation@gmail.com`. Keep the MX records Porkbun adds; they don't conflict with the website records above. Then update `contactEmail` in `config.js`.
 
 ## Before launch: checklist
 
