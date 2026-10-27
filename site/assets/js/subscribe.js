@@ -70,10 +70,10 @@
     const was = $('[data-crown-was]');
     $('[data-crown-price]').textContent = fmt(now);
     $('[data-crown-per]').textContent = period === 'year' ? (crownPlan() === 'crown-year-founding' ? '/first year' : '/year') : '/month';
-    was.hidden = crownPlan() !== 'crown-year-founding'; was.textContent = fmt(y);
+    was.hidden = true; // no struck-through comparison price (CMA pricing guidance)
     const note = $('[data-crown-note]');
     if (period === 'month') note.textContent = y && m ? `Or ${fmt(y)} a year and save ${money(m.amount * 12 - y.amount, m.cur)}.` : 'Billed monthly.';
-    else if (crownPlan() === 'crown-year-founding') note.textContent = `Founding price until 31 January 2027. Then ${fmt(y)} a year.`;
+    else if (crownPlan() === 'crown-year-founding') note.textContent = `Founding price for your first year. Then ${fmt(y)} a year. Offer ends 31 January 2027.`;
     else note.textContent = y ? `About ${money(y.amount / 12, y.cur)} a month, billed yearly.` : '';
     const tn = $('[data-trial-note]');
     if (tn && now) {
@@ -92,7 +92,7 @@
   // Ask for express consent to start access now (UK Consumer Contracts Regulations 2013) before every checkout.
   function consent() {
     const d = $('[data-consent-dialog]'), box = $('[data-consent-box]'), go = $('[data-consent-go]');
-    if (!d || !d.showModal) return Promise.resolve(window.confirm('Your access starts straight away. Full refund within 3 days of paying; within 14 days you get back the unused part. Continue?'));
+    if (!d || !d.showModal) return Promise.resolve(window.confirm('I ask for my access to start now, during my 14-day cancellation period. I understand that if I cancel within that period I get a full refund within 3 days of paying, and after that a refund minus the days I have used.\n\nPress OK to confirm and continue to secure payment.'));
     box.checked = false; go.disabled = true;
     box.onchange = () => { go.disabled = !box.checked; };
     d.showModal();

@@ -110,7 +110,7 @@ export function createHandler(deps) {
 
     const level = Number(await deps.levelOf(token).catch(() => 0)) || 0;
     const allowance = allowanceFor(level, parseAllowance(env('LUMEN_AI_DAILY') || '1:15,2:30,3:60'));
-    if (!allowance) return json(403, { error: 'level', message: 'Academy AI is included with an Evinca membership. Start your free Spotlight Story in Evinca to unlock it.' });
+    if (!allowance) return json(403, { error: 'level', message: 'Academy AI is not available on this account. Please email themicrolaunchequation@gmail.com.' });
 
     if (body?.action === 'status') {
       const used = await deps.usage(user.id).catch(() => 0);

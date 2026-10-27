@@ -19,9 +19,15 @@ const handler = createHandler({
     const { data, error } = await admin.auth.getUser(token)
     return error || !data.user ? null : { id: data.user.id }
   },
+  // Daily allowance level: every signed-in account gets level 1 (the free daily allowance), a Crown Pass
+  // (or Lumen premium, or a Gulf Pass) gives level 3, and a higher Evinca level still counts.
   levelOf: async (token: string) => {
-    const { data, error } = await asUser(token).rpc('platform_level')
-    return error ? 0 : Number(data ?? 0)
+    const db = asUser(token)
+    const [p, e] = await Promise.all([db.rpc('platform_level'), db.rpc('crown_entitlements')])
+    const evinca = p.error ? 0 : Number(p.data ?? 0)
+    const ent = (e.error ? null : e.data) as { crown?: boolean; lumen?: string } | null
+    const crown = Boolean(ent?.crown || ent?.lumen === 'premium')
+    return Math.max(1, evinca, crown ? 3 : 0)
   },
   take: async (user: string, limit: number, ceiling: number) => {
     const { data, error } = await admin.rpc('lumen_ai_take', { p_user: user, p_limit: limit, p_ceiling: ceiling })

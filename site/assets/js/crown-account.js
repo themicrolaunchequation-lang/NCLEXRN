@@ -384,11 +384,14 @@
         document.cookie = name + '=' + value + '; Path=/; Max-Age=' + age + '; SameSite=Lax' + (shared ? '; Domain=.healthcarecrownacademy.co.uk' : '') + (location.protocol === 'https:' ? '; Secure' : '');
       } catch { /* cookies blocked: Daily Crown simply stays empty */ }
     };
-    // The person can switch the streak off (privacy notice): we then delete it and remember the choice.
-    const isOff = () => document.cookie.split('; ').some((c) => c === OFF + '=1');
+    // Opt-in (PECR): nothing is stored until the person switches the streak on in My account.
+    // hca-daily-on remembers that choice; switching off deletes both cookies.
+    const ON = 'hca-daily-on';
+    const isOff = () => !document.cookie.split('; ').some((c) => c === ON + '=1');
+    if (isOff() && document.cookie.split('; ').some((c) => c.startsWith(KEY + '=') || c.startsWith(OFF + '='))) { setCookie(KEY, '', 0); setCookie(OFF, '', 0); } // tidy cookies from before opt-in
     const write = (st) => { if (!isOff()) setCookie(KEY, encodeURIComponent(JSON.stringify(st)), 31536000); };
     const setOff = (off) => {
-      if (off) { setCookie(KEY, '', 0); setCookie(OFF, '1', 31536000 * 5); } else setCookie(OFF, '', 0);
+      if (off) { setCookie(KEY, '', 0); setCookie(ON, '', 0); } else setCookie(ON, '1', 31536000);
       try { window.dispatchEvent(new CustomEvent('hca-daily', { detail: get() })); } catch { /* ignore */ }
     };
     /** What to show now: today's apps, and a streak that has lapsed reads as 0 (kindly: it restarts at 1 with the next activity). */
