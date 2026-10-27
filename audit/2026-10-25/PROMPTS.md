@@ -32,7 +32,7 @@ Hosting facts:
 - snle.healthcarecrownacademy.co.uk is: [not set up yet / live on Cloudflare Pages project ___ / other: ___]
 - lss.healthcarecrownacademy.co.uk is operated by: [Healthcare Crown Academy Ltd / Health Quality Leaders Ltd / other], hosted on [___]. Relationship between the two companies: [same owner / licence agreement / other]
 - I own evinca.org: [yes / no / don't know]
-- hello@healthcarecrownacademy.co.uk forwarding: I sent a test email from an outside account and it [arrived / did not arrive].
+- themicrolaunchequation@gmail.com forwarding: I sent a test email from an outside account and it [arrived / did not arrive].
 - Vercel plan for team themicrolaunchequation-langs-projects: [Hobby / Pro]
 - Old Vercel projects nexusrn-public-beta and nexusrn-public-preview: [delete / keep / unsure]
 ```
