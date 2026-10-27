@@ -184,9 +184,8 @@
     serein: ['All 15 practices', 'Journeys, routines and insights', 'Team toolkit'],
     lumen: ['More Academy AI help each day', 'Unlimited sources and recall cards', 'Focus planner'],
   };
-  // Must match the pricing section on the home page and public.crown_plans (monthly).
-  const PRICE = { medlex: '£2.99/month', carecraft: '£2.99/month', serein: 'free', lumen: '£4.99/month' };
-  const CROWN_PRICE = '£5.99/month';
+  // Must match public.crown_plans. Single-app plans were retired on 27 Oct 2026: every app comes with the Crown Pass.
+  const CROWN_PRICE = '£5.99 a month or £39.99 a year';
   function paywall(app, what) {
     document.querySelector('.hca-pay')?.remove();
     const d = document.createElement('dialog');
@@ -194,8 +193,8 @@
     d.setAttribute('aria-labelledby', 'hca-pay-title');
     const signedIn = ent && ent.signed_in;
     d.innerHTML = `<div class="hca-pay-in"><p class="hca-pay-eye">${NAMES[app].toUpperCase()} PREMIUM</p><h2 id="hca-pay-title"></h2><p class="hca-pay-lead"></p><ul></ul>
-<p class="hca-pay-price">${NAMES[app]} on its own <b>${PRICE[app]}</b>, or every app with the Crown Pass <b>${CROWN_PRICE}</b>. Codes can be used at checkout.</p>
-<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/subscribe?plan=${encodeURIComponent(app)}">See plans</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
+<p class="hca-pay-price">${NAMES[app]} and every other app come with the Crown Pass: <b>${CROWN_PRICE}</b>, with 7 days free.</p>
+<div class="hca-pay-row"><a class="hca-pay-go" href="https://healthcarecrownacademy.co.uk/subscribe?plan=${encodeURIComponent(app)}">Try it free for 7 days</a>${signedIn ? '' : '<button type="button" class="hca-pay-alt" data-in>I already have a plan</button>'}<button type="button" class="hca-pay-alt" data-close>Not now</button></div></div>`;
     d.querySelector('h2').textContent = what ? `Unlock ${what}` : `Unlock all of ${NAMES[app]}`;
     d.querySelector('.hca-pay-lead').textContent = `This is part of ${NAMES[app]} premium. Everything you have done so far stays yours.`;
     for (const t of PERKS[app]) { const li = document.createElement('li'); li.textContent = t; d.querySelector('ul').append(li); }
