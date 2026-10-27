@@ -146,7 +146,7 @@
     who.textContent = e.email;
     menu.append(who);
     const link = (text, href, cls) => { const a = document.createElement('a'); a.href = href; a.textContent = text; if (cls) a.className = cls; menu.append(a); };
-    link('My account', `${ACCOUNT}/account`);
+    link('My account', 'https://healthcarecrownacademy.co.uk/account');
     if (!e.crown && !e.admin) link('Upgrade to the Crown Pass', 'https://healthcarecrownacademy.co.uk/#pricing', 'gold');
     link('MedLex', 'https://medlex.healthcarecrownacademy.co.uk/');
     link('Carecraft', 'https://carecraft.healthcarecrownacademy.co.uk/');
@@ -154,6 +154,7 @@
     link('Lumen', 'https://lumen.healthcarecrownacademy.co.uk/');
     if (LIVE.snle) link('Gulf Region Nursing', 'https://snle.healthcarecrownacademy.co.uk/');
     link('Evinca', 'https://evinca.healthcarecrownacademy.co.uk/en');
+    link('Evinca profile', `${ACCOUNT}/account`);
     if (e.admin) link('Crown admin', `${ACCOUNT}/account/admin`, 'gold');
     const out = document.createElement('button');
     out.type = 'button';
