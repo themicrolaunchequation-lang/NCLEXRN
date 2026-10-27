@@ -14,7 +14,37 @@
     outside_window: 'Automatic refunds are available within 14 days of your first payment. Please email hello@healthcarecrownacademy.co.uk if something went wrong.',
     offline: 'You seem to be offline. Please check your connection.',
   };
-  const msg = (t) => { const m = $('[data-sub-msg]'); m.textContent = t; m.hidden = !t; if (t) m.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+  // Short notices (errors, info) appear as a toast at the bottom of the screen, wherever the person is.
+  const msg = (t, tone = 'error') => {
+    const el = $('[data-toast]'); if (!el) return;
+    clearTimeout(msg.timer);
+    if (!t) { el.hidden = true; return; }
+    el.dataset.tone = tone; $('[data-toast-text]').textContent = t; el.hidden = false;
+    if (tone === 'info') msg.timer = setTimeout(() => { el.hidden = true; }, 7000);
+  };
+  const APP = { crown: ['the Crown Pass', '/'], medlex: ['MedLex', '/medlex/'], carecraft: ['Carecraft', '/carecraft/'], lumen: ['Lumen', '/lumen/'] };
+  const EXAM = { saudi: 'Saudi SNLE', qatar: 'Qatar DHP', dubai: 'Dubai DHA', abudhabi: 'Abu Dhabi DOH' };
+  function describe(plan) {
+    const g = /^gulf-(\w+)-(\d+)m$/.exec(plan || '');
+    if (g) return { name: `the ${EXAM[g[1]] || 'Gulf Region'} exam pass for ${g[2]} month${g[2] === '1' ? '' : 's'}`, go: 'https://snle.healthcarecrownacademy.co.uk/', cta: 'Open the exam studio' };
+    const key = String(plan || '').split('-')[0];
+    const a = APP[key] || APP.crown;
+    return { name: a[0], go: a[1], cta: APP[key] && key !== 'crown' ? `Open ${a[0]}` : 'Start learning', trial: !key || key === 'crown' };
+  }
+  // Big, clear confirmation card for good news: a payment, a refund or a cancelled trial.
+  function result({ tone = 'success', kicker, title, amount, text, steps = [], go, cta, fine = '' }) {
+    const d = $('[data-result]'); if (!d || !d.showModal) { msg(`${title}. ${text}`, 'info'); return; }
+    $('.sp-result-in').dataset.tone = tone;
+    $('[data-result-kicker]').textContent = kicker;
+    $('[data-result-title]').textContent = title;
+    const am = $('[data-result-amount]'); am.hidden = !amount; am.innerHTML = amount || '';
+    $('[data-result-text]').textContent = text;
+    $('[data-result-steps]').innerHTML = steps.map((x) => `<li>${x}</li>`).join('');
+    const g = $('[data-result-go]'); g.hidden = !go; if (go) { g.href = go; g.textContent = cta; }
+    $('[data-result-fine]').textContent = fine;
+    const icon = $('.sp-result-icon'); icon.replaceWith(icon.cloneNode(true)); // replay the tick animation
+    d.showModal();
+  }
   const get = async (path) => { const r = await fetch(`${SUPABASE}/rest/v1/${path}`, { headers: { apikey: KEY } }); if (!r.ok) throw new Error(r.status); return r.json(); };
   const money = (amount, cur) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: cur.toUpperCase(), minimumFractionDigits: 2 }).format(amount).replace(/^US\$/, 'US$');
   // List prices are built in so the page never shows blanks; the database overrides them when it loads.
@@ -69,12 +99,18 @@
     d.showModal();
     const kind = await new Promise((res) => { d.onclose = () => res(d.returnValue); });
     if (kind !== 'subscription' && kind !== 'gulf') return;
-    msg('Checking your payment…');
+    msg('Checking your payment…', 'info');
     const r = await HCA.refund(kind);
     if (r && r.error) { if (r.error !== 'sign_in_required') msg(ERR[r.error] || 'Something went wrong. Please try again in a moment.'); return; }
-    if (r.trial) return msg('Your free trial has been cancelled. You have not been charged.');
+    msg('');
+    if (r.trial) return result({ tone: 'neutral', kicker: 'Trial cancelled', title: 'You have not been charged', text: 'Your free trial has ended and nothing will be taken from your card.',
+      steps: ['Your free features and saved work stay in your account.', 'You can start a plan again whenever you like.'] });
     const amt = r.amount != null ? money(r.amount, r.currency) : '';
-    msg(r.full ? `Done. We have refunded ${amt} in full. It usually reaches your card in 5 to 10 days.` : `Done. We have refunded ${amt} for the unused part. It usually reaches your card in 5 to 10 days.`);
+    const when = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    result({ tone: 'refund', kicker: 'Refund confirmed', title: 'Your money is on its way', amount: `${amt}<small>${r.full ? 'Full refund' : 'Unused part'}</small>`,
+      text: 'We have sent the refund to the card you paid with.',
+      steps: ['It usually reaches your card in 5 to 10 working days, depending on your bank.', 'Your paid access has ended. Your free features and saved work stay.', 'Stripe will email you a receipt for the refund.'],
+      fine: `Refunded on ${when}. Questions? hello@healthcarecrownacademy.co.uk` });
   }
 
   async function buy(btn, plan) {
@@ -82,6 +118,7 @@
     if (plan !== 'manage' && !(await consent())) return;
     const label = btn.innerHTML;
     btn.disabled = true; btn.textContent = 'Opening secure checkout…'; msg('');
+    if (plan !== 'manage') try { sessionStorage.setItem('hca-buying', plan); } catch { /* optional */ }
     const r = plan === 'manage' ? await HCA.manageBilling() : await HCA.checkout(plan, $('[data-sub-country]').value, true);
     btn.disabled = false; btn.innerHTML = label;
     if (r && r.error && r.error !== 'sign_in_required') msg(ERR[r.error] || 'Something went wrong. Please try again in a moment.');
@@ -112,6 +149,8 @@
     radios('[data-exam]', 'exam', (v) => { exam = v; render(); });
     document.addEventListener('click', (e) => {
       if (e.target.closest('[data-refund-open]')) { askRefund(); return; }
+      if (e.target.closest('[data-result-close]')) { $('[data-result]').close(); return; }
+      if (e.target.closest('[data-toast-close]')) { msg(''); return; }
       const b = e.target.closest('[data-buy],[data-plan],[data-pass],[data-manage]'); if (!b) return;
       if (b.dataset.buy) buy(b, `${b.dataset.buy}-${period}`);
       else if (b.dataset.plan) buy(b, b.dataset.plan);
@@ -131,8 +170,17 @@
     const ex = q.get('exam'); if (['saudi', 'qatar', 'dubai', 'abudhabi'].includes(ex)) { exam = ex; render(); document.querySelector('.sp-gulf')?.scrollIntoView({ block: 'center' }); }
     const pl = q.get('plan'); const card = pl && document.querySelector(`[data-buy="${CSS.escape(pl)}"]`)?.closest('.sp-card');
     if (card) { card.classList.add('is-picked'); setTimeout(() => card.scrollIntoView({ block: 'center' }), 200); }
-    if (q.get('checkout') === 'success') msg('Welcome aboard. Your payment went through and your plan will be active within a minute.');
-    if (q.get('checkout') === 'cancelled') msg('Checkout was cancelled. Nothing was charged.');
+    let bought = ''; try { bought = sessionStorage.getItem('hca-buying') || ''; sessionStorage.removeItem('hca-buying'); } catch { /* optional */ }
+    if (q.get('checkout') === 'success') {
+      const w = describe(bought);
+      const charge = new Date(Date.now() + 7 * 864e5).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+      result({ tone: 'success', kicker: w.trial ? 'Free trial started' : 'Payment confirmed', title: 'Welcome to Healthcare Crown', text: `You now have ${w.name}.`,
+        steps: [w.trial ? `Everything is unlocked now. Your first payment is on ${charge}, unless you cancel before then.` : 'Your access switches on within a minute. If a page still looks locked, refresh it once.',
+          w.trial ? 'Cancel any time with “Manage or cancel my plan” on this page.' : 'Stripe has emailed you a receipt.', 'Changed your mind? Full refund within 3 days, or the unused part within 14 days, with “Request a refund” on this page.'],
+        go: w.go, cta: w.cta });
+    }
+    if (q.get('checkout') === 'cancelled') msg('Checkout was cancelled. Nothing was charged.', 'info');
+    if (q.get('checkout')) history.replaceState(null, '', location.pathname + location.hash);
     try {
       const s = await (await fetch(`${SUPABASE}/functions/v1/crown-billing`, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: '{"action":"status"}' })).json();
       $('[data-sub-mode]').hidden = !(s.configured && !s.livemode);

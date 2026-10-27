@@ -46,7 +46,6 @@
       </div>
       <p class="sp-band" data-sub-band></p>
       <p class="sp-alert sp-test" data-sub-mode hidden><b>Test mode.</b> No real money is taken. Pay with card 4242 4242 4242 4242, any future date and any CVC.</p>
-      <p class="sp-alert" data-sub-msg role="status" aria-live="polite" hidden></p>
     </div>
   </section>
 
@@ -175,6 +174,19 @@
     </div>
   </div>
 
+  <dialog class="sp-result" data-result aria-labelledby="result-h" aria-describedby="result-p">
+    <div class="sp-result-in" data-tone="success">
+      <div class="sp-result-icon" aria-hidden="true"><svg viewBox="0 0 52 52"><circle class="c" cx="26" cy="26" r="24"/><path class="t" d="M15 27l7 7 15-16"/></svg></div>
+      <p class="sp-result-kicker" data-result-kicker></p>
+      <h2 id="result-h" data-result-title></h2>
+      <p class="sp-result-amount" data-result-amount hidden></p>
+      <p id="result-p" class="sp-result-text" data-result-text></p>
+      <ul class="sp-result-steps" data-result-steps></ul>
+      <div class="sp-result-actions"><a class="btn btn-primary" data-result-go href="/">Start learning</a><button type="button" class="btn btn-ghost" data-result-close>Close</button></div>
+      <p class="sp-result-fine" data-result-fine></p>
+    </div>
+  </dialog>
+  <div class="sp-toast" data-toast role="alert" hidden><span class="sp-toast-dot" aria-hidden="true"></span><p data-toast-text></p><button type="button" aria-label="Dismiss" data-toast-close>×</button></div>
   <dialog class="sp-dialog" data-consent-dialog aria-labelledby="consent-h">
     <form method="dialog">
       <h2 id="consent-h">Before you pay</h2>
@@ -251,6 +263,40 @@
 .sp-exams button{display:grid;gap:2px;min-height:64px;padding:10px 6px;border-radius:14px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text);font:inherit;cursor:pointer;text-align:center}
 .sp-exams small{color:var(--text-soft);font-size:.75rem}
 .sp-exams [aria-checked=true]{border:2px solid var(--j-lss);background:color-mix(in srgb,var(--j-lss) 10%,var(--surface))}
+.sp-result{max-width:440px;width:calc(100% - 32px);border:0;border-radius:24px;padding:0;background:#fff;color:#10253A;box-shadow:0 30px 80px rgba(3,10,20,.5);overflow:hidden}
+.sp-result::backdrop{background:rgba(5,12,20,.65);backdrop-filter:blur(3px)}
+.sp-result-in{padding:34px 28px 24px;text-align:center;background:radial-gradient(120% 70% at 50% 0%,var(--tint),#fff 62%)}
+.sp-result-in[data-tone=success]{--tone:#1F9D74;--tint:#E3F5EC}
+.sp-result-in[data-tone=refund]{--tone:#2563EB;--tint:#E6EEFD}
+.sp-result-in[data-tone=neutral]{--tone:#B7791F;--tint:#FBF1DE}
+.sp-result-icon{width:76px;height:76px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 8px color-mix(in srgb,var(--tone) 14%,transparent)}
+.sp-result-icon svg{width:52px;height:52px}
+.sp-result-icon .c{fill:var(--tone);transform-origin:center;animation:spPop .45s cubic-bezier(.2,1.4,.4,1) both}
+.sp-result-icon .t{fill:none;stroke:#fff;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:spTick .4s .35s ease-out forwards}
+@keyframes spPop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes spTick{to{stroke-dashoffset:0}}
+.sp-result-kicker{margin:0 0 4px;font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--tone)}
+.sp-result h2{margin:0;font-family:var(--font-display);font-weight:500;font-size:1.75rem;line-height:1.15;color:#0B1A2B}
+.sp-result-amount{margin:10px 0 0;font-size:2.4rem;font-weight:800;letter-spacing:-.02em;color:#0B1A2B}
+.sp-result-amount small{display:inline-block;margin-left:8px;padding:3px 10px;border-radius:99px;background:color-mix(in srgb,var(--tone) 14%,#fff);color:var(--tone);font-size:.78rem;font-weight:700;vertical-align:middle;letter-spacing:0}
+.sp-result-text{margin:10px auto 0;max-width:34ch;color:#3D4F63;line-height:1.5}
+.sp-result-steps{list-style:none;margin:18px 0 0;padding:14px 16px;border-radius:16px;background:#F5F7FA;text-align:left;display:grid;gap:10px;counter-reset:step}
+.sp-result-steps:empty{display:none}
+.sp-result-steps li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;font-size:.92rem;color:#24384C;line-height:1.4}
+.sp-result-steps li::before{content:counter(step);counter-increment:step;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--tone);color:#fff;font-size:.75rem;font-weight:800}
+.sp-result-actions{display:grid;gap:8px;margin-top:20px}
+.sp-result-actions [hidden]{display:none}
+.sp-result-actions .btn-ghost{color:#3D4F63;border-color:#D5DDE6}
+.sp-result-fine{margin:12px 0 0;font-size:.78rem;color:#6B7B8C}
+.sp-result-fine:empty{display:none}
+.sp-toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:12px;width:max-content;max-width:min(560px,calc(100% - 32px));padding:12px 12px 12px 16px;border-radius:16px;background:#fff;color:#10253A;box-shadow:0 18px 50px rgba(3,10,20,.35);border-left:5px solid var(--tone,#C2412D);animation:spUp .3s ease-out}
+.sp-toast[hidden]{display:none}
+.sp-toast[data-tone=info]{--tone:#2563EB}.sp-toast[data-tone=error]{--tone:#C2412D}
+.sp-toast p{margin:0;font-size:.95rem;line-height:1.4;text-align:left}
+.sp-toast-dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--tone,#C2412D)}
+.sp-toast button{flex:none;width:32px;height:32px;border:0;border-radius:50%;background:#F1F4F7;color:#3D4F63;font-size:1.2rem;cursor:pointer}
+@keyframes spUp{from{transform:translate(-50%,16px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.sp-result-icon .c,.sp-toast{animation:none}.sp-result-icon .t{animation:none;stroke-dashoffset:0}}
 .sp-dialog{max-width:460px;width:calc(100% - 32px);border:0;border-radius:20px;padding:24px;background:var(--surface,#132a40);color:var(--text,#fff);box-shadow:0 24px 60px rgba(0,0,0,.45)}.sp-dialog::backdrop{background:rgba(5,12,20,.6)}.sp-dialog{text-align:left}.sp-dialog h2{margin:0 0 8px}.sp-dialog .sp-fine{text-align:left}.sp-check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;line-height:1.45}.sp-check input{margin-top:4px;width:18px;height:18px;flex:none}.sp-dialog-row{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}.sp-dialog-col{display:grid;gap:10px;margin-top:12px}
 .sp-teams{margin-top:24px;padding:clamp(22px,4vw,40px);border-radius:var(--radius-xl);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-md)}.sp-teams-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:12px 0}.sp-team{padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03)}.sp-team h3{margin:0 0 6px}.sp-team p{margin:6px 0}
 .sp-passes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:14px}
