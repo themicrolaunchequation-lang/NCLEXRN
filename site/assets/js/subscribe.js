@@ -83,7 +83,7 @@
     }
     const parts = ['medlex', 'carecraft', 'lumen'].map((a) => price(a + '-month')).filter(Boolean);
     if (parts.length === 3) $('[data-worth]').textContent = money(parts.reduce((n, x) => n + x.amount, 0), parts[0].cur);
-    $('[data-sub-band]').textContent = band() === 'A' ? 'Prices in pounds sterling. VAT included where it applies.' : 'Fair pricing for your country, in US dollars.';
+    $('[data-sub-band]').textContent = band() === 'A' ? 'Prices in pounds sterling. No VAT is added: the price shown is the total you pay.' : 'Fair pricing for your country, in US dollars.';
     const f = plans['crown-year-founding'];
     $('[data-founding]').hidden = !f || (f.available_until && Date.parse(f.available_until) < Date.now());
     for (const b of $$('[data-period]')) b.setAttribute('aria-checked', String(b.dataset.period === period));

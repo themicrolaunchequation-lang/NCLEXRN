@@ -32,17 +32,20 @@ The terms, refunds and privacy pages (main site), the Lean Six Sigma legal page 
 
 ## You need to do or confirm
 
-1. **Run the retention SQL** (Supabase asked for approval and it timed out):
-   - Academy project: `evinca/supabase/migrations/20261027160000_retention_cleanup.sql`, paste into https://supabase.com/dashboard/project/ujeofxfbwivjmgrxqdcl/sql/new
-   - Lean Six Sigma project: `lss-healthcare-toolkit/supabase/migrations/20261027160000_retention_cleanup.sql`, paste into https://supabase.com/dashboard/project/zrvmqnvlinstipzrimyd/sql/new
+1. ~~**Run the retention SQL**~~ **Done 27 Oct 2026.** Both daily jobs confirmed running: `hca-retention` (Academy, 03:17 UTC) and `lss-retention` (Lean Six Sigma, 03:23 UTC).
 2. **Stripe reminder emails** (the refunds page promises them): in Stripe, Settings → Billing → Subscriptions and emails, turn on "Send a reminder email before a subscription renews" (yearly) and "Send a reminder email before a free trial ends". Also turn on receipt emails for successful payments and refunds. Do this in the sandbox and later in live mode.
-3. **VAT**: confirm whether HEALTHCARE CROWN ACADEMY LTD is VAT-registered and how each plan is treated. The pages say prices include any VAT that applies; if you are registered, make sure Stripe invoices show VAT correctly.
+3. ~~**VAT**~~ **Confirmed: not VAT-registered.** Pages now say "We are not registered for VAT, so no VAT is added: the price shown is the total you pay." Leave Stripe Tax off. Watch the UK threshold (taxable turnover over £90,000 in any rolling 12 months means you must register within 30 days; then pages and Stripe must change). Ask an accountant once about overseas digital-services VAT/GST for Gulf and EU buyers.
 4. **Gemini training terms** (now handled in code: Academy AI skips Gemini unless the secret `LUMEN_AI_GEMINI_PAID` is set to `true`; set it only after confirming a billed Google project): the privacy notice says AI providers do not train on Academy AI data. That is true for OpenAI's and Groq's APIs; for Google Gemini it is true only on the paid tier. Make sure the Gemini key is on a billed (paid) Google project, or remove Gemini from the `LUMEN_AI_PROVIDERS` secret (set it to `openai,groq`).
-5. **Data processing agreements and transfers** (links and filing list in `RECORDS-OF-PROCESSING.md`): accept/download the DPAs from Supabase, Vercel, Cloudflare, Stripe, OpenAI, Groq and Google, and note each one's transfer mechanism (UK–US data bridge certification or IDTA/Addendum). Keep a short transfer risk assessment.
+5. **Supplier agreements (DPAs)**: these are between the company and its own suppliers, not with customers, so customers never accept them at sign-up. Customers are told about suppliers in the privacy notice, which is already done. What you do, once, in about an hour:
+   - Make a folder "Supplier agreements" (Google Drive is fine).
+   - For each supplier in `RECORDS-OF-PROCESSING.md` part B, open the link while signed in to that supplier's account. Most (Stripe, Vercel, Cloudflare, Netlify, Groq) say the DPA is already part of the terms you accepted when you opened the account: save the page as PDF, name it `Supplier - DPA - date.pdf`.
+   - Two need an action: **Supabase** (dashboard → Organization settings → Legal documents → request/sign the DPA) and **OpenAI** (fill in the DPA form on the link to have it signed). Save the signed copies.
+   - In a one-page sheet, note per supplier: date saved, where data is held, transfer route (most US suppliers rely on the UK–US data bridge or the UK Addendum in their DPA), and their sub-processor list link.
+   - Look again once a year or when you add a supplier.
 6. **DPIA screening** for Academy AI (drafted: `DPIA-SCREENING-ACADEMY-AI.md`; read, tick and sign) (AI plus possible health-related text and young users): a short written screening, and a full DPIA if the screening says so.
 7. **Account closure process** (step-by-step in `RECORDS-OF-PROCESSING.md`): when someone asks to close their account, delete or anonymise it within 30 days (the privacy notice promises this).
 8. **Marketing unsubscribe**: check that every marketing email has a working unsubscribe link and that unsubscribed emails go on a do-not-contact list.
 9. **Evinca before paid launch (June 2027)**: add an express "start the review now" request at Evinca checkout and show the refund calculation; enforce the 18+ check at Evinca sign-up.
 10. **Subscription rules from 1 January 2027** (subject to Parliament): renewal and trial reminders, the extra cooling-off after qualifying renewals, and easy online cancellation. I can build these once the final regulations and guidance are published.
 11. **Price-comparison claims**: avoid "half the market price"-style claims unless you keep dated evidence of comparable products. The current pages make no such claim.
-12. **Solicitor review** of: /terms, /refunds, /privacy, the Lean Six Sigma legal page and Evinca's terms, privacy and fees pages.
+12. **Solicitor review** of: /terms, /refunds, /privacy, the Lean Six Sigma legal page and Evinca's terms, privacy and fees pages. Everything a solicitor or legal AI agent needs, including the brief to give them, is in one file: `LEGAL-REVIEW-PACK.md` (PDF copy `LEGAL-REVIEW-PACK.pdf`).

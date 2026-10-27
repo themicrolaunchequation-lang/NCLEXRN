@@ -25,7 +25,7 @@ Signed-in Lumen users who have an Evinca membership level may select a passage o
 | Patient-identifiable data sent to AI | Possible / high | Clear warnings in Lumen, privacy notice and terms; user-selected passages only; size limit 30,000 characters; no identity sent to provider | Low–medium. **Add:** a simple client-side check that warns before sending text containing NHS numbers, dates of birth or "Mr/Mrs + surname" patterns. |
 | Cross-user leakage via cache | Was possible / medium | Fixed 27 Oct 2026: cache key includes user id; old shared cache cleared | Low |
 | Provider training on data | Possible / medium | OpenAI and Groq APIs do not train on API data by default; Gemini excluded unless paid tier confirmed | Low |
-| Over-retention | Possible / low | 30-day cache and 90-day counts enforced by `hca_retention_cleanup` (pg_cron, once the migration is run) | Low |
+| Over-retention | Possible / low | 30-day cache and 90-day counts enforced by `hca_retention_cleanup` (pg_cron, running daily since 27 Oct 2026) | Low |
 | Transfer to US | Certain / medium | Provider DPAs with UK transfer mechanism (UK–US data bridge or IDTA/Addendum); transfer risk assessment to file | Low–medium |
 | Inaccurate AI answers relied on clinically | Possible / medium | "AI answers can be wrong; check against course materials"; terms say apps are not for decisions about patients | Low |
 | Under-18 users | Likely / low | No marketing by default, no profiling, data minimised, same protections for all | Low |
