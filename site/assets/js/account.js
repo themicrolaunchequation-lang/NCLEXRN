@@ -6,7 +6,7 @@
   const esc = (t) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const day = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   const PLAN = { crown: 'Crown Pass', medlex: 'MedLex Premium', carecraft: 'Carecraft Premium', lumen: 'Lumen Premium' };
-  const EXAM = { saudi: 'Saudi SNLE', qatar: 'Qatar DHP', dubai: 'Dubai DHA', abudhabi: 'Abu Dhabi DOH' };
+  const EXAM = { all: 'Gulf Pass · all four exams + Crown Pass', saudi: 'Saudi SNLE', qatar: 'Qatar DHP', dubai: 'Dubai DHA', abudhabi: 'Abu Dhabi DOH' };
   const APPS = [
     ['medlex', 'MedLex', 'Medical words', 'https://medlex.healthcarecrownacademy.co.uk/'],
     ['carecraft', 'Carecraft', 'Real situations', 'https://carecraft.healthcarecrownacademy.co.uk/'],

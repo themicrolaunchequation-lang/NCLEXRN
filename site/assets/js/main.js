@@ -471,7 +471,7 @@
     // [monthly, yearly] in GBP. Keep in step with the price cards in home.html.
     // Serein is free for everyone, so it has no price and never counts as a paid app.
     const prices = { medlex: [2.99, 19.99], lumen: [4.99, 34.99], carecraft: [2.99, 19.99], crown: [5.99, 39.99] };
-    const PLANS = ['crown', 'medlex', 'carecraft', 'lumen'];
+    const PLANS = ['crown', 'gulf', 'lss'];
     // Founding-member line disappears after its end date.
     $$('[data-until]').forEach((el) => { if (Date.now() > Date.parse(el.dataset.until)) el.hidden = true; });
     const reserve = initReserve();
@@ -486,7 +486,9 @@
       pickPlan(b.dataset.reserve, false);
       if (reserve) reserve.open();
     }));
-    const wanted = new URLSearchParams(location.search).get('plan');
+    const asked = new URLSearchParams(location.search).get('plan');
+    // Single apps are part of the Crown Pass, so old links such as ?plan=medlex show the Crown Pass.
+    const wanted = ['medlex', 'carecraft', 'lumen'].includes(asked) ? 'crown' : asked;
     if (wanted && PLANS.includes(wanted)) {
       pickPlan(wanted, false);
       // Let the browser settle on #pricing first, then bring the chosen card into view.
@@ -516,7 +518,7 @@
       const order = [];
       const count = $('[data-crown-count]'), meter = $('[data-crown-meter]'), total = $$('[data-interests] .interest').length;
       const cheer = (n) => (n === 0 ? '' : n === 1 ? ' · great start' : n < 4 ? ' · your crown is taking shape' : n < total ? ' · now that is a crown' : ' · the full crown!');
-      const extras = () => [order.includes('snle') && 'Gulf Region exam passes are US$25 a month or US$50 for 3 months.', order.includes('lss') && 'The Lean Six Sigma Green Belt toolkit is US$99 for 12 months, paid once.', order.includes('serein') && 'Serein is free for everyone.', order.includes('evinca') && 'Evinca stories are free.'].filter(Boolean).join(' ');
+      const extras = () => [order.includes('snle') && 'The Gulf Pass covers all four Gulf exams and includes the Crown Pass: US$50 for 3 months or US$69 for 6.', order.includes('lss') && 'The Lean Six Sigma Green Belt toolkit is US$99 for 12 months, paid once.', order.includes('serein') && 'Serein is free for everyone.', order.includes('evinca') && 'Evinca stories are free.'].filter(Boolean).join(' ');
       $$('[data-combo]').forEach((c) => c.addEventListener('click', () => {
         const want = c.dataset.combo.split(',');
         $$('[data-interests] .interest').forEach((b) => { if ((b.getAttribute('aria-pressed') === 'true') !== want.includes(b.dataset.app)) b.click(); });
@@ -547,9 +549,10 @@
         if (count) { count.parentNode.lastChild.textContent = ' of ' + total + ' jewels lit' + cheer(order.length); count.textContent = String(order.length); }
         if (meter) meter.style.width = (100 * order.length / total) + '%';
         const paid = order.filter((k) => prices[k]);
-        ctaPlan = paid.length >= 2 ? 'crown' : paid.length === 1 ? paid[0] : null;
+        // One answer: the Gulf Pass if a Gulf exam is picked (it includes the Crown Pass), otherwise the Crown Pass.
+        ctaPlan = order.includes('snle') ? 'gulf' : paid.length ? 'crown' : null;
         cta.setAttribute('href', ctaPlan ? '/subscribe?plan=' + ctaPlan : '/subscribe');
-        cta.textContent = ctaPlan ? (ctaPlan === 'crown' ? 'Try the Crown Pass free' : 'Get ' + names[ctaPlan]) : 'See plans';
+        cta.textContent = ctaPlan === 'gulf' ? 'Get the Gulf Pass' : ctaPlan === 'crown' ? 'Try the Crown Pass free' : 'See plans';
         if (!order.length) {
           label.textContent = defaults.label;
           price.textContent = defaults.price;
@@ -564,14 +567,8 @@
         price.innerHTML = '';
         if (!paid.length) { price.textContent = extras() + ' Start whenever you are ready.'; return; }
         const best = document.createElement('strong');
-        if (paid.length >= 2) {
-          const sum = paid.reduce((n, k) => n + prices[k][0], 0);
-          best.textContent = 'Crown Pass at £' + prices.crown[0].toFixed(2) + '/month';
-          price.append('Start free. Later, the ', best, ' covers ' + paid.map((k) => names[k]).join(' and ') + '; separately they would be £' + sum.toFixed(2) + '/month.');
-        } else {
-          best.textContent = '£' + prices[paid[0]][0].toFixed(2) + '/month';
-          price.append('Start free. The full app is ', best, ', or every app with the Crown Pass at £' + prices.crown[0].toFixed(2) + '.');
-        }
+        best.textContent = 'Crown Pass';
+        price.append('Start free. The ', best, ' unlocks ' + paid.map((k) => names[k]).join(' and ') + ' and every other app for £' + prices.crown[0].toFixed(2) + ' a month or £' + prices.crown[1].toFixed(2) + ' a year, with 7 days free.');
         const more = extras().replace(/ ?Serein is free for everyone\.| ?Evinca stories are free\./g, '');
         if (more) price.append(' ' + more.trim());
       }));

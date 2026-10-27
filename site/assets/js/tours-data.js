@@ -4,7 +4,7 @@
 window.HCA_TOURS = {
   medlex: {
     name: 'MedLex', chip: 'M', color: '#3557D6', motif: 'words', music: 'medlex', voice: 'Bright and curious',
-    tag: 'Make sense of any medical word.', url: 'https://medlex.healthcarecrownacademy.co.uk/', cta: 'Open MedLex free', note: 'Free to start · Premium £2.99/month or with the Crown Pass',
+    tag: 'Make sense of any medical word.', url: 'https://medlex.healthcarecrownacademy.co.uk/', cta: 'Open MedLex free', note: 'Free to start · Full app with the Crown Pass, 7 days free',
     hook: ['1,480 medical words.', 'What if you only had to learn the pieces?'], bg: ['mx-term', 'mx-prefix', 'mx-atlas'],
     sayHook: 'Fourteen hundred and eighty medical words. What if you only had to learn the pieces?',
     sayTitle: 'This is MedLex. Make sense of any medical word.',
@@ -25,7 +25,7 @@ window.HCA_TOURS = {
     ] },
   carecraft: {
     name: 'Carecraft', chip: 'C', color: '#0F8A86', motif: 'talk', music: 'carecraft', voice: 'Warm, British mentor',
-    tag: 'One useful minute of practice a day.', url: 'https://carecraft.healthcarecrownacademy.co.uk/', cta: 'Open Carecraft free', note: 'Free to start · Premium £2.99/month or with the Crown Pass',
+    tag: 'One useful minute of practice a day.', url: 'https://carecraft.healthcarecrownacademy.co.uk/', cta: 'Open Carecraft free', note: 'Free to start · Full app with the Crown Pass, 7 days free',
     hook: ['The hardest moment on shift is not always clinical.', 'Sometimes it is the next sentence you say.'], bg: ['cc-scenario', 'cc-slides', 'cc-guide'],
     sayHook: 'The hardest moment on shift is not always clinical. Sometimes, it is the next sentence you say.',
     sayTitle: 'This is Carecraft. One useful minute of practice, every day.',
@@ -63,7 +63,7 @@ window.HCA_TOURS = {
     ] },
   lumen: {
     name: 'Lumen', chip: 'L', color: '#8B6CF0', motif: 'cards', music: 'lumen', voice: 'Friendly study buddy',
-    tag: 'Turn your own notes into recall.', url: 'https://lumen.healthcarecrownacademy.co.uk/', cta: 'Open Lumen free', note: 'Free to start · Premium £4.99/month or with the Crown Pass',
+    tag: 'Turn your own notes into recall.', url: 'https://lumen.healthcarecrownacademy.co.uk/', cta: 'Open Lumen free', note: 'Free to start · Full app with the Crown Pass, 7 days free',
     hook: ['You highlighted everything.', 'So why does so little stick?'], bg: ['lm-reader', 'lm-explain', 'lm-card'],
     sayHook: 'You highlighted everything. So why does so little stick?',
     sayTitle: 'Meet Lumen. Turn your own notes into recall.',
@@ -82,7 +82,7 @@ window.HCA_TOURS = {
     ] },
   snle: {
     name: 'Gulf Region Nursing', chip: 'G', color: '#347A9A', motif: 'pulse', music: 'gulf', voice: 'Saudi-accented English',
-    tag: 'Your Gulf Region nursing licence, one safe decision at a time.', url: 'https://snle.healthcarecrownacademy.co.uk/', cta: 'Open the studio', note: 'US$25 a month or US$50 for 3 months, per exam',
+    tag: 'Your Gulf Region nursing licence, one safe decision at a time.', url: 'https://snle.healthcarecrownacademy.co.uk/', cta: 'Open the studio', note: 'Gulf Pass: all four exams, US$50 for 3 months or US$69 for 6',
     hook: ['One exam stands between you', 'and your nursing career in the Gulf Region.'], bg: ['gr-qb', 'gr-befast', 'gr-dossier'],
     sayHook: 'One exam stands between you, and your nursing career in the Gulf Region.',
     sayTitle: 'Welcome to the Gulf Region Nursing Licensure Studio.',

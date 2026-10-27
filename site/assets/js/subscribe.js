@@ -1,10 +1,10 @@
-/* Plans page: monthly/yearly toggle, country pricing, Gulf Region exam passes, and Stripe checkout through window.HCA. */
+/* Plans page: three plans (Crown Pass, Gulf Pass, Green Belt), country pricing for the Crown Pass, and Stripe checkout through window.HCA. */
 (() => {
   const SUPABASE = 'https://ujeofxfbwivjmgrxqdcl.supabase.co';
   const KEY = 'sb_publishable_ie1qqB5QnaqUZPitNPfQCg__M46e7JL';
   const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
   const ERR = {
-    already_subscribed: 'You already have an active plan. Use “Manage or cancel my plan” to change it.',
+    already_subscribed: 'You already have an active plan. Use “Stop renewal or update card” below to change it.',
     plan_unavailable: 'That plan is not available any more.',
     payments_unavailable: 'Payments are not open yet. Please try again soon.',
     no_customer: 'There is no plan on this account yet.',
@@ -24,9 +24,11 @@
   };
   const APP = { crown: ['the Crown Pass', '/'], medlex: ['MedLex', '/medlex/'], carecraft: ['Carecraft', '/carecraft/'], lumen: ['Lumen', '/lumen/'] };
   const EXAM = { saudi: 'Saudi SNLE', qatar: 'Qatar DHP', dubai: 'Dubai DHA', abudhabi: 'Abu Dhabi DOH' };
+  const GULF = 'https://snle.healthcarecrownacademy.co.uk/';
   function describe(plan) {
     const g = /^gulf-(\w+)-(\d+)m$/.exec(plan || '');
-    if (g) return { name: `the ${EXAM[g[1]] || 'Gulf Region'} exam pass for ${g[2]} month${g[2] === '1' ? '' : 's'}`, go: 'https://snle.healthcarecrownacademy.co.uk/', cta: 'Open the exam studio' };
+    if (g && g[1] === 'all') return { name: `the Gulf Pass for ${g[2]} months: all four Gulf exams, plus the Crown Pass`, go: GULF, cta: 'Open the exam studio' };
+    if (g) return { name: `the ${EXAM[g[1]] || 'Gulf Region'} exam pass for ${g[2]} month${g[2] === '1' ? '' : 's'}`, go: GULF, cta: 'Open the exam studio' };
     const key = String(plan || '').split('-')[0];
     const a = APP[key] || APP.crown;
     return { name: a[0], go: a[1], cta: APP[key] && key !== 'crown' ? `Open ${a[0]}` : 'Start learning', trial: !key || key === 'crown' };
@@ -46,12 +48,11 @@
     d.showModal();
   }
   const get = async (path) => { const r = await fetch(`${SUPABASE}/rest/v1/${path}`, { headers: { apikey: KEY } }); if (!r.ok) throw new Error(r.status); return r.json(); };
-  const money = (amount, cur) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: cur.toUpperCase(), minimumFractionDigits: 2 }).format(amount).replace(/^US\$/, 'US$');
+  const money = (amount, cur) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: cur.toUpperCase(), minimumFractionDigits: Number.isInteger(amount) ? 0 : 2, maximumFractionDigits: 2 }).format(amount).replace(/^US\$/, 'US$');
   // List prices are built in so the page never shows blanks; the database overrides them when it loads.
-  let plans = { 'crown-month': { amount_gbp: 5.99 }, 'crown-year': { amount_gbp: 39.99 }, 'crown-year-founding': { amount_gbp: 29.99, available_until: '2027-01-31T23:59:59Z' },
-    'medlex-month': { amount_gbp: 2.99 }, 'medlex-year': { amount_gbp: 19.99 }, 'carecraft-month': { amount_gbp: 2.99 }, 'carecraft-year': { amount_gbp: 19.99 },
-    'lumen-month': { amount_gbp: 4.99 }, 'lumen-year': { amount_gbp: 34.99 } };
-  let bands = {}, regional = {}, period = 'year', exam = 'saudi';
+  let plans = { 'crown-month': { amount_gbp: 5.99 }, 'crown-year': { amount_gbp: 39.99 }, 'crown-year-founding': { amount_gbp: 29.99, available_until: '2027-01-31T23:59:59Z' } };
+  const PASS = { '3m': { usd: 50, months: 3 }, '6m': { usd: 69, months: 6 } }; // Gulf Pass, the same in every country (gulf_exam_plans)
+  let bands = {}, regional = {}, period = 'year', len = '6m';
 
   const band = () => bands[$('[data-sub-country]').value] || 'A';
   function price(id) {
@@ -60,34 +61,32 @@
     return p ? { amount: Number(p.amount_gbp), cur: 'gbp' } : null;
   }
   const fmt = (x) => (x ? money(x.amount, x.cur) : '');
+  const founding = () => { const f = plans['crown-year-founding']; return Boolean(f) && !(f.available_until && Date.parse(f.available_until) < Date.now()); };
+  // The plan the Crown Pass button buys: the founding first year while it lasts, otherwise the chosen period.
+  const crownPlan = () => (period === 'year' && founding() ? 'crown-year-founding' : `crown-${period}`);
 
   function render() {
-    for (const el of $$('[data-price]')) el.textContent = fmt(price(el.dataset.price));
-    for (const el of $$('[data-show]')) {
-      const app = el.dataset.show, m = price(app + '-month'), y = price(app + '-year');
-      const note = $(`[data-sub-note="${app}"]`);
-      if (period === 'year' && y) {
-        // The yearly charge is what people pay, so it is shown as the main price (CAP/CMA price transparency).
-        el.textContent = fmt(y);
-        note.textContent = `About ${money(y.amount / 12, y.cur)} a month` + (m ? ` · save ${money(m.amount * 12 - y.amount, y.cur)} a year` : '');
-      } else if (m) {
-        el.textContent = fmt(m);
-        note.textContent = y ? `Billed monthly · or ${fmt(y)} a year` : 'Billed monthly';
-      }
-    }
-    for (const el of $$('[data-per]')) el.textContent = period === 'year' ? '/year' : '/month';
-    const tn = $('[data-trial-note]'), cp = price(`crown-${period}`);
-    if (tn && cp) {
+    const m = price('crown-month'), y = price('crown-year'), now = price(crownPlan());
+    const was = $('[data-crown-was]');
+    $('[data-crown-price]').textContent = fmt(now);
+    $('[data-crown-per]').textContent = period === 'year' ? (crownPlan() === 'crown-year-founding' ? '/first year' : '/year') : '/month';
+    was.hidden = crownPlan() !== 'crown-year-founding'; was.textContent = fmt(y);
+    const note = $('[data-crown-note]');
+    if (period === 'month') note.textContent = y && m ? `Or ${fmt(y)} a year and save ${money(m.amount * 12 - y.amount, m.cur)}.` : 'Billed monthly.';
+    else if (crownPlan() === 'crown-year-founding') note.textContent = `Founding price until 31 January 2027. Then ${fmt(y)} a year.`;
+    else note.textContent = y ? `About ${money(y.amount / 12, y.cur)} a month, billed yearly.` : '';
+    const tn = $('[data-trial-note]');
+    if (tn && now) {
       const first = new Date(Date.now() + 7 * 864e5).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-      tn.textContent = `£0 today. Then ${fmt(cp)} a ${period}, taken on ${first} and renewing automatically. Cancel before then and you pay nothing.`;
+      tn.textContent = `£0 today. Then ${fmt(now)} on ${first}, renewing automatically${crownPlan() === 'crown-year-founding' ? ` at ${fmt(y)} a year` : ''}. Cancel before then and you pay nothing.`;
     }
-    const parts = ['medlex', 'carecraft', 'lumen'].map((a) => price(a + '-month')).filter(Boolean);
-    if (parts.length === 3) $('[data-worth]').textContent = money(parts.reduce((n, x) => n + x.amount, 0), parts[0].cur);
-    $('[data-sub-band]').textContent = band() === 'A' ? 'Prices in pounds sterling. No VAT is added: the price shown is the total you pay.' : 'Fair pricing for your country, in US dollars.';
-    const f = plans['crown-year-founding'];
-    $('[data-founding]').hidden = !f || (f.available_until && Date.parse(f.available_until) < Date.now());
+    $('[data-sub-band]').textContent = band() === 'A' ? 'Prices in pounds sterling.' : 'Fair pricing for your country, in US dollars.';
+    const g = PASS[len];
+    $('[data-gulf-price]').textContent = money(g.usd, 'usd');
+    $('[data-gulf-per]').textContent = `/${g.months} months`;
+    $('[data-gulf-note]').textContent = `Paid once, never renews. About ${money(g.usd / g.months, 'usd')} a month.`;
     for (const b of $$('[data-period]')) b.setAttribute('aria-checked', String(b.dataset.period === period));
-    for (const b of $$('[data-exam]')) b.setAttribute('aria-checked', String(b.dataset.exam === exam));
+    for (const b of $$('[data-len]')) b.setAttribute('aria-checked', String(b.dataset.len === len));
   }
 
   // Ask for express consent to start access now (UK Consumer Contracts Regulations 2013) before every checkout.
@@ -150,39 +149,47 @@
     sel.addEventListener('change', () => { try { localStorage.setItem('hca-country', sel.value); } catch { /* ignore */ } render(); });
 
     $$('[data-period]').forEach((b) => b.addEventListener('click', () => { period = b.dataset.period; render(); }));
-    $$('[data-exam]').forEach((b) => b.addEventListener('click', () => { exam = b.dataset.exam; render(); }));
+    $$('[data-len]').forEach((b) => b.addEventListener('click', () => { len = b.dataset.len; render(); }));
     radios('[data-period]', 'period', (v) => { period = v; render(); });
-    radios('[data-exam]', 'exam', (v) => { exam = v; render(); });
+    radios('[data-len]', 'len', (v) => { len = v; render(); });
     document.addEventListener('click', (e) => {
       if (e.target.closest('[data-refund-open]')) { askRefund(); return; }
       if (e.target.closest('[data-result-close]')) { $('[data-result]').close(); return; }
       if (e.target.closest('[data-toast-close]')) { msg(''); return; }
-      const b = e.target.closest('[data-buy],[data-plan],[data-pass],[data-manage]'); if (!b) return;
-      if (b.dataset.buy) buy(b, `${b.dataset.buy}-${period}`);
-      else if (b.dataset.plan) buy(b, b.dataset.plan);
-      else if (b.dataset.pass) buy(b, `gulf-${exam}-${b.dataset.pass}`);
+      const b = e.target.closest('[data-buy-crown],[data-buy-gulf],[data-manage]'); if (!b) return;
+      if (b.hasAttribute('data-buy-crown')) buy(b, crownPlan());
+      else if (b.hasAttribute('data-buy-gulf')) buy(b, `gulf-all-${len}`);
       else buy(b, 'manage');
     });
     render();
 
-    const [b, r, p] = await Promise.allSettled([get('crown_country_bands?select=iso,band'), get('crown_regional_prices?select=plan_id,band,currency,amount'), get('crown_plans?select=id,amount_gbp,available_until,active')]);
+    const [b, r, p, gp] = await Promise.allSettled([get('crown_country_bands?select=iso,band'), get('crown_regional_prices?select=plan_id,band,currency,amount'),
+      get('crown_plans?select=id,amount_gbp,available_until,active&product=eq.crown'), get('gulf_exam_plans?select=id,months,amount_usd&id=like.gulf-all-*&active=is.true')]);
     if (b.status === 'fulfilled') bands = Object.fromEntries(b.value.map((x) => [x.iso, x.band]));
     if (r.status === 'fulfilled') regional = Object.fromEntries(r.value.map((x) => [x.plan_id + ':' + x.band, x]));
     if (p.status === 'fulfilled' && p.value.length) plans = Object.fromEntries(p.value.filter((x) => x.active).map((x) => [x.id, x]));
+    if (gp.status === 'fulfilled') for (const x of gp.value) { const k = `${x.months}m`; if (PASS[k]) PASS[k].usd = Number(x.amount_usd); }
     render();
 
+    // Deep links from app paywalls and the home page: ?plan=crown|medlex|carecraft|lumen|gulf|lss, ?exam=saudi|qatar|dubai|abudhabi
     const q = new URLSearchParams(location.search);
-    // Deep links from app paywalls: ?plan=medlex|carecraft|lumen|crown, ?exam=saudi|qatar|dubai|abudhabi
-    const ex = q.get('exam'); if (['saudi', 'qatar', 'dubai', 'abudhabi'].includes(ex)) { exam = ex; render(); document.querySelector('.sp-gulf')?.scrollIntoView({ block: 'center' }); }
-    const pl = q.get('plan'); const card = pl && document.querySelector(`[data-buy="${CSS.escape(pl)}"]`)?.closest('.sp-card');
-    if (card) { card.classList.add('is-picked'); setTimeout(() => card.scrollIntoView({ block: 'center' }), 200); }
+    const pl = q.get('plan') || '', ex = q.get('exam') || '';
+    const target = EXAM[ex] || pl === 'gulf' || pl.startsWith('gulf-') ? 'gulf' : pl === 'lss' ? 'lss' : APP[pl] ? 'crown' : '';
+    const hint = target === 'gulf' ? (EXAM[ex] ? `${EXAM[ex]} is included, with the other three Gulf exams.` : '')
+      : target === 'crown' && pl !== 'crown' ? `${APP[pl][0]} is included in the Crown Pass, with every other app.` : '';
+    const card = target && document.querySelector(`[data-card="${target}"]`);
+    if (card) {
+      card.classList.add('is-picked');
+      const h = $(`[data-hint="${target}"]`); if (h && hint) { h.textContent = hint; h.hidden = false; }
+      setTimeout(() => card.scrollIntoView({ block: 'center' }), 200);
+    }
     let bought = ''; try { bought = sessionStorage.getItem('hca-buying') || ''; sessionStorage.removeItem('hca-buying'); } catch { /* optional */ }
     if (q.get('checkout') === 'success') {
       const w = describe(bought);
       const charge = new Date(Date.now() + 7 * 864e5).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
       result({ tone: 'success', kicker: w.trial ? 'Free trial started' : 'Payment confirmed', title: 'Welcome to Healthcare Crown', text: `You now have ${w.name}.`,
         steps: [w.trial ? `Everything is unlocked now. Your first payment is on ${charge}, unless you cancel before then.` : 'Your access switches on within a minute. If a page still looks locked, refresh it once.',
-          w.trial ? 'Cancel any time with “Manage or cancel my plan” on this page.' : 'Stripe has emailed you a receipt.', 'Changed your mind? Full refund within 3 days, or the unused part within 14 days, with “Request a refund” on this page.'],
+          w.trial ? 'Cancel any time with “Stop renewal or update card” on this page.' : 'Stripe has emailed you a receipt.', 'Changed your mind? Full refund within 3 days, or the unused part within 14 days, with “Cancel and get a refund” on this page.'],
         go: w.go, cta: w.cta });
     }
     if (q.get('checkout') === 'cancelled') msg('Checkout was cancelled. Nothing was charged.', 'info');
