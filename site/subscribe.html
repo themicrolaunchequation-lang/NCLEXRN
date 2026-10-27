@@ -123,6 +123,7 @@
         <div class="sp-passes">
           <button type="button" class="sp-pass" data-pass="1m"><span>1 month</span><b>US$25</b><small>One payment</small></button>
           <button type="button" class="sp-pass is-best" data-pass="3m"><span class="sp-pill sp-pill-gold">Save US$25</span><span>3 months</span><b>US$50</b><small>US$16.67 a month</small></button>
+          <button type="button" class="sp-pass" data-pass="6m"><span class="sp-pill">Exam later or retaking</span><span>6 months</span><b>US$69</b><small>US$11.50 a month</small></button>
         </div>
       </div>
     </section>
@@ -139,6 +140,24 @@
         <p class="sp-sub">Paid once. Free to try with an account.</p>
         <a class="btn btn-primary btn-block" href="https://lss.healthcarecrownacademy.co.uk/">Open the Green Belt toolkit</a>
       </div>
+    </section>
+
+    <section class="sp-teams" aria-labelledby="teams-h">
+      <p class="eyebrow">For care homes, hospitals and nursing schools</p>
+      <h2 id="teams-h" class="sp-h2">Team prices</h2>
+      <div class="sp-teams-grid">
+        <div class="sp-team">
+          <h3>Carecraft for teams</h3>
+          <p class="sp-price"><b>£30</b><small> per learner a year</small></p>
+          <p>10 to 49 learners. <b>£20</b> per learner a year from 50 learners. A daily 60-second scenario for new starters, with the reasoning explained.</p>
+        </div>
+        <div class="sp-team">
+          <h3>Green Belt toolkit for teams</h3>
+          <p class="sp-price"><b>US$79</b><small> per seat for 12 months</small></p>
+          <p>From 10 seats (US$99 each for individuals). For quality, patient safety and education teams.</p>
+        </div>
+      </div>
+      <p class="sp-fine">Try it free for 30 days with up to 10 staff, then pay by invoice. <a href="mailto:hello@healthcarecrownacademy.co.uk?subject=Team%20pilot">Ask for a team pilot</a>.</p>
     </section>
     <section class="sp-faq" aria-labelledby="faq-h">
       <h2 id="faq-h" class="sp-h2">Questions, answered</h2>
@@ -210,7 +229,8 @@
 .sp-exams button{display:grid;gap:2px;min-height:64px;padding:10px 6px;border-radius:14px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--text);font:inherit;cursor:pointer;text-align:center}
 .sp-exams small{color:var(--text-soft);font-size:.75rem}
 .sp-exams [aria-checked=true]{border:2px solid var(--j-lss);background:color-mix(in srgb,var(--j-lss) 10%,var(--surface))}
-.sp-passes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.sp-teams{margin-top:24px;padding:clamp(22px,4vw,40px);border-radius:var(--radius-xl);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-md)}.sp-teams-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:12px 0}.sp-team{padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03)}.sp-team h3{margin:0 0 6px}.sp-team p{margin:6px 0}
+.sp-passes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:14px}
 .sp-pass{position:relative;display:grid;gap:4px;justify-items:center;padding:20px 12px;border-radius:18px;border:1px solid var(--line-strong);background:var(--surface);color:var(--text);font:inherit;cursor:pointer;transition:transform .2s var(--ease-out),box-shadow .2s}
 .sp-pass:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .sp-pass b{font-family:var(--font-display);font-weight:500;font-size:2rem}
