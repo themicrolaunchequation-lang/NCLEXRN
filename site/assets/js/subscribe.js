@@ -14,7 +14,7 @@
     outside_window: 'Automatic refunds are available within 14 days of your first payment. Please email hello@healthcarecrownacademy.co.uk if something went wrong.',
     offline: 'You seem to be offline. Please check your connection.',
   };
-  const msg = (t) => { const m = $('[data-sub-msg]'); m.textContent = t; m.hidden = !t; };
+  const msg = (t) => { const m = $('[data-sub-msg]'); m.textContent = t; m.hidden = !t; if (t) m.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
   const get = async (path) => { const r = await fetch(`${SUPABASE}/rest/v1/${path}`, { headers: { apikey: KEY } }); if (!r.ok) throw new Error(r.status); return r.json(); };
   const money = (amount, cur) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: cur.toUpperCase(), minimumFractionDigits: 2 }).format(amount).replace(/^US\$/, 'US$');
   // List prices are built in so the page never shows blanks; the database overrides them when it loads.
