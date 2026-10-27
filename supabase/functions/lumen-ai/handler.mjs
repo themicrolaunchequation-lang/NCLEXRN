@@ -138,7 +138,9 @@ export function createHandler(deps) {
     if (remaining === -1) return json(429, { error: 'daily', retryAfter, message: `You have used today’s ${allowance} Academy AI requests. They reset at midnight UTC.` });
     if (remaining === -2) return json(429, { error: 'academy', retryAfter, message: 'Academy AI has reached its limit for today. It resets at midnight UTC.' });
 
-    const order = (env('LUMEN_AI_PROVIDERS') || 'openai,groq,gemini').split(',').map(s => s.trim()).filter(id => PROVIDERS[id] && env(PROVIDERS[id].key));
+    // Gemini only trains-free on Google's paid tier: use it only when the owner confirms a billed project.
+    const order = (env('LUMEN_AI_PROVIDERS') || 'openai,groq,gemini').split(',').map(s => s.trim())
+      .filter(id => PROVIDERS[id] && env(PROVIDERS[id].key) && (id !== 'gemini' || env('LUMEN_AI_GEMINI_PAID') === 'true'));
     const tried = [];
     for (const id of order) {
       try {
