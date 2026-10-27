@@ -44,6 +44,9 @@
 .ac-empty{margin:0;color:var(--text-muted)}
 .ac-signed-out{text-align:center;padding:40px 24px}
 .ac-wide{grid-column:1/-1}
+.ac-note{margin:12px 0 0;font-size:.84rem;color:var(--text-muted);line-height:1.5}
+.ac-switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:var(--text)}
+.ac-switch input{width:18px;height:18px}
 </style>
 </head>
 <body class="subpage">
@@ -81,10 +84,11 @@
         <p class="ac-sub">MedLex, Carecraft, Lumen and the Crown Pass.</p>
         <div data-ac-plan><p class="ac-empty">Checking…</p></div>
         <div class="ac-actions">
-          <button type="button" class="btn btn-primary" data-ac-manage hidden>Manage or cancel</button>
+          <button type="button" class="btn btn-primary" data-ac-manage hidden>Stop renewal or update card</button>
           <a class="btn btn-primary" href="/subscribe" data-ac-choose hidden>Choose a plan</a>
-          <a class="btn btn-ghost" href="/subscribe?refund=1">Request a refund</a>
+          <a class="btn btn-ghost" href="/subscribe?refund=1">Cancel and get a refund</a>
         </div>
+        <p class="ac-note"><b>Stop renewal:</b> you keep access until the end of the period you paid for, with no refund. <b>Cancel and get a refund:</b> within 14 days of buying or starting your trial, your access ends now and we refund you (in full within 3 days of paying). <a class="inline-link" href="/refunds">How refunds work</a></p>
       </section>
 
       <section class="ac-card" data-ac-in hidden aria-labelledby="ac-gulf-h">
@@ -113,6 +117,8 @@
         <h2 id="ac-help-h">Help</h2>
         <div class="ac-row"><b>Refund rules</b><span>Full within 3 days, unused part within 14 days · <a class="inline-link" href="/refunds">details</a></span></div>
         <div class="ac-row"><b>Contact</b><span><a class="inline-link" href="mailto:themicrolaunchequation@gmail.com">themicrolaunchequation@gmail.com</a></span></div>
+        <div class="ac-row"><b>Daily streak</b><span><label class="ac-switch"><input type="checkbox" data-ac-streak> <span data-ac-streak-label>On</span></label></span></div>
+        <p class="ac-note">The streak uses a small cookie on this device and is never used for tracking. Switch it off to delete it. <a class="inline-link" href="/privacy">Privacy notice</a></p>
         <div class="ac-actions"><button type="button" class="btn btn-ghost" data-ac-signout>Sign out</button></div>
       </section>
     </div>

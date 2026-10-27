@@ -83,10 +83,14 @@
 
     $('[data-ac-manage]').addEventListener('click', async (ev) => {
       const b = ev.currentTarget; b.disabled = true; b.textContent = 'Opening…';
-      const r = await HCA.manageBilling(); b.disabled = false; b.textContent = 'Manage or cancel';
+      const r = await HCA.manageBilling(); b.disabled = false; b.textContent = 'Stop renewal or update card';
       if (r && r.error && r.error !== 'sign_in_required') alert('We could not open billing just now. Please try again in a moment.');
     });
     $('[data-ac-signout]').addEventListener('click', () => { if (HCA.signOut) HCA.signOut(); });
+    const box = $('[data-ac-streak]'), lab = $('[data-ac-streak-label]');
+    const showStreak = () => { const on = !(HCA.daily && HCA.daily.isOff && HCA.daily.isOff()); box.checked = on; lab.textContent = on ? 'On' : 'Off'; };
+    showStreak();
+    box.addEventListener('change', () => { if (HCA.daily && HCA.daily.setOff) HCA.daily.setOff(!box.checked); showStreak(); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

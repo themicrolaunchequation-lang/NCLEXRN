@@ -295,14 +295,6 @@ html.menu-open,html.menu-open body{overflow:hidden}
 .interest[aria-pressed="true"]::after{content:"\2713";position:absolute;top:12px;right:12px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--jt);color:var(--bg);font-weight:700;font-size:13px}
 .crown-preview{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(16px,3vw,32px);padding:clamp(18px,2.4vw,26px) clamp(18px,3vw,32px);border-radius:var(--radius-lg);background:radial-gradient(120% 140% at 0% 0%,#17324F,#0B1A2B 70%);box-shadow:var(--shadow-md)}
 .crown-art{width:clamp(110px,12vw,150px);height:auto;overflow:visible}
-.crown-shape{fill:rgba(255,255,255,.04);stroke:rgba(243,240,232,.55);stroke-width:2.5;stroke-linejoin:round}
-.crown-base{stroke:rgba(243,240,232,.55);stroke-width:4;stroke-linecap:round}
-.gem{fill:#1E3854;stroke:rgba(243,240,232,.5);stroke-width:2;transition:fill .4s var(--ease-out)}
-.crown-preview[data-medlex] .gem-medlex{fill:var(--j-medlex)}
-.crown-preview[data-carecraft] .gem-carecraft{fill:var(--j-carecraft)}
-.crown-preview[data-serein] .gem-serein{fill:var(--j-serein)}
-.crown-preview[data-evinca] .gem-evinca{fill:var(--j-evinca)}
-.crown-preview[data-lumen] .gem-lumen{fill:var(--j-lumen)}
 .crown-label{font-family:var(--font-display);font-size:clamp(1.15rem,1rem + .5vw,1.4rem);line-height:1.3}
 .crown-price{margin-top:4px;color:var(--text-muted);font-size:.95rem}
 .crown-price strong{color:#F3F0E8}
@@ -721,16 +713,65 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 .crown-meter{display:block;width:100%;height:6px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}
 .crown-meter i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--gold-300),var(--gold-500));transition:width .5s var(--ease-out)}
 .builder-v2 .crown-ctas{display:grid;width:100%;gap:10px;margin-top:6px}
-.gem{transition:fill .4s var(--ease-out),filter .4s}
-.crown-preview[data-snle] .gem-snle{fill:#347A9A}
-.crown-preview[data-lss] .gem-lss{fill:var(--j-lss)}
-.crown-preview[data-medlex] .gem-medlex,.crown-preview[data-carecraft] .gem-carecraft,.crown-preview[data-serein] .gem-serein,.crown-preview[data-evinca] .gem-evinca,.crown-preview[data-lumen] .gem-lumen,.crown-preview[data-snle] .gem-snle,.crown-preview[data-lss] .gem-lss{filter:drop-shadow(0 0 8px rgba(255,255,255,.55));animation:gem-pop .5s var(--ease-out)}
-@keyframes gem-pop{0%{transform:scale(.6)}60%{transform:scale(1.25)}100%{transform:none}}
-.gem{transform-box:fill-box;transform-origin:center}
 @media (max-width:960px){.builder-v2{grid-template-columns:1fr}.builder-v2 .crown-preview{position:static}}
 @media (max-width:640px){.builder-v2 .interest-list{grid-template-columns:1fr}.combo-row span{flex-basis:100%}}
-@media (prefers-reduced-motion:reduce){.builder-v2 .interest,.gem,.crown-meter i{transition:none;animation:none!important}}
+@media (prefers-reduced-motion:reduce){.builder-v2 .interest,.crown-meter i{transition:none;animation:none!important}}
 .builder-v2 .crown-ctas .btn{width:100%;flex:none}
+/* ---------- Picker crown (crw-): a mirror-symmetric crown, gold jewels, sparks on the top jewel ---------- */
+.builder-v2 .crown-preview{justify-items:stretch;gap:12px;padding:30px clamp(20px,5vw,28px) 28px;overflow:hidden;isolation:isolate}
+.builder-v2 .crown-preview::before{content:"";position:absolute;left:50%;top:-60px;z-index:-1;width:280px;height:220px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(232,193,112,.16),transparent);pointer-events:none}
+.builder-v2 .crown-preview>*{justify-self:center;text-align:center}
+.builder-v2 .crown-preview .crown-meter,.builder-v2 .crown-preview .crown-ctas{justify-self:stretch}
+.builder-v2 .crown-preview .crown-label,.builder-v2 .crown-preview .crown-price{max-width:30ch;margin-inline:auto}
+.builder-v2 .crown-preview .crown-ctas{display:grid;grid-template-columns:minmax(0,1fr);justify-content:stretch;justify-items:stretch;gap:10px;width:100%;margin-top:8px}
+.builder-v2 .crown-preview .crown-ctas .btn{width:100%;justify-content:center}
+.builder-v2 .crw-art{display:block;width:min(230px,82%);height:auto;margin:-4px auto 2px;overflow:visible}
+.crown-meter{position:relative}
+.crown-meter i{box-shadow:0 0 12px rgba(232,193,112,.55)}
+.crw-body{fill:url(#crw-body);stroke:rgba(232,193,112,.62);stroke-width:2.6;stroke-linejoin:round}
+.crw-band{fill:rgba(232,193,112,.08);stroke:rgba(232,193,112,.62);stroke-width:2.6}
+.crw-dot{fill:rgba(232,193,112,.5)}
+.crw-sweep,.crw-shine{fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.crw-sweep{stroke:#FFF0C2;stroke-width:2.6;stroke-dasharray:9 91;stroke-dashoffset:100;opacity:.75;filter:drop-shadow(0 0 3px rgba(255,226,150,.9));animation:crw-sweep 7s linear infinite}
+@keyframes crw-sweep{0%{stroke-dashoffset:100;opacity:0}6%{opacity:.75}55%{stroke-dashoffset:0;opacity:.75}60%,100%{stroke-dashoffset:0;opacity:0}}
+.crw-shine{stroke:#FFF6D8;stroke-width:3.4;stroke-dasharray:24 76;stroke-dashoffset:100;opacity:0;filter:drop-shadow(0 0 5px rgba(255,220,130,1))}
+.crw-shine.is-run{animation:crw-shine .9s cubic-bezier(.4,0,.2,1)}
+@keyframes crw-shine{0%{stroke-dashoffset:100;opacity:1}85%{opacity:1}100%{stroke-dashoffset:-24;opacity:0}}
+.crw-gem{--crw-c:#E8C170;fill:#10243A;stroke:rgba(232,193,112,.55);stroke-width:2;transform-box:fill-box;transform-origin:center;transition:fill .45s var(--ease-out),stroke .45s,filter .45s}
+.crw-gem-medlex{--crw-c:var(--j-medlex)}.crw-gem-lumen{--crw-c:var(--j-lumen)}.crw-gem-carecraft{--crw-c:var(--j-carecraft)}.crw-gem-serein{--crw-c:var(--j-serein)}.crw-gem-evinca{--crw-c:#F3D99B}.crw-gem-snle{--crw-c:#5FB0D3}.crw-gem-lss{--crw-c:var(--j-lss)}
+.crown-preview[data-medlex] .crw-gem-medlex,.crown-preview[data-lumen] .crw-gem-lumen,.crown-preview[data-carecraft] .crw-gem-carecraft,.crown-preview[data-serein] .crw-gem-serein,.crown-preview[data-evinca] .crw-gem-evinca,.crown-preview[data-snle] .crw-gem-snle,.crown-preview[data-lss] .crw-gem-lss{fill:url(#crw-gold);stroke:var(--crw-c);stroke-width:2.2;filter:drop-shadow(0 0 5px rgba(255,214,120,.85));animation:crw-pop .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes crw-pop{0%{transform:scale(.5)}55%{transform:scale(1.35)}100%{transform:none}}
+/* the top jewel: a breathing halo, drifting sparks and a slow glint */
+.crw-halo{transform-box:fill-box;transform-origin:center;opacity:.55;animation:crw-halo 3.2s ease-in-out infinite}
+@keyframes crw-halo{0%,100%{transform:scale(.8);opacity:.4}50%{transform:scale(1.12);opacity:.85}}
+.crown-preview[data-evinca] .crw-halo{animation-duration:2.4s}
+.crw-spk,.crw-glint,.crw-fan use,.crw-burst use{fill:#FFE29A;filter:drop-shadow(0 0 2px rgba(255,214,120,.95))}
+.crw-spk{opacity:0;transform-box:fill-box;transform-origin:center;animation:crw-spk 3.3s var(--d) ease-out infinite}
+@keyframes crw-spk{0%{transform:translate(calc(var(--dx)*.25),calc(var(--dy)*.25)) scale(0) rotate(0);opacity:0}20%{opacity:1;transform:translate(calc(var(--dx)*.5),calc(var(--dy)*.5)) scale(1) rotate(45deg)}70%{opacity:.8}100%{transform:translate(var(--dx),calc(var(--dy) - 6px)) scale(.2) rotate(120deg);opacity:0}}
+.crw-glint{fill:#FFFBEA;transform-box:fill-box;transform-origin:center;animation:crw-glint 4s 1s ease-in-out infinite}
+@keyframes crw-glint{0%,62%,100%{transform:translate(6px,-7px) scale(0) rotate(0);opacity:0}76%{transform:translate(6px,-7px) scale(1.5) rotate(90deg);opacity:1}88%{transform:translate(6px,-7px) scale(.4) rotate(160deg);opacity:.6}}
+/* one-off burst when a jewel lights (cloned by main.js) */
+.crw-burst-tpl{display:none}
+.crw-burst use{transform-box:view-box;transform:rotate(var(--a)) translateX(0) scale(.2);opacity:0;animation:crw-burst .8s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes crw-burst{0%{transform:rotate(var(--a)) translateX(4px) scale(.3);opacity:1}60%{opacity:1}100%{transform:rotate(var(--a)) translateX(21px) scale(.9) rotate(90deg);opacity:0}}
+/* the full crown: the whole frame turns gold and glows, with one celebratory sparkle */
+.crw-fan use{opacity:0;transform:translate(var(--x),var(--y)) scale(0)}
+.crown-preview[data-crw-full] .crw-fan use{animation:crw-fan 1.3s var(--d) ease-out}
+@keyframes crw-fan{0%{transform:translate(var(--x),var(--y)) scale(0) rotate(0);opacity:0}35%{transform:translate(var(--x),var(--y)) scale(1.8) rotate(60deg);opacity:1}100%{transform:translate(var(--x),calc(var(--y) - 8px)) scale(0) rotate(180deg);opacity:0}}
+.crw-frame{transition:filter .6s}
+.crown-preview[data-crw-full] .crw-frame{filter:drop-shadow(0 0 8px rgba(255,206,110,.75));animation:crw-flash 1.2s ease-out}
+.crown-preview[data-crw-full] .crw-body,.crown-preview[data-crw-full] .crw-band{stroke:#F3D17F;fill:rgba(232,193,112,.13)}
+.crown-preview[data-crw-full] .crw-dot{fill:#FFE29A}
+.crown-preview[data-crw-full] .crw-halo{opacity:1}
+@keyframes crw-flash{0%{filter:drop-shadow(0 0 0 rgba(255,206,110,0)) brightness(1)}30%{filter:drop-shadow(0 0 18px rgba(255,214,120,1)) brightness(1.25)}100%{filter:drop-shadow(0 0 8px rgba(255,206,110,.75)) brightness(1)}}
+@media (max-width:960px){.builder-v2 .crown-preview{position:relative}}
+@media (prefers-reduced-motion:reduce){
+  .crw-art *{animation:none!important;transition:none!important}
+  .crw-sweep{opacity:0}
+  .crw-halo{opacity:.7;transform:none}
+  .crw-spk{opacity:.85;transform:translate(var(--dx),var(--dy)) scale(.8)}
+  .crw-glint{opacity:0}
+}
 :root[data-theme="dark"] .jewel-snle{--jt:#94D5F0}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .jewel-snle{--jt:#94D5F0}}
 /* ---------- 30-second app tours (assets/js/tour.js) ---------- */
@@ -967,3 +1008,13 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 .ts-voices span{padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#C9D2E0;font-size:.78rem;font-weight:600;opacity:0}
 .ts-hook.is-on .ts-voices span{animation:rise .6s var(--ease-out) both;animation-delay:calc(.4s + var(--v) * 1.1s)}
 .ts-accent{top:auto;bottom:clamp(16px,3vw,32px);width:min(240px,26%);padding:10px 12px}
+
+/* Legal pages: tables, sub-headings and the model cancellation form */
+.prose h3{margin:1.4em 0 .4em;font-size:1.08rem}
+.prose .table-wrap{overflow-x:auto;margin:1em 0 1.4em;border:1px solid var(--line);border-radius:14px}
+.prose table{width:100%;border-collapse:collapse;font-size:.93rem;min-width:520px}
+.prose th,.prose td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.prose thead th{background:rgba(127,127,127,.08);font-weight:700}
+.prose tbody tr:last-child>*{border-bottom:0}
+.prose .legal-form{margin:1em 0;padding:14px 18px;border-left:4px solid var(--gold-500,#C9A24B);background:rgba(127,127,127,.07);border-radius:0 12px 12px 0}
+.prose .legal-form p{margin:.3em 0}
