@@ -87,6 +87,21 @@
       if (r && r.error && r.error !== 'sign_in_required') alert('We could not open billing just now. Please try again in a moment.');
     });
     $('[data-ac-signout]').addEventListener('click', () => { if (HCA.signOut) HCA.signOut(); });
+    // Close my account: type CLOSE, then the server deletes personal data and keeps nameless payment records.
+    const cd = $('[data-ac-close-dialog]'), ci = $('[data-ac-close-input]'), cg = $('[data-ac-close-go]'), cm = $('[data-ac-close-msg]');
+    $('[data-ac-close]').addEventListener('click', () => { ci.value = ''; cg.disabled = true; cm.textContent = ''; cd.showModal(); ci.focus(); });
+    ci.addEventListener('input', () => { cg.disabled = ci.value.trim().toUpperCase() !== 'CLOSE'; });
+    cg.addEventListener('click', async (ev) => {
+      ev.preventDefault(); cg.disabled = true; cg.textContent = 'Closing…';
+      const r = HCA.closeAccount ? await HCA.closeAccount() : { error: 'unavailable' };
+      if (r && r.closed) {
+        cd.close();
+        document.querySelector('main').innerHTML = `<div class="container"><section class="ac-card" style="margin:48px auto;max-width:560px"><h1>Your account is closed</h1><p>Your personal details and learning progress have been deleted, and no further payments will be taken.${r.evinca_records ? ' You also have Evinca applications in review or published: we will email you about those separately.' : ''}</p><p>Thank you for learning with us. <a class="inline-link" href="/">Back to the home page</a></p></section></div>`;
+        return;
+      }
+      cg.textContent = 'Close my account'; cg.disabled = false;
+      cm.textContent = 'We could not close your account just now. Please try again, or email themicrolaunchequation@gmail.com and we will do it for you.';
+    });
     const box = $('[data-ac-streak]'), lab = $('[data-ac-streak-label]');
     const showStreak = () => { const on = !(HCA.daily && HCA.daily.isOff && HCA.daily.isOff()); box.checked = on; lab.textContent = on ? 'On' : 'Off'; };
     showStreak();

@@ -104,7 +104,20 @@
     d.showModal();
     const kind = await new Promise((res) => { d.onclose = () => res(d.returnValue); });
     if (kind !== 'subscription' && kind !== 'gulf') return;
-    msg('Checking your payment…', 'info');
+    msg('Working out your refund…', 'info');
+    const q = await HCA.refund(kind, true);
+    if (q && q.error) { if (q.error !== 'sign_in_required') msg(ERR[q.error] || 'Something went wrong. Please try again in a moment.'); return; }
+    msg('');
+    // Show the exact amount first; nothing changes until the person confirms.
+    const c = $('[data-refund-confirm]');
+    $('[data-rc-title]').textContent = q.trial ? 'Cancel your free trial?' : `You will get back ${money(q.amount, q.currency)}`;
+    $('[data-rc-text]').textContent = q.trial
+      ? 'Your trial ends now and nothing is taken from your card.'
+      : `${q.name}: you paid ${money(q.paid, q.currency)}. ${q.full ? 'This is a full refund, because it is within 3 days of paying.' : `This is the price minus the days you have used (price × days used ÷ days in the period).`} Your paid access ends as soon as you confirm. If the law gives you more, email us and we will pay the difference.`;
+    c.showModal();
+    const yes = await new Promise((res) => { c.onclose = () => res(c.returnValue === 'ok'); });
+    if (!yes) return;
+    msg('Sending your refund…', 'info');
     const r = await HCA.refund(kind);
     if (r && r.error) { if (r.error !== 'sign_in_required') msg(ERR[r.error] || 'Something went wrong. Please try again in a moment.'); return; }
     msg('');

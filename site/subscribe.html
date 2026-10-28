@@ -57,7 +57,7 @@
         <ul class="sp-list">
           <li><i class="jewel" style="--jc:var(--j-medlex)"></i><span><b>MedLex</b> · decode 1,480 medical terms by their parts</span></li>
           <li><i class="jewel" style="--jc:var(--j-carecraft)"></i><span><b>Carecraft</b> · a 60-second scenario a day, 30 lessons</span></li>
-          <li><i class="jewel" style="--jc:var(--j-lumen)"></i><span><b>Lumen</b> · unlimited sources and recall cards, more Academy AI</span></li>
+          <li><i class="jewel" style="--jc:var(--j-lumen)"></i><span><b>Lumen</b> · unlimited sources, recall cards and the focus planner</span></li>
           <li><i class="jewel" style="--jc:var(--j-serein)"></i><span><b>Serein</b> · 15 calming practices</span></li>
         </ul>
         <button type="button" class="btn btn-gold btn-lg btn-block" data-buy-crown>Start 7-day free trial</button>
@@ -104,7 +104,7 @@
       </article>
     </section>
 
-    <p class="sp-free"><b>Not ready to pay?</b> Every app starts free with no card: MedLex modules 1 to 3, the Carecraft daily scenario, Lumen with a daily AI allowance, all of Serein and 10 free questions for each Gulf exam.</p>
+    <p class="sp-free"><b>Not ready to pay?</b> Every app starts free with no card: MedLex modules 1 to 3, the Carecraft daily scenario, Lumen study tools, all of Serein and 10 free questions for each Gulf exam.</p>
 
     <ul class="sp-trust" aria-label="Why it is safe to try">
       <li><b>Cancel any time</b><span>in two clicks, no calls</span></li>
@@ -153,6 +153,13 @@
       <label class="sp-check"><input type="checkbox" data-consent-box required> <span>I ask for my access to start now, during my 14-day cancellation period. I understand that if I cancel within that period I get a <b>full refund within 3 days</b> of paying, and after that a refund <b>minus the days I have used</b>.</span></label>
       <p class="sp-fine"><a href="/refunds">Subscriptions and refunds</a></p>
       <div class="sp-dialog-row"><button value="cancel" class="btn btn-ghost" formnovalidate>Cancel</button><button value="ok" class="btn btn-primary" data-consent-go disabled>Continue to secure payment</button></div>
+    </form>
+  </dialog>
+  <dialog class="sp-dialog" data-refund-confirm aria-labelledby="rc-h">
+    <form method="dialog">
+      <h2 id="rc-h" data-rc-title>Your refund</h2>
+      <p data-rc-text></p>
+      <div class="sp-dialog-row"><button value="cancel" class="btn btn-ghost">Keep my plan</button><button value="ok" class="btn btn-primary">Confirm</button></div>
     </form>
   </dialog>
   <dialog class="sp-dialog" data-refund-dialog aria-labelledby="refund-h">
