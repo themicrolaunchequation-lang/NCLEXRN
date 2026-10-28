@@ -57,5 +57,14 @@ Covers everything done from the first request to 22 October 2026, across all ses
 5. NMC revalidation pack: not requested yet.
 6. Rules: one session per task; push often; never hand-edit `site/<app>/`; never push Evinca `main` without the owner's word.
 
+## Owner to-do before taking payments (from 28 Oct review)
+- [ ] Real trading + postal address for customers (Shelton Street is a registered-office service); send it and Claude adds it to the legal pages.
+- [ ] Stripe: turn on renewal reminders and trial-ending emails (Settings → Billing → Subscriptions and emails), sandbox then live.
+- [ ] Supabase: upgrade to Pro (backups, no pausing).
+- [ ] Accept supplier data processing agreements: Supabase, Stripe, Vercel, Cloudflare, Resend.
+- [ ] Accountant (once): overseas VAT/tax on Gulf and EU sales.
+- [ ] Short risk assessment for 16–17-year-old users.
+- [ ] Solicitor: "service" or "digital content" per product (refund wording already treats the law as the minimum).
+
 ## Key links
 Audit report https://claude.ai/artifact/JYn5XwRaiS8JncfEvnFxTA · Serein image prompt sheet https://claude.ai/artifact/P9Q8zg8p4sFre9T3ii5r3M · Repos: github.com/themicrolaunchequation-lang/NCLEXRN and /evinca.
