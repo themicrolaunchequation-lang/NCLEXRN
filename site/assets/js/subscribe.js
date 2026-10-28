@@ -91,12 +91,12 @@
 
   // Ask for express consent to start access now (UK Consumer Contracts Regulations 2013) before every checkout.
   function consent() {
-    const d = $('[data-consent-dialog]'), box = $('[data-consent-box]'), go = $('[data-consent-go]');
-    if (!d || !d.showModal) return Promise.resolve(window.confirm('I ask for my access to start now, during my 14-day cancellation period. I understand that if I cancel within that period I get a full refund within 3 days of paying, and after that a refund minus the days I have used.\n\nPress OK to confirm and continue to secure payment.'));
-    box.checked = false; go.disabled = true;
-    box.onchange = () => { go.disabled = !box.checked; };
+    const d = $('[data-consent-dialog]'), box = $('[data-consent-box]'), adult = $('[data-adult-box]'), go = $('[data-consent-go]');
+    if (!d || !d.showModal) return Promise.resolve(window.confirm('I am 18 or over (or a parent or guardian paying), and I ask for my access to start now, during my 14-day cancellation period. I understand that if I cancel within that period I get a full refund within 3 days of paying, and after that a refund minus the days I have used.\n\nPress OK to confirm and continue to secure payment.'));
+    box.checked = false; adult.checked = false; go.disabled = true;
+    box.onchange = adult.onchange = () => { go.disabled = !(box.checked && adult.checked); };
     d.showModal();
-    return new Promise((res) => { d.onclose = () => res(d.returnValue === 'ok' && box.checked); });
+    return new Promise((res) => { d.onclose = () => res(d.returnValue === 'ok' && box.checked && adult.checked); });
   }
 
   async function askRefund() {
