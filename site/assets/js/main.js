@@ -111,6 +111,31 @@
     }));
   }
 
+  /* ---------- Hero: pointer light, looping audience strip, app chips light up their tile ---------- */
+  function initHeroExtras() {
+    const hero = $('[data-hero]');
+    if (!hero) return;
+    const track = hero.querySelector('.hx-track');
+    if (track && !track.dataset.looped) { track.dataset.looped = '1'; [...track.children].forEach((li) => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); track.appendChild(c); }); }
+    if (!reduceMotion.matches && finePointer.matches) {
+      hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); hero.style.setProperty('--mx', `${e.clientX - r.left}px`); hero.style.setProperty('--my', `${e.clientY - r.top}px`); });
+    }
+    const apps = [...hero.querySelectorAll('.hx-app')];
+    apps.forEach((a) => {
+      const tile = hero.querySelector(`.crown-tile[href="${a.getAttribute('href')}"]`);
+      if (!tile) return;
+      a.addEventListener('pointerenter', () => tile.classList.add('is-hot'));
+      a.addEventListener('pointerleave', () => tile.classList.remove('is-hot'));
+    });
+    // Gently light up one app at a time until the visitor interacts.
+    if (!reduceMotion.matches && apps.length) {
+      let k = 0, stop = false;
+      const tick = () => { if (stop) return; apps.forEach((a, i) => a.classList.toggle('is-lit', i === k)); k = (k + 1) % apps.length; };
+      setTimeout(() => { tick(); const t = setInterval(() => (stop ? clearInterval(t) : tick()), 2200); }, 2000);
+      hero.addEventListener('pointerdown', () => { stop = true; apps.forEach((a) => a.classList.remove('is-lit')); }, { once: true });
+    }
+  }
+
   /* ---------- The app crown: pointer tilt and a little scroll parallax ---------- */
   function initCrownStage() {
     const hero = $('[data-hero]');
@@ -593,7 +618,7 @@
   initHeader();
   initMenu();
   initTheme();
-  initCrownStage();
+  initCrownStage(); initHeroExtras();
   initCrownRing();
   initApps();
   initCrown();
