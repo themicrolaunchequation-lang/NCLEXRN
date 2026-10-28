@@ -1,0 +1,7 @@
+supplier,what they do,dpa_file_name,dpa_version_or_date,how_accepted (in terms / clicked / signed),date_saved,subprocessor_list_saved (y/n),transfer_mechanism (UK bridge / IDTA / SCC+Addendum / none),checked_by
+Supabase,database and sign-in,,,,,,,
+Stripe,payments,,,,,,,
+Resend,order and cancellation emails,,,,,,,
+Vercel,hosting main site and Evinca,,,,,,,
+Cloudflare,DNS and Gulf studio hosting,,,,,,,
+Netlify,Green Belt hosting (if used),,,,,,,
