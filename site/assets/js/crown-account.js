@@ -437,7 +437,7 @@
   }
 
   window.HCA = {
-    checkout: (plan, country, consent) => billing({ action: 'checkout', plan, country, consent: consent === true }),
+    checkout: (plan, country, consent) => billing({ action: 'checkout', plan, country, consent: consent === true, adult: consent === true }), // consent covers both ticked boxes (start now + 18+/parent)
     refund: (kind, preview) => billing({ action: 'refund', kind, preview: preview === true }), // preview: work out the amount only
     closeAccount: async () => { const r = await billing({ action: 'close_account', confirm: 'CLOSE' }); if (r && r.closed) clear(); return r; },
     manageBilling: () => billing({ action: 'portal' }),
