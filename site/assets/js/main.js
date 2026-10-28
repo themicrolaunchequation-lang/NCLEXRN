@@ -120,6 +120,16 @@
     if (!reduceMotion.matches && finePointer.matches) {
       hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); hero.style.setProperty('--mx', `${e.clientX - r.left}px`); hero.style.setProperty('--my', `${e.clientY - r.top}px`); });
     }
+    const who = hero.querySelector('[data-who]');
+    if (who) {
+      const lines = [...who.querySelector('[data-who-lines]').content.querySelectorAll('p')];
+      const say = who.querySelector('[data-who-say]');
+      who.querySelectorAll('[data-who-i]').forEach((b) => b.addEventListener('click', () => {
+        who.querySelectorAll('[data-who-i]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        say.innerHTML = lines[+b.dataset.whoI].innerHTML;
+        say.classList.remove('is-swap'); void say.offsetWidth; say.classList.add('is-swap');
+      }));
+    }
     const apps = [...hero.querySelectorAll('.hx-app')];
     apps.forEach((a) => {
       const tile = hero.querySelector(`.crown-tile[href="${a.getAttribute('href')}"]`);
