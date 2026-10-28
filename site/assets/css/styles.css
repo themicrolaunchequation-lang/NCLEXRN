@@ -1093,3 +1093,22 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 .hx-bar a{color:#9AA8B8;font-size:.78rem;text-decoration:none}.hx-bar a:hover{color:#E9D3A0}
 @media (max-width:760px){.hx-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;justify-content:flex-start;margin-inline:-16px;max-width:none;width:calc(100% + 32px);border-radius:0;border-inline:0}.hx-tabs::-webkit-scrollbar{display:none}.hx-bar{border-radius:16px;flex-direction:column;align-items:stretch}.hx-bar li+li{border-left:0;border-top:1px solid rgba(233,211,160,.2)}}
 @media (prefers-reduced-motion:reduce){.hx-who,.hx-bar,.hx-say.is-swap{animation:none!important}}
+/* Logo: a floating crown that sparkles now and then */
+.brand-crown{position:relative;display:inline-grid;place-items:center;width:46px;height:50px;flex:none}
+.brand .brand-mark{width:44px;height:44px;filter:drop-shadow(0 0 6px rgba(233,193,112,.5));animation:bc-float 3.2s ease-in-out infinite}
+.brand-name{font-size:1.2rem}
+.brand-sub{font-size:.66rem}
+.bc-glow{position:absolute;left:9px;right:9px;bottom:0;height:5px;border-radius:50%;background:radial-gradient(rgba(233,193,112,.55),transparent 70%);animation:bc-shadow 3.2s ease-in-out infinite}
+@keyframes bc-float{50%{transform:translateY(-4px)}}
+@keyframes bc-shadow{50%{transform:scaleX(.7);opacity:.45}}
+.bc-star{position:absolute;width:10px;height:10px;background:#FFF2CC;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);opacity:0;animation:bc-pop 4.8s ease-in-out infinite}
+.bc-star:nth-of-type(1){left:-3px;top:6px}
+.bc-star:nth-of-type(2){right:-5px;top:0;width:8px;height:8px;animation-delay:1.6s}
+.bc-star:nth-of-type(3){left:20px;top:-6px;width:7px;height:7px;animation-delay:3.2s}
+@keyframes bc-pop{0%,100%{opacity:0;transform:scale(0) rotate(0)}10%{opacity:1;transform:scale(1) rotate(45deg)}20%{opacity:0;transform:scale(.2) rotate(90deg)}}
+.brand .brand-mark circle{animation:bc-twinkle 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bc-twinkle{50%{opacity:.25}}
+.site-header.is-scrolled .brand-mark,.site-header.is-scrolled .bc-glow{animation:none;filter:none}
+.site-header.is-scrolled .bc-star,.site-header.is-scrolled .bc-glow{display:none}
+@media (max-width:640px){.brand-crown{width:38px;height:42px}.brand .brand-mark{width:36px;height:36px}.brand-name{font-size:1.04rem}}
+@media (prefers-reduced-motion:reduce){.brand .brand-mark,.bc-glow,.bc-star,.brand .brand-mark circle{animation:none!important}.bc-star{display:none}}
