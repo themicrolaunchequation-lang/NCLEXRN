@@ -5,6 +5,7 @@ window.HCA_TOURS = {
   medlex: {
     name: 'MedLex', chip: 'M', color: '#3557D6', motif: 'words', music: 'medlex', voice: 'Bright and curious',
     tag: 'Make sense of any medical word.', url: 'https://medlex.healthcarecrownacademy.co.uk/', cta: 'Open MedLex free', note: 'Free to start · Full app with the Crown Pass, 7 days free',
+    hookParts: [['Pneumono', '#8EC5FF'], ['ultra', '#B79CFF'], ['microscopic', '#FF9EC4'], ['silico', '#FFD27A'], ['volcano', '#FF8A65'], ['coni', '#6EE7B7'], ['osis', '#A5F3FC']],
     hook: ['Pneumono ultra microscopic silico volcano coni osis.', '45 letters. A few simple parts. A lung disease from fine volcanic dust.'], bg: ['mx-root', 'mx-hemi', 'mx-gastr'],
     sayHook: 'Pneumono, ultra, microscopic, silico, volcano, coni, osis. Forty five letters. Looks terrifying. Learn its few simple parts, and it just means a lung disease from fine volcanic dust.',
     sayTitle: 'This is MedLex. Make sense of any medical word.',

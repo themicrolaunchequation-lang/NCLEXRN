@@ -1018,3 +1018,13 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 .prose tbody tr:last-child>*{border-bottom:0}
 .prose .legal-form{margin:1em 0;padding:14px 18px;border-left:4px solid var(--gold-500,#C9A24B);background:rgba(127,127,127,.07);border-radius:0 12px 12px 0}
 .prose .legal-form p{margin:.3em 0}
+
+/* MedLex opening: one long word, each part in its own colour */
+.ts-hk-wide{max-width:none}
+.ts-hk-word{display:block;font-style:normal;white-space:nowrap;font-size:clamp(.82rem,3.3vw,2.9rem);letter-spacing:-.01em}
+.ts-hk-word b{color:var(--c);text-shadow:0 0 18px color-mix(in srgb,var(--c) 45%,transparent)}
+.ts-hook.is-on .ts-hk-word b{animation:hk-part .75s var(--ease-out) both,hk-glow 2.4s ease-in-out infinite;animation-delay:calc(.2s + var(--w) * .38s),calc(3s + var(--w) * .18s)}
+@keyframes hk-part{0%{opacity:0;transform:translateY(.55em) scale(.7);filter:blur(6px)}60%{opacity:1;transform:translateY(-.08em) scale(1.08);filter:blur(0)}100%{opacity:1;transform:none}}
+@keyframes hk-glow{0%,100%{text-shadow:0 0 14px color-mix(in srgb,var(--c) 35%,transparent)}50%{text-shadow:0 0 26px color-mix(in srgb,var(--c) 80%,transparent)}}
+@media (prefers-reduced-motion:reduce){.ts-hk-word b{animation:none!important}}
+.ts-hk-wide em{font-size:clamp(.9rem,.6rem + 1.6vw,1.9rem);margin-top:.7em}
