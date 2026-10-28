@@ -1,0 +1,9 @@
+item,account,mode,evidence,status
+Crown/Gulf prices,acct_1UNyuEELw45NjhlB,test,"created by code with lookup keys hca_*",VERIFIED in code; not re-listed in Stripe today
+LSS price,acct_1UNyuEELw45NjhlB,test,inline price_data US$99,VERIFIED in code
+Evinca price,acct_1UNyuEELw45NjhlB,test,inline price_data from order,VERIFIED in code
+Crown webhook events,acct_1UNyuEELw45NjhlB,test,"checkout.session.completed, async_payment_succeeded, customer.subscription.created/updated/deleted, charge.refunded",VERIFIED in code (HOOK_EVENTS)
+LSS webhook events,acct_1UNyuEELw45NjhlB,test,"completed, async_payment_succeeded, charge.refunded",Matches reviewer finding F07; one-off payment so no subscription events needed
+LSS session without consent metadata (F05),acct_1UNyuEELw45NjhlB,test,older build before consent fields were added,Explained; current code rejects checkout without consent
+invoice.payment_failed,acct_1UNyuEELw45NjhlB,test,not subscribed; access follows subscription status via customer.subscription.updated,NOT VERIFIED by a test run
+Live mode,acct_1UNyuEELw45NjhlB,live,not accessed,NOT VERIFIED

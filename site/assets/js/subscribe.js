@@ -9,6 +9,7 @@
     payments_unavailable: 'Payments are not open yet. Please try again soon.',
     no_customer: 'There is no plan on this account yet.',
     consent_required: 'Please confirm that you want access to start now.',
+    consent_outdated: 'Our terms were just updated. Please reload this page and tick the boxes again.',
     nothing_to_refund: 'We could not find a payment to refund on this account.',
     already_refunded: 'The instant refund button has already been used for this on your account. Your legal right to cancel still applies: email themicrolaunchequation@gmail.com and we will deal with it.',
     outside_window: 'Your 14-day cancellation period has ended, so there is no change-of-mind refund. You can still stop renewal at any time. If something went wrong or does not work as described, email themicrolaunchequation@gmail.com and we will put it right.',

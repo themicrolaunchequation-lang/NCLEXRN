@@ -1,0 +1,33 @@
+id,result,evidence
+T001,CODE CHECKED - NOT RUN,"crown-billing checkout(): consent!==true -> 400; LSS line 82; Evinca require_review_consent"
+T002,N/A,no separate service box yet (classification open)
+T003,CODE CHECKED - NOT RUN,new consent_version check -> 409 consent_outdated (Crown only)
+T004,CODE CHECKED - NOT RUN,price from DB/server constant; browser sends plan id only
+T005,CODE CHECKED - NOT RUN,consent_at/version/hash in session + subscription metadata
+T006,PASS (test mode),owner screenshot of confirmation email 27 Oct
+T007,NOT VERIFIED,trial confirmation timing not measured
+T008,NOT VERIFIED,trial cancel path exists (refund() trialing branch); not run today
+T009,CODE CHECKED - NOT RUN,window from sub.created; first invoice separate
+T010,NOT VERIFIED,
+T011,NOT VERIFIED,needs Stripe test clock
+T012,NOT VERIFIED,portal set to cancel at period end (owner configured)
+T013,BLOCKED,option D not approved; switch REFUND_POLICY=full14 off
+T014,BLOCKED,depends on classification
+T015,BLOCKED,legal method for Evinca not approved
+T016,NOT VERIFIED,manual email route only
+T017,CODE CHECKED - NOT RUN,button refuses; message gives email route
+T018,CODE CHECKED - NOT RUN,Stripe idempotency key on LSS; Crown one-refund row check
+T019,PASS,Evinca tests/payment-handlers.mjs 24 assertions (real signature check); Crown/LSS code checked
+T020,PASS (Evinca) / CODE CHECKED (Crown LSS),Evinca test run; crown_stripe_events; LSS unique payment ref
+T021,PASS (Evinca) / CODE CHECKED,access only from signed webhook with payment_status paid
+T022,NOT VERIFIED,
+T023,CODE CHECKED - NOT RUN,Crown ignores livemode mismatch; LSS relies on per-endpoint secret only
+T024,PASS (test mode),owner screenshots of refund + acknowledgement email 27 Oct
+T025,NOT VERIFIED,manual process; no logging tool yet
+T026,PASS (test mode),owner closed-account test 27 Oct; payment row kept
+T027,CODE CHECKED - NOT RUN,change-of-mind refund withdraws certificate
+T028,CODE CHECKED - NOT RUN,partial refund keeps access and certificate (LSS; Crown fixed today)
+T029,BLOCKED,local legal/tax review
+T030,CODE CHECKED - NOT RUN,webhook returns 500 so Stripe retries; dedupe tables prevent doubles
+T031,CODE CHECKED - NOT RUN,only active gulf plans sellable
+T032,PASS,Lumen own-key only; lumen-ai returns 410
