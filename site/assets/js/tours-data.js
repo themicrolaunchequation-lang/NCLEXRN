@@ -1,12 +1,12 @@
-/* Healthcare Crown Academy: the one-minute tours (data). Used by tour.js in the browser and by the voiceover
+/* Healthcare Crown Academy: the app tours (data). Used by tour.js in the browser and by the voiceover
    build script (scripts/build-tour-audio, kept outside the site). Each scene's `say` line is the narration; the
    matching audio file is /assets/audio/tour/<app>/<index>.mp3, in the order: hook, title, scenes..., end. */
 window.HCA_TOURS = {
   medlex: {
     name: 'MedLex', chip: 'M', color: '#3557D6', motif: 'words', music: 'medlex', voice: 'Bright and curious',
     tag: 'Make sense of any medical word.', url: 'https://medlex.healthcarecrownacademy.co.uk/', cta: 'Open MedLex free', note: 'Free to start · Full app with the Crown Pass, 7 days free',
-    hook: ['1,480 medical words.', 'What if you only had to learn the pieces?'], bg: ['mx-term', 'mx-prefix', 'mx-atlas'],
-    sayHook: 'Fourteen hundred and eighty medical words. What if you only had to learn the pieces?',
+    hook: ['Pneumono ultra microscopic silico volcano coni osis.', '45 letters. A few simple parts. A lung disease from fine volcanic dust.'], bg: ['mx-root', 'mx-hemi', 'mx-gastr'],
+    sayHook: 'Pneumono, ultra, microscopic, silico, volcano, coni, osis. Forty five letters. Looks terrifying. Learn its few simple parts, and it just means a lung disease from fine volcanic dust.',
     sayTitle: 'This is MedLex. Make sense of any medical word.',
     sayEnd: 'Open MedLex free, and decode your first word today.',
     scenes: [
@@ -22,6 +22,11 @@ window.HCA_TOURS = {
       ['mx-canvas', 'Lessons', 'Clear words. Confident learning.', 'Each body system on a single, beautiful canvas.', [0.5, 0.4], 'Lessons walk you through each body system on a single, beautiful canvas.'],
       ['mx-module', 'Modules', 'Integumentary system: the language of skin.', '100 terms per system, with clear outcomes you can tick off.', [0.4, 0.45], 'Every module comes with clear outcomes, so you always know what you have mastered.'],
       ['mx-practice', 'Practice', 'Real recall beats an hour of re-reading.', 'Decode it, build it, match pairs, explain simply, clinical notes and more.', [0.5, 0.6], 'And when you have five minutes, eight kinds of practice keep it all fresh.'],
+      ['mx-history', 'Foundations', 'Nine eras. One living language.', 'From Egypt and Mesopotamia to Vesalius: see where medical words come from.', [0.4, 0.4], 'Words make more sense when you know their story. Travel nine eras, from ancient Egypt to Vesalius and the Fabrica.'],
+      ['mx-root', 'Root cards', 'Card means heart.', 'A memory picture, a hook and a word lab: tachy plus card plus ia is a fast heartbeat.', [0.5, 0.4], 'Every root gets a memory picture and a hook. Card means heart. Add tachy, fast, and tachycardia is an abnormally fast heartbeat.'],
+      ['mx-hemi', 'Prefix cards', 'Hemi means half.', 'Hemiplegia: paralysis of one side of the body. Listen, repeat, remember.', [0.5, 0.35], 'Hemi means half. So hemiplegia is paralysis of one half, one side, of the body. Listen, and say it out loud.'],
+      ['mx-gastr', 'Mini-check', 'Prove it stuck.', 'A quick question after every card, with points the first time you get it right.', [0.5, 0.6], 'Then prove it stuck. A quick check after each card, with points the first time you get it right.'],
+      ['mx-mastery', 'Your progress', '60 roots. One mastery journey.', 'Track every body system and unlock achievements as you go.', [0.4, 0.3], 'Sixty roots, grouped by body system. Watch your mastery grow, and unlock achievements on the way.'],
     ] },
   carecraft: {
     name: 'Carecraft', chip: 'C', color: '#0F8A86', motif: 'talk', music: 'carecraft', voice: 'Warm, British mentor',
@@ -41,6 +46,11 @@ window.HCA_TOURS = {
       ['cc-sbar', 'Practice studio', 'Pass the message clearly.', 'An animated handover shows situation, background, assessment and recommendation in order.', [0.4, 0.35], 'Watch a handover come to life, then build your own. Situation. Background. Assessment. Recommendation.'],
       ['cc-builder', 'Toolkit', 'SBAR and ISBAR handover builder.', 'Fill it in step by step, with worked examples beside you.', [0.35, 0.45], 'The toolkit helps you prepare the real thing, from handovers to huddles and debriefs.'],
       ['cc-practice', 'Your growth', 'See the skills you have practised.', 'Coverage across communicating, escalating, handing over and more.', [0.6, 0.45], 'And your practice map shows how your skills are growing.'],
+      ['cc-trust', 'Learn as slides', 'Conversations that build trust.', 'Eight minutes, 14 slides, 3 checks and 3 visual guides.', [0.35, 0.35], 'Lessons come as short slide journeys. Conversations that build trust takes eight minutes, with checks along the way.'],
+      ['cc-hygiene', 'Animated practice', 'Watch. Decide. Reflect.', 'Spot the hand-hygiene moment in an animated ward scene. No time pressure.', [0.4, 0.5], 'Practise in animated scenes. Watch, decide which hand hygiene moment fits, then reflect. No time pressure.'],
+      ['cc-handover', 'Toolkit', 'Build a clear SBAR handover.', 'Situation, background, assessment, recommendation. Fictional practice drafts, not clinical records.', [0.45, 0.45], 'Build an SBAR or ISBAR handover step by step, with fictional practice drafts, never real records.'],
+      ['cc-numbers', 'Visual guides', 'Make numbers mean something.', 'Read absolute risk, relative change and uncertainty without being misled.', [0.5, 0.5], 'Visual guides make tricky ideas simple, like reading risk numbers without being misled.'],
+      ['cc-growth', 'My Growth', 'See what you have rehearsed.', 'Eight practice skills, from communicating to wellbeing. Coverage, not a competence score.', [0.35, 0.6], 'My Growth shows what you have rehearsed across eight skills. It tracks practice, not competence.'],
     ] },
   serein: {
     name: 'Serein', chip: 'S', color: '#2B735E', motif: 'breath', music: 'serein', voice: 'Soft and calm',
@@ -60,6 +70,11 @@ window.HCA_TOURS = {
       ['sr-toolkit', 'Toolkit', 'Small tools for real shifts.', 'Before a shift, between tasks, after a hard moment.', [0.4, 0.4], 'Small tools for real shifts. Before, during, and after.'],
       ['sr-me', 'Your space', 'A little room for you.', 'Save the practices you love and build your own routine.', [0.4, 0.5], 'Save what helps, and build a routine that is yours.'],
       ['sr-support', 'Support', 'You do not have to hold it alone.', 'Trusted services, one tap away.', [0.45, 0.45], 'And if it is too heavy today, real support is one tap away.'],
+      ['sr-box', 'Box Breathing', 'A steady four-part rhythm.', 'Breathe in, hold, breathe out, rest. Holds are optional. Your pace.', [0.4, 0.4], 'Follow a gentle square. Breathe in, hold, breathe out, rest. The holds are optional, and the pace is yours.'],
+      ['sr-hands', 'Hand & Finger Reset', 'Ninety seconds for tired hands.', 'Settle, open gently, return, rest. Stop or adapt if uncomfortable.', [0.4, 0.4], 'Ninety seconds for tired hands. Settle, open gently, and rest. Stop or adapt whenever you need to.'],
+      ['sr-practices', 'Library', 'Fifteen short practices.', 'Breathing, grounding, movement, awareness and visualisation, many in two minutes or less.', [0.4, 0.4], 'Choose from fifteen short practices. Breathing, grounding, gentle movement, awareness and visualisation.'],
+      ['sr-ritual', 'Ritual builder', 'A one-minute shift-start ritual.', 'Body basics, one settling step, one intention and one support to ask for.', [0.6, 0.4], 'Build a one minute ritual before your shift. Water, food, one settling step, one intention, and one support to ask for.'],
+      ['sr-barrier', 'Visual Atlas', 'Find the work barrier.', 'Six work-design areas, from the HSE Management Standards, for a better conversation at work.', [0.5, 0.4], 'And when work itself is the problem, map it. Six work design areas help you agree a positive change together.'],
     ] },
   lumen: {
     name: 'Lumen', chip: 'L', color: '#8B6CF0', motif: 'cards', music: 'lumen', voice: 'Friendly study buddy',
@@ -79,6 +94,11 @@ window.HCA_TOURS = {
       ['lm-notes', 'Notes & highlights', 'A thought in the margin becomes a connection.', 'Every highlight and note, gathered and searchable.', [0.5, 0.4], 'Every highlight and note is gathered, searchable, and linked to its page.'],
       ['lm-recall', 'Methods', 'Think first. Then reveal.', 'Active recall, explain it back, compare concepts and more.', [0.5, 0.35], 'Proven study methods, explained simply, so you know why they work.'],
       ['lm-focus', 'Focus timer', 'Twenty-five minutes. One clear goal.', 'Focus sessions with soft sounds and short breaks.', [0.75, 0.4], 'And when it is time to focus, Lumen keeps you in the zone.'],
+      ['lm-tools', 'Tools', 'Every study tool, one menu away.', 'Copy a region, magnify, add clinical stickers, define a word, then present or export.', [0.45, 0.3], 'One menu holds every tool. Copy a region, magnify, define a word, then present or export your work.'],
+      ['lm-stickers', 'Make it yours', 'Stickers, and help in your language.', 'Drag clinical stickers onto the page, and look up words with help in many languages, including Arabic.', [0.3, 0.6], 'Drag stickers onto the page, and look up any word, with help in many languages, including Arabic.'],
+      ['lm-magnify', 'Read closely', 'Magnify, mark, and keep it.', 'A lens follows your pointer. Highlights and notes are saved beside the page.', [0.6, 0.3], 'A magnifier follows your pointer. Mark what matters, and every highlight is saved beside its page.'],
+      ['lm-studio', 'Study studio', 'Your cards, ready when you are.', 'Recall cards, quick quizzes and a practice lab, all linked to your sources.', [0.4, 0.4], 'The study studio brings it back. Recall cards, quick quizzes and a practice lab, all linked to your own sources.'],
+      ['lm-comfort', 'Your space', 'Make yourself comfortable.', 'Daylight or evening, warm linen pages, your text size and gentle motion.', [0.5, 0.4], 'And make it comfortable. Daylight or evening, warm paper, your text size, and gentle motion.'],
     ] },
   snle: {
     name: 'Gulf Region Nursing', chip: 'G', color: '#347A9A', motif: 'pulse', music: 'gulf', voice: 'Saudi-accented English',
@@ -99,6 +119,11 @@ window.HCA_TOURS = {
       ['gr-labs', 'Interactive Labs', 'Decode the question before you answer it.', 'Nine labs on how licensing questions are built.', [0.4, 0.4], 'Nine labs show you how licensing questions are built, and how the safest answer wins.'],
       ['gr-glossary', 'Bilingual glossary', 'English and Arabic, side by side.', 'Question language explained clearly in both.', [0.6, 0.45], 'A bilingual glossary explains question language, in English and Arabic.'],
       ['gr-ready', 'Readiness', 'See exactly where you stand.', 'Accuracy by domain shows what to practise next.', [0.45, 0.45], 'And your readiness view shows exactly what to practise next.'],
+      ['gr-exam', 'Exam simulation', 'Timed. Answers hidden.', 'A blueprint simulation with a section timer and flags. Feedback comes at the end.', [0.5, 0.4], 'Sit a timed simulation. Answers stay hidden until the end, just like exam day.'],
+      ['gr-connections', 'Clinical dossier', 'Context, plus a rule you can reuse.', 'Each dossier links to core tools, like the ECG rapid reader and the ABCDE first-look guide.', [0.5, 0.55], 'Each clinical dossier connects to core tools, so one reasoning rule works across many cases.'],
+      ['gr-reset', 'Reset & Recharge', 'Match the reset to the problem.', 'Racing thoughts, a hard question, tired eyes: pick what is happening and get a short reset.', [0.4, 0.3], 'Feeling stuck? Pick what is happening, and get a short reset that fits, like box breathing.'],
+      ['gr-terms', 'Searchable glossary', 'Question language, in English and Arabic.', '62 original terms, each with Arabic support and three clinical examples.', [0.4, 0.35], 'The glossary decodes question language. Sixty two terms in English and Arabic, each with three clinical examples.'],
+      ['gr-tubes', 'Core tool', 'Tubes and drains troubleshooter.', 'Normal findings, common problems, first actions and when to escalate.', [0.5, 0.5], 'Troubleshoot tubes and drains. What is normal, what goes wrong, the first action, and when to escalate.'],
     ] },
   evinca: {
     name: 'Evinca', chip: 'E', color: '#D4A445', motif: 'medal', music: 'evinca', voice: 'Four voices · documentary',
