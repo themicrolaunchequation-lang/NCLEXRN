@@ -1,53 +1,7 @@
-// Supabase Edge Function "lumen-ai": Academy AI for Lumen members.
-// The logic lives in handler.mjs; this file wires it to Supabase.
-// Secrets: OPENAI_API_KEY, GROQ_API_KEY, GEMINI_API_KEY (optional OPENROUTER_API_KEY), *_MODEL overrides,
-// LUMEN_AI_PROVIDERS (order, default openai,groq,gemini), LUMEN_AI_DAILY, LUMEN_AI_ACADEMY_DAILY.
-import { createClient } from 'npm:@supabase/supabase-js@2.117.2'
-import { createHandler } from './handler.mjs'
-
-const env = (name: string) => Deno.env.get(name) ?? ''
-const admin = createClient(env('SUPABASE_URL'), env('SUPABASE_SERVICE_ROLE_KEY'), { auth: { persistSession: false, autoRefreshToken: false } })
-const asUser = (token: string) => createClient(env('SUPABASE_URL'), env('SUPABASE_ANON_KEY'), {
-  auth: { persistSession: false, autoRefreshToken: false },
-  global: { headers: { Authorization: `Bearer ${token}` } },
-})
-
-const handler = createHandler({
-  env,
-  fetch: (url: string, init: RequestInit) => fetch(url, init),
-  getUser: async (token: string) => {
-    const { data, error } = await admin.auth.getUser(token)
-    return error || !data.user ? null : { id: data.user.id }
-  },
-  // Daily allowance level: every signed-in account gets level 1 (the free daily allowance), a Crown Pass
-  // (or Lumen premium, or a Gulf Pass) gives level 3, and a higher Evinca level still counts.
-  levelOf: async (token: string) => {
-    const db = asUser(token)
-    const [p, e] = await Promise.all([db.rpc('platform_level'), db.rpc('crown_entitlements')])
-    const evinca = p.error ? 0 : Number(p.data ?? 0)
-    const ent = (e.error ? null : e.data) as { crown?: boolean; lumen?: string } | null
-    const crown = Boolean(ent?.crown || ent?.lumen === 'premium')
-    return Math.max(1, evinca, crown ? 3 : 0)
-  },
-  take: async (user: string, limit: number, ceiling: number) => {
-    const { data, error } = await admin.rpc('lumen_ai_take', { p_user: user, p_limit: limit, p_ceiling: ceiling })
-    if (error) throw error
-    return Number(data)
-  },
-  refund: async (user: string) => { await admin.rpc('lumen_ai_refund', { p_user: user }) },
-  usage: async (user: string) => {
-    const { data } = await admin.from('lumen_ai_usage').select('requests').eq('user_id', user).eq('day', new Date().toISOString().slice(0, 10)).maybeSingle()
-    return Number((data as { requests?: number } | null)?.requests ?? 0)
-  },
-  cacheGet: async (key: string) => {
-    const { data } = await admin.from('lumen_ai_cache').select('text, provider, model').eq('key', key).gt('created_at', new Date(Date.now() - 30 * 864e5).toISOString()).maybeSingle()
-    return data
-  },
-  cachePut: async (key: string, row: { text: string; provider: string; model: string }) => {
-    await admin.from('lumen_ai_cache').upsert({ key, ...row, created_at: new Date().toISOString() })
-  },
-  cleanup: async () => { await admin.rpc('lumen_ai_cleanup') },
-  log: (event: string, fields: Record<string, unknown>) => console.log(JSON.stringify({ fn: 'lumen-ai', event, ...fields })),
-})
-
-Deno.serve(handler)
+// Academy AI is switched off (owner decision, 27 Oct 2026). This function no longer sends any text to an AI provider.
+// Lumen still lets people use their own AI key, which goes from their browser straight to the provider they choose.
+// The previous version is kept in previous/index.ts and handler.mjs in case Academy AI is brought back.
+const CORS = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'authorization, apikey, content-type, x-client-info', 'Access-Control-Allow-Methods': 'POST, OPTIONS' }
+Deno.serve((req) => req.method === 'OPTIONS'
+  ? new Response(null, { status: 204, headers: CORS })
+  : new Response(JSON.stringify({ error: 'retired', message: 'Academy AI has been switched off. You can add your own AI key in Lumen.' }), { status: 410, headers: { ...CORS, 'Content-Type': 'application/json' } }))

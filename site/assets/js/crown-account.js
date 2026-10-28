@@ -313,7 +313,7 @@
     medlex: ['All 26 modules and 1,480 terms', '56 illustrated guides', 'Spaced practice and worksheets'],
     carecraft: ['All 30 lessons and 90 visual guides', 'All 22 practice activities', 'Smart Review'],
     serein: ['All 15 practices', 'Journeys, routines and insights', 'Team toolkit'],
-    lumen: ['More Academy AI help each day', 'Unlimited sources and recall cards', 'Focus planner'],
+    lumen: ['Unlimited sources', 'Unlimited recall cards', 'Focus planner'],
   };
   // Must match public.crown_plans. Single-app plans were retired on 27 Oct 2026: every app comes with the Crown Pass.
   const CROWN_PRICE = '£5.99 a month or £39.99 a year';
@@ -438,7 +438,8 @@
 
   window.HCA = {
     checkout: (plan, country, consent) => billing({ action: 'checkout', plan, country, consent: consent === true }),
-    refund: (kind) => billing({ action: 'refund', kind }),
+    refund: (kind, preview) => billing({ action: 'refund', kind, preview: preview === true }), // preview: work out the amount only
+    closeAccount: async () => { const r = await billing({ action: 'close_account', confirm: 'CLOSE' }); if (r && r.closed) clear(); return r; },
     manageBilling: () => billing({ action: 'portal' }),
     ready,
     daily: DAILY,

@@ -47,6 +47,9 @@
 .ac-note{margin:12px 0 0;font-size:.84rem;color:var(--text-muted);line-height:1.5}
 .ac-switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:var(--text)}
 .ac-switch input{width:18px;height:18px}
+.ac-danger{color:#C2412D;border-color:rgba(194,65,45,.45)}.ac-danger-solid{background:#C2412D;border-color:#C2412D;color:#fff}
+.ac-dialog{max-width:440px;width:calc(100% - 32px);border:0;border-radius:20px;padding:24px;background:var(--surface,#fff);color:var(--text,#10253A);box-shadow:0 24px 60px rgba(0,0,0,.35)}.ac-dialog::backdrop{background:rgba(5,12,20,.6)}.ac-dialog h2{margin:0 0 8px}
+.ac-close-label{display:grid;gap:6px;margin:12px 0;font-weight:600}.ac-close-label input{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line-strong,#ccc);background:transparent;color:inherit;font:inherit;letter-spacing:.1em}
 </style>
 </head>
 <body class="subpage">
@@ -121,7 +124,22 @@
         <p class="ac-note">Off unless you switch it on. When on, it keeps a small cookie on this device (the date, the apps you used and your streak) for up to a year. It is never used for tracking. Switch it off to delete it. <a class="inline-link" href="/privacy">Privacy notice</a></p>
         <div class="ac-actions"><button type="button" class="btn btn-ghost" data-ac-signout>Sign out</button></div>
       </section>
+
+      <section class="ac-card" data-ac-in hidden aria-labelledby="ac-close-h">
+        <h2 id="ac-close-h">Close my account</h2>
+        <p class="ac-note">This deletes your name, profile, learning progress and Academy certificates, and stops any renewing plan straight away. It also ends any Gulf Pass you have. It cannot be undone. Want a refund? Use <a class="inline-link" href="/subscribe?refund=1">Cancel and get a refund</a> first. We keep payment records (amounts, dates and Stripe references, without your name) for 6 years because tax law requires it. Work kept only on your device (MedLex, Carecraft, Serein, Lumen) is not affected.</p>
+        <div class="ac-actions"><button type="button" class="btn btn-ghost ac-danger" data-ac-close>Close my account</button></div>
+      </section>
     </div>
+  <dialog class="ac-dialog" data-ac-close-dialog aria-labelledby="ac-close-dh">
+    <form method="dialog">
+      <h2 id="ac-close-dh">Close your account?</h2>
+      <p>This cannot be undone. Your sign-in stops working for every Healthcare Crown app and Evinca. Type <b>CLOSE</b> to confirm.</p>
+      <label class="ac-close-label">Type CLOSE<input data-ac-close-input autocomplete="off" spellcheck="false"></label>
+      <p class="ac-note" data-ac-close-msg role="alert"></p>
+      <div class="ac-actions"><button value="cancel" class="btn btn-ghost">Keep my account</button><button value="ok" class="btn btn-primary ac-danger-solid" data-ac-close-go disabled>Close my account</button></div>
+    </form>
+  </dialog>
   </div>
 </main>
 
