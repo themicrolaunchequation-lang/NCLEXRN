@@ -130,7 +130,7 @@
 
   function sceneHTML(t, sc, n) {
     const mo = MOTIF[t.motif] || MOTIF.medal;
-    if (sc.k === 'hook') return `<div class="ts ts-hook">${who(t.sayHook, t).length > 1 ? `<p class="ts-voices">${who(t.sayHook, t).map((n, i) => `<span style="--v:${i}">${esc(n)}</span>`).join('')}</p>` : ''}<div class="ts-mosaic">${t.bg.map((f, k) => `<img src="${IMG + f}.webp" alt="" style="--k:${k}">`).join('')}</div><span class="ts-veil"></span><div class="ts-motif">${mo.big()}</div><p class="ts-hk"><span>${t.hook[0].split(' ').map((w, i) => `<b style="--w:${i}">${esc(w)}</b>`).join(' ')}</span><em>${esc(t.hook[1])}</em></p></div>`;
+    if (sc.k === 'hook') return `<div class="ts ts-hook">${who(t.sayHook, t).length > 1 ? `<p class="ts-voices">${who(t.sayHook, t).map((n, i) => `<span style="--v:${i}">${esc(n)}</span>`).join('')}</p>` : ''}<div class="ts-mosaic">${t.bg.map((f, k) => `<img src="${IMG + f}.webp" alt="" style="--k:${k}">`).join('')}</div><span class="ts-veil"></span><div class="ts-motif">${mo.big()}</div><p class="ts-hk${t.hookParts ? ' ts-hk-wide' : ''}"><span>${t.hookParts ? `<i class="ts-hk-word">${t.hookParts.map(([w, c], i) => `<b style="--w:${i};--c:${c}">${esc(w)}</b>`).join('')}</i>` : t.hook[0].split(' ').map((w, i) => `<b style="--w:${i}">${esc(w)}</b>`).join(' ')}</span><em>${esc(t.hook[1])}</em></p></div>`;
     if (sc.k === 'title') return `<div class="ts ts-title"><span class="ts-aura"></span><p class="ts-eye">The quick tour</p><span class="ts-chip">${esc(t.chip)}</span><h2 class="ts-h">${esc(t.name)}</h2><p class="ts-tag">${esc(t.tag)}</p></div>`;
     if (sc.k === 'shot') {
       const [f, k, h, p, fc] = sc.s;
