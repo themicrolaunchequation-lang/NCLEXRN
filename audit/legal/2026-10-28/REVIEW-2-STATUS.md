@@ -13,7 +13,7 @@ That review was written against the pack **before** the 27–28 Oct fixes (it an
 | T04 adult payer | **Fixed**: required box "18 or over, or a parent or guardian paying"; server refuses without it; stored in Stripe metadata |
 | T05 overseas rights saving | **Fixed 27 Oct** |
 | T06 changes power | **Fixed 27 Oct** |
-| T07 trading address | **Owner**: give the geographic address where the business is actually established (a mail-forwarding address does not automatically satisfy this). Keep Shelton Street labelled as the registered office. Add a separate complaints address only if different |
+| T07 trading address | **Fact confirmed 28 Oct: the business is run from Saudi Arabia and Jordan.** Solicitor to advise which address to publish (prompt task 5). **Owner**: give the geographic address where the business is actually established (a mail-forwarding address does not automatically satisfy this). Keep Shelton Street labelled as the registered office. Add a separate complaints address only if different |
 | T08 business-use exclusion | **Fixed** |
 | R03 period can be extended | **Fixed** |
 | R04 three-day promise | **Fixed** (72 hours from payment, matches code) |
