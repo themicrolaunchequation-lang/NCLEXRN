@@ -131,7 +131,7 @@
   function sceneHTML(t, sc, n) {
     const mo = MOTIF[t.motif] || MOTIF.medal;
     if (sc.k === 'hook') return `<div class="ts ts-hook">${who(t.sayHook, t).length > 1 ? `<p class="ts-voices">${who(t.sayHook, t).map((n, i) => `<span style="--v:${i}">${esc(n)}</span>`).join('')}</p>` : ''}<div class="ts-mosaic">${t.bg.map((f, k) => `<img src="${IMG + f}.webp" alt="" style="--k:${k}">`).join('')}</div><span class="ts-veil"></span><div class="ts-motif">${mo.big()}</div><p class="ts-hk"><span>${t.hook[0].split(' ').map((w, i) => `<b style="--w:${i}">${esc(w)}</b>`).join(' ')}</span><em>${esc(t.hook[1])}</em></p></div>`;
-    if (sc.k === 'title') return `<div class="ts ts-title"><span class="ts-aura"></span><p class="ts-eye">The one-minute tour</p><span class="ts-chip">${esc(t.chip)}</span><h2 class="ts-h">${esc(t.name)}</h2><p class="ts-tag">${esc(t.tag)}</p></div>`;
+    if (sc.k === 'title') return `<div class="ts ts-title"><span class="ts-aura"></span><p class="ts-eye">The quick tour</p><span class="ts-chip">${esc(t.chip)}</span><h2 class="ts-h">${esc(t.name)}</h2><p class="ts-tag">${esc(t.tag)}</p></div>`;
     if (sc.k === 'shot') {
       const [f, k, h, p, fc] = sc.s;
       return `<div class="ts ts-shot" style="--fx:${fc[0] * 100}%;--fy:${fc[1] * 100}%"><div class="ts-win"><span class="ts-bar"><i></i><i></i><i></i></span><img src="${IMG + f}.webp" alt="" decoding="async"></div><div class="ts-accent">${mo.mini(n)}</div><div class="ts-cap">${who(sc.s[5], t).length > 1 || (t.speakers && who(sc.s[5], t).length) ? `<p class="ts-who">${who(sc.s[5], t).map((n) => `<span>${esc(n)}</span>`).join('')}</p>` : ''}<p class="ts-k">${esc(k)}</p><h3>${esc(h)}</h3><p>${esc(p)}</p></div></div>`;
