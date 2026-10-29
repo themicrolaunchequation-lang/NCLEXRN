@@ -93,7 +93,7 @@
   // Ask for express consent to start access now (UK Consumer Contracts Regulations 2013) before every checkout.
   function consent() {
     const d = $('[data-consent-dialog]'), box = $('[data-consent-box]'), adult = $('[data-adult-box]'), go = $('[data-consent-go]');
-    if (!d || !d.showModal) return Promise.resolve(window.confirm('I am 18 or over (or a parent or guardian paying), and I ask for my access to start now, during my 14-day cancellation period. I understand that if I cancel within that period I get a full refund within 3 days of paying, and after that a refund minus the days I have used.\n\nPress OK to confirm and continue to secure payment.'));
+    if (!d || !d.showModal) return Promise.resolve(window.confirm('I am 18 or over (or a parent or guardian paying), and I ask for my access to start now, during my 14-day cancellation period. I understand that if I cancel within that period I get a full refund.\n\nPress OK to confirm and continue to secure payment.'));
     box.checked = false; adult.checked = false; go.disabled = true;
     box.onchange = adult.onchange = () => { go.disabled = !(box.checked && adult.checked); };
     d.showModal();
@@ -114,7 +114,7 @@
     $('[data-rc-title]').textContent = q.trial ? 'Cancel your free trial?' : `You will get back ${money(q.amount, q.currency)}`;
     $('[data-rc-text]').textContent = q.trial
       ? 'Your trial ends now and nothing is taken from your card.'
-      : `${q.name}: you paid ${money(q.paid, q.currency)}. ${q.full ? 'This is a full refund, because it is within 3 days of paying.' : `This is the price minus the days you have used (price × days used ÷ days in the period).`} Your paid access ends as soon as you confirm. If the law gives you more, email us and we will pay the difference.`;
+      : `${q.name}: you paid ${money(q.paid, q.currency)}. ${q.full ? 'This is a full refund, because you are within your 14-day period.' : `This is the price minus the days you have used (price × days used ÷ days in the period).`} Your paid access ends as soon as you confirm. If the law gives you more, email us and we will pay the difference.`;
     c.showModal();
     const yes = await new Promise((res) => { c.onclose = () => res(c.returnValue === 'ok'); });
     if (!yes) return;
@@ -204,7 +204,7 @@
       const charge = new Date(Date.now() + 7 * 864e5).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
       result({ tone: 'success', kicker: w.trial ? 'Free trial started' : 'Payment confirmed', title: 'Welcome to Healthcare Crown', text: `You now have ${w.name}.`,
         steps: [w.trial ? `Everything is unlocked now. Your first payment is on ${charge}, unless you cancel before then.` : 'Your access switches on within a minute. If a page still looks locked, refresh it once.',
-          w.trial ? 'Cancel any time with “Stop renewal or update card” on this page.' : 'Stripe has emailed you a receipt.', 'Changed your mind? Full refund within 3 days, or the unused part within 14 days, with “Cancel and get a refund” on this page.'],
+          w.trial ? 'Cancel any time with “Stop renewal or update card” on this page.' : 'Stripe has emailed you a receipt.', 'Changed your mind? Full refund within 14 days, with “Cancel and get a refund” on this page.'],
         go: w.go, cta: w.cta });
     }
     if (q.get('checkout') === 'cancelled') msg('Checkout was cancelled. Nothing was charged.', 'info');
