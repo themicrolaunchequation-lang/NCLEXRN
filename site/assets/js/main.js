@@ -128,7 +128,16 @@
         who.querySelectorAll('[data-who-i]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
         say.innerHTML = lines[+b.dataset.whoI].innerHTML;
         say.classList.remove('is-swap'); void say.offsetWidth; say.classList.add('is-swap');
+        place(b);
       }));
+      // A gold pill slides behind the chosen role.
+      const tabs = who.querySelector('[data-who-tabs]'), pill = who.querySelector('[data-who-pill]');
+      const place = (b) => { if (!pill || !b) return; pill.style.width = `${b.offsetWidth}px`; pill.style.transform = `translateX(${b.offsetLeft}px)`;
+        if (tabs.scrollWidth > tabs.clientWidth) tabs.scrollTo({ left: b.offsetLeft - (tabs.clientWidth - b.offsetWidth) / 2, behavior: reduceMotion.matches ? 'auto' : 'smooth' }); };
+      const current = () => who.querySelector('[data-who-i][aria-pressed="true"]');
+      requestAnimationFrame(() => place(current()));
+      if (document.fonts) document.fonts.ready.then(() => place(current()));
+      window.addEventListener('resize', () => place(current()));
     }
     const apps = [...hero.querySelectorAll('.hx-app')];
     apps.forEach((a) => {

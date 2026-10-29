@@ -1112,3 +1112,40 @@ input[aria-invalid="true"]{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67
 .site-header.is-scrolled .bc-star,.site-header.is-scrolled .bc-glow{display:none}
 @media (max-width:640px){.brand-crown{width:38px;height:42px}.brand .brand-mark{width:36px;height:36px}.brand-name{font-size:1.04rem}}
 @media (prefers-reduced-motion:reduce){.brand .brand-mark,.bc-glow,.bc-star,.brand .brand-mark circle{animation:none!important}.bc-star{display:none}}
+
+/* ---------- Hero, 29 Oct: new headline, one-line role picker, living underline ---------- */
+.hx-title{max-width:none}
+.hx-title .hx-l{display:block}
+.hx-lede{max-width:52ch;font-size:clamp(1.02rem,.94rem + .35vw,1.2rem);color:#C9D3DF;animation:fade-up .8s .6s var(--ease-out) both}
+/* the gold line under "Earn your crown." draws in, then a light runs along it and it breathes */
+.hx-gold::after{height:.075em;bottom:-.08em;background:linear-gradient(90deg,transparent 0,rgba(233,211,160,.55) 12%,#E9D3A0 30%,#FFF6DA 50%,#E9D3A0 70%,rgba(233,211,160,.55) 88%,transparent 100%);background-size:200% 100%;animation:hx-line 1.1s 1.1s var(--ease-out) forwards,hx-run 3.2s 2.2s linear infinite,hx-breathe 3.2s 2.2s ease-in-out infinite}
+.hx-gold::before{content:"";position:absolute;bottom:-.115em;left:0;width:.16em;height:.16em;border-radius:50%;background:#FFF6DA;box-shadow:0 0 10px 3px rgba(255,230,160,.85),0 0 24px 8px rgba(233,193,112,.45);opacity:0;animation:hx-spark-run 3.2s 2.2s ease-in-out infinite}
+@keyframes hx-run{from{background-position:200% 0}to{background-position:0 0}}
+@keyframes hx-breathe{0%,100%{filter:drop-shadow(0 0 2px rgba(233,193,112,.35))}50%{filter:drop-shadow(0 0 9px rgba(233,193,112,.9))}}
+@keyframes hx-spark-run{0%{left:4%;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:94%;opacity:0}}
+/* role picker: one line, sliding gold pill */
+.hx-who{margin-top:2px}
+.hx-who-k{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#9AA8B8}
+.hx-tabs{position:relative;flex-wrap:nowrap!important;width:max-content;max-width:none;padding:5px;gap:2px;border-radius:999px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 50px -24px rgba(0,0,0,.8)}
+.hx-tabs button{position:relative;z-index:1;border-radius:999px;padding:9px 15px;font-size:.88rem;font-weight:500;transition:color .3s}
+.hx-tabs button[aria-pressed="true"]{background:transparent;color:#10253a;font-weight:600}
+.hx-pill{position:absolute;z-index:0;top:5px;bottom:5px;left:0;width:0;border-radius:999px;background:linear-gradient(180deg,#F3DFAE,#E2C07A);box-shadow:0 6px 20px -6px rgba(233,193,112,.8);transition:transform .45s var(--ease-out),width .45s var(--ease-out)}
+.hx-say{font-size:1.02rem;max-width:66ch;min-height:3em}
+.hx-pass-btn span{font-weight:500;opacity:.8;margin-left:.3em}
+.hx-grow{display:inline-flex;align-items:center;gap:8px;margin:0;padding:6px 14px;border-radius:999px;font-size:.84rem;color:#C9D3DF;background:rgba(111,211,176,.07);border:1px solid rgba(111,211,176,.25);animation:fade-up .8s 1.05s var(--ease-out) both}
+.hx-spark{color:#8FE3C4;display:inline-block;animation:hx-twirl 3.5s ease-in-out infinite}
+@keyframes hx-twirl{0%,100%{transform:scale(1) rotate(0);opacity:1}50%{transform:scale(1.35) rotate(90deg);opacity:.6}}
+@media (max-width:1040px){.hx-tabs{width:calc(100% + 32px)!important;margin-inline:-16px;border-radius:0;border-inline:0;overflow-x:auto;scrollbar-width:none;justify-content:flex-start}.hx-tabs::-webkit-scrollbar{display:none}.hx-tabs button{flex:none}}
+@media (max-width:640px){.hx-title .hx-l{display:inline}.hx-grow{font-size:.78rem;text-align:left}}
+/* logo, larger */
+.brand-crown{width:56px;height:60px}
+.brand .brand-mark{width:54px;height:54px}
+.brand-name{font-size:1.42rem}
+.brand-sub{font-size:.7rem;margin-top:5px}
+.bc-glow{left:12px;right:12px}
+@media (max-width:640px){.brand-crown{width:44px;height:48px}.brand .brand-mark{width:42px;height:42px}.brand-name{font-size:1.12rem}.brand-sub{font-size:.6rem}}
+@media (prefers-reduced-motion:reduce){.hx-gold::after{animation:none!important;transform:none}.hx-gold::before,.hx-spark,.hx-grow,.hx-lede{animation:none!important}.hx-gold::before{display:none}.hx-pill{transition:none}}
+.hx-title .hx-gold{display:table;margin-inline:auto}
+.hx-lede{margin-top:10px}
+@media (max-width:640px){.hx-title .hx-l{display:block}.hx-title .hx-gold{display:table}.hx-title{font-size:clamp(1.8rem,8.2vw,2.5rem)}}
+@media (max-width:380px){.brand-crown{width:38px;height:44px}.brand .brand-mark{width:36px;height:36px}.brand-name{font-size:1rem}.brand{gap:8px}}
