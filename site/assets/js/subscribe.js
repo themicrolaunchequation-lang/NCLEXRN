@@ -132,8 +132,9 @@
       fine: `Refunded on ${when}. Questions? themicrolaunchequation@gmail.com` });
   }
 
+  let prelaunch = false;
   async function buy(btn, plan) {
-    if (!window.HCA) return;
+    if (!window.HCA || (prelaunch && plan !== 'manage')) return;
     if (plan !== 'manage' && !(await consent())) return;
     const label = btn.innerHTML;
     btn.disabled = true; btn.textContent = 'Opening secure checkout…'; msg('');
@@ -211,7 +212,18 @@
     if (q.get('checkout')) history.replaceState(null, '', location.pathname + location.hash);
     try {
       const s = await (await fetch(`${SUPABASE}/functions/v1/crown-billing`, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: '{"action":"status"}' })).json();
-      $('[data-sub-mode]').hidden = !(s.configured && !s.livemode);
+      if (s.configured && !s.livemode) {
+        // Payments are not live yet. Only the owner and approved testers see the test checkout.
+        const e = window.HCA ? await HCA.ready.catch(() => null) : null;
+        const box = $('[data-sub-mode]');
+        if (e && (e.admin || e.tester)) { box.hidden = false; }
+        else {
+          prelaunch = true;
+          box.innerHTML = '<b>Paid plans open very soon.</b> Everything free is open now: start free, no card needed.';
+          box.classList.remove('sp-test'); box.classList.add('sp-soon'); box.hidden = false;
+          $$('[data-buy-crown],[data-buy-gulf]').forEach((x) => { x.disabled = true; x.textContent = 'Opening soon'; });
+        }
+      }
     } catch { /* informational only */ }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
