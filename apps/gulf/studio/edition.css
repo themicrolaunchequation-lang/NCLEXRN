@@ -753,3 +753,16 @@ body.gulf-slide-on{overflow:hidden}
 :root[data-gulf-std] .mock-launch-panel *,:root[data-gulf-std] .mock-length-display strong{-webkit-text-fill-color:#14243a!important}:root[data-gulf-std] .mock-launch-panel button *,:root[data-gulf-std] .mock-launch-panel button{-webkit-text-fill-color:#fff!important}
 
 .gl-price{display:block;margin:6px 0 2px;font:600 .82rem/1.4 Studio,system-ui,sans-serif;color:var(--ac-ink,#12233a)}
+
+/* Question bank: questions after the free 10 are locked for people without a Gulf Pass */
+.gulf-locked>:not(.gulf-lockbox){display:none!important}
+.gulf-lockbox,.gs-locked{max-width:620px;margin:8px auto;padding:26px;border-radius:18px;background:#0B2232;color:#E9F3F8;border:1px solid rgba(148,213,240,.35);text-align:center;font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.gulf-lock-k{margin:0 0 6px;color:#E8C170;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+.gulf-lock-h{margin:0 0 8px;font:600 21px/1.3 Georgia,serif;color:#fff}
+.gulf-lockbox p,.gs-locked p{margin:0 0 12px;color:#B9CCD8}
+.gulf-lock-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0 0!important}
+.gulf-lock-go{display:inline-block;padding:11px 18px;border-radius:12px;background:#E8C170;color:#0B2232!important;font-weight:700;text-decoration:none}
+.gulf-lock-in{padding:11px 18px;border-radius:12px;background:none;border:1px solid rgba(148,213,240,.5);color:#E9F3F8;font:inherit;cursor:pointer}
+.gs-locked{margin-top:40px}
+.gulf-lockbox .gulf-lock-in,.gs-locked .gulf-lock-in{background:transparent!important;color:#E9F3F8!important;border:1px solid rgba(148,213,240,.55)!important;box-shadow:none!important}
+.gulf-lockbox .gulf-lock-go,.gs-locked .gulf-lock-go{background:#E8C170!important;color:#0B2232!important}

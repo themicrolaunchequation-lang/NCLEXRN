@@ -152,8 +152,20 @@
   var f=document.querySelector('.filters');if(f)f.addEventListener('input',function(){setTimeout(function(){apply(false)},0)});
  }
  function pageInfo(){var t=($('#position')||{}).textContent||'';var m=t.match(/(\d+)\s+of\s+(\d+)/);return m?[+m[1],+m[2]]:[1,1]}
+ // Free tier: questions 1 to 10 of the bank, by question number. Everything after needs a Gulf Pass (or admin).
+ // GULF_ACCESS comes from gate.js; until it answers, only the free questions show (fail closed).
+ function qnum(a){var m=qid(a).match(/(\d+)/);return m?+m[1]:0}
+ function allowed(a){var n=qnum(a);return window.GULF_ACCESS?window.GULF_ACCESS.ok(n):n>0&&n<=10}
+ function lock(a){
+  if(lib!=='questions')return;
+  var off=!allowed(a);a.classList.toggle('gulf-locked',off);
+  if(off&&!a.querySelector('.gulf-lockbox')){var x=document.createElement('div');x.className='gulf-lockbox';
+   x.innerHTML='<p class="gulf-lock-k">Gulf Pass</p><p class="gulf-lock-h">'+esc(noun)+' '+qnum(a)+' is part of the Gulf Pass</p><p>Questions 1 to 10 are free. The Gulf Pass unlocks all 1,297 questions, with the reasoning, mock exams and clinical tools, for all four Gulf exams.</p>'+
+   '<p class="gulf-lock-row"><a class="gulf-lock-go" href="'+esc(window.GULF_ACCESS?window.GULF_ACCESS.buy():'https://healthcarecrownacademy.co.uk/subscribe?plan=gulf')+'">See the Gulf Pass</a><button type="button" class="gulf-lock-in" data-gulf-signin>I already have a pass</button></p>';
+   a.append(x)}
+ }
  function apply(scroll){
-  build();var cs=cards();cs.forEach(enhance);
+  build();var cs=cards();cs.forEach(function(a){enhance(a);lock(a)});
   body.classList.toggle('gulf-one',mode==='one');body.classList.toggle('gulf-fclosed',mode==='one'&&!filtersOpen);
   if(!bar)return;bar.querySelectorAll('[data-v]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.v===mode))});
   bar.querySelectorAll('[data-r]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.r===review))});
@@ -176,7 +188,9 @@
   var b=$(d>0?'#next':'#previous');if(b&&!b.disabled){go=d>0?'first':'last';b.click()}
  }
  new MutationObserver(function(ms){if(ms.every(function(m){return bar&&bar.contains(m.target)||m.target.closest&&m.target.closest('article,.gulf-slide')}))return;var cs=cards();if(go&&cs.length){idx=go==='first'?0:cs.length-1;go=null;apply(true)}else if(!cs.length||!cs[idx]||!cs[idx].classList.contains('gulf-cur')){idx=0;apply(false)}else apply(false)}).observe(body,{childList:true,subtree:true});
- window.GULF_LIB={setReview:function(r){setReview(r)},review:function(){return review},counts:counts,cards:cards,qid:qid,index:function(){return idx},step:step,mark:mark,unmark:unmark,state:function(){return st},save:save,score:score,paintStar:paintStar,pageInfo:pageInfo,noun:noun,lib:lib,edition:ed,apply:apply,
+ document.addEventListener('click',function(e){if(e.target.closest('[data-gulf-signin]')&&window.HCA)HCA.signIn()});
+ window.addEventListener('gulf-access',function(){apply(false)});
+ window.GULF_LIB={locked:function(a){return !!(a&&a.classList.contains('gulf-locked'))},setReview:function(r){setReview(r)},review:function(){return review},counts:counts,cards:cards,qid:qid,index:function(){return idx},step:step,mark:mark,unmark:unmark,state:function(){return st},save:save,score:score,paintStar:paintStar,pageInfo:pageInfo,noun:noun,lib:lib,edition:ed,apply:apply,
   total:function(){var tm=(($('#count')||{}).textContent||'').match(/(\d+)\s+of/);return tm?+tm[1]:cards().length},
   go:function(i){var cs=cards();if(i>=0&&i<cs.length){idx=i;apply(false)}},
   onChange:null};

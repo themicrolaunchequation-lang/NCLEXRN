@@ -114,6 +114,9 @@
  function render(keepTimer){
   var a=L.cards()[L.index()];if(!a){qwrap.innerHTML='<p class="gs-empty">No '+L.noun.toLowerCase()+'s match. Change or reset the filters above.</p>';apane.innerHTML='';strip.innerHTML='';posEl.textContent='No matches';syncFilters();return}
   var id=L.qid(a);if(id!==cur){cur=id;keepTimer=false}
+  if(L.locked&&L.locked(a)){var lb=a.querySelector('.gulf-lockbox');qwrap.innerHTML='<div class="gs-locked">'+(lb?lb.innerHTML:'')+'</div>';apane.classList.remove('is-revealed');apane.innerHTML='';var pl=L.pageInfo(),nl=(pl[0]-1)*20+L.index()+1;posEl.textContent=L.noun+' '+nl+' of '+L.total();syncFilters();
+   var st0=L.state();strip.innerHTML=L.cards().map(function(c,i){return '<button type="button" data-i="'+i+'" class="gs-dot'+(i===L.index()?' is-cur':'')+'"'+(i===L.index()?' aria-current="true"':'')+'>'+((pl[0]-1)*20+i+1)+'</button>'}).join('')+'<span class="gs-page">Page '+pl[0]+' of '+pl[1]+'</span>';
+   root.querySelector('[data-nav="-1"]').disabled=L.index()===0&&pl[0]===1;root.querySelector('[data-nav="1"]').disabled=L.index()===L.cards().length-1&&pl[0]===pl[1];return}
   var meta=a.querySelector('p'),h2=a.querySelector('h2'),lis=[].slice.call(a.querySelectorAll('ol>li')),picked=a.dataset.picked,right=a.dataset.right,r=rec(id);
   var metaTxt=meta?meta.textContent.replace(/[★☆]/g,'').trim():'';
   qwrap.innerHTML='<p class="gs-meta">'+esc(metaTxt)+'</p><h2 class="gs-stem">'+esc(h2?h2.textContent:'')+'</h2><ol class="gs-opts">'+lis.map(function(li){var l=li.dataset.letter||'',x=r.x.indexOf(l)>-1,cls='gs-opt'+(x?' is-x':'')+(picked&&l===right?' is-right':'')+(picked&&l===picked&&l!==right?' is-wrong':'');
@@ -140,7 +143,7 @@
   else if(/^[1-5]$/.test(k)){setTool(['pen','highlighter','marker','eraser','note'][+k-1]);e.preventDefault()}
   else if(k==='0'){setTool('none')}
   else if(k==='s'){starBtn.click();e.preventDefault()}
-  else if(/^[a-e]$/.test(k)){var a=L.cards()[L.index()];if(a&&a.querySelector('li[data-letter="'+k.toUpperCase()+'"]')){L.mark(a,k.toUpperCase());e.preventDefault()}}
+  else if(/^[a-e]$/.test(k)){var a=L.cards()[L.index()];if(a&&!(L.locked&&L.locked(a))&&a.querySelector('li[data-letter="'+k.toUpperCase()+'"]')){L.mark(a,k.toUpperCase());e.preventDefault()}}
   else if(e.key===' '&&!(t&&t.closest&&t.closest('button,summary'))){var d=apane.querySelector('details');if(d){d.open=!d.open;apane.classList.add('is-revealed');e.preventDefault()}}
  }
  var lastFocus=null;

@@ -1,5 +1,5 @@
 /* Gulf Region exam passes: what is free and what needs a pass.
-   Free for everyone: Today, the exam guide, the glossary, comparing exams and 10 questions per exam.
+   Free for everyone: Today, the exam guide, the glossary, comparing exams and questions 1 to 10 of the question bank.
    With the Gulf Pass (all four exams plus the Crown Pass; US$29 for 1 month, US$50 for 3 or US$69 for 6), or an older one-exam pass: the full question bank, mock exams, clinical tools,
    dossiers, labs and progress. Admins see everything. Uses window.HCA from crown-account.js. */
 (function(){
@@ -34,12 +34,10 @@
   if(lib){if(mode==='dossiers'||mode==='tools')show('Included with the exam pass');return}
   if(PAID.indexOf(location.hash.split('?')[0])>=0)show('Included with the exam pass');else hide();
  }
- // Question bank: 10 free answers per exam, then the pass.
- function answered(){var k='gulf-free-q-'+exam(),n=+(store(k)||0)+1;store(k,String(n));if(n>FREE_Q&&!unlocked(ent,exam())&&window.HCA&&HCA.gatesOn)show('You have used your 10 free questions')}
- if(lib&&mode==='questions'){
-  document.addEventListener('click',function(e){if(e.target.closest('[data-letter]'))answered()},true);
-  document.addEventListener('keydown',function(e){if(/^[a-eA-E]$/.test(e.key)&&!/input|textarea/i.test((e.target.tagName||'')))answered()},true);
- }
- var tries=0;(function wait(){if(window.HCA&&HCA.ready){HCA.ready.then(function(e){ent=e;check();if(lib&&mode==='questions'&&+(store('gulf-free-q-'+exam())||0)>=FREE_Q&&!unlocked(e,exam())&&HCA.gatesOn)show('You have used your 10 free questions')});return}if(++tries<60)setTimeout(wait,200)})();
+ // Question bank: questions 1 to 10 are free; data.js and slides.js lock the rest using this.
+ var FREE_N=10;
+ window.GULF_ACCESS={ok:function(n){if(!window.HCA||!HCA.gatesOn)return !window.HCA?(n>0&&n<=FREE_N):true;if(ent&&unlocked(ent,exam()))return true;return n>0&&n<=FREE_N},
+  buy:function(){return 'https://healthcarecrownacademy.co.uk/subscribe?exam='+exam()}};
+ var tries=0;(function wait(){if(window.HCA&&HCA.ready){HCA.ready.then(function(e){ent=e;check();try{window.dispatchEvent(new Event('gulf-access'))}catch(x){}});return}if(++tries<60)setTimeout(wait,200)})();
  window.addEventListener('hashchange',function(){if(ent!==null)check()});
 })();
