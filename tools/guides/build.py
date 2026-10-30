@@ -8,6 +8,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 SITE = os.path.join(ROOT, 'site'); BASE = 'https://healthcarecrownacademy.co.uk'
 E = lambda s: html.escape(str(s), quote=True)
 URLS = []
+import shutil
+for d in ('guides/medical-word-parts', 'guides/gulf', 'guides/carecraft', 'guides/serein', 'guides/study', 'tools'):
+    shutil.rmtree(os.path.join(SITE, d), ignore_errors=True)
+for f_ in glob.glob(os.path.join(SITE, 'guides', '*.html')) + [os.path.join(SITE, 'guides.html')]:
+    if os.path.exists(f_): os.remove(f_)
 
 tpl = open(os.path.join(SITE, 'refunds.html'), encoding='utf-8').read()
 HEAD = tpl[:tpl.index('<title>')]
@@ -15,7 +20,7 @@ THEME = re.search(r'<meta name="theme-color".*?<script src="/assets/js/page.js" 
 HEADER = tpl[tpl.index('<body'):tpl.index('<main')]
 FOOTER = tpl[tpl.index('</main>') + len('</main>'):]
 
-def page(path, title, desc, body, crumbs, ld=None):
+def page(path, title, desc, body, crumbs, ld=None, wide=False):
     url = BASE + path
     lds = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + u} for i, (n, u) in enumerate(crumbs + [(title.split(' | ')[0], path)])]}]
@@ -25,12 +30,12 @@ def page(path, title, desc, body, crumbs, ld=None):
            f'<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="article">\n'
            + THEME + '\n<link rel="stylesheet" href="/guides/guides.css">\n<script src="/guides/guides.js" defer></script>\n'
            + ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in lds)
-           + '</head>\n' + HEADER + '<main id="main" class="section">\n  <article class="container prose g-wrap">\n'
+           + '</head>\n' + HEADER + '<main id="main" class="section">\n  <article class="container prose ' + ('g-hub' if wide else 'g-wrap') + '">\n'
            + f'<nav class="g-crumbs" aria-label="Breadcrumb">{cr}</nav>\n' + body + '\n  </article>\n</main>' + FOOTER)
     f = os.path.join(SITE, path.strip('/') + '.html')
     os.makedirs(os.path.dirname(f), exist_ok=True); open(f, 'w', encoding='utf-8').write(out); URLS.append(path)
 
-SHOT = lambda name, cap, href: (f'<figure class="g-shot"><a href="{href}"><img src="/assets/img/tour/{name}.webp" width="1200" height="750" loading="lazy" alt="{E(cap)}"></a>'
+SHOT = lambda name, cap, href: (f'<figure class="g-shot"><a href="{href}"><img src="/guides/img/{name}.webp" loading="lazy" alt="{E(cap)}"></a>'
                                 f'<figcaption><b>Inside the app.</b> {E(cap)}</figcaption></figure>')
 def cta(title, text, href, label, alt=None, img=None):
     a = f'<a class="g-alt" href="{alt[0]}">{E(alt[1])}</a>' if alt else ''
@@ -76,93 +81,109 @@ def words_for(p):
             if ok: hits.append(g); break
     return hits[:8]
 
-random.seed(7)
-order = sorted(parts, key=lambda k: (parts[k]['kind'], parts[k]['form'].lower()))
-for i, slug in enumerate(order):
-    p = parts[slug]; kind = NAME[p['kind']]
-    same = [k for k in order if parts[k]['kind'] == p['kind'] and k != slug]
-    near = [order[(i + d) % len(order)] for d in (1, 2, 3, 4, -1, -2)]
-    near = [k for k in near if parts[k]['kind'] == p['kind']][:4] or same[:4]
-    words = words_for(p)
-    def q(target):
-        t = parts[target]; wrong = random.sample([parts[k]['meaning'] for k in same if parts[k]['meaning'] != t['meaning']], 3)
-        opts = wrong + [t['meaning']]; random.shuffle(opts)
-        btn = ''.join(f'<button type="button"{" data-ok" if o == t["meaning"] else ""}>{E(o)}</button>' for o in opts)
-        return f'<div class="g-q"><p>What does {E(t["form"])} mean?</p>{btn}<div class="g-why" hidden>{E(t["form"])} means {E(t["meaning"])}.' + (f' Example: {E(t["example"])}.' if t['example'] else '') + '</div></div>'
-    ex = f' A common example is <b>{E(p["example"])}</b>.' if p['example'] else ''
-    wl = ''.join(f'<li><b>{E(g["term"])}</b>: {E(g["plain"])}</li>' for g in words)
-    body = (f'<p class="eyebrow">Medical {kind}</p>\n<h1 class="section-title">{E(p["form"])} meaning</h1>\n'
-            f'<p class="g-lead">The medical {kind} <b>{E(p["form"])}</b> means <b>{E(p["meaning"])}</b>.{ex}</p>\n'
-            + (f'<h2>Words that use {E(p["form"])}</h2><ul>{wl}</ul>' if words else '')
-            + '<h2>How to decode a medical word</h2><p>Split the word into its parts: a prefix at the front, a root in the middle and a suffix at the end. Read the suffix first, then the prefix, then the root. Learn each part once and you can read many new words.</p>'
-            + f'<h2>Quick check</h2><p>Five questions. Tap an answer to see if you are right.</p><div class="g-quiz">{q(slug)}{"".join(q(k) for k in near)}</div><p class="g-score" aria-live="polite"></p>'
-            + '<h2>Related word parts</h2><ul class="g-grid">' + ''.join(f'<li><a href="/guides/medical-word-parts/{k}">{E(parts[k]["form"])}<small>{E(parts[k]["meaning"])}</small></a></li>' for k in near) + '</ul>'
-            + cta('Learn medical words by their parts', 'MedLex teaches 1,480 terms in 26 body-system modules, with spaced practice. The starter lessons are free, with no card.', 'https://medlex.healthcarecrownacademy.co.uk/', 'Start MedLex free', ('/guides/medical-word-parts', 'All word parts'), img=('mx-term', 'MedLex splits every word into colour-coded parts, then gives the clinical meaning.')))
-    ld = {"@context": "https://schema.org", "@type": "DefinedTerm", "name": p['form'], "description": f'Medical {kind} meaning {p["meaning"]}', "inDefinedTermSet": BASE + '/guides/medical-word-parts'}
-    page(f'/guides/medical-word-parts/{slug}', f'{p["form"]} meaning: medical {kind} explained | MedLex',
-         f'{p["form"]} is a medical {kind} meaning {p["meaning"]}. See example words and test yourself with a free 5-question check.',
-         body, [('Guides', '/guides'), ('Medical word parts', '/guides/medical-word-parts')], ld)
-
-def grid(kind):
-    ks = [k for k in order if parts[k]['kind'] == kind]
-    return f'<ul class="g-grid">' + ''.join(f'<li data-f="{E((parts[k]["form"] + " " + parts[k]["meaning"]).lower())}"><a href="/guides/medical-word-parts/{k}">{E(parts[k]["form"])}<small>{E(parts[k]["meaning"])}</small></a></li>' for k in ks) + '</ul>', len(ks)
-gp, np_ = grid('prefix'); gsx, ns = grid('suffix'); gr, nr = grid('root')
-page('/guides/medical-word-parts', 'Medical prefixes, suffixes and roots: meanings A to Z | MedLex',
-     f'Free list of {np_} medical prefixes, {ns} suffixes and {nr} combining forms with meanings and examples. Search the list and test yourself.',
+# One curated A-Z page (no thin per-part pages). Only clear, self-contained meanings are kept.
+BAD = ('spelling', 'corresponding', 'assimilated', 'sometimes', 'depends', 'form of', 'variant', 'before a vowel', ' or -', '/')
+def ok(p): return len(p['meaning']) <= 48 and not any(b in p['meaning'].lower() for b in BAD) and len(p['form']) <= 18
+def tidy(m):
+    m = m.split(';')[0].replace(', depending on context', '').strip().rstrip(',')
+    return m[0].upper() + m[1:]
+BAD = BAD + ('form used',)
+CLEAN = {k: dict(v, meaning=tidy(v['meaning'])) for k, v in parts.items() if ok(v)}
+# Drop a single root when a combined entry already lists it (for example dermat/o inside derm/o · dermat/o).
+combined = {f.strip() for v in CLEAN.values() if v['kind'] == 'root' and '·' in v['form'] for f in v['form'].split('·')}
+CLEAN = {k: v for k, v in CLEAN.items() if not (v['kind'] == 'root' and '·' not in v['form'] and v['form'].strip() in combined)}
+order = sorted(CLEAN, key=lambda k: (CLEAN[k]['kind'], CLEAN[k]['form'].strip('-').lower()))
+random.seed(11)
+def quizq(k, pool):
+    t = CLEAN[k]; wrong = random.sample([CLEAN[x]['meaning'] for x in pool if CLEAN[x]['meaning'] != t['meaning']], 3)
+    opts = wrong + [t['meaning']]; random.shuffle(opts)
+    return (f'<div class="g-q"><p>What does {E(t["form"])} mean?</p>' + ''.join(f'<button type="button"{" data-ok" if o == t["meaning"] else ""}>{E(o)}</button>' for o in opts)
+            + f'<div class="g-why" hidden>{E(t["form"])} means {E(t["meaning"].lower())}' + (f', as in {E(t["example"])}.' if t['example'] else '.') + '</div></div>')
+COMMON = ['cardi-o-combining-form', 'itis-suffix', 'tachy-prefix', 'brady-prefix', 'ectomy-suffix', 'hepat-o-combining-form', 'hyper-prefix', 'algia-suffix', 'nephr-o-combining-form', 'scopy-suffix']
+quiz_keys = [k for k in COMMON if k in CLEAN][:8]
+for k in order:
+    if len(quiz_keys) >= 8: break
+    if k not in quiz_keys: quiz_keys.append(k)
+def group(kind):
+    ks = [k for k in order if CLEAN[k]['kind'] == kind]
+    return ('<ul class="g-dict">' + ''.join(
+        f'<li id="{k}" data-f="{E((CLEAN[k]["form"] + " " + CLEAN[k]["meaning"] + " " + CLEAN[k]["example"]).lower())}"><b>{E(CLEAN[k]["form"])}</b><span>{E(CLEAN[k]["meaning"])}</span>'
+        + (f'<i>{E(CLEAN[k]["example"])}</i>' if CLEAN[k]['example'] else '') + '</li>' for k in ks) + '</ul>', len(ks))
+gp, np_ = group('prefix'); gsx, ns = group('suffix'); gr, nr = group('root')
+page('/guides/medical-word-parts', 'Medical prefixes, suffixes and roots: meanings and examples | MedLex',
+     f'{np_} medical prefixes, {ns} suffixes and {nr} combining forms with plain meanings and examples, plus a free quick check. From the MedLex course.',
      '<p class="eyebrow">MedLex guide</p><h1 class="section-title">Medical prefixes, suffixes and roots</h1>'
-     f'<p class="g-lead">Most medical words are built from a few parts. Learn the parts and you can read words you have never seen. This free list has {np_} prefixes, {ns} suffixes and {nr} combining forms, each with a meaning and a quick check.</p>'
-     '<input class="g-filter" type="search" placeholder="Search, for example cardi or inflammation" aria-label="Search word parts">'
-     f'<h2>Prefixes</h2>{gp}<h2>Suffixes</h2>{gsx}<h2>Combining forms</h2>{gr}'
-     + cta('Practise them every day', 'MedLex turns these parts into short lessons and spaced practice. Free to start.', 'https://medlex.healthcarecrownacademy.co.uk/', 'Start MedLex free', img=('mx-hook', 'Tap peri, card and itis, and pericarditis explains itself.')),
+     '<p class="g-lead">Most medical words are built from a few small parts. Learn the parts once and you can read words you have never seen before.</p>'
+     '<div class="g-break" aria-label="Example"><span><b>tachy</b> fast</span><span>+</span><span><b>card</b> heart</span><span>+</span><span><b>ia</b> condition</span><span>=</span><span><b>tachycardia</b>: a fast heart rate</span></div>'
+     '<h2>Quick check: 8 common parts</h2><p>Tap an answer to see if you are right.</p><div class="g-quiz">' + ''.join(quizq(k, order) for k in quiz_keys) + '</div><p class="g-score" aria-live="polite"></p>'
+     f'<h2>Find a word part</h2><input class="g-filter" type="search" placeholder="Try cardi, kidney or inflammation" aria-label="Search word parts">'
+     '<p class="g-note">UK and US English spell some parts differently, for example -aemia and -emia, or haemat/o and hemat/o. Both mean the same.</p>'
+     f'<h2>Prefixes <small class="g-count">{np_}</small></h2><p>A prefix sits at the front and changes the meaning: where, how much, how fast.</p>{gp}'
+     f'<h2>Suffixes <small class="g-count">{ns}</small></h2><p>A suffix sits at the end and tells you the kind of word: a condition, a procedure, a test.</p>{gsx}'
+     f'<h2>Combining forms <small class="g-count">{nr}</small></h2><p>A combining form is the root plus a linking vowel. It names the body part or idea.</p>{gr}'
+     + cta('Learn them for good', 'MedLex teaches 1,480 terms in 26 body-system modules, with short daily practice. The starter lessons are free, with no card.', 'https://medlex.healthcarecrownacademy.co.uk/', 'Start MedLex free', img=('mx-term', 'MedLex shows every word as colour-coded parts, with the plain meaning and the clinical definition.')),
      [('Guides', '/guides')])
 
 # ---------------- Gulf exam guides ----------------
 G = json.load(open(os.path.join(ROOT, 'tools/guides/gulf-profiles.json'), encoding='utf-8'))
-P, RN = G['PROFILES'], G['RETAKE_NOTES']
-META = {'snle': ('saudi', 'saudi-snle-nursing-exam', 'Saudi SNLE nursing exam', 'Saudi Arabia'),
-        'qatar': ('qatar', 'qatar-dhp-nursing-exam', 'Qatar DHP nursing exam', 'Qatar'),
-        'dubai': ('dubai', 'dubai-dha-nursing-exam', 'Dubai DHA nursing exam', 'Dubai'),
-        'abudhabi': ('abudhabi', 'abu-dhabi-doh-nursing-exam', 'Abu Dhabi DOH nursing exam', 'Abu Dhabi')}
-hrs = lambda m: f'{m // 60} hours' + (f' {m % 60} minutes' if m % 60 else '')
-STUDY = ['Day 1: read the official guide and note the topics, time and rules.', 'Day 2: do 30 mixed practice questions and list your weak topics.',
-         'Day 3: study your two weakest topics, then answer 30 questions on them.', 'Day 4: priority and safety questions: airway, breathing, circulation, then risk.',
-         'Day 5: a timed block of questions at exam pace. Review every miss and why.', 'Day 6: a full mock if one is available, or two timed blocks. Review again.',
-         'Day 7: light review only. Check your ID, booking and test-centre rules. Sleep.']
+P = G['PROFILES']
+# Customer-facing wording, written from the verified exam profiles (tools/guides/gulf-profiles.json). Where official
+# documents disagree or say nothing, we say so plainly and point to the regulator.
+EX = {
+ 'snle': dict(ex='saudi', slug='saudi-snle-nursing-exam', short='Saudi SNLE', place='Saudi Arabia',
+   time='4 hours', timeNote='Two blocks of 100 questions, 120 minutes each, with a break between them.',
+   pass_='500', passNote='A scaled score of 500, on a scale from 200 to 800. It is not a percentage.',
+   attempts='The SCFHS applicant guide describes up to four attempts a year, but other SCFHS pages describe the limits differently. Check your own allowance with SCFHS before you book.'),
+ 'qatar': dict(ex='qatar', slug='qatar-dhp-nursing-exam', short='Qatar DHP', place='Qatar',
+   time='3 hours', timeNote='The current DHP exam page lists 3 hours. An older official blueprint says 3½ hours, so confirm the time when you book.',
+   pass_='50%', passNote='DHP publishes 50% as the minimum score.',
+   attempts='DHP documents describe up to five attempts for nurses. Confirm with DHP before you book.'),
+ 'dubai': dict(ex='dubai', slug='dubai-dha-nursing-exam', short='Dubai DHA', place='Dubai',
+   time='3 hours', timeNote='The 3 hours includes registration and the introduction, so the question time is a little shorter.',
+   pass_='50%', passNote='DHA publishes 50% as the pass mark. Results are reported as pass or fail.',
+   attempts='Across UAE health authorities you generally have three attempts. A fourth needs permission, and after a third failure there can be a wait before trying again. Confirm with DHA.'),
+ 'abudhabi': dict(ex='abudhabi', slug='abu-dhabi-doh-nursing-exam', short='Abu Dhabi DOH', place='Abu Dhabi',
+   time='3 hours', timeNote='A 2024 DOH circular describes the Registered Nurse exam as 150 multiple-choice questions over 3 hours.',
+   pass_='Ask DOH', passNote='DOH has not published the pass mark in the documents we checked. Ask DOH when you book.',
+   attempts='UAE-wide rules generally allow three attempts, with a possible final attempt subject to approval. Confirm with DOH.'),
+}
+STUDY = [('Day 1', 'Read the official guide. Note the topics, the time and the rules.'), ('Day 2', 'Answer 30 mixed questions. List your weakest topics.'),
+         ('Day 3', 'Study your two weakest topics, then answer 30 questions on them.'), ('Day 4', 'Priority and safety: airway, breathing, circulation, then risk.'),
+         ('Day 5', 'Answer a timed block at exam pace. Review every miss and why.'), ('Day 6', 'Take a full mock, or two timed blocks, and review again.'),
+         ('Day 7', 'Light review only. Check your ID, booking and test-centre rules, then sleep.')]
 def gulf_page(k):
-    p = P[k]; ex, slug, short, place = META[k]
-    rows = [('Regulator', p['regulator']), ('Questions', p['questions']), ('Time', hrs(p['minutes']) + (' (two 120-minute blocks with a break)' if p.get('blocks') else '')), ('Pass standard', p['pass'])]
-    dom = [d for d in p['domains']]
-    known = all(d['count'] for d in dom)
-    dtable = ('<div class="g-scroll"><table class="g-table"><thead><tr><th>Topic</th><th>Questions</th><th>Share</th></tr></thead><tbody>' + ''.join(
-        f'<tr><td>{E(d["label"])}</td><td>{d["count"]}</td><td>{round(d["count"] * 100 / p["questions"])}%</td></tr>' for d in dom) + '</tbody></table></div>') if known else (
-        '<p>The regulator has not published how many questions come from each topic. Study the main nursing areas evenly:</p><ul>' + ''.join(f'<li>{E(d["label"])}</li>' for d in dom) + '</ul>')
-    src = ''.join(f'<li><a href="{E(s["url"])}" rel="noopener">{E(s["label"])}</a></li>' for s in p['sources'])
-    body = (f'<p class="eyebrow">Gulf Region nursing exams</p><h1 class="section-title">{E(short)}: format, topics and how to prepare</h1>'
-            f'<p class="g-lead">The {E(p["fullName"])} is set by the {E(p["regulator"])}. It has {p["questions"]} multiple-choice questions over {hrs(p["minutes"])}. Here is what the official sources say, where they disagree, and a 7-day plan.</p>'
-            '<div class="g-facts">' + ''.join(f'<div class="g-fact"><b>{E(v)}</b><span>{E(l)}</span></div>' for l, v in [('Questions', p['questions']), ('Time', hrs(p['minutes']))]) + '</div>'
-            '<table class="g-table g-kv"><tbody>' + ''.join(f'<tr><th>{E(l)}</th><td>{E(v)}</td></tr>' for l, v in rows) + '</tbody></table>'
-            f'<p>{E(p["formatNote"])}</p><h2>Topics</h2>{dtable}'
-            f'<h2>How many attempts?</h2><p>{E(RN.get(ex if ex != "saudi" else "snle", RN.get(k, "")))}</p>'
-            '<h2>A 7-day study plan</h2><ol>' + ''.join(f'<li>{E(s)}</li>' for s in STUDY) + '</ol>'
-            f'<h2>Official sources</h2><p>Rules change. Always check the regulator before you book.</p><ul>{src}</ul>'
-            '<p class="g-note">We are an independent study provider. Our questions are original practice material, not official exam questions, and we are not endorsed by SCFHS, DHP, DHA or DOH.</p>'
-            + cta(f'Practise for the {place} exam', 'Try 10 free questions now. The Gulf Pass covers all four Gulf exams: 1,297 clinically reviewed questions, mock exams and 67 clinical reasoning tools, paid once.',
-                  f'https://snle.healthcarecrownacademy.co.uk/#exam/{k}', 'Try 10 free questions', (f'/subscribe?exam={ex}', 'See the Gulf Pass'), img=('gr-qb', 'Every question shows the reasoning, a clinical pearl and the trap to avoid.'))
-            + '<h2>Other Gulf exams</h2><ul class="g-grid">' + ''.join(f'<li><a href="/guides/gulf/{META[o][1]}">{E(META[o][2])}</a></li>' for o in P if o != k) + '<li><a href="/guides/gulf/compare-gulf-nursing-exams">Compare all four</a></li></ul>')
-    page(f'/guides/gulf/{slug}', f'{short} 2026: format, topics, pass mark and 7-day plan',
-         f'{p["fullName"]}: {p["questions"]} questions, {hrs(p["minutes"])}, pass standard, topics, attempts and official sources, plus a free 7-day study plan.',
+    p, x = P[k], EX[k]
+    known = all(d['count'] for d in p['domains'])
+    topics = ('<ul class="g-bars">' + ''.join(f'<li><span>{E(d["label"])}</span><b>{d["count"]} questions</b><i style="--w:{round(d["count"] * 100 / p["questions"])}%"></i></li>' for d in p['domains']) + '</ul>'
+              if known else '<p>The regulator has not published how many questions come from each topic. Expect the main nursing areas:</p><ul>' + ''.join(f'<li>{E(d["label"])}</li>' for d in p['domains']) + '</ul>')
+    src = ''.join(f'<li><a href="{E(s_["url"])}" rel="noopener">{E(s_["label"])}</a></li>' for s_ in p['sources'])
+    body = (f'<p class="eyebrow">Gulf Region nursing exams</p><h1 class="section-title">{E(x["short"])} nursing exam: what to expect and how to prepare</h1>'
+            f'<p class="g-lead">The {E(p["fullName"])} is set by the {E(p["regulator"])}. Here is the format, the topics and a 7-day plan, from the regulator\'s own documents.</p>'
+            '<div class="g-facts">' + ''.join(f'<div class="g-fact"><b>{E(v)}</b><span>{E(l)}</span></div>' for v, l in [(p['questions'], 'Questions'), (x['time'], 'Time'), (x['pass_'], 'Pass mark')]) + '</div>'
+            f'<h2>Format</h2><p>{E(x["timeNote"])}</p><p>{E(x["passNote"])}</p>'
+            f'<h2>Topics</h2>{topics}<h2>Attempts</h2><p>{E(x["attempts"])}</p>'
+            '<h2>A 7-day study plan</h2><ol class="g-days">' + ''.join(f'<li><b>{d}</b> {E(t)}</li>' for d, t in STUDY) + '</ol>'
+            f'<h2>Official sources</h2><p>Rules change, so check the regulator before you book.</p><ul>{src}</ul>'
+            '<p class="g-note">Healthcare Crown Academy is an independent study provider. Our questions are original practice material, not official exam questions. We are not endorsed by SCFHS, DHP, DHA or DOH.</p>'
+            + cta(f'Practise for the {x["place"]} exam', 'Try 10 questions free. The Gulf Pass covers all four Gulf exams, with 1,297 clinically reviewed questions, mock exams and 67 clinical reasoning tools. Paid once, never renews.',
+                  f'https://snle.healthcarecrownacademy.co.uk/#exam/{k}', 'Try 10 questions free', (f'/subscribe?exam={x["ex"]}', 'See the Gulf Pass'), img=('gr-qb', 'Every question shows the reasoning, a clinical pearl and the trap to avoid.'))
+            + '<h2>The other Gulf exams</h2><ul class="g-grid">' + ''.join(f'<li><a href="/guides/gulf/{EX[o]["slug"]}">{E(EX[o]["short"])}</a></li>' for o in P if o != k) + '<li><a href="/guides/gulf/compare-gulf-nursing-exams">Compare all four</a></li></ul>')
+    page(f'/guides/gulf/{x["slug"]}', f'{x["short"]} nursing exam: format, topics, pass mark and a 7-day plan',
+         f'{x["short"]} Registered Nurse exam: {p["questions"]} questions in {x["time"]}, the pass mark, the topics, attempts and a free 7-day study plan, from official sources.',
          body, [('Guides', '/guides'), ('Gulf nursing exams', '/guides/gulf/compare-gulf-nursing-exams')],
-         {"@context": "https://schema.org", "@type": "Article", "headline": f'{short}: format, topics and how to prepare', "dateModified": "2026-10-30", "author": {"@type": "Organization", "name": "Healthcare Crown Academy"}, "publisher": {"@type": "Organization", "name": "Healthcare Crown Academy"}})
+         {"@context": "https://schema.org", "@type": "Article", "headline": f'{x["short"]} nursing exam: what to expect and how to prepare', "dateModified": "2026-10-30", "author": {"@type": "Organization", "name": "Healthcare Crown Academy"}, "publisher": {"@type": "Organization", "name": "Healthcare Crown Academy"}})
 for k in P: gulf_page(k)
-cmp = ('<div class="g-scroll"><table class="g-table"><thead><tr><th>Exam</th><th>Regulator</th><th>Questions</th><th>Time</th><th>Pass standard</th><th>Topic weights published?</th></tr></thead><tbody>' + ''.join(
-    f'<tr><td><a href="/guides/gulf/{META[k][1]}">{E(META[k][2])}</a></td><td>{E(P[k]["regulator"])}</td><td>{P[k]["questions"]}</td><td>{hrs(P[k]["minutes"])}</td><td>{E(P[k]["pass"])}</td><td>{"Yes" if all(d["count"] for d in P[k]["domains"]) else "No"}</td></tr>' for k in P) + '</tbody></table></div>')
-page('/guides/gulf/compare-gulf-nursing-exams', 'SNLE vs DHP vs DHA vs DOH: Gulf nursing exams compared (2026)',
-     'Compare the Saudi SNLE, Qatar DHP, Dubai DHA and Abu Dhabi DOH nursing exams: questions, time, pass standard and topics, from official sources.',
-     '<p class="eyebrow">Gulf Region nursing exams</p><h1 class="section-title">The four Gulf nursing exams compared</h1>'
-     '<p class="g-lead">Where you want to work decides which exam you sit: Saudi Arabia (SNLE), Qatar (DHP), Dubai (DHA) or Abu Dhabi (DOH). Dubai and Abu Dhabi are both in the UAE but use different regulators.</p>'
-     + cmp + '<p class="g-note">Figures come from each regulator\'s published documents, linked on each exam page. Where sources disagree we say so. Check with the regulator before you book.</p>'
-     + cta('One pass, all four exams', 'The Gulf Pass covers SNLE, DHP, DHA and DOH, and includes the Crown Pass. From US$29 for 1 month, paid once, never renews.', '/subscribe?plan=gulf', 'See the Gulf Pass', ('https://snle.healthcarecrownacademy.co.uk/', 'Try 10 free questions'), img=('gr-landing', 'One studio for Saudi Arabia, Qatar, Dubai and Abu Dhabi.')),
+cards = '<div class="g-cards">' + ''.join(
+    f'<a class="g-card" href="/guides/gulf/{EX[k]["slug"]}"><span class="g-tag">{E(EX[k]["place"])}</span><b>{E(EX[k]["short"])}</b><small>{E(P[k]["regulator"])}</small>'
+    f'<dl><div><dt>Questions</dt><dd>{P[k]["questions"]}</dd></div><div><dt>Time</dt><dd>{E(EX[k]["time"])}</dd></div><div><dt>Pass mark</dt><dd>{E(EX[k]["pass_"])}</dd></div></dl><span class="g-more">Full guide</span></a>' for k in P) + '</div>'
+page('/guides/gulf/compare-gulf-nursing-exams', 'SNLE, DHP, DHA or DOH? The Gulf nursing exams compared',
+     'Which Gulf nursing exam do you need? Compare the Saudi SNLE, Qatar DHP, Dubai DHA and Abu Dhabi DOH exams: questions, time and pass mark, from official sources.',
+     '<p class="eyebrow">Gulf Region nursing exams</p><h1 class="section-title">Which Gulf nursing exam do you need?</h1>'
+     '<p class="g-lead">It depends on where you want to work. Saudi Arabia, Qatar, Dubai and Abu Dhabi each have their own regulator and exam. Dubai and Abu Dhabi are both in the UAE but use different exams.</p>'
+     + cards + '<p class="g-note">Figures come from each regulator\'s published documents, linked on each exam guide. Check with the regulator before you book.</p>'
+     + cta('One pass, all four exams', 'The Gulf Pass covers SNLE, DHP, DHA and DOH and includes the Crown Pass. From US$29 for 1 month, paid once, never renews.', '/subscribe?plan=gulf', 'See the Gulf Pass', ('https://snle.healthcarecrownacademy.co.uk/', 'Try 10 questions free'), img=('gr-landing', 'One studio for Saudi Arabia, Qatar, Dubai and Abu Dhabi.')),
      [('Guides', '/guides')])
+META = {k: (EX[k]['ex'], EX[k]['slug'], EX[k]['short'] + ' nursing exam', EX[k]['place']) for k in P}
 
 # ---------------- Free improvement calculators ----------------
 LSS = cta('Use 30 DMAIC tools on your own project', 'The Lean Six Sigma Green Belt for Healthcare toolkit has 9 live statistics engines, 10 simulations, a knowledge exam and a Certificate of Completion. Free to try.', 'https://lss.healthcarecrownacademy.co.uk/', 'Try the toolkit free', img=('ls-spc', 'The toolkit charts your own ward data and flags real signals, not noise.'))
@@ -195,8 +216,8 @@ LESSONS, _ = json.JSONDecoder().raw_decode(cs[cs.index('const lessons=') + len('
 REFS = {k: {'name': n, 'url': u} for k, n, u in re.findall(r'"([a-z0-9-]+)":\{"name":"([^"]+)","url":"([^"]+)"\}', cs)}
 FREE_CC = [l['id'] for l in LESSONS[:6]]
 CC = 'https://carecraft.healthcarecrownacademy.co.uk/'
-for l in LESSONS:
-    free = l['id'] in FREE_CC
+for l in LESSONS[:6]:
+    free = True
     refs = ''.join(f'<li><a href="{E(REFS[r]["url"])}" rel="noopener">{E(REFS[r]["name"])}</a></li>' for r in l.get('refs', []) if r in REFS)
     steps = ''.join(f'<li><b>{E(a)}</b>. {E(b)}</li>' for a, b in l['steps'])
     if free:
@@ -216,8 +237,9 @@ for l in LESSONS:
          {"@context": "https://schema.org", "@type": "LearningResource", "name": l['title'], "description": l['description'], "learningResourceType": "Scenario", "isAccessibleForFree": free})
 page('/guides/carecraft', 'Real situations in care: what to say and do | Carecraft',
      'Short practical guides for nurses, students and carers: communication, handover, safety, escalation, dignity and teamwork, each with a real situation to try.',
-     '<p class="eyebrow">Carecraft guides</p><h1 class="section-title">Real situations in care: what to say and do</h1><p class="g-lead">Each guide covers one moment that matters on shift, with the steps and a situation to try.</p><ul class="g-grid">'
-     + ''.join(f'<li><a href="/guides/carecraft/{l["id"]}">{E(l["title"])}<small>{E(l["tag"])}{" · free" if l["id"] in FREE_CC else ""}</small></a></li>' for l in LESSONS) + '</ul>'
+     '<p class="eyebrow">Carecraft guides</p><h1 class="section-title">Real situations in care: what to say and do</h1><p class="g-lead">Six moments that matter on every shift. Each guide gives the steps, a real situation to try and the evidence behind it.</p><ul class="g-grid">'
+     + ''.join(f'<li><a href="/guides/carecraft/{l["id"]}">{E(l["title"])}<small>{E(l["tag"])}</small></a></li>' for l in LESSONS[:6]) + '</ul>'
+     + f'<p>The Carecraft app has {len(LESSONS)} lessons like these, with visual guides and practice that targets your weak spots.</p>'
      + cta('60 seconds a day', 'Start with the free Carecraft lessons. No card needed.', CC, 'Start Carecraft free', img=('cc-scenario', 'One real situation a day: choose a reply and see why the strongest one works.')), [('Guides', '/guides')])
 
 # ---------------- Serein practices ----------------
@@ -225,20 +247,18 @@ ss = open(glob.glob(os.path.join(SITE, 'serein/app.*.js'))[0], encoding='utf-8')
 j = ss.rfind('[', 0, ss.index('{"id":"tide"'))
 PRACT, _ = json.JSONDecoder().raw_decode(ss[j:])
 SR = 'https://serein.healthcarecrownacademy.co.uk/'
-for p in PRACT:
-    steps = ''.join(f'<li><b>{E(a)}</b>. {E(b)}</li>' for a, b in p.get('steps', []))
-    body = (f'<p class="eyebrow">Serein · {E(p["category"])} · {E(p["duration"])}</p><h1 class="section-title">{E(p["title"])}</h1><p class="g-lead">{E(p["desc"])}</p>'
-            + (f'<p>{E(p["instruction"])}</p>' if p.get('instruction') else '') + f'<h2>Steps</h2><ol>{steps}</ol>'
-            + f'<p class="g-note"><b>Safety:</b> {E(p["safety"])}</p>'
-            + '<p>Serein offers short calming practices. It is not a treatment and does not replace professional care. If you are struggling, talk to someone you trust or your doctor.</p>'
-            + cta('Do it with a guide', 'Serein guides you through this practice with gentle timing and sound. Always free, for everyone who cares for others.', SR, 'Open Serein free', ('/guides/serein', 'All practices'), img=('sr-breathe', 'Follow the glowing breath at your own pace. Nothing is monitored.')))
-    page(f'/guides/serein/{p["id"]}', f'{p["title"]}: a {p["duration"]} {p["category"].lower()} practice for healthcare staff | Serein', p['desc'] + ' Steps, safety notes and a free guided version.',
-         body, [('Guides', '/guides'), ('Serein practices', '/guides/serein')])
+sec = ''.join(
+    f'<section class="g-prac" id="{p["id"]}"><p class="g-tag">{E(p["category"])} · {E(p["duration"])}</p><h2>{E(p["title"])}</h2><p>{E(p["desc"])}</p>'
+    + '<ol>' + ''.join(f'<li><b>{E(a)}.</b> {E(b)}</li>' for a, b in p.get('steps', [])) + '</ol>'
+    + f'<p class="g-safe"><b>Safety:</b> {E(p["safety"])}</p></section>' for p in PRACT)
 page('/guides/serein', 'Short calming practices for nurses and carers | Serein',
-     'Fifteen short breathing, grounding and movement practices for healthcare staff, with steps and safety notes. Always free.',
-     '<p class="eyebrow">Serein guides</p><h1 class="section-title">Short calming practices for people who care for others</h1><p class="g-lead">Each practice takes a few minutes and fits into a break or the walk to the car.</p><ul class="g-grid">'
-     + ''.join(f'<li><a href="/guides/serein/{p["id"]}">{E(p["title"])}<small>{E(p["category"])} · {E(p["duration"])}</small></a></li>' for p in PRACT) + '</ul>'
-     + cta('Always free', 'Serein has no paywall. Open it on your phone and start.', SR, 'Open Serein', img=('sr-reset', 'Tell Serein how you feel and get the right 2-minute reset.')), [('Guides', '/guides')])
+     'Fifteen short breathing, grounding and movement practices for healthcare staff, each with steps and safety notes. Free, with a guided version in Serein.',
+     '<p class="eyebrow">Serein guide</p><h1 class="section-title">Short calming practices for people who care for others</h1>'
+     '<p class="g-lead">Each practice takes one to five minutes and fits into a break or the walk to the car. Pick one, read the steps, and try it now.</p>'
+     '<ul class="g-grid">' + ''.join(f'<li><a href="#{p["id"]}">{E(p["title"])}<small>{E(p["category"])} · {E(p["duration"])}</small></a></li>' for p in PRACT) + '</ul>'
+     + sec + '<p class="g-note">Serein offers short calming practices. It is not a treatment and does not replace professional care. If you are struggling, talk to someone you trust or your doctor.</p>'
+     + cta('Do them with a guide', 'Serein guides you through every practice with gentle timing and sound. Always free, for everyone who cares for others.', SR, 'Open Serein free', img=('sr-breathe', 'Follow the glowing breath at your own pace. Nothing is monitored.')),
+     [('Guides', '/guides')])
 
 # ---------------- Study skills (Lumen) ----------------
 LU = 'https://lumen.healthcarecrownacademy.co.uk/'
@@ -259,7 +279,7 @@ STUDYG = [
 for slug, title, desc, steps, why in STUDYG:
     page(f'/guides/study/{slug}', f'{title} | Lumen', desc,
          f'<p class="eyebrow">Study skills</p><h1 class="section-title">{E(title)}</h1><p class="g-lead">{E(desc)}</p><h2>How to do it</h2><ol>' + ''.join(f'<li>{E(x)}</li>' for x in steps) + f'</ol><h2>Why it works</h2><p>{E(why)}</p>'
-         + cta('Do this with your own notes', 'Lumen turns your lecture PDFs and photos of notes into recall cards with spaced practice and a focus planner. Free to start.', LU, 'Start Lumen free', ('/guides', 'More guides'), img=('lm-explain', 'Read, hide, explain, verify: Lumen walks you through recall on your own notes.')),
+         + cta('Do this with your own notes', 'Lumen turns your lecture PDFs and photos of notes into recall cards with spaced practice and a focus planner. Free to start.', LU, 'Start Lumen free', ('/guides', 'More guides'), img=('lm-magnify', 'Read closely, magnify, highlight and turn what matters into recall cards.')),
          [('Guides', '/guides'), ('Study skills', '/guides#study')])
 
 # ---------------- Evinca: thank a nurse ----------------
@@ -274,25 +294,28 @@ page('/guides/how-to-thank-a-nurse', 'How to thank a nurse who cared for you (an
      [('Guides', '/guides')])
 
 # ---------------- Guides hub ----------------
-page('/guides', 'Free guides and tools for healthcare learners | Healthcare Crown Academy',
-     'Free medical word-part dictionary, Gulf nursing exam guides (SNLE, DHP, DHA, DOH) and improvement calculators for healthcare staff.',
-     '<p class="eyebrow">Free guides</p><h1 class="section-title">Free guides and tools</h1><p class="g-lead">Short, practical guides from the makers of MedLex, the Gulf Region Nursing studio and the Green Belt toolkit. Free to read, no sign-in.</p>'
-     + '<h2>Start here</h2><div class="g-feats">' + ''.join(
-        f'<a class="g-feat" href="{h}"><img src="/assets/img/tour/{i}.webp" width="1200" height="750" alt="" loading="{"eager" if n < 2 else "lazy"}"><span class="g-tag">{E(t)}</span><b>{E(ti)}</b><span>{E(d)}</span></a>'
-        for n, (h, i, t, ti, d) in enumerate([
-          ('/guides/gulf/compare-gulf-nursing-exams', 'gr-landing', 'Gulf nursing exams', 'Which Gulf exam do you need?', 'SNLE, DHP, DHA and DOH side by side: questions, time and pass standard, from official sources.'),
-          ('/guides/gulf/saudi-snle-nursing-exam', 'gr-qb', 'Gulf nursing exams', 'Saudi SNLE: the complete guide', '200 questions, 4 hours, the topics, the attempts rules and a 7-day plan.'),
-          ('/guides/medical-word-parts', 'mx-hook', 'Medical words', 'Decode any medical word', '227 prefixes, suffixes and roots, each with examples and a free 5-question check.'),
-          ('/tools/control-chart-calculator', 'ls-spc', 'Free tool', 'Signal or noise? Chart your ward data', 'Paste your numbers and get control limits and a chart in seconds. Nothing is uploaded.'),
-          ('/guides/carecraft/communication', 'cc-scenario', 'Care situations', 'Would you say the right thing?', 'Try a real ward situation, choose a reply and see why the strongest one works.'),
-          ('/guides/serein/box', 'sr-breathe', 'Wellbeing', 'Box breathing for a hard shift', 'A steady four-part rhythm you can do anywhere, with safety notes.'),
-          ('/guides/study/active-recall-for-nursing-students', 'lm-explain', 'Study skills', 'Stop rereading. Start remembering', 'The active recall method, step by step, for nursing and healthcare students.'),
-          ('/guides/how-to-thank-a-nurse', 'ex-comein', 'Say thank you', 'Thank the nurse who cared for you', 'What to write, an example, and how your message reaches them.'),
-        ])) + '</div><h2>Browse everything</h2>'
-     f'<h2>Medical words</h2><ul class="g-grid"><li><a href="/guides/medical-word-parts">Prefixes, suffixes and roots<small>{np_ + ns + nr} word parts, A to Z</small></a></li><li><a href="/medlex/learn/canvas/lessons/prefixes">Free lesson: medical prefixes</a></li><li><a href="/medlex/learn/canvas/lessons/suffixes">Free lesson: medical suffixes</a></li></ul>'
-     '<h2>Gulf nursing exams</h2><ul class="g-grid"><li><a href="/guides/gulf/compare-gulf-nursing-exams">Compare all four exams</a></li>' + ''.join(f'<li><a href="/guides/gulf/{META[k][1]}">{E(META[k][2])}</a></li>' for k in P) + '</ul>'
-     '<h2 id="tools">Free improvement tools</h2><ul class="g-grid">' + ''.join(f'<li><a href="/tools/{s}">{E(t)}</a></li>' for s, _, t, *_ in tools) + '</ul>',
-     [('Home', '/')])
+FEAT = [
+ ('/guides/gulf/compare-gulf-nursing-exams', 'gr-landing-card', 'Gulf nursing exams', 'Which Gulf exam do you need?', 'SNLE, DHP, DHA or DOH: questions, time and pass mark side by side.'),
+ ('/guides/medical-word-parts', 'mx-term-card', 'Medical words', 'Decode any medical word', f'{np_ + ns + nr} prefixes, suffixes and roots with plain meanings and a quick check.'),
+ ('/tools/control-chart-calculator', 'ls-spc-card', 'Free tool', 'Signal or noise? Chart your ward data', 'Paste your numbers. Get control limits and a chart in seconds.'),
+ ('/guides/carecraft/communication', 'cc-scenario-card', 'Care situations', 'Would you say the right thing?', 'Try a real ward situation and see why the strongest reply works.'),
+ ('/guides/serein', 'sr-breathe-card', 'Wellbeing', 'Calm in two minutes', '15 short practices for a hard shift, with steps and safety notes.'),
+ ('/guides/how-to-thank-a-nurse', 'ex-comein-card', 'Say thank you', 'Thank the nurse who cared for you', 'What to write, an example, and how your words reach them.'),
+]
+feat = '<div class="g-feats">' + ''.join(
+    f'<a class="g-feat" href="{h}"><span class="g-img"><img src="/guides/img/{i}.webp" alt="" loading="{"eager" if n < 2 else "lazy"}"></span><span class="g-tag">{E(t)}</span><b>{E(ti)}</b><span class="g-desc">{E(d)}</span></a>'
+    for n, (h, i, t, ti, d) in enumerate(FEAT)) + '</div>'
+li = lambda items: '<ul class="g-grid">' + ''.join(f'<li><a href="{h}">{E(t)}' + (f'<small>{E(sm)}</small>' if sm else '') + '</a></li>' for h, t, sm in items) + '</ul>'
+page('/guides', 'Free guides and tools for nurses and healthcare students | Healthcare Crown Academy',
+     'Free, practical guides from Healthcare Crown Academy: Gulf nursing exams, medical word parts, real care situations, study skills, calming practices and quality improvement tools.',
+     '<p class="eyebrow">Free guides</p><h1 class="section-title">Free guides and tools</h1><p class="g-lead">Practical guides from the makers of MedLex, Carecraft, Serein, Lumen, the Gulf Region Nursing studio and the Green Belt toolkit. Free to read, no sign-in.</p>'
+     '<h2>Start here</h2>' + feat
+     + '<h2>Gulf nursing exams</h2>' + li([('/guides/gulf/compare-gulf-nursing-exams', 'Compare all four exams', '')] + [(f'/guides/gulf/{EX[k]["slug"]}', EX[k]['short'] + ' guide', EX[k]['place']) for k in P])
+     + '<h2>Care situations</h2>' + li([(f'/guides/carecraft/{l["id"]}', l['title'], l['tag']) for l in LESSONS[:6]])
+     + '<h2 id="study">Study skills</h2>' + li([(f'/guides/study/{s_}', t_, '') for s_, t_, *_ in STUDYG])
+     + '<h2 id="tools">Free quality improvement tools</h2>' + li([(f'/tools/{s_}', t_, '') for s_, _, t_, *_ in tools])
+     + '<h2>Medical words, wellbeing and thanks</h2>' + li([('/guides/medical-word-parts', 'Medical prefixes, suffixes and roots', ''), ('/guides/serein', 'Short calming practices', '15 practices'), ('/guides/how-to-thank-a-nurse', 'How to thank a nurse', '')]),
+     [('Home', '/')], wide=True)
 
 json.dump(URLS, open(os.path.join(ROOT, 'tools/guides/urls.json'), 'w'), indent=0)
 # Keep the guides in the main sitemap, between markers, so one submitted sitemap covers everything.
