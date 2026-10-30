@@ -767,3 +767,6 @@ body.gulf-slide-on{overflow:hidden}
 .gulf-lockbox .gulf-lock-in,.gs-locked .gulf-lock-in{background:transparent!important;color:#E9F3F8!important;border:1px solid rgba(148,213,240,.55)!important;box-shadow:none!important}
 .gulf-lockbox .gulf-lock-go,.gs-locked .gulf-lock-go{background:#E8C170!important;color:#0B2232!important}
 .gulf-lockbox .gulf-lock-h,.gs-locked .gulf-lock-h{color:#fff!important}
+.gulf-free-note{margin:12px auto;max-width:760px;padding:12px 16px;border-radius:12px;background:#fff7e6;border:1px solid #e8c170;color:#3d2f12;font-size:14px;text-align:center}
+.gulf-free-note a{color:#0f6b63;font-weight:700}
+.gulf-free-note button{margin-left:8px;background:none;border:0;color:#0f6b63;text-decoration:underline;font:inherit;cursor:pointer}

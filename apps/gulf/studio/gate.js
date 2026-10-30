@@ -38,6 +38,9 @@
  var FREE_N=10;
  window.GULF_ACCESS={ok:function(n){if(!window.HCA||!HCA.gatesOn)return !window.HCA?(n>0&&n<=FREE_N):true;if(ent&&unlocked(ent,exam()))return true;return n>0&&n<=FREE_N},
   buy:function(){return 'https://healthcarecrownacademy.co.uk/subscribe?exam='+exam()}};
- var tries=0;(function wait(){if(window.HCA&&HCA.ready){HCA.ready.then(function(e){ent=e;check();try{window.dispatchEvent(new Event('gulf-access'))}catch(x){}});return}if(++tries<60)setTimeout(wait,200)})();
+ // Free visitors only receive questions 1 to 10; say so above the bank, with the way to unlock the rest.
+ function freeNote(){var it=document.getElementById('items');if(!lib||mode!=='questions'||!it||window.GULF_FULL_BANK||unlocked(ent,exam())||document.querySelector('.gulf-free-note'))return;
+  var n=document.createElement('p');n.className='gulf-free-note';n.innerHTML='You are using the 10 free questions. <a href="'+window.GULF_ACCESS.buy()+'">The Gulf Pass unlocks all 1,297</a>, with mock exams and clinical tools.'+(ent&&ent.signed_in?'':' <button type="button" data-gulf-signin>I already have a pass</button>');it.parentNode.insertBefore(n,it)}
+ var tries=0;(function wait(){if(window.HCA&&HCA.ready){HCA.ready.then(function(e){ent=e;check();freeNote();try{window.dispatchEvent(new Event('gulf-access'))}catch(x){}});return}if(++tries<60)setTimeout(wait,200)})();
  window.addEventListener('hashchange',function(){if(ent!==null)check()});
 })();

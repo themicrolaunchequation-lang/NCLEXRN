@@ -43,3 +43,13 @@ test('studio build output contains edition layers, hub and per-edition palettes'
  const crypto=await import('node:crypto');
  assert(appName.includes(crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,'dist/assets',appName))).digest('hex').slice(0,12)),'app file name carries a hash of its patched content (cache-safe)');
 });
+test('paid question bank stays off the public files',()=>{
+ const A=path.join(ROOT,'dist/assets'),data=fs.readdirSync(A).find(f=>/^data\.[0-9a-f]+\.js$/.test(f));
+ const win={};vm.runInNewContext(fs.readFileSync(path.join(A,data),'utf8'),{window:win,Set,JSON,Object,Array});
+ assert(win.SNLE_QUESTIONS.length<=10,'public data holds only the free questions');
+ const app=fs.readFileSync(path.join(A,fs.readdirSync(A).find(f=>/^app\.[0-9a-f]+\.js$/.test(f))),'utf8');
+ assert(app.includes('window.GULF_DOSSIERS||')&&!/"qs":\[\{/.test(app),'dossier cases are not in the public app');
+ const routes=JSON.parse(fs.readFileSync(path.join(ROOT,'dist/_routes.json'),'utf8'));
+ assert.deepEqual(routes.include,['/api/*'],'the worker only handles /api');
+ assert(fs.readFileSync(path.join(ROOT,'dist/_worker.js'),'utf8').includes("'/api/gulf-content'"));
+});

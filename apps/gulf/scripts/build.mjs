@@ -181,6 +181,10 @@ fs.writeFileSync(path.join(out,'_headers'),hd);
 const SITE='https://snle.healthcarecrownacademy.co.uk';
 fs.writeFileSync(path.join(out,'robots.txt'),PUBLIC?'User-agent: *\nAllow: /\nDisallow: /SNLE_\nDisallow: /question-bank\nDisallow: /dossier-bank\nDisallow: /tool-library\n\nSitemap: '+SITE+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
 if(PUBLIC){const day=new Date().toISOString().slice(0,10);fs.writeFileSync(path.join(out,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+['/','/hub/'].map(u=>'  <url><loc>'+SITE+u+'</loc><lastmod>'+day+'</lastmod></url>\n').join('')+'</urlset>\n')}
+// Keep the paid question bank off the public files: only questions 1 to 10 stay public; Gulf Pass holders get the rest from /api/gulf-content.
+const {secureBank}=await import(pathToFileURL(path.join(root,'scripts/secure-bank.mjs')));
+const sec=secureBank(out,fs.readFileSync(path.join(root,'studio/boot.js'),'utf8'));
+console.log('Question bank secured: '+sec.free+' free of '+sec.total+' public, '+sec.extra+' edition items private, '+sec.pages+' pages use the loader, worker '+sec.workerKB+' KB');
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 console.log('PASS Gulf studio + hub output ('+pkg.name+')');
-for(const n of ['index.html','sw.js','_headers','hub/index.html',...Object.values(urls).map(u=>u.slice(1))])console.log(n+' '+fs.statSync(path.join(out,n)).size+' bytes');
+for(const n of ['index.html','sw.js','_headers','hub/index.html',...Object.values(urls).map(u=>u.slice(1))])if(fs.existsSync(path.join(out,n)))console.log(n+' '+fs.statSync(path.join(out,n)).size+' bytes');
