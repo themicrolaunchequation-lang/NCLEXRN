@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://healthcarecrownacademy.co.uk/</loc><lastmod>2026-10-26</lastmod><priority>1.0</priority></url>
+  <url><loc>https://healthcarecrownacademy.co.uk/</loc><lastmod>2026-10-30</lastmod><priority>1.0</priority></url>
   <url><loc>https://carecraft.healthcarecrownacademy.co.uk/</loc><lastmod>2026-10-17</lastmod><priority>0.9</priority></url>
   <url><loc>https://serein.healthcarecrownacademy.co.uk/</loc><lastmod>2026-10-17</lastmod><priority>0.9</priority></url>
   <url><loc>https://medlex.healthcarecrownacademy.co.uk/</loc><lastmod>2026-10-17</lastmod><priority>0.9</priority></url>
   <url><loc>https://lumen.healthcarecrownacademy.co.uk/</loc><lastmod>2026-10-17</lastmod><priority>0.9</priority></url>
+  <url><loc>https://healthcarecrownacademy.co.uk/subscribe</loc><lastmod>2026-10-30</lastmod><priority>0.9</priority></url>
   <url><loc>https://healthcarecrownacademy.co.uk/privacy</loc><lastmod>2026-10-18</lastmod><priority>0.3</priority></url>
   <url><loc>https://healthcarecrownacademy.co.uk/terms</loc><lastmod>2026-10-18</lastmod><priority>0.3</priority></url>
-  <url><loc>https://healthcarecrownacademy.co.uk/refunds</loc><lastmod>2026-10-26</lastmod><priority>0.3</priority></url>
+  <url><loc>https://healthcarecrownacademy.co.uk/refunds</loc><lastmod>2026-10-30</lastmod><priority>0.3</priority></url>
 </urlset>
