@@ -9,7 +9,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const repo=path.resolve(root,'../..');
 const snle=path.join(repo,'apps/snle');
 const out=path.join(root,'dist');
-const PUBLIC=process.env.GULF_PUBLIC==='1'; // set on the live snle project: allow search engines
+const PUBLIC=process.env.GULF_PUBLIC!=='0'; // search engines may index the live studio; set GULF_PUBLIC=0 for a hidden preview build
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex').slice(0,12);
 execFileSync(process.execPath,[path.join(snle,'build.mjs')],{cwd:snle,stdio:['ignore','ignore','inherit']});
 fs.rmSync(out,{recursive:true,force:true});
@@ -171,13 +171,16 @@ sw=sw.replace(/CACHE='snle-web-[a-f0-9]+'/,"CACHE='gulf-web-"+buildId+"'").repla
 sw=sw.replace('SHELL=[','SHELL=['+[...Object.values(urls),...fontNames.map(f=>'/assets/fonts/'+f)].map(u=>JSON.stringify(u)).join(',')+',"/hub/",').replace(/CACHE='snle-web-/,"CACHE='gulf-web-");
 fs.writeFileSync(swp,sw);
 const mp=path.join(out,'manifest.webmanifest'),mf=JSON.parse(fs.readFileSync(mp,'utf8'));mf.name='Gulf Nursing Licensure Studio';mf.short_name='Gulf Nursing';fs.writeFileSync(mp,JSON.stringify(mf,null,2));
-// headers: the studio's own policy plus noindex everywhere (preview)
+// headers: the studio's own policy (plus noindex everywhere on a hidden preview build)
 let hd=fs.readFileSync(path.join(out,'_headers'),'utf8');
 if(!PUBLIC)hd=hd.replace('/*\n','/*\n  X-Robots-Tag: noindex, nofollow\n');
 fs.writeFileSync(path.join(out,'_headers'),hd);
 {const rp=path.join(out,'_redirects'),prev=fs.existsSync(rp)?fs.readFileSync(rp,'utf8'):'';
  fs.writeFileSync(rp,prev+['/question-bank /SNLE_Question_Bank_ViewOnly_v19.html 200','/dossier-bank /SNLE_Clinical_Dossier_Question_Bank_ViewOnly_v23_1_Smaller_Stem.html 200','/tool-library /SNLE_All_Tools_ViewOnly_v19.html 200'].join('\n')+'\n')}
-fs.writeFileSync(path.join(out,'robots.txt'),PUBLIC?'User-agent: *\nAllow: /\n':'User-agent: *\nDisallow: /\n');
+// Public build: index the studio and the exam hub, keep the paid view-only banks out of search, list the pages in a sitemap.
+const SITE='https://snle.healthcarecrownacademy.co.uk';
+fs.writeFileSync(path.join(out,'robots.txt'),PUBLIC?'User-agent: *\nAllow: /\nDisallow: /SNLE_\nDisallow: /question-bank\nDisallow: /dossier-bank\nDisallow: /tool-library\n\nSitemap: '+SITE+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n');
+if(PUBLIC){const day=new Date().toISOString().slice(0,10);fs.writeFileSync(path.join(out,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+['/','/hub/'].map(u=>'  <url><loc>'+SITE+u+'</loc><lastmod>'+day+'</lastmod></url>\n').join('')+'</urlset>\n')}
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 console.log('PASS Gulf studio + hub output ('+pkg.name+')');
 for(const n of ['index.html','sw.js','_headers','hub/index.html',...Object.values(urls).map(u=>u.slice(1))])console.log(n+' '+fs.statSync(path.join(out,n)).size+' bytes');
