@@ -562,7 +562,7 @@
       const order = [];
       const count = $('[data-crown-count]'), meter = $('[data-crown-meter]'), total = $$('[data-interests] .interest').length;
       const cheer = (n) => (n === 0 ? '' : n === 1 ? ' · great start' : n < 4 ? ' · your crown is taking shape' : n < total ? ' · now that is a crown' : ' · the full crown!');
-      const extras = () => [order.includes('snle') && 'The Gulf Pass covers all four Gulf exams and includes the Crown Pass: US$50 for 3 months or US$69 for 6.', order.includes('lss') && 'The Lean Six Sigma Green Belt toolkit is US$99 for 12 months, paid once.', order.includes('serein') && 'Serein is free for everyone.', order.includes('evinca') && 'Evinca stories are free.'].filter(Boolean).join(' ');
+      const extras = () => [order.includes('snle') && 'The Gulf Pass covers all four Gulf exams and includes the Crown Pass: US$29 for 1 month, US$50 for 3 or US$69 for 6.', order.includes('lss') && 'The Lean Six Sigma Green Belt toolkit is US$99 for 12 months, paid once.', order.includes('serein') && 'Serein is free for everyone.', order.includes('evinca') && 'Evinca stories are free.'].filter(Boolean).join(' ');
       $$('[data-combo]').forEach((c) => c.addEventListener('click', () => {
         const want = c.dataset.combo.split(',');
         $$('[data-interests] .interest').forEach((b) => { if ((b.getAttribute('aria-pressed') === 'true') !== want.includes(b.dataset.app)) b.click(); });

@@ -52,7 +52,7 @@
   const money = (amount, cur) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: cur.toUpperCase(), minimumFractionDigits: Number.isInteger(amount) ? 0 : 2, maximumFractionDigits: 2 }).format(amount).replace(/^US\$/, 'US$');
   // List prices are built in so the page never shows blanks; the database overrides them when it loads.
   let plans = { 'crown-month': { amount_gbp: 5.99 }, 'crown-year': { amount_gbp: 39.99 }, 'crown-year-founding': { amount_gbp: 29.99, available_until: '2027-01-31T23:59:59Z' } };
-  const PASS = { '3m': { usd: 50, months: 3 }, '6m': { usd: 69, months: 6 } }; // Gulf Pass, the same in every country (gulf_exam_plans)
+  const PASS = { '1m': { usd: 29, months: 1 }, '3m': { usd: 50, months: 3 }, '6m': { usd: 69, months: 6 } }; // Gulf Pass, the same in every country (gulf_exam_plans)
   let bands = {}, regional = {}, period = 'year', len = '6m';
 
   const band = () => bands[$('[data-sub-country]').value] || 'A';
@@ -84,8 +84,8 @@
     $('[data-sub-band]').textContent = band() === 'A' ? 'Prices in pounds sterling.' : 'Fair pricing for your country, in US dollars.';
     const g = PASS[len];
     $('[data-gulf-price]').textContent = money(g.usd, 'usd');
-    $('[data-gulf-per]').textContent = `/${g.months} months`;
-    $('[data-gulf-note]').textContent = `Paid once, never renews. About ${money(g.usd / g.months, 'usd')} a month.`;
+    $('[data-gulf-per]').textContent = g.months === 1 ? '/1 month' : `/${g.months} months`;
+    $('[data-gulf-note]').textContent = g.months === 1 ? 'Paid once, never renews. For an exam that is close.' : `Paid once, never renews. About ${money(g.usd / g.months, 'usd')} a month.`;
     for (const b of $$('[data-period]')) b.setAttribute('aria-checked', String(b.dataset.period === period));
     for (const b of $$('[data-len]')) b.setAttribute('aria-checked', String(b.dataset.len === len));
   }
@@ -186,9 +186,11 @@
     if (gp.status === 'fulfilled') for (const x of gp.value) { const k = `${x.months}m`; if (PASS[k]) PASS[k].usd = Number(x.amount_usd); }
     render();
 
-    // Deep links from app paywalls and the home page: ?plan=crown|medlex|carecraft|lumen|gulf|lss, ?exam=saudi|qatar|dubai|abudhabi
+    // Deep links from app paywalls and the home page: ?plan=crown|medlex|carecraft|lumen|gulf|lss, ?exam=saudi|qatar|dubai|abudhabi, ?len=1m|3m|6m
     const q = new URLSearchParams(location.search);
     const pl = q.get('plan') || '', ex = q.get('exam') || '';
+    const ql = q.get('len') || (pl.match(/^gulf-all-(\d+m)$/) || [])[1];
+    if (PASS[ql]) { len = ql; render(); }
     const target = EXAM[ex] || pl === 'gulf' || pl.startsWith('gulf-') ? 'gulf' : pl === 'lss' ? 'lss' : APP[pl] ? 'crown' : '';
     const hint = target === 'gulf' ? (EXAM[ex] ? `${EXAM[ex]} is included, with the other three Gulf exams.` : '')
       : target === 'crown' && pl !== 'crown' ? `${APP[pl][0]} is included in the Crown Pass, with every other app.` : '';

@@ -103,7 +103,7 @@ window.HCA_TOURS = {
     ] },
   snle: {
     name: 'Gulf Region Nursing', chip: 'G', color: '#347A9A', motif: 'pulse', music: 'gulf', voice: 'Saudi-accented English',
-    tag: 'Your Gulf Region nursing licence, one safe decision at a time.', url: 'https://snle.healthcarecrownacademy.co.uk/', cta: 'Open the studio', note: 'Gulf Pass: all four exams, US$50 for 3 months or US$69 for 6',
+    tag: 'Your Gulf Region nursing licence, one safe decision at a time.', url: 'https://snle.healthcarecrownacademy.co.uk/', cta: 'Open the studio', note: 'Gulf Pass: all four exams, US$29 for 1 month, US$50 for 3 or US$69 for 6',
     hook: ['One exam stands between you', 'and your nursing career in the Gulf Region.'], bg: ['gr-qb', 'gr-befast', 'gr-dossier'],
     sayHook: 'One exam stands between you, and your nursing career in the Gulf Region.',
     sayTitle: 'Welcome to the Gulf Region Nursing Licensure Studio.',
