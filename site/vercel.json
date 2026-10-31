@@ -491,6 +491,11 @@
   ],
   "redirects": [
     {
+      "source": "/preview/(.*)",
+      "destination": "/",
+      "permanent": false
+    },
+    {
       "source": "/medlex",
       "missing": [
         {
