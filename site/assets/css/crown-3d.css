@@ -60,3 +60,23 @@
   .cx-copy::before{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(transparent,rgba(5,11,28,.82) 38%,rgba(5,11,28,.94));pointer-events:none}
 }
 .cx-poster{-webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent);mask-image:radial-gradient(closest-side,#000 72%,transparent)}
+/* trust line under the opening buttons */
+.cx-trust{display:flex;flex-wrap:wrap;gap:6px 18px;margin:22px 0 0;padding:0;list-style:none;font:500 .74rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.06em;color:#a9b6cc}
+.cx-trust li{display:flex;align-items:center;gap:7px}
+.cx-trust li::before{content:"";width:5px;height:5px;border-radius:50%;background:#e8c170;box-shadow:0 0 8px #e8c170}
+.cx-trust a{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(169,182,204,.5)}
+.cx-trust a:hover,.cx-trust a:focus-visible{color:#e8c170;border-color:#e8c170}
+/* the app screens after the story */
+.cx-after-head{text-align:center}
+.cx-after-head h2{font-family:var(--font-display,Georgia,serif);font-weight:400;letter-spacing:-.02em;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.08;margin:0;color:#fff}
+.cx-after-head .cx-k{margin-bottom:12px}
+/* role suggestion in "Start here" */
+.combo-say{max-width:62ch;margin:16px auto 0;padding:12px 18px;border-radius:14px;border:1px solid var(--line-strong);background:var(--surface);color:var(--text);font-size:.98rem;line-height:1.55}
+.combo-say b{font-weight:650}
+.combo-say.is-swap{animation:hx-swap .45s var(--ease-out)}
+@media (max-width:760px){.cx-trust{margin-top:16px;font-size:.68rem;gap:4px 14px}}
+@media (prefers-reduced-motion:reduce){.combo-say.is-swap{animation:none}}
+@media (max-width:760px){
+  .cx-after{padding-top:72px;padding-bottom:84px}
+  .cx-after .crown-stage{margin-top:104px;margin-bottom:0}
+}

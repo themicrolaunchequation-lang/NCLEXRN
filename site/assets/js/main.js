@@ -567,6 +567,12 @@
         const want = c.dataset.combo.split(',');
         $$('[data-interests] .interest').forEach((b) => { if ((b.getAttribute('aria-pressed') === 'true') !== want.includes(b.dataset.app)) b.click(); });
         $$('[data-combo]').forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+        // A role button also shows a one-line suggestion for that role.
+        const say = $('[data-combo-say]'), lines = $('[data-combo-lines]');
+        if (say && lines && c.dataset.say) {
+          const line = lines.content.querySelectorAll('p')[+c.dataset.say];
+          if (line) { say.innerHTML = line.innerHTML; say.hidden = false; say.classList.remove('is-swap'); void say.offsetWidth; say.classList.add('is-swap'); }
+        }
       }));
       // The crown drawing: a lit jewel sends out a small burst of sparks and a shimmer runs along the outline.
       const art = $('[data-crw]', preview), tpl = art && $('.crw-burst-tpl', art), shine = art && $('.crw-shine', art);
