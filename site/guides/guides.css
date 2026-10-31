@@ -5,7 +5,7 @@
 .g-wrap img,.g-hub img{max-width:100%}
 .g-crumbs{font-size:.86rem;color:var(--text-soft);margin-bottom:18px}.g-crumbs a{color:inherit}
 .g-lead{font-size:1.15rem;line-height:1.6;color:var(--text);margin-top:14px;max-width:62ch}
-.g-tag{display:block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a37a1f}
+.g-tag{display:block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A6418}
 .g-count{font-family:inherit;font-size:.85rem;color:var(--text-soft);font-weight:600;margin-left:6px}
 
 /* key facts */
@@ -58,7 +58,7 @@
 .g-bars i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:#0f6b63;border-radius:99px}
 .g-days{list-style:none!important;padding:0!important;display:grid;gap:8px;margin-top:14px}
 .g-days li{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text)}
-.g-days b{display:inline-block;min-width:54px;color:#a37a1f}
+.g-days b{display:inline-block;min-width:54px;color:#8A6418}
 
 /* word-part dictionary */
 .g-break{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:18px}
@@ -94,3 +94,4 @@
 @media (max-width:900px){.g-feats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.g-feats,.g-cards{grid-template-columns:1fr}.g-lead{font-size:1.05rem}.g-cta{padding:20px}.g-cta a.g-alt{margin-left:0;display:block}}
 @media (prefers-reduced-motion:reduce){.g-feat{transition:none}.g-feat:hover{transform:none}}
+.g-updated{font-size:.88rem;color:var(--text-soft);margin-top:10px}

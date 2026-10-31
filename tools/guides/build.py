@@ -17,7 +17,8 @@ for f_ in glob.glob(os.path.join(SITE, 'guides', '*.html')) + [os.path.join(SITE
 tpl = open(os.path.join(SITE, 'refunds.html'), encoding='utf-8').read()
 HEAD = tpl[:tpl.index('<title>')]
 THEME = re.search(r'<meta name="theme-color".*?<script src="/assets/js/page.js" defer></script>', tpl, re.S).group(0)
-HEADER = tpl[tpl.index('<body'):tpl.index('<main')]
+HEADER = tpl[tpl.index('<body'):tpl.index('<main')].replace('<a href="/guides">Guides</a>', '<a href="/guides" aria-current="page">Guides</a>')
+GULF_UPDATED = ('2026-10-30', '30 October 2026')   # when the Gulf exam facts were last checked against the regulators
 FOOTER = tpl[tpl.index('</main>') + len('</main>'):]
 
 def page(path, title, desc, body, crumbs, ld=None, wide=False):
@@ -28,6 +29,7 @@ def page(path, title, desc, body, crumbs, ld=None, wide=False):
     cr = ' / '.join(f'<a href="{u}">{E(n)}</a>' for n, u in crumbs)
     out = (HEAD + f'<title>{E(title)}</title>\n<meta name="description" content="{E(desc)}">\n<link rel="canonical" href="{url}">\n'
            f'<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="article">\n'
+           '<meta property="og:image" content="https://healthcarecrownacademy.co.uk/assets/img/og-image.png">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta property="og:locale" content="en_GB">\n<meta name="twitter:card" content="summary_large_image">\n'
            + THEME + '\n<link rel="stylesheet" href="/guides/guides.css">\n<script src="/guides/guides.js" defer></script>\n'
            + ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in lds)
            + '</head>\n' + HEADER + '<main id="main" class="section">\n  <article class="container prose ' + ('g-hub' if wide else 'g-wrap') + '">\n'
@@ -158,7 +160,8 @@ def gulf_page(k):
               if known else '<p>The regulator has not published how many questions come from each topic. Expect the main nursing areas:</p><ul>' + ''.join(f'<li>{E(d["label"])}</li>' for d in p['domains']) + '</ul>')
     src = ''.join(f'<li><a href="{E(s_["url"])}" rel="noopener">{E(s_["label"])}</a></li>' for s_ in p['sources'])
     body = (f'<p class="eyebrow">Gulf Region nursing exams</p><h1 class="section-title">{E(x["short"])} nursing exam: what to expect and how to prepare</h1>'
-            f'<p class="g-lead">The {E(p["fullName"])} is set by the {E(p["regulator"])}. Here is the format, the topics and a 7-day plan, from the regulator\'s own documents.</p>'
+            f'<p class="g-lead">The {E(p["fullName"])} is set by the {E(p["regulator"])}. Here is the format, the topics and a 7-day plan, from the regulator\'s own documents.</p>\n'
+            f'<p class="g-updated">By Healthcare Crown Academy · Last updated <time datetime="{GULF_UPDATED[0]}">{GULF_UPDATED[1]}</time></p>'
             '<div class="g-facts">' + ''.join(f'<div class="g-fact"><b>{E(v)}</b><span>{E(l)}</span></div>' for v, l in [(p['questions'], 'Questions'), (x['time'], 'Time'), (x['pass_'], 'Pass mark')]) + '</div>'
             f'<h2>Format</h2><p>{E(x["timeNote"])}</p><p>{E(x["passNote"])}</p>'
             f'<h2>Topics</h2>{topics}<h2>Attempts</h2><p>{E(x["attempts"])}</p>'
