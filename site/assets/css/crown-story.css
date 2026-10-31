@@ -1,0 +1,71 @@
+/* "The Heartbeat Crown" scroll story (home hero). Works with assets/js/crown-story.js. */
+.cs{position:relative;background:radial-gradient(120% 80% at 50% 0%,#1d3a7a 0%,#0b1a3a 38%,#060d1f 70%,#040814 100%);color:#e9eef8}
+.cs.cs-live{height:520vh}
+.cs-sticky{position:relative}
+.cs-live .cs-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.cs-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cs-veil{position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 60% at 50% 45%,transparent 40%,rgba(2,5,14,.55) 100%)}
+.cs-veil::after{content:"";position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* scenes */
+.cs-live .cs-s{position:absolute;left:50%;width:min(92vw,980px);margin-left:calc(min(92vw,980px)/-2);text-align:center;will-change:opacity,transform}
+.cs-h1{margin:0;font-family:var(--font-display,Georgia,serif);font-weight:400;letter-spacing:-.02em}
+.cs-line{display:block;font-size:clamp(2.6rem,7.2vw,6.4rem);line-height:1.02}
+.cs-live .cs-line{top:14vh}
+.cs-gold{background:linear-gradient(100deg,#f6dfa4 0%,#e2b55a 45%,#fff2c9 55%,#b8862b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cs-cap{font-size:clamp(1rem,1.6vw,1.2rem);color:#b9c6dc;line-height:1.6;margin:0 auto;padding-inline:max(0px,calc((min(92vw,980px) - 640px)/2))}
+.cs-live .cs-cap{top:calc(14vh + clamp(3.4rem,8.6vw,7.6rem))}
+
+.cs-who{top:9vh}
+.cs-who .hero-lede{margin:0 auto 18px;max-width:640px;color:#c9d4e6}
+.cs-act{top:auto;bottom:9vh}
+.cs-live .cs-act{top:44vh;bottom:auto}
+.cs-act .hero-ctas{justify-content:center}
+.cs-act .hx-bar,.cs-act .hx-grow{margin-left:auto;margin-right:auto}
+
+/* app orb labels */
+.cs-orb{position:absolute;transform:translate(-50%,0);font-size:.82rem;font-weight:600;letter-spacing:.04em;color:#e9eef8;white-space:nowrap;pointer-events:auto;text-decoration:none;padding:4px 10px;border-radius:999px;background:rgba(6,13,31,.55);border:1px solid rgba(255,255,255,.12)}
+.cs-orb:hover,.cs-orb:focus-visible{border-color:#e8c170;color:#fff}
+.cs-orb small{display:block;font-weight:400;color:#9fb0c8;font-size:.72rem;letter-spacing:0}
+
+/* progress dots, scroll cue, skip */
+.cs-dots{position:absolute;right:22px;top:50%;transform:translateY(-50%);display:grid;gap:10px;list-style:none;margin:0;padding:0}
+.cs-dots li{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,transform .3s}
+.cs-dots li.is-on{background:#e8c170;transform:scale(1.4)}
+.cs-cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:#9fb0c8;opacity:calc(1 - var(--cs,0) * 3)}
+.cs-cue::after{content:"";display:block;width:1px;height:34px;margin:10px auto 0;background:linear-gradient(#e8c170,transparent);animation:cs-cue 1.8s ease-in-out infinite}
+@keyframes cs-cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.cs-skip{position:absolute;right:22px;bottom:24px;font-size:.8rem;color:#9fb0c8;text-decoration:underline;text-underline-offset:3px}
+.cs-skip:hover{color:#e8c170}
+
+/* still layout: reduced motion, no WebGL, or before the script runs */
+.cs:not(.cs-live){padding:140px 0 80px}
+.cs:not(.cs-live) .cs-canvas,.cs:not(.cs-live) .cs-dots,.cs:not(.cs-live) .cs-cue,.cs:not(.cs-live) .cs-skip,.cs:not(.cs-live) .cs-orb{display:none}
+.cs:not(.cs-live) .cs-s{position:static;margin:0 auto 22px;text-align:center;width:min(92vw,980px)}
+.cs:not(.cs-live) .cs-line{display:block;font-size:clamp(2.4rem,6.4vw,5.6rem)}
+.cs:not(.cs-live) .cs-still{display:block;margin:0 auto 28px;width:120px;height:120px}
+.cs-live .cs-still{display:none}
+
+@media (max-width:700px){
+  .cs.cs-live{height:440vh}
+  .cs-dots{right:10px}
+  .cs-live .cs-line{top:12vh}
+  .cs-live .cs-act{top:38vh}
+  .cs-who{top:7vh}.cs-who .hx-tabs{flex-wrap:wrap;justify-content:center}
+  .cs-orb{font-size:.74rem;padding:3px 8px}.cs-orb small{display:none}
+}
+@media (prefers-reduced-motion:reduce){.cs-cue::after{animation:none}}
+
+/* header stays dark glass over the story */
+.site-header.cs-over{color:#e9eef8}
+.site-header.cs-over::before{background:rgba(5,10,24,.62)!important;border-color:rgba(255,255,255,.08)!important;backdrop-filter:blur(14px)}
+.site-header.cs-over .brand-mark{stroke:#E2B55A}.site-header.cs-over .brand-mark circle{fill:#E8C170}
+.site-header.cs-over .icon-btn{border-color:rgba(255,255,255,.2)}
+@media (max-width:700px){
+  .cs-live .cs-cap{top:calc(12vh + 5.6rem)}
+  .cs-live .cs-who .hero-lede{display:none}
+  .cs-who{top:11vh}
+  .cs-orb .cs-long{display:none}
+}
+@media (min-width:701px){.cs-orb .cs-short{display:none}}
+.cs:not(.cs-live) .cs-cap{display:none}
