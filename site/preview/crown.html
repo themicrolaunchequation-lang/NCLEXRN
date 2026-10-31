@@ -30,7 +30,7 @@
 
 <script>document.documentElement.classList.replace('no-js','js');try{var t=localStorage.getItem('hca-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/crown-story.css">
+<link rel="stylesheet" href="/assets/css/crown-3d.css">
 <meta name="robots" content="noindex, nofollow">
 <script src="/assets/js/config.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
@@ -269,19 +269,47 @@
 <main id="main">
 
 <!-- ============ HERO ============ -->
-<section class="cs island-dark" id="top" aria-labelledby="hero-title" data-hero data-cs>
-  <div class="cs-sticky">
-    <canvas class="cs-canvas" aria-hidden="true"></canvas>
-    <div class="cs-veil" aria-hidden="true"></div>
-    <svg class="cs-still" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="#E2B55A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 41h8.5l4.5-14.5 5.2 11.5L32 20l5.8 18 5.2-11.5 4.5 14.5H56"/><path d="M18 48h28"/></g><g fill="#E8C170"><circle cx="21" cy="19.6" r="2.6"/><circle cx="43" cy="19.6" r="2.6"/><circle cx="32" cy="12.6" r="3.2"/></g></svg>
-    <h1 id="hero-title" class="cs-h1"><span class="cs-s cs-line" data-s="0">Learn with confidence.</span> <span class="cs-s cs-line" data-s="1">Care with skill.</span> <span class="cs-s cs-line cs-gold" data-s="2">Earn your crown.</span></h1>
-    <p class="cs-s cs-cap" data-s="0">Six apps and one account for every stage of your healthcare career.</p>
-    <p class="cs-s cs-cap cs-cap-a" data-s="1">Every great career in healthcare starts the same way: with care.</p>
-    <p class="cs-s cs-cap cs-cap-a" data-s="2">Learn it, practise it, prove it.</p>
-    <div class="cs-s cs-who" data-s="3">
-      <p class="hero-lede hx-lede">Six apps and one account for every stage of your healthcare career, from your first lecture to your finest work.</p>
-      <p class="sr-only">MedLex to understand medical words, Lumen to study, Carecraft to practise, Serein to restore, Gulf Region Nursing to prepare for your licence and Evinca to be recognised.</p>
-      <div class="hx-who" data-who>
+<section class="cx island-dark" id="top" aria-labelledby="hero-title" data-cx>
+  <div class="cx-pin">
+    <img class="cx-poster" src="/assets/img/crown-poster.webp" alt="" width="1200" height="1000">
+    <canvas class="cx-canvas" aria-hidden="true"></canvas>
+    <div class="cx-light" aria-hidden="true"></div><div class="cx-grid" aria-hidden="true"></div>
+    <div class="cx-copy">
+      <div class="cx-step" data-step="0">
+        <p class="cx-eyebrow">Healthcare Crown Academy</p>
+        <h1 id="hero-title">Learn with confidence.<br>Care with skill.<br><span class="cx-g">Earn your crown.</span></h1>
+        <p class="cx-lede">Six apps and one account for every stage of your healthcare career, from your first lecture to your finest work.</p>
+        <div class="cx-ctas">
+      <a class="btn btn-gold btn-lg hx-cta" href="#start">Start free — no card <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost btn-lg hx-pass-btn" href="#pricing">Crown Pass <span>7 days free, then from £5.99/month</span></a>
+    </div>
+      </div>
+      <div class="cx-step" data-step="1"><p class="cx-k">01 · One band</p><h2>One account<br>holds it all.</h2><p class="cx-spec">Sign in once. Every app, your progress and your plan live in <b>one place</b>, on every device.</p></div>
+      <div class="cx-step" data-step="2"><p class="cx-k">02 · Six jewels</p><h2>Six apps.<br>Each one a jewel.</h2><p class="cx-spec">Understand, study, practise, restore, prepare and be recognised. <b>Turn the crown</b> to meet each one.</p></div>
+      <div class="cx-step" data-step="3"><p class="cx-k">03 · The heartbeat</p><h2>Care at<br>the core.</h2><p class="cx-spec">Every lesson, tool and case is made for the people who <b>look after patients</b>.</p></div>
+      <div class="cx-step" data-step="4"><p class="cx-k">04 · The crown</p><h2><span class="cx-g">Earn your crown.</span></h2><p class="cx-spec">Learn it. Practise it. <b>Prove it.</b></p><div class="cx-ctas">
+      <a class="btn btn-gold btn-lg hx-cta" href="#start">Start free — no card <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost btn-lg hx-pass-btn" href="#pricing">Crown Pass <span>7 days free, then from £5.99/month</span></a>
+    </div></div>
+    </div>
+    <a class="cx-gem" href="#medlex" data-gem><i style="--c:#3557D6"></i>MedLex<small>Understand</small></a>
+    <a class="cx-gem" href="#lumen" data-gem><i style="--c:#8B6CF0"></i>Lumen<small>Study</small></a>
+    <a class="cx-gem" href="#carecraft" data-gem><i style="--c:#0F8A86"></i>Carecraft<small>Practise</small></a>
+    <a class="cx-gem" href="#serein" data-gem><i style="--c:#5FB89E"></i>Serein<small>Restore</small></a>
+    <a class="cx-gem" href="#snle" data-gem><i style="--c:#347A9A"></i>Gulf Region Nursing<small>Prepare</small></a>
+    <a class="cx-gem" href="#evinca" data-gem><i style="--c:#D9532F"></i>Evinca<small>Be recognised</small></a>
+    <nav class="cx-nav" aria-label="Story steps"><button type="button" data-cx-nav>00</button><button type="button" data-cx-nav>01</button><button type="button" data-cx-nav>02</button><button type="button" data-cx-nav>03</button><button type="button" data-cx-nav>04</button></nav>
+    <a class="cx-skip" href="#after">Skip the story</a>
+  </div>
+</section>
+
+<section class="hero island-dark cx-after" id="after" aria-labelledby="hx-who-k" data-hero>
+  <div class="hero-bg" aria-hidden="true"><div class="aurora"></div><div class="hx-grid"></div><div class="hx-spot"></div></div>
+  <div class="container hero-copy">
+    
+    
+    <p class="sr-only">MedLex to understand medical words, Lumen to study, Carecraft to practise, Serein to restore, Gulf Region Nursing to prepare for your licence and Evinca to be recognised.</p>
+    <div class="hx-who" data-who>
       <p class="hx-who-k" id="hx-who-k">Which describes you?</p>
       <div class="hx-tabs" role="group" aria-labelledby="hx-who-k" data-who-tabs>
         <span class="hx-pill" aria-hidden="true" data-who-pill></span>
@@ -298,28 +326,46 @@
         <p>Preparing for a Gulf nursing licence? <a class="t-snle" href="#snle">Gulf Region Nursing</a> covers the Saudi, Qatar, Dubai and Abu Dhabi exams, with <a class="t-medlex" href="#medlex">MedLex</a> for medical English.</p>
       </template>
     </div>
-    </div>
-    <a class="cs-orb" href="#medlex" data-orb>MedLex<small>Understand</small></a>
-    <a class="cs-orb" href="#lumen" data-orb>Lumen<small>Study</small></a>
-    <a class="cs-orb" href="#carecraft" data-orb>Carecraft<small>Practise</small></a>
-    <a class="cs-orb" href="#serein" data-orb>Serein<small>Restore</small></a>
-    <a class="cs-orb" href="#snle" data-orb><span class="cs-long">Gulf Region Nursing</span><span class="cs-short">Gulf</span><small>Prepare</small></a>
-    <a class="cs-orb" href="#evinca" data-orb>Evinca<small>Be recognised</small></a>
-    <div class="cs-s cs-act" data-s="4">
-      <div class="hero-ctas">
-      <a class="btn btn-gold btn-lg hx-cta" href="#start">Start free — no card <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      <a class="btn btn-ghost btn-lg hx-pass-btn" href="#pricing">Crown Pass <span>7 days free, then from £5.99/month</span></a>
-    </div>
+    
     <p class="hx-grow"><span class="hx-spark" aria-hidden="true">✦</span>Always growing: new lessons, tools and apps are added regularly.</p>
     <ul class="hx-bar" aria-label="Who we are">
       <li><span aria-hidden="true">✓</span>UK company 17501904 <a href="https://find-and-update.company-information.service.gov.uk/company/17501904" target="_blank" rel="noopener">check<span class="sr-only"> on Companies House (opens in a new tab)</span> ↗</a></li>
       <li><span aria-hidden="true">✓</span>ICO registered ZC273259 <a href="https://ico.org.uk/ESDWebPages/Entry/ZC273259" target="_blank" rel="noopener">check<span class="sr-only"> on the ICO register (opens in a new tab)</span> ↗</a></li>
       <li><span aria-hidden="true">✓</span>No ads, ever</li>
     </ul>
+  </div>
+
+  <div class="crown-stage" data-crown-stage>
+    <div class="crown crown-six" data-crown>
+      <a class="crown-tile jewel-serein" href="#serein" style="--i:4">
+        <span class="tile-frame"><picture><source media="(max-width: 640px)" srcset="/assets/img/apps/serein-phone.webp" width="390" height="844"><img src="/assets/img/apps/serein-desktop.webp" width="1200" height="750" alt="Serein's My Day: a two-minute breathing pause between tasks, a gentle weekly check-in and short practices such as Box Breathing." decoding="async"></picture><span class="tile-play" aria-hidden="true">Watch the tour</span></span>
+        <span class="tile-label"><span class="jewel" aria-hidden="true"></span>Serein <small>Restore</small></span>
+      </a>
+      <a class="crown-tile jewel-lumen" href="#lumen" style="--i:2">
+        <span class="tile-frame"><picture><source media="(max-width: 640px)" srcset="/assets/img/apps/lumen-phone.webp" width="390" height="844"><img src="/assets/img/apps/lumen-desktop.webp" width="1200" height="750" alt="Lumen's My Day: continue reading your own study source, start a focus session and see today's recall-card goal." decoding="async"></picture><span class="tile-play" aria-hidden="true">Watch the tour</span></span>
+        <span class="tile-label"><span class="jewel" aria-hidden="true"></span>Lumen <small>Study</small></span>
+      </a>
+      <a class="crown-tile jewel-medlex" href="#medlex" style="--i:0">
+        <span class="tile-frame"><picture><source media="(max-width: 640px)" srcset="/assets/img/apps/medlex-phone.webp" width="390" height="844"><img src="/assets/img/apps/medlex-desktop.webp" width="1200" height="750" alt="MedLex's My Day: a ten-item session to decode medical words, a 10-minute daily goal and the word of the day, encephalitis." decoding="async" fetchpriority="high"></picture><span class="tile-play" aria-hidden="true">Watch the tour</span></span>
+        <span class="tile-label"><span class="jewel" aria-hidden="true"></span>MedLex <small>Understand</small></span>
+      </a>
+      <a class="crown-tile jewel-snle" href="#snle" style="--i:1">
+        <span class="tile-frame"><picture><source media="(max-width: 640px)" srcset="/assets/img/apps/snle-phone.jpg" width="390" height="844"><img src="/assets/img/apps/snle-desktop.jpg" width="1200" height="750" alt="Gulf Region Nursing Licensure Studio: clinical reasoning tools, original practice questions and learning progress." decoding="async"></picture><span class="tile-play" aria-hidden="true">Watch the tour</span></span>
+        <span class="tile-label"><span class="jewel" aria-hidden="true"></span>Gulf Region Nursing <small>Prepare</small></span>
+      </a>
+      <a class="crown-tile jewel-carecraft" href="#carecraft" style="--i:1">
+        <span class="tile-frame"><picture><source media="(max-width: 640px)" srcset="/assets/img/apps/carecraft-phone.webp" width="390" height="844"><img src="/assets/img/apps/carecraft-desktop.webp" width="1200" height="750" alt="Carecraft's My Day: today's 60-second medication-safety scenario, a lesson on conversations that build trust and a practice to try." decoding="async"></picture><span class="tile-play" aria-hidden="true">Watch the tour</span></span>
+        <span class="tile-label"><span class="jewel" aria-hidden="true"></span>Carecraft <small>Practise</small></span>
+      </a>
+      <a class="crown-tile jewel-evinca" href="#evinca" style="--i:3">
+        <span class="tile-frame"><picture><source media="(max-width: 640px)" srcset="/assets/img/apps/evinca-phone.webp" width="390" height="844"><img src="/assets/img/apps/evinca-desktop.webp" width="1200" height="750" alt="Evinca's home page: 'Somebody made care better today', with a button to start a free Spotlight Story." decoding="async"></picture><span class="tile-play" aria-hidden="true">Watch the tour</span></span>
+        <span class="tile-label"><span class="jewel" aria-hidden="true"></span>Evinca <small>Be recognised</small></span>
+      </a>
+      <a class="crown-tile jewel-lss" href="#lss" style="--i:5">
+        <span class="tile-frame"><picture><source media="(max-width: 640px)" srcset="/assets/img/apps/lss-phone.webp" width="390" height="844"><img src="/assets/img/apps/lss-desktop.webp" width="1200" height="750" alt="The LSS Toolkit: the five DMAIC stages and a menu of Lean Six Sigma tools for healthcare improvement." decoding="async" loading="lazy"></picture><span class="tile-play" aria-hidden="true">Watch the tour</span></span>
+        <span class="tile-label"><span class="jewel" aria-hidden="true"></span>Lean Six Sigma <small>Green Belt</small></span>
+      </a>
     </div>
-    <ol class="cs-dots" aria-hidden="true"><li data-cs-dot></li><li data-cs-dot></li><li data-cs-dot></li><li data-cs-dot></li><li data-cs-dot></li></ol>
-    <p class="cs-cue" aria-hidden="true">Scroll</p>
-    <a class="cs-skip" href="#start">Skip intro</a>
   </div>
 </section>
 
@@ -821,6 +867,8 @@
 </footer>
 
 <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
-<script src="/assets/js/crown-story.js" defer></script>
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script type="module" src="/assets/js/crown-3d.js"></script>
 </body>
 </html>
