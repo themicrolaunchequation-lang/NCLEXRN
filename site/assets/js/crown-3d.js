@@ -1,6 +1,8 @@
 /* Healthcare Crown Academy: the 3D crown hero (Three.js + GSAP ScrollTrigger, both self-hosted).
    A gold crown with an engraved heartbeat, six app jewels and six points (no cross). Scroll story:
-   0 hero · 1 one band (one account) · 2 six jewels (six apps) · 3 the heartbeat (care at the core) · 4 earn your crown (burst and reassemble).
+   0 hero · 1 one band (one account) · 2 six jewels (six apps) · 3 the heartbeat (care at the core) ·
+   4 who it's for (the crown settles on six people made of gold dust, turning to show each one's jewel) · 5 earn your crown.
+   Sound is optional and made live in the browser (crown-sound.js).
    Text is real HTML; the canvas is decoration. Reduced motion or no WebGL keeps the still poster. */
 import * as THREE from '../vendor/three/three.module.min.js';
 import { RoomEnvironment } from '../vendor/three/addons/RoomEnvironment.js';
@@ -9,11 +11,57 @@ import { EffectComposer } from '../vendor/three/addons/EffectComposer.js';
 import { RenderPass } from '../vendor/three/addons/RenderPass.js';
 import { UnrealBloomPass } from '../vendor/three/addons/UnrealBloomPass.js';
 import { OutputPass } from '../vendor/three/addons/OutputPass.js';
+import { createSound } from './crown-sound.js';
 
 const root = document.querySelector('[data-cx]');
 const canvas = root && root.querySelector('.cx-canvas');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 function still() { root && root.classList.add('cx-still'); }
+
+/* ---------- six people, one for each jewel: simple silhouettes with the details cut in as lines ---------- */
+function paintFigure(i) {
+  const R = 320, c = document.createElement('canvas'); c.width = c.height = R;
+  const x = c.getContext('2d', { willReadFrequently: true }); x.scale(R / 512, R / 512);
+  x.fillStyle = '#fff'; x.strokeStyle = '#fff'; x.lineCap = 'round'; x.lineJoin = 'round';
+  const ell = (cx, cy, rx, ry, r = 0) => { x.beginPath(); x.ellipse(cx, cy, rx, ry, r, 0, Math.PI * 2); x.fill(); };
+  const line = (w, pts, close) => { x.lineWidth = w; x.beginPath(); pts.forEach(([a, b], k) => (k ? x.lineTo(a, b) : x.moveTo(a, b))); if (close) x.closePath(); x.stroke(); };
+  const ring = (cx, cy, r, w) => { x.lineWidth = w; x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.stroke(); };
+  if (i === 0) ell(318, 122, 26, 54, 0.5);   // ponytail
+  if (i === 5) { x.beginPath(); x.moveTo(192, 120); x.bezierCurveTo(176, 200, 178, 262, 200, 304); x.lineTo(312, 304); x.bezierCurveTo(334, 262, 336, 200, 320, 120); x.fill(); }   // shoulder-length hair
+  x.beginPath(); x.moveTo(84, 512); x.bezierCurveTo(88, 340, 140, 262, 256, 254); x.bezierCurveTo(372, 262, 424, 340, 428, 512); x.closePath(); x.fill();   // shoulders
+  x.fillRect(228, 196, 56, 72);    // neck
+  ell(256, 148, 66, 78);           // head
+  if (i === 1 || i === 3) ell(256, 112, 66, 44);   // short hair
+  if (i === 2) ell(256, 68, 30, 26);              // bun
+  if (i === 4) { ell(256, 146, 82, 94); x.beginPath(); x.moveTo(176, 160); x.bezierCurveTo(168, 262, 190, 320, 146, 352); x.lineTo(366, 352); x.bezierCurveTo(322, 320, 344, 262, 336, 160); x.fill(); }   // headscarf
+  x.save(); x.globalCompositeOperation = 'destination-out';
+  if (i === 0) { line(7, [[176, 398], [256, 418], [336, 398], [336, 478], [256, 498], [176, 478]], true); line(5, [[256, 418], [256, 498]]); line(7, [[200, 326], [178, 398]]); }   // open book, bag strap
+  if (i === 1) { ring(230, 156, 17, 6); ring(282, 156, 17, 6); line(5, [[247, 154], [265, 154]]); line(6, [[212, 330], [256, 400], [300, 330]]); line(6, [[300, 430], [356, 418], [366, 470], [310, 482]], true); }   // glasses, collar, papers
+  if (i === 2) { line(6, [[206, 322], [256, 394], [306, 322]]); line(6, [[300, 424], [352, 424], [352, 474], [300, 474]], true); line(5, [[318, 406], [318, 444]]); ring(196, 432, 15, 5); }   // tunic, pocket and pen, fob watch
+  if (i === 3) { x.lineWidth = 7; x.beginPath(); x.moveTo(212, 262); x.bezierCurveTo(198, 336, 212, 384, 232, 404); x.moveTo(300, 262); x.bezierCurveTo(314, 336, 300, 384, 280, 404); x.moveTo(232, 404); x.quadraticCurveTo(256, 428, 280, 404); x.moveTo(256, 418); x.bezierCurveTo(258, 456, 300, 462, 304, 436); x.stroke(); ring(304, 444, 14, 6); line(6, [[158, 342], [212, 474]]); line(6, [[354, 342], [300, 474]]); }   // stethoscope, white coat
+  if (i === 4) { x.lineWidth = 6; x.beginPath(); x.ellipse(256, 160, 46, 58, 0, 0, Math.PI * 2); x.stroke(); line(5, [[222, 354], [256, 420], [290, 354]]); line(6, [[228, 420], [284, 420], [284, 482], [228, 482]], true); line(4, [[240, 440], [272, 440]]); }   // scarf edge, lanyard and ID badge
+  if (i === 5) { line(7, [[178, 338], [238, 452], [256, 512]]); line(7, [[334, 338], [274, 452], [256, 512]]); ring(330, 410, 18, 6); line(5, [[320, 428], [312, 464]]); line(5, [[340, 428], [348, 464]]); }   // blazer lapels, recognition medal
+  x.restore();
+  return c;
+}
+function sampleFigure(c, n) {
+  const R = c.width, a = c.getContext('2d').getImageData(0, 0, R, R).data;
+  let h = null;   // a blurred copy gives each figure a soft, rounded depth
+  try { const b = document.createElement('canvas'); b.width = b.height = R; const bx = b.getContext('2d', { willReadFrequently: true }); bx.filter = 'blur(12px)'; if (bx.filter.indexOf('blur') >= 0) { bx.drawImage(c, 0, 0); h = bx.getImageData(0, 0, R, R).data; } } catch (e) { h = null; }
+  const fill = [], edge = [];
+  for (let y = 1; y < R - 1; y++) for (let x = 1; x < R - 1; x++) {
+    const k = (y * R + x) * 4 + 3; if (a[k] < 128) continue;
+    (a[k - 4] < 128 || a[k + 4] < 128 || a[k - R * 4] < 128 || a[k + R * 4] < 128 ? edge : fill).push(y * R + x);
+  }
+  const out = new Float32Array(n * 4), s = 512 / R;
+  for (let i = 0; i < n; i++) {
+    const isE = Math.random() < 0.34, list = isE ? edge : fill, q = list[(Math.random() * list.length) | 0];
+    const px = (q % R + Math.random()) * s, py = (((q / R) | 0) + Math.random()) * s, d = h ? h[q * 4 + 3] / 255 : 0.6;
+    out[i * 4] = (px - 256) / 256; out[i * 4 + 1] = (100 - py) / 256;
+    out[i * 4 + 2] = (d * 0.24 + (Math.random() - 0.5) * 0.03) * (Math.random() < 0.6 ? 1 : -0.4); out[i * 4 + 3] = isE ? 1 : 0;
+  }
+  return out;
+}
 
 (function start() {
   if (!root || !canvas || reduce || !window.gsap || !window.ScrollTrigger) return still();
@@ -113,14 +161,30 @@ function still() { root && root.classList.add('cx-still'); }
   const pg = new THREE.BufferGeometry();
   pg.setAttribute('position', new THREE.BufferAttribute(pos, 3)); pg.setAttribute('aDir', new THREE.BufferAttribute(dir, 3));
   pg.setAttribute('aCol', new THREE.BufferAttribute(col, 3)); pg.setAttribute('aRnd', new THREE.BufferAttribute(rnd, 1));
-  const pU = { uBurst: { value: 0 }, uShow: { value: 0 }, uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() } };
+  const FIGS = [0, 1, 2, 3, 4, 5].map((i) => sampleFigure(paintFigure(i), N));
+  const aFa = new THREE.BufferAttribute(new Float32Array(FIGS[0]), 4).setUsage(THREE.DynamicDrawUsage);
+  const aFb = new THREE.BufferAttribute(new Float32Array(FIGS[1]), 4).setUsage(THREE.DynamicDrawUsage);
+  pg.setAttribute('aFa', aFa); pg.setAttribute('aFb', aFb);
+  const pU = { uBurst: { value: 0 }, uShow: { value: 0 }, uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() }, uFig: { value: 0 }, uMix: { value: 0 }, uFigPt: { value: small ? 1.8 : 1 },
+    uCrownM: { value: new THREE.Matrix4() }, uFigM: { value: new THREE.Matrix4() }, uCa: { value: new THREE.Color(APPS[0][2]) }, uCb: { value: new THREE.Color(APPS[1][2]) } };
   const pMat = new THREE.ShaderMaterial({ uniforms: pU, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    vertexShader: `attribute vec3 aDir,aCol; attribute float aRnd; uniform float uBurst,uTime,uPx; varying vec3 vC; varying float vA;
+    vertexShader: `attribute vec3 aDir,aCol; attribute float aRnd; attribute vec4 aFa,aFb;
+      uniform float uBurst,uTime,uPx,uFig,uMix,uFigPt; uniform mat4 uCrownM,uFigM; uniform vec3 uCa,uCb; varying vec3 vC; varying float vA;
       void main(){ float b=smoothstep(0.,1.,clamp(uBurst*1.2-aRnd*0.2,0.,1.)); vec3 p=position+aDir*b*0.95;
         p.x+=sin(uTime*.7+aRnd*20.)*0.04*b; p.y+=cos(uTime*.6+aRnd*17.)*0.04*b;
-        vec4 mv=modelViewMatrix*vec4(p,1.); gl_Position=projectionMatrix*mv; gl_PointSize=min(uPx*4.5,uPx*(1.6+aRnd*1.8)*(5.2/-mv.z)); vC=aCol; vA=0.55+0.45*aRnd; }`,
+        vec3 pc=(uCrownM*vec4(p,1.)).xyz;
+        float m=smoothstep(0.,1.,clamp(uMix*1.4-aRnd*0.4,0.,1.)); vec4 f=mix(aFa,aFb,m);
+        vec3 fl=f.xyz+aDir*m*(1.-m)*0.5; fl.z+=sin(uTime*1.3+aRnd*30.)*0.012;
+        vec3 pf=(uFigM*vec4(fl,1.)).xyz;
+        float g=smoothstep(0.,1.,clamp(uFig*1.3-aRnd*0.3,0.,1.));
+        vec3 w=mix(pc,pf,g)+aDir*g*(1.-g)*1.2;
+        vec4 mv=viewMatrix*vec4(w,1.); gl_Position=projectionMatrix*mv;
+        gl_PointSize=min(uPx*4.5,uPx*(1.6+aRnd*1.8-g*0.5+f.w*g*0.5)*(5.2/-mv.z)*(1.+g*(uFigPt-1.)));
+        vec3 jc=mix(uCa,uCb,m); vec3 fc=mix(mix(vec3(.91,.75,.42),jc,.4),mix(jc,vec3(1.),.45),f.w);
+        vC=mix(aCol,fc,g); vA=(0.55+0.45*aRnd)*mix(1.,(0.5+0.45*f.w)*smoothstep(-1.62,-1.1,f.y),g); }`,
     fragmentShader: 'uniform float uShow; varying vec3 vC; varying float vA; void main(){ float r=length(gl_PointCoord-.5); float a=smoothstep(.5,0.,r); gl_FragColor=vec4(vC*1.6*a*vA*uShow,a*vA*uShow); }' });
-  const cloud = new THREE.Points(pg, pMat); cloud.renderOrder = 11; crown.add(cloud);
+  const cloud = new THREE.Points(pg, pMat); cloud.renderOrder = 11; cloud.frustumCulled = false; scene.add(cloud);
+  const fig = new THREE.Object3D();
 
   // gold dust in the room
   const D = small ? 500 : 1200, dp = new Float32Array(D * 3);
@@ -136,28 +200,53 @@ function still() { root && root.classList.add('cx-still'); }
   composer.addPass(new OutputPass());
 
   /* ---------- the scroll story ---------- */
-  const S = { x: small ? 0 : 1.15, y: small ? 0.75 : -0.05, rot: -0.35, tilt: 0.22, dist: 5.6, camY: 1.15, burst: 0, glow: 0.35, jewel: 0, solid: 1 };
+  const S = { x: small ? 0 : 1.15, y: small ? 0.75 : -0.05, rot: -0.35, tilt: 0.22, dist: 5.6, camY: 1.15, burst: 0, glow: 0.35, jewel: 0, solid: 1, cs: 1, ly: 0, face: 0, spin: 1, fig: 0, who: 0 };
   const fade = (sel, o) => gsap.to(root.querySelectorAll(sel), { autoAlpha: o, y: o ? 0 : -24, duration: 0.4, ease: 'power2.out' });
   const steps = [...root.querySelectorAll('[data-step]')];
   steps.forEach((el, i) => { if (i) gsap.set(el, { autoAlpha: 0, y: 24 }); });
+  const persons = [...root.querySelectorAll('[data-person]')];
+  persons.forEach((el, i) => { if (i) gsap.set(el, { autoAlpha: 0, y: 16 }); });
+  const navs = [...root.querySelectorAll('[data-cx-nav]')], chips = [...root.querySelectorAll('[data-person-go]')];
+  let marks = [0], snd = null, sceneI = 0, who = -1, total = 11;
   const tl = gsap.timeline({ defaults: { ease: 'power2.inOut', duration: 1 },
-    scrollTrigger: { trigger: root, start: 'top top', end: () => '+=' + innerHeight * (small ? 4 : 4.6), scrub: 0.8, pin: root.querySelector('.cx-pin'), anticipatePin: 1,
-      onUpdate: (st) => { const s = Math.round(st.progress * 4); root.querySelectorAll('[data-cx-nav]').forEach((b, i) => b.classList.toggle('is-on', i === s)); } } });
+    scrollTrigger: { trigger: root, start: 'top top', end: () => '+=' + innerHeight * total * (small ? 0.78 : 0.9), scrub: 0.8, pin: root.querySelector('.cx-pin'), anticipatePin: 1,
+      onUpdate: () => {
+        const t = tl.time(); let s = 0; marks.forEach((m, i) => { if (t >= m - 0.05) s = i; });
+        if (s !== sceneI) { sceneI = s; if (snd) { snd.scene(s); if (s === 5) snd.crown(); } }
+        navs.forEach((b, i) => b.classList.toggle('is-on', i === s));
+      } } });
   const show = (i, at) => { tl.to(steps.filter((_, k) => k !== i), { autoAlpha: 0, y: -24, duration: 0.3 }, at); tl.to(steps[i], { autoAlpha: 1, y: 0, duration: 0.4 }, at + '+=0.3'); };
+  const person = (i, at) => { tl.to(persons.filter((_, k) => k !== i), { autoAlpha: 0, y: -16, duration: 0.25 }, at); tl.to(persons[i], { autoAlpha: 1, y: 0, duration: 0.35 }, at + 0.25); };
   // 1 · one band
   tl.addLabel('s1').to(S, { x: small ? 0 : 1.1, y: small ? 0.72 : -0.1, rot: 0.9, tilt: 0.5, dist: 5.0, camY: 2.0 }, 's1'); show(1, 's1');
   // 2 · six jewels
   tl.addLabel('s2').to(S, { x: small ? 0 : 1.05, y: small ? 0.72 : -0.05, rot: 0.9 + Math.PI * 1.05, tilt: 0.1, dist: 4.6, camY: 0.75, jewel: 1 }, 's2'); show(2, 's2');
   // 3 · the heartbeat
   tl.addLabel('s3').to(S, { x: small ? 0 : 0.8, y: small ? 0.5 : 0, rot: 0.9 + Math.PI * 1.6, tilt: 0.0, dist: 3.7, camY: 0.3, jewel: 0.3, glow: 1.4 }, 's3'); show(3, 's3');
-  // 4 · earn your crown: burst into gold, hold, then come back together
-  tl.addLabel('s4').to(S, { x: small ? 0 : 1.25, y: small ? 0.75 : -0.02, rot: 0.9 + Math.PI * 2.25, tilt: 0.24, dist: 5.4, camY: 1.2, glow: 0.5, jewel: 0.6, duration: 1.2 }, 's4')
-    .to(S, { burst: 1, solid: 0, duration: 0.4, ease: 'power3.out' }, 's4')
-    .to(S, { burst: 0, solid: 1, duration: 0.5, ease: 'power3.inOut' }, 's4+=0.6'); show(4, 's4');
-  tl.to({}, { duration: 0.25 });
-  root.querySelectorAll('[data-cx-nav]').forEach((b, i) => b.addEventListener('click', () => {
-    const st = tl.scrollTrigger; scrollTo({ top: st.start + (st.end - st.start) * i / 4, behavior: 'smooth' });
-  }));
+  // 4 · who it's for: the crown settles on a person made of gold dust and turns to show their jewel
+  tl.addLabel('s4').to(S, { x: small ? 0 : 1.25, y: small ? 0.98 : 0.86, cs: small ? 0.5 : 0.36, tilt: 0.3, dist: 5.6, camY: small ? 1.05 : 0.45, ly: small ? 0.05 : -1.02,
+    face: 1, spin: 0, glow: 0.5, jewel: 0.15, fig: 1, who: 0, duration: 1.1 }, 's4'); show(4, 's4'); person(0, tl.labels.s4 + 0.3);
+  const whoAt = [tl.labels.s4 + 0.9];
+  for (let i = 1; i < 6; i++) { tl.addLabel('p' + i, '+=0.6'); tl.to(S, { who: i, duration: 0.75 }, 'p' + i); person(i, tl.labels['p' + i] + 0.2); whoAt.push(tl.labels['p' + i] + 0.7); }
+  tl.to({}, { duration: 0.5 });
+  // 5 · earn your crown: back to full size, burst into gold, then come back together
+  tl.addLabel('s5').to(S, { x: small ? 0 : 1.25, y: small ? 0.75 : -0.02, rot: 0.9 + Math.PI * 2.25, tilt: 0.24, dist: 5.4, camY: 1.2, ly: 0, cs: 1, face: 0, spin: 1, fig: 0, glow: 0.5, jewel: 0.6, duration: 1.1 }, 's5')
+    .to(S, { burst: 1, solid: 0, duration: 0.4, ease: 'power3.out' }, 's5+=0.9')
+    .to(S, { burst: 0, solid: 1, duration: 0.5, ease: 'power3.inOut' }, 's5+=1.4'); show(5, 's5');
+  tl.to({}, { duration: 0.3 });
+  total = tl.duration();
+  marks = [0, tl.labels.s1, tl.labels.s2, tl.labels.s3, tl.labels.s4, tl.labels.s5];
+  const goTo = (time) => { const st = tl.scrollTrigger; scrollTo({ top: st.start + (st.end - st.start) * Math.min(1, time / tl.duration()), behavior: 'smooth' }); };
+  navs.forEach((b, i) => b.addEventListener('click', () => goTo(i ? marks[i] + 0.8 : 0)));
+  chips.forEach((b, i) => b.addEventListener('click', () => goTo(whoAt[i])));
+
+  /* ---------- optional sound ---------- */
+  const sb = root.querySelector('[data-cx-sound]'), sl = root.querySelector('[data-cx-sound-label]');
+  if (sb) sb.addEventListener('click', () => {
+    try { if (!snd) { snd = createSound(); snd.scene(sceneI); } } catch (e) { sb.hidden = true; return; }
+    if (snd.on) snd.stop(); else snd.start();
+    sb.setAttribute('aria-pressed', String(snd.on)); sl.textContent = snd.on ? 'Sound on' : 'Sound off';
+  });
 
   /* ---------- labels that follow the jewels ---------- */
   const tags = [...root.querySelectorAll('[data-gem]')];
@@ -174,24 +263,33 @@ function still() { root && root.classList.add('cx-still'); }
   let mx = 0, my = 0, tx = 0, ty = 0;
   addEventListener('pointermove', (e) => { tx = (e.clientX / innerWidth - 0.5); ty = (e.clientY / innerHeight - 0.5); }, { passive: true });
   const clock = new THREE.Clock(); let running = true;
-  new IntersectionObserver(([e]) => { running = e.isIntersecting; if (running) renderer.setAnimationLoop(frame); else renderer.setAnimationLoop(null); }).observe(root);
+  new IntersectionObserver(([e]) => { running = e.isIntersecting; if (snd) snd.level(running ? 1 : 0); if (running) renderer.setAnimationLoop(frame); else renderer.setAnimationLoop(null); }).observe(root);
+  let last = 0, spin = 0, figP = -1;
+  const setFig = (p) => { if (p === figP) return; figP = p; aFa.array.set(FIGS[p]); aFb.array.set(FIGS[Math.min(p + 1, 5)]); aFa.needsUpdate = aFb.needsUpdate = true; pU.uCa.value.set(APPS[p][2]); pU.uCb.value.set(APPS[Math.min(p + 1, 5)][2]); };
   const header = document.querySelector('[data-header]'), after = document.getElementById('after');
   const darkHeader = () => header && header.classList.toggle('cs-over', (after || root).getBoundingClientRect().bottom > 80);
   addEventListener('scroll', darkHeader, { passive: true }); darkHeader();
   function frame() {
-    const t = clock.getElapsedTime();
+    const t = clock.getElapsedTime(), dt = Math.min(0.1, t - last); last = t; spin += dt * 0.12 * S.spin;
     mx += (tx - mx) * 0.05; my += (ty - my) * 0.05;
     const k = camera.aspect < 0.95 ? Math.min(2.1, 0.92 / camera.aspect) : 1;   // narrow screens: pull back, crown in the top half
-    crown.position.set(S.x, S.y * k, 0);
-    crown.rotation.set(S.tilt + my * 0.08, S.rot + t * 0.12 + mx * 0.25, 0);
-    camera.position.set(Math.sin(mx * 0.2) * 0.3, S.camY * k, S.dist * k); camera.lookAt(S.x * 0.35, (S.y + 0.1) * (k > 1 ? 0.2 : 1), 0);
+    crown.position.set(S.x, S.y * k, 0); crown.scale.setScalar(S.cs);
+    let ang = S.rot + spin;
+    if (S.face > 0) { const to = S.who * Math.PI / 3, near = to + Math.PI * 2 * Math.round((ang - to) / (Math.PI * 2)); ang += (near - ang) * S.face; }
+    crown.rotation.set(S.tilt + my * 0.08, ang + mx * 0.25 * (1 - S.face * 0.7), 0);
+    camera.position.set(Math.sin(mx * 0.2) * 0.3, S.camY * k, S.dist * k); camera.lookAt(S.x * 0.35, (S.y + 0.1) * (k > 1 ? 0.2 : 1) + S.ly * (k > 1 ? k : 1), 0);
+    crown.updateMatrixWorld(); pU.uCrownM.value.copy(crown.matrixWorld);
+    fig.position.copy(crown.position); fig.rotation.set(0, 0, 0); fig.lookAt(camera.position); fig.rotateY(Math.sin(t * 0.35) * 0.2 + mx * 0.45);
+    fig.scale.setScalar(S.cs * 3.56); fig.updateMatrixWorld(); pU.uFigM.value.copy(fig.matrixWorld);
+    const w = Math.max(0, Math.min(5, S.who)), p = Math.min(4, Math.floor(w)); setFig(p); pU.uMix.value = w - p; pU.uFig.value = S.fig;
+    const near = Math.round(w); if (S.fig > 0.6 && near !== who) { who = near; if (snd) snd.jewel(near); chips.forEach((c, i) => c.classList.toggle('is-on', i === near)); const row = chips[near] && chips[near].parentNode; if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: chips[near].offsetLeft - 20, behavior: 'smooth' }); }
     ecgU.uTime.value = t; ecgU.uGlow.value = S.glow;
-    pU.uTime.value = t; pU.uBurst.value = S.burst; pU.uShow.value = Math.min(1, S.burst * 3);
+    pU.uTime.value = t; pU.uBurst.value = S.burst; pU.uShow.value = Math.min(1, S.burst * 3 + S.fig * 2.5);
     const solid = S.solid;
     [gold, goldDark, pearlM, ...gems.map((g) => g.m), points[0].children[1].material].forEach((m) => { m.opacity = solid; m.depthWrite = solid > 0.98; });
     ecgMat.uniforms.uGlow.value = S.glow * solid; ecgMesh.visible = solid > 0.04;
     inner.intensity = 4 + S.glow * 4;
-    gems.forEach((g, i) => { g.m.emissiveIntensity = 0.1 + S.jewel * (0.35 + 0.2 * Math.sin(t * 2.4 + i)); });
+    gems.forEach((g, i) => { g.m.emissiveIntensity = 0.1 + S.jewel * (0.35 + 0.2 * Math.sin(t * 2.4 + i)) + S.face * Math.max(0, 1 - Math.abs(S.who - i) * 1.6) * 1.4; });
     dust.rotation.y = t * 0.01;
     // jewel name tags
     const vis = Math.max(0, 1 - Math.abs(tl.time() - tl.labels.s2 - 0.6) * 1.4);
