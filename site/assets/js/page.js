@@ -1,7 +1,7 @@
 /* Shared bits for secondary pages (privacy notice): fill in config values. */
 (() => {
   'use strict';
-  const cfg = Object.assign({ contactEmail: 'themicrolaunchequation@gmail.com' }, window.HCA_CONFIG || {});
+  const cfg = Object.assign({ contactEmail: 'hello@healthcarecrownacademy.co.uk' }, window.HCA_CONFIG || {});
   document.querySelectorAll('[data-contact-email]').forEach((a) => {
     a.href = 'mailto:' + cfg.contactEmail;
     a.textContent = cfg.contactEmail;

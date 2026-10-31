@@ -100,7 +100,7 @@
         return;
       }
       cg.textContent = 'Close my account'; cg.disabled = false;
-      cm.textContent = 'We could not close your account just now. Please try again, or email themicrolaunchequation@gmail.com and we will do it for you.';
+      cm.textContent = 'We could not close your account just now. Please try again, or email hello@healthcarecrownacademy.co.uk and we will do it for you.';
     });
     const box = $('[data-ac-streak]'), lab = $('[data-ac-streak-label]');
     const showStreak = () => { const on = !(HCA.daily && HCA.daily.isOff && HCA.daily.isOff()); box.checked = on; lab.textContent = on ? 'On' : 'Off'; };

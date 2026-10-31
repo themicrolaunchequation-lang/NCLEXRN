@@ -11,8 +11,8 @@
     consent_required: 'Please confirm that you want access to start now.',
     consent_outdated: 'Our terms were just updated. Please reload this page and tick the boxes again.',
     nothing_to_refund: 'We could not find a payment to refund on this account.',
-    already_refunded: 'The instant refund button has already been used for this on your account. Your legal right to cancel still applies: email themicrolaunchequation@gmail.com and we will deal with it.',
-    outside_window: 'Your 14-day cancellation period has ended, so there is no change-of-mind refund. You can still stop renewal at any time. If something went wrong or does not work as described, email themicrolaunchequation@gmail.com and we will put it right.',
+    already_refunded: 'The instant refund button has already been used for this on your account. Your legal right to cancel still applies: email hello@healthcarecrownacademy.co.uk and we will deal with it.',
+    outside_window: 'Your 14-day cancellation period has ended, so there is no change-of-mind refund. You can still stop renewal at any time. If something went wrong or does not work as described, email hello@healthcarecrownacademy.co.uk and we will put it right.',
     offline: 'You seem to be offline. Please check your connection.',
   };
   // Short notices (errors, info) appear as a toast at the bottom of the screen, wherever the person is.
@@ -129,7 +129,7 @@
     result({ tone: 'refund', kicker: 'Refund confirmed', title: 'Your money is on its way', amount: `${amt}<small>${r.full ? 'Full refund' : 'Unused part'}</small>`,
       text: 'We have sent the refund to the card you paid with.',
       steps: ['It usually reaches your card in 5 to 10 working days, depending on your bank.', 'Your paid access has ended. Your free features and saved work stay.', 'Stripe will email you a receipt for the refund.'],
-      fine: `Refunded on ${when}. Questions? themicrolaunchequation@gmail.com` });
+      fine: `Refunded on ${when}. Questions? hello@healthcarecrownacademy.co.uk` });
   }
 
   let prelaunch = false;

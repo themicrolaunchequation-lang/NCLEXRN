@@ -45,7 +45,7 @@ vercel.json              hosting: rewrites, redirects, security headers
 | Key | What to put there |
 |---|---|
 | `registeredOffice` | **Required by UK law.** The registered office address exactly as Companies House shows it. It appears in the footer and the privacy notice. |
-| `contactEmail` | Currently `themicrolaunchequation@gmail.com`. Switch it to `themicrolaunchequation@gmail.com` once email forwarding is set up (below). |
+| `contactEmail` | `hello@healthcarecrownacademy.co.uk` (forwarded to the owner's Gmail by Cloudflare Email Routing; replies are sent from Gmail as hello@). |
 | `evincaUrl` | The Evinca app's public URL once it's live. It shows an "Open the Evinca platform" button. |
 | `supabaseUrl`, `supabaseKey` | Already set to the `evinca` project. This is the publishable key, which is safe in the browser. |
 

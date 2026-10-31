@@ -17,7 +17,7 @@
 | Porkbun | unchanged | Domain registration/renewal |
 | Evinca admins | lilianhossamfahmi@gmail.com, themicrolaunchequation@gmail.com, lilianhossamfahmi2@gmail.com | Full admin (all data, gifts, certificates) |
 
-Contact email on both sites stays themicrolaunchequation@gmail.com.
+Contact email on the home site and apps: hello@healthcarecrownacademy.co.uk (Cloudflare Email Routing → themicrolaunchequation@gmail.com). Evinca and the Green Belt toolkit still need switching in their own repos.
 
 ## Accounts
 - **Domain**: Porkbun (nameservers → Cloudflare: asa / kellen.ns.cloudflare.com). Email forwarding MX/TXT kept.
