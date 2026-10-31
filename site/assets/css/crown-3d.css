@@ -1,0 +1,62 @@
+/* The 3D crown hero (assets/js/crown-3d.js). */
+.cx{position:relative;background:#050b1c;color:#eef2fa}
+.cx-pin{position:relative;height:100vh;height:100svh;overflow:hidden}
+.cx-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s ease}
+.cx-ready .cx-canvas{opacity:1}
+.cx-poster{position:absolute;right:4vw;top:50%;width:min(46vw,620px);transform:translateY(-50%);opacity:.95;transition:opacity 1s ease;pointer-events:none}
+.cx-ready .cx-poster{opacity:0}
+.cx-light{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.55;
+  background:radial-gradient(60% 50% at 78% 48%,rgba(232,193,112,.16),transparent 70%),radial-gradient(120% 70% at 50% -10%,rgba(53,87,214,.35),transparent 60%),radial-gradient(40% 30% at 15% 110%,rgba(53,87,214,.18),transparent 70%)}
+.cx-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:25% 100%;background-position:0 0;mask-image:linear-gradient(#000,transparent 85%)}
+
+/* copy */
+.cx-copy{position:absolute;inset:0;pointer-events:none}
+.cx-step{position:absolute;left:max(24px,calc((100vw - 1200px)/2 + 24px));top:50%;transform:translateY(-50%);width:min(520px,44vw);pointer-events:auto}
+.cx-eyebrow,.cx-k{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:#e8c170;margin:0 0 18px}
+.cx-k::after{content:"";display:inline-block;width:56px;height:1px;background:currentColor;opacity:.6;vertical-align:middle;margin-left:14px}
+.cx h1,.cx h2{font-family:var(--font-display,Georgia,serif);font-weight:400;letter-spacing:-.02em;margin:0;color:#fff}
+.cx h1{font-size:clamp(2.6rem,5.4vw,5.2rem);line-height:1.02}
+.cx h1 .cx-g,.cx h2 .cx-g{background:linear-gradient(100deg,#f6dfa4,#e2b55a 45%,#fff2c9 55%,#b8862b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cx h2{font-size:clamp(2.2rem,4.4vw,4.2rem);line-height:1.04}
+.cx-lede,.cx-spec{margin:20px 0 0;color:#c4cfe2;font-size:1.06rem;line-height:1.65;max-width:46ch}
+.cx-spec{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92rem;letter-spacing:.01em}
+.cx-spec b{color:#e8c170;font-weight:500}
+.cx-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.cx-ctas .btn{pointer-events:auto}
+
+/* jewel name tags (positioned by the script) */
+.cx-gem{position:absolute;left:0;top:0;margin:-46px 0 0 0;padding:6px 12px 6px 10px;border-radius:999px;background:rgba(5,11,28,.72);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;backdrop-filter:blur(8px);transform:translate(-9999px,0);opacity:0;visibility:hidden;translate:-50% 0}
+.cx-gem i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c);margin-right:8px;vertical-align:1px}
+.cx-gem small{font-weight:400;color:#a9b6cc;margin-left:6px}
+.cx-gem:hover,.cx-gem:focus-visible{border-color:#e8c170}
+
+/* navigator and skip */
+.cx-nav{position:absolute;right:max(20px,calc((100vw - 1200px)/2 + 20px));bottom:26px;display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(5,11,28,.6);backdrop-filter:blur(10px)}
+.cx-nav button{font:600 .72rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.08em;color:#a9b6cc;background:none;border:0;border-radius:999px;padding:7px 9px;cursor:pointer}
+.cx-nav button.is-on{background:#e8c170;color:#0b1430}
+.cx-skip{position:absolute;left:max(24px,calc((100vw - 1200px)/2 + 24px));bottom:30px;font:500 .72rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:#a9b6cc}
+.cx-skip:hover{color:#e8c170}
+
+/* still version: reduced motion, no WebGL, or before the script runs */
+.cx:not(.cx-live) .cx-step:not([data-step="0"]),.cx:not(.cx-live) .cx-gem,.cx:not(.cx-live) .cx-nav{display:none}
+.cx-still .cx-canvas{display:none}
+
+@media (max-width:760px){
+  .cx-step{left:20px;right:20px;width:auto;top:auto;bottom:84px;transform:none}
+  .cx h1{font-size:clamp(2.2rem,10vw,3rem)}
+  .cx h2{font-size:clamp(2rem,9vw,2.8rem)}
+  .cx-lede,.cx-spec{font-size:.95rem;margin-top:14px}
+  .cx-poster{right:50%;top:26%;width:86vw;transform:translate(50%,-50%)}
+  .cx-gem{font-size:.72rem;padding:4px 9px}.cx-gem small{display:none}
+  .cx-nav{bottom:18px;right:16px}.cx-skip{bottom:24px;left:20px}
+  .cx-grid{background-size:50% 100%}
+}
+/* header stays dark glass over the story */
+.site-header.cs-over{color:#e9eef8}
+.site-header.cs-over::before{background:rgba(5,10,24,.62)!important;border-color:rgba(255,255,255,.08)!important;backdrop-filter:blur(14px)}
+.site-header.cs-over .brand-mark{stroke:#E2B55A}.site-header.cs-over .brand-mark circle{fill:#E8C170}
+.site-header.cs-over .icon-btn{border-color:rgba(255,255,255,.2)}
+@media (max-width:760px){
+  .cx-copy::before{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(transparent,rgba(5,11,28,.82) 38%,rgba(5,11,28,.94));pointer-events:none}
+}
+.cx-poster{-webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent);mask-image:radial-gradient(closest-side,#000 72%,transparent)}
