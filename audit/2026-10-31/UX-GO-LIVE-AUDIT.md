@@ -336,3 +336,26 @@ These are the things competitors rarely get right. Keep them as you change thing
 - Carecraft's honesty labels;
 - zero trackers;
 - one calm design language across five apps.
+
+---
+
+## 9. Fix status (31 October 2026, same day)
+
+| Item | Status |
+|---|---|
+| B1 Home said "plans open soon" while checkout is live | **Fixed.** "Pricing" heading; Crown Pass button is "Start 7-day free trial" → `/subscribe?plan=crown`; reserve form removed; founding line says "join yearly"; FAQ and footer copy updated |
+| B2 Personal Gmail as contact | **Fixed and live.** `hello@healthcarecrownacademy.co.uk` via Cloudflare Email Routing; Green Belt and Evinca repos still to switch |
+| B3 MedLex Learn clipped on phones | **Fixed.** Phone layout for the Canvas library (source and published copy) |
+| B5 Facts differing between pages | **Mostly fixed.** Gulf section lists US$29 / 50 / 69; free MedLex content is "starter modules" everywhere; free list includes 10 Gulf questions; footer lists Gulf Region Nursing and Green Belt. Gulf app's own "SNLE" naming and the old hero screenshot are not changed (separate Cloudflare deploy; new screenshot needed) |
+| Secondary pages had no navigation | **Fixed.** Apps · Guides · Plans on all 28 secondary pages |
+| Gold and button contrast | **Fixed.** Home "grow", Green Belt chip, guide tags and day labels, plans Gulf button and badges; axe now 0 on every changed page |
+| Account avatar "." | **Fixed.** Person icon until signed in |
+| Privacy/refunds tables not keyboard-scrollable | **Fixed** |
+| No share images | **Fixed.** Brand share image on 27 public pages |
+| Gulf guides had no date | **Fixed.** "By Healthcare Crown Academy · Last updated 30 October 2026" from the existing data |
+| MedLex paywall gave no lesson name or price | **Fixed.** Names the lesson and shows the Crown Pass price |
+| Lumen "Quick tour" pill covered content on phones | **Fixed.** Compact round button on phones |
+| `/preview/crown` | **Left in place.** Another session is actively building it; it is `noindex` and blocked in `robots.txt` |
+
+**Still needs you:** About page and named clinical reviewers (B4, real names needed); confirm the Vercel plan; turn off Cloudflare Web Analytics on `snle.`; Gulf crisis numbers for Serein; contact address in the Green Belt and Evinca repos.
+**Still to build (larger app changes):** Lumen tool windows closing on navigation and UK/SI defaults; MedLex "HP" chip and Learn heading; layout shift on MedLex, Serein, Gulf studio and Green Belt; Green Belt CDN pinning and page size; Gulf studio accessibility fixes.
