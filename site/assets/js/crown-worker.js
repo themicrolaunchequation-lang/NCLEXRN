@@ -8,8 +8,8 @@ self.onmessage = async ({ data }) => {
       scene = buildScene(data.canvas, data.opts);
       scene.resize(data.W, data.H);
       await scene.warm();
-      scene.render(data.state);
-      self.postMessage({ type: 'ready' });
+      const before = scene.programs(); scene.render(data.state);
+      self.postMessage({ type: 'ready', hq: scene.hq, programs: [before, scene.programs()] });
     } catch (e) { self.postMessage({ type: 'fail', message: String(e && e.message || e) }); }
   } else if (!scene) {
     // not ready yet: tell the page this frame was skipped

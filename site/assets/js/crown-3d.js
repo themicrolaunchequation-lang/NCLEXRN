@@ -116,7 +116,8 @@ const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestI
   const nums = () => { const o = {}; for (const k in S) if (typeof S[k] === 'number') o[k] = S[k]; return o; };   // plain numbers only (GSAP adds its own data)
   const snap = () => ({ S: nums(), t: (performance.now() - t0) / 1000, mx, my, tagVis: Math.max(0, 1 - Math.abs(tl.time() - tl.labels.s2 - 0.6) * 1.4) });
   const size = () => ({ W: root.clientWidth, H: innerHeight });
-  const opts = { small, narrow, dpr: devicePixelRatio || 1 };
+  const hqq = new URLSearchParams(location.search).get('hq');   // testing switch: ?hq=1 or ?hq=0
+  const opts = { small, narrow, dpr: devicePixelRatio || 1, hq: hqq === null ? undefined : hqq === '1' };
   const ready = () => root.classList.add('cx-ready');
   setTimeout(() => { if (!root.classList.contains('cx-ready')) still(); }, 15000);   // never leave the picture breathing for ever
   let engine = null, handedOver = false;
@@ -127,7 +128,7 @@ const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestI
       let live = false, busy = true;
       const fail = () => { still(); wk.terminate(); engine = null; };
       wk.onmessage = ({ data }) => {
-        if (data.type === 'ready') { live = true; busy = false; ready(); }
+        if (data.type === 'ready') { live = true; busy = false; window.__cx.gfx = { hq: data.hq, programs: data.programs }; ready(); }
         else if (data.type === 'tags') { busy = false; placeTags(data.tags); }
         else if (data.type === 'fail') fail();
       };
