@@ -2,6 +2,7 @@
    allows it, so preparing the graphics never freezes the page; otherwise on the page itself (crown-3d.js).
    It knows nothing about the page: each frame it is given the story state and returns where the jewel name tags go. */
 import * as THREE from '../vendor/three/three.module.min.js';
+import { RoomEnvironment } from '../vendor/three/addons/RoomEnvironment.js';
 import { MeshSurfaceSampler } from '../vendor/three/addons/MeshSurfaceSampler.js';
 import { EffectComposer } from '../vendor/three/addons/EffectComposer.js';
 import { RenderPass } from '../vendor/three/addons/RenderPass.js';
@@ -47,9 +48,12 @@ function sampleFigure(c, n) {
   return out;
 }
 
-export function buildScene(canvas, { small, narrow, dpr }) {
+export function buildScene(canvas, { small, narrow, dpr, hq: forceHq }) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(dpr || 1, small ? 1.5 : 2));
+  // Full-quality gold (live reflections) only where the graphics card can prepare its programs in the background;
+  // elsewhere the painted-sphere gold, which is cheap to prepare. Either way nothing freezes.
+  const hq = forceHq !== undefined ? forceHq : renderer.extensions.has('KHR_parallel_shader_compile');
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.92;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
@@ -79,9 +83,16 @@ export function buildScene(canvas, { small, narrow, dpr }) {
   const goldCap = matcap([[0, '#f3cf7a'], [0.45, '#c8922f'], [0.78, '#6d4510'], [1, '#2a1904']], ['rgba(255,236,186,.75)', 'rgba(255,252,236,.95)', 'rgba(255,200,110,.35)'], 'rgba(120,150,255,.35)');
   const darkCap = matcap([[0, '#8a6220'], [0.6, '#4b3210'], [1, '#1c1204']], ['rgba(255,214,140,.25)', 'rgba(255,230,180,.3)', 'rgba(200,140,60,.15)'], null);
   const pearlCap = matcap([[0, '#fffaf0'], [0.55, '#e6dcc6'], [0.85, '#a89a80'], [1, '#5d5446']], ['rgba(255,255,255,.7)', 'rgba(255,255,255,.95)', 'rgba(255,230,210,.3)'], 'rgba(150,170,255,.3)');
-  const gold = new THREE.MeshMatcapMaterial({ matcap: goldCap, transparent: true });
-  const goldDark = new THREE.MeshMatcapMaterial({ matcap: darkCap, transparent: true, side: THREE.DoubleSide });
-  const pearlM = new THREE.MeshMatcapMaterial({ matcap: pearlCap, transparent: true });
+  let gold = new THREE.MeshMatcapMaterial({ matcap: goldCap, transparent: true });
+  let goldDark = new THREE.MeshMatcapMaterial({ matcap: darkCap, transparent: true, side: THREE.DoubleSide });
+  let pearlM = new THREE.MeshMatcapMaterial({ matcap: pearlCap, transparent: true });
+  if (hq) {
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.55;
+    gold = new THREE.MeshPhysicalMaterial({ color: '#c99a3e', metalness: 1, roughness: 0.3, clearcoat: 0.25, clearcoatRoughness: 0.35, transparent: true });
+    goldDark = new THREE.MeshPhysicalMaterial({ color: '#6e4e17', metalness: 1, roughness: 0.55, transparent: true, side: THREE.DoubleSide });
+    pearlM = new THREE.MeshPhysicalMaterial({ color: '#efe4cc', metalness: 0, roughness: 0.38, clearcoat: 0.4, transparent: true });
+  }
 
   // band: a lathe profile with raised rims
   const prof = [[0.93, -0.17], [0.99, -0.17], [1.03, -0.15], [1.03, -0.125], [0.995, -0.11], [1.005, 0.11], [1.05, 0.125], [1.05, 0.15], [1.02, 0.17], [0.95, 0.17], [0.93, -0.17]].map(([x, y]) => new THREE.Vector2(x, y));
@@ -99,7 +110,7 @@ export function buildScene(canvas, { small, narrow, dpr }) {
   const setG = new THREE.TorusGeometry(0.094, 0.014, 12, 40);
   const gems = APPS.map((app, i) => {
     const a = Math.PI / 2 + i * Math.PI / 3, g = new THREE.Group();
-    const m = new THREE.MeshStandardMaterial({ color: app[2], metalness: 0.1, roughness: 0.14, emissive: new THREE.Color(app[2]), emissiveIntensity: 0.1, flatShading: true, transparent: true });
+    const m = hq ? new THREE.MeshPhysicalMaterial({ color: app[2], metalness: 0.05, roughness: 0.06, clearcoat: 1, ior: 2.2, emissive: new THREE.Color(app[2]), emissiveIntensity: 0.1, flatShading: true, transparent: true }) : new THREE.MeshStandardMaterial({ color: app[2], metalness: 0.1, roughness: 0.14, emissive: new THREE.Color(app[2]), emissiveIntensity: 0.1, flatShading: true, transparent: true });
     const gem = new THREE.Mesh(gemG, m); gem.position.z = 0.02; g.add(gem);
     const set = new THREE.Mesh(setG, gold); g.add(set);
     g.position.set(Math.cos(a) * 1.03, 0.0, Math.sin(a) * 1.03); g.lookAt(Math.cos(a) * 3, 0.0, Math.sin(a) * 3);
@@ -114,7 +125,7 @@ export function buildScene(canvas, { small, narrow, dpr }) {
     const cone = new THREE.Mesh(new THREE.LatheGeometry([0, 0.05, 0.075, 0.07, 0.05, 0.028, 0.01, 0].map((r, k, arr) => new THREE.Vector2(r, k / (arr.length - 1) * h)), 32), gold);
     const holder = new THREE.Group(); holder.add(cone);
     holder.position.set(Math.cos(a) * 1.0, 0.16, Math.sin(a) * 1.0); holder.lookAt(0, 0.16, 0); holder.rotateX(-0.1);
-    const tip = new THREE.Mesh(new THREE.SphereGeometry(front ? 0.06 : 0.034, 24, 18), front ? new THREE.MeshMatcapMaterial({ matcap: pearlCap, color: '#ffe7b0', transparent: true }) : pearlM);
+    const tip = new THREE.Mesh(new THREE.SphereGeometry(front ? 0.06 : 0.034, 24, 18), front ? (hq ? new THREE.MeshPhysicalMaterial({ color: '#f6dfa4', metalness: 0.3, roughness: 0.12, clearcoat: 1, emissive: new THREE.Color('#e8c170'), emissiveIntensity: 0.25, transparent: true }) : new THREE.MeshMatcapMaterial({ matcap: pearlCap, color: '#ffe7b0', transparent: true })) : pearlM);
     tip.position.y = h + (front ? 0.05 : 0.025); holder.add(tip);
     crown.add(holder); points.push(holder);
   }
@@ -190,7 +201,7 @@ export function buildScene(canvas, { small, narrow, dpr }) {
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
   const bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), small ? 0.22 : 0.3, 0.45, 0.93); composer.addPass(bloom);
-  composer.addPass(new OutputPass());
+  const outputPass = new OutputPass(); composer.addPass(outputPass);
 
   const tmp = new THREE.Vector3();
   let W = 1, H = 1, last = 0, spin = 0, figP = -1;
@@ -219,7 +230,7 @@ export function buildScene(canvas, { small, narrow, dpr }) {
     [gold, goldDark, pearlM, ...gems.map((g) => g.m), points[0].children[1].material].forEach((m) => { m.opacity = solid; m.depthWrite = solid > 0.98; });
     ecgMat.uniforms.uGlow.value = S.glow * solid; ecgMesh.visible = solid > 0.04;
     inner.intensity = 4 + S.glow * 4;
-    gems.forEach((g, i) => { g.m.emissiveIntensity = 0.35 + S.jewel * (0.35 + 0.2 * Math.sin(t * 2.4 + i)) + S.face * Math.max(0, 1 - Math.abs(S.who - i) * 1.6) * 1.4; });
+    gems.forEach((g, i) => { g.m.emissiveIntensity = (hq ? 0.1 : 0.35) + S.jewel * (0.35 + 0.2 * Math.sin(t * 2.4 + i)) + S.face * Math.max(0, 1 - Math.abs(S.who - i) * 1.6) * 1.4; });
     dust.rotation.y = t * 0.01;
     // jewel name tags: screen position and visibility for each
     const tags = gems.map((gm) => {
@@ -232,8 +243,17 @@ export function buildScene(canvas, { small, narrow, dpr }) {
   }
   // prepare the graphics programs, draw once, then make the remaining icons
   async function warm() {
-    if (renderer.compileAsync) { try { await renderer.compileAsync(scene, camera); } catch (e) { /* compiled on first frame instead */ } }
-    [2, 3, 4, 5].forEach((i, k) => setTimeout(() => figAt(i), 600 + k * 250));
+    // Prepare every program before the first frame, in the same form the first frame will use, so it never has to stop.
+    const quad = new THREE.PlaneGeometry(2, 2), oc = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const sceneOf = (mats) => { const q = new THREE.Scene(); mats.filter(Boolean).forEach((m) => { const me = new THREE.Mesh(quad, m); me.frustumCulled = false; q.add(me); }); return q; };
+    const prep = async (sc, cam, target) => { renderer.setRenderTarget(target); try { await renderer.compileAsync(sc, cam); } catch (e) { /* prepared on first use instead */ } };
+    outputPass._outputColorSpace = renderer.outputColorSpace; outputPass._toneMapping = renderer.toneMapping;
+    outputPass.material.defines = { SRGB_TRANSFER: '', ACES_FILMIC_TONE_MAPPING: '' }; outputPass.material.needsUpdate = true;
+    await prep(scene, camera, composer.readBuffer);
+    await prep(sceneOf([bloom.materialHighPassFilter, ...(bloom.separableBlurMaterials || []), bloom.compositeMaterial, bloom.blendMaterial]), oc, composer.readBuffer);
+    await prep(sceneOf([outputPass.material]), oc, null);
+    renderer.setRenderTarget(null);
+    [2, 3, 4, 5].forEach(figAt);   // all six icons before the first frame, so nothing pauses later
   }
-  return { resize, render, warm };
+  return { resize, render, warm, hq, programs: () => renderer.info.programs.length };
 }
