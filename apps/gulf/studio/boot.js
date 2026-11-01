@@ -3,7 +3,13 @@
    The rest of the studio scripts then load in their original order, so they always see the right question set. */
 (function () {
   'use strict';
-  var me = document.currentScript, rest = [];
+  var me = document.currentScript, rest = [], root = document.documentElement;
+  // Keep the page unpainted while the scripts below build and rearrange it, then show the finished layout in
+  // one frame (no layout shift). A failsafe always reveals it, even if a script hangs.
+  root.setAttribute('data-gulf-boot', '');
+  var shown = false;
+  function reveal() { if (shown) return; shown = true; root.removeAttribute('data-gulf-boot'); }
+  setTimeout(reveal, 4000);
   try { rest = JSON.parse(me.getAttribute('data-rest') || '[]'); } catch (e) { rest = []; }
   var acct = rest.filter(function (s) { return /crown-account\./.test(s); })[0];
   function load(src) {
@@ -46,5 +52,11 @@
         });
       });
       return chain;
-    });
+    })
+    .then(function () {
+      // Let the studio's debounced first pass (60 ms) and the web fonts settle before the first paint.
+      var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      return Promise.race([Promise.all([fonts, timeout(120)]), timeout(800)]);
+    }, function () {})
+    .then(function () { requestAnimationFrame(reveal); });
 })();

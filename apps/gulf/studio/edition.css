@@ -1,4 +1,6 @@
 /* Self-hosted type (SIL OFL): Fraunces for display, IBM Plex Sans (+ Arabic) for reading, IBM Plex Mono for numbers. */
+/* Boot: hidden until the studio has composed its first layout (see boot.js). */
+:root[data-gulf-boot] body>*{visibility:hidden}
 @font-face{font-family:"Editorial";src:url(/assets/fonts/fraunces-wght-5.1.0.woff2) format("woff2");font-weight:300 900;font-style:normal;font-display:swap}
 @font-face{font-family:"Editorial";src:url(/assets/fonts/fraunces-wght-italic-5.1.0.woff2) format("woff2");font-weight:300 900;font-style:italic;font-display:swap}
 @font-face{font-family:"Studio";src:url(/assets/fonts/plex-sans-400-5.1.0.woff2) format("woff2");font-weight:400;font-display:swap}
