@@ -18,30 +18,23 @@ const canvas = root && root.querySelector('.cx-canvas');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 function still() { root && root.classList.add('cx-still'); }
 
-/* ---------- six people, one for each jewel: simple silhouettes with the details cut in as lines ---------- */
+/* ---------- six jewels, six tools: each app's own icon (the same drawings as the Start here cards), drawn in gold dust ---------- */
+const ICONS = [
+  [['M4 5h9a3 3 0 013 3v11a2 2 0 00-2-2H4z', 'M20 5h-3', 'M19.7 17.7L22 20'], [[17.5, 15.5, 3]]],   // MedLex: book and magnifier
+  [['M9 18h6M10 21h4', 'M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0012 3z'], []],   // Lumen: light bulb
+  [['M4 5h11a2 2 0 012 2v6a2 2 0 01-2 2H9l-4 3v-3H4a2 2 0 01-2-2V7a2 2 0 012-2z', 'M19 9h1a2 2 0 012 2v5a2 2 0 01-2 2h-1v3l-3-3h-3'], []],   // Carecraft: conversation
+  [['M5 19c0-8 5-13 15-14-1 10-6 15-14 15', 'M5 19l7-7'], []],   // Serein: leaf
+  [['M6 3v6a5 5 0 0010 0V3', 'M11 14v2a4 4 0 008 0v-2'], [[19, 12, 2]]],   // Gulf Region Nursing: stethoscope
+  [['M8.5 14L7 22l5-3 5 3-1.5-8', 'M9.5 9l1.8 1.8L15 7.5'], [[12, 9, 6]]]   // Evinca: medal
+];
 function paintFigure(i) {
   const R = 320, c = document.createElement('canvas'); c.width = c.height = R;
   const x = c.getContext('2d', { willReadFrequently: true }); x.scale(R / 512, R / 512);
-  x.fillStyle = '#fff'; x.strokeStyle = '#fff'; x.lineCap = 'round'; x.lineJoin = 'round';
-  const ell = (cx, cy, rx, ry, r = 0) => { x.beginPath(); x.ellipse(cx, cy, rx, ry, r, 0, Math.PI * 2); x.fill(); };
-  const line = (w, pts, close) => { x.lineWidth = w; x.beginPath(); pts.forEach(([a, b], k) => (k ? x.lineTo(a, b) : x.moveTo(a, b))); if (close) x.closePath(); x.stroke(); };
-  const ring = (cx, cy, r, w) => { x.lineWidth = w; x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.stroke(); };
-  if (i === 0) ell(318, 122, 26, 54, 0.5);   // ponytail
-  if (i === 5) { x.beginPath(); x.moveTo(192, 120); x.bezierCurveTo(176, 200, 178, 262, 200, 304); x.lineTo(312, 304); x.bezierCurveTo(334, 262, 336, 200, 320, 120); x.fill(); }   // shoulder-length hair
-  x.beginPath(); x.moveTo(84, 512); x.bezierCurveTo(88, 340, 140, 262, 256, 254); x.bezierCurveTo(372, 262, 424, 340, 428, 512); x.closePath(); x.fill();   // shoulders
-  x.fillRect(228, 196, 56, 72);    // neck
-  ell(256, 148, 66, 78);           // head
-  if (i === 1 || i === 3) ell(256, 112, 66, 44);   // short hair
-  if (i === 2) ell(256, 68, 30, 26);              // bun
-  if (i === 4) { ell(256, 146, 82, 94); x.beginPath(); x.moveTo(176, 160); x.bezierCurveTo(168, 262, 190, 320, 146, 352); x.lineTo(366, 352); x.bezierCurveTo(322, 320, 344, 262, 336, 160); x.fill(); }   // headscarf
-  x.save(); x.globalCompositeOperation = 'destination-out';
-  if (i === 0) { line(7, [[176, 398], [256, 418], [336, 398], [336, 478], [256, 498], [176, 478]], true); line(5, [[256, 418], [256, 498]]); line(7, [[200, 326], [178, 398]]); }   // open book, bag strap
-  if (i === 1) { ring(230, 156, 17, 6); ring(282, 156, 17, 6); line(5, [[247, 154], [265, 154]]); line(6, [[212, 330], [256, 400], [300, 330]]); line(6, [[300, 430], [356, 418], [366, 470], [310, 482]], true); }   // glasses, collar, papers
-  if (i === 2) { line(6, [[206, 322], [256, 394], [306, 322]]); line(6, [[300, 424], [352, 424], [352, 474], [300, 474]], true); line(5, [[318, 406], [318, 444]]); ring(196, 432, 15, 5); }   // tunic, pocket and pen, fob watch
-  if (i === 3) { x.lineWidth = 7; x.beginPath(); x.moveTo(212, 262); x.bezierCurveTo(198, 336, 212, 384, 232, 404); x.moveTo(300, 262); x.bezierCurveTo(314, 336, 300, 384, 280, 404); x.moveTo(232, 404); x.quadraticCurveTo(256, 428, 280, 404); x.moveTo(256, 418); x.bezierCurveTo(258, 456, 300, 462, 304, 436); x.stroke(); ring(304, 444, 14, 6); line(6, [[158, 342], [212, 474]]); line(6, [[354, 342], [300, 474]]); }   // stethoscope, white coat
-  if (i === 4) { x.lineWidth = 6; x.beginPath(); x.ellipse(256, 160, 46, 58, 0, 0, Math.PI * 2); x.stroke(); line(5, [[222, 354], [256, 420], [290, 354]]); line(6, [[228, 420], [284, 420], [284, 482], [228, 482]], true); line(4, [[240, 440], [272, 440]]); }   // scarf edge, lanyard and ID badge
-  if (i === 5) { line(7, [[178, 338], [238, 452], [256, 512]]); line(7, [[334, 338], [274, 452], [256, 512]]); ring(330, 410, 18, 6); line(5, [[320, 428], [312, 464]]); line(5, [[340, 428], [348, 464]]); }   // blazer lapels, recognition medal
-  x.restore();
+  x.translate(124, 150); x.scale(11, 11);   // a 24-unit icon becomes a 264px drawing under the crown
+  x.strokeStyle = '#fff'; x.lineWidth = 1.7; x.lineCap = 'round'; x.lineJoin = 'round';
+  const [paths, circles] = ICONS[i];
+  paths.forEach((d) => x.stroke(new Path2D(d)));
+  circles.forEach(([cx, cy, r]) => { x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.stroke(); });
   return c;
 }
 function sampleFigure(c, n) {
@@ -181,7 +174,7 @@ function sampleFigure(c, n) {
         vec4 mv=viewMatrix*vec4(w,1.); gl_Position=projectionMatrix*mv;
         gl_PointSize=min(uPx*4.5,uPx*(1.6+aRnd*1.8-g*0.5+f.w*g*0.5)*(5.2/-mv.z)*(1.+g*(uFigPt-1.)));
         vec3 jc=mix(uCa,uCb,m); vec3 fc=mix(mix(vec3(.91,.75,.42),jc,.4),mix(jc,vec3(1.),.45),f.w);
-        vC=mix(aCol,fc,g); vA=(0.55+0.45*aRnd)*mix(1.,(0.5+0.45*f.w)*smoothstep(-1.62,-1.1,f.y),g); }`,
+        vC=mix(aCol,fc,g); vA=(0.55+0.45*aRnd)*mix(1.,(0.5+0.45*f.w)*smoothstep(-1.75,-1.6,f.y),g); }`,
     fragmentShader: 'uniform float uShow; varying vec3 vC; varying float vA; void main(){ float r=length(gl_PointCoord-.5); float a=smoothstep(.5,0.,r); gl_FragColor=vec4(vC*1.6*a*vA*uShow,a*vA*uShow); }' });
   const cloud = new THREE.Points(pg, pMat); cloud.renderOrder = 11; cloud.frustumCulled = false; scene.add(cloud);
   const fig = new THREE.Object3D();
@@ -236,8 +229,35 @@ function sampleFigure(c, n) {
   tl.to({}, { duration: 0.3 });
   total = tl.duration();
   marks = [0, tl.labels.s1, tl.labels.s2, tl.labels.s3, tl.labels.s4, tl.labels.s5];
-  const goTo = (time) => { const st = tl.scrollTrigger; scrollTo({ top: st.start + (st.end - st.start) * Math.min(1, time / tl.duration()), behavior: 'smooth' }); };
-  navs.forEach((b, i) => b.addEventListener('click', () => goTo(i ? marks[i] + 0.8 : 0)));
+  /* ---------- one scroll, swipe, key or click = one step of the story ---------- */
+  const stops = [0, tl.labels.s1 + 1, tl.labels.s2 + 1, tl.labels.s3 + 1, ...whoAt, tl.duration()];
+  const yAt = (time) => { const st = tl.scrollTrigger; return st.start + (st.end - st.start) * Math.min(1, time / tl.duration()); };
+  let busy = false, quietUntil = 0;
+  const glide = (y) => { busy = true; const o = { y: scrollY };
+    gsap.to(o, { y, duration: 1.15, ease: 'power2.inOut', onUpdate: () => scrollTo({ top: o.y, behavior: 'instant' }), onComplete: () => { busy = false; quietUntil = performance.now() + 220; } }); };
+  const goTo = (time) => glide(yAt(time));
+  const inStory = () => { const st = tl.scrollTrigger; return scrollY >= st.start - 2 && scrollY <= st.end + 2; };
+  const nearest = () => { const t = tl.scrollTrigger.progress * tl.duration(); let k = 0, b = 1e9; stops.forEach((x, i) => { const d = Math.abs(x - t); if (d < b) { b = d; k = i; } }); return k; };
+  const canStep = (dir) => { const n = nearest() + dir; return n >= 0 && n < stops.length; };
+  const step = (dir) => { const n = nearest() + dir; if (n < 0 || n >= stops.length) return false; goTo(stops[n]); return true; };
+  addEventListener('wheel', (e) => {
+    if (!inStory()) return;
+    const now = performance.now();
+    if (busy || now < quietUntil) { e.preventDefault(); quietUntil = Math.max(quietUntil, now + 180); return; }   // let trackpad momentum die down
+    if (Math.abs(e.deltaY) < 3) return;
+    if (step(e.deltaY > 0 ? 1 : -1)) { e.preventDefault(); quietUntil = now + 180; }
+  }, { passive: false });
+  let ty0 = null;
+  addEventListener('touchstart', (e) => { ty0 = inStory() ? e.touches[0].clientY : null; }, { passive: true });
+  addEventListener('touchmove', (e) => { if (ty0 === null) return; const dir = ty0 - e.touches[0].clientY > 0 ? 1 : -1; if (busy || canStep(dir)) e.preventDefault(); }, { passive: false });
+  addEventListener('touchend', (e) => { if (ty0 === null || busy) return; const dy = ty0 - e.changedTouches[0].clientY; ty0 = null; if (Math.abs(dy) > 30) step(dy > 0 ? 1 : -1); }, { passive: true });
+  addEventListener('keydown', (e) => {
+    if (!inStory() || e.target.closest('input,textarea,select,[contenteditable]')) return;
+    const dir = ['ArrowDown', 'PageDown', ' '].includes(e.key) ? 1 : ['ArrowUp', 'PageUp'].includes(e.key) ? -1 : 0;
+    if (!dir) return; if (busy || step(dir)) e.preventDefault();
+  });
+  root.querySelector('.cx-pin').addEventListener('click', (e) => { if (!busy && !e.target.closest('a,button,input')) step(1); });
+  navs.forEach((b, i) => b.addEventListener('click', () => goTo(i ? (i === 4 ? whoAt[0] : marks[i] + 1) : 0)));
   chips.forEach((b, i) => b.addEventListener('click', () => goTo(whoAt[i])));
 
   /* ---------- optional sound ---------- */
@@ -280,7 +300,7 @@ function sampleFigure(c, n) {
     camera.position.set(Math.sin(mx * 0.2) * 0.3, S.camY * k, S.dist * k); camera.lookAt(S.x * 0.35, (S.y + 0.1) * (k > 1 ? 0.2 : 1) + S.ly * (k > 1 ? k : 1), 0);
     crown.updateMatrixWorld(); pU.uCrownM.value.copy(crown.matrixWorld);
     fig.position.copy(crown.position); fig.rotation.set(0, 0, 0); fig.lookAt(camera.position); fig.rotateY(Math.sin(t * 0.35) * 0.2 + mx * 0.45);
-    fig.scale.setScalar(S.cs * 3.56); fig.updateMatrixWorld(); pU.uFigM.value.copy(fig.matrixWorld);
+    fig.scale.setScalar(S.cs * 3.1); fig.updateMatrixWorld(); pU.uFigM.value.copy(fig.matrixWorld);
     const w = Math.max(0, Math.min(5, S.who)), p = Math.min(4, Math.floor(w)); setFig(p); pU.uMix.value = w - p; pU.uFig.value = S.fig;
     const near = Math.round(w); if (S.fig > 0.6 && near !== who) { who = near; if (snd) snd.jewel(near); chips.forEach((c, i) => c.classList.toggle('is-on', i === near)); const row = chips[near] && chips[near].parentNode; if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: chips[near].offsetLeft - 20, behavior: 'smooth' }); }
     ecgU.uTime.value = t; ecgU.uGlow.value = S.glow;
