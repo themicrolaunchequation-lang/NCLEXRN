@@ -32,7 +32,12 @@
  }
  if(!ed){document.documentElement.setAttribute('data-gulf-choose','');landingPage();return}
  var c=CFG.editions[ed];if(!c)return;
- document.title=c.short+' Study Studio | Healthcare Crown Academy';
+ document.title='Gulf Region Nursing · '+c.short+' | Healthcare Crown Academy';
+ // The app's own name is Gulf Region Nursing on every edition; the exam (SNLE, DHA…) is shown as the edition.
+ (function brand(n){var e=document.querySelector('.hs-name'),m=document.querySelector('.hs-mbrand span:not(.hs-crest)');
+  if(e&&!e.classList.contains('gulf-brand')){e.innerHTML='<b>Gulf Region Nursing</b><span class="hs-tag">'+c.short+' edition</span>';e.classList.add('gulf-brand')}
+  if(m&&m.textContent!=='Gulf Nursing'){m.textContent='Gulf Nursing';m.parentNode.setAttribute('aria-label','Gulf Region Nursing, '+c.short+' edition')}
+  if(n<30)setTimeout(function(){brand(n+1)},200)})(0);
  var pass={saudi:'',qatar:'DHP publishes a 50% minimum for this exam; whether it is raw, equated or scaled is not confirmed.',dubai:'DHA publishes a 50% threshold and reports pass or fail.',abudhabi:'DOH reports a pass or fail result and sets its cut score internally; no numeric pass mark is published.'}[ed];
  var UI=[[/SCFHS reports the licensure result on a 200[–-]800 scale with 500 as the passing score\./g,pass],[/SCFHS reports a scaled score from 200 to 800, with 500 as the pass mark\.[^.]*\./g,pass],
   [/This matches the scheduled midpoint break in the official 200-question SNLE structure\./g,'This is a study reset, not part of the regulator’s exam format.'],

@@ -22,7 +22,7 @@
   d.addEventListener('close',()=>restoreFocus?.focus?.());document.body.append(d);restoreFocus=document.activeElement;d.showModal();
  }
  window.HCAShell.init({
-  app:'snle',name:'SNLE',home:'#home',dayName:'Today',observe:'subtree',help:learningNotes,
+  app:'snle',name:'Gulf Region Nursing',home:'#home',dayName:'Today',observe:'subtree',help:learningNotes,
   sel:{side:'.sidebar',brand:'.brand-lockup',navs:['nav'],top:'.topbar',crumbs:'.topbar-context',moveRight:['.page-edit-trigger','.arabic-assist-toggle','.color-mode-button'],tabs:'.snle-mobile-tabs',content:'.main-canvas'},
   more:true,mcrest:()=>'/assets/crest.svg',streak:()=>{try{const s=JSON.parse(window.SNLEStorage.getItem('snle-react-interact-progress-v1')||'{}');return {text:s.streak||0,label:'Study streak'}}catch{return null}}
  });
