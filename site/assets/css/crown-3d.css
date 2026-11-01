@@ -136,3 +136,11 @@
 .cx-people{top:auto;bottom:104px;transform:none}
 @media (max-width:760px){.cx-people{bottom:76px}}
 @media (max-width:760px){.cx-nav{gap:2px;padding:5px 6px}.cx-nav button{padding:7px 6px}.cx-skip{letter-spacing:.12em}}
+/* phone: brand line is already in the header; role chips become dots with the chosen one named */
+@media (max-width:760px){
+  .cx-step[data-step="0"] .cx-eyebrow{display:none}
+  .cx-chips{flex-wrap:wrap;overflow:visible;margin:0 0 12px;padding:0;gap:6px;align-items:center}
+  .cx-chips button{font-size:0;gap:0;padding:8px}
+  .cx-chips button i{width:9px;height:9px}
+  .cx-chips button.is-on{font-size:.74rem;gap:7px;padding:6px 11px}
+}
