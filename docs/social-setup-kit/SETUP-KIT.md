@@ -12,13 +12,29 @@
 | YouTube | ✅ Healthcare Crown Academy (@healthcarecrownacademy) | — |
 | TikTok | ✅ @healthcarecrownacademy | — |
 
+## Which image goes where (quick map)
+
+Open **`PREVIEW.png`** first to see every image at a glance.
+
+| Where | Profile picture | Cover / banner | Posts |
+|---|---|---|---|
+| LinkedIn Page | `brand/profile-400x400.png` | `brand/linkedin-cover-1512x256.png` | `brand/welcome-post-1080x1350.png`, then `<app>/intro-post-1080x1350.png` |
+| LinkedIn Showcase: Carecraft | `carecraft/profile-1080x1080.png` | `carecraft/linkedin-cover-1512x256.png` | `carecraft/intro-post-1080x1350.png` |
+| LinkedIn Showcase: Green Belt | `green-belt/profile-1080x1080.png` | `green-belt/linkedin-cover-1512x256.png` | `green-belt/intro-post-1080x1350.png` |
+| LinkedIn Showcase: Gulf | `gulf/profile-1080x1080.png` | `gulf/linkedin-cover-1512x256.png` | `gulf/intro-post-1080x1350.png` |
+| Facebook Page | `brand/profile-1080x1080.png` | `brand/facebook-cover-1702x630.png` | Same posts as LinkedIn |
+| Facebook Page: Gulf | `gulf/profile-1080x1080.png` | `gulf/facebook-cover-1702x630.png` | `gulf/intro-post-1080x1350.png`, `gulf/square-post-1080x1080.png` |
+| Instagram | `brand/profile-1080x1080.png` | — | `<app>/intro-post-1080x1350.png` (4:5 fills the feed) |
+| YouTube | `brand/profile-800x800.png` (or `brand/profile-3d-1080x1080.png`) | `brand/youtube-banner-2560x1440.png` | Community posts: `<app>/square-post-1080x1080.png` |
+| TikTok | `brand/profile-1080x1080.png` | — | Photo posts: `<app>/intro-post-1080x1350.png` |
+
 **MedLex, Lumen, Serein and Evinca** don't need their own accounts yet. Post about them from the main brand accounts, using each app's images from `images/<app>/`. Separate accounts for every app would split your followers and multiply the work.
 
 ## Before you start (5 minutes)
 
 - [ ] Use **hello@healthcarecrownacademy.co.uk** for every sign-up, and keep the passwords in a password manager.
 - [ ] Have your **phone** ready for text-message codes.
-- [ ] Download the **`images`** folder from this kit to your computer.
+- [ ] Download and unzip the kit. Keep the **`images`** folder on your computer, and open **`PREVIEW.png`** to see every image.
 - [ ] Use the handle **healthcarecrownacademy** everywhere. If it's taken, use **hcacademy.uk**, and use the same one on every platform.
 
 ---
@@ -107,7 +123,7 @@ You need a **personal Facebook account**. It stays private, and the Page shows o
 3. Click **Create Page**.
 4. In the next steps:
    - **Profile picture:** `images/brand/profile-1080x1080.png`
-   - **Cover photo:** `images/brand/facebook-cover-1702x630.png` (keep the text centred, because phones crop the sides)
+   - **Cover photo:** `images/brand/facebook-cover-1702x630.png`. The crown and headline sit in the middle, so they stay visible when phones crop the sides.
    - **Website:** `https://healthcarecrownacademy.co.uk/?ref=fb-brand`
    - **Email:** `hello@healthcarecrownacademy.co.uk`
 5. Under **Add action button**, choose **Learn more** (or **Sign up**) → Website → `https://healthcarecrownacademy.co.uk/?ref=fb-brand`.
@@ -162,9 +178,9 @@ This is where you'll schedule Facebook and Instagram posts and run ads later.
 3. Fill in:
    - **Name:** `Healthcare Crown Academy`
    - **Handle:** `@healthcarecrownacademy` (3–30 characters; you can change it twice in 14 days)
-   - **Picture:** `images/brand/profile-800x800.png`
+   - **Picture:** `images/brand/profile-800x800.png`, or the 3D crown version `images/brand/profile-3d-1080x1080.png`. Use the same picture on every platform.
 4. Open **https://studio.youtube.com** → **Customisation**:
-   - **Banner:** `images/brand/youtube-banner-2560x1440.png`. Its text sits in the centre safe area, so it shows correctly on TV, desktop and phone.
+   - **Banner:** `images/brand/youtube-banner-2560x1440.png`. The crown and headline sit in YouTube's safe area, so they show on phones. The app phones on each side appear only on desktop and TV.
    - **Description:** paste this:
      > Short, practical videos for people who work in healthcare: decode medical words, study smarter, practise everyday care situations, prepare for the Saudi SNLE, Qatar DHP, Dubai DHA and Abu Dhabi DOH nursing exams, and take a calm minute between tasks. From Healthcare Crown Academy, a UK company (17501904). Free apps and guides: healthcarecrownacademy.co.uk
    - **Links:** add `https://healthcarecrownacademy.co.uk/?ref=yt-brand` and `https://healthcarecrownacademy.co.uk/guides?ref=yt-brand`.
@@ -179,13 +195,16 @@ This is where you'll schedule Facebook and Instagram posts and run ads later.
 3. **Profile photo:** `images/brand/profile-1080x1080.png`
 4. **Switch to a Business account:** Profile → ☰ menu → **Settings and privacy** → **Account** → **Switch to Business Account** → category **Education**.
 5. **Bio (max 80 characters):** `Study + well-being apps for healthcare. Medical words, exams, calm. Start free`
-6. **Website link in your bio:** TikTok only shows this once you reach **1,000 followers** or **register your business** in TikTok's Business Suite. Until then, say "link on our profile soon" or use the TikTok you post from to point to `healthcarecrownacademy.co.uk` in captions.
+6. **Website link in your bio:** TikTok only shows this once you reach **1,000 followers** or **register your business** in TikTok's Business Suite. Until then, mention `healthcarecrownacademy.co.uk` in your videos and captions.
+7. **Images on TikTok:** TikTok is mainly video. You can still post the `intro-post` images as a photo post (tap **+** → **Photo**). They work best as a swipeable set of 2–3 images.
 
 ---
 
 ## 7. First 9 posts (so each page looks active from day one)
 
-Post one every 2–3 days on LinkedIn, Facebook and Instagram, using the app images in `images/<app>/intro-post-1080x1350.png`.
+Post one every 2–3 days on LinkedIn, Facebook and Instagram, using the image named under each post. Use the **intro-post** (4:5) everywhere. Use the **square-post** only where a platform crops to a square.
+
+**Pin post 1** to the top of each page, so visitors see the welcome first.
 
 1. **Welcome (use `images/brand/welcome-post-1080x1350.png`)**
    > Hello! I'm Hossam, founder of Healthcare Crown Academy. We make study and well-being apps for people who work in healthcare, from your first lecture to your finest work. Every app starts free, with no card. Over the next two weeks I'll introduce each one. Which would help you most right now? 👇
@@ -195,27 +214,27 @@ Post one every 2–3 days on LinkedIn, Facebook and Instagram, using the app ima
    > Tachycardia = tachy (fast) + card (heart) + ia (condition). Once you know the parts, you can read words you've never seen. MedLex teaches medical words this way: 26 modules, 1,480 terms, 56 illustrated guides. Starter modules are free.
    > https://medlex.healthcarecrownacademy.co.uk/?ref=li-medlex
 
-3. **Carecraft** (`images/carecraft/…`)
+3. **Carecraft** (`images/carecraft/intro-post-1080x1350.png`)
    > A patient nods through your discharge explanation. How do you check they really understood? Carecraft gives you one 60-second scenario like this every day, with the reasoning behind each option. Free daily scenario and 6 lessons.
    > https://carecraft.healthcarecrownacademy.co.uk/?ref=li-carecraft
 
-4. **Serein** (`images/serein/…`)
+4. **Serein** (`images/serein/intro-post-1080x1350.png`)
    > Ten seconds is enough to start. Serein has 15 short, private practices for before, during and after a shift: breathing, grounding, movement, reflection. Nothing is monitored. Free for everyone.
    > https://serein.healthcarecrownacademy.co.uk/?ref=li-serein
 
-5. **Gulf Region Nursing** (`images/gulf/…`)
+5. **Gulf Region Nursing** (`images/gulf/intro-post-1080x1350.png`)
    > Preparing for the Saudi SNLE, Qatar DHP, Dubai DHA or Abu Dhabi DOH exam? One studio covers all four: 1,297 clinically reviewed practice questions, 67 reasoning tools and 35 specialty dossiers. Try 10 questions free. Original practice material, not official exam questions; not endorsed by SCFHS, DHP, DHA or DOH.
    > https://snle.healthcarecrownacademy.co.uk/?ref=li-gulf
 
-6. **Lumen** (`images/lumen/…`)
+6. **Lumen** (`images/lumen/intro-post-1080x1350.png`)
    > Rereading feels productive. Testing yourself works better. Lumen turns your own lecture PDFs and photos of notes into recall cards, with spaced practice and a focus planner. Your library stays on your device.
    > https://lumen.healthcarecrownacademy.co.uk/?ref=li-lumen
 
-7. **Evinca** (`images/evinca/…`)
+7. **Evinca** (`images/evinca/intro-post-1080x1350.png`)
    > Who noticed the work that made care safer on your ward? Evinca lets nurses share the story of what they achieved, free, and apply for an evidence-based review when ready. Not a licence or qualification: recognition, done properly.
    > https://evinca.healthcarecrownacademy.co.uk/en?ref=li-evinca
 
-8. **Green Belt** (`images/green-belt/…`)
+8. **Green Belt** (`images/green-belt/intro-post-1080x1350.png`)
    > Your ward data is telling you something. Is it a real change or just noise? Our free control chart calculator shows you in seconds. When you're ready to run a full project: the Lean Six Sigma Green Belt toolkit, built for healthcare.
    > https://healthcarecrownacademy.co.uk/tools/control-chart-calculator?ref=li-greenbelt
 
@@ -225,11 +244,14 @@ Post one every 2–3 days on LinkedIn, Facebook and Instagram, using the app ima
 
 **On Facebook and Instagram:** change `?ref=li-` to `?ref=fb-` or `?ref=ig-`. On Instagram, links in captions aren't clickable, so write "link in bio" instead.
 
+**On the Showcase Pages and the Gulf Facebook Page:** reshare the matching app post (Carecraft, Green Belt, Gulf) from the main page on the same day, so each page starts with real content.
+
 ---
 
 ## 8. After setup checklist
 
 - [ ] All 5 brand accounts use the same name, handle, picture and website.
+- [ ] The welcome post is pinned on LinkedIn, Facebook and Instagram.
 - [ ] 2-step verification is on for LinkedIn, Facebook, Instagram, Google/YouTube and TikTok.
 - [ ] You're admin on every Page. Ideally add a trusted second admin as a backup.
 - [ ] Add the new accounts to your website footer later. Ask me and I'll add the links.
