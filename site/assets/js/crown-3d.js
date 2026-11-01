@@ -56,9 +56,13 @@ function sampleFigure(c, n) {
   return out;
 }
 
-(function start() {
+// Build the scene in small pieces so the page stays responsive (the still poster shows meanwhile).
+const breathe = () => new Promise((r) => requestAnimationFrame(() => setTimeout(r, 0)));
+const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestIdleCallback(r, { timeout: 1500 }) : setTimeout(r, 200)));
+(async function start() {
   if (!root || !canvas || reduce || !window.gsap || !window.ScrollTrigger) return still();
   let renderer;
+  await whenIdle();   // let the header, sign-in and the rest of the page finish first
   try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' }); } catch (e) { return still(); }
   const gsap = window.gsap; gsap.registerPlugin(window.ScrollTrigger);
   const small = Math.min(innerWidth, innerHeight) < 700;   // lighter effects on small screens
@@ -138,6 +142,7 @@ function sampleFigure(c, n) {
     fragmentShader: 'uniform float uTime,uGlow; varying float vU; void main(){ float d=fract(vU-uTime*0.12); float p=exp(-d*24.)+exp(-(1.-d)*220.); vec3 c=mix(vec3(1.,.78,.36),vec3(1.,.97,.86),p); gl_FragColor=vec4(c*(uGlow+p*2.2),1.); }' });
   const ecgMesh = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(ecg, true), 720, 0.0085, 6, true), ecgMat); ecgMesh.renderOrder = 10; crown.add(ecgMesh);
 
+  await breathe();
   /* ---------- particles: the crown's own surface, to burst and reassemble ---------- */
   const N = small ? 9000 : 18000, pos = new Float32Array(N * 3), dir = new Float32Array(N * 3), col = new Float32Array(N * 3), rnd = new Float32Array(N);
   crown.updateMatrixWorld(true);
@@ -155,9 +160,9 @@ function sampleFigure(c, n) {
   const pg = new THREE.BufferGeometry();
   pg.setAttribute('position', new THREE.BufferAttribute(pos, 3)); pg.setAttribute('aDir', new THREE.BufferAttribute(dir, 3));
   pg.setAttribute('aCol', new THREE.BufferAttribute(col, 3)); pg.setAttribute('aRnd', new THREE.BufferAttribute(rnd, 1));
-  const FIGS = [0, 1, 2, 3, 4, 5].map((i) => sampleFigure(paintFigure(i), N));
-  const aFa = new THREE.BufferAttribute(new Float32Array(FIGS[0]), 4).setUsage(THREE.DynamicDrawUsage);
-  const aFb = new THREE.BufferAttribute(new Float32Array(FIGS[1]), 4).setUsage(THREE.DynamicDrawUsage);
+  const FIGS = [], figAt = (i) => FIGS[i] || (FIGS[i] = sampleFigure(paintFigure(i), N));   // icons 3-6 are made later, in spare time
+  const aFa = new THREE.BufferAttribute(new Float32Array(figAt(0)), 4).setUsage(THREE.DynamicDrawUsage);
+  const aFb = new THREE.BufferAttribute(new Float32Array(figAt(1)), 4).setUsage(THREE.DynamicDrawUsage);
   pg.setAttribute('aFa', aFa); pg.setAttribute('aFb', aFb);
   const pU = { uBurst: { value: 0 }, uShow: { value: 0 }, uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() }, uFig: { value: 0 }, uMix: { value: 0 }, uFigPt: { value: narrow ? 1.8 : 1 }, uFigOnly: { value: 1 },
     uCrownM: { value: new THREE.Matrix4() }, uFigM: { value: new THREE.Matrix4() }, uCa: { value: new THREE.Color(APPS[0][2]) }, uCb: { value: new THREE.Color(APPS[1][2]) } };
@@ -187,6 +192,7 @@ function sampleFigure(c, n) {
   const dust = new THREE.Points(dg, new THREE.PointsMaterial({ color: '#e8c170', size: 0.018, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false }));
   scene.add(dust);
 
+  await breathe();
   /* ---------- post: soft bloom on the gold highlights and the pulse ---------- */
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
@@ -292,9 +298,10 @@ function sampleFigure(c, n) {
   let mx = 0, my = 0, tx = 0, ty = 0;
   addEventListener('pointermove', (e) => { tx = (e.clientX / innerWidth - 0.5); ty = (e.clientY / innerHeight - 0.5); }, { passive: true });
   const clock = new THREE.Clock(); let running = true;
-  new IntersectionObserver(([e]) => { running = e.isIntersecting; if (snd) snd.level(running ? 1 : 0); if (running) renderer.setAnimationLoop(frame); else renderer.setAnimationLoop(null); }).observe(root);
+  let started = false;   // the loop starts only once the graphics programs are ready
+  new IntersectionObserver(([e]) => { running = e.isIntersecting; if (snd) snd.level(running ? 1 : 0); if (started) renderer.setAnimationLoop(running ? frame : null); }).observe(root);
   let last = 0, spin = 0, figP = -1;
-  const setFig = (p) => { if (p === figP) return; figP = p; aFa.array.set(FIGS[p]); aFb.array.set(FIGS[Math.min(p + 1, 5)]); aFa.needsUpdate = aFb.needsUpdate = true; pU.uCa.value.set(APPS[p][2]); pU.uCb.value.set(APPS[Math.min(p + 1, 5)][2]); };
+  const setFig = (p) => { if (p === figP) return; figP = p; aFa.array.set(figAt(p)); aFb.array.set(figAt(Math.min(p + 1, 5))); aFa.needsUpdate = aFb.needsUpdate = true; pU.uCa.value.set(APPS[p][2]); pU.uCb.value.set(APPS[Math.min(p + 1, 5)][2]); };
   const header = document.querySelector('[data-header]'), after = document.getElementById('after');
   const darkHeader = () => header && header.classList.toggle('cs-over', (after || root).getBoundingClientRect().bottom > 80);
   addEventListener('scroll', darkHeader, { passive: true }); darkHeader();
@@ -330,6 +337,10 @@ function sampleFigure(c, n) {
     });
     composer.render();
   }
-  resize(); root.classList.add('cx-live'); renderer.setAnimationLoop(frame);
+  // prepare the graphics programs off the main thread where the browser allows it, then start
+  await breathe();
+  if (renderer.compileAsync) { try { await renderer.compileAsync(scene, camera); } catch (e) { /* compiled on first frame instead */ } }
+  [2, 3, 4, 5].forEach((i, k) => setTimeout(() => figAt(i), 600 + k * 250));
+  started = true; resize(); root.classList.add('cx-live'); if (running) renderer.setAnimationLoop(frame);
   requestAnimationFrame(() => { root.classList.add('cx-ready'); window.ScrollTrigger.refresh(); });
 })();
