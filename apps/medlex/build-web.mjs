@@ -46,6 +46,8 @@ let js = scripts[0];
 js = patch(js, '"./infographics/', `"${BASE}infographics/`, 'poster paths', 56);
 js = patch(js, 'e.href="./manifest.webmanifest"', `e.href="${BASE}manifest.webmanifest"`, 'manifest link');
 js = patch(js, 'navigator.serviceWorker.register("./sw.js")', `navigator.serviceWorker.register("${BASE}sw.js",{scope:"${SCOPE}"})`, 'worker scope');
+// Learning preferences button: say what it does, not the placeholder initials ("HP").
+js = patch(js, 'De("#profileInitial").setAttribute("aria-label",De("#profileInitial").textContent+" · Learning preferences")', 'De("#profileInitial").setAttribute("aria-label","Learning preferences"),De("#profileInitial").setAttribute("title","Learning preferences")', 'preferences label');
 
 // Remove the dead "Complete offline HTML" link (./MedLex.html is not published on the web).
 js = patch(js, '<a class="btn" href="./MedLex.html" download="MedLex-Complete.html">Complete offline HTML</a>', '', 'offline HTML link');

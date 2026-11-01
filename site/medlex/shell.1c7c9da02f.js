@@ -568,7 +568,7 @@ window.MEDLEX_LEARN={"base":"/medlex/learn/","canvas":"/medlex/learn/canvas/","c
   function gated(id) { if (LN && LN.extra.some(x => x.id === id)) { if (LN.extra.find(x => x.id === id).free) return false; try { const H = window.HCA; if (H && H.locked && H.locked('medlex')) { setTimeout(() => H.paywall('medlex', 'this lesson')); return true; } } catch { } return false; } try { const H = window.HCA; if (H && H.locked && H.locked('medlex') && !FREE.includes(id)) { setTimeout(() => H.paywall('medlex', 'this module')); return true; } } catch { } return false; }
   function showCanvasLibrary() {
     const main = $('#main'); if (!main) return;
-    main.innerHTML = '<section class="canvas-learn" aria-label="MedLex Canvas Studio"><iframe class="canvas-learn-frame" title="MedLex Learn — Canvas Studio lesson library" allow="fullscreen" allowfullscreen></iframe></section>';
+    main.innerHTML = '<section class="canvas-learn" aria-labelledby="canvas-learn-h"><h1 id="canvas-learn-h" class="visually-hidden">Learn: MedLex lesson library</h1><iframe class="canvas-learn-frame" title="MedLex Learn — Canvas Studio lesson library" allow="fullscreen" allowfullscreen></iframe></section>';
     const frame = $('.canvas-learn-frame', main), area = $('.canvas-learn', main);
     const fit = () => {
       if (!area.isConnected) { observer.disconnect(); return; }
