@@ -6749,7 +6749,7 @@ function HCAAbout({onClose}){return HC(A,{title:'Lumen, by Healthcare Crown Acad
 rs = function HCADialogRouter(){const ctx=y(),m=ctx.modal;if(m?.type==='hca-method')return HC(HCAMethodInfo,{...m,onClose:()=>ctx.setModal(null)});if(m?.type==='hca-exercise')return HC(HCAExercise,{...m,onClose:()=>ctx.setModal(null)});if(m?.type==='hca-lab')return HC(A,{title:m.focus==='visual'?'Hide, recall, reveal.':m.focus==='compare'?'Work the distinction through.':'Explain one idea clearly.',eyebrow:'GUIDED PRACTICE',onClose:()=>ctx.setModal(null),className:'hca-lab-modal'},ctx.state.books.length?HC(Phase2Lab,{}):HC('p',{},'Add a source before starting a guided exercise.'));if(m?.type==='hca-about')return HC(HCAAbout,{onClose:()=>ctx.setModal(null)});return HC(HCAOriginalDialogs,{});};
 Me = function HCAStudy(){return HC('div',{className:'hca-study-shell'},HC(HCAOriginalStudy,{}),HC('div',{className:'hca-study-extras page-content'},HC('div',{className:'hca-section-head'},HC('h2',{},'More ways to work an idea through.')),HC(HCAMethodCards,{}),HC(HCAFooter,{})));};
 qo = function HCASettings(){const ctx=y();return HC(_.Fragment,{},HC(HCAOriginalSettings,{onClose:()=>ctx.setModal(null)}));};
-function HCAWorkspaceRuntime(){const ctx=y();const routeRef=_.useRef(ctx.route);_.useEffect(()=>{document.documentElement.dataset.scale=ctx.state.settings.interfaceScale||'comfortable';},[ctx.state.settings.interfaceScale]);_.useEffect(()=>{let titles={home:'My Day',library:'Library',studio:'Study studio',notes:'Notes',methods:'Learning methods',progress:'Progress',reader:'Reading room'};document.title=`${titles[ctx.route]||'Workspace'} — Lumen | Healthcare Crown Academy`;if(ctx.route!=='reader'&&location.hash!==`#${ctx.route}`)history.pushState(null,'',`#${ctx.route}`);if(routeRef.current!==ctx.route){let main=document.getElementById('main-content');main?.setAttribute('tabindex','-1');main?.focus({preventScroll:true});routeRef.current=ctx.route;}},[ctx.route]);_.useEffect(()=>{let go=()=>ctx.navigate(HCAInitialRoute());window.addEventListener('popstate',go);window.addEventListener('hashchange',go);return()=>{window.removeEventListener('popstate',go);window.removeEventListener('hashchange',go);};},[]);return HC('div',{className:'hca-access-bar'},HC('button',{title:'Toggle larger interface text','aria-label':'Toggle larger interface text','aria-pressed':ctx.state.settings.interfaceScale==='large',onClick:()=>ctx.setState(s=>({...s,settings:{...s.settings,interfaceScale:s.settings.interfaceScale==='large'?'comfortable':'large'}}))},HCAIcon('font-size'),HC('span',{},ctx.state.settings.interfaceScale==='large'?'Larger text':'Text size')),HC('button',{title:'Back up your workspace',onClick:ctx.backupWorkspace},HCAIcon('download-line'),HC('span',{},'Back up')));}
+function HCAWorkspaceRuntime(){const ctx=y();const routeRef=_.useRef(ctx.route);_.useEffect(()=>{document.documentElement.dataset.scale=ctx.state.settings.interfaceScale||'comfortable';},[ctx.state.settings.interfaceScale]);_.useEffect(()=>{let titles={home:'My Day',library:'Library',studio:'Study studio',notes:'Notes',methods:'Learning methods',progress:'Progress',reader:'Reading room'};document.title=`${titles[ctx.route]||'Workspace'} — Lumen | Healthcare Crown Academy`;if(ctx.route!=='reader'&&location.hash!==`#${ctx.route}`)history.pushState(null,'',`#${ctx.route}`);if(routeRef.current!==ctx.route){HCAWinOnRoute();let main=document.getElementById('main-content');main?.setAttribute('tabindex','-1');main?.focus({preventScroll:true});routeRef.current=ctx.route;}},[ctx.route]);_.useEffect(()=>{let go=()=>ctx.navigate(HCAInitialRoute());window.addEventListener('popstate',go);window.addEventListener('hashchange',go);return()=>{window.removeEventListener('popstate',go);window.removeEventListener('hashchange',go);};},[]);return HC('div',{className:'hca-access-bar'},HC('button',{title:'Toggle larger interface text','aria-label':'Toggle larger interface text','aria-pressed':ctx.state.settings.interfaceScale==='large',onClick:()=>ctx.setState(s=>({...s,settings:{...s.settings,interfaceScale:s.settings.interfaceScale==='large'?'comfortable':'large'}}))},HCAIcon('font-size'),HC('span',{},ctx.state.settings.interfaceScale==='large'?'Larger text':'Text size')),HC('button',{title:'Back up your workspace',onClick:ctx.backupWorkspace},HCAIcon('download-line'),HC('span',{},'Back up')));}
 
 /* Reader-first workspace: positioned ink, source anchors, and active recall. */
 const HCAOldReader=ys,HCAOldPage=ms,HCAOldTextPage=gs,HCAOldSidecar=os,HCAOldDialogs=rs;
@@ -7055,7 +7055,7 @@ function HCA3Streaks(days) {
 }
 
 const HCA3ReviewsSince = (s, t) => (s.reviewLog || []).filter(l => l.at >= t).length;
-const HCA3Goals = s => ({ examName: 'NCLEX-RN', dailyReviews: 20, ...(s.hcaGoals || {}) });
+const HCA3Goals = s => ({ examName: s.hcaGoals ? 'NCLEX-RN' : 'OSCE', dailyReviews: 20, ...(s.hcaGoals || {}) });
 
 function HCA3DaysUntil(date) {
   if (!date) return null;
@@ -9050,7 +9050,7 @@ HCA5ProviderRow = function HCA6ProviderRow(props) {
 
 /* ---------- Floating UI store (calculator, stickers tray, meaning card, presenter, status) ---------- */
 const HCA7UI = { state: { calc: false, tray: false, define: null, present: null, progress: null, choose: null }, subs: new Set() };
-function HCA7Set(patch) { HCA7UI.state = { ...HCA7UI.state, ...(typeof patch === 'function' ? patch(HCA7UI.state) : patch) }; HCA7UI.subs.forEach(f => f()); }
+function HCA7Set(patch) { const hcaPrev = HCA7UI.state; HCA7UI.state = { ...HCA7UI.state, ...(typeof patch === 'function' ? patch(HCA7UI.state) : patch) }; HCAWinFix(hcaPrev); HCA7UI.subs.forEach(f => f()); }
 function HCA7Use() {
   const [, force] = _.useState(0);
   _.useEffect(() => { const f = () => force(n => n + 1); HCA7UI.subs.add(f); return () => HCA7UI.subs.delete(f); }, []);
@@ -9545,10 +9545,10 @@ function HCA7Calculator() {
   const [from, to, f] = HCA7Units[conv.i], cv = Number(conv.v);
   const convOut = conv.v === '' || !Number.isFinite(cv) ? '' : f ? HCA7Fmt(cv * f, 3) : from === '°C' ? HCA7Fmt(cv * 9 / 5 + 32, 1) : HCA7Fmt((cv - 32) * 5 / 9, 1);
   const keys = ['(', ')', '%', '⌫', '7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '−', '0', '.', '^', '+'];
-  return HC('section', { ref: win.ref, className: 'hca7-float hca7-calc', style: win.style, 'aria-label': 'Calculator' },
+  return HC('section', { ref: win.ref, className: `hca7-float hca7-calc ${HCAWinIsMin('calc') ? 'hcaw-min' : ''}`, style: win.style, 'aria-label': 'Calculator' },
     HC('header', { ...win.header, title: 'Drag to move · double-click to reset' },
       HCAIcon('draggable'), HC('strong', {}, 'Calculator'),
-      HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close calculator', onClick: () => HCA7Set({ calc: false }) }, HCAIcon('close-line'))),
+      HC(HCAWinMinBtn, { id: 'calc', title: 'Calculator' }), HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close calculator', onClick: () => HCA7Set({ calc: false }) }, HCAIcon('close-line'))),
     HC('div', { className: 'hca7-tabs', role: 'tablist' }, [['keypad', 'Keypad'], ['clinical', 'Clinical'], ['convert', 'Convert']].map(([id, l]) => HC('button', { key: id, role: 'tab', 'aria-selected': tab === id, onClick: () => setTab(id) }, l))),
     tab === 'keypad' && HC('div', { className: 'hca7-keypad' },
       HC('input', { ref: input, className: 'hca7-display', value: expr, 'aria-label': 'Expression', placeholder: 'e.g. 500 × 0.2 ÷ 4', onChange: e => { setExpr(e.target.value); setErr(''); }, onKeyDown: e => { if (e.key === 'Enter') { e.preventDefault(); run(); } e.stopPropagation(); } }),
@@ -10271,16 +10271,17 @@ HCAReaderSidecar = function HCA7ReaderSidecar(props) {
 
 /* ---------- Window shell (drag, resize, maximise, remembered place) ---------- */
 function HCA8Window({ id, title, icon, onClose, children, className = '', actions = null }) {
-  const win = HCA7Win(id), [max, setMax] = _.useState(false);
-  return HC('section', { ref: win.ref, className: `hca7-float hca8-win ${className} ${max ? 'max' : ''}`, style: max ? undefined : win.style, 'aria-label': title, role: 'dialog' },
+  const win = HCA7Win(id), [max, setMax] = _.useState(false), hcaMin = !!(HCA7Use().min || {})[id];
+  return HC('section', { ref: win.ref, className: `hca7-float hca8-win ${className} ${max ? 'max' : ''} ${hcaMin ? 'hcaw-min' : ''}`, style: max ? undefined : win.style, 'aria-label': title, role: 'dialog' },
     HC('header', { ...(max ? {} : win.header), title: max ? undefined : 'Drag to move · double-click to reset' },
       !max && HCAIcon('draggable'), HCAIcon(icon), HC('strong', {}, title), HC('span', { className: 'grow' }), actions,
       typeof HCA9Guide !== 'undefined' && HCA9Guide.some(g => g.id === id) && HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': `How to use ${title}`, title: 'How to use this', onClick: () => HCA9OpenGuide(id) }, HCAIcon('question-line')),
+      HC(HCAWinMinBtn, { id, title }),
       HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': max ? 'Restore window size' : 'Maximise window', onClick: () => setMax(!max) }, HCAIcon(max ? 'fullscreen-exit-line' : 'fullscreen-line')),
       HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': `Close ${title}`, onClick: onClose }, HCAIcon('close-line'))),
     HC('div', { className: 'hca8-body' }, children));
 }
-const HCA8Open = name => HCA7Set(s => ({ desk: { ...(s.desk || {}), [name]: !(s.desk || {})[name] } }));
+const HCA8Open = name => HCAWinToggle(name);
 const HCA8Close = name => HCA7Set(s => ({ desk: { ...(s.desk || {}), [name]: false } }));
 const HCA8Today = () => new Date().toLocaleDateString('en-CA');
 const HCA8Days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -10290,20 +10291,20 @@ const HCA8Fmt = sec => `${String(Math.floor(sec / 60)).padStart(2, '0')}:${Strin
 /* ---------- Sidebar: Study desk ---------- */
 function HCA8SideDesk() {
   const ui = HCA7Use(), t = HCA8UseTimer(), desk = ui.desk || {}, [fold, setFold] = _.useState(HCA11FoldOpen());
-  const item = (key, icon, label, hint, extra) => HC('button', { type: 'button', title: hint, 'aria-pressed': !!desk[key], className: `hs-item ${desk[key] ? 'hca8-on' : ''}`, onClick: () => key === 'calc' ? HCA7Set(s => ({ calc: !s.calc })) : HCA8Open(key) },
+  const item = (key, icon, label, hint, extra) => HC('button', { type: 'button', title: hint, 'aria-pressed': !!desk[key], className: `hs-item ${desk[key] ? 'hca8-on' : ''}`, onClick: () => HCAWinToggle(key) },
     HCAIcon(icon), HC('span', {}, label), extra);
   return HC(_.Fragment, {},
     HC('details', { className: 'hs-fold', open: fold, onToggle: e => { setFold(e.currentTarget.open); HCA11Fold(e.currentTarget.open); } }, HC('summary', {}, 'Study desk'),
     HC('nav', { className: 'secondary-navigation hs-nav hca8-desk-nav', 'aria-label': 'Study desk' },
       item('board', 'layout-column-line', 'Board', 'Kanban board for your study tasks'),
       item('canvas', 'edit-line', 'Canvas', 'Whiteboard for concept maps and flows'),
-      item('timer', 'timer-line', 'Focus timer', 'Pomodoro focus sessions and breaks', t.running ? HC('b', { className: 'hca8-badge' }, HCA8Fmt(t.left)) : null),
+      item('timer', 'timer-line', 'Timer', 'Pomodoro focus sessions and breaks', t.running ? HC('b', { className: 'hca8-badge' }, HCA8Fmt(t.left)) : null),
       item('planner', 'time-line', 'Planner', 'Exam countdown and weekly timetable'),
-      item('blurt', 'brain-line', 'Blurt pad', 'Write from memory, then check what you missed'),
-      item('labs', 'heart-pulse-line', 'Lab values', 'Reference ranges with a quiz mode'),
+      item('blurt', 'brain-line', 'Blurt', 'Write from memory, then check what you missed'),
+      item('labs', 'heart-pulse-line', 'Labs', 'Reference ranges with a quiz mode'),
       item('techniques', 'lightbulb-line', 'Techniques', 'Proven study techniques, told as a story'),
       item('calc', 'stethoscope-line', 'Calculator', 'Clinical and scientific calculator'),
-      HC('button', { type: 'button', className: `hca9-guide-link ${desk.guide ? 'hca8-on' : ''}`, title: 'What each tool is, how and when to use it', onClick: () => desk.guide ? HCA8Close('guide') : HCA9OpenGuide('overview') }, HCAIcon('question-line'), HC('span', {}, 'How to use the desk')))));
+      HC('button', { type: 'button', className: `hca9-guide-link ${desk.guide ? 'hca8-on' : ''}`, title: 'What each tool is, how and when to use it', onClick: () => desk.guide ? HCA8Close('guide') : HCA9OpenGuide('overview') }, HCAIcon('question-line'), HC('span', {}, 'Desk guide')))));
 }
 
 /* ---------- Focus timer (keeps running when its window is closed) ---------- */
@@ -10647,7 +10648,7 @@ function HCA8Planner() {
 /* ---------- Mount ---------- */
 function HCA8Floats() {
   const ui = HCA7Use(), d = ui.desk || {};
-  return HC(_.Fragment, {}, HC(HCA8TimerHost), S.createPortal(HC(_.Fragment, {}, d.board && HC(HCA8Board), d.canvas && HC(HCA8Canvas), d.timer && HC(HCA8Timer), d.planner && HC(HCA8Planner)), document.body), HC(HCA9Floats));
+  return HC(_.Fragment, {}, HC(HCA8TimerHost), S.createPortal(HC(_.Fragment, {}, d.board && HC(HCA8Board), d.canvas && HC(HCA8Canvas), d.timer && HC(HCA8Timer), d.planner && HC(HCA8Planner), HC(HCAWinDock)), document.body), HC(HCA9Floats));
 }
 const HCA8Prev = { Dialogs: rs, Commands: HCA3Commands };
 rs = function HCA8DialogRouter() { return HC(_.Fragment, {}, HC(HCA8Prev.Dialogs), HC(HCA8Floats)); };
@@ -10678,7 +10679,7 @@ const HCA9TechImg = {"calibrate": '/lumen/img/7dc2e6b4aa.webp',
    All offline, no AI. New optional workspace keys: hcaBlurts. */
 
 const HCA9Prev = { Today: ke };
-const HCA9Show = name => HCA7Set(s => ({ desk: { ...(s.desk || {}), [name]: true } }));
+const HCA9Show = name => HCA7Set(s => ({ desk: { ...(s.desk || {}), [name]: true }, min: { ...(s.min || {}), [name]: false } }));
 const HCA9Reduce = () => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- Small helpers ---------- */
@@ -10857,7 +10858,7 @@ const HCA9Guide = [
   { id: 'timer', icon: 'timer-line', name: 'Focus timer', what: 'Pomodoro-style focus sessions and breaks, with a log of your minutes.', how: ['Write what you will focus on (optional) and press Start.', 'Work until the chime, then take the break it offers.', 'Turn on focus sounds if silence or noise distracts you.'], when: ['Starting is hard: commit to just one session.', 'Long study days, to avoid fatigue.', 'Measuring real study time, not time at the desk.'], tip: 'The countdown shows in the sidebar and the browser tab, so you can close the window.' },
   { id: 'planner', icon: 'time-line', name: 'Planner', what: 'Your exam countdown, today at a glance, and a weekly study timetable.', how: ['Set your exam date.', 'Add study blocks for each day: time, length, subject and colour.', 'Export to your calendar (.ics) so reminders reach your phone.'], when: ['At the start of each week (Sunday evening works well).', 'When a shift pattern changes.', 'When the countdown says you need to speed up.'], tip: 'Plan short blocks you can keep. Four 30-minute blocks beat one 2-hour block you skip.' },
   { id: 'blurt', icon: 'brain-line', name: 'Blurt pad', what: 'Write everything you remember about a topic, then check what you missed against your own notes.', how: ['Type a topic, choose a time, and press Start.', 'Write fast, without looking anything up.', 'Check: Lumen shows key terms from your notes, which you recalled and which you missed.'], when: ['Right after reading, to lock it in.', 'The day before a quiz, to find gaps.', 'When rereading feels easy (that feeling misleads).'], tip: 'Send missed terms to your Board, then blurt again tomorrow.' },
-  { id: 'labs', icon: 'heart-pulse-line', name: 'Lab values', what: 'Common adult reference ranges for NCLEX, with clinical cues and a quiz mode.', how: ['Search a value or browse by group.', 'Switch units between conventional (US) and SI (UK and international).', 'Turn on Quiz me to hide the numbers and test yourself.'], when: ['Answering a question that quotes a lab result.', 'A quick daily drill of 5 values.', 'Before a clinical shift.'], tip: 'Ranges vary between labs. In practice, always use your facility’s range.' },
+  { id: 'labs', icon: 'heart-pulse-line', name: 'Lab values', what: 'Typical adult reference ranges in SI and US units, with clinical cues and a quiz mode. Check your local lab’s ranges.', how: ['Search a value or browse by group.', 'Switch units between conventional (US) and SI (UK and international).', 'Turn on Quiz me to hide the numbers and test yourself.'], when: ['Answering a question that quotes a lab result.', 'A quick daily drill of 5 values.', 'Before a clinical shift.'], tip: 'Ranges vary between labs. In practice, always use your facility’s range.' },
   { id: 'techniques', icon: 'lightbulb-line', name: 'Techniques', what: 'Ten proven study techniques, told through one nurse’s story, with the evidence and a way to try each.', how: ['Read one chapter at a time.', 'Press "Try it in Lumen" to practise it straight away.', 'Come back when a method stops working for you.'], when: ['Starting your NCLEX preparation.', 'Feeling busy but not improving.', 'Planning how to study a hard topic.'], tip: 'Rereading and highlighting feel productive but help little on their own. Turn them into questions.' },
   { id: 'calc', icon: 'stethoscope-line', name: 'Calculator', what: 'A scientific and clinical calculator: dosage, drip rates, BMI and more.', how: ['Pick a clinical formula, or use the keypad.', 'Check the units shown next to each field.', 'Copy the result into a note.'], when: ['Dosage calculation practice.', 'Checking your working on a practice question.'], tip: 'Always estimate first, then calculate. A wildly different answer means a unit slipped.' },
 ];
@@ -11011,7 +11012,7 @@ function HCA9Blurt() {
 }
 
 /* ---------- Lab values ---------- */
-const HCA9LabNote = 'Typical adult reference ranges as commonly taught for NCLEX. Ranges vary by laboratory, textbook and country: in practice, always use your facility’s reference range.';
+const HCA9LabNote = 'Typical adult values, for study only. Reference ranges vary by laboratory; check your local lab’s ranges. Ranges also vary by textbook and country: in practice, always use your facility’s reference range.';
 const HCA9Labs = [
   ['Electrolytes', [
     ['Sodium (Na⁺)', '135–145 mEq/L', '135–145 mmol/L', 'Low or high: confusion, seizures. Correct slowly.'],
@@ -11065,18 +11066,19 @@ const HCA9Labs = [
     ['Heart rate', '60–100 /min', '60–100 /min', ''],
     ['Respiratory rate', '12–20 /min', '12–20 /min', 'Count for a full minute if irregular.'],
     ['Blood pressure', 'Below 120/80 mmHg', 'Below 120/80 mmHg', ''],
-    ['Temperature', '36.5–37.5 °C', '97.7–99.5 °F', ''],
+    ['Temperature', '97.7–99.5 °F', '36.5–37.5 °C', ''],
     ['SpO₂', '95–100%', '95–100%', '']]],
 ];
 function HCA9LabsWin() {
-  const [q, setQ] = _.useState(''), [si, setSi] = _.useState(false), [quiz, setQuiz] = _.useState(false), [shown, setShown] = _.useState({});
+  const [q, setQ] = _.useState(''), [quiz, setQuiz] = _.useState(false), [shown, setShown] = _.useState({});
+  const [si, setSi] = _.useState(true);
   const ql = q.trim().toLowerCase();
   const groups = HCA9Labs.map(([g, rows]) => [g, rows.filter(r => !ql || `${g} ${r.join(' ')}`.toLowerCase().includes(ql))]).filter(g => g[1].length);
   return HC(HCA8Window, { id: 'labs', title: 'Lab values', icon: 'heart-pulse-line', className: 'hca9-labs-win', onClose: () => HCA8Close('labs') },
     HC('div', { className: 'hca8-row' },
       HC('input', { className: 'hca8-search grow', value: q, placeholder: 'Search: potassium, INR, ABG…', 'aria-label': 'Search lab values', onKeyDown: e => e.stopPropagation(), onChange: e => setQ(e.target.value) }),
       HC('div', { className: 'hca9-seg', role: 'group', 'aria-label': 'Units' },
-        HC('button', { type: 'button', 'aria-pressed': !si, onClick: () => setSi(false) }, 'US units'), HC('button', { type: 'button', 'aria-pressed': si, onClick: () => setSi(true) }, 'SI units')),
+        HC('button', { type: 'button', 'aria-pressed': si, onClick: () => setSi(true) }, 'SI units'), HC('button', { type: 'button', 'aria-pressed': !si, onClick: () => setSi(false) }, 'US units')),
       HC('button', { type: 'button', className: `hca8-tool ${quiz ? 'on' : ''}`, 'aria-pressed': quiz, onClick: () => { setQuiz(!quiz); setShown({}); } }, HCAIcon(quiz ? 'eye-off-line' : 'eye-line'), 'Quiz me')),
     HC('p', { className: 'hca9-labnote' }, HCAIcon('information-line'), HCA9LabNote),
     groups.map(([g, rows]) => HC('section', { key: g, className: 'hca9-labgroup' }, HC('h4', {}, g),
@@ -11198,8 +11200,10 @@ if (!HCA10Get(HCA10ThemeKey)) { HCA10.autoTheme = HCA10OsDark() ? 'dark' : 'ligh
 /* ---------- First-visit hook ---------- */
 const HCA10HookKey = 'lumen.hook.v1';
 const HCA10Goals = [
-  ['nclex', 'NCLEX', 'NCLEX-RN', 'stethoscope-line'],
   ['osce', 'OSCE', 'OSCE', 'heart-pulse-line'],
+  ['nmc', 'NMC CBT', 'NMC CBT', 'shield-check-line'],
+  ['gulf', 'Gulf licensing (DHA, DoH, MOH)', 'Gulf licensing exam', 'book-2-line'],
+  ['nclex', 'NCLEX', 'NCLEX-RN', 'stethoscope-line'],
   ['course', 'Course exams', 'Course exams', 'graduation-cap-line'],
   ['learning', 'Just learning', '', 'lightbulb-line'],
 ];
@@ -11242,7 +11246,7 @@ function HCA10Hook({ onClose }) {
       HC('p', { className: 'dialog-intro' }, 'Lumen shapes your My Day plan around your goal. You can change this any time in Study goal.'),
       HC('fieldset', { className: 'hca10-goals' }, HC('legend', { className: 'hca10-sr' }, 'Your goal'),
         HCA10Goals.map(([id, label, , icon]) => HC('label', { key: id, className: goal === id ? 'on' : '' },
-          HC('input', { type: 'radio', name: 'hca10-goal', value: id, checked: goal === id, onChange: () => setGoal(id), autoFocus: id === 'nclex' }),
+          HC('input', { type: 'radio', name: 'hca10-goal', value: id, checked: goal === id, onChange: () => setGoal(id), autoFocus: id === 'osce' }),
           HCAIcon(icon), HC('span', {}, label)))),
       goal && goal !== 'learning' && HC('label', { className: 'field-label hca10-date' }, `${goalName} date (optional)`,
         HC('input', { type: 'date', value: date, min: new Date().toLocaleDateString('en-CA'), onChange: e => setDate(e.target.value) })))
@@ -11849,6 +11853,48 @@ HCAReaderSidecar = function HCA12Sidecar(props) {
   return HC(_.Fragment, {}, overlay && !floating && HC('button', { type: 'button', className: 'hl-scrim', tabIndex: -1, 'aria-label': 'Close study panel', onClick: props.onClose }), aside);
 };
 /*HCA12:END*/
+/* ---------- Tool windows: minimise when the screen changes, a dock to bring them back, and Close all ---------- */
+// Minimised windows stay mounted (hidden), so anything typed in them is kept until the learner closes them.
+function HCAWinTitle(k) { return ({ board: 'Board', canvas: 'Canvas', timer: 'Timer', planner: 'Planner', blurt: 'Blurt', labs: 'Labs', techniques: 'Techniques', calc: 'Calculator', guide: 'Desk guide', appguide: 'App guide', saved: 'Your work' })[k] || k; }
+function HCAWinIcon(k) { return ({ board: 'layout-column-line', canvas: 'edit-line', timer: 'timer-line', planner: 'time-line', blurt: 'brain-line', labs: 'heart-pulse-line', techniques: 'lightbulb-line', calc: 'stethoscope-line', saved: 'shield-check-line' })[k] || 'question-line'; }
+function HCAWinOpenKeys(s = HCA7UI.state) { const d = s.desk || {}, keys = Object.keys(d).filter(k => d[k]); if (s.calc) keys.push('calc'); return keys; }
+// called by HCA7Set: a window that has just opened or closed is never left minimised
+function HCAWinFix(prev) {
+  const s = HCA7UI.state, m = s.min; if (!m) return;
+  const was = k => k === 'calc' ? !!prev.calc : !!(prev.desk || {})[k], now = k => k === 'calc' ? !!s.calc : !!(s.desk || {})[k];
+  let n = null;
+  for (const k of Object.keys(m)) if (m[k] && (!now(k) || !was(k))) { n = n || { ...m }; n[k] = false; }
+  if (n) HCA7UI.state = { ...s, min: n };
+}
+function HCAWinIsMin(k) { return !!(HCA7UI.state.min || {})[k]; }
+function HCAWinMinimise(k) { HCA7Set(s => ({ min: { ...(s.min || {}), [k]: true } })); }
+function HCAWinRestore(k) { HCA7Set(s => ({ min: { ...(s.min || {}), [k]: false } })); }
+function HCAWinMinimiseAll() { const keys = HCAWinOpenKeys(); if (keys.length) HCA7Set(s => { const m = { ...(s.min || {}) }; keys.forEach(k => { m[k] = true; }); return { min: m }; }); }
+function HCAWinOnRoute() { HCAWinMinimiseAll(); }
+function HCAWinCloseAll() {
+  const s = HCA7UI.state;
+  if ((s.desk || {}).blurt && document.querySelector('.hca8-win textarea')?.value && !confirm('Close all windows? Text in the Blurt pad that you have not saved will be lost.')) return;
+  HCA7Set({ desk: {}, calc: false, min: {} });
+}
+// sidebar and command openers: a minimised window comes back instead of closing
+function HCAWinToggle(k) {
+  const s = HCA7UI.state, open = k === 'calc' ? !!s.calc : !!(s.desk || {})[k];
+  if (open && HCAWinIsMin(k)) return HCAWinRestore(k);
+  if (k === 'calc') HCA7Set(x => ({ calc: !x.calc })); else HCA7Set(x => ({ desk: { ...(x.desk || {}), [k]: !(x.desk || {})[k] } }));
+}
+function HCAWinMinBtn({ id, title }) {
+  return HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': `Minimise ${title}`, title: 'Minimise', onClick: () => HCAWinMinimise(id) }, HCAIcon('subtract-line'));
+}
+function HCAWinDock() {
+  const ui = HCA7Use(), keys = HCAWinOpenKeys(ui), min = ui.min || {};
+  if (!keys.length) return null;
+  const hidden = keys.filter(k => min[k]);
+  return HC('div', { className: 'hcaw-dock', role: 'toolbar', 'aria-label': 'Open tool windows' },
+    hidden.map(k => HC('button', { key: k, type: 'button', className: 'hcaw-chip', title: `Show ${HCAWinTitle(k)}`, onClick: () => HCAWinRestore(k) }, HCAIcon(HCAWinIcon(k)), HC('span', {}, HCAWinTitle(k)))),
+    hidden.length < keys.length && HC('button', { type: 'button', className: 'hcaw-chip', title: 'Minimise every open window', onClick: HCAWinMinimiseAll }, HCAIcon('subtract-line'), HC('span', {}, 'Minimise all')),
+    HC('button', { type: 'button', className: 'hcaw-chip hcaw-close', title: 'Close every tool window', onClick: HCAWinCloseAll }, HCAIcon('close-line'), HC('span', {}, 'Close all windows')));
+}
+
 /*HCA13:BEGIN*/
 /* HCA v13 — a reader toolbar the learner can arrange. Shares the bundle's module scope (y = workspace context hook,
    HC = createElement, _ = React, HCAIcon, HCALabelTool, HCABtn, A = dialog shell, HCAReaderContext, HCA7Use/HCA7Set = the tools'

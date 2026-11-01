@@ -1,0 +1,7 @@
+.hcaw-min{display:none!important}
+.hcaw-dock{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:1250;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;max-width:calc(100vw - 32px);padding:6px;border-radius:14px;background:var(--surface,#fffdf8);border:1px solid var(--line,rgba(16,37,58,.14));box-shadow:0 8px 28px rgba(16,37,58,.18)}
+.hcaw-chip{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:10px;border:1px solid var(--line,rgba(16,37,58,.14));background:transparent;color:inherit;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.hcaw-chip:hover{background:rgba(16,37,58,.06)}
+.hcaw-chip i,.hcaw-chip svg{font-size:15px}
+.hcaw-close{color:#9e3e3e}
+@media (max-width:1023px){.hcaw-dock{bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
