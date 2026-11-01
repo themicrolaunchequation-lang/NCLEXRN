@@ -130,3 +130,5 @@ Reply **"publish it"**. I'll add the fixes to the live branch without overwritin
 **Note for the other agent:** the guides are produced by a builder outside this repo. Copy the new study-guide sections into it before the next rebuild, or they will be overwritten.
 
 **Remaining:** Green Belt page size (2.7 MB) and pinning its outside scripts.
+
+**Green Belt (1 Nov, final item): done.** The other agent had already split the 2.7 MB page (now about 315 KB HTML), self-hosted jsPDF, JSZip, supabase-js 2.118.0 (pinned) and all fonts, and fixed layout shift (CLS 0, LCP 1.4 s on a throttled phone). This session self-hosted the last Google Fonts on the two How to use guides (PR lss-healthcare-toolkit#25). Live check: the main page and both guides contact no outside hosts. **The plan is complete.**
