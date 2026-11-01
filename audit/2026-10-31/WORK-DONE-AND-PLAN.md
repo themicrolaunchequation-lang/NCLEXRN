@@ -108,3 +108,25 @@ Reply **"publish it"**. I'll add the fixes to the live branch without overwritin
 - Carecraft's honesty labels;
 - zero trackers;
 - the consistent design across all apps.
+
+---
+
+## 3. Status update — 1 November 2026
+
+**Done by the other agent (live):** my audit fixes merged and published; Gulf studio renamed "Gulf Region Nursing"; Cloudflare analytics removed; new Gulf screenshots; Serein Saudi/UAE/Qatar crisis lines; Lumen windows, UK defaults, lab note and a much lighter first load; Green Belt contact email; preview page removed; Vercel moved to Pro (owner).
+
+**Done in this session:**
+
+| Item | Result | Where |
+|---|---|---|
+| MedLex content jumping on load | Layout shift 0.55 → **0.00** on phones, 0.20 → 0.03 on desktop | working branch |
+| MedLex "HP" chip | Now a "Learning preferences" sliders icon with a proper label | working branch |
+| MedLex Learn heading | Screen-reader heading added | working branch |
+| Gulf studio accessibility | Labs frame title and heading, glossary resize handle (critical), contrast in glossary, mock exam, guide and dossier; help text says 1,297 questions. axe: **0** on 7 screens; studio test suite 103/103 pass | commit on top of `claude/gulf-crosswalk`, also saved as `gulf-studio-accessibility.patch` |
+| Study guides | 4 guides expanded from ~210 to 570–645 words: worked nursing examples, common mistakes, routines, FAQs and research references | working branch |
+
+**Dropped by the owner:** About page and named reviewers; founding-price emails (nobody reserved).
+
+**Note for the other agent:** the guides are produced by a builder outside this repo. Copy the new study-guide sections into it before the next rebuild, or they will be overwritten.
+
+**Remaining:** Green Belt page size (2.7 MB) and pinning its outside scripts.

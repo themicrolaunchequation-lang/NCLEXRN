@@ -95,3 +95,4 @@
 @media (max-width:600px){.g-feats,.g-cards{grid-template-columns:1fr}.g-lead{font-size:1.05rem}.g-cta{padding:20px}.g-cta a.g-alt{margin-left:0;display:block}}
 @media (prefers-reduced-motion:reduce){.g-feat{transition:none}.g-feat:hover{transform:none}}
 .g-updated{font-size:.88rem;color:var(--text-soft);margin-top:10px}
+.g-refs{font-size:.9rem;color:var(--text-muted)}.g-refs li{margin-bottom:6px}
