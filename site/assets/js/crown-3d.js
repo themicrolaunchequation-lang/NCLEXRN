@@ -158,11 +158,11 @@ function sampleFigure(c, n) {
   const aFa = new THREE.BufferAttribute(new Float32Array(FIGS[0]), 4).setUsage(THREE.DynamicDrawUsage);
   const aFb = new THREE.BufferAttribute(new Float32Array(FIGS[1]), 4).setUsage(THREE.DynamicDrawUsage);
   pg.setAttribute('aFa', aFa); pg.setAttribute('aFb', aFb);
-  const pU = { uBurst: { value: 0 }, uShow: { value: 0 }, uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() }, uFig: { value: 0 }, uMix: { value: 0 }, uFigPt: { value: small ? 1.8 : 1 },
+  const pU = { uBurst: { value: 0 }, uShow: { value: 0 }, uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() }, uFig: { value: 0 }, uMix: { value: 0 }, uFigPt: { value: small ? 1.8 : 1 }, uFigOnly: { value: 1 },
     uCrownM: { value: new THREE.Matrix4() }, uFigM: { value: new THREE.Matrix4() }, uCa: { value: new THREE.Color(APPS[0][2]) }, uCb: { value: new THREE.Color(APPS[1][2]) } };
   const pMat = new THREE.ShaderMaterial({ uniforms: pU, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
     vertexShader: `attribute vec3 aDir,aCol; attribute float aRnd; attribute vec4 aFa,aFb;
-      uniform float uBurst,uTime,uPx,uFig,uMix,uFigPt; uniform mat4 uCrownM,uFigM; uniform vec3 uCa,uCb; varying vec3 vC; varying float vA;
+      uniform float uBurst,uTime,uPx,uFig,uMix,uFigPt,uFigOnly; uniform mat4 uCrownM,uFigM; uniform vec3 uCa,uCb; varying vec3 vC; varying float vA;
       void main(){ float b=smoothstep(0.,1.,clamp(uBurst*1.2-aRnd*0.2,0.,1.)); vec3 p=position+aDir*b*0.95;
         p.x+=sin(uTime*.7+aRnd*20.)*0.04*b; p.y+=cos(uTime*.6+aRnd*17.)*0.04*b;
         vec3 pc=(uCrownM*vec4(p,1.)).xyz;
@@ -173,8 +173,8 @@ function sampleFigure(c, n) {
         vec3 w=mix(pc,pf,g)+aDir*g*(1.-g)*1.2;
         vec4 mv=viewMatrix*vec4(w,1.); gl_Position=projectionMatrix*mv;
         gl_PointSize=min(uPx*4.5,uPx*(1.6+aRnd*1.8-g*0.5+f.w*g*0.5)*(5.2/-mv.z)*(1.+g*(uFigPt-1.)));
-        vec3 jc=mix(uCa,uCb,m); vec3 fc=mix(mix(vec3(.91,.75,.42),jc,.4),mix(jc,vec3(1.),.45),f.w);
-        vC=mix(aCol,fc,g); vA=(0.55+0.45*aRnd)*mix(1.,(0.5+0.45*f.w)*smoothstep(-1.75,-1.6,f.y),g); }`,
+        vec3 jc=mix(uCa,uCb,m)*1.35; vec3 fc=mix(mix(vec3(.91,.75,.42),jc,.65),mix(jc,vec3(1.),.18),f.w);
+        vC=mix(aCol,fc,g); vA=(0.55+0.45*aRnd)*mix(1.,(0.55+0.45*f.w)*smoothstep(-1.75,-1.6,f.y),g)*mix(1.,smoothstep(0.2,0.75,g),uFigOnly); }`,
     fragmentShader: 'uniform float uShow; varying vec3 vC; varying float vA; void main(){ float r=length(gl_PointCoord-.5); float a=smoothstep(.5,0.,r); gl_FragColor=vec4(vC*1.6*a*vA*uShow,a*vA*uShow); }' });
   const cloud = new THREE.Points(pg, pMat); cloud.renderOrder = 11; cloud.frustumCulled = false; scene.add(cloud);
   const fig = new THREE.Object3D();
@@ -200,22 +200,17 @@ function sampleFigure(c, n) {
   const persons = [...root.querySelectorAll('[data-person]')];
   persons.forEach((el, i) => { if (i) gsap.set(el, { autoAlpha: 0, y: 16 }); });
   const navs = [...root.querySelectorAll('[data-cx-nav]')], chips = [...root.querySelectorAll('[data-person-go]')];
-  let marks = [0], snd = null, sceneI = 0, who = -1, total = 11;
-  const tl = gsap.timeline({ defaults: { ease: 'power2.inOut', duration: 1 },
-    scrollTrigger: { trigger: root, start: 'top top', end: () => '+=' + innerHeight * total * (small ? 0.78 : 0.9), scrub: 0.8, pin: root.querySelector('.cx-pin'), anticipatePin: 1,
-      onUpdate: () => {
-        const t = tl.time(); let s = 0; marks.forEach((m, i) => { if (t >= m - 0.05) s = i; });
-        if (s !== sceneI) { sceneI = s; if (snd) { snd.scene(s); if (s === 5) snd.crown(); } }
-        navs.forEach((b, i) => b.classList.toggle('is-on', i === s));
-      } } });
+  let marks = [0], snd = null, sceneI = 0, who = -1, total = 11, stepping = false;
+  // The timeline is played by steps (one scroll, swipe, key or click each); the page scroll only follows it.
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut', duration: 1 } });
   const show = (i, at) => { tl.to(steps.filter((_, k) => k !== i), { autoAlpha: 0, y: -24, duration: 0.3 }, at); tl.to(steps[i], { autoAlpha: 1, y: 0, duration: 0.4 }, at + '+=0.3'); };
   const person = (i, at) => { tl.to(persons.filter((_, k) => k !== i), { autoAlpha: 0, y: -16, duration: 0.25 }, at); tl.to(persons[i], { autoAlpha: 1, y: 0, duration: 0.35 }, at + 0.25); };
   // 1 · one band
-  tl.addLabel('s1').to(S, { x: small ? 0 : 1.1, y: small ? 0.72 : -0.1, rot: 0.9, tilt: 0.5, dist: 5.0, camY: 2.0 }, 's1'); show(1, 's1');
+  tl.addLabel('s1').to(S, { x: small ? 0 : 1.1, y: small ? 0.72 : -0.1, rot: 0.9, tilt: 0.5, dist: small ? 5.9 : 5.7, camY: 2.0 }, 's1'); show(1, 's1');
   // 2 · six jewels
-  tl.addLabel('s2').to(S, { x: small ? 0 : 1.05, y: small ? 0.72 : -0.05, rot: 0.9 + Math.PI * 1.05, tilt: 0.1, dist: 4.6, camY: 0.75, jewel: 1 }, 's2'); show(2, 's2');
+  tl.addLabel('s2').to(S, { x: small ? 0 : 1.05, y: small ? 0.72 : -0.05, rot: 0.9 + Math.PI * 1.05, tilt: 0.1, dist: small ? 5.5 : 4.6, camY: 0.75, jewel: 1 }, 's2'); show(2, 's2');
   // 3 · the heartbeat
-  tl.addLabel('s3').to(S, { x: small ? 0 : 0.8, y: small ? 0.5 : 0, rot: 0.9 + Math.PI * 1.6, tilt: 0.0, dist: 3.7, camY: 0.3, jewel: 0.3, glow: 1.4 }, 's3'); show(3, 's3');
+  tl.addLabel('s3').to(S, { x: small ? 0 : 0.95, y: small ? 0.5 : 0, rot: 0.9 + Math.PI * 1.6, tilt: 0.0, dist: small ? 5.3 : 4.4, camY: 0.3, jewel: 0.3, glow: 1.4 }, 's3'); show(3, 's3');
   // 4 · who it's for: the crown settles on a person made of gold dust and turns to show their jewel
   tl.addLabel('s4').to(S, { x: small ? 0 : 1.25, y: small ? 0.98 : 0.86, cs: small ? 0.5 : 0.36, tilt: 0.3, dist: 5.6, camY: small ? 1.05 : 0.45, ly: small ? 0.05 : -1.02,
     face: 1, spin: 0, glow: 0.5, jewel: 0.15, fig: 1, who: 0, duration: 1.1 }, 's4'); show(4, 's4'); person(0, tl.labels.s4 + 0.3);
@@ -230,35 +225,48 @@ function sampleFigure(c, n) {
   total = tl.duration();
   marks = [0, tl.labels.s1, tl.labels.s2, tl.labels.s3, tl.labels.s4, tl.labels.s5];
   /* ---------- one scroll, swipe, key or click = one step of the story ---------- */
-  const stops = [0, tl.labels.s1 + 1, tl.labels.s2 + 1, tl.labels.s3 + 1, ...whoAt, tl.duration()];
-  const yAt = (time) => { const st = tl.scrollTrigger; return st.start + (st.end - st.start) * Math.min(1, time / tl.duration()); };
-  let busy = false, quietUntil = 0;
-  const glide = (y) => { busy = true; const o = { y: scrollY };
-    gsap.to(o, { y, duration: 1.15, ease: 'power2.inOut', onUpdate: () => scrollTo({ top: o.y, behavior: 'instant' }), onComplete: () => { busy = false; quietUntil = performance.now() + 220; } }); };
-  const goTo = (time) => glide(yAt(time));
-  const inStory = () => { const st = tl.scrollTrigger; return scrollY >= st.start - 2 && scrollY <= st.end + 2; };
-  const nearest = () => { const t = tl.scrollTrigger.progress * tl.duration(); let k = 0, b = 1e9; stops.forEach((x, i) => { const d = Math.abs(x - t); if (d < b) { b = d; k = i; } }); return k; };
+  const stops = [0, tl.labels.s1 + 1, tl.labels.s2 + 1, tl.labels.s3 + 1, ...whoAt, total];
+  // chapter shown in the navigator: the nearest stop (00-03, 04 for the six people, 05 at the end)
+  const sceneAt = (t) => { let n = 0, d = 1e9; stops.forEach((x, i) => { if (Math.abs(x - t) < d) { d = Math.abs(x - t); n = i; } }); return n <= 3 ? n : n < stops.length - 1 ? 4 : 5; };
+  const setScene = (t) => { const k = sceneAt(t); navs.forEach((b, i) => b.classList.toggle('is-on', i === k)); if (k !== sceneI) { sceneI = k; if (snd) { snd.scene(k); if (k === 5) snd.crown(); } } };
+  const st = window.ScrollTrigger.create({ trigger: root, start: 'top top', end: () => '+=' + innerHeight * total * (small ? 0.78 : 0.9), pin: root.querySelector('.cx-pin'), anticipatePin: 1,
+    // scrollbar drags, links and scrolling in from below: follow the scroll smoothly
+    onUpdate: (self) => { if (stepping) return; const t = self.progress * total; gsap.to(tl, { time: t, duration: 0.45, ease: 'power2.out', overwrite: true }); setScene(t); } });
+  const yAt = (t) => st.start + (st.end - st.start) * Math.min(1, t / total);
+  const inStory = () => scrollY >= st.start - 2 && scrollY <= st.end + 2;
+  let cur = 0, lastStep = 0, lastInput = 0;
+  const nearest = () => { if (stepping) return cur; const t = st.progress * total; let k = 0, b = 1e9; stops.forEach((x, i) => { const d = Math.abs(x - t); if (d < b) { b = d; k = i; } }); return k; };
+  const go = (n) => {
+    n = Math.max(0, Math.min(stops.length - 1, n)); cur = n; lastStep = performance.now(); stepping = true;
+    const t = stops[n]; scrollTo({ top: yAt(t), behavior: 'instant' }); setScene(t);
+    const d = Math.min(1.3, 0.75 + Math.abs(t - tl.time()) * 0.1);
+    gsap.to(tl, { time: t, duration: d, ease: 'power2.inOut', overwrite: true, onComplete: () => { stepping = false; } });
+  };
   const canStep = (dir) => { const n = nearest() + dir; return n >= 0 && n < stops.length; };
-  const step = (dir) => { const n = nearest() + dir; if (n < 0 || n >= stops.length) return false; goTo(stops[n]); return true; };
+  const step = (dir) => { if (!canStep(dir)) return false; go(nearest() + dir); return true; };
+  // A new gesture (a pause in the input) moves one step; trackpad momentum and fast repeats are absorbed.
+  const fresh = (now) => now - lastInput > 140 && now - lastStep > 420;
   addEventListener('wheel', (e) => {
-    if (!inStory()) return;
-    const now = performance.now();
-    if (busy || now < quietUntil) { e.preventDefault(); quietUntil = Math.max(quietUntil, now + 180); return; }   // let trackpad momentum die down
-    if (Math.abs(e.deltaY) < 3) return;
-    if (step(e.deltaY > 0 ? 1 : -1)) { e.preventDefault(); quietUntil = now + 180; }
+    if (!inStory() || Math.abs(e.deltaY) < 2) return;
+    const now = performance.now(), isNew = fresh(now); lastInput = now;
+    const dir = e.deltaY > 0 ? 1 : -1;
+    if (!canStep(dir) && !stepping) return;   // first or last step: let the page scroll on
+    e.preventDefault(); if (isNew) step(dir);
   }, { passive: false });
   let ty0 = null;
   addEventListener('touchstart', (e) => { ty0 = inStory() ? e.touches[0].clientY : null; }, { passive: true });
-  addEventListener('touchmove', (e) => { if (ty0 === null) return; const dir = ty0 - e.touches[0].clientY > 0 ? 1 : -1; if (busy || canStep(dir)) e.preventDefault(); }, { passive: false });
-  addEventListener('touchend', (e) => { if (ty0 === null || busy) return; const dy = ty0 - e.changedTouches[0].clientY; ty0 = null; if (Math.abs(dy) > 30) step(dy > 0 ? 1 : -1); }, { passive: true });
+  addEventListener('touchmove', (e) => { if (ty0 === null) return; const dir = ty0 - e.touches[0].clientY > 0 ? 1 : -1; if (stepping || canStep(dir)) e.preventDefault(); }, { passive: false });
+  addEventListener('touchend', (e) => { if (ty0 === null) return; const dy = ty0 - e.changedTouches[0].clientY; ty0 = null; if (Math.abs(dy) > 30 && performance.now() - lastStep > 320) step(dy > 0 ? 1 : -1); }, { passive: true });
   addEventListener('keydown', (e) => {
     if (!inStory() || e.target.closest('input,textarea,select,[contenteditable]')) return;
     const dir = ['ArrowDown', 'PageDown', ' '].includes(e.key) ? 1 : ['ArrowUp', 'PageUp'].includes(e.key) ? -1 : 0;
-    if (!dir) return; if (busy || step(dir)) e.preventDefault();
+    if (!dir || (!canStep(dir) && !stepping)) return; e.preventDefault(); if (performance.now() - lastStep > 320) step(dir);
   });
-  root.querySelector('.cx-pin').addEventListener('click', (e) => { if (!busy && !e.target.closest('a,button,input')) step(1); });
-  navs.forEach((b, i) => b.addEventListener('click', () => goTo(i ? (i === 4 ? whoAt[0] : marks[i] + 1) : 0)));
-  chips.forEach((b, i) => b.addEventListener('click', () => goTo(whoAt[i])));
+  root.querySelector('.cx-pin').addEventListener('click', (e) => { if (!e.target.closest('a,button,input')) step(1); });
+  const navStop = [0, 1, 2, 3, 4, stops.length - 1];
+  navs.forEach((b, i) => b.addEventListener('click', () => go(navStop[i])));
+  chips.forEach((b, i) => b.addEventListener('click', () => go(4 + i)));
+  window.__cx = { tl, st, stops, go };   // for testing
 
   /* ---------- optional sound ---------- */
   const sb = root.querySelector('[data-cx-sound]'), sl = root.querySelector('[data-cx-sound-label]');
@@ -301,7 +309,7 @@ function sampleFigure(c, n) {
     crown.updateMatrixWorld(); pU.uCrownM.value.copy(crown.matrixWorld);
     fig.position.copy(crown.position); fig.rotation.set(0, 0, 0); fig.lookAt(camera.position); fig.rotateY(Math.sin(t * 0.35) * 0.2 + mx * 0.45);
     fig.scale.setScalar(S.cs * 3.1); fig.updateMatrixWorld(); pU.uFigM.value.copy(fig.matrixWorld);
-    const w = Math.max(0, Math.min(5, S.who)), p = Math.min(4, Math.floor(w)); setFig(p); pU.uMix.value = w - p; pU.uFig.value = S.fig;
+    const w = Math.max(0, Math.min(5, S.who)), p = Math.min(4, Math.floor(w)); setFig(p); pU.uMix.value = w - p; pU.uFig.value = S.fig; pU.uFigOnly.value = S.burst > 0.01 ? 0 : 1;
     const near = Math.round(w); if (S.fig > 0.6 && near !== who) { who = near; if (snd) snd.jewel(near); chips.forEach((c, i) => c.classList.toggle('is-on', i === near)); const row = chips[near] && chips[near].parentNode; if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: chips[near].offsetLeft - 20, behavior: 'smooth' }); }
     ecgU.uTime.value = t; ecgU.uGlow.value = S.glow;
     pU.uTime.value = t; pU.uBurst.value = S.burst; pU.uShow.value = Math.min(1, S.burst * 3 + S.fig * 2.5);
@@ -315,7 +323,7 @@ function sampleFigure(c, n) {
     const vis = Math.max(0, 1 - Math.abs(tl.time() - tl.labels.s2 - 0.6) * 1.4);
     tags.forEach((el, i) => {
       const g = gems[i].g; g.getWorldPosition(tmp); const facing = tmp.clone().sub(crown.position).normalize().dot(camera.position.clone().sub(tmp).normalize());
-      tmp.project(camera); const o = vis * Math.max(0, Math.min(1, facing * 3));
+      tmp.project(camera); const px = (tmp.x + 1) / 2 * W, edge = Math.max(0, Math.min(1, (Math.min(px, W - px) - 50) / 40)); const o = vis * edge * Math.max(0, Math.min(1, facing * 3));
       el.style.transform = `translate(${((tmp.x + 1) / 2 * W).toFixed(1)}px,${((1 - tmp.y) / 2 * H).toFixed(1)}px)`;
       el.style.opacity = o.toFixed(3); el.style.visibility = o < 0.02 ? 'hidden' : 'visible';
     });
