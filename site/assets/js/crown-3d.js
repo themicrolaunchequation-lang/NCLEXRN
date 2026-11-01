@@ -61,7 +61,8 @@ function sampleFigure(c, n) {
   let renderer;
   try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' }); } catch (e) { return still(); }
   const gsap = window.gsap; gsap.registerPlugin(window.ScrollTrigger);
-  const small = Math.min(innerWidth, innerHeight) < 700;
+  const small = Math.min(innerWidth, innerHeight) < 700;   // lighter effects on small screens
+  const narrow = matchMedia('(max-width: 760px)').matches, short = !narrow && innerHeight < 760;   // short laptop screens: keep the small crown clear of the header   // phone layout: crown on top, text below (matches the CSS)
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, small ? 1.5 : 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.92;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -158,7 +159,7 @@ function sampleFigure(c, n) {
   const aFa = new THREE.BufferAttribute(new Float32Array(FIGS[0]), 4).setUsage(THREE.DynamicDrawUsage);
   const aFb = new THREE.BufferAttribute(new Float32Array(FIGS[1]), 4).setUsage(THREE.DynamicDrawUsage);
   pg.setAttribute('aFa', aFa); pg.setAttribute('aFb', aFb);
-  const pU = { uBurst: { value: 0 }, uShow: { value: 0 }, uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() }, uFig: { value: 0 }, uMix: { value: 0 }, uFigPt: { value: small ? 1.8 : 1 }, uFigOnly: { value: 1 },
+  const pU = { uBurst: { value: 0 }, uShow: { value: 0 }, uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() }, uFig: { value: 0 }, uMix: { value: 0 }, uFigPt: { value: narrow ? 1.8 : 1 }, uFigOnly: { value: 1 },
     uCrownM: { value: new THREE.Matrix4() }, uFigM: { value: new THREE.Matrix4() }, uCa: { value: new THREE.Color(APPS[0][2]) }, uCb: { value: new THREE.Color(APPS[1][2]) } };
   const pMat = new THREE.ShaderMaterial({ uniforms: pU, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
     vertexShader: `attribute vec3 aDir,aCol; attribute float aRnd; attribute vec4 aFa,aFb;
@@ -193,7 +194,7 @@ function sampleFigure(c, n) {
   composer.addPass(new OutputPass());
 
   /* ---------- the scroll story ---------- */
-  const S = { x: small ? 0 : 1.15, y: small ? 0.75 : -0.05, rot: -0.35, tilt: 0.22, dist: 5.6, camY: 1.15, burst: 0, glow: 0.35, jewel: 0, solid: 1, cs: 1, ly: 0, face: 0, spin: 1, fig: 0, who: 0 };
+  const S = { x: narrow ? 0 : 1.15, y: narrow ? 0.75 : -0.05, rot: -0.35, tilt: 0.22, dist: 5.6, camY: 1.15, burst: 0, glow: 0.35, jewel: 0, solid: 1, cs: 1, ly: 0, face: 0, spin: 1, fig: 0, who: 0 };
   const fade = (sel, o) => gsap.to(root.querySelectorAll(sel), { autoAlpha: o, y: o ? 0 : -24, duration: 0.4, ease: 'power2.out' });
   const steps = [...root.querySelectorAll('[data-step]')];
   steps.forEach((el, i) => { if (i) gsap.set(el, { autoAlpha: 0, y: 24 }); });
@@ -206,19 +207,19 @@ function sampleFigure(c, n) {
   const show = (i, at) => { tl.to(steps.filter((_, k) => k !== i), { autoAlpha: 0, y: -24, duration: 0.3 }, at); tl.to(steps[i], { autoAlpha: 1, y: 0, duration: 0.4 }, at + '+=0.3'); };
   const person = (i, at) => { tl.to(persons.filter((_, k) => k !== i), { autoAlpha: 0, y: -16, duration: 0.25 }, at); tl.to(persons[i], { autoAlpha: 1, y: 0, duration: 0.35 }, at + 0.25); };
   // 1 · one band
-  tl.addLabel('s1').to(S, { x: small ? 0 : 1.1, y: small ? 0.72 : -0.1, rot: 0.9, tilt: 0.5, dist: small ? 5.9 : 5.7, camY: 2.0 }, 's1'); show(1, 's1');
+  tl.addLabel('s1').to(S, { x: narrow ? 0 : 1.1, y: narrow ? 0.72 : -0.1, rot: 0.9, tilt: 0.5, dist: narrow ? 5.9 : 5.7, camY: 2.0 }, 's1'); show(1, 's1');
   // 2 · six jewels
-  tl.addLabel('s2').to(S, { x: small ? 0 : 1.05, y: small ? 0.72 : -0.05, rot: 0.9 + Math.PI * 1.05, tilt: 0.1, dist: small ? 5.5 : 4.6, camY: 0.75, jewel: 1 }, 's2'); show(2, 's2');
+  tl.addLabel('s2').to(S, { x: narrow ? 0 : 1.05, y: narrow ? 0.72 : -0.05, rot: 0.9 + Math.PI * 1.05, tilt: 0.1, dist: narrow ? 5.5 : 4.6, camY: 0.75, jewel: 1 }, 's2'); show(2, 's2');
   // 3 · the heartbeat
-  tl.addLabel('s3').to(S, { x: small ? 0 : 0.95, y: small ? 0.5 : 0, rot: 0.9 + Math.PI * 1.6, tilt: 0.0, dist: small ? 5.3 : 4.4, camY: 0.3, jewel: 0.3, glow: 1.4 }, 's3'); show(3, 's3');
+  tl.addLabel('s3').to(S, { x: narrow ? 0 : 0.95, y: narrow ? 0.5 : 0, rot: 0.9 + Math.PI * 1.6, tilt: 0.0, dist: narrow ? 5.3 : 4.4, camY: 0.3, jewel: 0.3, glow: 1.4 }, 's3'); show(3, 's3');
   // 4 · who it's for: the crown settles on a person made of gold dust and turns to show their jewel
-  tl.addLabel('s4').to(S, { x: small ? 0 : 1.25, y: small ? 0.98 : 0.86, cs: small ? 0.5 : 0.36, tilt: 0.3, dist: 5.6, camY: small ? 1.05 : 0.45, ly: small ? 0.05 : -1.02,
+  tl.addLabel('s4').to(S, { x: narrow ? 0 : 1.25, y: narrow ? 0.98 : 0.86, cs: narrow ? 0.5 : 0.36, tilt: 0.3, dist: 5.6, camY: narrow ? 1.05 : 0.45, ly: narrow ? 0.05 : short ? -0.84 : -1.02,
     face: 1, spin: 0, glow: 0.5, jewel: 0.15, fig: 1, who: 0, duration: 1.1 }, 's4'); show(4, 's4'); person(0, tl.labels.s4 + 0.3);
   const whoAt = [tl.labels.s4 + 0.9];
   for (let i = 1; i < 6; i++) { tl.addLabel('p' + i, '+=0.6'); tl.to(S, { who: i, duration: 0.75 }, 'p' + i); person(i, tl.labels['p' + i] + 0.2); whoAt.push(tl.labels['p' + i] + 0.7); }
   tl.to({}, { duration: 0.5 });
   // 5 · earn your crown: back to full size, burst into gold, then come back together
-  tl.addLabel('s5').to(S, { x: small ? 0 : 1.25, y: small ? 0.75 : -0.02, rot: 0.9 + Math.PI * 2.25, tilt: 0.24, dist: 5.4, camY: 1.2, ly: 0, cs: 1, face: 0, spin: 1, fig: 0, glow: 0.5, jewel: 0.6, duration: 1.1 }, 's5')
+  tl.addLabel('s5').to(S, { x: narrow ? 0 : 1.25, y: narrow ? 0.75 : -0.02, rot: 0.9 + Math.PI * 2.25, tilt: 0.24, dist: 5.4, camY: 1.2, ly: 0, cs: 1, face: 0, spin: 1, fig: 0, glow: 0.5, jewel: 0.6, duration: 1.1 }, 's5')
     .to(S, { burst: 1, solid: 0, duration: 0.4, ease: 'power3.out' }, 's5+=0.9')
     .to(S, { burst: 0, solid: 1, duration: 0.5, ease: 'power3.inOut' }, 's5+=1.4'); show(5, 's5');
   tl.to({}, { duration: 0.3 });
