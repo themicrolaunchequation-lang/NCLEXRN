@@ -118,6 +118,7 @@ const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestI
   const size = () => ({ W: root.clientWidth, H: innerHeight });
   const opts = { small, narrow, dpr: devicePixelRatio || 1 };
   const ready = () => root.classList.add('cx-ready');
+  setTimeout(() => { if (!root.classList.contains('cx-ready')) still(); }, 15000);   // never leave the picture breathing for ever
   let engine = null, handedOver = false;
   if (canvas.transferControlToOffscreen && typeof Worker !== 'undefined' && typeof OffscreenCanvas !== 'undefined') {
     try {
