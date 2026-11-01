@@ -187,7 +187,7 @@ This is where you'll schedule Facebook and Instagram posts and run ads later.
 
 Post one every 2–3 days on LinkedIn, Facebook and Instagram, using the app images in `images/<app>/intro-post-1080x1350.png`.
 
-1. **Welcome (use `images/brand/profile-1080x1080.png`)**
+1. **Welcome (use `images/brand/welcome-post-1080x1350.png`)**
    > Hello! I'm Hossam, founder of Healthcare Crown Academy. We make study and well-being apps for people who work in healthcare, from your first lecture to your finest work. Every app starts free, with no card. Over the next two weeks I'll introduce each one. Which would help you most right now? 👇
    > https://healthcarecrownacademy.co.uk/?ref=li-brand
 
@@ -219,7 +219,7 @@ Post one every 2–3 days on LinkedIn, Facebook and Instagram, using the app ima
    > Your ward data is telling you something. Is it a real change or just noise? Our free control chart calculator shows you in seconds. When you're ready to run a full project: the Lean Six Sigma Green Belt toolkit, built for healthcare.
    > https://healthcarecrownacademy.co.uk/tools/control-chart-calculator?ref=li-greenbelt
 
-9. **Free guides** (`images/brand/profile-1080x1080.png`)
+9. **Free guides** (`images/brand/welcome-post-1080x1350.png`)
    > 23 free guides for people in healthcare: medical word parts, active recall, exam-week plans, SBAR handovers, the four Gulf nursing exams compared, and how to thank a nurse. No sign-up needed.
    > https://healthcarecrownacademy.co.uk/guides?ref=li-brand
 
@@ -237,13 +237,20 @@ Post one every 2–3 days on LinkedIn, Facebook and Instagram, using the app ima
 
 ## Image list (in `images/`)
 
+All images use your real app screens (captured in high resolution on 1 November 2026), the gold 3D crown from your home page, and your brand fonts and colours.
+
 | File | Use |
 |---|---|
-| `brand/profile-1080x1080.png`, `800x800`, `400x400` | Profile pictures (Facebook, Instagram, TikTok, YouTube, LinkedIn) |
-| `brand/linkedin-cover-1512x256.png` | LinkedIn Page cover |
-| `brand/facebook-cover-1702x630.png` | Facebook Page cover (851×315 at double resolution) |
-| `brand/youtube-banner-2560x1440.png` | YouTube banner |
-| `<app>/profile-1080x1080.png` | Showcase Page and Gulf Page logos, and app post images |
-| `<app>/linkedin-cover-1512x256.png` | Showcase Page covers |
-| `<app>/intro-post-1080x1350.png` | "Meet the app" posts (4:5, best for feeds) |
-| `gulf/facebook-cover-1702x630.png` | Gulf Region Nursing Facebook Page cover |
+| `brand/profile-1080x1080.png`, `800x800`, `400x400` | **Profile picture for every brand account.** The gold crown mark reads clearly even when tiny. |
+| `brand/profile-3d-1080x1080.png` | Optional alternative profile picture (the 3D crown), best on YouTube and Instagram |
+| `brand/linkedin-cover-1512x256.png` | LinkedIn Page cover. The left side is kept clear for your logo. |
+| `brand/facebook-cover-1702x630.png` | Facebook Page cover (851×315 at double resolution; the key content sits in the centre, so phones show it) |
+| `brand/youtube-banner-2560x1440.png` | YouTube banner. The crown and headline sit in the safe area; app phones show on desktop and TV. |
+| `brand/welcome-post-1080x1350.png` | First "welcome" post, and the guides post |
+| `<app>/profile-1080x1080.png` | Badge for Showcase Pages and the Gulf Facebook Page |
+| `<app>/linkedin-cover-1512x256.png` | Showcase Page covers (with the real app in a browser frame) |
+| `<app>/intro-post-1080x1350.png` | **"Meet the app" posts.** Portrait 4:5 is the best size for Instagram, Facebook and LinkedIn feeds. |
+| `<app>/square-post-1080x1080.png` | Square version for any platform that crops to square |
+| `gulf/facebook-cover-1702x630.png` | Gulf Region Nursing Facebook Page cover (includes the "not official" disclaimer) |
+
+Apps: `medlex`, `lumen`, `carecraft`, `serein`, `gulf`, `evinca`, `green-belt`.
