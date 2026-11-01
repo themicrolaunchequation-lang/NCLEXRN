@@ -240,6 +240,40 @@ mod = replaceOnce(mod, "/*HCA12:END*/", "/*HCA12:END*/\n" + fs.readFileSync('src
 mod = replaceOnce(mod, ",(0,C.jsx)(`div`,{className:`segmented reading-modes`,children:[[`flip`,`book-open-line`,`Flipbook`],[`single`,`file-text-line`,`Single`],[`text`,`text`,`Text`]].map(([e,t,n])=>(0,C.jsxs)(`button`,{className:b===e?`selected`:``,onClick:()=>Fe(e),\"aria-label\":`${n} reading mode`,children:[(0,C.jsx)(E,{name:t}),(0,C.jsx)(`span`,{children:n})]},e))})", "", 'reading views out of the left cluster');
 // Settings: "Collapse the side bar while reading", a row after "Keep the motion gentle"
 mod = replaceOnce(mod, "onClick:()=>s(`reducedMotion`,!t.settings.reducedMotion),children:(0,C.jsx)(`span`,{})})]}),", "onClick:()=>s(`reducedMotion`,!t.settings.reducedMotion),children:(0,C.jsx)(`span`,{})})]}),(0,C.jsx)(HCA12RailSetting,{}),", 'settings: side bar row');
+/* ---------- Tool windows (src/windows.js): minimise on screen change, a dock, Close all ---------- */
+mod = replaceOnce(mod, "/*HCA12:END*/", "/*HCA12:END*/\n" + fs.readFileSync('src/windows.js', 'utf8'), 'windows block');
+mod = replaceOnce(mod, "function HCA7Set(patch) { HCA7UI.state = { ...HCA7UI.state, ...(typeof patch === 'function' ? patch(HCA7UI.state) : patch) }; HCA7UI.subs.forEach(f => f()); }",
+  "function HCA7Set(patch) { const hcaPrev = HCA7UI.state; HCA7UI.state = { ...HCA7UI.state, ...(typeof patch === 'function' ? patch(HCA7UI.state) : patch) }; HCAWinFix(hcaPrev); HCA7UI.subs.forEach(f => f()); }", 'floating store setter');
+mod = replaceOnce(mod, "const win = HCA7Win(id), [max, setMax] = _.useState(false);\n  return HC('section', { ref: win.ref, className: `hca7-float hca8-win ${className} ${max ? 'max' : ''}`",
+  "const win = HCA7Win(id), [max, setMax] = _.useState(false), hcaMin = !!(HCA7Use().min || {})[id];\n  return HC('section', { ref: win.ref, className: `hca7-float hca8-win ${className} ${max ? 'max' : ''} ${hcaMin ? 'hcaw-min' : ''}`", 'window shell: minimised');
+mod = replaceOnce(mod, "HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': max ? 'Restore window size'", "HC(HCAWinMinBtn, { id, title }),\n      HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': max ? 'Restore window size'", 'window shell: minimise button');
+mod = replaceOnce(mod, "className: 'hca7-float hca7-calc', style: win.style", "className: `hca7-float hca7-calc ${HCAWinIsMin('calc') ? 'hcaw-min' : ''}`, style: win.style", 'calculator: minimised');
+mod = replaceOnce(mod, "HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close calculator'", "HC(HCAWinMinBtn, { id: 'calc', title: 'Calculator' }), HC('button', { type: 'button', className: 'hca3-icon-btn', 'aria-label': 'Close calculator'", 'calculator: minimise button');
+mod = replaceOnce(mod, "const HCA8Open = name => HCA7Set(s => ({ desk: { ...(s.desk || {}), [name]: !(s.desk || {})[name] } }));", "const HCA8Open = name => HCAWinToggle(name);", 'desk opener');
+mod = replaceOnce(mod, "HCA9Show = name => HCA7Set(s => ({ desk: { ...(s.desk || {}), [name]: true } }));", "HCA9Show = name => HCA7Set(s => ({ desk: { ...(s.desk || {}), [name]: true }, min: { ...(s.min || {}), [name]: false } }));", 'desk show');
+mod = replaceOnce(mod, "onClick: () => key === 'calc' ? HCA7Set(s => ({ calc: !s.calc })) : HCA8Open(key)", "onClick: () => HCAWinToggle(key)", 'desk item toggle');
+mod = replaceOnce(mod, "if(routeRef.current!==ctx.route){", "if(routeRef.current!==ctx.route){HCAWinOnRoute();", 'route change: minimise windows');
+mod = replaceOnce(mod, "d.planner && HC(HCA8Planner)), document.body)", "d.planner && HC(HCA8Planner), HC(HCAWinDock)), document.body)", 'window dock');
+// short sidebar names; the description stays as the tooltip
+mod = replaceOnce(mod, "item('timer', 'timer-line', 'Focus timer',", "item('timer', 'timer-line', 'Timer',", 'label: timer');
+mod = replaceOnce(mod, "item('blurt', 'brain-line', 'Blurt pad',", "item('blurt', 'brain-line', 'Blurt',", 'label: blurt');
+mod = replaceOnce(mod, "item('labs', 'heart-pulse-line', 'Lab values',", "item('labs', 'heart-pulse-line', 'Labs',", 'label: labs');
+mod = replaceOnce(mod, "HC('span', {}, 'How to use the desk')", "HC('span', {}, 'Desk guide')", 'label: desk guide');
+
+/* ---------- UK / Gulf first: SI lab units, OSCE / NMC / Gulf exams listed before NCLEX ---------- */
+mod = replaceOnce(mod, "const HCA9LabNote = 'Typical adult reference ranges as commonly taught for NCLEX. Ranges vary by laboratory, textbook and country: in practice, always use your facility’s reference range.';",
+  "const HCA9LabNote = 'Typical adult values, for study only. Reference ranges vary by laboratory; check your local lab’s ranges. Ranges also vary by textbook and country: in practice, always use your facility’s reference range.';", 'lab note');
+mod = replaceOnce(mod, "['Temperature', '36.5–37.5 °C', '97.7–99.5 °F', '']", "['Temperature', '97.7–99.5 °F', '36.5–37.5 °C', '']", 'lab temperature columns');
+mod = replaceOnce(mod, "[quiz, setQuiz] = _.useState(false), [shown, setShown] = _.useState({});\n  const ql", "[quiz, setQuiz] = _.useState(false), [shown, setShown] = _.useState({});\n  const [si, setSi] = _.useState(true);\n  const ql", 'lab units: SI default');
+mod = replaceOnce(mod, "const [q, setQ] = _.useState(''), [si, setSi] = _.useState(false), [quiz", "const [q, setQ] = _.useState(''), [quiz", 'lab units: old state');
+mod = replaceOnce(mod, "HC('button', { type: 'button', 'aria-pressed': !si, onClick: () => setSi(false) }, 'US units'), HC('button', { type: 'button', 'aria-pressed': si, onClick: () => setSi(true) }, 'SI units')",
+  "HC('button', { type: 'button', 'aria-pressed': si, onClick: () => setSi(true) }, 'SI units'), HC('button', { type: 'button', 'aria-pressed': !si, onClick: () => setSi(false) }, 'US units')", 'lab units: SI first');
+mod = replaceOnce(mod, "  ['nclex', 'NCLEX', 'NCLEX-RN', 'stethoscope-line'],\n  ['osce', 'OSCE', 'OSCE', 'heart-pulse-line'],\n",
+  "  ['osce', 'OSCE', 'OSCE', 'heart-pulse-line'],\n  ['nmc', 'NMC CBT', 'NMC CBT', 'shield-check-line'],\n  ['gulf', 'Gulf licensing (DHA, DoH, MOH)', 'Gulf licensing exam', 'book-2-line'],\n  ['nclex', 'NCLEX', 'NCLEX-RN', 'stethoscope-line'],\n", 'goals: UK and Gulf first');
+mod = replaceOnce(mod, "autoFocus: id === 'nclex' }", "autoFocus: id === 'osce' }", 'goals: focus');
+// a learner who already set goals keeps NCLEX-RN as the default name; a new one starts on OSCE
+mod = replaceOnce(mod, "const HCA3Goals = s => ({ examName: 'NCLEX-RN', dailyReviews: 20, ...(s.hcaGoals || {}) });", "const HCA3Goals = s => ({ examName: s.hcaGoals ? 'NCLEX-RN' : 'OSCE', dailyReviews: 20, ...(s.hcaGoals || {}) });", 'goals: default exam');
+mod = replaceOnce(mod, "what: 'Common adult reference ranges for NCLEX, with clinical cues and a quiz mode.'", "what: 'Typical adult reference ranges in SI and US units, with clinical cues and a quiz mode. Check your local lab’s ranges.'", 'guide: labs');
 html = html.replace(modMatch[1], () => mod);
 
 /* ---------- Executable inline scripts -> hashed files ---------- */
@@ -255,6 +289,17 @@ html = html.replace(/<script(\s+type="module")?>([\s\S]*?)<\/script>/g, (_, isMo
   return `<script${isMod ? ' type="module"' : ''} src="${BASE}${name}"></script>`;
 });
 if (/<script>/.test(html)) throw Error('An executable inline script is left.');
+
+/* ---------- The two big font-and-style blocks -> hashed, long-cached stylesheets (allowed by style-src 'self') ---------- */
+// Only blocks with no id and nothing but data: URLs move; the page keeps the same order, so the cascade is unchanged.
+const styleFiles = [];
+html = html.replace(/<style>([\s\S]*?)<\/style>/g, (all, css) => {
+  if (css.length < 150000 || styleFiles.length >= 2 || /url\(\s*["']?(?!data:)/.test(css)) return all;
+  const url = put(`vendor/css/app.${hash(css)}.css`, css);
+  styleFiles.push(url);
+  return `<link rel="stylesheet" href="${url}">`;
+});
+if (styleFiles.length !== 2) throw Error('Expected the two large style blocks.');
 
 /* ---------- Install: manifest, icons, service worker ---------- */
 for (const f of ['icon.svg', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png']) fs.copyFileSync(path.join(SRC, 'icons', f), path.join(OUT, f));
@@ -274,7 +319,7 @@ shell.push(pwa);
 
 const shellJs = put(`js/shell.${hash(fs.readFileSync('../shared/hca-shell.js', 'utf8'))}.js`, fs.readFileSync('../shared/hca-shell.js', 'utf8'));
 shell.push(shellJs);
-const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}\n${fs.readFileSync('src/reader.css', 'utf8')}\n${fs.readFileSync('src/toolbar.css', 'utf8')}\n${fs.readFileSync('src/storage.css', 'utf8')}</style>`;
+const shellCss = `<style id="hca-shell">${fs.readFileSync('../shared/hca-shell.css', 'utf8')}\n${fs.readFileSync('src/day.css', 'utf8')}\n${fs.readFileSync('src/reader.css', 'utf8')}\n${fs.readFileSync('src/toolbar.css', 'utf8')}\n${fs.readFileSync('src/storage.css', 'utf8')}\n${fs.readFileSync('src/windows.css', 'utf8')}</style>`;
 const head = `<link rel="canonical" href="${SITE}/">
 <link rel="manifest" href="${BASE}manifest.webmanifest">
 <link rel="apple-touch-icon" href="${BASE}icon-192.png">
@@ -296,7 +341,7 @@ html = html.slice(0, body) + head + html.slice(body);
 fs.writeFileSync(path.join(OUT, 'index.html'), html);
 
 // The shell is cached on install; engines and pictures are cached the first time they are used.
-const SHELL = ['/', ...shell, `${BASE}manifest.webmanifest`, `${BASE}icon-192.png`, `${BASE}icon-512.png`, `${BASE}icon.svg`];
+const SHELL = ['/', ...shell, ...styleFiles, `${BASE}manifest.webmanifest`, `${BASE}icon-192.png`, `${BASE}icon-512.png`, `${BASE}icon.svg`];
 const version = hash(html + SHELL.join());
 fs.writeFileSync(path.join(OUT, 'sw.js'), `/* Lumen offline worker for /: app shell on install; engines (OCR, PDF, PowerPoint) and pictures cached when first used. */
 const CACHE='lumen-web-${version}',SHELL=${JSON.stringify(SHELL)},LAZY=/^\\/lumen\\/(vendor|img|licenses)\\//;
