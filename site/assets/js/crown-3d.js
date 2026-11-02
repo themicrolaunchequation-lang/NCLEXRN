@@ -1,264 +1,100 @@
 /* Healthcare Crown Academy: the 3D crown hero (Three.js + GSAP ScrollTrigger, both self-hosted).
    A gold crown with an engraved heartbeat, six app jewels and six points (no cross). Scroll story:
    0 hero · 1 one band (one account) · 2 six jewels (six apps) · 3 the heartbeat (care at the core) ·
-   4 who it's for (the crown settles on six people made of gold dust, turning to show each one's jewel) · 5 earn your crown.
+   4 who it's for (each app's tool, drawn in gold dust under the crown) · 5 earn your crown.
+   This file runs the story, the steps and the text. The drawing (crown-scene.js) runs in a background worker
+   (crown-worker.js) where the browser allows it, so the page never freezes while the graphics are prepared.
    Sound is optional and made live in the browser (crown-sound.js).
    Text is real HTML; the canvas is decoration. Reduced motion or no WebGL keeps the still poster. */
-import * as THREE from '../vendor/three/three.module.min.js';
-import { RoomEnvironment } from '../vendor/three/addons/RoomEnvironment.js';
-import { MeshSurfaceSampler } from '../vendor/three/addons/MeshSurfaceSampler.js';
-import { EffectComposer } from '../vendor/three/addons/EffectComposer.js';
-import { RenderPass } from '../vendor/three/addons/RenderPass.js';
-import { UnrealBloomPass } from '../vendor/three/addons/UnrealBloomPass.js';
-import { OutputPass } from '../vendor/three/addons/OutputPass.js';
 import { createSound } from './crown-sound.js';
 
 const root = document.querySelector('[data-cx]');
 const canvas = root && root.querySelector('.cx-canvas');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 function still() { root && root.classList.add('cx-still'); }
-
-/* ---------- six jewels, six tools: each app's own icon (the same drawings as the Start here cards), drawn in gold dust ---------- */
-const ICONS = [
-  [['M4 5h9a3 3 0 013 3v11a2 2 0 00-2-2H4z', 'M20 5h-3', 'M19.7 17.7L22 20'], [[17.5, 15.5, 3]]],   // MedLex: book and magnifier
-  [['M9 18h6M10 21h4', 'M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0012 3z'], []],   // Lumen: light bulb
-  [['M4 5h11a2 2 0 012 2v6a2 2 0 01-2 2H9l-4 3v-3H4a2 2 0 01-2-2V7a2 2 0 012-2z', 'M19 9h1a2 2 0 012 2v5a2 2 0 01-2 2h-1v3l-3-3h-3'], []],   // Carecraft: conversation
-  [['M5 19c0-8 5-13 15-14-1 10-6 15-14 15', 'M5 19l7-7'], []],   // Serein: leaf
-  [['M6 3v6a5 5 0 0010 0V3', 'M11 14v2a4 4 0 008 0v-2'], [[19, 12, 2]]],   // Gulf Region Nursing: stethoscope
-  [['M8.5 14L7 22l5-3 5 3-1.5-8', 'M9.5 9l1.8 1.8L15 7.5'], [[12, 9, 6]]]   // Evinca: medal
-];
-function paintFigure(i) {
-  const R = 320, c = document.createElement('canvas'); c.width = c.height = R;
-  const x = c.getContext('2d', { willReadFrequently: true }); x.scale(R / 512, R / 512);
-  x.translate(124, 150); x.scale(11, 11);   // a 24-unit icon becomes a 264px drawing under the crown
-  x.strokeStyle = '#fff'; x.lineWidth = 1.7; x.lineCap = 'round'; x.lineJoin = 'round';
-  const [paths, circles] = ICONS[i];
-  paths.forEach((d) => x.stroke(new Path2D(d)));
-  circles.forEach(([cx, cy, r]) => { x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.stroke(); });
-  return c;
-}
-function sampleFigure(c, n) {
-  const R = c.width, a = c.getContext('2d').getImageData(0, 0, R, R).data;
-  let h = null;   // a blurred copy gives each figure a soft, rounded depth
-  try { const b = document.createElement('canvas'); b.width = b.height = R; const bx = b.getContext('2d', { willReadFrequently: true }); bx.filter = 'blur(12px)'; if (bx.filter.indexOf('blur') >= 0) { bx.drawImage(c, 0, 0); h = bx.getImageData(0, 0, R, R).data; } } catch (e) { h = null; }
-  const fill = [], edge = [];
-  for (let y = 1; y < R - 1; y++) for (let x = 1; x < R - 1; x++) {
-    const k = (y * R + x) * 4 + 3; if (a[k] < 128) continue;
-    (a[k - 4] < 128 || a[k + 4] < 128 || a[k - R * 4] < 128 || a[k + R * 4] < 128 ? edge : fill).push(y * R + x);
-  }
-  const out = new Float32Array(n * 4), s = 512 / R;
-  for (let i = 0; i < n; i++) {
-    const isE = Math.random() < 0.34, list = isE ? edge : fill, q = list[(Math.random() * list.length) | 0];
-    const px = (q % R + Math.random()) * s, py = (((q / R) | 0) + Math.random()) * s, d = h ? h[q * 4 + 3] / 255 : 0.6;
-    out[i * 4] = (px - 256) / 256; out[i * 4 + 1] = (100 - py) / 256;
-    out[i * 4 + 2] = (d * 0.24 + (Math.random() - 0.5) * 0.03) * (Math.random() < 0.6 ? 1 : -0.4); out[i * 4 + 3] = isE ? 1 : 0;
-  }
-  return out;
-}
+const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestIdleCallback(r, { timeout: 1500 }) : setTimeout(r, 200)));
 
 (function start() {
   if (!root || !canvas || reduce || !window.gsap || !window.ScrollTrigger) return still();
-  let renderer;
-  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' }); } catch (e) { return still(); }
   const gsap = window.gsap; gsap.registerPlugin(window.ScrollTrigger);
-  const small = Math.min(innerWidth, innerHeight) < 700;
-  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, small ? 1.5 : 2));
-  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.92;
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#050b1c');
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.55;
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-
-  // lights: warm key, cool academy-blue rim, gold glow inside the crown
-  const key = new THREE.DirectionalLight('#ffe9c4', 1.5); key.position.set(3, 4, 5); scene.add(key);
-  const rim = new THREE.DirectionalLight('#6f8cff', 2.2); rim.position.set(-4, 2, -3); scene.add(rim);
-  const inner = new THREE.PointLight('#ffcf73', 2, 2.4, 2); inner.position.set(0, 0.25, 0); scene.add(inner);
-
-  /* ---------- the crown ---------- */
-  const crown = new THREE.Group(); scene.add(crown);
-  const gold = new THREE.MeshPhysicalMaterial({ color: '#c99a3e', metalness: 1, roughness: 0.3, clearcoat: 0.25, clearcoatRoughness: 0.35, transparent: true });
-  const goldDark = new THREE.MeshPhysicalMaterial({ color: '#6e4e17', metalness: 1, roughness: 0.55, transparent: true, side: THREE.DoubleSide });
-  const pearlM = new THREE.MeshPhysicalMaterial({ color: '#efe4cc', metalness: 0, roughness: 0.38, clearcoat: 0.4, transparent: true });
-
-  // band: a lathe profile with raised rims
-  const prof = [[0.93, -0.17], [0.99, -0.17], [1.03, -0.15], [1.03, -0.125], [0.995, -0.11], [1.005, 0.11], [1.05, 0.125], [1.05, 0.15], [1.02, 0.17], [0.95, 0.17], [0.93, -0.17]].map(([x, y]) => new THREE.Vector2(x, y));
-  const band = new THREE.Mesh(new THREE.LatheGeometry(prof, 160), gold); crown.add(band);
-  const bandIn = new THREE.Mesh(new THREE.CylinderGeometry(0.935, 0.935, 0.34, 96, 1, true), goldDark); crown.add(bandIn);
-  // pearls along both rims
-  const pearlG = new THREE.SphereGeometry(0.016, 14, 10);
-  const pearls = new THREE.InstancedMesh(pearlG, pearlM, 72); const mtx = new THREE.Matrix4();
-  for (let i = 0; i < 72; i++) { const a = i / 72 * Math.PI * 2; mtx.makeTranslation(Math.cos(a) * 1.05, 0.172, Math.sin(a) * 1.05); pearls.setMatrixAt(i, mtx); }
-  crown.add(pearls);
-
-  // six app jewels on the band, each in a gold setting
-  const APPS = [['MedLex', 'Understand', '#3557D6'], ['Lumen', 'Study', '#8B6CF0'], ['Carecraft', 'Practise', '#0F8A86'], ['Serein', 'Restore', '#5FB89E'], ['Gulf Region Nursing', 'Prepare', '#347A9A'], ['Evinca', 'Be recognised', '#D9532F']];
-  const gemG = new THREE.OctahedronGeometry(0.085, 0); gemG.scale(1, 1.2, 0.55);
-  const setG = new THREE.TorusGeometry(0.094, 0.014, 12, 40);
-  const gems = APPS.map((app, i) => {
-    const a = Math.PI / 2 + i * Math.PI / 3, g = new THREE.Group();
-    const m = new THREE.MeshPhysicalMaterial({ color: app[2], metalness: 0.05, roughness: 0.06, clearcoat: 1, ior: 2.2, emissive: new THREE.Color(app[2]), emissiveIntensity: 0.1, flatShading: true, transparent: true });
-    const gem = new THREE.Mesh(gemG, m); gem.position.z = 0.02; g.add(gem);
-    const set = new THREE.Mesh(setG, gold); g.add(set);
-    g.position.set(Math.cos(a) * 1.03, 0.0, Math.sin(a) * 1.03); g.lookAt(Math.cos(a) * 3, 0.0, Math.sin(a) * 3);
-    crown.add(g); return { g, m, app, a };
-  });
-
-  // six points between the jewels; the front one tallest, with the large centre jewel (no cross)
-  const points = [];
-  for (let i = 0; i < 6; i++) {
-    const a = Math.PI / 2 + Math.PI / 6 + i * Math.PI / 3 - Math.PI / 6 * 1, front = i === 0;
-    const h = front ? 0.62 : i % 2 ? 0.34 : 0.46;
-    const cone = new THREE.Mesh(new THREE.LatheGeometry([0, 0.05, 0.075, 0.07, 0.05, 0.028, 0.01, 0].map((r, k, arr) => new THREE.Vector2(r, k / (arr.length - 1) * h)), 32), gold);
-    const holder = new THREE.Group(); holder.add(cone);
-    holder.position.set(Math.cos(a) * 1.0, 0.16, Math.sin(a) * 1.0); holder.lookAt(0, 0.16, 0); holder.rotateX(-0.1);
-    const tip = new THREE.Mesh(new THREE.SphereGeometry(front ? 0.06 : 0.034, 24, 18), front ? new THREE.MeshPhysicalMaterial({ color: '#f6dfa4', metalness: 0.3, roughness: 0.12, clearcoat: 1, emissive: new THREE.Color('#e8c170'), emissiveIntensity: 0.25, transparent: true }) : pearlM);
-    tip.position.y = h + (front ? 0.05 : 0.025); holder.add(tip);
-    crown.add(holder); points.push(holder);
-  }
-
-  // the heartbeat engraved around the band, with a travelling pulse of light
-  const ecg = [];
-  for (let i = 0; i <= 720; i++) {
-    const t = i / 720, a = t * Math.PI * 2, k = ((t * 6) % 1);   // six beats, one under each point
-    let y = -0.055;
-    if (k > 0.42 && k < 0.47) y += (k - 0.42) / 0.05 * 0.03;
-    else if (k >= 0.47 && k < 0.5) y += 0.03 - (k - 0.47) / 0.03 * 0.07;
-    else if (k >= 0.5 && k < 0.54) y += -0.04 + (k - 0.5) / 0.04 * 0.13;
-    else if (k >= 0.54 && k < 0.58) y += 0.09 - (k - 0.54) / 0.04 * 0.13;
-    else if (k >= 0.58 && k < 0.62) y += -0.04 + (k - 0.58) / 0.04 * 0.04;
-    ecg.push(new THREE.Vector3(Math.cos(a + 0.52) * 1.012, y, Math.sin(a + 0.52) * 1.012));
-  }
-  const ecgU = { uTime: { value: 0 }, uGlow: { value: 0.35 } };
-  const ecgMat = new THREE.ShaderMaterial({ uniforms: ecgU, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false,
-    vertexShader: 'varying float vU; void main(){ vU=uv.x; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }',
-    fragmentShader: 'uniform float uTime,uGlow; varying float vU; void main(){ float d=fract(vU-uTime*0.12); float p=exp(-d*24.)+exp(-(1.-d)*220.); vec3 c=mix(vec3(1.,.78,.36),vec3(1.,.97,.86),p); gl_FragColor=vec4(c*(uGlow+p*2.2),1.); }' });
-  const ecgMesh = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(ecg, true), 720, 0.0085, 6, true), ecgMat); ecgMesh.renderOrder = 10; crown.add(ecgMesh);
-
-  /* ---------- particles: the crown's own surface, to burst and reassemble ---------- */
-  const N = small ? 9000 : 18000, pos = new Float32Array(N * 3), dir = new Float32Array(N * 3), col = new Float32Array(N * 3), rnd = new Float32Array(N);
-  crown.updateMatrixWorld(true);
-  const sources = [band, ...points.map((p) => p.children[0]), ...gems.map((g) => g.g.children[0])];
-  const samplers = sources.map((m) => { const geo = m.geometry.clone(); geo.applyMatrix4(m.matrixWorld); return new MeshSurfaceSampler(new THREE.Mesh(geo)).build(); });
-  const v = new THREE.Vector3(), goldC = new THREE.Color('#e9c06a');
-  for (let i = 0; i < N; i++) {
-    const s = i % 10 < 6 ? 0 : i % 10 < 9 ? 1 + (i % 6) : 7 + (i % 6);
-    samplers[Math.min(s, samplers.length - 1)].sample(v);
-    pos.set([v.x, v.y, v.z], i * 3);
-    const d = new THREE.Vector3(v.x, v.y * 0.6 + 0.5, v.z * 0.7).normalize().multiplyScalar(0.5 + Math.random() * 1.1).add(new THREE.Vector3((Math.random() - 0.5) * 0.5, Math.random() * 0.5, (Math.random() - 0.5) * 0.3));
-    dir.set([d.x, d.y, d.z], i * 3);
-    const c = s >= 7 ? new THREE.Color(APPS[(s - 7) % 6][2]) : goldC; col.set([c.r, c.g, c.b], i * 3); rnd[i] = Math.random();
-  }
-  const pg = new THREE.BufferGeometry();
-  pg.setAttribute('position', new THREE.BufferAttribute(pos, 3)); pg.setAttribute('aDir', new THREE.BufferAttribute(dir, 3));
-  pg.setAttribute('aCol', new THREE.BufferAttribute(col, 3)); pg.setAttribute('aRnd', new THREE.BufferAttribute(rnd, 1));
-  const FIGS = [0, 1, 2, 3, 4, 5].map((i) => sampleFigure(paintFigure(i), N));
-  const aFa = new THREE.BufferAttribute(new Float32Array(FIGS[0]), 4).setUsage(THREE.DynamicDrawUsage);
-  const aFb = new THREE.BufferAttribute(new Float32Array(FIGS[1]), 4).setUsage(THREE.DynamicDrawUsage);
-  pg.setAttribute('aFa', aFa); pg.setAttribute('aFb', aFb);
-  const pU = { uBurst: { value: 0 }, uShow: { value: 0 }, uTime: { value: 0 }, uPx: { value: renderer.getPixelRatio() }, uFig: { value: 0 }, uMix: { value: 0 }, uFigPt: { value: small ? 1.8 : 1 },
-    uCrownM: { value: new THREE.Matrix4() }, uFigM: { value: new THREE.Matrix4() }, uCa: { value: new THREE.Color(APPS[0][2]) }, uCb: { value: new THREE.Color(APPS[1][2]) } };
-  const pMat = new THREE.ShaderMaterial({ uniforms: pU, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    vertexShader: `attribute vec3 aDir,aCol; attribute float aRnd; attribute vec4 aFa,aFb;
-      uniform float uBurst,uTime,uPx,uFig,uMix,uFigPt; uniform mat4 uCrownM,uFigM; uniform vec3 uCa,uCb; varying vec3 vC; varying float vA;
-      void main(){ float b=smoothstep(0.,1.,clamp(uBurst*1.2-aRnd*0.2,0.,1.)); vec3 p=position+aDir*b*0.95;
-        p.x+=sin(uTime*.7+aRnd*20.)*0.04*b; p.y+=cos(uTime*.6+aRnd*17.)*0.04*b;
-        vec3 pc=(uCrownM*vec4(p,1.)).xyz;
-        float m=smoothstep(0.,1.,clamp(uMix*1.4-aRnd*0.4,0.,1.)); vec4 f=mix(aFa,aFb,m);
-        vec3 fl=f.xyz+aDir*m*(1.-m)*0.5; fl.z+=sin(uTime*1.3+aRnd*30.)*0.012;
-        vec3 pf=(uFigM*vec4(fl,1.)).xyz;
-        float g=smoothstep(0.,1.,clamp(uFig*1.3-aRnd*0.3,0.,1.));
-        vec3 w=mix(pc,pf,g)+aDir*g*(1.-g)*1.2;
-        vec4 mv=viewMatrix*vec4(w,1.); gl_Position=projectionMatrix*mv;
-        gl_PointSize=min(uPx*4.5,uPx*(1.6+aRnd*1.8-g*0.5+f.w*g*0.5)*(5.2/-mv.z)*(1.+g*(uFigPt-1.)));
-        vec3 jc=mix(uCa,uCb,m); vec3 fc=mix(mix(vec3(.91,.75,.42),jc,.4),mix(jc,vec3(1.),.45),f.w);
-        vC=mix(aCol,fc,g); vA=(0.55+0.45*aRnd)*mix(1.,(0.5+0.45*f.w)*smoothstep(-1.75,-1.6,f.y),g); }`,
-    fragmentShader: 'uniform float uShow; varying vec3 vC; varying float vA; void main(){ float r=length(gl_PointCoord-.5); float a=smoothstep(.5,0.,r); gl_FragColor=vec4(vC*1.6*a*vA*uShow,a*vA*uShow); }' });
-  const cloud = new THREE.Points(pg, pMat); cloud.renderOrder = 11; cloud.frustumCulled = false; scene.add(cloud);
-  const fig = new THREE.Object3D();
-
-  // gold dust in the room
-  const D = small ? 500 : 1200, dp = new Float32Array(D * 3);
-  for (let i = 0; i < D; i++) dp.set([(Math.random() - 0.5) * 12, (Math.random() - 0.5) * 7, -Math.random() * 8 + 1], i * 3);
-  const dg = new THREE.BufferGeometry(); dg.setAttribute('position', new THREE.BufferAttribute(dp, 3));
-  const dust = new THREE.Points(dg, new THREE.PointsMaterial({ color: '#e8c170', size: 0.018, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false }));
-  scene.add(dust);
-
-  /* ---------- post: soft bloom on the gold highlights and the pulse ---------- */
-  const composer = new EffectComposer(renderer);
-  composer.addPass(new RenderPass(scene, camera));
-  const bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), small ? 0.22 : 0.3, 0.45, 0.93); composer.addPass(bloom);
-  composer.addPass(new OutputPass());
+  const small = Math.min(innerWidth, innerHeight) < 700;   // lighter effects on small screens
+  const narrow = matchMedia('(max-width: 760px)').matches, short = !narrow && innerHeight < 760;   // phone layout by width; short laptop screens keep the small crown clear of the header
 
   /* ---------- the scroll story ---------- */
-  const S = { x: small ? 0 : 1.15, y: small ? 0.75 : -0.05, rot: -0.35, tilt: 0.22, dist: 5.6, camY: 1.15, burst: 0, glow: 0.35, jewel: 0, solid: 1, cs: 1, ly: 0, face: 0, spin: 1, fig: 0, who: 0 };
+  const S = { x: narrow ? 0 : 1.15, y: narrow ? 0.75 : -0.05, rot: -0.35, tilt: 0.22, dist: 5.6, camY: 1.15, burst: 0, glow: 0.35, jewel: 0, solid: 1, cs: 1, ly: 0, face: 0, spin: 1, fig: 0, who: 0 };
   const fade = (sel, o) => gsap.to(root.querySelectorAll(sel), { autoAlpha: o, y: o ? 0 : -24, duration: 0.4, ease: 'power2.out' });
   const steps = [...root.querySelectorAll('[data-step]')];
   steps.forEach((el, i) => { if (i) gsap.set(el, { autoAlpha: 0, y: 24 }); });
   const persons = [...root.querySelectorAll('[data-person]')];
   persons.forEach((el, i) => { if (i) gsap.set(el, { autoAlpha: 0, y: 16 }); });
   const navs = [...root.querySelectorAll('[data-cx-nav]')], chips = [...root.querySelectorAll('[data-person-go]')];
-  let marks = [0], snd = null, sceneI = 0, who = -1, total = 11;
-  const tl = gsap.timeline({ defaults: { ease: 'power2.inOut', duration: 1 },
-    scrollTrigger: { trigger: root, start: 'top top', end: () => '+=' + innerHeight * total * (small ? 0.78 : 0.9), scrub: 0.8, pin: root.querySelector('.cx-pin'), anticipatePin: 1,
-      onUpdate: () => {
-        const t = tl.time(); let s = 0; marks.forEach((m, i) => { if (t >= m - 0.05) s = i; });
-        if (s !== sceneI) { sceneI = s; if (snd) { snd.scene(s); if (s === 5) snd.crown(); } }
-        navs.forEach((b, i) => b.classList.toggle('is-on', i === s));
-      } } });
+  let marks = [0], snd = null, sceneI = 0, who = -1, total = 11, stepping = false;
+  // The timeline is played by steps (one scroll, swipe, key or click each); the page scroll only follows it.
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut', duration: 1 } });
   const show = (i, at) => { tl.to(steps.filter((_, k) => k !== i), { autoAlpha: 0, y: -24, duration: 0.3 }, at); tl.to(steps[i], { autoAlpha: 1, y: 0, duration: 0.4 }, at + '+=0.3'); };
   const person = (i, at) => { tl.to(persons.filter((_, k) => k !== i), { autoAlpha: 0, y: -16, duration: 0.25 }, at); tl.to(persons[i], { autoAlpha: 1, y: 0, duration: 0.35 }, at + 0.25); };
   // 1 · one band
-  tl.addLabel('s1').to(S, { x: small ? 0 : 1.1, y: small ? 0.72 : -0.1, rot: 0.9, tilt: 0.5, dist: 5.0, camY: 2.0 }, 's1'); show(1, 's1');
+  tl.addLabel('s1').to(S, { x: narrow ? 0 : 1.1, y: narrow ? 0.72 : -0.1, rot: 0.9, tilt: 0.5, dist: narrow ? 5.9 : 5.7, camY: 2.0 }, 's1'); show(1, 's1');
   // 2 · six jewels
-  tl.addLabel('s2').to(S, { x: small ? 0 : 1.05, y: small ? 0.72 : -0.05, rot: 0.9 + Math.PI * 1.05, tilt: 0.1, dist: 4.6, camY: 0.75, jewel: 1 }, 's2'); show(2, 's2');
+  tl.addLabel('s2').to(S, { x: narrow ? 0 : 1.05, y: narrow ? 0.72 : -0.05, rot: 0.9 + Math.PI * 1.05, tilt: 0.1, dist: narrow ? 5.5 : 4.6, camY: 0.75, jewel: 1 }, 's2'); show(2, 's2');
   // 3 · the heartbeat
-  tl.addLabel('s3').to(S, { x: small ? 0 : 0.8, y: small ? 0.5 : 0, rot: 0.9 + Math.PI * 1.6, tilt: 0.0, dist: 3.7, camY: 0.3, jewel: 0.3, glow: 1.4 }, 's3'); show(3, 's3');
+  tl.addLabel('s3').to(S, { x: narrow ? 0 : 0.95, y: narrow ? 0.5 : 0, rot: 0.9 + Math.PI * 1.6, tilt: 0.0, dist: narrow ? 5.3 : 4.4, camY: 0.3, jewel: 0.3, glow: 1.4 }, 's3'); show(3, 's3');
   // 4 · who it's for: the crown settles on a person made of gold dust and turns to show their jewel
-  tl.addLabel('s4').to(S, { x: small ? 0 : 1.25, y: small ? 0.98 : 0.86, cs: small ? 0.5 : 0.36, tilt: 0.3, dist: 5.6, camY: small ? 1.05 : 0.45, ly: small ? 0.05 : -1.02,
+  tl.addLabel('s4').to(S, { x: narrow ? 0 : 1.25, y: narrow ? 0.98 : 0.86, cs: narrow ? 0.5 : 0.36, tilt: 0.3, dist: 5.6, camY: narrow ? 1.05 : 0.45, ly: narrow ? 0.05 : short ? -0.84 : -1.02,
     face: 1, spin: 0, glow: 0.5, jewel: 0.15, fig: 1, who: 0, duration: 1.1 }, 's4'); show(4, 's4'); person(0, tl.labels.s4 + 0.3);
   const whoAt = [tl.labels.s4 + 0.9];
   for (let i = 1; i < 6; i++) { tl.addLabel('p' + i, '+=0.6'); tl.to(S, { who: i, duration: 0.75 }, 'p' + i); person(i, tl.labels['p' + i] + 0.2); whoAt.push(tl.labels['p' + i] + 0.7); }
   tl.to({}, { duration: 0.5 });
   // 5 · earn your crown: back to full size, burst into gold, then come back together
-  tl.addLabel('s5').to(S, { x: small ? 0 : 1.25, y: small ? 0.75 : -0.02, rot: 0.9 + Math.PI * 2.25, tilt: 0.24, dist: 5.4, camY: 1.2, ly: 0, cs: 1, face: 0, spin: 1, fig: 0, glow: 0.5, jewel: 0.6, duration: 1.1 }, 's5')
+  tl.addLabel('s5').to(S, { x: narrow ? 0 : 1.25, y: narrow ? 0.75 : -0.02, rot: 0.9 + Math.PI * 2.25, tilt: 0.24, dist: 5.4, camY: 1.2, ly: 0, cs: 1, face: 0, spin: 1, fig: 0, glow: 0.5, jewel: 0.6, duration: 1.1 }, 's5')
     .to(S, { burst: 1, solid: 0, duration: 0.4, ease: 'power3.out' }, 's5+=0.9')
     .to(S, { burst: 0, solid: 1, duration: 0.5, ease: 'power3.inOut' }, 's5+=1.4'); show(5, 's5');
   tl.to({}, { duration: 0.3 });
   total = tl.duration();
   marks = [0, tl.labels.s1, tl.labels.s2, tl.labels.s3, tl.labels.s4, tl.labels.s5];
   /* ---------- one scroll, swipe, key or click = one step of the story ---------- */
-  const stops = [0, tl.labels.s1 + 1, tl.labels.s2 + 1, tl.labels.s3 + 1, ...whoAt, tl.duration()];
-  const yAt = (time) => { const st = tl.scrollTrigger; return st.start + (st.end - st.start) * Math.min(1, time / tl.duration()); };
-  let busy = false, quietUntil = 0;
-  const glide = (y) => { busy = true; const o = { y: scrollY };
-    gsap.to(o, { y, duration: 1.15, ease: 'power2.inOut', onUpdate: () => scrollTo({ top: o.y, behavior: 'instant' }), onComplete: () => { busy = false; quietUntil = performance.now() + 220; } }); };
-  const goTo = (time) => glide(yAt(time));
-  const inStory = () => { const st = tl.scrollTrigger; return scrollY >= st.start - 2 && scrollY <= st.end + 2; };
-  const nearest = () => { const t = tl.scrollTrigger.progress * tl.duration(); let k = 0, b = 1e9; stops.forEach((x, i) => { const d = Math.abs(x - t); if (d < b) { b = d; k = i; } }); return k; };
+  const stops = [0, tl.labels.s1 + 1, tl.labels.s2 + 1, tl.labels.s3 + 1, ...whoAt, total];
+  // chapter shown in the navigator: the nearest stop (00-03, 04 for the six people, 05 at the end)
+  const sceneAt = (t) => { let n = 0, d = 1e9; stops.forEach((x, i) => { if (Math.abs(x - t) < d) { d = Math.abs(x - t); n = i; } }); return n <= 3 ? n : n < stops.length - 1 ? 4 : 5; };
+  const setScene = (t) => { const k = sceneAt(t); navs.forEach((b, i) => b.classList.toggle('is-on', i === k)); if (k !== sceneI) { sceneI = k; if (snd) { snd.scene(k); if (k === 5) snd.crown(); } } };
+  const st = window.ScrollTrigger.create({ trigger: root, start: 'top top', end: () => '+=' + innerHeight * total * (small ? 0.78 : 0.9), pin: root.querySelector('.cx-pin'), anticipatePin: 1,
+    // scrollbar drags, links and scrolling in from below: follow the scroll smoothly
+    onUpdate: (self) => { if (stepping) return; const t = self.progress * total; gsap.to(tl, { time: t, duration: 0.45, ease: 'power2.out', overwrite: true }); setScene(t); } });
+  const yAt = (t) => st.start + (st.end - st.start) * Math.min(1, t / total);
+  const inStory = () => scrollY >= st.start - 2 && scrollY <= st.end + 2;
+  let cur = 0, lastStep = 0, lastInput = 0;
+  const nearest = () => { if (stepping) return cur; const t = st.progress * total; let k = 0, b = 1e9; stops.forEach((x, i) => { const d = Math.abs(x - t); if (d < b) { b = d; k = i; } }); return k; };
+  const go = (n) => {
+    n = Math.max(0, Math.min(stops.length - 1, n)); cur = n; lastStep = performance.now(); stepping = true;
+    const t = stops[n]; scrollTo({ top: yAt(t), behavior: 'instant' }); setScene(t);
+    const d = Math.min(1.3, 0.75 + Math.abs(t - tl.time()) * 0.1);
+    gsap.to(tl, { time: t, duration: d, ease: 'power2.inOut', overwrite: true, onComplete: () => { stepping = false; } });
+  };
   const canStep = (dir) => { const n = nearest() + dir; return n >= 0 && n < stops.length; };
-  const step = (dir) => { const n = nearest() + dir; if (n < 0 || n >= stops.length) return false; goTo(stops[n]); return true; };
+  const step = (dir) => { if (!canStep(dir)) return false; go(nearest() + dir); return true; };
+  // A new gesture (a pause in the input) moves one step; trackpad momentum and fast repeats are absorbed.
+  const fresh = (now) => now - lastInput > 140 && now - lastStep > 420;
   addEventListener('wheel', (e) => {
-    if (!inStory()) return;
-    const now = performance.now();
-    if (busy || now < quietUntil) { e.preventDefault(); quietUntil = Math.max(quietUntil, now + 180); return; }   // let trackpad momentum die down
-    if (Math.abs(e.deltaY) < 3) return;
-    if (step(e.deltaY > 0 ? 1 : -1)) { e.preventDefault(); quietUntil = now + 180; }
+    if (!inStory() || Math.abs(e.deltaY) < 2) return;
+    const now = performance.now(), isNew = fresh(now); lastInput = now;
+    const dir = e.deltaY > 0 ? 1 : -1;
+    if (!canStep(dir) && !stepping) return;   // first or last step: let the page scroll on
+    e.preventDefault(); if (isNew) step(dir);
   }, { passive: false });
   let ty0 = null;
   addEventListener('touchstart', (e) => { ty0 = inStory() ? e.touches[0].clientY : null; }, { passive: true });
-  addEventListener('touchmove', (e) => { if (ty0 === null) return; const dir = ty0 - e.touches[0].clientY > 0 ? 1 : -1; if (busy || canStep(dir)) e.preventDefault(); }, { passive: false });
-  addEventListener('touchend', (e) => { if (ty0 === null || busy) return; const dy = ty0 - e.changedTouches[0].clientY; ty0 = null; if (Math.abs(dy) > 30) step(dy > 0 ? 1 : -1); }, { passive: true });
+  addEventListener('touchmove', (e) => { if (ty0 === null) return; const dir = ty0 - e.touches[0].clientY > 0 ? 1 : -1; if (stepping || canStep(dir)) e.preventDefault(); }, { passive: false });
+  addEventListener('touchend', (e) => { if (ty0 === null) return; const dy = ty0 - e.changedTouches[0].clientY; ty0 = null; if (Math.abs(dy) > 30 && performance.now() - lastStep > 320) step(dy > 0 ? 1 : -1); }, { passive: true });
   addEventListener('keydown', (e) => {
     if (!inStory() || e.target.closest('input,textarea,select,[contenteditable]')) return;
     const dir = ['ArrowDown', 'PageDown', ' '].includes(e.key) ? 1 : ['ArrowUp', 'PageUp'].includes(e.key) ? -1 : 0;
-    if (!dir) return; if (busy || step(dir)) e.preventDefault();
+    if (!dir || (!canStep(dir) && !stepping)) return; e.preventDefault(); if (performance.now() - lastStep > 320) step(dir);
   });
-  root.querySelector('.cx-pin').addEventListener('click', (e) => { if (!busy && !e.target.closest('a,button,input')) step(1); });
-  navs.forEach((b, i) => b.addEventListener('click', () => goTo(i ? (i === 4 ? whoAt[0] : marks[i] + 1) : 0)));
-  chips.forEach((b, i) => b.addEventListener('click', () => goTo(whoAt[i])));
+  root.querySelector('.cx-pin').addEventListener('click', (e) => { if (!e.target.closest('a,button,input')) step(1); });
+  const navStop = [0, 1, 2, 3, 4, stops.length - 1];
+  navs.forEach((b, i) => b.addEventListener('click', () => go(navStop[i])));
+  chips.forEach((b, i) => b.addEventListener('click', () => go(4 + i)));
+  window.__cx = { tl, st, stops, go };   // for testing
 
   /* ---------- optional sound ---------- */
   const sb = root.querySelector('[data-cx-sound]'), sl = root.querySelector('[data-cx-sound-label]');
@@ -268,59 +104,64 @@ function sampleFigure(c, n) {
     sb.setAttribute('aria-pressed', String(snd.on)); sl.textContent = snd.on ? 'Sound on' : 'Sound off';
   });
 
-  /* ---------- labels that follow the jewels ---------- */
+  /* ---------- jewel name tags, placed from the scene's numbers ---------- */
   const tags = [...root.querySelectorAll('[data-gem]')];
-  const tmp = new THREE.Vector3();
+  const placeTags = (list) => { if (!list) return; tags.forEach((el, i) => { const [x, y, o] = list[i] || [0, 0, 0];
+    el.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`; el.style.opacity = o.toFixed(3); el.style.visibility = o < 0.02 ? 'hidden' : 'visible'; }); };
 
-  /* ---------- size and frame loop ---------- */
-  let W = 0, H = 0;
-  function resize() {
-    W = root.clientWidth; H = innerHeight;
-    renderer.setSize(W, H, false); composer.setSize(W, H); bloom.resolution.set(W / 2, H / 2);
-    camera.aspect = W / H; camera.updateProjectionMatrix(); pU.uPx.value = renderer.getPixelRatio() * (H / 900);
-  }
-  addEventListener('resize', resize);
+  /* ---------- the drawing: a background worker where possible, otherwise this page ---------- */
   let mx = 0, my = 0, tx = 0, ty = 0;
   addEventListener('pointermove', (e) => { tx = (e.clientX / innerWidth - 0.5); ty = (e.clientY / innerHeight - 0.5); }, { passive: true });
-  const clock = new THREE.Clock(); let running = true;
-  new IntersectionObserver(([e]) => { running = e.isIntersecting; if (snd) snd.level(running ? 1 : 0); if (running) renderer.setAnimationLoop(frame); else renderer.setAnimationLoop(null); }).observe(root);
-  let last = 0, spin = 0, figP = -1;
-  const setFig = (p) => { if (p === figP) return; figP = p; aFa.array.set(FIGS[p]); aFb.array.set(FIGS[Math.min(p + 1, 5)]); aFa.needsUpdate = aFb.needsUpdate = true; pU.uCa.value.set(APPS[p][2]); pU.uCb.value.set(APPS[Math.min(p + 1, 5)][2]); };
+  const t0 = performance.now();
+  const nums = () => { const o = {}; for (const k in S) if (typeof S[k] === 'number') o[k] = S[k]; return o; };   // plain numbers only (GSAP adds its own data)
+  const snap = () => ({ S: nums(), t: (performance.now() - t0) / 1000, mx, my, tagVis: Math.max(0, 1 - Math.abs(tl.time() - tl.labels.s2 - 0.6) * 1.4) });
+  const size = () => ({ W: root.clientWidth, H: innerHeight });
+  const hqq = new URLSearchParams(location.search).get('hq');   // testing switch: ?hq=1 or ?hq=0
+  const opts = { small, narrow, dpr: devicePixelRatio || 1, hq: hqq === null ? undefined : hqq === '1' };
+  const ready = () => root.classList.add('cx-ready');
+  setTimeout(() => { if (!root.classList.contains('cx-ready')) still(); }, 15000);   // never leave the picture breathing for ever
+  let engine = null, handedOver = false;
+  if (canvas.transferControlToOffscreen && typeof Worker !== 'undefined' && typeof OffscreenCanvas !== 'undefined') {
+    try {
+      const off = canvas.transferControlToOffscreen(); handedOver = true;
+      const wk = new Worker(new URL('./crown-worker.js', import.meta.url), { type: 'module' });
+      let live = false, busy = true;
+      const fail = () => { still(); wk.terminate(); engine = null; };
+      wk.onmessage = ({ data }) => {
+        if (data.type === 'ready') { live = true; busy = false; window.__cx.gfx = { hq: data.hq, programs: data.programs }; ready(); }
+        else if (data.type === 'tags') { busy = false; placeTags(data.tags); }
+        else if (data.type === 'fail') fail();
+      };
+      wk.onerror = fail;
+      wk.postMessage({ type: 'init', canvas: off, opts, ...size(), state: snap() }, [off]);
+      engine = { resize: () => wk.postMessage({ type: 'resize', ...size() }), frame: () => { if (live && !busy) { busy = true; wk.postMessage({ type: 'frame', state: snap() }); } } };
+    } catch (e) { engine = null; if (handedOver) still(); }
+  }
+  if (!engine && !handedOver) {
+    // no background canvas: build on this page once it has finished loading
+    whenIdle().then(() => import('./crown-scene.js')).then(async ({ buildScene }) => {
+      let sc; try { sc = buildScene(canvas, opts); } catch (e) { return still(); }
+      const s = size(); sc.resize(s.W, s.H); await sc.warm();
+      engine = { resize: () => { const z = size(); sc.resize(z.W, z.H); }, frame: () => placeTags(sc.render(snap())) };
+      ready();
+    }).catch(still);
+  }
+  addEventListener('resize', () => engine && engine.resize());
+
+  /* ---------- frame loop: smooth the pointer, update chips and sound, ask for a drawing ---------- */
+  let running = true, looping = false;
+  new IntersectionObserver(([e]) => { running = e.isIntersecting; if (snd) snd.level(running ? 1 : 0); if (running && !looping) { looping = true; requestAnimationFrame(loop); } }).observe(root);
   const header = document.querySelector('[data-header]'), after = document.getElementById('after');
   const darkHeader = () => header && header.classList.toggle('cs-over', (after || root).getBoundingClientRect().bottom > 80);
   addEventListener('scroll', darkHeader, { passive: true }); darkHeader();
-  function frame() {
-    const t = clock.getElapsedTime(), dt = Math.min(0.1, t - last); last = t; spin += dt * 0.12 * S.spin;
+  function loop() {
+    if (!running) { looping = false; return; }
     mx += (tx - mx) * 0.05; my += (ty - my) * 0.05;
-    const k = camera.aspect < 0.95 ? Math.min(2.1, 0.92 / camera.aspect) : 1;   // narrow screens: pull back, crown in the top half
-    crown.position.set(S.x, S.y * k, 0); crown.scale.setScalar(S.cs);
-    let ang = S.rot + spin;
-    if (S.face > 0) { const to = S.who * Math.PI / 3, near = to + Math.PI * 2 * Math.round((ang - to) / (Math.PI * 2)); ang += (near - ang) * S.face; }
-    crown.rotation.set(S.tilt + my * 0.08, ang + mx * 0.25 * (1 - S.face * 0.7), 0);
-    camera.position.set(Math.sin(mx * 0.2) * 0.3, S.camY * k, S.dist * k); camera.lookAt(S.x * 0.35, (S.y + 0.1) * (k > 1 ? 0.2 : 1) + S.ly * (k > 1 ? k : 1), 0);
-    crown.updateMatrixWorld(); pU.uCrownM.value.copy(crown.matrixWorld);
-    fig.position.copy(crown.position); fig.rotation.set(0, 0, 0); fig.lookAt(camera.position); fig.rotateY(Math.sin(t * 0.35) * 0.2 + mx * 0.45);
-    fig.scale.setScalar(S.cs * 3.1); fig.updateMatrixWorld(); pU.uFigM.value.copy(fig.matrixWorld);
-    const w = Math.max(0, Math.min(5, S.who)), p = Math.min(4, Math.floor(w)); setFig(p); pU.uMix.value = w - p; pU.uFig.value = S.fig;
-    const near = Math.round(w); if (S.fig > 0.6 && near !== who) { who = near; if (snd) snd.jewel(near); chips.forEach((c, i) => c.classList.toggle('is-on', i === near)); const row = chips[near] && chips[near].parentNode; if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: chips[near].offsetLeft - 20, behavior: 'smooth' }); }
-    ecgU.uTime.value = t; ecgU.uGlow.value = S.glow;
-    pU.uTime.value = t; pU.uBurst.value = S.burst; pU.uShow.value = Math.min(1, S.burst * 3 + S.fig * 2.5);
-    const solid = S.solid;
-    [gold, goldDark, pearlM, ...gems.map((g) => g.m), points[0].children[1].material].forEach((m) => { m.opacity = solid; m.depthWrite = solid > 0.98; });
-    ecgMat.uniforms.uGlow.value = S.glow * solid; ecgMesh.visible = solid > 0.04;
-    inner.intensity = 4 + S.glow * 4;
-    gems.forEach((g, i) => { g.m.emissiveIntensity = 0.1 + S.jewel * (0.35 + 0.2 * Math.sin(t * 2.4 + i)) + S.face * Math.max(0, 1 - Math.abs(S.who - i) * 1.6) * 1.4; });
-    dust.rotation.y = t * 0.01;
-    // jewel name tags
-    const vis = Math.max(0, 1 - Math.abs(tl.time() - tl.labels.s2 - 0.6) * 1.4);
-    tags.forEach((el, i) => {
-      const g = gems[i].g; g.getWorldPosition(tmp); const facing = tmp.clone().sub(crown.position).normalize().dot(camera.position.clone().sub(tmp).normalize());
-      tmp.project(camera); const o = vis * Math.max(0, Math.min(1, facing * 3));
-      el.style.transform = `translate(${((tmp.x + 1) / 2 * W).toFixed(1)}px,${((1 - tmp.y) / 2 * H).toFixed(1)}px)`;
-      el.style.opacity = o.toFixed(3); el.style.visibility = o < 0.02 ? 'hidden' : 'visible';
-    });
-    composer.render();
+    const near = Math.round(Math.max(0, Math.min(5, S.who)));
+    if (S.fig > 0.6 && near !== who) { who = near; if (snd) snd.jewel(near); chips.forEach((c, i) => c.classList.toggle('is-on', i === near)); const row = chips[near] && chips[near].parentNode; if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: chips[near].offsetLeft - 20, behavior: 'smooth' }); }
+    if (engine) engine.frame();
+    requestAnimationFrame(loop);
   }
-  resize(); root.classList.add('cx-live'); renderer.setAnimationLoop(frame);
-  requestAnimationFrame(() => { root.classList.add('cx-ready'); window.ScrollTrigger.refresh(); });
+  root.classList.add('cx-live');
+  requestAnimationFrame(() => window.ScrollTrigger.refresh());
 })();
