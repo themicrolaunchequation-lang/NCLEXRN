@@ -180,7 +180,7 @@
   var CROWN = '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M8 41h8.5l4.5-14.5 5.2 11.5L32 20l5.8 18 5.2-11.5 4.5 14.5H56M18 48h28" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21" cy="19.6" r="3" fill="currentColor"/><circle cx="43" cy="19.6" r="3" fill="currentColor"/><circle cx="32" cy="12.6" r="3.4" fill="currentColor"/></svg>';
   function css() {
     if (D.getElementById('crown-help-css')) return;
-    var l = el('link'); l.id = 'crown-help-css'; l.rel = 'stylesheet'; l.href = BASE + 'crown-help.css?v=4'; D.head.appendChild(l);
+    var l = el('link'); l.id = 'crown-help-css'; l.rel = 'stylesheet'; l.href = BASE + 'crown-help.css?v=5'; D.head.appendChild(l);
   }
   function build() {
     if (ui) return ui;
@@ -207,7 +207,7 @@
     panel.querySelector('.chp-email-top').addEventListener('click', function () { emailCard('', ''); });
     panel.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.stopPropagation(); close(); } });
     ui.form.addEventListener('submit', function (e) {
-      e.preventDefault(); var q = ui.q.value.trim(); if (!q) return; ui.q.value = ''; ask(q);
+      e.preventDefault(); if (thinking) return; var q = ui.q.value.trim(); if (!q) return; ui.q.value = ''; ask(q);
     });
     return ui;
   }
@@ -244,8 +244,8 @@
   function sameSite(u) { try { var h = new URL(u, location.href).hostname; return h === location.hostname; } catch (e) { return true; } }
   function run(label, dest) {
     if (dest.ask) { ask(dest.ask); return; }
-    if (dest.intent) { you(label); load().then(function () { show(intent(dest.intent), label); }); return; }
-    if (dest.pick) { you(label); say(data.picks[dest.pick]); return; }
+    if (dest.intent) { you(label); load().then(function () { var it = intent(dest.intent); think(Math.min(3000, 1400 + (it.answer || '').length * 2.2), function () { show(it, label); }); }); return; }
+    if (dest.pick) { you(label); think(1600, function () { say(data.picks[dest.pick]); }); return; }
     if (dest.email != null) { emailCard(dest.email, lastQuestion()); return; }
     if (dest.act === 'resolved') { you(label); say('Glad that\'s sorted. Anything else I can help with?'); log('helpful'); return; }
     if (dest.act === 'serein-help') {
@@ -271,9 +271,33 @@
     scrollEnd();
   }
 
+  /* A short, visible "thinking" pause so answers feel considered, not instant.
+     Crisis messages wait well under a second: they must never be held back. */
+  var thinking = 0;
+  function think(ms, fn) {
+    thinking++; setBusy(true);
+    var t = el('div', 'chp-msg chp-bot chp-typing');
+    t.innerHTML = '<span class="chp-sr">Crown Help is thinking</span><i></i><i></i><i></i>';
+    ui.log.appendChild(t); scrollEnd();
+    setTimeout(function () {
+      t.remove(); thinking = Math.max(0, thinking - 1);
+      if (!ui.panel.hidden) fn();
+      if (!thinking) setBusy(false);
+    }, ms);
+  }
+  function setBusy(on) {
+    ui.form.querySelector('button').disabled = on;
+    ui.form.setAttribute('aria-busy', on ? 'true' : 'false');
+  }
+  function pause(q) {
+    if (CRISIS.test(q)) return 500;
+    var top = INDEX ? match(q)[0] : null;
+    var len = top && top.it.answer ? top.it.answer.length : 200;
+    return Math.min(3000, 1400 + len * 2.2 + Math.random() * 400);
+  }
   function ask(q) {
     you(q);
-    load().then(function () { respond(q); }).catch(function () {
+    load().then(function () { think(pause(q), function () { respond(q); }); }).catch(function () {
       say('Sorry, I couldn\'t load my answers just now. Please email us at **' + EMAIL + '** and we\'ll reply ' + REPLY + '.', { buttons: [{ label: 'Email us', email: '' }] });
     });
   }
@@ -416,7 +440,7 @@
     if (!ui) return;
     ui.panel.hidden = true; ui.btn.setAttribute('aria-expanded', 'false'); ui.root.classList.remove('chp-open');
     // Closing ends the chat: next time it opens fresh, like a new conversation.
-    ui.log.textContent = ''; ui.started = false; convo = []; misses = 0; frustration = 0; ui.q.value = '';
+    ui.log.textContent = ''; ui.started = false; convo = []; thinking = 0; setBusy(false); misses = 0; frustration = 0; ui.q.value = '';
     (lastFocus && lastFocus.focus ? lastFocus : ui.btn).focus();
   }
 

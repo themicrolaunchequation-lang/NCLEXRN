@@ -23,7 +23,7 @@ for (const [kind, vp] of [['desktop', { width: 1366, height: 860 }], ['phone', {
     if (cover.covered || cover.under) { console.log('OVERLAP', name, kind, JSON.stringify(cover)); problems++; }
     await p.screenshot({ path: `${OUT}/${name}-${kind}-closed.png` });
     await launch.click(); await p.waitForTimeout(600);
-    await p.fill('#chp-q', name === 'serein' ? 'is my journal private' : name === 'plans' ? 'can I get a refund' : 'is it free'); await p.keyboard.press('Enter'); await p.waitForTimeout(700);
+    await p.fill('#chp-q', name === 'serein' ? 'is my journal private' : name === 'plans' ? 'can I get a refund' : 'is it free'); await p.keyboard.press('Enter'); await p.waitForTimeout(3600);
     await p.screenshot({ path: `${OUT}/${name}-${kind}-open.png` });
     if (AXE && kind === 'desktop') {
       await p.addScriptTag({ path: AXE });
@@ -40,7 +40,7 @@ for (const [kind, vp] of [['desktop', { width: 1366, height: 860 }], ['phone', {
   const logged = []; await ctx.route(/supabase\.co/, r => { logged.push(r.request().postDataJSON()); r.fulfill({ status: 204, body: '' }); });
   const p = await ctx.newPage(); await p.goto(`https://localhost:${port}/`, { waitUntil: 'load' }); await p.waitForTimeout(1500);
   await p.click('.chp-launch'); await p.waitForTimeout(400);
-  const send = async q => { await p.fill('#chp-q', q); await p.keyboard.press('Enter'); await p.waitForTimeout(500); };
+  const send = async q => { await p.fill('#chp-q', q); await p.keyboard.press('Enter'); await p.waitForTimeout(3600); };
   await send('I was charged twice!!! this is unacceptable');
   await send('what dose of morphine for my patient');
   await send('I want to kill myself');

@@ -115,3 +115,11 @@ html[data-hs-motion="off"] .chp-panel{animation:none}
 .chp .chp-msg li{display:list-item}
 /* Hidden while the app is in a focused mode (its own dialog, full screen, a practice) */
 .chp-away .chp-launch{opacity:0;pointer-events:none;visibility:hidden}
+
+/* Thinking dots */
+.chp-typing{display:inline-flex;align-items:center;gap:5px;padding:14px 16px}
+.chp-typing i{width:7px;height:7px;border-radius:50%;background:var(--chp-gold);opacity:.35;animation:chp-dot 1.2s infinite ease-in-out}
+.chp-typing i:nth-of-type(2){animation-delay:.18s}.chp-typing i:nth-of-type(3){animation-delay:.36s}
+@keyframes chp-dot{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.chp-typing i{animation:none;opacity:.7}}
+.chp-ask button:disabled{opacity:.55;cursor:wait}
