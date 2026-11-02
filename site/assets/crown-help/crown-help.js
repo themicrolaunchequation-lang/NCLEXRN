@@ -179,7 +179,7 @@
   var CROWN = '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M8 41h8.5l4.5-14.5 5.2 11.5L32 20l5.8 18 5.2-11.5 4.5 14.5H56M18 48h28" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21" cy="19.6" r="3" fill="currentColor"/><circle cx="43" cy="19.6" r="3" fill="currentColor"/><circle cx="32" cy="12.6" r="3.4" fill="currentColor"/></svg>';
   function css() {
     if (D.getElementById('crown-help-css')) return;
-    var l = el('link'); l.id = 'crown-help-css'; l.rel = 'stylesheet'; l.href = BASE + 'crown-help.css?v=1'; D.head.appendChild(l);
+    var l = el('link'); l.id = 'crown-help-css'; l.rel = 'stylesheet'; l.href = BASE + 'crown-help.css?v=2'; D.head.appendChild(l);
   }
   function build() {
     if (ui) return ui;
