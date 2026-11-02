@@ -777,3 +777,8 @@ body.hs .hs-brand .hs-name.gulf-brand b{font-size:17px!important;white-space:nor
 .hs-name.gulf-brand .hs-tag{white-space:normal;line-height:1.3}
 .hs-name.gulf-brand{min-width:0;max-width:150px}
 body.hs .hs-mbrand span:not(.hs-crest){font-size:14px!important;line-height:1.05!important;white-space:normal!important;max-width:62px;display:inline-block}
+/* show the G.N crest beside the app name on phones */
+body.hs .hs-top .hs-mbrand .hs-crest{display:block!important;width:30px;height:30px;flex:0 0 30px}
+body.hs .hs-top .hs-mbrand{display:inline-flex;align-items:center;gap:6px}
+body.hs .hs-top .hs-mbrand span:not(.hs-crest){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+body.hs .hs-top .hs-mbrand .hs-crest{width:36px!important;height:36px!important;flex:0 0 36px!important}

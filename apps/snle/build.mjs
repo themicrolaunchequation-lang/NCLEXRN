@@ -72,7 +72,7 @@ html=html.replace(/<title>[\s\S]*?<\/title>/,'<title>SNLE Clinical Learning Stud
 html=html.replace('</head>','<meta name="hca-app" content="snle"><link rel="canonical" href="https://snle.healthcarecrownacademy.co.uk/"><link rel="icon" href="/assets/crest.svg" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="'+urls.css+'">'+['prelude','data','guidance','app','master','account','shell','integration'].map(k=>'<script defer src="'+urls[k]+'"></script>').join('')+'</head>');
 html=html.replace('<div id="app">','<a class="snle-skip" href="#snle-content">Skip to learning content</a><div id="app">');
 html=html.replace('</body>','<noscript><p>SNLE needs JavaScript to run. <a href="https://healthcarecrownacademy.co.uk/">Return to Healthcare Crown Academy</a>.</p></noscript></body>');
-write('assets/crest.svg',fs.readFileSync(path.join(REPO,'site/assets/img/favicon.svg')));
+write('assets/crest.svg',fs.readFileSync(path.join(ROOT,'src/gn-crest.svg')));   // Gulf Region Nursing's own G.N crest
 const labsPath=path.join(ROOT,'source/SNLE_Decoder_Interactive_Labs_v3'),hasLabs=fs.existsSync(labsPath);
 if(hasLabs){const dest=path.join(OUT,'SNLE_Decoder_Interactive_Labs_v3');fs.cpSync(labsPath,dest,{recursive:true});
  for(const f of fs.readdirSync(dest).filter(n=>n.endsWith('.html'))){const fp=path.join(dest,f);let h=fs.readFileSync(fp,'utf8'),i=0;
@@ -81,7 +81,7 @@ if(hasLabs){const dest=path.join(OUT,'SNLE_Decoder_Interactive_Labs_v3');fs.cpSy
 write('assets/labs-status.js','window.SNLE_HAS_LABS='+JSON.stringify(hasLabs)+';');
 html=html.replace('<script defer src="'+urls.data+'">','<script defer src="/assets/labs-status.js"></script><script defer src="'+urls.data+'">');write('index.html',html);
 write('404.html','<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Page not found · SNLE</title><h1>Page not found</h1><p><a href="/">Return to SNLE Clinical Learning Studio</a></p></html>');
-write('manifest.webmanifest',JSON.stringify({name:'SNLE Clinical Learning Studio',short_name:'SNLE',start_url:'/',scope:'/',display:'standalone',theme_color:'#10253A',background_color:'#F8F5EF',icons:[{src:'/assets/crest.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]},null,2));
+write('manifest.webmanifest',JSON.stringify({name:'Gulf Region Nursing',short_name:'Gulf Nursing',start_url:'/',scope:'/',display:'standalone',theme_color:'#10253A',background_color:'#F8F5EF',icons:[{src:'/assets/crest.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]},null,2));
 write('_headers',read('src/headers.txt'));
 for(const [name,mode,title]of[
  ['SNLE_All_Tools_ViewOnly_v19.html','tools','Clinical tool library'],
