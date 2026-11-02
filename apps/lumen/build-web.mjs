@@ -331,6 +331,7 @@ ${licenceLinks}
 <meta name="hca-account-position" content="right">
 <script src="/assets/js/crown-move.js"></script>
 <script defer src="/assets/js/crown-account.js"></script>
+<script defer src="/assets/crown-help/crown-help.js"></script>
 <script defer src="${pwa}"></script>
 <script src="${shellJs}"></script>
 ${shellCss}

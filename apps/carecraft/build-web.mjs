@@ -95,6 +95,7 @@ const html = `<!DOCTYPE html>
 <meta name="hca-app" content="carecraft">
 <script src="/assets/js/crown-move.js"></script>
 <script defer src="/assets/js/crown-account.js"></script>
+<script defer src="/assets/crown-help/crown-help.js"></script>
 <script defer id="carecraft-app-code" src="${BASE}${jsName}"></script>
 </head>
 <body><div id="app"></div><noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:4rem auto;padding:0 1rem">Carecraft needs JavaScript. You can also <a href="${BASE}download/Carecraft-v${VERSION}.html">download the offline edition</a> or return to <a href="${HOME}">Healthcare Crown Academy</a>.</p></noscript></body>

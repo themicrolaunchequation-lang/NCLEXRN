@@ -190,6 +190,7 @@ write('index.html', `<!DOCTYPE html>
 <meta name="hca-app" content="medlex">
 <script src="/assets/js/crown-move.js"></script>
 <script defer src="/assets/js/crown-account.js"></script>
+<script defer src="/assets/crown-help/crown-help.js"></script>
 <script defer src="${BASE}${hookName}"></script>
 <script defer src="${BASE}${shellName}"></script>
 <script defer src="${BASE}${jsName}"></script>
