@@ -14,7 +14,7 @@ await p.waitForFunction(() => window.CrownHelp);
 let pass = 0; const fails = [];
 for (const [q, want] of golden) {
   const r = await p.evaluate(q => window.CrownHelp._match(q), q);
-  const ok = r[0] && r[0][0] === want && r[0][1] >= 0.46;
+  const ok = r[0] && r[0][0] === want && r[0][1] >= 0.47;
   ok ? pass++ : fails.push(`${want}  "${q}"  -> ${JSON.stringify(r)}`);
 }
 console.log(`Golden: ${pass}/${golden.length}`); fails.forEach(f => console.log('  MISS', f));
@@ -22,14 +22,24 @@ const hold = JSON.parse(fs.readFileSync(new URL('./holdout.json', import.meta.ur
 let hp = 0, hm = 0;
 for (const [q, want] of hold) {
   const r = await p.evaluate(q => window.CrownHelp._match(q), q);
-  const offered = r.filter((x, i) => x[1] >= 0.46 && (i === 0 || (!r[0][2] && x[1] >= r[0][1] * 0.93))).map(x => x[0]);
+  const offered = r.filter((x, i) => x[1] >= 0.47 && (i === 0 || (!r[0][2] && x[1] >= r[0][1] * 0.93))).map(x => x[0]);
   if (offered.length) { if (offered.includes(want)) hp++; else console.log('  WRONG', want, JSON.stringify(q), JSON.stringify(r)); }
   else { hm++; console.log('  TO EMAIL', want, JSON.stringify(q), JSON.stringify(r)); }
+}
+for (const f of ['./holdout2.json', './research.json']) {
+  const set = JSON.parse(fs.readFileSync(new URL(f, import.meta.url)));
+  let ok2 = 0;
+  for (const [q, want] of set) {
+    const r = await p.evaluate(q => window.CrownHelp._match(q), q);
+    const offered = r.filter((x, i) => x[1] >= 0.47 && (i === 0 || (!r[0][2] && x[1] >= r[0][1] * 0.93))).map(x => x[0]);
+    if (offered.includes(want)) ok2++; else console.log('  ' + f.slice(2, -5).toUpperCase(), want, JSON.stringify(q), JSON.stringify(r));
+  }
+  console.log(`${f.slice(2, -5)}: ${ok2}/${set.length}`);
 }
 console.log(`Unseen questions: ${hp} right (or offered as a choice), ${hm} sent to email, ${hold.length - hp - hm} wrong (of ${hold.length})`);
 const neg = JSON.parse(fs.readFileSync(new URL('./negative.json', import.meta.url)));
 let nOk = 0;
-for (const q of neg) { const r = await p.evaluate(q => window.CrownHelp._match(q), q); if (!r[0] || r[0][1] < 0.46) nOk++; else console.log('  GUESSED', JSON.stringify(q), JSON.stringify(r[0])); }
+for (const q of neg) { const r = await p.evaluate(q => window.CrownHelp._match(q), q); if (!r[0] || r[0][1] < 0.47) nOk++; else console.log('  GUESSED', JSON.stringify(q), JSON.stringify(r[0])); }
 console.log(`Off-topic not answered: ${nOk}/${neg.length}`);
 const crisisYes = ['I want to kill myself', 'thinking about suicide', 'I can\'t go on anymore', 'I want to die', 'I have been self harming'];
 const crisisNo = ['how do I cancel', 'the app crashed and died', 'kill switch for notifications', 'I want to delete my account'];

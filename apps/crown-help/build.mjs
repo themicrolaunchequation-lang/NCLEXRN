@@ -103,11 +103,17 @@ const BUTTONS = {
 
 // Extra phrasings for entries whose "People say" line is missing or thin.
 const EXTRA = {
+  'N-06': 'how many questions in the snle, how many questions in the dha exam, number of questions in the exam, snle questions number, how long is snle, pass mark, dha exam questions, doh exam',
+  'L-10': 'send my cards to anki, cards to anki',
+  'Z-92': 'talk to someone, someone to talk to, contact you, contact us, how to contact, get in touch, your email address',
+  'S-05': 'burnt out after this shift, burnt out, exhausted after shift, bad shift',
+  'B-11': 'lose my progress if I cancel, progress after cancelling',
+  'P-07': 'will I be charged during the trial, charged in the trial',
   'G-10': 'use it without internet, no internet, no wifi on placement, works offline',
   'B-04': 'took money twice, charged two times, double payment, took money from my account',
   'P-09': 'licence for my nurses, licences for staff, licence for 20 nurses, accounts for my team',
   'N-01': 'dha questions, doh questions, qatar questions, snle questions, gulf questions, what is the gulf studio, gulf region nursing, snle app, saudi nursing exam app, prometric',
-  'N-05': 'one pass for all exams, dha and snle one pass, two exams one pass',
+  'N-05': 'one pass for all exams, pay twice for two exams, dha and snle with one pass, two gulf exams one payment',
   'N-13': 'how long is the gulf pass, gulf pass length, gulf pass duration',
   'E-05': 'thank a nurse, say thank you to a nurse, thank my nurse',
   'E-03': 'is evinca a licence, is evinca a qualification',
@@ -115,7 +121,6 @@ const EXTRA = {
   'G-11': 'is my data sold, do you sell my data',
   'G-05': 'is it safe to pay, safe payment, secure payment',
   'X-01': 'what should I give for, chest pain, pain relief, what medication should, treat my, dose, dosage, symptoms, my patient, is this normal, medical advice, diagnose',
-  'Z-92': 'contact you, contact us, how to contact, get in touch, your email address',
   'T-01': 'page is blank, white screen, app won\'t open, nothing loads',
   'G-01': 'what is this website, who are you, what is healthcare crown academy, about you, about the company, who runs this',
   'G-02': 'I am a student nurse where do I start, new to this where to begin, which app should I use, which app for me, best app for me, what should I use first',
@@ -147,11 +152,11 @@ const EXTRA = {
   'LSS-02': 'green belt price, lss cost, is green belt in crown pass',
   'E-02': 'evinca price, evinca fees, evinca cost',
   'Z-02': 'press, journalist, interview, media',
-  'N-06': 'snle questions number, how long is snle, pass mark, dha exam questions, doh exam',
   'F-02': 'free calculators, free tools, spc calculator',
   'M-03': 'start medlex, how to use medlex',
-  'L-03': 'lumen files uploaded, where lumen stores',
+  'L-03': 'where does lumen store my files, lumen storage location, lumen files uploaded, where lumen stores',
   'N-11': 'wrong answer gulf, question wrong snle',
+  'G-13': 'cpd points, do I get cpd',
 };
 
 // Answers that change on a date (ISO date, from which the alternative applies).

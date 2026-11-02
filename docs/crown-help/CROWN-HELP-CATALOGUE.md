@@ -911,6 +911,612 @@ Route: Answer (no further engagement)
 
 ---
 
+---
+
+## Part C+ — Added from market research (questions people ask similar apps)
+
+Researched 2 November 2026 from public help centres, FAQs and user forums of UWorld, Archer Review, Gulf exam-prep sites, Anki, RemNote, Quizlet, Headspace, Calm, the DAISY Award, Lean Six Sigma course providers and medical-terminology courses. Every answer below is written for our apps and uses only facts confirmed in our apps or site.
+
+### C18. Learned from exam-prep apps (UWorld, Archer Review, Gulf exam prep)
+
+**N-16 · Can I reset an exam and start again?**
+People say: reset question bank, start over, clear my progress, reset my answers, fresh start, reset qbank
+Answer: Yes, we can give you a clean start. Each exam keeps its own progress on your account, so tell us which exam to reset and the email on your account. Notes you wrote stay on your device unless you clear them yourself.
+Buttons: [Email us]
+Route: Email (topic: Account and sign-in)
+
+**N-17 · How much is included in the Gulf Pass?**
+People say: what do I get with gulf pass, full question bank, gulf pass include, whole bank, entire question bank, everything in gulf pass
+Answer: Everything for all four exams: the full bank of 1,297 clinically reviewed questions, mock exams in tutor and exam mode, review of misses, 67 clinical reasoning tools, 35 specialty dossiers and the bilingual glossary. It also includes the Crown Pass (MedLex, Carecraft and Lumen) for the same time.
+Buttons: [See plans]
+Route: Answer
+
+**N-18 · Are the questions harder than the real exam?**
+People say: harder than real exam, difficulty level, too difficult, easier than exam, similar difficulty
+Answer: We write them in the style of each exam, and some are deliberately demanding so you practise the reasoning, not just recall. Don't read your score as a prediction of your exam result: use it to see which topics need more work.
+Route: Answer
+
+**N-19 · What score should I aim for?**
+People say: what percentage should I get, good score, target score, am I ready, readiness
+Answer: There's no official cut-off we can map our scores to. A good sign of readiness is when you can explain why each wrong option is wrong, your misses are shrinking in your review, and you're comfortable in timed exam mode.
+Buttons: [Open the studio]
+Route: Answer
+
+**N-20 · Can I extend my Gulf Pass?**
+People say: extend gulf pass, more time, renew gulf pass, pass expiring, need longer
+Answer: Yes. Buy another Gulf Pass when you need more time, and your progress stays on your account. If your current pass still has days left, email us first so we make sure the time adds up correctly.
+Buttons: [See plans] [Email us]
+Route: Answer + offer email (topic: Billing and refunds)
+
+**N-21 · My exam date moved. Can I pause my pass?**
+People say: pause gulf pass, freeze pass, exam postponed, exam date changed, hold my pass
+Answer: Passes can't be paused automatically, but please tell us what happened and when your new date is. We'll look at what we can do.
+Route: Email (topic: Billing and refunds)
+
+**N-22 · Can I use it for the NCLEX?**
+People say: nclex, nclex-rn, usa exam, nclex prep, us nursing exam
+Answer: The studio is built for the four Gulf exams, not the NCLEX. Many clinical reasoning skills overlap, but if you're sitting the NCLEX, use an NCLEX-specific course. MedLex can still help with medical English.
+Route: Answer
+
+**N-23 · Do you cover HAAD, MOH UAE, Oman, Kuwait or Bahrain?**
+People say: haad, moh uae, oman exam, kuwait exam, bahrain exam, other gulf countries, nhra, qchp
+Answer: We cover Saudi SNLE, Qatar DHP, Dubai DHA and Abu Dhabi DOH (DOH was formerly HAAD). Other exams such as MOH UAE, Oman, Kuwait or Bahrain aren't covered as separate exams yet. The clinical content still helps, but check that regulator's own blueprint.
+Buttons: [Compare the Gulf exams]
+Route: Answer
+
+**N-24 · How do I practise timing?**
+People say: timed practice, time per question, timer, practise under time, speed
+Answer: Use the **Practice Hub**'s timed sets and **exam mode** to practise your pace. For the real time limit, check your exam's guide, then confirm with the regulator when you book.
+Buttons: [SNLE guide] [Compare Gulf exams guide]
+Route: Answer
+
+**N-25 · Can I review the questions I got wrong?**
+People say: review wrong answers, see my mistakes, missed questions, incorrect answers, review misses
+Answer: Yes. The studio keeps a **review of misses** for each exam, so you can go back over the questions you got wrong and read the reasoning again.
+Route: Answer
+
+**N-26 · Can I flag questions and take notes?**
+People say: flag question, bookmark question, take notes, highlight, mark for review
+Answer: Yes. The slide-view question bank lets you add notes and highlights, flag questions to come back to, and review your misses.
+Route: Answer
+
+**N-27 · Do the questions explain the answers?**
+People say: rationale, explanation, why is it correct, explain answers, reasoning
+Answer: Yes. In **tutor mode** you see the answer and the reasoning straight after each question. In **exam mode** you see them at the end.
+Route: Answer
+
+**N-28 · Do you have specialty questions such as ICU, emergency or paediatrics?**
+People say: icu questions, emergency, er nurse, paediatric, pediatric, critical care, operating room, specialty
+Answer: The licensing exams test general nursing, and the question bank follows that. For deeper specialty practice, the 35 **specialty dossiers** work through clinical cases by specialty.
+Route: Answer
+
+**N-29 · Is it only for registered nurses?**
+People say: midwife, assistant nurse, nurse technician, doctor exam, pharmacist exam, for midwives
+Answer: It's built for nurses sitting the Gulf nursing licensing exams. Midwives and other professionals may find parts useful, but it isn't tailored to their exams.
+Route: Answer
+
+**N-30 · Is the content up to date for this year?**
+People say: updated, latest blueprint, 2026, 2027, new exam format, current
+Answer: Exam details are checked against published regulator information, and each guide shows when it was last checked. Rules change, so always confirm with SCFHS, DHP, DHA or DOH when you book.
+Buttons: [SNLE guide] [Compare Gulf exams guide]
+Route: Answer
+
+**N-31 · Can I pay from Saudi Arabia, UAE or Qatar?**
+People say: pay from saudi, pay in riyal, dirham, mada card, local card, card declined gulf
+Answer: Yes. The Gulf Pass is priced in US dollars, and Stripe may show the amount in your currency at checkout. Most Visa and Mastercard cards work. If yours is declined, try another card or ask your bank to allow the online payment.
+Route: Answer
+
+**N-32 · Can my agency or recruiter buy passes for several nurses?**
+People say: recruitment agency, recruiter, buy for my nurses, agency licence, bulk gulf pass
+Answer: Yes, we can set that up. Tell us the organisation, how many nurses and which exams, and we'll come back to you with options.
+Route: Email (topic: Teams and organisations)
+
+**N-33 · How many times can I sit the exam?**
+People say: number of attempts, how many attempts, retake exam, failed exam again, attempts allowed
+Answer: The number of attempts is set by the regulator and can change. Check your exam's guide, then confirm with SCFHS, DHP, DHA or DOH.
+Buttons: [SNLE guide] [Qatar guide] [Dubai DHA guide] [Abu Dhabi DOH guide]
+Route: Answer
+
+**N-34 · Can I get a refund on the Gulf Pass?**
+People say: refund gulf pass, cancel gulf pass, money back gulf
+Answer: Yes, within 14 days of buying: use **Cancel and get a refund** on your account page for a full refund, even if you've used it. Your access then ends. After 14 days we don't refund for a change of mind.
+Buttons: [Cancel and get a refund] [Refund policy]
+Route: Answer
+
+**N-35 · I failed my exam. What now?**
+People say: failed exam, didn't pass, i failed, unsuccessful, retake after failing
+Answer: I'm sorry, that's hard, and it happens to many good nurses. Take a few days, then use your **review of misses** to find the weak topics, rebuild with tutor mode, and finish with timed exam mode. The regulator sets when you can sit it again.
+Buttons: [Open the studio] [Start a 2-minute reset]
+Route: Answer
+
+### C19. Learned from flashcard and study apps (Anki, Quizlet, RemNote)
+
+**L-10 · Can I use my Lumen cards in Anki or Quizlet?**
+People say: anki, quizlet, export to anki, import to anki, flashcard app, move cards
+Answer: Yes. Export your cards as **CSV** from Lumen: the CSV works with Anki and spreadsheets. Importing decks *into* Lumen isn't available yet; Lumen builds cards from your own sources.
+Route: Answer
+
+**L-11 · Which files can I add to Lumen?**
+People say: file types, powerpoint, pptx, word document, docx, slides, supported formats, file size, open powerpoint, powerpoint slides, can lumen open pptx
+Answer: PDF, PowerPoint (.pptx) and images (JPG, PNG, WEBP, GIF, BMP), up to 150 MB per file. For a Word document, save it as PDF first.
+Buttons: [Open Lumen]
+Route: Answer
+
+**L-12 · How does spaced repetition work?**
+People say: spaced repetition, how reviews work, when do cards come back, again got it, review schedule
+Answer: Each card comes back just before you're likely to forget it. Answer honestly: **Again** brings it back soon, **Got it** spaces it further out. Little and often beats one long session.
+Buttons: [Free guide: active recall]
+Route: Answer
+
+**L-13 · How many cards should I review a day?**
+People say: cards per day, daily review, how many cards, review goal, daily goal
+Answer: Lumen's daily goal starts at 20 reviews, which suits most people. Clear what's due first, and add new cards in small batches so reviews don't pile up.
+Route: Answer
+
+**L-14 · Can I share my cards with classmates?**
+People say: share cards, share deck, send to friend, classmates, collaborate
+Answer: Not directly, because your library stays on your device. You can export your cards as CSV and send the file. Please remove anything personal first.
+Route: Answer
+
+**L-15 · Can Lumen read handwriting?**
+People say: handwriting, handwritten notes, scan notes, photo of notes, ocr
+Answer: You can add photos of handwritten notes and read, highlight and make cards from them. Clear, well-lit photos work best, and neat printed text is easiest to work with.
+Route: Answer
+
+**L-16 · Is there a focus timer?**
+People say: focus timer, pomodoro, study timer, focus session, timer
+Answer: Yes. Lumen has a **focus session** (25 minutes by default) and a planner to plan your study blocks.
+Buttons: [Open Lumen]
+Route: Answer
+
+**L-17 · Which units do the lab values use?**
+People say: lab values units, lab reference, normal ranges, mmol or mg, reference ranges
+Answer: The lab values reference is for learning. Always check the units next to each value, and follow your own lab's reference ranges in practice, because they differ between hospitals and countries.
+Route: Answer
+
+**L-18 · Which AI provider should I use in Lumen?**
+People say: best ai provider, which ai, free ai key, openai or gemini, recommend ai
+Answer: We don't recommend one. Lumen shows each provider's free-plan limits and privacy notes next to it. Some free plans let the provider use what you send for training, so read those notes and never send patient details.
+Route: Answer
+
+**L-19 · Does Lumen sync between my devices?**
+People say: lumen sync, lumen phone and laptop, cards on another device, lumen cloud
+Answer: No. Lumen keeps everything on the device where you use it, which keeps it private. To move it, make a **backup** and **restore** it on the other device.
+Route: Answer
+
+### C20. Learned from medical-terminology courses
+
+**M-09 · How long does MedLex take?**
+People say: how long to finish medlex, how many hours, time to complete, how long course
+Answer: It's self-paced. Ten to fifteen minutes a day works well: do the starter modules first, then one body system at a time, with a few minutes of practice each day.
+Buttons: [Open MedLex]
+Route: Answer
+
+**M-10 · Do I get a certificate from MedLex?**
+People say: medlex certificate, certificate of completion medlex, proof medlex
+Answer: No. MedLex is for learning and doesn't issue a certificate. You can still describe what you studied in your own reflective notes or CV.
+Route: Answer
+
+**M-11 · Does MedLex cover abbreviations?**
+People say: abbreviations, acronyms, medical abbreviations, prn bd tds
+Answer: MedLex focuses on understanding terms through their parts, and some lessons include common abbreviations. If you need one that isn't there, tell us and we'll consider adding it.
+Buttons: [Email us]
+Route: Answer + offer email (topic: Other)
+
+**M-12 · How do I look up a word?**
+People say: search a word, look up term, find a term, dictionary, glossary search
+Answer: Open the **Library** in MedLex and search for the term or one of its parts (for example *cardio*). The decoded words show how each part contributes to the meaning.
+Buttons: [Open MedLex]
+Route: Answer
+
+**M-13 · Can I test myself in MedLex?**
+People say: quiz, test myself, practice questions medlex, self test, flashcards medlex
+Answer: Yes. Use **Practice** for short quizzes with spaced repetition. Words you miss come back sooner.
+Buttons: [Open MedLex]
+Route: Answer
+
+**M-14 · Is MedLex good if English is not my first language?**
+People say: english second language, non native, international nurse english, esl
+Answer: Yes, that's one of the main reasons we built it. Learning the word parts lets you work out new terms yourself, and the pronunciation practice helps with speaking.
+Buttons: [Free guide: medical word parts]
+Route: Answer
+
+### C21. Learned from well-being apps (Headspace, Calm)
+
+**S-07 · How long are the practices?**
+People say: how long practices, short practice, minutes, quick exercise
+Answer: They're short: some start with a single breath, and most take two to a few minutes, so they fit between tasks or after a shift.
+Buttons: [Open Serein]
+Route: Answer
+
+**S-08 · I can't sleep after night shifts**
+People say: can't sleep, insomnia, night shift sleep, sleep after shift, sleep problems
+Answer: That's really common after nights. Serein's after-shift practices can help you wind down. If poor sleep goes on for weeks or affects your work, please speak to your GP or occupational health.
+Buttons: [Open Serein]
+Route: Answer
+
+**S-09 · Can I change the voice or sounds?**
+People say: voice guidance, chime, sound, mute, audio settings serein
+Answer: Yes. Open a practice and use its settings to choose voice guidance and a chime, or turn sound off.
+Route: Answer
+
+**S-10 · Can I use Serein with my team?**
+People say: team huddle, use with team, group session, present to team, shared screen
+Answer: Yes. Practices have a **Shared presentation** mode for a huddle or a team reset on a shared screen. Serein is free for everyone.
+Buttons: [Open Serein]
+Route: Answer
+
+**S-11 · Is Serein evidence-based?**
+People say: evidence based, research, does it work, science behind serein
+Answer: Serein uses common, well-known relaxation and grounding techniques, and its **About images, evidence & safety** page explains the sources. It's self-care, not treatment.
+Buttons: [Open Serein]
+Route: Answer
+
+**S-12 · How do I delete my Serein journal?**
+People say: delete journal, clear check-ins, remove my entries
+Answer: Your journal and check-ins live only in this browser. Use **Privacy & browser data** in Serein, or clear this site's data in your browser settings. No copy exists anywhere else.
+Route: Answer
+
+**S-13 · Crisis lines outside the UK**
+People say: helpline philippines, helpline india, crisis line my country, support line abroad, egypt helpline
+Answer: Serein's **Get help** lists UK, Saudi, UAE and Qatar lines. Elsewhere, call your local emergency number if anyone is in danger, and you can find free local helplines at **findahelpline.com**.
+Buttons: [Open Get help in Serein]
+Route: Answer
+
+**S-14 · Can patients use Serein?**
+People say: can patients use serein, serein for patients, recommend serein to a patient, family use serein
+Answer: Serein is made for people who work in care, but anyone can use it. It's general self-care, not treatment, so it shouldn't replace a patient's care plan.
+Route: Answer
+
+### C22. Learned from nurse award programmes (DAISY and similar)
+
+**E-10 · Who can nominate on Evinca?**
+People say: who can nominate, can patients nominate, can family nominate, colleague nominate
+Answer: Anyone: colleagues, managers, patients and families. Choose **Nominate someone** or **Say thank you** on Evinca.
+Buttons: [Nominate someone]
+Route: Answer
+
+**E-11 · Can I nominate anonymously?**
+People say: anonymous nomination, hide my name, nominate secretly, without my name, nominate without my name, keep my name secret
+Answer: Yes. We won't say it was you unless you want us to.
+Buttons: [Nominate someone]
+Route: Answer
+
+**E-12 · Can I nominate a whole team or ward?**
+People say: nominate team, nominate ward, whole department, group nomination, team award
+Answer: Yes, team work can be recognised through **Project Honors** on Evinca, which is for improvements led by a team.
+Buttons: [Visit Evinca]
+Route: Answer
+
+**E-13 · How long does an Evinca review take?**
+People say: how long review, when will I hear, review time, decision time
+Answer: It follows the recognition: **Spotlight** is published in that month's gallery, **Distinction** is judged by quarter, and an **Honor** covers twelve months. For a specific application, email us with your reference.
+Buttons: [Email the Evinca team]
+Route: Answer + offer email (topic: Evinca)
+
+**E-14 · What evidence do I need?**
+People say: what evidence, documents needed, proof needed, how to prove, apply guide
+Answer: Evidence of the contribution and its effect: for example, before-and-after data, documents you produced, and confirmations from colleagues. The free **Apply Guide** on Evinca walks you through it.
+Buttons: [Visit Evinca]
+Route: Answer
+
+**E-15 · Is Evinca only for nurses?**
+People say: only nurses, doctors evinca, pharmacists, allied health evinca, midwives evinca
+Answer: No. It's for nurses, midwives, physicians, pharmacists, allied health professionals, educators and leaders, worldwide.
+Buttons: [Visit Evinca]
+Route: Answer
+
+**E-16 · What do honorees receive?**
+People say: what do honorees receive, evinca badge, evinca certificate, honoree record, what does an honoree get
+Answer: A public, verifiable record of the recognition, with a badge and certificate. Honorees never pay for their record, badge or certificate.
+Route: Answer
+
+**E-17 · Do I get my review fee back if I'm not selected?**
+People say: refund evinca fee, not selected refund, review fee back
+Answer: The fee pays for the independent review itself, so it isn't tied to the outcome. Evinca's own terms set out refunds. If something went wrong, email us with your reference.
+Buttons: [Email the Evinca team]
+Route: Answer + offer email (topic: Evinca)
+
+**E-18 · Am I eligible for Evinca?**
+People say: am I eligible for evinca, evinca eligibility, can I apply to evinca, check eligibility
+Answer: You can check your eligibility in about two minutes on Evinca. Evinca is for people aged 18 and over.
+Buttons: [Visit Evinca]
+Route: Answer
+
+### C23. Learned from Lean Six Sigma course providers
+
+**LSS-09 · Does the Green Belt certificate expire?**
+People say: certificate expire, expiry, valid how long, renew certificate, recertification, certificate expiry, green belt certificate valid
+Answer: Your access lasts 12 months, so download and keep your certificate while it's active. If you have a question about a certificate already issued, email us.
+Buttons: [Email us]
+Route: Answer + offer email (topic: Green Belt)
+
+**LSS-10 · What if I fail the knowledge exam?**
+People say: fail the green belt exam, fail exam green belt, retake exam, second attempt, didn't pass 80
+Answer: Keep working the tools and the exam prep, then try again. If you're unsure how many attempts you have left, email us and we'll check.
+Buttons: [Email us]
+Route: Answer + offer email (topic: Green Belt)
+
+**LSS-11 · What is the Green Belt exam like?**
+People say: green belt exam format, how many questions in the green belt exam, pass mark green belt, green belt exam questions
+Answer: 66 questions, with a pass mark of 80%. It includes chart-reading questions, so it tests interpretation, not just recall.
+Route: Answer
+
+**LSS-12 · Do I need a real project?**
+People say: need a project, real project, own project, project required
+Answer: The tools are designed for your own improvement project, which is the best way to learn. If you don't have one yet, the clinical worked examples and simulations let you practise first.
+Route: Answer
+
+**LSS-13 · Do I need a statistics background?**
+People say: statistics background, prerequisites, prior knowledge, beginner, not good at maths
+Answer: No. Each statistics tool comes with a clinical worked example, and the **LSS Guide** explains every method in plain steps.
+Buttons: [Open the Green Belt]
+Route: Answer
+
+**LSS-14 · How long does the Green Belt take?**
+People say: how long green belt, hours, duration, time to complete
+Answer: It's self-paced within your 12 months of access. Most of the time goes into applying the tools to your own project.
+Route: Answer
+
+**LSS-15 · Is my project data private?**
+People say: project data private, where stored green belt, patient data project, confidential
+Answer: Yes. Everything runs in your browser, with no server or database holding your project, and you can export your whole portfolio at any time. Never put patient-identifiable data into any tool.
+Route: Answer
+
+**LSS-16 · Do you offer Yellow Belt or Black Belt?**
+People say: yellow belt, black belt, white belt, other belts
+Answer: Not at the moment: we offer the Green Belt for healthcare. Tell us if you'd like another level, and we'll note it.
+Buttons: [Email us]
+Route: Answer + offer email (topic: Green Belt)
+
+**LSS-17 · Can I print tools for my team?**
+People say: print tool, print charter, share with stakeholders, pdf export green belt
+Answer: Yes. Any tool prints cleanly for stakeholders, and you can export your whole portfolio as a file.
+Route: Answer
+
+### C24. Learned from subscription apps: billing and account
+
+**P-15 · Can I buy a plan as a gift?**
+People say: gift, buy for someone, gift subscription, present for friend
+Answer: There isn't a gift checkout yet. Email us with what you'd like to give and we'll help.
+Route: Email (topic: Billing and refunds)
+
+**P-16 · I can't afford it. Is there any help?**
+People say: hardship, scholarship, can't afford, free access, financial help, sponsorship
+Answer: Everything starts free, and Serein is always free. Prices are also lower in many countries. If cost still stops you, tell us your situation: we read every request.
+Buttons: [What's free?] [Email us]
+Route: Answer + offer email (topic: Billing and refunds)
+
+**P-17 · Is there a lifetime plan?**
+People say: lifetime, one time payment crown pass, pay once forever, permanent access
+Answer: No. The Crown Pass is monthly or yearly. The Gulf Pass (1, 3 or 6 months) and the Green Belt (12 months) are paid once and never renew.
+Buttons: [See plans]
+Route: Answer
+
+**P-18 · Why was I charged after my free trial?**
+People say: charged after trial, trial ended charge, didn't cancel trial, unexpected charge trial
+Answer: The trial turns into a paid plan on day 8, and we email a reminder before it does. You're still within your 14 days, so you can use **Cancel and get a refund** on your account page for a full refund.
+Buttons: [Cancel and get a refund] [Email us]
+Route: Answer + offer email (topic: Billing and refunds)
+
+**P-19 · Can I see the price in my currency?**
+People say: price in rupees, pesos, egyptian pounds, naira, local currency, currency
+Answer: Country prices are set in US dollars. At checkout Stripe may also show the amount in your currency, and your bank may add a small conversion fee.
+Buttons: [Is it cheaper in my country?]
+Route: Answer
+
+**P-20 · Can my employer pay for my plan?**
+People say: employer pay, work pays, company card, reimburse, claim expenses
+Answer: Yes. You can pay and claim it back using Stripe's receipt. If your employer wants to pay for several people, ask about team prices and payment by invoice.
+Buttons: [Ask about a team pilot]
+Route: Answer
+
+**P-21 · Is there a pass guarantee or money back if I fail?**
+People say: money back if I fail, pass guarantee refund, refund if I fail the exam, guaranteed pass or refund
+Answer: No. No one can honestly guarantee a pass, so we don't. You do get a full refund if you cancel within 14 days of buying, for any reason.
+Buttons: [Refund policy]
+Route: Answer
+
+**B-13 · Can I cancel during the free trial?**
+People say: cancel trial, stop trial, end trial, cancel before day 7
+Answer: Yes. **Stop renewal** keeps the trial running until it ends and you're never charged. **Cancel and get a refund** ends it straight away, and nothing is taken.
+Buttons: [Stop renewal]
+Route: Answer
+
+**B-14 · Can I pause my subscription?**
+People say: pause subscription, freeze, take a break, hold subscription
+Answer: There's no pause, but you can **stop renewal** and come back any time. Your progress is kept, and the free versions stay open.
+Buttons: [Stop renewal]
+Route: Answer
+
+**B-15 · If I rejoin later, is my progress still there?**
+People say: rejoin, resubscribe, come back later, re-subscribe progress
+Answer: Yes. Your progress is never deleted when a plan ends. Sign in with the same account and it's there.
+Route: Answer
+
+**B-16 · I don't recognise a charge**
+People say: unknown charge, don't recognise payment, what is this charge, strange charge, stripe charge
+Answer: Sorry for the worry. Send us the date, amount and the last four digits of the card (never the full number), and we'll check it and explain or refund it.
+Route: Email (topic: Billing and refunds)
+
+**B-17 · I bought on the wrong account**
+People say: wrong account, wrong email paid, bought on other account, move purchase
+Answer: No problem, we can move it. Email us with both email addresses and your receipt number.
+Route: Email (topic: Billing and refunds)
+
+**A-13 · Can I sign in with Google or Apple?**
+People say: google login, sign in with google, apple login, facebook login, social login
+Answer: Sign-in uses your email and a password. It's one account for all the Crown apps and Evinca.
+Buttons: [Sign in]
+Route: Answer
+
+**A-14 · Can I share my account?**
+People say: share account, share login, use with friend, family account, two people one account
+Answer: Accounts are for one person, because progress and plans are personal. Anyone can create their own free account.
+Route: Answer
+
+**A-15 · Change my name on my account or certificate**
+People say: change name, wrong name, name on certificate, spelling of my name, update name
+Answer: Email us from your account's address with the correct spelling, and we'll update it.
+Route: Email (topic: Account and sign-in)
+
+**A-16 · I have two accounts. Can you merge them?**
+People say: two accounts, merge accounts, duplicate account, combine accounts
+Answer: Yes, email us with both email addresses and tell us which one to keep. Progress stored on your device isn't affected.
+Route: Email (topic: Account and sign-in)
+
+**A-17 · It keeps signing me out**
+People say: keeps logging out, signed out, logged out every time, session expires
+Answer: That usually means cookies are blocked or you're in a private window. Allow cookies for healthcarecrownacademy.co.uk and use a normal window. Signing in normally lasts up to a year.
+Route: Answer + offer email (topic: Account and sign-in)
+
+**A-18 · My confirmation link has expired**
+People say: link expired, confirmation link, verify email, activation link, invalid link
+Answer: Links expire for security. Sign in again or use **Forgotten your password?** to get a fresh link, and use the newest email (check spam too).
+Buttons: [Sign in]
+Route: Answer
+
+**D-08 · Can my employer or university see my progress?**
+People say: employer see progress, university see, manager see, school track me
+Answer: No. We don't share your learning data with anyone, and most of it stays on your own device. If your access comes through an organisation, email us and we'll explain exactly what applies.
+Route: Answer + offer email (topic: Privacy and data)
+
+### C25. Learned from app help centres: technical
+
+**T-07 · The tour video won't play**
+People say: video not playing, tour not working, can't watch tour, video error
+Answer: Check your connection and refresh. Sound starts off, so tap play or turn sound on. If it still won't play, tell us your device and browser.
+Route: Answer + offer email (topic: Something isn't working)
+
+**T-08 · I can't see "Add to Home Screen" on iPhone**
+People say: add to home screen missing, install iphone not working, no install button ios
+Answer: On iPhone or iPad this only works in **Safari**. Open the app's address in Safari, tap **Share** (the square with an arrow), scroll down and choose **Add to Home Screen**.
+Route: Answer
+
+**T-09 · Text is too small**
+People say: text too small, make text bigger, zoom, font size, hard to read
+Answer: The apps follow your device's text size. You can also zoom: **Ctrl +** on Windows, **Cmd +** on Mac, or pinch on a phone.
+Route: Answer
+
+**T-10 · The home page is slow on my device**
+People say: home page slow, laggy, 3d slow, crown slow, page heavy
+Answer: The 3D crown story can be heavy on older devices. Use **Skip the story** to go straight to the content.
+Route: Answer
+
+**T-11 · Will clearing my browser delete my progress?**
+People say: clear cache, clear browser data, clear cookies lose progress, reset browser
+Answer: It can. MedLex, Carecraft, Serein and Lumen keep progress on your device, so clearing site data deletes it. **Back up or export first**, and you can usually clear only the cache instead.
+Route: Answer
+
+**T-12 · Does it work on a work or hospital computer?**
+People say: hospital computer, work pc, nhs computer, blocked at work, firewall
+Answer: Usually yes, in any up-to-date browser. Some work networks block new sites or clear data when you log off, so progress may not stay. A personal device is best for anything you want to keep.
+Route: Answer
+
+### C26. General questions people ask similar platforms
+
+**G-15 · How are you different from UWorld, Archer or Quizlet?**
+People say: compare uworld, better than archer, vs quizlet, alternative, why choose you
+Answer: We cover Gulf licensing exams, medical words, everyday care skills, study tools and well-being in one account, priced for nurses worldwide and free to start. Many learners use us alongside other resources, so try the free versions and judge for yourself.
+Buttons: [Start free]
+Route: Answer
+
+**G-16 · Do you have OET or IELTS preparation?**
+People say: oet, ielts, english exam, language test
+Answer: Not as a course. MedLex builds medical vocabulary and pronunciation, which helps with the healthcare parts of OET and IELTS.
+Buttons: [Open MedLex]
+Route: Answer
+
+**G-17 · Is it useful for doctors, pharmacists or allied health?**
+People say: for doctors, for pharmacists, physiotherapist, allied health, paramedic
+Answer: Yes, partly. MedLex and Lumen suit anyone in healthcare, Carecraft's communication and safety skills apply across roles, and Evinca recognises all professions. The Gulf studio is for nursing exams.
+Route: Answer
+
+**G-18 · Who is behind the Academy?**
+People say: founder, who made this, owner, who runs it, team behind
+Answer: The Academy was founded by Hossam, and it's a UK company: HEALTHCARE CROWN ACADEMY LTD, company number 17501904.
+Buttons: [Check Companies House]
+Route: Answer
+
+**G-19 · Where are you based?**
+People say: where are you located, address, office, country based
+Answer: Our registered office is 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. The easiest way to reach us is by email.
+Route: Answer
+
+**G-20 · Do you have live classes or tutors?**
+People say: live classes, tutor, teacher, one to one, live sessions, webinar
+Answer: No. The apps are self-study, so you can learn at any time. For questions about using them, email us.
+Route: Answer
+
+**G-21 · Does my progress carry between apps?**
+People say: progress between apps, linked progress, one progress, apps connected
+Answer: Each app keeps its own progress. Your account, plan and the optional daily streak work across all of them.
+Route: Answer
+
+**G-22 · How do I hear about new apps and updates?**
+People say: newsletter, updates, news, new features, mailing list
+Answer: Sign up under **News** at the bottom of the home page. We email only when new courses and apps land, and you can unsubscribe at any time.
+Route: Answer
+
+**G-23 · Is this an official NHS or regulator product?**
+People say: official nhs, regulator approved, endorsed, government, scfhs approved
+Answer: No. We're an independent company. Our content isn't endorsed by the NHS or any regulator (including SCFHS, DHP, DHA and DOH).
+Route: Answer
+
+**G-24 · Can I use your content in my teaching?**
+People say: use your content, copy materials, teaching slides, permission to use, copyright
+Answer: Please ask first. Tell us what you'd like to use and how, and we'll reply. For teams and schools, a team pilot may be the simplest route.
+Route: Email (topic: Other)
+
+**G-25 · Can I post your questions on social media?**
+People say: share questions online, post screenshot, social media, whatsapp group questions
+Answer: Please don't post question content: it's protected, and sharing it weakens the bank for everyone. You're welcome to share our free guides and links.
+Buttons: [Open Guides]
+Route: Answer
+
+**Z-06 · Report inappropriate content or misuse**
+People say: report abuse, inappropriate, offensive, misuse, report content
+Answer: Thank you for telling us. Send the details, including where you saw it, and we'll look into it promptly.
+Route: Email (topic: Complaint)
+
+**Z-07 · Do you have a referral or ambassador programme?**
+People say: referral, ambassador, student rep, refer a friend, invite friends, referral program, referral scheme
+Answer: Not yet. If you'd like to represent the Academy at your school or hospital, email us about yourself.
+Route: Email (topic: Partnership or press)
+
+### C27. Learned from clinical-skills e-learning
+
+**C-08 · Can I use Carecraft to train my team?**
+People say: train my team, staff training, huddle teaching, preceptor, practice educator
+Answer: Yes. Lessons, the 60-second scenarios and the toolkit job aids (such as the SBAR handover builder) work well for huddles and preceptorship. For staff accounts, ask about a free 30-day team pilot.
+Buttons: [Ask about a team pilot] [Open Carecraft]
+Route: Answer
+
+**C-09 · What topics does Carecraft cover?**
+People say: carecraft topics, what does carecraft teach, subjects, lessons list
+Answer: Communication, safety, teamwork, escalation and handover, plus empathy, infection prevention and clinical reasoning, across 30 short lessons and 22 practice activities.
+Buttons: [Open Carecraft]
+Route: Answer
+
+**C-10 · Is there a new scenario every day?**
+People say: new scenario every day, daily scenario
+Answer: Yes. **Today** gives you one 60-second scenario a day, free. It's a quick way to keep your skills fresh.
+Buttons: [Open Carecraft]
+Route: Answer
+
+**C-11 · Can I save the visual guides?**
+People say: save infographic, download guide, save image carecraft, print guide
+Answer: Yes. Each lesson's visual guide opens in a reader with a **Save image** option, so you can keep the pages for revision.
+Route: Answer
+
+**C-12 · What evidence are the lessons based on?**
+People say: evidence carecraft, research behind lessons, references, sources
+Answer: Carecraft includes topic-matched research summaries alongside the lessons. Scenarios are fictional, and your local policy always comes first.
+Route: Answer
+
+
+---
+
 ## Part D — Suggested questions per page (chips)
 
 | Where | Chips |
@@ -964,4 +1570,5 @@ Route: Answer (no further engagement)
 | Clinical boundaries | 3 |
 | Business and feedback | 5 |
 | Fallbacks | 4 |
-| **Total** | **141 intents** (about 600 phrasings once each intent's variants are expanded) |
+| Added from market research (Part C+) | 105 |
+| **Total** | **246 intents** |

@@ -62,14 +62,14 @@
   }
 
   /* ---------- matching ---------- */
-  var STOP = ' a an the i me my im i\'m we us our you your it its is are am was were be been do does did can could would will should shall may might to of in on at for from by with and or but if so as this that these those there here what whats how why when where who which please hi hello hey thanks just really very some any get got about into up out not no yes ok okay one guys guy folks without ';
+  var STOP = ' a an the i me my im i\'m we us our you your it its is are am was were be been do does did can could would will should shall may might to of in on at for from by with and or but if so as this that these those there here what whats how why when where who which please hi hello hey thanks just really very some any get got about into up out not no yes ok okay guys guy folks without today ';
   var SYN = {
     pay: 'charge', paid: 'charge', payment: 'charge', payments: 'charge', billed: 'charge', billing: 'charge', charged: 'charge', charges: 'charge', debit: 'charge',
     price: 'price', prices: 'price', pricing: 'price', cost: 'price', costs: 'price', fee: 'price', fees: 'price', much: 'price', expensive: 'price', cheap: 'price', cheaper: 'price', afford: 'price',
     cancel: 'cancel', cancelling: 'cancel', canceling: 'cancel', cancelled: 'cancel', canceled: 'cancel', cancellation: 'cancel', stop: 'cancel',
     refund: 'refund', refunds: 'refund', refunded: 'refund', money: 'refund',
     login: 'login', log: 'login', logon: 'login', signin: 'login', sign: 'login', signed: 'login',
-    password: 'password', pass: 'password', pwd: 'password',
+    password: 'password', pwd: 'password',
     register: 'account', signup: 'account', account: 'account', profile: 'account',
     delete: 'delete', remove: 'delete', erase: 'delete', close: 'delete',
     broken: 'broken', working: 'broken', work: 'broken', works: 'broken', error: 'broken', bug: 'broken', crash: 'broken', crashes: 'broken', blank: 'broken', loading: 'broken', load: 'broken', stuck: 'broken', glitch: 'broken', freeze: 'broken', frozen: 'broken',
@@ -151,7 +151,7 @@
     }).sort(function (a, b) { return b.s - a.s; });
     return scored;
   }
-  var THRESHOLD = 0.46;
+  var THRESHOLD = 0.47;
 
   /* ---------- safety ---------- */
   var CRISIS = /\b(suicid\w*|kill(ing)? (my ?self|me)|end (my life|it all)|self[- ]?harm\w*|hurt(ing)? my ?self|cut(ting)? my ?self|(don'?t|do not) want to (live|be here|wake up)|want(ed)? to die|better off dead|can'?t go on|no reason to live|overdos\w*|take my (own )?life|(he|she|they|someone) (is )?(hurting|abusing|hitting) me|i'?m (not safe|in danger))\b/i;
