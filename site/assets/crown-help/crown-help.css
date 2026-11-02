@@ -102,3 +102,9 @@ html[data-hs-motion="off"] .chp-panel{animation:none}
 .chp-ask button{background:linear-gradient(135deg,#E8C170,#B8862B);color:#10253A}
 .chp-primary{background:linear-gradient(135deg,#1B3A5C,#10253A)}
 .chp-card{box-shadow:0 10px 26px rgba(184,134,43,.12)}
+.chp-card{position:relative}
+.chp-card h3{padding-right:40px}
+.chp-card-x{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:10px;background:transparent;color:var(--chp-muted);cursor:pointer}
+.chp-card-x svg{width:18px;height:18px}
+.chp-card-x:hover{background:var(--chp-chip);color:var(--chp-text)}
+.chp-cancel{min-height:42px;padding:9px 14px;border:0;background:transparent;color:var(--chp-muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}

@@ -179,7 +179,7 @@
   var CROWN = '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M8 41h8.5l4.5-14.5 5.2 11.5L32 20l5.8 18 5.2-11.5 4.5 14.5H56M18 48h28" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21" cy="19.6" r="3" fill="currentColor"/><circle cx="43" cy="19.6" r="3" fill="currentColor"/><circle cx="32" cy="12.6" r="3.4" fill="currentColor"/></svg>';
   function css() {
     if (D.getElementById('crown-help-css')) return;
-    var l = el('link'); l.id = 'crown-help-css'; l.rel = 'stylesheet'; l.href = BASE + 'crown-help.css?v=2'; D.head.appendChild(l);
+    var l = el('link'); l.id = 'crown-help-css'; l.rel = 'stylesheet'; l.href = BASE + 'crown-help.css?v=3'; D.head.appendChild(l);
   }
   function build() {
     if (ui) return ui;
@@ -344,19 +344,26 @@
     if (ui.panel.hidden) open(true);
     var topics = data ? data.topics : ['Other'];
     var id = 'chp-e' + Math.random().toString(36).slice(2, 7);
+    var prev = ui.log.querySelector('.chp-card');
+    if (prev) prev.remove();
     var card = el('form', 'chp-card');
     card.setAttribute('aria-label', 'Email our team');
     card.innerHTML =
+      '<button type="button" class="chp-card-x" aria-label="Close the email form"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>' +
       '<h3>Email our team</h3><p>A person reads every message. We reply ' + REPLY + '.</p>' +
       '<label for="' + id + 't">Topic</label><select id="' + id + 't">' + topics.map(function (t) { return '<option' + (t === topic ? ' selected' : '') + '>' + esc(t) + '</option>'; }).join('') + '</select>' +
       '<label for="' + id + 'm">Your message</label><textarea id="' + id + 'm" rows="4" maxlength="1500"></textarea>' +
       '<label class="chp-check"><input type="checkbox" id="' + id + 'c" checked> Include this conversation</label>' +
-      '<div class="chp-card-actions"><button type="submit" class="chp-primary">Open my email app</button><button type="button" class="chp-copy">Copy our address</button></div>' +
+      '<div class="chp-card-actions"><button type="submit" class="chp-primary">Open my email app</button><button type="button" class="chp-copy">Copy our address</button><button type="button" class="chp-cancel">Cancel</button></div>' +
       '<p class="chp-small">Prefer to write yourself? <a href="mailto:' + EMAIL + '">' + EMAIL + '</a></p>';
     ui.log.appendChild(card);
     var ta = card.querySelector('textarea');
     ta.value = question || '';
     if (!topic) card.querySelector('select').value = 'Other';
+    var dismiss = function () { card.remove(); ui.q.focus(); };
+    card.querySelector('.chp-card-x').addEventListener('click', dismiss);
+    card.querySelector('.chp-cancel').addEventListener('click', dismiss);
+    card.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.stopPropagation(); dismiss(); } });
     card.querySelector('.chp-copy').addEventListener('click', function (e) {
       var b = e.currentTarget;
       (navigator.clipboard ? navigator.clipboard.writeText(EMAIL) : Promise.reject()).then(function () { b.textContent = 'Copied'; }, function () { b.textContent = EMAIL; });
