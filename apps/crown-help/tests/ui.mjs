@@ -15,7 +15,7 @@ for (const [kind, vp] of [['desktop', { width: 1366, height: 860 }], ['phone', {
     const errs = []; p.on('pageerror', e => { if (/crown-help|CrownHelp|chp/.test(String(e.stack))) errs.push(String(e)); });
     await p.goto(`https://localhost:${port}${path}`, { waitUntil: 'load' }); await p.waitForTimeout(2500);
     await p.keyboard.press('Escape').catch(() => {});
-    await p.evaluate(() => document.querySelectorAll('dialog[open]').forEach(d => d.close()));
+    await p.evaluate(() => { document.querySelectorAll('dialog[open]').forEach(d => d.close()); document.querySelectorAll('[aria-modal="true"]').forEach(d => { if (!d.closest('.chp')) d.remove(); }); }); await p.waitForTimeout(900);
     const launch = await p.$('.chp-launch');
     if (!launch) { console.log('NO LAUNCHER', name, kind); problems++; await ctx.close(); continue; }
     // What sits under the launcher? It must be the launcher itself (not covered) and must not cover another control.
@@ -47,12 +47,12 @@ for (const [kind, vp] of [['desktop', { width: 1366, height: 860 }], ['phone', {
   await send('purple elephants dancing'); await send('more purple elephants');
   await p.screenshot({ path: `${OUT}/flows-desktop.png`, fullPage: false });
   const text = await p.$eval('.chp-log', e => e.innerText);
-  const checks = { angryHandover: /pass this straight to a person/.test(text), clinical: /can't give advice about a real patient/.test(text), crisis: /116 123/.test(text) && /999/.test(text), secondMiss: /rather not guess/.test(text), emailCards: (await p.$$('.chp-card')).length >= 2 };
+  const checks = { angryHandover: /pass this straight to a person/.test(text), clinical: /can't give advice about a real patient/.test(text), crisis: /116 123/.test(text) && /999/.test(text), secondMiss: /rather not guess/.test(text), emailCards: (await p.$$('.chp-card')).length === 1 };
   console.log('Flows:', JSON.stringify(checks));
   if (Object.values(checks).includes(false)) problems++;
   const crisisLog = logged.find(l => l && l.p_kind === 'crisis');
   console.log('Crisis log stores no words:', crisisLog && crisisLog.p_query === null);
-  await p.keyboard.press('Escape'); await p.waitForTimeout(200);
+  await p.keyboard.press('Escape'); await p.waitForTimeout(150); await p.keyboard.press('Escape'); await p.waitForTimeout(200);
   const focus = await p.evaluate(() => document.activeElement && document.activeElement.className);
   console.log('Focus after Escape:', focus);
   await ctx.close();

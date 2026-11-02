@@ -163,8 +163,9 @@
 
   /* ---------- state ---------- */
   var data = null, loading = null, ui = null, misses = 0, frustration = 0;
-  var convo = store.get('convo') || []; // [{who:'you'|'help', text}]
-  function remember(who, text) { convo.push({ who: who, text: String(text).slice(0, 600) }); if (convo.length > 40) convo = convo.slice(-40); store.set('convo', convo); }
+  var convo = []; // this chat only, in memory: closing the panel or leaving the page ends it
+  try { sessionStorage.removeItem('crown-help.convo'); } catch (e) {}
+  function remember(who, text) { convo.push({ who: who, text: String(text).slice(0, 600) }); if (convo.length > 40) convo = convo.slice(-40); }
   function load() {
     if (data) return Promise.resolve(data);
     if (!loading) loading = fetch(BASE + 'data.json', { credentials: 'omit' }).then(function (r) { if (!r.ok) throw new Error('load'); return r.json(); })
@@ -179,14 +180,14 @@
   var CROWN = '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M8 41h8.5l4.5-14.5 5.2 11.5L32 20l5.8 18 5.2-11.5 4.5 14.5H56M18 48h28" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21" cy="19.6" r="3" fill="currentColor"/><circle cx="43" cy="19.6" r="3" fill="currentColor"/><circle cx="32" cy="12.6" r="3.4" fill="currentColor"/></svg>';
   function css() {
     if (D.getElementById('crown-help-css')) return;
-    var l = el('link'); l.id = 'crown-help-css'; l.rel = 'stylesheet'; l.href = BASE + 'crown-help.css?v=3'; D.head.appendChild(l);
+    var l = el('link'); l.id = 'crown-help-css'; l.rel = 'stylesheet'; l.href = BASE + 'crown-help.css?v=4'; D.head.appendChild(l);
   }
   function build() {
     if (ui) return ui;
     var root = el('div', 'chp'); root.setAttribute('data-app', APP); root.setAttribute('data-page', PAGE);
     var btn = el('button', 'chp-launch'); btn.type = 'button';
     btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', 'chp-panel');
-    btn.innerHTML = CROWN + '<span>Help</span>';
+    btn.innerHTML = CROWN + '<span>Ask us</span>'; btn.setAttribute('aria-label', 'Ask us: open Crown Help');
     var panel = el('section', 'chp-panel'); panel.id = 'chp-panel'; panel.hidden = true;
     panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'false'); panel.setAttribute('aria-labelledby', 'chp-title');
     panel.innerHTML =
@@ -396,12 +397,16 @@
     ui.panel.hidden = false; ui.btn.setAttribute('aria-expanded', 'true'); ui.root.classList.add('chp-open');
     if (!ui.started) {
       ui.started = true;
-      if (convo.length) {
-        convo.forEach(function (c) { var m = el('div', 'chp-msg ' + (c.who === 'you' ? 'chp-you' : 'chp-bot')); m.textContent = c.text; ui.log.appendChild(m); });
-        var note = el('p', 'chp-related', 'Earlier in this visit'); ui.log.insertBefore(note, ui.log.firstChild);
-      }
       var g = el('div', 'chp-msg chp-bot'); g.textContent = GREETING; ui.log.appendChild(g);
-      load().then(function (d) { if (!silent) actions((d.chips[PAGE] || d.chips.home).map(function (c) { return { label: c, ask: c }; })); })
+      var slot = el('div', 'chp-actions'); ui.log.appendChild(slot);
+      load().then(function (d) {
+        if (silent) { slot.remove(); return; }
+        (d.chips[PAGE] || d.chips.home).forEach(function (c) {
+          var x = el('button', 'chp-chip', c); x.type = 'button';
+          x.addEventListener('click', function () { ask(c); });
+          slot.appendChild(x);
+        });
+      })
         .catch(function () {});
     }
     if (!silent) setTimeout(function () { ui.q.focus(); }, 30);
@@ -410,10 +415,21 @@
   function close() {
     if (!ui) return;
     ui.panel.hidden = true; ui.btn.setAttribute('aria-expanded', 'false'); ui.root.classList.remove('chp-open');
+    // Closing ends the chat: next time it opens fresh, like a new conversation.
+    ui.log.textContent = ''; ui.started = false; convo = []; misses = 0; frustration = 0; ui.q.value = '';
     (lastFocus && lastFocus.focus ? lastFocus : ui.btn).focus();
   }
 
-  function init() { css(); build(); if (/[?#&]help\b/.test(location.search + location.hash)) open(); }
+  function busy() {
+    if (D.fullscreenElement) return true;
+    var m = D.querySelectorAll('dialog[open], [aria-modal="true"], .hs-studio, .hcs-studio, #player:not([hidden]), .player.is-open');
+    for (var i = 0; i < m.length; i++) { if (!ui.root.contains(m[i]) && m[i].getClientRects().length) return true; }
+    return false;
+  }
+  function watch() {
+    setInterval(function () { if (!ui) return; var b = busy() && ui.panel.hidden; ui.root.classList.toggle('chp-away', b); }, 700);
+  }
+  function init() { css(); build(); watch(); if (/[?#&]help\b/.test(location.search + location.hash)) open(); }
   window.CrownHelp = { open: function (q) { open(); if (q) ask(q); }, close: close, _match: function (q) { return load().then(function () { var r = match(q); return r.slice(0, 3).map(function (x, i) { return [x.it.id, +x.s.toFixed(3), i === 0 && (x.exact || x.s >= 1.1)]; }); }); }, _crisis: function (q) { return CRISIS.test(q); }, _clinical: function (q) { return CLINICAL.test(q) && !LEARNING.test(q); } };
   if (D.readyState === 'loading') D.addEventListener('DOMContentLoaded', init); else init();
 })();
