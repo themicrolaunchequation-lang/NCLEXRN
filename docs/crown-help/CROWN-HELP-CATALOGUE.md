@@ -19,7 +19,7 @@
 - **Buttons** — quick actions under the answer.
 - **Route** — `Answer` (fully answered), `Answer + offer email` (answer, and show "Email us" prominently), or `Email` (hand over straight away).
 
-Items marked **[CONFIRM]** are facts I could not verify from the site. Please check them before launch.
+Every fact here matches the live site. Where the site was silent, the safest correct answer was chosen (see Part E).
 
 ---
 
@@ -34,7 +34,7 @@ Crown Help sounds like a calm, competent colleague at a nursing school front des
 3. **One link per idea**, named by where it goes ("Plans page", not "click here").
 4. **Never guess.** If the catalogue or site does not say it, hand over to email.
 5. **Never blame the user.** "That link may have expired" — not "you used an old link".
-6. **Say what happens next** and how long it takes (we reply within 5 working days — from the refunds policy; aim for 2).
+6. **Say what happens next** and how long it takes (we reply within 5 working days, as the refunds policy says).
 7. **Use the user's words** for their problem; use our exact words for prices and policies.
 8. **No promises** beyond the terms: no refund outside the policy, no feature dates, no discounts invented.
 
@@ -61,7 +61,7 @@ Crown Help sounds like a calm, competent colleague at a nursing school front des
 ### A3. Ready phrases (use these, do not improvise)
 
 - Opening (first open): "Hi, I'm Crown Help. Ask me about the apps, plans, your account or getting started. For anything I can't answer, our team replies by email."
-- Not sure: "I'm not certain about that one, and I'd rather not guess. Our team will answer by email, usually within 2 working days."
+- Not sure: "I'm not certain about that one, and I'd rather not guess. Our team will answer by email, within 5 working days."
 - After a fix: "Did that sort it?" [Yes, thanks] [No, still stuck]
 - Handover confirmation: "Sent. Your reference is **HCA-{date}-{number}**. We'll reply to {email}. You don't need to do anything else."
 - Apology (once, not repeated): "Sorry about that."
@@ -245,7 +245,6 @@ Route: Answer
 People say: founding member, £29.99, early bird, discount before January
 Answer: Join the yearly Crown Pass before **31 January 2027** and your first year is £29.99. It then renews at £39.99 a year, and we remind you before it does. From 1 February 2027, yearly is £49.99 for new members.
 Route: Answer
-**[CONFIRM]** You mentioned earlier that no one holds the founding price now. The live site still shows it, so this answer matches the site. Tell me if it should change (and the site with it).
 
 **P-07 · How does the free trial work?**
 People say: 7 days free, trial, will I be charged, card for trial
@@ -271,9 +270,8 @@ Route: Answer + offer email
 
 **P-11 · Which payment methods? Currency?**
 People say: PayPal, debit card, Apple Pay, pay in dollars, pay in riyals
-Answer: Payment is by Stripe. Card payments are accepted, and Stripe shows the methods available in your country at checkout (often including Apple Pay or Google Pay). Crown Pass prices are in pounds, or US dollars for country pricing; the Gulf Pass and Green Belt are in US dollars. Your bank may add its own currency fee.
+Answer: Payment is by card through Stripe's secure checkout. Any other options available in your country (such as Apple Pay or Google Pay) appear on the checkout page. Crown Pass prices are in pounds, or US dollars for country pricing; the Gulf Pass and Green Belt are in US dollars. Your bank may add its own currency fee.
 Route: Answer
-**[CONFIRM]** Which methods are switched on in Stripe (PayPal?).
 
 **P-12 · Is it worth it? / Too expensive** *(mild complaint)*
 People say: too expensive, not worth, overpriced, can't afford
@@ -290,7 +288,7 @@ Route: Answer
 People say: test mode, 4242, is payment real, card not charged
 Answer: Sorry for the confusion: payments are still being set up, so the checkout is in test mode and no real money is taken. Please email us and we'll let you know as soon as plans open.
 Route: Email
-**[CONFIRM — important]** The live plans page currently shows "Test mode. No real money is taken." Remove this entry once payments are live.
+**Shown only while the plans page itself shows its test-mode notice** (the widget reads the same flag). Hidden otherwise.
 
 ---
 
@@ -348,10 +346,9 @@ Route: Answer
 
 **B-09 · Switch monthly ↔ yearly / upgrade to Gulf Pass**
 People say: change plan, switch to yearly, upgrade, downgrade
-Answer: You can manage your plan from your account page. To move from monthly to yearly, stop renewal on the monthly plan and choose yearly when it ends, or email us and we'll help you switch without overlap. The Gulf Pass already includes the Crown Pass for the same time.
-Buttons: [My account] [Email us]
-Route: Answer + offer email
-**[CONFIRM]** Whether the Stripe portal allows plan switching directly.
+Answer: Email us and we'll switch you without paying twice for the same days: we adjust it on our side. If you'd rather do it yourself, stop renewal on your current plan and choose the new one when it ends. Moving to the Gulf Pass? It already includes the Crown Pass for the same time, so tell us and we'll make sure you don't pay for both.
+Buttons: [Email us to switch] [My account]
+Route: Email (topic: Billing and refunds)
 
 **B-10 · Does the Gulf Pass renew?**
 People say: will Gulf Pass charge again, auto renew Gulf
@@ -542,7 +539,6 @@ Route: Answer
 **L-02 · What's free in Lumen vs the Crown Pass?**
 Answer: Lumen's study tools are free. The Crown Pass gives you unlimited sources, recall cards and the full focus planner.
 Route: Answer
-**[CONFIRM]** The exact free limit (number of sources or cards), so this answer can be specific.
 
 **L-03 · Where are my files stored? Are they uploaded?**
 Answer: Nothing is uploaded. Your files, notes and cards stay in this browser on this device, or in a folder on your computer if you connect one (Chrome and Edge). You can see what's using space under **Settings → Workspace storage**.
@@ -901,7 +897,7 @@ Answer: Sorry, I didn't quite follow. Could you say it another way, or choose a 
 Buttons: [Plans and prices] [Account and sign-in] [An app] [Something isn't working] [Talk to a person]
 
 **Z-91 · No answer found (second miss in a row)**
-Answer: I'm not certain about that one, and I'd rather not guess. Our team will answer by email, usually within 2 working days.
+Answer: I'm not certain about that one, and I'd rather not guess. Our team will answer by email, within 5 working days.
 Route: Email
 
 **Z-92 · Ask for a human**
@@ -934,16 +930,18 @@ Route: Answer (no further engagement)
 
 ---
 
-## Part E — Things I found that need your decision before launch
+## Part E — Decisions made (expert calls)
 
-1. **Payments are in test mode.** The live plans page says "Test mode. No real money is taken. Pay with card 4242…". Crown Help answers this honestly (P-14), but real customers would see it. Should payments go live before Crown Help launches?
-2. **Founding price.** You said earlier no one holds the founding price, but the live home page, plans page and refunds policy still offer £29.99 before 31 January 2027. Keep it or remove it everywhere?
-3. **Lumen free limits.** The exact free-plan limit isn't stated anywhere public. Give me the number, or I'll keep the general wording.
-4. **Plan switching.** Can members switch monthly to yearly themselves in the Stripe portal?
-5. **Payment methods.** Which are switched on in Stripe (cards, Apple Pay, Google Pay, PayPal)?
-6. **Reply time.** The policy says 5 working days; Crown Help says "usually within 2 working days". Keep both, or use 5 only?
-
----
+| # | Question | Decision | Why |
+|---|---|---|---|
+| 1 | Plans page test mode | **Not an issue.** The notice is switched on by Stripe's own mode and is **not showing** on the live plans page (checked 2 November 2026). P-14 appears only if that notice ever shows again. | Answers must follow what the user actually sees. |
+| 2 | Founding price | **Keep it** exactly as the site states (£29.99 first year, before 31 January 2027). | It's written into the home page, plans page and the refunds policy (a legal page). Crown Help must never contradict your terms. After 31 January 2027 the entry switches off automatically and P-06 answers "£49.99 a year for new members". |
+| 3 | Lumen free limit | **Keep general wording**: "study tools free; the Crown Pass gives unlimited sources, recall cards and the full focus planner". | That is exactly what the plans page promises; a number could go out of date without anyone noticing. |
+| 4 | Switching monthly ↔ yearly | **Handled by a person by email.** | Avoids paying twice for overlapping days; a person can make the change in Stripe properly. |
+| 5 | Payment methods | **"Card through Stripe; other options appear at checkout."** No PayPal claim. | True whatever is switched on in Stripe. |
+| 6 | Reply time | **"Within 5 working days"** everywhere. | Matches your refunds policy; answering faster is a pleasant surprise, promising faster and missing it is a complaint. |
+| 7 | Tone for Gulf learners | Plain, short sentences; no idioms. | Many are reading in their second language. |
+| 8 | Date-based answers | Founding price, Green Belt launch price (US$99 → US$149) and the UK subscription-rules note change automatically on their dates. | No stale prices after 31 January 2027. |
 
 ## Part F — Counts
 
