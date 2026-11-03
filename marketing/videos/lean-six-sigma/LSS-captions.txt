@@ -1,0 +1,54 @@
+LEAN SIX SIGMA — VIDEO COPY (UK English) · Healthcare Crown Academy
+Main link: https://lss.healthcarecrownacademy.co.uk
+Numbers in the posters are fictional teaching examples. Personas are samples.
+
+============================================================
+VIDEO A — Process Capability: Cp and Cpk (3:39)
+Files: LSS-Process-Capability-Cp-Cpk-landscape-16x9.mp4 / -portrait-9x16.mp4
+On-screen hook: "Stable. ✓ … but out of spec?"
+
+YouTube title: Cp vs Cpk explained: process capability for healthcare (garage analogy)
+YouTube description:
+Your process is stable, so why are results still outside specification? Cp and Cpk answer it.
+In this video: the car-in-the-garage analogy, the Cp and Cpk formulas, a 3D view of a centred process (LSL 0, USL 12, mean 6, σ 1: Cp 2.00, Cpk 2.00) and what happens when the mean moves to 9 (Cp 2.00, Cpk 1.00), the "move it, tighten it, or change the limits?" decision, a live capability histogram (Cp 1.54, Cpk 1.49), the common 1.33 minimum, and where Cp/Cpk came from (Juran, Kane 1986).
+Try it: https://lss.healthcarecrownacademy.co.uk/?ref=cpcpk-youtube
+Hashtags: #LeanSixSigma #ProcessCapability #Cpk #QualityImprovement #HealthcareQuality
+Tags: Cp vs Cpk, process capability, Cpk explained, Lean Six Sigma Green Belt, healthcare quality improvement, statistical process control, Six Sigma healthcare
+
+Shorts / TikTok / Reels caption:
+Stable is not the same as capable. Cp asks "could it fit?" Cpk asks "does it fit where it is?" 🚗 👉 lss.healthcarecrownacademy.co.uk/?ref=cpcpk-shorts
+#leansixsigma #qualityimprovement #nursing
+
+LinkedIn post:
+A process can sit inside its control limits and still fail its specification.
+Cp compares the size of the garage with the spread of parking positions. Cpk asks whether the car is parked in the middle. Same spread, mean moved from 6 to 9: Cp stays 2.00, Cpk falls to 1.00.
+The Lean Six Sigma toolkit's Process Capability Studio teaches it with posters, a 3D view and a live histogram:
+https://lss.healthcarecrownacademy.co.uk/?ref=cpcpk-linkedin
+
+Telegram / Facebook:
+Cp or Cpk? Learn it in 3 minutes with one picture: a car in a garage 🚗📊
+👉 https://lss.healthcarecrownacademy.co.uk/?ref=cpcpk-telegram   (ref=cpcpk-facebook on Facebook)
+
+============================================================
+VIDEO B — Swimlane Process Map (1:03)
+Files: LSS-Swimlane-Process-Map-landscape-16x9.mp4 / -portrait-9x16.mp4
+On-screen hook: "Collected fast. Result… where?"
+
+YouTube title: Swimlane process map in healthcare: see who does what and where work waits
+YouTube description:
+A blood sample is collected in minutes, so where does the time go? A swimlane map shows who does what and where work waits: patient, collection staff, transport and laboratory, every handoff, the waiting queue and the "identifiers complete?" decision loop. From the Lean Six Sigma toolkit's Swimlane Studio.
+Try it: https://lss.healthcarecrownacademy.co.uk/?ref=swimlane-youtube
+Hashtags: #LeanSixSigma #SwimlaneDiagram #ProcessMapping #PatientFlow #QualityImprovement
+Tags: swimlane process map, swimlane diagram healthcare, process mapping, patient flow, Lean healthcare, SIPOC vs swimlane vs VSM
+
+Shorts / TikTok / Reels caption:
+Fix the handoff, not the people. Map the work, see the wait 🏊 👉 lss.healthcarecrownacademy.co.uk/?ref=swimlane-shorts
+#leanhealthcare #qualityimprovement
+
+LinkedIn post:
+Everyone did their part, so why is the result late? A swimlane map shows the gaps between roles, like a specimen waiting at lab receiving. Not anyone's fault; just a handoff nobody owns.
+https://lss.healthcarecrownacademy.co.uk/?ref=swimlane-linkedin
+
+Telegram / Facebook:
+Map the work. See the wait. 🧪➡️🚚➡️🔬
+👉 https://lss.healthcarecrownacademy.co.uk/?ref=swimlane-telegram   (ref=swimlane-facebook on Facebook)

@@ -1,0 +1,80 @@
+[
+ {
+  "id": "hook",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "A blood sample is collected in minutes. So why does the result take so long? Where does the time go?"
+ },
+ {
+  "id": "mgr1",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 1.0,
+  "post": 0.4,
+  "text": "Everyone says they did their part. Nobody can see the gaps."
+ },
+ {
+  "id": "reveal",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "Draw a swimlane map. Show who does what, and where work waits."
+ },
+ {
+  "id": "lanes",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "post": 0.6,
+  "text": "One lane per role. Patient, collection staff, transport, laboratory. Follow the specimen across every handoff."
+ },
+ {
+  "id": "wait",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "post": 0.7,
+  "text": "And there it is. The waiting queue at lab receiving. Not anyone's fault. Just a gap between two lanes."
+ },
+ {
+  "id": "decide",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "pre": 0.2,
+  "post": 0.6,
+  "text": "Identifiers complete? Yes, testing starts. No, and the specimen goes back. Every loop shows up on the map."
+ },
+ {
+  "id": "studio",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "pre": 0.2,
+  "post": 0.6,
+  "text": "And the Studio goes further: SIPOC versus swimlane versus value stream map, plus a poster on waste and delay points."
+ },
+ {
+  "id": "mgr2",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.4,
+  "text": "So we fix the handoff, not the people."
+ },
+ {
+  "id": "cta",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "pre": 0.4,
+  "post": 1.7,
+  "text": "Map the work. See the wait. Try it free today, at Lean Six Sigma dot Healthcare Crown Academy dot co dot uk."
+ }
+]
