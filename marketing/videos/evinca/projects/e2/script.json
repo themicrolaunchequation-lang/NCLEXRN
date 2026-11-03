@@ -1,0 +1,20 @@
+[
+ {"id":"hook","voice":"bm_george","lang":"en-gb","speed":0.98,"pre":0.35,"post":0.5,"text":"Anyone can write award winner on a CV. So how would you ever check?"},
+ {"id":"mgr1","voice":"af_heart","lang":"en-us","speed":0.97,"post":0.5,"text":"I see healthcare awards on CVs every week. Most of them, I can't verify. So I ignore them."},
+ {"id":"reveal","voice":"bm_george","lang":"en-gb","speed":0.98,"pre":0.4,"post":0.5,"text":"Evinca was built for that exact problem. Every honour links to a live public record. No login needed. Start with the Honorees Register."},
+ {"id":"register","voice":"bm_george","lang":"en-gb","speed":0.97,"post":0.5,"text":"Search by name, country or category. And notice the honesty: it says plainly that this is a publisher's record, not a licence to practise. Every profile here is a labelled, illustrative example."},
+ {"id":"search","voice":"bm_george","lang":"en-gb","speed":0.97,"post":0.6,"text":"Let's type a name. Amina Rahman. A midwife and unit quality lead, in Amman, Jordan."},
+ {"id":"profile","voice":"bm_george","lang":"en-gb","speed":0.97,"post":0.6,"text":"Her profile shows the approved summary. A structured handover that cut missed escalation signals on a maternity unit. Then, open the proof page."},
+ {"id":"proof","voice":"bm_george","lang":"en-gb","speed":0.97,"pre":0.3,"post":0.6,"text":"Here is the public proof. Current status: active. This honour is current and valid."},
+ {"id":"record","voice":"bm_george","lang":"en-gb","speed":0.96,"post":0.6,"text":"The record ID, the category, the date it was issued, the decision pathway, and the reviewers' roles. Even the rubric is named, and openly labelled as a pilot, unvalidated."},
+ {"id":"passport","voice":"bm_george","lang":"en-gb","speed":0.96,"post":0.7,"text":"Then the Evidence Passport. What was measured. The baseline. Who verified it. The caveats: a single site, and staffing also changed. And what stays private: raw audit sheets with patient identifiers are withheld."},
+ {"id":"mgr2","voice":"af_heart","lang":"en-us","speed":0.98,"pre":0.3,"post":0.5,"text":"Wait. It actually tells me the limits of the evidence?"},
+ {"id":"cert","voice":"bm_george","lang":"en-gb","speed":0.97,"pre":0.3,"post":0.7,"text":"And yes, there is a certificate. A record number, a fingerprint, and a QR code that opens this exact page. Shown here as a sample."},
+ {"id":"verify","voice":"bm_george","lang":"en-gb","speed":0.97,"pre":0.4,"post":0.5,"text":"Got a certificate in front of you? Go to Verify, and type the record ID."},
+ {"id":"typed","voice":"bm_george","lang":"en-gb","speed":0.96,"post":0.7,"text":"E V N, demo, P 8 W D. Find record."},
+ {"id":"corrected","voice":"bm_george","lang":"en-gb","speed":0.97,"post":0.7,"text":"David Chen. Status: corrected. The record was corrected, the honour remains valid, and the history stays visible. Even corrections happen in public."},
+ {"id":"method","voice":"bm_george","lang":"en-gb","speed":0.97,"pre":0.4,"post":0.6,"text":"And the method is published before the recognition. Four steps, held in public. Automatic evidence checks first, then a named reviewer decides. Conflicts, borderline scores and appeals go to an external reviewer."},
+ {"id":"rubric","voice":"bm_george","lang":"en-gb","speed":0.97,"post":0.6,"text":"Even the scoring weights are on the page. Twenty five points for evidence quality. Every decision made by a person, never by software."},
+ {"id":"mgr3","voice":"af_heart","lang":"en-us","speed":1.0,"pre":0.2,"post":0.5,"text":"Okay. That's an award I can actually check."},
+ {"id":"cta","voice":"bm_george","lang":"en-gb","speed":0.96,"pre":0.5,"post":1.7,"text":"Recognition you can verify. Impact you can understand. Start free today, at Evinca dot Healthcare Crown Academy dot co dot uk."}
+]

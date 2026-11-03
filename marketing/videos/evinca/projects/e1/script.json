@@ -1,0 +1,21 @@
+[
+ {"id":"hook","voice":"bf_emma","lang":"en-gb","speed":0.98,"pre":0.35,"post":0.5,"text":"Somebody made care better today. Did anyone write it down?"},
+ {"id":"nurse1","voice":"af_sarah","lang":"en-us","speed":0.97,"post":0.5,"text":"I rewrote our handover checklist. Everyone uses it now. But it's not like anyone would call that an award."},
+ {"id":"reveal","voice":"bf_emma","lang":"en-gb","speed":0.98,"pre":0.4,"post":0.5,"text":"This is Evinca. An independent healthcare publication, and an honours programme judged on evidence, for nurses, midwives, doctors, pharmacists and leaders, worldwide."},
+ {"id":"comein","voice":"bf_emma","lang":"en-gb","speed":0.97,"post":0.6,"text":"Every story of better care has someone who did the work, someone who noticed, and someone who was cared for. So, where do you come in?"},
+ {"id":"cards","voice":"bf_emma","lang":"en-gb","speed":0.97,"post":0.7,"text":"Made something better? Tell your story. Saw someone do it? Nominate them. Were you cared for? Say thank you. Lead a team? Recognise your staff."},
+ {"id":"nominate","voice":"bm_daniel","lang":"en-gb","speed":0.97,"pre":0.4,"post":0.6,"text":"Some people will never put themselves forward. So I nominated her. It's free, it takes about five minutes, and they won't say it was me unless I want them to."},
+ {"id":"thank","voice":"am_michael","lang":"en-us","speed":0.95,"pre":0.4,"post":0.7,"text":"And to the night nurse on Ward four. You held my hand when I was scared. Now my thank-you reaches you, through the hospital."},
+ {"id":"apply","voice":"bf_emma","lang":"en-gb","speed":0.97,"pre":0.4,"post":0.6,"text":"But most people underestimate their own work. So Evinca has a free check. Two minutes, no account, nothing submitted and nothing scored."},
+ {"id":"prompts","voice":"bf_emma","lang":"en-gb","speed":0.97,"post":0.6,"text":"Have you ever rewritten a handover? Caught an error before it reached a patient? Made a process safer, and can show the before and after? If you nodded at even one, you probably have a story."},
+ {"id":"case1","voice":"bf_emma","lang":"en-gb","speed":0.96,"pre":0.4,"post":0.5,"text":"Case one. A ward nurse in the United Kingdom. Patient safety and quality."},
+ {"id":"case1q","voice":"bf_emma","lang":"en-gb","speed":0.95,"post":0.6,"text":"Can she describe the problem, what she did, and what changed? Yes. Evidence of change, with no patient-identifying data? Yes. Someone independent to confirm it? Yes."},
+ {"id":"case1r","voice":"bf_emma","lang":"en-gb","speed":0.97,"post":0.8,"text":"Your evidence looks ready to shape. Honest, too. It tells her plainly: this does not predict selection."},
+ {"id":"case2","voice":"bf_emma","lang":"en-gb","speed":0.96,"pre":0.4,"post":0.5,"text":"Case two. A clinical educator in Saudi Arabia. Healthcare education."},
+ {"id":"case2q","voice":"bf_emma","lang":"en-gb","speed":0.95,"post":0.6,"text":"A clear story? Yes. A baseline and a result? Not yet. Someone to confirm it? Yes."},
+ {"id":"case2r","voice":"bf_emma","lang":"en-gb","speed":0.97,"post":0.8,"text":"Worth strengthening first. Not a rejection. It points to the one missing piece, and suggests a free Spotlight Story to start with today."},
+ {"id":"spot","voice":"bf_emma","lang":"en-gb","speed":0.97,"pre":0.3,"post":0.6,"text":"Your story saves as you go, stays private until you choose to submit it, and you add to it as your results come in."},
+ {"id":"marks","voice":"bf_emma","lang":"en-gb","speed":0.97,"pre":0.3,"post":0.6,"text":"When you're ready, there are four marks. Spotlight each month, Distinction each quarter, Honour each year, and Laureate for the very few. One verified record behind each."},
+ {"id":"nurse2","voice":"af_sarah","lang":"en-us","speed":1.0,"pre":0.2,"post":0.5,"text":"Okay. Maybe my checklist is a story after all."},
+ {"id":"cta","voice":"bf_emma","lang":"en-gb","speed":0.96,"pre":0.5,"post":1.7,"text":"Your work already made a difference. Let Evinca make it visible. Start free today, at Evinca dot Healthcare Crown Academy dot co dot uk."}
+]
