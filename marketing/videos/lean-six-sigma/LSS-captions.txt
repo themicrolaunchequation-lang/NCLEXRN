@@ -3,7 +3,7 @@ Main link: https://lss.healthcarecrownacademy.co.uk
 Numbers in the posters are fictional teaching examples. Personas are samples.
 
 ============================================================
-VIDEO A — Process Capability: Cp and Cpk (3:39)
+VIDEO A — Process Capability: Cp and Cpk (3:37)
 Files: LSS-Process-Capability-Cp-Cpk-landscape-16x9.mp4 / -portrait-9x16.mp4
 On-screen hook: "Stable. ✓ … but out of spec?"
 
