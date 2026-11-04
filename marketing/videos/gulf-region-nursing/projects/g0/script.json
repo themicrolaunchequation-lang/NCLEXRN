@@ -1,0 +1,12 @@
+[
+ {"id":"hook","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"post":0.4,"text":"Four Gulf licensing exams. One studio."},
+ {"id":"rn1","voice":"af_sarah","lang":"en-us","speed":1.0,"post":0.4,"text":"I'm moving to the Gulf, and I don't know where to start."},
+ {"id":"reveal","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"post":0.5,"text":"Gulf Region Nursing. Saudi Arabia, Qatar, Dubai and Abu Dhabi, each with its own exam card, daily pace and readiness map."},
+ {"id":"qbank","voice":"bm_lewis","lang":"en-gb","speed":0.98,"pre":0.2,"post":0.6,"text":"Answer a question, and see why the safest choice wins. With the reasoning, a clinical pearl, and the trap to avoid."},
+ {"id":"tools","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.2,"post":0.5,"text":"Sixty seven clinical decision tools, like BE-FAST for stroke, each with a poster and coached practice."},
+ {"id":"more","voice":"bm_lewis","lang":"en-gb","speed":1.0,"post":0.5,"text":"Thirty five specialty dossiers. Timed mock exams. And a bilingual glossary, in English and Arabic."},
+ {"id":"compare","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"post":2.4,"text":"So it's not just a question bank."},
+ {"id":"pass","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"post":0.5,"text":"The Gulf Pass covers all four exams, and includes MedLex, Carecraft and Lumen. And Serein is free for everyone."},
+ {"id":"rn2","voice":"af_sarah","lang":"en-us","speed":1.0,"pre":0.2,"post":0.4,"text":"Now I know exactly where to start."},
+ {"id":"cta","voice":"bm_lewis","lang":"en-gb","speed":0.98,"pre":0.4,"post":1.7,"text":"Pass with reasoning, not memory. Start free today, at S N L E dot Healthcare Crown Academy dot co dot uk."}
+]

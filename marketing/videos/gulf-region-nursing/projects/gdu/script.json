@@ -1,0 +1,64 @@
+[
+ {
+  "id": "hook",
+  "voice": "bm_george",
+  "text": "Dubai D H A. One hundred and fifty questions. Three hours. Are you ready?",
+  "pre": 0.3,
+  "post": 0.5,
+  "speed": 1.0,
+  "lang": "en-gb"
+ },
+ {
+  "id": "rn1",
+  "voice": "af_nicole",
+  "text": "I have my exam date. Where do I begin?",
+  "post": 0.4,
+  "speed": 1.0,
+  "lang": "en-us"
+ },
+ {
+  "id": "reveal",
+  "voice": "bm_george",
+  "text": "Gulf Region Nursing, Dubai edition. Set your exam date, and the studio suggests a daily pace.",
+  "pre": 0.3,
+  "post": 0.4,
+  "speed": 1.0,
+  "lang": "en-gb"
+ },
+ {
+  "id": "run",
+  "voice": "bm_george",
+  "speed": 0.98,
+  "text": "Reasoning on every question. Timed mocks. Decision tools, like BE-FAST. Clinical dossiers. A bilingual glossary. And a readiness map that shows what to practise next.",
+  "pre": 0.2,
+  "post": 0.5,
+  "lang": "en-gb"
+ },
+ {
+  "id": "compare",
+  "voice": "bm_george",
+  "text": "Not just a question bank.",
+  "pre": 0.3,
+  "post": 2.3,
+  "speed": 1.0,
+  "lang": "en-gb"
+ },
+ {
+  "id": "pass",
+  "voice": "bm_george",
+  "text": "The Gulf Pass includes MedLex, Carecraft and Lumen. And Serein is free.",
+  "pre": 0.2,
+  "post": 0.4,
+  "speed": 1.0,
+  "lang": "en-gb"
+ },
+ {
+  "id": "cta",
+  "voice": "bm_george",
+  "speed": 0.98,
+  "text": "D H A R N preparation, built for Dubai. Start free today, at S N L E dot Healthcare Crown Academy dot co dot uk.",
+  "pre": 0.4,
+  "post": 1.7,
+  "lang": "en-gb"
+ }
+]
