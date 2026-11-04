@@ -2,14 +2,14 @@
 # Same outputs as vo.py: <proj>/vo/<id>.wav (silence trimmed) and <proj>/vo/durations.json. Lines may carry "style" (an accent/delivery prompt).
 import json,sys,os,base64,urllib.request,numpy as np,soundfile as sf,time
 d=sys.argv[1]; KEY=os.environ.get('GEMINI_API_KEY') or os.environ.get('GOOGLE_API_KEY')
-if not KEY: sys.exit('GEMINI_API_KEY is not set')
+# No key in the environment: the session's network secret adds the x-goog-api-key header for us.
 M=os.environ.get('GEMINI_TTS_MODEL','gemini-2.5-flash-preview-tts'); os.makedirs(f'{d}/vo',exist_ok=True); out={}
 for x in json.load(open(f'{d}/script.json')):
   txt=(x.get('style','')+': ' if x.get('style') else '')+x['text']
   body={'contents':[{'parts':[{'text':txt}]}],'generationConfig':{'responseModalities':['AUDIO'],'speechConfig':{'voiceConfig':{'prebuiltVoiceConfig':{'voiceName':x['voice']}}}}}
   for a in range(4):
     try:
-      r=urllib.request.urlopen(urllib.request.Request(f'https://generativelanguage.googleapis.com/v1beta/models/{M}:generateContent',data=json.dumps(body).encode(),headers={'Content-Type':'application/json','x-goog-api-key':KEY}),timeout=120); break
+      r=urllib.request.urlopen(urllib.request.Request(f'https://generativelanguage.googleapis.com/v1beta/models/{M}:generateContent',data=json.dumps(body).encode(),headers=dict({'Content-Type':'application/json'},**({'x-goog-api-key':KEY} if KEY else {}))),timeout=120); break
     except Exception as e:
       if a==3: raise
       time.sleep(2**(a+1))
