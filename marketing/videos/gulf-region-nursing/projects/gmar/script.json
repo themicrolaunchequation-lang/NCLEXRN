@@ -1,0 +1,242 @@
+[
+ {
+  "id": "hook",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.5,
+  "text": "السعودية. قطر. دبي. أبوظبي. اختبارُ ترخيصٍ واحد يقف بينكم وبين مسيرتكم التمريضية في الخليج. وعدد المحاولات محدود."
+ },
+ {
+  "id": "rn1",
+  "voice": "Leda",
+  "style": "nurse from the Gulf speaking naturally and emotionally, Gulf Arabic accent",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.5,
+  "text": "حفظتُ مئات الأسئلة. ثم جاء الاختبار الحقيقي بصيغةٍ مختلفة، فتجمّدت."
+ },
+ {
+  "id": "pain",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "مناوباتٌ ليلية. بلدٌ جديد. اختبارٌ مصيري بلغةٍ ليست لغتكم الأولى. ومعظم بنوك الأسئلة لا تقول لكم إلا شيئًا واحدًا: صح، أو خطأ. وحفظُ الإجابات هو أغلى طريقةٍ للاستعداد، لأن الاختبار الحقيقي لن يسألكم بالصيغة التي حفظتموها."
+ },
+ {
+  "id": "reveal",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.5,
+  "text": "تعرّفوا على تمريض منطقة الخليج. مصمَّم للممرضين والممرضات المتقدّمين لاختبارات السعودية وقطر ودبي وأبوظبي. أربعة اختبارات. استوديو واحد. خطة واحدة."
+ },
+ {
+  "id": "today",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.6,
+  "text": "اختاروا اختباركم، وشاهدوا بالضبط ما ينتظركم: عدد الأسئلة، والمدة، ودرجة النجاح، وعدد المحاولات. أضيفوا موعد الاختبار، ويقترح عليكم الاستوديو وتيرةً يومية."
+ },
+ {
+  "id": "guide",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "لكل اختبارٍ دليلُه الخاص، مبنيٌّ على منشورات الجهة المنظِّمة نفسها. فمثلًا في الاختبار السعودي: جزآن من مئة سؤال، ودرجةٌ موزونة من مئتين إلى ثمانمئة، ومخطّطٌ منشور تتبعه مجموعات التدريب."
+ },
+ {
+  "id": "wrong",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "الآن أجيبوا عن سؤال. وإن أخطأتم، فلن تروا علامة خطأ فقط. سترون السبب: أيُّ قرينةٍ كانت حاسمة، ولماذا تفوز الإجابة الأكثر أمانًا، ولماذا تقصُر كل الخيارات الأخرى."
+ },
+ {
+  "id": "pearl",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.7,
+  "text": "كل سؤالٍ يحمل لؤلؤةً سريرية، والفخَّ الذي يجب تجنّبه. هكذا تتعلّمون الاستدلال، فيبدو لكم السؤال الجديد مألوفًا."
+ },
+ {
+  "id": "quality",
+  "voice": "Aoede",
+  "style": "friendly, clear Gulf female presenter speaking Modern Standard Arabic",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.6,
+  "text": "والجودة أولًا. ألفٌ ومئتان وسبعةٌ وتسعون سؤالًا تدريبيًا، راجعها مختصّون سريريًا واعتُمدت للنشر. وكلُّ سؤالٍ مصنَّف حسب المجال، والصعوبة، وخطوة الحكم السريري."
+ },
+ {
+  "id": "sim",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.8,
+  "text": "وعندما تكونون مستعدين، تدرّبوا على اليوم الحقيقي. فمثلًا في الاختبار السعودي: المخطّط الكامل، مئتا سؤال. مئة سؤال في مئةٍ وعشرين دقيقة، ثم الاستراحة الرسمية ثلاثين دقيقة، ثم مئة أخرى. وتبقى الإجابات مخفيّة حتى النهاية، ليصبح يوم الاختبار مألوفًا."
+ },
+ {
+  "id": "tools",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.6,
+  "text": "سبعٌ وستون أداةَ قرارٍ سريري، مثل بي فاست للسكتة الدماغية. كل أداة تفتح على ملصقٍ مصوَّر، وعدسة قرار، وتدريبٍ موجَّه، ونطاقِ الأدلة."
+ },
+ {
+  "id": "poster",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "افتحوا أي أداة، ويُفتح معها ملصقها التعليمي المصوَّر. كبّروا. ظلّلوا السطر المهم. ارسموا دائرةً حول ما يهمّ بالقلم، وأضيفوا ملاحظاتٍ أو ملاحظاتٍ لاصقة. وتُحفظ علاماتكم تلقائيًا على كل ملصق."
+ },
+ {
+  "id": "coach",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "ثم انتقلوا إلى التدريب الموجَّه: عشرة أسئلةٍ مرتبطة بكل أداة، مع تلميحات، وتغذيةٍ راجعة، ونقلٍ إلى حالاتٍ جديدة."
+ },
+ {
+  "id": "cases",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "خمسةٌ وثلاثون ملفًّا تخصصيًا. وتسعة مختبراتٍ تفاعلية، فيها مئتان وستون تمرينًا، تعلّمكم كيف تُبنى أسئلة الاختبار، لتفكّوا شيفرة السؤال قبل أن تجيبوا."
+ },
+ {
+  "id": "arabic",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "هل الإنجليزية لغتكم الثانية؟ المسرد يشرح لغة الأسئلة بالعربية والإنجليزية، مع ثلاثة أمثلةٍ سريرية لكل مصطلح."
+ },
+ {
+  "id": "progress",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "ويعرض لكم مؤشّر الجاهزية دقّتكم في كل مجالٍ من مجالات الاختبار، لتتدرّبوا على ما يرفع درجتكم. وهو صادق: دليلُ دراسة، وليس توقّعًا للنجاح."
+ },
+ {
+  "id": "reset",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "وعندما يشتدّ الضغط، يمنحكم قسم الاستراحة والتجديد استراحاتٍ قصيرة تناسب اللحظة: قبل اختبارٍ مؤقّت، أو بعد خطأٍ صعب، أو عندما تعلقون."
+ },
+ {
+  "id": "compare",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 1.0,
+  "text": "فكيف نقارن؟ بنك الأسئلة التقليدي يعطيكم صح أو خطأ. ونحن نعطيكم الاستدلال. اختبارٌ واحد، أم أربعة. الإنجليزية فقط، أم العربية والإنجليزية. أسئلةٌ فقط، أم أدواتٌ وملفاتٌ ومختبرات. مذاكرةٌ بلا توقّف، أم طريقةٌ للحفاظ على هدوئكم."
+ },
+ {
+  "id": "price",
+  "voice": "Aoede",
+  "style": "friendly, clear Gulf female presenter speaking Modern Standard Arabic",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.6,
+  "text": "والسعر بسيط. ابدأوا مجانًا، بعشرة أسئلةٍ لكل اختبار. وعندما تكونون مستعدين، تغطي باقة الخليج الاختبارات الأربعة. تسعةٌ وعشرون دولارًا لشهر. خمسون لثلاثة أشهر. أو تسعةٌ وستون لستة أشهر. تُدفع مرة واحدة، ولا تتجدّد تلقائيًا."
+ },
+ {
+  "id": "fair",
+  "voice": "Aoede",
+  "style": "friendly, clear Gulf female presenter speaking Modern Standard Arabic",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.6,
+  "text": "السعر نفسه في كل بلد، مع استرداد كامل خلال أربعة عشر يومًا إذا غيّرتم رأيكم."
+ },
+ {
+  "id": "pass",
+  "voice": "Aoede",
+  "style": "friendly, clear Gulf female presenter speaking Modern Standard Arabic",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "وتشمل باقة الخليج باقة كراون: ميدلكس للغة الطبية الإنجليزية، وكيركرافت للتواصل السريري، ولومن لملاحظاتكم الدراسية."
+ },
+ {
+  "id": "why",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.8,
+  "text": "لماذا نحن؟ لأنكم لا تحتاجون إلى أسئلةٍ أكثر. بل إلى أن تفهموها. الاستدلال قبل الحفظ. تدريبٌ مبنيٌّ على الاختبار الحقيقي. مصمَّم للخليج، بالعربية والإنجليزية."
+ },
+ {
+  "id": "rn2",
+  "voice": "Leda",
+  "style": "nurse from the Gulf speaking naturally and emotionally, Gulf Arabic accent",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.5,
+  "text": "هذه المرة، لن أحفظ. أنا مستعدة."
+ },
+ {
+  "id": "cta",
+  "voice": "Charon",
+  "style": "warm, confident Gulf narrator speaking clear Modern Standard Arabic, energetic and persuasive",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.5,
+  "post": 1.7,
+  "text": "رخصتكم هي بابكم إلى مسيرتكم في الخليج. ادخلوه مستعدين. ابدأوا مجانًا اليوم، عبر الرابط الظاهر على الشاشة."
+ }
+]

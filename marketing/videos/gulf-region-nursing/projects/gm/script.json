@@ -45,6 +45,15 @@
   "text": "Choose your exam, and see exactly what you face: the questions, the time, the pass mark, and the attempts. Add your exam date, and the studio suggests a daily pace."
  },
  {
+  "id": "guide",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "Every exam has its own guide, built from the regulator's own publications. For the S N L E: two blocks of one hundred questions, a scaled score from two hundred to eight hundred, and a published blueprint that your practice sets follow."
+ },
+ {
   "id": "wrong",
   "voice": "bm_lewis",
   "lang": "en-gb",
@@ -88,6 +97,24 @@
   "pre": 0.4,
   "post": 0.6,
   "text": "Sixty seven clinical decision tools, like BE-FAST for stroke. Each one opens into a poster, a decision lens, coached practice, and its evidence and scope."
+ },
+ {
+  "id": "poster",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "Open any tool, and its infographic poster opens with it. Zoom in. Highlight the key line. Circle what matters with the pen, and add notes or sticky notes. Your marks save automatically, on every poster."
+ },
+ {
+  "id": "coach",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "Then switch to coached practice: ten aligned questions for every tool, with hints, feedback, and transfer to new cases."
  },
  {
   "id": "cases",

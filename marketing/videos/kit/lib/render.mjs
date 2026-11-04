@@ -22,5 +22,5 @@ fs.writeFileSync(`${proj}/events-${fmt}.json`, JSON.stringify(ev));
 const out = `${proj}/frames-${fmt}`; fs.mkdirSync(out,{recursive:true});
 if (stills) { for (const t of stills.split(',').map(Number)) { await p.evaluate(t=>renderAt(t), t); await p.screenshot({path:`${proj}/still-${fmt}-${t}.jpg`, type:'jpeg', quality:85}); } await br.close(); process.exit(0); }
 const N = Math.ceil(total*FPS); const t0=Date.now();
-for (let i=0;i<N;i++){ await p.evaluate(t=>renderAt(t), i/FPS); await p.screenshot({path:`${out}/${String(i).padStart(5,'0')}.jpg`, type:'jpeg', quality:92}); if(i%300===0) console.log(fmt,i,'/',N, Math.round((Date.now()-t0)/1000)+'s'); }
+for (let i=0;i<N;i++){ const fp=`${out}/${String(i).padStart(5,'0')}.jpg`; if (fs.existsSync(fp) && fs.statSync(fp).size>1000 && fs.existsSync(`${out}/${String(i+1).padStart(5,'0')}.jpg`)) continue; await p.evaluate(t=>renderAt(t), i/FPS); await p.screenshot({path:`${out}/${String(i).padStart(5,'0')}.jpg`, type:'jpeg', quality:92}); if(i%300===0) console.log(fmt,i,'/',N, Math.round((Date.now()-t0)/1000)+'s'); }
 await br.close(); console.log('frames',N);
