@@ -1,0 +1,25 @@
+import { createRequire } from 'node:module'; import fs from 'node:fs';
+const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium } = require('playwright');
+const OUT='g/cap'; const meta={shots:[]};
+const br = await chromium.launch(); const p=await (await br.newContext({viewport:{width:1440,height:900},deviceScaleFactor:2})).newPage(); p.setDefaultTimeout(6000);
+const css='*{caret-color:transparent!important;scroll-behavior:auto!important} *,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important}';
+async function shot(name, sels={}){ const f=`${OUT}/${name}.png`; await p.screenshot({path:f}); const r={}; for(const [k,l] of Object.entries(sels)){ const b=await l.boundingBox({timeout:800}).catch(()=>null); if(b) r[k]=[b.x,b.y,b.width,b.height].map(Math.round); } meta.shots.push({name,file:f,rects:r}); console.log(name,JSON.stringify(r)); }
+const T=t=>p.getByText(t,{exact:false}).first();
+await p.goto('https://snle.healthcarecrownacademy.co.uk/',{waitUntil:'networkidle'}); await p.addStyleTag({content:css}); await p.waitForTimeout(2000);
+await p.getByRole('button',{name:'Practice Hub',exact:true}).first().click(); await p.waitForTimeout(2000); await p.evaluate(()=>scrollTo(0,0));
+const sim=p.locator('main button').filter({hasText:'Exam Simulation'}).first(); await sim.click(); await p.waitForTimeout(1000);
+const len=p.locator('main select').first(); if(await len.count()){ await len.selectOption({label:'200 questions'}).catch(()=>{}); } await p.waitForTimeout(1000);
+await shot('m-sim',{sim,blue:T('BLUEPRINT'),len,begin:p.locator('main button').filter({hasText:/Begin/}).first()});
+console.log('SIMTXT',(await p.locator('main').innerText()).replace(/\n+/g,' | ').slice(300,1200));
+await p.locator('main button').filter({hasText:/Begin/}).first().click().catch(()=>{}); await p.waitForTimeout(3000);
+await shot('m-sim2',{}); console.log('AFTERBEGIN',(await p.locator('body').innerText()).replace(/\n+/g,' | ').slice(0,700));
+await p.goto('https://snle.healthcarecrownacademy.co.uk/',{waitUntil:'networkidle'}); await p.addStyleTag({content:css}); await p.waitForTimeout(2000);
+await p.getByRole('button',{name:'Interactive Labs',exact:true}).first().click(); await p.waitForTimeout(4000); await shot('m-labs',{});
+await p.goto('https://healthcarecrownacademy.co.uk/subscribe',{waitUntil:'networkidle'}); await p.addStyleTag({content:css}); await p.waitForTimeout(2000);
+const card=p.locator('text=Gulf Pass').first().locator('xpath=ancestor::*[.//text()[contains(.,"Get the Gulf Pass")]][1]');
+await card.scrollIntoViewIfNeeded(); await p.evaluate(()=>scrollBy(0,-60)); await card.getByText('6 months',{exact:true}).first().click(); await p.waitForTimeout(800);
+await shot('m-price',{card,price:card.getByText('US$69').first(),m1:card.getByText('1 month',{exact:true}).first(),m3:card.getByText('3 months',{exact:true}).first(),m6:card.getByText('6 months',{exact:true}).first(),btn:card.getByText('Get the Gulf Pass').first()});
+await card.getByText('1 month',{exact:true}).first().click(); await p.waitForTimeout(600); await shot('m-price1',{card});
+await card.getByText('3 months',{exact:true}).first().click(); await p.waitForTimeout(600); await shot('m-price3',{card});
+const free=T('Not ready to pay?'); await free.scrollIntoViewIfNeeded(); await p.evaluate(()=>scrollBy(0,-200)); await p.waitForTimeout(600); await shot('m-free',{free,ref:T('Full refund within 14 days')});
+fs.writeFileSync(`${OUT}/meta3.json`, JSON.stringify({wide:meta},null,1)); await br.close();

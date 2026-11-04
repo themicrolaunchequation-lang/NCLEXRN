@@ -1,0 +1,191 @@
+[
+ {
+  "id": "hook",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.5,
+  "text": "Three attempts. That is all the U A E gives you. One exam. One chance to prove everything you know."
+ },
+ {
+  "id": "rn1",
+  "voice": "af_sarah",
+  "lang": "en-us",
+  "speed": 0.97,
+  "pre": 0.2,
+  "post": 0.5,
+  "text": "I memorised hundreds of questions. Then the real exam asked them differently, and I froze."
+ },
+ {
+  "id": "pain",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "Night shifts. A new country. A high stakes exam in your second language. And most question banks tell you only one thing: right, or wrong. Memorising answers is the most expensive way to prepare, because the real exam will not ask your question the way you memorised it."
+ },
+ {
+  "id": "reveal",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.5,
+  "text": "Meet Gulf Region Nursing. Built for nurses sitting the Saudi S N L E, Qatar D H P, Dubai D H A, and Abu Dhabi D O H. Four exams. One studio. One plan."
+ },
+ {
+  "id": "today",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.6,
+  "text": "Choose your exam, and see exactly what you face: the questions, the time, the pass mark, and the attempts. Add your exam date, and the studio suggests a daily pace."
+ },
+ {
+  "id": "wrong",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "Now answer a question. Get it wrong, and you don't just see a red cross. You see why. Which cue mattered, why the safest choice wins, and why every other option falls short."
+ },
+ {
+  "id": "pearl",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.7,
+  "text": "Every question carries a clinical pearl and the trap to avoid. That is how you learn to reason, so a question you have never seen still feels familiar."
+ },
+ {
+  "id": "quality",
+  "voice": "bf_emma",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.6,
+  "text": "And quality comes first. One thousand, two hundred and ninety seven practice questions, clinically reviewed and accepted for release. Each one tagged by domain, difficulty, and clinical judgement step."
+ },
+ {
+  "id": "sim",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.8,
+  "text": "When you are ready, rehearse the real thing. For the S N L E: the full blueprint, two hundred questions. One hundred questions in a hundred and twenty minutes, the official thirty minute break, then a hundred more. Answers stay hidden until you finish, so exam day feels familiar."
+ },
+ {
+  "id": "tools",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.6,
+  "text": "Sixty seven clinical decision tools, like BE-FAST for stroke. Each one opens into a poster, a decision lens, coached practice, and its evidence and scope."
+ },
+ {
+  "id": "cases",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "Thirty five specialty dossiers. And nine interactive labs, with two hundred and sixty exercises, that teach you how exam questions are built, so you can decode the stem before you answer."
+ },
+ {
+  "id": "arabic",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "Is English your second language? The glossary decodes question language in English and Arabic, with three clinical examples for every term."
+ },
+ {
+  "id": "progress",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "Your readiness view shows accuracy by exam domain, so you practise what moves your score. And it is honest: a study guide, not a pass prediction."
+ },
+ {
+  "id": "reset",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "And when the pressure builds, Reset and Recharge gives you short resets matched to the moment: before a timed mock, after a hard error, or when you are stuck."
+ },
+ {
+  "id": "compare",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 1.0,
+  "text": "So how does it compare? A typical question bank gives you right or wrong. This gives you the reasoning. One exam, or four. English only, or English and Arabic. Questions only, or tools, dossiers and labs. Study, study, study, or a way to stay steady."
+ },
+ {
+  "id": "price",
+  "voice": "bf_emma",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.6,
+  "text": "And the price is simple. Start free, with ten questions for every exam. When you are ready, one Gulf Pass covers all four exams. Twenty nine dollars for one month. Fifty for three. Or sixty nine for six months. Paid once. It never renews."
+ },
+ {
+  "id": "fair",
+  "voice": "bf_emma",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.6,
+  "text": "The same price in every country, and a full refund within fourteen days if you change your mind."
+ },
+ {
+  "id": "pass",
+  "voice": "bf_emma",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.6,
+  "text": "And the Gulf Pass includes the Crown Pass: MedLex for medical English, Carecraft for clinical communication, and Lumen for your own study notes."
+ },
+ {
+  "id": "why",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 0.8,
+  "text": "Why us? Because you don't need more questions. You need to understand them. Reasoning over memory. A rehearsal built on the real exam. Made for the Gulf, in English and Arabic."
+ },
+ {
+  "id": "rn2",
+  "voice": "af_sarah",
+  "lang": "en-us",
+  "speed": 0.97,
+  "pre": 0.2,
+  "post": 0.5,
+  "text": "This time, I'm not memorising. I'm ready."
+ },
+ {
+  "id": "cta",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.5,
+  "post": 1.7,
+  "text": "Your licence is the door to your career in the Gulf. Walk in prepared. Start free today, at S N L E dot Healthcare Crown Academy dot co dot uk."
+ }
+]
