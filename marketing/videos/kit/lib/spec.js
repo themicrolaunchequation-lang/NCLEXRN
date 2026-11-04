@@ -46,3 +46,7 @@ window.CFG={W:tall?1080:1920,H:tall?1920:1080,layout:L,shots,shotW:P.shotW||1440
 (function(){ const P=window.SPEC; if(!P||!P.theme) return; const t=P.theme; const s=document.createElement('style');
  s.textContent=`#bg{background:radial-gradient(60% 50% at var(--gx,30%) var(--gy,20%),${t.g1},transparent 60%),radial-gradient(55% 45% at var(--hx,80%) var(--hy,85%),${t.g2},transparent 60%),linear-gradient(160deg,${t.b[0]} 0%,${t.b[1]} 55%,${t.b[2]} 100%)!important} #cap .line b{color:${t.hi}!important} #head .k{color:${t.hi}!important}`;
  document.head.appendChild(s); window.CFG.theme=t; })();
+// right-to-left Arabic text
+(function(){ const P=window.SPEC; if(!P||!P.rtl) return; const s=document.createElement('style');
+ s.textContent=`#cap .line,#head,.bubble,.callout,#cta,.kin,#note{font-family:Cairo,Inter,sans-serif!important} #cap .line,#head,.bubble .msg,.bubble .who,.callout,#note,#cta .ttl,#cta .pts,#cta .go{direction:rtl} #cap .line{line-height:1.35} .fx svg{font-family:Cairo,Inter,sans-serif!important}`;
+ document.head.appendChild(s); })();

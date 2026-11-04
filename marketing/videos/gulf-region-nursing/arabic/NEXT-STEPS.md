@@ -6,3 +6,6 @@
 4. For each region, copy `arabic/script-<region>-ar.json` to `<region>-ar/script.json`, run `vo_gemini.py`, then `lib/timeline.py`, `lib/music.py` and `lib/data.py`.
 5. Config: reuse the English region config, with captions and headlines in Arabic and right to left (add `direction:rtl` and an Arabic font such as Cairo or IBM Plex Sans Arabic to `#cap` and `#head`), plus the Arabic disclaimer from `Arabic-scripts-for-review.md`.
 6. Render with `lib/both.sh`. Have a native Arabic-speaking nurse review the audio and text before posting.
+
+## Status (done in the original session)
+The key was added as a network secret (header `x-goog-api-key` for generativelanguage.googleapis.com), so no environment variable is needed. Voices use the DIRECTOR'S NOTES / TRANSCRIPT prompt so the accent note is not read aloud. The free tier allows only 10 voice requests per day per model, so each region used a different model. Arabic project folders must have no hyphen (`gqaar`, not `gqa-ar`), because the compositor reads the project name up to the first non-word character.

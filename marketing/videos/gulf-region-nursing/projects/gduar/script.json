@@ -1,0 +1,72 @@
+[
+ {
+  "id": "hook",
+  "voice": "Charon",
+  "style": "Say in a warm, clear Emirati Gulf Arabic accent, as a confident narrator",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "اختبار هيئة الصحة بدبي للتمريض، دي إتش إيه: مئة وخمسون سؤالًا، وثلاث ساعات. هل أنتم مستعدون؟"
+ },
+ {
+  "id": "rn1",
+  "voice": "Leda",
+  "style": "Say in a warm, clear Emirati Gulf Arabic accent, as a nurse speaking naturally",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "حدّدتُ موعد اختباري. من أين أبدأ؟"
+ },
+ {
+  "id": "reveal",
+  "voice": "Charon",
+  "style": "Say in a warm, clear Emirati Gulf Arabic accent, as a confident narrator",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "تمريض منطقة الخليج، نسخة دبي. حدّدوا موعد اختباركم، ويقترح عليكم الاستوديو وتيرةً يومية."
+ },
+ {
+  "id": "run",
+  "voice": "Charon",
+  "style": "Say in a warm, clear Emirati Gulf Arabic accent, as a confident narrator",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.5,
+  "text": "شرحٌ لكل سؤال يوضّح لماذا تفوز الإجابة الأكثر أمانًا. اختباراتٌ تجريبية مؤقّتة. أدواتُ قرارٍ سريري مثل بي فاست. ملفاتُ حالاتٍ تخصصية. مسردٌ بالعربية والإنجليزية. وخريطةُ جاهزية تُريكم ما تتدرّبون عليه بعد ذلك."
+ },
+ {
+  "id": "compare",
+  "voice": "Charon",
+  "style": "Say in a warm, clear Emirati Gulf Arabic accent, as a confident narrator",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.3,
+  "post": 2.3,
+  "text": "ليس مجرد بنك أسئلة."
+ },
+ {
+  "id": "pass",
+  "voice": "Charon",
+  "style": "Say in a warm, clear Emirati Gulf Arabic accent, as a confident narrator",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.4,
+  "text": "باقة الخليج تشمل ميدلكس وكيركرافت ولومن. وتطبيق سيرين مجاني للجميع."
+ },
+ {
+  "id": "cta",
+  "voice": "Charon",
+  "style": "Say in a warm, clear Emirati Gulf Arabic accent, as a confident narrator",
+  "lang": "ar",
+  "speed": 1.0,
+  "pre": 0.4,
+  "post": 1.7,
+  "text": "استعدادٌ للاختبار، مصمَّمٌ لـدبي. ابدأوا مجانًا اليوم، عبر الرابط الظاهر على الشاشة."
+ }
+]

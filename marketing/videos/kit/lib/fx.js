@@ -75,7 +75,7 @@ const T={
    g.querySelector('.hg').setAttribute('transform',`translate(735,375) rotate(${waiting?f*360:0})`); } }
 };
 const items=F.map(x=>{ const d=document.createElement('div'); d.className='fx'; const b=x.box; Object.assign(d.style,{position:'absolute',left:b[0]+'px',top:b[1]+'px',width:b[2]+'px',height:b[3]+'px',zIndex:40,pointerEvents:'none'});
-  const r=T[x.type].build(x.o||{}); d.innerHTML=`<svg xmlns="${NS}" viewBox="${r.vb}" width="100%" height="100%" style="overflow:visible;font-family:Inter,sans-serif">${r.s}</svg>`; st.appendChild(d); return {x,d,g:d.firstChild}; });
+  const r=T[x.type].build(x.o||{}); d.innerHTML=`<svg xmlns="${NS}" viewBox="${r.vb}" width="100%" height="100%" style="overflow:visible;font-family:${(window.SPEC&&window.SPEC.rtl)?'Cairo,Inter':'Inter'},sans-serif">${r.s}</svg>`; st.appendChild(d); return {x,d,g:d.firstChild}; });
 const orig=window.renderAt, ow=C.win;
 C.win=t=>{ const w=Object.assign({},ow(t)); let dim=0; F.forEach(x=>{ if(x.full) dim=Math.max(dim,clamp((t-x.t0)/.4)*clamp((x.t1-t)/.4)); }); if(dim>0){ w.o=(w.o??1)*(1-0.88*dim); w.blur=(w.blur||0)+8*dim; } return w; };
 window.renderAt=function(t){ orig(t); items.forEach(({x,d,g})=>{ const a=clamp((t-x.t0)/.35)*clamp((x.t1-t)/.35); d.style.opacity=a; if(a>0){ const e=outBack(clamp((t-x.t0)/.6)); d.style.transform=`perspective(1600px) rotateX(${(1-e)*18}deg) scale(${0.85+0.15*e})`; T[x.type].frame(g,t-x.t0,x.o||{}); } }); };
