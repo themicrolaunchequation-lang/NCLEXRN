@@ -3,14 +3,15 @@ const BASE='file://'+window.BASE+'/'+window.PROJ+'/cap/';
 const FULL={wide:[0,0,1440],tall:[290,40,760]};
 const co=(at,to,html,bg)=>({at,to,html,bg,sizeW:42,sizeT:46,yW:770,yT:1180});
 window.SPEC={
- brand:['Gulf Region Nursing','Healthcare Crown Academy'], hookShot:'du-today', hookCam:{wide:[0,0,1440],tall:[290,40,760]}, revealScene:'reveal',
+ brand:['Gulf Region Nursing','Healthcare Crown Academy'], hookShot:'sa-today', hookCam:{wide:[0,0,1440],tall:[290,40,760]}, revealScene:'reveal',
  theme:{b:['#062026','#0b3340','#0b2a2a'],g1:'rgba(20,184,166,.34)',g2:'rgba(212,164,69,.26)',hi:'#facc15'},
  note:'Original practice material, not official exam questions. Not endorsed by SCFHS, DHP, DHA or DOH.',
  cursorWindows:[[['wrong',-0.4],['pearl',2]],[['price',4],['price','voend']]],
  cta:{title:'Gulf Region Nursing<br><em>reasoning over memory</em>',pts:['SNLE · DHP · DHA · DOH','Real-exam simulation','Start free · Gulf Pass from US$29'],go:'Start free today →',url:'snle.healthcarecrownacademy.co.uk',fine:'Prices as shown on the subscribe page · nurse is a sample persona'},
  scenes:[
-  {id:'hook',cap:['**Three attempts.**','That is all the **UAE** gives you.','One exam. **One chance**','to prove everything you know.'],
-   kin:[{at:0,to:2.6,html:'<span style="color:#f87171">3</span> attempts.',size:[170,190],y:[320,170]},{at:2.7,to:4.6,html:'Across the<br><span style="color:#facc15">whole UAE.</span>',size:[130,150],y:[300,160]},{at:4.7,html:'One <span style="color:#f87171">chance.</span>',size:[160,180],y:[320,170]}]},
+  {id:'hook',shots:[{at:-0.3,name:'sa-today'},{at:0.9,name:'qa-today'},{at:1.6,name:'du-today'},{at:2.4,name:'ad-today'},{at:3.3,name:'sa-today'}],
+   cap:['**Saudi Arabia. Qatar. Dubai. Abu Dhabi.**','One licensing exam stands between you','and your **nursing career in the Gulf**.','And you only get a **limited number of attempts**.'],
+   kin:[{at:-0.2,to:0.9,html:'<span style="color:#34d399">Saudi Arabia</span>',size:[120,140],y:[330,190]},{at:0.9,to:1.6,html:'<span style="color:#f472b6">Qatar</span>',size:[140,160],y:[330,190]},{at:1.6,to:2.4,html:'<span style="color:#fcd34d">Dubai</span>',size:[140,160],y:[330,190]},{at:2.4,to:3.3,html:'<span style="color:#7dd3fc">Abu Dhabi</span>',size:[140,160],y:[330,190]},{at:3.4,to:7.2,html:'One exam.<br><span style="color:#facc15">Your Gulf career.</span>',size:[120,130],y:[300,150]},{at:7.3,html:'<span style="color:#f87171">Limited</span> attempts.',size:[130,150],y:[320,170]}]},
   {id:'rn1',bubble:{who:'Nurse · sample',av:'RN',text:'I memorised hundreds of questions. Then the real exam asked them differently, and I froze.',type:3.6,col:RED}},
   {id:'pain',fx:[{at:-0.2,to:'end',type:'pain',full:true,o:{t:[0,1.0,2.0,3.6],items:[['🌙','Night shifts'],['✈️','A new country'],['🗣️','Second language'],['⚠️','Right or wrong only']]}}],
    cap:['**Night shifts.** A **new country**.','A high-stakes exam in your **second language**.','And most question banks tell you one thing:','**right, or wrong.**','Memorising answers is the **most expensive way**','to prepare, because the real exam','**won’t ask it the way you memorised it.**']},
@@ -36,7 +37,7 @@ window.SPEC={
   {id:'sim',shots:[{at:-0.4,name:'m-sim',tr:'pop',d:0.45}],cam:[{at:-0.4,r:FULL,d:0.6},{at:2.0,r:{wide:[300,250,1120],tall:[1040,260,400]},d:1.4},{at:7.0,r:{wide:[300,480,800],tall:[320,520,560]},d:1.4}],
    hl:[{at:2.6,to:6.6,r:[1060,270,330,470],color:'#5eead4'},{at:7.6,to:'end',r:[315,535,740,100],color:'#facc15'}],
    callouts:[co(1.0,6.6,'Exam Simulation · 200 questions',TEAL),co(7.8,13.0,'100 Q · 120 min → 30-min break → 100 Q',GOLD),co(13.2,'end','Answers hidden until the end · Gulf Pass',NAVY)],
-   head:['Exam Simulation','Rehearse<br>the real day'],cap:['When you’re ready, **rehearse the real thing**.','For the **SNLE**: the full blueprint, **200 questions**.','**100 questions in 120 minutes**,','the **official 30-minute break**, then 100 more.','**Answers stay hidden** until you finish,','so exam day **feels familiar**.']},
+   head:['Exam Simulation','Rehearse<br>the real day'],cap:['When you’re ready, **rehearse the real thing**.','For example, the **SNLE**: the full blueprint, **200 questions**.','**100 questions in 120 minutes**,','the **official 30-minute break**, then 100 more.','**Answers stay hidden** until you finish,','so exam day **feels familiar**.']},
   {id:'tools',shots:[{at:-0.3,name:'sa-tools',tr:'fade',d:0.4},{at:2.8,name:'sa-befast',tr:'pop',d:0.45}],cam:[{at:-0.3,r:{wide:[0,40,1440],tall:[280,320,560]},d:0.6},{at:2.8,r:{wide:[0,0,1440],tall:[120,60,760]},d:0.01},{at:6.0,r:{wide:[0,0,1440],tall:[120,240,760]},d:1.5}],
    cursor:[{at:0.8,to:[476,396],d:0.7,click:true}],
    hl:[{at:0.3,to:2.6,r:[293,340,366,112],color:'#facc15'},{at:4.2,to:'end',r:[20,105,560,48],color:'#5eead4'}],
