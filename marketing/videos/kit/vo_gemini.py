@@ -3,7 +3,7 @@
 import json,sys,os,base64,urllib.request,numpy as np,soundfile as sf,time
 d=sys.argv[1]; KEY=os.environ.get('GEMINI_API_KEY') or os.environ.get('GOOGLE_API_KEY')
 # No key in the environment: the session's network secret adds the x-goog-api-key header for us.
-M=os.environ.get('GEMINI_TTS_MODEL','gemini-2.5-flash-preview-tts'); os.makedirs(f'{d}/vo',exist_ok=True); out={}
+MODELS=os.environ.get('GEMINI_TTS_MODELS',os.environ.get('GEMINI_TTS_MODEL','gemini-2.5-flash-preview-tts')).split(','); M=MODELS[0]; os.makedirs(f'{d}/vo',exist_ok=True); out={}
 import urllib.error
 prev=json.load(open(f'{d}/vo/durations.json')) if os.path.exists(f'{d}/vo/durations.json') else {}
 for x in json.load(open(f'{d}/script.json')):
@@ -17,7 +17,10 @@ for x in json.load(open(f'{d}/script.json')):
     except Exception as e:
       if getattr(e,'code',0)==429:
         msg=e.read().decode()
-        if 'per day' in msg or 'PerDay' in msg: sys.exit(f"{x['id']}: daily quota reached for {M}")
+        if 'per day' in msg or 'PerDay' in msg:
+          MODELS.pop(0)
+          if not MODELS: sys.exit(f"{x['id']}: daily quota reached on every model")
+          M=MODELS[0]; print('switching to',M); continue
         print('per-minute limit, waiting 65 s'); time.sleep(65); continue
       if getattr(e,'code',0)==400: sys.exit(f"{x['id']}: HTTP 400 {e.read().decode()[:300]}")
       if a==3: raise
