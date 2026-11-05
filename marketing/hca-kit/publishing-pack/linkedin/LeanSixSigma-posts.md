@@ -1,22 +1,32 @@
 # LinkedIn posting pack: Lean Six Sigma for Healthcare page
+
 5 scheduled video posts. Work top to bottom. Each block is one post.
-**Before you start**
+
+**Posting times**
+
+- Gulf Region Nursing posts go out at **09:00 Riyadh** (Gulf audience).
+- All other apps go out at **09:00 UK** (= 12:00 Riyadh), the window for professional audiences.
+- Each block shows Riyadh, UK and UTC. LinkedIn schedules in **your own account time zone**, so use the one that matches where you are.
+
+**How to post each one**
+
 1. Open the page as admin, then **Start a post** in the page composer (not your personal profile).
-2. Times below are **Asia/Riyadh (GMT+3)**, as planned. LinkedIn schedules in **your own account time zone**, so use the column that matches where you are: each block gives Riyadh, UK and UTC.
-3. Upload the video, set the thumbnail, paste the post text, then **Schedule** (clock icon) and set date and time.
+2. Upload the video, set the thumbnail, paste the post text.
+3. **Schedule** (clock icon), set the date and time, confirm.
 4. The link is **not** in the post text. When the post goes live, paste the first comment from `first-comments.md`. LinkedIn cannot pre-schedule a comment.
-5. Tick the box in this file as you go.
+5. Tick the box here as you go.
 
 ---
 
-## [ ] 01. 2026-11-11 (Wed) 10:00 Riyadh — Lean Six Sigma for Healthcare
+## [ ] 01. 2026-11-11 (Wed) — Lean Six Sigma for Healthcare
 | | |
 |---|---|
-| **Schedule** | Wed 11 Nov 2026, 10:00 Riyadh · 07:00 UK · 07:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 11 Nov 2026 |
 | **Page** | Lean Six Sigma for Healthcare |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/LSS-CostOfPoorQuality-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/LSS-CostOfPoorQuality-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:09 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LSS-CostOfPoorQuality-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LSS-CostOfPoorQuality-portrait-9x16.jpg` |
 | **Video title field** | Cost of Poor Quality in Healthcare: Lean Six Sigma Business Case |
 | **First comment** | https://lss.healthcarecrownacademy.co.uk/?ref=copq-li |
 
@@ -40,14 +50,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 02. 2026-11-18 (Wed) 10:00 Riyadh — Lean Six Sigma for Healthcare
+## [ ] 02. 2026-11-18 (Wed) — Lean Six Sigma for Healthcare
 | | |
 |---|---|
-| **Schedule** | Wed 18 Nov 2026, 10:00 Riyadh · 07:00 UK · 07:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 18 Nov 2026 |
 | **Page** | Lean Six Sigma for Healthcare |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/LeanSixSigma-RedBeadWard-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/LeanSixSigma-RedBeadWard-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:03 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LeanSixSigma-RedBeadWard-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LeanSixSigma-RedBeadWard-portrait-9x16.jpg` |
 | **Video title field** | Deming’s Red Bead Experiment for Nurses: Stop Ranking Staff |
 | **First comment** | https://lss.healthcarecrownacademy.co.uk/?ref=redbead-li |
 
@@ -71,14 +82,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 03. 2026-11-25 (Wed) 10:00 Riyadh — Lean Six Sigma for Healthcare
+## [ ] 03. 2026-11-25 (Wed) — Lean Six Sigma for Healthcare
 | | |
 |---|---|
-| **Schedule** | Wed 25 Nov 2026, 10:00 Riyadh · 07:00 UK · 07:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 25 Nov 2026 |
 | **Page** | Lean Six Sigma for Healthcare |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/LeanSixSigma-ExamToVerifiedCertificate-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/LeanSixSigma-ExamToVerifiedCertificate-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:57 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LeanSixSigma-ExamToVerifiedCertificate-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LeanSixSigma-ExamToVerifiedCertificate-portrait-9x16.jpg` |
 | **Video title field** | Lean Six Sigma Green Belt Exam + Certificate Anyone Can Verify |
 | **First comment** | https://lss.healthcarecrownacademy.co.uk/?ref=cert-li |
 
@@ -102,14 +114,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 04. 2026-12-02 (Wed) 10:00 Riyadh — Lean Six Sigma for Healthcare
+## [ ] 04. 2026-12-02 (Wed) — Lean Six Sigma for Healthcare
 | | |
 |---|---|
-| **Schedule** | Wed 02 Dec 2026, 10:00 Riyadh · 07:00 UK · 07:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 02 Dec 2026 |
 | **Page** | Lean Six Sigma for Healthcare |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/lean-six-sigma/LSS-Process-Capability-Cp-Cpk-landscape-16x9.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/lean-six-sigma/LSS-Process-Capability-Cp-Cpk-landscape-16x9.mp4` |
 | **Shape / length** | 16:9 · 3:37 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LSS-Process-Capability-Cp-Cpk-landscape-16x9.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LSS-Process-Capability-Cp-Cpk-landscape-16x9.jpg` |
 | **Video title field** | Cp vs Cpk Explained: Process Capability for Healthcare |
 | **First comment** | https://lss.healthcarecrownacademy.co.uk/?ref=cpcpk-li |
 
@@ -133,14 +146,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 05. 2026-12-09 (Wed) 10:00 Riyadh — Lean Six Sigma for Healthcare
+## [ ] 05. 2026-12-09 (Wed) — Lean Six Sigma for Healthcare
 | | |
 |---|---|
-| **Schedule** | Wed 09 Dec 2026, 10:00 Riyadh · 07:00 UK · 07:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 09 Dec 2026 |
 | **Page** | Lean Six Sigma for Healthcare |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/lean-six-sigma/LSS-Swimlane-Process-Map-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/lean-six-sigma/LSS-Swimlane-Process-Map-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:03 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LSS-Swimlane-Process-Map-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/LeanSixSigma/LSS-Swimlane-Process-Map-portrait-9x16.jpg` |
 | **Video title field** | Swimlane Process Map in Healthcare: See Where Work Waits |
 | **First comment** | https://lss.healthcarecrownacademy.co.uk/?ref=swimlane-li |
 

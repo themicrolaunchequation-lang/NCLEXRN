@@ -1,22 +1,32 @@
 # LinkedIn posting pack: Healthcare Crown Academy page
+
 33 scheduled video posts. Work top to bottom. Each block is one post.
-**Before you start**
+
+**Posting times**
+
+- Gulf Region Nursing posts go out at **09:00 Riyadh** (Gulf audience).
+- All other apps go out at **09:00 UK** (= 12:00 Riyadh), the window for professional audiences.
+- Each block shows Riyadh, UK and UTC. LinkedIn schedules in **your own account time zone**, so use the one that matches where you are.
+
+**How to post each one**
+
 1. Open the page as admin, then **Start a post** in the page composer (not your personal profile).
-2. Times below are **Asia/Riyadh (GMT+3)**, as planned. LinkedIn schedules in **your own account time zone**, so use the column that matches where you are: each block gives Riyadh, UK and UTC.
-3. Upload the video, set the thumbnail, paste the post text, then **Schedule** (clock icon) and set date and time.
+2. Upload the video, set the thumbnail, paste the post text.
+3. **Schedule** (clock icon), set the date and time, confirm.
 4. The link is **not** in the post text. When the post goes live, paste the first comment from `first-comments.md`. LinkedIn cannot pre-schedule a comment.
-5. Tick the box in this file as you go.
+5. Tick the box here as you go.
 
 ---
 
-## [ ] 01. 2026-11-10 (Tue) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 01. 2026-11-10 (Tue) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Tue 10 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Tue 10 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/GulfRegionNursing-RepairTheReasoning-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/GulfRegionNursing-RepairTheReasoning-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:00 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/GulfRegionNursing-RepairTheReasoning-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/GulfRegionNursing-RepairTheReasoning-portrait-9x16.jpg` |
 | **Video title field** | Gulf Nursing Exam Practice: Learn Why the Safest Answer Wins |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=reasoning-li |
 
@@ -40,14 +50,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 02. 2026-11-11 (Wed) 09:00 Riyadh — Evinca
+## [ ] 02. 2026-11-11 (Wed) — Evinca
 | | |
 |---|---|
-| **Schedule** | Wed 11 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 11 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Evinca-WhereDoYouComeIn-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Evinca-WhereDoYouComeIn-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:52 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-WhereDoYouComeIn-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-WhereDoYouComeIn-portrait-9x16.jpg` |
 | **Video title field** | Somebody Made Care Better Today: Healthcare Honors Judged on Evidence |
 | **First comment** | https://evinca.healthcarecrownacademy.co.uk/en?ref=comein-short-li |
 
@@ -72,14 +83,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 03. 2026-11-12 (Thu) 09:00 Riyadh — Lumen
+## [ ] 03. 2026-11-12 (Thu) — Lumen
 | | |
 |---|---|
-| **Schedule** | Thu 12 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Thu 12 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-ReadHideExplain-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-ReadHideExplain-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:10 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-ReadHideExplain-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-ReadHideExplain-portrait-9x16.jpg` |
 | **Video title field** | Stop Rereading: The Read-Hide-Explain Study Method |
 | **First comment** | https://lumen.healthcarecrownacademy.co.uk/?ref=explain-li |
 
@@ -103,14 +115,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 04. 2026-11-17 (Tue) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 04. 2026-11-17 (Tue) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Tue 17 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Tue 17 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/GulfRegionNursing-BEFASTDecisionTool-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/GulfRegionNursing-BEFASTDecisionTool-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:54 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/GulfRegionNursing-BEFASTDecisionTool-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/GulfRegionNursing-BEFASTDecisionTool-portrait-9x16.jpg` |
 | **Video title field** | BE-FAST Stroke Recognition for Nurses: Decision Tool + Practice |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=befast-li |
 
@@ -134,14 +147,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 05. 2026-11-18 (Wed) 09:00 Riyadh — Carecraft
+## [ ] 05. 2026-11-18 (Wed) — Carecraft
 | | |
 |---|---|
-| **Schedule** | Wed 18 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 18 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Carecraft-TeachBackScenario-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Carecraft-TeachBackScenario-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:51 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Carecraft/Carecraft-TeachBackScenario-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Carecraft/Carecraft-TeachBackScenario-portrait-9x16.jpg` |
 | **Video title field** | Teach-Back Method in Nursing: A 60-Second Scenario |
 | **First comment** | https://carecraft.healthcarecrownacademy.co.uk/?ref=teachback-li |
 
@@ -165,14 +179,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 06. 2026-11-19 (Thu) 09:00 Riyadh — MedLex
+## [ ] 06. 2026-11-19 (Thu) — MedLex
 | | |
 |---|---|
-| **Schedule** | Thu 19 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Thu 19 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/MedLex-DecodeAnyWord-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/MedLex-DecodeAnyWord-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:53 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/MedLex/MedLex-DecodeAnyWord-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/MedLex/MedLex-DecodeAnyWord-portrait-9x16.jpg` |
 | **Video title field** | Medical Terminology Made Easy: Decode Any Word in 10 Seconds |
 | **First comment** | https://medlex.healthcarecrownacademy.co.uk/?ref=decode-li |
 
@@ -195,14 +210,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 07. 2026-11-24 (Tue) 09:00 Riyadh — Serein
+## [ ] 07. 2026-11-24 (Tue) — Serein
 | | |
 |---|---|
-| **Schedule** | Tue 24 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Tue 24 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Serein-TwoMinutePause-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Serein-TwoMinutePause-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:54 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Serein/Serein-TwoMinutePause-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Serein/Serein-TwoMinutePause-portrait-9x16.jpg` |
 | **Video title field** | 2-Minute Breathing Exercise for Nurses and Healthcare Workers |
 | **First comment** | https://serein.healthcarecrownacademy.co.uk/?ref=pause-li |
 
@@ -226,14 +242,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 08. 2026-11-25 (Wed) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 08. 2026-11-25 (Wed) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Wed 25 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Wed 25 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/GulfRegionNursing-GlossaryFourExams-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/GulfRegionNursing-GlossaryFourExams-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:51 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/GulfRegionNursing-GlossaryFourExams-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/GulfRegionNursing-GlossaryFourExams-portrait-9x16.jpg` |
 | **Video title field** | Nursing Exam Language in English and Arabic: 4 Gulf Exams |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=glossary-li |
 
@@ -257,14 +274,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 09. 2026-11-26 (Thu) 09:00 Riyadh — Evinca
+## [ ] 09. 2026-11-26 (Thu) — Evinca
 | | |
 |---|---|
-| **Schedule** | Thu 26 Nov 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Thu 26 Nov 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Evinca-TwoMinuteEligibilityCheck-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Evinca-TwoMinuteEligibilityCheck-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:50 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-TwoMinuteEligibilityCheck-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-TwoMinuteEligibilityCheck-portrait-9x16.jpg` |
 | **Video title field** | Is Your Work Award-Worthy? Free 2-Minute Check |
 | **First comment** | https://evinca.healthcarecrownacademy.co.uk/en?ref=eligibility-li |
 
@@ -289,14 +307,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 10. 2026-12-01 (Tue) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 10. 2026-12-01 (Tue) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Tue 01 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Tue 01 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-All-in-one-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-All-in-one-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:07 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-All-in-one-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-All-in-one-portrait-9x16.jpg` |
 | **Video title field** | Gulf Nursing Licensing Exams: SNLE, DHP, DHA, DOH in One Studio |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=all-li |
 
@@ -320,14 +339,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 11. 2026-12-02 (Wed) 09:00 Riyadh — Lumen
+## [ ] 11. 2026-12-02 (Wed) — Lumen
 | | |
 |---|---|
-| **Schedule** | Wed 02 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 02 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-RecallCards-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-RecallCards-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:15 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-RecallCards-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-RecallCards-portrait-9x16.jpg` |
 | **Video title field** | Spaced Repetition for Nursing Students: Recall Cards That Adapt |
 | **First comment** | https://lumen.healthcarecrownacademy.co.uk/?ref=cards-li |
 
@@ -351,14 +371,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 12. 2026-12-03 (Thu) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 12. 2026-12-03 (Thu) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Thu 03 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Thu 03 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Why-Us-Full-landscape-16x9.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Why-Us-Full-landscape-16x9.mp4` |
 | **Shape / length** | 16:9 · 4:08 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Why-Us-Full-landscape-16x9.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Why-Us-Full-landscape-16x9.jpg` |
 | **Video title field** | Pass the SNLE, DHA, DOH or DHP With Reasoning, Not Memory |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=whyus-li |
 
@@ -382,14 +403,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 13. 2026-12-08 (Tue) 09:00 Riyadh — Evinca
+## [ ] 13. 2026-12-08 (Tue) — Evinca
 | | |
 |---|---|
-| **Schedule** | Tue 08 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Tue 08 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Evinca-VerifiableProofPage-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Evinca-VerifiableProofPage-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:50 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-VerifiableProofPage-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-VerifiableProofPage-portrait-9x16.jpg` |
 | **Video title field** | Recognition You Can Verify: Public Proof Pages, QR and Badges |
 | **First comment** | https://evinca.healthcarecrownacademy.co.uk/en?ref=proof-short-li |
 
@@ -414,14 +436,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 14. 2026-12-09 (Wed) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 14. 2026-12-09 (Wed) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Wed 09 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Wed 09 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Saudi-SNLE-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Saudi-SNLE-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:51 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Saudi-SNLE-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Saudi-SNLE-portrait-9x16.jpg` |
 | **Video title field** | SNLE Exam Prep for Nurses: 200 Questions, 4 Hours |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=saudi-li |
 
@@ -445,14 +468,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 15. 2026-12-10 (Thu) 09:00 Riyadh — Carecraft
+## [ ] 15. 2026-12-10 (Thu) — Carecraft
 | | |
 |---|---|
-| **Schedule** | Thu 10 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Thu 10 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Carecraft-SBARHandoverBuilder-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Carecraft-SBARHandoverBuilder-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:50 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Carecraft/Carecraft-SBARHandoverBuilder-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Carecraft/Carecraft-SBARHandoverBuilder-portrait-9x16.jpg` |
 | **Video title field** | SBAR Handover Made Easy: Build a Clear Message |
 | **First comment** | https://carecraft.healthcarecrownacademy.co.uk/?ref=sbar-li |
 
@@ -476,14 +500,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 16. 2026-12-15 (Tue) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 16. 2026-12-15 (Tue) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Tue 15 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Tue 15 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Qatar-DHP-RGN-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Qatar-DHP-RGN-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:46 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Qatar-DHP-RGN-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Qatar-DHP-RGN-portrait-9x16.jpg` |
 | **Video title field** | Qatar DHP RGN Nursing Exam Prep: 150 Questions, 3 Hours |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=qatar-li |
 
@@ -507,14 +532,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 17. 2026-12-16 (Wed) 09:00 Riyadh — Lumen
+## [ ] 17. 2026-12-16 (Wed) — Lumen
 | | |
 |---|---|
-| **Schedule** | Wed 16 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 16 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-FocusAndMethods-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-FocusAndMethods-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:13 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-FocusAndMethods-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-FocusAndMethods-portrait-9x16.jpg` |
 | **Video title field** | 25-Minute Focus Sessions + 6 Study Methods That Work |
 | **First comment** | https://lumen.healthcarecrownacademy.co.uk/?ref=focus-li |
 
@@ -538,14 +564,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 18. 2026-12-17 (Thu) 09:00 Riyadh — MedLex
+## [ ] 18. 2026-12-17 (Thu) — MedLex
 | | |
 |---|---|
-| **Schedule** | Thu 17 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Thu 17 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/MedLex-BuildTheWord-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/MedLex-BuildTheWord-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:51 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/MedLex/MedLex-BuildTheWord-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/MedLex/MedLex-BuildTheWord-portrait-9x16.jpg` |
 | **Video title field** | Build Medical Words From Parts: Gastroenteritis in 4 Pieces |
 | **First comment** | https://medlex.healthcarecrownacademy.co.uk/?ref=build-li |
 
@@ -568,14 +595,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 19. 2026-12-22 (Tue) 09:00 Riyadh — Serein
+## [ ] 19. 2026-12-22 (Tue) — Serein
 | | |
 |---|---|
-| **Schedule** | Tue 22 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Tue 22 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Serein-FindAPauseThatFits-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Serein-FindAPauseThatFits-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:56 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Serein/Serein-FindAPauseThatFits-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Serein/Serein-FindAPauseThatFits-portrait-9x16.jpg` |
 | **Video title field** | The Right Break for the Moment: 90-Second Hand Reset |
 | **First comment** | https://serein.healthcarecrownacademy.co.uk/?ref=fits-li |
 
@@ -599,14 +627,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 20. 2026-12-23 (Wed) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 20. 2026-12-23 (Wed) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Wed 23 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Wed 23 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Dubai-DHA-RN-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Dubai-DHA-RN-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:52 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Dubai-DHA-RN-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Dubai-DHA-RN-portrait-9x16.jpg` |
 | **Video title field** | DHA RN Exam Prep for Nurses in Dubai: 150 Questions, 3 Hours |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=dubai-li |
 
@@ -630,14 +659,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 21. 2026-12-24 (Thu) 09:00 Riyadh — Evinca
+## [ ] 21. 2026-12-24 (Thu) — Evinca
 | | |
 |---|---|
-| **Schedule** | Thu 24 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Thu 24 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/evinca/Evinca-Where-do-you-come-in-landscape-16x9.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/evinca/Evinca-Where-do-you-come-in-landscape-16x9.mp4` |
 | **Shape / length** | 16:9 · 2:32 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-Where-do-you-come-in-landscape-16x9.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-Where-do-you-come-in-landscape-16x9.jpg` |
 | **Video title field** | Healthcare Awards Judged on Evidence: Is Your Work Eligible? |
 | **First comment** | https://evinca.healthcarecrownacademy.co.uk/en?ref=comein-li |
 
@@ -662,14 +692,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 22. 2026-12-29 (Tue) 09:00 Riyadh — Gulf Region Nursing
+## [ ] 22. 2026-12-29 (Tue) — Gulf Region Nursing
 | | |
 |---|---|
-| **Schedule** | Tue 29 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Tue 29 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:47 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-portrait-9x16.jpg` |
 | **Video title field** | DOH RN Exam Prep for Nurses in Abu Dhabi: 150 Questions, 3 Hours |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=abudhabi-li |
 
@@ -693,14 +724,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 23. 2026-12-30 (Wed) 09:00 Riyadh — Lumen
+## [ ] 23. 2026-12-30 (Wed) — Lumen
 | | |
 |---|---|
-| **Schedule** | Wed 30 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 30 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-ReaderAllFeatures-landscape-16x9.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-ReaderAllFeatures-landscape-16x9.mp4` |
 | **Shape / length** | 16:9 · 1:37 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-ReaderAllFeatures-landscape-16x9.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-ReaderAllFeatures-landscape-16x9.jpg` |
 | **Video title field** | Turn Any PDF Into a Study Desk: Every Lumen Reader Tool |
 | **First comment** | https://lumen.healthcarecrownacademy.co.uk/?ref=reader-li |
 
@@ -724,14 +756,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 24. 2026-12-31 (Thu) 09:00 Riyadh — Gulf Region Nursing · ARABIC
+## [ ] 24. 2026-12-31 (Thu) — Gulf Region Nursing · ARABIC
 | | |
 |---|---|
-| **Schedule** | Thu 31 Dec 2026, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Thu 31 Dec 2026 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Saudi-SNLE-AR-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Saudi-SNLE-AR-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:07 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Saudi-SNLE-AR-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Saudi-SNLE-AR-portrait-9x16.jpg` |
 | **Video title field** | التحضير لاختبار التمريض السعودي SNLE: مئتا سؤال وأربع ساعات |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=saudi-ar-li |
 
@@ -752,14 +785,15 @@ Original practice material, not official exam questions. Not endorsed by SCFHS, 
 
 ---
 
-## [ ] 25. 2027-01-05 (Tue) 09:00 Riyadh — Evinca
+## [ ] 25. 2027-01-05 (Tue) — Evinca
 | | |
 |---|---|
-| **Schedule** | Tue 05 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Tue 05 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/evinca/Evinca-Proof-anyone-can-check-landscape-16x9.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/evinca/Evinca-Proof-anyone-can-check-landscape-16x9.mp4` |
 | **Shape / length** | 16:9 · 2:47 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-Proof-anyone-can-check-landscape-16x9.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-Proof-anyone-can-check-landscape-16x9.jpg` |
 | **Video title field** | How to Verify a Healthcare Award: Public Proof Pages Explained |
 | **First comment** | https://evinca.healthcarecrownacademy.co.uk/en?ref=proof-li |
 
@@ -784,14 +818,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 26. 2027-01-06 (Wed) 09:00 Riyadh — Gulf Region Nursing · ARABIC
+## [ ] 26. 2027-01-06 (Wed) — Gulf Region Nursing · ARABIC
 | | |
 |---|---|
-| **Schedule** | Wed 06 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Wed 06 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Qatar-DHP-RGN-AR-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Qatar-DHP-RGN-AR-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:06 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Qatar-DHP-RGN-AR-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Qatar-DHP-RGN-AR-portrait-9x16.jpg` |
 | **Video title field** | التحضير لاختبار التمريض في قطر DHP: 150 سؤالًا وثلاث ساعات |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=qatar-ar-li |
 
@@ -812,14 +847,15 @@ Original practice material, not official exam questions. Not endorsed by SCFHS, 
 
 ---
 
-## [ ] 27. 2027-01-07 (Thu) 09:00 Riyadh — Carecraft
+## [ ] 27. 2027-01-07 (Thu) — Carecraft
 | | |
 |---|---|
-| **Schedule** | Thu 07 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Thu 07 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Carecraft-LessonAsSlides-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Carecraft-LessonAsSlides-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:48 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Carecraft/Carecraft-LessonAsSlides-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Carecraft/Carecraft-LessonAsSlides-portrait-9x16.jpg` |
 | **Video title field** | 8-Minute Nursing Lessons: Conversations That Build Trust |
 | **First comment** | https://carecraft.healthcarecrownacademy.co.uk/?ref=lesson-li |
 
@@ -843,14 +879,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 28. 2027-01-12 (Tue) 09:00 Riyadh — MedLex
+## [ ] 28. 2027-01-12 (Tue) — MedLex
 | | |
 |---|---|
-| **Schedule** | Tue 12 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Tue 12 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/MedLex-RootCardsMemoryHooks-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/MedLex-RootCardsMemoryHooks-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:51 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/MedLex/MedLex-RootCardsMemoryHooks-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/MedLex/MedLex-RootCardsMemoryHooks-portrait-9x16.jpg` |
 | **Video title field** | Medical Root Words Made Memorable: Root Cards + Memory Hooks |
 | **First comment** | https://medlex.healthcarecrownacademy.co.uk/?ref=roots-li |
 
@@ -873,14 +910,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 29. 2027-01-13 (Wed) 09:00 Riyadh — Serein
+## [ ] 29. 2027-01-13 (Wed) — Serein
 | | |
 |---|---|
-| **Schedule** | Wed 13 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 13 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Serein-VisualAtlasGuides-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Serein-VisualAtlasGuides-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:56 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Serein/Serein-VisualAtlasGuides-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Serein/Serein-VisualAtlasGuides-portrait-9x16.jpg` |
 | **Video title field** | Does a 10-Minute Break Help? Illustrated Wellbeing Guides |
 | **First comment** | https://serein.healthcarecrownacademy.co.uk/?ref=atlas-li |
 
@@ -904,14 +942,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 30. 2027-01-14 (Thu) 09:00 Riyadh — Gulf Region Nursing · ARABIC
+## [ ] 30. 2027-01-14 (Thu) — Gulf Region Nursing · ARABIC
 | | |
 |---|---|
-| **Schedule** | Thu 14 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Thu 14 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Dubai-DHA-RN-AR-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Dubai-DHA-RN-AR-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:06 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Dubai-DHA-RN-AR-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Dubai-DHA-RN-AR-portrait-9x16.jpg` |
 | **Video title field** | التحضير لاختبار هيئة الصحة بدبي للتمريض DHA: 150 سؤالًا |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=dubai-ar-li |
 
@@ -932,14 +971,15 @@ Original practice material, not official exam questions. Not endorsed by SCFHS, 
 
 ---
 
-## [ ] 31. 2027-01-19 (Tue) 09:00 Riyadh — Lumen
+## [ ] 31. 2027-01-19 (Tue) — Lumen
 | | |
 |---|---|
-| **Schedule** | Tue 19 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Tue 19 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-ReaderShort45s-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/hca-kit/video-pipeline/out/Lumen-ReaderShort45s-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 0:45 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-ReaderShort45s-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Lumen/Lumen-ReaderShort45s-portrait-9x16.jpg` |
 | **Video title field** | Your PDF Can Do Way More Than You Think | Lumen |
 | **First comment** | https://lumen.healthcarecrownacademy.co.uk/?ref=reader-short-li |
 
@@ -963,14 +1003,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 32. 2027-01-20 (Wed) 09:00 Riyadh — Evinca
+## [ ] 32. 2027-01-20 (Wed) — Evinca
 | | |
 |---|---|
-| **Schedule** | Wed 20 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 UK** |
+| **Same moment** | 12:00 Riyadh · 09:00 UK · 09:00 UTC, Wed 20 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/evinca/Evinca-What-you-get-landscape-16x9.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/evinca/Evinca-What-you-get-landscape-16x9.mp4` |
 | **Shape / length** | 16:9 · 3:19 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-What-you-get-landscape-16x9.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/Evinca/Evinca-What-you-get-landscape-16x9.jpg` |
 | **Video title field** | Free Spotlight Story, Career Studio, Academy: What Evinca Gives Nurses |
 | **First comment** | https://evinca.healthcarecrownacademy.co.uk/en?ref=studios-li |
 
@@ -995,14 +1036,15 @@ Voices are AI-generated.
 
 ---
 
-## [ ] 33. 2027-01-21 (Thu) 09:00 Riyadh — Gulf Region Nursing · ARABIC
+## [ ] 33. 2027-01-21 (Thu) — Gulf Region Nursing · ARABIC
 | | |
 |---|---|
-| **Schedule** | Thu 21 Jan 2027, 09:00 Riyadh · 06:00 UK · 06:00 UTC |
+| **Post at** | **09:00 Riyadh** |
+| **Same moment** | 09:00 Riyadh · 06:00 UK · 06:00 UTC, Thu 21 Jan 2027 |
 | **Page** | Healthcare Crown Academy |
-| **Video** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-AR-portrait-9x16.mp4` |
+| **Video** | `/home/user/nclexrn/marketing/videos/gulf-region-nursing/Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-AR-portrait-9x16.mp4` |
 | **Shape / length** | 9:16 · 1:04 |
-| **Thumbnail** | `/home/user/themicrolaunchequation-lang/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-AR-portrait-9x16.jpg` |
+| **Thumbnail** | `/home/user/nclexrn/marketing/hca-kit/publishing-pack/thumbs2/GulfRegionNursing/Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-AR-portrait-9x16.jpg` |
 | **Video title field** | التحضير لاختبار دائرة الصحة في أبوظبي للتمريض DOH |
 | **First comment** | https://snle.healthcarecrownacademy.co.uk/?ref=abudhabi-ar-li |
 
