@@ -90,6 +90,7 @@ Every video uses **real footage of the live app**, animated in a compositor. Rea
 | `lib/render.mjs <proj> <wide|tall> [--stills=t1,t2]` | Uses Playwright to step `renderAt` at 30 fps and screenshot JPEG frames. `--stills` renders only check frames. It also writes the effect event list. |
 | `lib/mix.py <proj> <fmt>` | Mixes voices, ducked music (−10 dB under speech, smooth attack and release) and effects at the event times. |
 | `lib/build.sh` | Renders, mixes, loudness-normalises with ffmpeg `loudnorm I=-14 TP=-1.5`, then encodes H.264 CRF 19 `yuv420p`, AAC 192k, `+faststart`. |
+| `lib/check.py <proj> [--app Name]` | **Run this before every render.** Reads `script.json`, `music.json`, `config.js` and, when built, `vo/durations.json`, then reports ERROR / WARN / NOTE. It catches "LSS" or "SNLE" spoken as an abbreviation, discount wording, the end-card promo block, a missing per-app disclaimer, overclaims ("accredited", "guaranteed", "endorsed"), committed credentials, duplicate line ids, a single voice, a caption colour under 4.5:1 on the background, a missing music seed, a run time outside 50–75 s, a hook that lands after 2 s and a tail gap outside 1.6–1.8 s. Exits 1 on any ERROR, so `python3 -I lib/check.py <proj> && sh lib/both.sh <proj> <Name>` will not render a clip that breaks a rule. `--json` for machine-readable output. |
 | `lib/both.sh <proj> <OutName>` | Builds both shapes in parallel, then **verifies** each file by decoding it fully (expects 0 errors) and reports its duration. |
 | `stub.mjs` | A fake Supabase SDK, for capturing the Lean Six Sigma app logged in as a paid demo user without real credentials. |
 | `example/` | A complete project to copy: MedLex "Build the word". It contains `cap.mjs`, `script.json`, `music.json` and `config.js`. |
@@ -133,6 +134,7 @@ curl -L -O https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-f
    - Run `node lib/render.mjs <proj> wide --stills=...` and `... tall --stills=...` at about 10 moments.
    - Make a contact sheet and **look at it**. Fix the camera if the content is cropped, empty or mis-framed, and fix highlights if they are off target.
    - The portrait shape needs the most fixes: keep the subject large in the window.
+6b. **Check the rules.** Run `python3 -I lib/check.py <proj> --app <Name>` and clear every ERROR. It reads the files, not the video, so it is instant and costs nothing to re-run.
 7. **Render** with `sh lib/both.sh <proj> <App>-<Topic>`. Expect about 8–12 minutes per pair on 4 cores. Run them in a queue so only one pair renders at a time.
 8. **Verify.**
    - Each file must decode with 0 errors and have the expected duration.
