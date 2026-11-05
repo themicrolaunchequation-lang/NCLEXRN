@@ -1,0 +1,167 @@
+{
+ "total": 109.394,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.3,
+   "vo_end": 4.312,
+   "start": 0.0,
+   "text": "Slide three says hepatosplenomegaly. And the lecture moves on.",
+   "voice": "bf_alice",
+   "end": 4.762
+  },
+  {
+   "id": "hook2",
+   "vo_start": 5.062,
+   "vo_end": 9.581,
+   "start": 4.762,
+   "text": "Most healthcare learning asks you to keep up. This one is built to make it stick.",
+   "voice": "bf_alice",
+   "end": 9.981
+  },
+  {
+   "id": "reveal",
+   "vo_start": 10.331,
+   "vo_end": 15.184,
+   "start": 9.981,
+   "text": "Healthcare Crown Academy. Learn with confidence. Care with skill. Earn your crown.",
+   "voice": "bf_alice",
+   "end": 15.734
+  },
+  {
+   "id": "band",
+   "vo_start": 16.034,
+   "vo_end": 22.893,
+   "start": 15.734,
+   "text": "One account holds it all. Sign in once, and every app, your progress and your plan live in one place, on every device.",
+   "voice": "bf_alice",
+   "end": 23.343
+  },
+  {
+   "id": "jewels",
+   "vo_start": 23.643,
+   "vo_end": 29.261,
+   "start": 23.343,
+   "text": "Six apps. Each one a jewel. Understand. Study. Practise. Restore. Prepare. And be recognised.",
+   "voice": "bf_alice",
+   "end": 29.761
+  },
+  {
+   "id": "heart",
+   "vo_start": 30.061,
+   "vo_end": 35.247,
+   "start": 29.761,
+   "text": "Care at the core. Every lesson, tool and case is made for the people who look after patients.",
+   "voice": "bf_alice",
+   "end": 35.697
+  },
+  {
+   "id": "who",
+   "vo_start": 35.997,
+   "vo_end": 41.094,
+   "start": 35.697,
+   "text": "Student, care assistant, nurse, doctor, or preparing for a Gulf licence.",
+   "voice": "bm_lewis",
+   "end": 41.444
+  },
+  {
+   "id": "word",
+   "vo_start": 41.744,
+   "vo_end": 48.444,
+   "start": 41.444,
+   "text": "So that word? MedLex splits it into parts you already know. Hepato, liver. Spleno, spleen. Megaly, enlarged.",
+   "voice": "bf_alice",
+   "end": 49.044
+  },
+  {
+   "id": "crown",
+   "vo_start": 49.344,
+   "vo_end": 51.435,
+   "start": 49.044,
+   "text": "Learn it. Practise it. Prove it.",
+   "voice": "bf_alice",
+   "end": 52.335
+  },
+  {
+   "id": "act2",
+   "vo_start": 52.635,
+   "vo_end": 57.38,
+   "start": 52.335,
+   "text": "Now, inside the crown. Six jewels, and the one job each of them does well.",
+   "voice": "bf_alice",
+   "end": 57.83
+  },
+  {
+   "id": "medlex",
+   "vo_start": 58.13,
+   "vo_end": 65.488,
+   "start": 57.83,
+   "text": "MedLex, to understand. Twenty-six modules, one thousand four hundred and eighty terms, and fifty-six illustrated guides.",
+   "voice": "bf_alice",
+   "end": 65.838
+  },
+  {
+   "id": "lumen",
+   "vo_start": 66.138,
+   "vo_end": 72.689,
+   "start": 65.838,
+   "text": "Lumen, to study. Your own notes and PDFs become recall cards, and your library stays on your device.",
+   "voice": "bf_alice",
+   "end": 73.039
+  },
+  {
+   "id": "carecraft",
+   "vo_start": 73.339,
+   "vo_end": 78.102,
+   "start": 73.039,
+   "text": "Carecraft, to practise. Thirty lessons in the conversations that matter most.",
+   "voice": "bf_alice",
+   "end": 78.452
+  },
+  {
+   "id": "serein",
+   "vo_start": 78.752,
+   "vo_end": 82.823,
+   "start": 78.452,
+   "text": "Serein, to restore. Fifteen short practices for a long shift.",
+   "voice": "bf_alice",
+   "end": 83.223
+  },
+  {
+   "id": "gulf",
+   "vo_start": 83.523,
+   "vo_end": 89.403,
+   "start": 83.223,
+   "text": "Gulf Region Nursing, to prepare. Saudi Arabia, Qatar, Dubai and Abu Dhabi, in one studio.",
+   "voice": "bf_alice",
+   "end": 89.753
+  },
+  {
+   "id": "evinca",
+   "vo_start": 90.053,
+   "vo_end": 93.532,
+   "start": 89.753,
+   "text": "And Evinca, to be recognised for the work you already do.",
+   "voice": "bf_alice",
+   "end": 94.032
+  },
+  {
+   "id": "proof",
+   "vo_start": 94.332,
+   "vo_end": 100.54,
+   "start": 94.032,
+   "text": "A real, registered company. No ads, ever. Most of your progress stays on your own device.",
+   "voice": "bm_lewis",
+   "end": 100.99
+  },
+  {
+   "id": "cta",
+   "vo_start": 101.29,
+   "vo_end": 107.094,
+   "start": 100.99,
+   "text": "One account. Six apps. Start free, no card, at healthcare crown academy dot co dot uk.",
+   "voice": "bf_alice",
+   "end": 108.794
+  }
+ ]
+}

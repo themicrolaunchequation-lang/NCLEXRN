@@ -1,3 +1,12 @@
 *.zip
 apps/carecraft/dist/
 node_modules/
+
+# Kokoro voice model + venv: too large for git, re-downloadable (see kit/AGENT-PROMPT.md)
+marketing/hca-kit/video-pipeline/kit/kokoro-v1.0.onnx
+marketing/hca-kit/video-pipeline/kit/voices-v1.0.bin
+marketing/hca-kit/video-pipeline/kit/kenv/
+__pycache__/
+# render intermediates
+marketing/hca-kit/video-pipeline/*/frames-*/
+marketing/hca-kit/video-pipeline/*/build-*.log

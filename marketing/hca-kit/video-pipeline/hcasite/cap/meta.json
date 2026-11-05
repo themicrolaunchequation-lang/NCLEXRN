@@ -1,0 +1,118 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "s00",
+    "file": "hcasite/cap/s00.png",
+    "rects": {
+     "cta": [
+      144,
+      639.999755859375,
+      238.34375,
+      54
+     ]
+    }
+   },
+   {
+    "name": "s00r1",
+    "file": "hcasite/cap/s00r1.png",
+    "rects": {}
+   },
+   {
+    "name": "s00r2",
+    "file": "hcasite/cap/s00r2.png",
+    "rects": {}
+   },
+   {
+    "name": "s01",
+    "file": "hcasite/cap/s01.png",
+    "rects": {}
+   },
+   {
+    "name": "s02",
+    "file": "hcasite/cap/s02.png",
+    "rects": {}
+   },
+   {
+    "name": "s02r1",
+    "file": "hcasite/cap/s02r1.png",
+    "rects": {}
+   },
+   {
+    "name": "s02r2",
+    "file": "hcasite/cap/s02r2.png",
+    "rects": {}
+   },
+   {
+    "name": "s03",
+    "file": "hcasite/cap/s03.png",
+    "rects": {}
+   },
+   {
+    "name": "s04",
+    "file": "hcasite/cap/s04.png",
+    "rects": {}
+   },
+   {
+    "name": "s05",
+    "file": "hcasite/cap/s05.png",
+    "rects": {}
+   },
+   {
+    "name": "after",
+    "file": "hcasite/cap/after.png",
+    "rects": {}
+   },
+   {
+    "name": "start",
+    "file": "hcasite/cap/start.png",
+    "rects": {}
+   },
+   {
+    "name": "apps",
+    "file": "hcasite/cap/apps.png",
+    "rects": {}
+   },
+   {
+    "name": "apps2",
+    "file": "hcasite/cap/apps2.png",
+    "rects": {}
+   },
+   {
+    "name": "apps3",
+    "file": "hcasite/cap/apps3.png",
+    "rects": {}
+   },
+   {
+    "name": "proof",
+    "file": "hcasite/cap/proof.png",
+    "rects": {}
+   },
+   {
+    "name": "menu",
+    "file": "hcasite/cap/menu.png",
+    "rects": {}
+   },
+   {
+    "name": "appsX2",
+    "file": "hcasite/cap/appsX2.png",
+    "rects": {}
+   },
+   {
+    "name": "appsX3",
+    "file": "hcasite/cap/appsX3.png",
+    "rects": {}
+   },
+   {
+    "name": "appsX4",
+    "file": "hcasite/cap/appsX4.png",
+    "rects": {}
+   },
+   {
+    "name": "appsX5",
+    "file": "hcasite/cap/appsX5.png",
+    "rects": {}
+   }
+  ]
+ }
+}

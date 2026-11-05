@@ -1,0 +1,20 @@
+[
+{"id":"hook","voice":"bf_alice","lang":"en-gb","speed":0.97,"pre":0.3,"post":0.45,"text":"Slide three says hepatosplenomegaly. And the lecture moves on."},
+{"id":"hook2","voice":"bf_alice","lang":"en-gb","speed":0.98,"post":0.4,"text":"Most healthcare learning asks you to keep up. This one is built to make it stick."},
+{"id":"reveal","voice":"bf_alice","lang":"en-gb","speed":0.96,"pre":0.35,"post":0.55,"text":"Healthcare Crown Academy. Learn with confidence. Care with skill. Earn your crown."},
+{"id":"band","voice":"bf_alice","lang":"en-gb","speed":1.0,"post":0.45,"text":"One account holds it all. Sign in once, and every app, your progress and your plan live in one place, on every device."},
+{"id":"jewels","voice":"bf_alice","lang":"en-gb","speed":0.95,"post":0.5,"text":"Six apps. Each one a jewel. Understand. Study. Practise. Restore. Prepare. And be recognised."},
+{"id":"heart","voice":"bf_alice","lang":"en-gb","speed":0.97,"post":0.45,"text":"Care at the core. Every lesson, tool and case is made for the people who look after patients."},
+{"id":"who","voice":"bm_lewis","lang":"en-gb","speed":1.0,"post":0.35,"text":"Student, care assistant, nurse, doctor, or preparing for a Gulf licence."},
+{"id":"word","voice":"bf_alice","lang":"en-gb","speed":0.97,"post":0.6,"text":"So that word? MedLex splits it into parts you already know. Hepato, liver. Spleno, spleen. Megaly, enlarged."},
+{"id":"crown","voice":"bf_alice","lang":"en-gb","speed":0.93,"pre":0.3,"post":0.9,"text":"Learn it. Practise it. Prove it."},
+{"id":"act2","voice":"bf_alice","lang":"en-gb","speed":0.96,"pre":0.3,"post":0.45,"text":"Now, inside the crown. Six jewels, and the one job each of them does well."},
+{"id":"medlex","voice":"bf_alice","lang":"en-gb","speed":0.99,"post":0.35,"text":"MedLex, to understand. Twenty-six modules, one thousand four hundred and eighty terms, and fifty-six illustrated guides."},
+{"id":"lumen","voice":"bf_alice","lang":"en-gb","speed":0.99,"post":0.35,"text":"Lumen, to study. Your own notes and PDFs become recall cards, and your library stays on your device."},
+{"id":"carecraft","voice":"bf_alice","lang":"en-gb","speed":0.99,"post":0.35,"text":"Carecraft, to practise. Thirty lessons in the conversations that matter most."},
+{"id":"serein","voice":"bf_alice","lang":"en-gb","speed":0.95,"post":0.4,"text":"Serein, to restore. Fifteen short practices for a long shift."},
+{"id":"gulf","voice":"bf_alice","lang":"en-gb","speed":0.99,"post":0.35,"text":"Gulf Region Nursing, to prepare. Saudi Arabia, Qatar, Dubai and Abu Dhabi, in one studio."},
+{"id":"evinca","voice":"bf_alice","lang":"en-gb","speed":0.98,"post":0.5,"text":"And Evinca, to be recognised for the work you already do."},
+{"id":"proof","voice":"bm_lewis","lang":"en-gb","speed":0.98,"post":0.45,"text":"A real, registered company. No ads, ever. Most of your progress stays on your own device."},
+{"id":"cta","voice":"bf_alice","lang":"en-gb","speed":0.94,"pre":0.3,"post":1.7,"text":"One account. Six apps. Start free, no card, at healthcare crown academy dot co dot uk."}
+]

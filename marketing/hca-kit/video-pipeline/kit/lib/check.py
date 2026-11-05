@@ -82,7 +82,7 @@ SECRETS = [
     (r'(?i)\b(api[_-]?key|secret|password)\s*[:=]\s*["\'][^"\']{8,}', 'hard-coded credential'),
 ]
 
-LEN_MIN, LEN_MAX = 50.0, 75.0      # AGENT-PROMPT section 1
+LEN_MIN, LEN_MAX = 50.0, 75.0      # AGENT-PROMPT section 1; override with --len MIN-MAX
 TAIL_MIN, TAIL_MAX = 1.6, 1.8      # quality bar
 HOOK_LANDS_BY = 2.0                # quality bar
 
@@ -376,6 +376,15 @@ def main(argv):
     if not os.path.isdir(proj):
         print(f'No such project folder: {proj}')
         return 2
+
+    global LEN_MIN, LEN_MAX
+    for a in argv[1:]:
+        if a.startswith('--len='):
+            lo, _, hi = a.split('=', 1)[1].partition('-')
+            LEN_MIN, LEN_MAX = float(lo), float(hi)
+    if '--len' in argv:
+        lo, _, hi = argv[argv.index('--len') + 1].partition('-')
+        LEN_MIN, LEN_MAX = float(lo), float(hi)
 
     app = None
     for a in argv[1:]:
