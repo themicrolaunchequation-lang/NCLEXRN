@@ -1,0 +1,382 @@
+[
+ {
+  "app": "LeanSixSigma",
+  "file": "LSS-CostOfPoorQuality",
+  "dur": 69.044,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "LeanSixSigma",
+  "file": "LeanSixSigma-RedBeadWard",
+  "dur": 63.422,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "LeanSixSigma",
+  "file": "LeanSixSigma-ExamToVerifiedCertificate",
+  "dur": 57.376,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "LeanSixSigma",
+  "file": "LSS-Process-Capability-Cp-Cpk",
+  "dur": 217.245,
+  "fb": "wide",
+  "li": "wide",
+  "yt_short": false,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "LeanSixSigma",
+  "file": "LSS-Swimlane-Process-Map",
+  "dur": 62.562,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "MedLex",
+  "file": "MedLex-DecodeAnyWord",
+  "dur": 53.153,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "MedLex",
+  "file": "MedLex-BuildTheWord",
+  "dur": 50.938,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "MedLex",
+  "file": "MedLex-RootCardsMemoryHooks",
+  "dur": 51.131,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Carecraft",
+  "file": "Carecraft-TeachBackScenario",
+  "dur": 50.802,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Carecraft",
+  "file": "Carecraft-SBARHandoverBuilder",
+  "dur": 50.226,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Carecraft",
+  "file": "Carecraft-LessonAsSlides",
+  "dur": 48.482,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Serein",
+  "file": "Serein-TwoMinutePause",
+  "dur": 54.436,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Serein",
+  "file": "Serein-FindAPauseThatFits",
+  "dur": 56.057,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Serein",
+  "file": "Serein-VisualAtlasGuides",
+  "dur": 56.439,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Lumen",
+  "file": "Lumen-ReadHideExplain",
+  "dur": 70.388,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Lumen",
+  "file": "Lumen-RecallCards",
+  "dur": 74.826,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Lumen",
+  "file": "Lumen-FocusAndMethods",
+  "dur": 72.765,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Lumen",
+  "file": "Lumen-ReaderAllFeatures",
+  "dur": 97.364,
+  "fb": "wide",
+  "li": "wide",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Lumen",
+  "file": "Lumen-ReaderShort45s",
+  "dur": 44.907,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "GulfRegionNursing-RepairTheReasoning",
+  "dur": 59.931,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "GulfRegionNursing-BEFASTDecisionTool",
+  "dur": 54.063,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "GulfRegionNursing-GlossaryFourExams",
+  "dur": 51.437,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-All-in-one",
+  "dur": 67.217,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Why-Us-Full",
+  "dur": 248.055,
+  "fb": "wide",
+  "li": "wide",
+  "yt_short": false,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Saudi-SNLE",
+  "dur": 51.248,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Qatar-DHP-RGN",
+  "dur": 45.762,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Dubai-DHA-RN",
+  "dur": 52.392,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Abu-Dhabi-DOH-RN",
+  "dur": 46.9,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Saudi-SNLE-AR",
+  "dur": 67.189,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "ar",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Qatar-DHP-RGN-AR",
+  "dur": 66.429,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "ar",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Dubai-DHA-RN-AR",
+  "dur": 65.568,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "ar",
+  "src": "other"
+ },
+ {
+  "app": "GulfRegionNursing",
+  "file": "Gulf-Region-Nursing-Abu-Dhabi-DOH-RN-AR",
+  "dur": 63.895,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "ar",
+  "src": "other"
+ },
+ {
+  "app": "Evinca",
+  "file": "Evinca-WhereDoYouComeIn",
+  "dur": 52.012,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Evinca",
+  "file": "Evinca-TwoMinuteEligibilityCheck",
+  "dur": 50.426,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Evinca",
+  "file": "Evinca-VerifiableProofPage",
+  "dur": 50.012,
+  "fb": "tall",
+  "li": "tall",
+  "yt_short": true,
+  "lang": "en",
+  "src": "mine"
+ },
+ {
+  "app": "Evinca",
+  "file": "Evinca-Where-do-you-come-in",
+  "dur": 152.248,
+  "fb": "wide",
+  "li": "wide",
+  "yt_short": true,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "Evinca",
+  "file": "Evinca-Proof-anyone-can-check",
+  "dur": 167.442,
+  "fb": "wide",
+  "li": "wide",
+  "yt_short": true,
+  "lang": "en",
+  "src": "other"
+ },
+ {
+  "app": "Evinca",
+  "file": "Evinca-What-you-get",
+  "dur": 198.953,
+  "fb": "wide",
+  "li": "wide",
+  "yt_short": false,
+  "lang": "en",
+  "src": "other"
+ }
+]
