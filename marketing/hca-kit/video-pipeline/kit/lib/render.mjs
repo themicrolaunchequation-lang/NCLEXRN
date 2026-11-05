@@ -1,10 +1,10 @@
 // usage: node lib/render.mjs <proj> <fmt> [--stills t1,t2,...] [--fps 30]
 import { createRequire } from 'node:module'; import fs from 'node:fs'; import path from 'node:path';
-const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium } = require('playwright');
+const require = createRequire('/opt/node-tools/node_modules/'); const { chromium } = require('playwright');
 const [proj, fmt] = process.argv.slice(2); const BASE = path.resolve('.');
 const stills = (process.argv.find(a=>a.startsWith('--stills='))||'').slice(9);
 const FPS = 30; const tall = fmt==='tall'; const W=tall?1080:1920, H=tall?1920:1080;
-const br = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args:['--no-proxy-server','--allow-file-access-from-files'] });
+const br = await chromium.launch({ executablePath:process.env.PW_CHROME||'/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', args:['--no-proxy-server','--allow-file-access-from-files'] });
 const p = await br.newPage({ viewport:{width:W,height:H}, deviceScaleFactor:1 });
 p.on('pageerror', e=>console.log('PAGEERR', e.message)); p.on('console', m=>{ if(m.type()==='error') console.log('CONSOLE', m.text()); });
 await p.goto(`file://${BASE}/lib/comp.html?proj=${proj}&fmt=${fmt}&base=${encodeURIComponent(BASE)}`);

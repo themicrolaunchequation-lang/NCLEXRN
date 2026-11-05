@@ -10,3 +10,10 @@ __pycache__/
 # render intermediates
 marketing/hca-kit/video-pipeline/*/frames-*/
 marketing/hca-kit/video-pipeline/*/build-*.log
+# render intermediates (regenerate with lib/both.sh)
+marketing/hca-kit/video-pipeline/*/mix-*.wav
+marketing/hca-kit/video-pipeline/*/mixn-*.wav
+marketing/hca-kit/video-pipeline/*/loud-*.txt
+marketing/hca-kit/video-pipeline/*/events-*.json
+marketing/hca-kit/video-pipeline/*/still-*.jpg
+marketing/hca-kit/video-pipeline/kit/out/
