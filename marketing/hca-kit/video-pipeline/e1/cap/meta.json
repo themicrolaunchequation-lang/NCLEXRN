@@ -1,0 +1,76 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "h0",
+    "file": "e1/cap/h0.png",
+    "rects": {}
+   },
+   {
+    "name": "h1",
+    "file": "e1/cap/h1.png",
+    "rects": {}
+   },
+   {
+    "name": "h2",
+    "file": "e1/cap/h2.png",
+    "rects": {}
+   },
+   {
+    "name": "h3",
+    "file": "e1/cap/h3.png",
+    "rects": {}
+   },
+   {
+    "name": "h4",
+    "file": "e1/cap/h4.png",
+    "rects": {}
+   },
+   {
+    "name": "h5",
+    "file": "e1/cap/h5.png",
+    "rects": {}
+   },
+   {
+    "name": "h6",
+    "file": "e1/cap/h6.png",
+    "rects": {}
+   },
+   {
+    "name": "h7",
+    "file": "e1/cap/h7.png",
+    "rects": {}
+   },
+   {
+    "name": "el0",
+    "file": "e1/cap/el0.png",
+    "rects": {}
+   },
+   {
+    "name": "el1",
+    "file": "e1/cap/el1.png",
+    "rects": {}
+   },
+   {
+    "name": "el2",
+    "file": "e1/cap/el2.png",
+    "rects": {}
+   },
+   {
+    "name": "pr0",
+    "file": "e1/cap/pr0.png",
+    "rects": {}
+   },
+   {
+    "name": "pr1",
+    "file": "e1/cap/pr1.png",
+    "rects": {}
+   },
+   {
+    "name": "pr2",
+    "file": "e1/cap/pr2.png",
+    "rects": {}
+   }
+  ]
+ }
+}

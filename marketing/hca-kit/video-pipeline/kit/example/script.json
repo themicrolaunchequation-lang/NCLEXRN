@@ -1,0 +1,70 @@
+[
+ {
+  "id": "hook",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.35,
+  "post": 0.45,
+  "text": "Could you spell a diagnosis you've never seen before? You can, if you know the parts."
+ },
+ {
+  "id": "stu1",
+  "voice": "am_eric",
+  "lang": "en-us",
+  "speed": 0.95,
+  "text": "Gastro... entero... what?",
+  "post": 0.5
+ },
+ {
+  "id": "reveal",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "text": "In MedLex Practice, you don't just read words. You build them."
+ },
+ {
+  "id": "build",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 0.84,
+  "pre": 0.3,
+  "post": 0.9,
+  "text": "The stomach and intestines are inflamed. Gastr, stomach. O, to join. Enter, intestine. Itis, inflammation."
+ },
+ {
+  "id": "check",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "Check it. Right. Gastroenteritis. Four small parts, one clear meaning. And now you know exactly why.",
+  "post": 0.8
+ },
+ {
+  "id": "stu2",
+  "voice": "am_eric",
+  "lang": "en-us",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.45,
+  "text": "Okay. That's actually fun."
+ },
+ {
+  "id": "modes",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.35,
+  "text": "Eight ways to practise. Decode it, build it, match pairs, look-alikes, clinical notes, and a flash review that brings words back just before you forget them."
+ },
+ {
+  "id": "cta",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "pre": 0.5,
+  "post": 1.6,
+  "text": "Build your medical vocabulary, piece by piece. Try it free today, at MedLex dot Healthcare Crown Academy dot co dot uk."
+ }
+]

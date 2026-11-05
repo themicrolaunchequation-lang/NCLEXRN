@@ -1,0 +1,78 @@
+[
+ {
+  "id": "hook",
+  "voice": "bf_alice",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.35,
+  "post": 0.4,
+  "text": "Two in the morning. Your patient is getting worse. You call the doctor, and your mind goes blank."
+ },
+ {
+  "id": "doc1",
+  "voice": "am_michael",
+  "lang": "en-us",
+  "speed": 0.95,
+  "text": "Okay... what exactly do you need from me?"
+ },
+ {
+  "id": "reveal",
+  "voice": "bf_alice",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "text": "Carecraft's SBAR handover builder turns that moment into a clear message."
+ },
+ {
+  "id": "type",
+  "voice": "bf_alice",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "text": "Start with the situation, in a sentence or two. The live preview fills in as you type."
+ },
+ {
+  "id": "example",
+  "voice": "bf_alice",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "text": "Not sure what good looks like? Load a fictional example. Background. Assessment. And a clear recommendation.",
+  "post": 0.7
+ },
+ {
+  "id": "loop",
+  "voice": "bf_alice",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "text": "Then close the loop. Ask them to say the plan back, and agree what happens if it doesn't.",
+  "post": 0.7
+ },
+ {
+  "id": "check",
+  "voice": "bf_alice",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "text": "A quick self-check confirms you've said who, how urgent, and exactly what you need."
+ },
+ {
+  "id": "doc2",
+  "voice": "am_michael",
+  "lang": "en-us",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.45,
+  "text": "Clear. I'll be there in ten minutes."
+ },
+ {
+  "id": "cta",
+  "voice": "bf_alice",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "pre": 0.5,
+  "post": 1.6,
+  "text": "Hand over with confidence. Try it free today, at Carecraft dot Healthcare Crown Academy dot co dot uk."
+ }
+]

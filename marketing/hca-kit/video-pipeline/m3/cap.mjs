@@ -1,0 +1,28 @@
+import { createRequire } from 'node:module'; import fs from 'node:fs';
+const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium } = require('playwright');
+const OUT='m3/cap'; const meta={shots:[]};
+const br = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const p = await (await br.newContext({ viewport:{width:1440,height:900}, deviceScaleFactor:2 })).newPage();
+await p.goto('https://medlex.healthcarecrownacademy.co.uk/#wordparts/root', {waitUntil:'domcontentloaded'}); await p.waitForTimeout(4000);
+await p.getByRole('button',{name:/^Skip$/}).click({timeout:1500}).catch(()=>{}); await p.waitForTimeout(2500);
+const fr = p.frames().find(f=>/quest-roots/.test(f.url()));
+const off = await p.evaluate(()=>{ const i=[...document.querySelectorAll('iframe')].find(f=>/quest-roots/.test(f.src)); const r=i.getBoundingClientRect(); return [r.x,r.y]; });
+async function shot(name, sels={}){ console.log('shot',name); const f=`${OUT}/${name}.png`; await p.screenshot({path:f}); const r={}; for(const [k,l] of Object.entries(sels)){ const b=await l.boundingBox({timeout:400}).catch(()=>null); if(b) r[k]=[b.x,b.y,b.width,b.height]; } meta.shots.push({name,file:f,rects:r}); }
+await fr.evaluate(()=>{ document.querySelectorAll('[class*=toast],[role=status]').forEach(e=>e.style.display='none'); });
+const neph = fr.locator('button').filter({hasText:/nephr\/o/}).first(), cardi=fr.locator('button').filter({hasText:/cardi\/o/}).first(), explore=fr.locator('button,a').filter({hasText:/^Explore cards/}).first(), hear=fr.locator('button').filter({hasText:/Hear the connection/}).first();
+await shot('s0',{neph,cardi,explore,hear});
+await neph.click({force:true}); await p.waitForTimeout(1200); await shot('s1',{neph,cardi,explore});
+await explore.click({force:true}); await p.waitForTimeout(2500); await shot('grid');
+const arthr = fr.locator('*').filter({hasText:/^\s*arthr\s*$/}).first();
+const card4 = fr.locator('button,[role=button],article,div').filter({hasText:/King Arthur joints creak/}).last();
+await shot('grid2',{card4});
+await card4.click({force:true,timeout:5000}).catch(e=>console.log('nocard')); await p.waitForTimeout(2500); await shot('pop1');
+console.log('POP', await fr.evaluate(()=>{ const d=[...document.querySelectorAll('[role=dialog],dialog,.modal,[class*=modal]')].find(e=>e.offsetParent); return d? d.innerText.replace(/\n+/g,' | ').slice(0,700):'none'; }));
+await p.waitForTimeout(3000); await shot('pop1b');
+await p.mouse.move(1000,600); await p.mouse.wheel(0,450); await p.waitForTimeout(1200); await shot('pop2');
+const ansA = fr.locator('button').filter({hasText:/[A-D]\.\s*joint\s*$/}).first();
+await shot('pop2r',{ansA});
+await ansA.click({force:true,timeout:4000}).catch(()=>console.log('noans')); await p.waitForTimeout(1800); await shot('pop3');
+const cards = fr.locator('[class*=card]').filter({hasText:/card|heart|cardi/i});
+console.log('cards', await fr.evaluate(()=>[...document.querySelectorAll('button,[role=button],article')].filter(b=>b.offsetParent&&b.getBoundingClientRect().top>0&&b.getBoundingClientRect().top<900).map(b=>b.textContent.trim().replace(/\s+/g,' ').slice(0,40)).slice(0,30).join(' | ')));
+fs.writeFileSync(`${OUT}/meta.json`, JSON.stringify({wide:meta},null,1)); await br.close();

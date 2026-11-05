@@ -1,0 +1,11 @@
+import { createRequire } from 'node:module';
+const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium } = require('playwright');
+const br = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const p = await (await br.newContext({ viewport:{width:1440,height:900} })).newPage(); p.setDefaultTimeout(4000);
+await p.goto('https://lumen.healthcarecrownacademy.co.uk/',{waitUntil:'domcontentloaded',timeout:60000}); await p.waitForTimeout(3000);
+await p.getByRole('button',{name:/Skip for now/}).click().catch(()=>{});
+await p.locator('nav, aside').getByText('Library').first().click(); await p.waitForTimeout(2000);
+await p.getByText('Cardiovascular foundations').first().click(); await p.waitForTimeout(4000);
+await p.mouse.click(718,73); await p.waitForTimeout(1200); await p.screenshot({path:'l4/tm.png'});
+console.log(await p.evaluate(()=>[...document.querySelectorAll('[role=menuitem],[role=menu] button,[role=dialog] button, .popover button')].filter(b=>b.offsetParent).map(b=>b.textContent.trim().replace(/\s+/g,' ').slice(0,30)+'@'+Math.round(b.getBoundingClientRect().x)+','+Math.round(b.getBoundingClientRect().y)).join(' | ')));
+await br.close();

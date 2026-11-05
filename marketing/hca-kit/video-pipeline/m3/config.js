@@ -1,0 +1,31 @@
+const POP={wide:[290,20,1120],tall:[310,280,600]}, MC={wide:[300,330,1100],tall:[330,360,620]};
+window.SPEC={
+ brand:['MedLex','Healthcare Crown Academy'], hookShot:'pop1b', hookCam:POP, revealScene:'reveal',
+ cursorWindows:[[['swap',0.8],['swap',3.6]],[['card',-0.5],['card',1.0]],[['check',1.4],['check',3.4]]],
+ cta:{title:'MedLex<br><em>medical terminology, decoded</em>',pts:['60 roots','66 prefixes','100 suffixes','Memory hooks + mini-checks'],go:'Try it free today →',url:'medlex.healthcarecrownacademy.co.uk',fine:'Healthcare Crown Academy'},
+ scenes:[
+  {id:'hook',cap:['**Arthritis.** **Arthralgia.** **Arthroscopy.**','Three words.','**One secret.**'],
+   kin:[{at:0,to:2.9,html:'<span style="color:#ffd166">Arthr</span>itis<br><span style="color:#ffd166">Arthr</span>algia<br><span style="color:#ffd166">Arthr</span>oscopy',size:[100,92],y:[260,110]},{at:3.05,html:'One secret.',size:[160,170],y:[400,200],color:'#5eead4'}]},
+  {id:'stu1',bubble:{who:'Student',av:'JM',text:'They all start the same… but what does it mean?',type:1.6,col:'linear-gradient(135deg,#f59e0b,#b45309)'}},
+  {id:'reveal',shots:[{at:-0.4,name:'s0'}],cam:[{at:-0.4,r:[0,0,1440],d:0.01},{at:0.9,r:{wide:[290,90,1120],tall:[320,240,640]},d:2.2}],
+   head:['MedLex · Word parts','It’s the<br>root.'],headTo:'swap',cap:['It’s **the root**.','MedLex has a **studio**','for every one of them.']},
+  {id:'swap',shots:[{at:2.3,name:'s1'}],cam:[{at:-0.3,r:{wide:[560,230,860],tall:[890,270,460]},d:0.9}],
+   cursor:[{at:1.4,to:'neph@s0',d:0.6,click:true}],
+   hl:[{at:0.1,to:2.2,r:[918,428,170,46],color:'#f87171'},{at:2.5,to:'end',r:[918,428,180,46],color:'#5eead4'}],
+   cap:['**Cardiology**: the heart.','Swap one root.','**Nephrology**: the kidneys.','Same ending, a **different subject**.']},
+  {id:'card',shots:[{at:-0.4,name:'grid2',tr:'fade',d:0.35},{at:0.6,name:'pop1',tr:'pop',d:0.55},{at:3.6,name:'pop1b',tr:'fade',d:0.4}],
+   cam:[{at:-0.4,r:{wide:[370,250,1060],tall:[1080,330,330]},d:0.6},{at:0.6,r:POP,d:0.01},{at:3.6,r:{wide:[300,280,880],tall:[320,420,560]},d:1.2}],
+   cursor:[{at:-0.3,to:[1255,520],d:0.5,click:true}],
+   hl:[{at:4.6,to:'end',r:[336,438,510,236],color:'#ffd166'}],
+   callouts:[{at:4.9,html:'“King Arthur’s joints creak”<small>a memory hook for arthr = joint</small>',bg:'linear-gradient(135deg,#f59e0b,#b45309)',sizeW:44,sizeT:48,yW:700,yT:1180}],
+   head:['Tap a card','Arthr =<br>joint'],cap:['Tap a card, and it **pops open**.','**Arthr** means **joint**.','And the memory hook?','**King Arthur’s joints creak.**']},
+  {id:'check',shots:[{at:-0.3,name:'pop2',tr:'fade',d:0.35},{at:2.4,name:'pop3'}],cam:[{at:-0.3,r:MC,d:0.8}],
+   cursor:[{at:1.6,to:'ansA@pop2r',d:0.6,click:true}],
+   hl:[{at:2.6,to:'end',r:[340,750,560,40],color:'#34d399'}],
+   head:['Mini-check','Prove it<br>stuck'],headTo:'stu2',cap:['Then **prove it stuck**.','What does **arthr** mean?','**Joint.** Correct,','and **ten points**.']},
+  {id:'stu2',bubble:{who:'Student',av:'JM',text:'King Arthur’s joints. I’ll never forget that.',type:1.4,col:'linear-gradient(135deg,#f59e0b,#b45309)',yW:110,yT:600,xW:250,wW:900}},
+  {id:'narr',shots:[{at:-0.35,name:'grid',tr:'fade',d:0.4}],cam:[{at:-0.35,r:{wide:[300,60,1120],tall:[320,330,560]},d:0.8},{at:3.5,r:{wide:[300,250,1120],tall:[800,330,560]},d:3}],
+   callouts:[{at:2.0,html:'226 word parts<small>60 roots · 66 prefixes · 100 suffixes</small>',bg:'linear-gradient(135deg,#6366f1,#4338ca)',sizeW:46,sizeT:50,yW:700,yT:1180}],
+   head:['Every word part','Picture, hook<br>and check'],cap:['**60 roots**, **66 prefixes**','and **100 suffixes**.','Each with a picture, a **memory hook**,','and a **quick check**.']},
+  {id:'cta',cap:['Learn it once.','**Recognise it everywhere.**','**Try it free** today.']}
+ ]};

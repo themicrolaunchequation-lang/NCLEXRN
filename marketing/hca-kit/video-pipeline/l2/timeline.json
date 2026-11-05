@@ -1,0 +1,86 @@
+{
+ "total": 74.826,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 9.083,
+   "start": 0.0,
+   "text": "Most of what you study today, you'll forget by next week. Unless you test yourself at the right moment.",
+   "voice": "af_nicole",
+   "end": 9.533
+  },
+  {
+   "id": "stu1",
+   "vo_start": 9.833,
+   "vo_end": 12.064,
+   "start": 9.533,
+   "text": "But how do I know when to review?",
+   "voice": "bm_george",
+   "end": 12.414
+  },
+  {
+   "id": "reveal",
+   "vo_start": 12.814,
+   "vo_end": 21.296,
+   "start": 12.414,
+   "text": "Lumen's study studio does the timing for you. Add a starter collection, linked to your sources.",
+   "voice": "af_nicole",
+   "end": 21.646
+  },
+  {
+   "id": "q",
+   "vo_start": 21.946,
+   "vo_end": 30.683,
+   "start": 21.646,
+   "text": "A moment to remember. Which side of the heart supplies the pulmonary circulation? Think first.",
+   "voice": "af_nicole",
+   "end": 31.283
+  },
+  {
+   "id": "a",
+   "vo_start": 31.583,
+   "vo_end": 37.635,
+   "start": 31.283,
+   "text": "Then reveal. The right side of the heart. Rate how well you knew it.",
+   "voice": "af_nicole",
+   "end": 37.985
+  },
+  {
+   "id": "sched",
+   "vo_start": 38.285,
+   "vo_end": 47.772,
+   "start": 37.985,
+   "text": "The schedule adapts. Easy cards come back later. Tricky ones return sooner, just before you forget.",
+   "voice": "af_nicole",
+   "end": 48.122
+  },
+  {
+   "id": "next",
+   "vo_start": 48.422,
+   "vo_end": 58.674,
+   "start": 48.122,
+   "text": "Next card. Cardiac output equals heart rate times stroke volume. Every answer links back to its page.",
+   "voice": "af_nicole",
+   "end": 59.024
+  },
+  {
+   "id": "stu2",
+   "vo_start": 59.224,
+   "vo_end": 61.861,
+   "start": 59.024,
+   "text": "Ten minutes a day. And it actually sticks.",
+   "voice": "bm_george",
+   "end": 62.311
+  },
+  {
+   "id": "cta",
+   "vo_start": 62.811,
+   "vo_end": 72.626,
+   "start": 62.311,
+   "text": "Remember what you study. Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "af_nicole",
+   "end": 74.226
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "total": 44.907,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.3,
+   "vo_end": 3.418,
+   "start": 0.0,
+   "text": "Your PDF can do way more than you think.",
+   "voice": "af_nicole",
+   "end": 3.718
+  },
+  {
+   "id": "reveal",
+   "vo_start": 4.018,
+   "vo_end": 8.747,
+   "start": 3.718,
+   "text": "Open it in Lumen's reader. It turns like a real book.",
+   "voice": "af_nicole",
+   "end": 9.047
+  },
+  {
+   "id": "mark",
+   "vo_start": 9.247,
+   "vo_end": 13.212,
+   "start": 9.047,
+   "text": "Draw. Highlight. Every mark is saved with its page.",
+   "voice": "af_nicole",
+   "end": 14.012
+  },
+  {
+   "id": "mag",
+   "vo_start": 14.212,
+   "vo_end": 15.754,
+   "start": 14.012,
+   "text": "Magnify small print.",
+   "voice": "af_nicole",
+   "end": 16.554
+  },
+  {
+   "id": "stick",
+   "vo_start": 16.754,
+   "vo_end": 22.103,
+   "start": 16.554,
+   "text": "Drop clinical stickers, and use a calculator with clinical formulas.",
+   "voice": "af_nicole",
+   "end": 22.903
+  },
+  {
+   "id": "share",
+   "vo_start": 23.103,
+   "vo_end": 28.43,
+   "start": 22.903,
+   "text": "Turn your notes into slides, or export to PowerPoint and Word.",
+   "voice": "af_nicole",
+   "end": 29.23
+  },
+  {
+   "id": "explain",
+   "vo_start": 29.43,
+   "vo_end": 31.513,
+   "start": 29.23,
+   "text": "Then recall before you reveal.",
+   "voice": "af_nicole",
+   "end": 31.813
+  },
+  {
+   "id": "stu2",
+   "vo_start": 32.013,
+   "vo_end": 34.773,
+   "start": 31.813,
+   "text": "It's a study desk inside my PDF.",
+   "voice": "bm_george",
+   "end": 35.073
+  },
+  {
+   "id": "cta",
+   "vo_start": 35.473,
+   "vo_end": 42.707,
+   "start": 35.073,
+   "text": "Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "af_nicole",
+   "end": 44.307
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+const MOD={wide:[320,40,800],tall:[350,150,740]};
+window.SPEC={
+ brand:['Carecraft','Healthcare Crown Academy'], hookShot:'s0', hookCam:MOD, revealScene:'reveal',
+ cursorWindows:[[['choices',-0.2],['nurse',0.6]]],
+ cta:{title:'Carecraft<br><em>practise the moments that matter</em>',pts:['60-second scenarios','30 short lessons','90 visual guides'],go:'Try it free today →',url:'carecraft.healthcarecrownacademy.co.uk',fine:'Healthcare Crown Academy · fictional practice scenarios'},
+ scenes:[
+  {id:'hook',cap:['He **nodded** the whole time.','But did he **actually understand**?'],
+   kin:[{at:0,to:1.9,html:'He nodded.',size:[150,150],y:[360,180]},{at:2.0,html:'Did he <span style="color:#ffd166">understand?</span>',size:[110,110],y:[380,200]}]},
+  {id:'pat',bubble:{who:'Patient · Mr Okafor',av:'MO',text:'Yes, yes, that’s all fine. My taxi’s here in ten minutes.',type:1.8,col:'linear-gradient(135deg,#64748b,#334155)'}},
+  {id:'reveal',shots:[{at:-0.4,name:'s0'}],cam:[{at:-0.4,r:[0,0,1440],d:0.01},{at:0.9,r:{wide:[330,60,780],tall:[360,120,720]},d:2.4}],
+   head:['Carecraft · 60-second scenario','What would<br>you do?'],headTo:'nurse',cap:['One moment from a **working day**.','Carecraft gives you','**sixty seconds** to decide.']},
+  {id:'choices',cam:[{at:-0.3,r:{wide:[330,480,780],tall:[370,295,690]},d:0.8}],
+   hl:[{at:0.1,to:1.4,r:[380,513,680,81],color:'#94a3b8'},{at:1.5,to:3.9,r:[380,700,680,81],color:'#94a3b8'},{at:4.1,to:'end',r:[380,607,680,81],color:'#ffd166'}],
+   cursor:[{at:0.2,to:[880,553],d:0.6},{at:1.6,to:[880,740],d:0.6},{at:4.2,to:[720,647],d:0.6}],
+   cap:['Hand him **the leaflet**?','**Repeat it slowly**,','and ask for questions?','Or **something better**?']},
+  {id:'nurse',bubble:{who:'Nurse · Priya',av:'PR',text:'“So I know I’ve explained it well, how will you describe the plan to your daughter tonight?”',type:3.2,col:'linear-gradient(135deg,#14b8a6,#0f766e)',yW:110,yT:600,xW:250,wW:1000,sizeW:44,sizeT:50},
+   cursor:[{at:-0.1,to:[720,647],d:0.4,click:true}]},
+  {id:'fb',shots:[{at:-0.3,name:'s1',tr:'fade',d:0.4}],cam:[{at:-0.3,r:{wide:[330,440,780],tall:[370,290,690]},d:0.8}],
+   hl:[{at:0.3,to:'end',r:[380,592,680,129],color:'#34d399'}],
+   callouts:[{at:1.4,html:'Teach-back<small>checks your explanation, not the patient</small>',bg:'linear-gradient(135deg,#10b981,#047857)',sizeW:46,sizeT:52,yW:700,yT:1180}],
+   head:['Feedback','Strongest<br>choice'],headTo:'why',cap:['**Strongest choice.**','**Teach-back** checks your explanation,','not the patient.','Any gap shows while he’s **still on the ward**.']},
+  {id:'why',cam:[{at:-0.3,r:{wide:[330,520,780],tall:[370,290,690]},d:1.0}],
+   hl:[{at:0.6,to:'end',r:[380,734,680,130],color:'#f59e0b'}],
+   cap:['**Every option** is explained.','Because **nodding** is not evidence','of **understanding**.']},
+  {id:'lesson',shots:[{at:-0.3,name:'s2',tr:'fade',d:0.4}],cam:[{at:-0.3,r:{wide:[330,500,780],tall:[370,295,690]},d:0.9}],
+   hl:[{at:0.6,to:'end',r:[378,580,680,131],color:'#5eead4'}],
+   callouts:[{at:1.6,html:'8-minute lesson<small>Conversations that build trust</small>',bg:'linear-gradient(135deg,#6366f1,#4338ca)',sizeW:46,sizeT:52,yW:700,yT:1180}],
+   head:['Go deeper','30 short<br>lessons'],cap:['Then **go deeper**,','with an **eight-minute lesson**','on conversations that **build trust**.']},
+  {id:'cta',cap:['**Practise the moments**','that matter.','**Try it free** today.']}
+ ]};

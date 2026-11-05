@@ -1,0 +1,27 @@
+window.SPEC={
+ note:'Original practice material, not official exam questions. Not endorsed by SCFHS, DHP, DHA or DOH.',
+ brand:['Gulf Region Nursing','Healthcare Crown Academy'], hookShot:'po0', hookCam:{wide:[20,280,700],tall:[20,280,420]}, revealScene:'reveal',
+ cursorWindows:[[['reveal',2.4],['reveal',5.0]],[['poster',-0.4],['poster',0.6]],[['coach',-0.4],['coach',0.6]]],
+ cta:{title:'Gulf Region Nursing<br><em>Saudi · Qatar · Dubai · Abu Dhabi</em>',pts:['67 clinical decision tools','Posters you can annotate','Coached practice'],go:'Try it free today →',url:'snle.healthcarecrownacademy.co.uk',fine:'Healthcare Crown Academy · educational only, follow local protocols'},
+ scenes:[
+  {id:'hook',cap:['Every minute counts **in a stroke**.','Would you **spot the signs** in time?'],
+   kin:[{at:0,to:2.4,html:'TIME = BRAIN',size:[150,150],y:[340,170],color:'#f87171'},{at:2.5,html:'Spot the signs?',size:[130,130],y:[380,190]}]},
+  {id:'nur1',bubble:{who:'Nurse · exam candidate',av:'EC',text:'I know FAST. But what are the B and the E?',type:1.4,col:'linear-gradient(135deg,#0d9488,#115e59)'}},
+  {id:'reveal',shots:[{at:-0.4,name:'ri0'},{at:4.2,name:'bf0',tr:'pop',d:0.55}],cam:[{at:-0.4,r:[0,0,1440],d:0.01},{at:1.0,r:{wide:[260,60,1180],tall:[300,280,680]},d:2.6},{at:4.2,r:[0,0,1440],d:0.01}],
+   cursor:[{at:2.6,to:[460,315],d:0.8,click:true}],
+   head:['React & Interact','67 decision<br>tools'],headTo:'lens',cap:['**Gulf Region Nursing** has','**sixty-seven clinical decision tools**.','Let’s open **BE-FAST**.']},
+  {id:'lens',cam:[{at:-0.2,r:{wide:[100,200,1200],tall:[100,200,640]},d:1},{at:3.4,r:{wide:[100,260,1200],tall:[600,250,640]},d:2.5}],
+   cap:['The **decision lens**.','**Task. Decisive clue. Commit. Reassess.**','Plus the **boundary**, the **clinical pearl**,','and the **trap**.']},
+  {id:'poster',shots:[{at:0.4,name:'po0',tr:'fade',d:0.4}],cam:[{at:0.4,r:{wide:[20,260,960],tall:[20,260,560]},d:0.6},{at:1.4,r:{wide:[200,340,620],tall:[200,360,420]},d:3.5}],
+   cursor:[{at:-0.3,to:[270,202],d:0.6,click:true}],
+   head:['Poster + annotate','B · E · F<br>A · S · T'],headTo:'detail',cap:['Then **the poster**.','**Balance. Eyes. Face.**','**Arm. Speech. Time.**']},
+  {id:'detail',shots:[{at:-0.3,name:'po1',tr:'fade',d:0.4}],cam:[{at:-0.3,r:{wide:[400,150,1040],tall:[700,220,720]},d:0.8},{at:3.5,r:{wide:[400,450,1040],tall:[700,520,720]},d:3}],
+   callouts:[{at:4.5,html:'Zoom · highlight · annotate',bg:'linear-gradient(135deg,#0d9488,#115e59)',sizeW:46,sizeT:50,yW:700,yT:1180}],
+   cap:['What to **watch for**,','when **not** to use it first,','and what to **consider instead**.','You can **zoom, highlight and annotate**.']},
+  {id:'coach',shots:[{at:0.3,name:'co0',tr:'fade',d:0.4}],cam:[{at:0.3,r:{wide:[200,60,1040],tall:[440,180,560]},d:0.8}],
+   cursor:[{at:-0.3,to:[480,180],d:0.6,click:true}],
+   callouts:[{at:1.6,html:'10 coached questions<small>per tool</small>',bg:'linear-gradient(135deg,#6366f1,#4338ca)',sizeW:46,sizeT:52,yW:700,yT:1180}],
+   cap:['Then **practise**.','**Ten coached questions**,','built around the same tool.']},
+  {id:'nur2',bubble:{who:'Nurse · exam candidate',av:'EC',text:'Balance and eyes. Now I’ll catch it earlier.',type:1.3,col:'linear-gradient(135deg,#0d9488,#115e59)',yW:110,yT:600,xW:250,wW:900}},
+  {id:'cta',cap:['Make **safer decisions**,','**faster**.','**Try it free** today.']}
+ ]};

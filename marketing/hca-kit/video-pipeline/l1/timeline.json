@@ -1,0 +1,86 @@
+{
+ "total": 70.388,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 5.824,
+   "start": 0.0,
+   "text": "You read the chapter three times. So why can't you remember any of it?",
+   "voice": "af_nicole",
+   "end": 6.274
+  },
+  {
+   "id": "stu1",
+   "vo_start": 6.574,
+   "vo_end": 9.643,
+   "start": 6.274,
+   "text": "I highlight everything. It all looks important.",
+   "voice": "bm_george",
+   "end": 9.993
+  },
+  {
+   "id": "reveal",
+   "vo_start": 10.393,
+   "vo_end": 18.34,
+   "start": 9.993,
+   "text": "Lumen turns reading into learning. Bring in your own notes, or start with a sample book.",
+   "voice": "af_nicole",
+   "end": 18.69
+  },
+  {
+   "id": "read",
+   "vo_start": 18.99,
+   "vo_end": 26.589,
+   "start": 18.69,
+   "text": "Flip through like a real book. One pump, two circuits. Preload. Afterload.",
+   "voice": "af_nicole",
+   "end": 26.939
+  },
+  {
+   "id": "hl",
+   "vo_start": 27.239,
+   "vo_end": 34.442,
+   "start": 26.939,
+   "text": "Highlight the idea, not the whole page. Every highlight is saved with its source.",
+   "voice": "af_nicole",
+   "end": 34.942
+  },
+  {
+   "id": "explain",
+   "vo_start": 35.242,
+   "vo_end": 43.572,
+   "start": 34.942,
+   "text": "Now the powerful part. Press Explain, and the page hides. Recall before you reveal.",
+   "voice": "af_nicole",
+   "end": 43.922
+  },
+  {
+   "id": "verify",
+   "vo_start": 44.222,
+   "vo_end": 52.678,
+   "start": 43.922,
+   "text": "Explain it from memory, then reveal the source and compare. That's where real learning happens.",
+   "voice": "af_nicole",
+   "end": 53.028
+  },
+  {
+   "id": "stu2",
+   "vo_start": 53.228,
+   "vo_end": 55.507,
+   "start": 53.028,
+   "text": "So that's why I kept forgetting.",
+   "voice": "bm_george",
+   "end": 55.957
+  },
+  {
+   "id": "cta",
+   "vo_start": 56.457,
+   "vo_end": 68.188,
+   "start": 55.957,
+   "text": "Read, hide, explain, verify. Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "af_nicole",
+   "end": 69.788
+  }
+ ]
+}

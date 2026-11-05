@@ -1,0 +1,95 @@
+{
+ "total": 54.436,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.4,
+   "vo_end": 4.525,
+   "start": 0.0,
+   "text": "Twelve hours. No break. And the next patient is already waiting.",
+   "voice": "af_bella",
+   "end": 5.025
+  },
+  {
+   "id": "nur1",
+   "vo_start": 5.325,
+   "vo_end": 7.466,
+   "start": 5.025,
+   "text": "I don't have time to look after myself.",
+   "voice": "bf_emma",
+   "end": 7.816
+  },
+  {
+   "id": "reveal",
+   "vo_start": 8.316,
+   "vo_end": 11.021,
+   "start": 7.816,
+   "text": "You have two minutes. Serein makes room for you.",
+   "voice": "af_bella",
+   "end": 11.371
+  },
+  {
+   "id": "breath",
+   "vo_start": 11.771,
+   "vo_end": 16.347,
+   "start": 11.371,
+   "text": "Three easy breaths, before anything else. Breathe in. And let it go.",
+   "voice": "af_bella",
+   "end": 17.147
+  },
+  {
+   "id": "pause",
+   "vo_start": 17.547,
+   "vo_end": 24.086,
+   "start": 17.147,
+   "text": "Press start my pause, and the Breathing Tide guides you. Breathe in, only as far as feels comfortable.",
+   "voice": "af_bella",
+   "end": 24.436
+  },
+  {
+   "id": "out",
+   "vo_start": 24.736,
+   "vo_end": 27.731,
+   "start": 24.436,
+   "text": "Breathe out. Let the breath leave, without forcing it.",
+   "voice": "af_bella",
+   "end": 28.431
+  },
+  {
+   "id": "lib",
+   "vo_start": 28.831,
+   "vo_end": 37.418,
+   "start": 28.431,
+   "text": "When you have a little longer, the library has fifteen short practices. Breathing, grounding, gentle movement, from one minute to five.",
+   "voice": "af_bella",
+   "end": 37.768
+  },
+  {
+   "id": "promise",
+   "vo_start": 38.068,
+   "vo_end": 41.929,
+   "start": 37.768,
+   "text": "No streak to keep. Nothing is scored. Nothing is monitored.",
+   "voice": "af_bella",
+   "end": 42.279
+  },
+  {
+   "id": "nur2",
+   "vo_start": 42.579,
+   "vo_end": 44.487,
+   "start": 42.279,
+   "text": "Two minutes. I feel human again.",
+   "voice": "bf_emma",
+   "end": 44.987
+  },
+  {
+   "id": "cta",
+   "vo_start": 45.487,
+   "vo_end": 52.036,
+   "start": 44.987,
+   "text": "Make room for you. Try it free today, at Serein dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "af_bella",
+   "end": 53.836
+  }
+ ]
+}

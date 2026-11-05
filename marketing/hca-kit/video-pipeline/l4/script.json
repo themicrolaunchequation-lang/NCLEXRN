@@ -1,0 +1,109 @@
+[
+ {
+  "id": "hook",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.35,
+  "post": 0.4,
+  "text": "One PDF. Twelve study tools. Let me show you all of them in sixty seconds."
+ },
+ {
+  "id": "stu1",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "Wait, my lecture notes can do all that?",
+  "post": 0.35
+ },
+ {
+  "id": "reveal",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.4,
+  "text": "Open any PDF in Lumen's reader. It turns like a real book, and stays private on your device.",
+  "post": 0.35
+ },
+ {
+  "id": "mark",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "Draw with the pen. Highlight the key idea. Every mark is saved with its page."
+ },
+ {
+  "id": "tools",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "Open Tools. Copy a region, magnify, add stickers, calculate, define a word, present, or export."
+ },
+ {
+  "id": "mag",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "A magnifier follows your pointer, for diagrams and small print."
+ },
+ {
+  "id": "stick",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "Drag clinical stickers onto the page. And a calculator with clinical formulas, right beside your notes."
+ },
+ {
+  "id": "define",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "Stuck on a word? Define it in plain language, with help in other languages too."
+ },
+ {
+  "id": "share",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.3,
+  "post": 0.4,
+  "text": "Turn your highlights and notes into slides to present, or export to PowerPoint, Word, or Markdown."
+ },
+ {
+  "id": "explain",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.3,
+  "text": "And the Study panel helps you recall before you reveal, with a quiz and summary from your own page.",
+  "post": 0.35
+ },
+ {
+  "id": "stu2",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.4,
+  "text": "It's like a study desk inside my PDF."
+ },
+ {
+  "id": "cta",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.1,
+  "pre": 0.5,
+  "post": 1.6,
+  "text": "Bring your notes. Lumen does the rest. Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk."
+ }
+]

@@ -1,0 +1,261 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "b00",
+    "file": "s1/cap/b00.png",
+    "rects": {}
+   },
+   {
+    "name": "b01",
+    "file": "s1/cap/b01.png",
+    "rects": {}
+   },
+   {
+    "name": "b02",
+    "file": "s1/cap/b02.png",
+    "rects": {}
+   },
+   {
+    "name": "b03",
+    "file": "s1/cap/b03.png",
+    "rects": {}
+   },
+   {
+    "name": "b04",
+    "file": "s1/cap/b04.png",
+    "rects": {}
+   },
+   {
+    "name": "b05",
+    "file": "s1/cap/b05.png",
+    "rects": {}
+   },
+   {
+    "name": "b06",
+    "file": "s1/cap/b06.png",
+    "rects": {}
+   },
+   {
+    "name": "b07",
+    "file": "s1/cap/b07.png",
+    "rects": {}
+   },
+   {
+    "name": "b08",
+    "file": "s1/cap/b08.png",
+    "rects": {}
+   },
+   {
+    "name": "b09",
+    "file": "s1/cap/b09.png",
+    "rects": {}
+   },
+   {
+    "name": "b10",
+    "file": "s1/cap/b10.png",
+    "rects": {}
+   },
+   {
+    "name": "b11",
+    "file": "s1/cap/b11.png",
+    "rects": {}
+   },
+   {
+    "name": "b12",
+    "file": "s1/cap/b12.png",
+    "rects": {}
+   },
+   {
+    "name": "b13",
+    "file": "s1/cap/b13.png",
+    "rects": {}
+   },
+   {
+    "name": "b14",
+    "file": "s1/cap/b14.png",
+    "rects": {}
+   },
+   {
+    "name": "b15",
+    "file": "s1/cap/b15.png",
+    "rects": {}
+   },
+   {
+    "name": "b16",
+    "file": "s1/cap/b16.png",
+    "rects": {}
+   },
+   {
+    "name": "b17",
+    "file": "s1/cap/b17.png",
+    "rects": {}
+   },
+   {
+    "name": "b18",
+    "file": "s1/cap/b18.png",
+    "rects": {}
+   },
+   {
+    "name": "b19",
+    "file": "s1/cap/b19.png",
+    "rects": {}
+   },
+   {
+    "name": "b20",
+    "file": "s1/cap/b20.png",
+    "rects": {}
+   },
+   {
+    "name": "b21",
+    "file": "s1/cap/b21.png",
+    "rects": {}
+   },
+   {
+    "name": "b22",
+    "file": "s1/cap/b22.png",
+    "rects": {}
+   },
+   {
+    "name": "b23",
+    "file": "s1/cap/b23.png",
+    "rects": {}
+   },
+   {
+    "name": "today",
+    "file": "s1/cap/today.png",
+    "rects": {}
+   },
+   {
+    "name": "pre",
+    "file": "s1/cap/pre.png",
+    "rects": {}
+   },
+   {
+    "name": "p00",
+    "file": "s1/cap/p00.png",
+    "rects": {}
+   },
+   {
+    "name": "p01",
+    "file": "s1/cap/p01.png",
+    "rects": {}
+   },
+   {
+    "name": "p02",
+    "file": "s1/cap/p02.png",
+    "rects": {}
+   },
+   {
+    "name": "p03",
+    "file": "s1/cap/p03.png",
+    "rects": {}
+   },
+   {
+    "name": "p04",
+    "file": "s1/cap/p04.png",
+    "rects": {}
+   },
+   {
+    "name": "p05",
+    "file": "s1/cap/p05.png",
+    "rects": {}
+   },
+   {
+    "name": "p06",
+    "file": "s1/cap/p06.png",
+    "rects": {}
+   },
+   {
+    "name": "p07",
+    "file": "s1/cap/p07.png",
+    "rects": {}
+   },
+   {
+    "name": "p08",
+    "file": "s1/cap/p08.png",
+    "rects": {}
+   },
+   {
+    "name": "p09",
+    "file": "s1/cap/p09.png",
+    "rects": {}
+   },
+   {
+    "name": "p10",
+    "file": "s1/cap/p10.png",
+    "rects": {}
+   },
+   {
+    "name": "p11",
+    "file": "s1/cap/p11.png",
+    "rects": {}
+   },
+   {
+    "name": "p12",
+    "file": "s1/cap/p12.png",
+    "rects": {}
+   },
+   {
+    "name": "p13",
+    "file": "s1/cap/p13.png",
+    "rects": {}
+   },
+   {
+    "name": "p14",
+    "file": "s1/cap/p14.png",
+    "rects": {}
+   },
+   {
+    "name": "p15",
+    "file": "s1/cap/p15.png",
+    "rects": {}
+   },
+   {
+    "name": "p16",
+    "file": "s1/cap/p16.png",
+    "rects": {}
+   },
+   {
+    "name": "p17",
+    "file": "s1/cap/p17.png",
+    "rects": {}
+   },
+   {
+    "name": "p18",
+    "file": "s1/cap/p18.png",
+    "rects": {}
+   },
+   {
+    "name": "p19",
+    "file": "s1/cap/p19.png",
+    "rects": {}
+   },
+   {
+    "name": "p20",
+    "file": "s1/cap/p20.png",
+    "rects": {}
+   },
+   {
+    "name": "p21",
+    "file": "s1/cap/p21.png",
+    "rects": {}
+   },
+   {
+    "name": "p22",
+    "file": "s1/cap/p22.png",
+    "rects": {}
+   },
+   {
+    "name": "p23",
+    "file": "s1/cap/p23.png",
+    "rects": {}
+   },
+   {
+    "name": "library",
+    "file": "s1/cap/library.png",
+    "rects": {}
+   }
+  ]
+ }
+}

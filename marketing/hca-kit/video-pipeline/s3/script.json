@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"af_bella","lang":"en-us","speed":0.95,"pre":0.4,"post":0.5,"text":"Does a ten-minute break really make a difference? The research says it can."},
+ {"id":"nur1","voice":"bf_emma","lang":"en-gb","speed":0.95,"text":"I always feel guilty taking a break."},
+ {"id":"reveal","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.5,"text":"Serein's Visual Atlas. Twelve illustrated guides for real working days."},
+ {"id":"pressure","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.3,"text":"Pressure is a shared responsibility. Each guide shows the evidence, who it's for, and when to use it."},
+ {"id":"flip","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.3,"text":"Flip through. Breathe gently, without forcing. Come back to the room, with five senses."},
+ {"id":"big","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.3,"post":0.6,"text":"Enlarge any page. A small break can make room: a meta-analysis of twenty-two studies, with over two thousand participants."},
+ {"id":"support","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.3,"text":"And if today is too heavy, real human support is one tap away."},
+ {"id":"nur2","voice":"bf_emma","lang":"en-gb","speed":0.95,"pre":0.3,"post":0.5,"text":"So a break isn't selfish. It's part of the job."},
+ {"id":"cta","voice":"af_bella","lang":"en-us","speed":0.92,"pre":0.5,"post":1.8,"text":"A clearer picture, and a useful next step. Try it free today, at Serein dot Healthcare Crown Academy dot co dot uk."}
+]

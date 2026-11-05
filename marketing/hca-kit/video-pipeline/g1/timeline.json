@@ -1,0 +1,86 @@
+{
+ "total": 59.931,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 6.159,
+   "start": 0.0,
+   "text": "Getting a licensing question wrong is the fastest way to learn. If someone shows you why.",
+   "voice": "bm_lewis",
+   "end": 6.609
+  },
+  {
+   "id": "nur1",
+   "vo_start": 6.909,
+   "vo_end": 10.176,
+   "start": 6.609,
+   "text": "I keep missing the priority questions, and I don't know why.",
+   "voice": "af_sarah",
+   "end": 10.526
+  },
+  {
+   "id": "reveal",
+   "vo_start": 10.926,
+   "vo_end": 17.945,
+   "start": 10.526,
+   "text": "Gulf Region Nursing. Practice for Saudi Arabia, Qatar, Dubai and Abu Dhabi licensing exams.",
+   "voice": "bm_lewis",
+   "end": 18.295
+  },
+  {
+   "id": "q",
+   "vo_start": 18.595,
+   "vo_end": 25.601,
+   "start": 18.295,
+   "text": "Start a quick check. A trauma patient has gurgling respirations and blood in the mouth. What's most appropriate?",
+   "voice": "bm_lewis",
+   "end": 25.951
+  },
+  {
+   "id": "pick",
+   "vo_start": 26.251,
+   "vo_end": 28.315,
+   "start": 25.951,
+   "text": "Check both legs for deformity first?",
+   "voice": "af_sarah",
+   "end": 28.715
+  },
+  {
+   "id": "repair",
+   "vo_start": 29.015,
+   "vo_end": 35.161,
+   "start": 28.715,
+   "text": "Not yet. Repair the reasoning. Clear the airway with suction, while protecting the cervical spine.",
+   "voice": "bm_lewis",
+   "end": 35.511
+  },
+  {
+   "id": "why",
+   "vo_start": 35.811,
+   "vo_end": 45.146,
+   "start": 35.511,
+   "text": "Every question shows why the safest answer wins, a clinical pearl, and the trap to avoid. Treat the earliest unresolved life threat first.",
+   "voice": "bm_lewis",
+   "end": 45.496
+  },
+  {
+   "id": "nur2",
+   "vo_start": 45.696,
+   "vo_end": 48.015,
+   "start": 45.496,
+   "text": "Airway first. I won't forget that again.",
+   "voice": "af_sarah",
+   "end": 48.465
+  },
+  {
+   "id": "cta",
+   "vo_start": 48.965,
+   "vo_end": 57.731,
+   "start": 48.465,
+   "text": "Learn the reasoning behind every answer. Try it free today, at S N L E dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bm_lewis",
+   "end": 59.331
+  }
+ ]
+}

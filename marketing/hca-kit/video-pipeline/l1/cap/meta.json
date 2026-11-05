@@ -1,0 +1,61 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "lib",
+    "file": "l1/cap/lib.png",
+    "rects": {}
+   },
+   {
+    "name": "r0",
+    "file": "l1/cap/r0.png",
+    "rects": {}
+   },
+   {
+    "name": "r1",
+    "file": "l1/cap/r1.png",
+    "rects": {}
+   },
+   {
+    "name": "r2",
+    "file": "l1/cap/r2.png",
+    "rects": {}
+   },
+   {
+    "name": "hl0",
+    "file": "l1/cap/hl0.png",
+    "rects": {}
+   },
+   {
+    "name": "hl3",
+    "file": "l1/cap/hl3.png",
+    "rects": {}
+   },
+   {
+    "name": "hl6",
+    "file": "l1/cap/hl6.png",
+    "rects": {}
+   },
+   {
+    "name": "hl9",
+    "file": "l1/cap/hl9.png",
+    "rects": {}
+   },
+   {
+    "name": "hl9",
+    "file": "l1/cap/hl9.png",
+    "rects": {}
+   },
+   {
+    "name": "ex0",
+    "file": "l1/cap/ex0.png",
+    "rects": {}
+   },
+   {
+    "name": "qz0",
+    "file": "l1/cap/qz0.png",
+    "rects": {}
+   }
+  ]
+ }
+}

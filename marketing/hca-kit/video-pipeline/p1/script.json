@@ -1,0 +1,72 @@
+[
+ {
+  "id": "hook",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "What if a four percent infection rate was quietly costing one point seven million dollars a year?"
+ },
+ {
+  "id": "mgr1",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 1.0,
+  "text": "Four percent? That's fine... isn't it?"
+ },
+ {
+  "id": "reveal",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "Let's put a price on it. Cost of Poor Quality, in Lean Six Sigma for Healthcare."
+ },
+ {
+  "id": "inputs",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.02,
+  "text": "Twelve hundred central lines a year. A four percent infection rate. Forty-eight thousand dollars per infection, from the worked example."
+ },
+ {
+  "id": "result",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "That's forty-eight infections, and two point three million dollars, every year."
+ },
+ {
+  "id": "payoff",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "Bring the rate down to one percent, and you avoid thirty-six infections, and free up one point seven million."
+ },
+ {
+  "id": "mgr2",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 1.0,
+  "text": "Wait. That's a business case."
+ },
+ {
+  "id": "ledger",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.02,
+  "text": "Split the cost into prevention, appraisal, internal and external failure, and see exactly where the money goes."
+ },
+ {
+  "id": "studio",
+  "voice": "bf_emma",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "Stuck on a concept? Open the Learning Studio. Every tool comes with clinical examples, and posters you can annotate."
+ },
+ {
+  "id": "cta",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "text": "Turn your quality problem into a business case leaders cannot ignore. Start free today, at Lean Six Sigma dot Healthcare Crown Academy dot co dot uk."
+ }
+]

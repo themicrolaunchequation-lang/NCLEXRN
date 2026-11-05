@@ -1,0 +1,83 @@
+[
+ {
+  "id": "hook",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.12,
+  "pre": 0.3,
+  "post": 0.3,
+  "text": "Your PDF can do way more than you think."
+ },
+ {
+  "id": "reveal",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.12,
+  "pre": 0.3,
+  "post": 0.3,
+  "text": "Open it in Lumen's reader. It turns like a real book."
+ },
+ {
+  "id": "mark",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.12,
+  "pre": 0.2,
+  "post": 0.8,
+  "text": "Draw. Highlight. Every mark is saved with its page."
+ },
+ {
+  "id": "mag",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.12,
+  "pre": 0.2,
+  "post": 0.8,
+  "text": "Magnify small print."
+ },
+ {
+  "id": "stick",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.12,
+  "pre": 0.2,
+  "post": 0.8,
+  "text": "Drop clinical stickers, and use a calculator with clinical formulas."
+ },
+ {
+  "id": "share",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.12,
+  "pre": 0.2,
+  "post": 0.8,
+  "text": "Turn your notes into slides, or export to PowerPoint and Word."
+ },
+ {
+  "id": "explain",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.12,
+  "pre": 0.2,
+  "post": 0.3,
+  "text": "Then recall before you reveal."
+ },
+ {
+  "id": "stu2",
+  "voice": "bm_george",
+  "lang": "en-gb",
+  "speed": 1.05,
+  "pre": 0.2,
+  "post": 0.3,
+  "text": "It's a study desk inside my PDF."
+ },
+ {
+  "id": "cta",
+  "voice": "af_nicole",
+  "lang": "en-us",
+  "speed": 1.05,
+  "pre": 0.4,
+  "post": 1.6,
+  "text": "Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk."
+ }
+]

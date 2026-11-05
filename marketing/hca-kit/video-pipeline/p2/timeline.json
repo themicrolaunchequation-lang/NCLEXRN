@@ -1,0 +1,86 @@
+{
+ "total": 63.422,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 6.623,
+   "start": 0.0,
+   "text": "On Monday, Amara was your worst nurse. By Wednesday, she was your best. Nothing about her changed.",
+   "voice": "bm_george",
+   "end": 7.023
+  },
+  {
+   "id": "mgr1",
+   "vo_start": 7.323,
+   "vo_end": 9.896,
+   "start": 7.023,
+   "text": "So who do I praise... and who do I retrain?",
+   "voice": "af_heart",
+   "end": 10.246
+  },
+  {
+   "id": "reveal",
+   "vo_start": 10.696,
+   "vo_end": 15.951,
+   "start": 10.246,
+   "text": "Neither. Meet the Red Bead Ward, a simulation in Lean Six Sigma for Healthcare.",
+   "voice": "bm_george",
+   "end": 16.301
+  },
+  {
+   "id": "draw",
+   "vo_start": 16.501,
+   "vo_end": 24.373,
+   "start": 16.301,
+   "text": "Six nurses draw from the same box. Red beads are defects. Press next day, and watch the league table shuffle itself.",
+   "voice": "bm_george",
+   "end": 24.723
+  },
+  {
+   "id": "chance",
+   "vo_start": 24.923,
+   "vo_end": 30.832,
+   "start": 24.723,
+   "text": "Worker of the day. Needs retraining. A different name every single day. It's pure chance.",
+   "voice": "bm_george",
+   "end": 31.232
+  },
+  {
+   "id": "guide",
+   "vo_start": 31.532,
+   "vo_end": 39.154,
+   "start": 31.232,
+   "text": "Predict the weakest performer, then run it. Every point sits inside the control limits. The differences come from the system.",
+   "voice": "bm_george",
+   "end": 39.504
+  },
+  {
+   "id": "mgr2",
+   "vo_start": 39.654,
+   "vo_end": 42.012,
+   "start": 39.504,
+   "text": "So I've been blaming people... for the box.",
+   "voice": "af_heart",
+   "end": 42.462
+  },
+  {
+   "id": "rule",
+   "vo_start": 42.862,
+   "vo_end": 51.009,
+   "start": 42.462,
+   "text": "Deming put it simply. Most performance problems belong to the system. The Learning Studio shows you the history, the maths, and the clinical story.",
+   "voice": "bf_emma",
+   "end": 51.409
+  },
+  {
+   "id": "cta",
+   "vo_start": 51.909,
+   "vo_end": 61.222,
+   "start": 51.409,
+   "text": "Stop ranking people. Start fixing systems. Start free today, at Lean Six Sigma dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bm_george",
+   "end": 62.822
+  }
+ ]
+}

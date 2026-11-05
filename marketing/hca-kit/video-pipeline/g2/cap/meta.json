@@ -1,0 +1,46 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "ri0",
+    "file": "g2/cap/ri0.png",
+    "rects": {}
+   },
+   {
+    "name": "bf0",
+    "file": "g2/cap/bf0.png",
+    "rects": {}
+   },
+   {
+    "name": "po0",
+    "file": "g2/cap/po0.png",
+    "rects": {}
+   },
+   {
+    "name": "po1",
+    "file": "g2/cap/po1.png",
+    "rects": {}
+   },
+   {
+    "name": "co0",
+    "file": "g2/cap/co0.png",
+    "rects": {}
+   },
+   {
+    "name": "cq0",
+    "file": "g2/cap/cq0.png",
+    "rects": {}
+   },
+   {
+    "name": "cq1",
+    "file": "g2/cap/cq1.png",
+    "rects": {}
+   },
+   {
+    "name": "cq2",
+    "file": "g2/cap/cq2.png",
+    "rects": {}
+   }
+  ]
+ }
+}

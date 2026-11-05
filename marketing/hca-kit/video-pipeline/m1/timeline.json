@@ -1,0 +1,86 @@
+{
+ "total": 53.153,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 4.351,
+   "start": 0.0,
+   "text": "Pericarditis. Tachycardia. Sound scary? Give me ten seconds.",
+   "voice": "bf_isabella",
+   "end": 4.751
+  },
+  {
+   "id": "stu1",
+   "vo_start": 5.051,
+   "vo_end": 7.578,
+   "start": 4.751,
+   "text": "I just memorise them... and forget them by Friday.",
+   "voice": "am_eric",
+   "end": 7.928
+  },
+  {
+   "id": "reveal",
+   "vo_start": 8.328,
+   "vo_end": 11.633,
+   "start": 7.928,
+   "text": "Stop memorising. Start decoding. This is MedLex.",
+   "voice": "bf_isabella",
+   "end": 11.983
+  },
+  {
+   "id": "dec1",
+   "vo_start": 12.183,
+   "vo_end": 15.782,
+   "start": 11.983,
+   "text": "Tap peri. Around. Card. Heart. Itis. Inflammation.",
+   "voice": "bf_isabella",
+   "end": 16.882
+  },
+  {
+   "id": "mean1",
+   "vo_start": 17.182,
+   "vo_end": 21.887,
+   "start": 16.882,
+   "text": "Pericarditis. The sac around the heart is inflamed. You just read it yourself.",
+   "voice": "bf_isabella",
+   "end": 22.587
+  },
+  {
+   "id": "dec2",
+   "vo_start": 22.937,
+   "vo_end": 27.341,
+   "start": 22.587,
+   "text": "Another one. Tachy, fast. Card, heart. Ia, a condition. Tachycardia.",
+   "voice": "bf_isabella",
+   "end": 28.241
+  },
+  {
+   "id": "stu2",
+   "vo_start": 28.441,
+   "vo_end": 30.08,
+   "start": 28.241,
+   "text": "Wait... I actually get it now.",
+   "voice": "am_eric",
+   "end": 30.53
+  },
+  {
+   "id": "today",
+   "vo_start": 30.88,
+   "vo_end": 42.557,
+   "start": 30.53,
+   "text": "Fourteen hundred and eighty medical terms, all built from parts like these. Sixty-six prefixes, sixty roots, a hundred suffixes. Ten minutes a day, on your My Day page.",
+   "voice": "bm_lewis",
+   "end": 42.907
+  },
+  {
+   "id": "cta",
+   "vo_start": 43.407,
+   "vo_end": 50.953,
+   "start": 42.907,
+   "text": "Learn the language of medicine, one part at a time. Try it free today, at MedLex dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bf_isabella",
+   "end": 52.553
+  }
+ ]
+}

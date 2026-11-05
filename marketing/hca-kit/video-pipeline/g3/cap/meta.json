@@ -1,0 +1,51 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "home",
+    "file": "g3/cap/home.png",
+    "rects": {}
+   },
+   {
+    "name": "gl0",
+    "file": "g3/cap/gl0.png",
+    "rects": {}
+   },
+   {
+    "name": "gl1",
+    "file": "g3/cap/gl1.png",
+    "rects": {}
+   },
+   {
+    "name": "ar0",
+    "file": "g3/cap/ar0.png",
+    "rects": {}
+   },
+   {
+    "name": "ar1",
+    "file": "g3/cap/ar1.png",
+    "rects": {}
+   },
+   {
+    "name": "ex-Saudi",
+    "file": "g3/cap/ex-Saudi.png",
+    "rects": {}
+   },
+   {
+    "name": "ex-Qatar",
+    "file": "g3/cap/ex-Qatar.png",
+    "rects": {}
+   },
+   {
+    "name": "ex-Dubai",
+    "file": "g3/cap/ex-Dubai.png",
+    "rects": {}
+   },
+   {
+    "name": "ex-AbuDhabi",
+    "file": "g3/cap/ex-AbuDhabi.png",
+    "rects": {}
+   }
+  ]
+ }
+}

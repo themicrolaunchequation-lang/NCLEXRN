@@ -1,0 +1,79 @@
+[
+ {
+  "id": "hook",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.35,
+  "post": 0.45,
+  "text": "Arthritis. Arthralgia. Arthroscopy. Three words. One secret."
+ },
+ {
+  "id": "stu1",
+  "voice": "am_eric",
+  "lang": "en-us",
+  "speed": 1.0,
+  "text": "They all start the same... but what does it mean?"
+ },
+ {
+  "id": "reveal",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "text": "It's the root. MedLex has a studio for every one of them."
+ },
+ {
+  "id": "swap",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 0.97,
+  "pre": 0.2,
+  "text": "Cardiology, the heart. Swap one root. Nephrology, the kidneys. Same ending, a different subject.",
+  "post": 0.75
+ },
+ {
+  "id": "card",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "pre": 0.3,
+  "text": "Tap a card, and it pops open. Arthr means joint. And the memory hook? King Arthur's joints creak.",
+  "post": 0.75
+ },
+ {
+  "id": "check",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.3,
+  "text": "Then prove it stuck. What does arthr mean? Joint. Correct, and ten points.",
+  "post": 0.75
+ },
+ {
+  "id": "stu2",
+  "voice": "am_eric",
+  "lang": "en-us",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.45,
+  "text": "King Arthur's joints. I'll never forget that."
+ },
+ {
+  "id": "narr",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.35,
+  "text": "Sixty roots, sixty-six prefixes and a hundred suffixes. Each with a picture, a memory hook, and a quick check."
+ },
+ {
+  "id": "cta",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "pre": 0.5,
+  "post": 1.6,
+  "text": "Learn it once. Recognise it everywhere. Try it free today, at MedLex dot Healthcare Crown Academy dot co dot uk."
+ }
+]

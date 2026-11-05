@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.35,"post":0.45,"text":"You read the chapter three times. So why can't you remember any of it?"},
+ {"id":"stu1","voice":"bm_george","lang":"en-gb","speed":1.0,"text":"I highlight everything. It all looks important."},
+ {"id":"reveal","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.4,"text":"Lumen turns reading into learning. Bring in your own notes, or start with a sample book."},
+ {"id":"read","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"Flip through like a real book. One pump, two circuits. Preload. Afterload."},
+ {"id":"hl","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"post":0.5,"text":"Highlight the idea, not the whole page. Every highlight is saved with its source."},
+ {"id":"explain","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"Now the powerful part. Press Explain, and the page hides. Recall before you reveal."},
+ {"id":"verify","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"Explain it from memory, then reveal the source and compare. That's where real learning happens."},
+ {"id":"stu2","voice":"bm_george","lang":"en-gb","speed":1.0,"pre":0.2,"post":0.45,"text":"So that's why I kept forgetting."},
+ {"id":"cta","voice":"af_nicole","lang":"en-us","speed":0.98,"pre":0.5,"post":1.6,"text":"Read, hide, explain, verify. Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk."}
+]

@@ -1,0 +1,86 @@
+{
+ "total": 57.376,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 4.482,
+   "start": 0.0,
+   "text": "Anyone can print a certificate. But can yours prove it's real?",
+   "voice": "bm_george",
+   "end": 4.932
+  },
+  {
+   "id": "me1",
+   "vo_start": 5.232,
+   "vo_end": 8.762,
+   "start": 4.932,
+   "text": "Sixty-six questions. Eighty percent to pass. Let's do this.",
+   "voice": "bf_emma",
+   "end": 9.112
+  },
+  {
+   "id": "reveal",
+   "vo_start": 9.512,
+   "vo_end": 17.124,
+   "start": 9.112,
+   "text": "The Green Belt exam in Lean Six Sigma for Healthcare covers every DMAIC phase, including reading the charts.",
+   "voice": "bm_george",
+   "end": 17.474
+  },
+  {
+   "id": "answer",
+   "vo_start": 17.774,
+   "vo_end": 24.468,
+   "start": 17.474,
+   "text": "Choose your answer. Explanations stay hidden until you submit, so you recall, instead of recognise.",
+   "voice": "bm_george",
+   "end": 24.818
+  },
+  {
+   "id": "mark",
+   "vo_start": 25.118,
+   "vo_end": 30.566,
+   "start": 24.818,
+   "text": "Your exam is marked on our server, not in your browser. So a pass can't be faked.",
+   "voice": "bm_george",
+   "end": 30.916
+  },
+  {
+   "id": "me2",
+   "vo_start": 31.116,
+   "vo_end": 32.993,
+   "start": 30.916,
+   "text": "Ninety-two percent. I passed!",
+   "voice": "bf_emma",
+   "end": 33.443
+  },
+  {
+   "id": "cert",
+   "vo_start": 33.743,
+   "vo_end": 40.142,
+   "start": 33.443,
+   "text": "Claim your certificate. It carries a unique ID and a QR code, with a matching ID badge.",
+   "voice": "bm_george",
+   "end": 40.492
+  },
+  {
+   "id": "boss",
+   "vo_start": 40.892,
+   "vo_end": 45.671,
+   "start": 40.492,
+   "text": "I scanned her QR code. Valid. Her name, the course, and the date. Done.",
+   "voice": "am_michael",
+   "end": 46.121
+  },
+  {
+   "id": "cta",
+   "vo_start": 46.621,
+   "vo_end": 55.176,
+   "start": 46.121,
+   "text": "Earn a certificate that proves itself. Start free today, at Lean Six Sigma dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bm_george",
+   "end": 56.776
+  }
+ ]
+}

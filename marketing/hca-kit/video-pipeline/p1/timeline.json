@@ -1,0 +1,95 @@
+{
+ "total": 69.044,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 6.859,
+   "start": 0.0,
+   "text": "What if a four percent infection rate was quietly costing one point seven million dollars a year?",
+   "voice": "bm_george",
+   "end": 7.309
+  },
+  {
+   "id": "mgr1",
+   "vo_start": 7.609,
+   "vo_end": 9.853,
+   "start": 7.309,
+   "text": "Four percent? That's fine... isn't it?",
+   "voice": "af_heart",
+   "end": 10.203
+  },
+  {
+   "id": "reveal",
+   "vo_start": 10.653,
+   "vo_end": 15.621,
+   "start": 10.203,
+   "text": "Let's put a price on it. Cost of Poor Quality, in Lean Six Sigma for Healthcare.",
+   "voice": "bm_george",
+   "end": 15.921
+  },
+  {
+   "id": "inputs",
+   "vo_start": 16.121,
+   "vo_end": 24.596,
+   "start": 15.921,
+   "text": "Twelve hundred central lines a year. A four percent infection rate. Forty-eight thousand dollars per infection, from the worked example.",
+   "voice": "bm_george",
+   "end": 24.946
+  },
+  {
+   "id": "result",
+   "vo_start": 25.146,
+   "vo_end": 29.826,
+   "start": 24.946,
+   "text": "That's forty-eight infections, and two point three million dollars, every year.",
+   "voice": "bm_george",
+   "end": 30.226
+  },
+  {
+   "id": "payoff",
+   "vo_start": 30.526,
+   "vo_end": 37.462,
+   "start": 30.226,
+   "text": "Bring the rate down to one percent, and you avoid thirty-six infections, and free up one point seven million.",
+   "voice": "bm_george",
+   "end": 37.862
+  },
+  {
+   "id": "mgr2",
+   "vo_start": 38.012,
+   "vo_end": 39.566,
+   "start": 37.862,
+   "text": "Wait. That's a business case.",
+   "voice": "af_heart",
+   "end": 40.016
+  },
+  {
+   "id": "ledger",
+   "vo_start": 40.416,
+   "vo_end": 47.658,
+   "start": 40.016,
+   "text": "Split the cost into prevention, appraisal, internal and external failure, and see exactly where the money goes.",
+   "voice": "bm_george",
+   "end": 47.958
+  },
+  {
+   "id": "studio",
+   "vo_start": 48.408,
+   "vo_end": 55.244,
+   "start": 47.958,
+   "text": "Stuck on a concept? Open the Learning Studio. Every tool comes with clinical examples, and posters you can annotate.",
+   "voice": "bf_emma",
+   "end": 55.644
+  },
+  {
+   "id": "cta",
+   "vo_start": 56.144,
+   "vo_end": 66.844,
+   "start": 55.644,
+   "text": "Turn your quality problem into a business case leaders cannot ignore. Start free today, at Lean Six Sigma dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bm_george",
+   "end": 68.444
+  }
+ ]
+}

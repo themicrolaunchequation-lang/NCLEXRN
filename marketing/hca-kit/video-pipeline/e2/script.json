@@ -1,0 +1,72 @@
+[
+ {
+  "id": "hook",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.35,
+  "post": 0.45,
+  "text": "Have you ever caught an error before it reached a patient? Then you probably have a story worth telling."
+ },
+ {
+  "id": "nur1",
+  "voice": "bm_daniel",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "Me? I was just doing my job."
+ },
+ {
+  "id": "reveal",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.4,
+  "text": "Most people underestimate their own work. Evinca's check takes two minutes. No account needed.",
+  "post": 1.2
+ },
+ {
+  "id": "q1",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "text": "Where do you practise? Pick a category, like patient safety and quality.",
+  "post": 1.2
+ },
+ {
+  "id": "q2",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "post": 1.2,
+  "text": "Can you describe the problem, what you did, and what changed? Do you have a before and after, without patient data? Could someone independent confirm it?"
+ },
+ {
+  "id": "res",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "text": "Your evidence looks ready to shape. Nothing is submitted, and nothing is scored.",
+  "post": 1.2
+ },
+ {
+  "id": "nur2",
+  "voice": "bm_daniel",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.45,
+  "text": "Three yeses. Maybe it was more than my job."
+ },
+ {
+  "id": "cta",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.96,
+  "pre": 0.5,
+  "post": 1.6,
+  "text": "Check your eligibility in two minutes, free. At Evinca dot Healthcare Crown Academy dot co dot uk."
+ }
+]

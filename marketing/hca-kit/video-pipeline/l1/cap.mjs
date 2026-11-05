@@ -1,0 +1,20 @@
+import { createRequire } from 'node:module'; import fs from 'node:fs';
+const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium } = require('playwright');
+const OUT='l1/cap'; const meta={shots:[]};
+const br = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const p = await (await br.newContext({ viewport:{width:1440,height:900}, deviceScaleFactor:2 })).newPage();
+await p.goto('https://lumen.healthcarecrownacademy.co.uk/',{waitUntil:'domcontentloaded'}); await p.waitForTimeout(3000);
+await p.getByRole('button',{name:/Skip for now/}).click({timeout:3000}).catch(()=>{}); await p.waitForTimeout(1000);
+async function shot(name){ console.log('shot',name); const f=`${OUT}/${name}.png`; await p.screenshot({path:f}); meta.shots.push({name,file:f,rects:{}}); }
+await p.locator('nav, aside').getByText('Library').first().click(); await p.waitForTimeout(2500); await shot('lib');
+await p.getByText('Cardiovascular foundations').first().click({timeout:3000}); await p.waitForTimeout(4000); await shot('r0');
+await p.mouse.click(1257,473); await p.waitForTimeout(2500); await shot('r1');
+await p.mouse.click(1257,473); await p.waitForTimeout(2500); await shot('r2');
+await p.mouse.click(360,73); await p.waitForTimeout(800); await shot('hl0');
+await p.mouse.move(800,420); await p.mouse.down(); for(let i=1;i<=10;i++){ await p.mouse.move(800+i*40,420,{steps:2}); if(i%3==0) await shot('hl'+i); } await p.mouse.up(); await p.waitForTimeout(800); await shot('hl9');
+await p.mouse.click(817,73); await p.waitForTimeout(2500); await shot('ex0');
+console.log('EX', await p.evaluate(()=>{const d=[...document.querySelectorAll('[role=dialog],aside,section')].filter(e=>e.offsetParent&&/Explain/i.test(e.innerText)).pop(); return d?d.innerText.replace(/\n+/g,' | ').slice(0,700):'none';}));
+await p.keyboard.press('Escape'); await p.waitForTimeout(800);
+await p.mouse.click(940,73); await p.waitForTimeout(2500); await shot('qz0');
+console.log('URL',p.url()); console.log('BTN', await p.evaluate(()=>[...document.querySelectorAll('button')].filter(b=>b.offsetParent).map(b=>(b.getAttribute('aria-label')||b.textContent).trim().replace(/\s+/g,' ').slice(0,25)).join(' | ')));
+fs.writeFileSync(`${OUT}/meta.json`, JSON.stringify({wide:meta},null,1)); await br.close();

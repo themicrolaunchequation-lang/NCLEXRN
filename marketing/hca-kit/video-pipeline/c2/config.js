@@ -1,0 +1,31 @@
+const MODAL={wide:[130,30,1180],tall:[150,400,620]};
+window.SPEC={
+ brand:['Carecraft','Healthcare Crown Academy'], hookShot:'ex1', hookCam:MODAL, revealScene:'reveal',
+ cursorWindows:[[['type',-0.4],['type',1.2]],[['example',0.2],['example',1.6]]],
+ cta:{title:'Carecraft<br><em>practise the moments that matter</em>',pts:['18 toolkit job-aids','SBAR · ISBAR builder','Copy · Print · Download'],go:'Try it free today →',url:'carecraft.healthcarecrownacademy.co.uk',fine:'Healthcare Crown Academy · fictional practice drafts, not clinical records'},
+ scenes:[
+  {id:'hook',cap:['**Two in the morning.**','Your patient is getting worse.','You call the doctor,','and your **mind goes blank**.'],
+   kin:[{at:0,to:2.6,html:'02:00',size:[220,220],y:[330,150],color:'#ffd166'},{at:2.7,html:'Mind goes blank?',size:[110,120],y:[400,210]}]},
+  {id:'doc1',bubble:{who:'On-call doctor',av:'DR',text:'Okay… what exactly do you need from me?',type:1.5,col:'linear-gradient(135deg,#3b82f6,#1e3a8a)'}},
+  {id:'reveal',shots:[{at:-0.4,name:'tools'},{at:1.4,name:'e0',tr:'pop',d:0.55}],cam:[{at:-0.4,r:{wide:[260,60,1180],tall:[280,290,700]},d:0.01},{at:1.4,r:MODAL,d:0.01}],
+   cursor:[{at:0.3,to:[357,755],d:0.6,click:true}],
+   head:['Carecraft Toolkit','SBAR<br>builder'],headTo:'type',cap:['Carecraft’s **SBAR handover builder**','turns that moment','into a **clear message**.']},
+  {id:'type',shots:[{at:0.9,name:'t1'},{at:1.8,name:'t2'},{at:2.7,name:'t3'},{at:3.6,name:'t4'}],cam:[{at:-0.3,r:{wide:[140,330,1160],tall:[150,360,620]},d:0.8}],
+   cursor:[{at:-0.2,to:[445,606],d:0.5,click:true}],
+   hl:[{at:0.4,to:3.6,r:[159,556,572,100],color:'#5eead4'},{at:3.6,to:'end',r:[810,575,440,70],color:'#34d399'}],
+   cap:['Start with the **situation**,','in a sentence or two.','The **live preview**','fills in as you type.']},
+  {id:'example',shots:[{at:1.2,name:'ex1',tr:'fade',d:0.35},{at:4.0,name:'ex2',tr:'fade',d:0.45}],cam:[{at:-0.3,r:{wide:[140,330,1160],tall:[150,360,620]},d:0.8},{at:4.0,r:{wide:[140,60,1160],tall:[150,140,620]},d:0.8}],
+   cursor:[{at:0.4,to:[399,465],d:0.6,click:true}],
+   hl:[{at:1.6,to:3.9,r:[765,510,512,360],color:'#34d399'}],
+   callouts:[{at:2.0,to:4.0,html:'5 of 5 parts<small>situation · background · assessment · recommendation</small>',bg:'linear-gradient(135deg,#10b981,#047857)',sizeW:42,sizeT:44,yW:700,yT:1180}],
+   head:['Learn from examples','Fictional<br>example'],cap:['Not sure what **good** looks like?','Load a **fictional example**.','**Background.** **Assessment.**','And a **clear recommendation**.']},
+  {id:'loop',shots:[{at:-0.3,name:'ex3',tr:'fade',d:0.4}],cam:[{at:-0.3,r:{wide:[140,200,1160],tall:[150,200,620]},d:0.8}],
+   hl:[{at:0.3,to:'end',r:[158,240,572,112],color:'#ffd166'},{at:1.0,to:'end',r:[808,600,450,60],color:'#5eead4'}],
+   head:['Close the loop','Say it<br>back'],headTo:'check',cap:['Then **close the loop**.','Ask them to **say the plan back**,','and agree what happens','**if it doesn’t**.']},
+  {id:'check',cam:[{at:-0.2,r:{wide:[140,320,1160],tall:[150,360,620]},d:1.0}],
+   hl:[{at:0.6,to:'end',r:[158,430,572,330],color:'#34d399'}],
+   callouts:[{at:2.2,html:'Self-check<small>who · how urgent · what you need</small>',bg:'linear-gradient(135deg,#6366f1,#4338ca)',sizeW:46,sizeT:50,yW:700,yT:1180}],
+   cap:['A quick **self-check** confirms','you’ve said **who**, **how urgent**,','and exactly **what you need**.']},
+  {id:'doc2',bubble:{who:'On-call doctor',av:'DR',text:'Clear. I’ll be there in ten minutes.',type:1.0,col:'linear-gradient(135deg,#3b82f6,#1e3a8a)',yW:110,yT:600,xW:250,wW:900}},
+  {id:'cta',cap:['**Hand over**','with confidence.','**Try it free** today.']}
+ ]};

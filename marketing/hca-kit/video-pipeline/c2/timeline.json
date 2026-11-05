@@ -1,0 +1,86 @@
+{
+ "total": 50.226,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 5.726,
+   "start": 0.0,
+   "text": "Two in the morning. Your patient is getting worse. You call the doctor, and your mind goes blank.",
+   "voice": "bf_alice",
+   "end": 6.126
+  },
+  {
+   "id": "doc1",
+   "vo_start": 6.426,
+   "vo_end": 8.912,
+   "start": 6.126,
+   "text": "Okay... what exactly do you need from me?",
+   "voice": "am_michael",
+   "end": 9.262
+  },
+  {
+   "id": "reveal",
+   "vo_start": 9.662,
+   "vo_end": 14.109,
+   "start": 9.262,
+   "text": "Carecraft's SBAR handover builder turns that moment into a clear message.",
+   "voice": "bf_alice",
+   "end": 14.459
+  },
+  {
+   "id": "type",
+   "vo_start": 14.759,
+   "vo_end": 20.017,
+   "start": 14.459,
+   "text": "Start with the situation, in a sentence or two. The live preview fills in as you type.",
+   "voice": "bf_alice",
+   "end": 20.367
+  },
+  {
+   "id": "example",
+   "vo_start": 20.667,
+   "vo_end": 26.683,
+   "start": 20.367,
+   "text": "Not sure what good looks like? Load a fictional example. Background. Assessment. And a clear recommendation.",
+   "voice": "bf_alice",
+   "end": 27.383
+  },
+  {
+   "id": "loop",
+   "vo_start": 27.683,
+   "vo_end": 32.462,
+   "start": 27.383,
+   "text": "Then close the loop. Ask them to say the plan back, and agree what happens if it doesn't.",
+   "voice": "bf_alice",
+   "end": 33.162
+  },
+  {
+   "id": "check",
+   "vo_start": 33.462,
+   "vo_end": 38.175,
+   "start": 33.162,
+   "text": "A quick self-check confirms you've said who, how urgent, and exactly what you need.",
+   "voice": "bf_alice",
+   "end": 38.525
+  },
+  {
+   "id": "doc2",
+   "vo_start": 38.725,
+   "vo_end": 40.683,
+   "start": 38.525,
+   "text": "Clear. I'll be there in ten minutes.",
+   "voice": "am_michael",
+   "end": 41.133
+  },
+  {
+   "id": "cta",
+   "vo_start": 41.633,
+   "vo_end": 48.026,
+   "start": 41.133,
+   "text": "Hand over with confidence. Try it free today, at Carecraft dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bf_alice",
+   "end": 49.626
+  }
+ ]
+}

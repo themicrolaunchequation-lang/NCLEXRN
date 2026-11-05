@@ -1,0 +1,72 @@
+[
+ {
+  "id": "hook",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.35,
+  "post": 0.45,
+  "text": "Somebody made care better today. Will anyone ever know?"
+ },
+ {
+  "id": "nur1",
+  "voice": "bf_lily",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "I rewrote the handover checklist. Nobody noticed."
+ },
+ {
+  "id": "reveal",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.4,
+  "text": "Evinca makes sure it's written down. Independent honors, judged on evidence.",
+  "post": 1.2
+ },
+ {
+  "id": "come",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "text": "Where do you come in? Tell your story. Nominate a colleague. Thank someone who cared for you. Or recognise your team.",
+  "post": 1.2
+ },
+ {
+  "id": "marks",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "text": "Four marks of recognition, each with one verified record. Spotlight, Distinction, Honor and Laureate.",
+  "post": 1.2
+ },
+ {
+  "id": "map",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "post": 1.2,
+  "text": "Every contribution is judged in its own context, worldwide. You were never invisible. You were unrecorded."
+ },
+ {
+  "id": "nur2",
+  "voice": "bf_lily",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.45,
+  "text": "Then I'm writing mine down today."
+ },
+ {
+  "id": "cta",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.96,
+  "pre": 0.5,
+  "post": 1.6,
+  "text": "Your work deserves a record. Start your free Spotlight story today, at Evinca dot Healthcare Crown Academy dot co dot uk."
+ }
+]

@@ -1,0 +1,11 @@
+import { createRequire } from 'node:module'; import fs from 'node:fs';
+const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium } = require('playwright');
+const [url, out] = process.argv.slice(2);
+const br = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const ctx = await br.newContext({ viewport:{width:1440,height:900} });
+const p = await ctx.newPage();
+await p.goto(url, {waitUntil:'networkidle', timeout:60000}).catch(e=>console.log('goto',e.message));
+await p.waitForTimeout(2500);
+await p.screenshot({path:out});
+console.log(p.url()); console.log(await p.evaluate(()=>[...document.querySelectorAll('a,button,[role=tab]')].filter(b=>b.offsetParent).map(b=>(b.textContent||'').trim().replace(/\s+/g,' ').slice(0,28)).filter(Boolean).slice(0,80).join(' | ')));
+await br.close();

@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.35,"post":0.45,"text":"Most of what you study today, you'll forget by next week. Unless you test yourself at the right moment."},
+ {"id":"stu1","voice":"bm_george","lang":"en-gb","speed":1.0,"text":"But how do I know when to review?"},
+ {"id":"reveal","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.4,"text":"Lumen's study studio does the timing for you. Add a starter collection, linked to your sources."},
+ {"id":"q","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"post":0.6,"text":"A moment to remember. Which side of the heart supplies the pulmonary circulation? Think first."},
+ {"id":"a","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"Then reveal. The right side of the heart. Rate how well you knew it."},
+ {"id":"sched","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"The schedule adapts. Easy cards come back later. Tricky ones return sooner, just before you forget."},
+ {"id":"next","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"Next card. Cardiac output equals heart rate times stroke volume. Every answer links back to its page."},
+ {"id":"stu2","voice":"bm_george","lang":"en-gb","speed":1.0,"pre":0.2,"post":0.45,"text":"Ten minutes a day. And it actually sticks."},
+ {"id":"cta","voice":"af_nicole","lang":"en-us","speed":0.98,"pre":0.5,"post":1.6,"text":"Remember what you study. Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk."}
+]

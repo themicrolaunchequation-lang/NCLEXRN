@@ -1,0 +1,86 @@
+[
+ {
+  "id": "hook",
+  "voice": "af_bella",
+  "lang": "en-us",
+  "speed": 0.95,
+  "pre": 0.4,
+  "post": 0.5,
+  "text": "Twelve hours. No break. And the next patient is already waiting."
+ },
+ {
+  "id": "nur1",
+  "voice": "bf_emma",
+  "lang": "en-gb",
+  "speed": 0.95,
+  "text": "I don't have time to look after myself."
+ },
+ {
+  "id": "reveal",
+  "voice": "af_bella",
+  "lang": "en-us",
+  "speed": 0.93,
+  "pre": 0.5,
+  "text": "You have two minutes. Serein makes room for you."
+ },
+ {
+  "id": "breath",
+  "voice": "af_bella",
+  "lang": "en-us",
+  "speed": 0.88,
+  "pre": 0.4,
+  "post": 0.8,
+  "text": "Three easy breaths, before anything else. Breathe in. And let it go."
+ },
+ {
+  "id": "pause",
+  "voice": "af_bella",
+  "lang": "en-us",
+  "speed": 0.92,
+  "pre": 0.4,
+  "text": "Press start my pause, and the Breathing Tide guides you. Breathe in, only as far as feels comfortable."
+ },
+ {
+  "id": "out",
+  "voice": "af_bella",
+  "lang": "en-us",
+  "speed": 0.9,
+  "pre": 0.3,
+  "post": 0.7,
+  "text": "Breathe out. Let the breath leave, without forcing it."
+ },
+ {
+  "id": "lib",
+  "voice": "af_bella",
+  "lang": "en-us",
+  "speed": 0.93,
+  "pre": 0.4,
+  "text": "When you have a little longer, the library has fifteen short practices. Breathing, grounding, gentle movement, from one minute to five."
+ },
+ {
+  "id": "promise",
+  "voice": "af_bella",
+  "lang": "en-us",
+  "speed": 0.93,
+  "pre": 0.3,
+  "text": "No streak to keep. Nothing is scored. Nothing is monitored."
+ },
+ {
+  "id": "nur2",
+  "voice": "bf_emma",
+  "lang": "en-gb",
+  "speed": 0.95,
+  "pre": 0.3,
+  "post": 0.5,
+  "text": "Two minutes. I feel human again."
+ },
+ {
+  "id": "cta",
+  "voice": "af_bella",
+  "lang": "en-us",
+  "speed": 0.92,
+  "pre": 0.5,
+  "post": 1.8,
+  "text": "Make room for you. Try it free today, at Serein dot Healthcare Crown Academy dot co dot uk."
+ }
+]

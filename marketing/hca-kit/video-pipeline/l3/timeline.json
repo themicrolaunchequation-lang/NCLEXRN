@@ -1,0 +1,86 @@
+{
+ "total": 72.765,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 7.119,
+   "start": 0.0,
+   "text": "You sat down to study for two hours. You actually studied for twenty minutes.",
+   "voice": "af_nicole",
+   "end": 7.569
+  },
+  {
+   "id": "stu1",
+   "vo_start": 7.869,
+   "vo_end": 11.145,
+   "start": 7.569,
+   "text": "My phone, my messages... I just can't focus.",
+   "voice": "bm_george",
+   "end": 11.495
+  },
+  {
+   "id": "reveal",
+   "vo_start": 11.895,
+   "vo_end": 18.421,
+   "start": 11.495,
+   "text": "Lumen keeps you in the zone. Open a focus session from your My Day page.",
+   "voice": "af_nicole",
+   "end": 18.771
+  },
+  {
+   "id": "timer",
+   "vo_start": 19.071,
+   "vo_end": 28.492,
+   "start": 18.771,
+   "text": "Twenty-five minutes. One clear goal. Then a short break. Add soft rain or brown noise if it helps.",
+   "voice": "af_nicole",
+   "end": 28.992
+  },
+  {
+   "id": "methods",
+   "vo_start": 29.292,
+   "vo_end": 36.547,
+   "start": 28.992,
+   "text": "Not sure how to study? The Methods page explains six proven ways, simply.",
+   "voice": "af_nicole",
+   "end": 36.897
+  },
+  {
+   "id": "loop",
+   "vo_start": 37.197,
+   "vo_end": 43.958,
+   "start": 36.897,
+   "text": "A five-step learning loop. Read. Explain. Recall. Verify. Return.",
+   "voice": "af_nicole",
+   "end": 44.308
+  },
+  {
+   "id": "cards",
+   "vo_start": 44.608,
+   "vo_end": 54.546,
+   "start": 44.308,
+   "text": "Active recall. Explain it back. Compare concepts. Spaced return. Each with a tool to try.",
+   "voice": "af_nicole",
+   "end": 54.896
+  },
+  {
+   "id": "stu2",
+   "vo_start": 55.096,
+   "vo_end": 59.017,
+   "start": 54.896,
+   "text": "Twenty-five focused minutes beat two distracted hours.",
+   "voice": "bm_george",
+   "end": 59.467
+  },
+  {
+   "id": "cta",
+   "vo_start": 59.967,
+   "vo_end": 70.565,
+   "start": 59.467,
+   "text": "Study smarter, in less time. Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "af_nicole",
+   "end": 72.165
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "a0",
+    "file": "e2/cap/a0.png",
+    "rects": {}
+   },
+   {
+    "name": "s0",
+    "file": "e2/cap/s0.png",
+    "rects": {}
+   },
+   {
+    "name": "s1",
+    "file": "e2/cap/s1.png",
+    "rects": {}
+   },
+   {
+    "name": "s2",
+    "file": "e2/cap/s2.png",
+    "rects": {}
+   },
+   {
+    "name": "st2a",
+    "file": "e2/cap/st2a.png",
+    "rects": {}
+   },
+   {
+    "name": "st2b",
+    "file": "e2/cap/st2b.png",
+    "rects": {}
+   },
+   {
+    "name": "st3a",
+    "file": "e2/cap/st3a.png",
+    "rects": {}
+   },
+   {
+    "name": "st3b",
+    "file": "e2/cap/st3b.png",
+    "rects": {}
+   },
+   {
+    "name": "st4a",
+    "file": "e2/cap/st4a.png",
+    "rects": {}
+   },
+   {
+    "name": "st4b",
+    "file": "e2/cap/st4b.png",
+    "rects": {}
+   },
+   {
+    "name": "st5a",
+    "file": "e2/cap/st5a.png",
+    "rects": {}
+   },
+   {
+    "name": "st5b",
+    "file": "e2/cap/st5b.png",
+    "rects": {}
+   },
+   {
+    "name": "st6a",
+    "file": "e2/cap/st6a.png",
+    "rects": {}
+   },
+   {
+    "name": "st6b",
+    "file": "e2/cap/st6b.png",
+    "rects": {}
+   }
+  ]
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "day",
+    "file": "l3/cap/day.png",
+    "rects": {}
+   },
+   {
+    "name": "f0",
+    "file": "l3/cap/f0.png",
+    "rects": {}
+   },
+   {
+    "name": "f1",
+    "file": "l3/cap/f1.png",
+    "rects": {}
+   },
+   {
+    "name": "f2",
+    "file": "l3/cap/f2.png",
+    "rects": {}
+   },
+   {
+    "name": "m0",
+    "file": "l3/cap/m0.png",
+    "rects": {}
+   },
+   {
+    "name": "m1",
+    "file": "l3/cap/m1.png",
+    "rects": {}
+   }
+  ]
+ }
+}

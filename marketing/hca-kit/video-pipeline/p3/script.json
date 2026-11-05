@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"bm_george","lang":"en-gb","speed":1.0,"pre":0.35,"post":0.45,"text":"Anyone can print a certificate. But can yours prove it's real?"},
+ {"id":"me1","voice":"bf_emma","lang":"en-gb","speed":1.02,"text":"Sixty-six questions. Eighty percent to pass. Let's do this."},
+ {"id":"reveal","voice":"bm_george","lang":"en-gb","speed":1.0,"pre":0.4,"text":"The Green Belt exam in Lean Six Sigma for Healthcare covers every DMAIC phase, including reading the charts."},
+ {"id":"answer","voice":"bm_george","lang":"en-gb","speed":1.02,"text":"Choose your answer. Explanations stay hidden until you submit, so you recall, instead of recognise."},
+ {"id":"mark","voice":"bm_george","lang":"en-gb","speed":1.0,"text":"Your exam is marked on our server, not in your browser. So a pass can't be faked."},
+ {"id":"me2","voice":"bf_emma","lang":"en-gb","speed":1.0,"pre":0.2,"post":0.45,"text":"Ninety-two percent. I passed!"},
+ {"id":"cert","voice":"bm_george","lang":"en-gb","speed":1.02,"text":"Claim your certificate. It carries a unique ID and a QR code, with a matching ID badge."},
+ {"id":"boss","voice":"am_michael","lang":"en-us","speed":1.0,"pre":0.4,"post":0.45,"text":"I scanned her QR code. Valid. Her name, the course, and the date. Done."},
+ {"id":"cta","voice":"bm_george","lang":"en-gb","speed":0.98,"pre":0.5,"post":1.6,"text":"Earn a certificate that proves itself. Start free today, at Lean Six Sigma dot Healthcare Crown Academy dot co dot uk."}
+]

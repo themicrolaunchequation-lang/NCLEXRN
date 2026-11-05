@@ -1,0 +1,86 @@
+{
+ "total": 48.482,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 4.487,
+   "start": 0.0,
+   "text": "You understand now, right? The leaflet explains the rest. Sound familiar?",
+   "voice": "bf_alice",
+   "end": 4.887
+  },
+  {
+   "id": "nur1",
+   "vo_start": 5.187,
+   "vo_end": 8.783,
+   "start": 4.887,
+   "text": "I say it every shift. I don't have time for an hour-long course.",
+   "voice": "bf_lily",
+   "end": 9.133
+  },
+  {
+   "id": "reveal",
+   "vo_start": 9.533,
+   "vo_end": 13.643,
+   "start": 9.133,
+   "text": "You don't need one. Carecraft lessons come as eight-minute slide journeys.",
+   "voice": "bf_alice",
+   "end": 13.993
+  },
+  {
+   "id": "ideas",
+   "vo_start": 14.293,
+   "vo_end": 19.586,
+   "start": 13.993,
+   "text": "Three ideas, one at a time. Start with the person. Make understanding shared. Close the loop.",
+   "voice": "bf_alice",
+   "end": 19.936
+  },
+  {
+   "id": "guide",
+   "vo_start": 20.236,
+   "vo_end": 23.517,
+   "start": 19.936,
+   "text": "Visual guides you can open, enlarge, and annotate.",
+   "voice": "bf_alice",
+   "end": 23.867
+  },
+  {
+   "id": "diff",
+   "vo_start": 24.167,
+   "vo_end": 31.335,
+   "start": 23.867,
+   "text": "Then notice the difference. Tap to reveal a stronger approach. I've shared a lot. How would you describe the next step, in your own words?",
+   "voice": "bf_alice",
+   "end": 31.935
+  },
+  {
+   "id": "checks",
+   "vo_start": 32.235,
+   "vo_end": 35.458,
+   "start": 31.935,
+   "text": "Three quick checks, a reflection, and one thing to remember.",
+   "voice": "bf_alice",
+   "end": 35.808
+  },
+  {
+   "id": "nur2",
+   "vo_start": 36.008,
+   "vo_end": 38.55,
+   "start": 35.808,
+   "text": "Eight minutes. I can do that on my break.",
+   "voice": "bf_lily",
+   "end": 39.0
+  },
+  {
+   "id": "cta",
+   "vo_start": 39.5,
+   "vo_end": 46.282,
+   "start": 39.0,
+   "text": "Thirty lessons for the work you do. Try it free today, at Carecraft dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bf_alice",
+   "end": 47.882
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.35,"post":0.4,"text":"You understand now, right? The leaflet explains the rest. Sound familiar?"},
+ {"id":"nur1","voice":"bf_lily","lang":"en-gb","speed":1.0,"text":"I say it every shift. I don't have time for an hour-long course."},
+ {"id":"reveal","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.4,"text":"You don't need one. Carecraft lessons come as eight-minute slide journeys."},
+ {"id":"ideas","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Three ideas, one at a time. Start with the person. Make understanding shared. Close the loop."},
+ {"id":"guide","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Visual guides you can open, enlarge, and annotate."},
+ {"id":"diff","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.3,"post":0.6,"text":"Then notice the difference. Tap to reveal a stronger approach. I've shared a lot. How would you describe the next step, in your own words?"},
+ {"id":"checks","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Three quick checks, a reflection, and one thing to remember."},
+ {"id":"nur2","voice":"bf_lily","lang":"en-gb","speed":1.0,"pre":0.2,"post":0.45,"text":"Eight minutes. I can do that on my break."},
+ {"id":"cta","voice":"bf_alice","lang":"en-gb","speed":0.98,"pre":0.5,"post":1.6,"text":"Thirty lessons for the work you do. Try it free today, at Carecraft dot Healthcare Crown Academy dot co dot uk."}
+]

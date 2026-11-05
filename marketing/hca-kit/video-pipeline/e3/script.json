@@ -1,0 +1,72 @@
+[
+ {
+  "id": "hook",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.35,
+  "post": 0.45,
+  "text": "Anyone can claim an award. Can yours be checked?"
+ },
+ {
+  "id": "hr",
+  "voice": "am_michael",
+  "lang": "en-us",
+  "speed": 1.0,
+  "text": "Your CV says honoree. How do I know it's real?"
+ },
+ {
+  "id": "reveal",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.4,
+  "text": "Every Evinca honor has a public proof page. No login needed.",
+  "post": 1.2
+ },
+ {
+  "id": "status",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "text": "Current status: active. This honor is current and valid. Scan the QR code to open the record.",
+  "post": 1.2
+ },
+ {
+  "id": "record",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "post": 1.2,
+  "text": "The record shows the category, the rubric, who reviewed it, and the evidence passport. Baseline, result, and how it was verified."
+ },
+ {
+  "id": "badge",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.98,
+  "pre": 0.3,
+  "text": "A certificate, a digital badge, and ready wording for LinkedIn. Corrections stay visible, in public.",
+  "post": 1.2
+ },
+ {
+  "id": "hr2",
+  "voice": "am_michael",
+  "lang": "en-us",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.45,
+  "text": "Checked in thirty seconds. Impressive."
+ },
+ {
+  "id": "cta",
+  "voice": "af_heart",
+  "lang": "en-us",
+  "speed": 0.96,
+  "pre": 0.5,
+  "post": 1.6,
+  "text": "Recognition you can verify. Start free today, at Evinca dot Healthcare Crown Academy dot co dot uk."
+ }
+]

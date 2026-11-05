@@ -1,0 +1,10 @@
+[
+ {"id":"hook","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.35,"post":0.45,"text":"You know the nursing. It's the question language that trips you up."},
+ {"id":"nur1","voice":"af_sarah","lang":"en-us","speed":1.0,"text":"What exactly is a stem? Or a distractor?"},
+ {"id":"reveal","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.4,"text":"Gulf Region Nursing's searchable glossary decodes exam language, in English and Arabic."},
+ {"id":"gl","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"post":0.5,"text":"Sixty-two original terms. Stem. Lead-in. Clue. Key clue. Distractor. Each with three clinical examples."},
+ {"id":"ar","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Switch the whole studio to Arabic with one tap."},
+ {"id":"exams","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"post":0.5,"text":"And it's four exams in one. Saudi Arabia. Qatar. Dubai. Abu Dhabi. Each keeps its own progress, guide and exam facts."},
+ {"id":"nur2","voice":"af_sarah","lang":"en-us","speed":1.0,"pre":0.2,"post":0.45,"text":"Finally, the questions make sense."},
+ {"id":"cta","voice":"bm_lewis","lang":"en-gb","speed":0.98,"pre":0.5,"post":1.6,"text":"Understand the question, then answer it with confidence. Try it free today, at S N L E dot Healthcare Crown Academy dot co dot uk."}
+]

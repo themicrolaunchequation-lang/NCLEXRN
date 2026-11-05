@@ -1,0 +1,26 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "s0",
+    "file": "c1/cap/s0.png",
+    "rects": {}
+   },
+   {
+    "name": "s1",
+    "file": "c1/cap/s1.png",
+    "rects": {}
+   },
+   {
+    "name": "s2",
+    "file": "c1/cap/s2.png",
+    "rects": {}
+   },
+   {
+    "name": "s3",
+    "file": "c1/cap/s3.png",
+    "rects": {}
+   }
+  ]
+ }
+}

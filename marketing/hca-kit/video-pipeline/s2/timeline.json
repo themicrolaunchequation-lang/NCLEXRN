@@ -1,0 +1,86 @@
+{
+ "total": 56.057,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.4,
+   "vo_end": 5.349,
+   "start": 0.0,
+   "text": "Not every break needs to be the same. So why do wellbeing apps treat you like it does?",
+   "voice": "af_bella",
+   "end": 5.849
+  },
+  {
+   "id": "nur1",
+   "vo_start": 6.149,
+   "vo_end": 8.761,
+   "start": 5.849,
+   "text": "I've got two minutes, and my hands are aching.",
+   "voice": "bm_daniel",
+   "end": 9.111
+  },
+  {
+   "id": "reveal",
+   "vo_start": 9.611,
+   "vo_end": 12.564,
+   "start": 9.111,
+   "text": "Serein asks first. Find a pause that fits.",
+   "voice": "af_bella",
+   "end": 12.914
+  },
+  {
+   "id": "q",
+   "vo_start": 13.214,
+   "vo_end": 20.111,
+   "start": 12.914,
+   "text": "What's happening around this pause? Between tasks. How much time do you have? Two minutes. What would feel comfortable?",
+   "voice": "af_bella",
+   "end": 20.611
+  },
+  {
+   "id": "res",
+   "vo_start": 20.911,
+   "vo_end": 27.465,
+   "start": 20.611,
+   "text": "Three suggestions, each with a clear reason. Breathing Tide. Hand and Finger Reset. Here and Now.",
+   "voice": "af_bella",
+   "end": 27.815
+  },
+  {
+   "id": "hand",
+   "vo_start": 28.215,
+   "vo_end": 37.346,
+   "start": 27.815,
+   "text": "Ninety seconds for tired hands. Settle. Rest your forearms. Then gently uncurl your fingers, only as far as feels easy.",
+   "voice": "af_bella",
+   "end": 37.946
+  },
+  {
+   "id": "safe",
+   "vo_start": 38.246,
+   "vo_end": 42.079,
+   "start": 37.946,
+   "text": "Stop or adapt whenever you need to. Nothing here is a score.",
+   "voice": "af_bella",
+   "end": 42.429
+  },
+  {
+   "id": "nur2",
+   "vo_start": 42.729,
+   "vo_end": 44.688,
+   "start": 42.429,
+   "text": "That's exactly what I needed.",
+   "voice": "bm_daniel",
+   "end": 45.188
+  },
+  {
+   "id": "cta",
+   "vo_start": 45.688,
+   "vo_end": 53.657,
+   "start": 45.188,
+   "text": "The right pause, for the moment you're in. Try it free today, at Serein dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "af_bella",
+   "end": 55.457
+  }
+ ]
+}

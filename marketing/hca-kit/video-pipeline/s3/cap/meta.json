@@ -1,0 +1,41 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "a0",
+    "file": "s3/cap/a0.png",
+    "rects": {}
+   },
+   {
+    "name": "a1",
+    "file": "s3/cap/a1.png",
+    "rects": {}
+   },
+   {
+    "name": "a2",
+    "file": "s3/cap/a2.png",
+    "rects": {}
+   },
+   {
+    "name": "a3",
+    "file": "s3/cap/a3.png",
+    "rects": {}
+   },
+   {
+    "name": "a4",
+    "file": "s3/cap/a4.png",
+    "rects": {}
+   },
+   {
+    "name": "big",
+    "file": "s3/cap/big.png",
+    "rects": {}
+   },
+   {
+    "name": "support",
+    "file": "s3/cap/support.png",
+    "rects": {}
+   }
+  ]
+ }
+}

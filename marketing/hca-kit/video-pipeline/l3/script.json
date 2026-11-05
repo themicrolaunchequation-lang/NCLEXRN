@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.35,"post":0.45,"text":"You sat down to study for two hours. You actually studied for twenty minutes."},
+ {"id":"stu1","voice":"bm_george","lang":"en-gb","speed":1.0,"text":"My phone, my messages... I just can't focus."},
+ {"id":"reveal","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.4,"text":"Lumen keeps you in the zone. Open a focus session from your My Day page."},
+ {"id":"timer","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"post":0.5,"text":"Twenty-five minutes. One clear goal. Then a short break. Add soft rain or brown noise if it helps."},
+ {"id":"methods","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"Not sure how to study? The Methods page explains six proven ways, simply."},
+ {"id":"loop","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"A five-step learning loop. Read. Explain. Recall. Verify. Return."},
+ {"id":"cards","voice":"af_nicole","lang":"en-us","speed":1.0,"pre":0.3,"text":"Active recall. Explain it back. Compare concepts. Spaced return. Each with a tool to try."},
+ {"id":"stu2","voice":"bm_george","lang":"en-gb","speed":1.0,"pre":0.2,"post":0.45,"text":"Twenty-five focused minutes beat two distracted hours."},
+ {"id":"cta","voice":"af_nicole","lang":"en-us","speed":0.98,"pre":0.5,"post":1.6,"text":"Study smarter, in less time. Try it free today, at Lumen dot Healthcare Crown Academy dot co dot uk."}
+]

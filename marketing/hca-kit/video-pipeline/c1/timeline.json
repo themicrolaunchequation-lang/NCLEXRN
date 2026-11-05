@@ -1,0 +1,86 @@
+{
+ "total": 50.802,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 3.586,
+   "start": 0.0,
+   "text": "He nodded the whole time. But did he actually understand?",
+   "voice": "bf_alice",
+   "end": 3.986
+  },
+  {
+   "id": "pat",
+   "vo_start": 4.286,
+   "vo_end": 7.816,
+   "start": 3.986,
+   "text": "Yes, yes, that's all fine. My taxi's here in ten minutes.",
+   "voice": "bm_daniel",
+   "end": 8.166
+  },
+  {
+   "id": "reveal",
+   "vo_start": 8.566,
+   "vo_end": 13.137,
+   "start": 8.166,
+   "text": "One moment from a working day. Carecraft gives you sixty seconds to decide.",
+   "voice": "bf_alice",
+   "end": 13.487
+  },
+  {
+   "id": "choices",
+   "vo_start": 13.687,
+   "vo_end": 18.402,
+   "start": 13.487,
+   "text": "Hand him the leaflet? Repeat it slowly, and ask for questions? Or something better?",
+   "voice": "bf_alice",
+   "end": 18.902
+  },
+  {
+   "id": "nurse",
+   "vo_start": 19.102,
+   "vo_end": 23.838,
+   "start": 18.902,
+   "text": "So I know I've explained it well, how will you describe the plan to your daughter tonight?",
+   "voice": "bf_lily",
+   "end": 24.238
+  },
+  {
+   "id": "fb",
+   "vo_start": 24.538,
+   "vo_end": 30.873,
+   "start": 24.238,
+   "text": "Strongest choice. Teach-back checks your explanation, not the patient. Any gap shows while he's still on the ward.",
+   "voice": "bf_alice",
+   "end": 31.223
+  },
+  {
+   "id": "why",
+   "vo_start": 31.523,
+   "vo_end": 36.0,
+   "start": 31.223,
+   "text": "Every option is explained. Because nodding is not evidence of understanding.",
+   "voice": "bf_alice",
+   "end": 36.35
+  },
+  {
+   "id": "lesson",
+   "vo_start": 36.65,
+   "vo_end": 41.23,
+   "start": 36.35,
+   "text": "Then go deeper, with an eight-minute lesson on conversations that build trust.",
+   "voice": "bf_alice",
+   "end": 41.58
+  },
+  {
+   "id": "cta",
+   "vo_start": 42.08,
+   "vo_end": 48.602,
+   "start": 41.58,
+   "text": "Practise the moments that matter. Try it free today, at Carecraft dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bf_alice",
+   "end": 50.202
+  }
+ ]
+}

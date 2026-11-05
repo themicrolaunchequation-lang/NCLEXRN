@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"bm_george","lang":"en-gb","speed":1.0,"pre":0.35,"post":0.4,"text":"On Monday, Amara was your worst nurse. By Wednesday, she was your best. Nothing about her changed."},
+ {"id":"mgr1","voice":"af_heart","lang":"en-us","speed":1.0,"text":"So who do I praise... and who do I retrain?"},
+ {"id":"reveal","voice":"bm_george","lang":"en-gb","speed":1.0,"pre":0.45,"text":"Neither. Meet the Red Bead Ward, a simulation in Lean Six Sigma for Healthcare."},
+ {"id":"draw","voice":"bm_george","lang":"en-gb","speed":1.02,"pre":0.2,"text":"Six nurses draw from the same box. Red beads are defects. Press next day, and watch the league table shuffle itself."},
+ {"id":"chance","voice":"bm_george","lang":"en-gb","speed":1.0,"pre":0.2,"post":0.4,"text":"Worker of the day. Needs retraining. A different name every single day. It's pure chance."},
+ {"id":"guide","voice":"bm_george","lang":"en-gb","speed":1.02,"pre":0.3,"text":"Predict the weakest performer, then run it. Every point sits inside the control limits. The differences come from the system."},
+ {"id":"mgr2","voice":"af_heart","lang":"en-us","speed":1.0,"pre":0.15,"post":0.45,"text":"So I've been blaming people... for the box."},
+ {"id":"rule","voice":"bf_emma","lang":"en-gb","speed":1.0,"pre":0.4,"post":0.4,"text":"Deming put it simply. Most performance problems belong to the system. The Learning Studio shows you the history, the maths, and the clinical story."},
+ {"id":"cta","voice":"bm_george","lang":"en-gb","speed":0.98,"pre":0.5,"post":1.6,"text":"Stop ranking people. Start fixing systems. Start free today, at Lean Six Sigma dot Healthcare Crown Academy dot co dot uk."}
+]

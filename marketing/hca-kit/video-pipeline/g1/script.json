@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.35,"post":0.45,"text":"Getting a licensing question wrong is the fastest way to learn. If someone shows you why."},
+ {"id":"nur1","voice":"af_sarah","lang":"en-us","speed":1.0,"text":"I keep missing the priority questions, and I don't know why."},
+ {"id":"reveal","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.4,"text":"Gulf Region Nursing. Practice for Saudi Arabia, Qatar, Dubai and Abu Dhabi licensing exams."},
+ {"id":"q","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Start a quick check. A trauma patient has gurgling respirations and blood in the mouth. What's most appropriate?"},
+ {"id":"pick","voice":"af_sarah","lang":"en-us","speed":1.0,"pre":0.3,"post":0.4,"text":"Check both legs for deformity first?"},
+ {"id":"repair","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Not yet. Repair the reasoning. Clear the airway with suction, while protecting the cervical spine."},
+ {"id":"why","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Every question shows why the safest answer wins, a clinical pearl, and the trap to avoid. Treat the earliest unresolved life threat first."},
+ {"id":"nur2","voice":"af_sarah","lang":"en-us","speed":1.0,"pre":0.2,"post":0.45,"text":"Airway first. I won't forget that again."},
+ {"id":"cta","voice":"bm_lewis","lang":"en-gb","speed":0.98,"pre":0.5,"post":1.6,"text":"Learn the reasoning behind every answer. Try it free today, at S N L E dot Healthcare Crown Academy dot co dot uk."}
+]

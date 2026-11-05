@@ -1,0 +1,36 @@
+{
+ "wide": {
+  "shots": [
+   {
+    "name": "home",
+    "file": "g1/cap/home.png",
+    "rects": {}
+   },
+   {
+    "name": "q0",
+    "file": "g1/cap/q0.png",
+    "rects": {}
+   },
+   {
+    "name": "q1",
+    "file": "g1/cap/q1.png",
+    "rects": {}
+   },
+   {
+    "name": "q2",
+    "file": "g1/cap/q2.png",
+    "rects": {}
+   },
+   {
+    "name": "q3",
+    "file": "g1/cap/q3.png",
+    "rects": {}
+   },
+   {
+    "name": "q4",
+    "file": "g1/cap/q4.png",
+    "rects": {}
+   }
+  ]
+ }
+}

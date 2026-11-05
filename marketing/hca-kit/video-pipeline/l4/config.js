@@ -1,0 +1,32 @@
+const BK={wide:[60,40,1340],tall:[700,110,560]}, TB={wide:[150,40,1180],tall:[150,40,620]};
+window.SPEC={
+ brand:['Lumen','Healthcare Crown Academy'], hookShot:'mag', hookCam:{wide:[400,250,700],tall:[440,280,480]}, revealScene:'reveal',
+ cursorWindows:[[['mark',-0.4],['mark',5.0]],[['tools',-0.4],['tools',1.0]],[['define',-0.4],['define',1.0]]],
+ cta:{title:'Lumen<br><em>bring your notes, Lumen does the rest</em>',pts:['Pen · highlight · notes','Magnifier · stickers · calculator','Present · export · quiz'],go:'Try it free today →',url:'lumen.healthcarecrownacademy.co.uk',fine:'Healthcare Crown Academy · PDFs stay on your device'},
+ scenes:[
+  {id:'hook',cap:['**One PDF.** **Twelve study tools.**','Let me show you all of them','in **sixty seconds**.'],
+   kin:[{at:0,to:2.4,html:'1 PDF.',size:[200,200],y:[330,160]},{at:2.5,html:'<span style="color:#5eead4">12 tools.</span>',size:[200,200],y:[330,160]}]},
+  {id:'stu1',bubble:{who:'Nursing student',av:'NS',text:'Wait, my lecture notes can do all that?',type:1.3,col:'linear-gradient(135deg,#8b5cf6,#5b21b6)'}},
+  {id:'reveal',shots:[{at:-0.4,name:'lib'},{at:3.0,name:'r0',tr:'pop',d:0.55},{at:6.0,name:'r1',tr:'fade',d:0.4}],cam:[{at:-0.4,r:{wide:[90,0,1260],tall:[320,330,560]},d:0.01},{at:3.0,r:[0,0,1440],d:0.01},{at:3.4,r:BK,d:2}],
+   cursor:[{at:1.8,to:[985,540],d:0.7,click:true}],
+   head:['Lumen · reader','Your PDF,<br>supercharged'],headTo:'mark',cap:['Open **any PDF** in Lumen’s reader.','It turns like **a real book**,','and stays **private on your device**.']},
+  {id:'mark',shots:[{at:0.9,name:'pen'},{at:3.2,name:'hl'}],cam:[{at:-0.3,r:{wide:[150,40,1180],tall:[780,200,500]},d:0.8}],
+   cursor:[{at:-0.3,to:[270,73],d:0.5,click:true},{at:0.3,to:[1140,345],d:0.6},{at:2.0,to:[360,73],d:0.5,click:true},{at:2.6,to:[1210,420],d:0.6}],
+   head:['Annotate','Pen +<br>highlight'],cap:['Draw with the **pen**.','**Highlight** the key idea.','Every mark is **saved with its page**.']},
+  {id:'tools',shots:[{at:0.2,name:'tools',tr:'pop',d:0.45}],cam:[{at:-0.3,r:TB,d:0.4},{at:0.6,r:{wide:[500,40,800],tall:[660,90,400]},d:1}],
+   cursor:[{at:-0.3,to:[718,73],d:0.5,click:true}],
+   head:['Tools menu','Everything,<br>one tap'],headTo:'mag',cap:['Open **Tools**.','**Copy a region**, **magnify**, add **stickers**,','**calculate**, **define a word**,','**present**, or **export**.']},
+  {id:'mag',shots:[{at:-0.3,name:'mag',tr:'fade',d:0.35}],cam:[{at:-0.3,r:{wide:[150,120,1180],tall:[430,260,500]},d:0.6}],
+   callouts:[{at:1.2,html:'Magnifier<small>follows your pointer</small>',bg:'linear-gradient(135deg,#8b5cf6,#5b21b6)',sizeW:46,sizeT:50,yW:700,yT:1180}],
+   cap:['A **magnifier** follows your pointer,','for diagrams and **small print**.']},
+  {id:'stick',shots:[{at:-0.3,name:'stickers',tr:'pop',d:0.45},{at:3.3,name:'calc',tr:'pop',d:0.45}],cam:[{at:-0.3,r:{wide:[60,280,900],tall:[60,460,500]},d:0.01},{at:3.3,r:{wide:[700,40,740],tall:[1000,60,440]},d:0.01}],
+   head:['Make it yours','Stickers +<br>calculator'],headTo:'define',cap:['Drag **clinical stickers** onto the page.','And a **calculator** with clinical formulas,','right beside your notes.']},
+  {id:'define',shots:[{at:-0.3,name:'define',tr:'pop',d:0.45}],cam:[{at:-0.3,r:{wide:[240,250,1100],tall:[150,250,700]},d:0.6}],
+   cap:['Stuck on a word?','**Define it** in plain language,','with help in **other languages** too.']},
+  {id:'share',shots:[{at:-0.3,name:'present',tr:'pop',d:0.45},{at:3.6,name:'export',tr:'fade',d:0.4}],cam:[{at:-0.3,r:{wide:[400,80,640],tall:[420,90,600]},d:0.6}],
+   head:['Share it','Present +<br>export'],cap:['Turn your highlights and notes','into **slides to present**,','or **export** to PowerPoint,','Word, or Markdown.']},
+  {id:'explain',shots:[{at:-0.3,name:'explain',tr:'pop',d:0.45}],cam:[{at:-0.3,r:{wide:[0,0,1440],tall:[300,150,560]},d:0.01},{at:0.3,r:{wide:[700,40,740],tall:[1050,120,390]},d:3}],
+   head:['Study panel','Recall before<br>you reveal'],cap:['And the **Study panel** helps you','**recall before you reveal**,','with a **quiz and summary**','from your own page.']},
+  {id:'stu2',bubble:{who:'Nursing student',av:'NS',text:'It’s like a study desk inside my PDF.',type:1.2,col:'linear-gradient(135deg,#8b5cf6,#5b21b6)',yW:110,yT:600,xW:250,wW:900}},
+  {id:'cta',cap:['**Bring your notes.**','**Lumen does the rest.**','**Try it free** today.']}
+ ]};

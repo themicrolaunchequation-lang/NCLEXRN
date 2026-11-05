@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"af_bella","lang":"en-us","speed":0.95,"pre":0.4,"post":0.5,"text":"Not every break needs to be the same. So why do wellbeing apps treat you like it does?"},
+ {"id":"nur1","voice":"bm_daniel","lang":"en-gb","speed":0.95,"text":"I've got two minutes, and my hands are aching."},
+ {"id":"reveal","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.5,"text":"Serein asks first. Find a pause that fits."},
+ {"id":"q","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.3,"post":0.5,"text":"What's happening around this pause? Between tasks. How much time do you have? Two minutes. What would feel comfortable?"},
+ {"id":"res","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.3,"text":"Three suggestions, each with a clear reason. Breathing Tide. Hand and Finger Reset. Here and Now."},
+ {"id":"hand","voice":"af_bella","lang":"en-us","speed":0.88,"pre":0.4,"post":0.6,"text":"Ninety seconds for tired hands. Settle. Rest your forearms. Then gently uncurl your fingers, only as far as feels easy."},
+ {"id":"safe","voice":"af_bella","lang":"en-us","speed":0.93,"pre":0.3,"text":"Stop or adapt whenever you need to. Nothing here is a score."},
+ {"id":"nur2","voice":"bm_daniel","lang":"en-gb","speed":0.95,"pre":0.3,"post":0.5,"text":"That's exactly what I needed."},
+ {"id":"cta","voice":"af_bella","lang":"en-us","speed":0.92,"pre":0.5,"post":1.8,"text":"The right pause, for the moment you're in. Try it free today, at Serein dot Healthcare Crown Academy dot co dot uk."}
+]

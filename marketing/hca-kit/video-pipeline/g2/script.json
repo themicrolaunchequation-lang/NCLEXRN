@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.35,"post":0.45,"text":"Every minute counts in a stroke. Would you spot the signs in time?"},
+ {"id":"nur1","voice":"af_sarah","lang":"en-us","speed":1.0,"text":"I know FAST. But what are the B and the E?"},
+ {"id":"reveal","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.4,"text":"Gulf Region Nursing has sixty-seven clinical decision tools. Let's open BE-FAST."},
+ {"id":"lens","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"text":"The decision lens. Task, decisive clue, commit, reassess. Plus the boundary, the clinical pearl, and the trap."},
+ {"id":"poster","voice":"bm_lewis","lang":"en-gb","speed":0.97,"pre":0.3,"text":"Then the poster. Balance. Eyes. Face. Arm. Speech. Time."},
+ {"id":"detail","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"post":0.5,"text":"What to watch for, when not to use it first, and what to consider instead. You can zoom, highlight and annotate."},
+ {"id":"coach","voice":"bm_lewis","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Then practise. Ten coached questions, built around the same tool."},
+ {"id":"nur2","voice":"af_sarah","lang":"en-us","speed":1.0,"pre":0.2,"post":0.45,"text":"Balance and eyes. Now I'll catch it earlier."},
+ {"id":"cta","voice":"bm_lewis","lang":"en-gb","speed":0.98,"pre":0.5,"post":1.6,"text":"Make safer decisions, faster. Try it free today, at S N L E dot Healthcare Crown Academy dot co dot uk."}
+]

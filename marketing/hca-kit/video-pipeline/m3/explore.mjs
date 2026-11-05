@@ -1,0 +1,11 @@
+import { createRequire } from 'node:module';
+const require = createRequire('/opt/node22/lib/node_modules/'); const { chromium } = require('playwright');
+const br = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const p = await (await br.newContext({ viewport:{width:1440,height:900} })).newPage();
+await p.goto('https://medlex.healthcarecrownacademy.co.uk/#wordparts', {waitUntil:'domcontentloaded'}); await p.waitForTimeout(3500);
+await p.getByRole('button',{name:/^Skip$/}).click({timeout:1500}).catch(()=>{}); await p.waitForTimeout(800);
+await p.screenshot({path:'m3/x0.png'});
+await p.locator('button,a').filter({hasText:/Open studio/}).nth(1).click({force:true,timeout:5000}); await p.waitForTimeout(5000);
+await p.screenshot({path:'m3/x1.png'});
+const fr = p.frames().map(f=>f.url()); console.log(fr.join('\n'));
+await br.close();

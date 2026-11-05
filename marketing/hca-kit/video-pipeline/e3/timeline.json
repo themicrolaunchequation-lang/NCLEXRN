@@ -1,0 +1,77 @@
+{
+ "total": 50.012,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 3.289,
+   "start": 0.0,
+   "text": "Anyone can claim an award. Can yours be checked?",
+   "voice": "af_heart",
+   "end": 3.739
+  },
+  {
+   "id": "hr",
+   "vo_start": 4.039,
+   "vo_end": 7.252,
+   "start": 3.739,
+   "text": "Your CV says honoree. How do I know it's real?",
+   "voice": "am_michael",
+   "end": 7.602
+  },
+  {
+   "id": "reveal",
+   "vo_start": 8.002,
+   "vo_end": 11.851,
+   "start": 7.602,
+   "text": "Every Evinca honor has a public proof page. No login needed.",
+   "voice": "af_heart",
+   "end": 13.051
+  },
+  {
+   "id": "status",
+   "vo_start": 13.351,
+   "vo_end": 19.419,
+   "start": 13.051,
+   "text": "Current status: active. This honor is current and valid. Scan the QR code to open the record.",
+   "voice": "af_heart",
+   "end": 20.619
+  },
+  {
+   "id": "record",
+   "vo_start": 20.919,
+   "vo_end": 28.494,
+   "start": 20.619,
+   "text": "The record shows the category, the rubric, who reviewed it, and the evidence passport. Baseline, result, and how it was verified.",
+   "voice": "af_heart",
+   "end": 29.694
+  },
+  {
+   "id": "badge",
+   "vo_start": 29.994,
+   "vo_end": 36.114,
+   "start": 29.694,
+   "text": "A certificate, a digital badge, and ready wording for LinkedIn. Corrections stay visible, in public.",
+   "voice": "af_heart",
+   "end": 37.314
+  },
+  {
+   "id": "hr2",
+   "vo_start": 37.514,
+   "vo_end": 39.797,
+   "start": 37.314,
+   "text": "Checked in thirty seconds. Impressive.",
+   "voice": "am_michael",
+   "end": 40.247
+  },
+  {
+   "id": "cta",
+   "vo_start": 40.747,
+   "vo_end": 47.812,
+   "start": 40.247,
+   "text": "Recognition you can verify. Start free today, at Evinca dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "af_heart",
+   "end": 49.412
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "total": 52.012,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 3.402,
+   "start": 0.0,
+   "text": "Somebody made care better today. Will anyone ever know?",
+   "voice": "af_heart",
+   "end": 3.852
+  },
+  {
+   "id": "nur1",
+   "vo_start": 4.152,
+   "vo_end": 7.425,
+   "start": 3.852,
+   "text": "I rewrote the handover checklist. Nobody noticed.",
+   "voice": "bf_lily",
+   "end": 7.775
+  },
+  {
+   "id": "reveal",
+   "vo_start": 8.175,
+   "vo_end": 12.778,
+   "start": 7.775,
+   "text": "Evinca makes sure it's written down. Independent honors, judged on evidence.",
+   "voice": "af_heart",
+   "end": 13.978
+  },
+  {
+   "id": "come",
+   "vo_start": 14.278,
+   "vo_end": 20.916,
+   "start": 13.978,
+   "text": "Where do you come in? Tell your story. Nominate a colleague. Thank someone who cared for you. Or recognise your team.",
+   "voice": "af_heart",
+   "end": 22.116
+  },
+  {
+   "id": "marks",
+   "vo_start": 22.416,
+   "vo_end": 29.054,
+   "start": 22.116,
+   "text": "Four marks of recognition, each with one verified record. Spotlight, Distinction, Honor and Laureate.",
+   "voice": "af_heart",
+   "end": 30.254
+  },
+  {
+   "id": "map",
+   "vo_start": 30.554,
+   "vo_end": 37.141,
+   "start": 30.254,
+   "text": "Every contribution is judged in its own context, worldwide. You were never invisible. You were unrecorded.",
+   "voice": "af_heart",
+   "end": 38.341
+  },
+  {
+   "id": "nur2",
+   "vo_start": 38.541,
+   "vo_end": 40.942,
+   "start": 38.341,
+   "text": "Then I'm writing mine down today.",
+   "voice": "bf_lily",
+   "end": 41.392
+  },
+  {
+   "id": "cta",
+   "vo_start": 41.892,
+   "vo_end": 49.812,
+   "start": 41.392,
+   "text": "Your work deserves a record. Start your free Spotlight story today, at Evinca dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "af_heart",
+   "end": 51.412
+  }
+ ]
+}

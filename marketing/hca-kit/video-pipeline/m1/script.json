@@ -1,0 +1,78 @@
+[
+ {
+  "id": "hook",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.35,
+  "post": 0.4,
+  "text": "Pericarditis. Tachycardia. Sound scary? Give me ten seconds."
+ },
+ {
+  "id": "stu1",
+  "voice": "am_eric",
+  "lang": "en-us",
+  "speed": 1.0,
+  "text": "I just memorise them... and forget them by Friday."
+ },
+ {
+  "id": "reveal",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.4,
+  "text": "Stop memorising. Start decoding. This is MedLex."
+ },
+ {
+  "id": "dec1",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 0.85,
+  "pre": 0.2,
+  "text": "Tap peri. Around. Card. Heart. Itis. Inflammation.",
+  "post": 1.1
+ },
+ {
+  "id": "mean1",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "text": "Pericarditis. The sac around the heart is inflamed. You just read it yourself.",
+  "post": 0.7
+ },
+ {
+  "id": "dec2",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 0.88,
+  "pre": 0.35,
+  "text": "Another one. Tachy, fast. Card, heart. Ia, a condition. Tachycardia.",
+  "post": 0.9
+ },
+ {
+  "id": "stu2",
+  "voice": "am_eric",
+  "lang": "en-us",
+  "speed": 1.0,
+  "pre": 0.2,
+  "post": 0.45,
+  "text": "Wait... I actually get it now."
+ },
+ {
+  "id": "today",
+  "voice": "bm_lewis",
+  "lang": "en-gb",
+  "speed": 1.0,
+  "pre": 0.35,
+  "text": "Fourteen hundred and eighty medical terms, all built from parts like these. Sixty-six prefixes, sixty roots, a hundred suffixes. Ten minutes a day, on your My Day page."
+ },
+ {
+  "id": "cta",
+  "voice": "bf_isabella",
+  "lang": "en-gb",
+  "speed": 0.98,
+  "pre": 0.5,
+  "post": 1.6,
+  "text": "Learn the language of medicine, one part at a time. Try it free today, at MedLex dot Healthcare Crown Academy dot co dot uk."
+ }
+]

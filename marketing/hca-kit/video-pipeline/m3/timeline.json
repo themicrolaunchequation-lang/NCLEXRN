@@ -1,0 +1,86 @@
+{
+ "total": 51.131,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo_start": 0.35,
+   "vo_end": 4.411,
+   "start": 0.0,
+   "text": "Arthritis. Arthralgia. Arthroscopy. Three words. One secret.",
+   "voice": "bf_isabella",
+   "end": 4.861
+  },
+  {
+   "id": "stu1",
+   "vo_start": 5.161,
+   "vo_end": 7.388,
+   "start": 4.861,
+   "text": "They all start the same... but what does it mean?",
+   "voice": "am_eric",
+   "end": 7.738
+  },
+  {
+   "id": "reveal",
+   "vo_start": 8.138,
+   "vo_end": 11.332,
+   "start": 7.738,
+   "text": "It's the root. MedLex has a studio for every one of them.",
+   "voice": "bf_isabella",
+   "end": 11.682
+  },
+  {
+   "id": "swap",
+   "vo_start": 11.882,
+   "vo_end": 17.557,
+   "start": 11.682,
+   "text": "Cardiology, the heart. Swap one root. Nephrology, the kidneys. Same ending, a different subject.",
+   "voice": "bf_isabella",
+   "end": 18.307
+  },
+  {
+   "id": "card",
+   "vo_start": 18.607,
+   "vo_end": 24.324,
+   "start": 18.307,
+   "text": "Tap a card, and it pops open. Arthr means joint. And the memory hook? King Arthur's joints creak.",
+   "voice": "bf_isabella",
+   "end": 25.074
+  },
+  {
+   "id": "check",
+   "vo_start": 25.374,
+   "vo_end": 29.524,
+   "start": 25.074,
+   "text": "Then prove it stuck. What does arthr mean? Joint. Correct, and ten points.",
+   "voice": "bf_isabella",
+   "end": 30.274
+  },
+  {
+   "id": "stu2",
+   "vo_start": 30.474,
+   "vo_end": 32.736,
+   "start": 30.274,
+   "text": "King Arthur's joints. I'll never forget that.",
+   "voice": "am_eric",
+   "end": 33.186
+  },
+  {
+   "id": "narr",
+   "vo_start": 33.536,
+   "vo_end": 40.956,
+   "start": 33.186,
+   "text": "Sixty roots, sixty-six prefixes and a hundred suffixes. Each with a picture, a memory hook, and a quick check.",
+   "voice": "bm_lewis",
+   "end": 41.306
+  },
+  {
+   "id": "cta",
+   "vo_start": 41.806,
+   "vo_end": 48.931,
+   "start": 41.306,
+   "text": "Learn it once. Recognise it everywhere. Try it free today, at MedLex dot Healthcare Crown Academy dot co dot uk.",
+   "voice": "bf_isabella",
+   "end": 50.531
+  }
+ ]
+}

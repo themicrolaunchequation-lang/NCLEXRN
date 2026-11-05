@@ -1,0 +1,11 @@
+[
+ {"id":"hook","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.35,"post":0.4,"text":"He nodded the whole time. But did he actually understand?"},
+ {"id":"pat","voice":"bm_daniel","lang":"en-gb","speed":0.95,"text":"Yes, yes, that's all fine. My taxi's here in ten minutes."},
+ {"id":"reveal","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.4,"text":"One moment from a working day. Carecraft gives you sixty seconds to decide."},
+ {"id":"choices","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.2,"post":0.5,"text":"Hand him the leaflet? Repeat it slowly, and ask for questions? Or something better?"},
+ {"id":"nurse","voice":"bf_lily","lang":"en-gb","speed":0.98,"pre":0.2,"post":0.4,"text":"So I know I've explained it well, how will you describe the plan to your daughter tonight?"},
+ {"id":"fb","voice":"bf_alice","lang":"en-gb","speed":1.0,"text":"Strongest choice. Teach-back checks your explanation, not the patient. Any gap shows while he's still on the ward."},
+ {"id":"why","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Every option is explained. Because nodding is not evidence of understanding."},
+ {"id":"lesson","voice":"bf_alice","lang":"en-gb","speed":1.0,"pre":0.3,"text":"Then go deeper, with an eight-minute lesson on conversations that build trust."},
+ {"id":"cta","voice":"bf_alice","lang":"en-gb","speed":0.98,"pre":0.5,"post":1.6,"text":"Practise the moments that matter. Try it free today, at Carecraft dot Healthcare Crown Academy dot co dot uk."}
+]
