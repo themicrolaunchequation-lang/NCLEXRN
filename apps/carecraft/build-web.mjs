@@ -58,7 +58,7 @@ else console.warn('Run node build.mjs first to publish the offline edition.');
 for (const f of ['icon-192.png', 'icon-512.png', 'maskable-512.png', 'apple-touch-icon.png', 'og-image.png']) if (fs.existsSync('web/' + f)) copy('web/' + f, 'img/' + f);
 
 const title = 'Carecraft — 60-second scenarios and short lessons for healthcare | Healthcare Crown Academy';
-const description = 'Carecraft by Healthcare Crown Academy: a daily 60-second scenario, 30 short lessons, interactive practice and visual guides for people who work in healthcare. Free, private, and your progress stays in your browser.';
+const description = 'Carecraft by Healthcare Crown Academy: a daily 60-second scenario, 30 short lessons, interactive practice and visual guides for people who work in healthcare. Start free with 6 lessons; all 30 come with the Crown Pass. Your progress stays in your browser.';
 write('manifest.webmanifest', JSON.stringify({
   name: 'Carecraft · Healthcare Crown Academy', short_name: 'Carecraft', description,
   id: BASE, start_url: '/', scope: '/', display: 'standalone',
