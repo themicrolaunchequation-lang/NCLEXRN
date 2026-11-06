@@ -1,5 +1,30 @@
 # Cloudflare deployment and rollback
 
+## Current state (checked 7 November 2026) — read this first
+
+The rest of this document describes the plan written before launch. It is out of date in four ways:
+
+1. **The hostname is live.** `snle.healthcarecrownacademy.co.uk` returns the Gulf Nursing Licensure Studio. The statement below that it "has not been added to DNS or any hosting project" is no longer true.
+2. **The live site is not built from this folder alone.** It is built by `apps/gulf/scripts/build.mjs`, which builds `apps/snle` first and then layers the four-exam Gulf edition on top. The live page carries the title "Gulf Nursing Licensure Studio" and `<meta name="hca-app" content="gulf">`, which only that build writes.
+3. **The live build matches branch `claude/gulf-crosswalk`, commit `c5fb27d` (2 November 2026).** Three content-hashed files served by the live site are byte-for-byte names from that build: `/assets/app.4c4b786799e8.js`, `/assets/gulf-ui.7ab5095e6e4e.js` and `/assets/library.4296c7c2b06f.js`. None of this is on the production branch `claude/loving-ptolemy-srrq02`, which does not contain `apps/gulf`.
+4. **Hosting is Cloudflare Pages, not Vercel.** No Vercel project owns the hostname. The build writes a Pages `_worker.js` and `_routes.json` (the worker serves `/api/gulf-content` to Gulf Pass holders only).
+
+**Still unconfirmed, because no one in the review had Cloudflare access:** the Pages project name, the production branch it is set to, whether it deploys automatically on push or by direct upload, and the deployment ID to roll back to. Until the owner confirms these from the Cloudflare dashboard, treat any push to `claude/gulf-crosswalk` as a possible production release.
+
+**Build settings that reproduce the live files** (inferred from the match, to confirm in Cloudflare):
+
+| Setting | Value |
+| --- | --- |
+| Branch | `claude/gulf-crosswalk` |
+| Root directory | `apps/gulf` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Environment | `GULF_PUBLIC` unset (public build: indexable, with sitemap) |
+
+**Rollback until confirmed:** in Cloudflare → Workers & Pages → the project → Deployments, promote the last good deployment, then revert the commit on the branch the project deploys from. Record the deployment ID before every release.
+
+---
+
 ## Access and release order
 
 No Cloudflare connection, API token or account ID was available at implementation time. Local verification is not a Cloudflare preview.
