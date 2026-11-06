@@ -135,6 +135,11 @@ async function checkout(user: { id: string; email?: string }, body: Record<strin
   const { data: p } = await db.from('crown_plans').select('product,interval,trial_days').eq('id', plan).single()
   const { data: existing } = await db.from('crown_subscriptions').select('id').eq('user_id', user.id).eq('livemode', LIVE).in('status', ['trialing', 'active', 'past_due']).limit(1)
   if (existing?.length) return json({ error: 'already_subscribed' }, 409)
+  // One free trial per account: anyone who has had a Crown Suite subscription before, in any state, pays from day one.
+  const { data: before } = await db.from('crown_subscriptions').select('id').eq('user_id', user.id).eq('livemode', LIVE).limit(1)
+  const trialDays = p!.trial_days && !before?.length ? p!.trial_days : 0
+  // The plans page says "£0 today". When the trial is used up, the page must tell the person and ask before we charge.
+  if (p!.trial_days && !trialDays && body.trial !== false) return json({ error: 'trial_used' }, 409)
   // Founding offer: charge the standard yearly price with a one-off first-year discount, so year two renews at full price.
   const founding = plan === 'crown-year-founding'
   const billed = founding ? (await db.rpc('crown_price_for', { p_plan: 'crown-year', p_country: country || null })).data : quote
@@ -149,7 +154,7 @@ async function checkout(user: { id: string; email?: string }, body: Record<strin
   const s = await stripe!.checkout.sessions.create({ ...base, ...(discounts ? { discounts, allow_promotion_codes: undefined } : {}), mode: 'subscription', line_items: [{ price, quantity: 1 }],
     metadata: { user_id: user.id, plan, band: quote.band, country, ...consent },
     custom_text: { submit: { message: CONSENT_TEXT } },
-    subscription_data: { description: RECEIPT_TEXT, metadata: { user_id: user.id, plan, band: quote.band, country, ...consent }, ...(p!.trial_days ? { trial_period_days: p!.trial_days } : {}) } })
+    subscription_data: { description: RECEIPT_TEXT, metadata: { user_id: user.id, plan, band: quote.band, country, ...consent }, ...(trialDays ? { trial_period_days: trialDays } : {}) } })
   return json({ url: s.url, livemode: s.livemode, amount: quote.amount, currency: quote.currency, band: quote.band })
 }
 

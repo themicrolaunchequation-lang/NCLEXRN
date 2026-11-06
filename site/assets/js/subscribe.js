@@ -5,6 +5,7 @@
   const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
   const ERR = {
     already_subscribed: 'You already have an active plan. Use “Stop renewal or update card” below to change it.',
+    trial_used: 'You have already had your free trial. Choose the plan again to pay from today.',
     plan_unavailable: 'That plan is not available any more.',
     payments_unavailable: 'Payments are not open yet. Please try again soon.',
     no_customer: 'There is no plan on this account yet.',
@@ -139,7 +140,14 @@
     const label = btn.innerHTML;
     btn.disabled = true; btn.textContent = 'Opening secure checkout…'; msg('');
     if (plan !== 'manage') try { sessionStorage.setItem('hca-buying', plan); } catch { /* optional */ }
-    const r = plan === 'manage' ? await HCA.manageBilling() : await HCA.checkout(plan, $('[data-sub-country]').value, true);
+    let r = plan === 'manage' ? await HCA.manageBilling() : await HCA.checkout(plan, $('[data-sub-country]').value, true);
+    // One free trial per account. Someone who has had it is told the real price and asked before we go on.
+    if (r && r.error === 'trial_used') {
+      const due = fmt(price(plan));
+      if (window.confirm(`You have already had your free trial, so this plan starts today and you pay ${due || 'the plan price'} now. Continue to secure payment?`)) {
+        r = await HCA.checkout(plan, $('[data-sub-country]').value, true, { trial: false });
+      } else r = null;
+    }
     btn.disabled = false; btn.innerHTML = label;
     if (r && r.error && r.error !== 'sign_in_required') msg(ERR[r.error] || 'Something went wrong. Please try again in a moment.');
   }
