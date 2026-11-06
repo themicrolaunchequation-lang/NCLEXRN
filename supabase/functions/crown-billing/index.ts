@@ -26,8 +26,19 @@ const LIVE_APPROVED = env('LIVE_PAYMENTS_APPROVED') === 'yes'
 // The older 'deduct' rule (full within 3 days, then minus days used) stays available only if REFUND_POLICY=deduct is set.
 const REFUND_POLICY = env('REFUND_POLICY') === 'deduct' ? 'deduct' : 'full14'
 async function sha256(t: string) { const b = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)); return [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, '0')).join('') }
-// The cancellation period ends 14 days after the day the contract was made (we allow to the end of that day, UK time).
-const windowEnd = (contractMs: number) => { const d = new Date(contractMs); return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 15) + 3600000 }
+// The cancellation period ends at the end of the 14th day after the day the contract was made, counted in UK time.
+// londonDate gives the calendar date in London; londonMidnight gives the instant a London day starts (GMT or BST).
+const LONDON = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' })
+function londonParts(ms: number) {
+  const p: Record<string, number> = {}
+  for (const x of LONDON.formatToParts(new Date(ms))) if (x.type !== 'literal') p[x.type] = Number(x.value)
+  return p
+}
+const londonOffset = (ms: number) => { const p = londonParts(ms); return Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second) - Math.floor(ms / 1000) * 1000 }
+// UK clocks change at 01:00 UTC, never at midnight, so the offset an hour either side of midnight is the right one.
+const londonMidnight = (y: number, m: number, d: number) => { const t = Date.UTC(y, m - 1, d); return t - londonOffset(t - londonOffset(t)) }
+// The first instant after the cancellation period: midnight in London at the start of day 15.
+const windowEnd = (contractMs: number) => { const p = londonParts(contractMs); return londonMidnight(p.year, p.month, p.day + 15) }
 const ORIGIN = /^https:\/\/([a-z0-9-]+\.)?healthcarecrownacademy\.co\.uk$/
 
 const json = (body: unknown, status = 200, headers: Record<string, string> = {}) =>
@@ -166,7 +177,7 @@ async function refund(user: { id: string; email?: string }, body: Record<string,
     const product = 'gulf-' + String(pass.plan_id).split('-')[1]
     if (await alreadyRefunded(user.id, product)) return json({ error: 'already_refunded' }, 409)
     const paidAt = Date.parse(pass.created_at)
-    if (Date.now() > windowEnd(paidAt)) return json({ error: 'outside_window' }, 409)
+    if (Date.now() >= windowEnd(paidAt)) return json({ error: 'outside_window' }, 409)
     const months = Number(String(pass.plan_id).match(/-(\d+)m$/)?.[1] ?? 1)
     const share = refundShare(paidAt, months * 30.44 * DAY)
     const amount = Math.floor(pass.amount_cents * share)
@@ -193,7 +204,7 @@ async function refund(user: { id: string; email?: string }, body: Record<string,
     }
     const product = String(row.plan_id).split('-')[0]
     if (await alreadyRefunded(user.id, product)) return json({ error: 'already_refunded' }, 409)
-    if (Date.now() > windowEnd(sub.created * 1000)) return json({ error: 'outside_window' }, 409)
+    if (Date.now() >= windowEnd(sub.created * 1000)) return json({ error: 'outside_window' }, 409)
     const paid = (await stripe!.invoices.list({ subscription: sub.id, status: 'paid', limit: 10 })).data.filter((i) => i.amount_paid > 0)
     if (paid.length !== 1) return json({ error: 'outside_window' }, 409) // renewals are not refunded automatically
     const inv = paid[0]
@@ -288,7 +299,7 @@ async function confirmationEmail(s: Stripe.Checkout.Session) {
   const rows = lines.map(([k, v]) => `<tr><td style="padding:6px 0;color:#5b6b7c">${esc(k)}</td><td style="padding:6px 0;text-align:right;font-weight:600">${esc(v)}</td></tr>`).join('')
   const list = (xs: string[]) => xs.filter(Boolean).map((x) => `<li style="margin:0 0 8px">${esc(x)}</li>`).join('')
   const rights = [
-    `You can cancel without giving a reason. Normally your cancellation period ends at the end of ${day2(now + 14 * DAY)} (the 14th day after the day you bought or started your free trial). It can be longer if the law requires.`,
+    `You can cancel without giving a reason. Normally your cancellation period ends at the end of ${day2(windowEnd(now) - 1)} (the 14th day after the day you bought or started your free trial). It can be longer if the law requires.`,
     'Cancel within your 14-day period and we refund you in full, even if you have used the app. A free trial is simply cancelled, with nothing to pay.',
     `To cancel: use "Cancel and get a refund" on your account page (https://healthcarecrownacademy.co.uk/account), or send any clear message to ${CONTACT}, or use the form below. We refund to the card you paid with within 14 days of hearing from you, and email you an acknowledgement.`,
     'After the 14 days, your rights if something is faulty or not as described always remain.',
