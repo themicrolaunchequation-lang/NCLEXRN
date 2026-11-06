@@ -782,3 +782,7 @@ body.hs .hs-top .hs-mbrand .hs-crest{display:block!important;width:30px;height:3
 body.hs .hs-top .hs-mbrand{display:inline-flex;align-items:center;gap:6px}
 body.hs .hs-top .hs-mbrand span:not(.hs-crest){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 body.hs .hs-top .hs-mbrand .hs-crest{width:36px!important;height:36px!important;flex:0 0 36px!important}
+
+/* Disclaimer on library pages and in the slide view: a legal control, always visible, never truncated */
+.gulf-legal{position:sticky;top:0;z-index:50;margin:0;padding:10px 16px;background:#14243a;color:#fff;font:600 .9rem/1.45 var(--hs-sans,system-ui,sans-serif);text-align:center;white-space:normal}
+.gulf-slide .gs-legal{margin:0 0 10px;padding:6px 10px;border-left:3px solid var(--ac,#087d72);background:#fff;color:#14243a;font:600 .85rem/1.45 var(--hs-sans,system-ui,sans-serif);white-space:normal}
