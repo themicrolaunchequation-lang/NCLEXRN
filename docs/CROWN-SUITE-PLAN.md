@@ -71,7 +71,7 @@ Free access needs only an account. The paywall is a **soft gate**: a friendly sh
 | App | Free (account) | Premium |
 |---|---|---|
 | MedLex | Modules 1–3, word-part decoder, 10 practice items a day, 6 illustrated guides | All 26 modules and 1,480 terms, all 56 guides, worksheets and exports, unlimited spaced practice, certificate |
-| Carecraft | Daily 60-second scenario, 6 of 30 lessons, 3 practice activities, core toolkit | All 30 lessons and 90 visual guides, all 32 activities and simulations, Smart Review, certificate |
+| Carecraft | Daily 60-second scenario, 6 of 30 lessons, 3 practice activities, all 90 visual guides, core toolkit | All 30 lessons, all 32 activities and simulations, Smart Review, certificate |
 | Serein | 3 starter practices (Breathing Tide, Here & Now, Seated Reset), one check-in a day, and the "Get help" support page (always free, for safety) | All 15 practices, journal, journeys, routine builder, insights, team toolkit, infographic library, certificate of participation |
 | Evinca | Free story and existing levels (unchanged) | Crown Pass members get 15% off recognition assessment fees |
 
