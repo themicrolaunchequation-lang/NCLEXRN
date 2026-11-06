@@ -11,6 +11,8 @@ const stripe = KEY ? new Stripe(KEY, { httpClient: Stripe.createFetchHttpClient(
 const crypto = Stripe.createSubtleCryptoProvider()
 const db = createClient(env('SUPABASE_URL'), env('SUPABASE_SERVICE_ROLE_KEY'), { auth: { persistSession: false, autoRefreshToken: false } })
 const SITE = 'https://healthcarecrownacademy.co.uk'
+// The contact named on the terms, refunds and privacy pages. Every email uses it, including the reply-to address.
+const CONTACT = 'hello@healthcarecrownacademy.co.uk'
 const HOOK_URL = `${env('SUPABASE_URL')}/functions/v1/crown-billing?hook=1`
 const HOOK_EVENTS = ['checkout.session.completed', 'checkout.session.async_payment_succeeded', 'customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'charge.refunded'] as const
 const NAMES: Record<string, string> = { crown: 'Crown Pass', medlex: 'MedLex Premium', carecraft: 'Carecraft Premium', lumen: 'Lumen Academy', serein: 'Serein' }
@@ -285,7 +287,7 @@ async function confirmationEmail(s: Stripe.Checkout.Session) {
   const rights = [
     `You can cancel without giving a reason. Normally your cancellation period ends at the end of ${day2(now + 14 * DAY)} (the 14th day after the day you bought or started your free trial). It can be longer if the law requires.`,
     'Cancel within your 14-day period and we refund you in full, even if you have used the app. A free trial is simply cancelled, with nothing to pay.',
-    'To cancel: use "Cancel and get a refund" on your account page (https://healthcarecrownacademy.co.uk/account), or send any clear message to themicrolaunchequation@gmail.com, or use the form below. We refund to the card you paid with within 14 days of hearing from you, and email you an acknowledgement.',
+    `To cancel: use "Cancel and get a refund" on your account page (https://healthcarecrownacademy.co.uk/account), or send any clear message to ${CONTACT}, or use the form below. We refund to the card you paid with within 14 days of hearing from you, and email you an acknowledgement.`,
     'After the 14 days, your rights if something is faulty or not as described always remain.',
   ]
   const html = `<!doctype html><html><body style="margin:0;background:#f4f1ea;font-family:Arial,Helvetica,sans-serif;color:#10253a">
@@ -303,12 +305,12 @@ ${consent ? `<p style="margin:0 0 8px;font-size:15px">${esc(consent)}</p>` : ''}
 <h2 style="font-size:17px;margin:20px 0 8px">Model cancellation form</h2>
 <p style="margin:0 0 8px;font-size:14px;color:#5b6b7c">Complete and return this form only if you wish to withdraw from the contract. Any clear message is also enough.</p>
 <div style="border:1px solid #e6e1d6;border-radius:10px;padding:12px;font-size:14px;line-height:1.6">
-To HEALTHCARE CROWN ACADEMY LTD, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, themicrolaunchequation@gmail.com:<br>
+To HEALTHCARE CROWN ACADEMY LTD, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, ${CONTACT}:<br>
 I/We [*] hereby give notice that I/We [*] cancel my/our [*] contract of sale of the following goods [*]/for the supply of the following service [*]: ${esc(name)} (order ${esc(ref)}),<br>
 Ordered on [*]/received on [*]: ${esc(day2(now))},<br>Name of consumer(s),<br>Address of consumer(s),<br>Signature of consumer(s) (only if this form is notified on paper),<br>Date<br>[*] Delete as appropriate.</div>
 <h2 style="font-size:17px;margin:20px 0 8px">Our terms</h2>
 <p style="margin:0 0 8px;font-size:14px">This order is under our terms of use and our subscriptions and refunds terms, version ${TERMS_VERSION}: https://healthcarecrownacademy.co.uk/terms and https://healthcarecrownacademy.co.uk/refunds. Please keep this email: it is your record of what you agreed.</p>
-<p style="margin:16px 0 0;font-size:12px;color:#7a8794">HEALTHCARE CROWN ACADEMY LTD, company 17501904, registered in England and Wales. Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. We are not registered for VAT, so no VAT is added. Questions: themicrolaunchequation@gmail.com</p>
+<p style="margin:16px 0 0;font-size:12px;color:#7a8794">HEALTHCARE CROWN ACADEMY LTD, company 17501904, registered in England and Wales. Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. We are not registered for VAT, so no VAT is added. Questions: ${CONTACT}</p>
 </td></tr></table></td></tr></table></body></html>`
   await sendEmail(to, `Your order is confirmed: ${name}`, html, `confirm-${s.id}`)
 }
@@ -317,7 +319,7 @@ async function sendEmail(to: string, subject: string, html: string, idem: string
   const key = env('RESEND_API_KEY')
   if (!key || !to) { console.log('email skipped', { reason: key ? 'no_email' : 'no_resend_key', subject }); return }
   const r = await fetch('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', 'Idempotency-Key': idem },
-    body: JSON.stringify({ from: env('CONFIRM_FROM') || 'Healthcare Crown Academy <orders@healthcarecrownacademy.co.uk>', to: [to], reply_to: 'themicrolaunchequation@gmail.com', subject, html }) })
+    body: JSON.stringify({ from: env('CONFIRM_FROM') || 'Healthcare Crown Academy <orders@healthcarecrownacademy.co.uk>', to: [to], reply_to: CONTACT, subject, html }) })
   if (!r.ok) throw new Error(`resend ${r.status} ${(await r.text()).slice(0, 200)}`)
 }
 
@@ -333,7 +335,7 @@ async function ackEmail(to: string | undefined, name: string, refundCents: numbe
 <p style="font-size:15px;margin:0 0 10px"><b>${esc(name)}</b> · cancelled on ${esc(when)}. Your paid access ended on ${esc(when)}.</p>
 <p style="font-size:15px;margin:0 0 10px">${esc(calc)}</p>
 <p style="font-size:15px;margin:0 0 10px">If anything here looks wrong, or you think the law gives you more, reply to this email and we will review it and tell you the outcome.</p>
-<p style="margin:16px 0 0;font-size:12px;color:#7a8794">HEALTHCARE CROWN ACADEMY LTD, company 17501904. 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. themicrolaunchequation@gmail.com</p>
+<p style="margin:16px 0 0;font-size:12px;color:#7a8794">HEALTHCARE CROWN ACADEMY LTD, company 17501904. 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. ${CONTACT}</p>
 </td></tr></table></td></tr></table></body></html>`
   await sendEmail(to, `Cancellation received: ${name}`, html, `ack-${name}-${to}-${Math.floor(at / 60000)}`)
 }
