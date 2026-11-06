@@ -358,6 +358,17 @@ async function closeAccount(user: { id: string; email?: string }, body: Record<s
   return json({ closed: true, evinca_records: evinca })
 }
 
+// Stripe sends every event on the account to every webhook, including Green Belt and Evinca checkouts that other
+// functions handle. Only a Crown Suite subscription or a Gulf Pass made by this function gets our confirmation email.
+const CROWN_PLAN = /^(crown|medlex|carecraft|lumen|serein)-(month|year)(-founding)?$/
+const GULF_PLAN = /^gulf-[a-z]+-\d+m$/
+function ourOrder(s: Stripe.Checkout.Session) {
+  const m = s.metadata ?? {}, plan = String(m.plan ?? '')
+  if (!m.user_id || !m.consent_version) return false
+  if (s.mode === 'payment') return m.kind === 'gulf' && GULF_PLAN.test(plan)
+  return s.mode === 'subscription' && CROWN_PLAN.test(plan)
+}
+
 async function hook(req: Request) {
   const secret = await state('webhook_secret')
   if (!secret) return json({ error: 'not_configured' }, 503)
@@ -373,7 +384,7 @@ async function hook(req: Request) {
   } else if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
     const s = await stripe!.checkout.sessions.retrieve(o.id as string)
     if (s.mode === 'subscription' && s.subscription) await syncSubscription(await stripe!.subscriptions.retrieve(typeof s.subscription === 'string' ? s.subscription : s.subscription.id))
-    if (s.payment_status === 'paid' || s.payment_status === 'no_payment_required') await confirmationEmail(s).catch((e) => console.error('confirmation email', e))
+    if (ourOrder(s) && (s.payment_status === 'paid' || s.payment_status === 'no_payment_required')) await confirmationEmail(s).catch((e) => console.error('confirmation email', e))
     if (s.mode === 'payment' && s.metadata?.kind === 'gulf' && s.payment_status === 'paid') {
       const months = Number(s.metadata.months) || 1
       const { data: last } = await db.from('gulf_passes').select('until').eq('user_id', s.metadata.user_id).eq('plan_id', s.metadata.plan).gt('until', new Date().toISOString()).order('until', { ascending: false }).limit(1)
