@@ -225,7 +225,7 @@ Route: Answer
 
 **P-03 · What's included in the Crown Pass?**
 People say: what do I get, premium features, what's unlocked
-Answer: The Crown Pass fully unlocks **MedLex** (all 26 modules and 1,480 terms), **Carecraft** (all 30 lessons and 22 activities) and **Lumen** (unlimited sources, recall cards and the focus planner). It also gives 15% off Evinca review fees. Serein is free for everyone anyway.
+Answer: The Crown Pass fully unlocks **MedLex** (all 26 modules and 1,480 terms), **Carecraft** (all 30 lessons and 32 activities) and **Lumen** (unlimited sources, recall cards and the focus planner). It also gives 15% off Evinca review fees. Serein is free for everyone anyway.
 Route: Answer
 
 **P-04 · Can I buy just one app?**
@@ -586,7 +586,7 @@ Route: Answer + offer email
 ### C8. Carecraft — everyday care skills
 
 **C-01 · What is Carecraft?**
-Answer: Carecraft builds everyday care skills in short bursts: a 60-second scenario a day, 30 short lessons, 22 practice activities and 18 toolkit job aids such as an SBAR handover builder. Topics include communication, safety, teamwork, escalation and handover. Scenarios are fictional.
+Answer: Carecraft builds everyday care skills in short bursts: a 60-second scenario a day, 30 short lessons, 32 practice activities and 18 toolkit job aids such as an SBAR handover builder. Topics include communication, safety, teamwork, escalation and handover. Scenarios are fictional.
 Buttons: [Open Carecraft] [Free guide: SBAR]
 Route: Answer
 
