@@ -22,7 +22,7 @@ Other features:
 
 - Light and dark themes with a circular reveal transition.
 - Respects the reduced-motion setting.
-- Keyboard accessible, and passes WCAG 2.1 AA checks with axe.
+- Keyboard accessible. Automated axe checks pass; the target is WCAG 2.2 AA, and the scroll story has known gaps for screen-reader users (reviewed 6 Nov 2026).
 - Strict security headers.
 - Fonts are hosted on the site, so there are no third-party requests.
 
@@ -69,7 +69,7 @@ Domains on the project: `healthcarecrownacademy.co.uk`, `www`, `medlex`, `carecr
 
 **Rollback:** Vercel → nclexrn-site → Deployments → pick the previous production deployment → Promote. Then revert the commit on the production branch.
 
-**Note:** Vercel's Hobby plan is for non-commercial use. Move the team to Pro before taking payments.
+**Plan:** the team is on Vercel Pro, confirmed 7 Nov 2026. (Hobby is non-commercial and must not be used while payments are live.)
 
 ## Before launch: checklist
 

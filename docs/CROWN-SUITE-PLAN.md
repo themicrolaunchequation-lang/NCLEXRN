@@ -103,13 +103,18 @@ Sources: [Headspace pricing (Udonis)](https://www.blog.udonis.co/statistics/head
 - At checkout the edge function checks the code (active, not expired, uses left, valid for this plan), then applies a matching Stripe coupon. A **100% code** skips Stripe entirely and grants access directly (for staff, partners and reviewers).
 - Each code records who redeemed it and when.
 
-### 50% test codes (for you)
-Ten single-use codes, 50% off the first 3 months of any monthly plan or the first year of any annual plan, valid until 31 Dec 2026. They become active when phase 3 is deployed, and work in Stripe test mode first:
+### 50% test codes — WITHDRAWN 6 Nov 2026
 
-```
-CROWN50-XPGX-X8H7   CROWN50-AZA3-W9PS   CROWN50-UJRE-GZQE   CROWN50-KVZ6-N5TY   CROWN50-RXGN-R2K6
-CROWN50-XETV-JWFA   CROWN50-8C53-BBFT   CROWN50-BD7F-N7YV   CROWN50-GFMD-WD2A   CROWN50-HJKF-HE2U
-```
+Ten single-use 50% codes were listed here in plain text. **This repository is public**, so they
+were readable by anyone, and all ten were active and unredeemed in `crown_codes` when that was
+found on 6 Nov 2026.
+
+They have been removed from this file. **Removing them here does not retire them**: the codes
+remain in this repository's git history, in any fork and in any cache. The only effective fix is
+to deactivate the rows in `crown_codes`, which is tracked separately.
+
+Do not paste a working code into this repository, or any other file in it, again. Generate test
+codes through the Crown Admin console and share them out of band.
 
 ## 7. One admin for everything
 
