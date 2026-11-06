@@ -91,18 +91,21 @@ async function checkout(user: { id: string; email?: string }, body: Record<strin
   const plan = String(body.plan ?? '')
   const country = /^[A-Z]{2}$/.test(String(body.country ?? '').toUpperCase()) ? String(body.country).toUpperCase() : ''
   const back = returnUrl(body.return_url, `${SITE}/#pricing`)
-  await ensureWebhook()
-  const customer = await customerFor(user)
-  const base = { customer, client_reference_id: user.id, allow_promotion_codes: true, billing_address_collection: 'required' as const,
-    success_url: `${back}${back.includes('?') ? '&' : '?'}checkout=success&session_id={CHECKOUT_SESSION_ID}`, cancel_url: `${back}${back.includes('?') ? '&' : '?'}checkout=cancelled` }
 
+  // Consent is checked before anything is created in Stripe.
   // UK Consumer Contracts Regulations 2013: the buyer must expressly ask for access to start within the 14-day period.
   if (body.consent !== true) return json({ error: 'consent_required' }, 400)
   // The payer confirms they are 18 or over, or a parent or guardian paying for the account holder.
   if (body.adult !== true) return json({ error: 'consent_required' }, 400)
-  // A page showing older consent wording cannot buy: the person must reload and see the current text.
-  if (body.consent_version !== undefined && body.consent_version !== CONSENT_VERSION) return json({ error: 'consent_outdated' }, 409)
+  // The page must say which consent wording it showed, and it must be the current one. A missing version is refused
+  // like an old one: the person reloads, sees the current text and ticks again. Default deny.
+  if (body.consent_version !== CONSENT_VERSION) return json({ error: 'consent_outdated' }, 409)
   if (LIVE && !LIVE_APPROVED) return json({ error: 'payments_unavailable' }, 503)
+
+  await ensureWebhook()
+  const customer = await customerFor(user)
+  const base = { customer, client_reference_id: user.id, allow_promotion_codes: true, billing_address_collection: 'required' as const,
+    success_url: `${back}${back.includes('?') ? '&' : '?'}checkout=success&session_id={CHECKOUT_SESSION_ID}`, cancel_url: `${back}${back.includes('?') ? '&' : '?'}checkout=cancelled` }
   const consent = { consent_at: new Date().toISOString(), consent_version: CONSENT_VERSION, consent_hash: (await sha256(CONSENT_TEXT)).slice(0, 32), adult_payer: 'confirmed', refund_policy: REFUND_POLICY }
   if (plan.startsWith('gulf-')) {
     const { data: g } = await db.from('gulf_exam_plans').select('*').eq('id', plan).eq('active', true).maybeSingle()
