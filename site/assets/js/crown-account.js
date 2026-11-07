@@ -437,7 +437,8 @@
   }
 
   window.HCA = {
-    checkout: (plan, country, consent) => billing({ action: 'checkout', plan, country, consent: consent === true, adult: consent === true, consent_version: '2026-10-29' }), // consent covers both ticked boxes (start now + 18+/parent)
+    // consent covers both ticked boxes (start now + 18+/parent). opts.trial === false: the person agreed to pay today because their free trial is used up.
+    checkout: (plan, country, consent, opts = {}) => billing({ action: 'checkout', plan, country, consent: consent === true, adult: consent === true, consent_version: '2026-10-29', ...(opts.trial === false ? { trial: false } : {}) }),
     refund: (kind, preview) => billing({ action: 'refund', kind, preview: preview === true }), // preview: work out the amount only
     closeAccount: async () => { const r = await billing({ action: 'close_account', confirm: 'CLOSE' }); if (r && r.closed) clear(); return r; },
     manageBilling: () => billing({ action: 'portal' }),
