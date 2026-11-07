@@ -22,17 +22,20 @@ const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestI
 
   /* ---------- the scroll story ---------- */
   const S = { x: narrow ? 0 : 1.15, y: narrow ? 0.75 : -0.05, rot: -0.35, tilt: 0.22, dist: 5.6, camY: 1.15, burst: 0, glow: 0.35, jewel: 0, solid: 1, cs: 1, ly: 0, face: 0, spin: 1, fig: 0, who: 0 };
-  const fade = (sel, o) => gsap.to(root.querySelectorAll(sel), { autoAlpha: o, y: o ? 0 : -24, duration: 0.4, ease: 'power2.out' });
+  const fade = (sel, o) => gsap.to(root.querySelectorAll(sel), { opacity: o, y: o ? 0 : -24, duration: 0.4, ease: 'power2.out' });
+  // Steps and people fade with opacity only, never visibility, so screen readers can read all six messages and
+  // every person in order. The one on screen is marked is-active; the others ignore the pointer (crown-3d.css),
+  // and keyboard focus on any of them brings it on screen (see focusin below).
   const steps = [...root.querySelectorAll('[data-step]')];
-  steps.forEach((el, i) => { if (i) gsap.set(el, { autoAlpha: 0, y: 24 }); });
+  steps.forEach((el, i) => { el.classList.toggle('is-active', !i); if (i) gsap.set(el, { opacity: 0, y: 24 }); });
   const persons = [...root.querySelectorAll('[data-person]')];
-  persons.forEach((el, i) => { if (i) gsap.set(el, { autoAlpha: 0, y: 16 }); });
+  persons.forEach((el, i) => { el.classList.toggle('is-active', !i); if (i) gsap.set(el, { opacity: 0, y: 16 }); });
   const navs = [...root.querySelectorAll('[data-cx-nav]')], chips = [...root.querySelectorAll('[data-person-go]')];
   let marks = [0], snd = null, sceneI = 0, who = -1, total = 11, stepping = false;
   // The timeline is played by steps (one scroll, swipe, key or click each); the page scroll only follows it.
   const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut', duration: 1 } });
-  const show = (i, at) => { tl.to(steps.filter((_, k) => k !== i), { autoAlpha: 0, y: -24, duration: 0.3 }, at); tl.to(steps[i], { autoAlpha: 1, y: 0, duration: 0.4 }, at + '+=0.3'); };
-  const person = (i, at) => { tl.to(persons.filter((_, k) => k !== i), { autoAlpha: 0, y: -16, duration: 0.25 }, at); tl.to(persons[i], { autoAlpha: 1, y: 0, duration: 0.35 }, at + 0.25); };
+  const show = (i, at) => { tl.to(steps.filter((_, k) => k !== i), { opacity: 0, y: -24, duration: 0.3 }, at); tl.to(steps[i], { opacity: 1, y: 0, duration: 0.4 }, at + '+=0.3'); };
+  const person = (i, at) => { tl.to(persons.filter((_, k) => k !== i), { opacity: 0, y: -16, duration: 0.25 }, at); tl.to(persons[i], { opacity: 1, y: 0, duration: 0.35 }, at + 0.25); };
   // 1 · one band
   tl.addLabel('s1').to(S, { x: narrow ? 0 : 1.1, y: narrow ? 0.72 : -0.1, rot: 0.9, tilt: 0.5, dist: narrow ? 5.9 : 5.7, camY: 2.0 }, 's1'); show(1, 's1');
   // 2 · six jewels
@@ -56,7 +59,7 @@ const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestI
   const stops = [0, tl.labels.s1 + 1, tl.labels.s2 + 1, tl.labels.s3 + 1, ...whoAt, total];
   // chapter shown in the navigator: the nearest stop (00-03, 04 for the six people, 05 at the end)
   const sceneAt = (t) => { let n = 0, d = 1e9; stops.forEach((x, i) => { if (Math.abs(x - t) < d) { d = Math.abs(x - t); n = i; } }); return n <= 3 ? n : n < stops.length - 1 ? 4 : 5; };
-  const setScene = (t) => { const k = sceneAt(t); navs.forEach((b, i) => b.classList.toggle('is-on', i === k)); if (k !== sceneI) { sceneI = k; if (snd) { snd.scene(k); if (k === 5) snd.crown(); } } };
+  const setScene = (t) => { const k = sceneAt(t); navs.forEach((b, i) => { b.classList.toggle('is-on', i === k); if (i === k) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); }); steps.forEach((el, i) => el.classList.toggle('is-active', i === k)); if (k !== sceneI) { sceneI = k; if (snd) { snd.scene(k); if (k === 5) snd.crown(); } } };
   const st = window.ScrollTrigger.create({ trigger: root, start: 'top top', end: () => '+=' + innerHeight * total * (small ? 0.78 : 0.9), pin: root.querySelector('.cx-pin'), anticipatePin: 1,
     // scrollbar drags, links and scrolling in from below: follow the scroll smoothly
     onUpdate: (self) => { if (stepping) return; const t = self.progress * total; gsap.to(tl, { time: t, duration: 0.45, ease: 'power2.out', overwrite: true }); setScene(t); } });
@@ -94,6 +97,12 @@ const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestI
   const navStop = [0, 1, 2, 3, 4, stops.length - 1];
   navs.forEach((b, i) => b.addEventListener('click', () => go(navStop[i])));
   chips.forEach((b, i) => b.addEventListener('click', () => go(4 + i)));
+  // Keyboard: focusing a link or button in a step or person that is not on screen moves the story there first.
+  root.addEventListener('focusin', (e) => {
+    const st = e.target.closest('[data-step]'); if (!st) return;
+    const p = e.target.closest('[data-person]'), pi = persons.indexOf(p), si = steps.indexOf(st);
+    if (pi >= 0) { if (nearest() !== 4 + pi) go(4 + pi); } else if (sceneI !== si) go(navStop[si]);
+  });
   window.__cx = { tl, st, stops, go };   // for testing
 
   /* ---------- optional sound ---------- */
@@ -158,7 +167,7 @@ const whenIdle = () => new Promise((r) => (window.requestIdleCallback ? requestI
     if (!running) { looping = false; return; }
     mx += (tx - mx) * 0.05; my += (ty - my) * 0.05;
     const near = Math.round(Math.max(0, Math.min(5, S.who)));
-    if (S.fig > 0.6 && near !== who) { who = near; if (snd) snd.jewel(near); chips.forEach((c, i) => c.classList.toggle('is-on', i === near)); const row = chips[near] && chips[near].parentNode; if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: chips[near].offsetLeft - 20, behavior: 'smooth' }); }
+    if (S.fig > 0.6 && near !== who) { who = near; if (snd) snd.jewel(near); chips.forEach((c, i) => c.classList.toggle('is-on', i === near)); persons.forEach((el, i) => el.classList.toggle('is-active', i === near)); const row = chips[near] && chips[near].parentNode; if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: chips[near].offsetLeft - 20, behavior: 'smooth' }); }
     if (engine) engine.frame();
     requestAnimationFrame(loop);
   }
