@@ -1,7 +1,7 @@
 /* Crown Help: the help sidebar for Healthcare Crown Academy and its apps.
    Answers come from data.json, built from docs/crown-help/CROWN-HELP-CATALOGUE.md by apps/crown-help/build.mjs.
    No AI: questions are matched in the browser. Anything it cannot answer goes to hello@ by email.
-   Logging: anonymous events only (see public.crown_help_log). Crisis and handover events never store the user's words. */
+   Logging: anonymous events only (see public.crown_help_log). Crisis and handover events never store the user's words. Serein logs nothing at all. */
 (function () {
   'use strict';
   if (window.CrownHelp) return;
@@ -52,6 +52,7 @@
     set: function (k, v) { try { sessionStorage.setItem('crown-help.' + k, JSON.stringify(v)); } catch (e) {} }
   };
   function log(kind, intent, query) {
+    if (APP === 'serein') return; // Serein promises nothing is monitored: no event, no words, no request
     try {
       fetch(SUPA + '/rest/v1/rpc/crown_help_log', {
         method: 'POST', keepalive: true, credentials: 'omit',
@@ -295,6 +296,7 @@
       return;
     }
     if (!top || top.s < THRESHOLD) {
+      if (APP === 'serein') { sereinHelp(); return; }
       misses++; log('miss', null, q);
       if (misses < 2) {
         var z90 = intent('Z-90');
@@ -313,6 +315,13 @@
       return;
     }
     show(top.it, q);
+  }
+  /* Serein: a message the helper cannot answer is never a dead end. Open Get help; nothing is logged. */
+  function sereinHelp() {
+    var b = D.querySelector('[data-v5="help"]');
+    if (!b) { say(data.crisis, { cls: 'chp-crisis' }); return; }
+    say('I\'m not sure I understood that. If things feel hard right now, Get help is open for you, with people you can speak to today.', { buttons: [{ label: 'Open Get help in Serein', act: 'serein-help' }] });
+    close(); b.click();
   }
   function show(it, q) {
     var msg = say(answerOf(it), { buttons: it.buttons });
