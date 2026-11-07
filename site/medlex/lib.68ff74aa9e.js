@@ -429,7 +429,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
   const KINDS = ['prefix', 'root', 'suffix'];
   /* each quest keeps its own progress in this browser (same origin as the frame): key and the lists it stores */
   const INFO = {
-    prefix: { n: 66, key: 'prefixQuest66', c: '#3557D6', dk: '#8FA7FF', glyph: 'pre-', blurb: 'Small openers that change a word’s direction, size, number or time, such as hyper-, sub- and peri-.', eg: 'hyper- + tension' },
+    prefix: { n: 66, unit: 'core prefixes', more: 'The Prefixes module lists all 100 forms.', key: 'prefixQuest66', c: '#3557D6', dk: '#8FA7FF', glyph: 'pre-', blurb: 'Small openers that change a word’s direction, size, number or time, such as hyper-, sub- and peri-.', eg: 'hyper- + tension' },
     root: { n: 60, key: 'rootQuest60v1', c: '#0F7B78', dk: '#5FD0CB', glyph: 'root', blurb: 'The core of a word: the body part, organ or process it is about, such as cardi-, hepat- and nephr-.', eg: 'cardio + megaly' },
     suffix: { n: 100, key: 'suffixQuest_v1', c: '#B4533A', dk: '#F0A58F', glyph: '-itis', blurb: 'Endings that say what happens or is done: inflammation, removal, study, a record or a procedure.', eg: 'gastr + itis' }
   };
@@ -462,7 +462,7 @@ window.MEDLEX_LIB={"words":[{"id":"tachycardia","term":"Tachycardia","plain":"Th
       return `<article class="wp-card" ${tone(k)}><div class="wp-glyph" aria-hidden="true">${esc(I.glyph)}</div>
         <h2>${esc(name)}</h2><p class="wp-blurb">${esc(I.blurb)}</p>
         <p class="wp-eg"><span>For example</span> ${esc(I.eg)}</p>
-        <p class="wp-count"><b>${I.n}</b> ${esc(name.toLowerCase())} to learn</p>
+        <p class="wp-count"><b>${I.n}</b> ${esc(I.unit || name.toLowerCase())} to learn${I.more ? ` <span class="wp-more">· ${esc(I.more)}</span>` : ''}</p>
         <div class="wp-prog"><div class="wp-meter" role="img" aria-label="${esc(state)}"><i style="width:${pct}%"></i></div><p>${esc(state)}${p.badges ? ` · ${plural(p.badges, 'badge')}` : ''}</p></div>
         <a class="wp-open" href="#wordparts/${k}" aria-label="Open the ${esc(name.toLowerCase())} studio">Open studio ${ic('arrow')}</a></article>`;
     };
