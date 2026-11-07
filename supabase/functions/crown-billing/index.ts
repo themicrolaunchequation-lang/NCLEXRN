@@ -100,7 +100,8 @@ const returnUrl = (u: unknown, fallback: string) => typeof u === 'string' && /^h
 
 async function checkout(user: { id: string; email?: string }, body: Record<string, unknown>) {
   const plan = String(body.plan ?? '')
-  const country = /^[A-Z]{2}$/.test(String(body.country ?? '').toUpperCase()) ? String(body.country).toUpperCase() : ''
+  // No country is read from the request. A Crown Suite price band comes only from the issuing country of the card
+  // saved in Stripe (see cardPlan), so posting {"country":"IN"} changes nothing.
   const back = returnUrl(body.return_url, `${SITE}/#pricing`)
 
   // Consent is checked before anything is created in Stripe.
@@ -129,33 +130,99 @@ async function checkout(user: { id: string; email?: string }, body: Record<strin
     return json({ url: s.url, livemode: s.livemode })
   }
 
-  const { data: quote, error } = await db.rpc('crown_price_for', { p_plan: plan, p_country: country || null })
+  // Crown Suite: step 1 of 2. Stripe saves the card and charges nothing. The price band is then set from the card's
+  // issuing country (quote), and the subscription starts only when the person confirms that price (subscribe).
+  const { data: avail, error } = await db.rpc('crown_price_for', { p_plan: plan, p_country: null })
   if (error) throw error
-  if (!quote?.available) return json({ error: 'plan_unavailable' }, 404)
-  const { data: p } = await db.from('crown_plans').select('product,interval,trial_days').eq('id', plan).single()
+  if (!avail?.available) return json({ error: 'plan_unavailable' }, 404)
   const { data: existing } = await db.from('crown_subscriptions').select('id').eq('user_id', user.id).eq('livemode', LIVE).in('status', ['trialing', 'active', 'past_due']).limit(1)
   if (existing?.length) return json({ error: 'already_subscribed' }, 409)
+  const s = await stripe!.checkout.sessions.create({ customer, client_reference_id: user.id, mode: 'setup', currency: 'gbp', allowed_payment_method_types: ['card'], billing_address_collection: 'required',
+    success_url: `${back}${back.includes('?') ? '&' : '?'}setup=done&session_id={CHECKOUT_SESSION_ID}`, cancel_url: base.cancel_url,
+    metadata: { user_id: user.id, plan, kind: 'crown_setup', ...consent },
+    setup_intent_data: { metadata: { user_id: user.id, plan } },
+    custom_text: { submit: { message: 'Nothing is charged now. Next you see your price, set by your card’s country, and confirm it.' } } })
+  return json({ url: s.url, livemode: s.livemode })
+}
+
+// The card step must be this person's, finished, recent and for a Crown Suite plan. Returns the saved card and its country.
+const SETUP_MAX_AGE = DAY
+async function savedCard(user: { id: string }, body: Record<string, unknown>) {
+  const sid = String(body.session_id ?? '')
+  if (!/^cs_(test|live)_[A-Za-z0-9]+$/.test(sid)) return { error: 'setup_not_found' } as const
+  let s: Stripe.Checkout.Session
+  try { s = await stripe!.checkout.sessions.retrieve(sid, { expand: ['setup_intent.payment_method'] }) } catch { return { error: 'setup_not_found' } as const }
+  const m = s.metadata ?? {}
+  if (s.mode !== 'setup' || s.status !== 'complete' || m.kind !== 'crown_setup' || m.user_id !== user.id || !CROWN_PLAN.test(String(m.plan ?? ''))) return { error: 'setup_not_found' } as const
+  if (Date.now() - s.created * 1000 > SETUP_MAX_AGE) return { error: 'setup_expired' } as const
+  const si = s.setup_intent as Stripe.SetupIntent | null, pm = si?.payment_method as Stripe.PaymentMethod | null
+  if (!pm || typeof pm === 'string' || si?.status !== 'succeeded') return { error: 'setup_not_found' } as const
+  // Card-country rule (owner decision, 7 Nov 2026): the issuing country wins, even for a card issued abroad.
+  // Unknown country falls back to band A (the UK price), never to a cheaper band.
+  const country = /^[A-Z]{2}$/.test(pm.card?.country ?? '') ? pm.card!.country! : ''
+  return { session: s, pm, country, plan: String(m.plan) }
+}
+
+// Everything about the price for one plan and one card country, worked out on the server only.
+async function cardPlan(user: { id: string }, plan: string, country: string) {
+  const { data: quote, error } = await db.rpc('crown_price_for', { p_plan: plan, p_country: country || null })
+  if (error) throw error
+  if (!quote?.available) return { error: 'plan_unavailable' } as const
+  const { data: p } = await db.from('crown_plans').select('product,interval,trial_days').eq('id', plan).single()
+  const { data: existing } = await db.from('crown_subscriptions').select('id').eq('user_id', user.id).eq('livemode', LIVE).in('status', ['trialing', 'active', 'past_due']).limit(1)
+  if (existing?.length) return { error: 'already_subscribed' } as const
   // One free trial per account: anyone who has had a Crown Suite subscription before, in any state, pays from day one.
   const { data: before } = await db.from('crown_subscriptions').select('id').eq('user_id', user.id).eq('livemode', LIVE).limit(1)
-  const trialDays = p!.trial_days && !before?.length ? p!.trial_days : 0
-  // The plans page says "£0 today". When the trial is used up, the page must tell the person and ask before we charge.
-  if (p!.trial_days && !trialDays && body.trial !== false) return json({ error: 'trial_used' }, 409)
+  const trialDays: number = p!.trial_days && !before?.length ? p!.trial_days : 0
   // Founding offer: charge the standard yearly price with a one-off first-year discount, so year two renews at full price.
   const founding = plan === 'crown-year-founding'
   const billed = founding ? (await db.rpc('crown_price_for', { p_plan: 'crown-year', p_country: country || null })).data : quote
-  if (!billed?.available) return json({ error: 'plan_unavailable' }, 404)
-  const price = await ensurePrice(`hca_${founding ? 'crown-year' : plan}_${billed.band}`, `hca_${p!.product}`, NAMES[p!.product] ?? p!.product, Number(billed.amount), billed.currency, { interval: p!.interval })
-  let discounts: Stripe.Checkout.SessionCreateParams.Discount[] | undefined
+  if (!billed?.available) return { error: 'plan_unavailable' } as const
+  return { quote, billed, founding, p: p!, trialDays, offersTrial: Boolean(p!.trial_days) }
+}
+
+// Crown Suite: the price for the saved card, shown to the person before anything is charged.
+async function quoteCard(user: { id: string }, body: Record<string, unknown>) {
+  const card = await savedCard(user, body)
+  if ('error' in card) return json({ error: card.error }, 409)
+  const c = await cardPlan(user, card.plan, card.country)
+  if ('error' in c) return json({ error: c.error }, 409)
+  return json({ plan: card.plan, country: card.country || null, band: c.quote.band, amount: Number(c.quote.amount), then: Number(c.billed.amount), currency: c.quote.currency,
+    interval: c.p.interval, trial: c.trialDays > 0, trial_days: c.trialDays, trial_used: c.offersTrial && !c.trialDays, card: { brand: card.pm.card?.brand ?? null, last4: card.pm.card?.last4 ?? null } })
+}
+
+// Crown Suite: step 2 of 2. The person has seen the price for their card and confirmed it.
+async function subscribe(user: { id: string; email?: string }, body: Record<string, unknown>) {
+  const card = await savedCard(user, body)
+  if ('error' in card) return json({ error: card.error }, 409)
+  const c = await cardPlan(user, card.plan, card.country)
+  if ('error' in c) return json({ error: c.error }, 409)
+  // The confirm screen states whether today costs £0 or the full price. Refuse if the page showed the other case.
+  if (c.trialDays > 0 !== (body.trial !== false)) return json({ error: c.trialDays > 0 ? 'quote_changed' : 'trial_used' }, 409)
+  const { quote, billed, founding, p, trialDays } = c
+  const price = await ensurePrice(`hca_${founding ? 'crown-year' : card.plan}_${billed.band}`, `hca_${p.product}`, NAMES[p.product] ?? p.product, Number(billed.amount), billed.currency, { interval: p.interval })
+  let discounts: Stripe.SubscriptionCreateParams.Discount[] | undefined
   if (founding) {
     const off = Math.round((Number(billed.amount) - Number(quote.amount)) * 100), cid = `hca_founding_${billed.band}_${billed.currency}_${off}`
     try { await stripe!.coupons.retrieve(cid) } catch { await stripe!.coupons.create({ id: cid, amount_off: off, currency: billed.currency, duration: 'once', name: 'Founding member, first year' }) }
     discounts = [{ coupon: cid }]
   }
-  const s = await stripe!.checkout.sessions.create({ ...base, ...(discounts ? { discounts, allow_promotion_codes: undefined } : {}), mode: 'subscription', line_items: [{ price, quantity: 1 }],
-    metadata: { user_id: user.id, plan, band: quote.band, country, ...consent },
-    custom_text: { submit: { message: CONSENT_TEXT } },
-    subscription_data: { description: RECEIPT_TEXT, metadata: { user_id: user.id, plan, band: quote.band, country, ...consent }, ...(trialDays ? { trial_period_days: trialDays } : {}) } })
-  return json({ url: s.url, livemode: s.livemode, amount: quote.amount, currency: quote.currency, band: quote.band })
+  const m = card.session.metadata ?? {}
+  const consent = { consent_at: String(m.consent_at ?? ''), consent_version: String(m.consent_version ?? ''), consent_hash: String(m.consent_hash ?? ''), adult_payer: String(m.adult_payer ?? ''), refund_policy: String(m.refund_policy ?? '') }
+  const customer = typeof card.session.customer === 'string' ? card.session.customer : card.session.customer!.id
+  // The band and country are recorded on the subscription and never changed by a later card change (owner decision, 7 Nov 2026).
+  const sub = await stripe!.subscriptions.create({ customer, items: [{ price }], default_payment_method: card.pm.id, payment_behavior: 'allow_incomplete',
+    ...(trialDays ? { trial_period_days: trialDays } : {}), ...(discounts ? { discounts } : {}), description: RECEIPT_TEXT,
+    metadata: { user_id: user.id, plan: card.plan, band: quote.band, country: card.country, price_source: 'card_country', setup_session: card.session.id, ...consent },
+    expand: ['latest_invoice'] }, { idempotencyKey: `hca-sub-${card.session.id}` })
+  await syncSubscription(sub)
+  if (sub.status === 'incomplete') {
+    // The bank wants the card holder to approve this first payment: Stripe's hosted invoice page asks them.
+    const inv = sub.latest_invoice as Stripe.Invoice | null
+    return json({ subscribed: false, url: inv?.hosted_invoice_url ?? null })
+  }
+  await confirmationEmail(orderFromSubscription(sub, user.email ?? '')).catch((e) => console.error('confirmation email', e))
+  return json({ subscribed: true, plan: card.plan, trial: sub.status === 'trialing' })
 }
 
 // Self-service refunds. Full refund within the 14-day cancellation period (the statutory
@@ -275,32 +342,40 @@ const TERMS_VERSION = '2026-10-29'
 const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!))
 const money2 = (cents: number, cur: string) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: cur.toUpperCase() }).format(cents / 100)
 const day2 = (ms: number) => new Date(ms).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/London' })
-async function confirmationEmail(s: Stripe.Checkout.Session) {
-  const to = s.customer_details?.email ?? ''
-  if (!env('RESEND_API_KEY') || !to) { console.log('confirmation email skipped', { session: s.id }); return }
-  const plan = String(s.metadata?.plan ?? ''), now = Date.now(), cur = s.currency ?? 'gbp'
+// What the confirmation email needs, from either a completed Checkout (Gulf Pass) or a subscription made after the card step.
+type Order = { id: string; email: string; metadata: Record<string, string>; currency: string | null; amountTotal: number; subscriptionId: string | null }
+const orderFromSession = (s: Stripe.Checkout.Session): Order => ({ id: s.id, email: s.customer_details?.email ?? '', metadata: (s.metadata ?? {}) as Record<string, string>,
+  currency: s.currency, amountTotal: s.amount_total ?? 0, subscriptionId: typeof s.subscription === 'string' ? s.subscription : s.subscription?.id ?? null })
+const orderFromSubscription = (sub: Stripe.Subscription, email: string): Order => {
+  const inv = typeof sub.latest_invoice === 'object' ? sub.latest_invoice : null
+  return { id: sub.id, email, metadata: (sub.metadata ?? {}) as Record<string, string>, currency: sub.currency, amountTotal: inv?.amount_paid ?? 0, subscriptionId: sub.id }
+}
+async function confirmationEmail(o: Order) {
+  const to = o.email
+  if (!env('RESEND_API_KEY') || !to) { console.log('confirmation email skipped', { order: o.id }); return }
+  const plan = String(o.metadata.plan ?? ''), now = Date.now(), cur = o.currency ?? 'gbp'
   const gulf = /^gulf-/.test(plan), months = Number(plan.match(/-(\d+)m$/)?.[1] ?? 0)
   const lines: [string, string][] = []
   let name = 'Crown Pass', facts: string[] = []
   if (gulf) {
     name = plan.startsWith('gulf-all') ? `Gulf Pass, ${months} month${months === 1 ? '' : 's'}` : `Gulf Region exam pass, ${months} month${months === 1 ? '' : 's'}`
-    lines.push(['Paid', money2(s.amount_total ?? 0, cur)], ['Access until', day2(new Date(now).setMonth(new Date(now).getMonth() + months))])
+    lines.push(['Paid', money2(o.amountTotal, cur)], ['Access until', day2(new Date(now).setMonth(new Date(now).getMonth() + months))])
     facts = ['This is a one-off payment. It never renews.', plan.startsWith('gulf-all') ? 'It includes all four Gulf Region exams and the Crown Pass for the same time. The included Crown Pass ends with the Gulf Pass and never turns into a paid subscription.' : '']
-  } else if (s.subscription) {
-    const sub = await stripe!.subscriptions.retrieve(typeof s.subscription === 'string' ? s.subscription : s.subscription.id)
+  } else if (o.subscriptionId) {
+    const sub = await stripe!.subscriptions.retrieve(o.subscriptionId)
     const item = sub.items.data[0], price = item?.price, interval = price?.recurring?.interval === 'year' ? 'year' : 'month'
     const full = price?.unit_amount ?? 0, pcur = price?.currency ?? cur
     name = NAMES[plan.split('-')[0]] ?? 'Crown Pass'
     if (sub.status === 'trialing' && sub.trial_end) {
       let first = full
-      if (plan === 'crown-year-founding') { const q = (await db.rpc('crown_price_for', { p_plan: plan, p_country: s.metadata?.country || null })).data; if (q?.available) first = Math.round(Number(q.amount) * 100) }
+      if (plan === 'crown-year-founding') { const q = (await db.rpc('crown_price_for', { p_plan: plan, p_country: o.metadata.country || null })).data; if (q?.available) first = Math.round(Number(q.amount) * 100) }
       lines.push(['Today', money2(0, pcur) + ' (7-day free trial)'], ['First payment', `${money2(first, pcur)} on ${day2(sub.trial_end * 1000)}, unless you cancel before then`])
-    } else lines.push(['Paid', money2(s.amount_total ?? 0, pcur)])
+    } else lines.push(['Paid', money2(o.amountTotal, pcur)])
     lines.push(['Then', `${money2(full, pcur)} a ${interval}, renewing automatically until you stop it`])
     facts = ['You can stop renewal at any time from your account page; your plan then stays active until the end of the period you paid for.', plan === 'crown-year-founding' ? 'The founding price is for your first year only.' : '']
   }
-  const consent = s.metadata?.consent_at ? `On ${day2(Date.parse(String(s.metadata.consent_at)))} you asked for your access to start straight away, during your 14-day cancellation period.` : ''
-  const ref = s.id.slice(-10).toUpperCase()
+  const consent = o.metadata.consent_at ? `On ${day2(Date.parse(String(o.metadata.consent_at)))} you asked for your access to start straight away, during your 14-day cancellation period.` : ''
+  const ref = o.id.slice(-10).toUpperCase()
   const rows = lines.map(([k, v]) => `<tr><td style="padding:6px 0;color:#5b6b7c">${esc(k)}</td><td style="padding:6px 0;text-align:right;font-weight:600">${esc(v)}</td></tr>`).join('')
   const list = (xs: string[]) => xs.filter(Boolean).map((x) => `<li style="margin:0 0 8px">${esc(x)}</li>`).join('')
   const rights = [
@@ -331,7 +406,7 @@ Ordered on [*]/received on [*]: ${esc(day2(now))},<br>Name of consumer(s),<br>Ad
 <p style="margin:0 0 8px;font-size:14px">This order is under our terms of use and our subscriptions and refunds terms, version ${TERMS_VERSION}: https://healthcarecrownacademy.co.uk/terms and https://healthcarecrownacademy.co.uk/refunds. Please keep this email: it is your record of what you agreed.</p>
 <p style="margin:16px 0 0;font-size:12px;color:#7a8794">HEALTHCARE CROWN ACADEMY LTD, company 17501904, registered in England and Wales. Registered office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. We are not registered for VAT, so no VAT is added. Questions: ${CONTACT}</p>
 </td></tr></table></td></tr></table></body></html>`
-  await sendEmail(to, `Your order is confirmed: ${name}`, html, `confirm-${s.id}`)
+  await sendEmail(to, `Your order is confirmed: ${name}`, html, `confirm-${o.id}`)
 }
 
 async function sendEmail(to: string, subject: string, html: string, idem: string) {
@@ -401,11 +476,18 @@ async function hook(req: Request) {
   if (seen) return json({ received: true })
   const o = event.data.object as unknown as Record<string, unknown>
   if (event.type.startsWith('customer.subscription.')) {
-    await syncSubscription(await stripe!.subscriptions.retrieve((o as { id: string }).id))
+    const sub = await stripe!.subscriptions.retrieve((o as { id: string }).id, { expand: ['latest_invoice', 'customer'] })
+    await syncSubscription(sub)
+    // A card-step subscription whose first payment needed the bank's approval: confirm the order once it is paid.
+    const was = (event.data as { previous_attributes?: { status?: string } }).previous_attributes?.status
+    if (event.type === 'customer.subscription.updated' && was === 'incomplete' && ['active', 'trialing'].includes(sub.status) && sub.metadata?.price_source === 'card_country') {
+      const email = typeof sub.customer === 'object' && !('deleted' in sub.customer && sub.customer.deleted) ? (sub.customer as Stripe.Customer).email ?? '' : ''
+      await confirmationEmail(orderFromSubscription(sub, email)).catch((e) => console.error('confirmation email', e))
+    }
   } else if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
     const s = await stripe!.checkout.sessions.retrieve(o.id as string)
     if (s.mode === 'subscription' && s.subscription) await syncSubscription(await stripe!.subscriptions.retrieve(typeof s.subscription === 'string' ? s.subscription : s.subscription.id))
-    if (ourOrder(s) && (s.payment_status === 'paid' || s.payment_status === 'no_payment_required')) await confirmationEmail(s).catch((e) => console.error('confirmation email', e))
+    if (ourOrder(s) && (s.payment_status === 'paid' || s.payment_status === 'no_payment_required')) await confirmationEmail(orderFromSession(s)).catch((e) => console.error('confirmation email', e))
     if (s.mode === 'payment' && s.metadata?.kind === 'gulf' && s.payment_status === 'paid') {
       const months = Number(s.metadata.months) || 1
       const { data: last } = await db.from('gulf_passes').select('until').eq('user_id', s.metadata.user_id).eq('plan_id', s.metadata.plan).gt('until', new Date().toISOString()).order('until', { ascending: false }).limit(1)
@@ -447,6 +529,8 @@ Deno.serve(async (req) => {
     const user = await userFrom(req)
     if (!user) return json({ error: 'sign_in_required' }, 401)
     if (body.action === 'checkout') return checkout(user, body)
+    if (body.action === 'quote') return quoteCard(user, body)
+    if (body.action === 'subscribe') return subscribe(user, body)
     if (body.action === 'portal') return portal(user, body)
     if (body.action === 'refund') return refund(user, body)
     if (body.action === 'close_account') return closeAccount(user, body)
