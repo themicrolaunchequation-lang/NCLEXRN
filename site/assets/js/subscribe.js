@@ -1,4 +1,5 @@
-/* Plans page: three plans (Crown Pass, Gulf Pass, Green Belt), country pricing for the Crown Pass, and Stripe checkout through window.HCA. */
+/* Plans page: three plans (Crown Pass, Gulf Pass, Green Belt) and Stripe checkout through window.HCA.
+   Crown Pass: card first (nothing charged), then the server sets the price from the card's country and the person confirms it. */
 (() => {
   const SUPABASE = 'https://ujeofxfbwivjmgrxqdcl.supabase.co';
   const KEY = 'sb_publishable_ie1qqB5QnaqUZPitNPfQCg__M46e7JL';
@@ -6,6 +7,9 @@
   const ERR = {
     already_subscribed: 'You already have an active plan. Use “Stop renewal or update card” below to change it.',
     trial_used: 'You have already had your free trial. Choose the plan again to pay from today.',
+    setup_not_found: 'We could not find your card details. Please choose your plan again.',
+    setup_expired: 'That was more than a day ago. Please choose your plan again.',
+    quote_changed: 'Your price details changed. Please choose your plan again.',
     plan_unavailable: 'That plan is not available any more.',
     payments_unavailable: 'Payments are not open yet. Please try again soon.',
     no_customer: 'There is no plan on this account yet.',
@@ -56,7 +60,11 @@
   const PASS = { '1m': { usd: 29, months: 1 }, '3m': { usd: 50, months: 3 }, '6m': { usd: 69, months: 6 } }; // Gulf Pass, the same in every country (gulf_exam_plans)
   let bands = {}, regional = {}, period = 'year', len = '6m';
 
-  const band = () => bands[$('[data-sub-country]').value] || 'A';
+  // Display only. Before the card step the page shows an estimate from the browser's language region.
+  // The server sets the real band from the card's issuing country and ignores anything this page could send.
+  let guess = 'GB';
+  const region = (c) => { try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(c) || c; } catch { return c; } };
+  const band = () => bands[guess] || 'A';
   function price(id) {
     const b = band(), r = regional[id + ':' + b], p = plans[id];
     if (b !== 'A' && r) return { amount: Number(r.amount), cur: r.currency };
@@ -82,7 +90,7 @@
       const first = new Date(Date.now() + 7 * 864e5).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
       tn.textContent = `£0 today. Then ${fmt(now)} on ${first}, renewing automatically${crownPlan() === 'crown-year-founding' ? ` at ${fmt(y)} a year` : ''}. Cancel before then and you pay nothing.`;
     }
-    $('[data-sub-band]').textContent = band() === 'A' ? 'Prices in pounds sterling.' : 'Fair pricing for your country, in US dollars.';
+    $('[data-sub-band]').textContent = `${band() === 'A' ? 'Prices in pounds sterling.' : `Estimated for ${region(guess)}, in US dollars.`} Your price is set by your payment card’s country. You see it before you confirm, and nothing is charged until you do.`;
     const g = PASS[len];
     $('[data-gulf-price]').textContent = money(g.usd, 'usd');
     $('[data-gulf-per]').textContent = g.months === 1 ? '/1 month' : `/${g.months} months`;
@@ -140,16 +148,41 @@
     const label = btn.innerHTML;
     btn.disabled = true; btn.textContent = 'Opening secure checkout…'; msg('');
     if (plan !== 'manage') try { sessionStorage.setItem('hca-buying', plan); } catch { /* optional */ }
-    let r = plan === 'manage' ? await HCA.manageBilling() : await HCA.checkout(plan, $('[data-sub-country]').value, true);
-    // One free trial per account. Someone who has had it is told the real price and asked before we go on.
-    if (r && r.error === 'trial_used') {
-      const due = fmt(price(plan));
-      if (window.confirm(`You have already had your free trial, so this plan starts today and you pay ${due || 'the plan price'} now. Continue to secure payment?`)) {
-        r = await HCA.checkout(plan, $('[data-sub-country]').value, true, { trial: false });
-      } else r = null;
-    }
+    const r = plan === 'manage' ? await HCA.manageBilling() : await HCA.checkout(plan, true);
     btn.disabled = false; btn.innerHTML = label;
     if (r && r.error && r.error !== 'sign_in_required') msg(ERR[r.error] || 'Something went wrong. Please try again in a moment.');
+  }
+
+  // Crown Pass, step 2: the card is saved and nothing is charged. Show the price the server set from the card's
+  // country, and start the plan only if the person confirms it.
+  async function confirmCard(sid) {
+    msg('Working out your price…', 'info');
+    const q = await HCA.quote(sid);
+    if (!q || q.error) { if (!q || q.error !== 'sign_in_required') msg(ERR[q && q.error] || 'Something went wrong. Please try again in a moment.'); return; }
+    msg('');
+    const founding = q.plan === 'crown-year-founding', per = q.interval === 'year' ? 'a year' : 'a month';
+    const p = money(q.amount, q.currency), then = money(q.then, q.currency);
+    const first = new Date(Date.now() + q.trial_days * 864e5).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    $('[data-pc-title]').textContent = `Your price: ${p} ${founding ? 'for your first year' : per}`;
+    $('[data-pc-text]').textContent = q.country ? `Set by the country that issued your card: ${region(q.country)}.` : 'Your card did not show a country, so this is our UK price.';
+    $('[data-pc-fine]').textContent = q.trial
+      ? `${money(0, q.currency)} today. Then ${p} on ${first}, renewing automatically${founding ? ` at ${then} a year` : ''}. Cancel before then and you pay nothing.`
+      : `${q.trial_used ? 'You have already had your free trial, so you' : 'You'} pay ${p} today. It renews automatically at ${founding ? `${then} a year` : `${p} ${per}`} until you stop it.`;
+    $('[data-pc-go]').textContent = q.trial ? 'Start free trial' : `Pay ${p} now`;
+    const d = $('[data-price-dialog]');
+    d.showModal();
+    const yes = await new Promise((res) => { d.onclose = () => res(d.returnValue === 'ok'); });
+    if (!yes) { msg('Nothing was charged.', 'info'); return; }
+    msg('Starting your plan…', 'info');
+    const r = await HCA.subscribe(sid, q.trial);
+    if (!r || r.error) { if (!r || r.error !== 'sign_in_required') msg(ERR[r && r.error] || 'Something went wrong. Please try again in a moment.'); return; }
+    if (!r.subscribed) return; // the bank wants to approve the payment: HCA has sent the person to Stripe's page
+    msg('');
+    const w = describe(q.plan);
+    result({ tone: 'success', kicker: r.trial ? 'Free trial started' : 'Payment confirmed', title: 'Welcome to Healthcare Crown', text: `You now have ${w.name}.`,
+      steps: [r.trial ? `Everything is unlocked now. Your first payment is on ${first}, unless you cancel before then.` : 'Your access is on now. If a page still looks locked, refresh it once.',
+        r.trial ? 'Cancel any time with “Stop renewal or update card” on this page.' : 'Stripe has emailed you a receipt.', 'Changed your mind? Full refund within 14 days, with “Cancel and get a refund” on this page.'],
+      go: w.go, cta: w.cta });
   }
 
   function radios(group, attr, set) {
@@ -161,15 +194,8 @@
   }
 
   async function init() {
-    const sel = $('[data-sub-country]');
-    const names = new Intl.DisplayNames(['en'], { type: 'region' });
-    const codes = 'AD AE AF AG AL AM AO AR AT AU AZ BA BB BD BE BF BG BH BI BJ BN BO BR BS BT BW BY BZ CA CD CF CG CH CI CL CM CN CO CR CU CV CY CZ DE DJ DK DM DO DZ EC EE EG ER ES ET FI FJ FM FR GA GB GD GE GH GM GN GQ GR GT GW GY HK HN HR HT HU ID IE IL IN IQ IR IS IT JM JO JP KE KG KH KI KM KN KR KW KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MH MK ML MM MN MR MT MU MV MW MX MY MZ NA NE NG NI NL NO NP NR NZ OM PA PE PG PH PK PL PS PT PW PY QA RO RS RU RW SA SB SC SD SE SG SI SK SL SM SN SO SR SS ST SV SY SZ TD TG TH TJ TL TM TN TO TR TT TV TW TZ UA UG US UY UZ VA VC VE VN VU WS XK YE ZA ZM ZW'.split(' ');
-    const opts = codes.map((c) => { let n = c; try { n = names.of(c) || c; } catch { /* keep code */ } return [c, n]; }).sort((a, b) => a[1].localeCompare(b[1]));
-    for (const [c, n] of opts) sel.add(new Option(n, c));
-    let guess = 'GB';
-    try { guess = localStorage.getItem('hca-country') || ((navigator.languages || [navigator.language]).map((l) => /-([A-Z]{2})$/i.exec(l)).find(Boolean) || [, 'GB'])[1].toUpperCase(); } catch { /* default */ }
-    sel.value = codes.includes(guess) ? guess : 'GB';
-    sel.addEventListener('change', () => { try { localStorage.setItem('hca-country', sel.value); } catch { /* ignore */ } render(); });
+    try { guess = ((navigator.languages || [navigator.language]).map((l) => /-([A-Z]{2})$/i.exec(l)).find(Boolean) || [, 'GB'])[1].toUpperCase(); } catch { /* default */ }
+    try { localStorage.removeItem('hca-country'); } catch { /* ignore */ }
 
     $$('[data-period]').forEach((b) => b.addEventListener('click', () => { period = b.dataset.period; render(); }));
     $$('[data-len]').forEach((b) => b.addEventListener('click', () => { len = b.dataset.len; render(); }));
@@ -209,6 +235,11 @@
       setTimeout(() => card.scrollIntoView({ block: 'center' }), 200);
     }
     let bought = ''; try { bought = sessionStorage.getItem('hca-buying') || ''; sessionStorage.removeItem('hca-buying'); } catch { /* optional */ }
+    if (q.get('setup') === 'done' && q.get('session_id')) {
+      const sid = q.get('session_id');
+      history.replaceState(null, '', location.pathname + location.hash);
+      confirmCard(sid);
+    }
     if (q.get('checkout') === 'success') {
       const w = describe(bought);
       const charge = new Date(Date.now() + 7 * 864e5).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });

@@ -431,14 +431,17 @@
     try {
       const r = await fetch(`${SUPABASE}/functions/v1/crown-billing`, { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + s.access_token, 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, return_url: location.href.split('#')[0].replace(/[?&]checkout=[^&]*(&session_id=[^&]*)?/, '') }) });
       const j = await r.json().catch(() => ({ error: 'payment_request_failed' }));
-      if (j.url && /^https:\/\/(checkout|billing)\.stripe\.com\//.test(j.url)) { location.href = j.url; return j; }
+      if (j.url && /^https:\/\/(checkout|billing|invoice)\.stripe\.com\//.test(j.url)) { location.href = j.url; return j; }
       return j;
     } catch { return { error: 'offline' }; }
   }
 
   window.HCA = {
-    // consent covers both ticked boxes (start now + 18+/parent). opts.trial === false: the person agreed to pay today because their free trial is used up.
-    checkout: (plan, country, consent, opts = {}) => billing({ action: 'checkout', plan, country, consent: consent === true, adult: consent === true, consent_version: '2026-10-29', ...(opts.trial === false ? { trial: false } : {}) }),
+    // consent covers both ticked boxes (start now + 18+/parent). No country is sent: the server prices the Crown Pass from the card's country.
+    checkout: (plan, consent) => billing({ action: 'checkout', plan, consent: consent === true, adult: consent === true, consent_version: '2026-10-29' }),
+    // Crown Pass after the card step: the price for that card, then start the plan once the person has confirmed it.
+    quote: (sessionId) => billing({ action: 'quote', session_id: sessionId }),
+    subscribe: (sessionId, trial) => billing({ action: 'subscribe', session_id: sessionId, trial: trial === true }),
     refund: (kind, preview) => billing({ action: 'refund', kind, preview: preview === true }), // preview: work out the amount only
     closeAccount: async () => { const r = await billing({ action: 'close_account', confirm: 'CLOSE' }); if (r && r.closed) clear(); return r; },
     manageBilling: () => billing({ action: 'portal' }),

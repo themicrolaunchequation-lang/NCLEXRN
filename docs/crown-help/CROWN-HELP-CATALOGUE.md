@@ -235,7 +235,7 @@ Route: Answer
 
 **P-05 · Is it cheaper in my country?**
 People say: Philippines, India, Egypt, Nigeria, Pakistan price, local price, too expensive in my country, PPP
-Answer: Yes, the Crown Pass follows World Bank income groups, set from your billing country at checkout:
+Answer: Yes, the Crown Pass follows World Bank income groups, set from the country that issued your payment card (you see your exact price before you confirm):
 - Upper-middle-income (e.g. Jordan, Malaysia, Turkey, South Africa, Brazil): **US$4.49 a month or US$29.99 a year**.
 - Lower-middle and low-income (e.g. Egypt, India, Pakistan, the Philippines, Nigeria, Kenya): **US$2.99 a month or US$19.99 a year**.
 The Gulf Pass and Green Belt cost the same everywhere. Stripe may show your local currency.
