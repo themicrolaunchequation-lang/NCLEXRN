@@ -86,7 +86,7 @@ Every app starts free:
 - **Link:** https://carecraft.healthcarecrownacademy.co.uk
 - **Who it's for:** nurses, healthcare assistants, care-home staff, preceptors and practice educators.
 - **What it does:**
-  - A 60-second scenario a day, 30 short lessons, 22 practice activities and 18 toolkit job aids (for example an SBAR handover builder).
+  - A 60-second scenario a day, 30 short lessons, 32 practice activities and 18 toolkit job aids (for example an SBAR handover builder).
   - Topics include communication, safety, teamwork, escalation and handover.
   - Scenarios are fictional, and it is not CPD.
 - **Free guides:**

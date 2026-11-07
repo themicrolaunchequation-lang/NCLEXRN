@@ -97,7 +97,7 @@ From your Company Page admin view, click **Create** (top left) → **Create a Sh
 **Overviews to paste**
 
 **Carecraft:**
-> A 60-second care scenario a day, 30 short lessons, 22 practice activities and 18 job aids (including an SBAR handover builder) on communication, safety and teamwork. Scenarios are fictional; not CPD. Free to start, with team pilots for care homes and NHS teams: hello@healthcarecrownacademy.co.uk
+> A 60-second care scenario a day, 30 short lessons, 32 practice activities and 18 job aids (including an SBAR handover builder) on communication, safety and teamwork. Scenarios are fictional; not CPD. Free to start, with team pilots for care homes and NHS teams: hello@healthcarecrownacademy.co.uk
 
 **Green Belt:**
 > An interactive Green Belt toolkit for healthcare professionals: 30 DMAIC tools you use on your own project, 9 live statistics engines, 10 simulations, a knowledge exam and a Certificate of Completion. Free to try. Full access is US$99 for 12 months, paid once (launch price until 31 January 2027). Cohort codes for hospital QI teams: hello@healthcarecrownacademy.co.uk
