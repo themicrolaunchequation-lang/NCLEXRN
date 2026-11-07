@@ -38,6 +38,8 @@
 .cx-nav{position:absolute;right:max(20px,calc((100vw - 1200px)/2 + 20px));bottom:26px;display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(5,11,28,.6);backdrop-filter:blur(10px)}
 .cx-nav button{font:600 .72rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.08em;color:#a9b6cc;background:none;border:0;border-radius:999px;padding:7px 9px;cursor:pointer}
 .cx-nav button.is-on{background:#e8c170;color:#0b1430}
+/* steps and people stay readable by screen readers when faded out; only the one on screen takes the pointer */
+.cx-live .cx-step:not(.is-active),.cx-live .cx-person:not(.is-active){pointer-events:none}
 .cx-skip{position:absolute;left:max(24px,calc((100vw - 1200px)/2 + 24px));bottom:30px;font:500 .72rem ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:#a9b6cc}
 .cx-skip:hover{color:#e8c170}
 
