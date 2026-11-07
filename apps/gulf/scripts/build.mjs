@@ -42,6 +42,7 @@ const meta={
   intro:'150 multiple-choice questions in 3 hours (DOH nursing licensing circular, 2024). DOH reports a pass or fail result and does not publish its pass mark.',
   mix:'DOH does not publish how many questions come from each area. To keep practice fair, this studio spreads questions across all four areas using its own mix, shown below. It is not the DOH split.'}
 };
+const DISCLAIMER='Original practice material, not official exam questions. Not endorsed by SCFHS, DHP, DHA or DOH.';
 const POLICY='Original practice material written for this studio. It is not official exam content, is not endorsed by SCFHS, DHP, DHA or DOH, and does not predict your result. No recalled exam questions are used.';
 const editions={};
 const m0=id=>meta[id].profile||id;
@@ -59,7 +60,7 @@ for(const f of fs.existsSync(itemsDir)?fs.readdirSync(itemsDir).filter(n=>n.ends
  for(const q of items){if(!q.id||!q.stem||!Array.isArray(q.options)||!q.key||!q.options.some(o=>o.label===q.key))throw Error('Bad edition item '+ed+' '+(q.id||'?'));}
  extra[ed]=items;
 }
-const cfg={extra,order:['saudi','qatar','dubai','abudhabi'],editions,policy:POLICY,checked:'23 October 2026',sb:{url:sbUrl,key:sbKey}};
+const cfg={extra,order:['saudi','qatar','dubai','abudhabi'],editions,policy:POLICY,disclaimer:DISCLAIMER,checked:'23 October 2026',sb:{url:sbUrl,key:sbKey}};
 const files={
  pre:fs.readFileSync(path.join(root,'studio/pre.js'),'utf8'),
  data:fs.readFileSync(path.join(root,'studio/data.js'),'utf8'),
@@ -134,6 +135,7 @@ let libSwap=null;
    .split('/assets/'+libFile).join('/assets/'+libNew)
    .replace('<script defer src="/assets/'+libNew+'"></script>','<script defer src="/assets/'+libNew+'"></script>'+slides)
    .replace('</head>','<link rel="stylesheet" href="'+urls.css+'">'+(PUBLIC?'':'<meta name="robots" content="noindex,nofollow">')+'</head>')
+   .replace('<body data-library="'+mode+'">','<body data-library="'+mode+'"><p class="gulf-legal" role="note">'+DISCLAIMER+'</p>')
    .replace(/<title>[^<]*<\/title>/,'<title>'+titles[mode]+' | Gulf Nursing Licensure Studio</title>').replace('Return to SNLE','Return to the study studio');
   fs.writeFileSync(fp,h);
  }
