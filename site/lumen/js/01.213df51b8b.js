@@ -9721,7 +9721,14 @@ function HCA7GlossaryHits(text) {
   }
   return out.slice(0, 12);
 }
+/* Outside lookups send the learner's selected text to third-party sites, so they run only after the learner says yes. The choice is remembered on this device and can be turned off again. */
+let HCA7ConsentMem = false;
+const HCA7Consent = {
+  get: () => { if (HCA7ConsentMem) return true; try { return localStorage.getItem('lumen.lookup.consent.v1') === 'yes'; } catch { return false; } },
+  set: v => { HCA7ConsentMem = !!v; try { v ? localStorage.setItem('lumen.lookup.consent.v1', 'yes') : localStorage.removeItem('lumen.lookup.consent.v1'); } catch {} },
+};
 async function HCA7Fetch(url, ms = 8000) {
+  if (!HCA7Consent.get()) return null;
   const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms);
   try { const r = await fetch(url, { signal: ctl.signal }); return r.ok ? await r.json() : null; } catch { return null; } finally { clearTimeout(t); }
 }
@@ -9743,6 +9750,7 @@ async function HCA7LookUp(term) {
   const q = HCA7Clean(term).replace(/[“”"'.,;:!?()]/g, '').trim();
   const out = { term: q, glossary: HCA7Glossary[q.toLowerCase()] || null, dictionary: null, wiki: null, offline: !navigator.onLine };
   if (!q || out.offline) return out;
+  if (!HCA7Consent.get()) { out.needsConsent = true; return out; }
   const enc = encodeURIComponent(q), lower = encodeURIComponent(q.toLowerCase()), words = q.split(' ').length;
   const [wikt, dict, simple] = await Promise.all([
     words <= 3 ? HCA7Fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${lower}`) : null,
@@ -9804,7 +9812,7 @@ async function HCA7WikiInLang(title, lang) {
 
 function HCA7Meaning({ text, page, bookId }) {
   const ctx = y(), [query, setQuery] = _.useState(''), [res, setRes] = _.useState(null), [busy, setBusy] = _.useState(false), win = HCA7Win('meaning');
-  const [lang, setLang] = _.useState(HCA7Lang.get), [help, setHelp] = _.useState(null), [helpBusy, setHelpBusy] = _.useState(false), [passage, setPassageT] = _.useState(null), run = _.useRef(0);
+  const [ok, setOk] = _.useState(HCA7Consent.get), [lang, setLang] = _.useState(HCA7Lang.get), [help, setHelp] = _.useState(null), [helpBusy, setHelpBusy] = _.useState(false), [passage, setPassageT] = _.useState(null), run = _.useRef(0);
   const sel = HCA7Clean(text), short = sel && sel.split(' ').length <= 3;
   const cands = sel && !short ? HCA7Candidates(sel) : [];
   const go = async term => {
@@ -9842,9 +9850,15 @@ function HCA7Meaning({ text, page, bookId }) {
     HC('form', { className: 'hca7-lookup', onSubmit: e => { e.preventDefault(); go(query); } },
       HC('input', { value: query, onChange: e => setQuery(e.target.value), onKeyDown: e => e.stopPropagation(), placeholder: 'Type a word or term', 'aria-label': 'Word or term to look up' }),
       HCABtn(busy ? 'Looking…' : 'Look up', () => go(query), 'primary', busy ? 'loader-4-line' : 'search-line', { disabled: busy || !query.trim() })),
+    !ok && HC('div', { className: 'hca7-def hca7-consent', role: 'group', 'aria-label': 'Look up online?' },
+      HC('h4', {}, 'Look this up online?'),
+      HC('p', { className: 'hca-small' }, 'To find a meaning, Lumen sends the word or phrase you selected to free outside sites: Wiktionary, Free Dictionary (dictionaryapi.dev) and Wikipedia. With a help language on, translation may go to MyMemory. They can see your IP address. Your files and the rest of the page stay on this device. Never look up anything that could identify a patient.'),
+      HC('div', { className: 'hca5-row' },
+        HCABtn('Look it up online', () => { HCA7Consent.set(true); setOk(true); go(query || sel.replace(/[“”"'.,;:!?()]/g, '')); }, 'primary', 'search-line'),
+        HCABtn('Not now', () => HCA7Set({ define: null }), 'secondary', 'close-line'))),
     cands.length > 0 && HC('div', { className: 'hca7-cands' }, HC('p', { className: 'hca-small' }, 'Choose a word from your selection'),
       HC('div', {}, cands.map(w => HC('button', { key: w, type: 'button', className: `hca4-tag ${res?.term?.toLowerCase() === w.toLowerCase() ? 'on' : ''} ${HCA7Glossary[w.toLowerCase()] ? 'gloss' : ''}`, onClick: () => go(w) }, w)))),
-    cands.length > 0 && lang && HC('div', { className: 'hca7-passage' },
+    cands.length > 0 && lang && ok && HC('div', { className: 'hca7-passage' },
       passage?.text ? HC('p', { dir: 'auto', lang }, passage.text, HC('small', {}, ` · translated ${passage.via}`)) : passage?.failed ? HC('p', { className: 'hca-small' }, 'Translation is not available right now.') : null,
       !passage?.text && HCABtn(passage?.busy ? 'Translating…' : 'Translate the whole selection', translatePassage, 'secondary', 'refresh-line', { disabled: !!passage?.busy })),
     busy && HC('div', { className: 'hca7-progress indeterminate', role: 'progressbar', 'aria-label': 'Looking up' }, HC('span', {})),
@@ -9853,8 +9867,8 @@ function HCA7Meaning({ text, page, bookId }) {
       res.glossary && HC('p', {}, HC('span', { className: 'hca7-src' }, 'Lumen glossary'), res.glossary),
       res.dictionary && HC('div', {}, HC('span', { className: 'hca7-src' }, 'Dictionary'), HC('ul', {}, res.dictionary.map((d, i) => HC('li', { key: i }, d.part && HC('em', {}, d.part), ' ', d.text)))),
       res.wiki && HC('p', {}, HC('span', { className: 'hca7-src' }, res.wiki.simple ? 'Simple Wikipedia · plain English' : `Wikipedia · ${res.wiki.title}`), res.wiki.text, ' ', res.wiki.url && HC('a', { href: res.wiki.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-link inline' }, 'Read more', HCAIcon('external-link-line'))),
-      !meaning && HC('p', { className: 'hca-small' }, res.offline ? 'You are offline, and this term is not in the Lumen glossary.' : 'No definition found for this exact wording. Pick one word above, or try a shorter term.'),
-      lang && HC('div', { className: 'hca7-help', dir: 'auto', lang },
+      !meaning && ok && HC('p', { className: 'hca-small' }, res.offline ? 'You are offline, and this term is not in the Lumen glossary.' : 'No definition found for this exact wording. Pick one word above, or try a shorter term.'),
+      lang && ok && HC('div', { className: 'hca7-help', dir: 'auto', lang },
         HC('span', { className: 'hca7-src' }, `In ${HCA7Langs.find(l => l[0] === lang)?.[1]}`),
         helpBusy ? HC('div', { className: 'hca7-progress indeterminate' }, HC('span', {})) : HC(_.Fragment, {},
           help?.term?.text && HC('p', { className: 'hca7-help-term', style: { textAlign: rtl ? 'right' : undefined } }, help.term.text),
@@ -9863,6 +9877,7 @@ function HCA7Meaning({ text, page, bookId }) {
           !help?.term && !help?.mean && !help?.wiki && HC('p', { className: 'hca-small' }, 'No translation available right now.'),
           (help?.term || help?.mean) && HC('small', { className: 'hca-small' }, `Machine translation ${help.term?.via || help.mean?.via}. Check important terms with your tutor.`))),
       meaning && HC('div', { className: 'hca5-row' }, HCABtn('Make a recall card', card, 'secondary', 'stack-line', { disabled: !bookId }), HCABtn('Copy', () => navigator.clipboard?.writeText(`${res.term}: ${meaning}`).then(() => ctx.toast('Copied.')), 'secondary', 'file-copy-line'), HCABtn('Look up again', () => go(res.term), 'secondary', 'refresh-line'))),
+    ok && HC('p', { className: 'hca-small' }, HC('button', { type: 'button', className: 'text-link inline', onClick: () => { HCA7Consent.set(false); setOk(false); setRes(null); setHelp(null); setPassageT(null); } }, 'Turn off online lookups')),
     HC('p', { className: 'hca-small' }, 'General definitions for study, not clinical advice. Sources: Lumen glossary, Wiktionary, Free Dictionary, Wikipedia', lang ? '; translations on your device (Chrome) or by MyMemory, which receives the words you translate.' : '.'));
 }
 window.HCA7Define = (text, page, bookId) => HCA7Set({ define: { text, page, bookId } });
