@@ -311,7 +311,7 @@
   const NAMES = { medlex: 'MedLex', carecraft: 'Carecraft', serein: 'Serein', lumen: 'Lumen' };
   const PERKS = {
     medlex: ['All 26 modules and 1,480 terms', '56 illustrated guides', 'Spaced practice and worksheets'],
-    carecraft: ['All 30 lessons and 90 visual guides', 'All 32 practice activities', 'Smart Review'],
+    carecraft: ['All 30 lessons', 'All 32 practice activities', 'Smart Review'],
     serein: ['All 15 practices', 'Journeys, routines and insights', 'Team toolkit'],
     lumen: ['Unlimited sources', 'Unlimited recall cards', 'Focus planner'],
   };
