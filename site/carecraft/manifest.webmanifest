@@ -1,7 +1,7 @@
 {
   "name": "Carecraft · Healthcare Crown Academy",
   "short_name": "Carecraft",
-  "description": "Carecraft by Healthcare Crown Academy: a daily 60-second scenario, 30 short lessons, interactive practice and visual guides for people who work in healthcare. Free, private, and your progress stays in your browser.",
+  "description": "Carecraft by Healthcare Crown Academy: a daily 60-second scenario, 30 short lessons, interactive practice and visual guides for people who work in healthcare. Start free with 6 lessons; all 30 come with the Crown Pass. Your progress stays in your browser.",
   "id": "/carecraft/",
   "start_url": "/",
   "scope": "/",
