@@ -156,7 +156,7 @@ const EXTRA = {
 
 // Answers that change on a date (ISO date, from which the alternative applies).
 const DATED = {
-  'P-06': { from: '2027-02-01', answer: 'The founding offer ended on 31 January 2027. The yearly Crown Pass is now **£49.99 a year** for new members, or £5.99 a month. Members who joined at the founding price keep their renewal price of £39.99 a year.' },
+  'P-06': { from: '2027-02-01', answer: 'The founding offer ended on 31 January 2027. The yearly Crown Pass is **£39.99 a year**, or £5.99 a month, for new members. Members who joined at the founding price renew at £39.99 a year too.' },
   'LSS-02': { from: '2027-02-01', answer: 'US$149 for 12 months, paid once. It\'s a separate app with its own sign-in, not part of the Crown Pass, and the same price in every country.' },
 };
 
