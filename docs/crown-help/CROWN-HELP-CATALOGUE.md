@@ -243,7 +243,7 @@ Route: Answer
 
 **P-06 · What is the founding price?**
 People say: founding member, £29.99, early bird, discount before January
-Answer: Join the yearly Crown Pass before **31 January 2027** and your first year is £29.99. It then renews at £39.99 a year, and we remind you before it does. From 1 February 2027, yearly is £49.99 for new members.
+Answer: Join the yearly Crown Pass before **31 January 2027** and your first year is £29.99. It then renews at £39.99 a year, and we remind you before it does.
 Route: Answer
 
 **P-07 · How does the free trial work?**
@@ -935,7 +935,7 @@ Route: Answer (no further engagement)
 | # | Question | Decision | Why |
 |---|---|---|---|
 | 1 | Plans page test mode | **Not an issue.** The notice is switched on by Stripe's own mode and is **not showing** on the live plans page (checked 2 November 2026). P-14 appears only if that notice ever shows again. | Answers must follow what the user actually sees. |
-| 2 | Founding price | **Keep it** exactly as the site states (£29.99 first year, before 31 January 2027). | It's written into the home page, plans page and the refunds policy (a legal page). Crown Help must never contradict your terms. After 31 January 2027 the entry switches off automatically and P-06 answers "£49.99 a year for new members". |
+| 2 | Founding price | **Keep it** exactly as the site states (£29.99 first year, before 31 January 2027). | It's written into the home page, plans page and the refunds policy (a legal page). Crown Help must never contradict your terms. After 31 January 2027 the entry switches off automatically and P-06 answers with the standard price, £39.99 a year (as in `crown_plans`). No price rise is planned or announced. |
 | 3 | Lumen free limit | **Keep general wording**: "study tools free; the Crown Pass gives unlimited sources, recall cards and the full focus planner". | That is exactly what the plans page promises; a number could go out of date without anyone noticing. |
 | 4 | Switching monthly ↔ yearly | **Handled by a person by email.** | Avoids paying twice for overlapping days; a person can make the change in Stripe properly. |
 | 5 | Payment methods | **"Card through Stripe; other options appear at checkout."** No PayPal claim. | True whatever is switched on in Stripe. |
