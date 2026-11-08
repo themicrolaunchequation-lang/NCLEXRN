@@ -59,7 +59,13 @@ js = patch(js, '${Fn()} active days in your current streak', '${(n=>n+(1===n?" a
 // Free plan: modules ch1, ch2, prefixes and suffixes. Gate inside the router so links, pushState navigation and typed URLs are all covered.
 js = patch(js, 'library:"library/terms",affixes', 'library:"library/lab",affixes', 'Library opens on the word lab');
 js = patch(js, '"infographics"===a?Ma():', 'window.MedlexV5&&MedlexV5.route(a,i,t)?void 0:"infographics"===a?Ma():', 'Library, Atlas and Practice routes');
-js = patch(js, '(location.hash.slice(1)||"today"),{path:a,params:i}=e;', '(location.hash.slice(1)||"today"),{path:a,params:i}=e;{const g=a.match(/^learn\\/module\\/([^/]+)/);if(g&&window.HCA&&HCA.locked&&HCA.locked("medlex")&&!["ch1","ch2","prefixes","suffixes"].includes(g[1])){history.replaceState(null,"","#learn");setTimeout(()=>HCA.paywall("medlex","this module"));return fi()}}', 'module gate');
+// The only MedLex modules outside the Crown Pass. Used twice: by the in-app module gate
+// below, and by the lesson-page gate in copyCanvas. Keep them in step.
+const FREE_MODULES = ['ch1', 'ch2', 'prefixes', 'suffixes'];
+// The lesson pages those four modules correspond to. Every other lesson page gets the paywall.
+const FREE_LESSON_PAGES = new Set(['basic-word-structure.html', 'building-vocabulary.html', 'prefixes.html', 'suffixes.html']);
+
+js = patch(js, '(location.hash.slice(1)||"today"),{path:a,params:i}=e;', '(location.hash.slice(1)||"today"),{path:a,params:i}=e;{const g=a.match(/^learn\\/module\\/([^/]+)/);if(g&&window.HCA&&HCA.locked&&HCA.locked("medlex")&&!' + JSON.stringify(FREE_MODULES) + '.includes(g[1])){history.replaceState(null,"","#learn");setTimeout(()=>HCA.paywall("medlex","this module"));return fi()}}', 'module gate');
 // ---- My Day + Visual Atlas names, and the data hook the new home screen reads ----
 const patchAll = (text, from, to, label) => { const n = text.split(from).length - 1; if (!n) throw Error(`Patch "${label}" matched 0 times; the source changed.`); return text.split(from).join(to); };
 js = patch(js, '{today:"Today",learn:"Learn",practice:"Practice",progress:"Progress",library:"Library",settings:"Settings",teach:"Teach",infographics:"Infographics"}', '{today:"My Day",learn:"Learn",practice:"Practice",progress:"Progress",library:"Library",settings:"Settings",teach:"Teach",infographics:"Visual Atlas",wordparts:"Word parts"}', 'route names');
@@ -136,10 +142,12 @@ const shellJs = `window.MEDLEX_LEARN=${JSON.stringify(LEARN)};window.MEDLEX_PART
 // Preserve the supplied, self-contained Canvas Studio pages, including Save HTML.
 // Hash only executable scripts; curriculum JSON is data, not executable code.
 const canvasHashes = new Set();
+let gated = 0;
 (function copyCanvas(dir, rel) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.isDirectory()) copyCanvas(path.join(dir, e.name), rel + e.name + '/');
-    else if (e.name.endsWith('.html')) {
+    else if (!e.name.endsWith('.html')) write(rel + e.name, fs.readFileSync(path.join(dir, e.name)));
+    else {
       let data = fs.readFileSync(path.join(dir, e.name));
       // Vercel canonicalizes index.html to the directory URL without a trailing
       // slash. Keep the attachment's relative links rooted in its own folder.
@@ -147,15 +155,34 @@ const canvasHashes = new Set();
       for (const [, attrs, script] of data.toString().matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)) {
         if (!/type=["']application\/json["']/.test(attrs)) canvasHashes.add("'sha256-" + crypto.createHash('sha256').update(script).digest('base64') + "'");
       }
+      // Paywall. Injected after the hash scan above, because these are external scripts and
+      // must not change the Content-Security-Policy. Without it a rebuild silently unlocks
+      // every paid lesson, which is what happened before this was part of the build.
+      if (rel === 'learn/canvas/lessons/' && !FREE_LESSON_PAGES.has(e.name)) {
+        const head = '</style></head>';
+        if (!data.toString().includes(head)) throw Error(`Cannot gate ${e.name}: no "${head}" to inject before`);
+        data = Buffer.from(data.toString().replace(head, '</style><meta name="hca-app" content="medlex"><script defer src="/assets/js/crown-account.js"></script><script defer src="/medlex/learn/canvas/lesson-gate.js"></script>\n</head>'));
+        gated++;
+      }
       write(rel + e.name, data);
     }
   }
 })('canvas', 'learn/canvas/');
+// Fail loudly rather than ship an ungated lesson. If the lesson set changes, this stops the
+// build until FREE_LESSON_PAGES is updated on purpose.
+const lessonCount = fs.readdirSync('canvas/lessons').filter((f) => f.endsWith('.html')).length;
+if (gated !== lessonCount - FREE_LESSON_PAGES.size) throw Error(`Gated ${gated} lesson pages; expected ${lessonCount - FREE_LESSON_PAGES.size} of ${lessonCount}`);
+if (!fs.existsSync(path.join(OUT, 'learn/canvas/lesson-gate.js'))) throw Error('lesson-gate.js missing from the build output');
 const hostingPath = path.resolve('../../site/vercel.json');
 const hosting = JSON.parse(fs.readFileSync(hostingPath, 'utf8'));
+// The lesson paywall calls Supabase through crown-account.js, so the Canvas CSP has to allow it.
+// Read the origin from the site's own config rather than hardcoding it: hardcoding 'self' alone
+// here is what silently blocked the plan check whenever anyone rebuilt.
+const SUPABASE_ORIGIN = (read('../../site/assets/js/config.js').match(/https:\/\/[a-z0-9]+\.supabase\.co/) || [])[0];
+if (!SUPABASE_ORIGIN) throw Error('No Supabase origin found in site/assets/js/config.js; the Canvas CSP would block the plan check');
 const canvasHeader = hosting.headers.find(h => h.source === '/medlex/learn/canvas(/.*)?');
 if (!canvasHeader) throw Error('Missing Canvas Studio hosting headers');
-canvasHeader.headers.find(h => h.key === 'Content-Security-Policy').value = `default-src 'self'; script-src 'self' ${[...canvasHashes].sort().join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'`;
+canvasHeader.headers.find(h => h.key === 'Content-Security-Policy').value = `default-src 'self'; script-src 'self' ${[...canvasHashes].sort().join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' ${SUPABASE_ORIGIN}; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'`;
 fs.writeFileSync(hostingPath, JSON.stringify(hosting, null, 2) + '\n');
 for (const f of fs.readdirSync(PUBLIC + '/infographics')) write('infographics/' + f, fs.readFileSync(`${PUBLIC}/infographics/${f}`));
 for (const f of fs.readdirSync('web/thumbs')) write('infographics/t/' + f, fs.readFileSync(`web/thumbs/${f}`));
