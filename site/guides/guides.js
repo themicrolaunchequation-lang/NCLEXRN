@@ -14,7 +14,7 @@
       const ok = b.hasAttribute('data-ok'); if (ok) right++;
       b.classList.add(ok ? 'ok' : 'no'); $$('button[data-ok]', q).forEach((x) => x.classList.add('ok'));
       const why = $('.g-why', q); if (why) why.hidden = false;
-      if (score && done === total) score.textContent = `You got ${right} out of ${total}.` + (right === total ? ' Well done.' : ' Try the free MedLex lessons to lock it in.');
+      if (score && done === total) score.textContent = `You got ${right} out of ${total}.` + (right === total ? ' Well done.' : ' ' + (quiz.dataset.next || 'Try the free MedLex lessons to lock it in.'));
     });
   }
 
