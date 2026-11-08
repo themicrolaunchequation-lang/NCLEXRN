@@ -339,6 +339,8 @@ ${shellCss}
 const body = html.search(/<body[\s>]/);
 if (body < 0) throw Error('No <body> found.');
 html = html.slice(0, body) + head + html.slice(body);
+// Cookie-free Vercel Web Analytics (same origin, no cookies).
+html = html.replace('</head>', '<script defer src="/_vercel/insights/script.js"></script>\n</head>');
 fs.writeFileSync(path.join(OUT, 'index.html'), html);
 
 // The shell is cached on install; engines and pictures are cached the first time they are used.

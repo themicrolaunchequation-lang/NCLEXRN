@@ -157,6 +157,7 @@ write('index.html', `<!doctype html>
 <script defer src="/assets/js/crown-account.js"></script>
 <script defer src="/assets/crown-help/crown-help.js"></script>
 <script defer src="${BASE}${jsName}"></script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>${markup}<noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:2rem auto;padding:0 1rem">Serein needs JavaScript to run. Return to <a href="${HOME}">Healthcare Crown Academy</a>.</p></noscript>
 </body></html>
