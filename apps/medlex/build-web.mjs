@@ -221,6 +221,7 @@ write('index.html', `<!DOCTYPE html>
 <script defer src="${BASE}${hookName}"></script>
 <script defer src="${BASE}${shellName}"></script>
 <script defer src="${BASE}${jsName}"></script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>${body}<noscript><p style="font:16px/1.6 system-ui;max-width:40rem;margin:2rem auto;padding:0 1rem">MedLex needs JavaScript to run. Return to <a href="${HOME}">Healthcare Crown Academy</a>.</p></noscript>
 </body>
