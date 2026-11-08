@@ -14,7 +14,7 @@ const SITE = 'https://healthcarecrownacademy.co.uk'
 // The contact named on the terms, refunds and privacy pages. Every email uses it, including the reply-to address.
 const CONTACT = 'hello@healthcarecrownacademy.co.uk'
 const HOOK_URL = `${env('SUPABASE_URL')}/functions/v1/crown-billing?hook=1`
-const HOOK_EVENTS = ['checkout.session.completed', 'checkout.session.async_payment_succeeded', 'customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'charge.refunded'] as const
+const HOOK_EVENTS = ['checkout.session.completed', 'checkout.session.async_payment_succeeded', 'customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted', 'customer.subscription.trial_will_end', 'charge.refunded'] as const
 const NAMES: Record<string, string> = { crown: 'Crown Pass', medlex: 'MedLex Premium', carecraft: 'Carecraft Premium', lumen: 'Lumen Academy', serein: 'Serein' }
 const CONSENT_VERSION = '2026-10-29'
 const CONSENT_TEXT = 'You asked for access to start now, during your 14-day cancellation period. Cancel within that period for a full refund. Details: healthcarecrownacademy.co.uk/refunds'
@@ -434,6 +434,30 @@ async function ackEmail(to: string | undefined, name: string, refundCents: numbe
   await sendEmail(to, `Cancellation received: ${name}`, html, `ack-${name}-${to}-${Math.floor(at / 60000)}`)
 }
 
+// Trial ending reminder (card network requirement, and our own promise on the plans page).
+// Stripe's built-in reminder goes out 7 days before a trial ends, which for our 7-day trial would
+// land at sign-up and tell the person nothing. So we send our own from trial_will_end, which the
+// Dashboard sets to 3 days before. It must state the exact amount, the date and how to stop it.
+async function trialEndingEmail(sub: Stripe.Subscription, to: string) {
+  if (!to || !sub.trial_end) return
+  const item = sub.items.data[0], price = item?.price
+  const amount = price?.unit_amount ?? 0, cur = price?.currency ?? sub.currency ?? 'gbp'
+  const when = day2(sub.trial_end * 1000)
+  const plan = String(sub.metadata?.plan ?? ''), name = NAMES[plan.split('-')[0]] ?? 'Crown Pass'
+  const card = sub.default_payment_method
+  const last4 = typeof card === 'object' && card && 'card' in card ? (card as Stripe.PaymentMethod).card?.last4 ?? null : null
+  const html = `<!doctype html><html><body style="margin:0;background:#f4f1ea;font-family:Arial,Helvetica,sans-serif;color:#10253a"><table role="presentation" width="100%"><tr><td align="center" style="padding:24px 12px"><table role="presentation" width="100%" style="max-width:580px;background:#fff;border-radius:14px;padding:28px"><tr><td>
+<p style="margin:0;color:#b8862b;font-size:12px;font-weight:700;letter-spacing:.12em">HEALTHCARE CROWN ACADEMY</p>
+<h1 style="margin:8px 0 12px;font-size:24px">Your free trial ends on ${esc(when)}</h1>
+<p style="font-size:15px;margin:0 0 10px">Your free trial of <b>${esc(name)}</b> ends on <b>${esc(when)}</b>. On that day we will charge <b>${esc(money2(amount, cur))}</b>${last4 ? ` to the card ending ${esc(last4)}` : ''}, and then the same amount each ${esc(price?.recurring?.interval === 'year' ? 'year' : 'month')} until you stop it.</p>
+<p style="font-size:15px;margin:0 0 10px">You do not need to do anything if you want to carry on.</p>
+<p style="font-size:15px;margin:0 0 10px"><b>If you do not want to be charged</b>, cancel before ${esc(when)} on your account page: https://healthcarecrownacademy.co.uk/account. Cancelling a free trial costs nothing and takes one click. You can also reply to this email or write to ${CONTACT}.</p>
+<p style="font-size:15px;margin:0 0 10px">Your 14-day cancellation rights are unchanged: https://healthcarecrownacademy.co.uk/refunds</p>
+<p style="margin:16px 0 0;font-size:12px;color:#7a8794">HEALTHCARE CROWN ACADEMY LTD, company 17501904. 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. ${CONTACT}</p>
+</td></tr></table></td></tr></table></body></html>`
+  await sendEmail(to, `Your free trial ends on ${when}`, html, `trial-end-${sub.id}-${sub.trial_end}`)
+}
+
 // ---------- Close my account ----------
 // Personal details and learning data are deleted; payment records (subscriptions, passes, refunds, Stripe customer)
 // are kept for 6 years for tax law, linked only to a closed, nameless account. The sign-in is disabled.
@@ -480,9 +504,14 @@ async function hook(req: Request) {
     await syncSubscription(sub)
     // A card-step subscription whose first payment needed the bank's approval: confirm the order once it is paid.
     const was = (event.data as { previous_attributes?: { status?: string } }).previous_attributes?.status
+    const subEmail = typeof sub.customer === 'object' && !('deleted' in sub.customer && sub.customer.deleted) ? (sub.customer as Stripe.Customer).email ?? '' : ''
     if (event.type === 'customer.subscription.updated' && was === 'incomplete' && ['active', 'trialing'].includes(sub.status) && sub.metadata?.price_source === 'card_country') {
-      const email = typeof sub.customer === 'object' && !('deleted' in sub.customer && sub.customer.deleted) ? (sub.customer as Stripe.Customer).email ?? '' : ''
-      await confirmationEmail(orderFromSubscription(sub, email)).catch((e) => console.error('confirmation email', e))
+      await confirmationEmail(orderFromSubscription(sub, subEmail)).catch((e) => console.error('confirmation email', e))
+    }
+    // Tell the person what is about to be charged, before it is charged.
+    if (event.type === 'customer.subscription.trial_will_end' && sub.status === 'trialing' && !sub.cancel_at_period_end) {
+      const full = await stripe!.subscriptions.retrieve(sub.id, { expand: ['default_payment_method'] })
+      await trialEndingEmail(full, subEmail).catch((e) => console.error('trial ending email', e))
     }
   } else if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
     const s = await stripe!.checkout.sessions.retrieve(o.id as string)
