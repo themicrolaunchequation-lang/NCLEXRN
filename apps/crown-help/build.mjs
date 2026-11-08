@@ -106,6 +106,7 @@ const EXTRA = {
   'G-10': 'use it without internet, no internet, no wifi on placement, works offline',
   'B-04': 'took money twice, charged two times, double payment, took money from my account',
   'P-09': 'licence for my nurses, licences for staff, licence for 20 nurses, accounts for my team',
+  'P-05': 'how much is the crown pass in my country, crown pass price in my country, how much is the crown pass in nigeria, crown pass price nigeria, price in my country, cheaper in my country, country pricing, is there a discount for my country',
   'N-01': 'dha questions, doh questions, qatar questions, snle questions, gulf questions, what is the gulf studio, gulf region nursing, snle app, saudi nursing exam app, prometric',
   'N-05': 'one pass for all exams, dha and snle one pass, two exams one pass',
   'N-13': 'how long is the gulf pass, gulf pass length, gulf pass duration',
