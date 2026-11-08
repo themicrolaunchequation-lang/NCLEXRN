@@ -9078,14 +9078,16 @@ function HCA5ProvidersDialog({ onClose }) {
   const forgetAll = () => { commit({ order: config.order, providers: Object.fromEntries(Object.entries(config.providers).map(([id, p]) => [id, id === 'academy' ? p : { ...p, key: '', enabled: false }])) }); ctx.toast('All AI keys removed from this device. Academy AI is unchanged.'); };
   const ready = HCA5Ready();
   const own = config.order.filter(id => id !== 'academy'), row = id => HC(HCA5ProviderRow, { key: id, id, index: config.order.indexOf(id), count: config.order.length, config, update, move });
-  return HC(A, { title: 'AI for your studies.', eyebrow: 'ACADEMY AI OR YOUR OWN KEY', onClose, className: 'hca5-ai-dialog',
+  const academyOn = window.HCA6_ACADEMY_AI === true;
+  return HC(A, { title: 'AI for your studies.', eyebrow: academyOn ? 'ACADEMY AI OR YOUR OWN KEY' : 'USE YOUR OWN AI KEY', onClose, className: 'hca5-ai-dialog',
     footer: HC(_.Fragment, {}, HCABtn('Remove all keys', forgetAll, 'secondary', 'delete-bin-line'), HCABtn('Done', onClose, 'primary', 'check-line')) },
-    HC('p', {}, 'Two ways to get AI help. Use either, or both. Lumen tries them in the order shown. When one reaches its limit or fails, it moves to the next, then to browser AI, then to source tools that need no AI.'),
+    HC('p', {}, academyOn ? 'Two ways to get AI help. Use either, or both. Lumen tries them in the order shown.' : 'Lumen works fully without AI. If you want AI help, add your own key from a provider such as OpenRouter, OpenAI, Groq or Google. Lumen tries your keys in the order shown.'),
+    false && HC('p', {}, 'Two ways to get AI help. Use either, or both. Lumen tries them in the order shown. When one reaches its limit or fails, it moves to the next, then to browser AI, then to source tools that need no AI.'),
     HC('div', { className: 'hca5-chain', 'aria-label': 'Fallback order' },
       [...ready.map(id => HCA5Provider(id).name), 'Browser AI', 'Free local AI (if downloaded)', 'Source tools'].map((n, i, a) => HC(_.Fragment, { key: n }, HC('span', { className: i < ready.length ? 'live' : '' }, n), i < a.length - 1 && HCAIcon('arrow-right-s-line')))),
     HC('div', { className: 'hca-info-banner hca5-warning' }, HCAIcon('shield-check-line'),
       HC('p', {}, HC('strong', {}, 'Never send patient-identifiable information. '), 'Only the page or passage you choose is sent, and only after you confirm.')),
-    HC('section', { className: 'hca6-path', 'aria-labelledby': 'hca6-path-academy' },
+    academyOn && HC('section', { className: 'hca6-path', 'aria-labelledby': 'hca6-path-academy' },
       HC('h3', { id: 'hca6-path-academy' }, 'Academy AI ', HC('span', {}, '(included with your plan)')),
       HC('ul', { className: 'hca5-providers' }, row('academy')),
       HC('p', { className: 'hca-small' }, 'You sign in once with your Healthcare Crown account; Lumen does not ask for or keep a separate password. Your chosen passage goes to the Academy’s AI service, which passes it to an AI provider (OpenAI, with Groq or Gemini as backup) to write the answer. The service does not log your text. To save cost, answers to structured requests such as quiz questions and recall cards are kept for up to 30 days, without your name or account, and reused if someone sends exactly the same text. A kept answer can quote your passage.')),
@@ -9294,13 +9296,23 @@ const HCA6Academy = {
   account: 'https://account.healthcarecrownacademy.co.uk/en/account',
 };
 
-HCA5Providers.unshift({
-  id: 'academy', name: 'Academy AI', kind: 'academy', model: 'academy', tier: 'academy',
-  free: 'Included with your Healthcare Crown account, with a daily allowance. No key to set up.',
-  privacy: '',
-});
-if (!HCA5Store.config.order.includes('academy')) HCA5Store.config.order.unshift('academy');
-if (!HCA5Store.config.providers.academy) HCA5Store.config.providers.academy = { enabled: true };
+/* Academy AI is switched off (owner decision, 27 Oct 2026): the Academy no longer sends text to an AI provider.
+   People can still add their own key; it stays on their device and goes only to the provider they choose.
+   To bring Academy AI back, set HCA6_ACADEMY_AI = true (and update the privacy notice and DPIA first). */
+const HCA6_ACADEMY_AI = false;
+window.HCA6_ACADEMY_AI = HCA6_ACADEMY_AI;
+if (HCA6_ACADEMY_AI) {
+  HCA5Providers.unshift({
+    id: 'academy', name: 'Academy AI', kind: 'academy', model: 'academy', tier: 'academy',
+    free: 'Included with your Healthcare Crown account, with a daily allowance. No key to set up.',
+    privacy: '',
+  });
+  if (!HCA5Store.config.order.includes('academy')) HCA5Store.config.order.unshift('academy');
+  if (!HCA5Store.config.providers.academy) HCA5Store.config.providers.academy = { enabled: true };
+} else {
+  HCA5Store.config.order = HCA5Store.config.order.filter(id => id !== 'academy');
+  delete HCA5Store.config.providers.academy;
+}
 
 /* ---------- The shared account ----------
    state: 'checking' | 'out' (not signed in, or Lumen cannot see the account script) | 'in' | 'offline' (could not check) */
