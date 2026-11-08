@@ -1,0 +1,980 @@
+{
+ "source": "Public free questions (numbers 1 to 10) from the Gulf Nursing Licensure Studio build, branch claude/gulf-crosswalk. Paid questions are never included.",
+ "shared": [
+  {
+   "id": "Q0001",
+   "stem": "A nurse receives handoff on four patients. Which patient should be assessed first?",
+   "options": [
+    {
+     "label": "A",
+     "text": "A postoperative patient with incisional pain 7/10 thirty minutes after analgesia."
+    },
+    {
+     "label": "B",
+     "text": "A patient with COPD whose SpO2 is 91% on prescribed oxygen and unchanged from baseline."
+    },
+    {
+     "label": "C",
+     "text": "A patient 2 hours after extubation with new inspiratory stridor and increasing retractions."
+    },
+    {
+     "label": "D",
+     "text": "A patient with an NG tube reporting nausea and 150 mL green drainage in 2 hours."
+    }
+   ],
+   "key": "C",
+   "answerText": "A patient 2 hours after extubation with new inspiratory stridor and increasing retractions.",
+   "rationale": "New stridor after extubation suggests an evolving upper-airway obstruction.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0002",
+   "stem": "A patient with pneumonia has SpO2 84%, RR 34/min, and accessory-muscle use. What should the nurse do first?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Complete a detailed pain assessment before changing the respiratory plan."
+    },
+    {
+     "label": "B",
+     "text": "Encourage oral fluids and reassess the respiratory rate in 30 minutes."
+    },
+    {
+     "label": "C",
+     "text": "Position the patient upright, apply appropriate oxygen, and rapidly reassess breathing and response."
+    },
+    {
+     "label": "D",
+     "text": "Obtain a sputum specimen before starting an intervention that may alter respiratory findings."
+    }
+   ],
+   "key": "C",
+   "answerText": "Position the patient upright, apply appropriate oxygen, and rapidly reassess breathing and response.",
+   "rationale": "The patient has an immediate breathing problem requiring support and reassessment.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0003",
+   "stem": "A patient with an upper GI bleed becomes pale and restless; BP falls to 82/48 mmHg and HR rises to 132/min. What should the nurse do first?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Call for urgent help, support circulation, obtain rapid vascular access as appropriate, and reassess perfusion."
+    },
+    {
+     "label": "B",
+     "text": "Ask the patient to rate abdominal pain before initiating other care."
+    },
+    {
+     "label": "C",
+     "text": "Administer the scheduled proton-pump inhibitor and recheck blood pressure in one hour."
+    },
+    {
+     "label": "D",
+     "text": "Collect a stool specimen for occult blood before contacting the clinical team."
+    }
+   ],
+   "key": "A",
+   "answerText": "Call for urgent help, support circulation, obtain rapid vascular access as appropriate, and reassess perfusion.",
+   "rationale": "Hypotension, tachycardia, pallor, and restlessness with bleeding indicate circulatory instability.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0004",
+   "stem": "A patient suddenly becomes difficult to arouse. Airway is patent, SpO2 96%, RR 16/min, and BP 126/74 mmHg. What should the nurse do next?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Give a rapid IV fluid bolus despite normal perfusion and no evidence of volume loss."
+    },
+    {
+     "label": "B",
+     "text": "Delay assessment because oxygenation and blood pressure remain normal."
+    },
+    {
+     "label": "C",
+     "text": "Start chest compressions because reduced responsiveness is sufficient to diagnose cardiac arrest."
+    },
+    {
+     "label": "D",
+     "text": "Perform a rapid neurologic assessment, check bedside glucose, and escalate the acute change in consciousness."
+    }
+   ],
+   "key": "D",
+   "answerText": "Perform a rapid neurologic assessment, check bedside glucose, and escalate the acute change in consciousness.",
+   "rationale": "With airway, breathing, and circulation adequate, the new neurologic change is the next priority.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0005",
+   "stem": "A trauma patient has gurgling respirations and blood in the mouth. Which action is most appropriate?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Open and clear the airway with suction while maintaining appropriate cervical-spine precautions."
+    },
+    {
+     "label": "B",
+     "text": "Obtain laboratory specimens before attempting to clear the airway."
+    },
+    {
+     "label": "C",
+     "text": "Administer analgesia before performing airway interventions."
+    },
+    {
+     "label": "D",
+     "text": "Inspect both legs for deformity before addressing the noisy respirations."
+    }
+   ],
+   "key": "A",
+   "answerText": "Open and clear the airway with suction while maintaining appropriate cervical-spine precautions.",
+   "rationale": "Gurgling with oral blood indicates threatened airway patency.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0006",
+   "stem": "A patient with chronic hypercapnic respiratory disease deteriorates and requires oxygen. Which approach is most appropriate?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Titrate oxygen to the prescribed or clinically appropriate target and reassess work of breathing, mentation, and saturation."
+    },
+    {
+     "label": "B",
+     "text": "Withhold oxygen until an arterial blood gas confirms the exact cause."
+    },
+    {
+     "label": "C",
+     "text": "Give a rapid crystalloid bolus first because respiratory deterioration implies hypovolemia."
+    },
+    {
+     "label": "D",
+     "text": "Set oxygen automatically to achieve 100% saturation regardless of the patient condition."
+    }
+   ],
+   "key": "A",
+   "answerText": "Titrate oxygen to the prescribed or clinically appropriate target and reassess work of breathing, mentation, and saturation.",
+   "rationale": "Oxygen therapy should treat hypoxemia while being individualized and reassessed.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0007",
+   "stem": "After supporting a postoperative patient with acute dyspnea, what should the nurse do next?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Reassess airway and breathing before moving on to circulation and neurologic status."
+    },
+    {
+     "label": "B",
+     "text": "Focus only on the original abnormal vital sign rather than reassessing the patient."
+    },
+    {
+     "label": "C",
+     "text": "Move directly to discharge planning because the immediate symptom was treated."
+    },
+    {
+     "label": "D",
+     "text": "Document the intervention and wait for the next routine observation round."
+    }
+   ],
+   "key": "A",
+   "answerText": "Reassess airway and breathing before moving on to circulation and neurologic status.",
+   "rationale": "After treatment, reassess from the beginning to confirm earlier priorities remain controlled.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0008",
+   "stem": "A patient with severe asthma has loud wheezing, then becomes quieter while remaining tachypneic and exhausted. What is the priority interpretation?",
+   "options": [
+    {
+     "label": "A",
+     "text": "The quieter chest indicates bronchodilator therapy has been effective."
+    },
+    {
+     "label": "B",
+     "text": "The patient is ready for discharge teaching because wheezing is no longer prominent."
+    },
+    {
+     "label": "C",
+     "text": "The reduced breath sounds may reflect worsening airflow obstruction and impending respiratory failure."
+    },
+    {
+     "label": "D",
+     "text": "The change is most consistent with anxiety because the respiratory rate is high."
+    }
+   ],
+   "key": "C",
+   "answerText": "The reduced breath sounds may reflect worsening airflow obstruction and impending respiratory failure.",
+   "rationale": "A quiet chest in severe asthma can represent critically reduced airflow rather than improvement.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0009",
+   "stem": "A septic patient is febrile and confused. Which finding requires the most immediate response?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Poor appetite and generalized weakness for two days."
+    },
+    {
+     "label": "B",
+     "text": "BP 78/42 mmHg with cool mottled skin and delayed capillary refill."
+    },
+    {
+     "label": "C",
+     "text": "Temperature 39.1 C with chills that began 30 minutes ago."
+    },
+    {
+     "label": "D",
+     "text": "WBC 17,000/mm3 reported with morning laboratory results."
+    }
+   ],
+   "key": "B",
+   "answerText": "BP 78/42 mmHg with cool mottled skin and delayed capillary refill.",
+   "rationale": "Profound hypotension with poor perfusion is an immediate circulation threat.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "Q0010",
+   "stem": "A patient suddenly becomes dyspneic after central-line removal. Which action should the nurse take first?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Apply oxygen, position the patient as indicated by the suspected complication, and activate urgent clinical help."
+    },
+    {
+     "label": "B",
+     "text": "Obtain a complete medication history before changing the plan."
+    },
+    {
+     "label": "C",
+     "text": "Prepare discharge instructions while waiting for review."
+    },
+    {
+     "label": "D",
+     "text": "Send a routine message to the team and reassess at the next vital-sign round."
+    }
+   ],
+   "key": "A",
+   "answerText": "Apply oxygen, position the patient as indicated by the suspected complication, and activate urgent clinical help.",
+   "rationale": "Sudden respiratory deterioration requires immediate oxygenation support and escalation while the cause is assessed.",
+   "pearl": "Treat the earliest unresolved life threat, then reassess from A again.",
+   "trap": "Do not use ABCDE Priority Framework as a rigid slogan; compare the patient's actual severity, timing, safety, scope, and response.",
+   "domain": "Nursing Fundamentals"
+  }
+ ],
+ "dubai": [
+  {
+   "id": "DU-001",
+   "stem": "A DHA-licensed nurse is allocated a nonurgent procedure that the nurse has never been trained to perform. What is the best response?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Ask the patient to accept the additional risk."
+    },
+    {
+     "label": "B",
+     "text": "Explain the competence gap and arrange a suitably qualified practitioner."
+    },
+    {
+     "label": "C",
+     "text": "Proceed while a colleague gives instructions by telephone."
+    },
+    {
+     "label": "D",
+     "text": "Perform it because a prescriber has requested it."
+    }
+   ],
+   "key": "B",
+   "answerText": "Explain the competence gap and arrange a suitably qualified practitioner.",
+   "rationale": "The request does not establish competence. Arranging qualified help protects the patient without abandoning care.",
+   "pearl": "DHA practice: Explain the competence gap and arrange a suitably qualified practitioner.",
+   "trap": "Remote instructions do not establish assessed competence.",
+   "domain": "Nursing Management and Leadership"
+  },
+  {
+   "id": "DU-002",
+   "stem": "A nurse supervising care in a DHA-licensed facility plans to delegate a routine clinical task. Which check is essential?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Choose the worker who agrees to accept responsibility."
+    },
+    {
+     "label": "B",
+     "text": "Confirm that the task fits the worker’s authorized role and demonstrated competence."
+    },
+    {
+     "label": "C",
+     "text": "Choose the worker who has the lightest workload."
+    },
+    {
+     "label": "D",
+     "text": "Use the worker who has observed the task most often."
+    }
+   ],
+   "key": "B",
+   "answerText": "Confirm that the task fits the worker’s authorized role and demonstrated competence.",
+   "rationale": "Willingness and availability do not establish authority or ability. Delegation must fit the person and the task.",
+   "pearl": "DHA practice: Confirm that the task fits the worker’s authorized role and demonstrated competence.",
+   "trap": "Workload matters only after role and ability are established.",
+   "domain": "Nursing Management and Leadership"
+  },
+  {
+   "id": "DU-003",
+   "stem": "In Dubai, a nurse delegates an authorized task to a competent team member. Which follow-up is most appropriate?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Remove the task from handover because it was delegated."
+    },
+    {
+     "label": "B",
+     "text": "Check the reported outcome and provide supervision matched to the task."
+    },
+    {
+     "label": "C",
+     "text": "Review the outcome only if the patient makes a complaint."
+    },
+    {
+     "label": "D",
+     "text": "Assume completion because the worker accepted the task."
+    }
+   ],
+   "key": "B",
+   "answerText": "Check the reported outcome and provide supervision matched to the task.",
+   "rationale": "Delegation does not end the need for oversight. Outcome review helps identify care that needs adjustment.",
+   "pearl": "DHA practice: Check the reported outcome and provide supervision matched to the task.",
+   "trap": "Waiting for a complaint misses earlier signs of incomplete care.",
+   "domain": "Nursing Management and Leadership"
+  },
+  {
+   "id": "DU-004",
+   "stem": "In a DHA-licensed unit, a patient awaiting an elective procedure cannot explain what the procedure involves despite a signed form. What should the nurse do first?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Ask a relative to confirm that the procedure is acceptable."
+    },
+    {
+     "label": "B",
+     "text": "Repeat the procedure name and request another signature."
+    },
+    {
+     "label": "C",
+     "text": "Pause preparation and arrange an understandable explanation before consent is confirmed."
+    },
+    {
+     "label": "D",
+     "text": "Continue because the signed form is already in the record."
+    }
+   ],
+   "key": "C",
+   "answerText": "Pause preparation and arrange an understandable explanation before consent is confirmed.",
+   "rationale": "A signature alone does not show informed agreement. The misunderstanding must be addressed before the elective procedure proceeds.",
+   "pearl": "DHA practice: Pause preparation and arrange an understandable explanation before consent is confirmed.",
+   "trap": "A form does not resolve the stated misunderstanding.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "DU-005",
+   "stem": "A capable adult in Dubai asks to discuss an alternative treatment. A family member prefers the proposed plan. What should the nurse do?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Support the patient in discussing options with the treating clinician."
+    },
+    {
+     "label": "B",
+     "text": "Ask the family to decide which option will be discussed."
+    },
+    {
+     "label": "C",
+     "text": "Discourage further questions because a plan is documented."
+    },
+    {
+     "label": "D",
+     "text": "Ask the patient to decide without further information."
+    }
+   ],
+   "key": "A",
+   "answerText": "Support the patient in discussing options with the treating clinician.",
+   "rationale": "Care should support the patient’s informed participation. Family involvement should not prevent the patient from receiving information.",
+   "pearl": "DHA practice: Support the patient in discussing options with the treating clinician.",
+   "trap": "Family preference does not displace a capable adult’s voice.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "DU-006",
+   "stem": "In a Dubai clinic, a caller requests an adult patient’s test results and claims to be a relative. Permission to disclose has not been established. What is best?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Give the results if the person knows the patient’s birth date."
+    },
+    {
+     "label": "B",
+     "text": "Ask another visitor to confirm the relationship."
+    },
+    {
+     "label": "C",
+     "text": "Verify identity and the authority to receive information before disclosure."
+    },
+    {
+     "label": "D",
+     "text": "Share only the abnormal results to limit disclosure."
+    }
+   ],
+   "key": "C",
+   "answerText": "Verify identity and the authority to receive information before disclosure.",
+   "rationale": "The request alone does not authorize disclosure. Identity and a valid basis for access must both be established.",
+   "pearl": "DHA practice: Verify identity and the authority to receive information before disclosure.",
+   "trap": "Selected results are still confidential information.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "DU-007",
+   "stem": "In a Dubai ward, a stable patient’s sensitive history is being discussed within hearing of unrelated visitors. What is the best action?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Move the conversation to a private setting with the patient’s agreement."
+    },
+    {
+     "label": "B",
+     "text": "Continue quietly while using the patient’s room number."
+    },
+    {
+     "label": "C",
+     "text": "Ask visitors to ignore the conversation and continue."
+    },
+    {
+     "label": "D",
+     "text": "Omit the patient’s name but discuss the full history."
+    }
+   ],
+   "key": "A",
+   "answerText": "Move the conversation to a private setting with the patient’s agreement.",
+   "rationale": "Avoidable exposure of personal information should be reduced. Omitting a name does not make an identifiable bedside conversation private.",
+   "pearl": "DHA practice: Move the conversation to a private setting with the patient’s agreement.",
+   "trap": "Room context can still identify the patient.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "DU-008",
+   "stem": "A stable patient in a DHA-licensed unit requests a same-gender practitioner for an intimate examination. What is the best initial response?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Ask a family member to persuade the patient to withdraw it."
+    },
+    {
+     "label": "B",
+     "text": "Cancel all planned care until a same-gender team is available."
+    },
+    {
+     "label": "C",
+     "text": "Explore the preference and arrange suitable care where feasible without delaying urgent needs."
+    },
+    {
+     "label": "D",
+     "text": "Assume the request applies to every future procedure."
+    }
+   ],
+   "key": "C",
+   "answerText": "Explore the preference and arrange suitable care where feasible without delaying urgent needs.",
+   "rationale": "Preferences should be discussed individually and respected where feasible. The nurse must also account for the urgency of care.",
+   "pearl": "DHA practice: Explore the preference and arrange suitable care where feasible without delaying urgent needs.",
+   "trap": "An individual preference must not be generalized without discussion.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "DU-009",
+   "stem": "After administering prescribed analgesia in Dubai, which record best supports safe continuing care?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Record that all routine care was completed during the shift."
+    },
+    {
+     "label": "B",
+     "text": "Record the medicine only if pain remains severe."
+    },
+    {
+     "label": "C",
+     "text": "Record the intended response before reassessment occurs."
+    },
+    {
+     "label": "D",
+     "text": "Record the assessment, medicine given, time, and reassessed response."
+    }
+   ],
+   "key": "D",
+   "answerText": "Record the assessment, medicine given, time, and reassessed response.",
+   "rationale": "The record should show what was done and how the patient responded. Intended outcomes must not be recorded as observed facts.",
+   "pearl": "DHA practice: Record the assessment, medicine given, time, and reassessed response.",
+   "trap": "A broad completion statement omits important clinical details.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "DU-010",
+   "stem": "A patient in Dubai needs more oxygen than earlier in the shift. Which handover is most appropriate?",
+   "options": [
+    {
+     "label": "A",
+     "text": "List completed routine tasks before ending the handover."
+    },
+    {
+     "label": "B",
+     "text": "Describe the change, current observations, actions taken, and required follow-up."
+    },
+    {
+     "label": "C",
+     "text": "Describe the admission diagnosis and leave changes in the chart."
+    },
+    {
+     "label": "D",
+     "text": "Report that the patient is comfortable without mentioning oxygen."
+    }
+   ],
+   "key": "B",
+   "answerText": "Describe the change, current observations, actions taken, and required follow-up.",
+   "rationale": "A new oxygen requirement is a relevant change in condition. The receiving team needs the current situation and outstanding actions.",
+   "pearl": "DHA practice: Describe the change, current observations, actions taken, and required follow-up.",
+   "trap": "The chart does not replace communication of a significant change.",
+   "domain": "Nursing Fundamentals"
+  }
+ ],
+ "qatar": [
+  {
+   "id": "QA-001",
+   "stem": "In a Qatar ward, an RGN is asked to perform an unfamiliar elective procedure. The nurse has no assessed competence in it. What is the best response?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Proceed while a colleague gives instructions by telephone."
+    },
+    {
+     "label": "B",
+     "text": "Perform it because a prescriber has requested it."
+    },
+    {
+     "label": "C",
+     "text": "Ask the patient to accept the additional risk."
+    },
+    {
+     "label": "D",
+     "text": "Explain the competence gap and arrange a suitably qualified practitioner."
+    }
+   ],
+   "key": "D",
+   "answerText": "Explain the competence gap and arrange a suitably qualified practitioner.",
+   "rationale": "The request does not establish competence. Arranging qualified help protects the patient without abandoning care.",
+   "pearl": "Qatar RGN practice: Explain the competence gap and arrange a suitably qualified practitioner.",
+   "trap": "Remote instructions do not establish assessed competence.",
+   "domain": "Nursing Management and Leadership"
+  },
+  {
+   "id": "QA-002",
+   "stem": "A Qatar RGN plans to delegate a stable patient’s scheduled care task. What must be checked before choosing the team member?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Choose the worker who agrees to accept responsibility."
+    },
+    {
+     "label": "B",
+     "text": "Confirm that the task fits the worker’s authorized role and demonstrated competence."
+    },
+    {
+     "label": "C",
+     "text": "Choose the worker who has the lightest workload."
+    },
+    {
+     "label": "D",
+     "text": "Use the worker who has observed the task most often."
+    }
+   ],
+   "key": "B",
+   "answerText": "Confirm that the task fits the worker’s authorized role and demonstrated competence.",
+   "rationale": "Willingness and availability do not establish authority or ability. Delegation must fit the person and the task.",
+   "pearl": "Qatar RGN practice: Confirm that the task fits the worker’s authorized role and demonstrated competence.",
+   "trap": "Workload matters only after role and ability are established.",
+   "domain": "Nursing Management and Leadership"
+  },
+  {
+   "id": "QA-003",
+   "stem": "In Qatar, an RGN has delegated care to a competent colleague. Which action best meets the RGN’s ongoing responsibility?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Remove the task from handover because it was delegated."
+    },
+    {
+     "label": "B",
+     "text": "Check the reported outcome and provide supervision matched to the task."
+    },
+    {
+     "label": "C",
+     "text": "Review the outcome only if the patient makes a complaint."
+    },
+    {
+     "label": "D",
+     "text": "Assume completion because the worker accepted the task."
+    }
+   ],
+   "key": "B",
+   "answerText": "Check the reported outcome and provide supervision matched to the task.",
+   "rationale": "Delegation does not end the need for oversight. Outcome review helps identify care that needs adjustment.",
+   "pearl": "Qatar RGN practice: Check the reported outcome and provide supervision matched to the task.",
+   "trap": "Waiting for a complaint misses earlier signs of incomplete care.",
+   "domain": "Nursing Management and Leadership"
+  },
+  {
+   "id": "QA-004",
+   "stem": "Before an elective procedure in Qatar, a patient says, “I signed because I thought this was a blood test.” What should the nurse do first?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Ask a relative to confirm that the procedure is acceptable."
+    },
+    {
+     "label": "B",
+     "text": "Repeat the procedure name and request another signature."
+    },
+    {
+     "label": "C",
+     "text": "Pause preparation and arrange an understandable explanation before consent is confirmed."
+    },
+    {
+     "label": "D",
+     "text": "Continue because the signed form is already in the record."
+    }
+   ],
+   "key": "C",
+   "answerText": "Pause preparation and arrange an understandable explanation before consent is confirmed.",
+   "rationale": "A signature alone does not show informed agreement. The misunderstanding must be addressed before the elective procedure proceeds.",
+   "pearl": "Qatar RGN practice: Pause preparation and arrange an understandable explanation before consent is confirmed.",
+   "trap": "A form does not resolve the stated misunderstanding.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "QA-005",
+   "stem": "A capable adult in Qatar wants the clinician to explain another treatment option. A relative asks the nurse to keep to the original plan. What is the best response?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Support the patient in discussing options with the treating clinician."
+    },
+    {
+     "label": "B",
+     "text": "Ask the family to decide which option will be discussed."
+    },
+    {
+     "label": "C",
+     "text": "Discourage further questions because a plan is documented."
+    },
+    {
+     "label": "D",
+     "text": "Ask the patient to decide without further information."
+    }
+   ],
+   "key": "A",
+   "answerText": "Support the patient in discussing options with the treating clinician.",
+   "rationale": "Care should support the patient’s informed participation. Family involvement should not prevent the patient from receiving information.",
+   "pearl": "Qatar RGN practice: Support the patient in discussing options with the treating clinician.",
+   "trap": "Family preference does not displace a capable adult’s voice.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "QA-006",
+   "stem": "On a Qatar ward, a visitor asks for an adult patient’s laboratory results. The nurse has not established permission to share them. What is the best response?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Verify identity and the authority to receive information before disclosure."
+    },
+    {
+     "label": "B",
+     "text": "Share only the abnormal results to limit disclosure."
+    },
+    {
+     "label": "C",
+     "text": "Give the results if the person knows the patient’s birth date."
+    },
+    {
+     "label": "D",
+     "text": "Ask another visitor to confirm the relationship."
+    }
+   ],
+   "key": "A",
+   "answerText": "Verify identity and the authority to receive information before disclosure.",
+   "rationale": "The request alone does not authorize disclosure. Identity and a valid basis for access must both be established.",
+   "pearl": "Qatar RGN practice: Verify identity and the authority to receive information before disclosure.",
+   "trap": "Selected results are still confidential information.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "QA-007",
+   "stem": "During a bedside discussion in Qatar, nearby visitors can hear sensitive details. The patient is stable. What should the nurse do?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Omit the patient’s name but discuss the full history."
+    },
+    {
+     "label": "B",
+     "text": "Move the conversation to a private setting with the patient’s agreement."
+    },
+    {
+     "label": "C",
+     "text": "Continue quietly while using the patient’s room number."
+    },
+    {
+     "label": "D",
+     "text": "Ask visitors to ignore the conversation and continue."
+    }
+   ],
+   "key": "B",
+   "answerText": "Move the conversation to a private setting with the patient’s agreement.",
+   "rationale": "Avoidable exposure of personal information should be reduced. Omitting a name does not make an identifiable bedside conversation private.",
+   "pearl": "Qatar RGN practice: Move the conversation to a private setting with the patient’s agreement.",
+   "trap": "Room context can still identify the patient.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "QA-008",
+   "stem": "A stable patient in Qatar requests a same-gender practitioner for intimate care. What should the nurse do first?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Assume the request applies to every future procedure."
+    },
+    {
+     "label": "B",
+     "text": "Ask a family member to persuade the patient to withdraw it."
+    },
+    {
+     "label": "C",
+     "text": "Cancel all planned care until a same-gender team is available."
+    },
+    {
+     "label": "D",
+     "text": "Explore the preference and arrange suitable care where feasible without delaying urgent needs."
+    }
+   ],
+   "key": "D",
+   "answerText": "Explore the preference and arrange suitable care where feasible without delaying urgent needs.",
+   "rationale": "Preferences should be discussed individually and respected where feasible. The nurse must also account for the urgency of care.",
+   "pearl": "Qatar RGN practice: Explore the preference and arrange suitable care where feasible without delaying urgent needs.",
+   "trap": "An individual preference must not be generalized without discussion.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "QA-009",
+   "stem": "After giving prescribed pain relief in Qatar, which entry best supports continuing care?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Record the intended response before reassessment occurs."
+    },
+    {
+     "label": "B",
+     "text": "Record the assessment, medicine given, time, and reassessed response."
+    },
+    {
+     "label": "C",
+     "text": "Record that all routine care was completed during the shift."
+    },
+    {
+     "label": "D",
+     "text": "Record the medicine only if pain remains severe."
+    }
+   ],
+   "key": "B",
+   "answerText": "Record the assessment, medicine given, time, and reassessed response.",
+   "rationale": "The record should show what was done and how the patient responded. Intended outcomes must not be recorded as observed facts.",
+   "pearl": "Qatar RGN practice: Record the assessment, medicine given, time, and reassessed response.",
+   "trap": "A broad completion statement omits important clinical details.",
+   "domain": "Nursing Fundamentals"
+  },
+  {
+   "id": "QA-010",
+   "stem": "A Qatar ward nurse hands over a patient with a new oxygen requirement. Which information is most important to communicate?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Describe the change, current observations, actions taken, and required follow-up."
+    },
+    {
+     "label": "B",
+     "text": "Describe the admission diagnosis and leave changes in the chart."
+    },
+    {
+     "label": "C",
+     "text": "Report that the patient is comfortable without mentioning oxygen."
+    },
+    {
+     "label": "D",
+     "text": "List completed routine tasks before ending the handover."
+    }
+   ],
+   "key": "A",
+   "answerText": "Describe the change, current observations, actions taken, and required follow-up.",
+   "rationale": "A new oxygen requirement is a relevant change in condition. The receiving team needs the current situation and outstanding actions.",
+   "pearl": "Qatar RGN practice: Describe the change, current observations, actions taken, and required follow-up.",
+   "trap": "The chart does not replace communication of a significant change.",
+   "domain": "Nursing Fundamentals"
+  }
+ ],
+ "editions": {
+  "saudi": {
+   "fullName": "Saudi Nursing Licensure Examination",
+   "regulator": "Saudi Commission for Health Specialties (SCFHS)",
+   "tiles": [
+    {
+     "k": "Questions",
+     "v": "200",
+     "s": "ok",
+     "n": "Two blocks of 100"
+    },
+    {
+     "k": "Time",
+     "v": "4 hours",
+     "s": "ok",
+     "n": "2 × 120 minutes, with a scheduled break"
+    },
+    {
+     "k": "Pass mark",
+     "v": "500",
+     "s": "ok",
+     "n": "Scaled score, 200–800"
+    },
+    {
+     "k": "Attempts",
+     "v": "See guide",
+     "s": "check",
+     "n": "SCFHS sources differ"
+    }
+   ],
+   "intro": "200 multiple-choice questions in two blocks of 100, each 120 minutes, with a scheduled break. SCFHS reports a scaled score from 200 to 800; 500 is the pass mark.",
+   "retake": "SCFHS sources differ: the applicant guide describes up to four attempts a year, while the SCFHS dates page describes three attempts in an initial cycle with renewal provisions after a year. This is not a lifetime maximum. Confirm with SCFHS before relying on either."
+  },
+  "qatar": {
+   "fullName": "Qatar Registered General Nurse Qualifying Examination",
+   "regulator": "Department of Healthcare Professions (DHP), Ministry of Public Health",
+   "tiles": [
+    {
+     "k": "Questions",
+     "v": "150",
+     "s": "ok",
+     "n": "Multiple choice"
+    },
+    {
+     "k": "Time",
+     "v": "3 hours",
+     "s": "check",
+     "n": "An older DHP document says 3½ hours"
+    },
+    {
+     "k": "Pass mark",
+     "v": "50%",
+     "s": "ok",
+     "n": "Published minimum"
+    },
+    {
+     "k": "Attempts",
+     "v": "Up to 5",
+     "s": "check",
+     "n": "DHP policy v04"
+    }
+   ],
+   "intro": "150 multiple-choice questions. The current DHP exam page says 3 hours; an older DHP blueprint document says 3½ hours, so check the time on your booking confirmation.",
+   "retake": "DHP policy (v04) and the qualifying-examination page describe five attempts. A three-attempt line sits under physician specialties and does not clearly apply to nurses. Effective dates are not stated; not confirmed in writing by DHP."
+  },
+  "dubai": {
+   "fullName": "Dubai DHA Registered Nurse Assessment",
+   "regulator": "Dubai Health Authority (DHA)",
+   "tiles": [
+    {
+     "k": "Questions",
+     "v": "150",
+     "s": "ok",
+     "n": "Multiple choice"
+    },
+    {
+     "k": "Time",
+     "v": "3 hours",
+     "s": "ok",
+     "n": "Includes registration and introduction"
+    },
+    {
+     "k": "Pass mark",
+     "v": "50%",
+     "s": "ok",
+     "n": "Result shown as pass or fail"
+    },
+    {
+     "k": "Attempts",
+     "v": "3 across the UAE",
+     "s": "check",
+     "n": "A 4th only with permission"
+    }
+   ],
+   "intro": "150 multiple-choice questions in 3 hours. The 3 hours includes registration and a short introduction, so your answering time is a little less.",
+   "retake": "General DHA licensing rules apply: three attempts across UAE authorities, a fourth only with permission, and a two-year block after the third failure before new attempts. Sources differ on details; confirm with DHA."
+  },
+  "abudhabi": {
+   "fullName": "Abu Dhabi Department of Health Registered Nurse",
+   "regulator": "Department of Health – Abu Dhabi (DOH)",
+   "tiles": [
+    {
+     "k": "Questions",
+     "v": "150",
+     "s": "ok",
+     "n": "Multiple choice"
+    },
+    {
+     "k": "Time",
+     "v": "3 hours",
+     "s": "ok",
+     "n": "DOH nursing circular, 2024"
+    },
+    {
+     "k": "Pass mark",
+     "v": "Not published",
+     "s": "none",
+     "n": "DOH reports pass or fail only"
+    },
+    {
+     "k": "Attempts",
+     "v": "3 across the UAE",
+     "s": "check",
+     "n": "A final attempt may be approved"
+    }
+   ],
+   "intro": "150 multiple-choice questions in 3 hours (DOH nursing licensing circular, 2024). DOH reports a pass or fail result and does not publish its pass mark.",
+   "retake": "UAE-wide rules allow three attempts across authorities, with a possible final attempt subject to approval. Confirm with DOH."
+  }
+ },
+ "disclaimer": "Original practice material, not official exam questions. Not endorsed by SCFHS, DHP, DHA or DOH."
+}
