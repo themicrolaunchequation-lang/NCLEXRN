@@ -771,7 +771,7 @@ Answer: An interactive Lean Six Sigma Green Belt for healthcare: 30 DMAIC tools 
 Buttons: [Open the Green Belt] [Free control chart calculator]
 Route: Answer
 
-**LSS-02 · Green Belt price / is the Green Belt in the Crown Pass?**
+**LSS-02 · Green Belt price / is the Green Belt included in a plan?**
 Answer: US$99 for 12 months, paid once (launch price until 31 January 2027, then US$149). It's a separate app with its own sign-in, not part of the Crown Pass, and the same price in every country.
 Route: Answer
 
