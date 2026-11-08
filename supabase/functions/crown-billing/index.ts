@@ -145,6 +145,22 @@ async function checkout(user: { id: string; email?: string }, body: Record<strin
   return json({ url: s.url, livemode: s.livemode })
 }
 
+// Each card step saves a new payment method, so a person who starts the card step twice (a dropped
+// connection, a reload, a changed mind) ends up with the same card listed two or three times on the
+// billing portal. Nothing is charged twice, but seeing your card repeated after paying is alarming.
+// Stripe gives every card a `fingerprint` that is stable across payment methods, so once the
+// subscription is safely on one of them, detach the others that are the same card.
+// Never throws: a tidy-up must not fail a subscription that already exists.
+async function dedupeCards(customer: string, keep: Stripe.PaymentMethod) {
+  const fp = keep.card?.fingerprint
+  if (!fp) return
+  const list = await stripe!.paymentMethods.list({ customer, type: 'card', limit: 100 })
+  for (const pm of list.data) {
+    if (pm.id === keep.id || pm.card?.fingerprint !== fp) continue
+    await stripe!.paymentMethods.detach(pm.id).catch((e) => console.error('detach duplicate card', pm.id, e))
+  }
+}
+
 // The card step must be this person's, finished, recent and for a Crown Suite plan. Returns the saved card and its country.
 const SETUP_MAX_AGE = DAY
 async function savedCard(user: { id: string }, body: Record<string, unknown>) {
@@ -216,6 +232,8 @@ async function subscribe(user: { id: string; email?: string }, body: Record<stri
     metadata: { user_id: user.id, plan: card.plan, band: quote.band, country: card.country, price_source: 'card_country', setup_session: card.session.id, ...consent },
     expand: ['latest_invoice'] }, { idempotencyKey: `hca-sub-${card.session.id}` })
   await syncSubscription(sub)
+  // The subscription now holds this card, so any older copy of the same card is safe to remove.
+  await dedupeCards(customer, card.pm).catch((e) => console.error('dedupe cards', e))
   if (sub.status === 'incomplete') {
     // The bank wants the card holder to approve this first payment: Stripe's hosted invoice page asks them.
     const inv = sub.latest_invoice as Stripe.Invoice | null
