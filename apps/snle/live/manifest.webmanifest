@@ -1,0 +1,17 @@
+{
+  "name": "Gulf Nursing Licensure Studio",
+  "short_name": "Gulf Nursing",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#10253A",
+  "background_color": "#F8F5EF",
+  "icons": [
+    {
+      "src": "/assets/crest.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
