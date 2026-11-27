@@ -1,0 +1,10 @@
+const CACHE='gulf-web-80d6b627a149',SHELL=["/assets/gulf-boot.be8533eca39a.js","/assets/gulf-pre.3ed4ca112405.js","/assets/gulf-data.8248546c9bb0.js","/assets/gulf-cfg.19dd9e1607e9.js","/assets/gulf-ui.7ab5095e6e4e.js","/assets/gulf-slides.ac987de185f4.js","/assets/gulf-sync.7d3a7076a6f8.js","/assets/gulf-css.973f7cd5f90e.css","/assets/fonts/fraunces-wght-5.1.0.woff2","/assets/fonts/fraunces-wght-italic-5.1.0.woff2","/assets/fonts/plex-arabic-400-5.1.0.woff2","/assets/fonts/plex-arabic-600-5.1.0.woff2","/assets/fonts/plex-mono-500-5.1.0.woff2","/assets/fonts/plex-sans-400-5.1.0.woff2","/assets/fonts/plex-sans-500-5.1.0.woff2","/assets/fonts/plex-sans-600-5.1.0.woff2","/hub/","/","/assets/prelude.b8b73ede56e9.js","/assets/data.8169f8d6e959.js","/assets/guidance.109527ad5fc7.js","/assets/app.4c4b786799e8.js","/assets/enhancements.339de1defd28.js","/assets/crown-account.7d2036c7e9e3.js","/assets/hca-shell.c34a387c703b.js","/assets/integration.8670757deec3.js","/assets/app.d0c727ebb97c.css","/assets/library.4296c7c2b06f.js","/assets/library.f978634baddc.css","/assets/dossiers.5e79d13d4474.js","/assets/labs-status.js","/assets/crest.svg","/manifest.webmanifest"];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ns=>Promise.all(ns.filter(n=>n.startsWith('gulf-web-')&&n!==CACHE).map(n=>caches.delete(n)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',e=>{
+ const r=e.request,u=new URL(r.url);if(r.method!=='GET'||u.origin!==location.origin)return;
+ if(r.mode==='navigate'){
+  e.respondWith(fetch(r).then(res=>{if(res.ok){const copy=res.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(u.pathname,copy)))}return res}).catch(()=>caches.match(u.pathname)));return;
+ }
+ if(u.pathname.startsWith('/assets/'))e.respondWith(caches.match(r).then(hit=>hit||fetch(r).then(res=>{if(res.ok){const copy=res.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(r,copy)))}return res})));
+});

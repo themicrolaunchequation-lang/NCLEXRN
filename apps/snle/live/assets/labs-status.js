@@ -1,0 +1,1 @@
+window.SNLE_HAS_LABS=true;

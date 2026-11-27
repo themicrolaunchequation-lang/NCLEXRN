@@ -1,0 +1,76 @@
+{
+  "pages": [
+    {
+      "num": "01",
+      "title": "SNLE Question Blueprint",
+      "subtitle": "Anatomy of a Question",
+      "file": "SNLE_Decoder_01_SNLE_Question_Blueprint_Interactive.html",
+      "sections": 5,
+      "exercises": 20
+    },
+    {
+      "num": "02",
+      "title": "SNLE Stem Types & Scenario Structures",
+      "subtitle": "How stems hide the decision",
+      "file": "SNLE_Decoder_02_SNLE_Stem_Types_and_Scenario_Structures_Interactive.html",
+      "sections": 5,
+      "exercises": 20
+    },
+    {
+      "num": "03",
+      "title": "Clue Atlas Part 1",
+      "subtitle": "Instability, timing & change",
+      "file": "SNLE_Decoder_03_Clue_Atlas_Part_1_Interactive.html",
+      "sections": 6,
+      "exercises": 24
+    },
+    {
+      "num": "04",
+      "title": "Clue Atlas Part 2",
+      "subtitle": "Vitals, labs, symptoms & statements",
+      "file": "SNLE_Decoder_04_Clue_Atlas_Part_2_Interactive.html",
+      "sections": 8,
+      "exercises": 32
+    },
+    {
+      "num": "05",
+      "title": "Lead-in Decoder",
+      "subtitle": "What task is being tested?",
+      "file": "SNLE_Decoder_05_Lead-in_Decoder_Interactive.html",
+      "sections": 10,
+      "exercises": 40
+    },
+    {
+      "num": "06",
+      "title": "SNLE Clinical Judgment Map",
+      "subtitle": "Six clinical-judgment functions",
+      "file": "SNLE_Decoder_06_SNLE_Clinical_Judgment_Map_Interactive.html",
+      "sections": 8,
+      "exercises": 32
+    },
+    {
+      "num": "07",
+      "title": "Distractor Psychology",
+      "subtitle": "The 10 wrong-answer traps",
+      "file": "SNLE_Decoder_07_Distractor_Psychology_Interactive.html",
+      "sections": 8,
+      "exercises": 32
+    },
+    {
+      "num": "08",
+      "title": "How the Correct Answer Wins",
+      "subtitle": "Clue → interpretation → decision → best answer",
+      "file": "SNLE_Decoder_08_How_the_Correct_Answer_Wins_Interactive.html",
+      "sections": 8,
+      "exercises": 32
+    },
+    {
+      "num": "09",
+      "title": "SNLE Decoding Workflow",
+      "subtitle": "From reading to answering",
+      "file": "SNLE_Decoder_09_SNLE_Decoding_Workflow_Interactive.html",
+      "sections": 7,
+      "exercises": 28
+    }
+  ]
+}
