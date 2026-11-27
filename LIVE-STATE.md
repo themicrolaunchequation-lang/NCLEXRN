@@ -12,21 +12,32 @@ been committed.
    (canonical URLs now point at `/medlex/learn/canvas/lessons/…`). They were
    deployed to Vercel without ever being committed; the repo had the older
    `embed.js`-based versions.
-2. **`apps/snle/live/` (new, 88 files, ~19 MB)** — a complete capture of the
-   Gulf studio deployment at `snle.healthcarecrownacademy.co.uk`
-   (Cloudflare Pages project `snle-clinical-studio`):
-   - `index.html`, `manifest.webmanifest`, `sw.js` (service worker precache list matches the capture exactly)
-   - `assets/gulf-pre.js`, `gulf-boot.js`, `gulf-cfg.js`, `gulf-data.js`,
-     `gulf-sync.js`, `gulf-ui.js`, `gulf-slides.js`, `data.js`,
-     `dossiers.js`, `library.js`, `guidance.js`, `enhancements.js`,
-     `integration.js`, `crown-account.js`, `hca-shell.js`, `prelude.js`,
-     `labs-status.js`, `app.js` + all CSS
-   - `assets/media/` (73 hashed poster/case images) and `assets/fonts/`
+2. **`apps/snle/live/`** — a capture of the Gulf studio deployment at
+   `snle.healthcarecrownacademy.co.uk` (Cloudflare Pages project
+   `snle-clinical-studio`). File names keep the live content hashes.
+   - Root: `index.html` (served at `/`), `manifest.webmanifest`, `sw.js`,
+     `robots.txt`, `sitemap.xml`, `404.html`
+   - Library pages: `SNLE_Question_Bank_ViewOnly_v19.html`,
+     `SNLE_Clinical_Dossier_Question_Bank_ViewOnly_v23_1_Smaller_Stem.html`,
+     `SNLE_All_Tools_ViewOnly_v19.html` (live serves them without `.html`;
+     `/question-bank`, `/dossier-bank`, `/tool-library` 308-redirect to them)
+   - `SNLE_Decoder_Interactive_Labs_v3/` — the 9 labs, index, README and manifest
+     as served live. The 10 HTML files are **newer than**
+     `apps/snle/source/SNLE_Decoder_Interactive_Labs_v3/`; README/manifest are identical.
+   - `assets/`: 19 JS (`prelude`, `gulf-pre`, `gulf-boot`, `gulf-cfg`,
+     `gulf-data`, `gulf-sync`, `gulf-ui`, `gulf-slides`, `data`, `dossiers`,
+     `library`, `guidance`, `enhancements`, `integration`, `crown-account`,
+     `hca-shell`, `app`, `labs-status`) and 3 CSS (`app`, `gulf-css`,
+     `library`), plus `crest.svg`, `media/` (73 images) and `fonts/`
    - `hub/` — the "Gulf Region Exams · Development Preview" page served at `/hub/`
-   - Note: these are the **built/deployed** files (some minified/hashed), not
-     the original authoring sources. The public `data.js` contains only the
-     free questions (1–10); the full 1,350-question bank is served by the
-     authenticated `/api/gulf-content` endpoint (see below).
+   - Every file was re-downloaded and byte-compared with live on 27 Nov 2026.
+   - Not capturable from outside: Cloudflare `_headers` / `_redirects`
+     configuration and the Pages Function `/api/gulf-content` (see below).
+   - These are the **built/deployed** files, not original authoring sources.
+     The public `data.js` holds only the free questions (1–10); the full
+     1,350-question bank comes from the authenticated `/api/gulf-content`.
+   - Correction: the first commit of this branch (`f58489d`) listed the JS/CSS
+     above but did not actually contain them; they were added in the follow-up commit.
 
 ## How the comparison was done
 

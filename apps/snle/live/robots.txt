@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /SNLE_
+Disallow: /question-bank
+Disallow: /dossier-bank
+Disallow: /tool-library
+
+Sitemap: https://snle.healthcarecrownacademy.co.uk/sitemap.xml
