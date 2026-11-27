@@ -24,7 +24,7 @@ been committed.
    - `SNLE_Decoder_Interactive_Labs_v3/` — the 9 labs, index, README and manifest
      as served live. The 10 HTML files are **newer than**
      `apps/snle/source/SNLE_Decoder_Interactive_Labs_v3/`; README/manifest are identical.
-   - `assets/`: 19 JS (`prelude`, `gulf-pre`, `gulf-boot`, `gulf-cfg`,
+   - `assets/`: 18 JS (`prelude`, `gulf-pre`, `gulf-boot`, `gulf-cfg`,
      `gulf-data`, `gulf-sync`, `gulf-ui`, `gulf-slides`, `data`, `dossiers`,
      `library`, `guidance`, `enhancements`, `integration`, `crown-account`,
      `hca-shell`, `app`, `labs-status`) and 3 CSS (`app`, `gulf-css`,
