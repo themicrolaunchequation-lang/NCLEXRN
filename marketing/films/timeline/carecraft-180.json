@@ -1,0 +1,283 @@
+{
+ "app": "carecraft",
+ "len": 180,
+ "total": 180,
+ "name": "Carecraft",
+ "full": "Carecraft",
+ "short": "Carecraft",
+ "color": "#0F8A86",
+ "accent": "#6EE7D8",
+ "url": "carecraft.healthcarecrownacademy.co.uk",
+ "tagline": "One useful minute of practice a day.",
+ "open": [
+  "The hardest moment on shift",
+  "is not always clinical."
+ ],
+ "worry": [
+  "What do I say to a worried family?",
+  "How do I escalate this?",
+  "Did my handover make sense?"
+ ],
+ "end": {
+  "free": [
+   "Free to start",
+   "Try every app before you pay"
+  ],
+  "paidTitle": "Crown Pass",
+  "paidLine": "MedLex, Carecraft and Lumen in one pass",
+  "before": "7 days free, then £29.99 for your first year. Founding price until 31 Jan 2027.",
+  "after": "7 days free, then £5.99 a month."
+ },
+ "endings": true,
+ "chapters": [
+  {
+   "title": "Daily scenario",
+   "icon": "sun"
+  },
+  {
+   "title": "Learn",
+   "icon": "book"
+  },
+  {
+   "title": "See it",
+   "icon": "eye"
+  },
+  {
+   "title": "Practise",
+   "icon": "bolt"
+  },
+  {
+   "title": "Toolkit",
+   "icon": "tool"
+  },
+  {
+   "title": "Grow",
+   "icon": "chart"
+  }
+ ],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "The hardest moment on shift is not always clinical. Sometimes, it is the next sentence you say. To a frightened family. To a busy doctor. To the colleague taking over from you.",
+   "i": 0,
+   "vStart": 0.8,
+   "vEnd": 11.58,
+   "t0": 0,
+   "t1": 13.6
+  },
+  {
+   "beat": "worry",
+   "say": "What do I say? How do I escalate without sounding unsure? Did my handover really make sense?",
+   "i": 1,
+   "vStart": 14,
+   "vEnd": 19.94,
+   "t0": 13.6,
+   "t1": 20.24
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. These are skills, and skills can be practised. Carecraft has you.",
+   "i": 2,
+   "logo": 23,
+   "vStart": 20.54,
+   "vEnd": 26.3,
+   "t0": 20.24,
+   "t1": 26.8
+  },
+  {
+   "beat": "chapter",
+   "title": "Daily scenario",
+   "icon": "sun",
+   "say": "Every day, one moment from a working shift. Think first, then compare your reasoning. The feedback names the behaviour, and gives you one specific thing to try next.",
+   "imgs": [
+    [
+     "cc-today",
+     "Your scenario is ready"
+    ],
+    [
+     "cc-scenario",
+     "Strongest choice"
+    ]
+   ],
+   "i": 3,
+   "card": 26.8,
+   "slotEnd": 48.08333333333333,
+   "vStart": 29,
+   "vEnd": 38.98,
+   "t0": 26.8,
+   "t1": 48.083
+  },
+  {
+   "beat": "chapter",
+   "title": "Learn",
+   "icon": "book",
+   "say": "Thirty short lessons for the work you do, from foundation to advanced. Read, practise and reflect, with your own notes beside every lesson. Or learn as a guided slideshow.",
+   "imgs": [
+    [
+     "cc-learn",
+     "Thirty lessons"
+    ],
+    [
+     "cc-lesson",
+     "Conversations that build trust"
+    ],
+    [
+     "cc-slides",
+     "Learn as slides"
+    ]
+   ],
+   "i": 4,
+   "card": 48.08333333333333,
+   "slotEnd": 70.16666666666666,
+   "vStart": 50.283,
+   "vEnd": 61.103,
+   "t0": 48.083,
+   "t1": 70.167
+  },
+  {
+   "beat": "chapter",
+   "title": "See it",
+   "icon": "eye",
+   "say": "Ninety illustrated guides you can zoom, save and share. Listen with intention. Explain with clarity. Make numbers mean something.",
+   "imgs": [
+    [
+     "cc-guide",
+     "Visual guides"
+    ],
+    [
+     "cc-numbers",
+     "Make numbers mean something"
+    ]
+   ],
+   "i": 5,
+   "card": 70.16666666666666,
+   "slotEnd": 92.25,
+   "vStart": 72.367,
+   "vEnd": 81.647,
+   "t0": 70.167,
+   "t1": 92.25
+  },
+  {
+   "beat": "chapter",
+   "title": "Practise",
+   "icon": "bolt",
+   "say": "An animated handover shows the message in order. Spot the hand hygiene moment in a ward scene, with no time pressure. Watch, decide, reflect.",
+   "imgs": [
+    [
+     "cc-sbar",
+     "Pass the message clearly"
+    ],
+    [
+     "cc-hygiene",
+     "Watch. Decide. Reflect."
+    ]
+   ],
+   "i": 6,
+   "card": 92.25,
+   "slotEnd": 114.33333333333333,
+   "vStart": 94.45,
+   "vEnd": 103.65,
+   "t0": 92.25,
+   "t1": 114.333
+  },
+  {
+   "beat": "chapter",
+   "title": "Toolkit",
+   "icon": "tool",
+   "say": "Build a clear handover step by step, with worked examples beside you. Situation, background, assessment, recommendation. Fictional practice drafts, never clinical records.",
+   "imgs": [
+    [
+     "cc-builder",
+     "Handover builder"
+    ],
+    [
+     "cc-handover",
+     "Build a clear SBAR"
+    ]
+   ],
+   "i": 7,
+   "card": 114.33333333333333,
+   "slotEnd": 136.41666666666666,
+   "vStart": 116.533,
+   "vEnd": 127.773,
+   "t0": 114.333,
+   "t1": 136.417
+  },
+  {
+   "beat": "chapter",
+   "title": "Grow",
+   "icon": "chart",
+   "say": "See the skills you have rehearsed, from communicating to escalating to wellbeing. It shows coverage, not a competence score.",
+   "imgs": [
+    [
+     "cc-practice",
+     "Skills you have practised"
+    ],
+    [
+     "cc-growth",
+     "See what you have rehearsed"
+    ]
+   ],
+   "i": 8,
+   "card": 136.41666666666666,
+   "slotEnd": 158.5,
+   "vStart": 138.617,
+   "vEnd": 146.577,
+   "t0": 136.417,
+   "t1": 160
+  },
+  {
+   "beat": "stats",
+   "say": "Thirty lessons. Ninety visual guides. Twenty two practice activities.",
+   "stats": [
+    [
+     30,
+     "short lessons"
+    ],
+    [
+     90,
+     "visual guides"
+    ],
+    [
+     22,
+     "practice activities"
+    ],
+    [
+     18,
+     "toolkit job-aids"
+    ]
+   ],
+   "i": 9,
+   "vStart": 160.6,
+   "vEnd": 165.06,
+   "t0": 160,
+   "t1": 170
+  },
+  {
+   "beat": "offer",
+   "say": "Carecraft is free to start. The full app comes with the Crown Pass, with seven days free. One useful minute a day.",
+   "i": 10,
+   "vStart": 170.4,
+   "vEnd": 177.6,
+   "t0": 170,
+   "t1": 180,
+   "endCard": 172.6
+  }
+ ],
+ "imgs": [
+  "cc-today",
+  "cc-scenario",
+  "cc-learn",
+  "cc-lesson",
+  "cc-slides",
+  "cc-guide",
+  "cc-numbers",
+  "cc-sbar",
+  "cc-hygiene",
+  "cc-builder",
+  "cc-handover",
+  "cc-practice",
+  "cc-growth",
+  "cc-trust"
+ ]
+}

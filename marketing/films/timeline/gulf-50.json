@@ -1,0 +1,124 @@
+{
+ "app": "gulf",
+ "len": 50,
+ "total": 50,
+ "name": "Gulf Region Nursing",
+ "full": "Gulf Region Nursing",
+ "short": "Gulf Region",
+ "color": "#347A9A",
+ "accent": "#9ED8F0",
+ "url": "snle.healthcarecrownacademy.co.uk",
+ "tagline": "Your Gulf Region nursing licence, one safe decision at a time.",
+ "open": [
+  "One exam stands between you",
+  "and your nursing career in the Gulf."
+ ],
+ "worry": [
+  "Saudi, Qatar, Dubai or Abu Dhabi?",
+  "Which questions will they ask?",
+  "Am I really ready?"
+ ],
+ "end": {
+  "free": [
+   "Free practice questions",
+   "Try the studio first"
+  ],
+  "paidTitle": "Gulf Pass",
+  "paidLine": "All four exams, plus the Crown Pass",
+  "before": "US$50 for 3 months · US$69 for 6 months. Paid once.",
+  "after": "US$50 for 3 months · US$69 for 6 months. Paid once."
+ },
+ "endings": false,
+ "chapters": [],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "One exam stands between you and your nursing career in the Gulf Region.",
+   "i": 0,
+   "vStart": 0.6,
+   "vEnd": 5.64,
+   "t0": 0,
+   "t1": 7.6
+  },
+  {
+   "beat": "worry",
+   "say": "Which exam? Which questions? And are you really ready?",
+   "i": 1,
+   "vStart": 8,
+   "vEnd": 11.66,
+   "t0": 7.6,
+   "t1": 12.5
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. We have you.",
+   "i": 2,
+   "logo": 14,
+   "vStart": 13.8,
+   "vEnd": 15.4,
+   "t0": 12.5,
+   "t1": 16.2
+  },
+  {
+   "beat": "screens",
+   "say": "Saudi Arabia, Qatar, Dubai and Abu Dhabi, in one studio. Answer a question, then see the safest choice, a clinical pearl, and the trap to avoid.",
+   "imgs": [
+    [
+     "gr-landing",
+     "Four exams, one studio"
+    ],
+    [
+     "gr-qb",
+     "Answer, then see the reasoning"
+    ],
+    [
+     "gr-mock",
+     "Tutor or timed simulation"
+    ]
+   ],
+   "i": 3,
+   "vStart": 16.6,
+   "vEnd": 27.04,
+   "t0": 16.2,
+   "t1": 38
+  },
+  {
+   "beat": "montage",
+   "say": "Decision tools, clinical dossiers, a bilingual glossary, and your readiness.",
+   "imgs": [
+    "gr-befast",
+    "gr-dossier",
+    "gr-labs",
+    "gr-glossary",
+    "gr-ready",
+    "gr-exam"
+   ],
+   "i": 4,
+   "vStart": 37.2,
+   "vEnd": 42.58,
+   "t0": 38,
+   "t1": 44
+  },
+  {
+   "beat": "offer",
+   "say": "Start with free questions today. One safe decision at a time.",
+   "i": 5,
+   "vStart": 44.4,
+   "vEnd": 48.3,
+   "t0": 44,
+   "t1": 50,
+   "endCard": 46.6
+  }
+ ],
+ "imgs": [
+  "gr-landing",
+  "gr-qb",
+  "gr-mock",
+  "gr-befast",
+  "gr-dossier",
+  "gr-labs",
+  "gr-glossary",
+  "gr-ready",
+  "gr-exam"
+ ]
+}

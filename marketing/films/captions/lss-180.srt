@@ -1,0 +1,123 @@
+1
+00:00:00,800 --> 00:00:03,004
+Every delay on your ward has a cause.
+
+2
+00:00:03,004 --> 00:00:04,911
+The waiting room is full again.
+
+3
+00:00:04,911 --> 00:00:06,579
+Antibiotics are late again.
+
+4
+00:00:06,579 --> 00:00:09,260
+And everyone is working as hard as they can.
+
+5
+00:00:14,000 --> 00:00:15,875
+Is it the people, or the system?
+
+6
+00:00:15,875 --> 00:00:17,692
+Where does the time really go?
+
+7
+00:00:17,692 --> 00:00:19,860
+And if you fix it, can you prove it?
+
+8
+00:00:20,460 --> 00:00:20,920
+Breathe.
+
+9
+00:00:20,920 --> 00:00:22,183
+Data tells you where.
+
+10
+00:00:22,183 --> 00:00:24,022
+Judgement tells you what to do.
+
+11
+00:00:24,022 --> 00:00:25,860
+The Green Belt toolkit has you.
+
+12
+00:00:28,560 --> 00:00:32,435
+Thirty tools follow the DMAIC path, with a live statistical engine.
+
+13
+00:00:32,435 --> 00:00:38,160
+Start with the problem, then brainstorm causes across all six categories, before anyone is blamed.
+
+14
+00:00:47,129 --> 00:00:51,291
+Map the journey from emergency department to ward, and watch the waiting appear.
+
+15
+00:00:51,291 --> 00:00:55,609
+Find the bottleneck first, because speeding up one step can simply flood the next.
+
+16
+00:01:06,057 --> 00:01:08,525
+Put the biggest causes first with a Pareto chart.
+
+17
+00:01:08,525 --> 00:01:11,497
+Test your hypothesis, and see what the numbers really say.
+
+18
+00:01:24,986 --> 00:01:26,441
+Plot your change over time.
+
+19
+00:01:26,441 --> 00:01:33,233
+In this example, door to antibiotic time fell from eighty six to fifty four minutes, and the toolkit flags the shift for you.
+
+20
+00:01:33,233 --> 00:01:36,306
+Safety comes from resilient systems, not perfect people.
+
+21
+00:01:43,914 --> 00:01:46,379
+Control limits tell you when a spike is real.
+
+22
+00:01:46,379 --> 00:01:52,954
+In the red bead ward, every point sits inside the limits: the differences come from the system, so stop ranking people.
+
+23
+00:02:02,843 --> 00:02:08,390
+Learn Lean Six Sigma by playing it, with two game worlds, eighteen tools and twenty one levels.
+
+24
+00:02:08,390 --> 00:02:13,003
+And trace the history, from Ford’s line in nineteen thirteen to today’s wards.
+
+25
+00:02:21,771 --> 00:02:27,771
+Practise for nine certification blueprints, then earn your Certificate of Completion, with an ID badge and a verifiable code.
+
+26
+00:02:40,600 --> 00:02:41,392
+Thirty tools.
+
+27
+00:02:41,392 --> 00:02:42,427
+Ten simulations.
+
+28
+00:02:42,427 --> 00:02:44,680
+Over a thousand exam practice items.
+
+29
+00:02:50,400 --> 00:02:52,273
+The Green Belt toolkit is free to try.
+
+30
+00:02:52,273 --> 00:02:54,491
+Full access is for twelve months, paid once.
+
+31
+00:02:54,491 --> 00:02:55,920
+Fix the cause, and prove it.

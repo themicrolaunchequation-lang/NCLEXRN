@@ -1,0 +1,307 @@
+{
+ "app": "evinca",
+ "len": 180,
+ "total": 180,
+ "name": "Evinca",
+ "full": "Evinca",
+ "short": "Evinca",
+ "color": "#D4A445",
+ "accent": "#F5D78E",
+ "url": "evinca.healthcarecrownacademy.co.uk",
+ "tagline": "Your best work, recognised on evidence.",
+ "open": [
+  "Somebody made care better today.",
+  "Did anyone write it down?"
+ ],
+ "worry": [
+  "Your best work, forgotten?",
+  "Your impact, unseen?",
+  "Your story, untold?"
+ ],
+ "end": {
+  "free": [
+   "Share your story free",
+   "A Spotlight Story costs nothing"
+  ],
+  "paidTitle": "Reviewed on evidence",
+  "paidLine": "Checkable by anyone, with a public record",
+  "before": "Spotlight Stories are free.",
+  "after": "Spotlight Stories are free."
+ },
+ "endings": false,
+ "chapters": [
+  {
+   "title": "Come in",
+   "icon": "door"
+  },
+  {
+   "title": "Spotlight",
+   "icon": "spark"
+  },
+  {
+   "title": "In context",
+   "icon": "globe"
+  },
+  {
+   "title": "Recognition",
+   "icon": "award"
+  },
+  {
+   "title": "Proof",
+   "icon": "shield"
+  },
+  {
+   "title": "Independence",
+   "icon": "scale"
+  },
+  {
+   "title": "Grow",
+   "icon": "chart"
+  }
+ ],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "Somebody made care better today. A safer ward. A faster diagnosis. A calmer family. It happens everywhere, every day. Did anyone write it down?",
+   "i": 0,
+   "vStart": 0.8,
+   "vEnd": 12.16,
+   "t0": 0,
+   "t1": 13.6
+  },
+  {
+   "beat": "worry",
+   "say": "Your best work, forgotten. Your impact, unseen. Your story, untold.",
+   "i": 1,
+   "vStart": 14,
+   "vEnd": 20.02,
+   "t0": 13.6,
+   "t1": 20.32
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. Good work deserves a record. Evinca has you.",
+   "i": 2,
+   "logo": 23,
+   "vStart": 20.62,
+   "vEnd": 24.64,
+   "t0": 20.32,
+   "t1": 26
+  },
+  {
+   "beat": "chapter",
+   "title": "Come in",
+   "icon": "door",
+   "say": "Someone did the work. Someone noticed. Someone was cared for. Tell your story, nominate a colleague, thank a carer, or recognise your team. In two minutes, without an account, see which recognition your evidence fits.",
+   "imgs": [
+    [
+     "ex-comein",
+     "Where do you come in?"
+    ],
+    [
+     "ev-underestimate",
+     "Two minutes, no account"
+    ]
+   ],
+   "i": 3,
+   "card": 26,
+   "slotEnd": 44.92857142857143,
+   "vStart": 28.2,
+   "vEnd": 42.64,
+   "t0": 26,
+   "t1": 44.929
+  },
+  {
+   "beat": "chapter",
+   "title": "Spotlight",
+   "icon": "spark",
+   "say": "Every month, a verified moment of good care. Share your Spotlight Story free, and verify it when you are ready.",
+   "imgs": [
+    [
+     "ev-spotlight",
+     "Spotlight"
+    ]
+   ],
+   "i": 4,
+   "card": 44.92857142857143,
+   "slotEnd": 63.857142857142854,
+   "vStart": 47.129,
+   "vEnd": 54.149,
+   "t0": 44.929,
+   "t1": 63.857
+  },
+  {
+   "beat": "chapter",
+   "title": "In context",
+   "icon": "globe",
+   "say": "Reviewers read every contribution against its local resources and constraints. Impact, in context, from anywhere in the world.",
+   "imgs": [
+    [
+     "ex-map",
+     "A worldwide record"
+    ]
+   ],
+   "i": 5,
+   "card": 63.857142857142854,
+   "slotEnd": 82.78571428571428,
+   "vStart": 66.057,
+   "vEnd": 73.997,
+   "t0": 63.857,
+   "t1": 82.786
+  },
+  {
+   "beat": "chapter",
+   "title": "Recognition",
+   "icon": "award",
+   "say": "Four marks, one verified record. Spotlight monthly, Distinction quarterly, Honor yearly, and Laureate. Every honoree gets a magazine cover, with the measure, the comparison and its limits.",
+   "imgs": [
+    [
+     "ev-marks",
+     "Four marks"
+    ],
+    [
+     "ex-camila",
+     "Illustrative example",
+     "Illustrative"
+    ],
+    [
+     "ev-covers",
+     "Magazine covers",
+     "Illustrative"
+    ]
+   ],
+   "i": 6,
+   "card": 82.78571428571428,
+   "slotEnd": 101.71428571428571,
+   "vStart": 84.986,
+   "vEnd": 98.406,
+   "t0": 82.786,
+   "t1": 101.714
+  },
+  {
+   "beat": "chapter",
+   "title": "Proof",
+   "icon": "shield",
+   "say": "No login needed. Every record can be checked, shared and corrected in public. Each certificate carries a record number and a code you can scan.",
+   "imgs": [
+    [
+     "ex-davidchen",
+     "Public proof page",
+     "Illustrative"
+    ],
+    [
+     "ex-cert",
+     "Certificate · sample",
+     "Sample"
+    ]
+   ],
+   "i": 7,
+   "card": 101.71428571428571,
+   "slotEnd": 120.64285714285714,
+   "vStart": 103.914,
+   "vEnd": 113.194,
+   "t0": 101.714,
+   "t1": 120.643
+  },
+  {
+   "beat": "chapter",
+   "title": "Independence",
+   "icon": "scale",
+   "say": "Evidence is checked first. A named reviewer decides. Conflicts and appeals go to an external reviewer.",
+   "imgs": [
+    [
+     "ex-safeguards",
+     "Verified first. Then decided."
+    ]
+   ],
+   "i": 8,
+   "card": 120.64285714285714,
+   "slotEnd": 139.57142857142856,
+   "vStart": 122.843,
+   "vEnd": 129.163,
+   "t0": 120.643,
+   "t1": 139.571
+  },
+  {
+   "beat": "chapter",
+   "title": "Grow",
+   "icon": "chart",
+   "say": "Then keep growing. Courses in AI prompting, quality improvement and leadership. A career studio for your CV and appraisal. And a ninety day plan for what comes next.",
+   "imgs": [
+    [
+     "ex-academy",
+     "Evinca Academy"
+    ],
+    [
+     "ex-career",
+     "Career Studio"
+    ],
+    [
+     "ex-planner",
+     "Your next 90 days"
+    ]
+   ],
+   "i": 9,
+   "card": 139.57142857142856,
+   "slotEnd": 158.5,
+   "vStart": 141.771,
+   "vEnd": 151.831,
+   "t0": 139.571,
+   "t1": 160
+  },
+  {
+   "beat": "stats",
+   "say": "Free to share. Four levels. An eight seat editorial board. And one public record behind every honour.",
+   "stats": [
+    [
+     0,
+     "cost to share a story"
+    ],
+    [
+     4,
+     "levels of recognition"
+    ],
+    [
+     8,
+     "seat editorial board"
+    ],
+    [
+     1,
+     "public record per honor"
+    ]
+   ],
+   "i": 10,
+   "vStart": 160.6,
+   "vEnd": 167.3,
+   "t0": 160,
+   "t1": 170
+  },
+  {
+   "beat": "offer",
+   "say": "Share your Spotlight Story free today. Your best work, recognised on evidence.",
+   "i": 11,
+   "vStart": 170.4,
+   "vEnd": 175.1,
+   "t0": 170,
+   "t1": 180,
+   "endCard": 172.6
+  }
+ ],
+ "imgs": [
+  "ex-comein",
+  "ev-underestimate",
+  "ev-spotlight",
+  "ex-map",
+  "ev-marks",
+  "ex-camila",
+  "ev-covers",
+  "ex-davidchen",
+  "ex-cert",
+  "ex-safeguards",
+  "ex-academy",
+  "ex-career",
+  "ex-planner",
+  "ex-rafael",
+  "ev-record"
+ ]
+}

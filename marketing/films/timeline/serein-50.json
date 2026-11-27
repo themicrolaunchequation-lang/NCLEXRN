@@ -1,0 +1,120 @@
+{
+ "app": "serein",
+ "len": 50,
+ "total": 50,
+ "name": "Serein",
+ "full": "Serein",
+ "short": "Serein",
+ "color": "#2B735E",
+ "accent": "#9FE3C8",
+ "url": "serein.healthcarecrownacademy.co.uk",
+ "tagline": "A little room to breathe, between tasks.",
+ "open": [
+  "You look after everyone.",
+  "Who looks after you?"
+ ],
+ "worry": [
+  "Racing thoughts.",
+  "Tight shoulders.",
+  "No time to stop."
+ ],
+ "end": {
+  "free": [
+   "Free for everyone",
+   "Always. Nothing is monitored."
+  ],
+  "paidTitle": "Free",
+  "paidLine": "Every practice, every guide",
+  "before": "No account needed to begin.",
+  "after": "No account needed to begin."
+ },
+ "endings": false,
+ "chapters": [],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "You look after everyone. All shift. Every shift. So, between tasks, who looks after you?",
+   "i": 0,
+   "vStart": 0.6,
+   "vEnd": 9.3,
+   "t0": 0,
+   "t1": 9.4
+  },
+  {
+   "beat": "worry",
+   "say": "Racing thoughts. Tight shoulders. No time to stop.",
+   "i": 1,
+   "vStart": 9.8,
+   "vEnd": 14.18,
+   "t0": 9.4,
+   "t1": 14.28
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. Serein has you.",
+   "i": 2,
+   "logo": 15.78,
+   "vStart": 14.78,
+   "vEnd": 17.24,
+   "t0": 14.28,
+   "t1": 17.44
+  },
+  {
+   "beat": "screens",
+   "say": "Tell it how you feel, and get the right two minute reset. Then breathe out, and let it leave, without forcing it.",
+   "imgs": [
+    [
+     "sr-reset",
+     "The right reset"
+    ],
+    [
+     "sr-breathe",
+     "Breathing Tide"
+    ]
+   ],
+   "i": 3,
+   "vStart": 17.84,
+   "vEnd": 25.58,
+   "t0": 17.44,
+   "t1": 38
+  },
+  {
+   "beat": "montage",
+   "say": "Short practices, gentle journeys, small tools for real shifts.",
+   "imgs": [
+    "sr-library",
+    "sr-box",
+    "sr-hands",
+    "sr-journey",
+    "sr-toolkit",
+    "sr-ritual"
+   ],
+   "i": 4,
+   "vStart": 37.2,
+   "vEnd": 42.42,
+   "t0": 38,
+   "t1": 44
+  },
+  {
+   "beat": "offer",
+   "say": "Free for everyone, always. And nothing is ever monitored.",
+   "i": 5,
+   "vStart": 44.4,
+   "vEnd": 48.76,
+   "t0": 44,
+   "t1": 50,
+   "endCard": 46.6
+  }
+ ],
+ "imgs": [
+  "sr-reset",
+  "sr-breathe",
+  "sr-library",
+  "sr-box",
+  "sr-hands",
+  "sr-journey",
+  "sr-toolkit",
+  "sr-ritual",
+  "sr-guide"
+ ]
+}

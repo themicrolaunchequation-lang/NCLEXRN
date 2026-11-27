@@ -1,0 +1,8 @@
+render/
+out/
+music/
+voice/clips/
+voice/rejected/
+voice/*-placed.wav
+voice/.*
+voice/*.log

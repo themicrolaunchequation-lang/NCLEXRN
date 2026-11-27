@@ -1,0 +1,292 @@
+{
+ "app": "medlex",
+ "len": 180,
+ "total": 180,
+ "name": "MedLex",
+ "full": "MedLex",
+ "short": "MedLex",
+ "color": "#3557D6",
+ "accent": "#8EC5FF",
+ "url": "medlex.healthcarecrownacademy.co.uk",
+ "tagline": "Make sense of any medical word.",
+ "open": [
+  "Pneumonoultramicroscopic",
+  "silicovolcanoconiosis"
+ ],
+ "worry": [
+  "Another word you can’t say?",
+  "Another word you can’t spell?",
+  "What does it even mean?"
+ ],
+ "end": {
+  "free": [
+   "Free to start",
+   "Try every app before you pay"
+  ],
+  "paidTitle": "Crown Pass",
+  "paidLine": "MedLex, Carecraft and Lumen in one pass",
+  "before": "7 days free, then £29.99 for your first year. Founding price until 31 Jan 2027.",
+  "after": "7 days free, then £5.99 a month."
+ },
+ "endings": true,
+ "chapters": [
+  {
+   "title": "Decode",
+   "icon": "puzzle"
+  },
+  {
+   "title": "Practise",
+   "icon": "bolt"
+  },
+  {
+   "title": "Library",
+   "icon": "book"
+  },
+  {
+   "title": "See it",
+   "icon": "eye"
+  },
+  {
+   "title": "Remember",
+   "icon": "spark"
+  },
+  {
+   "title": "Grow",
+   "icon": "chart"
+  }
+ ],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "Pneumono, ultra, microscopic, silico, volcano, coni, osis. Forty five letters. A ward round in the morning. And a word you have never seen before.",
+   "i": 0,
+   "vStart": 0.8,
+   "vEnd": 9.88,
+   "t0": 0,
+   "t1": 13.6
+  },
+  {
+   "beat": "worry",
+   "say": "Can you say it out loud? Can you spell it on a chart? And when someone asks what it means, will you know?",
+   "i": 1,
+   "vStart": 14,
+   "vEnd": 19.82,
+   "t0": 13.6,
+   "t1": 20.12
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. Long words are just small parts, joined together. MedLex has you.",
+   "i": 2,
+   "logo": 23,
+   "vStart": 20.42,
+   "vEnd": 25.18,
+   "t0": 20.12,
+   "t1": 26
+  },
+  {
+   "beat": "chapter",
+   "title": "Decode",
+   "icon": "puzzle",
+   "say": "It starts with a puzzle. Tap peri, card and itis, and pericarditis explains itself. Every answer shows you why. Gastr means stomach. Add itis, and you have gastritis.",
+   "imgs": [
+    [
+     "mx-hook",
+     "Every word is a puzzle"
+    ],
+    [
+     "mx-decode",
+     "Right. Gastr means stomach."
+    ]
+   ],
+   "i": 3,
+   "card": 26,
+   "slotEnd": 48.08333333333333,
+   "vStart": 28.2,
+   "vEnd": 40.8,
+   "t0": 26,
+   "t1": 48.083
+  },
+  {
+   "beat": "chapter",
+   "title": "Practise",
+   "icon": "bolt",
+   "say": "Your day is ten minutes and ten words, mixing new terms with smart reviews. Match each part to its meaning. Then flip it around, and build the word yourself.",
+   "imgs": [
+    [
+     "mx-today",
+     "Ten minutes. Ten words."
+    ],
+    [
+     "mx-match",
+     "Match the part to its meaning"
+    ],
+    [
+     "mx-build",
+     "Build it yourself"
+    ]
+   ],
+   "i": 4,
+   "card": 48.08333333333333,
+   "slotEnd": 70.16666666666666,
+   "vStart": 50.283,
+   "vEnd": 60.663,
+   "t0": 48.083,
+   "t1": 70.167
+  },
+  {
+   "beat": "chapter",
+   "title": "Library",
+   "icon": "book",
+   "say": "Every term in the library is taken apart, explained in plain words, and spoken aloud. Sixty six prefixes, sixty roots and a hundred suffixes, each with its own studio.",
+   "imgs": [
+    [
+     "mx-term",
+     "Every term taken apart"
+    ],
+    [
+     "mx-prefix",
+     "Word part studios"
+    ]
+   ],
+   "i": 5,
+   "card": 70.16666666666666,
+   "slotEnd": 92.25,
+   "vStart": 72.367,
+   "vEnd": 82.027,
+   "t0": 70.167,
+   "t1": 92.25
+  },
+  {
+   "beat": "chapter",
+   "title": "See it",
+   "icon": "eye",
+   "say": "Illustrated guides decode a term in five steps. Each body system lives on one beautiful canvas, with a hundred terms and outcomes you can tick off.",
+   "imgs": [
+    [
+     "mx-atlas",
+     "Visual Atlas"
+    ],
+    [
+     "mx-canvas",
+     "One system, one canvas"
+    ],
+    [
+     "mx-module",
+     "Clear outcomes"
+    ]
+   ],
+   "i": 6,
+   "card": 92.25,
+   "slotEnd": 114.33333333333333,
+   "vStart": 94.45,
+   "vEnd": 103.07,
+   "t0": 92.25,
+   "t1": 114.333
+  },
+  {
+   "beat": "chapter",
+   "title": "Remember",
+   "icon": "spark",
+   "say": "Root cards give you a picture and a hook. Card means heart. Hemi means half. A quick check after every card proves it stuck.",
+   "imgs": [
+    [
+     "mx-root",
+     "Card means heart"
+    ],
+    [
+     "mx-hemi",
+     "Hemi means half"
+    ],
+    [
+     "mx-gastr",
+     "Prove it stuck"
+    ]
+   ],
+   "i": 7,
+   "card": 114.33333333333333,
+   "slotEnd": 136.41666666666666,
+   "vStart": 116.533,
+   "vEnd": 125.733,
+   "t0": 114.333,
+   "t1": 136.417
+  },
+  {
+   "beat": "chapter",
+   "title": "Grow",
+   "icon": "chart",
+   "say": "Travel nine eras of medical language, from ancient Egypt to Vesalius. And watch your mastery grow, one body system at a time.",
+   "imgs": [
+    [
+     "mx-history",
+     "Nine eras. One language."
+    ],
+    [
+     "mx-mastery",
+     "Your mastery journey"
+    ]
+   ],
+   "i": 8,
+   "card": 136.41666666666666,
+   "slotEnd": 158.5,
+   "vStart": 138.617,
+   "vEnd": 149.737,
+   "t0": 136.417,
+   "t1": 160
+  },
+  {
+   "beat": "stats",
+   "say": "Fourteen hundred and eighty terms. Twenty six modules. Fifty six illustrated guides.",
+   "stats": [
+    [
+     1480,
+     "medical terms"
+    ],
+    [
+     26,
+     "body-system modules"
+    ],
+    [
+     56,
+     "illustrated guides"
+    ],
+    [
+     8,
+     "ways to practise"
+    ]
+   ],
+   "i": 9,
+   "vStart": 160.6,
+   "vEnd": 165.54,
+   "t0": 160,
+   "t1": 170
+  },
+  {
+   "beat": "offer",
+   "say": "MedLex is free to start. The full app comes with the Crown Pass, with seven days free. Decode your first word today.",
+   "i": 10,
+   "vStart": 170.4,
+   "vEnd": 176.62,
+   "t0": 170,
+   "t1": 180,
+   "endCard": 172.6
+  }
+ ],
+ "imgs": [
+  "mx-hook",
+  "mx-decode",
+  "mx-today",
+  "mx-match",
+  "mx-build",
+  "mx-term",
+  "mx-prefix",
+  "mx-atlas",
+  "mx-canvas",
+  "mx-module",
+  "mx-root",
+  "mx-hemi",
+  "mx-gastr",
+  "mx-history",
+  "mx-mastery"
+ ]
+}

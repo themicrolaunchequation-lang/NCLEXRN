@@ -1,0 +1,128 @@
+{
+ "app": "evinca",
+ "len": 50,
+ "total": 50,
+ "name": "Evinca",
+ "full": "Evinca",
+ "short": "Evinca",
+ "color": "#D4A445",
+ "accent": "#F5D78E",
+ "url": "evinca.healthcarecrownacademy.co.uk",
+ "tagline": "Your best work, recognised on evidence.",
+ "open": [
+  "Somebody made care better today.",
+  "Did anyone write it down?"
+ ],
+ "worry": [
+  "Your best work, forgotten?",
+  "Your impact, unseen?",
+  "Your story, untold?"
+ ],
+ "end": {
+  "free": [
+   "Share your story free",
+   "A Spotlight Story costs nothing"
+  ],
+  "paidTitle": "Reviewed on evidence",
+  "paidLine": "Checkable by anyone, with a public record",
+  "before": "Spotlight Stories are free.",
+  "after": "Spotlight Stories are free."
+ },
+ "endings": false,
+ "chapters": [],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "Somebody made care better today. A safer ward. A calmer family. Did anyone write it down?",
+   "i": 0,
+   "vStart": 0.6,
+   "vEnd": 7.08,
+   "t0": 0,
+   "t1": 7.6
+  },
+  {
+   "beat": "worry",
+   "say": "Your best work, forgotten. Your impact, unseen. Your story, untold.",
+   "i": 1,
+   "vStart": 8,
+   "vEnd": 13.759,
+   "t0": 7.6,
+   "t1": 13.859
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. Evinca has you.",
+   "i": 2,
+   "logo": 15.359,
+   "vStart": 15.535,
+   "vEnd": 16.759,
+   "t0": 13.859,
+   "t1": 16.959
+  },
+  {
+   "beat": "screens",
+   "say": "Tell your story, or recognise a colleague. Reviewers read the evidence in its local context. And every honour gets a public record that anyone can check.",
+   "imgs": [
+    [
+     "ex-comein",
+     "Where do you come in?"
+    ],
+    [
+     "ex-camila",
+     "Illustrative example",
+     "Illustrative"
+    ],
+    [
+     "ex-davidchen",
+     "Public proof page",
+     "Illustrative"
+    ]
+   ],
+   "i": 3,
+   "vStart": 17.359,
+   "vEnd": 28.516,
+   "t0": 16.959,
+   "t1": 38
+  },
+  {
+   "beat": "montage",
+   "say": "Spotlight, Distinction, Honor and Laureate. Verified first, then decided.",
+   "imgs": [
+    "ev-spotlight",
+    "ev-marks",
+    "ex-map",
+    "ex-cert",
+    "ex-safeguards",
+    "ev-covers"
+   ],
+   "i": 4,
+   "vStart": 37.2,
+   "vEnd": 43.655,
+   "t0": 38,
+   "t1": 44
+  },
+  {
+   "beat": "offer",
+   "say": "Share your Spotlight Story free. Your best work, recognised on evidence.",
+   "i": 5,
+   "vStart": 44.4,
+   "vEnd": 49.629,
+   "t0": 44,
+   "t1": 50,
+   "endCard": 46.6
+  }
+ ],
+ "imgs": [
+  "ex-comein",
+  "ex-camila",
+  "ex-davidchen",
+  "ev-spotlight",
+  "ev-marks",
+  "ex-map",
+  "ex-cert",
+  "ex-safeguards",
+  "ev-covers",
+  "ex-rafael",
+  "ev-record"
+ ]
+}

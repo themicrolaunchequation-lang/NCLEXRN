@@ -1,0 +1,120 @@
+{
+ "app": "carecraft",
+ "len": 50,
+ "total": 50,
+ "name": "Carecraft",
+ "full": "Carecraft",
+ "short": "Carecraft",
+ "color": "#0F8A86",
+ "accent": "#6EE7D8",
+ "url": "carecraft.healthcarecrownacademy.co.uk",
+ "tagline": "One useful minute of practice a day.",
+ "open": [
+  "The hardest moment on shift",
+  "is not always clinical."
+ ],
+ "worry": [
+  "What do I say to a worried family?",
+  "How do I escalate this?",
+  "Did my handover make sense?"
+ ],
+ "end": {
+  "free": [
+   "Free to start",
+   "Try every app before you pay"
+  ],
+  "paidTitle": "Crown Pass",
+  "paidLine": "MedLex, Carecraft and Lumen in one pass",
+  "before": "7 days free, then £29.99 for your first year. Founding price until 31 Jan 2027.",
+  "after": "7 days free, then £5.99 a month."
+ },
+ "endings": true,
+ "chapters": [],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "The hardest moment on shift is not always clinical. Sometimes, it is the next sentence you say.",
+   "i": 0,
+   "vStart": 0.6,
+   "vEnd": 7.26,
+   "t0": 0,
+   "t1": 7.6
+  },
+  {
+   "beat": "worry",
+   "say": "What do I tell a worried family? How do I escalate this? Was my handover clear?",
+   "i": 1,
+   "vStart": 8,
+   "vEnd": 13.1,
+   "t0": 7.6,
+   "t1": 13.2
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. Carecraft has you.",
+   "i": 2,
+   "logo": 14.7,
+   "vStart": 13.92,
+   "vEnd": 16.1,
+   "t0": 13.2,
+   "t1": 16.3
+  },
+  {
+   "beat": "screens",
+   "say": "Each day, one real moment from a working shift. Think first, choose, then see feedback that names what worked, and what to try next.",
+   "imgs": [
+    [
+     "cc-today",
+     "Your scenario is ready"
+    ],
+    [
+     "cc-scenario",
+     "Feedback you can use"
+    ]
+   ],
+   "i": 3,
+   "vStart": 16.7,
+   "vEnd": 25.68,
+   "t0": 16.3,
+   "t1": 38
+  },
+  {
+   "beat": "montage",
+   "say": "Short lessons, visual guides, a handover builder and practice you can see.",
+   "imgs": [
+    "cc-learn",
+    "cc-guide",
+    "cc-sbar",
+    "cc-builder",
+    "cc-hygiene",
+    "cc-growth"
+   ],
+   "i": 4,
+   "vStart": 37.2,
+   "vEnd": 42.38,
+   "t0": 38,
+   "t1": 44
+  },
+  {
+   "beat": "offer",
+   "say": "One useful minute a day. Start free today.",
+   "i": 5,
+   "vStart": 44.4,
+   "vEnd": 47.52,
+   "t0": 44,
+   "t1": 50,
+   "endCard": 46.6
+  }
+ ],
+ "imgs": [
+  "cc-today",
+  "cc-scenario",
+  "cc-learn",
+  "cc-guide",
+  "cc-sbar",
+  "cc-builder",
+  "cc-hygiene",
+  "cc-growth",
+  "cc-trust"
+ ]
+}

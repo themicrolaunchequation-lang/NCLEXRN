@@ -1,0 +1,311 @@
+{
+ "app": "gulf",
+ "len": 180,
+ "total": 180,
+ "name": "Gulf Region Nursing",
+ "full": "Gulf Region Nursing",
+ "short": "Gulf Region",
+ "color": "#347A9A",
+ "accent": "#9ED8F0",
+ "url": "snle.healthcarecrownacademy.co.uk",
+ "tagline": "Your Gulf Region nursing licence, one safe decision at a time.",
+ "open": [
+  "One exam stands between you",
+  "and your nursing career in the Gulf."
+ ],
+ "worry": [
+  "Saudi, Qatar, Dubai or Abu Dhabi?",
+  "Which questions will they ask?",
+  "Am I really ready?"
+ ],
+ "end": {
+  "free": [
+   "Free practice questions",
+   "Try the studio first"
+  ],
+  "paidTitle": "Gulf Pass",
+  "paidLine": "All four exams, plus the Crown Pass",
+  "before": "US$50 for 3 months · US$69 for 6 months. Paid once.",
+  "after": "US$50 for 3 months · US$69 for 6 months. Paid once."
+ },
+ "endings": false,
+ "chapters": [
+  {
+   "title": "Four exams",
+   "icon": "globe"
+  },
+  {
+   "title": "Question bank",
+   "icon": "check"
+  },
+  {
+   "title": "Mock exams",
+   "icon": "clock"
+  },
+  {
+   "title": "Decision tools",
+   "icon": "bolt"
+  },
+  {
+   "title": "Dossiers",
+   "icon": "book"
+  },
+  {
+   "title": "Language",
+   "icon": "globe2"
+  },
+  {
+   "title": "Readiness",
+   "icon": "chart"
+  }
+ ],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "You trained for years. You care for patients every day. And now, one exam stands between you and your nursing career in the Gulf Region.",
+   "i": 0,
+   "vStart": 0.8,
+   "vEnd": 9.78,
+   "t0": 0,
+   "t1": 13.6
+  },
+  {
+   "beat": "worry",
+   "say": "Saudi, Qatar, Dubai or Abu Dhabi? Which questions will they ask? And on the day, will you really be ready?",
+   "i": 1,
+   "vStart": 14,
+   "vEnd": 21.46,
+   "t0": 13.6,
+   "t1": 21.56
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. You already think like a safe nurse. We will help you show it. We have you.",
+   "i": 2,
+   "logo": 23.060000000000002,
+   "vStart": 22.06,
+   "vEnd": 27.62,
+   "t0": 21.56,
+   "t1": 28.12
+  },
+  {
+   "beat": "chapter",
+   "title": "Four exams",
+   "icon": "globe",
+   "say": "Pick your regulator. Saudi Arabia, Qatar, Dubai or Abu Dhabi. Each exam keeps its own progress. Set your exam date, and the studio suggests a daily pace.",
+   "imgs": [
+    [
+     "gr-landing",
+     "Four exams, one studio"
+    ],
+    [
+     "gr-today",
+     "A plan for today"
+    ]
+   ],
+   "i": 3,
+   "card": 28.12,
+   "slotEnd": 44.92857142857143,
+   "vStart": 30.32,
+   "vEnd": 40.4,
+   "t0": 28.12,
+   "t1": 44.929
+  },
+  {
+   "beat": "chapter",
+   "title": "Question bank",
+   "icon": "check",
+   "say": "Answer, then see the reasoning. The safest choice, a clinical pearl, and the trap to avoid, on every question.",
+   "imgs": [
+    [
+     "gr-qb",
+     "Answer, then see the reasoning"
+    ]
+   ],
+   "i": 4,
+   "card": 44.92857142857143,
+   "slotEnd": 63.857142857142854,
+   "vStart": 47.129,
+   "vEnd": 54.169,
+   "t0": 44.929,
+   "t1": 63.857
+  },
+  {
+   "beat": "chapter",
+   "title": "Mock exams",
+   "icon": "clock",
+   "say": "Train in tutor mode for instant feedback, or run a timed simulation of the real day, with answers hidden until the end.",
+   "imgs": [
+    [
+     "gr-mock",
+     "One exam card, two ways"
+    ],
+    [
+     "gr-exam",
+     "Timed. Answers hidden."
+    ]
+   ],
+   "i": 5,
+   "card": 63.857142857142854,
+   "slotEnd": 82.78571428571428,
+   "vStart": 66.057,
+   "vEnd": 73.297,
+   "t0": 63.857,
+   "t1": 82.786
+  },
+  {
+   "beat": "chapter",
+   "title": "Decision tools",
+   "icon": "bolt",
+   "say": "Clinical decision tools, from stroke recognition to tubes and drains. Screen, decide, commit and reassess, and every tool comes with its own questions.",
+   "imgs": [
+    [
+     "gr-befast",
+     "BE-FAST stroke recognition"
+    ],
+    [
+     "gr-tubes",
+     "Tubes and drains"
+    ],
+    [
+     "gr-tools",
+     "Every tool has questions"
+    ]
+   ],
+   "i": 6,
+   "card": 82.78571428571428,
+   "slotEnd": 101.71428571428571,
+   "vStart": 84.986,
+   "vEnd": 95.006,
+   "t0": 82.786,
+   "t1": 101.714
+  },
+  {
+   "beat": "chapter",
+   "title": "Dossiers",
+   "icon": "book",
+   "say": "Practise the same reasoning inside full clinical stories. Thirty five specialty dossiers, each linked to the core tools you need.",
+   "imgs": [
+    [
+     "gr-dossier",
+     "Specialty dossiers"
+    ],
+    [
+     "gr-connections",
+     "Context, plus a rule you can reuse"
+    ]
+   ],
+   "i": 7,
+   "card": 101.71428571428571,
+   "slotEnd": 120.64285714285714,
+   "vStart": 103.914,
+   "vEnd": 112.554,
+   "t0": 101.714,
+   "t1": 120.643
+  },
+  {
+   "beat": "chapter",
+   "title": "Language",
+   "icon": "globe2",
+   "say": "Nine labs show how licensing questions are built. And question language is explained side by side, in English and Arabic.",
+   "imgs": [
+    [
+     "gr-labs",
+     "Decode the question"
+    ],
+    [
+     "gr-glossary",
+     "English and Arabic"
+    ],
+    [
+     "gr-terms",
+     "Searchable glossary"
+    ]
+   ],
+   "i": 8,
+   "card": 120.64285714285714,
+   "slotEnd": 139.57142857142856,
+   "vStart": 122.843,
+   "vEnd": 130.343,
+   "t0": 120.643,
+   "t1": 139.571
+  },
+  {
+   "beat": "chapter",
+   "title": "Readiness",
+   "icon": "chart",
+   "say": "See exactly where you stand, by domain. And when your head is full, a short reset matched to the problem.",
+   "imgs": [
+    [
+     "gr-ready",
+     "See where you stand"
+    ],
+    [
+     "gr-reset",
+     "Reset and recharge"
+    ]
+   ],
+   "i": 9,
+   "card": 139.57142857142856,
+   "slotEnd": 158.5,
+   "vStart": 141.771,
+   "vEnd": 147.891,
+   "t0": 139.571,
+   "t1": 160
+  },
+  {
+   "beat": "stats",
+   "say": "Twelve hundred and ninety seven clinically reviewed questions. Sixty seven decision tools. Three hundred and fifty cases.",
+   "stats": [
+    [
+     1297,
+     "clinically reviewed questions"
+    ],
+    [
+     67,
+     "decision tools"
+    ],
+    [
+     350,
+     "dossier cases"
+    ],
+    [
+     4,
+     "Gulf Region exams"
+    ]
+   ],
+   "i": 10,
+   "vStart": 160.6,
+   "vEnd": 167.16,
+   "t0": 160,
+   "t1": 170
+  },
+  {
+   "beat": "offer",
+   "say": "Start with free questions today. The Gulf Pass opens all four exams, plus the Crown Pass. One safe decision at a time.",
+   "i": 11,
+   "vStart": 170.4,
+   "vEnd": 178.02,
+   "t0": 170,
+   "t1": 180,
+   "endCard": 172.6
+  }
+ ],
+ "imgs": [
+  "gr-landing",
+  "gr-today",
+  "gr-qb",
+  "gr-mock",
+  "gr-exam",
+  "gr-befast",
+  "gr-tubes",
+  "gr-tools",
+  "gr-dossier",
+  "gr-connections",
+  "gr-labs",
+  "gr-glossary",
+  "gr-terms",
+  "gr-ready",
+  "gr-reset"
+ ]
+}

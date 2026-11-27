@@ -1,0 +1,318 @@
+{
+ "app": "lss",
+ "len": 180,
+ "total": 180,
+ "name": "Green Belt",
+ "full": "Lean Six Sigma Green Belt",
+ "short": "Green Belt",
+ "color": "#1F9D74",
+ "accent": "#8FF0C8",
+ "url": "lss.healthcarecrownacademy.co.uk",
+ "tagline": "Lean Six Sigma for healthcare practitioners.",
+ "open": [
+  "Every delay on your ward",
+  "has a cause."
+ ],
+ "worry": [
+  "Why are patients still waiting?",
+  "Is it the people, or the system?",
+  "Can you prove it?"
+ ],
+ "end": {
+  "free": [
+   "Free to try",
+   "Explore tools and simulations"
+  ],
+  "paidTitle": "Green Belt",
+  "paidLine": "Full toolkit, exam and certificate, 12 months",
+  "before": "US$99 for 12 months, paid once.",
+  "after": "US$149 for 12 months, paid once."
+ },
+ "endings": true,
+ "chapters": [
+  {
+   "title": "Define",
+   "icon": "target"
+  },
+  {
+   "title": "Measure",
+   "icon": "map"
+  },
+  {
+   "title": "Analyse",
+   "icon": "chart"
+  },
+  {
+   "title": "Improve",
+   "icon": "bolt"
+  },
+  {
+   "title": "Control",
+   "icon": "shield"
+  },
+  {
+   "title": "Play",
+   "icon": "play"
+  },
+  {
+   "title": "Certify",
+   "icon": "award"
+  }
+ ],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "Every delay on your ward has a cause. The waiting room is full again. Antibiotics are late again. And everyone is working as hard as they can.",
+   "i": 0,
+   "vStart": 0.8,
+   "vEnd": 9.26,
+   "t0": 0,
+   "t1": 13.6
+  },
+  {
+   "beat": "worry",
+   "say": "Is it the people, or the system? Where does the time really go? And if you fix it, can you prove it?",
+   "i": 1,
+   "vStart": 14,
+   "vEnd": 19.86,
+   "t0": 13.6,
+   "t1": 20.16
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. Data tells you where. Judgement tells you what to do. The Green Belt toolkit has you.",
+   "i": 2,
+   "logo": 23,
+   "vStart": 20.46,
+   "vEnd": 25.86,
+   "t0": 20.16,
+   "t1": 26.36
+  },
+  {
+   "beat": "chapter",
+   "title": "Define",
+   "icon": "target",
+   "say": "Thirty tools follow the DMAIC path, with a live statistical engine. Start with the problem, then brainstorm causes across all six categories, before anyone is blamed.",
+   "imgs": [
+    [
+     "ls-home",
+     "Clinical Quality Toolkit"
+    ],
+    [
+     "ls-fishbone",
+     "Fishbone diagram"
+    ]
+   ],
+   "i": 3,
+   "card": 26.36,
+   "slotEnd": 44.92857142857143,
+   "vStart": 28.56,
+   "vEnd": 38.16,
+   "t0": 26.36,
+   "t1": 44.929
+  },
+  {
+   "beat": "chapter",
+   "title": "Measure",
+   "icon": "map",
+   "say": "Map the journey from emergency department to ward, and watch the waiting appear. Find the bottleneck first, because speeding up one step can simply flood the next.",
+   "imgs": [
+    [
+     "ls-vsm",
+     "Value stream map"
+    ],
+    [
+     "lx-toc",
+     "Find the bottleneck first"
+    ]
+   ],
+   "i": 4,
+   "card": 44.92857142857143,
+   "slotEnd": 63.857142857142854,
+   "vStart": 47.129,
+   "vEnd": 55.609,
+   "t0": 44.929,
+   "t1": 63.857
+  },
+  {
+   "beat": "chapter",
+   "title": "Analyse",
+   "icon": "chart",
+   "say": "Put the biggest causes first with a Pareto chart. Test your hypothesis, and see what the numbers really say.",
+   "imgs": [
+    [
+     "ls-pareto",
+     "Pareto chart"
+    ],
+    [
+     "ls-hyptest",
+     "Hypothesis test"
+    ],
+    [
+     "ls-regression",
+     "Correlation and regression"
+    ]
+   ],
+   "i": 5,
+   "card": 63.857142857142854,
+   "slotEnd": 82.78571428571428,
+   "vStart": 66.057,
+   "vEnd": 71.497,
+   "t0": 63.857,
+   "t1": 82.786
+  },
+  {
+   "beat": "chapter",
+   "title": "Improve",
+   "icon": "bolt",
+   "say": "Plot your change over time. In this example, door to antibiotic time fell from eighty six to fifty four minutes, and the toolkit flags the shift for you. Safety comes from resilient systems, not perfect people.",
+   "imgs": [
+    [
+     "lx-runchart",
+     "Example: 86 to 54 minutes",
+     "Example data"
+    ],
+    [
+     "lx-swiss",
+     "Swiss cheese model"
+    ],
+    [
+     "lx-5s",
+     "5S"
+    ]
+   ],
+   "i": 6,
+   "card": 82.78571428571428,
+   "slotEnd": 101.71428571428571,
+   "vStart": 84.986,
+   "vEnd": 96.306,
+   "t0": 82.786,
+   "t1": 101.714
+  },
+  {
+   "beat": "chapter",
+   "title": "Control",
+   "icon": "shield",
+   "say": "Control limits tell you when a spike is real. In the red bead ward, every point sits inside the limits: the differences come from the system, so stop ranking people.",
+   "imgs": [
+    [
+     "ls-spc",
+     "Signal or noise?"
+    ],
+    [
+     "lx-redbead",
+     "Read the system"
+    ]
+   ],
+   "i": 7,
+   "card": 101.71428571428571,
+   "slotEnd": 120.64285714285714,
+   "vStart": 103.914,
+   "vEnd": 112.954,
+   "t0": 101.714,
+   "t1": 120.643
+  },
+  {
+   "beat": "chapter",
+   "title": "Play",
+   "icon": "play",
+   "say": "Learn Lean Six Sigma by playing it, with two game worlds, eighteen tools and twenty one levels. And trace the history, from Ford’s line in nineteen thirteen to today’s wards.",
+   "imgs": [
+    [
+     "lx-playground",
+     "LSS Playground"
+    ],
+    [
+     "lx-timeline",
+     "From 1913 to today"
+    ]
+   ],
+   "i": 8,
+   "card": 120.64285714285714,
+   "slotEnd": 139.57142857142856,
+   "vStart": 122.843,
+   "vEnd": 133.003,
+   "t0": 120.643,
+   "t1": 139.571
+  },
+  {
+   "beat": "chapter",
+   "title": "Certify",
+   "icon": "award",
+   "say": "Practise for nine certification blueprints, then earn your Certificate of Completion, with an ID badge and a verifiable code.",
+   "imgs": [
+    [
+     "lx-exam",
+     "Exam prep"
+    ],
+    [
+     "lx-cert",
+     "Certificate · specimen",
+     "Specimen"
+    ]
+   ],
+   "i": 9,
+   "card": 139.57142857142856,
+   "slotEnd": 158.5,
+   "vStart": 141.771,
+   "vEnd": 147.771,
+   "t0": 139.571,
+   "t1": 160
+  },
+  {
+   "beat": "stats",
+   "say": "Thirty tools. Ten simulations. Over a thousand exam practice items.",
+   "stats": [
+    [
+     30,
+     "DMAIC tools"
+    ],
+    [
+     10,
+     "simulations"
+    ],
+    [
+     1089,
+     "exam practice items"
+    ],
+    [
+     18,
+     "playground tools"
+    ]
+   ],
+   "i": 10,
+   "vStart": 160.6,
+   "vEnd": 164.68,
+   "t0": 160,
+   "t1": 170
+  },
+  {
+   "beat": "offer",
+   "say": "The Green Belt toolkit is free to try. Full access is for twelve months, paid once. Fix the cause, and prove it.",
+   "i": 11,
+   "vStart": 170.4,
+   "vEnd": 175.92,
+   "t0": 170,
+   "t1": 180,
+   "endCard": 172.6
+  }
+ ],
+ "imgs": [
+  "ls-home",
+  "ls-fishbone",
+  "ls-vsm",
+  "lx-toc",
+  "ls-pareto",
+  "ls-hyptest",
+  "ls-regression",
+  "lx-runchart",
+  "lx-swiss",
+  "lx-5s",
+  "ls-spc",
+  "lx-redbead",
+  "lx-playground",
+  "lx-timeline",
+  "lx-exam",
+  "lx-cert"
+ ]
+}

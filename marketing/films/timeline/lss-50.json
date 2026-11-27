@@ -1,0 +1,125 @@
+{
+ "app": "lss",
+ "len": 50,
+ "total": 50,
+ "name": "Green Belt",
+ "full": "Lean Six Sigma Green Belt",
+ "short": "Green Belt",
+ "color": "#1F9D74",
+ "accent": "#8FF0C8",
+ "url": "lss.healthcarecrownacademy.co.uk",
+ "tagline": "Lean Six Sigma for healthcare practitioners.",
+ "open": [
+  "Every delay on your ward",
+  "has a cause."
+ ],
+ "worry": [
+  "Why are patients still waiting?",
+  "Is it the people, or the system?",
+  "Can you prove it?"
+ ],
+ "end": {
+  "free": [
+   "Free to try",
+   "Explore tools and simulations"
+  ],
+  "paidTitle": "Green Belt",
+  "paidLine": "Full toolkit, exam and certificate, 12 months",
+  "before": "US$99 for 12 months, paid once.",
+  "after": "US$149 for 12 months, paid once."
+ },
+ "endings": true,
+ "chapters": [],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "Every delay on your ward has a cause. The waiting room is full again.",
+   "i": 0,
+   "vStart": 0.6,
+   "vEnd": 4.7,
+   "t0": 0,
+   "t1": 7.6
+  },
+  {
+   "beat": "worry",
+   "say": "Is it the people, or the system? And can you prove it?",
+   "i": 1,
+   "vStart": 8,
+   "vEnd": 11.16,
+   "t0": 7.6,
+   "t1": 12.5
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. The Green Belt toolkit has you.",
+   "i": 2,
+   "logo": 14,
+   "vStart": 12.92,
+   "vEnd": 15.4,
+   "t0": 12.5,
+   "t1": 16.2
+  },
+  {
+   "beat": "screens",
+   "say": "Map the patient journey and watch the waiting appear. Then plot the data, and see the moment your change made a real difference.",
+   "imgs": [
+    [
+     "ls-vsm",
+     "See where the time goes"
+    ],
+    [
+     "lx-runchart",
+     "Example: 86 to 54 minutes",
+     "Example data"
+    ],
+    [
+     "ls-spc",
+     "Signal or noise?"
+    ]
+   ],
+   "i": 3,
+   "vStart": 16.6,
+   "vEnd": 24.2,
+   "t0": 16.2,
+   "t1": 38
+  },
+  {
+   "beat": "montage",
+   "say": "Thirty tools, simulations, a playground, exam practice and a certificate.",
+   "imgs": [
+    "ls-fishbone",
+    "ls-pareto",
+    "lx-redbead",
+    "lx-playground",
+    "lx-exam",
+    "lx-cert"
+   ],
+   "i": 4,
+   "vStart": 37.2,
+   "vEnd": 42.14,
+   "t0": 38,
+   "t1": 44
+  },
+  {
+   "beat": "offer",
+   "say": "Free to try. Fix the cause, and prove it.",
+   "i": 5,
+   "vStart": 44.4,
+   "vEnd": 47.02,
+   "t0": 44,
+   "t1": 50,
+   "endCard": 46.6
+  }
+ ],
+ "imgs": [
+  "ls-vsm",
+  "lx-runchart",
+  "ls-spc",
+  "ls-fishbone",
+  "ls-pareto",
+  "lx-redbead",
+  "lx-playground",
+  "lx-exam",
+  "lx-cert"
+ ]
+}

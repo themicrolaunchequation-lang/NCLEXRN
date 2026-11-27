@@ -1,0 +1,282 @@
+{
+ "app": "serein",
+ "len": 180,
+ "total": 180,
+ "name": "Serein",
+ "full": "Serein",
+ "short": "Serein",
+ "color": "#2B735E",
+ "accent": "#9FE3C8",
+ "url": "serein.healthcarecrownacademy.co.uk",
+ "tagline": "A little room to breathe, between tasks.",
+ "open": [
+  "You look after everyone.",
+  "Who looks after you?"
+ ],
+ "worry": [
+  "Racing thoughts.",
+  "Tight shoulders.",
+  "No time to stop."
+ ],
+ "end": {
+  "free": [
+   "Free for everyone",
+   "Always. Nothing is monitored."
+  ],
+  "paidTitle": "Free",
+  "paidLine": "Every practice, every guide",
+  "before": "No account needed to begin.",
+  "after": "No account needed to begin."
+ },
+ "endings": false,
+ "chapters": [
+  {
+   "title": "Pause",
+   "icon": "sun"
+  },
+  {
+   "title": "Reset",
+   "icon": "spark"
+  },
+  {
+   "title": "Breathe",
+   "icon": "wave"
+  },
+  {
+   "title": "Explore",
+   "icon": "book"
+  },
+  {
+   "title": "Toolkit",
+   "icon": "tool"
+  },
+  {
+   "title": "Your space",
+   "icon": "heart"
+  }
+ ],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "You look after everyone. All shift. Every shift. The call bell, the family, the handover. So, between tasks, who looks after you?",
+   "i": 0,
+   "vStart": 0.8,
+   "vEnd": 13.48,
+   "t0": 0,
+   "t1": 13.6
+  },
+  {
+   "beat": "worry",
+   "say": "Racing thoughts. Tight shoulders. Tired hands. And no time to stop.",
+   "i": 1,
+   "vStart": 14,
+   "vEnd": 20.26,
+   "t0": 13.6,
+   "t1": 20.56
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. Two minutes is enough. Serein has you.",
+   "i": 2,
+   "logo": 23,
+   "vStart": 20.86,
+   "vEnd": 25.48,
+   "t0": 20.56,
+   "t1": 26
+  },
+  {
+   "beat": "chapter",
+   "title": "Pause",
+   "icon": "sun",
+   "say": "Your day starts with a little room for you. A two minute pause between tasks. No streak to keep. Nothing monitored.",
+   "imgs": [
+    [
+     "sr-today",
+     "Make room for you"
+    ]
+   ],
+   "i": 3,
+   "card": 26,
+   "slotEnd": 48.08333333333333,
+   "vStart": 28.2,
+   "vEnd": 36.48,
+   "t0": 26,
+   "t1": 48.083
+  },
+  {
+   "beat": "chapter",
+   "title": "Reset",
+   "icon": "spark",
+   "say": "Racing or on edge? At a desk or at a station? Tell Serein how you feel, and it suggests the reset that fits.",
+   "imgs": [
+    [
+     "sr-reset",
+     "Get the right reset"
+    ]
+   ],
+   "i": 4,
+   "card": 48.08333333333333,
+   "slotEnd": 70.16666666666666,
+   "vStart": 50.283,
+   "vEnd": 59.003,
+   "t0": 48.083,
+   "t1": 70.167
+  },
+  {
+   "beat": "chapter",
+   "title": "Breathe",
+   "icon": "wave",
+   "say": "Breathe out, and let it leave, without forcing it. A steady four part box rhythm, holds optional, at your pace. Ninety seconds for tired hands.",
+   "imgs": [
+    [
+     "sr-breathe",
+     "Breathing Tide"
+    ],
+    [
+     "sr-box",
+     "Box Breathing"
+    ],
+    [
+     "sr-hands",
+     "Hand and finger reset"
+    ]
+   ],
+   "i": 5,
+   "card": 70.16666666666666,
+   "slotEnd": 92.25,
+   "vStart": 72.367,
+   "vEnd": 84.567,
+   "t0": 70.167,
+   "t1": 92.25
+  },
+  {
+   "beat": "chapter",
+   "title": "Explore",
+   "icon": "book",
+   "say": "Fifteen short practices, many in two minutes or less. Gentle journeys, one small step at a time. Illustrated guides for real working days.",
+   "imgs": [
+    [
+     "sr-practices",
+     "Fifteen short practices"
+    ],
+    [
+     "sr-journey",
+     "Finding your pause"
+    ],
+    [
+     "sr-guide",
+     "Visual Atlas"
+    ]
+   ],
+   "i": 6,
+   "card": 92.25,
+   "slotEnd": 114.33333333333333,
+   "vStart": 94.45,
+   "vEnd": 105.69,
+   "t0": 92.25,
+   "t1": 114.333
+  },
+  {
+   "beat": "chapter",
+   "title": "Toolkit",
+   "icon": "tool",
+   "say": "Small tools for before a shift, between tasks, and after a hard moment. Build a one minute shift start ritual, and find the work barrier, for a better conversation at work.",
+   "imgs": [
+    [
+     "sr-toolkit",
+     "Small tools for real shifts"
+    ],
+    [
+     "sr-ritual",
+     "A one-minute ritual"
+    ],
+    [
+     "sr-barrier",
+     "Find the work barrier"
+    ]
+   ],
+   "i": 7,
+   "card": 114.33333333333333,
+   "slotEnd": 136.41666666666666,
+   "vStart": 116.533,
+   "vEnd": 129.713,
+   "t0": 114.333,
+   "t1": 136.417
+  },
+  {
+   "beat": "chapter",
+   "title": "Your space",
+   "icon": "heart",
+   "say": "Save the practices you love. And when it is more than a hard day, trusted services are one tap away. You do not have to hold it alone.",
+   "imgs": [
+    [
+     "sr-me",
+     "A little room for you"
+    ],
+    [
+     "sr-support",
+     "You do not have to hold it alone"
+    ]
+   ],
+   "i": 8,
+   "card": 136.41666666666666,
+   "slotEnd": 158.5,
+   "vStart": 138.617,
+   "vEnd": 149.157,
+   "t0": 136.417,
+   "t1": 160
+  },
+  {
+   "beat": "stats",
+   "say": "Fifteen practices. Twelve illustrated guides. Two minutes is enough. And nothing, ever, is monitored.",
+   "stats": [
+    [
+     15,
+     "short practices"
+    ],
+    [
+     12,
+     "illustrated guides"
+    ],
+    [
+     2,
+     "minutes is enough"
+    ],
+    [
+     0,
+     "things monitored"
+    ]
+   ],
+   "i": 9,
+   "vStart": 160.6,
+   "vEnd": 168.64,
+   "t0": 160,
+   "t1": 170
+  },
+  {
+   "beat": "offer",
+   "say": "Serein is free for everyone, always. A little room to breathe, between tasks.",
+   "i": 10,
+   "vStart": 170.4,
+   "vEnd": 176.44,
+   "t0": 170,
+   "t1": 180,
+   "endCard": 172.6
+  }
+ ],
+ "imgs": [
+  "sr-today",
+  "sr-reset",
+  "sr-breathe",
+  "sr-box",
+  "sr-hands",
+  "sr-practices",
+  "sr-journey",
+  "sr-guide",
+  "sr-toolkit",
+  "sr-ritual",
+  "sr-barrier",
+  "sr-me",
+  "sr-support"
+ ]
+}

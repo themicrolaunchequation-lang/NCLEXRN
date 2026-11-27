@@ -1,0 +1,124 @@
+{
+ "app": "medlex",
+ "len": 50,
+ "total": 50,
+ "name": "MedLex",
+ "full": "MedLex",
+ "short": "MedLex",
+ "color": "#3557D6",
+ "accent": "#8EC5FF",
+ "url": "medlex.healthcarecrownacademy.co.uk",
+ "tagline": "Make sense of any medical word.",
+ "open": [
+  "Pneumonoultramicroscopic",
+  "silicovolcanoconiosis"
+ ],
+ "worry": [
+  "Another word you can’t say?",
+  "Another word you can’t spell?",
+  "What does it even mean?"
+ ],
+ "end": {
+  "free": [
+   "Free to start",
+   "Try every app before you pay"
+  ],
+  "paidTitle": "Crown Pass",
+  "paidLine": "MedLex, Carecraft and Lumen in one pass",
+  "before": "7 days free, then £29.99 for your first year. Founding price until 31 Jan 2027.",
+  "after": "7 days free, then £5.99 a month."
+ },
+ "endings": true,
+ "chapters": [],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "Forty five letters. One exam tomorrow. And a word you have never seen before.",
+   "i": 0,
+   "vStart": 0.6,
+   "vEnd": 6.28,
+   "t0": 0,
+   "t1": 7.6
+  },
+  {
+   "beat": "worry",
+   "say": "Can you say it? Can you spell it? Do you know what it means?",
+   "i": 1,
+   "vStart": 8,
+   "vEnd": 11.14,
+   "t0": 7.6,
+   "t1": 12.5
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. MedLex has you.",
+   "i": 2,
+   "logo": 14,
+   "vStart": 13.66,
+   "vEnd": 15.4,
+   "t0": 12.5,
+   "t1": 16.2
+  },
+  {
+   "beat": "screens",
+   "say": "Every medical word is a puzzle. Tap peri, card and itis, and pericarditis explains itself. Then build it yourself, piece by piece.",
+   "imgs": [
+    [
+     "mx-hook",
+     "Every word is a puzzle"
+    ],
+    [
+     "mx-decode",
+     "Instant feedback"
+    ],
+    [
+     "mx-build",
+     "Build it yourself"
+    ]
+   ],
+   "i": 3,
+   "vStart": 16.6,
+   "vEnd": 26.84,
+   "t0": 16.2,
+   "t1": 38
+  },
+  {
+   "beat": "montage",
+   "say": "Daily sessions, illustrated guides, root cards and quick checks.",
+   "imgs": [
+    "mx-today",
+    "mx-atlas",
+    "mx-root",
+    "mx-hemi",
+    "mx-gastr",
+    "mx-mastery"
+   ],
+   "i": 4,
+   "vStart": 37.2,
+   "vEnd": 41.3,
+   "t0": 38,
+   "t1": 44
+  },
+  {
+   "beat": "offer",
+   "say": "Start free today, and decode your first word in ten seconds.",
+   "i": 5,
+   "vStart": 44.4,
+   "vEnd": 48.32,
+   "t0": 44,
+   "t1": 50,
+   "endCard": 46.6
+  }
+ ],
+ "imgs": [
+  "mx-hook",
+  "mx-decode",
+  "mx-build",
+  "mx-today",
+  "mx-atlas",
+  "mx-root",
+  "mx-hemi",
+  "mx-gastr",
+  "mx-mastery"
+ ]
+}

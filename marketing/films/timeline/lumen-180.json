@@ -1,0 +1,277 @@
+{
+ "app": "lumen",
+ "len": 180,
+ "total": 180,
+ "name": "Lumen",
+ "full": "Lumen",
+ "short": "Lumen",
+ "color": "#8B6CF0",
+ "accent": "#C9B8FF",
+ "url": "lumen.healthcarecrownacademy.co.uk",
+ "tagline": "Turn your own notes into recall.",
+ "open": [
+  "You highlighted everything.",
+  "So why does so little stick?"
+ ],
+ "worry": [
+  "Three hundred pages.",
+  "Four days left.",
+  "Where do I even start?"
+ ],
+ "end": {
+  "free": [
+   "Free to start",
+   "Try every app before you pay"
+  ],
+  "paidTitle": "Crown Pass",
+  "paidLine": "MedLex, Carecraft and Lumen in one pass",
+  "before": "7 days free, then £29.99 for your first year. Founding price until 31 Jan 2027.",
+  "after": "7 days free, then £5.99 a month."
+ },
+ "endings": true,
+ "chapters": [
+  {
+   "title": "Bring it in",
+   "icon": "upload"
+  },
+  {
+   "title": "Read",
+   "icon": "book"
+  },
+  {
+   "title": "Explain",
+   "icon": "spark"
+  },
+  {
+   "title": "Remember",
+   "icon": "cards"
+  },
+  {
+   "title": "Connect",
+   "icon": "link"
+  },
+  {
+   "title": "Focus",
+   "icon": "clock"
+  }
+ ],
+ "beats": [
+  {
+   "beat": "open",
+   "say": "You highlighted everything. Every page is yellow. You read it twice. So why, when the exam asks, does so little stick?",
+   "i": 0,
+   "vStart": 0.8,
+   "vEnd": 8.9,
+   "t0": 0,
+   "t1": 13.6
+  },
+  {
+   "beat": "worry",
+   "say": "Three hundred pages. Four days left. Where do you even start?",
+   "i": 1,
+   "vStart": 14,
+   "vEnd": 17.82,
+   "t0": 13.6,
+   "t1": 19.24
+  },
+  {
+   "beat": "turn",
+   "say": "Breathe. Reading is not remembering. Recall is. Lumen has you.",
+   "i": 2,
+   "logo": 23,
+   "vStart": 19.54,
+   "vEnd": 24.4,
+   "t0": 19.24,
+   "t1": 26
+  },
+  {
+   "beat": "chapter",
+   "title": "Bring it in",
+   "icon": "upload",
+   "say": "Add a PDF or photos of your own notes. Lecture notes, handouts and books live in one calm library. Everything stays private, on your device.",
+   "imgs": [
+    [
+     "lm-today",
+     "Bring in something to study"
+    ],
+    [
+     "lm-library",
+     "Your library, your way"
+    ]
+   ],
+   "i": 3,
+   "card": 26,
+   "slotEnd": 48.08333333333333,
+   "vStart": 28.2,
+   "vEnd": 36.96,
+   "t0": 26,
+   "t1": 48.083
+  },
+  {
+   "beat": "chapter",
+   "title": "Read",
+   "icon": "book",
+   "say": "Read beside your tools. Highlight, write, add sticky notes and mark a region, right on the page. A lens follows your pointer when you need to read closely.",
+   "imgs": [
+    [
+     "lm-reader",
+     "Read beside your tools"
+    ],
+    [
+     "lm-magnify",
+     "Magnify, mark, and keep it"
+    ]
+   ],
+   "i": 4,
+   "card": 48.08333333333333,
+   "slotEnd": 70.16666666666666,
+   "vStart": 50.283,
+   "vEnd": 59.003,
+   "t0": 48.083,
+   "t1": 70.167
+  },
+  {
+   "beat": "chapter",
+   "title": "Explain",
+   "icon": "spark",
+   "say": "Then the real learning. Hide the page. Explain it from memory. Reveal it, and compare. Think first, then reveal, with active recall and explain it back.",
+   "imgs": [
+    [
+     "lm-explain",
+     "Read. Hide. Explain. Verify."
+    ],
+    [
+     "lm-recall",
+     "Think first. Then reveal."
+    ]
+   ],
+   "i": 5,
+   "card": 70.16666666666666,
+   "slotEnd": 92.25,
+   "vStart": 72.367,
+   "vEnd": 81.767,
+   "t0": 70.167,
+   "t1": 92.25
+  },
+  {
+   "beat": "chapter",
+   "title": "Remember",
+   "icon": "cards",
+   "say": "Turn a moment into a recall card. Review timing adapts to how well you knew it. Your cards and practice lab wait for you in the study studio.",
+   "imgs": [
+    [
+     "lm-card",
+     "A moment to remember"
+    ],
+    [
+     "lm-studio",
+     "Your cards, ready"
+    ]
+   ],
+   "i": 6,
+   "card": 92.25,
+   "slotEnd": 114.33333333333333,
+   "vStart": 94.45,
+   "vEnd": 102.01,
+   "t0": 92.25,
+   "t1": 114.333
+  },
+  {
+   "beat": "chapter",
+   "title": "Connect",
+   "icon": "link",
+   "say": "Every highlight and note is gathered and searchable. Drag clinical stickers onto the page, and look up words with help in many languages, including Arabic.",
+   "imgs": [
+    [
+     "lm-notes",
+     "Notes and highlights"
+    ],
+    [
+     "lm-stickers",
+     "Help in your language"
+    ]
+   ],
+   "i": 7,
+   "card": 114.33333333333333,
+   "slotEnd": 136.41666666666666,
+   "vStart": 116.533,
+   "vEnd": 124.953,
+   "t0": 114.333,
+   "t1": 136.417
+  },
+  {
+   "beat": "chapter",
+   "title": "Focus",
+   "icon": "clock",
+   "say": "Twenty five minutes, one clear goal, soft sounds and short breaks. Daylight or evening, warm pages and your text size. Make yourself comfortable.",
+   "imgs": [
+    [
+     "lm-focus",
+     "Twenty-five minutes. One goal."
+    ],
+    [
+     "lm-comfort",
+     "Make yourself comfortable"
+    ]
+   ],
+   "i": 8,
+   "card": 136.41666666666666,
+   "slotEnd": 158.5,
+   "vStart": 138.617,
+   "vEnd": 149.357,
+   "t0": 136.417,
+   "t1": 160
+  },
+  {
+   "beat": "stats",
+   "say": "A five step learning loop. Six study methods. Zero automatic uploads.",
+   "stats": [
+    [
+     5,
+     "step learning loop"
+    ],
+    [
+     6,
+     "study methods"
+    ],
+    [
+     0,
+     "automatic uploads"
+    ],
+    [
+     25,
+     "minute focus sessions"
+    ]
+   ],
+   "i": 9,
+   "vStart": 160.6,
+   "vEnd": 165.64,
+   "t0": 160,
+   "t1": 170
+  },
+  {
+   "beat": "offer",
+   "say": "Lumen is free to start. The full app comes with the Crown Pass, with seven days free. Turn your own notes into recall.",
+   "i": 10,
+   "vStart": 170.4,
+   "vEnd": 178.28,
+   "t0": 170,
+   "t1": 180,
+   "endCard": 172.6
+  }
+ ],
+ "imgs": [
+  "lm-today",
+  "lm-library",
+  "lm-reader",
+  "lm-magnify",
+  "lm-explain",
+  "lm-recall",
+  "lm-card",
+  "lm-studio",
+  "lm-notes",
+  "lm-stickers",
+  "lm-focus",
+  "lm-comfort"
+ ]
+}
